@@ -113,7 +113,6 @@
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/amazon-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-firehose-connector">Amazon Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -126,6 +125,7 @@
         <a href="/server-side-connectors/audiencestore-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-connector">AudienceStore</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awin Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -380,6 +380,15 @@
 </ul>
 </li>
 </ul>
+<h2 id="how-it-works">How it works</h2>
+<p>Accurate predictions of customer’s preferences and their next best actions rely on a good understanding of that customer and most recent interactions across all touchpoints. Tealium enhances Pega’s Customer Decision Hub by making it easy to connect this accurate and rich customer data to inform decisions and recommendations.</p>
+<p>The Pegasystems connector connects valuable customer data in two ways:</p>
+<ol>
+<li>Tealium and Pega share consolidated customer information based on a 360-degree view of the customer, aggregating all cross-channel signals in a standardized customer profile.</li>
+<li>Tealium streams customer interactions across web, app, call-center and other channels in real-time to Pega to provide in-the-moment context for decision making.</li>
+</ol>
+<p>The Pegasystems connector supports both EventStream and AudienceStream actions and lets you track page views/interactions through EventStream. Using a customer identifier or cookie ID, you can configure and map differing page types to send interaction history to Pega.</p>
+<p>Additionally, trigger next best actions within the Pega Customer Decision Hub by sending audience segments and statuses to Pega along with a customer identifier.</p>
 <h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
@@ -391,12 +400,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Send Custom Audience Data (Real-Time)</td>
+<td>Update Segment Membership Data (Real-Time)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Send Custom Audience Data (Batched)</td>
+<td>Update Segment Membership Data (Batched)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -415,33 +424,35 @@
 <td>✓</td>
 <td>✗</td>
 </tr>
+<tr>
+<td>Send Customer Profile Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>While Tealium supports batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
 <h2 id="configure-settings">Configure settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Client ID</strong> Required: The unique ID that is assigned to the client.</li>
-<li><strong>Client Secret</strong> Required: The password that the system assigns to the client to authenticate with the Pega Platform authorization module.</li>
-<li><strong>Access Token URL</strong> Required: The request URL used to receive an access token for the client as a response after authentication.</li>
+<li><strong>Client ID</strong>: Required. The unique ID that is assigned to the client.</li>
+<li><strong>Client Secret</strong>: Required. The password that the system assigns to the client to authenticate with the Pega Platform authorization module.</li>
+<li><strong>Access Token URL</strong>: Required. The request URL used to receive an access token for the client as a response after authentication.</li>
+<li><strong>Authentication method</strong>: Required. The authentication method used to access the Pega Platform.
+<ul>
+<li><strong>POST</strong>: Send the client credentials in the body of the POST request.</li>
+<li><strong>BASIC</strong>: Send the client credentials (Client ID and Client Secret) to the external application as a part of the authorization header.</li>
+</ul>
+</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The REST service authentication used by the client requires <strong>Client ID</strong> and <strong>Client Secret</strong> credentials.</p>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>Accurate predictions of customer’s preferences and next best products rely on a good understanding of that customer and most recent interactions across all touchpoints. Tealium enhances Pega’s Customer Decision Hub by making it easy to connect this accurate and rich customer data to inform decisions and recommendations.</p>
-<p>The Pegasystems connector connects valuable customer data in two ways:</p>
-<ol>
-<li>Tealium and Pega share consolidated customer information based on a 360-degree view of the customer, aggregating all cross-channel signals in a standardized customer profile.</li>
-<li>Tealium streams customer interactions across web, app, call-center and other channels in real-time to Pega to provide in-the-moment context for decision making.</li>
-</ol>
-<p>The Pegasystems connector supports both EventStream and AudienceStream actions and lets you track page views/interactions through EventStream. Using a Customer Identifier or Cookie ID, you can configure and map differing page types to send interaction history to Pega.</p>
-<p>Additionally, trigger next best actions within the Pega Customer Decision Hub by sending audience segments and statuses to Pega along with a Customer Identifier.</p>
 <h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--send-custom-audience-data-real-time">Action — Send Custom Audience Data (Real-Time)</h3>
-<p>Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&rsquo;s profile for decisioning in real-time.</p>
+<h3 id="action--update-segment-membership-data-real-time">Action — Update Segment Membership Data (Real-Time)</h3>
+<p>Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&rsquo;s profile for making a decision in real-time.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -457,27 +468,27 @@
 </tr>
 <tr>
 <td>Customer ID</td>
-<td>(Required) The primary key for a Pega Customer Profile.</td>
+<td>Required. The primary key for a Pega Customer Profile.</td>
 </tr>
 <tr>
 <td>Name</td>
-<td>(Required) The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega.</td>
+<td>Required. The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega.</td>
 </tr>
 <tr>
 <td>Status</td>
-<td>(Required) The audience trigger action to join or leave an audience. Based on the desired action, we recommend that you include mapping <strong>Join</strong> or <strong>Leave</strong> values to the Segment Status field.</td>
+<td>Required. The audience trigger action to join or leave an audience. Based on the desired action, we recommend that you include mapping <strong>Join</strong> or <strong>Leave</strong> values to the Segment Status field.</td>
 </tr>
 <tr>
 <td>Namespace</td>
-<td>(Required) Any subcategory parameters used to supplement the audience data provided to Pega.</td>
+<td>Required. Any subcategory parameters used to supplement the audience data provided to Pega.</td>
 </tr>
 <tr>
 <td>Last Qualification Time</td>
-<td>(Required) The timestamp when the user joined the audience. Date attributes will be converted to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format. If not mapped, this parameter will be initialized with the current timestamp in the ISO 8601 format. For example: 2022-08-30T01:13:16.081Z.</td>
+<td>Required. The timestamp when the user joined the audience. Date attributes will be converted to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format. If not mapped, this parameter will be initialized with the current timestamp in the ISO 8601 format. For example: <code>2022-08-30T01:13:16.081Z</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action--send-custom-audience-data-batched">Action — Send Custom Audience Data (Batched)</h3>
+<h3 id="action--update-segment-membership-data-batched">Action — Update Segment Membership Data (Batched)</h3>
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -485,8 +496,8 @@
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 100 MB</li>
 </ul>
-<p>Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&rsquo;s profile for decisioning in real-time.</p>
-<p class="tip"><i class="fa fa-info-circle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
+<p>Use this action to send audience data to Pega to trigger next best action decisioning within the Pega Customer Decision Hub. Send audience data and additional parameters relevant to that visitor&rsquo;s profile for making a decision in real-time.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -502,23 +513,23 @@
 </tr>
 <tr>
 <td>Customer ID</td>
-<td>(Required) The primary key for a Pega Customer Profile.</td>
+<td>Required. The primary key for a Pega Customer Profile.</td>
 </tr>
 <tr>
 <td>Name</td>
-<td>(Required) The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega.</td>
+<td>Required. The audience name to be sent to the Pega platform. We recommend configuring your audience name or similar value as a string to be passed to Pega.</td>
 </tr>
 <tr>
 <td>Status</td>
-<td>(Required) The audience trigger action to join or leave an audience. Based on the desired action, we recommend that you include mapping <strong>Join</strong> or <strong>Leave</strong> values to the Segment Status field.</td>
+<td>Required. The audience trigger action to join or leave an audience. Based on the desired action, we recommend that you include mapping <strong>Join</strong> or <strong>Leave</strong> values to the Segment Status field.</td>
 </tr>
 <tr>
 <td>Namespace</td>
-<td>(Required) Any subcategory parameters used to supplement the audience data provided to Pega.</td>
+<td>Required. Any subcategory parameters used to supplement the audience data provided to Pega.</td>
 </tr>
 <tr>
 <td>Last Qualification Time</td>
-<td>(Required)The timestamp when the user joined the audience. Date attributes will be converted to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format. If not mapped, this parameter will be initialized with the current timestamp in the ISO 8601 format. For example: 2022-08-30T01:13:16.081Z.</td>
+<td>Required.The timestamp when the user joined the audience. Date attributes will be converted to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format. If not mapped, this parameter will be initialized with the current timestamp in the ISO 8601 format. For example: <code>2022-08-30T01:13:16.081Z</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -539,15 +550,15 @@
 </tr>
 <tr>
 <td>Page Type</td>
-<td>(Required) The type of the page visited.</td>
+<td>Required. The type of the page visited.</td>
 </tr>
 <tr>
 <td>Device Type</td>
-<td>(Required) The device used in event generation.</td>
+<td>Required. The device used in event generation.</td>
 </tr>
 <tr>
 <td>Event Type</td>
-<td>(Required) The name of the event. Recommended to use your <code>tealium_event</code> value.</td>
+<td>Required. The name of the event. Recommended to use your <code>tealium_event</code> value.</td>
 </tr>
 <tr>
 <td>Customer ID</td>
@@ -559,7 +570,7 @@
 </tr>
 <tr>
 <td>Event Timestamp</td>
-<td>Time of the event generated. Date attributes will be converted to the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601</a> format. If not mapped, it will be initialized with the current timestamp in the ISO 8601 format. Example: 2022-08-30T01:13:16.081Z.</td>
+<td>Time of the event generated. Date attributes will be converted to the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601</a> format. If not mapped, it will be initialized with the current timestamp in the ISO 8601 format. For example: <code>2022-08-30T01:13:16.081Z</code>.</td>
 </tr>
 <tr>
 <td>Page Location</td>
@@ -580,7 +591,7 @@
 <li>Max size of requests: 100 MB</li>
 </ul>
 <p>Use this EventStream action to send batched event data, primarily page views, to Pega for aggregation within the Pegasystems endpoint.</p>
-<p class="tip"><i class="fa fa-info-circle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
@@ -596,15 +607,15 @@
 </tr>
 <tr>
 <td>Page Type</td>
-<td>(Required) The type of the page visited.</td>
+<td>Required. The type of the page visited.</td>
 </tr>
 <tr>
 <td>Device Type</td>
-<td>(Required) The device used in event generation.</td>
+<td>Required. The device used in event generation.</td>
 </tr>
 <tr>
 <td>Event Type</td>
-<td>(Required) The name of the event. Recommended to use your <code>tealium_event</code> value.</td>
+<td>Required. The name of the event. Recommended to use your <code>tealium_event</code> value.</td>
 </tr>
 <tr>
 <td>Customer ID</td>
@@ -616,7 +627,7 @@
 </tr>
 <tr>
 <td>Event Timestamp</td>
-<td>Time of the event generated. Date attributes will be converted to the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601</a> format. If not mapped, it will be initialized with the current timestamp in the ISO 8601 format. Example: 2022-08-30T01:13:16.081Z.</td>
+<td>Time of the event generated. Date attributes will be converted to the ISO <a href="https://en.wikipedia.org/wiki/ISO_8601">8601</a> format. If not mapped, it will be initialized with the current timestamp in the ISO 8601 format. For example: <code>2022-08-30T01:13:16.081Z</code>.</td>
 </tr>
 <tr>
 <td>Page Location</td>
@@ -629,7 +640,7 @@
 </tbody>
 </table>
 <h3 id="action--id-merge">Action — ID Merge</h3>
-<p>Use this action to merge customer behavioral information to produce more accurate recommendations and next-best-action decisions based on cumulative bevaioral data.</p>
+<p>Use this action to merge customer behavioral information to produce more accurate recommendations and next-best-action decisions based on cumulative behavioral data.</p>
 <h4 id="suggested-setup-in-tealium">Suggested setup in Tealium</h4>
 <p>We recommend the following Pegasystems connector configuration:</p>
 <ol>
@@ -659,7 +670,7 @@
 <tbody>
 <tr>
 <td>Primary ID / Secondary ID</td>
-<td>(Required) An array of strings that contains the Primary ID and Secondary IDs. The first value is Primary ID, and subsequent values are Secondary IDs. For example <code>[&quot;ID12345&quot;,&quot;ID12346&quot;,&quot;ID12347&quot;]</code>.</td>
+<td>Required. An array of strings that contains the Primary ID and Secondary IDs. The first value is Primary ID, and subsequent values are Secondary IDs. For example: <code>[&quot;ID12345&quot;,&quot;ID12346&quot;,&quot;ID12347&quot;]</code>.</td>
 </tr>
 <tr>
 <td>Application Name</td>
@@ -667,13 +678,13 @@
 </tr>
 <tr>
 <td>Context Name</td>
-<td>Select the Context Name or enter a custom Context Name: <strong>Customer</strong>, <strong>Provider</strong>, or <strong>Subscriber</strong>.</td>
+<td>Select the context name or enter a custom context name: <strong>Customer</strong>, <strong>Provider</strong>, or <strong>Subscriber</strong>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="vendor-resources">Vendor resources</h2>
 <ul>
-<li><a href="https://docs.pega.com/bundle/components/page/customer-decision-hub/components/tealium-installation-guide.html#con-tealium-installation-guide">Installing the Tealium Customer Data Connector</a></li>
+<li><a href="https://docs.pega.com/bundle/components/page/customer-decision-hub/components/tealium-installation-guide.html#con-tealium-installation-guide">Pega: Installing the Tealium Customer Data Connector</a></li>
 </ul>
 
 </div>
@@ -735,7 +746,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 13, 2024 
+          <p>This page was last updated:  December 5, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -750,12 +761,12 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-custom-audience-data-real-time" href="javascript:void(0)">Action — Send Custom Audience Data (Real-Time)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-custom-audience-data-batched" href="javascript:void(0)">Action — Send Custom Audience Data (Batched)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--update-segment-membership-data-real-time" href="javascript:void(0)">Action — Update Segment Membership Data (Real-Time)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--update-segment-membership-data-batched" href="javascript:void(0)">Action — Update Segment Membership Data (Batched)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-custom-event-data-real-time" href="javascript:void(0)">Action — Send Custom Event Data (Real-Time)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-custom-event-data-batched" href="javascript:void(0)">Action — Send Custom Event Data (Batched)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--id-merge" href="javascript:void(0)">Action — ID Merge</a></li>

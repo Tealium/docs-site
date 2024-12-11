@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "8",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -113,7 +113,6 @@
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/amazon-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-firehose-connector">Amazon Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -126,6 +125,7 @@
         <a href="/server-side-connectors/audiencestore-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-connector">AudienceStore</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awin Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -373,10 +373,11 @@
   <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>API Name: X Ads API</li>
+<li>API Name: X Conversions API</li>
 <li>API Version: v12</li>
 <li>API Endpoint: <code>https://ads-api.x.com/</code></li>
 <li>Rate limit: 60,000 events per account, per 15 minute interval</li>
+<li>Documentation: <a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/api-reference/conversions">X: Web Conversions API</a></li>
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
@@ -384,7 +385,7 @@
 <li><a href="http://developer.x.com">X Developer</a> account</li>
 <li>X user account with permissions to send events to desired ad accounts</li>
 </ul>
-<p>If you already have an actively used X Ads API application, both the application and existing access tokens may be used for the Conversion API. For more information, see <a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">Conversion API Set Up</a> in the X documentation.</p>
+<p>If you already have an actively used X Ads API application, both the application and existing access tokens can be used for the Conversion API. For more information, see <a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">X: Conversion API Set Up</a>.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Use the X Conversion API to create a separate server-side application that passes conversion events to X for use in optimization, measurement, and attribution across your campaigns. With this API, you can measure the impact of running ads on X by sending conversion events without the need for a X website pixel.</p>
 <p>Currently, there are two primary use cases for measuring ad impact using matching identifiers:</p>
@@ -416,16 +417,16 @@
 <p>Manage event duplication using the <code>conversion_id</code> event parameter, which can be included in Pixel or X Conversion API requests.</p>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>X Conversions requires allowlisting on your X account. For assistance with allowlisting, contact your X representative.</p>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li>
 <p><strong>Event ID</strong><br>
-The base-36 ID of a specific event. It matches a pre-configured event contained within this ad account. This is called ID in the corresponding event in Events Manager.
+The base36 ID of a specific event. It matches a pre-configured event contained within this ad account. This is called <strong>ID</strong> in the corresponding event in Events Manager.
 This value can be created in the following ways:</p>
 <ul>
-<li>Within the Single-Event Website tag configuration. Log in to your ads account at <a href="https://ads.x.com">ads.x.com</a> and select <strong>Events Manager</strong> under <strong>Tools</strong>.</li>
-<li>Use the API. See <a href="https://developer.x.com/en/docs/x-ads-api/measurement/api-reference/web-event-tags">Web Event Tags</a> for more details.</li>
+<li>Within the Single-Event Website tag configuration. Log in to your ads account at <a href="https://ads.x.com/">https://ads.x.com/</a> and select <strong>Events Manager</strong> under <strong>Tools</strong>.</li>
+<li>Use the API. For more information, see <a href="https://developer.x.com/en/docs/x-ads-api/measurement/api-reference/web-event-tags">X: Web Event Tags</a>.</li>
 <li>Contact your X account manager.</li>
 </ul>
 </li>
@@ -434,7 +435,7 @@ This value can be created in the following ways:</p>
 The Universal Website Tag (UWT) ID for an ad account. This represents the base36-encoded value for an ad account&rsquo;s UWT ID.<br>
 To obtain your Pixel ID:</p>
 <ol>
-<li>Navigate to <a href="https://ads.x.com">ads.x.com</a>.</li>
+<li>Log in to your ads account at <a href="https://ads.x.com">https://ads.x.com/</a>.</li>
 <li>In the top left corner of the interface, under <strong>Tools</strong>, click <strong>Events Manager</strong>.</li>
 <li>If you do not have a X Pixel event source on your left sidebar yet, in the top right corner of the page, select <strong>Add event source</strong>.</li>
 <li>The interface displays the Pixel ID and Event ID of this event that is used in the API.</li>
@@ -461,6 +462,13 @@ To obtain your Pixel ID:</p>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-conversion-event">Send Conversion Event</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see [Batched Actions].(/server-side/connectors/batched-actions/) Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="user-data">User Data</h4>
 <p>You must provide at least one of the following parameters:</p>
 <table>
@@ -475,7 +483,7 @@ To obtain your Pixel ID:</p>
 <tr>
 <td>X Click ID</td>
 <td>String</td>
-<td>X Click ID as parsed from the click-through URL. Either X Click ID or Email must be specified. Both are preferred in order to increase match rate.</td>
+<td>X Click ID as parsed from the click-through URL. Either X Click ID or Email must be specified. Use both to increase match rate.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -519,8 +527,8 @@ To obtain your Pixel ID:</p>
 </thead>
 <tbody>
 <tr>
-<td>Event Source ID Override</td>
-<td>This is called Website Tag ID in the Ads Manager and Ads API and can be found in the <strong>Events Manager</strong> of the X Ads platform. This parameter is a required field, and this setting overrides Event Source ID used in the configuration section.</td>
+<td>Event ID Override</td>
+<td>This is called <strong>Website Tag ID</strong> in the Ads Manager and Ads API and can be found in the <strong>Events Manager</strong> of the X Ads platform. This parameter is a required field, and this setting overrides <strong>Event Source ID</strong> used in the configuration section.</td>
 </tr>
 <tr>
 <td>Pixel ID Override</td>
@@ -528,11 +536,11 @@ To obtain your Pixel ID:</p>
 </tr>
 <tr>
 <td>Conversion Time</td>
-<td>Required. The time of a conversion event. Specify date-time of event expressed in <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>. If not provided, the time of the event is be used. Example: <code>2020-11-01T08:00:00.000Z</code>.</td>
+<td>Required. The time of a conversion event. Specify date-time of event expressed in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a>. If not provided, the value is the time of the event. Example: <code>2020-11-01T08:00:00.000Z</code>.</td>
 </tr>
 <tr>
 <td>Conversion Value</td>
-<td>The price value of items being purchased, represented in &lsquo;price_currency&rsquo; currency.</td>
+<td>The price value of items being purchased, represented in <code>price_currency</code> currency.</td>
 </tr>
 <tr>
 <td>Number of Items</td>
@@ -540,11 +548,11 @@ To obtain your Pixel ID:</p>
 </tr>
 <tr>
 <td>Currency</td>
-<td>The type of a currency to filter results by, identified using <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>. This is a three-letter string such as &lsquo;USD&rsquo;.</td>
+<td>The type of a currency to filter results by, identified using <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217 format</a>. This is a three-letter string, such as <code>USD</code>.</td>
 </tr>
 <tr>
 <td>Conversion ID</td>
-<td>For deduplication between pixel and conversion API conversions. An identifier for a conversion event that can be used for de-duplication between Web Pixel and Conversion API conversions in the same event tag. See the <a target="_blank" href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">Conversions Guide</a> for more information.</td>
+<td>For deduplication between pixel and conversion API conversions. An identifier for a conversion event that can be used for de-duplication between Web Pixel and Conversion API conversions in the same event tag. For more information, see <a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">X: Conversion API Set Up</a>.</td>
 </tr>
 <tr>
 <td>Description</td>
@@ -554,9 +562,21 @@ To obtain your Pixel ID:</p>
 <td>Search String</td>
 <td>Text that was searched for on the advertiser&rsquo;s website.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="contents-attributes">Contents Attributes</h4>
+<p>Optional parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Content ID</td>
-<td>A SKU or GTIN identifier that represents the content.</td>
+<td>A SKU or GTIN (Global Trade Item Number) identifier that represents the content.</td>
 </tr>
 <tr>
 <td>Content Group ID</td>
@@ -577,78 +597,6 @@ To obtain your Pixel ID:</p>
 <tr>
 <td>Number of Items</td>
 <td>The number of products purchased.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="send-mobile-measurement-conversion-event">Send Mobile Measurement Conversion Event</h3>
-<h4 id="parameters">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Conversion Type</td>
-<td>The type of conversion event. Possible values: <code>PURCHASE</code>, <code>SIGN_UP</code>, <code>INSTALL</code>, <code>RE_ENGAGE</code>, <code>UPDATE</code>, <code>TUTORIAL_COMPLETE</code>, <code>RESERVATION</code>, <code>ADD_TO_CART</code>, <code>ADD_TO_WISHLIST</code>, <code>LOGIN</code>, <code>CHECKOUT_INITIATED</code>, <code>SEARCH</code>, <code>LEVEL_ACHIEVED</code>, <code>ACHIEVEMENT_UNLOCKED</code>, <code>CONTENT_VIEW</code>, <code>SHARE</code>, <code>INVITE</code>, <code>ADDED_PAYMENT_INFO</code>, <code>SPENT_CREDITS</code>, <code>RATED</code>.</td>
-</tr>
-<tr>
-<td>APP ID</td>
-<td>(Required)</td>
-</tr>
-<tr>
-<td>Conversion Time</td>
-<td>(Required)</td>
-</tr>
-<tr>
-<td>Hashed Device ID</td>
-<td>(Required)</td>
-</tr>
-<tr>
-<td>Operating System Type</td>
-<td>(Required)</td>
-</tr>
-<tr>
-<td>Device IP Address</td>
-<td>IPv4 or IPv6 address of the device when the conversion event happened.</td>
-</tr>
-<tr>
-<td>Click Window</td>
-<td>The click window for this event in days. Note: <strong>Click Window</strong> must be greater than or equal to <strong>View Through Window</strong>. Default: <code>14</code>. Possible values: <code>1</code>, <code>7</code>, <code>14</code>, <code>30</code>.</td>
-</tr>
-<tr>
-<td>Level</td>
-<td>A level associated with this event.</td>
-</tr>
-<tr>
-<td>Non X Engagement Time</td>
-<td>The time of the last non-X engagement prior to the conversion.</td>
-</tr>
-<tr>
-<td>Non X Engagement Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Number Items</td>
-<td>Number of items associated with this event.</td>
-</tr>
-<tr>
-<td>Price Currency</td>
-<td>The currency associated with this event in ISO 4217 format.</td>
-</tr>
-<tr>
-<td>Price Micro</td>
-<td>A price amount associated to this event in micro.</td>
-</tr>
-<tr>
-<td>User Payment Info</td>
-<td>A boolean value to indicate if the user’s payment information is stored in the app associated with this event.</td>
-</tr>
-<tr>
-<td>View Through Window</td>
-<td>The view through window for this event in days. Default: <code>1</code>. Possible values: <code>0</code>, <code>1</code>, <code>7</code>, <code>14</code>, <code>30</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -712,7 +660,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 4, 2024 
+          <p>This page was last updated:  December 9, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -733,7 +681,6 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-mobile-measurement-conversion-event" href="javascript:void(0)">Send Mobile Measurement Conversion Event</a></li>
               </nav>
   </aside></nav>
 

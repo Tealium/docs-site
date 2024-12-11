@@ -624,6 +624,8 @@
 <ul>
 <li><strong>File encoding</strong><br>
 We suggest UTF-8 <a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">(without BOM encoding)</a>.</li>
+<li><strong>Field separator</strong><br>
+The field separator must be a comma (<code>,</code>).</li>
 <li><strong>Column names</strong>
 <ul>
 <li>The first line of the CSV file must contain the file column names. Each line after that represents an event or a visitor record and must contain at least one <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor identifier attribute</a>.</li>
@@ -631,19 +633,21 @@ We suggest UTF-8 <a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">(
 <li>Column names are case-sensitive and must match the attribute names exactly.</li>
 </ul>
 </li>
-<li><strong>Column Values</strong><br>
+<li><strong>Column values</strong><br>
 Column values should not exceed 1,000 characters. Any characters over this limit are trimmed.</li>
-<li><strong>Column Order</strong><br>
+<li><strong>Column order</strong><br>
 The order of the columns does not matter, but we recommend placing the visitor ID column first.</li>
-<li><strong>Extra/Missing Columns</strong><br>
+<li><strong>Extra/Missing columns</strong><br>
 Extra columns that are not configured as AudienceStream attributes will be ignored. Mapped columns not present in the CSV file will be skipped.</li>
-<li><strong>Group Rows by Visitor ID</strong><br>
+<li><strong>Group rows by visitor ID</strong><br>
 Each row has a <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor ID</a> column and file may contain multiple rows for the same visitor. Rows that contain the same visitor ID should be grouped together to optimize the import process.</li>
+<li><strong>Line endings</strong><br>
+The following line endings are supported: LF (Line Feed), CR (Carriage Return), and CR LF (Carriage Return Line Feed).</li>
 </ul>
 <h3 id="data-type-formats">Data type formats</h3>
 <p>We recommend that you format the following data types accordingly:</p>
 <ul>
-<li><strong>Double-Quote Values with Commas</strong><br>
+<li><strong>Double-quote values with commas</strong><br>
 If a value contains a comma (<code>,</code>), it must be surrounded by double-quotes to ensure the integrity of the CSV columns. We recommend putting all values in double-quotes. Use a doubled double quote (<code>&quot;&quot;</code>) to indicate a double quote character in the data.</li>
 <li><strong>Array of strings format</strong><br>
 Use the following example format for file attributes that are to be mapped to an array of strings:
@@ -657,7 +661,7 @@ Use the following example format for file attributes that are to be mapped to an
 Use the following example format for file attributes that are to be mapped to an array of booleans:
 <pre tabindex="0"><code>&#34;[0, 1]&#34;,&#34;[0, 1]&#34;
 </code></pre></li>
-<li><strong>Normalize Dates</strong>
+<li><strong>Normalize dates</strong>
 <ul>
 <li>Date values must be consistent throughout a file for a given field.</li>
 <li>Each date value must match the format specified for that column. For example, if the expected format is <code>yyyy-MM-dd</code>, the values must contain 4-digit years and 2-digit month and day values, for example, <code>2021-02-09</code>.</li>
@@ -665,9 +669,9 @@ Use the following example format for file attributes that are to be mapped to an
 <li>Dates are stored in Tealium as epoch timestamps in milliseconds.</li>
 </ul>
 </li>
-<li><strong>Normalize Empty Values</strong><br>
+<li><strong>Normalize empty values</strong><br>
 Some rows might not contain a value for each column. Ensure that these columns are empty and do not contain placeholder values such as &ldquo;null&rdquo;, &ldquo;empty&rdquo;, &ldquo;blank&rdquo;, etc.</li>
-<li><strong>Omit Special Characters from Currency Amounts</strong><br>
+<li><strong>Omit special characters from currency amounts</strong><br>
 Columns that represent currency amounts, such as &ldquo;OrderTotal&rdquo; or &ldquo;ProductPrice&rdquo;, must not contain symbols or commas.</li>
 </ul>
 <table>
@@ -752,7 +756,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 23, 2024 
+          <p>This page was last updated:  December 10, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
