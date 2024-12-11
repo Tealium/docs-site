@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "guides",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -89,6 +89,8 @@
   <ul class="list pa0" data-nav-section="guides"><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/vip-badge-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">VIPバッジ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/cart-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">カート放棄</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/discount-shopper-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".discount-shopper-guide">ディスカウントショッパー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/browse-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".browse-abandonment-guide">ブラウズ放棄</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/lifetime-value/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ライフタイムバリュー</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/supported-consent-integration/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">同意統合</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/abandonment-strategy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">放棄戦略</a></li></ul>
@@ -132,7 +134,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>このガイドでは、Tealium iQタグ管理システムとOneTrust同意統合を使用しますが、この構成は<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">サポートされているベンダー統合</a>のいずれにも適用できます。このガイドの終わりまでに、OneTrustまたは他の選択したConsent Management Platform（CMP）を成功裏に統合し、Tealium iQでユーザーの構成を尊重するための関連する強制措置を構成します。</p>
+  <p>このガイドでは、Tealium iQタグ管理システムとOneTrust同意統合を使用しますが、この構成は<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">サポートされているベンダー統合</a>のいずれにも適用できます。このガイドの終わりまでに、OneTrustまたは他の任意のサポートされているConsent Management Platform（CMP）を成功裏に統合し、Tealium iQでユーザーの構成を尊重するための関連する強制措置を構成します。</p>
 <figure><a class="slb" href="/images/guides/consent-integration-guide.png"><img src="/images/guides/consent-integration-guide.png"
          alt="Consent integration screenshot"
          title="Consent integration screenshot"/>
@@ -167,12 +169,12 @@
 <li>ベンダーID：同意統合がページ上のCMPを識別するために使用します。</li>
 <li>構成済みの同意カテゴリ：同意統合はこれらを目的と呼び、1つのCMPからの目的の集合を目的グループと呼びます。</li>
 </ul>
-<p>この情報は、すべてのトラッキングを受け入れた後のウェブページから直接取得できます。それを取得する方法の詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/#how-it-works">サポートされているベンダー統合</a>を参照してください。</p>
+<p>この情報は、すべてのトラッキングを受け入れた後のウェブページから直接取得できます。取得方法の詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/#how-it-works">サポートされているベンダー統合</a>を参照してください。</p>
 <h2 id="cmpスクリプトを読み込む">CMPスクリプトを読み込む</h2>
 <p>まず、<strong>Pre Loader</strong>または<strong>DOM Ready</strong>拡張機能を使用して、OneTrust CMPスクリプトをウェブサイトに注入します。この構成には、CMPプロバイダから取得できる構成済みのCMPスクリプトが必要です。この例では、OneTrustコンソールから取得したOneTrust CMPスクリプトを使用します。</p>
 <ol>
 <li><strong>iQタグ管理 &gt; 拡張機能</strong>に移動します。</li>
-<li><strong>+ 拡張機能を追加 &gt; アドバンス</strong>をクリックします。</li>
+<li><strong>+ 拡張機能を追加 &gt; 高度な構成</strong>をクリックします。</li>
 <li><strong>Javascriptコード</strong>拡張機能を追加します。</li>
 <li>拡張機能を識別するための<strong>タイトル</strong>を入力します。</li>
 <li><strong>スコープ</strong>の下で、<strong>Pre Loader</strong>または<strong>DOM Ready Extensions</strong>を選択します。</li>
@@ -201,11 +203,11 @@
 <li>統合の目的を明確に識別する名前を入力します。</li>
 <li>ベンダードロップダウンリストから<strong>OneTrust</strong>を選択します。</li>
 <li>OneTrustコンソールから取得した<strong>ベンダーID</strong>を入力します。</li>
-<li>OneTrustのデフォルトカテゴリーで新しい目的グループを自動的に作成するには、<strong>Create new Purpose Group with OneTrust Default Categories</strong>を選択します。</li>
+<li>OneTrustのデフォルトカテゴリーから標準的な目的を自動的に作成するには、<strong>OneTrustデフォルトカテゴリーで新しい目的グループを作成</strong>を選択します。</li>
 <li><strong>次へ</strong>をクリックします。</li>
 </ol>
 <h3 id="ステップ2強制ルールを構成する">ステップ2：強制ルールを構成する</h3>
-<p><strong>強制ルール</strong>は、CMPがキャプチャした同意信号がいつ強制されるべきかを決定します。同意が常に正しく強制されるようにするために、ウェブサイトの各ページビューやイベントは、重複がないように1つの同意統合または免除をトリガーする必要があります。</p>
+<p><strong>強制ルール</strong>は、CMPによってキャプチャされた同意信号がいつ強制されるべきかを決定します。同意が常に正しく強制されるようにするために、ウェブサイト上の各ページビューやイベントは、重複がないように1つの同意統合または免除をトリガーする必要があります。</p>
 <ol>
 <li>単一の統合のみを構成しているため、ドロップダウンリストから<strong>すべてのページとイベント</strong>を選択します。</li>
 <li><strong>次へ</strong>をクリックします。</li>
@@ -213,29 +215,29 @@
 <h3 id="ステップ3公開場所を選択する">ステップ3：公開場所を選択する</h3>
 <p><strong>公開場所</strong>画面では、統合が適用される環境を選択できます。まずテスト環境に公開することをお勧めします。この例では、すべての環境に公開します。</p>
 <ol>
-<li><strong>Dev, QA</strong>、および<strong>Prod</strong>環境を選択します。</li>
+<li><strong>Dev、QA</strong>、および<strong>Prod</strong>環境を選択します。</li>
 <li><strong>次へ</strong>をクリックします。</li>
 </ol>
 <h3 id="ステップ4目的グループを選択する">ステップ4：目的グループを選択する</h3>
 <ol>
-<li><strong>目的グループ</strong>画面で、ドロップダウンリストから<strong>OneTrust Default</strong>を選択します。</li>
+<li><strong>目的グループ</strong>画面で、ドロップダウンリストから<strong>OneTrustデフォルト</strong>を選択します。</li>
 <li>同意統合を保存するために<strong>保存</strong>をクリックします。</li>
 </ol>
 <h3 id="ステップ5目的グループを編集する">ステップ5：目的グループを編集する</h3>
-<p>同意統合を保存した後、Tealium iQを目的に割り当て、タグを目的にマッピングするために目的グループを編集する必要があります。</p>
+<p>同意統合を保存した後、目的グループを編集してTealium iQを目的に割り当て、タグを目的にマッピングする必要があります。</p>
 <p>目的グループを編集するには：</p>
 <ol>
 <li><strong>同意統合</strong>画面で、<strong>目的グループ</strong>タブをクリックします。</li>
-<li><a href="#step-1-configure-the-integration">ステップ1</a>で作成した<strong>OneTrust Default</strong>目的グループを選択します。</li>
+<li><a href="#step-1-configure-the-integration">ステップ1</a>で作成した<strong>OneTrustデフォルト</strong>目的グループを選択します。</li>
 </ol>
 <h3 id="ステップ6tealium-iqを目的に割り当てる">ステップ6：Tealium iQを目的に割り当てる</h3>
 <p><strong>Tealium iQ目的</strong>画面では、Tealium iQを特定の目的にマッピングできます。これは、すべてのタグ操作を管理するために重要です。同意が必要で、ユーザーがその目的に同意しない場合、Tealium iQはロードされず、結果としてタグは機能しません。</p>
 <ol>
 <li><strong>Tealium iQ目的</strong>タブをクリックします。</li>
-<li>Tealium iQが常にロードされるようにするため、Tealium iQを<strong>Strictly Necessary</strong>目的に割り当てます。これにより、ユーザーはオプトアウトできません。</li>
+<li>Tealium iQが常にロードされるようにするため、Tealium iQを<strong>厳密に必要</strong>な目的に割り当てます。</li>
 </ol>
 <h3 id="ステップ7タグを目的にマッピングする">ステップ7：タグを目的にマッピングする</h3>
-<p><strong>タグのマッピング</strong>画面では、タグを特定の目的に割り当てることができます。これにより、ユーザーの同意選択に基づいて正しいタグが発火します。すべてのタグに目的を割り当てることが重要であり、目的がないタグは発火しません。この画面では、タグの再発火を構成することもできます。これにより、ユーザーの同意が同じイベント内で更新された場合にタグを再発火できます。</p>
+<p><strong>タグのマッピング</strong>画面では、タグを特定の目的に割り当てることができ、ユーザーの同意選択に基づいて正しいタグが発火することを保証します。すべてのタグに目的を割り当てることが重要で、目的がないタグは発火しません。この画面では、同意が同じイベント内で更新された場合にタグを再発火させる構成もできます。</p>
 <ol>
 <li><strong>タグのマッピング</strong>タブをクリックします。</li>
 <li>各タグを適切な目的に割り当てます。</li>
@@ -244,7 +246,7 @@
 </ol>
 <h3 id="ステップ8構成を公開する">ステップ8：構成を公開する</h3>
 <p>Tealium iQプロファイルを保存し公開して、CMPとの同意統合を開始します。</p>
-<p>これで、Tealium iQ内のOneTrust統合の構成が完了しました。この構成により、すべてのページとイベントで、CMPで構成した構成に従って、ユーザーが同意を与えた場合にのみタグが発火します。統合が正しく動作していることを確認するために、選択した環境でテストします。テスト方法についての詳細は、以下のテストとトラブルシューティングを参照してください。</p>
+<p>これで、Tealium iQ内のOneTrust統合の構成が完了しました。この構成により、すべてのページとイベントで、CMPで構成した構成に従って、ユーザーが同意を与えた場合にのみタグが発火します。選択した環境でテストを行い、統合が正しく動作していることを確認します。テスト方法についての詳細は、以下のテストとトラブルシューティングを参照してください。</p>
 <h2 id="テストとトラブルシューティング">テストとトラブルシューティング</h2>
 <p>同意統合を構成したので、動作を確認しましょう。このセクションでは、Tealium iQのOneTrust同意統合が正しく機能していることを確認します。データレイヤーで同意状態を確認し、ブラウザコンソールを使用して構成を検証します。</p>
 <p>開始する前に、以下を確認してください：</p>
@@ -255,18 +257,18 @@
 <h3 id="データレイヤーを確認する">データレイヤーを確認する</h3>
 <p>同意状態は、タグが発火する直前にデータレイヤーに追加されます。同意状態が正しくロードされていることを確認するために、<code>tci</code>プレフィックスのTealium同意変数を確認します：</p>
 <ul>
-<li><code>tci.consent_type</code>：同意タイプ（暗黙的または明示的）を識別します。</li>
-<li><code>tci.purposes_with_consent_all</code>: すべての同意された目的を含む配列です。</li>
-<li><code>tci.purposes_with_consent_unprocessed</code>: すべての未処理の同意された目的を含みます。</li>
-<li><code>tci.purposes_with_consent_processed</code>: すべての処理済みの同意された目的を含みます。</li>
+<li><code>tci.consent_type</code>：同意の種類（暗黙的または明示的）を識別します。</li>
+<li><code>tci.purposes_with_consent_all</code>：すべての同意された目的を含む配列を含みます。</li>
+<li><code>tci.purposes_with_consent_unprocessed</code>：すべての未処理の同意された目的を含みます。</li>
+<li><code>tci.purposes_with_consent_processed</code>：すべての処理済みの同意された目的を含みます。</li>
 </ul>
 <p>未処理と処理済みの変数は、EventStreamとAudienceStreamコネクタが同じイベントに対して複数回発火しないようにするロジックを構築するために使用できます。</p>
-<h3 id="あなたの同意統合構成を確認する">あなたの同意統合構成を確認する</h3>
-<p>同意統合がアクティブになった後、ブラウザのコンソールから直接現在の同意統合の詳細にアクセスできます。<code>tealiumCmpIntegration</code>ウィンドウスコープオブジェクト内には、統合の管理と対話のための<a href="/ja/iq-tag-management/consent/consent-integrations/custom-cmp/#integration-functions">関数</a>のセットが用意されています。</p>
-<p>ウェブページから関連情報を取得するには、以下の手順に従ってください：</p>
+<h3 id="同意統合構成の確認">同意統合構成の確認</h3>
+<p>同意統合がアクティブになった後、ブラウザのコンソールから直接現在の同意統合の詳細にアクセスできます。<code>tealiumCmpIntegration</code>ウィンドウスコープオブジェクト内には、統合の管理と対話のための<a href="/ja/iq-tag-management/consent/consent-integrations/custom-cmp/#integration-functions">関数</a>が用意されています。</p>
+<p>Webページから関連情報を取得するには、次の手順を実行します：</p>
 <ol>
 <li>
-<p>CMPが実装されているあなたのウェブサイトを訪れます。</p>
+<p>CMPが実装されているウェブサイトを訪れます。</p>
 </li>
 <li>
 <p>すべてのトラッキングを承認します。</p>
@@ -275,7 +277,7 @@
 <p>開発者ツールのJavaScriptコンソールを開きます。</p>
 </li>
 <li>
-<p>以下のスニペットをブラウザのコンソールに貼り付けます。</p>
+<p>次のスニペットをブラウザのコンソールに貼り付けます。</p>
 <pre tabindex="0"><code>var outputString = `${tealiumCmpIntegration.cmpName} - ${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
 
 Checks:
@@ -287,21 +289,21 @@ Checks:
 console.log(outputString)
 </code></pre></li>
 </ol>
-<h4 id="スクリプトの出力を分析する">スクリプトの出力を分析する</h4>
+<h4 id="スクリプト出力の分析">スクリプト出力の分析</h4>
 <ul>
 <li>
 <p><strong>同意前</strong>：</p>
-<p>これは、同意が与えられる前のスクリプトの出力の例です。</p>
+<p>これは、同意が与えられる前のスクリプト出力の例です。</p>
 <figure><a class="slb" href="/images/guides/consent-integration-before-consent.png"><img src="/images/guides/consent-integration-before-consent.png"
              alt="CMP before consent screenshot"
              title="CMP before consent screenshot"/>
         </a>
     </figure>
-<p>示されているように、CMPがその動作モードとともに検出されました。この場合、ユーザーからの明示的な同意が提供されていないため、<code>C0001</code>（必要）目的のみが許可されています。</p>
+<p>示されているように、CMPがその動作モードとともに検出されました。この場合、ユーザーから明示的な同意が得られていないため、<code>C0001</code>（必要）目的のみが許可されています。</p>
 </li>
 <li>
 <p><strong>同意後</strong>：</p>
-<p>では、いくつかのカテゴリに同意しましょう。ページを再読み込みすると、CMPとその動作モードが再度表示されます。今回は、明示的な同意が与えられましたが、<code>C0001</code>（必要）と<code>C0002</code>（パフォーマンス）目的のみが許可されています。</p>
+<p>では、いくつかのカテゴリに同意しましょう。ページを再読み込みすると、CMPとその動作モードが再度表示されます。今回は、明示的な同意が得られましたが、<code>C0001</code>（必要）と<code>C0002</code>（パフォーマンス）目的のみが許可されています。</p>
 <figure><a class="slb" href="/images/guides/consent-integration-after-consent.png"><img src="/images/guides/consent-integration-after-consent.png"
              alt="CMP after consent screenshot"
              title="CMP after consent screenshot"/>
@@ -309,18 +311,18 @@ console.log(outputString)
     </figure>
 </li>
 </ul>
-<h3 id="デバッグモードを使用して追加情報を表示する">デバッグモードを使用して追加情報を表示する</h3>
+<h3 id="デバッグモードを使用して追加情報を表示">デバッグモードを使用して追加情報を表示</h3>
 <p>同意統合は、Tealiumの<a href="/ja/platforms/javascript/debugging/">デバッグモード</a>にも追加情報を追加します。</p>
 <ol>
 <li><a href="/ja/platforms/javascript/debugging/">デバッグモード</a>を有効にして、追加の同意統合情報を表示します。</li>
-<li>デバッグモードの出力で同意統合情報を簡単に見つけるために、正規表現<code>/SENDING|****/</code>を使用して出力をフィルタリングし、タグの送信と同意統合の通知のみを表示します。</li>
+<li>デバッグモード出力で同意統合情報を簡単に見つけるために、正規表現<code>/SENDING|****/</code>を使用して出力をフィルタリングし、タグ送信と同意統合通知のみを表示します。</li>
 </ol>
-<p>デバッグモードのフィルタを使用すると、重要な同意関連のメッセージが隔離され、次のことが可能になります：</p>
+<p>デバッグモードフィルタを使用すると、重要な同意関連メッセージを隔離し、次のことが可能になります：</p>
 <ul>
-<li>同意の選択に基づいたタグの動作をすばやく確認する：フィルタは、ユーザーの同意に従って送信またはブロックされたタグを強調表示し、構成がユーザーの構成を尊重していることを確認します。</li>
-<li>潜在的な構成問題を簡単に特定する：関連するログエントリに焦点を当てることで、フィルタは目的のマッピングの欠落や意図しないタグのブロックなどの問題を見つけるのに役立ちます。</li>
+<li>同意選択に基づくタグの動作をすばやく確認：フィルタは、ユーザーの同意に従って送信またはブロックされるタグを強調表示し、構成がユーザーの構成を尊重していることを確認します。</li>
+<li>潜在的な構成問題を簡単に特定：関連するログエントリに焦点を当てることで、フィルタは目的のマッピングの欠落や意図しないタグのブロックなどの問題を見つけ出し、それらをより効率的に解決できるようにします。</li>
 </ul>
-<p>以下は、デバッグモードのフィルタで遭遇する可能性があるいくつかのシナリオです。</p>
+<p>以下は、デバッグモードフィルタで遭遇する可能性があるいくつかのシナリオです。</p>
 <h4 id="シナリオ1cmpスクリプトのブロック">シナリオ1：CMPスクリプトのブロック</h4>
 <p><figure><a class="slb" href="/images/guides/consent-integration-blocked-cmp-script.png"><img src="/images/guides/consent-integration-blocked-cmp-script.png"
          alt="Blocked CMP script screenshot"
@@ -328,20 +330,20 @@ console.log(outputString)
     </a>
 </figure>
 このシナリオでは、CMPスクリプトがブロックされているか利用できません。デバッグ出力に示されているように、同意統合はTealium iQのロードを防ぎ、アクティブな同意統合が存在するため、ページビューイベントがキューに入れられますが、CMPスクリプトがロードされるまで他のアクションは発生しません。</p>
-<h4 id="シナリオ2クッキーが受け入れられる前のオプトインモードのcmp">シナリオ2：クッキーが受け入れられる前のオプトインモードのCMP</h4>
+<h4 id="シナリオ2クッキーが承認される前のopt-inモードのcmp">シナリオ2：クッキーが承認される前のopt-inモードのCMP</h4>
 <figure><a class="slb" href="/images/guides/consent-integration-opt-in-mode-before-cookies.png"><img src="/images/guides/consent-integration-opt-in-mode-before-cookies.png"
          alt="CMP in opt-in mode before cookies are accepted screenshot"
          title="CMP in opt-in mode before cookies are accepted screenshot"/>
     </a>
 </figure>
-<p>ここでは、CMPはオプトインモードで動作しており、ユーザーはまだ明示的な同意を提供していません。ユーザーがクッキーを受け入れる前に、同意統合は<code>Necessary</code>にマッピングされた目的のみに対する暗黙の同意を検出し、他の目的のロードを防ぎます。オプトインモードにあるため、システムは明示的な同意決定を求めて継続的にポーリングします。</p>
-<h4 id="シナリオ3クッキーが受け入れられた後のオプトインモードのcmp">シナリオ3：クッキーが受け入れられた後のオプトインモードのCMP</h4>
+<p>ここでは、CMPはopt-inモードで動作しており、ユーザーはまだ明示的な同意を提供していません。ユーザーがクッキーを承認する前に、同意統合は<code>Necessary</code>にマッピングされた目的のみに対する暗黙的な同意を検出し、他の目的のロードを防ぎます。opt-inモードにあるため、システムは明示的な同意決定を求めて継続的にポーリングします。</p>
+<h4 id="シナリオ3クッキーが承認された後のopt-inモードのcmp">シナリオ3：クッキーが承認された後のopt-inモードのCMP</h4>
 <figure><a class="slb" href="/images/guides/consent-integration-opt-in-mode-after-cookies.png"><img src="/images/guides/consent-integration-opt-in-mode-after-cookies.png"
          alt="CMP in opt-in mode after cookies are accepted screenshot"
          title="CMP in opt-in mode after cookies are accepted screenshot"/>
     </a>
 </figure>
-<p>このシナリオでは、ユーザーがクッキーに同意した後、同意統合は明示的な同意を検出し、新たに同意された目的をレビューし、暗黙の同意の下で既に処理されたものを除外します。次に、新たに同意された目的にマッピングされたタグを検索し、それらを発火のためにキューに入れます。目的にマッピングされていないタグは、ロードがブロックされたままです。</p>
+<p>このシナリオでは、ユーザーがクッキーに同意した後、同意統合は明示的な同意を検出し、新たに同意された目的をレビューし、暗黙的な同意の下で既に処理されたものを除外します。次に、新たに同意された目的にマッピングされたタグを検索し、それらを発火のためにキューに入れます。目的にマッピングされていないタグは、ロードがブロックされたままです。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">同意統合の検証とデバッグ</a>を参照してください。</p>
 
 </div>
@@ -403,7 +405,7 @@ console.log(outputString)
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2024年December月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -430,8 +432,8 @@ console.log(outputString)
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%978%E6%A7%8B%E6%88%90%E3%82%92%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ8：構成を公開する</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88%E3%81%A8%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">テストとトラブルシューティング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B" href="javascript:void(0)">データレイヤーを確認する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E5%90%8C%E6%84%8F%E7%B5%B1%E5%90%88%E6%A7%8B%E6%88%90%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B" href="javascript:void(0)">あなたの同意統合構成を確認する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E8%BF%BD%E5%8A%A0%E6%83%85%E5%A0%B1%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B" href="javascript:void(0)">デバッグモードを使用して追加情報を表示する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E7%B5%B1%E5%90%88%E6%A7%8B%E6%88%90%E3%81%AE%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">同意統合構成の確認</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E8%BF%BD%E5%8A%A0%E6%83%85%E5%A0%B1%E3%82%92%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">デバッグモードを使用して追加情報を表示</a></li>
               </nav>
   </aside></nav>
 
@@ -714,6 +716,8 @@ console.log(outputString)
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

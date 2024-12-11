@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AppsFlyerアプリイベントコネクタのセットアップガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
+    <title>AppsFlyerアプリイベントコネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -126,6 +126,7 @@
         <a href="/ja/server-side-connectors/salesforce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-connector">AudienceStreamのためのSalesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awinコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -386,7 +387,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">AppsFlyerアプリイベントコネクタのセットアップガイド</h1>
+<h1 class="lh-title mt30 mb3">AppsFlyerアプリイベントコネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -394,7 +395,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Customer Data HubアカウントでAppsFlyerアプリイベントコネクタを設定する方法について説明します。
+      この記事では、Customer Data HubアカウントでAppsFlyerアプリイベントコネクタを構成する方法について説明します。
     </p>
   
 </div>
@@ -404,201 +405,194 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>アクション名</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">インストールをトラッキング</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>インストールを追跡</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">アプリ内イベントをトラッキング</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>アプリ内イベントを追跡</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">アプリ内イベントをトラッキング (SDKクライアント)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>アプリ内イベントを追跡 (SDKクライアント)</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="設定の構成">設定の構成</h2>
-<p>コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する方法の一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタの概要</a>の記事を読んでください。</p>
-<p>コネクタを追加した後、次の設定を構成します：</p>
+<h2 id="構成の構成">構成の構成</h2>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li>
-<p><strong>アプリID</strong></p>
+<li><strong>App ID</strong>
 <ul>
-<li>これはデータを渡すアプリのAppsFlyerアプリIDです。</li>
+<li>これは、データを渡しているアプリのAppsFlyer App IDです。</li>
 </ul>
 </li>
-<li>
-<p><strong>Devキー</strong></p>
+<li><strong>Dev Key</strong>
 <ul>
-<li><strong>AppsFlyer</strong>ダッシュボードの<strong>アプリ設定</strong>画面から取得したアカウントのDevキーです。</li>
+<li><strong>AppsFlyer</strong>ダッシュボードの<strong>App Settings</strong>画面から取得したアカウントのdev keyです。</li>
 </ul>
 </li>
+<li><strong>S2S Key</strong><br>
+サーバー間通信でデータを送信するために使用されるトークンです。詳細については、<a href="https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens">AppsFlyer: AppsFlyerトークンの管理</a>を参照してください。</li>
 </ul>
-<p>S2Sキーはアクセスを有効にするために使用されます。詳細については、<a href="https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-API-and-Server-to-server-S2S-tokens">AppsFlyer：APIとサーバー間のS2Sトークンの管理</a>を参照してください。</p>
-<h3 id="アクションの設定---パラメータとオプション">アクションの設定 - パラメータとオプション</h3>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタのアクションを構成します。</p>
-<ul>
-<li><strong>アクション名</strong>ボックスにアクションの名前を入力します。</li>
-<li><strong>アクションタイプ</strong>リストからアクションのタイプを選択します。</li>
-<li><strong>プラットフォーム</strong>リストからイベントの発生元のプラットフォームを選択します。選択によって、マッピングテーブルに表示されるパラメータが決まります。
-<ul>
-<li>Android</li>
-<li>iOS</li>
-<li>Windows</li>
-</ul>
-</li>
-</ul>
-<p>このセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
-<h3 id="アクション---インストールをトラッキング">アクション - インストールをトラッキング</h3>
+<p>S2S Keyはアクセスを有効にするために使用されます。詳細については、<a href="https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-API-and-Server-to-server-S2S-tokens">AppsFlyer: APIとサーバー間S2Sトークンの管理</a>を参照してください。</p>
+<h2 id="アクション">アクション</h2>
+<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="インストールを追跡">インストールを追跡</h3>
 <h4 id="パラメータ">パラメータ</h4>
-<p>プラットフォームデータのパラメータは必須です。Apple Search Adsとカスタムデータのパラメータはオプションです。</p>
-<h5 id="プラットフォームデータ">プラットフォームデータ</h5>
+<p>Platform Dataパラメータは必須です。Apple Search AdsとCustom Dataパラメータはオプションです。</p>
+<h5 id="platform-data">Platform Data</h5>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>パラメータ</strong></th>
-<th style="text-align:left"><strong>プラットフォーム</strong></th>
-<th style="text-align:left"><strong>説明</strong></th>
+<th><strong>パラメータ</strong></th>
+<th><strong>プラットフォーム</strong></th>
+<th><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Ad ID Enabled Flag (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">このパラメータを<code>true</code>に設定して、ユーザーをAppsFlyerAnalyticsからオプトアウトします。</td>
+<td>Ad ID Enabled Flag (必須)</td>
+<td>すべて</td>
+<td>このパラメータを<code>false</code>に構成してAppsFlyerAnalyticsからユーザーをオプトアウトします。フラグを<code>true</code>に構成してAppsFlyerAnalyticsにオプトインします。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Open Counter (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">このパラメータを<code>1</code>または<code>2</code>に設定して、最初の起動のアトリビューションに使用するか、<code>3</code>以上に設定してリターゲティングに使用します。</td>
+<td>App Open Counter (必須)</td>
+<td>すべて</td>
+<td>このパラメータを<code>1</code>または<code>2</code>に構成して初回起動のアトリビューションを行い、<code>3</code>以上に構成してリターゲティングを行います。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Advertising ID (必須)</td>
-<td style="text-align:left">AndroidまたはWindows</td>
-<td style="text-align:left">デバイスの広告IDです。例：<code>caf5555d48f22222d34f03bcd7ab333b</code>。</td>
+<td>Device Advertising ID (必須)</td>
+<td>AndroidまたはWindows</td>
+<td>デバイスの広告ID。例えば、<code>caf5555d48f22222d34f03bcd7ab333b</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device IP Address (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">デバイスのIPアドレスです。</td>
+<td>Device IP Address (必須)</td>
+<td>すべて</td>
+<td>デバイスのIPアドレス。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Locale (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">デバイスのロケールです。例：<code>en-US</code>。</td>
+<td>Device Locale (必須)</td>
+<td>すべて</td>
+<td>デバイスのロケール。例えば、<code>en-US</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Type/Model (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">デバイスのタイプまたはモデルです。</td>
+<td>Device Type/Model (必須)</td>
+<td>すべて</td>
+<td>デバイスのタイプまたはモデル。</td>
 </tr>
 <tr>
-<td style="text-align:left">Install Date (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">デバイス上のアプリケーションの最初の起動日またはインストール日です。ISO 8601 UTC形式で指定します。例：<code>2015-01-22T08:45:33.412</code>。</td>
+<td>Install Date (必須)</td>
+<td>すべて</td>
+<td>デバイス上のアプリケーションの初回起動日またはインストール日。ISO 8601 UTC形式。例えば、<code>2015-01-22T08:45:33.412</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">iOS Ad ID (必須)</td>
-<td style="text-align:left">iOS</td>
-<td style="text-align:left">広告主向けのOS ID（<code>advertisingIdentifier</code>）で、SHA1ハッシュ化することができます。例：<code>AC9FB4FB-AAAA-BBBB-88E6-2840D9BB17F4</code>。</td>
+<td>iOS Ad ID (必須)</td>
+<td>iOS</td>
+<td>広告主向けのOS ID (<code>advertisingIdentifier</code>)。SHA1ハッシュ化可能。例えば、<code>AC9FB4FB-AAAA-BBBB-88E6-2840D9BB17F4</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">OS Version (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">オペレーティングシステムのバージョンです。</td>
+<td>OS Version (必須)</td>
+<td>すべて</td>
+<td>オペレーティングシステムのバージョン。</td>
 </tr>
 <tr>
-<td style="text-align:left">Unique User ID (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">ユニークなユーザーIDです。例：<code>1b1758cd-c22b-461e-924e-ceb0c7f849aa</code>。</td>
+<td>Unique User ID (必須)</td>
+<td>すべて</td>
+<td>ユニークなユーザーID。例えば、<code>1b1758cd-c22b-461e-924e-ceb0c7f849aa</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">User Agent (必須)</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">アプリケーションのユーザーエージェントです。</td>
+<td>User Agent (必須)</td>
+<td>すべて</td>
+<td>アプリケーションのユーザーエージェント。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Bundle ID</td>
-<td style="text-align:left">iOS</td>
-<td style="text-align:left">アプリのバンドルIDです。例：<code>com.company.appname</code>。</td>
+<td>App Bundle ID</td>
+<td>iOS</td>
+<td>アプリのバンドルID。例えば、<code>com.company.appname</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Customer User ID</td>
-<td style="text-align:left">IOSおよびAndroid</td>
-<td style="text-align:left">開発者が設定した顧客ユーザーID。広告主のシステムでは、これをユーザー識別子として使用します。例：<code>3d4d05e5-9ae4-4755-9363-8166568f7935</code>。</td>
+<td>Customer User ID</td>
+<td>IOSとAndroid</td>
+<td>開発者が構成したカスタマーユーザーID。広告主のシステムはこれをユーザー識別子として使用します。例えば、<code>3d4d05e5-9ae4-4755-9363-8166568f7935</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device IMEI</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">デバイスのIMEI（International Mobile Equipment Identity）で、SHA1ハッシュ化することができます。</td>
+<td>Device IMEI</td>
+<td>Android</td>
+<td>デバイスのIMEI（International Mobile Equipment Identity）。SHA1ハッシュ化可能。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Android ID</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">デバイスのAndroid IDで、SHA1ハッシュ化することができます。</td>
+<td>Device Android ID</td>
+<td>Android</td>
+<td>デバイスのAndroid ID。SHA1ハッシュ化することができます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Facebook Tracking Cookie Value</td>
-<td style="text-align:left">AndroidおよびWindows</td>
-<td style="text-align:left">Facebookトラッキングクッキーの値です。</td>
+<td>Facebook Tracking Cookie Value</td>
+<td>Android and Windows</td>
+<td>Facebook Tracking Cookieの値。</td>
 </tr>
 <tr>
-<td style="text-align:left">Full DeepLink URL</td>
-<td style="text-align:left">すべて</td>
-<td style="text-align:left">トラッキングコールの完全なDeepLink URLです。例：<code>myapp://page/1?param1=val1</code>。</td>
+<td>Full DeepLink URL</td>
+<td>All</td>
+<td>トラッキングコールの完全なDeepLink URL。例えば、<code>myapp://page/1?param1=val1</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Google Play Referrer</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">Google Playレシーバーから受け取ったリファラーです。URLエンコードは行いません。例：<code>af_tranid=1A4F123KJHG73F0P&amp;c=c1&amp;pid=MediaSource1</code>。</td>
+<td>Google Play Referrer</td>
+<td>Android</td>
+<td>Google Playレシーバーから受け取ったリファラー、URLエンコーディングなし。例えば、<code>af_tranid=1A4F123KJHG73F0P&amp;c=c1&amp;pid=MediaSource1</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Microsoft Store Referrer</td>
-<td style="text-align:left">Windows</td>
-<td style="text-align:left">Microsoft Storeから受け取ったWindowsリファラーです。URLエンコードは行いません。例：<code>af_tranid=1A4F123KJHG73F0P</code>。</td>
+<td>Microsoft Store Referrer</td>
+<td>Windows</td>
+<td>Microsoft Storeから受け取ったWindowsリファラー、URLエンコーディングなし。例えば、<code>af_tranid=1A4F123KJHG73F0P</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">iOS Identifier for Vendor</td>
-<td style="text-align:left">iOS</td>
-<td style="text-align:left">ベンダーのためのiOS識別子です。例：<code>95C9BD22-4A4C-41C8-9548-ED07C5C8C145</code>。</td>
+<td>iOS Identifier for Vendor</td>
+<td>iOS</td>
+<td>ベンダーのiOS識別子。例えば、<code>95C9BD22-4A4C-41C8-9548-ED07C5C8C145</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Tracking Transparency</td>
-<td style="text-align:left">iOS 14以降</td>
-<td style="text-align:left">このパラメータを設定して、ユーザーがIDFAの使用をオプトアウトしたかどうかを示します：<ul><li><code>0</code>：決定されていません。</li><li><code>1</code>：制限されています。</li><li><code>2</code>：拒否されました。</li><li><code>3</code>：許可されました。</li></ul> 詳細については、<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/">Apple：ATTrackingManager.AuthorizationStatus</a>を参照してください。</td>
+<td>App Tracking Transparency</td>
+<td>iOS 14 and above</td>
+<td>ユーザーがIDFAの使用をオプトアウトしたかどうかを示すためにこのパラメータを構成します:  <ul><li><code>0</code>: 未決定。</li><li><code>1</code>: 制限。</li><li><code>2</code>: 拒否。</li><li><code>3</code>: 許可。</li></ul>  詳細は、<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/">Apple: ATTrackingManager.AuthorizationStatus</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Type</td>
-<td style="text-align:left">iOS</td>
-<td style="text-align:left">これがアプリクリップのインストールである場合。</td>
+<td>App Type</td>
+<td>iOS</td>
+<td>これがアプリクリップのインストールであるかどうか。</td>
 </tr>
 <tr>
-<td style="text-align:left">Open Anonymous Device Identifier</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">オープン匿名デバイス識別子です。例：<code>57cfbf44-edfc-9f25-7fcf-7 3fdffc59929</code>。</td>
+<td>Open Anonymous Device Identifier</td>
+<td>Android</td>
+<td>Open Anonymous Device Identifier。例えば、<code>57cfbf44-edfc-9f25-7fcf-7 3fdffc59929</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Amazon Advertising ID</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">Amazonデバイスのユニークな広告IDです。例：<code>24c5f114-7718-4a12-97d9-1273397be3c6</code>。</td>
+<td>Amazon Advertising ID</td>
+<td>Android</td>
+<td>Amazonデバイスのユニークな広告ID。例えば、<code>24c5f114-7718-4a12-97d9-1273397be3c6</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Store</td>
-<td style="text-align:left">Android</td>
-<td style="text-align:left">アプリのダウンロード元のストアです。</td>
+<td>App Store</td>
+<td>Android</td>
+<td>アプリがダウンロードされたストア。</td>
 </tr>
 </tbody>
 </table>
+<h5 id="app-id-override">App ID Override</h5>
+<p>このフィールドを使用して、コネクタ構成画面で構成した<strong>App ID</strong>を上書きします。</p>
+<h5 id="dev-key-override">Dev Key Override</h5>
+<p>このフィールドを使用して、コネクタ構成画面で構成した<strong>Dev Key</strong>を上書きします。</p>
 <h5 id="apple-search-ads">Apple Search Ads</h5>
 <table>
 <thead>
@@ -618,7 +612,7 @@
 </tr>
 <tr>
 <td style="text-align:left">iad-attribution</td>
-<td style="text-align:left">Ad IDのアトリビューション。</td>
+<td style="text-align:left">Ad ID属性。</td>
 </tr>
 <tr>
 <td style="text-align:left">iad-campaign-id</td>
@@ -654,14 +648,14 @@
 </tr>
 </tbody>
 </table>
-<h5 id="カスタムデータ">カスタムデータ</h5>
+<h5 id="custom-data">Custom Data</h5>
 <p>このセクションを使用して、イベントメッセージにカスタマイズされた情報を追加します。</p>
-<h3 id="アクション---アプリ内イベントをトラッキング">アクション - アプリ内イベントをトラッキング</h3>
-<h4 id="パラメータ-1">パラメータ</h4>
-<p><strong>プラットフォームデータ</strong>および<strong>イベントデータ</strong>パラメータは必須です。<strong>カスタムデータ</strong>パラメータはオプションです。</p>
-<h5 id="プラットフォームデータ-1">プラットフォームデータ</h5>
-<p>このアクションでは、<strong>インストールをトラッキング</strong>アクションと同じ<strong>プラットフォームデータ</strong>パラメータを使用します。</p>
-<h5 id="イベントデータ">イベントデータ</h5>
+<h3 id="action---track-in-app-event">Action - Track in App Event</h3>
+<h4 id="parameters">Parameters</h4>
+<p><strong>Platform Data</strong>と<strong>Event Data</strong>パラメータは必須です。<strong>Custom Data</strong>パラメータはオプションです。</p>
+<h5 id="platform-data-1">Platform Data</h5>
+<p>このアクションは、Track Installアクションと同じ<strong>Platform Data</strong>パラメータを使用します。</p>
+<h5 id="event-data">Event Data</h5>
 <table>
 <thead>
 <tr>
@@ -671,20 +665,20 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">イベント通貨</td>
-<td style="text-align:left"><ul><li>イベントのデフォルト通貨</li><li><code>USD</code>の場合のみ、<strong>イベントプロパティ</strong>（<code>event_value</code>）セクションの<code>af_currency</code>キーを使用してマッピングテーブルにマップします。</li></ul></td>
+<td style="text-align:left">Event Currency</td>
+<td style="text-align:left"><ul><li>イベントのデフォルト通貨</li><li><code>USD</code>のみ使用し、他のすべての通貨は、<strong>Event Properties</strong> (<code>event_value</code>)セクションで<code>af_currency</code>キーを使用してマッピングします。</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">イベント名 (必須)</td>
-<td style="text-align:left">イベント名を表す文字列。例：<code>af_purchase</code>。</td>
+<td style="text-align:left">Event Name (required)</td>
+<td style="text-align:left">イベント名を表す文字列。例えば、<code>af_purchase</code>。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="カスタムデータ-1">カスタムデータ</h5>
+<h5 id="custom-data-1">Custom Data</h5>
 <p>このセクションを使用して、イベントメッセージにカスタマイズされた情報を追加します。</p>
-<h3 id="アプリ内イベントをトラッキング-sdkクライアント">アプリ内イベントをトラッキング (SDKクライアント)</h3>
-<p>このアクションは、AppsFlyer SDKがインストールされており、アプリ外で発生するモバイルイベントを送信したい場合に使用します。</p>
-<h4 id="プラットフォームデータ-2">プラットフォームデータ</h4>
+<h3 id="track-in-app-event-sdk-clients">Track In App Event (SDK Clients)</h3>
+<p>AppsFlyer SDKがインストールされていて、アプリの外で発生するモバイルイベントを送信したい場合にこのアクションを使用します。</p>
+<h4 id="platform-data-2">Platform Data</h4>
 <table>
 <thead>
 <tr>
@@ -696,97 +690,97 @@
 <tbody>
 <tr>
 <td>Appsflyer ID</td>
-<td>すべて</td>
-<td>(必須) アプリが初めて起動したときにAppsFlyerによって生成される一意の識別子です。</td>
+<td>All</td>
+<td>(必須) アプリが初めて起動したときにAppsFlyerが生成する一意の識別子。</td>
 </tr>
 <tr>
 <td>Advertising ID</td>
 <td>Android</td>
-<td>デバイスの広告IDです。</td>
+<td>デバイスの広告ID。</td>
 </tr>
 <tr>
 <td>Open Anonymous Device Identifier</td>
 <td>Android</td>
-<td>オープン匿名デバイス識別子です。</td>
+<td>Open Anonymous Device Identifier。</td>
 </tr>
 <tr>
 <td>Amazon Advertising ID</td>
 <td>Android</td>
-<td>Amazon広告IDです。</td>
+<td>Amazon Advertising ID。</td>
 </tr>
 <tr>
 <td>Device IMEI</td>
 <td>Android</td>
-<td>デバイスのIMEIで、SHA1ハッシュ化することができます。</td>
+<td>デバイスのIMEI。SHA1ハッシュ化することができます。</td>
 </tr>
 <tr>
 <td>iOS Ad ID</td>
-<td>iOS</td>
-<td>広告主向けのOS ID（<code>advertisingIdentifier</code>）で、SHA1ハッシュ化することができます。</td>
+<td>IOS</td>
+<td>広告主向けのOS ID (<code>advertisingIdentifier</code>)。SHA1ハッシュ化することができます。</td>
 </tr>
 <tr>
 <td>iOS Identifier for Vendor</td>
-<td>iOS</td>
-<td>ベンダーのためのiOS識別子です。</td>
+<td>IOS</td>
+<td>ベンダーのiOS識別子。</td>
 </tr>
 <tr>
 <td>Advertising ID Enabled Flag</td>
-<td>iOS</td>
-<td>ユーザーが広告主IDの共有をオプトアウトしたかどうかを示すためのブールフラグです。</td>
+<td>IOS</td>
+<td>ユーザーが広告主IDの共有をオプトアウトしたかどうかを示すためのブールフラグを使用します。</td>
 </tr>
 <tr>
 <td>App Tracking Transparency</td>
-<td>iOS 14以降</td>
-<td>このパラメータを設定して、ユーザーがIDFAの使用をオプトアウトしたかどうかを示します：<ul><li><code>0</code>：決定されていません。</li><li><code>1</code>：制限されています。</li><li><code>2</code>：拒否されました。</li><li><code>3</code>：許可されました。</li></ul> 詳細については、<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/">Apple：ATTrackingManager.AuthorizationStatus</a>を参照してください。</td>
+<td>IOS 14以降</td>
+<td>ユーザーがIDFAの使用をオプトアウトしたかどうかを示すためにこのパラメータを構成します:  <ul><li><code>0</code>: 未決定。</li><li><code>1</code>: 制限されています。</li><li><code>2</code>: 拒否されました。</li><li><code>3</code>: 認証済み。</li></ul>  詳細は、<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/">Apple: ATTrackingManager.AuthorizationStatus</a>を参照してください。</td>
 </tr>
 <tr>
 <td>App Store</td>
-<td>すべて</td>
-<td>アプリクリップのインストールである場合。</td>
+<td>全て</td>
+<td>これがアプリクリップのインストールであるかどうか。</td>
 </tr>
 <tr>
 <td>App Type</td>
-<td>すべて</td>
-<td>ユーザーイベントが<code>app_clip</code>で発生する場合は、パラメータを送信します。それ以外の場合はパラメータを送信しないでください。</td>
+<td>全て</td>
+<td>ユーザーイベントが<code>app_clip</code>で発生した場合は、パラメータを送信します。それ以外の場合はパラメータを送信しないでください。</td>
 </tr>
 <tr>
 <td>App Version Name</td>
-<td>すべて</td>
-<td>アプリのバージョン名です。</td>
+<td>全て</td>
+<td>あなたの名前付きアプリバージョン。</td>
 </tr>
 <tr>
 <td>Bundle Identifier</td>
-<td>すべて</td>
-<td>一意のアプリ識別子です。生データでは、パラメータは<strong>Bundle ID</strong>に入ります。</td>
+<td>全て</td>
+<td>ユニークなアプリ識別子。生データでは、このパラメータは<strong>Bundle ID</strong>を埋めます。</td>
 </tr>
 <tr>
 <td>Customer User ID</td>
-<td>すべて</td>
-<td>開発者が設定した顧客ユーザーIDです。これは広告主のシステムでユーザー識別子として使用されます。</td>
+<td>全て</td>
+<td>開発者が構成した顧客ユーザーID。これは広告主のシステムでのユーザー識別子として使用されます。</td>
 </tr>
 <tr>
 <td>Event Time</td>
-<td>すべて</td>
-<td>イベントが発生した時刻（UTCタイムゾーン）です。設定されていない場合、Appsflyerは受信したイベント時刻を使用します。</td>
+<td>全て</td>
+<td>イベントが発生した時間をUTCタイムゾーンで使用します。構成されていない場合、Appsflyerは着信イベントの時間を使用します。</td>
 </tr>
 <tr>
 <td>IP Address</td>
-<td>すべて</td>
-<td>イベント発生時のモバイルデバイスのIPアドレスです。送信された場合、IPアドレスはジオロケーションフィールドに入力されます。送信されない場合、AppsFlyerはインストールアトリビューションイベントの値を使用してジオロケーションフィールドを入力します。</td>
+<td>全て</td>
+<td>イベント発生時のモバイルデバイスのIPアドレス。送信された場合、IPアドレスは地理位置情報フィールドを埋めるために使用されます。送信されなかった場合、AppsFlyerはインストール属性イベントからの値を使用して地理位置情報フィールドを埋めます。</td>
 </tr>
 <tr>
 <td>Operating System</td>
-<td>すべて</td>
-<td>デバイスのオペレーティングシステムバージョンです。</td>
+<td>全て</td>
+<td>デバイスのオペレーティングシステムのバージョン。</td>
 </tr>
 <tr>
 <td>Sharing Filter</td>
-<td>すべて</td>
-<td>共有フィルタは、ポストバック/APIを介したS2Sイベントのパートナーや他のサードパーティ統合による共有をブロックします。すべてのパートナーをブロックするには<code>all</code>を設定します。特定のパートナーをブロックするには、パートナーIDの配列を渡します。</td>
+<td>全て</td>
+<td>共有フィルタは、統合パートナーや他のサードパーティ統合とのポストバック/API経由でのS2Sイベントの共有をブロックします。すべてのパートナーをブロックするには<code>all</code>を構成します。特定のパートナーをブロックするには、パートナーIDの配列を渡します。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="イベントデータ-1">イベントデータ</h4>
+<h4 id="イベントデータ">イベントデータ</h4>
 <table>
 <thead>
 <tr>
@@ -796,15 +790,15 @@
 </thead>
 <tbody>
 <tr>
-<td>イベント名</td>
-<td>(必須) イベント名を表す文字列。例：<code>af_purchase</code>。</td>
+<td>Event Name</td>
+<td>(必須) イベント名を記述する文字列。例えば、<code>af_purchase</code>。</td>
 </tr>
 <tr>
-<td>イベント通貨</td>
-<td>イベントのデフォルト通貨。例：<code>USD</code>。</td>
+<td>Event Currency</td>
+<td>イベントのデフォルト通貨。例えば、<code>USD</code>。</td>
 </tr>
 <tr>
-<td>カスタムデータ</td>
+<td>Custom Data</td>
 <td>このセクションを使用して、イベントメッセージに追加のカスタマイズ情報を追加します。</td>
 </tr>
 </tbody>
@@ -869,7 +863,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月30日
+          <p>最終更新日 ::  2024年December月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -884,11 +878,11 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">設定の構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクションの設定 - パラメータとオプション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%92%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">アクション - インストールをトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%A2%E3%83%97%E3%83%AA%E5%86%85%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">アクション - アプリ内イベントをトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%83%97%E3%83%AA%E5%86%85%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0-sdk%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88" href="javascript:void(0)">アプリ内イベントをトラッキング (SDKクライアント)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%92%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">インストールを追跡</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---track-in-app-event" href="javascript:void(0)">Action - Track in App Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-in-app-event-sdk-clients" href="javascript:void(0)">Track In App Event (SDK Clients)</a></li>
               </nav>
   </aside></nav>
 
@@ -1171,6 +1165,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

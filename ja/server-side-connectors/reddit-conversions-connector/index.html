@@ -126,6 +126,7 @@
         <a href="/ja/server-side-connectors/salesforce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-connector">AudienceStreamのためのSalesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awinコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -409,7 +410,7 @@
 <li>ドキュメンテーション：<a href="https://ads-api.reddit.com/docs/v2">Reddit API</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするために、バッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：1000</li>
 <li>最も古いリクエストからの最大時間：60分</li>
@@ -426,24 +427,24 @@
 </thead>
 <tbody>
 <tr>
-<td>Send Conversion</td>
+<td>コンバージョンの送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>アカウントID</strong><br>
-必須。変換イベントが所属するReddit AdアカウントのID。Reddit AdアカウントIDを見つけるには、Reddit Ads UIの<strong>Conversions Events &gt; Pixel ID</strong>に移動します。Reddit Adアカウントには、次の権限が必要です：<code>adsread</code>、<code>history</code>、<code>adsconversions</code>、および<code>adsleadgendownloader</code>。詳細については、<a href="https://ads-api.reddit.com/docs/v2/#section/Authentication">Reddit: Authentication</a>を参照してください。</li>
+必須。コンバージョンイベントが所属するReddit AdアカウントのID。Reddit AdアカウントIDを見つけるには、Reddit Ads UIの<strong>Conversions Events &gt; Pixel ID</strong>に移動します。Reddit Adアカウントには、次の権限が必要です：<code>adsread</code>、<code>history</code>、<code>adsconversions</code>、および<code>adsleadgendownloader</code>。詳細については、<a href="https://ads-api.reddit.com/docs/v2/#section/Authentication">Reddit: 認証</a>を参照してください。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="send-conversion">Send Conversion</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Reddit PixelタグとReddit Conversionsコネクタの両方を実装している場合にのみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> Conversion ID構成の使用を推奨します。Conversion ID構成を使用すると、同じ変換イベントが両方のソースで送信された場合に二重にカウントされるのを防ぐことができます。この値が不適切に渡されると、アトリビューションとキャンペーンパフォーマンスに影響を与えます。</p>
+<h3 id="コンバージョンの送信">コンバージョンの送信</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Reddit PixelタグとReddit Conversionsコネクタの両方を実装している場合に限り、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversionsコネクタ</a>のConversion ID構成の使用を推奨します。Conversion ID構成を使用すると、同じコンバージョンイベントが両方のソースで送信された場合に二重にカウントされるのを防ぐことができます。この値が不適切に渡されると、アトリビューションとキャンペーンパフォーマンスに影響を与えます。</p>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -455,15 +456,15 @@
 <tbody>
 <tr>
 <td>イベント名</td>
-<td>変換トラッキングイベントのタイプ。イベント名は、リストされた値のいずれか、またはカスタムの文字列値にすることができます。</td>
+<td>コンバージョントラッキングイベントのタイプ。イベント名は、リストされた値のいずれか、またはカスタムの文字列値にすることができます。</td>
 </tr>
 <tr>
 <td>イベント時間</td>
-<td>変換イベントが発生したRFC3339タイムスタンプ。デフォルトでは、コネクタは現在の時間を送信します。</td>
+<td>コンバージョンイベントが発生したRFC3339タイムスタンプ。デフォルトでは、コネクタは現在の時間を送信します。</td>
 </tr>
 <tr>
-<td>変換ID</td>
-<td>特定の変換イベントに対応する一意の変換ID。変換IDは重複排除に使用され、同じ変換イベントが複数回送信された場合に一度以上処理されるのを防ぎます。</td>
+<td>コンバージョンID</td>
+<td>特定のコンバージョンイベントに対応する一意のコンバージョンID。コンバージョンIDは重複排除に使用され、同じコンバージョンイベントが複数回送信された場合に、それが一度以上処理されるのを防ぎます。</td>
 </tr>
 <tr>
 <td>トランザクション値（小数）</td>
@@ -487,7 +488,7 @@
 </tr>
 <tr>
 <td>メールアドレス（既にSHA256でハッシュ化済み）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化したメールアドレスを提供します。</td>
+<td>既に空白をトリムし、小文字にし、SHA256でハッシュ化したメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
@@ -503,15 +504,15 @@
 </tr>
 <tr>
 <td>外部ID（既にSHA256でハッシュ化済み）</td>
-<td>ユーザーに対して広告主が割り当てた永続的な識別子（Reddit Click IDまたは追加のアトリビューション信号を伴う必要があります）。すでに空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
+<td>ユーザーに対する広告主が割り当てた永続的な識別子（Reddit Click IDまたは追加のアトリビューション信号を伴う必要があります）。既に空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
 </tr>
 <tr>
 <td>外部ID（SHA256ハッシュを適用）</td>
-<td>ユーザーに対して広告主が割り当てた永続的な識別子（Reddit Click IDまたは追加のアトリビューション信号を伴う必要があります）。コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーに対する広告主が割り当てた永続的な識別子（Reddit Click IDまたは追加のアトリビューション信号を伴う必要があります）。コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>IDFA（既にSHA256でハッシュ化済み）</td>
-<td>ユーザーのデバイスのIDFA。すでに空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
+<td>ユーザーのデバイスのIDFA。既に空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
 </tr>
 <tr>
 <td>IDFA（SHA256ハッシュを適用）</td>
@@ -519,7 +520,7 @@
 </tr>
 <tr>
 <td>AAID（既にSHA256でハッシュ化済み）</td>
-<td>ユーザーのデバイスのAAID。すでに空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
+<td>ユーザーのデバイスのAAID。既に空白をトリムし、小文字にし、SHA256でハッシュ化した値を提供します。</td>
 </tr>
 <tr>
 <td>AAID（SHA256ハッシュを適用）</td>
@@ -531,11 +532,11 @@
 </tr>
 <tr>
 <td>画面の高さ</td>
-<td>ユーザーの画面の高さ（ピクセル単位）。</td>
+<td>ユーザーの画面の高さ（ピクセル単位）。<strong>画面の高さ</strong>を構成しない場合、<code>events.user.screen_dimensions</code>はTealium Collectイベントデータから取得されます。例えば、<code>data.com.viewport_height</code>から。</td>
 </tr>
 <tr>
 <td>画面の幅</td>
-<td>ユーザーの画面の幅（ピクセル単位）。</td>
+<td>ユーザーの画面の幅（ピクセル単位）。<strong>画面の幅</strong>を構成しない場合、<code>events.user.screen_dimensions</code>はTealium Collectイベントデータから取得されます。例えば、<code>data.com.viewport_width</code>から。</td>
 </tr>
 </tbody>
 </table>
@@ -599,7 +600,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年September月25日
+          <p>最終更新日 ::  2024年December月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -618,7 +619,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion" href="javascript:void(0)">Send Conversion</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョンの送信</a></li>
               </nav>
   </aside></nav>
 
@@ -901,6 +902,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -126,6 +126,7 @@
         <a href="/ja/server-side-connectors/salesforce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-connector">AudienceStreamのためのSalesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awinコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -403,60 +404,61 @@
   <h2 id="api情報">API情報</h2>
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
-<li>API名：X Ads API</li>
+<li>API名：X変換API</li>
 <li>APIバージョン：v12</li>
 <li>APIエンドポイント：<code>https://ads-api.x.com/</code></li>
 <li>レート制限：アカウントあたり15分間に60,000イベント</li>
+<li>ドキュメンテーション：<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/api-reference/conversions">X：Web変換API</a></li>
 </ul>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li><a href="https://developer.x.com/en/docs/x-ads-api/getting-started">X Ads API</a>へのアクセス</li>
 <li><a href="http://developer.x.com">X Developer</a>アカウント</li>
-<li>希望の広告アカウントにイベントを送信する権限を持つXユーザーアカウント</li>
+<li>希望する広告アカウントにイベントを送信する権限を持つXユーザーアカウント</li>
 </ul>
-<p>既にX Ads APIアプリケーションを活用している場合、そのアプリケーションと既存のアクセストークンをConversion APIに使用することができます。詳細については、Xのドキュメンテーション内の<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">Conversion API Set Up</a>を参照してください。</p>
+<p>既に活動的に使用しているX Ads APIアプリケーションがある場合、そのアプリケーションと既存のアクセストークンは変換APIに使用できます。詳細については、<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">X：変換API構成</a>を参照してください。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>X Conversion APIを使用して、変換イベントをXに渡す別のサーバーサイドアプリケーションを作成します。このAPIを使用すると、Xのウェブサイトピクセルが必要なく、Xで広告を実行する影響を測定するための変換イベントを送信できます。</p>
+<p>X変換APIを使用して、変換イベントをXに渡す別のサーバーサイドアプリケーションを作成します。このAPIを使用すると、Xのウェブサイトピクセルが必要なく、変換イベントを送信することでXの広告の実行の影響を測定できます。</p>
 <p>現在、マッチング識別子を使用して広告の影響を測定する主なユースケースは2つあります：</p>
 <ul>
-<li>X Click IDを使用したウェブサイトトラフィックキャンペーンのクリックスルー変換</li>
+<li>XクリックIDを使用したウェブサイトトラフィックキャンペーンのクリックスルー変換</li>
 <li>メールを使用したすべてのXキャンペーンのビュースルーとクリックスルー変換</li>
 </ul>
-<p>広告キャンペーンに応じて、変換トラッキングで以下のウェブサイトアクションの1つ以上を測定できます：</p>
+<p>広告キャンペーンに応じて、以下のウェブサイトアクションの1つ以上を変換トラッキングで測定できます：</p>
 <ul>
-<li><strong>サイト訪問</strong>：ユーザーが広告主のサイトのランディングページを訪問</li>
-<li><strong>購入</strong>：ユーザーが広告主のサイトで商品やサービスの購入を完了</li>
-<li><strong>ダウンロード</strong>：ユーザーが広告主のサイトからファイル（ホワイトペーパーやソフトウェアパッケージなど）をダウンロード</li>
-<li><strong>サインアップ</strong>：ユーザーが広告主のサービス、ニュースレター、またはメールコミュニケーションにサインアップ</li>
-<li><strong>カスタム</strong>：上記のカテゴリに該当しないカスタムアクションのためのキャッチオールカテゴリ</li>
+<li><strong>サイト訪問</strong>：ユーザーが広告主のサイトのランディングページを訪れる</li>
+<li><strong>購入</strong>：ユーザーが広告主のサイトで製品やサービスの購入を完了する</li>
+<li><strong>ダウンロード</strong>：ユーザーが広告主のサイトからファイル（ホワイトペーパーやソフトウェアパッケージなど）をダウンロードする</li>
+<li><strong>サインアップ</strong>：ユーザーが広告主のサービス、ニュースレター、またはメールコミュニケーションにサインアップする</li>
+<li><strong>カスタム</strong>：これは、上記のカテゴリに該当しないカスタムアクションのためのキャッチオールカテゴリです</li>
 </ul>
-<h3 id="x-conversion-apiの使用">X Conversion APIの使用</h3>
-<p>X Conversion APIを使用するには、X Ads Managerで新しい変換イベントを作成するか、X Pixelで既に作成および使用されている既存のイベントを使用する必要があります。X PixelとX Conversion APIのリクエスト間で変換を重複排除するには、Pixel用に作成した既存のイベントを使用します。</p>
-<h4 id="ads-managerで既存の変換イベントを使用する">Ads Managerで既存の変換イベントを使用する</h4>
-<p>X Pixelで使用されている既存のイベントを使用するには、そのイベントのEvent IDを使用します。同じイベントに対してX PixelとX Conversion APIの両方を使用する場合、X PixelのコードスニペットとX Conversion APIのリクエスト（<code>conversion_id</code>として）の両方で重複排除キーを使用してください。重複排除についての詳細は、Xのドキュメンテーション内の<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">Conversion API Set Up</a>のTesting Events and Deduplicationセクションを参照してください。</p>
+<h3 id="x変換apiの使用">X変換APIの使用</h3>
+<p>X変換APIを使用するには、X Ads Managerで新しい変換イベントを作成するか、既に作成され使用されているX Pixelのイベントを使用する必要があります。X PixelとX変換APIリクエスト間の変換の重複を排除するために、Pixel用に作成した既存のイベントを使用します。</p>
+<h4 id="ads-managerで既存の変換イベントの使用">Ads Managerで既存の変換イベントの使用</h4>
+<p>X Pixelで使用されている既存のイベントを使用するには、そのイベントのイベントIDを使用します。同じイベントに対してX PixelとX変換APIの両方を使用する場合、X PixelのコードスニペットとX変換APIリクエストの両方で重複キーを使用することを確認してください（<code>conversion_id</code>として）。重複についての詳細は、Xのドキュメンテーションの<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">変換API構成</a>のテストイベントと重複セクションを参照してください。</p>
 <h4 id="変換イベントの識別子">変換イベントの識別子</h4>
-<p>変換イベントがX Conversion APIに渡されるためには、少なくとも1つのX Click ID（<code>twclid</code>）またはメールアドレスがイベント識別子として構成されている必要があります。</p>
-<p>X Conversion APIに変換イベントを正常に構成するために、以下の構成を推奨します：</p>
+<p>変換イベントがX変換APIに渡されるためには、少なくとも1つのXクリックID（<code>twclid</code>）またはイベント識別子として構成されたメールアドレスが必要です。</p>
+<p>変換イベントをX変換APIに正常に構成するために、以下の構成を推奨します：</p>
 <ul>
 <li>URLクエリパラメータに<code>twclid</code>値が存在する場合は常に解析し、Tealium EventStream API Hubに渡します。</li>
 <li>データを関連するフォームフィールドや変換イベント情報と一緒に保存します。</li>
 </ul>
 <h4 id="重複排除">重複排除</h4>
-<p>Page Viewイベント、つまりXが定義する<strong>Site Visit</strong>および<strong>Landing Page View</strong>イベントについては、Xは重複排除のための30分間のウィンドウを提供します。<strong>Purchase</strong>や<strong>Lead</strong>などの他のイベントタイプは重複排除されません。</p>
-<p><code>conversion_id</code>イベントパラメータを使用してイベントの重複を管理します。これはPixelまたはX Conversion APIのリクエストに含めることができます。</p>
+<p>ページビューイベント、X定義の<strong>サイト訪問</strong>および<strong>ランディングページビュー</strong>イベントを含む、Xは重複排除のための30分間のウィンドウを提供します。<strong>購入</strong>や<strong>リード</strong>などの他のイベントタイプは重複排除されません。</p>
+<p><code>conversion_id</code>イベントパラメータを使用してイベントの重複を管理します。これはPixelまたはX変換APIリクエストに含めることができます。</p>
 <h2 id="構成の構成">構成の構成</h2>
 <p>X変換は、あなたのXアカウントでの許可リストが必要です。許可リストの支援については、Xの担当者に連絡してください。</p>
-<p>Connector Marketplaceに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/manage/">About Connectors</a>の記事を参照してください。</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li>
-<p><strong>Event ID</strong><br>
-特定のイベントのbase-36 IDです。これは、この広告アカウント内に含まれる事前に構成されたイベントと一致します。これは、Events Manager内の対応するイベントでIDと呼ばれます。
+<p><strong>イベントID</strong><br>
+特定のイベントのbase36 IDです。これは、この広告アカウント内に含まれる事前に構成されたイベントに一致します。これは、Events Managerの対応するイベントで<strong>ID</strong>と呼ばれます。
 この値は以下の方法で作成できます：</p>
 <ul>
-<li>Single-Event Websiteタグ構成内で。<a href="https://ads.x.com">ads.x.com</a>で広告アカウントにログインし、<strong>Tools</strong>の下で<strong>Events Manager</strong>を選択します。</li>
-<li>APIを使用します。詳細については、<a href="https://developer.x.com/en/docs/x-ads-api/measurement/api-reference/web-event-tags">Web Event Tags</a>を参照してください。</li>
-<li>Xのアカウントマネージャーに連絡します。</li>
+<li>Single-Event Websiteタグ構成内で。あなたの広告アカウントにログインし、<a href="https://ads.x.com/">https://ads.x.com/</a>で<strong>ツール</strong>の下にある<strong>Events Manager</strong>を選択します。</li>
+<li>APIを使用します。詳細については、<a href="https://developer.x.com/en/docs/x-ads-api/measurement/api-reference/web-event-tags">X：Webイベントタグ</a>を参照してください。</li>
+<li>あなたのXアカウントマネージャーに連絡します。</li>
 </ul>
 </li>
 <li>
@@ -464,9 +466,9 @@
 広告アカウントのUniversal Website Tag（UWT）IDです。これは、広告アカウントのUWT IDのbase36エンコード値を表します。<br>
 Pixel IDを取得するには：</p>
 <ol>
-<li><a href="https://ads.x.com">ads.x.com</a>に移動します。</li>
-<li>インターフェースの左上隅で、<strong>Tools</strong>の下で<strong>Events Manager</strong>をクリックします。</li>
-<li>まだ左側のサイドバーにX Pixelイベントソースがない場合、ページの右上隅で<strong>Add event source</strong>を選択します。</li>
+<li>あなたの広告アカウントにログインし、<a href="https://ads.x.com">https://ads.x.com/</a>にアクセスします。</li>
+<li>インターフェースの左上隅にある<strong>ツール</strong>の下で、<strong>Events Manager</strong>をクリックします。</li>
+<li>左側のサイドバーにまだX Pixelイベントソースがない場合、ページの右上隅で<strong>イベントソースを追加</strong>を選択します。</li>
 <li>インターフェースは、APIで使用されるこのイベントのPixel IDとEvent IDを表示します。</li>
 </ol>
 </li>
@@ -488,9 +490,16 @@ Pixel IDを取得するには：</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Continue</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p><strong>続ける</strong>をクリックして、コネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="変換イベントの送信">変換イベントの送信</h3>
+<h4 id="バッチ制限">バッチ制限</h4>
+<p>このコネクタは、ベンダーへの高ボリュームのデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<ul>
+<li>リクエストの最大数：500</li>
+<li>最古のリクエストからの最大時間：10分</li>
+<li>リクエストの最大サイズ：1MB</li>
+</ul>
 <h4 id="ユーザーデータ">ユーザーデータ</h4>
 <p>以下のパラメータのうち少なくとも1つを提供する必要があります：</p>
 <table>
@@ -503,34 +512,34 @@ Pixel IDを取得するには：</p>
 </thead>
 <tbody>
 <tr>
-<td>X Click ID</td>
+<td>XクリックID</td>
 <td>文字列</td>
-<td>クリックスルーURLから解析されたX Click ID。X Click IDまたはEmailのいずれかを指定する必要があります。マッチ率を向上させるために、両方を指定することが推奨されます。</td>
+<td>クリックスルーURLから解析されたXクリックID。XクリックIDまたはメールのいずれかを指定する必要があります。マッチ率を上げるために両方を使用します。</td>
 </tr>
 <tr>
-<td>Email Address (既にSHA256でハッシュ化されている)</td>
+<td>メールアドレス（既にSHA256ハッシュ化済み）</td>
 <td>文字列</td>
-<td>ホワイトスペースがトリムされ、小文字に変換され、SHA256でハッシュ化されたメールアドレスを提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたメールアドレスを提供します。</td>
 </tr>
 <tr>
-<td>Email Address (SHA256ハッシュを適用)</td>
+<td>メールアドレス（SHA256ハッシュを適用）</td>
 <td>文字列</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタはこの値をホワイトスペーストリム、小文字化、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクタはこの値を空白をトリムし、小文字にし、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>Phone Number (既にSHA256でハッシュ化されている)</td>
+<td>電話番号（既にSHA256ハッシュ化済み）</td>
 <td>文字列</td>
-<td>ホワイトスペースがトリムされ、小文字に変換され、SHA256でハッシュ化され、E164形式である電話番号を提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化し、E164形式にした電話番号を提供します。</td>
 </tr>
 <tr>
-<td>Phone Number (SHA256ハッシュを適用)</td>
+<td>電話番号（SHA256ハッシュを適用）</td>
 <td>文字列</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはこの値をホワイトスペーストリム、小文字化、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>プレーンテキストの電話番号を提供し、コネクタはこの値を空白をトリムし、小文字にし、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td><code>ip_address</code></td>
 <td>文字列</td>
-<td>この値はドットで区切られた10進表記で書かれており、ピリオドで区切られた4つの数字で構成されています。</td>
+<td>この値はドットで区切られた10進表記で書かれ、4つの数字がピリオドで区切られています。</td>
 </tr>
 <tr>
 <td><code>user_agent</code></td>
@@ -539,7 +548,7 @@ Pixel IDを取得するには：</p>
 </tr>
 </tbody>
 </table>
-<h4 id="追加のパラメータ">追加のパラメータ</h4>
+<h4 id="追加パラメータ">追加パラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -549,69 +558,45 @@ Pixel IDを取得するには：</p>
 </thead>
 <tbody>
 <tr>
-<td>Event Source ID Override</td>
-<td>これはAds ManagerとAds APIでWebsite Tag IDと呼ばれ、X Adsプラットフォームの<strong>Events Manager</strong>で見つけることができます。このパラメータは必須フィールドであり、この構成は構成セクションで使用されるEvent Source IDを上書きします。</td>
+<td>イベントIDオーバーライド</td>
+<td>これはAds ManagerとAds APIで<strong>Website Tag ID</strong>と呼ばれ、X Adsプラットフォームの<strong>Events Manager</strong>で見つけることができます。このパラメータは必須フィールドであり、この構成は構成セクションで使用される<strong>Event Source ID</strong>を上書きします。</td>
 </tr>
 <tr>
 <td>Pixel ID Override</td>
-<td>広告アカウントのUniversal Website Tag（UWT）IDです。このパラメータは、広告アカウントのUWT IDのbase36エンコード値を表します。例：<code>o5h34</code>。この構成は、構成セクションで使用される<strong>Pixel ID</strong>を上書きします。</td>
+<td>広告アカウントのUniversal Website Tag（UWT）ID。このパラメータは、広告アカウントのUWT IDのbase36エンコード値を表します。例：<code>o5h34</code>。この構成は、構成セクションで使用される<strong>Pixel ID</strong>を上書きします。</td>
 </tr>
 <tr>
 <td>Conversion Time</td>
-<td>必須。変換イベントの時間。イベントの日時を<a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>で指定します。提供されない場合、イベントの時間が使用されます。例：<code>2020-11-01T08:00:00.000Z</code>。</td>
+<td>必須。コンバージョンイベントの時間。イベントの日時を<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601形式</a>で指定します。提供されていない場合、値はイベントの時間です。例：<code>2020-11-01T08:00:00.000Z</code>。</td>
 </tr>
 <tr>
 <td>Conversion Value</td>
-<td>&lsquo;price_currency&rsquo;通貨で表される購入アイテムの価格値。</td>
+<td><code>price_currency</code>通貨で表される購入されるアイテムの価格値。</td>
 </tr>
 <tr>
-<td>アイテム数</td>
-<td>購入されるアイテムの数。ゼロより大きい正の数でなければなりません。<strong>アイテム数</strong>が提供されていない場合、<strong>Contents</strong>配列の要素の総数が使用されます。</td>
+<td>Number of Items</td>
+<td>購入されるアイテムの数。ゼロより大きい正の数でなければなりません。<strong>Number of Items</strong>が提供されていない場合、<strong>Contents</strong>配列の要素の総数が使用されます。</td>
 </tr>
 <tr>
-<td>通貨</td>
-<td>結果をフィルタリングする通貨の種類。これは<a target="_blank" href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>を使用して識別されます。これは&rsquo;USD&rsquo;のような3文字の文字列です。</td>
+<td>Currency</td>
+<td>結果をフィルタリングする通貨の種類、<a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217形式</a>で識別されます。これは<code>USD</code>のような3文字の文字列です。</td>
 </tr>
 <tr>
-<td>コンバージョンID</td>
-<td>ピクセルとコンバージョンAPIのコンバージョン間の重複排除用。同じイベントタグ内のWeb PixelとConversion APIのコンバージョン間で重複排除に使用できるコンバージョンイベントの識別子。詳細は<a target="_blank" href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">コンバージョンガイド</a>を参照してください。</td>
+<td>Conversion ID</td>
+<td>ピクセルとコンバージョンAPIのコンバージョン間の重複排除用。同じイベントタグ内のWeb PixelとConversion APIのコンバージョン間で重複排除に使用できるコンバージョンイベントの識別子。詳細については、<a href="https://developer.x.com/en/docs/x-ads-api/measurement/web-conversions/conversion-api">X: Conversion API Set Up</a>を参照してください。</td>
 </tr>
 <tr>
-<td>説明</td>
+<td>Description</td>
 <td>コンバージョンに関する追加情報を含む説明。</td>
 </tr>
 <tr>
-<td>検索文字列</td>
+<td>Search String</td>
 <td>広告主のウェブサイトで検索されたテキスト。</td>
-</tr>
-<tr>
-<td>コンテンツID</td>
-<td>コンテンツを表すSKUまたはGTIN識別子。</td>
-</tr>
-<tr>
-<td>コンテンツグループID</td>
-<td>製品バリアントのグループに関連付けられたID。</td>
-</tr>
-<tr>
-<td>コンテンツ名</td>
-<td>製品またはサービスの名前。</td>
-</tr>
-<tr>
-<td>コンテンツ価格</td>
-<td>製品またはサービスの価格。</td>
-</tr>
-<tr>
-<td>コンテンツタイプ</td>
-<td>購入された製品のカテゴリ。</td>
-</tr>
-<tr>
-<td>アイテム数</td>
-<td>購入された製品の数。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="モバイル測定コンバージョンイベントの送信">モバイル測定コンバージョンイベントの送信</h3>
-<h4 id="パラメータ">パラメータ</h4>
+<h4 id="contents-attributes">Contents Attributes</h4>
+<p>オプションのパラメータ：</p>
 <table>
 <thead>
 <tr>
@@ -621,64 +606,28 @@ Pixel IDを取得するには：</p>
 </thead>
 <tbody>
 <tr>
-<td>コンバージョンタイプ</td>
-<td>コンバージョンイベントのタイプ。可能な値: <code>PURCHASE</code>, <code>SIGN_UP</code>, <code>INSTALL</code>, <code>RE_ENGAGE</code>, <code>UPDATE</code>, <code>TUTORIAL_COMPLETE</code>, <code>RESERVATION</code>, <code>ADD_TO_CART</code>, <code>ADD_TO_WISHLIST</code>, <code>LOGIN</code>, <code>CHECKOUT_INITIATED</code>, <code>SEARCH</code>, <code>LEVEL_ACHIEVED</code>, <code>ACHIEVEMENT_UNLOCKED</code>, <code>CONTENT_VIEW</code>, <code>SHARE</code>, <code>INVITE</code>, <code>ADDED_PAYMENT_INFO</code>, <code>SPENT_CREDITS</code>, <code>RATED</code>.</td>
+<td>Content ID</td>
+<td>コンテンツを表すSKUまたはGTIN（Global Trade Item Number）識別子。</td>
 </tr>
 <tr>
-<td>APP ID</td>
-<td>(必須)</td>
+<td>Content Group ID</td>
+<td>製品バリアントのグループに関連付けられたID。</td>
 </tr>
 <tr>
-<td>コンバージョン時間</td>
-<td>(必須)</td>
+<td>Content Name</td>
+<td>製品またはサービスの名前。</td>
 </tr>
 <tr>
-<td>ハッシュ化されたデバイスID</td>
-<td>(必須)</td>
+<td>Content Price</td>
+<td>製品またはサービスの価格。</td>
 </tr>
 <tr>
-<td>オペレーティングシステムタイプ</td>
-<td>(必須)</td>
+<td>Content Type</td>
+<td>購入された製品のカテゴリ。</td>
 </tr>
 <tr>
-<td>デバイスIPアドレス</td>
-<td>コンバージョンイベントが発生したときのデバイスのIPv4またはIPv6アドレス。</td>
-</tr>
-<tr>
-<td>クリックウィンドウ</td>
-<td>このイベントのクリックウィンドウ（日数）。注: <strong>クリックウィンドウ</strong>は<strong>ビュースルーウィンドウ</strong>以上でなければなりません。デフォルト: <code>14</code>。可能な値: <code>1</code>, <code>7</code>, <code>14</code>, <code>30</code>.</td>
-</tr>
-<tr>
-<td>レベル</td>
-<td>このイベントに関連するレベル。</td>
-</tr>
-<tr>
-<td>非Xエンゲージメント時間</td>
-<td>コンバージョン前の最後の非Xエンゲージメントの時間。</td>
-</tr>
-<tr>
-<td>非Xエンゲージメントタイプ</td>
-<td></td>
-</tr>
-<tr>
-<td>アイテム数</td>
-<td>このイベントに関連するアイテムの数。</td>
-</tr>
-<tr>
-<td>価格通貨</td>
-<td>このイベントに関連する通貨（ISO 4217形式）。</td>
-</tr>
-<tr>
-<td>価格マイクロ</td>
-<td>このイベントに関連する価格額（マイクロ）。</td>
-</tr>
-<tr>
-<td>ユーザー支払い情報</td>
-<td>このイベントに関連するアプリにユーザーの支払い情報が保存されているかどうかを示すブール値。</td>
-</tr>
-<tr>
-<td>ビュースルーウィンドウ</td>
-<td>このイベントのビュースルーウィンドウ（日数）。デフォルト: <code>1</code>。可能な値: <code>0</code>, <code>1</code>, <code>7</code>, <code>14</code>, <code>30</code>.</td>
+<td>Number of Items</td>
+<td>購入された製品の数。</td>
 </tr>
 </tbody>
 </table>
@@ -742,7 +691,7 @@ Pixel IDを取得するには：</p>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2024年December月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -759,11 +708,10 @@ Pixel IDを取得するには：</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#x-conversion-api%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">X Conversion APIの使用</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#x%E5%A4%89%E6%8F%9Bapi%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">X変換APIの使用</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%8F%9B%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">変換イベントの送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E6%B8%AC%E5%AE%9A%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">モバイル測定コンバージョンイベントの送信</a></li>
               </nav>
   </aside></nav>
 
@@ -1046,6 +994,7 @@ Pixel IDを取得するには：</p>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

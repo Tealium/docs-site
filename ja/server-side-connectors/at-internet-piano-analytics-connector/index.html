@@ -126,6 +126,7 @@
         <a href="/ja/server-side-connectors/salesforce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-connector">AudienceStreamのためのSalesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awinコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealiumが提供する認証情報)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -401,7 +402,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：100</li>
 <li>最古のリクエストからの最大時間：5分</li>
@@ -466,16 +467,20 @@
 <td>データを送信するページのアドレス。</td>
 </tr>
 <tr>
+<td>サイトID</td>
+<td>データが所属するサイトのID。このパラメータは、値が空でない場合、<strong>構成</strong>タブで定義された値を上書きします。</td>
+</tr>
+<tr>
 <td>ユーザーエージェント</td>
-<td>クライアントのユーザーエージェント。このフィールドがマッピングされていない場合、Tealium EventStream API HubのUser Agent属性と訪問の最後のUser Agent属性に自動的にマッピングされます。</td>
+<td>クライアントのユーザーエージェント。このフィールドがマッピングされていない場合、Tealium EventStream API HubのUser Agent属性とTealium AudienceStream CDPの訪問の最後のUser Agent属性に自動マッピングされます。</td>
 </tr>
 <tr>
 <td>訪問ID</td>
-<td>訪問の一意の識別子。このフィールドがマッピングされていない場合、Tealium Visitor IDに自動的にマッピングされます。</td>
+<td>訪問の一意の識別子。このフィールドがマッピングされていない場合、Tealium Visitor IDに自動マッピングされます。</td>
 </tr>
 <tr>
 <td>前のURL</td>
-<td>前のページのURL。このフィールドがマッピングされていない場合、EventStreamのCurrent URL属性とAudienceStreamのEntry URL属性に自動的にマッピングされます。</td>
+<td>前のページのURL。このフィールドがマッピングされていない場合、EventStreamのCurrent URL属性とAudienceStreamのEntry URL属性に自動マッピングされます。</td>
 </tr>
 <tr>
 <td>デバイスタイムスタンプUTC</td>
@@ -523,7 +528,7 @@
 </tr>
 <tr>
 <td>キャンペーン作成</td>
-<td>キャンペーンの作成。使用例については、ATインターネットピアノアナリティクスコネクタの<a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns">コレクションAPI</a>ドキュメンテーションを参照してください。</td>
+<td>キャンペーンの作成。使用例については、ATインターネットピアノアナリティクスコネクタ<a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns">コレクションAPI</a>のドキュメンテーションを参照してください。</td>
 </tr>
 <tr>
 <td>キャンペーンバリアント</td>
@@ -539,11 +544,11 @@
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>認証されたユーザーを追跡するためにこのフィールドをマッピングします。</td>
+<td>このフィールドをマッピングして認証済みユーザーを追跡します。</td>
 </tr>
 <tr>
 <td>ユーザーカテゴリ</td>
-<td>認証されたユーザーを追跡するためにこのフィールドをマッピングします。</td>
+<td>このフィールドをマッピングして認証済みユーザーを追跡します。</td>
 </tr>
 <tr>
 <td>ゴールタイプ</td>
@@ -912,6 +917,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
