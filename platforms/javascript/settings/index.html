@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -103,6 +103,7 @@
         <a href="/platforms/javascript/api/tracking-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-api-tracking-functions">Tracking Functions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/javascript/api/utility-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-api-utility-functions">Utility Functions</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/platforms/javascript/version-4-52/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version 4.52&#43; notes</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/javascript/version-4-50/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version 4.50&#43; notes</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/javascript/version-4-26/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version 4.26 notes</a></li></ul></li></ul>
 </nav>
@@ -224,6 +225,10 @@
 <td>Disable the <code>utag_main</code> cookie.</td>
 </tr>
 <tr>
+<td><a href="#nonblocking_tags"><code>nonblocking_tags</code></a></td>
+<td>Make all tags nonblocking to improve performance and Interaction to Next Paint (INP) scores in extreme cases. Default: <code>false</code>.</td>
+</tr>
+<tr>
 <td><a href="#path"><code>path</code></a></td>
 <td>Specifies the publishing path.</td>
 </tr>
@@ -246,6 +251,10 @@
 <tr>
 <td><a href="#split_cookie_allowlist"><code>split_cookie_allowlist</code></a></td>
 <td>An array of allowed <code>utag_main</code> subcookies or standalone cookies.</td>
+</tr>
+<tr>
+<td><a href="#suppress_before_load_rules_with_uids"><code>suppress_before_load_rules_with_uids</code></a></td>
+<td>Prevent extensions scoped to Before Load Rules from running on tags loaded by UID. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><a href="#waittimer"><code>waittimer</code></a></td>
@@ -325,6 +334,11 @@ Only set this option if a visitor has explicitly opted out of all cookies. (Defa
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Using this option inflates visitor and session counts, making all visits look like &ldquo;single page sessions&rdquo;.</p>
 <p>This option disables <em>all</em> cookies from being stored by <code>utag.js</code>, including cookies set with the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>, and session cookies. It also sets a new timestamp for the variables <code>ut.visitor_id</code>, <code>tealium_visitor_id</code>, and <code>cp.utag_main_v_id</code> when the cookie is not available.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nocookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h2 id="nonblocking_tags"><code>nonblocking_tags</code></h2>
+<p><strong>Load tags asynchronously</strong><br>
+(New in <a href="/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>)<br>
+Enable non-blocking behavior for all tags, which can improve INP scores and overall page performance. Use this setting for pages with resource-intensive tags that slow down user interactions and reduce INP scores, but ensure you test exit link tracking thoroughly. (Default: <code>false</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nonblocking_tags</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h2 id="path"><code>path</code></h2>
 <p><strong>Publish URL path</strong><br>
 Sets the publishing URL path for your tag templates, overriding the Publish URLs fields in the <a href="/iq-tag-management/save-publish/publish-configuration/">Publish Configuration dialog</a>, if specified. Setting the publishing URL path can be useful for self-hosting and <a href="/iq-tag-management/administration/first-party-domains/about/">First Party Domains</a> customers.</p>
@@ -360,6 +374,11 @@ Specifies an array of allowed <code>utag_main</code> subcookies. The allow list 
 <p>If <code>split_cookie_allowlist</code> is not defined or <code>split_cookie</code> is not <code>true</code>, all <code>utag_</code> namespace cookies are allowed.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Using this option without allowing <code>ses_id</code>, <code>_st</code>, and <code>_ss</code> inflates visitor and session counts, making all visits look like single page sessions.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">split_cookie_allowlist</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;v_id&#34;</span>, <span style="color:#e6db74">&#34;_ss&#34;</span>, <span style="color:#e6db74">&#34;_st&#34;</span>, <span style="color:#e6db74">&#34;ses_id&#34;</span>];
+</span></span></code></pre></div><h2 id="suppress_before_load_rules_with_uids"><code>suppress_before_load_rules_with_uids</code></h2>
+<p><strong>Prevent Before Load Rules extensions from running for UID calls</strong><br>
+(New in <a href="/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>)<br>
+By default, all extensions scoped to <strong>Before Load Rules</strong> now execute once per page load, even for tags called by UID. Set this option to <code>true</code> to prevent <strong>Before Load Rules</strong> extensions from running for tags called by UID. (Default: <code>false</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">suppress_before_load_rules_with_uids</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h2 id="waittimer"><code>waittimer</code></h2>
 <p><strong>Delay tags with timer</strong>
 Sets how long to wait (in milliseconds) after the DOM Ready event before loading tags. (Default: not set)</p>
@@ -424,7 +443,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 7, 2024 
+          <p>This page was last updated:  December 18, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -454,12 +473,14 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#noload" href="javascript:void(0)">noload</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#noview" href="javascript:void(0)">noview</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#nocookie" href="javascript:void(0)">nocookie</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#nonblocking_tags" href="javascript:void(0)">nonblocking_tags</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#path" href="javascript:void(0)">path</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#readywait" href="javascript:void(0)">readywait</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#secure_cookie" href="javascript:void(0)">secure_cookie</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#session_timeout" href="javascript:void(0)">session_timeout</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split_cookie" href="javascript:void(0)">split_cookie</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split_cookie_allowlist" href="javascript:void(0)">split_cookie_allowlist</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#suppress_before_load_rules_with_uids" href="javascript:void(0)">suppress_before_load_rules_with_uids</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#waittimer" href="javascript:void(0)">waittimer</a></li>
               </nav>
   </aside></nav>
@@ -792,6 +813,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/platforms/javascript/api/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           API Reference
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/javascript/version-4-52/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Version 4.52&#43; notes
       </a>
       </li>
       

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -268,7 +268,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/rokt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-email-studio-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-connector-legacy">Salesforce Email Studio (Legacy)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -282,6 +282,7 @@
         <a href="/server-side-connectors/selligent-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".selligent-marketing-cloud-connector">Selligent Marketing Cloud</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/sendgrid-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sendgrid-connector">SendGrid</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/session-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".session-ai-connector">Session AI</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/slack-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smart-digital/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -370,9 +371,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="prerequisites">Prerequisites</h2>
+  <h2 id="requirements">Requirements</h2>
 <ul>
-<li>Google Ads account with an Enhanced Conversions-enabled conversion. For more information, see <a href="https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&amp;rd=1">About enhanced conversions for web in the Google Ads API</a>.</li>
+<li>Google Ads account with Enhanced Conversions-enabled conversion.</li>
+<li>Read and write permissions for the Enhanced Conversions-enabled conversion account.</li>
+<li>The Customer ID for the Google Ads account. For more information, see <a href="https://support.google.com/google-ads/answer/1704344?hl=en">Google: Find your Google Ads customer ID</a>.
+<ul>
+<li>If you are accessing the account on behalf of a client, the Manager Customer ID (MCC ID) must be set. You can find your Customer ID by logging into Google Ads and going to <strong>Preferences &gt; Access &amp; Security &gt; Manager</strong>.</li>
+</ul>
+</li>
 </ul>
 <h2 id="connector-actions">Connector actions</h2>
 <table>
@@ -407,14 +414,15 @@
 <li>Max size of requests: 2 MB</li>
 </ul>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Customer ID</strong><br>
 Required. Provide Ads account customer ID to manage.</li>
 <li><strong>Manager Customer ID</strong><br>
-Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID must be set.</li>
+Optional. If you are accessing the account on behalf of a client, the Manager Customer ID must be set. You can find your Customer ID by logging into Google Ads and going to <strong>Preferences &gt; Access &amp; Security &gt; Manager</strong>.</li>
 </ul>
+<p>You must establish the connection with the Google Account with at least read and write permissions to the account the conversion is set up in.</p>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
@@ -431,7 +439,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td>Conversion Action</td>
-<td>Select an existing conversion action. Conversion actions need to be configured in the Google Ads UI with a type of <strong>WEBPAGE</strong>, enhanced conversions enabled, and enhanced conversion implementation method set to <strong>API</strong>. For more information about enhanced conversions, see <a href="https://support.google.com/google-ads/answer/9888656">Google Ads Enhanced Conversion Tracking</a>.</td>
+<td>Select an existing conversion action. Conversion actions need to be configured in the Google Ads UI with a type of <strong>WEBPAGE</strong>, enhanced conversions enabled, and enhanced conversion implementation method set to <strong>API</strong>. For more information about enhanced conversions, see <a href="https://support.google.com/google-ads/answer/9888656">Google Ads: Enhanced Conversion Tracking</a>.</td>
 </tr>
 <tr>
 <td>Transaction ID</td>
@@ -447,7 +455,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Conversion Time</td>
-<td>The date and time when the original conversion occurred. The timezone must be specified. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. For example, <strong>2022-01-01 12:32:45-08:00</strong>. Default value is <strong>now</strong>.</td>
+<td>The date and time when the original conversion occurred. The time zone must be specified. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. For example, <code>022-01-01 12:32:45-08:00</code>. Default value is <strong>now</strong>.</td>
 </tr>
 <tr>
 <td>Gclid</td>
@@ -459,7 +467,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
+<td>Provide an email address that has been already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
@@ -471,7 +479,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>When a plain text phone number is provided, the connector will remove all non-digit symbols, prefix the number with a plus sign (<code>+</code>), whitespace trim and hash this value using SHA256 hash.</td>
+<td>When a plain text phone number is provided, the connector will remove all non-digit characters, prefix the number with a plus sign (<code>+</code>), whitespace trim and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Address Info: First Name (already SHA256 hashed)</td>
@@ -511,7 +519,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Address Info: Country Code</td>
-<td>2-letter country code in ISO-3166-1 alpha-2 of the user&rsquo;s address.</td>
+<td>2-letter country code in ISO 3166-1 alpha-2 of the user&rsquo;s address.</td>
 </tr>
 <tr>
 <td>Automatic Transaction ID</td>
@@ -519,16 +527,16 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Conversion Action Override</td>
-<td>(Optional) Provide a Conversion Action ID to override the conversion action in the <strong>Required</strong> section. This parameter lets you use EventStream variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard, and click the conversion. The Conversion Action ID is the value of the <code>ctId</code> query parameter in the website URL. For example, if the URL is <code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>, the Conversion Action ID is <code>987654321</code>.</td>
+<td>(Optional) Provide a Conversion Action ID to override the conversion action in the <strong>Required</strong> section. This parameter lets you use EventStream variables to populate the Conversion Action ID. To find the Conversion Action ID, go to your Google Ads dashboard and click the conversion. The Conversion Action ID is the value of the <code>ctId</code> query parameter in the website URL. For example, if the URL is <code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>, the Conversion Action ID is <code>987654321</code>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="error-troubleshooting">Error troubleshooting</h2>
 <p>The following are some common error codes and resolutions:</p>
 <ul>
-<li><strong>EC_MODE_MISMATCH</strong>: The conversion action has the incorrect conversion type in the Google Ads Platform. Change the converstion type to API in the Google Ads Platform under <strong>Tools &gt; Conversions &gt; Conversion Event</strong>.</li>
+<li><strong>EC_MODE_MISMATCH</strong>: The conversion action has the incorrect conversion type in the Google Ads Platform. Change the conversion type to API in the Google Ads Platform under <strong>Tools &gt; Conversions &gt; Conversion Event</strong>.</li>
 <li><strong>INVALID_USER_CUSTOMER_AUTHORIZATION</strong>: The login used to authenticate to the Google Ads platform during connector setup needs to have at least read-only access for the account owning the audience list.</li>
-<li><strong>Invalid Parameter - Action has invalid parameter value or missing required parameter</strong>: This is an internal validation error from the connector raised when required fields are missing. One of the following Action Errors will be returned:
+<li><strong>Invalid Parameter - Action has invalid parameter value or missing required parameter</strong>: This is an internal validation error from the connector raised when required fields are missing. One of the following action errors will be returned:
 <ul>
 <li><strong>Transaction ID cannot be empty</strong>: If a conversion does not have an order ID, <code>tealium_random</code> can be mapped in the client-side tag and the connector action configuration.</li>
 <li><strong>Email or Phone Number or All Address Info need to be provided</strong>: Required PII for Enhanced Conversions are one set of the following:<br>
@@ -538,7 +546,7 @@ Ensure that required field values are present in the event data.</li>
 </ul>
 </li>
 </ul>
-<p>For more information, see <a href="https://developers.google.com/google-ads/api/reference/rpc/v14/AccessInvitationErrorEnum.AccessInvitationError">Google Ads API Errors</a>.</p>
+<p>For more information, see <a href="https://developers.google.com/google-ads/api/reference/rpc/v14/AccessInvitationErrorEnum.AccessInvitationError">Google Ads: API Errors</a>.</p>
 
 </div>
 
@@ -599,7 +607,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 28, 2024 
+          <p>This page was last updated:  December 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -613,7 +621,7 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
@@ -901,6 +909,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
