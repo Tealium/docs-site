@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Google Ad ManagerとDV360（Googleホスト）のGoogle Cookie Matching Serviceタグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
+    <title>Google Ad ManagerとDV360 (Googleがホスト) のGoogle Cookie Matching Service タグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -211,8 +211,8 @@
         <a href="/ja/client-side-tags/google-ad-manager-360-audience-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-360-audience-pixel-tag-setup-guide">Google Ad Manager 360 Audience Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-conversion-tag">Google Ad Manager コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-spotlight-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-spotlight-tag">Google Ad Manager スポットライト</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/google-cookie-matching-admgr-dv360/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".google-cookie-matching-service-google-hosted">Google Ad ManagerとDV360（Googleホスト）のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad ManagerとDV360（Tealiumホスト）のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/google-cookie-matching-admgr-dv360/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".google-cookie-matching-service-google-hosted">Google Ad ManagerとDV360 (Googleがホスト) のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad ManagerとDV360 (Tealium-hosted) のためのGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversion-tracking-and-remarketing-gtagjs-tag">Google Ads コンバージョン追跡とリマーケティング (gtag.js)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ads-remarketing-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-remarketing-tag">Google Adsリマーケティング</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/setting-up-advertising-features-in-google-analytics-for-ios-and-android/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".setting-up-advertising-features-in-google-analytics-for-ios-and-android">Google Analytics - iOSとAndroid向け広告機能</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -413,7 +413,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Google Ad ManagerとDV360（Googleホスト）のGoogle Cookie Matching Serviceタグ構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Google Ad ManagerとDV360 (Googleがホスト) のGoogle Cookie Matching Service タグ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -421,21 +421,22 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium iQタグ管理アカウントでGoogle Ad ManagerとDV360（Googleホスト）のGoogle Cookie Matching Serviceタグを構成する方法について説明します。
+      この記事では、Tealium iQタグ管理アカウントでGoogle Ad ManagerとDV360 (Googleがホスト) のGoogle Cookie Matching Serviceタグを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>GoogleのCookie Matching Serviceは、訪問を識別する第一者クッキーと、Googleのユーザーを識別するdoubleclick.netクッキーを関連付けることをバイヤーに可能にします。このGoogleホストのマッチタグは、Tealium Visitor ID、またはクライアントが指定した識別子をGoogleに送信します。この識別子はその後、Ad ManagerとDV360コネクタで使用することができます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>このタグを <code>utag</code> バージョン4.50以降で使用する場合、<code>utag.js</code> の <a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> 構成</a> を <code>true</code> に構成する必要があります。この構成により、訪問IDがクッキー同期に利用可能になります。詳細については、<a href="/ja/platforms/javascript/version-4-50/#updating-to-version-450-or-later">utag 4.50 リリースノート</a> および <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-">utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項</a> を参照してください。</p>
+<p>GoogleのCookie Matching Serviceは、訪問を識別する第一者クッキーと、Googleのユーザーを識別するdoubleclick.netクッキーを関連付けることをバイヤーに可能にします。このGoogleがホストするマッチタグは、Tealium Visitor ID、またはクライアントが指定した識別子をGoogleに送信し、マッチングを行います。この識別子は、Ad ManagerとDV360コネクタで使用することができます。</p>
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>クッキーホストマッチングにアクセスするには、Googleアカウントマネージャーに連絡してアカウントを構成する必要があります。</li>
-<li><code>tealium_visitor_id</code>（md5ハッシュ化）は、マッピングで上書きされない限り、<code>google_hm</code>としてGoogleに自動的に送信されます（両方ともbase64でエンコードされます）。</li>
+<li><code>tealium_visitor_id</code> (md5ハッシュ化)は、マッピングで上書きされない限り、<code>google_hm</code>としてGoogleに自動的に送信されます（どちらもbase64でエンコードされます）。</li>
 <li>このタグで送信される識別子属性は、DV360/Ad ManagerコネクタのPartner Provided IDにマッピングする必要があります。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>新しいタグを追加するためにTag Marketplaceに移動します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>新しいタグを追加するために、タグマーケットプレイスに移動します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
 <p>タグを追加する際には、以下の構成を行います：</p>
 <ul>
 <li><strong>ネットワークID</strong>：Googleが提供するネットワークまたはバイヤーID。</li>
@@ -443,7 +444,7 @@
 <h3 id="ロードルール">ロードルール</h3>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h3 id="データマッピング">データマッピング</h3>
-<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
+<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
 <h4 id="スタンダード">スタンダード</h4>
 <table>
@@ -462,6 +463,10 @@
 <td style="text-align:left"><code>google_hm</code></td>
 <td style="text-align:left">Google Hosted Match Data (文字列)</td>
 </tr>
+<tr>
+<td style="text-align:left"><code>process_consent</code></td>
+<td style="text-align:left">IABサポート付きの同意管理プラットフォームを使用していない場合、エンドユーザーが同意を与えたことを示すために、この変数に <code>T</code> をマップします。</td>
+</tr>
 </tbody>
 </table>
 
@@ -473,10 +478,10 @@
   <a href="/ja/client-side-tags/google-cookie-matching-service/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Google Ad ManagerとDV360（Tealiumホスト）のGoogle Cookie Matching Service</div>
+      <div>Google Ad ManagerとDV360 (Tealium-hosted) のためのGoogle Cookie Matching Service</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Google Ad ManagerとDV360（Tealiumホスト）のGoogle Cookie Matching Service"</title>
+      <title>"Google Ad ManagerとDV360 (Tealium-hosted) のためのGoogle Cookie Matching Service"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -524,7 +529,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

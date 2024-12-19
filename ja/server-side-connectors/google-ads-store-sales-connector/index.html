@@ -276,7 +276,7 @@
         <a href="/ja/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsysマーケティングクラウド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/responsys-connector-soap-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-connector-soap-api">Responsys（SOAP API）</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/retently-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".retently-connector">Retently</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/rokt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKTイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/sailthru-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sailthru-connector">Sailthru</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -360,6 +360,7 @@
         <a href="/ja/server-side-connectors/connector-insights-facebook-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-custom-audiences">コネクタインサイトFacebookカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">コネクターインサイト Google DV360 カスタマーマッチコネクター</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-x-custom-audiences">コネクターインサイトXカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">シングラーエベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">チーターデジタル</a></li></ul>
 </nav>
 </div>
@@ -439,11 +440,11 @@
 <li><strong>顧客ID</strong><br>
 必須：Google Adsアカウントの顧客ID。</li>
 <li><strong>マネージャー顧客ID</strong><br>
-クライアント顧客にアクセスする場合、マネージャー顧客IDを構成する必要があります。</li>
+オプション。クライアントの代わりにアカウントにアクセスする場合、マネージャー顧客IDを構成する必要があります。顧客IDは、Google Adsにログインして<strong>構成 &gt; アクセスとセキュリティ &gt; マネージャー</strong>に移動することで見つけることができます。</li>
 </ul>
 <h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="アクション---トランザクションのアップロード">アクション - トランザクションのアップロード</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
 <p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
@@ -478,23 +479,23 @@
 <tbody>
 <tr>
 <td>住所情報：国コード</td>
-<td>ユーザーの住所に使用される2文字のISO-3166-1 alpha-2形式の国コード。</td>
+<td>ユーザーの住所に使用される国コード。ISO-3166-1 alpha-2形式の2文字を使用します。</td>
 </tr>
 <tr>
 <td>住所情報：名（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
@@ -502,23 +503,23 @@
 </tr>
 <tr>
 <td>メールアドレス（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>電話番号（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
+<td>すでに空白をトリムし、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白を削除し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白トリムし、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>サードパーティユーザーID</td>
-<td>サードパーティに割り当てられたユーザーID。</td>
+<td>サードパーティによって割り当てられたユーザーID。</td>
 </tr>
 </tbody>
 </table>
@@ -533,7 +534,7 @@
 <tbody>
 <tr>
 <td>トランザクション日時</td>
-<td>（必須）トランザクションが発生したタイムスタンプ。形式：<code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで<code>[+/-HH:MM]</code>はUTCからのオプションのタイムゾーンオフセット。</td>
+<td>（必須）トランザクションが発生したタイムスタンプ。形式：<code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで<code>[+/-HH:MM]</code>はUTCからのオプションのタイムゾーンオフセットです。</td>
 </tr>
 <tr>
 <td>トランザクション金額</td>
@@ -545,11 +546,11 @@
 </tr>
 <tr>
 <td>トランザクションアップロード比率</td>
-<td>（必須）顧客と関連付けられた全体の売上に対するアップロードされた売上の比率。この値は0と1の間（0を除く）でなければなりません。例えば、顧客と関連付けられる売上の半分をアップロードする場合、この値は0.5になります。</td>
+<td>（必須）アップロードされたセールスと顧客に関連する全体のセールスとの比率。この値は0と1の間（0を除く）でなければなりません。例えば、顧客に関連付けられるセールスの半分をアップロードする場合、この値は0.5になります。</td>
 </tr>
 <tr>
-<td>トランザクション注文ID</td>
-<td>トランザクションの注文ID。</td>
+<td>トランザクションオーダーID</td>
+<td>トランケーションオーダーID。</td>
 </tr>
 <tr>
 <td>カスタムキー</td>
@@ -573,11 +574,11 @@
 </tr>
 <tr>
 <td>国コード</td>
-<td>アイテムがアップロードされるフィードに関連付けられた国のCommon Locale Data Repository（CLDR）地域コード。</td>
+<td>フィードにアイテムがアップロードされている国のCommon Locale Data Repository（CLDR）の地域コード。</td>
 </tr>
 <tr>
 <td>言語コード</td>
-<td>アイテムがアップロードされるフィードに関連付けられた言語のISO 639-1コード。</td>
+<td>アイテムがアップロードされているフィードに関連する言語のISO 639-1コード。</td>
 </tr>
 <tr>
 <td>マーチャントID</td>
@@ -586,7 +587,7 @@
 </tbody>
 </table>
 <h5 id="同意">同意</h5>
-<p>コネクタは、<code>adUserData</code>と<code>adPersonalization</code>の同意について、デフォルトで<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>に対して、<code>DENIED</code>の値を持つ関連するEventStream属性をマップします。</p>
+<p>コネクタはデフォルトで<code>adUserData</code>と<code>adPersonalization</code>の同意に<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>にEventStream属性をマップし、値を<code>DENIED</code>にします。</p>
 <table>
 <thead>
 <tr>
@@ -639,23 +640,23 @@
 <tbody>
 <tr>
 <td>住所情報：国コード</td>
-<td>ユーザーの住所に使用される2文字のISO-3166-1 alpha-2形式の国コード。</td>
+<td>ユーザーの住所に使用される国コード。ISO-3166-1 alpha-2形式の2文字を使用します。</td>
 </tr>
 <tr>
 <td>住所情報：名（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
@@ -663,19 +664,27 @@
 </tr>
 <tr>
 <td>メールアドレス（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
+<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>電話番号（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白を削除し、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
+<td>すでに空白をトリムし、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白を削除し、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白トリムし、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>サードパーティユーザーID</td>
+<td>サードパーティによって割り当てられたユーザーID。</td>
+</tr>
+<tr>
+<td>電話番号 (SHA256ハッシュを適用)</td>
+<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白トリムしてSHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>第三者ユーザーID</td>
@@ -698,15 +707,15 @@
 </tr>
 <tr>
 <td>トランザクション金額</td>
-<td>(必須) トランザクション金額（マイクロ単位）。1,000,000が1通貨単位に相当します。</td>
+<td>(必須) マイクロ単位のトランザクション金額。ここで一百万は一通貨単位に相当します。</td>
 </tr>
 <tr>
 <td>通貨コード</td>
-<td>(必須) ISO-4217形式の3文字のトランザクション通貨コード。</td>
+<td>(必須) ISO-4217の3文字形式のトランザクション通貨コード。</td>
 </tr>
 <tr>
 <td>トランザクションアップロード比率</td>
-<td>(必須) アップロードされた売上の比率と顧客に関連する全体の売上の比率。この値は0から1の間でなければならず（0は除く）。例えば、顧客に関連付けられる売上の半分をアップロードする場合、この値は0.5になります。</td>
+<td>(必須) アップロードされた売上と顧客に関連する全体の売上との比率。この値は0から1の間でなければならず（0を除く）。例えば、顧客に関連付けることができる売上の半分をアップロードする場合、この値は0.5になります。</td>
 </tr>
 <tr>
 <td>トランザクションオーダーID</td>
@@ -714,7 +723,7 @@
 </tr>
 <tr>
 <td>カスタムキー</td>
-<td>ストアセールスのカスタム変数キーの名前。トランザクションに適用できる事前定義されたキーで、後でレポートのカスタムセグメンテーションに使用できます。</td>
+<td>ストアセールスカスタム変数キーの名前。トランザクションに適用できる事前定義されたキーで、後でレポートのカスタムセグメンテーションに使用できます。</td>
 </tr>
 <tr>
 <td>カスタム値</td>
@@ -722,11 +731,11 @@
 </tr>
 <tr>
 <td>ストアコード</td>
-<td>Googleに事前にアップロードされたユニークなストアID。</td>
+<td>Googleに以前にアップロードされたユニークなストアID。</td>
 </tr>
 <tr>
 <td>アイテムID</td>
-<td>商品のユニークな識別子。これはMerchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
+<td>製品のユニークな識別子。これはMerchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
 </tr>
 <tr>
 <td>数量</td>
@@ -747,7 +756,7 @@
 </tbody>
 </table>
 <h5 id="同意-1">同意</h5>
-<p>コネクタは、<code>adUserData</code>と<code>adPersonalization</code>の同意について、デフォルトで<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>に対して<code>DENIED</code>の値を持つ関連するEventStream属性をマップします。</p>
+<p>コネクタはデフォルトで<code>adUserData</code>と<code>adPersonalization</code>の同意に<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>に対して<code>DENIED</code>の値を持つ関連するEventStream属性をマップします。</p>
 <table>
 <thead>
 <tr>
@@ -762,7 +771,7 @@
 </tr>
 <tr>
 <td>Ad Personalization Consent</td>
-<td>広告のパーソナライゼーションの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
+<td>広告パーソナライゼーションの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -826,7 +835,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年July月10日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1128,6 +1137,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

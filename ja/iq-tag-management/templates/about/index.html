@@ -275,7 +275,7 @@
         <a href="/ja/iq-tag-management/save-publish/publish-workflow-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".publish-workflow-management">パブリッシングワークフロー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/version-labels/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".version-labels">バージョンラベル</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/version-diff-tool/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-iq-diff-tool">バージョン差分ツール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/save-publish/merging-versions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".merging-versions">バージョンの統合</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/save-publish/merging-versions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".merging-versions">バージョンのマージ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".save-publish-concurrent-users">同時利用者</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/merging-changes-between-concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".merging-changes-between-concurrent-users">同時利用者間での変更のマージ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/subresource-integrity/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".subresource-integrity">サブリソースインテグリティ</a></li></ul>
@@ -419,36 +419,35 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このドキュメントでは、iQタグ管理テンプレートの基本的な概念を紹介します。
+      このドキュメントでは、iQタグ管理テンプレートに関する基本的な概念を紹介します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>テンプレートには、ベンダータグまたは同意管理のコンポーネントのコアロジックのJavaScriptコードが含まれています。各マーケットプレイスのベンダータグには、タグ構成、データマッピング、およびiQタグ管理インターフェースからの拡張機能を、あなたのサイトで実行されるJavaScriptコードに変換する独自のテンプレートがあります。また、同意管理の各コンポーネントには、あなたのサイトでのその動作を制御するテンプレートがあります。</p>
-<p>テンプレートを編集する必要があるシナリオはいくつかあります：</p>
+  <h2 id="仕組み">仕組み</h2>
+<p>テンプレートは、iQタグ管理の機能、タグ、または機能コンポーネントのコアロジックを提供するJavaScriptコードです。テンプレートは、Tealium iQからの構成を組み立て、あなたのサイトやアプリで実行されるJavaScriptファイルにします。コンポーネント別のテンプレート一覧については、<a href="#template-types">テンプレートの種類</a>を参照してください。</p>
+<p>ユーザーは、<a href="/ja/iq-tag-management/templates/template-status-checker/">テンプレートステータスチェッカー</a>を実行して、テンプレートが最新であることを確認できます。上級ユーザーは、以下のケースでテンプレートの直接編集が役立つと感じるでしょう：</p>
 <ul>
-<li>ベンダータグの最新リリースに更新する。</li>
-<li>同意管理の最新機能に更新する。</li>
-<li>タグのコアロジックを変更する。</li>
-<li>同意管理のコンポーネントをカスタマイズする。</li>
-<li>タグのバグを修正する。</li>
+<li>サポートされていないベンダーまたは自己構築したソリューションのための独自の機能を構築するために、<a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/">カスタムコンテナタグ</a>または<a href="/ja/iq-tag-management/consent/consent-integrations/custom-cmp/">カスタムコンセント統合</a>を追加する。</li>
+<li>公式の修正がリリースされるまでの間、タグのバグを一時的に修正する。</li>
+<li>特定のニーズを満たすために、テンプレート化されたコンポーネントのコアロジックを変更する。</li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>カスタマイズや修正は、テンプレートを編集するのではなく、タグにスコープを持つ拡張機能を使用して達成できる場合があります。このアプローチは、時間をかけて維持するのが容易なため、まず考慮すべきです。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>一部のカスタマイズや修正は、テンプレートを編集するのではなく、エクステンションを使用して行うことができます。エクステンションは時間の経過とともに維持するのが容易なので、まずエクステンションの使用を検討してみてください。</p>
+<p>テンプレートの編集や更新についての詳細は、<a href="/ja/iq-tag-management/templates/manage/">テンプレートの管理</a>を参照してください。</p>
 <h2 id="テンプレートの種類">テンプレートの種類</h2>
-<p>テンプレートは、ベンダータグ、Tealiumタグ、および同意管理に使用されます。テンプレートのリストを表示すると、各タイプは次の名前で識別できます：</p>
+<p>テンプレートは、システムタグ、ベンダータグ、およびコンセントマネージャーに使用されます。テンプレートの一覧を表示すると、各タイプは以下の名前で識別できます：</p>
+<h3 id="システムタグ">システムタグ</h3>
 <ul>
-<li><strong>Tealiumタグ</strong>
-<ul>
-<li>uTag Loader
-<code>utag.js</code>のテンプレート。</li>
-<li>uTag Sync<br>
-<code>utag.sync.js</code>のテンプレート。</li>
-<li>uTag Footer (非推奨)<br>
-<code>utag.footer.js</code>のテンプレート</li>
+<li><strong>uTag Loader</strong> (<code>utag.js</code>)<br>
+ユニバーサルタグのテンプレートです。ユニバーサルタグは、サードパーティのタグをあなたのサイトにロードするために必要なすべての生成コードを含むJavaScriptコードです。詳細については、<a href="/ja/platforms/javascript/install/#universal-tag-utagjs">JavaScript (<code>utag.js</code>) インストール</a>を参照してください。</li>
+<li><strong>uTag Sync</strong> (<code>utag.sync.js</code>)<br>
+このファイルは、あなたのページがA/Bテストや多変量テストタグ（例：Adobe TargetやOptimizely）をサポートすることを可能にします。スクリプトをページコードの<code>&lt;head&gt;</code>セクションに配置し、最も一般的なベンダー要件に準拠するように同期的にロードします。詳細については、<a href="/ja/iq-tag-management/getting-started/install/utag-sync/"><code>utag.sync.js</code>の動作方法</a>を参照してください。</li>
+<li><strong>モバイルwebview</strong> (<code>mobile.html</code>)<br>
+モバイルインストール用のテンプレートで、ベンダータグをロードするためのモバイルアプリの隠しwebviewとしてロードされます。詳細については、<a href="/ja/platforms/getting-started-mobile/client-side/#mobile">クライアントサイド</a>を参照してください。</li>
 </ul>
-</li>
-<li><strong>同意管理</strong>
+<h3 id="コンセント管理">コンセント管理</h3>
+<p>これらのテンプレートは、コンセント管理機能で使用されます。詳細については、<a href="/ja/iq-tag-management/consent/consent-management/about/">コンセントマネージャーについて</a>を参照してください。</p>
 <ul>
 <li>Dom Ready (<code>cmDomready</code>)</li>
 <li>General (<code>cmGeneral</code>)</li>
@@ -460,34 +459,41 @@
 <li>Consent Logging - Accept/Decline Consent (<code>fullConsentEventHandler</code>)</li>
 <li>Consent Logging - Grant Partial Consent (<code>partialConsentEventHandler</code>)</li>
 </ul>
-</li>
-<li><strong>同意統合</strong>
+<h3 id="コンセント統合">コンセント統合</h3>
+<p>これらのテンプレートは、コンセント統合で使用されます。詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/about/">コンセント統合について</a>を参照してください。</p>
 <ul>
-<li>Framework (<code>utcm_framework</code>)</li>
-<li>すべての統合テンプレートは、統合名（Tealium iQ Consent Integrationsダッシュボードに表示されるように）、テンプレート名（OneTrust、Usercentrics、Customなど）、およびそのテンプレートのインスタンスの内部Tealium IDによって識別されます。
-例：<code>Consent Integrations - Test Integration (onetrust) UID:utcm_e9582a8f-40fd-49ae-9819-fb2721f5547e</code></li>
+<li>Framework (<code>utcm_framework</code>): Tealium iQのためのコンセント強制フレームワーク。</li>
+<li>統合テンプレート : すべての統合テンプレートは、統合名（Tealium iQ Consent Integrationsダッシュボードに表示されるように）、テンプレート名（OneTrust、Usercentrics、Customなど）、およびそのテンプレートのインスタンスの内部Tealium IDによって識別されます。例：<code>Consent Integrations - Test Integration (onetrust) UID:utcm_e9582a8f-40fd-49ae-9819-fb2721f5547e</code>
+<ul>
+<li>Didomi</li>
+<li>OneTrust</li>
+<li>OptOut Cookie + GPC</li>
+<li>Usercentrics</li>
+<li>Custom</li>
 </ul>
 </li>
-<li><strong>マーケットプレイスタグ</strong><br>
-すべてのマーケットプレイステンプレートは、ベンダー名（マーケットプレイスに表示されるように）、タグ名（タグ構成で入力されるように）、およびタグUIDによって識別されます。<br>
-例：<code>Twitter Conversions: Twitter Conversions (Retargeting): Tag UID: 2042</code></li>
 </ul>
-<h2 id="テンプレートの編集ワークフロー">テンプレートの編集ワークフロー</h2>
-<p>テンプレートを編集または更新すると、変更を適用してからプロファイルを保存する必要があります。タグテンプレートが変更されると、タグは<strong>更新済み</strong>とマークされます。テンプレートを変更してプロファイルを保存しない場合、変更は破棄されます。</p>
+<h3 id="マーケットプレイスタグ">マーケットプレイスタグ</h3>
+<p>すべてのマーケットプレイステンプレートは、ベンダー名（マーケットプレイスに表示されるように）、タグ名（タグ構成に入力されるように）、およびタグUIDによって識別されます。</p>
+<p>例：<code>Twitter Conversions: Twitter Conversions (Retargeting): Tag UID: 2042 </code></p>
+<h2 id="テンプレートステータスチェッカー">テンプレートステータスチェッカー</h2>
+<p><strong>テンプレートステータスチェッカー</strong>ツールは、各テンプレートを最新のシステムバージョンと比較します。詳細については、<a href="/ja/iq-tag-management/templates/template-status-checker/">テンプレートステータスチェッカーについて</a>を参照してください。</p>
 <h2 id="テンプレートへのアクセス">テンプレートへのアクセス</h2>
-<p>テンプレートにアクセスするための以下の方法があります：</p>
+<p>テンプレートへのアクセスには以下の方法があります：</p>
 <ul>
 <li><strong>管理メニュー</strong><br>
 管理メニューで、<strong>テンプレートの管理</strong>をクリックします。<br>
-この方法では、プロファイル内のすべてのテンプレートを閲覧し、ドロップダウンリストからすぐにアクセスすることができます。</li>
+この方法では、プロファイル内のすべてのテンプレートを閲覧し、ドロップダウンリストからすばやくアクセスすることができます。</li>
 <li><strong>タグ構成</strong><br>
-タグ構成画面から、<strong>詳細構成</strong>エリアを展開し、<strong>テンプレートの編集</strong>をクリックします。<br>
-この方法では、そのタグのテンプレートに直接アクセスできます。</li>
+タグ構成画面から、<strong>詳細構成</strong>エリアを展開し、<strong>テンプレートの編集</strong>をクリックします。この方法では、そのタグのテンプレートに直接アクセスすることができます。</li>
 <li><strong>テンプレートステータスチェッカー</strong><br>
 管理メニューで、<strong>テンプレートステータスチェッカー</strong>をクリックし、レポート内のテンプレートをクリックします。<br>
-この方法では、テンプレートのステータスレポートが表示されます。これには、同意管理テンプレートとTealium uTagテンプレートが含まれます。<br>
-<a href="/ja/iq-tag-management/templates/template-status-checker/">テンプレートステータスチェッカーについて</a>の詳細を学びましょう。</li>
+この方法では、テンプレートのステータスレポートが表示されます。レポートには、各テンプレートへのリンクが含まれています。<br>
+詳細については、<a href="/ja/iq-tag-management/templates/template-status-checker/">テンプレートステータスチェッカーについて</a>を参照してください。</li>
 </ul>
+<h2 id="テンプレートのマージ動作">テンプレートのマージ動作</h2>
+<p>タグテンプレートは、標準的なマージ動作には従いません。一つのバージョンを別のバージョンにマージするとき、アクティブバージョンのタグテンプレートが優先されます。マージされたバージョンからのタグテンプレートの変更は破棄されます。別のバージョンからタグテンプレートをマージしたい場合は、そのバージョンに切り替えてから、タグテンプレートを元のバージョンにマージします。</p>
+<p>バージョンのマージについての詳細は、<a href="/ja/iq-tag-management/save-publish/merging-versions/">バージョンのマージ</a>を参照してください。</p>
 
 </div>
 
@@ -533,7 +539,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -547,9 +553,15 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E7%A8%AE%E9%A1%9E" href="javascript:void(0)">テンプレートの種類</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E7%B7%A8%E9%9B%86%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">テンプレートの編集ワークフロー</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E7%A8%AE%E9%A1%9E" href="javascript:void(0)">テンプレートの種類</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%BF%E3%82%B0" href="javascript:void(0)">システムタグ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86" href="javascript:void(0)">コンセント管理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E7%B5%B1%E5%90%88" href="javascript:void(0)">コンセント統合</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E3%82%BF%E3%82%B0" href="javascript:void(0)">マーケットプレイスタグ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC" href="javascript:void(0)">テンプレートステータスチェッカー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9" href="javascript:void(0)">テンプレートへのアクセス</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E3%83%9E%E3%83%BC%E3%82%B8%E5%8B%95%E4%BD%9C" href="javascript:void(0)">テンプレートのマージ動作</a></li>
               </nav>
   </aside></nav>
 

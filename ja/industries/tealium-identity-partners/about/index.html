@@ -359,80 +359,88 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、TealiumのアイデンティティパートナーエコシステムのアイデンティティプロバイダーがTealiumプラットフォームでどのように機能し、それらを使用する方法について説明します。
+      この記事では、TealiumのアイデンティティパートナーエコシステムにあるアイデンティティプロバイダーがTealiumプラットフォームでどのように機能し、それらをどのように使用するかについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealiumは、PIIを使用して訪問データを結び付けて顧客のプロファイルを作成するために、確定的な情報源に依存しています。ただし、確率的なアイデンティティ解決の方法を使用するファーストパーティおよびサードパーティのデータのアイデンティティプロバイダーを使用して、各訪問、見込み客、および顧客に関する高品質な洞察を作成することができます。これらの確率的な洞察は、Tealiumによって収集されたデータとプロファイルを組み合わせて関係データをエンリッチメントし、顧客にパーソナライズされた体験を提供するために使用することができます。</p>
+  <p>Tealiumは、訪問データを一つの顧客ビューにまとめるためにPIIを使用して決定的な情報源に依存しています。しかし、一次データと三次データのアイデンティティプロバイダーを使用して、訪問、見込み客、顧客の各々について高品質な洞察を作成することができます。これらの確率的な洞察は、Tealiumによって収集され、プロファイルがエンリッチされたデータと組み合わせて、関係データをエンリッチメントし、顧客にパーソナライズされた体験を提供することができます。</p>
 <h2 id="アイデンティティプロバイダーは何をするのか">アイデンティティプロバイダーは何をするのか？</h2>
-<p>Tealiumのアイデンティティパートナーは、以下のサービスを提供します：</p>
+<p>Tealiumのアイデンティティパートナーは以下のサービスを提供します：</p>
 <ul>
-<li>ファーストパーティおよびサードパーティのデータを単一の顧客データベースに収集します。これは、それ自体がCRMとして使用することも、ビジネスが所有するCRMをエンリッチメントするために使用することもできます。</li>
-<li>継続的なプロセスでファーストパーティのデータを収集、クリーンアップ、正規化して、サービスの品質を確保します。</li>
-<li>UID2.0と統合し、サードパーティのクッキーを置き換えるオープンソースのIDフレームワークです。たとえば、The Trade DeskはUID 2.0を提供しており、広告主はPIIを共有し、短期間の匿名の識別子を広告ターゲティングに送り返すことができます。</li>
-<li>一部のデータプロバイダーは、AdTechおよびパブリッシャー関連の機能も提供しています。これらのパブリッシャープラットフォームとの直接統合は、広告ターゲティングをサポートすることができ、他のものはプライバシーに準拠した環境での広告キャンペーンの分析を可能にします。</li>
+<li>一次データと三次データを一つの顧客データベースに収集します。これはCRMとして自体使用することも、ビジネスが所有するCRMをエンリッチメントするために使用することもできます。</li>
+<li>一次データを収集し、クリーニングし、正規化することでサービスの品質を保証します。</li>
+<li>UID2.0という、第三者のクッキーを置き換えることになるオープンソースのIDフレームワークと統合します。例えば、The Trade DeskはUID 2.0を提供しており、広告主がPIIを共有することができ、彼らは広告ターゲティングのための短期的な匿名識別子を返送します。</li>
+<li>一部のデータプロバイダーは、AdTechと公開関連の機能も提供します。これらの公開プラットフォームとの直接の統合は、広告ターゲティングをサポートすることができ、他のものはプライバシーに準拠した環境での広告キャンペーンの分析を可能にします。</li>
 </ul>
-<p>Tealiumは、プラットフォーム全体で多数のアイデンティティパートナーの統合にアクセスできます：iQタグ管理、EventStream、データソース、AudienceStream、および関数。これらのソースから情報を取得し、それを訪問と顧客のプロファイルの明確なビジョンに組み合わせる作業は大変な作業になる場合があるため、Tealiumは複数のソースからのアイデンティティプロバイダーデータの統合プロセスをスムーズかつ簡単にするためにここにあります。</p>
-<h3 id="確定的対確率的">確定的対確率的</h3>
-<p>確定的マッチングと確率的データモデルの違いを理解することは重要です：</p>
+<p>Tealiumは、プラットフォーム全体で多数のアイデンティティパートナー統合を提供します：iQタグ管理、EventStream、データソース、AudienceStream、およびFunctions。これらの各ソースから情報を引き出し、訪問と顧客のプロファイルを明確に組み合わせることは大変な作業になることがあるため、Tealiumは複数のソースからのアイデンティティプロバイダーデータの統合をスムーズで簡単にするためにここに存在します。</p>
+<h3 id="決定論的-vs-確率論的">決定論的 vs 確率論的</h3>
+<p>決定論的マッチングと確率論的データモデルの違いを理解することは重要です：</p>
 <ul>
-<li>確定的マッチングは、ファーストパーティのデータを使用してデバイスレベルのデータを適切なユーザープロファイルにリンクします。</li>
-<li>確率的モデルは、信頼レベルに基づいてユーザーデータを個人にリンクするための予測アルゴリズムを使用します。</li>
+<li>決定論的マッチングは、デバイスレベルのデータを適切なユーザープロファイルにリンクするために一次データを使用します。</li>
+<li>確率論的モデルは、信頼レベルに基づいてユーザーデータを個々の人物にリンクするために予測アルゴリズムを使用します。</li>
 </ul>
-<p>確定的な方法はPII（メール、UID2.0など）を使用してユーザーを識別します。Tealiumは、訪問スティッチングで確定的モデルを使用しています。</p>
-<p>確率的なアイデンティティプログラムとの統合では、返されたデータを処理するためにTealiumの関数を使用することが通常です。</p>
-<h2 id="仕組み">仕組み</h2>
+<p>決定論的な方法は、PII（メール、UID2.0など）を使用してユーザーを識別します。Tealiumは、訪問のスティッチングに決定論的モデルを使用します。</p>
+<p>確率論的なアイデンティティプログラムとの統合は、通常、返されたデータと信頼スコアを処理するためにTealiumの機能の使用を必要とします。</p>
+<h2 id="それはどのように機能するのか">それはどのように機能するのか</h2>
 <h3 id="auth0とciam">Auth0とCIAM</h3>
-<p>Auth0は、Customer Identity Access Management（CIAM）モデルを使用しています：</p>
+<p>Auth0は、Customer Identity Access Management（CIAM）モデルを使用します：</p>
 <figure><a class="slb" href="/images/industries/screen-shot-2022-09-26-at-13.41.19.png"><img src="/images/industries/screen-shot-2022-09-26-at-13.41.19.png"/>
     </a>
 </figure>
-<p>ユーザーがAuth0にログインすると、そのユーザーのアイデンティティはAuth0の認可サーバーによって確認されます。</p>
-<p>TealiumはAuth0のアクションとして表示され、ドラッグアンドドロップの統合を介して使用することができます。</p>
-<p>Auth0データソースは、Tealiumの新しいIdentityカテゴリーの下に表示されます。</p>
+<p>ユーザーがAuth0にログインすると、そのアイデンティティはAuth0の認証サーバーによって確認されます。</p>
+<p>TealiumはAuth0のアクションとして表示され、ドラッグアンドドロップの統合を通じて使用することができます。</p>
+<p>Auth0のデータソースは、Tealiumの新しい<strong>Identity</strong>カテゴリーの下に表示されます。</p>
 <h3 id="uid-20">UID 2.0</h3>
-<p>The Trade Deskおよびその他のベンダーはUID 2.0を使用しており、確定的な識別のためにPIIを使用しています。訪問にUID 2.0を割り当てるために、エンリッチメントと関数コードを構成する必要があります：</p>
+<p>The Trade Deskや他のベンダーは、決定論的な識別のためにPIIを使用するUID 2.0を使用します。訪問にUID 2.0を割り当てるために、エンリッチメントと関数コードを構成する必要があります：</p>
 <figure><a class="slb" href="/images/industries/screen-shot-2022-09-26-at-13.41.53.png"><img src="/images/industries/screen-shot-2022-09-26-at-13.41.53.png"/>
     </a>
 </figure>
-<p>詳細については、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">Tealium関数を使用してUID2.0トークンを生成する方法</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>プライバシーの制限により、UID 2.0はEUでは使用できません。</p>
+<p>詳細については、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">Tealium Functionsを使用してUID2.0トークンを生成する</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>UID 2.0は、プライバシー制限のためEUでは使用できません。</p>
 <h3 id="acxiomとmerkle">AcxiomとMerkle</h3>
-<p>アイデンティティおよびデータ管理ソリューションプロバイダーであるAcxiomとMerkleは、次の役割を果たします：</p>
+<p>アイデンティティとデータ管理ソリューションプロバイダーとして、AcxiomとMerkleは以下の役割を果たします：</p>
 <ul>
-<li>顧客データ戦略と追加のオプションサービスを提供します。</li>
-<li>関数とTealium iQタグ管理へのアクセスが必要です。</li>
-<li>ビジネスのためにファーストパーティおよびサードパーティのデータをクレンジングし、保存し、プロファイルをグループ化し、デモグラフィックスを収集し、NCOA（国内転送先住所変更）を追跡することができます。</li>
-<li>確率的な方法を使用して訪問を識別し、「確定的にスティッチングし、確率的にエンリッチする」ことができます。</li>
+<li>顧客データ戦略を提供し、追加のオプションサービスを提供します。</li>
+<li>FunctionsとTealium iQタグ管理へのアクセスを必要とします。</li>
+<li>ビジネスのために一次データと三次データをクリーニングし、保存します。これにより、プロファイルをホーム庭にグループ化し、人口統計情報を収集し、NCOA（National Change of Address）を追跡し、その他の情報を収集することができます。</li>
+<li>確率論的な方法を使用して訪問を識別し、「決定論的にステッチし、確率論的にエンリッチする」。</li>
 </ul>
 <figure><a class="slb" href="/images/industries/data-partners-&#43;-tealium---acxiom-%283%29.png"><img src="/images/industries/data-partners-&#43;-tealium---acxiom-%283%29.png"/>
     </a>
 </figure>
+<h3 id="netid">netID</h3>
+<p>ウェブサイトでnetIDによるログインまたは登録後、ユーザーのnetIDアイデンティティパラメーターはTealiumのリアルタイムデータ収集、エンリッチメント、およびアクティベーション機能に利用可能になります。</p>
+<p>ユーザーがnetID認証でウェブサイトにログインすると、そのアイデンティティはnetID認証APIによって確認されます。API <code>READ SERVICE</code>のレスポンスからのアイデンティティパラメーター<code>tpid</code>は、Tealiumデータレイヤーに永続化することができます。</p>
+<ul>
+<li>Tealium iQのロードルールとタグ変数マッピング内でnetIDを使用し、クライアントサイドのアクティベーションを広告技術に対して行います。これはサポートされている場合です。</li>
+<li>Tealium EventStreamのルール、イベントフィード、およびコネクタ属性マッピング内でnetIDを使用し、サーバーサイドのアクティベーションを広告技術に対して行います。これはサポートされている場合です。</li>
+<li>netIDを使用してTealium AudienceStreamの訪問プロファイルを豊かにし、広告技術全体での顧客プロファイルベースのアクティベーションと抑制のためにコネクタ属性をマッピングします。これはサポートされている場合です。</li>
+</ul>
 <h2 id="アイデンティティプロバイダーの使用方法">アイデンティティプロバイダーの使用方法</h2>
-<p>アイデンティティプロバイダーを使用して、電話番号やメールアドレスなどのPIIをTealiumと直ちに共有し、顧客プロファイルをエンリッチすることができます。これにより、匿名の訪問を知られた訪問または顧客に変換することができます。</p>
-<p>データプロバイダーは常にデータをクリーンアップし、正規化しているため、この情報を使用して自分自身のデータをクリーンアップするのに役立てることができます。</p>
-<p>サードパーティのクッキーが非推奨になるため、匿名のリターゲティングはもはや可能ではありません。したがって、AdTech IDパートナーとの間で1つ以上のPIIを共有することで、その個人をパブリッシャーやドメイン全体で識別し、ターゲティングすることができます。</p>
-<p>多くの顧客はすでにサードパーティのアイデンティティプロバイダーを雇って、訪問プロファイルを改善しています。Tealium Identity Marketplaceは、これらのデータにサブスクライブし、インポートし、統合するプロセスを簡素化するのに役立ちます。</p>
+<p>アイデンティティプロバイダーを使用して、電話番号やメールアドレスなどのPIIをすぐにTealiumと共有し、顧客プロファイルをエンリッチすることができます。これにより、匿名の訪問を既知の訪問または顧客に変えることができます。</p>
+<p>データプロバイダーは常にデータをクリーニングし、正規化しているため、この情報を使用して自分のデータをクリーニングするのに役立てることができます。</p>
+<p>第三者のクッキーが非推奨になると、匿名のリターゲティングはもはや可能ではありません。したがって、一つ以上のPIIをAdTech IDパートナーと共有することで、その個人を公開社やドメイン全体で識別し、ターゲティングすることが可能になります。</p>
+<p>多くの顧客がすでに訪問プロファイルを改善するために第三者のアイデンティティプロバイダーを雇っています。Tealium Identity Marketplaceは、このデータを購読し、インポートし、組み込むプロセスを簡素化するのに役立ちます。</p>
 <h2 id="アイデンティティタグコネクタデータソース">アイデンティティタグ、コネクタ、データソース</h2>
-<p>各タグ、コネクタ、データソースの<strong>Identity</strong>カテゴリーには、そのパートの利用可能な識別子リソースがすべてリストされています。</p>
-<h3 id="アイデンティティおよびデータ管理ソリューション">アイデンティティおよびデータ管理ソリューション</h3>
+<p><strong>Tags</strong>、<strong>Connectors</strong>、および<strong>Data Sources</strong>インターフェースのそれぞれの<strong>Identity</strong>カテゴリーは、そのプラットフォーム部分の利用可能な識別子リソースをすべてリストします。</p>
+<h3 id="アイデンティティとデータ管理ソリューション">アイデンティティとデータ管理ソリューション</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">パートナー</th>
 <th style="text-align:left">統合タイプ</th>
 <th style="text-align:left">概要</th>
-<th style="text-align:left">ドキュメントリンク</th>
+<th style="text-align:left">ドキュメンテーションリンク</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">Acxiom</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left"><ul><li>ブランドの所有および有料メディア全体に実装されたファーストパーティタグ。</li><li>所有および有料メディア全体で統一された一貫したアイデンティティを提供します。</li><li>確定的および確率的なシグナルの両方によってリンクを構築することができます。</li><li>クライアント自身のドメインで実行され、他のエンティティとのデータ共有はありません。</li><li>クッキーの存在（または非受け入れ）がなくてもアイデンティティを解決することができます</li></ul></td>
-<td style="text-align:left"><a href="/ja/client-side-tags/acxiom-real-identity-rtag/">Acxiom Real Identity rTag Setup Guide</a></td>
+<td style="text-align:left"><ul><li>ブランドが所有し、有料メディアに実装されたファーストパーティタグ。</li><li>所有メディアと有料メディアを通じて統一された一貫したアイデンティティを提供します。</li><li>決定的な信号と確率的な信号の両方によってリンクを構築することができます。</li><li>クライアント自身のドメインを使用し、他のエンティティとのデータ共有がない完全なファーストパーティソリューションとして機能します。</li><li>クッキーが存在しない（または受け入れられない）場合でも、アイデンティティを解決することができます</li></ul></td>
+<td style="text-align:left"><a href="/ja/client-side-tags/acxiom-real-identity-rtag/">Acxiom Real Identity rTag構成ガイド</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Auth0</td>
@@ -443,8 +451,14 @@
 <tr>
 <td style="text-align:left">Merkle</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left">Merkuryは、組織のファーストパーティCRMデータとログイン、アウトバウンドメールキャンペーン、メディアリーチなどの貴重なインタラクションを使用して、人物ベースのIDの宇宙を作成および拡大します。Tealium IQのデータマッピング機能を使用すると、共有するデータポイントを制御できます。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/merkle-merkury-tag/">Merkle Merkury Tag Setup Guide</a></td>
+<td style="text-align:left">Merkuryは、組織のファーストパーティCRMデータとログイン、アウトバウンドメールキャンペーン、メディアリーチなどの価値あるインタラクションを使用して、パーソンベースのIDのユニバースを作成し、拡大します。Tealium IQのデータマッピング機能を使用すると、Merkuryと共有するデータポイントを制御できます。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/merkle-merkury-tag/">Merkle Merkuryタグ構成ガイド</a></td>
+</tr>
+<tr>
+<td style="text-align:left">netID</td>
+<td style="text-align:left">データレイヤー (UDOオブジェクト)</td>
+<td style="text-align:left">netIDログイン標準を実装するために、netIDパートナーは自分のウェブサイトでnetIDのブラウザベースのJavascript APIリクエストを実装し、netIDのアイデンティティとプライバシープロパティをブラウザ保存（例えば、ファーストパーティクッキー、localStorage、またはsessionStorage）に永続化します。ここでTealiumがそれらをダウンストリームのアクティベーションのために取得できます。</td>
+<td style="text-align:left"><a href="/ja/industries/tealium-identity-partners/netid-identity-resolution/">netID実装ガイド</a></td>
 </tr>
 </tbody>
 </table>
@@ -455,56 +469,56 @@
 <th style="text-align:left">パートナー</th>
 <th style="text-align:left">統合タイプ</th>
 <th style="text-align:left">概要</th>
-<th style="text-align:left">ドキュメントリンク</th>
+<th style="text-align:left">ドキュメンテーションリンク</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">Criteo</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left">クッキーマッチングは、Tealiumの訪問を識別するクッキーをCriteoでユーザーを識別するクッキーに関連付けます。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/criteo-cookie-matching-service-tag/">Criteo Cookie Matching Service Tag Setup Guide</a></td>
+<td style="text-align:left">Cookie Matchingは、Tealiumの訪問を識別するクッキーを、Criteoのユーザーを識別するクッキーに関連付けます。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/criteo-cookie-matching-service-tag/">Criteo Cookie Matching Serviceタグ構成ガイド</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Criteo</td>
 <td style="text-align:left">コネクタ</td>
-<td style="text-align:left">オーディエンスマッチは、柔軟な顧客ターゲティングソリューションです。</td>
-<td style="text-align:left"><a href="/ja/server-side-connectors/criteo-audience-match-connector/">Criteo Audience Match Connector Setup Guide</a></td>
+<td style="text-align:left">Audience Matchは、柔軟な顧客ターゲティングソリューションです。</td>
+<td style="text-align:left"><a href="/ja/server-side-connectors/criteo-audience-match-connector/">Criteo Audience Matchコネクタ構成ガイド</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Epsilon</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left">パートナーピクセルURLのリストを返し、ブラウザがこれらを呼び出してIDを交換します。これにより、ユーザーはサイトを離れた後も識別され、メッセージが表示されることができます。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/epsilon-partner-sync-web-service-tag/">Epsilon Partner Sync Web Service Tag Setup Guide</a></td>
+<td style="text-align:left">パートナーピクセルURLのリストを返し、ブラウザによって呼び出されると、IDを交換所と同期します。これにより、ユーザーがあなたのサイトを離れた後でも、ユーザーを識別し、メッセージを送ることができます。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/epsilon-partner-sync-web-service-tag/">Epsilon Partner Sync Web Serviceタグ構成ガイド</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Tapad</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left">これにより、Tapadと共同でデバイスを識別し、これらのデバイスでアクションを実行することができます。<br><br><strong>注意：</strong> Tealiumの訪問セッションごとに1回発生します。<code>tapad_id</code>サーバーサイド属性をTealiumに送信します。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/tapad-cookie-matching-service-tag/">TAPAD Cookie Matching Service Tag Setup Guide</a></td>
+<td style="text-align:left">これにより、Tapadとあなたが共同でデバイスを識別し、これらのデバイスに対してアクションを取ることができます。<br><br><strong>注:</strong> Tealiumの訪問セッションごとに一度発火します。<code>tapad_id</code>サーバーサイド属性をTealiumに送信します。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/tapad-cookie-matching-service-tag/">TAPAD Cookie Matching Serviceタグ構成ガイド</a></td>
 </tr>
 <tr>
 <td style="text-align:left">The Trade Desk (TDD)</td>
 <td style="text-align:left">タグ</td>
-<td style="text-align:left">The Trade Desk Universal Pixelを使用すると、マーケターはユーザーデータの可視性を高め、より詳細なレベルでレポートを分析することができます。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/">Trade Desk Universal Pixel Setup Guide for Tealium iQ</a></td>
+<td style="text-align:left">The Trade Desk Universal Pixelは、マーケターがユーザーデータをより詳細に見ることを可能にし、レポートをより詳細なレベルで分析することを可能にします。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/">Trade Desk Universal Pixel構成ガイド for Tealium iQ</a></td>
 </tr>
 <tr>
 <td style="text-align:left">The Trade Desk (TDD)</td>
 <td style="text-align:left">コネクタ</td>
-<td style="text-align:left">The Trade Deskコネクタを使用すると、エンリッチされた訪問プロファイルとオーディエンスをTDDに投稿して、よりパーソナライズされた広告キャンペーンを実施することができます。</td>
-<td style="text-align:left"><a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service Tag Setup Guide</a> (used with UID2.0 Function)</td>
+<td style="text-align:left">The Trade Deskコネクタは、エンリッチされた訪問プロファイルとオーディエンスをTDDに投稿し、よりパーソナライズされた広告キャンペーンを実施するために使用できます。</td>
+<td style="text-align:left"><a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Serviceタグ構成ガイド</a> (UID2.0 Functionと一緒に使用)</td>
 </tr>
 <tr>
 <td style="text-align:left">The Trade Desk (TDD)</td>
-<td style="text-align:left">関数</td>
-<td style="text-align:left">UID2.0は、サードパーティのクッキーを置き換えるオープンソースの識別子です。</td>
-<td style="text-align:left"><a href="/ja/server-side-connectors/the-trade-desk-connector/">The Trade Desk Connector Setup Guide</a> (used with UID2.0 Function)</td>
+<td style="text-align:left">ファンクション</td>
+<td style="text-align:left">UID2.0は、3rd-partyクッキーを置き換えるオープンソースの識別子です。</td>
+<td style="text-align:left"><a href="/ja/server-side-connectors/the-trade-desk-connector/">The Trade Deskコネクタ構成ガイド</a> (UID2.0 Functionと一緒に使用)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アイデンティティプロバイダーのプライバシー制限">アイデンティティプロバイダーのプライバシー制限：</h3>
-<p>アイデンティティパートナーは、GDPRなどの法規制により、運用できる場所に制限があります。各パートナーには異なる機能があります（たとえば、Merkleはグローバルですが、TDD UID2.0はEU内では使用できません）。</p>
+<h3 id="アイデンティティプロバイダーのプライバシー制限">アイデンティティプロバイダーのプライバシー制限:</h3>
+<p>アイデンティティパートナーは、GDPRなどの法律により、彼らが運用できる場所に制限があります。各パートナーは異なる能力を持っています（例えば、Merkleはグローバルですが、TDD UID2.0はEU内で使用することはできません）。</p>
 <ul>
 <li>Acxiom - <a href="https://www.acxiom.com/data-privacy-ethics/gdpr/">GDPR</a></li>
 <li>Auth0 - <a href="https://auth0.com/docs/secure/data-privacy-and-compliance/gdpr">Auth0 General Data Protection Regulation Compliance</a></li>
@@ -517,10 +531,11 @@
 <h2 id="アイデンティティプロバイダーの実装方法">アイデンティティプロバイダーの実装方法</h2>
 <p>アイデンティティプロバイダーを実装するには：</p>
 <ul>
-<li>The Trade DeskとUID 2.0の場合は、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">Tealium関数を使用してUID2.0トークンを生成する方法</a>を参照してください。</li>
-<li>Acxiomの場合は、<a href="../acxiom-identity-resolution/">Acxiom Identity ResolutionのためのTealium関数の使用方法</a>を参照してください。</li>
+<li>The Trade DeskとUID 2.0については、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">Using Tealium Functions to Generate a UID2.0 Token</a>を参照してください。</li>
+<li>Acxiomについては、<a href="../acxiom-identity-resolution/">Using Tealium Functions for Acxiom Identity Resolution</a>を参照してください。</li>
+<li>netIDについては、<a href="/ja/industries/tealium-identity-partners/netid-identity-resolution/">netID実装ガイド</a>を参照してください。</li>
 </ul>
-<p>近日中にさらなる関数の例を追加します。</p>
+<p>近日中にさらに多くの機能例を追加します。</p>
 
 </div>
 
@@ -566,7 +581,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -581,16 +596,17 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%81%AF%E4%BD%95%E3%82%92%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B" href="javascript:void(0)">アイデンティティプロバイダーは何をするのか？</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%A2%BA%E5%AE%9A%E7%9A%84%E5%AF%BE%E7%A2%BA%E7%8E%87%E7%9A%84" href="javascript:void(0)">確定的対確率的</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B1%BA%E5%AE%9A%E8%AB%96%E7%9A%84-vs-%E7%A2%BA%E7%8E%87%E8%AB%96%E7%9A%84" href="javascript:void(0)">決定論的 vs 確率論的</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%9D%E3%82%8C%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E6%A9%9F%E8%83%BD%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B" href="javascript:void(0)">それはどのように機能するのか</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#auth0%E3%81%A8ciam" href="javascript:void(0)">Auth0とCIAM</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid-20" href="javascript:void(0)">UID 2.0</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#acxiom%E3%81%A8merkle" href="javascript:void(0)">AcxiomとMerkle</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#netid" href="javascript:void(0)">netID</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">アイデンティティプロバイダーの使用方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%82%BF%E3%82%B0%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9" href="javascript:void(0)">アイデンティティタグ、コネクタ、データソース</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%81%8A%E3%82%88%E3%81%B3%E3%83%87%E3%83%BC%E3%82%BF%E7%AE%A1%E7%90%86%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アイデンティティおよびデータ管理ソリューション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E7%AE%A1%E7%90%86%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アイデンティティとデータ管理ソリューション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BA%83%E5%91%8A%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9" href="javascript:void(0)">広告アイデンティティサービス</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E5%88%B6%E9%99%90" href="javascript:void(0)">アイデンティティプロバイダーのプライバシー制限：</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E5%88%B6%E9%99%90" href="javascript:void(0)">アイデンティティプロバイダーのプライバシー制限:</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95" href="javascript:void(0)">アイデンティティプロバイダーの実装方法</a></li>
               </nav>
   </aside></nav>

@@ -382,7 +382,7 @@
         <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/oauth2-authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-OAuth2-authentication">OAuth 2.0認証を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/event-visitor-functions/uid2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-visitor-function-get-uid20">UID2の生成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/uid2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-visitor-function-get-uid20">UID2を生成する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/euid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-visitor-function-euid">EUIDを生成する</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-transformation-functions">データ変換関数</a>
@@ -535,12 +535,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Action V2ランタイムは廃止され、サポートされていません。V2ランタイムを使用する関数はまだ実行されていますが、コードの変更を保存することはできません。コードの変更を保存するには、ランタイムバージョンを更新する必要があり、これには関数コードの変更が必要になる場合があります。必要なコード変更については、<a href="/ja/server-side/functions/event-visitor-functions/migrate-v2-to-v3/">V2関数をV3ランタイムに移行する</a>を参照してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Action V2ランタイムは廃止され、サポートされていません。V2ランタイムを使用する関数は引き続き実行されますが、コードの変更を保存することはできません。コードの変更を保存するには、ランタイムバージョンを更新する必要があり、これには関数コードの変更が必要になる場合があります。必要なコード変更については、<a href="/ja/server-side/functions/event-visitor-functions/migrate-v2-to-v3/">V2関数をV3ランタイムに移行する</a>を参照してください。</p>
 <p>新しい関数はデフォルトでV3ランタイムを使用します。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントと訪問関数 V3</a>を参照してください。</p>
 <h2 id="名前付きエクスポート">名前付きエクスポート</h2>
 <p>Tealiumモジュールは、イベントと訪問関数のために5つの名前付きエクスポートを提供します：<code>auth</code>、<code>event</code>、<code>visitor</code>、<code>store</code>、および<code>tealium</code>。関数は次のようにこれらの名前付きエクスポートをインポートします：</p>
 <pre tabindex="0"><code>import { auth, visitor, event, store, tealium } from &#34;tealium&#34;; 
-</code></pre><h2 id="authオブジェクト-authget">Authオブジェクト: auth.get()</h2>
+</code></pre><h2 id="authオブジェクトauthget">Authオブジェクト：auth.get()</h2>
 <p>イベントと訪問関数は、FacebookやGoogleなどの一部のサービスプロバイダにアクセスするために認証を必要とします。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/authentication/">関数に認証を追加する</a>を参照してください。認証を追加すると、アクセストークンが返されます。</p>
 <p>アクセストークンは<code>auth.get()</code>メソッドに渡され、HTTPリクエストで使用できる認証のIDを返します。</p>
 <table>
@@ -555,11 +555,12 @@
 <tr>
 <td>authName</td>
 <td>string</td>
-<td>認証の名前を指定します。これは、関数に認証が追加されたときに入力された名前です。</td>
+<td>関数に追加されたときに入力された認証の名前を指定します。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="eventオブジェクト">Eventオブジェクト</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベント関数は、Tealiumがイベントを処理した後に呼び出されるため、イベントを変更することはできません。イベントを変更するには、イベント属性のエンリッチメントまたはイベント変換関数を使用します。また、データソースでイベントを変更してからTealiumに送信することもできます。</p>
 <p><code>event</code>オブジェクトは、関数がイベントフィードによってトリガーされたときに利用可能で、イベントデータを含みます。</p>
 <table>
 <thead>
@@ -593,7 +594,7 @@
 <tr>
 <td><code>event.data</code></td>
 <td>object</td>
-<td>イベント属性データを含むオブジェクト。例：<code>event.data.udo.page_category</code>や<code>event.data.udo.order_id</code>。</td>
+<td>イベント属性データを含むオブジェクト。例：<code>event.data.udo.page_category</code>または<code>event.data.udo.order_id</code>。</td>
 </tr>
 <tr>
 <td><code>function getAttributeNameById(id)</code></td>
@@ -656,7 +657,7 @@
   &#34;env&#34;: &#34;prod&#34;,
   &#34;post_time&#34;: 1537305808000
 }
-</code></pre><p>イベントデータは、関数内で以下のようにアクセスできます：</p>
+</code></pre><p>イベントデータは、関数内で次のようにアクセスできます：</p>
 <pre tabindex="0"><code>const data = {};
     // DOM変数はevent.domに格納されています
     data.current_url = event?.dom?.url;
@@ -669,7 +670,7 @@
     data.tealium_event = event?.data?.udo?.tealium_event;
     data.tealium_account = event?.data?.udo?.tealium_account;
     data.tealium_profile = event?.data?.udo?.tealium_profile;
-</code></pre><h2 id="storeオブジェクト-storeget">Storeオブジェクト: store.get()</h2>
+</code></pre><h2 id="storeオブジェクトstoreget">Storeオブジェクト：store.get()</h2>
 <p><code>store</code>オブジェクトは、キー/値のペア（グローバル変数と呼ばれます）を格納するために使用され、複数の関数でデータを共有するために使用できます。キーは変数の名前です。値は数値または文字列の定数であることができます。関数のコードエディタの<strong>Code</strong>タブでグローバル変数を追加、編集、削除することができます。関数はグローバル変数の値を取得することができますが、変更することはできません。</p>
 <p>V2関数は、<code>store.get()</code>メソッドを呼び出し、キーをパラメータとして渡すことで、キーの値を取得することができます。</p>
 <table>
@@ -689,7 +690,7 @@
 </tbody>
 </table>
 <p>グローバル変数の追加、編集、使用についての詳細は、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/">グローバル変数の管理</a>を参照してください。</p>
-<h2 id="tealiumオブジェクト-sendcollectevent">Tealiumオブジェクト: sendCollectEvent()</h2>
+<h2 id="tealiumオブジェクトsendcollectevent">Tealiumオブジェクト：sendCollectEvent()</h2>
 <p><code>sendCollectEvent()</code>メソッドは、イベントをTealium Collect HTTP APIに送信し、文字列を返します。</p>
 <table>
 <thead>
@@ -708,22 +709,23 @@
 <tr>
 <td>account</td>
 <td>string</td>
-<td>任意。指定された場合、event.tealium_accountの値を置き換えます。</td>
+<td>オプション。指定された場合、event.tealium_accountの値を置き換えます。</td>
 </tr>
 <tr>
 <td>profile</td>
 <td>string</td>
-<td>任意。指定された場合、event.tealium_profileの値を置き換えます。</td>
+<td>オプション。指定された場合、event.tealium_profileの値を置き換えます。</td>
 </tr>
 <tr>
 <td>dataSourceId</td>
 <td>string</td>
-<td>任意。指定された場合、event.tealium_datasourceの値を置き換えます。</td>
+<td>オプション。指定された場合、event.tealium_datasourceの値を置き換えます。</td>
 </tr>
 </tbody>
 </table>
-<p>Tealium Collect HTTP APIの<code>Response</code>インターフェースは、リクエストへのレスポンスを表します。<code>Response</code>モデルは<code>fetch</code> APIと同じですが、結果からURLはcollectクライアントで利用できません。</p>
+<p>Tealium Collect HTTP APIの<code>Response</code>インターフェースは、リクエストへのレスポンスを表します。<code>Response</code>モデルは<code>fetch</code> APIと同じですが、結果からURLが利用できない点がcollect clientと異なります。</p>
 <h2 id="visitorオブジェクト">Visitorオブジェクト</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問関数は、Tealiumが訪問プロファイルを処理した後に呼び出されるため、訪問プロファイルを変更することはできません。訪問プロファイルを変更するには、訪問または訪問属性のエンリッチメントを使用します。</p>
 <p><code>visitor</code>オブジェクトは、関数がオーディエンスフィードによってトリガーされたときに利用可能で、訪問データを含みます。</p>
 <table>
 <thead>
@@ -980,7 +982,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月8日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -995,11 +997,11 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8D%E5%89%8D%E4%BB%98%E3%81%8D%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">名前付きエクスポート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#auth%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-authget" href="javascript:void(0)">Authオブジェクト: auth.get()</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#auth%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88authget" href="javascript:void(0)">Authオブジェクト：auth.get()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">Eventオブジェクト</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">Eventオブジェクトの例</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#store%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-storeget" href="javascript:void(0)">Storeオブジェクト: store.get()</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-sendcollectevent" href="javascript:void(0)">Tealiumオブジェクト: sendCollectEvent()</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#store%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88storeget" href="javascript:void(0)">Storeオブジェクト：store.get()</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88sendcollectevent" href="javascript:void(0)">Tealiumオブジェクト：sendCollectEvent()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">Visitorオブジェクト</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">訪問オブジェクトの例</a></li>
               </nav>

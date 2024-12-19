@@ -276,7 +276,7 @@
         <a href="/ja/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsysマーケティングクラウド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/responsys-connector-soap-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-connector-soap-api">Responsys（SOAP API）</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/retently-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".retently-connector">Retently</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/rokt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKTイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/sailthru-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sailthru-connector">Sailthru</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -360,6 +360,7 @@
         <a href="/ja/server-side-connectors/connector-insights-facebook-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-custom-audiences">コネクタインサイトFacebookカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">コネクターインサイト Google DV360 カスタマーマッチコネクター</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-x-custom-audiences">コネクターインサイトXカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">シングラーエベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">チーターデジタル</a></li></ul>
 </nav>
 </div>
@@ -427,10 +428,10 @@
 <li>ドキュメンテーション：<a href="https://developers.google.com/google-ads/api/docs/conversions/upload-identifiers">Google Ads API: Enhanced Conversions For Leadsのアップロード</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細は、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：2000</li>
-<li>最古のリクエストからの最大時間：10分</li>
+<li>最も古いリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：2 MB</li>
 </ul>
 <h3 id="同意">同意</h3>
@@ -442,11 +443,11 @@
 <li><strong>顧客ID</strong><br>
 必須：管理する広告アカウントの顧客IDを提供します。</li>
 <li><strong>マネージャー顧客ID</strong><br>
-オプション：クライアント顧客にアクセスする場合、マネージャー顧客IDを構成する必要があります。</li>
+オプション。クライアントの代わりにアカウントにアクセスしている場合、マネージャー顧客IDを構成する必要があります。Google Adsにログインし、<strong>構成 &gt; アクセスとセキュリティ &gt; マネージャー</strong>に移動することで顧客IDを見つけることができます。</li>
 </ul>
 <p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
 <h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p><strong>続行</strong>をクリックしてコネクタのアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="アクション---コンバージョンを送信">アクション - コンバージョンを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
@@ -460,23 +461,23 @@
 <tbody>
 <tr>
 <td>コンバージョンアクション</td>
-<td><strong>UPLOAD_CLICKS</strong>タイプの既存のコンバージョンアクションを選択し、エンハンストコンバージョンを有効にします。詳細は、<a href="https://support.google.com/google-ads/answer/9888656">Google Ads Enhanced Conversion Tracking</a>を参照してください。</td>
+<td><strong>UPLOAD_CLICKS</strong>タイプの既存のコンバージョンアクションを選択し、エンハンスドコンバージョンを有効にします。詳細については、<a href="https://support.google.com/google-ads/answer/9888656">Google Ads Enhanced Conversion Tracking</a>を参照してください。</td>
 </tr>
 <tr>
 <td>メールアドレス（既にSHA256でハッシュ化済み）</td>
-<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化したメールアドレスを提供します。<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）をハッシュ化する前に削除します。</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化されたメールアドレスを提供します。<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスで、ドメイン名の前にあるすべてのピリオド（<code>.</code>）をハッシュ化する前に削除します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタは<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）を削除し、空白をトリムし、小文字に変換し、この値をSHA256ハッシュでハッシュ化します。</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクタは<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスで、ドメイン名の前にあるすべてのピリオド（<code>.</code>）を削除し、空白をトリムし、小文字に変換し、この値にSHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>電話番号（既にSHA256でハッシュ化済み）</td>
-<td><a href="https://en.wikipedia.org/wiki/E.164">E164標準</a>に従った電話番号を提供し、すでに空白をトリムし、SHA256でハッシュ化しています。</td>
+<td><a href="https://en.wikipedia.org/wiki/E.164">E164標準</a>に従った電話番号を提供します。この電話番号はすでに空白をトリムし、SHA256でハッシュ化されている必要があります。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字記号を削除し、番号の前にプラス記号（<code>+</code>）を付け、空白をトリムし、この値をSHA256ハッシュでハッシュ化します。</td>
+<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字記号を削除し、番号の前にプラス記号（<code>+</code>）を付け、空白をトリムし、この値にSHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>gclid</td>
@@ -516,23 +517,23 @@
 </tr>
 <tr>
 <td>ローカルトランザクションコスト</td>
-<td>全カートに対する無料配送やクーポン割引など、すべてのトランザクションレベルの割引の合計。</td>
+<td>全体のカートに対する無料配送やクーポン割引など、すべてのトランザクションレベルの割引の合計。</td>
 </tr>
 <tr>
 <td>商品ID</td>
-<td>アイテムのショッピングID。Merchant Centerの商品識別子と等しくなければなりません。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
+<td>アイテムのショッピングID。Merchant Centerの商品識別子と等しくなければなりません。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>売れたアイテムの数。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
+<td>売れたアイテムの数。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
 </tr>
 <tr>
 <td>単価</td>
-<td>税金、送料、および任意のトランザクションレベルの割引を除いた単価。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
+<td>税金、送料、および任意のトランザクションレベルの割引を除いた単価。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
 </tr>
 <tr>
 <td>コンバージョンアクションオーバーライド</td>
-<td>（オプション）コンバージョンアクションIDを提供して、<strong>必須</strong>セクションのコンバージョンアクションを上書きします。このパラメータを使用すると、EventStream変数を使用してConversion Action IDを入力することができます。Conversion Action IDを見つけるには、Google Adsダッシュボードに移動し、コンバージョンをクリックします。Conversion Action IDは、ウェブサイトURLの<code>ctId</code>クエリパラメータの値です。例えば、URLが<code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>の場合、Conversion Action IDは<code>987654321</code>です。</td>
+<td>（オプション）コンバージョンアクションIDを提供して、<strong>必須</strong>セクションのコンバージョンアクションを上書きします。このパラメータを使用すると、EventStream変数を使用してコンバージョンアクションIDを入力することができます。コンバージョンアクションIDを見つけるには、Google Adsダッシュボードに移動し、コンバージョンをクリックします。コンバージョンアクションIDは、ウェブサイトURLの<code>ctId</code>クエリパラメータの値です。例えば、URLが<code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>の場合、コンバージョンアクションIDは<code>987654321</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -596,7 +597,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -899,6 +900,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

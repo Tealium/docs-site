@@ -211,8 +211,8 @@
         <a href="/ja/client-side-tags/google-ad-manager-360-audience-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-360-audience-pixel-tag-setup-guide">Google Ad Manager 360 Audience Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-conversion-tag">Google Ad Manager コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-spotlight-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-spotlight-tag">Google Ad Manager スポットライト</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/google-cookie-matching-admgr-dv360/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-google-hosted">Google Ad ManagerとDV360（Googleホスト）のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad ManagerとDV360（Tealiumホスト）のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/google-cookie-matching-admgr-dv360/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-google-hosted">Google Ad ManagerとDV360 (Googleがホスト) のGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad ManagerとDV360 (Tealium-hosted) のためのGoogle Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversion-tracking-and-remarketing-gtagjs-tag">Google Ads コンバージョン追跡とリマーケティング (gtag.js)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ads-remarketing-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-remarketing-tag">Google Adsリマーケティング</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/setting-up-advertising-features-in-google-analytics-for-ios-and-android/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".setting-up-advertising-features-in-google-analytics-for-ios-and-android">Google Analytics - iOSとAndroid向け広告機能</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -427,20 +427,21 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Yahoo Cookie Syncタグを使用すると、データパートナーがCookie Syncを開始し、各パートナーに対して一意の暗号化されたYahoo Cookie ID（AXID）を受け取ることができます。この暗号化されたIDは、Yahoo DataX Connectorを介してCookieデータを投稿するために使用できます。このタグは、AXIDをサーバーサイドに送信して取り込みます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>このタグを<code>utag</code>バージョン4.50以降で使用する場合、<code>utag.js</code>の<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code>構成</a>を<code>true</code>に構成する必要があります。この構成により、訪問IDがCookie同期に利用可能になります。詳細については、<a href="/ja/platforms/javascript/version-4-50/#updating-to-version-450-or-later">utag 4.50リリースノート</a>および<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-">utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項</a>を参照してください。</p>
+<p>Yahoo Cookie Syncタグを使用すると、データパートナーがCookie同期を開始し、各パートナーに対して一意の暗号化されたYahoo Cookie ID（AXID）を受け取ることができます。この暗号化されたIDは、Yahoo DataX Connectorを介してCookieデータを投稿するために使用できます。このタグは、AXIDをサーバーサイドに送信して取り込みます。</p>
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>このタグは、セッションごとに一度だけトリガーされます。</li>
-<li>このタグは、<code>visitor_id</code>をYahooに送信し、<code>visitor_id</code>に一致する<code>yahoo_id</code>をサーバーサイドからの応答として受け取ります。</li>
+<li>このタグは、<code>visitor_id</code>をYahooに送信し、<code>visitor_id</code>に一致する<code>yahoo_id</code>のレスポンスをサーバーサイドに送信します。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>新しいタグを追加するために、タグマーケットプレイスに移動します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグマーケットプレイスに移動して新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
 <p>タグを追加する際には、以下の構成を行います：</p>
 <ul>
 <li><strong>Pixel ID</strong>: Pixel IDを示す数値ID。</li>
-<li><strong>Partner ID</strong>: 提供されたデータのYahoo ID。</li>
+<li><strong>Partner ID</strong>: 提供されるデータのYahoo識別子。</li>
 <li><strong>GDPR</strong>: ユーザーがGDPR規制地域からのものかどうかを示します。</li>
-<li><strong>GDPR Consent</strong>: GDPRユーザーの同意文字列。GDPRパラメータが<code>True</code>に構成されている場合は必須です。</li>
+<li><strong>GDPR Consent</strong>: GDPRユーザー同意文字列。GDPRパラメータが<code>True</code>に構成されている場合に必要です。</li>
 <li><strong>Tealium Account</strong>: デフォルトでは現在のTealiumアカウント。</li>
 <li><strong>Tealium Profile</strong>: デフォルトでは現在のTealiumプロファイル。</li>
 <li><strong>Tealium Event</strong>: デフォルトでは<code>yahoo_cookie_sync</code>。</li>
@@ -448,7 +449,7 @@
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
+<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
 <h3 id="標準">標準</h3>
 <table>
@@ -553,7 +554,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2023年March月3日
+          <p>最終更新日 ::  2024年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
