@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Google BigQuery Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "server-side-connectors",
+        reading_time  : "4",
+        site_language : "en",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="server-side-connectors"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/server-side-connectors/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Server-Side Connectors</span></a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/acoustic-campaign-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".acoustic-campaign-connector">Acoustic Campaign</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/acoustic-exchange-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".acoustic-exchange-connector">Acoustic Exchange</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/acoustic-transact-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".acoustic-transact-connector">Acoustic Transact</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/activecampaign-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".activecampaign-connector">ActiveCampaign</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adestra-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adestra-connector">Adestra</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adform-connector">AdForm</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adform-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adform-segments-connector">Adform Segments</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adition-tagging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adition-tagging-connector">ADITION Tagging</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adjust-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adjust-events-api-connector">Adjust Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-analytics-connector">Adobe Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-audience-manager-dcs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-audience-manager-dcs-connector">Adobe Audience Manager DCS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-campaign-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-campaign-connector">Adobe Campaign</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-campaign-classic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-campaign-classic-connector">Adobe Campaign Classic</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-campaign-standard-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-campaign-standard-connector">Adobe Campaign Standard</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-campaign-v8-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-campaign-v8-connector">Adobe Campaign v8</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-aep-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-aep-connector">Adobe Experience Platform</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-journey-optimizer-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-journey-optimizer-connector">Adobe Journey Optimizer</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/adobe-target-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-target-connector">Adobe Target</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/agillic-recipients-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".agillic-recipients-connector">Agillic Recipients</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/airship-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-ads-audience-management-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-ads-audience-management-connector">Amazon Ads Audience Management</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amplitude-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector-setup-guide-deprecated">Amplitude (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amplitude-identify-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-identify-connector">Amplitude Identify</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/appcues-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appcues-connector">Appcues</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/appsflyer-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appsflyer-app-events-connector">AppsFlyer App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/apsis-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".apsis-connector">APSIS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/at-internet-piano-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".at-internet-piano-analytics-connector">AT Internet Piano Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/audiencestore-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-connector">AudienceStore</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/avo-inspector-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/awin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awin Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-firehose-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-connector">AWS Firehose</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-firehose-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-firehose-tealium-provided-credentials-connector">AWS Firehose (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-kinesis-streams-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/aws-kinesis-streams-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-tealium-provided-credentials-connector">AWS Kinesis Streams (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/basis-technologies-dsp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".basis-technologies-dsp-connector">Basis Technologies DSP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/branch-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".branch-events-connector">Branch Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/braze-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".braze-connector">Braze</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/campaign-monitor-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".campaign-monitor-connector">Campaign Monitor</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/centro-dsp-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".centro-dsp-connector-setup-guide-deprecated">Centro DSP (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">Cheetah Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/cj-tracking-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cj-tracking-api-connector">CJ Tracking API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/clicksend-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clicksend-connector">ClickSend</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/clinch-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clinch-connector">Clinch</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/confluent-kafka-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".confluent-kafka-connect-connector">Confluent Kafka Connect</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/connector-insights-facebook-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-custom-audiences">Connector Insights Facebook Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/connector-insights-facebook-event-match-quality/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-event-match-quality">Connector Insights Facebook Event Match Quality</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">Connector Insights Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">Connector Insights Google DV360 Customer Match Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-x-custom-audiences">Connector Insights X Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/cordial-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordial-connector">Cordial</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/coveo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-connector">Coveo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/dmd-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">DMD</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/doceree-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Doceree</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/domo-json-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".domo-json-webhook-connector">Domo JSON Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/dotdigital-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".dotdigital-connector">dotdigital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/doubleclick-ad-exchange-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".doubleclick-ad-exchange-connector">DoubleClick Ad Exchange</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/dynamic-yield-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".dynamic-yield-connector">Dynamic Yield</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/emailicious-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".emailicious-connector">Emailicious</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/emarsys-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".emarsys-connector">Emarsys</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/epsilon-event-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".epsilon-event-api-connector">Epsilon Event API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/everflow-conversion-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".everflow-conversion-tracking-connector">Everflow Conversion Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/exactag-s2s-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".exactag-s2s-tracking-connector">Exactag S2S Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/experian-marketing-suite-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".experian-marketing-suite-connector">Experian Marketing Suite</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-connector-series/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-connector-series">Facebook and Tealium Customer Data Hub (Series)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-app-events-connector">Facebook App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-audiences-connector">Facebook Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-audiences-customer-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-audiences-customer-provided-credentials-connector">Facebook Audiences Customer-Provided Credentials</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-conversions-connector">Facebook Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/facebook-offline-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-offline-conversions-connector">Facebook Offline Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/friendbuy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".friendbuy-connector">Friendbuy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/fullstory-user-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-api-connector">FullStory API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ad-manager-360-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-360-connector">Google Ad Manager 360</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ad-manager-audience-integration-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-audience-integration-connector">Google Ad Manager Audience Integration</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Ads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ads-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-customer-match-connector">Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ads-enhanced-conversions-for-leads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-leads-connector">Google Ads Enhanced Conversions for Leads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-ads-store-sales-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-store-sales-connector">Google Ads Store Sales</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-analytics-connector">Google Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-analytics-4-measurement-protocol-connector-setup-guide">Google Analytics 4 Measurement Protocol</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-analytics-user-deletion-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-analytics-user-deletion-connector">Google Analytics User Deletion</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-bigquery-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".google-bigquery-connector">Google BigQuery</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-campaign-manager-360-floodlight-connector-setup-guide">Google Campaign Manager 360 Floodlight</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-display-video-360-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-display-amp-video-360-connector-setup-guide">Google Display and Video 360</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/heap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".heap-connector">Heap</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/hubspot-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/impact-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".impact-conversions-connector">Impact Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/impact-page-loads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".impact-page-loads-connector">Impact Page Loads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/infobip-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".infobip-connector">Infobip</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/insider-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".insider-connector">Insider</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/insightly-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".insightly-connector-deprecated">Insightly (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/insightly-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".insightly-crm-connector">Insightly CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/intelliad-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".intelliad-connector">intealliAd</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ispot-tv-conversion-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ispot-tv-conversion-tracking-connector">iSpot TV Conversion Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/iterable-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iterable-connector">Iterable</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/iterable-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iterable-connector-deprecated">Iterable (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/kayak-conversion-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".kayak-conversion-tracking-connector">KAYAK Conversion Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/klaviyo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".klaviyo-connector">Klaviyo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/klenty-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".klenty-connector">Klenty</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/kochava-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".kochava-connector">Kochava</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/launchdarkly-audience-cohorting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".launchdarkly-audience-cohorting">LaunchDarkly Audience Cohorting</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/launchdarkly-metric-import-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".launchdarkly-metric-import-api-connector">LaunchDarkly Metric Import API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/leadsquared-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".leadsquared-connector">LeadSquared</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/leanplum-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".leanplum-connector">Leanplum</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/line-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-connector">LINE</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/line-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-audiences-connector">LINE Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/listrak-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/lithium-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".lithium-connector">Lithium</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/liveperson-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".liveperson-connector">LivePerson</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/localytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".localytics-connector">Localytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mailchimp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mailchimp-connector">Mailchimp</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mailgun-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mailgun-connector">Mailgun</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mailrelay-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mailrelay-connector">Mailrelay</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mandrill-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mandrill-connector">Mandrill</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/manychat-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manychat-connector">Manychat</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mapp-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mapp-connect-connector">Mapp Connect</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mapp-intelligence-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mapp-intelligence-connector">Mapp Intelligence</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/marigold-engage-by-sailthru-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".marigold-engage-by-sailthru-connector">Marigold Engage by Sailthru</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/marketo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".marketo-connector">Marketo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mediamath-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mediamath-connector">MediaMath</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-azure-event-hubs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-azure-event-hubs-connector">Microsoft Azure Event Hubs</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-azure-service-bus-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-azure-service-bus-connector">Microsoft Azure Service Bus</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-bing-ads-offline-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-bing-ads-offline-conversions">Microsoft Bing Ads Offline Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-customer-match-connector">Microsoft Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-dynamics-365-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-dynamics-365-connector-setup-guide-for-audiencestream">Microsoft Dynamics 365</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mixmax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mixmax-connector">Mixmax</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mixpanel-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mixpanel-connector">Mixpanel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/mocean-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mocean-connector">Mocean</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/moengage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moengage-connector">MoEngage</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/monetate-personalization-engine-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".monetate-personalization-engine-connector">Monetate Personalization Engine</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/movable-ink-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".movable-ink-connector">Movable Ink</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/new-relic-browser-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-browser-connector">New Relic Browser</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/nextdoor-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-connector">Nextdoor</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/nine-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nine-audience-match-connector">Nine Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ontraport-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ontraport-connector">Ontraport</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/optimizely-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-events-connector">Optimizely Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/optimizely-events-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-events-connector-legacy">Optimizely Events (Legacy)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-bluekai-mobile-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-bluekai-mobile-connector">Oracle BlueKai Mobile</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-eloqua-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-eloqua-connector">Oracle Eloqua</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-eloqua-custom-object-bulk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eloqua-custom-object-bulk-connector">Oracle Eloqua Custom Object (Bulk)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-infinity-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-infinity-analytics-connector">Oracle Infinity Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-responsys-connector-soap-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-responsys-connector-soap-api">Oracle Responsys (SOAP API)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/oracle-responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-responsys-marketing-cloud-connector">Oracle Responsys Marketing Cloud</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pega-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pega-webhook-connector">Pega Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pegasystems-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pegasystems-connector-setup-guide">Pegasystems</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pendo-engage-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pendo-engage-api-connector">Pendo Engage API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pinterest-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pinterest-audiences-connector">Pinterest Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pinterest-conversions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pinterest-conversions-connector">Pinterest Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/postmark-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".postmark-connector">Postmark</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pushcrew-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-email-studio-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-connector-legacy">Salesforce Email Studio (Legacy)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-email-studio-oauth2-exacttarget-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-oauth2-exacttarget-connector-setup-guide">Salesforce Email Studio OAuth2 (ExactTarget)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-connector">Salesforce for AudienceStream</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-interaction-studio-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-interaction-studio-connector-setup-guide">Salesforce Interaction Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-journey-builder-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-journey-builder-connector">Salesforce Journey Builder</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/pardot-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-pardot-connector">Salesforce Pardot</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/salesforce-standard-objects-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-standard-objects-connector">Salesforce Standard Objects</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/sas-360-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sas-360-match-connector">SAS 360 Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/selligent-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".selligent-marketing-cloud-connector">Selligent Marketing Cloud</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/sendgrid-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sendgrid-connector">SendGrid</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/session-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".session-ai-connector">Session AI</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/slack-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/smart-digital/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/talonone-cam/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talon-one-campaign-audience-manager-connector">Talon.One CAM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/talonone-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talonone-webhook-connector">Talon.One Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tamber-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/teads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".teads-conversions-connector">Teads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tealium-for-salesforce/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-for-salesforce">Tealium for Salesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-first-party-data-connector-setup-guide">The Trade Desk First Party Data</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-in-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-in-app-events-connector">The Trade Desk In-App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-offline-conversion-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-offline-conversion-connector">The Trade Desk Offline Conversion</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-real-time-conversion-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-real-time-conversion-events-connector">The Trade Desk Real-Time Conversion Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-third-party-data-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-third-party-data-connector-setup-guide">The Trade Desk Third-Party Data</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tiktok-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-audiences-connector-setup-guide">TikTok Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tiktok-audiences-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-audiences-tealium-provided-credentials-connector-setup-guide">TikTok Audiences (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tiktok-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-events-connector">TikTok Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tiktok-offline-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-offline-events-connector">TikTok Offline Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/trbo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".trbo-connector">trbo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tune-in-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tune-in-app-events-connector">TUNE In-App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tune-postback-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tune-postback-tracking-connector">TUNE Postback Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/tvsquared-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tvsquared-connector">TVSquared</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/twilio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".twilio-connector">Twilio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/userlist-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userlist-connector">Userlist</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/veeva-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Veeva CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/veritonic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".veritonic-connector">Veritonic</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/viant-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".viant-connector">Viant</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte Ads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/whatsapp-business-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".whatsapp-business-connector">WhatsApp Business</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/woopra-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".woopra-connector">Woopra</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/x-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".x-conversions-connector">X Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/x-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".x-custom-audiences-connector">X Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/xandr-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xandr-connector-legacy">Xandr (formerly AppNexus)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/xandr-instant-audience-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xandr-instant-audience-connector">Xandr Instant Audience Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/xiti-by-at-internet-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xiti-by-at-internet-connector">XiTi by AT Internet</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yahoo-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-conversions-connector">Yahoo Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yelp-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yelp-conversions-connector">Yelp Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/zoho-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".zoho-crm-connector">Zoho CRM</a></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/server-side-connectors/">Server-Side Connectors</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Google BigQuery Connector Setup Guide</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      This article describes how to set up the Google BigQuery connector in your Customer Data Hub account.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p>This article describes how to set up the Google BigQuery connector.</p>
+<h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Google API</li>
+<li>API Version: v2</li>
+<li>API Endpoint: <code>https://bigquery.googleapis.com/bigquery/v2</code></li>
+<li>Documentation: <a href="https://cloud.google.com/bigquery/docs/loading-data">Google API</a></li>
+</ul>
+<h2 id="batch-limits">Batch Limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 90 MB</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Project ID</strong>
+<ul>
+<li>Select the Project ID to connect to.</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upsert record</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Upsert record batch</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Event Data batch</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data batch</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="upsert-record">Upsert record</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Select the ID of the collection of tables that to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Provide the table name to connect to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="event-parameters">Event Parameters</h4>
+<p>Map the parameters to the columns of the table. You must map at least one parameter.</p>
+<p>The parameters available for mapping are dependent on the dataset and table selected when the connector is configured.</p>
+<h3 id="upsert-record-batch">Upsert record batch</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 90 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Select the ID of the collection of tables that you want to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Provide the table name you want to connect to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="event-parameters-1">Event Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between 5 and 60 minutes. The default value is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-event-data-batch">Send Entire Event Data batch</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 90 MB</li>
+</ul>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Select the ID of the collection of tables that you want to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Provide the table name you want to connect to.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Choose the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Column to record the Payload</td>
+<td>Choose the <code>JSON</code> column to record the payload.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>5</code> and <code>60</code> minutes. Default is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data batch</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 90 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>Select the ID of the collection of tables that you want to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Provide the table name you want to connect to.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Choose the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Column to record the Payload</td>
+<td>Choose the <code>JSON</code> column to record the payload.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data with Visitor Data</td>
+<td>Include the current visit data with the visitor data.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>5</code> and <code>60</code> minutes. Default is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>Google Campaign Manager 360 Floodlight</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Google Campaign Manager 360 Floodlight"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/server-side-connectors/google-analytics-user-deletion-connector/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Google Analytics User Deletion "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Google Analytics User Deletion</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  January 8, 2025 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-record" href="javascript:void(0)">Upsert record</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-record-batch" href="javascript:void(0)">Upsert record batch</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-batch" href="javascript:void(0)">Send Entire Event Data batch</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data batch</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Guides
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Partner Integrations
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
