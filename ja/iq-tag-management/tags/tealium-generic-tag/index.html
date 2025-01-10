@@ -320,7 +320,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".explicit-consent-prompt">明示的な同意プロンプト</a>
         <ul class="pl2  explicit-consent-prompt desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的な同意プロンプトマネージャーについて</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/%E7%AE%A1%E7%90%86/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的同意プロンプトの管理</a></li></ul>
+        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
         <ul class="pl2  consent-preferences-dialog desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -426,7 +426,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="タグの種類">タグの種類</h2>
-<p>このタグは、画像、iframe、またはスクリプトの3つのタイプをサポートしています。タグの構成を行う際には、どのタイプのタグを扱っているかを特定することが重要です。そのため、以下に示すようなパターンにタグのコードが一致する場合は、タグの構成で対応するタグのタイプを選択してください。</p>
+<p>このタグは、画像、iframe、またはスクリプトの3つのタイプをサポートしています。タグの種類を特定することは重要ですので、タグの構成を行う際に探すべき手がかりを以下に示します。タグのコードがこれらのパターンのいずれかに一致する場合、タグの構成で対応するタグのタイプを選択してください。</p>
 <h3 id="画像">画像</h3>
 <p>画像タグのコードスニペットは通常、以下のいずれかを含みます：</p>
 <ul>
@@ -450,12 +450,12 @@
 <h2 id="タグのコンポーネント">タグのコンポーネント</h2>
 <p>ジェネリックタグを構成するためには、タグを構成する以下のコンポーネントを理解する必要があります。</p>
 <h3 id="ベースurl">ベースURL</h3>
-<p>ベースURLは、ホスト名、パス名、およびピクセルの場所を指すファイルです。<code>?</code>文字やクエリストリングパラメータは含まれません。</p>
+<p>ベースURLは、ホスト名、パス名、ピクセルの位置を指すファイルです。<code>?</code>文字やクエリストリングパラメータは含まれません。</p>
 <p>上記のサンプルピクセルでは、ベースURLは次のとおりです：<code>//www.example.com/tag.gif</code></p>
 <h3 id="静的および動的パラメータ">静的および動的パラメータ</h3>
-<p>多くのタグでは、URLのクエリストリングを使用してデータを収集します。これらは、<code>?</code>文字の後にURLに表示されるキー/値のペアです。例では、パラメータは次のとおりです：</p>
+<p>多くのタグは、URLのクエリストリングを使用してデータを収集します。これらは、<code>?</code>文字の後にURLに表示されるキーと値のペアです。例では、パラメータは次のとおりです：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">cid=112233&amp;rg=us&amp;rnd=&#39; + rnd_nocache + &#39;&amp;ref=&#39; + referrer
-</code></pre><p>静的パラメータは、スニペットで見ることができ、ページごとに変わらない値を持つものです。この例では、静的パラメータは次のとおりです：</p>
+</code></pre><p>静的パラメータは、スニペットで見ることができ、ページごとに変わらない値を持っています。この例では、静的パラメータは次のとおりです：</p>
 <ul>
 <li><code>cid=112233</code></li>
 <li><code>rg=us</code></li>
@@ -465,9 +465,9 @@
 <li><code>rnd=</code></li>
 <li><code>ref=</code></li>
 </ul>
-<p>動的パラメータは、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピング</a>を使用して構成する必要があります。マッピングとして構成されたすべての変数は、タグURLのクエリストリングパラメータにキー/値のペアとして追加されます。</p>
+<p>動的パラメータは、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピング</a>を使用して構成する必要があります。マッピングとして構成されたすべての変数は、キーと値のペアとしてタグURLのクエリストリングパラメータに追加されます。</p>
 <h3 id="キャッシュバスト">キャッシュバスト</h3>
-<p>ベンダータグでは、クエリストリングにキャッシュバスト変数を必要とすることが一般的です。この値はランダムに生成され、URLに追加されることで、ブラウザがリクエストをキャッシュするのを防ぎます。例では、キャッシュバスティング変数として<code>rnd</code>が含まれています。</p>
+<p>ベンダータグでは、クエリストリングにキャッシュバスト変数を必要とすることが一般的です。この値はランダムに生成され、URLに追加されることでブラウザがリクエストをキャッシュするのを防ぎます。例では、キャッシュバスト変数として<code>rnd</code>が含まれています。</p>
 <p>この機能はジェネリックタグに組み込まれています。キャッシュバスト構成を有効にし、キャッシュバストパラメータの名前を指定するだけで、ジェネリックタグがランダムな値を生成し、割り当ててくれます。</p>
 <h2 id="タグの構成">タグの構成</h2>
 <p>まず、<strong>タグマーケットプレイス</strong>に移動し、プロファイルにジェネリックタグを追加します。</p>
@@ -487,13 +487,13 @@
 <li>URLが異なる場合は、それぞれのフィールドを構成します。</li>
 </ul>
 </li>
-<li><strong>クエリストリングデリミタ</strong>：URLからクエリストリング部分を分離するデリミタ文字です。デフォルトは<code>?</code>ですが、これを変更することもできます。</li>
-<li><strong>パラメータデリミタ</strong>：クエリストリング内の各キー値ペアを分離するデリミタ文字です。デフォルトは<code>&amp;</code>ですが、これを変更することもできます。</li>
-<li><strong>キー/値デリミタ</strong>：キーとその値を分離するデリミタ文字です。デフォルトは<code>=</code>ですが、これを変更することもできます。</li>
+<li><strong>クエリストリングデリミタ</strong>：URLからクエリストリング部分を分離するデリミタ文字。デフォルトは<code>?</code>ですが、これを変更することもできます。</li>
+<li><strong>パラメータデリミタ</strong>：クエリストリング内の各キー値ペアを分離するデリミタ文字。デフォルトは<code>&amp;</code>ですが、これを変更することもできます。</li>
+<li><strong>キー値デリミタ</strong>：キーとその値を分離するデリミタ文字。デフォルトは<code>=</code>ですが、これを変更することもできます。</li>
 <li><strong>クエリストリング</strong>：定義されたデリミタを使用して、静的および動的クエリストリングパラメータを入力します。</li>
 </ul>
 <h3 id="動的値の置換">動的値の置換</h3>
-<p>このタグは動的値の置換をサポートしており、ベースURL、HTTPS URL、またはクエリストリング構成フィールドで直接データレイヤー変数を参照することができます。これにより、データレイヤーに基づいた動的なタグを作成する柔軟性が提供されます。フィールドでデータレイヤー変数を使用するには、変数名を<code>@@</code>で囲んで参照します。例えば、URLのパスに<code>account_id</code>という名前のデータレイヤー変数を挿入するには、次のような値を入力します：<code>//example.com/path/@@account_id@@/i.gif</code></p>
+<p>このタグは動的値の置換をサポートしており、ベースURL、HTTPS URL、またはクエリストリング構成フィールドで直接データレイヤー変数を参照することができます。これにより、データレイヤーに基づいた動的なタグを作成する柔軟性が提供されます。フィールドでデータレイヤー変数を使用するには、変数名を<code>@@</code>で囲むことで参照します。例えば、URLのパスに<code>account_id</code>という名前のデータレイヤー変数を挿入するには、次のような値を入力します：<code>//example.com/path/@@account_id@@/i.gif</code></p>
 <p>各種類のデータレイヤー変数は、以下のプレフィックスを使用して置換することができます：</p>
 <ul>
 <li><strong>Javascriptページ変数</strong>：<code>@@js_page.variable@@</code></li>
@@ -585,7 +585,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月20日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

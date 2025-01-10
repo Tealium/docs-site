@@ -89,6 +89,7 @@
   <ul class="list pa0" data-nav-section="early-access"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/ja/early-access/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">早期アクセス</span></a>
         <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アーリーアクセスについて</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/early-access/cookieconsent-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cookieconsent-consent-integration">CookieConsent &#43; Tealium iQ Consent統合</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) コネクタ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversionsコネクタ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences コネクタ</a></li><li class="relative w-100 fw8 f5  active">
@@ -183,7 +184,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このドキュメントでは、HTTP APIを使用してイベントのためのCustomer Data Hubにデータを送信する方法について説明します。この記事では、HTTPリクエストを送信できる任意のアプリケーションで使用できる直接HTTPエンドポイントの仕様を提供します。
+      このドキュメントでは、HTTP APIを使用してCustomer Data Hubにデータを送信する方法について説明します。この記事では、任意のアプリケーションでHTTPリクエストを送信できる直接HTTPエンドポイントの仕様を提供します。
     </p>
   
 </div>
@@ -195,33 +196,33 @@
 <pre tabindex="0"><code>https://collect.tealiumiq.com/event
 </code></pre><p>セッションは、<a href="/ja/server-side/attributes/about/#scope">訪問スコープ</a>属性プロパティに基づいて決定されます。</p>
 <h3 id="地域と全球のエンドポイント">地域と全球のエンドポイント</h3>
-<p>Tealium Collectは、任意のプロファイルが任意の地域でTealium Collectにイベントデータを送信できるようにするクロス地域エンドポイントです。APIはプロファイルの正しい地域を認識し、その後、データを正しい地域のESPに送信します。</p>
+<p>Tealium Collectは、クロスリージョナルエンドポイントであり、任意のプロファイルが任意のリージョンでTealium Collectにイベントデータを送信できます。APIはプロファイルの正しいリージョンを認識し、その後、データを正しいリージョンのESPに送信します。</p>
 <p>Tealium Collectは以下の2つのホストをサポートしています：</p>
 <ul>
 <li><code>collect.tealiumiq.com</code><br>
-最も近いTealium Collectサーバー（最もレイテンシーが少ないもの）にイベントを送信します。</li>
+イベントを最も近いTealium Collectサーバー（最もレイテンシーが少ないもの）に送信します。</li>
 <li><code>collect-&lt;region&gt;.tealiumiq.com</code><br>
-プロファイルの地域にあるTealium Collectサーバーにイベントを送信します。</li>
+イベントをプロファイルのリージョンのTealium Collectサーバーに送信します。</li>
 </ul>
-<p>セキュアなTealium Collectエンドポイントの場合、全球エンドポイントは内部的に<code>collect.tealiumiq.com</code>に、地域エンドポイントは<code>collect-&lt;region&gt;.tealiumiq.com</code>にマッピングされます。</p>
+<p>セキュアなTealium Collectエンドポイントの場合、グローバルエンドポイントは内部的に<code>collect.tealiumiq.com</code>に、リージョナルエンドポイントは<code>collect-&lt;region&gt;.tealiumiq.com</code>にマッピングされます。</p>
 <h3 id="レート制限">レート制限</h3>
 <p>Tealium Collect HTTP API — V3は、最大レート制限を100イベント/秒でサポートしています。</p>
 <p>例えば、以下のように送信する場合：</p>
 <ul>
-<li>1回の呼び出しにつき1イベントを送信する場合、1秒あたり100回の呼び出しを送信できます。</li>
-<li>1回の呼び出しにつき10イベントを送信する場合、1秒あたり10回の呼び出しを送信できます。</li>
-<li>1回の呼び出しにつき100イベントを送信する場合、1秒あたり1回の呼び出しを送信できます。</li>
+<li>1回の呼び出しにつき1イベント、1秒あたり100回の呼び出しを送信できます。</li>
+<li>1回の呼び出しにつき10イベント、1秒あたり10回の呼び出しを送信できます。</li>
+<li>1回の呼び出しにつき100イベント、1秒あたり1回の呼び出しを送信できます。</li>
 </ul>
 <p>レート制限を超えると、TealiumはHTTP 429レスポンスを送信し、リクエストが多すぎることを示します。</p>
 <p class="tip"><i class="fa fa-info-circle"></i>ビジネスのニーズが高いイベント制限を必要とする場合は、Tealiumのアカウントマネージャーに連絡してください。</p>
 <h3 id="エンドポイントのマッピング">エンドポイントのマッピング</h3>
-<p>以下の表は、セキュアでないTealium CollectエンドポイントをセキュアなTealium Collectエンドポイントにマッピングしたものです。</p>
+<p>以下の表は、非セキュアなTealium CollectエンドポイントをセキュアなTealium Collectエンドポイントにマッピングしたものです。</p>
 <table>
 <thead>
 <tr>
-<th>セキュアでないTealium Collectエンドポイント</th>
-<th>セキュアな全球Tealium Collectエンドポイント</th>
-<th>セキュアな地域Tealium Collectエンドポイント</th>
+<th>非セキュアなTealium Collectエンドポイント</th>
+<th>セキュアなグローバルTealium Collectエンドポイント</th>
+<th>セキュアなリージョナルTealium Collectエンドポイント</th>
 <th>HTTPメソッド</th>
 <th>説明</th>
 </tr>
@@ -239,7 +240,7 @@
 <td><code>/v3/collect/integration/</code><br> <code>event/accounts/</code><br> <code>{account}/profiles/</code><br> <code>{profile}/datasources/</code><br> <code>{datasourceID}</code></td>
 <td><code>/v3/collect/regional/</code><br><code>integration/event/accounts/</code><br><code>{account}/profiles/{profile}/</code><br><code>datasources/{datasourceID}</code></td>
 <td>POST</td>
-<td>HTTP Advanced HTTP APIとCommunicationsデータソースが内部的に使用するエンドポイント。</td>
+<td>HTTP Advanced HTTP APIおよびCommunicationsデータソースが内部的に使用するエンドポイント。</td>
 </tr>
 <tr>
 <td><code>/bulk-event</code></td>
@@ -275,9 +276,9 @@
 </tr>
 </tbody>
 </table>
-<p>Tealium iQタグ管理を使用し、API呼び出しをサーバー間で送信して匿名訪問プロファイルをエンリッチする場合、<code>tealium_visitor_id</code>の値は<code>utag_main_v_id</code>クッキーの値と一致する必要があります。utag.jsからの組み込み変数については、<a href="/ja/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>を参照してください。</p>
+<p>Tealium iQタグ管理を使用し、API呼び出しをサーバー間で送信して匿名の訪問プロファイルをエンリッチする場合、<code>tealium_visitor_id</code>の値は<code>utag_main_v_id</code>クッキーの値と一致する必要があります。utag.jsからの組み込み変数については、<a href="/ja/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>を参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Adobe LaunchまたはGoogle Tag Managerを使用している場合、値は<strong>TEAL</strong>クッキーの<code>v</code>部分と一致する必要があります。</p>
-<h4 id="既知の訪問サーバー間">既知の訪問サーバー間</h4>
+<h4 id="既知の訪問-サーバー間">既知の訪問 サーバー間</h4>
 <table>
 <thead>
 <tr>
@@ -292,7 +293,7 @@
 </tr>
 </tbody>
 </table>
-<p>既知の訪問のデータを送信する場合（訪問ID属性（例：<code>email_address</code>）の値が存在する場合）、以下のものを連結して含めます：</p>
+<p>既知の訪問のデータを送信する場合（<code>email_address</code>などの訪問ID属性に値が存在する場合）、以下のものを連結して含めます：</p>
 <ul>
 <li>
 <p>アカウント</p>
@@ -301,7 +302,7 @@
 <p>プロファイル</p>
 </li>
 <li>
-<p>訪問ID属性IDと値 <p class="tip"><i class="fa fa-info-circle"></i>訪問ID属性IDは、属性リストの属性名の隣や、詳細を展開した中にあります。詳細については、<a href="/ja/server-side/attributes/about/#attribute-ids">About Attributes</a>を参照してください。</p></p>
+<p>訪問ID属性IDと値 <p class="tip"><i class="fa fa-info-circle"></i>訪問ID属性IDは、属性リストの属性名の隣にあるか、詳細を展開した中にあります。詳細については、<a href="/ja/server-side/attributes/about/#attribute-ids">About Attributes</a>を参照してください。</p></p>
 </li>
 <li>
 <p><code>tealium_visitor_id</code>パラメータの値</p>
@@ -327,31 +328,31 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>匿名訪問を使用するか既知の訪問を使用するかに関わらず、API呼び出しに一貫した<code>tealium_visitor_id</code>が含まれていない場合、各イベントは新しい訪問を生成し、訪問のスティッチングは不可能になります。</p>
 <h3 id="ユーザー識別子">ユーザー識別子</h3>
-<p>AudienceStreamを使用する場合、トラッキングコールに既知のユーザー識別子を渡すことができます。例えば、<code>email_address</code>や<code>login_id</code>などです。</p>
-<p>ユーザー識別子は、EventStreamを使用していて、ベンダーコネクタにIDを提供する必要がある場合にも必要です。</p>
+<p>AudienceStreamを使用すると、トラッキング呼び出しに既知のユーザー識別子を渡すことができます。例えば、<code>email_address</code>や<code>login_id</code>などです。</p>
+<p>ユーザー識別子は、EventStreamを使用していてベンダーコネクタにIDを提供する必要がある場合にも必要です。</p>
 <p>AudienceStreamでは、これらのユーザー識別子は、<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>をエンリッチするために使用されます。</p>
 <h2 id="権限要件">権限要件</h2>
 <ul>
 <li>サーバーサイドのパブリッシャー権限</li>
 </ul>
 <h2 id="認証">認証</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ベアラートークンは、すべてのAPI呼び出しを認証するために使用され、APIキーではありません。APIキーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証レスポンスには、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ベアラートークンは、すべてのAPI呼び出しを認証するために使用され、APIキーではありません。APIキーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証レスポンスには、後続のサーバーサイドAPI呼び出しで使用する必要があるリージョン固有のホスト名が含まれます。</p>
 <p>APIキーからベアラートークンを生成する方法については、<a href="/ja/api/v3/getting-started/authentication/">Authentication</a>を参照してください。</p>
-<h3 id="必須パラメータ">必須パラメータ</h3>
+<h3 id="必要なパラメータ">必要なパラメータ</h3>
 <p>Tealium Collectは、各リクエストで以下の標準パラメータをサポートしています：</p>
 <ul>
 <li><code>tealium_account</code> - Tealiumアカウントの名前。</li>
 <li><code>tealium_profile</code> - Tealiumプロファイルの名前。デフォルトは<strong>main</strong>です。</li>
-<li><code>tealium_datasource</code> - （オプション）Customer Data Hubからのデータソースキー。詳細については、<a href="/ja/server-side/data-sources/about-data-sources/">About data sources</a>を参照してください。</li>
-<li><code>tealium_event</code> - （推奨）トラッキング目的のイベント名。</li>
-<li><code>tealium_visitor_id</code> - （AudienceStreamで必須）イベントに関連する訪問の匿名化されたユニークな識別子（<a href="#visitor-identifiers">Visitor Identifiers</a>セクションを参照）。</li>
-<li><code>tealium_trace_id</code> - （オプション）<a href="/ja/server-side/trace/about/">Trace</a>で使用するため。</li>
+<li><code>tealium_datasource</code> - (オプション) Customer Data Hubからのデータソースキー。詳細については、<a href="/ja/server-side/data-sources/about-data-sources/">About data sources</a>を参照してください。</li>
+<li><code>tealium_event</code> - (推奨) トラッキング目的のイベント名。</li>
+<li><code>tealium_visitor_id</code> - (AudienceStreamで必須) イベントに関連する訪問の匿名化された一意の識別子（<a href="#visitor-identifiers">Visitor Identifiers</a>セクションを参照）。</li>
+<li><code>tealium_trace_id</code> - (オプション) <a href="/ja/server-side/trace/about/">Trace</a>の使用に。</li>
 </ul>
 <p>リクエストの形式は、使用されるHTTPメソッドによって異なります。以下の例では、プレースホルダー値は次の形式で表されています：<code>{VALUE}</code>。</p>
 <h4 id="カスタムイベントパラメータ">カスタムイベントパラメータ</h4>
 <p>追加のイベント属性は、トラッキングのニーズに応じてカスタムパラメータとして送信されます。これらのパラメータも、Customer Data Hubで<a href="/ja/server-side/attributes/about/">イベント属性として定義</a>する必要があります。</p>
 <h2 id="getメソッド">GETメソッド</h2>
-<p>GETメソッドは、エンドポイントのクエリ文字列内のキー/値のペアを使用してデータを渡します。このメソッドは、HTMLベースの実装と互換性を持たせるために、1x1の透明なGIFを返します。</p>
+<p>GETメソッドは、エンドポイントのクエリ文字列内のキー-値ペアを使用してデータを渡します。このメソッドは、HTMLベースの実装と互換性を持たせるために、1x1の透明なGIFを返します。</p>
 <h3 id="eventの例"><code>/event</code>の例</h3>
 <h4 id="curlリクエストの例">cURLリクエストの例</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -X GET <span style="color:#e6db74">&#39;https://{host}/v3/collect/event?tealium_account={account}&amp;tealium_profile={profile}&amp;tealium_event=user_login&amp;email_address=user@example.com&#39;</span>
@@ -502,7 +503,7 @@
 <ul>
 <li>JSONキーにピリオドが含まれている、無効である、またはサイズが1MBを超えている</li>
 <li>ファイルタイプパラメータにJSONまたはJavaScript以外の値が含まれている</li>
-<li><code>account</code>、<code>profile</code>、および<code>datalayer_id</code>の組み合わせが250文字を超えている、または制限された文字を含んでいる</li>
+<li><code>account</code>、<code>profile</code>、および<code>datalayer_id</code>の組み合わせが250文字を超えている、または制限された文字が含まれている</li>
 <li><code>tealium_account</code>または<code>tealium_profile</code>が欠落している、またはタイプミスが含まれている</li>
 <li>リクエストボディが空である</li>
 </ul>
@@ -546,7 +547,7 @@
 </code></pre><h2 id="例">例</h2>
 <h3 id="html">HTML</h3>
 <p>Tealium Collectは、HTML内の<code>&lt;img&gt;</code>タグで参照できます。ブラウザのキャッシュにより、キャッシュバスター（ランダムに生成された値を含む追加のパラメータ）を含めることが重要です。
-例えば、キャッシュバスター：</p>
+例えばキャッシュバスター：</p>
 <p><code>var cb=Math.random()*100000000000;</code></p>
 <p>この変数はTealium Collectピクセルのクエリストリングに追加されます：</p>
 <p><code>&lt;img height=&quot;1&quot; width=&quot;1&quot; style=&quot;display:none&quot; src=&quot;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=' + cb + '&quot;/&gt;</code></p>
@@ -564,7 +565,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event</span>));
 </span></span></code></pre></div><p>レスポンスヘッダーには次の内容が含まれます：</p>
 <p><code>Access-Control-Allow-Origin: [&lt;http://your_domain.com&gt;](&lt;http://your_domain.com&gt;)</code></p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Collect HTTP APIの使用を開始するには、Tealiumのアカウントマネージャーに連絡してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Collect HTTP APIの使用を開始するには、Tealiumアカウントマネージャーに連絡してください。</p>
 
 </div>
 
@@ -595,7 +596,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -618,7 +619,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90" href="javascript:void(0)">ユーザー識別子</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E8%A6%81%E4%BB%B6" href="javascript:void(0)">権限要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E9%A0%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">必須パラメータ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">必要なパラメータ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">GETメソッド</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event%E3%81%AE%E4%BE%8B" href="javascript:void(0)">/eventの例</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#post%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">POSTメソッド</a></li>
@@ -914,6 +915,12 @@
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/ja/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           アーリーアクセスについて
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/cookieconsent-consent-integration/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          CookieConsent &#43; Tealium iQ Consent統合
       </a>
       </li>
       

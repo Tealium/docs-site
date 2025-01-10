@@ -310,7 +310,7 @@
 <tr>
 <td style="text-align:left"><code>device_battery_percent</code></td>
 <td style="text-align:left"><code>Number</code></td>
-<td style="text-align:left">デバイスの残りバッテリー電力をパーセントで表した整数</td>
+<td style="text-align:left">デバイスの残りバッテリー電力をパーセントで表した整数値</td>
 <td style="text-align:left"><code>100</code></td>
 </tr>
 <tr>
@@ -328,7 +328,7 @@
 <tr>
 <td style="text-align:left"><code>device_language </code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">2文字のIOS-639-1言語識別子（en、jaなど）</td>
+<td style="text-align:left">IOS-639-1言語識別子（en、jaなど）</td>
 <td style="text-align:left"><code>&quot;en&quot;</code></td>
 </tr>
 <tr>
@@ -384,7 +384,7 @@
 <tr>
 <td style="text-align:left"><code>lifecycle_ firstlaunchdate</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">最初に検出された起動のGMTタイムスタンプ（ISO-8601形式のズールータイム）</td>
+<td style="text-align:left">最初に検出された起動のGMTタイムスタンプ（UTCのISO 8601形式）</td>
 <td style="text-align:left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
 </tr>
 <tr>
@@ -426,25 +426,25 @@
 <tr>
 <td style="text-align:left"><code>lifecycle_ lastlaunchdate </code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">前回記録された起動のGMTタイムスタンプ（ISO-8601形式のズールータイム）（最初のセッション内では未構成）</td>
+<td style="text-align:left">前回記録された起動のGMTタイムスタンプ（UTCのISO 8601形式）（最初のセッション内では未構成）</td>
 <td style="text-align:left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>lifecycle_ lastsleepdate </code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">前回記録されたスリープイベントのGMTタイムスタンプ（ISO-8601形式のズールータイム）</td>
+<td style="text-align:left">前回記録されたスリープイベントのGMTタイムスタンプ（UTCのISO 8601形式）</td>
 <td style="text-align:left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>lifecycle_ lastwakedate </code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">前回記録されたスリープ解除イベントのGMTタイムスタンプ（ISO-8601形式のズールータイム）</td>
+<td style="text-align:left">前回記録されたスリープ解除イベントのGMTタイムスタンプ（UTCのISO 8601形式）</td>
 <td style="text-align:left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>lifecycle_ launchcount </code></td>
 <td style="text-align:left"><code>Number</code></td>
-<td style="text-align:left">最新のバージョン更新以降のアプリケーションの起動回数の合計（新しいバージョンが検出されるとリセットされます）</td>
+<td style="text-align:left">最新のバージョン更新以降のアプリケーションの起動回数の合計（新しいバージョンが検出されると再開）</td>
 <td style="text-align:left"><code>3</code></td>
 </tr>
 <tr>
@@ -504,7 +504,7 @@
 <tr>
 <td style="text-align:left"><code>lifecycle_ updatelaunchdate</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">アプリバージョンの更新が検出された後の最初の起動/スリープ解除のGMTタイムスタンプ。ISO8601形式のズールータイム。</td>
+<td style="text-align:left">アプリバージョンの更新が検出された後の最初の起動/スリープ解除のGMTタイムスタンプ。UTCのISO 8601形式。</td>
 <td style="text-align:left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
 </tr>
 <tr>
@@ -516,7 +516,7 @@
 </tbody>
 </table>
 <h2 id="オフラインキューイング">オフラインキューイング</h2>
-<p>例えば、デバイスが一時的にネットワーク接続を失ったときに、後で配信するためのイベントディスパッチデータを保存します。</p>
+<p>例えば、デバイスが一時的にネットワーク接続を失ったときに、後で配信するためのイベントディスパッチデータを保持します。</p>
 <p>以下のイベント属性をキューに入れたディスパッチデータ内に構成します：</p>
 <table>
 <thead>
@@ -575,13 +575,13 @@
 <tr>
 <td style="text-align:left"><code>tealium_account</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">Tealiumの統合ライブラリを初期化するために使用されたTealiumアカウント名。</td>
+<td style="text-align:left">Tealium統合ライブラリを初期化するために使用されるTealiumアカウント名。</td>
 <td style="text-align:left"><code>&quot;companyXYZ&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>tealium_environment</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">TealiumのTIQ環境を初期化するために使用されたTealiumの統合ライブラリ。</td>
+<td style="text-align:left">Tealium統合ライブラリを初期化するために使用されるTealium TIQ環境。</td>
 <td style="text-align:left">[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
 </tr>
 <tr>
@@ -599,25 +599,25 @@
 <tr>
 <td style="text-align:left"><code>tealium_profile</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">Tealiumの統合ライブラリを初期化するために使用されたTealiumプロファイル名。</td>
+<td style="text-align:left">Tealium統合ライブラリを初期化するために使用されるTealiumプロファイル名。</td>
 <td style="text-align:left"><code>&quot;main&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>tealium_datasource</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">TealiumのCustomer Data Hubによって提供される6桁の英数字識別子</td>
+<td style="text-align:left">Tealium Customer Data Hubによって提供される6桁の英数字識別子</td>
 <td style="text-align:left"><code>&quot;abc123&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>tealium_session_id</code></td>
 <td style="text-align:left"><code>Number</code></td>
-<td style="text-align:left">最初のイベントのUnixエポックタイムスタンプ（ミリ秒単位、小数点以下なし）。新しいセッションが開始されるとリセットされます。</td>
+<td style="text-align:left">最初のイベントのミリ秒単位のUnixエポックタイムスタンプ、小数点以下なし。新しいセッションが開始されるとリセットされます、通常は新しい起動時。</td>
 <td style="text-align:left"><code>1496350751928</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>tealium_visitor_id</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">ユーザーを区別する一意のアプリ-デバイス訪問ID。Collectサービスに必要です。</td>
+<td style="text-align:left">ユーザーを区別するユニークなアプリ-デバイス訪問ID。Collectサービスに必要。</td>
 <td style="text-align:left">(32文字の英数字)</td>
 </tr>
 <tr>
@@ -688,7 +688,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

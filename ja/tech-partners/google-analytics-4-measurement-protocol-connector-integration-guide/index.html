@@ -367,7 +367,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
 <p><a href="/ja/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 測定プロトコルコネクタ</a>は、開発者がHTTPリクエストを作成し、イベントを直接Google Analyticsサーバーに送信することを可能にします。これにより、開発者はHTTP対応環境からビジネスとのユーザーのやり取りを測定することが容易になり、サーバー間のやり取りを簡単に測定できます。</p>
-<p>Tealium EventStreamは、Google Analytics 4のトラッキングを可能にするためのパイプ役を果たします。モバイル、IoT、オフラインイベントおよびページビュートラッキングのサポートを統合することで：</p>
+<p>Tealium EventStreamは、Google Analytics 4のトラッキングを可能にするための伝送路として機能します。モバイル、IoT、オフラインイベントおよびページビュートラッキングのサポートを統合することで:</p>
 <ul>
 <li>ウェブアプリケーションとアプリの両方をトラッキングします。</li>
 <li>オンラインとオフラインの行動を結びつけます。</li>
@@ -379,7 +379,7 @@
          title="GA 4 measurement protocol diagram"/>
     </a>
 </figure>
-<p>Tealiumは、Google Analytics 4 測定プロトコルコネクタと共に以下のアクションをサポートします：</p>
+<p>Tealiumは、Google Analytics 4 測定プロトコルコネクタと共に以下のアクションをサポートします:</p>
 <ul>
 <li>ページビューイベントの送信</li>
 <li>イベントの送信</li>
@@ -398,9 +398,9 @@
 </ul>
 </li>
 <li>パラメータ値は100文字に制限されています。100文字を超える値は、最終的なGA4レポートから切り捨てられるか、削除されます。</li>
-<li><code>utm</code>パラメータをサポートしていません。</li>
-<li>キャンペーンやトラフィックソースデータの送信をサポートしていません。</li>
-<li>地理的なデータやユーザーエージェントを含んでいません。</li>
+<li><code>utm</code>パラメータはサポートしていません。</li>
+<li>キャンペーンやトラフィックソースデータの送信はサポートしていません。</li>
+<li>地理的なデータやユーザーエージェントは含まれていません。</li>
 </ul>
 <h2 id="認証">認証</h2>
 <p>測定プロトコルAPIは、URLのクエリパラメータとして含まれる測定IDとAPIシークレットを使用します。</p>
@@ -408,14 +408,14 @@
 </code></pre><h2 id="構成">構成</h2>
 <p>コネクタを構成するには、APIシークレットとデータストリームの測定IDまたはFirebase IDを入力します。</p>
 <h2 id="レスポンスデバッグ">レスポンス/デバッグ</h2>
-<p>測定プロトコルは、HTTPリクエストが受信された場合は常に<code>2xx</code>のステータスコードを返します。ペイロードデータが不正な形式であった場合、またはペイロードのデータが不正であったりGoogle Analyticsによって処理されなかった場合でも、測定プロトコルはエラーコードを返しません。</p>
-<p>Googleは、イベントの検証用に別のエンドポイントを提供しています：</p>
+<p>測定プロトコルは、HTTPリクエストが受信された場合は常に<code>2xx</code>のステータスコードを返します。ペイロードデータが不正な形式であった場合や、ペイロードのデータが不正であったりGoogle Analyticsによって処理されなかった場合でも、測定プロトコルはエラーコードを返しません。</p>
+<p>Googleは、イベントの検証用に別のエンドポイントを提供しています:</p>
 <pre tabindex="0"><code>https://google-analytics.com/debug/mp/collect?
 </code></pre><p>Tealiumの測定プロトコルコネクタは、このエンドポイントをTrace中に使用し、イベントデータの検証プロセスを表示します。</p>
 <h3 id="推奨事項と構成詳細">推奨事項と構成詳細</h3>
 <p>制限事項を緩和し、すべてのデータ要件を完全にカバーするために、Tealium iQタグ管理で<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4タグ</a>を実装します。すべてのページでタグをロードし、<strong>ページビューの送信</strong>を<code>false</code>に構成します。さらに、Googleの<code>clientId</code>が自動的に<code>utag_main__ga</code>クッキー値として追加されるように、Google Analytics Cookie Matching Serviceタグを追加します。</p>
 <p>Googleの自動収集イベント以外のすべての必要なイベントは、Tealium EventStreamのGoogle Analyticsコネクタで構成できます。</p>
-<p>Google Analytics 4タグは、E-commerce拡張マッピングを通じて<code>order_id</code>が存在するときに自動的に購入イベントをトリガーします。E-commerce拡張を有効にしていて、EventStreamを通じて購入をトラッキングしたい場合は、Google Analytics 4にスコープを構成した<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">データ値構成</a>拡張を構成して、<code>_corder</code>属性をクリアします。</p>
+<p>Google Analytics 4タグは、E-commerce拡張マッピングを通じて<code>order_id</code>が存在するときに自動的に購入イベントをトリガーします。E-commerce拡張を有効にしており、EventStreamを通じて購入をトラッキングしたい場合は、Google Analytics 4にスコープを構成した<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">データ値構成</a>拡張を構成して、<code>_corder</code>属性をクリアします。</p>
 <figure><a class="slb" href="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"><img src="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"
          alt="google analytics 4 measurement protocol set data values"
          title="google analytics 4 measurement protocol set data values"/>
@@ -428,7 +428,7 @@
 <thead>
 <tr>
 <th>製品</th>
-<th>必要</th>
+<th>必須</th>
 </tr>
 </thead>
 <tbody>
@@ -459,21 +459,21 @@
 <tr>
 <td>API Secret (必須)</td>
 <td>Google Analytics UIで生成されたAPI Secret。</td>
-<td>新しいシークレットを作成するには、次の場所に移動します：<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定プロトコル</strong> &gt; <strong>追加構成</strong> &gt; <strong>測定プロトコルAPIシークレット</strong>。</td>
+<td>新しいシークレットを作成するには、次の場所に移動します: <strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定プロトコル</strong> &gt; <strong>追加構成</strong> &gt; <strong>測定プロトコルAPIシークレット</strong>。</td>
 </tr>
 <tr>
 <td>Measurement ID (任意)</td>
 <td>ストリームに関連付けられた測定ID。</td>
-<td>Google Analytics UIで、次の場所に移動します：<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定ID</strong> &gt; <strong>作成</strong>。</td>
+<td>Google Analytics UIで、次の場所に移動します: <strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定ID</strong> &gt; <strong>作成</strong>。</td>
 </tr>
 <tr>
 <td>Firebase App ID (任意)</td>
 <td>Firebaseアプリの識別子。</td>
-<td>Firebaseコンソールで、次の場所に移動します：<strong>プロジェクト構成</strong> &gt; <strong>一般</strong> &gt; <strong>アプリ</strong> &gt; <strong>アプリID</strong>。</td>
+<td>Firebaseコンソールで、次の場所に移動します: <strong>プロジェクト構成</strong> &gt; <strong>一般</strong> &gt; <strong>アプリ</strong> &gt; <strong>アプリID</strong>。</td>
 </tr>
 </tbody>
 </table>
-<p>APIバージョン：ベータ</p>
+<p>APIバージョン: ベータ</p>
 <h3 id="イベントパラメータ">イベントパラメータ</h3>
 <table>
 <thead>
@@ -493,7 +493,7 @@
 </tr>
 <tr>
 <td>ユーザープロパティ</td>
-<td>ユーザープロパティは、言語の構成や地理的な位置など、ユーザーベースのセグメントを記述します。これらはセクション<strong>テンプレート</strong>に構成できます。</td>
+<td>ユーザープロパティは、言語の構成や地理的な位置など、ユーザーベースのセグメントを記述します。これらはセクション <strong>テンプレート</strong>に構成できます。</td>
 </tr>
 <tr>
 <td>アイテムID</td>
@@ -505,7 +505,7 @@
 </tr>
 <tr>
 <td>所属</td>
-<td>供給会社や物理的な店舗の場所を指定するための製品所属。イベントレベルとアイテムレベルの所属パラメータは独立しています。</td>
+<td>供給会社や物理的な店舗の場所を指定するための商品所属。イベントレベルとアイテムレベルの所属パラメータは独立しています。</td>
 </tr>
 <tr>
 <td>クーポン</td>
@@ -529,23 +529,23 @@
 </tr>
 <tr>
 <td>アイテムカテゴリ</td>
-<td>アイテムのカテゴリ。カテゴリ階層または分類法の一部として使用される場合、これは最初のカテゴリです。</td>
+<td>アイテムのカテゴリ。カテゴリ階層または分類の一部として使用される場合、これは最初のカテゴリです。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ2</td>
-<td>アイテムの第二カテゴリ階層または追加の分類法。</td>
+<td>アイテムの第二カテゴリ階層または追加の分類。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ3</td>
-<td>アイテムの第三カテゴリ階層または追加の分類法。</td>
+<td>アイテムの第三カテゴリ階層または追加の分類。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ4</td>
-<td>アイテムの第四カテゴリ階層または追加の分類法。</td>
+<td>アイテムの第四カテゴリ階層または追加の分類。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ5</td>
-<td>アイテムの第五カテゴリ階層または追加の分類法。</td>
+<td>アイテムの第五カテゴリ階層または追加の分類。</td>
 </tr>
 <tr>
 <td>アイテムリストID</td>
@@ -573,11 +573,11 @@
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td>テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。ネストされたテンプレート変数はドット表記法で名前を付けます（例： <code>items.name</code>）。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td>テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。ネストされたテンプレート変数はドット表記法で名前を付けます。例えば、<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から作成されます。</td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>ユーザープロパティで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。テンプレートは、名前で二重中括弧でサポートされたフィールドに注入されます（例： <code>{{SomeTemplateName}}</code>）。</td>
+<td>ユーザープロパティで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。テンプレートは、名前で二重中括弧を使用してサポートされるフィールドに注入されます（例：<code>{{SomeTemplateName}}</code>）。</td>
 </tr>
 </tbody>
 </table>
@@ -607,7 +607,7 @@
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>ユーザーの一意の識別子。Google Analytics 4測定プロトコルイベントに <code>user_id</code> を含める場合、クライアントサイドイベントにもそれを含める必要があります。</td>
+<td>ユーザーの一意の識別子。Google Analytics 4測定プロトコルのイベントに <code>user_id</code> を含める場合、クライアントサイドのイベントにもそれを含める必要があります。</td>
 </tr>
 <tr>
 <td>タイムスタンプマイクロ</td>
@@ -647,7 +647,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;params&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;page_location&#34;</span>: <span style="color:#e6db74">&#34;http://demosite.com/ecomm/category.html&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...other</span> <span style="color:#960050;background-color:#1e0010">mapped</span> <span style="color:#960050;background-color:#1e0010">parameters...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...他のマップされたパラメータ...</span>
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ],
@@ -679,7 +679,7 @@
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>ユーザーの一意の識別子。Google Analytics 4測定プロトコルイベントに <code>user_id</code> を含める場合、クライアントサイドイベントにもそれを含める必要があります。</td>
+<td>ユーザーの一意の識別子。Google Analytics 4測定プロトコルのイベントに <code>user_id</code> を含める場合、クライアントサイドのイベントにもそれを含める必要があります。</td>
 </tr>
 <tr>
 <td>タイムスタンプマイクロ</td>
@@ -849,7 +849,7 @@
 </tr>
 </tbody>
 </table>
-<p>サポートされているイベントの完全なリストを表示するには、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol - Google Analytics 4 events</a>を参照してください。</p>
+<p>サポートされているイベントの全リストを表示するには、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol - Google Analytics 4 events</a>を参照してください。</p>
 <h2 id="firebaseイベントの送信">Firebaseイベントの送信</h2>
 <h3 id="概要-2">概要</h3>
 <p>このアクションは、FirebaseイベントをGoogle Analyticsに送信するために使用されます。構成はSend Eventと同じですが、App Instance IDも提供する必要があります。</p>
@@ -887,7 +887,7 @@
 <h3 id="イベントパラメータ-2">イベントパラメータ</h3>
 <p>このアクションは、Send Eventアクションと同じ一般的なイベントパラメータをサポートし、同じイベント固有のパラメータもサポートします。</p>
 <h3 id="ユーザープロパティ">ユーザープロパティ</h3>
-<p>ユーザープロパティは、言語の構成や地理的な位置など、ユーザーベースのセグメントを記述します。Analyticsは<a href="https://support.google.com/analytics/answer/9268042">自動的に一部のユーザープロパティをログに記録します</a>。追加のプロパティを収集したい場合は、プロジェクトごとに最大25の追加ユーザープロパティを構成できます。ユーザープロパティの構成と登録方法については、<a href="https://support.google.com/analytics/answer/9269570">GA4 Custom dimensions</a>とメトリクスと<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=firebase#example_usage">Firebase Custom user properties</a>を参照してください。</p>
+<p>ユーザープロパティは、言語の構成や地理的な位置など、ユーザーベースのセグメントを記述します。Analyticsは<a href="https://support.google.com/analytics/answer/9268042">自動的に一部のユーザープロパティをログに記録します</a>。追加のプロパティを収集したい場合は、プロジェクトごとに最大25の追加ユーザープロパティを構成できます。ユーザープロパティの構成と登録方法については、<a href="https://support.google.com/analytics/answer/9269570">GA4 Custom dimensions</a>とメトリクス、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=firebase#example_usage">Firebase Custom user properties</a>をご覧ください。</p>
 
 </div>
 
@@ -933,7 +933,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月28日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>リモート コマンド: Adjust | 統合 | Tealiumドキュメント</title>
+    <title>リモートコマンド: Adjust | 統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "7",
+        reading_time  : "5",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -147,7 +147,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">リモート コマンド: Adjust</h1>
+<h1 class="lh-title mt30 mb3">リモートコマンド: Adjust</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -155,109 +155,103 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Android および Swift/iOS における Adjust の Tealium リモート コマンド統合です。
+      AndroidとSwift/iOSでのAdjustのTealiumリモートコマンド統合
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="要件">要件</h2>
+  <h2 id="必要条件">必要条件</h2>
 <ul>
 <li>Adjust <a href="https://help.adjust.com/en/article/app-settings#view-your-app-token">App Token</a></li>
-<li>これらのモバイルライブラリのうちのいずれか:
+<li>以下のいずれかのモバイルライブラリ:
 <ul>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0 以降)</li>
-<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (5.9.0 以降)</li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+)</li>
 <li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul>
 </li>
-<li>これらのリモート コマンド統合のいずれか:
+<li>以下のいずれかのリモートコマンド統合:
 <ul>
-<li><a href="/ja/platforms/remote-commands/integrations/adjust/#json-template">Adjust Remote Command JSON File</a> (Android-Kotlin 1.0.0 以降または iOS-Swift 2.1.0 以降が必要)</li>
-<li><a href="https://community.tealiumiq.com/t5/Client-Side-Tags/Adjust-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/35849">Tealium iQ Tag Management での Adjust Remote Command タグ</a></li>
+<li><a href="/ja/platforms/remote-commands/integrations/adjust/#json-template">Adjust Remote Command JSON File</a> (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)</li>
+<li><a href="/ja/client-side-tags/adjust-mobile-remote-command-tag/">Tealium iQタグ管理のAdjust Remote Commandタグ</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>Adjust 統合は、これらのアイテムを使用します:</p>
+<p>Adjust統合は以下の3つの要素を使用します:</p>
 <ol>
-<li>Adjust ネイティブ SDK</li>
-<li>Adjust メソッドをラップするリモート コマンド モジュール</li>
-<li>イベント トラッキングをネイティブ Adjust コールに翻訳する、JSON 構成ファイルまたは Remote Command タグのいずれか</li>
+<li>AdjustネイティブSDK</li>
+<li>Adjustメソッドをラップするリモートコマンドモジュール</li>
+<li>イベントトラッキングをネイティブのAdjust呼び出しに変換するJSON構成ファイルまたはRemote Commandタグ</li>
 </ol>
-<p>Adjust リモート コマンド モジュールをアプリに追加すると、必要な Adjust ライブラリが自動的にインストールされ、ビルドされます。この際、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャのインストールを使用している場合、Adjust SDK を個別にインストールする必要はありません。</p>
-<p>リモート コマンド オプションは、次の 2 つがあります: A JSON 構成ファイル、または、マッピングを構成するための iQ タグ管理の使用。A JSON 構成ファイルは、リモートでホスティングするか、またはアプリ内でローカルでホスティングするかのいずれでも、ベンダー統合の推奨オプションです。iQ タグ管理を使用する場合は、ベンダー統合用のリモート コマンド タグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>の詳細は、こちらから参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>iOS: Adjust バージョン 4.23.0 以降の場合は、SDKは、次のネイティブ フレームワークを自動的追加します: <code>AdSupport.framework</code>、 <code>iAd.framework</code> および <code>AppTrackingTransparaceny.framework</code>。詳細については、 <a href="https://help.adjust.com/en/article/app-tracking-transparency-att-framework">Adjust iOS SKAdNetwork 統合</a> に関するガイドを参照してください。</p>
+<p>Adjustリモートコマンドモジュールをアプリに追加すると、ベンダー固有のコードをアプリに追加することなく、必要なAdjustライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャのインストールを使用している場合、Adjust SDKを別途インストールする必要はありません。</p>
+<p>リモートコマンドのオプションは2つあります: JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のための推奨オプションで、リモートまたはアプリ内にホストされます。iQタグ管理を使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>について詳しく学びましょう。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>iOS: Adjustバージョン4.23.0+では、SDKは自動的に以下のネイティブフレームワークを追加します: <code>AdSupport.framework</code>, <code>iAd.framework</code>および<code>AppTrackingTransparaceny.framework</code>。<a href="https://help.adjust.com/en/article/app-tracking-transparency-att-framework">Adjust iOS SKAdNetwork統合</a>ガイドで詳しく学びましょう。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="依存関係マネージャ">依存関係マネージャ</h3>
-<p>次の依存関係マネージャのいずれかをインストールに使用することをお勧めします。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
-  <p>Swift Package Manager を使用して iOS の Adjust リモート コマンドをインストールするには:</p>
-<ol>
-<li>Xcode プロジェクトで、次のように選択します: <strong>[File] &gt; [Add Package&hellip;]&gt; [Add Package Dependency]</strong></li>
-<li>レポジトリの URL として「https://github.com/tealium/tealium-ios-adjust-remote-command」と入力します</li>
-<li>バージョンルールを構成します。通常は <code>Up to next major</code> が推奨されます。現在の <code>TealiumAdjust</code> バージョンがリストに表示されない場合は、Swift パッケージ キャッシュをリセットします。</li>
-<li>インストールする <code>TealiumAdjust</code> モジュールを選択し、モジュールをインストールするアプリ ターゲットを選択します。</li>
-<li>Tealium Swift ライブラリからの追加のモジュールを使用しようとしている場合は、 <a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Managerの手順</a> に従って、これを追加します。</li>
+  <ol>
+<li>Xcodeプロジェクトで、<strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>を選択します。</li>
+<li>リポジトリURLを入力します: <code>https://github.com/tealium/tealium-ios-adjust-remote-command</code></li>
+<li>バージョンルールを構成します。通常、<code>Up to next major</code>が推奨されます。現在の<code>TealiumAdjust</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
+<li>インストールする<code>TealiumAdjust</code>モジュールを選択し、モジュールをインストールするアプリターゲットを選択します。</li>
+<li>Tealium Swiftライブラリから追加のモジュールを使用している場合は、<a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Managerの指示</a>に従ってそれらを追加します。</li>
 </ol>
-<p>プロジェクトにアプリ ターゲットが複数あり、複数のアプリ ターゲットで <code>TealiumAdjust</code> モジュールが必要な場合は、 <strong>[Frameworks, Libraries, and Embedded Content] (フレームワーク、ライブラリ、組み込みコンテンツ)</strong> セクションにそれらを手動で追加する必要があります。</p>
-<p>追加のアプリ ターゲットに <code>TealiumAdjust</code> をインストールするには:</p>
+<p>プロジェクトに複数のアプリターゲットがあり、<code>TealiumAdjust</code>モジュールを他のアプリターゲットに必要とする場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
+<p>追加のアプリターゲットに<code>TealiumAdjust</code>をインストールするには:</p>
 <ol>
-<li><strong>プロジェクト ナビゲーター</strong>で Xcode プロジェクトを選択します。</li>
-<li>Xcode プロジェクトにおいて、 <strong>[TARGETS] (ターゲット)</strong> セクションでアプリ ターゲットを選択します。</li>
-<li><strong>[General] &gt; [Frameworks, Libraries &amp; Embedded Content]</strong> に進み、 <code>TealiumAdjust</code> モジュールを選択して、アプリ ターゲットに追加します。</li>
+<li><strong>Project Navigator</strong>でXcodeプロジェクトを選択します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションの下のアプリターゲットを選択します。</li>
+<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、<code>TealiumAdjust</code>モジュールを選択してアプリターゲットに追加します。</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>CocoaPods を使用して iOS の Adjust リモート コマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><code>pod &quot;tealium-swift&quot;</code> と <code>pod &quot;Adjust&quot;</code> が Podfile に存在する場合は削除します。<code>tealium-swift</code> の依存関係は <code>TealiumAdjust</code> フレームワークに既に含まれています。</p>
+<p>Podfileに<code>pod &quot;tealium-swift&quot;</code>と<code>pod &quot;Adjust&quot;</code>が存在する場合は削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumAdjust</code>フレームワークに含まれています。</p>
 </li>
 <li>
-<p>次の依存関係をPodfileに追加します。</p>
-</li>
-</ol>
+<p>Podfileに以下の依存関係を追加します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumAdjust&#34;</span>
-</span></span></code></pre></div><p><code>TealiumAdjust</code> ポッドには以下の <code>TealiumSwift</code> 依存関係が含まれています。</p>
+</span></span></code></pre></div><p><code>TealiumAdjust</code> podには以下の<code>TealiumSwift</code>依存関係が含まれています:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-swift/Core&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-swift/RemoteCommands&#34;</span>
-</span></span></code></pre></div><ol start="3">
-<li><code>tealium-swift/Collect</code> または <code>tealium-swift/TagManagement</code> のいずれかのインストールにディスパチャー ポッドを含めて、ポッドファイルに他の個別のサブ モジュールを含めます。例：</li>
-</ol>
+</span></span></code></pre></div></li>
+<li>
+<p>インストールにディスパッチャーポッドを含めます。<code>tealium-swift/Collect</code>または<code>tealium-swift/TagManagement</code>のいずれか、およびpodfileに他の個々のサブモジュールを含めます。例えば:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumAdjust&#34;</span>
 </span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;tealium-swift/Collect&#34;</span>
 </span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;tealium-swift/Lifecycle&#34;</span>
 </span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;tealium-swift/Attribution&#34;</span>
-</span></span></code></pre></div><ol start="4">
-<li>モジュール <code>TealiumSwift</code> および <code>TealiumAdjust</code> を、 <code>TealiumHelper</code> ファイル、 <code>Tealium</code> クラスにアクセスするその他のファイル、または Adjsut リモート コマンドにインポートします。</li>
+</span></span></code></pre></div></li>
+<li>
+<p><code>TealiumHelper</code>ファイルと、<code>Tealium</code>クラスまたはAdjsutリモートコマンドにアクセスする他のファイルに<code>TealiumSwift</code>と<code>TealiumAdjust</code>モジュールをインポートします。</p>
+</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>Carthage を使用して iOS の Adjust リモート コマンドをインストールするには:</p>
-<ol>
+  <ol>
 <li>
-<p><code>tealium-swift</code>をCartfileから削除します。<code>tealium-swift</code> の依存関係は <code>TealiumAdjust</code> フレームワークに既に含まれています。</p>
+<p>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumAdjust</code>フレームワークに含まれています。</p>
 </li>
 <li>
-<p>以下の行がCartfileに存在する場合は、その行を削除します。</p>
-</li>
-</ol>
+<p>Cartfileに以下の行が存在する場合は削除します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;adjust/ios_sdk&#34;</span>
-</span></span></code></pre></div><ol start="3">
-<li>次の依存関係をCartfileに追加します。</li>
-</ol>
+</span></span></code></pre></div></li>
+<li>
+<p>Cartfileに以下の依存関係を追加します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-adjust-remote-command&#34;</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>Maven を使用して Android の Adjust リモート コマンドをインストールするには:</p>
-<ol>
+  <ol>
 <li>
-<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> または <a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a> をインストールして、Tealium Maven URL を、プロジェクトのトップレベル <code>build.gradle</code> ファイルに追加します (まだ済んでいない場合)。</p>
+<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、まだ行っていない場合は、プロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
@@ -268,185 +262,174 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>アプリ プロジェクトの <code>build.gradle</code> ファイルに次の依存関係を追加して、Adjust SDK と Tealium-Adjust の両方のリモート コマンドをインポートします。</p>
-</li>
-</ol>
+<p>アプリプロジェクトの<code>build.gradle</code>ファイルに以下の依存関係を追加して、Adjust SDKとTealium-Adjustリモートコマンドをインポートします:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:adjust:1.0.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <ol>
+<li>
+<p>React Nativeプロジェクトのルートに移動します。</p>
+</li>
+<li>
+<p>以下のコマンドで<code>tealium-react-adjust</code>パッケージをダウンロードしてインストールします:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn add tealium-react-adjust
+</span></span></code></pre></div></li>
+<li>
+<p>React Native AutolinkingはNPMパッケージのバージョン1.0.7で有効化され、React Nativeのバージョン0.60+を使用している場合、<code>react-native link</code>を実行する必要はもうありません。</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 
-<h3 id="手動による手順ios">手動による手順（iOS）</h3>
-<p>Adjust リモート コマンドを手動でインストールするには、 <a href="/ja/platforms/ios-swift/">Tealium for Swift</a> ライブラリがインストールされている必要があります。iOS プロジェクトの Adjust リモート コマンドをインストールするには:</p>
+<h3 id="手動インストール">手動インストール</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Adjustリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリがインストールされている必要があります。iOSプロジェクトのAdjustリモートコマンドをインストールするには:</p>
 <ol>
 <li>
-<p><a href="https://github.com/adjust/ios_sdk">Adjust SDK</a>をまだインストールしていない場合はインストールします。</p>
+<p>まだ行っていない場合は、<a href="https://github.com/adjust/ios_sdk">Adjust SDK</a>をインストールします。</p>
 </li>
 <li>
-<p><a href="https://github.com/tealium/tealium-ios-adjust-remote-command">Tealium iOS Adjust リモート コマンド</a> レポジトリをクローンして、 <code>Sources</code> フォルダ内のファイルをプロジェクトにドラッグします。</p>
+<p><a href="https://github.com/tealium/tealium-ios-adjust-remote-command">Tealium iOS Adjust remote command</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
 </li>
 <li>
-<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> 構成フラッグを <code>true</code>に構成します</p>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します</p>
 </li>
 </ol>
-<h3 id="手動android">手動（Android）</h3>
-<p>Adjust リモート コマンドを手動でインストールするには、 <a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> または <a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a> がインストールされている必要があります。Android プロジェクトの Adjust リモート コマンドをインストールするには:</p>
+</div>
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Adjustリモートコマンドの手動インストールには、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>がインストールされている必要があります。AndroidプロジェクトのAdjustリモートコマンドをインストールするには:</p>
 <ol>
-<li><code>flatDir</code>をプロジェクトのルートにある<code>build.gradle</code>ファイルに追加します。</li>
-</ol>
+<li>
+<p>プロジェクトのルート<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>         mavenCentral<span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>         flatDir <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>             dirs <span style="color:#e6db74">&#39;libs&#39;</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        flatDir <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            dirs <span style="color:#e6db74">&#39;libs&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ol start="2">
+</span></span></code></pre></div></li>
 <li>
-<p><code>tealium-adjust.aar</code> を <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に追加します。</p>
+<p><code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に<code>tealium-adjust.aar</code>を追加します。</p>
 </li>
 <li>
-<p>Tealiumライブラリの依存関係を<code>build.gradle</code>ファイルに追加します。</p>
-</li>
-</ol>
+<p><code>build.gradle</code>ファイルにTealiumライブラリの依存関係を追加します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      implementation<span style="color:#f92672">(</span>name:<span style="color:#e6db74">&#39;tealium-adjust&#39;</span><span style="color:#f92672">,</span> ext:<span style="color:#e6db74">&#39;aar&#39;</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="初期化">初期化</h2>
-<p>すべての Tealium ライブラリについて、初期化時に Adjust リモート コマンドを登録します。</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>Tealium の Android (Kotlin) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div>
+
+<h2 id="初期化">初期化</h2>
+<p>すべてのTealiumライブラリで、初期化時にAdjust Remote Commandを登録します。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Command 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Sets up a config object and creates a Tealium instance
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// New code to add the Adjust Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> adjustRemoteCommand = AdjustRemoteCommand(application)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(adjustRemoteCommand, filename = <span style="color:#e6db74">&#34;adjust.json&#34;</span>);
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>TealiumのiOS (Swift)ライブラリのリモートコマンドをJSON構成ファイルまたはRemote Commandタグで初期化します:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドの使用に必要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> adjust = AdjustRemoteCommand()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let adjust = AdjustRemoteCommand(type: .local(file: &#34;adjust&#34;)) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let adjust = AdjustRemoteCommand(type: .remote(url: &#34;https://some.domain.com/adjust.json&#34;))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(adjust)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Sets up a config object and creates a Tealium instance
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>TealiumのAndroid（Kotlin）ライブラリ用のリモートコマンドをJSON構成ファイルまたはリモートコマンドタグで初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands, <span style="color:#a6e22e">Dispatchers</span>.TagManagement));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> adjust = AdjustRemoteCommand(application);
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// New code to add the Adjust Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> adjustRemoteCommand = AdjustRemoteCommand(application)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(adjustRemoteCommand);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(adjust); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(adjust, filename = &#34;adjust.json&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(adjust, remoteUrl = &#34;https://some.domain.com/adjust.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="android-java">Android (Java)</h3>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>Android 向けの JSON Remote Command ファイル機能は、Kotlin SDK でのみ利用できます。</p>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sets up a config object and creates a Tealium instance
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
+<div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
+  <p>TealiumのAndroid（Java）ライブラリ用のリモートコマンドをJSON構成ファイルまたはリモートコマンドタグで初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// New code to add the Adjust Remote Command
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adjust Remote Commandを追加する新しいコード
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>AdjustRemoteCommand adjustRemoteCommand <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AdjustRemoteCommand<span style="color:#f92672">(</span>application<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>adjustRemoteCommand<span style="color:#f92672">);</span>
 </span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>Tealium の iOS (Swift) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Command 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <p>React Native用のリモートコマンドをJSON構成ファイルまたはリモートコマンドタグで初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">AdjustRemoteCommand</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-adjust&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.RemoteCommands, Dispatchers.Collect]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">adjust</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">AdjustRemoteCommand</span>.<span style="color:#a6e22e">name</span> } 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> adjust = AdjustRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;adjust&#34;</span>))
-</span></span><span style="display:flex;"><span>	remoteCommands.add(adjust)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.RemoteCommands, Dispatchers.TagManagement]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> adjust = AdjustRemoteCommand()
-</span></span><span style="display:flex;"><span>	remoteCommands.add(adjust)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//let adjust = { id: AdjustRemoteCommand.name, path: &#34;adjust.json&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//let adjust = { id: AdjustRemoteCommand.name, url: &#34;https://some.domain.com/adjust.json&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">remoteCommands</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">adjust</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<h2 id="json-テンプレート">JSON テンプレート</h2>
-<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON 構成ファイル</a>を使用してリモート コマンドを構成しようとする場合は、まず、以下のテンプレートを参照します。テンプレートには、標準的な E コマースのインストールに用いられる共通マッピングが含まれます。必要に応じて、マッピングを編集します。</p>
+<h2 id="jsonテンプレート">JSONテンプレート</h2>
+<p>リモートコマンドを<a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用して構成する場合、以下のテンプレートを参考にしてください。テンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;api_token&#34;</span>: <span style="color:#e6db74">&#34;YOUR_API_TOKEN&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sandbox&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;settings&#34;</span>: {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;log_level&#34;</span>: <span style="color:#e6db74">&#34;verbose&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;delay_start&#34;</span>: <span style="color:#ae81ff">1.0</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;allow_iad&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;allow_ad_services&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;allow_idfa&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;app_secret&#34;</span> : <span style="color:#e6db74">&#34;secret123&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;app_secret_info_1&#34;</span> : <span style="color:#e6db74">&#34;123&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;app_secret_info_2&#34;</span> : <span style="color:#e6db74">&#34;456&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;app_secret_info_3&#34;</span> : <span style="color:#e6db74">&#34;789&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;app_secret_info_4&#34;</span> : <span style="color:#e6db74">&#34;012&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;event_buffering_enabled&#34;</span>: <span style="color:#66d9ef">false</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;send_in_background&#34;</span>: <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>    }
@@ -473,9 +456,9 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;num_of_pets&#34;</span>: <span style="color:#e6db74">&#34;partner.pets,session_partner.pets&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;callback.customerId&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customer_is_member&#34;</span>: <span style="color:#e6db74">&#34;partner.isMember&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;session_params&#34;</span>: <span style="color:#e6db74">&#34;session_callback,session_partner&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;remove_session_params&#34;</span>: <span style="color:#e6db74">&#34;remove_session_callback_params,remove_session_partner_params&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;reset_session_params&#34;</span>: <span style="color:#e6db74">&#34;reset_session_callback_params,reset_session_partner_params&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;global_params&#34;</span>: <span style="color:#e6db74">&#34;global_callback,global_partner&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;remove_global_params&#34;</span>: <span style="color:#e6db74">&#34;remove_global_callback_params,remove_global_partner_params&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;reset_global_params&#34;</span>: <span style="color:#e6db74">&#34;reset_global_callback_params,reset_global_partner_params&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;consent_granted&#34;</span>: <span style="color:#e6db74">&#34;measurement_consent&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;enabled&#34;</span>: <span style="color:#e6db74">&#34;enabled&#34;</span>
 </span></span><span style="display:flex;"><span>  },
@@ -484,13 +467,13 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;track_deeplink&#34;</span>: <span style="color:#e6db74">&#34;appwillopenurl&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;purchase&#34;</span>: <span style="color:#e6db74">&#34;trackevent,updateconversionvalue&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;event&#34;</span>: <span style="color:#e6db74">&#34;trackevent&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;contact&#34;</span>: <span style="color:#e6db74">&#34;trackevent,addsessioncallbackparams,addsessionpartnerparams&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;contact&#34;</span>: <span style="color:#e6db74">&#34;trackevent,addglobalcallbackparams,addglobalpartnerparams&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ad_revenue&#34;</span>: <span style="color:#e6db74">&#34;trackadrevenue&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;subscribe&#34;</span>: <span style="color:#e6db74">&#34;trackevent,tracksubscription&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;received_push_token&#34;</span>: <span style="color:#e6db74">&#34;setpushtoken&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;add_session_parameters&#34;</span>: <span style="color:#e6db74">&#34;addsessioncallbackparams,addsessionpartnerparams&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;remove_session_parameters&#34;</span>: <span style="color:#e6db74">&#34;removesessioncallbackparams,removesessionpartnerparams&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;reset_session_parameters&#34;</span>: <span style="color:#e6db74">&#34;resetsessioncallbackparams,resetsessionpartnerparams&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;add_global_parameters&#34;</span>: <span style="color:#e6db74">&#34;addglobalcallbackparams,addglobalpartnerparams&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;remove_global_parameters&#34;</span>: <span style="color:#e6db74">&#34;removeglobalcallbackparams,removeglobalpartnerparams&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;reset_global_parameters&#34;</span>: <span style="color:#e6db74">&#34;resetglobalcallbackparams,resetglobalpartnerparams&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;consent_revoked&#34;</span>: <span style="color:#e6db74">&#34;gdprforgetme,trackmeasurementconsent&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;consent_granted&#34;</span>: <span style="color:#e6db74">&#34;trackmeasurementconsent&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;set_enabled&#34;</span>: <span style="color:#e6db74">&#34;setenabled&#34;</span>,
@@ -498,12 +481,12 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="サポートされているメソッド">サポートされているメソッド</h2>
-<p>以下の Adjust メソッドは、以下の Tealium コマンドを使用し、Adjust リモート コマンド タグのデータ マッピングを使用してトリガーできます。</p>
+<p>各Adjustメソッドにコマンドをマッピングします。Adjustメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">リモートコマンド</th>
-<th style="text-align:left">Adjust メソッド</th>
+<th style="text-align:left">Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -541,11 +524,11 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>setEnabled</code></td>
-<td style="text-align:left"><code>setEnabled()</code></td>
+<td style="text-align:left"><code>enable()</code>/<code>disable()</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>setOfflineMode</code></td>
-<td style="text-align:left"><code>setOfflineMode()</code></td>
+<td style="text-align:left"><code>switchToOfflineMode()</code>/<code>switchBackToOnlineMode()</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>gdprForgetMe</code></td>
@@ -560,40 +543,64 @@
 <td style="text-align:left"><code>trackMeasurementConsent()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>addSessionCallbackParams</code></td>
+<td style="text-align:left"><code>addSessionCallbackParams</code> (非推奨)</td>
 <td style="text-align:left"><code>addSessionCallbackParams()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>removeSessionCallbackParams</code></td>
+<td style="text-align:left"><code>removeSessionCallbackParams</code> (非推奨)</td>
 <td style="text-align:left"><code>removeSessionCallbackParams()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>resetSessionCallbackParams</code></td>
+<td style="text-align:left"><code>resetSessionCallbackParams</code> (非推奨)</td>
 <td style="text-align:left"><code>resetSessionCallbackParams()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>addSessionPartnerParams</code></td>
+<td style="text-align:left"><code>addSessionPartnerParams</code> (非推奨)</td>
 <td style="text-align:left"><code>addSessionPartnerParams()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>removeSessionPartnerParams</code></td>
+<td style="text-align:left"><code>removeSessionPartnerParams</code> (非推奨)</td>
 <td style="text-align:left"><code>removeSessionPartnerParams()</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>resetSessionPartnerParams</code></td>
+<td style="text-align:left"><code>resetSessionPartnerParams</code> (非推奨)</td>
 <td style="text-align:left"><code>resetSessionPartnerParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>addGlobalCallbackParams</code></td>
+<td style="text-align:left"><code>addGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>removeGlobalCallbackParams</code></td>
+<td style="text-align:left"><code>removeGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>resetGlobalCallbackParams</code></td>
+<td style="text-align:left"><code>resetGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>addGlobalPartnerParams</code></td>
+<td style="text-align:left"><code>addGlobalPartnerParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>removeGlobalPartnerParams</code></td>
+<td style="text-align:left"><code>removeGlobalPartnerParams()</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>resetGlobalPartnerParams</code></td>
+<td style="text-align:left"><code>resetGlobalPartnerParams()</code></td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>* <code>AppTrackingTransparency.framework</code>の一部として iOS でのみサポートされます。詳細については <a href="https://help.adjust.com/en/article/app-tracking-transparency-att-framework">Adjust iOS SKAdNetwork 統合</a> に関するガイドを参照してください。</p>
-<h3 id="sdkのセットアップ">SDKのセットアップ</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>これはiOSの一部としてのみサポートされており、<code>AppTrackingTransparency.framework</code>に含まれています。<a href="https://help.adjust.com/en/article/app-tracking-transparency-att-framework">Adjust iOS SKAdNetwork統合</a>ガイドで詳細を学びましょう。</p>
+<h3 id="sdkセットアップ">SDKセットアップ</h3>
 <h4 id="初期化-1">初期化</h4>
-<p>Adjust SDKは起動時に自動的に初期化されます。Adjust API キーはタグ構成で構成されます。</p>
+<p>Adjust SDKは起動時に自動的に初期化されます。Adjust APIキーはタグ構成で構成されます。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -603,19 +610,19 @@
 </tr>
 </tbody>
 </table>
-<p>Adjust Developer Guide: SDK の初期セットアップ</p>
+<p>Adjust Developer Guide: Initial SDK Setup</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk/blob/master/README.md#sdk-integrate">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#qs-integrate-sdk">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/configuration">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/configuration">Android</a></li>
 </ul>
-<p>Adjust リモート コマンド タグで利用できる構成オプションはいくつかあります。以下のいずれかが起動時に構成された場合は、 <code>initialize()</code> メソッドの実行中に送信されます。</p>
+<p>Adjust Remote Commandタグにはいくつかの構成オプションがあります。以下のいずれかが起動時に構成されている場合、それらは<code>initialize()</code>メソッド中に送信されます。</p>
 <h5 id="構成オプション">構成オプション</h5>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>iQ 変数マッピング</th>
-<th>型</th>
+<th>名前</th>
+<th>iQ変数マッピング</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -630,7 +637,7 @@
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>delayStart</code></td>
+<td><code>delayStart</code> (非推奨)</td>
 <td><code>delay_start</code></td>
 <td><code>Double</code></td>
 </tr>
@@ -650,27 +657,27 @@
 <td><code>Bool</code></td>
 </tr>
 <tr>
-<td><code>appSecret</code></td>
+<td><code>appSecret</code> (非推奨)</td>
 <td><code>app_secret</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>appSecretInfo1</code></td>
+<td><code>appSecretInfo1</code> (非推奨)</td>
 <td><code>app_secret_info_1</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>appSecretInfo2</code></td>
+<td><code>appSecretInfo2</code> (非推奨)</td>
 <td><code>app_secret_info_2</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>appSecretInfo3</code></td>
+<td><code>appSecretInfo3</code> (非推奨)</td>
 <td><code>app_secret_info_3</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>appSecretInfo4</code></td>
+<td><code>appSecretInfo4</code> (非推奨)</td>
 <td><code>app_secret_info_4</code></td>
 <td><code>String</code></td>
 </tr>
@@ -699,16 +706,41 @@
 <td><code>preinstall_tracking</code></td>
 <td><code>String</code></td>
 </tr>
+<tr>
+<td><code>eventDeduplicationIdsMaxSize</code></td>
+<td><code>deduplication_id_max_size</code></td>
+<td><code>Int</code></td>
+</tr>
+<tr>
+<td><code>urlStrategy</code></td>
+<td><code>url_strategy</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>domains</code></td>
+<td><code>url_strategy_domains</code></td>
+<td><code>[String]</code></td>
+</tr>
+<tr>
+<td><code>useSubdomains</code></td>
+<td><code>url_strategy_use_subdomains</code></td>
+<td><code>Bool</code></td>
+</tr>
+<tr>
+<td><code>isResidency</code></td>
+<td><code>url_strategy_is_residency</code></td>
+<td><code>Bool</code></td>
+</tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>* iOS のみ
-** Android のみ</p>
-<h4 id="イベントのトラッキング">イベントのトラッキング</h4>
+<p><code>url_strategy</code>はv4 url戦略のいずれかでなければならず、あるいは、将来追加される別の戦略を作成するために、domains/useSubdomains/isResidencyの3つのパラメータすべてを提供することもできます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>iOSとAndroidのみ</p>
+<h4 id="イベントの追跡">イベントの追跡</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -722,16 +754,20 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>event_token</code> (required)</td>
+<td><code>event_token</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
 <td><code>order_id</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>deduplication_id</code></td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -744,11 +780,11 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>Dictionary</code>または<code>Map</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
 </tr>
 <tr>
 <td><code>partner</code></td>
-<td><code>Dictionary</code>または<code>Map</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
 </tr>
 <tr>
 <td><code>callback_id</code></td>
@@ -756,23 +792,23 @@
 </tr>
 </tbody>
 </table>
-<p>Adjust Developer Guide: トラック イベント</p>
+<p>Adjust開発者ガイド: イベントの追跡</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#event-tracking">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#track-event">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/events">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/events">Android</a></li>
 </ul>
-<h3 id="サブスクリプションのトラッキング">サブスクリプションのトラッキング</h3>
+<h4 id="サブスクリプションの追跡">サブスクリプションの追跡</h4>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">リモートコマンド</th>
-<th style="text-align:left">Adjust メソッド</th>
+<th style="text-align:left">Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>tracksubscription</code></td>
-<td style="text-align:left"><code>trackSubscription()</code></td>
+<td style="text-align:left"><code>trackAppStoreSubscription()</code></td>
 </tr>
 </tbody>
 </table>
@@ -780,36 +816,40 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>revenue</code> (required)</td>
+<td><code>revenue</code> (必須)</td>
 <td><code>Double</code></td>
 </tr>
 <tr>
-<td><code>currency</code> (required)</td>
+<td><code>currency</code> (必須)</td>
 <td><code>String </code></td>
 </tr>
 <tr>
-<td><code>order_id</code> (required)</td>
+<td><code>order_id</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>receipt</code> (required for iOS only)</td>
+<td><code>deduplication_id</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>receipt</code> (非推奨)</td>
 <td><code>Data</code></td>
 </tr>
 <tr>
-<td><code>sku</code> (required for Android only)</td>
+<td><code>sku</code> (Androidのみ必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>signature</code> (required for Android only)</td>
+<td><code>signature</code> (Androidのみ必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>purchase_token</code> (required for Android only)</td>
+<td><code>purchase_token</code> (Androidのみ必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -822,21 +862,21 @@
 </tr>
 <tr>
 <td><code>callback</code></td>
-<td><code>Dictionary</code>または<code>Map</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
 </tr>
 <tr>
 <td><code>partner</code></td>
-<td><code>Dictionary</code>または<code>Map</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
 </tr>
 </tbody>
 </table>
-<p>Adjust APIリファレンス：サブスクリプション トラッキング</p>
+<p>Adjust APIリファレンス: サブスクリプションの追跡</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#subscription-tracking">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#subscription-tracking">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/subscriptions">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/subscriptions">Android</a></li>
 </ul>
-<h3 id="トラッキング許可のリクエスト-ios">トラッキング許可のリクエスト (iOS)</h3>
-<p>Adjust SDK は、ユーザーに対してトラッキング許可を自動的にリクエストします。完了を構成するには、 <code>Adjust.trackingAuthorizationCompletion()</code> メソッドを使用して、次に、リモート コマンドを追加します。</p>
+<h4 id="トラッキング許可のリクエスト-ios">トラッキング許可のリクエスト (iOS)</h4>
+<p>Adjust SDKは自動的にユーザーからのトラッキング許可をリクエストします。完了を構成するには、<code>Adjust.trackingAuthorizationCompletion()</code>メソッドを使用し、リモートコマンドを追加します。</p>
 <p>例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
@@ -856,16 +896,16 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>	remoteCommands.add(adjustRemoteCommand)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Adjust API リファレンス: アプリ トラッキング許可ラッパー</p>
+</span></span></code></pre></div><p>Adjust APIリファレンス: アプリトラッキング許可ラッパー</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#ata-wrapper">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/att">iOS</a></li>
 </ul>
-<h3 id="変換値の更新-ios-のみ">変換値の更新 (iOS のみ)</h3>
+<h4 id="コンバージョン値の更新-iosのみ">コンバージョン値の更新 (iOSのみ)</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -879,26 +919,34 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>conversion_value</code> (required)</td>
+<td><code>conversion_value</code> (必須)</td>
 <td><code>Int</code></td>
+</tr>
+<tr>
+<td><code>coarse_value</code></td>
+<td><code>low</code>, <code>medium</code>, <code>high</code></td>
+</tr>
+<tr>
+<td><code>lock_window</code></td>
+<td><code>Bool</code></td>
 </tr>
 </tbody>
 </table>
-<p>Adjust API リファレンス: SKAdNetwork 変換値の更新</p>
+<p>Adjust APIリファレンス: SKAdNetworkコンバージョン値の更新</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#update-skadnetwork-conversion-value">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/skad">iOS</a></li>
 </ul>
-<h4 id="アプリのオープン">アプリのオープン</h4>
+<h4 id="アプリが開く">アプリが開く</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -912,27 +960,27 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>deeplink_open_url</code> (required)</td>
+<td><code>deeplink_open_url</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 </tbody>
 </table>
-<p>ADjust API リファレンス: ディープ リンクを用いたリアトリビューション</p>
+<p>ADjust APIリファレンス: ディープリンク経由の再アトリビューション</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#reattribution-via-deep-links">iOS</a></li>
-<li><a href="https://github.com/adjust/ios_sdk#reattribution-via-deep-links">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/deep-links/">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/deep-links/">Android</a></li>
 </ul>
-<h4 id="広告収益のトラッキング">広告収益のトラッキング</h4>
+<h4 id="広告収益の追跡">広告収益の追跡</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -946,31 +994,74 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ad_revenue_source</code> (required)</td>
+<td><code>ad_revenue_source</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>ad_revenue_payload</code> (required)</td>
-<td><code>Dictionary</code>または<code>Map</code></td>
+<td><code>ad_revenue_payload</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
 </tr>
 </tbody>
 </table>
-<p>Adjust APIリファレンス：広告収益のトラッキング</p>
+<p>ペイロードは以下のパラメータで構成されます:</p>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unit</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td><code>Double</code></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>placement</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>impression_count</code></td>
+<td><code>Int32</code></td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+<tr>
+<td><code>partner</code></td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+</tbody>
+</table>
+<p>Adjust APIリファレンス: 広告収益の追跡</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#ad-revenue-tracking">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#ad-revenue-tracking">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/ad-revenue">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/ad-revenue">Android</a></li>
 </ul>
-<h4 id="プッシュ-トークンの構成">プッシュ トークンの構成</h4>
+<h4 id="プッシュトークンの構成">プッシュトークンの構成</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -984,67 +1075,33 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>push_token</code> (required)</td>
+<td><code>push_token</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 </tbody>
 </table>
-<p>Adjust 追加のAPI: プッシュ トークンの構成</p>
+<p>Adjust追加API: プッシュトークンの構成</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#ad-revenue-tracking">iOS</a></li>
-<li><a href="https://help.adjust.com/en/article/push-tokens-flutter-sdk">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/configuration/#set-push-tokens">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/configuration/#set-push-tokens">Android</a></li>
 </ul>
-<h4 id="有効化の構成">有効化の構成</h4>
+<h4 id="オフラインモードの構成">オフラインモードの構成</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust プロパティ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>setenabled</code></td>
-<td><code>setEnabled()</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>enabled</code> (required)</td>
-<td><code>Bool</code></td>
-</tr>
-</tbody>
-</table>
-<p>Adjust API リファレンス: トラッキングの無効化</p>
-<ul>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#disable-tracking">iOS</a></li>
-<li><a href="https://github.com/adjust/ios_sdk#disable-tracking">Android</a></li>
-</ul>
-<h4 id="オフライン-モードの構成">オフライン モードの構成</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setofflinemode</code></td>
-<td><code>setOfflineMode()</code></td>
+<td><code>switchToOfflineMode()</code>/<code>switchBackToOnlineMode()</code></td>
 </tr>
 </tbody>
 </table>
@@ -1052,27 +1109,220 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>offline</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>offline</code> (必須)</td>
+<td>Bool</td>
 </tr>
 </tbody>
 </table>
-<p>Adjust 追加のAPI: オフライン モードの構成</p>
+<p>Adjust追加API: オフラインモードの構成</p>
 <ul>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#offline-mode">iOS</a></li>
-<li><a href="https://github.com/adjust/ios_sdk#offline-mode">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/configuration/#activate-offline-mode">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/configuration/#activate-offline-mode">Android</a></li>
 </ul>
-<h4 id="ユーザー情報の削除">ユーザー情報の削除</h4>
+<h3 id="コールバックパラメータ">コールバックパラメータ</h3>
+<p>Adjust追加API: コールバックパラメータ</p>
+<ul>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/session-parameters">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/session-parameter">Android</a></li>
+</ul>
+<h4 id="グローバルコールバックパラメータの追加">グローバルコールバックパラメータの追加</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addsessioncallbackparams</code> (非推奨)</td>
+<td><code>addGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td><code>addglobalcallbackparams</code></td>
+<td><code>addGlobalCallbackParams()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_callback</code> (非推奨)</td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+<tr>
+<td><code>global_callback</code> (必須)</td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="グローバルパートナーパラメータの追加">グローバルパートナーパラメータの追加</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addsessionpartnerparams</code> (非推奨)</td>
+<td><code>addGlobalPartnerParams()</code></td>
+</tr>
+<tr>
+<td><code>addglobalpartnerparams</code></td>
+<td><code>addGlobalPartnerParams()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_partner</code> (非推奨)</td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+<tr>
+<td><code>global_partner</code> (必須)</td>
+<td><code>Dictionary</code> または <code>Map</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="グローバルコールバックパラメータの削除">グローバルコールバックパラメータの削除</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removesessioncallbackparams</code> (非推奨)</td>
+<td><code>removeGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td><code>removeglobalcallbackparams</code></td>
+<td><code>removeGlobalCallbackParams()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>remove_session_callback_params</code> (非推奨)</td>
+<td><code>[String]</code></td>
+</tr>
+<tr>
+<td><code>remove_global_callback_params</code> (必須)</td>
+<td><code>[String]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="グローバルパートナーパラメータの削除">グローバルパートナーパラメータの削除</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removesessionpartnerparams</code> (非推奨)</td>
+<td><code>removeGlobalPartnerParams()</code></td>
+</tr>
+<tr>
+<td><code>removeglobalpartnerparams</code></td>
+<td><code>removeGlobalPartnerParams()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>remove_session_partner_params</code> (非推奨)</td>
+<td><code>[String]</code></td>
+</tr>
+<tr>
+<td><code>remove_global_partner_params</code> (必須)</td>
+<td><code>[String]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="セッションコールバックパラメータのリセット">セッションコールバックパラメータのリセット</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resetsessioncallbackparams</code> (非推奨)</td>
+<td><code>resetGlobalCallbackParams()</code></td>
+</tr>
+<tr>
+<td><code>resetglobalcallbackparams</code></td>
+<td><code>resetGlobalCallbackParams()</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="セッションパートナーパラメータのリセット">セッションパートナーパラメータのリセット</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resetsessionpartnerparams</code> (非推奨)</td>
+<td><code>resetGlobalPartnerParams()</code></td>
+</tr>
+<tr>
+<td><code>resetglobalpartnerparams</code></td>
+<td><code>resetGlobalPartnerParams()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="同意オプション">同意オプション</h3>
+<h4 id="forget-me">Forget Me</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1080,25 +1330,28 @@
 <td><code>gdprforgetme</code></td>
 <td><code>gdprForgetMe()</code></td>
 </tr>
+<tr>
+<td>追加APIの調整：GDPR忘れられる権利</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p>Adjust 追加のAPI: 忘れられる GDPR 権利</p>
 <ul>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#gdpr-right-to-be-forgotten">iOS</a></li>
-<li><a href="https://github.com/adjust/ios_sdk#gdpr-right-to-be-forgotten">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/privacy/#send-erasure-request">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/privacy/#send-erasure-request">Android</a></li>
 </ul>
-<h4 id="サードパーティ共有のトラッキング">サードパーティ共有のトラッキング</h4>
+<h4 id="有効に構成">有効に構成</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustプロパティ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>trackthirdpartysharing</code></td>
-<td><code>trackThirdPartySharing()</code></td>
+<td><code>setenabled</code></td>
+<td><code>enable()</code>/<code>disable()</code></td>
 </tr>
 </tbody>
 </table>
@@ -1106,27 +1359,27 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>enabled</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>enabled</code> (必須)</td>
+<td><code>Bool</code></td>
 </tr>
 </tbody>
 </table>
-<p>Adjust 追加の API: Enable サードパーティ共有の有効化</p>
+<p>Adjust APIリファレンス：トラッキングの無効化</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#third-party-sharing-for-specific-users">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#third-party-sharing-for-specific-users">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/configuration#disable-the-sdk">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/configuration#disable-the-sdk">Android</a></li>
 </ul>
-<h4 id="測定同意のトラッキング">測定同意のトラッキング</h4>
+<h4 id="測定同意の追跡">測定同意の追跡</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Adjust メソッド</th>
+<th>Adjustメソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1140,173 +1393,55 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>measurement_consent</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>measurement_consent</code> (必須)</td>
+<td>Bool</td>
 </tr>
 </tbody>
 </table>
-<p>Adjust 追加のAPI: 測定の同意</p>
+<p>Adjust追加API：同意測定</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#consent-measurement-for-specific-users">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#consent-measurement-for-specific-users">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/privacy#consent-measurement-for-specific-users">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/privacy#consent-measurement-for-specific-users">Android</a></li>
 </ul>
-<h3 id="コールバック-パラメータ">コールバック パラメータ</h3>
-<p>Adjust 追加のAPI: コールバック パラメータ</p>
+<h4 id="第三者共有の追跡">第三者共有の追跡</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Adjustメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trackthirdpartysharing</code></td>
+<td><code>trackThirdPartySharing()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code> (必須)</td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+<p>Adjust追加API：第三者共有の有効化</p>
 <ul>
-<li><a href="https://github.com/adjust/ios_sdk#callback-parameters">iOS</a></li>
-<li><a href="https://github.com/adjust/android_sdk/blob/master/README.md#custom-parameters-overview">Android</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/ios/features/privacy#third-party-sharing-for-specific-users">iOS</a></li>
+<li><a href="https://dev.adjust.com/en/sdk/android/features/privacy#third-party-sharing-for-specific-users">Android</a></li>
 </ul>
-<h4 id="セッション-コールバック-パラメータの追加">セッション コールバック パラメータの追加</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>addsessioncallbackparams</code></td>
-<td><code>addSessionCallbackParams()</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>session_callback</code> (required)</td>
-<td><code>Dicationary</code> または <code>Map</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="セッション-パートナー-パラメータの追加">セッション パートナー パラメータの追加</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>addsessionpartnerparams</code></td>
-<td><code>addSessionPartnerParams()</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>session_partner</code> (required)</td>
-<td><code>Dicationary</code> または <code>Map</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="セッション-コールバック-パラメータの削除">セッション コールバック パラメータの削除</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>removesessioncallbackparams</code></td>
-<td><code>removeSessionCallbackParams()</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>remove_session_callback_params </code> (required)</td>
-<td><code>[String]</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="セッション-パートナー-パラメータの削除">セッション パートナー パラメータの削除</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>removesessionpartnerparams</code></td>
-<td><code>removeSessionPartnerParams()</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>remove_session_partner_params</code> (required)</td>
-<td><code>[String]</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="セッション-コールバック-パラメータのリセット">セッション コールバック パラメータのリセット</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>resetsessioncallbackparams</code></td>
-<td><code>resetSessionCallbackParams()</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="セッション-パートナー-パラメータのリセット">セッション パートナー パラメータのリセット</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Adjust メソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>resetsessionpartnerparams</code></td>
-<td><code>resetSessionPartnerParams()</code></td>
-</tr>
-</tbody>
-</table>
 
 </div>
 
@@ -1352,7 +1487,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1366,23 +1501,17 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">依存関係マネージャ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E6%89%8B%E9%A0%86ios" href="javascript:void(0)">手動による手順（iOS）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95android" href="javascript:void(0)">手動（Android）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">手動インストール</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-kotlin" href="javascript:void(0)">Android (Kotlin)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-java" href="javascript:void(0)">Android (Java)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ios-swift" href="javascript:void(0)">iOS (Swift)</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json-%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSON テンプレート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">サブスクリプションのトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E8%A8%B1%E5%8F%AF%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88-ios" href="javascript:void(0)">トラッキング許可のリクエスト (iOS)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%8F%9B%E5%80%A4%E3%81%AE%E6%9B%B4%E6%96%B0-ios-%E3%81%AE%E3%81%BF" href="javascript:void(0)">変換値の更新 (iOS のみ)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF-%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">コールバック パラメータ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKセットアップ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">コールバックパラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">同意オプション</a></li>
               </nav>
   </aside></nav>
 

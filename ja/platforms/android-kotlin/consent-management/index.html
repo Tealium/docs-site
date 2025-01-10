@@ -174,16 +174,16 @@
 <div class="prose nested-links" id="prose">
   <h2 id="使用法">使用法</h2>
 <p>同意管理モジュールは推奨され、初期化時に自動的に有効化されます。AndroidモバイルとAndroid TVでサポートされています。</p>
-<p><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>TealiumConfig</code></a>内で同意管理ポリシーを初期化します。その後、<a href="/ja/platforms/android-kotlin/api/tealium/#consentmanager"><code>tealium.consentManager</code></a>でTealiumインスタンスを使用してユーザーの同意を管理します。</p>
+<p><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>TealiumConfig</code></a>内で同意管理ポリシーを初期化します。その後、<a href="/ja/platforms/android-kotlin/api/tealium/#consentmanager"><code>tealium.consentManager</code></a>のTealiumインスタンスを使用してユーザーの同意を管理します。</p>
 <p><a href="/ja/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについて詳しく学びましょう。</p>
 <h2 id="同意">同意</h2>
 <h3 id="ポリシーの構成">ポリシーの構成</h3>
-<p>初期化時に以下のいずれかの同意ポリシーを構成します：</p>
+<p>初期化時に同意ポリシーを以下のいずれかに構成します：</p>
 <ul>
 <li><code>ConsentPolicy.GDPR</code></li>
 <li><code>ConsentPolicy.CCPA</code></li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>一度に一つのポリシーのみがデバイス上で強制されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>一度に一つのポリシーしかデバイスに適用できません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val config <span style="color:#f92672">=</span> TealiumConfig<span style="color:#f92672">(...).</span><span style="color:#a6e22e">apply</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  consentManagerPolicy <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">GDPR</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -217,21 +217,21 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentStatus</span> <span style="color:#f92672">=</span> ConsentStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">NOT_CONSENTED</span>
 </span></span></code></pre></div><p>あるいは、同意カテゴリを<code>null</code>に構成します。</p>
 <h2 id="カスタム同意">カスタム同意</h2>
-<p>あなたの組織の同意要件が、私たちの標準的な<a href="/ja/glossary/#opt-in-model-consent">Opt-in</a>および<a href="/ja/glossary/#opt-out-model-consent">Opt-out</a>同意管理ポリシーに含まれていない場合、カスタム同意ポリシーを作成します。</p>
+<p>あなたの組織の同意要件が、私たちの標準的な<a href="/ja/glossary/#opt-in-model-consent">Opt-in</a>および<a href="/ja/glossary/#opt-out-model-consent">Opt-out</a>同意管理ポリシーによってカバーされていない場合、カスタム同意ポリシーを作成します。</p>
 <ol>
 <li><code>ConsentManagementPolicy</code>インターフェースを実装します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val customPolicy <span style="color:#f92672">=</span> object<span style="color:#f92672">:</span> ConsentManagementPolicy <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">//implement methods...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
-<li><code>setCustomPolicy()</code>メソッドを使用して、<code>ConsentPolicy.CUSTOM</code> enumに<code>ConsentManagementPolicy</code>の実装を渡します。
+<li><code>setCustomPolicy()</code>メソッドを使用して、<code>ConsentPolicy.CUSTOM</code>列挙型に<code>ConsentManagementPolicy</code>の実装を渡します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setCustomPolicy</span><span style="color:#f92672">(</span>customPolicy<span style="color:#f92672">)</span>
 </span></span></code></pre></div></li>
 <li><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>consentManagerPolicy</code></a>プロパティを介して<code>TealiumConfig</code>オブジェクトに<code>ConsentPolicy.CUSTOM</code>オプションを渡します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>config<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManagerPolicy</span> <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span>
 </span></span></code></pre></div></li>
 </ol>
-<p>カスタム<code>ConsentManagementPolicy</code>実装は、提供された<code>superPolicy</code>に既存の同意管理メソッドとプロパティを委任することができ、それぞれのイベントで<code>policy</code>キーを自身の名前で上書きします。</p>
+<p>カスタム<code>ConsentManagementPolicy</code>の実装は、提供された<code>superPolicy</code>に既存の同意管理メソッドとプロパティを委任することができ、それぞれのイベントで<code>policy</code>キーを自身の名前で上書きします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomPolicy</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>        val superPolicy<span style="color:#f92672">:</span> ConsentManagementPolicy
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">)</span> <span style="color:#f92672">:</span> ConsentManagementPolicy by superPolicy <span style="color:#f92672">{</span>
@@ -264,7 +264,7 @@
 <tr>
 <td><code>userConsentPreferences</code></td>
 <td><code>UserConsentPreferences</code></td>
-<td><code>ConsentManager</code>がプリファレンスの変更時に自動的に更新する現在の<code>UserConsentPreferences</code></td>
+<td>プリファレンスが変更されたときに<code>ConsentManager</code>によって自動的に更新される現在の<code>UserConsentPreferences</code></td>
 </tr>
 <tr>
 <td><code>consentLoggingEnabled</code></td>
@@ -309,7 +309,7 @@
 </tbody>
 </table>
 <h3 id="例">例</h3>
-<p>以下の例では、ポリシーデータキーを再マッピングして、Tealium EventStreamの固定同意値を避けます：</p>
+<p>以下の例では、ポリシーデータキーを再マップして、Tealium EventStreamの固定同意値を避けます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomPolicy</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>        val superPolicy<span style="color:#f92672">:</span> ConsentManagementPolicy
 </span></span><span style="display:flex;"><span><span style="color:#f92672">)</span> <span style="color:#f92672">:</span> ConsentManagementPolicy by superPolicy <span style="color:#f92672">{</span>
@@ -337,7 +337,7 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>以下の例では、<code>thirdPartyConsentProvider</code>が別の同意プロバイダーへの参照である場合、第三者の同意値を返します：</p>
+</span></span></code></pre></div><p>以下の例では、<code>thirdPartyConsentProvider</code>が別の同意プロバイダーへの参照である場合、サードパーティの同意値を返します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomPolicy</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>        val superPolicy<span style="color:#f92672">:</span> ConsentManagementPolicy<span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>        val thirdPartyConsentLibrary<span style="color:#f92672">:</span> OtherConsentProvider
@@ -408,7 +408,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

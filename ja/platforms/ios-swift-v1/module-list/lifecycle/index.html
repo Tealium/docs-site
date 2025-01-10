@@ -195,9 +195,9 @@
 <li>macOS</li>
 </ul>
 <h2 id="要件">要件</h2>
-<p>ターゲットアプリに<code>UIKit</code>の依存関係が追加されている場合、それ以上の構成や実装は必要ありません。他のプラットフォームビルド（watchOS、macOS）では、ライフサイクルモジュールの関数を手動でトリガーすることができます（<a href="/ja/platforms/ios-swift-v1/module-list/lifecycle/#api-reference">APIリファレンス</a>を参照）。</p>
+<p>ターゲットアプリに<code>UIKit</code>の依存関係が追加されている場合、それ以上の構成や実装は必要ありません。他のプラットフォームのビルド（watchOS、macOS）では、ライフサイクルモジュールの関数を手動でトリガーすることができます（<a href="/ja/platforms/ios-swift-v1/module-list/lifecycle/#api-reference">APIリファレンス</a>を参照）。</p>
 <h2 id="インストール">インストール</h2>
-<p>CocoaPodsまたはCarthageを使用してライフサイクルモジュールをインストールします。</p>
+<p>CocoaPodsまたはCarthageでライフサイクルモジュールをインストールします。</p>
 <h3 id="cocoapods">CocoaPods</h3>
 <p>CocoaPodsでライフサイクルモジュールをインストールするには、以下のpodをPodfileに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TealiumLifecycle&#39;</span>
@@ -209,22 +209,22 @@
 <p>Xcodeでアプリターゲットの一般構成ページに移動します。</p>
 </li>
 <li>
-<p>以下のフレームワークを<strong>Embedded Binaries</strong>セクションに追加します：</p>
+<p>次のフレームワークを<strong>Embedded Binaries</strong>セクションに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">TealiumLifecycle</span><span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 <li>
-<p>ライフサイクルライブラリをインポートするには、プロジェクトに以下のインポート文を追加します：</p>
+<p>ライフサイクルライブラリをインポートするには、プロジェクトに次のインポート文を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumLifecycle</span>
 </span></span></code></pre></div></li>
 </ol>
 <p>フレームワークは自動的にインスタンス化されます。<code>TealiumCore</code>に依存しています。追加のインポート文は必要ありません。iOSのCarthageインストールについては<a href="/ja/platforms/ios-swift-v1/install/#carthage">こちら</a>を参照してください。</p>
 <h2 id="データレイヤー">データレイヤー</h2>
-<p>モジュールが有効な間、以下の変数が各トラッキング呼び出しで送信されます：</p>
+<p>モジュールが有効な間、次の変数が各トラッキング呼び出しで送信されます：</p>
 <table>
 <thead>
 <tr>
 <th>変数名</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -239,7 +239,7 @@
 <tr>
 <td><code>lifecycle_dayofweek_local</code></td>
 <td><code>Number</code></td>
-<td>呼び出しが行われたローカルの曜日、例えば1=日曜日、2=月曜日。</td>
+<td>呼び出しが行われた地元の曜日、例えば1=日曜日、2=月曜日。</td>
 <td><code>13</code></td>
 </tr>
 <tr>
@@ -263,7 +263,7 @@
 <tr>
 <td><code>lifecycle_firstlaunchdate</code></td>
 <td><code>String</code></td>
-<td>最初に検出された起動/ウェイクのGMTタイムスタンプ（ISO8601形式のズールータイムから）。</td>
+<td>最初に検出された起動/ウェイクのGMTタイムスタンプ（UTCからのISO 8601形式）。</td>
 <td><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
 </tr>
 <tr>
@@ -275,7 +275,7 @@
 <tr>
 <td><code>lifecycle_hourofday_local</code></td>
 <td><code>String</code></td>
-<td>呼び出しが行われたローカルの時間（24時間形式）。</td>
+<td>呼び出しが行われた地元の時間（24時間形式）。</td>
 <td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
 </tr>
 <tr>
@@ -305,7 +305,7 @@
 <tr>
 <td><code>lifecycle_launchcount</code></td>
 <td><code>Number</code></td>
-<td>アプリのこのバージョンの起動回数の合計（最後の更新以降）。</td>
+<td>あなたのアプリのこのバージョンの起動回数（最後の更新以降）。</td>
 <td><code>3</code></td>
 </tr>
 <tr>
@@ -323,7 +323,7 @@
 <tr>
 <td><code>lifecycle_sleepcount</code></td>
 <td><code>Number</code></td>
-<td>アプリがスリープに入った回数の合計（更新されるとリセットされます）。</td>
+<td>あなたのアプリがスリープに入った回数の合計（更新されるとリセットされます）。</td>
 <td><code>5</code></td>
 </tr>
 <tr>
@@ -335,13 +335,13 @@
 <tr>
 <td><code>lifecycle_totallaunchcount</code></td>
 <td><code>Number</code></td>
-<td>インストール以降の起動回数の合計（アプリが削除されるとのみリセットされます）。</td>
+<td>インストール以降の起動回数の合計（アプリが削除されるとのみリセットされます）</td>
 <td><code>3</code></td>
 </tr>
 <tr>
 <td><code>lifecycle_totalsecondsawake</code></td>
 <td><code>Number</code></td>
-<td>アプリがインストール以降に起動/アクティブ状態にあった全秒数（アプリが削除されるとのみリセットされます）。</td>
+<td>アプリがインストールされて以降、アプリが起動/アクティブ状態にあった秒数の合計（アプリが削除されるとのみリセットされます）。</td>
 <td><code>36</code></td>
 </tr>
 <tr>
@@ -371,7 +371,7 @@
 <tr>
 <td><code>lifecycle_wakecount</code></td>
 <td><code>Number</code></td>
-<td>アプリのこのバージョンの起動+ウェイクの合計数（更新されるとリセットされます）。</td>
+<td>あなたのアプリのこのバージョンの起動+ウェイクの合計数（更新されるとリセットされます）。</td>
 <td><code>&quot;29&quot;</code></td>
 </tr>
 </tbody>
@@ -381,7 +381,7 @@
 <p>通常、アプリがユーザーによって閉じられると、OSからの通知がライフサイクルのスリープイベントをトリガーしますが、アプリがクラッシュすると、これが発生する時間がありません。したがって、スリープイベントは発生しません。クラッシュ後の次の起動時に、<code>lifecycle_diddetectcrash</code>変数が<code>true</code>に構成され、<code>lifecycle_totalcrashcount</code>変数が1増加します。</p>
 <p>より高度なクラッシュ検出が必要な場合、Crash Reporterモジュールは各クラッシュの詳細とクラッシュの理由を提供します。これは現在、iOSのみでサポートされています。</p>
 <h2 id="apiリファレンス">APIリファレンス</h2>
-<p>これらのAPIメソッドは、<code>UIKit</code>をサポートしていないプラットフォームをターゲットにしている場合にのみ使用する必要があります。</p>
+<p><code>UIKit</code>をサポートしていないプラットフォームを対象としている場合のみ、これらのAPIメソッドを使用する必要があります。</p>
 <h3 id="launchdetected"><code>launchDetected()</code></h3>
 <p>起動イベントでライフサイクルレコードを更新し、ライフサイクルイベントのディスパッチをトリガーします。</p>
 <pre tabindex="0"><code>func someMethodCalledAtLaunchTime {
@@ -396,13 +396,13 @@
 }
 </code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i><code>wakeDetected()</code>の呼び出しは、同じ関数内で<code>launchDetected()</code>の後に安全に追加できます。モジュールは、インスタンス化されたインスタンスごとに単一の起動イベントのみを受け入れます。</p>
 <h3 id="sleepdetected"><code>sleepDetected()</code></h3>
-<p>スリープイベントでライフサイクルレコードを更新し、ライフサイクルイベントのディスパッチをトリガーします。</p>
+<p>アプリ終了前に呼び出されるメソッドで、スリープイベントを記録し、ライフサイクルイベントのディスパッチをトリガーします。</p>
 <pre tabindex="0"><code>func someMethodCalledBeforeAppTerminated {
     tealium?.lifecycle()?.sleepDetected()
 }
 </code></pre><h3 id="dictionary"><code>dictionary</code></h3>
-<p>ライフサイクルデータへの読み取り専用アクセスを提供するプロパティ。<code>[String: Any]</code>の辞書として提供されます。</p>
-<pre tabindex="0"><code>// ライフサイクルデータ辞書から合計ウェイクカウントを取得
+<p>ライフサイクルデータを<code>[String: Any]</code>の辞書として読み取り専用で提供するプロパティ。</p>
+<pre tabindex="0"><code>// ライフサイクルデータ辞書からトータルウェイクカウントを取得します
 let wakeCount = tealium?.lifecycle()?.dictionary?[&#34;lifecycle_totalwakecount&#34;]
 </code></pre>
 </div>
@@ -464,7 +464,7 @@ let wakeCount = tealium?.lifecycle()?.dictionary?[&#34;lifecycle_totalwakecount&
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

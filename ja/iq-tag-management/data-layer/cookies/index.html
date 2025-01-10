@@ -320,7 +320,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".explicit-consent-prompt">明示的な同意プロンプト</a>
         <ul class="pl2  explicit-consent-prompt desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的な同意プロンプトマネージャーについて</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/%E7%AE%A1%E7%90%86/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的同意プロンプトの管理</a></li></ul>
+        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
         <ul class="pl2  consent-preferences-dialog desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -454,7 +454,7 @@
 </tr>
 <tr>
 <td><code>utag_main__ss</code></td>
-<td>ページがセッションの最初のものであるかどうかを示すブール値。<code>1</code>の値は、現在のページがセッションで最初に表示されたページであることを意味し、<code>0</code>の値は、現在のページがセッションで最初に表示されたページではないことを意味します。</td>
+<td>ページがセッションの最初のものかどうかを示すブール値。<code>1</code>の値は、現在のページがセッションで最初に表示されたページであることを意味し、<code>0</code>の値は、現在のページがセッションで最初に表示されたページではないことを意味します。</td>
 </tr>
 <tr>
 <td><code>utag_main__pn</code></td>
@@ -467,31 +467,31 @@
 </tbody>
 </table>
 <h3 id="バージョン450以降">バージョン4.50以降</h3>
-<p><a href="/ja/platforms/javascript/version-4-50/">バージョン4.50以降</a>の<code>utag.js</code>は、<code>utag_main_</code>プレフィックスを使用してスタンドアロンのクッキーを作成および管理します。これは、<code>utag.js</code>が各値を<code>utag_main_</code>で始まるクッキー名を持つクッキーに個別に保存することを意味します。</p>
+<p><a href="/ja/platforms/javascript/version-4-50/"><code>utag.js</code>のバージョン4.50以降</a>は、<code>utag_main_</code>プレフィックスを使用してスタンドアロンのクッキーを作成および管理します。これは、<code>utag.js</code>が各値を<code>utag_main_</code>で始まるクッキー名を持つクッキーに個別に保存することを意味します。</p>
 <p>ブラウザのコンソールでは、これらの個別のクッキーは次のように表示されます：</p>
 <figure><a class="slb" href="/images/iq-tag-management/data-layer/utag-separate-cookies.png"><img src="/images/iq-tag-management/data-layer/utag-separate-cookies.png"/>
     </a>
 </figure>
-<p>このデフォルトのスタンドアロンクッキーの動作を上書きし、<code>utag.js</code>にすべての<code>utag_main</code>クッキーを単一のマルチバリュークッキーに保存するように強制するには、<a href="/ja/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a>構成を使用します。デフォルトのスタンドアロンクッキーの動作を使用する場合、<a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。</p>
+<p>このデフォルトのスタンドアロンクッキーの動作を上書きし、<code>utag.js</code>にすべての<code>utag_main</code>クッキーを単一のマルチバリュークッキーに保存するように強制するには、<a href="/ja/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a>構成を使用します。デフォルトのスタンドアロンクッキーの動作を使用する場合は、<a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><code>utag.js</code>のバージョン4.50から、<code>utag_main</code>の<code>v_id</code>変数は、データプライバシーと同意目的を遵守するためにTealium Collectタグによって構成されます。この動作を上書きして、すべての訪問に対してこのクッキーを生成するには、<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a>構成を有効にします。</p>
 <h3 id="バージョン449以前">バージョン4.49以前</h3>
-<p>バージョン4.49以前の<code>utag.js</code>は、いくつかの区切られたキー/値ペアを持つ単一のマルチバリュークッキーである<code>utag_main</code>を作成および維持します。</p>
+<p><code>utag.js</code>のバージョン4.49以前は、いくつかの区切られたキー値ペアを持つ単一のマルチバリュークッキーである<code>utag_main</code>を作成および維持します。</p>
 <p>ブラウザのコンソールでは、この単一のマルチバリュークッキーは次のように表示されます：</p>
 <figure><a class="slb" href="/images/iq-tag-management/data-layer/utag-multivalue-cookie.png"><img src="/images/iq-tag-management/data-layer/utag-multivalue-cookie.png"/>
     </a>
 </figure>
 <h2 id="クッキー関数">クッキー関数</h2>
 <p><code>utag.js</code>は、クッキーを読み書きする簡単な方法を提供する2つのクッキー関数を使用します。詳細については、<a href="/ja/platforms/javascript/api/cookie-functions/">cookie functions</a>を参照してください。</p>
-<p><a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。この構成は、タグとカスタム関数が未宣言のクッキーを構成しないように保証します。また、<a href="/ja/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>が未宣言のクッキーを書き込むのを防ぎます。</p>
+<p><a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。この構成は、タグとカスタム関数が未宣言のクッキーを構成しないようにします。また、<a href="/ja/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>が未宣言のクッキーを書き込むのを防ぎます。</p>
 <h2 id="拡張機能からのクッキー">拡張機能からのクッキー</h2>
 <h3 id="データ値の永続化">データ値の永続化</h3>
 <p><strong>データ値の永続化</strong>拡張機能は、iQタグ管理インターフェースからクッキーを構成するために使用できます。クッキーは、<code>utag_main</code>プレフィックスの有無に関係なく構成できます。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>を参照してください。</p>
-<h3 id="スプリットセグメンテーション">スプリットセグメンテーション</h3>
-<p><strong>スプリットセグメンテーション</strong>拡張機能は、通常、A/Bテストのための訪問セグメントを作成するために使用されます。拡張機能は、セグメント名をクッキーに保存します。</p>
+<h3 id="split-segmentation">Split Segmentation</h3>
+<p><strong>Split Segmentation</strong>拡張機能は、通常はA/Bテストのために訪問のセグメントを作成するために使用されます。拡張機能は、セグメント名をクッキーに保存します。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/split-segmentation-extension/">Split Segmentation extension</a>を参照してください。</p>
-<h3 id="プライバシーマネージャー">プライバシーマネージャー</h3>
-<p><strong>プライバシーマネージャー</strong>拡張機能は、<code>OPTOUTMULTI</code>という名前のクッキーを使用して、訪問のプライバシー構成を次回のサイト訪問時に保存します。</p>
+<h3 id="privacy-manager">Privacy Manager</h3>
+<p><strong>Privacy Manager</strong>拡張機能は、<code>OPTOUTMULTI</code>という名前のクッキーを使用して、訪問のプライバシー構成を次回のサイト訪問時に保存します。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager extension</a>を参照してください。</p>
 <h2 id="タグからのクッキー">タグからのクッキー</h2>
 <p>タグマーケットプレイスの一部のタグは、匿名識別子やその他の情報を永続化するために<a href="/ja/platforms/javascript/api/cookie-functions/">cookie functions</a>を使用します。</p>
@@ -511,7 +511,7 @@
 </tr>
 <tr>
 <td><code>utag_main_dc_group</code></td>
-<td>サンプルサイズ構成を使用して、どのイベントがサンプリングされるかを決定するためのランダムな数値。</td>
+<td><strong>Sample Size</strong>構成を使用して、どのイベントがサンプリングされるかを決定するためのランダムな数値。</td>
 </tr>
 <tr>
 <td><code>utag_main_dc_visit</code></td>
@@ -586,7 +586,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -606,8 +606,8 @@
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E9%96%A2%E6%95%B0" href="javascript:void(0)">クッキー関数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%8B%E3%82%89%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">拡張機能からのクッキー</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%80%A4%E3%81%AE%E6%B0%B8%E7%B6%9A%E5%8C%96" href="javascript:void(0)">データ値の永続化</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%97%E3%83%AA%E3%83%83%E3%83%88%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">スプリットセグメンテーション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC" href="javascript:void(0)">プライバシーマネージャー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split-segmentation" href="javascript:void(0)">Split Segmentation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#privacy-manager" href="javascript:void(0)">Privacy Manager</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%8B%E3%82%89%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">タグからのクッキー</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect%E3%82%BF%E3%82%B0%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">Tealium Collectタグのクッキー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%BF%E3%82%B0%E3%81%8B%E3%82%89%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">サードパーティタグからのクッキー</a></li>

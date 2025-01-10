@@ -257,8 +257,8 @@
 <p>一つまたは複数の訪問レコードを削除する前に、以下の点を考慮してください：</p>
 <ul>
 <li>訪問レコードの削除リクエストは、訪問ID値に関連するすべてのデータ、ステッチされた訪問レコードを含む、を削除する結果となります。</li>
-<li>削除リクエストは処理のためにキューに入れられ、完了までに数日かかることがあります。</li>
-<li>訪問が他の訪問に置き換えられた場合、または置き換えられた場合、ステッチされたすべての訪問が削除されます。</li>
+<li>削除リクエストは処理のためにキューに入れられ、完了までに数日かかる場合があります。</li>
+<li>訪問が他の訪問に置き換えられた場合、または他の訪問に置き換えられた場合、ステッチされたすべての訪問が削除されます。</li>
 <li><code>DELETE</code> コマンドへのパラメータは、クエリストリングパラメータではなく、コンテンツタイプ &quot; <code>application/x-www-form-urlencoded</code>&quot; を使用してURLエンコードされたフォームフィールドとして渡す必要があります。</li>
 </ul>
 <p>訪問のレコードを削除するには、以下の <code>DELETE</code> コマンドを使用します：</p>
@@ -295,8 +295,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#34;attributeId=86&#34;</span>
 </span></span><span style="display:flex;"><span>--data-urlencode <span style="color:#e6db74">&#34;attributeValue=user@example.com&#34;</span>
 </span></span></code></pre></div><h3 id="レスポンスの例-1">レスポンスの例</h3>
-<p>削除リクエストへのレスポンスには、<code>transaction_id</code> とステータスが含まれます。<code>transaction_id</code> は、以前のリクエストのステータスを確認するための <code>GET</code> トランザクションコールで使用されます。次のステータス文字列が可能です：<code>PENDING</code>、<code>SUCCESS</code>、または <code>FAILED</code>。</p>
-<p>成功したレスポンスは、<code>transactionId</code> 値を持つ <code>202 Accepted</code> メッセージを表示します。もし同じ <code>account</code>、<code>profile</code>、<code>attributeId</code> 、および <code>attributeValue</code> を持つリクエストが既に存在し、そのトランザクションステータスが <code>PENDING</code> である場合、既存のトランザクションIDが返されます。以下のようになります：</p>
+<p>削除リクエストへのレスポンスには、<code>transaction_id</code> とステータスが含まれます。<code>transaction_id</code> は、前のリクエストのステータスを確認するための <code>GET</code> トランザクションコールで使用されます。次のステータス文字列が可能です：<code>PENDING</code>、<code>SUCCESS</code>、または <code>FAILED</code>。</p>
+<p>成功したレスポンスは、<code>transactionId</code> 値を持つ <code>202 Accepted</code> メッセージを表示します。もし同じ <code>account</code>、<code>profile</code>、<code>attributeId</code> 、および <code>attributeValue</code> を持つリクエストが既に存在し、トランザクションステータスが <code>PENDING</code> の場合、既存のトランザクションIDが返されます。以下のようになります：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;transactionId&#34;</span> : <span style="color:#e6db74">&#34;{transactionId1}&#34;</span>  
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -321,7 +321,7 @@
 </tbody>
 </table>
 <h2 id="get-transaction">GET transaction</h2>
-<p><em>トランザクション</em> は、任意の <code>GET</code> visitor リクエストまたは <code>DELETE</code> visitor リクエストを指します。<code>DELETE</code> visitor リクエストは後で処理するためにキューに入れられ、これにより <code>transaction_id</code> がそのリクエストとIDのユニークなレコードとなり、処理ステータスを確認する際に使用されます。</p>
+<p><em>トランザクション</em> は、任意の <code>GET</code> visitor または <code>DELETE</code> visitor リクエストを指します。<code>DELETE</code> visitor リクエストは後で処理するためにキューに入れられ、これにより <code>transaction_id</code> がそのリクエストとIDのユニークなレコードとなり、処理ステータスを確認する際に使用されます。</p>
 <p>トランザクションのステータスを確認するには、以下の <code>GET</code> コマンドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v2/visitor/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/transactions/<span style="color:#f92672">{</span>transaction_id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="curlリクエストの例-2">cURLリクエストの例</h3>
@@ -329,7 +329,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\ </span>
 </span></span><span style="display:flex;"><span>https://api.tealiumiq.com/v2/visitor/accounts/my_account/profiles/main/transactions/0123456789
 </span></span></code></pre></div><h3 id="レスポンスの例-2">レスポンスの例</h3>
-<p>レスポンスには、<em>key</em> が <code>transaction_id</code> で <em>value</em> が次のステータス文字列のいずれかであるオブジェクトが含まれます：<code>PENDING</code>、<code>SUCCESS</code>、または <code>FAILED</code>。</p>
+<p>レスポンスには、<em>キー</em> が <code>transaction_id</code> で <em>値</em> が次のステータス文字列のいずれかであるキー-値ペアのオブジェクトが含まれます：<code>PENDING</code>、<code>SUCCESS</code>、または <code>FAILED</code>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;0123456789&#34;</span> : <span style="color:#e6db74">&#34;SUCCESS&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -340,7 +340,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\ </span>
 </span></span><span style="display:flex;"><span>https://api.tealiumiq.com/v2/visitor/accounts/my_account/profiles/main/ids
 </span></span></code></pre></div><h3 id="レスポンスの例-3">レスポンスの例</h3>
-<p>このコマンドのレスポンスは、訪問ID属性の数値IDと名前を表すキー/値のペアのオブジェクトです。</p>
+<p>このコマンドのレスポンスは、訪問ID属性の数値IDと名前を表すキー-値ペアのオブジェクトです。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;43&#34;</span> : <span style="color:#e6db74">&#34;Email Address&#34;</span>,  
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;57&#34;</span> : <span style="color:#e6db74">&#34;Tax ID Number&#34;</span>
@@ -390,7 +390,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月25日
+          <p>最終更新日 ::  2025年January月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
