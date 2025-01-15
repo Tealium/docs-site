@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -537,8 +537,8 @@
 <ul>
 <li><strong>Decimal (default)</strong>
 <ul>
-<li>Decimal values can have zero (0) or more decimal digits.</li>
-<li>Example: <code>12</code>, <code>12.0</code>, <code>12.345</code></li>
+<li>Decimal values can have zero or more decimal digits.</li>
+<li>For example: <code>12</code>, <code>12.0</code>, <code>12.345</code></li>
 <li>Decimal values use the Java Double class. For more information, see <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html">Class Double</a>.</li>
 <li>Recommended for attributes that represent monetary values.</li>
 </ul>
@@ -546,7 +546,7 @@
 <li><strong>Integer</strong>
 <ul>
 <li>Only whole number values are stored.</li>
-<li>Example: <code>12</code>, <code>-4</code>, <code>3214</code></li>
+<li>For example: <code>12</code>, <code>-4</code>, <code>3214</code></li>
 <li>Useful for number attributes that represent quantities, counters, or scores.</li>
 </ul>
 </li>
@@ -621,6 +621,7 @@ order_tax_amount: <code>3.29</code></li>
 <li><strong>Result</strong>: <code>43.19</code></li>
 </ul>
 <h3 id="set-difference-between-two-dates">Set difference between two dates</h3>
+<p>(AudienceStream only)</p>
 <p>Calculates the elapsed time between two events. Elapsed time can be expressed as one of the following:</p>
 <ul>
 <li>Minutes</li>
@@ -641,6 +642,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>367</code></li>
 </ul>
 <h3 id="set-rolling-average-based-on-timeline">Set rolling average based on timeline</h3>
+<p>(AudienceStream only)</p>
 <p>The rolling average is the arithmetic mean of numerical values captured over time. These values come from number and <a href="/server-side/attributes/data-types/tally/">tally</a> attributes that are collected as entries in a <a href="/server-side/attributes/data-types/timeline/">timeline</a>. The timeline&rsquo;s expiration determines which entries can be factored into the final average. If there is not an expiration date, it is a simple average solution.</p>
 <p><strong>Attribute Name</strong>: Average Order Value</p>
 <ul>
@@ -649,6 +651,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>35.00</code></li>
 </ul>
 <h3 id="set-rolling-sum-based-on-timeline">Set rolling sum based on timeline</h3>
+<p>(AudienceStream only)</p>
 <p>A rolling sum is the aggregate of numerical values in a number or <a href="/server-side/attributes/data-types/tally/">tally</a> attribute that are captured as entries in a <a href="/server-side/attributes/data-types/timeline/">timeline</a>. The timeline&rsquo;s expiration determines which entries can be factored in during the aggregation.</p>
 <p><strong>Attribute Name</strong>: Total Order Value</p>
 <ul>
@@ -665,6 +668,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>5.00</code></li>
 </ul>
 <h3 id="set-number-to-tally-value">Set number to tally value</h3>
+<p>(AudienceStream only)</p>
 <p>Set the number to a specific value within the tally. Specify the tally attribute and the name of the entry in the tally. For example, a tally for Site Category Views might have an entry for &ldquo;Shoes&rdquo;.</p>
 <p><strong>Attribute Name</strong>: Shoe Category View Count</p>
 <ul>
@@ -673,6 +677,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>42</code></li>
 </ul>
 <h3 id="set-number-to-the-count-of-items-in-tally">Set number to the count of items in tally</h3>
+<p>(AudienceStream only)</p>
 <p>Set the attribute to the number of entries in a tally. For example, a tally for Site Category Views might have three entries in it.</p>
 <p><strong>Attribute Name</strong>: Number of Categories Viewed</p>
 <ul>
@@ -688,7 +693,8 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>3.00</code></li>
 </ul>
 <h3 id="set-number-to-the-count-of-items-in-set-of-strings">Set number to the count of items in set of strings</h3>
-<p>Set the number to the count of items in a set of strings. For example, a set of strings Active Browser Types might have 3 entries.</p>
+<p>(AudienceStream only)</p>
+<p>Set the number to the count of items in a set of strings. For example, a set of strings Active Browser Types might have three entries.</p>
 <p><strong>Attribute Name</strong>: Number of Active Browser Types</p>
 <ul>
 <li><strong>Initial</strong>: &mdash;</li>
@@ -696,6 +702,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>3.00</code></li>
 </ul>
 <h3 id="set-number-to-tallys-rolling-max-based-on-a-timeline">Set number to tally&rsquo;s rolling max based on a timeline</h3>
+<p>(AudienceStream only)</p>
 <p>Set the number to the rolling maximum of another number in a tally captured within a timeline.</p>
 <p><strong>Attribute Name</strong>: Highest Order Value</p>
 <ul>
@@ -704,6 +711,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>50.00</code></li>
 </ul>
 <h3 id="set-number-to-change-in-number">Set number to change in number</h3>
+<p>(AudienceStream only)</p>
 <p>Set this attribute to the difference between it and another attribute since the last event. For example, use this enrichment to capture the difference between a previous order amount and the current order amount. To set an attribute named Change in Order Value, set it to the change in <code>order_subtotal</code> since the previous order.</p>
 <p><strong>Attribute Name</strong>: Change in Order Value</p>
 <ul>
@@ -712,6 +720,7 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>Result</strong>: <code>12.00</code></li>
 </ul>
 <h3 id="set-number-to-change-in-date">Set number to change in date</h3>
+<p>(AudienceStream only)</p>
 <p>Set this attribute to the change in value of the selected value between this event and the last event. For example, use this enrichment to capture the change in months of the Last Purchase Date date attribute each time a purchase occurs.</p>
 <p>The change in date can be expressed as one of the following:</p>
 <ul>
@@ -728,6 +737,33 @@ Current Visit Date: <code>&quot;2019/11/01&quot;</code></li>
 Last Purchase Date (last event): <code>&quot;10/31/2019&quot;</code><br>
 Last Purchase Date (this event): <code>&quot;12/31/2019&quot;</code></li>
 <li><strong>Result</strong>: 2 (months)</li>
+</ul>
+<h3 id="set-to-number-based-on-average-of-an-array-of-numbers">Set To Number Based On Average of An Array of Numbers</h3>
+<p>(EventStream only)</p>
+<p>Set this attribute to the average of an array of numbers.</p>
+<p><strong>Attribute Name</strong>: Average Purchase Price</p>
+<ul>
+<li><strong>Initial</strong>: &mdash;</li>
+<li><strong>Enriched With</strong>: <code>[20.00, 25.00, 30.00, 35.00, 40.00]</code></li>
+<li><strong>Result</strong>: <code>30.00</code></li>
+</ul>
+<h3 id="set-to-number-based-on-max-of-an-array-of-numbers">Set To Number Based On Max of An Array of Numbers</h3>
+<p>(EventStream only)</p>
+<p>Set this attribute to the maximum value within an array of numbers.</p>
+<p><strong>Attribute Name</strong>: Most Expensive Product Purchased</p>
+<ul>
+<li><strong>Initial</strong>: &mdash;</li>
+<li><strong>Enriched With</strong>: <code>[20.00, 25.00, 30.00, 35.00, 40.00]</code></li>
+<li><strong>Result</strong>: <code>40.00</code></li>
+</ul>
+<h3 id="set-to-number-based-on-min-of-an-array-of-numbers">Set To Number Based On Min of An Array of Numbers</h3>
+<p>(EventStream only)</p>
+<p>Set this attribute to the minimum value within an array of numbers.</p>
+<p><strong>Attribute Name</strong>: Least Expensive Product Purchased</p>
+<ul>
+<li><strong>Initial</strong>: &mdash;</li>
+<li><strong>Enriched With</strong>: <code>[20.00, 25.00, 30.00, 35.00, 40.00]</code></li>
+<li><strong>Result</strong>: <code>20.00</code></li>
 </ul>
 <h3 id="set-to-the-number-of-items-in-an-array">Set to the number of items in an array</h3>
 <p>Set to the number of items in an array. For example, to store the number of products in the cart, use this enrichment to capture the number of items in the <code>cart_product_id</code> array.</p>
@@ -797,7 +833,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 13, 2024 
+          <p>This page was last updated:  January 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -830,6 +866,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-number-to-tallys-rolling-max-based-on-a-timeline" href="javascript:void(0)">Set number to tally’s rolling max based on a timeline</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-number-to-change-in-number" href="javascript:void(0)">Set number to change in number</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-number-to-change-in-date" href="javascript:void(0)">Set number to change in date</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-to-number-based-on-average-of-an-array-of-numbers" href="javascript:void(0)">Set To Number Based On Average of An Array of Numbers</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-to-number-based-on-max-of-an-array-of-numbers" href="javascript:void(0)">Set To Number Based On Max of An Array of Numbers</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-to-number-based-on-min-of-an-array-of-numbers" href="javascript:void(0)">Set To Number Based On Min of An Array of Numbers</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-to-the-number-of-items-in-an-array" href="javascript:void(0)">Set to the number of items in an array</a></li>
               </nav>
   </aside></nav>

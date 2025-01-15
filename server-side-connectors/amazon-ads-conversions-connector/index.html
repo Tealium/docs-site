@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -406,6 +406,43 @@
 <li><strong>API Base URL</strong>: Required. Select your API Base URL.</li>
 <li><strong>Amazon Advertiser ID</strong>: Required. Enter your Amazon Advertising account ID.</li>
 </ul>
+<h2 id="deduplication-for-web-events">Deduplication for web events</h2>
+<p>To configure this connector to deduplicate events from the Amazon Ads Server tag, use the event IDs sent as event attributes with the following naming convention:</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">amazon_event_id_{eventName}_{tagID}
+</code></pre><p>For example, a checkout event from tag #32 would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_checkout_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A page view event from the same tag would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_pageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Use a separate action for each type of event. Map the event-specific event ID attribute to <code>Event ID</code> with the matching event name mapped to <code>Event Name</code>. For example:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tealium attribute</th>
+<th style="text-align:left">Amazon Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>amazon_event_id_checkout_32</code> (attribute)</td>
+<td style="text-align:left">Event ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&quot;Checkout&quot;</code> (custom text)</td>
+<td style="text-align:left">Event Name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="automatic-deduplication">Automatic deduplication</h3>
+<p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an <code>Event ID</code> if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
+<p>The connector follows this order of operations:</p>
+<ul>
+<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer (for example: <code>amazon_event_id_checkout_32</code>), this value supersedes anything mapped in <code>Event ID</code>.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <code>Event ID</code> is used, if it is populated.</li>
+</ul>
 <h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -447,7 +484,7 @@
 <tbody>
 <tr>
 <td>Country Code</td>
-<td>(Required) The country where the user performing the event is located, in ISO 3166-1 alpha-2 format.</td>
+<td>Required. The country where the user performing the event is located, in ISO 3166-1 alpha-2 format.</td>
 </tr>
 <tr>
 <td>Conversion Time</td>
@@ -490,7 +527,7 @@
 </tr>
 <tr>
 <td>Phone (already SHA256 hashed)</td>
-<td>Provide a phone number which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a phone number that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Phone (apply SHA256 hash)</td>
@@ -498,7 +535,7 @@
 </tr>
 <tr>
 <td>First Name (already SHA256 hashed)</td>
-<td>Provide a first name which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a first name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>First Name (apply SHA256 hash)</td>
@@ -506,7 +543,7 @@
 </tr>
 <tr>
 <td>Last Name (already SHA256 hashed)</td>
-<td>Provide a last name which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a last name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Last Name (apply SHA256 hash)</td>
@@ -514,7 +551,7 @@
 </tr>
 <tr>
 <td>Address (already SHA256 hashed)</td>
-<td>Provide an address which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide an address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Address (apply SHA256 hash)</td>
@@ -522,7 +559,7 @@
 </tr>
 <tr>
 <td>City (already SHA256 hashed)</td>
-<td>Provide a city which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a city that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>City (apply SHA256 hash)</td>
@@ -530,7 +567,7 @@
 </tr>
 <tr>
 <td>State (already SHA256 hashed)</td>
-<td>Provide a state which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a state that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>State (apply SHA256 hash)</td>
@@ -538,7 +575,7 @@
 </tr>
 <tr>
 <td>Postal Code (already SHA256 hashed)</td>
-<td>Provide a postal code which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide a postal code that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Postal Code (apply SHA256 hash)</td>
@@ -546,7 +583,26 @@
 </tr>
 <tr>
 <td>MAID</td>
-<td>Mobile Identifier - MAID, ADID, IDFA, or FIREADID accepted.</td>
+<td>Mobile Identifier. Valid values are <code>MAID</code>, <code>ADID</code>, <code>IDFA</code>, and <code>FIREADID</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="automatic-deduplication-1">Automatic Deduplication</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic Deduplication</td>
+<td>When the <strong>Tealium iQ Tag ID</strong> is provided, we will automatically look for your Event ID value sent from Tealium iQ.</td>
+</tr>
+<tr>
+<td>Tag Conversion Type</td>
+<td>When enabling Automatic Deduplication, select the Conversion Type sent client-side with the Tag <code>ID</code> selected in the<strong>Automatic Deduplication</strong> parameter:<ul><li>ADD_TO_SHOPPING_CART</li><li>APPLICATION</li><li>CHECKOUT</li><li>CONTACT</li><li>LEAD</li><li>OFF_AMAZON_PURCHASES</li><li>PAGE_VIEW</li><li>SEARCH</li><li>SIGN_UP</li><li>SUBSCRIBE</li><li>OTHER</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -611,7 +667,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2024 
+          <p>This page was last updated:  January 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -628,7 +684,9 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion" href="javascript:void(0)">Action — Send Conversion</a></li>
               </nav>
   </aside></nav>

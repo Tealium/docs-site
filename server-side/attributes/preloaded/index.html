@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -525,10 +525,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="preloaded-attributes">Preloaded attributes</h2>
-<p>For your convenience, AudienceStream and EventStream contain a set of preloaded visit and visitor attributes. Each attribute is preconfigured with statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional information from the visitor beyond standard web traffic data from the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</p>
+  <h2 id="how-it-works">How it works</h2>
+<p>For your convenience, AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes. Each attribute is configured to collect statistical information that can help you determine useful information about each visitor or visit. These attributes do not require additional attributes beyond the standard event data from the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Preloaded attributes cannot be modified, but you can duplicate them and modify the copy. The duplicate contains all of the enrichments and rules from the original.</p>
-<h3 id="visitor-attributes">Visitor attributes</h3>
+<h2 id="visitor-attributes">Visitor attributes</h2>
 <table>
 <thead>
 <tr>
@@ -536,6 +536,7 @@
 <th>ID</th>
 <th>Type</th>
 <th>Description</th>
+<th>Enrichments</th>
 </tr>
 </thead>
 <tbody>
@@ -544,154 +545,179 @@
 <td>26</td>
 <td>Number</td>
 <td>The average visit duration in minutes</td>
+<td>Set ratio <code>Average visit duration in minutes</code> to <code>Total time spent on site in minutes</code> divided by <code>Lifetime visit count</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Average visits per week</td>
 <td>29</td>
 <td>Number</td>
 <td>Average visits per week</td>
+<td>Set ratio  <code>Average visits per week</code> to <code>Lifetime visit count</code> divided by <code>Weeks since first visit</code> when new visit if <code>Weeks since first visit</code> is greater than or equal to <code>1</code>.</td>
 </tr>
 <tr>
 <td>Fan</td>
 <td>30</td>
 <td>Badge</td>
 <td>The visitor has visited more that two times and has more direct visits than referrals.</td>
+<td>Assign <code>Fan</code> badge to visitor when new visit if <code>Total direct visits</code> is greater than <code>Total referred visits</code>.</td>
 </tr>
 <tr>
 <td>First visit</td>
 <td>23</td>
 <td>Date</td>
 <td>The date of the first visit</td>
+<td>Set <code>First visit_copy</code> to  <code>Last event timestamp</code> when new visitor.</td>
 </tr>
 <tr>
 <td>Frequent visitor</td>
 <td>31</td>
 <td>Badge</td>
 <td>The visitor has visited two or more visits per week on average.</td>
+<td>Remove <code>Frequent visitor</code> badge from visitor when new visit if <code>Average visits per week</code> is less than <code>2</code> and assign <code>Frequent visitor</code> to visitor when new visit if <code>Average visits per week</code> is greater than or equal to <code>2</code>.</td>
 </tr>
 <tr>
 <td>Last event URL</td>
 <td>17</td>
 <td>String</td>
 <td>The last event URL for the visitor</td>
+<td>Set string <code>Last event URL</code> to <code>Current URL</code> when any event.</td>
 </tr>
 <tr>
 <td>Last visit</td>
 <td>24</td>
 <td>Date</td>
 <td>The date of the last visit</td>
+<td>Set <code>Last visit</code> to Last event timestamp when visit ended.</td>
 </tr>
 <tr>
 <td>Lifetime browser types used</td>
 <td>57</td>
 <td>Tally</td>
 <td>A tally of how many times each type of browser is used</td>
+<td>For tally <code>Lifetime browser types used</code> increment all values by <code>1</code> if found in <code>Active browser types</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Lifetime browser types used (favorite)</td>
 <td>56</td>
 <td>String</td>
 <td>The favorite item out of the Lifetime browser types used attribute</td>
+<td>Automatically generated from Lifetime browser types used.</td>
 </tr>
 <tr>
 <td>Lifetime browser versions used</td>
 <td>63</td>
 <td>Tally</td>
 <td>A tally of browser versions used</td>
+<td>For tally <code>Lifetime browser versions used</code> increment all values by <code>1</code> if found in <code>Active browser versions</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Lifetime browser versions used (favorite)</td>
 <td>62</td>
 <td>String</td>
 <td>The favorite out of the Lifetime browser versions used attribute</td>
+<td>Automatically generated from Lifetime browser versions used.</td>
 </tr>
 <tr>
 <td>Lifetime devices used</td>
 <td>55</td>
 <td>Tally</td>
 <td>A tally of devices used</td>
+<td>For tally <code>Lifetime devices used</code> increment all values by <code>1</code> if found in <code>Active devices</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Lifetime devices used (favorite)</td>
 <td>54</td>
 <td>String</td>
 <td>The favorite item out of the Lifetime devices used attribute</td>
+<td>Automatically generated from Lifetime devices used.</td>
 </tr>
 <tr>
 <td>Lifetime event count</td>
 <td>22</td>
 <td>Number</td>
 <td>The total number of events triggered by user</td>
+<td>Increment number <code>Lifetime event count</code> by <code>1</code> when any event.</td>
 </tr>
 <tr>
 <td>Lifetime operating systems used</td>
 <td>59</td>
 <td>Tally</td>
 <td>A tally of operating systems used</td>
+<td>For tally <code>Lifetime operating systems used</code> increment all values by <code>1</code> if found in <code>Active operating systems</code> when visit ended</td>
 </tr>
 <tr>
 <td>Lifetime operating systems used (favorite)</td>
 <td>58</td>
 <td>String</td>
 <td>The favorite item out of the Lifetime operating systems used attribute</td>
+<td>Automatically generated from Lifetime operating systems used.</td>
 </tr>
 <tr>
 <td>Lifetime platforms used</td>
 <td>61</td>
 <td>Tally</td>
 <td>A tally of platforms used</td>
+<td>For tally <code>Lifetime platforms used</code> increment all values by <code>1</code> if found in <code>Active platforms</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Lifetime platforms used (favorite)</td>
 <td>60</td>
 <td>String</td>
 <td>The favorite item out of the Lifetime platforms used attribute</td>
+<td>Automatically generated from Lifetime platforms used.</td>
 </tr>
 <tr>
 <td>Lifetime visit count</td>
 <td>21</td>
 <td>Number</td>
 <td>Total number of times user has visited site</td>
+<td><ul><li>Set ratio <code>Average visit duration in minutes</code> to <code>Total time spent on site in minutes</code> divided by <code>Lifetime visit count</code> when visit ended.</li><li>Set ratio <code>Average visits per week</code> to <code>Lifetime visit count</code> divided by <code>Weeks since first visit</code> when new visit if <code>Weeks since first visit</code> is greater than or equal to <code>1</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Returning visitor</td>
 <td>27</td>
-<td>Badge</td>
+<td>Boolean</td>
 <td>The visitor is a returning visitor.</td>
+<td>Set <code>Returning visitor</code> to <code>true</code> when new visit <code>Lifetime visit count</code> is greater than <code>1</code>.</td>
 </tr>
 <tr>
 <td>Total direct visits</td>
 <td>15</td>
 <td>Number</td>
 <td>The total number of direct visits</td>
+<td>Increment number <code>Total direct visits</code> by <code>1</code> when new visit if <code>Referring URL</code> is empty or <code>Referring URL</code> equals <code>Current URL</code>.</td>
 </tr>
 <tr>
 <td>Total referred visits</td>
 <td>16</td>
 <td>Number</td>
 <td>The total number of referred visits</td>
+<td>Increment number <code>Total referred visits</code> by <code>1</code> when new visit if <code>Referring URL</code> is not empty and <code>Referring URL</code> does not equal <code>Current URL</code>.</td>
 </tr>
 <tr>
 <td>Total time spent on site in minutes</td>
 <td>25</td>
 <td>Number</td>
 <td>The sum of the duration of all user visits</td>
+<td>Increment number <code>Total time spent on site in minutes</code> by <code>Visit duration </code> when visit ended.</td>
 </tr>
 <tr>
 <td>Unbadged</td>
 <td>32</td>
 <td>Badge</td>
 <td>The visitor has not been assigned any badges.</td>
+<td>Assign <code>Unbadged</code> badge to visitor when new visitor.</td>
 </tr>
 <tr>
 <td>Weeks since first visit</td>
 <td>28</td>
 <td>Number</td>
 <td>The number of weeks elapsed since first visit</td>
+<td>Set ratio <code>Average visits per week</code> to <code>Lifetime visit count</code> divided by <code>Weeks since first visit</code> when new visit if <code>Weeks since first visit</code> is greater than or equal to <code>1</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="visit-attributes">Visit attributes</h3>
+<h2 id="visit-attributes">Visit attributes</h2>
 <table>
 <thead>
 <tr>
@@ -699,6 +725,7 @@
 <th>ID</th>
 <th>Type</th>
 <th>Description</th>
+<th>Enrichments</th>
 </tr>
 </thead>
 <tbody>
@@ -707,112 +734,130 @@
 <td>44</td>
 <td>String</td>
 <td>The browser actively being used by the visitor</td>
+<td><ul><li>Set string <code>Active browser version</code> to <code>Active browser type</code> when any event if <code>User Agent</code> does not contain <code>Firefox</code> and <code>User Agent</code> does not contain <code>Safari</code> and <code>User Agent</code> does not contain <code>MSIE</code> and <code>User Agent</code> does not contain <code>Edg</code> and <code>User Agent</code> does not contain Opera.</li><li>Set string <code>Active browser version</code> to <code>Active browser type</code> when any event <code>User Agent</code> is <code>Chrome</code>.</li><li>Set string <code>Active browser version</code> to <code>Active browser type</code> when any event <code>User Agent</code> is <code>Firefox</code>.</li><li>Set string <code>Active browser version</code> to <code>Active browser type</code> when any event <code>User Agent</code> is <code>Opera</code>.</li><li>For <code>Set of Strings</code> Active browser types add <code>Active browser type</code> when any event.</li></ul></td>
 </tr>
 <tr>
 <td>Active browser types</td>
 <td>49</td>
 <td>Set of strings</td>
 <td>A deduplicated list of browser types used this visit</td>
+<td>For tally <code>Lifetime browser types used</code> increment all values by <code>1</code> if found in <code>Active browser types when visit ended.</code></td>
 </tr>
 <tr>
 <td>Active browser version</td>
 <td>48</td>
 <td>String</td>
 <td>The browser version actively being used by the visitor</td>
+<td>For set of strings <code>Active browser versions</code> add <code>Active browser version</code> when any event.</td>
 </tr>
 <tr>
 <td>Active browser versions</td>
 <td>53</td>
 <td>Set of strings</td>
 <td>A deduplicated list of browser versions this visit</td>
+<td>For tally <code>Lifetime browser versions used</code> increment all values by <code>1</code> if found in <code>Active browser versions</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Active device</td>
 <td>46</td>
 <td>String</td>
 <td>The device actively being used by the visitor</td>
+<td>For set of strings <code>Active devices</code> add <code>Active device</code> when any visit.</td>
 </tr>
 <tr>
 <td>Active devices</td>
 <td>51</td>
 <td>Set of strings</td>
 <td>A deduplicated list of devices this visit</td>
+<td>For tally <code>Lifetime devices used</code> increment all values by <code>1</code> if found in <code>Active devices</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Active operating system</td>
 <td>45</td>
 <td>String</td>
 <td>The operating system actively being used by the visitor</td>
+<td>For set of strings <code>Active operating systems</code> add <code>Active operating system</code> when any event.</td>
 </tr>
 <tr>
 <td>Active operating systems</td>
 <td>50</td>
 <td>Set of strings</td>
 <td>A deduplicated list of operating systems</td>
+<td>For tally <code>Lifetime operating systems used</code> increment all values by <code>1</code>  if found in <code>Active operating systems</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Active platform</td>
 <td>47</td>
 <td>String</td>
 <td>The platform actively being used by the visitor</td>
+<td>For set of strings <code>Active platforms</code> add <code>Active platform</code> when any event.</td>
 </tr>
 <tr>
 <td>Active platforms</td>
 <td>52</td>
 <td>Set of strings</td>
 <td>A deduplicated list of active platforms</td>
+<td>For tally <code>Lifetime platforms used</code> increment all values by <code>1</code> if found in <code>Active platforms</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Direct visit</td>
 <td>14</td>
 <td>Boolean</td>
 <td>The user navigated directly to the site.</td>
+<td>Set boolean <code>Direct visit</code> to <code>true</code> when new visit if <code>Referring URL</code> is empty or <code>Referring URL</code> equals <code>Current URL</code>.</td>
 </tr>
 <tr>
 <td>Entry URL</td>
 <td>5</td>
 <td>String</td>
 <td>The URL of the first page visited</td>
+<td>Set string <code>Entry URL</code> to <code>Current URL</code> when new visit.</td>
 </tr>
 <tr>
 <td>Event count</td>
 <td>7</td>
 <td>Number</td>
 <td>The total number of events in this visit</td>
+<td>Increment Number <code>Event count</code> by <code>1</code> when any event</td>
 </tr>
 <tr>
 <td>Exit URL</td>
 <td>6</td>
 <td>String</td>
 <td>The URL of the last page visited</td>
+<td>Set string <code>Exit URL</code> to <code>Current URL</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Referred visit</td>
 <td>13</td>
 <td>Boolean</td>
 <td>The user was referred from another site.</td>
+<td>Set boolean <code>Referred visit</code> to <code>true</code> when new visit if <code>Referring URL</code> is not empty and <code>Referring URL</code> does not equal <code>Current URL</code>.</td>
 </tr>
 <tr>
 <td>Visit duration</td>
 <td>12</td>
 <td>Number</td>
 <td>The duration of this visit</td>
+<td>Increment number <code>Total time spent on site in minutes</code> by <code>Visit duration</code> when visit ended.</td>
 </tr>
 <tr>
 <td>Visit end</td>
 <td>11</td>
 <td>Date</td>
 <td>The end date of this visit</td>
+<td>Set number <code>Visit duration</code> to be the difference between <code>Visit end</code> and <code>Visit start</code> in minutes when any event.</td>
 </tr>
 <tr>
 <td>Visit start</td>
 <td>10</td>
 <td>Date</td>
 <td>The start date of this visit</td>
+<td>Set number <code>Visit duration</code> to be the difference between <code>Visit end</code> and <code>Visit start</code> in minutes when any event.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="event-attributes">Event attributes</h3>
+<h2 id="event-attributes">Event attributes</h2>
 <table>
 <thead>
 <tr>
@@ -820,6 +865,7 @@
 <th>ID</th>
 <th>Type</th>
 <th>Description</th>
+<th>Enrichments</th>
 </tr>
 </thead>
 <tbody>
@@ -828,154 +874,186 @@
 <td>74</td>
 <td>String</td>
 <td>The IP address of the client</td>
+<td></td>
+</tr>
+<tr>
+<td>Client IPv6</td>
+<td>83</td>
+<td>String</td>
+<td>The IPv6 address of the client</td>
+<td></td>
 </tr>
 <tr>
 <td>Current URL</td>
 <td>4</td>
 <td>String</td>
 <td>The URL of the current page</td>
+<td><ul><li>Set string <code>Entry URL</code> to <code>Current URL</code> when new visit.</li><li>Set string <code>Exit URL</code> to <code>Current URL</code> when visit ended.</li><li>Set string <code>Last event URL</code> to <code>Current URL</code> when any event.</li></ul></td>
 </tr>
 <tr>
 <td>Domain</td>
 <td>35</td>
 <td>String</td>
 <td>The domain of the current page</td>
+<td></td>
 </tr>
 <tr>
 <td>event_name</td>
 <td>64</td>
 <td>String</td>
 <td>This attribute is deprecated; use <code>tealium_event</code> instead.</td>
+<td></td>
 </tr>
 <tr>
 <td>Last event timestamp</td>
 <td>8</td>
 <td>String</td>
 <td>The timestamp of the last event</td>
+<td><ul><li>Set date <code>Visit start</code> to <code>Last event timestamp</code> when new visit.</li><li>Set date <code>Visit end</code> to <code>Last event timestamp</code> when any event.</li><li>Set date <code>First visit</code> to <code>Last event timestamp</code> when new visitor.</li><li>Set date <code>Last visit</code> to <code>Last event timestamp</code> when visit ended.</li></ul></td>
 </tr>
 <tr>
 <td>Page Title</td>
 <td>38</td>
 <td>String</td>
 <td>The title of the current page</td>
+<td></td>
 </tr>
 <tr>
 <td>Pathname</td>
 <td>36</td>
 <td>String</td>
 <td>The pathname of the current page</td>
+<td></td>
 </tr>
 <tr>
 <td>platform</td>
 <td>40</td>
 <td>String</td>
 <td>The platform of the client</td>
+<td></td>
 </tr>
 <tr>
 <td>Query String</td>
 <td>37</td>
 <td>String</td>
 <td>The query string of the current page</td>
+<td></td>
 </tr>
 <tr>
 <td>Referring URL</td>
 <td>3</td>
 <td>String</td>
 <td>The URL of the previous page</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_account</td>
 <td>66</td>
 <td>String</td>
 <td>The account name</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_datasource</td>
 <td>70</td>
 <td>String</td>
 <td>The Data Source Key</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_environment</td>
 <td>67</td>
 <td>String</td>
 <td>The publishing environment</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_event</td>
 <td>75</td>
 <td>String</td>
-<td>The tealium event name (either <code>view</code> or <code>link</code>)</td>
+<td>The Tealium event name (either <code>view</code> or <code>link</code>)</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_event_type</td>
 <td>78</td>
 <td>String</td>
 <td>The type of Tealium event being dispatched (either <code>view</code> or <code>event</code>)</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_firstparty_visitor_id</td>
 <td>76</td>
 <td>String</td>
 <td>The visitor ID provided by the first-party cookie</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_library_name</td>
 <td>68</td>
 <td>String</td>
 <td>The library name</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_library_version</td>
 <td>69</td>
 <td>String</td>
 <td>The version of the library</td>
+<td></td>
 </tr>
 <tr>
-<td>tealium_library_profile</td>
+<td>tealium_profile</td>
 <td>79</td>
 <td>String</td>
 <td>The account profile</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_random</td>
 <td>65</td>
 <td>Number</td>
 <td>This value is a random number that the platform generated for each event. The expected value is 16 numeric digits. This value is prepended with zeroes if it is less than 16 digits.</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_session_id</td>
 <td>71</td>
 <td>Number</td>
 <td>This value is the epoch timestamp of when the first page view, event, or library finished starting up (in milliseconds). This value resets if there is no activity for 30 minutes on the web.</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_thirdparty_visitor_id</td>
 <td>77</td>
 <td>String</td>
 <td>The visitor ID provided by the third-party cookie</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_timestamp_epoch</td>
 <td>73</td>
 <td>Number</td>
 <td>This value is when the event occurred, in seconds. If event was queued, this value is the time that the event originally occurred.</td>
+<td></td>
 </tr>
 <tr>
 <td>tealium_visitor_id</td>
 <td>72</td>
 <td>String</td>
 <td>This value is the generated UUID, which is case sensitive on AudienceStream. This value was formerly <code>tealium_vid</code> in <code>vdata</code> calls.</td>
+<td></td>
 </tr>
 <tr>
 <td>User Agent</td>
 <td>2</td>
 <td>String</td>
 <td>The user agent string</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h2 id="examples">Examples</h2>
 <p>The following examples demonstrate how you can use preloaded attributes:</p>
 <ul>
 <li>Use the <strong>Frequent visitor</strong> badge to create an audience, and then action that audience with a connector to send email to those visitors that says &ldquo;Thank you for being a regular visitor.&rdquo;</li>
@@ -1042,7 +1120,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 3, 2024 
+          <p>This page was last updated:  January 14, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1056,8 +1134,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#preloaded-attributes" href="javascript:void(0)">Preloaded attributes</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-attributes" href="javascript:void(0)">Visitor attributes</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-attributes" href="javascript:void(0)">Visitor attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-attributes" href="javascript:void(0)">Visit attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-attributes" href="javascript:void(0)">Event attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
