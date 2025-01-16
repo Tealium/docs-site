@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -155,13 +155,13 @@
 
 <div class="prose nested-links" id="prose">
   <p>A deep link is a hyperlink that launches a mobile app and, optionally, delivers specific content within the app. Deep links are often used to measure the performance of advertisement campaigns or promotional emails that link users to your app.</p>
-<h2 id="supported-platforms">Supported Platforms</h2>
+<h2 id="supported-platforms">Supported platforms</h2>
 <p>The following platforms support deep link tracking:</p>
 <ul>
 <li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
 <li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
-<h2 id="how-it-works">How it Works</h2>
+<h2 id="how-it-works">How it works</h2>
 <p>When your app is launched from a deep link, the Tealium library adds the URL to the data layer as the attribute <code>deep_link_url</code>.</p>
 <p>The deep link&rsquo;s query parameters are added to the data layer with attribute names in the format <code>deep_link_param_&lt;param name&gt;</code>.</p>
 <p>For example, <code>https://example.com/?campaign_code=SUMMER</code> becomes:</p>
@@ -173,8 +173,17 @@
 <p>Deep link tracking is automatically enabled in Tealium for Android (Kotlin).</p>
 <p>Disable automatic tracking of deep links by setting the <a href="/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a> property to <code>false</code>.</p>
 <h3 id="swift-v2x">Swift v2.x</h3>
-<p>Deep link tracking is automatically enabled in Tealium for iOS (Swift v2.x).</p>
-<p>Disable automatic tracking of deep links by setting the <code>info.plist</code> key <code>TealiumAutotrackingDeepLinkEnabled</code> to <code>false</code>.</p>
+<p>Automatic deep link tracking is enabled by default in Tealium for iOS (Swift v2.x) through the method swizzling technique. Method swizzling is the dynamic swapping of one method implementation for another during a program&rsquo;s runtime.</p>
+<p>If you do not want to use method swizzling or don&rsquo;t want deep links to be tracked automatically, you can disable automatic deep link tracking with the <code>info.plist</code> key <code>TealiumAutotrackingDeepLinkEnabled</code> set to <code>false</code>.</p>
+<p>If you want to track deep links without method swizzling and you are using <code>SwiftUI</code>, after disabling the automatic tracking in the <code>info.plist</code>, use the <code>TealiumAppTrackable</code> wrapper around your application content&rsquo;s <code>View</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> body: some Scene {
+</span></span><span style="display:flex;"><span>    WindowGroup {
+</span></span><span style="display:flex;"><span>        TealiumAppTrackable {
+</span></span><span style="display:flex;"><span>            ContentView()
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you are using <code>UIKit</code>, you can instead call the <code>handleDeeplink</code> method on the <code>tealium</code> instance manually.</p>
 <h3 id="swift-v1x">Swift v1.x</h3>
 <p>Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app&rsquo;s <code>AppDelegate</code> class to enable deep linking.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">application</span>(<span style="color:#66d9ef">_</span> app: UIApplication,
@@ -281,7 +290,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 7, 2018 
+          <p>This page was last updated:  January 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -295,8 +304,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-platforms" href="javascript:void(0)">Supported Platforms</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-platforms" href="javascript:void(0)">Supported platforms</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-kotlin" href="javascript:void(0)">Android Kotlin</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift-v2x" href="javascript:void(0)">Swift v2.x</a></li>

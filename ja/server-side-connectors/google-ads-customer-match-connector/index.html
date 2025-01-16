@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Google Ads Customer Match（Tealium提供の資格情報）コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
+    <title>Google Ads Customer Match（Tealiumが提供する認証情報）コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -391,7 +391,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Google Ads Customer Match（Tealium提供の資格情報）コネクタ構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Google Ads Customer Match（Tealiumが提供する認証情報）コネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -399,7 +399,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealiumが提供する資格情報を使用するGoogle Ads Customer Matchコネクタの構成方法について説明します。
+      この記事では、Tealiumが提供する認証情報を使用するGoogle Ads Customer Matchコネクタの構成方法について説明します。
     </p>
   
 </div>
@@ -431,7 +431,7 @@
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Google Ads API</li>
-<li>APIバージョン：v17</li>
+<li>APIバージョン：v18</li>
 <li>APIエンドポイント：<code>https://googleads.googleapis.com/</code></li>
 <li>ドキュメンテーション：<a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
 </ul>
@@ -449,13 +449,13 @@
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="ユーザー識別子">ユーザー識別子</h3>
-<p>各アクションにはユーザー識別子が必要です。ベンダーは、これらの値が正規化され、SHA-256を使用してハッシュ化されていることを要求します。各マップされたユーザー識別子の値は、以下の要件を満たすことが期待されています：</p>
+<p>各アクションにはユーザー識別子が必要です。ベンダーは、これらの値が正規化され、SHA-256を使用してハッシュ化されていることを要求します。マップされたユーザー識別子の値は、以下の要件を満たすことが期待されます：</p>
 <ul>
 <li>小文字</li>
 <li>テキストの始めと終わりからの空白のトリミング</li>
 <li>SHA-256でハッシュ化</li>
 </ul>
-<p>すでに正規化され、ハッシュ化された属性をマップすることも、コネクタに正規化とハッシュ化をさせることもできます。シナリオに適したマッピングを選択します。</p>
+<p>すでに正規化されハッシュ化された属性をマップすることも、コネクタにそれらを正規化しハッシュ化させることもできます。シナリオに適したマッピングを選択します。</p>
 <p>必要なユーザー識別子は、選択した<code>User List</code>タイプに基づいています。<code>User List</code>タイプは以下のいずれかになります：</p>
 <ul>
 <li><code>CONTACT_INFO</code></li>
@@ -509,7 +509,7 @@
 </tbody>
 </table>
 <h4 id="同意">同意</h4>
-<p><strong>リマーケティングリストにユーザーを追加</strong>アクションを使用すると、コネクタは<code>adUserData</code>と<code>adPersonalization</code>パラメータに対して<code>GRANTED</code>の値を送信します。同意を得ていない訪問がリストに追加されるのを防ぐために、訪問プロファイルの同意ステータスをチェックするルールを持つオーディエンスを作成します。その後、<strong>リマーケティングリストから削除</strong>アクションを使用して、同意を得ていない訪問をリストから削除します。</p>
+<p><strong>リマーケティングリストにユーザーを追加</strong>アクションを使用すると、コネクタは<code>adUserData</code>と<code>adPersonalization</code>パラメータに対して<code>GRANTED</code>の値を送信します。同意を得ていない訪問がリストに追加されるのを防ぐために、訪問のプロファイル同意ステータスをチェックするルールを持つオーディエンスを作成します。その後、<strong>リマーケティングリストから削除</strong>アクションを使用して、同意を得ていない訪問をリストから削除します。</p>
 <h3 id="アクション---リマーケティングリストからユーザーを削除">アクション - リマーケティングリストからユーザーを削除</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
 <p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
@@ -593,7 +593,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月17日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

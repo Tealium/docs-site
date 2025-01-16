@@ -469,7 +469,7 @@
         <a href="/ja/server-side/administration/ip-allow-list/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-ip-addresses-for-allow">許可するIPアドレス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/tealium-content-security-policies-reference-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-content-security-policy">コンテンツセキュリティポリシー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/server-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-bot-filtering">サーバーサイドボットフィルタリング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">使用レポート</a></li></ul>
+        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">利用レポート</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-tealium-tools">Tealiumツール</a>
         <ul class="pl2  ss-tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -535,7 +535,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>ブール属性は、条件の真または偽の値を格納するために使用されます。例えば、ブール型は訪問がカートにアイテムを追加したかどうか、または特定のサイトのセクションを訪れたかどうかを格納することができます。</p>
+<p>ブール属性は、条件の真偽値を格納するために使用されます。例えば、訪問がカートにアイテムを追加したかどうか、特定のサイトのセクションを訪れたかどうかをブール値で格納することができます。</p>
 <p>ブール属性は次のスコープで利用可能です：イベント、訪問、訪問。</p>
 <figure><a class="slb" href="/images/server-side/attribute-scopes-table-all.png"><img src="/images/server-side/attribute-scopes-table-all.png" width="400" height="110"/>
     </a>
@@ -545,18 +545,18 @@
 <h2 id="エンリッチメント">エンリッチメント</h2>
 <h3 id="ブールの構成">ブールの構成</h3>
 <p>このエンリッチメントを使用して、ブール属性を真または偽に構成します。</p>
-<p>この例では、&ldquo;カートに追加したか&quot;というブール属性を使用して、訪問がカートにアイテムを追加したかどうかを判断する方法を示しています。訪問の開始時に属性を偽に構成し、<code>cart_add</code>イベントが発生するたびに真に構成します。</p>
-<p>これを達成するために2つのエンリッチメントを作成します：</p>
-<pre tabindex="0"><code>構成値: false
-WHEN: 新規訪問
-</code></pre><pre tabindex="0"><code>構成値: true
-WHEN: 任意のイベント
-ルール: tealium_event equals &#34;cart_add&#34;
+<p>この例では、訪問がカートにアイテムを追加したかどうかを「カートに追加したか」のブール属性で知る方法を示しています。訪問の開始時に属性を偽に構成し、<code>cart_add</code>イベントが発生するたびに真に構成します。</p>
+<p>これを達成するためには、2つのエンリッチメントを作成します：</p>
+<pre tabindex="0"><code>構成値：偽
+条件：新規訪問
+</code></pre><pre tabindex="0"><code>構成値：真
+条件：任意のイベント
+ルール：tealium_event が &#34;cart_add&#34;と等しい
 </code></pre><p><strong>属性名:</strong> カートに追加したか</p>
 <ul>
 <li><strong>初期値</strong>: <code>&quot;&quot;</code></li>
-<li><strong>エンリッチメント</strong>: <code>true</code></li>
-<li><strong>結果値</strong> <code>true</code></li>
+<li><strong>エンリッチメント</strong>: <code>真</code></li>
+<li><strong>結果の値</strong> <code>真</code></li>
 </ul>
 
 </div>
@@ -603,7 +603,7 @@ WHEN: 任意のイベント
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月13日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

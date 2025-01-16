@@ -469,7 +469,7 @@
         <a href="/ja/server-side/administration/ip-allow-list/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-ip-addresses-for-allow">許可するIPアドレス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/tealium-content-security-policies-reference-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-content-security-policy">コンテンツセキュリティポリシー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/server-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-bot-filtering">サーバーサイドボットフィルタリング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">使用レポート</a></li></ul>
+        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">利用レポート</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-tealium-tools">Tealiumツール</a>
         <ul class="pl2  ss-tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -545,35 +545,35 @@ DataAccessを使用していた既存の顧客に対してSpectrumを有効に�
 <h2 id="データベースの認証情報を取得する">データベースの認証情報を取得する</h2>
 <p>Postgresをサポートするサードパーティのツールは、接続するための認証情報が必要です。認証情報はDataAccess Consoleで提供されます。</p>
 <p>データベースの認証情報は現在、各ユーザーごとに生成されます。以前は、すべてのユーザーがアカウントとプロファイルに対して生成された認証情報を共有していました。誰かがグローバルな認証情報を再生成すると、すべてのユーザーの接続が終了し、すべてのユーザーが再接続しなければなりませんでした。</p>
-<p>ユーザー固有の認証情報の場合、生成された認証情報はアカウント、プロファイル、ユーザーのメールアドレスに基づいています。ユーザーは自分自身の認証情報を再生成することができ、他の接続を終了させることなく、特定のユーザーのアクセスを削除することができます。特定のユーザーの認証情報を無効にするには、Tealiumサポートに連絡してください。</p>
+<p>ユーザー固有の認証情報の場合、生成される認証情報はアカウント、プロファイル、およびユーザーのメールアドレスに基づいています。ユーザーは自分自身の認証情報を再生成することができ、他の接続を終了させることなく、特定のユーザーのアクセスを削除することができます。特定のユーザーの認証情報を無効にするには、Tealiumサポートに連絡してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>以前に生成されたグローバルな認証情報は引き続き使用できますが、再生成することはできません。</p>
 <p>データベースの認証情報を取得するには、以下の手順を使用します：</p>
 <ol>
 <li><strong>DataAccess &gt; EventDB</strong> または <strong>DataAccess &gt; AudienceDB</strong> に移動します。</li>
 <li><strong>Get DB Connection Details</strong> をクリックします。</li>
 <li><strong>Regenerate DB Credentials</strong> をクリックします。<br>
-これが初めての認証情報取得であっても、認証情報を再生成する必要があります。<br>
+これが初めての認証情報の取得であっても、認証情報を再生成する必要があります。<br>
 <figure><a class="slb" href="/images/server-side/connection-details.png"><img src="/images/server-side/connection-details.png"
                alt="connection details"
                title="connection details"/>
           </a>
       </figure></li>
-<li>既存の認証情報を削除し、新しいものを生成することを確認するために <strong>Yes</strong> をクリックします。<br>
+<li>既存の認証情報を削除し、新しいものを生成したいことを確認するために <strong>Yes</strong> をクリックします。<br>
 <strong>DB Connection Details</strong> 画面には以下のフィールドが表示されます：
 <ul>
 <li><strong>Username</strong><br>
-データベース接続のユーザー名。これはあなたのアカウント、プロファイル名、そしてあなたのメールアドレスの組み合わせです。例えば、<code>account__profile__email</code>。</li>
+データベース接続のユーザー名。これはあなたのアカウント、プロファイル名、およびメールアドレスの組み合わせです。例えば、<code>account__profile__email</code>。</li>
 <li><strong>Password</strong><br>
 データベース接続のパスワード。</li>
 <li><strong>Database</strong><br>
-データベースの名前、通常はあなたのアカウントの名前です。</li>
+データベースの名前。通常はあなたのアカウントの名前です。</li>
 <li><strong>Host</strong><br>
-データベースサーバーのホスト名、あなたのデータストレージ領域に特化しています。</li>
+データベースサーバーのホスト名。あなたのデータ保存地域に特化しています。</li>
 <li><strong>Port</strong><br>
 接続のポート番号。</li>
 </ul>
 </li>
-<li>未来の使用のために接続詳細を保存し、<strong>Close</strong> をクリックします。</li>
+<li>将来の使用のために接続詳細を保存し、<strong>Close</strong> をクリックします。</li>
 </ol>
 <h3 id="redshiftデータベースを閲覧する">Redshiftデータベースを閲覧する</h3>
 <p>データベースの認証情報を取得したら、サードパーティのツールを使用してデータベースに接続できます。以下の例では、SQL Workbench/J（フリーウェアアプリケーション）を使用しています（<a href="/ja/server-side/data-storage/data-viz-tools/connecting-sql-workbench/">SQL Workbenchを使用してEventDBに接続する</a>を参照）。スキーマの命名規則は <code>account__profile</code> です。</p>
@@ -637,7 +637,7 @@ DataAccessを使用していた既存の顧客に対してSpectrumを有効に�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

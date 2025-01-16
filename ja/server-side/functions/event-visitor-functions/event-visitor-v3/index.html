@@ -469,7 +469,7 @@
         <a href="/ja/server-side/administration/ip-allow-list/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-ip-addresses-for-allow">許可するIPアドレス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/tealium-content-security-policies-reference-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-content-security-policy">コンテンツセキュリティポリシー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/administration/server-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-bot-filtering">サーバーサイドボットフィルタリング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">使用レポート</a></li></ul>
+        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">利用レポート</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-tealium-tools">Tealiumツール</a>
         <ul class="pl2  ss-tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -542,7 +542,7 @@
 </ul>
 <p>イベントと訪問関数には、認証を取得し、グローバル変数を取得するための <code>helper.getAuth()</code> と <code>helper.getGlobalVariable()</code> を提供する追加のパラメータ、<code>helper</code> があります。</p>
 <h2 id="activate-関数">activate() 関数</h2>
-<p>V3イベントまたは訪問関数を作成すると、関数コードエディタの <strong>Code</strong> タブにデフォルトのコードが表示されます。このコードにはグローバルな <code>activate</code> 関数が含まれています。関数の入力パラメータは <code>activate()</code> 関数に渡されます。以下の例はイベント関数の <code>activate()</code> を示しています：</p>
+<p>V3イベントまたは訪問関数を作成すると、関数コードエディタの <strong>Code</strong> タブにデフォルトのコードが表示されます。このコードにはグローバル <code>activate</code> 関数が含まれています。関数の入力パラメータは <code>activate()</code> 関数に渡されます。以下の例はイベント関数の <code>activate()</code> を示しています：</p>
 <pre tabindex="0"><code>activate(async ({ event, helper }) =&gt; {
 
   ...
@@ -550,7 +550,7 @@
 });
 </code></pre><p>デフォルトのコードの最初と最後の行の間のコードを、あなたのニーズに合わせて変更します。</p>
 <h2 id="track-関数">track() 関数</h2>
-<p>関数はグローバルな <code>track()</code> 関数を使用して、イベントをTealium Collectに送信することができます。<code>track()</code> には以下のように2つの入力パラメータがあります：</p>
+<p>関数はグローバル <code>track()</code> 関数を使用して、イベントをTealium Collectに送信することができます。<code>track()</code> には2つの入力パラメータがあります：</p>
 <ul>
 <li><code>data</code> オブジェクト – Tealium Collectに送信されるイベントデータ。</li>
 <li><code>config</code> オブジェクト – 任意。以下のフィールドを含みます：
@@ -558,7 +558,7 @@
 <li><code>tealium_account</code> – アカウント名を指定します。</li>
 <li><code>tealium_profile</code> – プロファイルを指定します。</li>
 <li><code>tealium_datasource</code> – データソースを指定します。<br>
-アカウント、プロファイル、データソースのフィールドが <code>data</code> オブジェクトに含まれている場合、<code>config</code> オブジェクトは必要ありません。</li>
+アカウント、プロファイル、およびデータソースのフィールドが <code>data</code> オブジェクトに含まれている場合、<code>config</code> オブジェクトは必要ありません。</li>
 </ul>
 </li>
 </ul>
@@ -583,7 +583,7 @@
 </span></span><span style="display:flex;"><span>  })
 </span></span></code></pre></div><p><code>track()</code> 関数の詳細な例については、<a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/#send-an-event-to-the-tealium-collect-http-api">Tealium Collect HTTP APIにイベントを送信する</a>を参照してください。</p>
 <h2 id="イベントオブジェクト">イベントオブジェクト</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>イベント関数は、Tealiumがイベントを処理した後に呼び出されるため、イベントを変更することはできません。イベントを変更するには、イベント属性のエンリッチメントまたはイベント変換関数を使用します。また、Tealiumに送信する前にデータソースでイベントを変更することもできます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベント関数は、Tealiumがイベントを処理した後に呼び出されるため、イベントを変更することはできません。イベントを変更するには、イベント属性のエンリッチメントまたはイベント変換関数を使用します。また、データソースでイベントを変更してからTealiumに送信することもできます。</p>
 <p><code>event</code> オブジェクトはイベント関数で利用可能で、イベントデータを含んでいます。</p>
 <table>
 <thead>
@@ -607,7 +607,7 @@
 <tr>
 <td><code>env</code></td>
 <td>string</td>
-<td>実行環境。値は <code>qa</code>、<code>dev</code>、または <code>prod</code> です。</td>
+<td>実行環境。値は <code>qa</code>、<code>dev</code>、または <code>prod</code> になります。</td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
@@ -627,7 +627,7 @@
 <tr>
 <td><code>useragent</code></td>
 <td>string</td>
-<td>ブラウザなどのユーザーエージェントを表す文字列。</td>
+<td>ユーザーエージェント（ブラウザなど）を表す文字列。</td>
 </tr>
 <tr>
 <td><code>visitor_id</code></td>
@@ -736,19 +736,19 @@
 </span></span></code></pre></div><h2 id="ヘルパーオブジェクト">ヘルパーオブジェクト</h2>
 <p><code>helper</code> オブジェクトは <code>helper.getGlobalVariable()</code> と <code>helper.getAuth()</code> メソッドを提供します。</p>
 <h3 id="helpergetglobalvariable"><code>helper.getGlobalVariable()</code></h3>
-<p>関数は <code>helper.getGlobalVariable()</code> を使用してグローバル変数を取得し、グローバル変数のキーをパラメータとして渡します。以下のようになります：</p>
+<p>関数は <code>helper.getGlobalVariable()</code> を使用してグローバル変数を取得し、グローバル変数のキーをパラメータとして渡します：</p>
 <pre tabindex="0"><code>activate(({ helper }) =&gt; {
   console.log(helper.getGlobalVariable(&#34;TEST_GLOBAL_VAR&#34;));
 });
 </code></pre><p>グローバル変数の追加と編集についての詳細は、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/">グローバル変数の管理</a>を参照してください。</p>
 <h3 id="helpergetauth"><code>helper.getAuth()</code></h3>
-<p>関数は <code>helper.getAuth()</code> を使用して、関数に追加された認証を取得します。関数は認証トークンを <code>helper.getAuth()</code> に渡します。以下のようになります：</p>
+<p>関数は <code>helper.getAuth()</code> を使用して、関数に追加された認証を取得します。関数は認証トークンを <code>helper.getAuth()</code> に渡します：</p>
 <pre tabindex="0"><code>activate(({ helper }) =&gt; {
     console.log(helper.getAuth(&#34;auth_token_name&#34;));
 })
 </code></pre><p>認証トークンは、認証が関数に追加されたときに作成されます。関数に認証を追加する方法については、<a href="/ja/server-side/functions/event-visitor-functions/authentication/">イベントまたは訪問関数に認証を追加する</a>を参照してください。</p>
 <h2 id="訪問オブジェクト">訪問オブジェクト</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問関数は、訪問が処理された後に呼び出されます。訪問プロファイルが処理された後に訪問プロファイルを変更することはできません。訪問プロファイルを変更するには、訪問または訪問属性のエンリッチメントを使用します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問関数は、訪問が処理された後に呼び出されます。訪問が処理された後に訪問オブジェクトを変更することはできません。訪問データを変更するには、訪問属性のエンリッチメントを使用します。</p>
 <p><code>visitor</code> オブジェクトは訪問関数で利用可能で、訪問データを含んでいます。</p>
 <table>
 <thead>
@@ -822,42 +822,42 @@
 <tr>
 <td><code>secondary_ids</code></td>
 <td>string</td>
-<td>ユーザー識別子（例：メールアドレス、ソーシャルメディアID、顧客ID）。</td>
+<td>ユーザー識別子（例：メールアドレス、ソーシャルメディアID、顧客ID）</td>
 </tr>
 <tr>
 <td><code>audiences</code></td>
 <td>string[]</td>
-<td>訪問が現在所属しているオーディエンス。</td>
+<td>現在訪問が所属しているオーディエンス</td>
 </tr>
 <tr>
 <td><code>creation_ts</code></td>
 <td>epoch</td>
-<td>訪問の作成タイムスタンプ。</td>
+<td>訪問の作成タイムスタンプ</td>
 </tr>
 <tr>
 <td><code>new_visitor</code></td>
 <td>boolean</td>
-<td>新規訪問であるかどうかを示します。</td>
+<td>新規訪問であるかどうかを示します</td>
 </tr>
 <tr>
 <td><code>audiences_joined_at</code></td>
 <td>number</td>
-<td>訪問がオーディエンスに参加したタイムスタンプ。</td>
+<td>訪問がオーディエンスに参加したタイムスタンプ</td>
 </tr>
 <tr>
 <td><code>current_visit</code></td>
 <td>visit object</td>
-<td>現在の訪問に関するデータ。</td>
+<td>現在の訪問に関するデータ</td>
 </tr>
 <tr>
 <td><code>function getAttributeNameById(id)</code></td>
 <td>string</td>
-<td>指定された属性IDの名前を含む文字列を返します。<code>id</code>は属性IDを含む文字列です。</td>
+<td>指定した属性IDの名前を含む文字列を返します。<code>id</code>は属性IDを含む文字列です</td>
 </tr>
 <tr>
 <td><code>function getAttributeValueById(id)</code></td>
 <td>any</td>
-<td>指定された属性IDの値を返します。<code>id</code>は属性IDを含む文字列です。</td>
+<td>指定した属性IDの値を返します。<code>id</code>は属性IDを含む文字列です</td>
 </tr>
 </tbody>
 </table>
@@ -977,7 +977,8 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="訪問オブジェクト-1">訪問オブジェクト</h2>
-<p><code>visit</code>オブジェクトは訪問関数で利用可能で、現在の訪問のデータを含みます。</p>
+<p><code>visit</code>オブジェクトは訪問関数で利用可能で、現在の訪問に関するデータを含みます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問関数は訪問が処理された後に呼び出されます。訪問が処理された後に訪問オブジェクトを変更することはできません。訪問データを変更するには、訪問属性のエンリッチメントを使用してください。</p>
 <table>
 <thead>
 <tr>
@@ -990,82 +991,82 @@
 <tr>
 <td><code>metrics</code></td>
 <td>object(key, number)</td>
-<td>数値属性。</td>
+<td>数値属性</td>
 </tr>
 <tr>
 <td><code>properties</code></td>
 <td>object(key, string)</td>
-<td>文字列属性。</td>
+<td>文字列属性</td>
 </tr>
 <tr>
 <td><code>dates</code></td>
 <td>object(key, epoch)</td>
-<td>エポック形式の日付属性。</td>
+<td>エポック形式の日付属性</td>
 </tr>
 <tr>
 <td><code>flags</code></td>
 <td>object(key, boolean)</td>
-<td>ブール属性。</td>
+<td>ブール属性</td>
 </tr>
 <tr>
 <td><code>metrics_sets</code></td>
 <td>object(key, object(key, number))</td>
-<td>集計属性。</td>
+<td>集計属性</td>
 </tr>
 <tr>
 <td><code>property_sets</code></td>
 <td>object(key, string[])</td>
-<td>文字列のセット属性。</td>
+<td>文字列のセット属性</td>
 </tr>
 <tr>
 <td><code>funnels</code></td>
 <td>object (see example)</td>
-<td>ファネル属性。</td>
+<td>ファネル属性</td>
 </tr>
 <tr>
 <td><code>sequences</code></td>
 <td>object (see example)</td>
-<td>タイムライン属性。</td>
+<td>タイムライン属性</td>
 </tr>
 <tr>
 <td><code>property_lists</code></td>
 <td>object(key, string[])</td>
-<td>文字列の配列属性。</td>
+<td>文字列の配列属性</td>
 </tr>
 <tr>
 <td><code>metric_lists</code></td>
 <td>object(key, number[])</td>
-<td>数値の配列属性。</td>
+<td>数値の配列属性</td>
 </tr>
 <tr>
 <td><code>flag_lists</code></td>
 <td>object(key, boolean[])</td>
-<td>ブールの配列属性。</td>
+<td>ブールの配列属性</td>
 </tr>
 <tr>
 <td><code>events_compressed</code></td>
 <td>boolean</td>
-<td>イベントが圧縮されているかどうかを示します。</td>
+<td>イベントが圧縮されているかどうかを示します</td>
 </tr>
 <tr>
 <td><code>total_event_count</code></td>
 <td>number</td>
-<td>イベントの総数。</td>
+<td>イベントの総数</td>
 </tr>
 <tr>
 <td><code>creation_ts</code></td>
 <td>number</td>
-<td>訪問の作成タイムスタンプ。</td>
+<td>訪問の作成タイムスタンプ</td>
 </tr>
 <tr>
 <td><code>function getAttributeNameById(id)</code></td>
 <td>string</td>
-<td>指定された属性IDの名前を含む文字列を返します。<code>id</code>は属性IDを含む文字列です。</td>
+<td>指定した属性IDの名前を含む文字列を返します。<code>id</code>は属性IDを含む文字列です</td>
 </tr>
 <tr>
 <td><code>function getAttributeValueById(id)</code></td>
 <td>any</td>
-<td>指定された属性IDの値を返します。<code>id</code>は属性IDを含む文字列です。</td>
+<td>指定した属性IDの値を返します。<code>id</code>は属性IDを含む文字列です</td>
 </tr>
 </tbody>
 </table>
@@ -1216,7 +1217,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月18日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

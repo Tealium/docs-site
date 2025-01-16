@@ -356,8 +356,9 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".tealium-tools">Tealiumツール</a>
         <ul class="pl2  tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tealium-tools/browser-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-browser-extension">ブラウザ拡張機能</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tealium-tools/environment-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-tealium-tools-environment-switcher">環境スイッチャー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-web-companion-tool-adobe-test-amp-target">Web Companion Adobe Test &amp; Target</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tealium-tools/environment-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-tealium-tools-environment-switcher">環境スイッチャー</a></li></ul>
+        <a href="/ja/iq-tag-management/tealium-tools/tealium-tools-version-3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-version-3">Tealium Tools バージョン3</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".troubleshooting">トラブルシューティング</a>
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -425,12 +426,18 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Moments iQ体験を作成するには、タグマーケットプレイスに移動し、<strong>Moments iQ</strong>を検索して**+ 追加**をクリックします。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+  <h2 id="要件">要件</h2>
+<ul>
+<li>Moments iQ体験は、Tealium iQプロファイルでのみ作成できます。プロファイルライブラリでは作成できません。</li>
+<li>アカウントで<strong>タグマーケットプレイスポリシー</strong>を有効にしている場合、<strong>表示</strong>リストにMoments iQ Experienceタグを追加する必要があります。そうしないと、タグはタグマーケットプレイスに表示されません。</li>
+</ul>
+<h2 id="動作方法">動作方法</h2>
+<p>Moments iQ体験を作成するには、タグマーケットプレイスに移動し、<strong>Moments iQ</strong>を検索して**+ 追加**をクリックします。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
 <h2 id="位置と配置">位置と配置</h2>
 <p>以下の構成を構成して、体験がページ上のどこに表示され、体験がどのように動作するかを制御します：</p>
 <ul>
 <li>
-<p><strong>体験の抑制</strong>：体験は、以下の条件下でリターニングビジターに対して自動的に抑制することができます：</p>
+<p><strong>体験の抑制</strong>：次の条件の下で、体験はリターニングビジターに対して自動的に抑制することができます：</p>
 <ul>
 <li><strong>決して</strong></li>
 <li><strong>閉じるボタンが選択された後</strong></li>
@@ -440,7 +447,7 @@
 <p>ブラウザはこの情報を<code>momentsiq_suppress</code>キーとしてローカル保存に保存します。</p>
 </li>
 <li>
-<p><strong>ロードの追跡</strong>：体験が初めてページ上にロードされたときに追跡コールを送信するには、<code>True</code>を選択します。</p>
+<p><strong>ロードの追跡</strong>：体験が初めてページにロードされたときに追跡コールを送信するには、<code>True</code>を選択します。</p>
 </li>
 <li>
 <p><strong>Tealiumトラックタイプ</strong>：モーダルクローズと送信アクションの追跡時にトリガーされる<code>utag.track</code>コールで使用されるイベントのタイプ。</p>
@@ -463,17 +470,17 @@
 <p><strong>配置セレクタ</strong>：体験を配置するページ要素を識別するCSSセレクタ。これは<strong>埋め込み</strong>配置オプションでのみ使用されます。要素のセレクタを決定する方法についての詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">要素のCSSセレクタの決定方法</a>を参照してください。</p>
 </li>
 <li>
-<p><strong>体験の位置</strong>：<strong>配置セレクタ</strong>内の要素に対する挿入要素の位置。</p>
+<p><strong>体験の位置</strong>：<strong>配置セレクタ</strong>の要素に対する挿入要素の位置。</p>
 <ul>
 <li><strong>開始前</strong>：ページ要素の前。</li>
-<li><strong>開始後</strong>：ページ要素内、最初の子の前。</li>
-<li><strong>終了前</strong>：ページ要素内、最後の子の後。</li>
+<li><strong>開始後</strong>：ページ要素の内部、最初の子の前。</li>
+<li><strong>終了前</strong>：ページ要素の内部、最後の子の後。</li>
 <li><strong>終了後</strong>：ページ要素の後。</li>
 <li><strong>置換</strong>：ページ要素の置換。</li>
 </ul>
 </li>
 <li>
-<p><strong>リダイレクトURL</strong>：主要なボタンがクリックされたときに訪問をリダイレクトするURL。URLをリダイレクトしたくない場合は、このフィールドを空白にします。例えば、これは特別なオファーを提供する感謝のページや、フォローアップの質問を尋ねる別の体験が含まれるページにリダイレクトすることができます。</p>
+<p><strong>リダイレクトURL</strong>：主要なボタンがクリックされたときに訪問をリダイレクトするURL。URLをリダイレクトしたくない場合は、このフィールドを空白にします。例えば、これは特別なオファーを提供する感謝のページにリダイレクトしたり、フォローアップの質問を尋ねる別の体験を含むページにリダイレクトすることができます。</p>
 </li>
 <li>
 <p><strong>リダイレクトがタブを開く</strong>：訪問がリダイレクトされたときに新しいタブを開くには、<code>True</code>を選択します。このオプションは、<strong>リダイレクトURL</strong>に値を入力した場合にのみ利用可能です。</p>
@@ -646,131 +653,131 @@
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>主要なボタンのフォントスタイル</strong></td>
-<td>主要なボタンのフォントスタイル。デフォルト値は<code>normal</code>。</td>
+<td><strong>プライマリボタンのフォントスタイル</strong></td>
+<td>プライマリボタンのフォントスタイル。デフォルト値は <code>normal</code> です。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>副ボタンのフォントスタイル</strong></td>
-<td>副ボタンのフォントスタイル。デフォルト値は<code>normal</code>。</td>
+<td><strong>セカンダリボタンのフォントスタイル</strong></td>
+<td>セカンダリボタンのフォントスタイル。デフォルト値は <code>normal</code> です。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
 <td><strong>ヘッダーテキストのフォントウェイト</strong></td>
-<td>ヘッダーのフォントウェイト。デフォルト値は<code>700</code>。</td>
+<td>ヘッダーのフォントウェイト。デフォルト値は <code>700</code> です。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
 <td><strong>メインテキストのフォントウェイト</strong></td>
-<td>メインテキストのフォントウェイト。デフォルト値は <code>400</code>。</td>
+<td>メインテキストのフォントウェイト。デフォルト値は <code>400</code> です。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>質問テキストのフォントウェイト</strong></td>
+<td><strong>質問のフォントウェイト</strong></td>
 <td>質問テキストのフォントウェイト。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>回答テキストのフォントウェイト</strong></td>
+<td><strong>回答のフォントウェイト</strong></td>
 <td>回答テキストのフォントウェイト。</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
 <td><strong>プライマリボタンのフォントウェイト</strong></td>
-<td>プライマリボタンテキストのフォントウェイト。デフォルト値は <code>400</code>。</td>
+<td>プライマリボタンテキストのフォントウェイト。デフォルト値は <code>400</code> です。</td>
 <td><code>400</code></td>
 </tr>
 <tr>
 <td><strong>セカンダリボタンのフォントウェイト</strong></td>
-<td>セカンダリボタンテキストのフォントウェイト。デフォルト値は <code>400</code>。</td>
+<td>セカンダリボタンテキストのフォントウェイト。デフォルト値は <code>400</code> です。</td>
 <td><code>400</code></td>
 </tr>
 <tr>
 <td><strong>アウターコンテナの背景色</strong></td>
-<td>経験の背景色、ヘックスコードまたは標準色名。デフォルト値は <code>#FCFCFC</code>。</td>
+<td>体験の背景色、ヘックスコードまたは標準色名。デフォルト値は <code>#FCFCFC</code> です。</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
 <td><strong>プライマリボタンの背景色</strong></td>
-<td>プライマリボタンの背景色。デフォルト値は <code>#1B1B1B</code>。</td>
+<td>プライマリボタンの背景色。デフォルト値は <code>#1B1B1B</code> です。</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
 <td><strong>セカンダリボタンの背景色</strong></td>
-<td>セカンダリボタンの背景色。デフォルト値は <code>#1B1B1B</code>。</td>
+<td>セカンダリボタンの背景色。デフォルト値は <code>#1B1B1B</code> です。</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
 <td><strong>アウターコンテナのマージン</strong></td>
-<td>最外部コンテナのマージンサイズ。デフォルト値は <code>0</code>。マージン構成の詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">MDN Web Docs: margin</a>を参照してください。</td>
+<td>最外部コンテナのマージンサイズ。デフォルト値は <code>0</code> です。マージン構成の詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">MDN Web Docs: margin</a>を参照してください。</td>
 <td><code>1px</code></td>
 </tr>
 <tr>
 <td><strong>質問コンテナのマージン</strong></td>
-<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code>。</td>
+<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code> です。</td>
 <td><code>0</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのマージン</strong></td>
-<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code>。</td>
+<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code> です。</td>
 <td><code>0</code></td>
 </tr>
 <tr>
 <td><strong>質問コンテナのテキストアライン</strong></td>
-<td>コンテナ内の質問テキストの配置方向。デフォルト値は <code>start</code>。</td>
+<td>コンテナ内の質問テキストの配置方向。デフォルト値は <code>start</code> です。</td>
 <td><code>start</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのテキストアライン</strong></td>
-<td>コンテナ内の回答テキストの配置方向。デフォルト値は <code>start</code>。</td>
+<td>コンテナ内の回答テキストの配置方向。デフォルト値は <code>start</code> です。</td>
 <td><code>start</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのフレックス方向</strong></td>
-<td>回答の配置方向、縦方向の列または横方向の行。デフォルト値は <code>column</code>。</td>
+<td>回答の配置方向、縦方向の列または横方向の行。デフォルト値は <code>column</code> です。</td>
 <td><code>column</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのアラインアイテム</strong></td>
-<td>コンテナ内の回答の配置方向（例：<code>start</code>、<code>flex-start</code>、または <code>self-start</code>）。デフォルト値は <code>flex-start</code>。</td>
+<td>コンテナ内の回答の配置方向（例：<code>start</code>、<code>flex-start</code>、または <code>self-start</code>）。デフォルト値は <code>flex-start</code> です。</td>
 <td><code>flex-start</code></td>
 </tr>
 <tr>
 <td><strong>アウターコンテナのボーダースタイル</strong></td>
-<td>経験の最外部コンテナのボーダースタイル。デフォルト値は <code>none</code>。</td>
+<td>体験の最外部コンテナのボーダースタイル。デフォルト値は <code>none</code> です。</td>
 <td><code>none</code></td>
 </tr>
 <tr>
 <td><strong>アウターコンテナのボーダーカラー</strong></td>
-<td>経験の最外部コンテナの周囲のボーダーの色、ヘックスコードまたは標準色名。ボーダーカラーを表示するには、ボーダースタイルを <code>none</code> 以外の値に構成する必要があります。半径は <code>8px</code>。</td>
+<td>体験の最外部コンテナの周囲のボーダーの色、ヘックスコードまたは標準色名。ボーダーカラーを表示するには、ボーダースタイルを <code>none</code> 以外の値に構成する必要があります。半径は <code>8px</code> です。</td>
 <td><code>8px</code></td>
 </tr>
 <tr>
 <td><strong>アウターコンテナの幅</strong></td>
-<td>最外部コンテナの幅。デフォルト値は <code>500px</code>。</td>
+<td>最外部コンテナの幅。デフォルト値は <code>500px</code> です。</td>
 <td><code>500px</code></td>
 </tr>
 <tr>
 <td><strong>Z-Index</strong></td>
-<td>ページ上の経験のzオーダー配置を上書きするために使用します。高い値は低い値の上にスタックされます。</td>
+<td>ページ上の体験のzオーダー位置を上書きするために使用します。高い値は低い値の上にスタックされます。</td>
 <td><code>auto</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="ダイナミックテキスト">ダイナミックテキスト</h2>
-<p><strong>ヘッダーテキスト</strong>、<strong>メインテキスト</strong>、<strong>質問テキスト</strong>、および<strong>回答</strong>パラメーターのダイナミックテキストを作成するために変数を使用できます。変数は2つのセットの中括弧の間に表示されます。例えば、<code>{{VARIABLENAME}}</code>。</p>
+<p><strong>ヘッダーテキスト</strong>、<strong>メインテキスト</strong>、<strong>質問テキスト</strong>、および<strong>回答</strong>パラメーターにダイナミックテキストを作成するために変数を使用できます。変数は2つのセットの中括弧の間に表示されます。例えば、<code>{{VARIABLENAME}}</code>。</p>
 <p>以下のデータを変数で使用できます：</p>
 <ul>
 <li><code>utag.data</code> (例： <code>{{utag.data.customer_name}}</code>)</li>
 <li>Bオブジェクト (例： <code>{{b.customer_alias}}</code>)</li>
-<li>Audiencestream属性、Bオブジェクトを通じて (例： <code>{{b.variable_name}}</code>)</li>
+<li>Bオブジェクトを通じたAudiencestream属性 (例： <code>{{b.variable_name}}</code>)</li>
 </ul>
 <p>データが挿入できない場合に表示されるフォールバック値を構成できます。フォールバック値はパイプ文字のペアの後に表示されます (例： <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
 <h2 id="ロードルール">ロードルール</h2>
-<p>すべてのページで経験をロードするか、経験が表示される条件を構成します。ロードルールとイベントについての詳細は、<a href="/ja/iq-tag-management/load-rules/about/">Load Rules</a>と<a href="/ja/iq-tag-management/events/about/">Events</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>データの衝突を避けるために、一度に1つのMoments iQ経験だけがページに表示されます。複数の経験がある場合は、一度に1つの経験だけがロードされるようにロードルールを構成してください。</p>
+<p>体験をすべてのページにロードするか、体験が表示される条件を構成します。ロードルールとイベントについての詳細は、<a href="/ja/iq-tag-management/load-rules/about/">Load Rules</a>と<a href="/ja/iq-tag-management/events/about/">Events</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データの衝突を避けるために、一度に1つのMoments iQ体験だけがページに表示されます。複数の体験がある場合は、ロードルールを構成して一度に1つの体験だけがロードされるようにします。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>以下のマッピングを拡張機能と一緒に使用して、構成で動的な値を取得したり、経験から経験へのスタイリングを一貫させたりします：</p>
+<p>以下のマッピングを拡張機能と一緒に使用して、構成で動的な値を取得したり、体験から体験へのスタイリングを一貫させたりします：</p>
 <!-- 詳細については、[Advanced data mappings](LINK TO ADVANCED DATA MAPPINGS WHEN IT'S WRITTEN)を参照してください。 -->
 <h3 id="基本パラメータ">基本パラメータ</h3>
 <table>
@@ -785,12 +792,12 @@
 <tr>
 <td style="text-align:left"><code>type</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験のタイプ</td>
+<td style="text-align:left">体験タイプ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>placement</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験の配置</td>
+<td style="text-align:left">体験の配置</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>selector</code></td>
@@ -800,7 +807,7 @@
 <tr>
 <td style="text-align:left"><code>position</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験の位置</td>
+<td style="text-align:left">体験の位置</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>imagePosition</code></td>
@@ -810,7 +817,7 @@
 <tr>
 <td style="text-align:left"><code>imageUrl</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">画像のURL</td>
+<td style="text-align:left">画像URL</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>altText</code></td>
@@ -912,7 +919,7 @@
 <tr>
 <td style="text-align:left"><code>headerTitle.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">ヘッダーフォントのウェイト</td>
+<td style="text-align:left">ヘッダーのフォントウェイト</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.color</code></td>
@@ -962,7 +969,7 @@
 <tr>
 <td style="text-align:left"><code>questionContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">質問フォントのウェイト</td>
+<td style="text-align:left">質問のフォントウェイト</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.color</code></td>
@@ -987,7 +994,7 @@
 <tr>
 <td style="text-align:left"><code>answerContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">回答フォントのウェイト</td>
+<td style="text-align:left">回答のフォントウェイト</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.color</code></td>
@@ -1234,7 +1241,7 @@ momentsiq_suppress, Local Storage Variable
          title="Attribute and rules configuration"/>
     </a>
 </figure>
-<p>また、Moments iQのルールでAudienceStream変数を活用する予定の場合、データレイヤーの豊かさを有効にする必要があります。</p>
+<p>また、Moments iQのルールでAudienceStream変数を活用する予定の場合、データレイヤーのエンリッチされたを有効にする必要があります。</p>
 <p>詳細については、<a href="/ja/server-side/attributes/data-layer-enrichment/about/">About data layer enrichment</a>と<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>を参照してください。</p>
 <h2 id="保存と公開">保存と公開</h2>
 <p>体験をテストしリリースするには、他のタグと同じワークフローを使用します。詳細については、<a href="/ja/iq-tag-management/tags/about/">About tags</a>を参照してください。</p>
@@ -1298,7 +1305,7 @@ momentsiq_suppress, Local Storage Variable
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1312,7 +1319,9 @@ momentsiq_suppress, Local Storage Variable
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%8D%E7%BD%AE%E3%81%A8%E9%85%8D%E7%BD%AE" href="javascript:void(0)">位置と配置</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%8D%E7%BD%AE%E3%81%A8%E9%85%8D%E7%BD%AE" href="javascript:void(0)">位置と配置</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%93%E9%A8%93%E3%81%AE%E8%83%8C%E6%99%AF%E7%94%BB%E5%83%8F" href="javascript:void(0)">体験の背景画像</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%93%E9%A8%93%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" href="javascript:void(0)">体験テキスト</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%9B%9E%E7%AD%94" href="javascript:void(0)">回答</a></li>

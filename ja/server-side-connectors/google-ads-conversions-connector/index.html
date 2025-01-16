@@ -399,18 +399,18 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Google Ads コンバージョン コネクタの構成方法について説明します。
+      この記事では、Google Ads コンバージョンコネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>Google Ads のコンバージョンは、ユーザーが広告をクリックしたり、ディスプレイネットワークの広告を表示した後に特定のアクションを実行したときに発生します。Google Ads コンバージョン コネクタは Google Ads API を使用し、オフラインでのコンバージョンのアップロードと、以前に取得したコンバージョン値の調整をサポートしています。このコネクタを使用して、Google Ads にオフラインのクリックコンバージョンをアップロードし、電話や営業担当者を通じてオフラインの世界での販売につながる広告を追跡することができます。広告が電話をかけるきっかけになり、それが価値ある顧客アクションにつながるときに、オフラインの通話コンバージョンをアップロードすることができます。</p>
+<p>Google Ads のコンバージョンは、ユーザーが広告をクリックしたり、ディスプレイネットワークの広告を表示した後に特定のアクションを実行したときに発生します。Google Ads コンバージョンコネクタは、Google Ads API を使用してオフラインコンバージョンのアップロードと、以前に取得したコンバージョン値の調整をサポートしています。このコネクタを使用して、Google Ads にオフラインクリックコンバージョンをアップロードし、電話や営業担当者を通じてオフラインの世界での販売につながった広告を追跡することができます。また、広告が電話をかけるきっかけになり、それが価値ある顧客アクションにつながったときに、オフラインの通話コンバージョンをアップロードすることもできます。</p>
 <h2 id="要件">要件</h2>
 <ul>
-<li>オフラインのコンバージョンを送信するには、Google Ads Import コンバージョンアクションを構成し、ソースとして通話またはクリックを指定します。詳細については、<a href="https://support.google.com/google-ads/answer/2998031?sjid=13815989904284925133-NC">Google ヘルプのオフラインコンバージョンに関するドキュメンテーション</a>を参照してください。</li>
-<li>コンバージョンを調整するには、元のコンバージョンのトランザクション ID を持っているか、<code>gclid</code>とコンバージョンの日時を持っていて、調整したいコンバージョンを特定する必要があります。</li>
+<li>オフラインコンバージョンを送信するには、Google Ads Import コンバージョンアクションを構成し、ソースとして通話またはクリックを指定します。詳細については、<a href="https://support.google.com/google-ads/answer/2998031?sjid=13815989904284925133-NC">Google ヘルプのオフラインコンバージョンに関するドキュメント</a>を参照してください。</li>
+<li>コンバージョンを調整するには、元のコンバージョンのトランザクションIDを持っているか、<code>gclid</code>とコンバージョンの日時を持っていて、調整したいコンバージョンを特定する必要があります。</li>
 </ul>
 <h2 id="コネクタのアクション">コネクタのアクション</h2>
 <table>
@@ -448,7 +448,7 @@
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Google Ads API</li>
-<li>APIバージョン：v17</li>
+<li>APIバージョン：v18</li>
 <li>APIエンドポイント：<code>https://googleads.googleapis.com/</code></li>
 <li>ドキュメンテーション：<a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
 </ul>
@@ -463,12 +463,12 @@
 <p>アクションは、Googleのベストプラクティスに従って、オフラインコンバージョンのアップロードを収容するために30分遅延します。Google Campaign Manager 360 Floodlight コネクタを使用した遅延アクションについての詳細は、Googleの<a href="https://support.google.com/searchads/answer/6074338?hl=en">オフラインコンバージョンのアップロードに関するベストプラクティス</a>のドキュメンテーションを参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>EventStream または AudienceStream で <a href="/ja/server-side/trace/manage/">trace</a> を使用するときは、アクションは遅延しません。</p>
 <h3 id="同意">同意</h3>
-<p>コネクタは、<code>adUserData</code> と <code>adPersonalization</code> の同意について、デフォルトで <code>GRANTED</code> の値を送信します。デフォルトを上書きするには、関連する EventStream 属性を <code>Ad User Data Consent</code> および/または <code>Ad Personalization Consent</code> にマッピングし、値を <code>DENIED</code> に構成します。</p>
+<p>コネクタは、<code>adUserData</code>と<code>adPersonalization</code>の同意について、デフォルトで<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、関連するEventStream属性を<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>にマップし、値を<code>DENIED</code>に構成します。</p>
 <h2 id="構成の構成">構成の構成</h2>
 <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
+<p>コネクタを追加したら、次の構成を構成します：</p>
 <ul>
-<li><strong>顧客ID</strong>：個々のGoogle Adsアカウントに割り当てられた一意の識別子。</li>
+<li><strong>顧客ID</strong>：あなたの個々のGoogle Adsアカウントに割り当てられた一意の識別子。</li>
 <li><strong>マネージャー顧客ID</strong>：管理されたアカウントにアクセスする場合は、<strong>マネージャー顧客ID</strong>と<strong>顧客ID</strong>を入力します。</li>
 </ul>
 <p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
@@ -487,11 +487,11 @@
 <tbody>
 <tr>
 <td>顧客ID</td>
-<td>(必須) 顧客アカウントIDを選択します。利用可能なオプションは、認証されたユーザーのアクセス可能な顧客アカウントを反映しています。</td>
+<td>必須。顧客アカウントIDを選択します。利用可能なオプションは、認証されたユーザーのアクセス可能な顧客アカウントを反映しています。</td>
 </tr>
 <tr>
 <td>コンバージョンアクション</td>
-<td>(必須) 既存のコンバージョンアクションを選択します。表示されるのは、<code>UPLOAD_CALLS</code>タイプのGoogle Adsコンバージョンアクションのみです。詳細については、<a href="https://support.google.com/google-ads/answer/1722022">Google Ads コンバージョントラッキング</a>を参照してください。</td>
+<td>必須。既存のコンバージョンアクションを選択します。表示されるのは、<code>UPLOAD_CALLS</code>タイプのGoogle Adsコンバージョンアクションのみです。詳細については、<a href="https://support.google.com/google-ads/answer/1722022">Google Ads コンバージョントラッキング</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
@@ -506,15 +506,15 @@
 <tbody>
 <tr>
 <td>発信者ID</td>
-<td>(必須) この通話が発信された発信者ID。発信者IDはE.164形式で、プラス (<code>+</code>) 文字が先行することが期待されます。例：<code>+16502531234</code></td>
+<td>必須。この通話が発信された発信者ID。発信者IDはE.164形式で、プラス (<code>+</code>) 文字が先行することが期待されます。例：<code>+16502531234</code>。</td>
 </tr>
 <tr>
 <td>通話開始日時</td>
-<td>(必須) 通話が発生した日時。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
+<td>必須。通話が発生した日時。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
 </tr>
 <tr>
 <td>コンバージョン日時</td>
-<td>(必須) コンバージョンが発生した日時。この日時は通話時間の後でなければなりません。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
+<td>必須。コンバージョンが発生した日時。この日時は通話時間の後でなければなりません。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
 </tr>
 <tr>
 <td>コンバージョン値</td>
@@ -580,11 +580,11 @@
 <tbody>
 <tr>
 <td>Google Click ID</td>
-<td>(必須) このコンバージョンに関連するGoogleクリックID (<code>gclid)</code>。</td>
+<td>必須。このコンバージョンに関連するGoogleクリックID (<code>gclid</code>)。Google Click ID、<code>gbraid</code>、または<code>wbraid</code>が必要です。</td>
 </tr>
 <tr>
 <td>コンバージョン日時</td>
-<td>(必須) コンバージョンが発生した日時。この日時は通話時間の後でなければなりません。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
+<td>必須。コンバージョンが発生した日時。この日時は通話時間の後でなければなりません。タイムゾーンを指定する必要があります。形式は <strong>yyyy-mm-dd hh:mm:ss</strong> です。例：<code>2020-01-01 12:32:45-8:00</code>。</td>
 </tr>
 <tr>
 <td>コンバージョン値</td>
@@ -596,7 +596,7 @@
 </tr>
 <tr>
 <td>注文ID</td>
-<td>(必須) コンバージョンに関連する注文ID。注文IDは、コンバージョンアクションごとに1つのコンバージョンに対してのみ使用できます。</td>
+<td>必須。コンバージョンに関連する注文ID。注文IDは、コンバージョンアクションごとに1つのコンバージョンにのみ使用できます。</td>
 </tr>
 <tr>
 <td>外部帰属クレジット</td>
@@ -604,7 +604,15 @@
 </tr>
 <tr>
 <td>外部帰属モデル</td>
-<td>指定された帰属モデル名。詳細については、<a href="https://developers.google.com/google-ads/api/reference/rpc/v3/ClickConversion">Google Ads API クリックコンバージョン</a>を参照してください。</td>
+<td>指定された帰属モデル名。詳細については、<a href="https://developers.google.com/google-ads/api/reference/rpc/v3/ClickConversion">Google Ads API Click Conversion</a>を参照してください。</td>
+</tr>
+<tr>
+<td>gbraid</td>
+<td>必須。iOS14から始まるiOSデバイスからのアプリコンバージョンと関連するクリックの識別子。値はGoogle Click ID、<code>gbraid</code>、または<code>wbraid</code>であることができます。</td>
+</tr>
+<tr>
+<td>wbraid</td>
+<td>必須。iOS14から始まるiOSデバイスからのウェブコンバージョンと関連するクリックの識別子。値はGoogle Click ID、<code>gbraid</code>、または<code>wbraid</code>であることができます。</td>
 </tr>
 </tbody>
 </table>
@@ -618,32 +626,32 @@
 </thead>
 <tbody>
 <tr>
-<td>マーチャントID</td>
+<td>Merchant ID</td>
 <td>アイテムがアップロードされるMerchant CenterのID。</td>
 </tr>
 <tr>
-<td>フィード国コード</td>
+<td>Feed Country Code</td>
 <td>アイテムがアップロードされるフィードに関連する国コード。</td>
 </tr>
 <tr>
-<td>フィード言語コード</td>
+<td>Feed Language Code</td>
 <td>アイテムがアップロードされるフィードに関連する言語コード。</td>
 </tr>
 <tr>
 <td>ローカルトランザクション</td>
-<td>全体のカートに対する無料配送やクーポン割引など、すべてのトランザクションレベルの割引の合計。通貨コードは <code>ClickConversion</code> メッセージのものと同じです。</td>
+<td>すべてのトランザクションレベルの割引の合計、例えば全体のカートに対する送料無料やクーポン割引などです。通貨コードは<code>ClickConversion</code>メッセージと同じです。</td>
 </tr>
 <tr>
 <td>商品ID</td>
-<td>アイテムのショッピングID。この値はMerchant Centerの商品識別子と等しくなければなりません。複数のアイテムを追加するには配列を使用します。配列タイプの属性は等しい長さでなければなりません。</td>
+<td>商品のショッピングIDです。この値はMerchant Centerの商品識別子と等しくなければなりません。複数の商品を追加するには配列を使用します。配列型の属性は等しい長さでなければなりません。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>売れたアイテムの数。複数のアイテムを追加するには配列を使用します。配列型の属性は等しい長さでなければなりません。</td>
+<td>売れた商品の数です。複数の商品を追加するには配列を使用します。配列型の属性は等しい長さでなければなりません。</td>
 </tr>
 <tr>
 <td>単価</td>
-<td>税金、送料、および取引レベルの割引を除いた単価。通貨コードは <code>ClickConversion</code> メッセージと同じです。複数のアイテムを追加するには配列を使用します。配列型の属性は等しい長さでなければなりません。</td>
+<td>税金、送料、および任意のトランザクションレベルの割引を除いた単価です。通貨コードは<code>ClickConversion</code>メッセージと同じです。複数の商品を追加するには配列を使用します。配列型の属性は等しい長さでなければなりません。</td>
 </tr>
 </tbody>
 </table>
@@ -658,19 +666,19 @@
 <tbody>
 <tr>
 <td>Conversion Action Override</td>
-<td><strong>Conversion Action</strong> パラメータを上書きするための変換アクションIDを提供します。EventStream変数を使用して <strong>Conversion Action ID</strong> パラメータを入力することができます。</td>
+<td><strong>Conversion Action</strong>パラメータを上書きするための変換アクションIDを提供します。<strong>Conversion Action ID</strong>パラメータにはEventStream変数を使用できます。</td>
 </tr>
 <tr>
 <td>Custom Variables</td>
-<td>この変換に関連するカスタム変数。詳細については、<a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>を参照してください。</td>
+<td>この変換に関連するカスタム変数です。詳細については、<a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>を参照してください。</td>
 </tr>
 <tr>
 <td>Ad User Data Consent</td>
-<td>広告ユーザーデータの同意。デフォルト値は <code>GRANTED</code> です。有効な値は <code>GRANTED</code> と <code>DENIED</code> です。</td>
+<td>広告ユーザーデータの同意です。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--変換の再声明">アクション — 変換の再声明</h3>
+<h3 id="アクション--変換再声明">アクション — 変換再声明</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -686,27 +694,27 @@
 </tr>
 <tr>
 <td>Restatement Value</td>
-<td>(必須) 再声明後の変換の値。</td>
+<td>必須。再声明後の変換の値です。</td>
 </tr>
 <tr>
 <td>Restatement Date Time</td>
-<td>(必須) 調整が行われた日時。形式は <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong> です。日付属性はGoogleが期待する形式に変換されます。</td>
+<td>必須。調整が行われた日時です。形式は<strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>です。日付属性はGoogleが期待する形式に変換されます。</td>
 </tr>
 <tr>
 <td>Order ID</td>
-<td><strong>Order ID</strong> または <strong>Google Click ID</strong> と <strong>Conversion Date Time</strong> のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
+<td><strong>Order ID</strong>または<strong>Google Click ID</strong>と<strong>Conversion Date Time</strong>のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
 </tr>
 <tr>
 <td>Google Click ID</td>
-<td><strong>Order ID</strong> または <strong>Google Click ID</strong> と <strong>Conversion Date Time</strong> のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
+<td><strong>Order ID</strong>または<strong>Google Click ID</strong>と<strong>Conversion Date Time</strong>のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
 </tr>
 <tr>
 <td>Conversion Date Time</td>
-<td>変換の日時。形式は <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong> です。日付属性はGoogleが期待する形式に変換されます。</td>
+<td>変換の日時です。形式は<strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>です。日付属性はGoogleが期待する形式に変換されます。</td>
 </tr>
 <tr>
 <td>Currency Code</td>
-<td>再声明された値の通貨。提供されない場合、変換アクションからのデフォルトの通貨が使用されます。</td>
+<td>再声明された値の通貨です。提供されない場合、変換アクションからのデフォルトの通貨が使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -721,11 +729,19 @@
 <tbody>
 <tr>
 <td>Conversion Action Override</td>
-<td><strong>Conversion Action</strong> パラメータを上書きするための変換アクションIDを提供します。このフィールドでは、EventStream変数を使用して <strong>Conversion Action ID</strong> パラメータを入力することができます。</td>
+<td><strong>Conversion Action</strong>パラメータを上書きするための変換アクションIDを提供します。このフィールドでは、EventStream変数を使用して<strong>Conversion Action ID</strong>パラメータを入力できます。</td>
+</tr>
+<tr>
+<td>Customer ID Override</td>
+<td>任意。コネクタ構成の<strong>Customer ID</strong>を上書きするための顧客IDを提供します。このオプションを使用する場合、Conversion Action Overrideも使用する必要があります。</td>
+</tr>
+<tr>
+<td>Manager Customer ID Override</td>
+<td>任意。Customer ID Overrideを使用してクライアントの顧客にアクセスしている場合は、Manager Customer IDを提供します。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--変換の撤回">アクション — 変換の撤回</h3>
+<h3 id="アクション--変換撤回">アクション — 変換撤回</h3>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
@@ -741,23 +757,31 @@
 </tr>
 <tr>
 <td>Retraction Date Time</td>
-<td>(必須) 撤回が行われた日時。形式は <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong> です。日付属性はGoogleが期待する形式に変換されます。</td>
+<td>必須。撤回が行われた日時です。形式は<strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>です。日付属性はGoogleが期待する形式に変換されます。</td>
 </tr>
 <tr>
 <td>Order ID</td>
-<td><strong>Order ID</strong> または <strong>Google Click ID</strong> と <strong>Conversion Date Time</strong> のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
+<td><strong>Order ID</strong>または<strong>Google Click ID</strong>と<strong>Conversion Date Time</strong>のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
 </tr>
 <tr>
 <td>Google Click ID</td>
-<td><strong>Order ID</strong> または <strong>Google Click ID</strong> と <strong>Conversion Date Time</strong> のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
+<td><strong>Order ID</strong>または<strong>Google Click ID</strong>と<strong>Conversion Date Time</strong>のいずれかを提供する必要があります。変換が注文IDを指定して報告された場合、その注文IDを使用する必要があります。</td>
 </tr>
 <tr>
 <td>Conversion Date Time</td>
-<td>このパラメータは形式 <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong> でなければなりません。日付属性はGoogleが期待する形式に変換されます。</td>
+<td>このパラメータは形式<strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>でなければなりません。日付属性はGoogleが期待する形式に変換されます。</td>
 </tr>
 <tr>
 <td>Conversion Action Override</td>
-<td><strong>Conversion Action</strong> パラメータを上書きするための変換アクションIDを提供します。EventStream変数を使用して <strong>Conversion Action ID</strong> パラメータを入力することができます。</td>
+<td><strong>Conversion Action</strong>パラメータを上書きするための変換アクションIDを提供します。EventStream変数を使用して<strong>Conversion Action ID</strong>パラメータを入力できます。</td>
+</tr>
+<tr>
+<td>Customer ID Override</td>
+<td>任意。コネクタ構成の<strong>Customer ID</strong>を上書きするための顧客IDを提供します。このオプションを使用する場合、Conversion Action Overrideも使用する必要があります。</td>
+</tr>
+<tr>
+<td>Manager Customer ID Override</td>
+<td>任意。Customer ID Overrideを使用してクライアントの顧客にアクセスしている場合は、Manager Customer IDを提供します。</td>
 </tr>
 </tbody>
 </table>
@@ -821,7 +845,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年September月25日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -846,8 +870,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E9%80%9A%E8%A9%B1%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89" href="javascript:void(0)">アクション - 通話コンバージョンのアップロード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89" href="javascript:void(0)">アクション - クリックコンバージョンのアップロード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E5%A4%89%E6%8F%9B%E3%81%AE%E5%86%8D%E5%A3%B0%E6%98%8E" href="javascript:void(0)">アクション — 変換の再声明</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E5%A4%89%E6%8F%9B%E3%81%AE%E6%92%A4%E5%9B%9E" href="javascript:void(0)">アクション — 変換の撤回</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E5%A4%89%E6%8F%9B%E5%86%8D%E5%A3%B0%E6%98%8E" href="javascript:void(0)">アクション — 変換再声明</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E5%A4%89%E6%8F%9B%E6%92%A4%E5%9B%9E" href="javascript:void(0)">アクション — 変換撤回</a></li>
               </nav>
   </aside></nav>
 

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "13",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -486,6 +486,54 @@
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="action---add-user-to-custom-audience">Action - Add User To Custom Audience</h3>
+<h4 id="user-identifiers">User identifiers</h4>
+<p>You must provide at least one of the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>String</td>
+<td>Provide a plain text email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed email address is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td>String</td>
+<td>Provide a plain text phone number that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed phone number is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>String</td>
+<td>Provide the device ID that has been already whitespace trimmed, lowercased, and SHA256 hashed. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. If an unhashed device ID is mapped, please select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Twitter Handle</td>
+<td>String</td>
+<td>Provide an X handle that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed X handle is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Twitter ID</td>
+<td>String</td>
+<td>Provide an X ID that has been already whitespace trimmed, lowercased, and SHA256 hashed. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID. If an unhashed X ID is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Partner User ID</td>
+<td>String</td>
+<td>Provide the partner user ID. If an unhashed Partner User ID is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>User Identifier Hashing</td>
+<td>Boolean</td>
+<td>If the user identifier is already hashed, select this checkbox. Otherwise, the connector will <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalize</a> and hash the mapped value.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -500,44 +548,84 @@
 <td><ul><li>Required</li><li>Select audience from list. This value is retrieved from the X Ads account and will appear instantly when created through the AudienceStream Configuration screen.</li><li>For more information, see <a href="https://developer.x.com/en/docs/ads/audiences/overview">Custom Audiences</a>.</li></ul></td>
 </tr>
 <tr>
-<td>Device ID</td>
-<td><ul><li>User Device ID. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. </li></ul></td>
-</tr>
-<tr>
-<td>Email</td>
-<td><ul><li>User Email. If an unhashed email address is mapped, please utilize the User Identifier Hashing checkbox. Otherwise a SHA256 Email should be mapped.</li></ul></td>
-</tr>
-<tr>
-<td>Partner User ID</td>
-<td><ul><li>The user&rsquo;s ID in the partner&rsquo;s system. </li><li>If your company uses its own standard ID system to track users (that is, not common user identifiers like email addresses, device IDs, X user ID, etc.), then this is the recommended parameter.</li></ul></td>
-</tr>
-<tr>
-<td>Phone Number</td>
-<td><ul><li>The user&rsquo;s phone number. This value is no longer supported by the API and should not be mapped</li></ul></td>
-</tr>
-<tr>
-<td>X Handle</td>
-<td><ul><li>The X @handle belonging to the user.</li></ul></td>
-</tr>
-<tr>
-<td>X ID</td>
-<td><ul><li>The X ID belonging to the user. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID</li></ul></td>
-</tr>
-<tr>
-<td>User Identifier Hashing</td>
-<td><ul><li>All user identifiers except &ldquo;Partner User ID&rdquo; must be hashed using SHA256 hashing methods and <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalized</a>.</li><li>If the checkbox is unchecked, the Add User action will normalize and hash the mapped value.</li></ul></td>
-</tr>
-<tr>
 <td>Effective At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601.</li><li>Defaults to the current date and time.</li><li>A millisecond (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
 </tr>
 <tr>
 <td>Expired At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of &ldquo;Effective At&rdquo;.</li><li>Expressed in ISO 8601.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of &ldquo;Effective At&rdquo;.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of <strong>Effective At</strong>.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of <strong>Effective At</strong>.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-user-from-custom-audience">Action - Remove User From Custom Audience</h3>
+<h3 id="action---add-user-to-custom-audience-multiple-identifiers">Action - Add User To Custom Audience (multiple identifiers)</h3>
+<h4 id="user-identifiers-1">User identifiers</h4>
+<p>You must provide at least one of the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide a plain text email address and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Email (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide a phone number that has been already whitespace trimmed, lowercased, SHA256 hashed, and in E164 format.</td>
+</tr>
+<tr>
+<td>Device ID (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide the device ID and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Device ID (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide a device ID that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Twitter Handle (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide an X handle and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Twitter Handle (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide an X handle that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Twitter ID (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide an X ID and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Twitter ID (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide an X ID that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Partner User ID</td>
+<td>String</td>
+<td>Provide the partner user ID.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -552,59 +640,64 @@
 <td><ul><li>Required</li><li>Select audience from list. This value is retrieved from the X Ads account and will appear instantly when created through the AudienceStream Configuration screen.</li><li>For more information, see <a href="https://developer.x.com/en/docs/ads/audiences/overview">Custom Audiences</a>.</li></ul></td>
 </tr>
 <tr>
-<td>Device ID</td>
-<td><ul><li>User Device ID. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. </li></ul></td>
-</tr>
-<tr>
-<td>Email</td>
-<td><ul><li>User Email. If an unhashed email address is mapped, please utilize the User Identifier Hashing checkbox. Otherwise a SHA256 Email should be mapped.</li></ul></td>
-</tr>
-<tr>
-<td>Partner User ID</td>
-<td><ul><li>Partner User ID.</li><li>If your company uses its own standard ID system to track users (for instance, not common user identifiers like email addresses, device ids, X user ID, et cetera), then this is the recommended parameter.</li></ul></td>
-</tr>
-<tr>
-<td>Phone Number</td>
-<td><ul><li>The user&rsquo;s phone number. This value is no longer supported by the API and should not be mapped</li></ul></td>
-</tr>
-<tr>
-<td>X Handle</td>
-<td><ul><li>The X @handle belonging to the user.</li></ul></td>
-</tr>
-<tr>
-<td>X ID</td>
-<td><ul><li>The X ID belonging to the user. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID</li></ul></td>
-</tr>
-<tr>
-<td>User Identifier Hashing</td>
-<td><ul><li>All user identifiers except &ldquo;Partner User ID&rdquo; must be hashed using SHA256 hashing methods and <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalized</a>.</li><li>If the checkbox is unchecked, the Remove User action will normalize and hash the mapped value.</li></ul></td>
-</tr>
-<tr>
 <td>Effective At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601.</li><li>Defaults to the current date and time.</li><li>A millisecond (ms) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
 </tr>
 <tr>
 <td>Expired At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of &ldquo;Effective At&rdquo;.</li><li>Expressed in ISO 8601.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of &ldquo;Effective At&rdquo;.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of <strong>Effective At</strong>.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of <strong>Effective At</strong>.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---add-user-to-custom-audience-1">Action - Add User To Custom Audience</h3>
-<h4 id="user-identifiers">User identifiers</h4>
+<h3 id="action---remove-user-from-custom-audience">Action - Remove User From Custom Audience</h3>
+<h4 id="user-identifiers-2">User identifiers</h4>
 <p>You must provide at least one of the following parameters:</p>
-<p>| <strong>Parameter</strong> | <strong>Type</strong> |<strong>Description</strong> |
-| &mdash; | &mdash; |
-| Email (apply SHA256 hash) | String | Provide a plain text email address and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash. |
-| Email (already SHA256 hashed) | String| Provide an email address which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | String | Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| Phone Number (already SHA256 hashed) | String|  Provide a phone number which has been already whitespace trimmed, lowercased, SHA256 hashed, and in E164 format. |
-| Device ID (apply SHA256 hash) | String| Provide the device ID and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash. |
-| Device ID (already SHA256 hashed)| String | Provide a device ID which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| X Handle (apply SHA256 hash)| String | Provide an X handle and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| X Handle (already SHA256 hashed) | String| Provide a X handle which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| X ID (apply SHA256 hash) | String| Provide an X ID and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| X ID (already SHA256 hashed)| String |  Provide an X ID which has been already whitespace trimmed, lowercased, and SHA256 hashed.   |
-| Partner User ID | String| Provide the partner user ID. |</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>String</td>
+<td>Provide a plain text email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed email address is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td>String</td>
+<td>Provide a plain text phone number that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed phone number is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>String</td>
+<td>Provide the device ID that has been already whitespace trimmed, lowercased, and SHA256 hashed. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. If an unhashed device ID is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Twitter Handle</td>
+<td>String</td>
+<td>Provide an X handle that has been already whitespace trimmed, lowercased, and SHA256 hashed. If an unhashed X handle is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Twitter ID</td>
+<td>String</td>
+<td>Provide an X ID that has been already whitespace trimmed, lowercased, and SHA256 hashed. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID. If an unhashed X ID is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>Partner User ID</td>
+<td>String</td>
+<td>Provide the partner user ID. If an unhashed Partner User ID is mapped, select the User Identifier Hashing checkbox.</td>
+</tr>
+<tr>
+<td>User Identifier Hashing</td>
+<td>Boolean</td>
+<td>If the user identifier is already hashed, select this checkbox. Otherwise, the connector will <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalize</a> and hash the mapped value.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -619,59 +712,84 @@
 <td><ul><li>Required</li><li>Select audience from list. This value is retrieved from the X Ads account and will appear instantly when created through the AudienceStream Configuration screen.</li><li>For more information, see <a href="https://developer.x.com/en/docs/ads/audiences/overview">Custom Audiences</a>.</li></ul></td>
 </tr>
 <tr>
-<td>Device ID</td>
-<td><ul><li>User Device ID. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. </li></ul></td>
-</tr>
-<tr>
-<td>Email</td>
-<td><ul><li>User Email. If an unhashed email address is mapped, please utilize the User Identifier Hashing checkbox. Otherwise a SHA256 Email should be mapped.</li></ul></td>
-</tr>
-<tr>
-<td>Partner User ID</td>
-<td><ul><li>The user&rsquo;s ID in the partner&rsquo;s system. </li><li>If your company uses its own standard ID system to track users (that is, not common user identifiers like email addresses, device IDs, X user ID, etc.), then this is the recommended parameter.</li></ul></td>
-</tr>
-<tr>
-<td>Phone Number</td>
-<td><ul><li>The user&rsquo;s phone number. This value is no longer supported by the API and should not be mapped</li></ul></td>
-</tr>
-<tr>
-<td>X Handle</td>
-<td><ul><li>The X @handle belonging to the user.</li></ul></td>
-</tr>
-<tr>
-<td>X ID</td>
-<td><ul><li>The X ID belonging to the user. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID</li></ul></td>
-</tr>
-<tr>
-<td>User Identifier Hashing</td>
-<td><ul><li>All user identifiers except &ldquo;Partner User ID&rdquo; must be hashed using SHA256 hashing methods and <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalized</a>.</li><li>If the checkbox is unchecked, the Add User action will normalize and hash the mapped value.</li></ul></td>
-</tr>
-<tr>
 <td>Effective At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601.</li><li>Defaults to the current date and time.</li><li>A millisecond (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (MS) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
 </tr>
 <tr>
 <td>Expired At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of &ldquo;Effective At&rdquo;.</li><li>Expressed in ISO 8601.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of &ldquo;Effective At&rdquo;.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of <strong>Effective At</strong>.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of <strong>Effective At</strong>.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-user-from-custom-audience-1">Action - Remove User From Custom Audience</h3>
-<h4 id="user-identifiers-1">User identifiers</h4>
+<h3 id="remove-user-from-custom-audience-multiple-identifiers">Remove User from Custom Audience (multiple identifiers)</h3>
+<h4 id="user-identifiers-3">User identifiers</h4>
 <p>You must provide at least one of the following parameters:</p>
-<p>| <strong>Parameter</strong> | <strong>Type</strong> |<strong>Description</strong> |
-| &mdash; | &mdash; |
-| Email (apply SHA256 hash) | String | Provide a plain text email address and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash. |
-| Email (already SHA256 hashed) | String| Provide an email address which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| Phone Number (apply SHA256 hash) | String | Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| Phone Number (already SHA256 hashed) | String|  Provide a phone number which has been already whitespace trimmed, lowercased, SHA256 hashed, and in E164 format. |
-| Device ID (apply SHA256 hash) | String| Provide the device ID and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash. |
-| Device ID (already SHA256 hashed)| String | Provide a device ID which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| X Handle (apply SHA256 hash)| String | Provide an X handle and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| X Handle (already SHA256 hashed) | String| Provide a X handle which has been already whitespace trimmed, lowercased, and SHA256 hashed. |
-| X ID (apply SHA256 hash) | String| Provide an X ID and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash. |
-| X ID (already SHA256 hashed)| String |  Provide an X ID which has been already whitespace trimmed, lowercased, and SHA256 hashed.   |
-| Partner User ID | String| Provide the partner user ID. |</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide a plain text email address and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Email (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide a phone number which has been already whitespace trimmed, lowercased, SHA256 hashed, and in E164 format.</td>
+</tr>
+<tr>
+<td>Device ID (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide the device ID and the connector whitespaces trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Device ID (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide a device ID which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>X Handle (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide an X handle and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>X Handle (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide a X handle which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>X ID (apply SHA256 hash)</td>
+<td>String</td>
+<td>Provide an X ID and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>X ID (already SHA256 hashed)</td>
+<td>String</td>
+<td>Provide an X ID which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Partner User ID</td>
+<td>String</td>
+<td>Provide the partner user ID.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
@@ -686,40 +804,12 @@
 <td><ul><li>Required</li><li>Select audience from list. This value is retrieved from the X Ads account and will appear instantly when created through the AudienceStream Configuration screen.</li><li>For more information, see <a href="https://developer.x.com/en/docs/ads/audiences/overview">Custom Audiences</a>.</li></ul></td>
 </tr>
 <tr>
-<td>Device ID</td>
-<td><ul><li>User Device ID. This value should be an <a href="https://developer.apple.com/Library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html">iOS Advertising Identifier</a>, <a href="https://developer.android.com/google/play-services/id.html">Google Advertising ID</a>, or when not available - <a href="https://developer.android.com/google/play-services/id.html">Android ID</a>. </li></ul></td>
-</tr>
-<tr>
-<td>Email</td>
-<td><ul><li>User Email. If an unhashed email address is mapped, please utilize the User Identifier Hashing checkbox. Otherwise a SHA256 Email should be mapped.</li></ul></td>
-</tr>
-<tr>
-<td>Partner User ID</td>
-<td><ul><li>Partner User ID.</li><li>If your company uses its own standard ID system to track users (for instance, not common user identifiers like email addresses, device ids, X user ID, et cetera), then this is the recommended parameter.</li></ul></td>
-</tr>
-<tr>
-<td>Phone Number</td>
-<td><ul><li>The user&rsquo;s phone number. This value is no longer supported by the API and should not be mapped</li></ul></td>
-</tr>
-<tr>
-<td>X Handle</td>
-<td><ul><li>The X @handle belonging to the user.</li></ul></td>
-</tr>
-<tr>
-<td>X ID</td>
-<td><ul><li>The X ID belonging to the user. The X ID is a unique value that every account on X has. No two people have the same ID. Although an account can change its @handle, it can never change its X ID</li></ul></td>
-</tr>
-<tr>
-<td>User Identifier Hashing</td>
-<td><ul><li>All user identifiers except &ldquo;Partner User ID&rdquo; must be hashed using SHA256 hashing methods and <a href="https://developer.x.com/en/docs/ads/audiences/overview/user-data#data-normalization">normalized</a>.</li><li>If the checkbox is unchecked, the Remove User action will normalize and hash the mapped value.</li></ul></td>
-</tr>
-<tr>
 <td>Effective At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601.</li><li>Defaults to the current date and time.</li><li>A millisecond (ms) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should take effect.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to the current date and time.</li><li>A milliseconds (ms) since epoch timestamp may be provided, and will be formatted correctly.</li></ul></td>
 </tr>
 <tr>
 <td>Expired At</td>
-<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of &ldquo;Effective At&rdquo;.</li><li>Expressed in ISO 8601.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of &ldquo;Effective At&rdquo;.</li></ul></td>
+<td><ul><li>Membership option.</li><li>The UTC time at which the custom audience associations should expire.</li><li>The specified time must be later than the value of <strong>Effective At</strong>.</li><li>Expressed in ISO 8601 format.</li><li>Defaults to your configured default expiration period, which is typically 30 days or 720 hours from the value of <strong>Effective At</strong>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -783,7 +873,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 7, 2024 
+          <p>This page was last updated:  January 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -807,9 +897,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-custom-audience-overview" href="javascript:void(0)">Create a Custom Audience Overview</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-user-to-custom-audience" href="javascript:void(0)">Action - Add User To Custom Audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-user-to-custom-audience-multiple-identifiers" href="javascript:void(0)">Action - Add User To Custom Audience (multiple identifiers)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-user-from-custom-audience" href="javascript:void(0)">Action - Remove User From Custom Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-user-to-custom-audience" href="javascript:void(0)">Action - Add User To Custom Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-user-from-custom-audience" href="javascript:void(0)">Action - Remove User From Custom Audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-custom-audience-multiple-identifiers" href="javascript:void(0)">Remove User from Custom Audience (multiple identifiers)</a></li>
               </nav>
   </aside></nav>
 

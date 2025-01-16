@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>オフライン購入者をリマーケティングから除外する | ガイド | Tealiumドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/guides/exclude-offline-purchasers/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "guides",
+        reading_time  : "1",
+        site_language : "ja",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">知識ベース&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/guides/exclude-offline-purchasers/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="guides"><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/vip-badge-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">VIPバッジ</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/exclude-offline-purchasers/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".exclude-offline-purchasers">オフライン購入者を除外する</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/cart-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">カート放棄</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/discount-shopper-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".discount-shopper-guide">ディスカウントショッパー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/browse-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".browse-abandonment-guide">ブラウズ放棄</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/lifetime-value/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ライフタイムバリュー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/supported-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">同意統合</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/abandonment-strategy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">放棄戦略</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/customer-spending-levels-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".customer-spending-levels-guide">顧客の支出レベル</a></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/guides/">ガイド</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">オフライン購入者をリマーケティングから除外する</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      このガイドでは、マーケティング効率と顧客体験を向上させるために、オフライン購入者をオンラインリマーケティングの対象から除外する方法について説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="なぜオフラインのショッパーをリターゲティングから除外するのか">なぜオフラインのショッパーをリターゲティングから除外するのか？</h2>
+<p>オンラインのマーケティングキャンペーンからオフラインのショッパーを除外する理由はいくつかあります：</p>
+<ul>
+<li><strong>冗長な広告を避ける</strong>：ショッパーがオンラインでアイテムを閲覧し、店舗で購入を完了した場合、そのアイテムについて再マーケティングする必要はありません。</li>
+<li><strong>より関連性の高いオファー</strong>：店舗での購入を好むショッパーは、送料無料などのオンライン限定のプロモーションに興味がないかもしれません。</li>
+</ul>
+<p>このアプローチは、広告費を削減するだけでなく、既に購入したアイテムの広告を受け取ることによる顧客のフラストレーションを防ぐのにも役立ちます。</p>
+<p>リマーケティングの対象から顧客を永久に除外することは望ましくありません。顧客がサイトでアイテムを閲覧したり検索したりすることで再度関与すると、除外リストから顧客を削除することが重要です。これにより、顧客が再度関心を示したときにマーケティング活動が再開され、関連性のあるメッセージを提供し、機会を逃さないようにすることができます。</p>
+<h2 id="オフライン購入者の追跡方法">オフライン購入者の追跡方法</h2>
+<p>オフライン購入者を追跡するためには、オフラインの取引データをTealiumにインポートします。これは、ファイルインポート、Data Connect、APIを通じて行うことができます。その後、これらの訪問に「オフラインショッパー」のバッジを付けることができます。このバッジは、リマーケティングベンダーに送信する除外オーディエンスを作成するために使用でき、これらの顧客を不必要なリターゲティングから除外します。</p>
+<h2 id="要件">要件</h2>
+<h4 id="必要なeventstream属性">必要なEventStream属性</h4>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>タイプ</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_email</code></td>
+<td>UDO変数</td>
+<td><code>user@example.com</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="必要なaudiencestream属性">必要なAudienceStream属性</h4>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>タイプ</th>
+<th>スコープ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メールアドレス</td>
+<td>文字列</td>
+<td>訪問</td>
+<td>顧客のメールアドレス。</td>
+</tr>
+<tr>
+<td>オフラインショッパー</td>
+<td>バッジ</td>
+<td>訪問</td>
+<td>オフラインで購入を完了した訪問。</td>
+</tr>
+<tr>
+<td>ユーザーアクション</td>
+<td>ブール値</td>
+<td>訪問</td>
+<td>サイトと再度関与するために検索を行ったり、製品を閲覧したりした訪問。</td>
+</tr>
+</tbody>
+</table>
+<p>次の例では、オフラインの顧客とその購入を「オフラインショッパー」のバッジで識別し、そのバッジを持つ訪問でオーディエンスを作成します。その後、リマーケティングベンダーを通じてオーディエンスを活性化し、除外リストを更新します。</p>
+<h2 id="ステップ1---属性の作成">ステップ1 - 属性の作成</h2>
+<p>以下のエンリッチメントで<code>メールアドレス</code>という名前の文字列訪問属性を作成します：</p>
+<ul>
+<li><strong>ANY EVENT</strong>で<code>customer_email</code>に構成します。</li>
+</ul>
+<figure><a class="slb" href="/images/guides/offline_purchases_string_email%20address.png"><img src="/images/guides/offline_purchases_string_email%20address.png"
+         alt="メールアドレスの文字列を追加"
+         title="メールアドレスの文字列を追加"/>
+    </a>
+</figure>
+<p>訪問が製品を閲覧したり、検索を行ったりしてサイトと再度関与するかどうかを追跡するために、以下のエンリッチメントで<code>ユーザーアクション</code>という名前のブール値訪問属性を作成します：</p>
+<ul>
+<li><strong>NEW VISIT</strong>で<code>false</code>に構成します。</li>
+<li><code>tealium_event</code>が<code>search</code>を含むか<code>tealium_event</code>が<code>product_view</code>を含む場合に<strong>ANY EVENT</strong>で<code>true</code>に構成します。</li>
+</ul>
+<p>この属性を、監視する他のイベントを含めるように調整します。</p>
+<figure><a class="slb" href="/images/guides/user_actions_attribute.png"><img src="/images/guides/user_actions_attribute.png"
+         alt="ユーザーアクション属性"
+         title="ユーザーアクション属性"/>
+    </a>
+</figure>
+<p>属性の追加についての詳細は、<a href="/ja/server-side/attributes/manage-attributes/add-attribute/">属性を追加する</a>を参照してください。</p>
+<h2 id="ステップ2---データソースの構成">ステップ2 - データソースの構成</h2>
+<p>このステップでは、ストアの購入データへの接続を構成します。そのデータを収集し、処理する方法はいくつかあります：</p>
+<ul>
+<li><a href="/ja/server-side/data-connect/about/">Data Connect</a>は、SaaSアプリケーション、CRM、データウェアハウスからのデータをインポートし、Tealiumにリアルタイムでデータを送信するためのデータワークフローを自動化、スケジューリング、エンリッチメントすることができます。</li>
+<li><a href="/ja/server-side/data-sources/webhooks/http-api-advanced/">HTTP-API Advanced</a>データソースは、条件付きで受信リクエストボディを解析することができます。このデータソースは、複雑なオブジェクトのフラット化とバッチイベントのサポートを備えたHTTPエンドポイントを提供し、単一のHTTP呼び出しでリアルタイムのイベントデータを収集することができます。</li>
+<li><a href="/ja/server-side/data-sources/file-import/about/">File Import</a>は、各行がイベントを表すCSVファイルをTealiumにインポートすることができます。</li>
+</ul>
+<p>次の例は、ファイルインポートを使用してオフラインデータを処理し、除外リストに使用する方法を示しています：</p>
+<ul>
+<li><strong>サンプルファイルの作成</strong>：CSVサンプルファイルには、顧客を識別するために必要な取引詳細、例えば顧客IDやメールアドレスなどが含まれているべきです。行1の列名は自動的に検出され、<strong>Column Mappings</strong>画面のエントリを事前構成するために使用されます。<figure><a class="slb" href="/images/guides/offline_purchasers_csv_file.png"><img src="/images/guides/offline_purchasers_csv_file.png"
+         alt="オフライン購入者CSVファイル"
+         title="オフライン購入者CSVファイル"/>
+    </a>
+</figure></li>
+<li><strong>ファイルのアップロードと確認</strong>：サンプルファイルをスクロールして、列とデータが正しいことを確認します。</li>
+<li><strong>列をイベント属性にマッピング</strong>：CSVファイルの各行はイベントとして処理されます。マッピングされていない列は無視されます。CSVファイルに存在しないマッピングされた列はスキップされます。<figure><a class="slb" href="/images/guides/map_columns.png"><img src="/images/guides/map_columns.png"
+         alt="列のマッピング"
+         title="列のマッピング"/>
+    </a>
+</figure></li>
+<li><strong>イベント仕様の選択</strong>：ファイル内のデータと一致するように確認するか、カスタムのイベント属性セットを作成します。</li>
+<li><strong>訪問ID属性の識別とマッピング</strong>：適切なイベント属性（例えばメールアドレス）を訪問ID属性にマッピングします。<figure><a class="slb" href="/images/guides/visitor_id_mapping.png"><img src="/images/guides/visitor_id_mapping.png"
+         alt="訪問IDのマッピング"
+         title="訪問IDのマッピング"/>
+    </a>
+</figure></li>
+</ul>
+<p>後で使用するために<strong>Data Source Key</strong>をコピーしておくことを忘れないでください。</p>
+<figure><a class="slb" href="/images/guides/file_import_summary.png"><img src="/images/guides/file_import_summary.png"
+         alt="ファイルインポートの概要"
+         title="ファイルインポートの概要"/>
+    </a>
+</figure>
+<p>変更を保存/公開します。</p>
+<p>ファイルインポートの構成方法についての詳細は、<a href="/ja/server-side/data-sources/file-import/about/">File Import</a>を参照してください。</p>
+<h2 id="ステップ3---オフラインショッパーバッジの作成">ステップ3 - オフラインショッパーバッジの作成</h2>
+<p>メールアドレスによってオフラインショッパーを識別できるようになったので、その属性に基づいてオフラインショッパーバッジを作成できます。</p>
+<p>以前に保存したデータソースキーを使用して、「オフラインショッパー」訪問属性をバッジタイプとして追加し、以下のエンリッチメントを行います。</p>
+<ul>
+<li><code>tealium_datasource</code>が（大文字小文字を無視して）インポートプロファイルからのデータソースキーと等しい場合に<strong>ANY EVENT</strong>でこのバッジを訪問に割り当てます</li>
+<li><code>ユーザーアクション</code>が<code>true</code>の場合に<strong>VISIT ENDED</strong>でこのバッジを訪問から削除します。</li>
+</ul>
+<figure><a class="slb" href="/images/guides/offline_shopper_badge.png"><img src="/images/guides/offline_shopper_badge.png"
+         alt="オフラインショッパーバッジ"
+         title="オフラインショッパーバッジ"/>
+    </a>
+</figure>
+<h2 id="ステップ4---オフラインショッパーオーディエンスの作成">ステップ4 - オフラインショッパーオーディエンスの作成</h2>
+<p>次に、以下の条件でオフラインショッパーオーディエンスを作成できます：</p>
+<ul>
+<li><code>オフラインショッパー</code>バッジが割り当てられています。</li>
+<li><code>メールアドレス</code>文字列が割り当てられています。</li>
+</ul>
+<figure><a class="slb" href="/images/guides/offline_shoppers_audience.png"><img src="/images/guides/offline_shoppers_audience.png"
+         alt="オフラインショッパーオーディエンス"
+         title="オフラインショッパーオーディエンス"/>
+    </a>
+</figure>
+<p>詳細については、<a href="/ja/server-side/audiences/manage/">オーディエンスの管理</a>を参照してください。</p>
+<h2 id="ステップ5---コネクタの構成">ステップ5 - コネクタの構成</h2>
+<p>オーディエンスをリマーケティングベンダーを通じて活性化し、キャンペーン構成と除外を更新します。</p>
+<p>ディスカウントショッパーをターゲットにするための一般的なコネクタとアクションには、以下のようなものがあります：</p>
+<ul>
+<li><a href="/ja/server-side-connectors/adobe-campaign-classic-connector/">Adobe Campaign Classic</a></li>
+<li><a href="/ja/server-side-connectors/iterable-connector/">Iterable</a>: <strong>ユーザーをリストに登録する</strong>、<strong>ユーザーをアップサートする</strong>アクション</li>
+<li><a href="/ja/server-side-connectors/marketo-connector/">Marketo</a>: <strong>リードをリストに追加する</strong>アクション</li>
+<li><a href="/ja/server-side-connectors/sendgrid-connector/">SendGrid</a>: <strong>コンタクトをアップサートする</strong>アクション</li>
+</ul>
+<p>例えば、Marketoコネクタを構成して、訪問のメールアドレスをリマーケティングの除外リストに追加することができます。コネクタのアクションをカスタマイズして、訪問がオフラインショッパーオーディエンスに参加したときだけトリガーするようにします。</p>
+<figure><a class="slb" href="/images/guides/offline_shoppers_marketo1.png"><img src="/images/guides/offline_shoppers_marketo1.png"
+         alt="オフラインショッパーMarketo 1"
+         title="オフラインショッパーMarketo 1"/>
+    </a>
+</figure>
+<figure><a class="slb" href="/images/guides/offline_shoppers_marketo2.png"><img src="/images/guides/offline_shoppers_marketo2.png"
+         alt="オフラインショッパーMarketo 2"
+         title="オフラインショッパーMarketo 2"/>
+    </a>
+</figure>
+<p>その後、訪問がサイトに戻ったときに除外リストから訪問を削除するために、Marketoコネクタの別のインスタンスを構成する必要があります。コネクタのアクションをカスタマイズして、訪問がオフラインショッパーオーディエンスを離れたときだけトリガーするようにします。</p>
+<p><figure><a class="slb" href="/images/guides/offline_shoppers_marketo3.png"><img src="/images/guides/offline_shoppers_marketo3.png"
+         alt="オフラインショッパーMarketo 3"
+         title="オフラインショッパーMarketo 3"/>
+    </a>
+</figure>
+<figure><a class="slb" href="/images/guides/offline_shoppers_marketo4.png"><img src="/images/guides/offline_shoppers_marketo4.png"
+         alt="Offline shoppers Marketo 4"
+         title="Offline shoppers Marketo 4"/>
+    </a>
+</figure></p>
+<p>詳細については、<a href="/ja/server-side/connectors/add/">コネクタを追加する</a>をご覧ください。</p>
+<h2 id="ステップ6---データのインポート">ステップ6 - データのインポート</h2>
+<p>属性、バッジ、およびオーディエンスを構成したので、Tealiumのファイルインポート機能を使用してデータをアップロードします。AudienceStreamはこのデータを訪問プロファイルにステッチし、オーディエンスを更新し、リマーケティングコネクタに更新を送信します。</p>
+<p>アップロードプロセスについての詳細は、<a href="/ja/server-side/data-sources/file-import/about/#step-2-upload-your-files-to-a-file-transfer-service">ファイルインポートについて</a>をご覧ください。</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/guides/discount-shopper-guide/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>ディスカウントショッパー</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"ディスカウントショッパー"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/guides/cart-abandonment-guide/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"カート放棄 "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>カート放棄</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2025年January月16日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%AA%E3%81%9C%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%B7%E3%83%A7%E3%83%83%E3%83%91%E3%83%BC%E3%82%92%E3%83%AA%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8B%E3%82%89%E9%99%A4%E5%A4%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B" href="javascript:void(0)">なぜオフラインのショッパーをリターゲティングから除外するのか？</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E8%B3%BC%E5%85%A5%E8%80%85%E3%81%AE%E8%BF%BD%E8%B7%A1%E6%96%B9%E6%B3%95" href="javascript:void(0)">オフライン購入者の追跡方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971---%E5%B1%9E%E6%80%A7%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ステップ1 - 属性の作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972---%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ステップ2 - データソースの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973---%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%91%E3%83%BC%E3%83%90%E3%83%83%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ステップ3 - オフラインショッパーバッジの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%974---%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%91%E3%83%BC%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ステップ4 - オフラインショッパーオーディエンスの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%975---%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ステップ5 - コネクタの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%976---%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">ステップ6 - データのインポート</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          手引き
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium_ja',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

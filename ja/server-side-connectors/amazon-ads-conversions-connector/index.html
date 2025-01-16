@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -424,27 +424,64 @@
 </thead>
 <tbody>
 <tr>
-<td>コンバージョンを送信</td>
+<td>コンバージョンの送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>API Base URL</strong>：必須。API Base URLを選択します。</li>
 <li><strong>Amazon Advertiser ID</strong>：必須。Amazon AdvertisingアカウントIDを入力します。</li>
 </ul>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---コンバージョンを送信">アクション - コンバージョンを送信</h3>
-<h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量のデータ転送をサポートするために、バッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<h2 id="ウェブイベントの重複排除">ウェブイベントの重複排除</h2>
+<p>Amazon Ads Serverタグからのイベントを重複排除するようにこのコネクタを構成するには、以下の命名規則でイベント属性として送信されるイベントIDを使用します：</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">amazon_event_id_{eventName}_{tagID}
+</code></pre><p>例えば、タグ＃32からのチェックアウトイベントは、以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_checkout_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同じタグからのページビューイベントは、以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_pageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>各タイプのイベントに対して別々のアクションを使用します。イベント固有のイベントID属性を<code>Event ID</code>にマッピングし、一致するイベント名を<code>Event Name</code>にマッピングします。例えば：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tealium属性</th>
+<th style="text-align:left">Amazonパラメータ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>amazon_event_id_checkout_32</code> (属性)</td>
+<td style="text-align:left">Event ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&quot;Checkout&quot;</code> (カスタムテキスト)</td>
+<td style="text-align:left">Event Name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="自動重複排除">自動重複排除</h3>
+<p><strong>Automatic Deduplication</strong>の値が入力されている場合、コネクタは対応するイベントID属性を探します。このセクションが入力されていて、Tealium iQを使用している場合、<code>Event ID</code>を追加する必要はありません。ただし、Tealium iQを使用せずにEventStreamを使用する場合は、以下のアプローチがまだ必要となる場合があります。</p>
+<p>コネクタは以下の操作順序を守ります：</p>
 <ul>
-<li>リクエストの最大数：500</li>
+<li><strong>Automatic Deduplication</strong>が入力されており、その値がデータレイヤーで見つかった場合（例：<code>amazon_event_id_checkout_32</code>）、この値は<code>Event ID</code>にマッピングされたものよりも優先されます。</li>
+<li><strong>Automatic Deduplication</strong>が入力されているが、その値が見つからない場合、<code>Event ID</code>が入力されている場合は、その<code>Event ID</code>が使用されます。</li>
+</ul>
+<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
+<p>アクションに名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="アクション---コンバージョンの送信">アクション - コンバージョンの送信</h3>
+<h4 id="バッチ制限">バッチ制限</h4>
+<p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<ul>
+<li>リクエストの最大数：100</li>
 <li>最も古いリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
@@ -458,47 +495,149 @@
 </thead>
 <tbody>
 <tr>
-<td>広告プロファイル</td>
+<td>Advertising Profile</td>
 <td>このコンバージョンの広告プロファイルを選択します。</td>
 </tr>
 <tr>
-<td>コンバージョン定義</td>
-<td>コンバージョン定義を選択するか、<strong>定義を作成</strong>をクリックして新しい定義を作成します。</td>
+<td>Conversion Definition</td>
+<td>コンバージョン定義を選択するか、<strong>Create Definition</strong>をクリックして新しい定義を作成します。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="コンバージョンデータ">コンバージョンデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Country Code</td>
+<td>必須。イベントを実行するユーザーが位置している国、ISO 3166-1 alpha-2形式。</td>
 </tr>
 <tr>
-<td>国コード</td>
-<td>(必須) イベントを実行するユーザーが位置している国、ISO 3166-1 alpha-2形式。</td>
+<td>Conversion Time</td>
+<td>コンバージョンのタイムスタンプ、ISO形式（<code>YYYY-MM-DDThh:mm:ssTZD</code>）。マッピングされていない場合、コネクタはイベント時間を使用します。</td>
 </tr>
 <tr>
-<td>コンバージョン時間</td>
-<td>コンバージョンのタイムスタンプをISO形式（<code>YYYY-MM-DDThh:mm:ssTZD</code>）で。マッピングされていない場合、コネクタはイベント時間を使用します。</td>
-</tr>
-<tr>
-<td>コンバージョン値</td>
+<td>Conversion Value</td>
 <td>コンバージョンの値。</td>
 </tr>
 <tr>
-<td>通貨</td>
-<td>ISO 4217形式の通貨。<code>OFF_AMAZON_PURCHASES</code>のコンバージョンタイプにのみ適用されます。</td>
+<td>Currency</td>
+<td>通貨、ISO 4217形式。<code>OFF_AMAZON_PURCHASES</code>のコンバージョンタイプにのみ適用されます。</td>
 </tr>
 <tr>
-<td>販売単位数</td>
+<td>Units Sold</td>
 <td>購入したアイテムの数。<code>OFF_AMAZON_PURCHASES</code>のコンバージョンタイプにのみ適用されます。</td>
 </tr>
 <tr>
 <td>Dedupe ID</td>
-<td>タグとコネクタの両方でコンバージョンを追跡している場合は、重複排除IDを指定します。両方のイベントで値が一致する必要があります。</td>
-</tr>
-<tr>
-<td>メール（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたメールアドレスを提供します。</td>
-</tr>
-<tr>
-<td>メール（SHA256ハッシュを適用）</td>
-<td>平文のメールアドレスが提供された場合、コネクタはこの値を空白トリムし、小文字にし、SHA256ハッシュを使用してハッシュ化します。</td>
+<td>タグとコネクタの両方でコンバージョンを追跡している場合、重複排除IDを指定します。両方のイベントで値が一致するべきです。</td>
 </tr>
 </tbody>
 </table>
+<h5 id="ユーザーデータ">ユーザーデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化されたメールアドレスを提供します。</td>
+</tr>
+<tr>
+<td>Email (apply SHA256 hash)</td>
+<td>プレーンテキストのメールアドレスが提供された場合、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>Phone (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された電話番号を提供します。</td>
+</tr>
+<tr>
+<td>Phone (apply SHA256 hash)</td>
+<td>プレーンテキストの電話番号を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>First Name (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された名前を提供します。</td>
+</tr>
+<tr>
+<td>First Name (apply SHA256 hash)</td>
+<td>プレーンテキストの名前を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>Last Name (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された姓を提供します。</td>
+</tr>
+<tr>
+<td>Last Name (apply SHA256 hash)</td>
+<td>プレーンテキストの姓を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>Address (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された住所を提供します。</td>
+</tr>
+<tr>
+<td>Address (apply SHA256 hash)</td>
+<td>プレーンテキストの住所を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>City (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された市区町村を提供します。</td>
+</tr>
+<tr>
+<td>City (apply SHA256 hash)</td>
+<td>プレーンテキストの市区町村を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>State (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された都道府県を提供します。</td>
+</tr>
+<tr>
+<td>State (apply SHA256 hash)</td>
+<td>プレーンテキストの都道府県を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>Postal Code (already SHA256 hashed)</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化された郵便番号を提供します。</td>
+</tr>
+<tr>
+<td>Postal Code (apply SHA256 hash)</td>
+<td>プレーンテキストの郵便番号を提供し、コネクタはこの値を空白をトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>MAID</td>
+<td>モバイル識別子。有効な値は<code>MAID</code>、<code>ADID</code>、<code>IDFA</code>、<code>FIREADID</code>です。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="自動重複排除-1">自動重複排除</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic Deduplication</td>
+<td><strong>Tealium iQ Tag ID</strong>が提供された場合、Tealium iQから送信されたイベントIDの値を自動的に探します。</td>
+</tr>
+<tr>
+<td>Tag Conversion Type</td>
+<td>自動重複排除を有効にする場合、<strong>Automatic Deduplication</strong>パラメータで選択したTag <code>ID</code>と一緒にクライアントサイドで送信されるConversion Typeを選択します：<ul><li>ADD_TO_SHOPPING_CART</li><li>APPLICATION</li><li>CHECKOUT</li><li>CONTACT</li><li>LEAD</li><li>OFF_AMAZON_PURCHASES</li><li>PAGE_VIEW</li><li>SEARCH</li><li>SIGN_UP</li><li>SUBSCRIBE</li><li>OTHER</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>ハッシュ化のためのフォーマットと正規化の要件についての詳細は、<a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">Format audience file for hashing</a>を参照してください。</p>
 
 </div>
 
@@ -559,7 +698,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2023年August月3日
+          <p>最終更新日 ::  2025年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -576,8 +715,10 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - コンバージョンを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">ウェブイベントの重複排除</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">自動重複排除</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - コンバージョンの送信</a></li>
               </nav>
   </aside></nav>
 
