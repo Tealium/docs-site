@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CookieConsent &#43; Tealium iQ Consent Integration | Consent | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/consent/cookieconsent-consent-integration/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "early-access",
+        reading_time  : "13",
+        site_language : "en",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="/help/" class="dim link mid-gray">Help</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/consent/cookieconsent-consent-integration/" class="dim link mid-gray">日本語</a>
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="early-access"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Early Access</span></a>
+        <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Early Access</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-administration">Administration</a>
+        <ul class="pl2  ea-administration desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".platform-permissions">Platform Permissions</a>
+        <ul class="pl2  platform-permissions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/administration/platform-permissions/pii-account-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-audiences">Audiences</a>
+        <ul class="pl2  ea-audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/audiences/potential-audience-sizing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">Potential Audience Sizing</a></li></ul>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ea-consent">Consent</a>
+        <ul class="pl2 bl b--primary bw1 ea-consent desktopmenu animated fadeIn list "><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-orchestration">Consent Orchestration (Event-level)</a>
+        <ul class="pl2  consent-orchestration desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/consent-orchestration/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-orchestration">About Consent Orchestration</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">Handling conflicts in enforcement conditions</a></li></ul>
+      </li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/cookieconsent-consent-integration/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cookieconsent-consent-integration">CookieConsent &#43; Tealium iQ Consent Integration</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-sources">Data sources</a>
+        <ul class="pl2  ea-data-sources desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".snowflake-data-source">Snowflake Data Source</a>
+        <ul class="pl2  snowflake-data-source desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-snowflake-data-source">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source">Manage</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source-error-logs">Error logs</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-storage">Data storage</a>
+        <ul class="pl2  ea-data-storage desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-storage/visitor-deletion-jobs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-platforms">Platforms</a>
+        <ul class="pl2  ea-platforms desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-tealium-shopify-app">Tealium Shopify App</a>
+        <ul class="pl2  ea-tealium-shopify-app desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tealium-shopify-app">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealium configuration</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".install-tealium-shopify-app">Install Tealium app</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/data-layer-and-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".variables-events-tealium-shopify-app">Data layer and events</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".server-side-concurrency">Server-side Concurrency</a>
+        <ul class="pl2  server-side-concurrency desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Save and publish</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Profile switcher</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Concurrency best practices</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-server-side-connectors">Server-Side Connectors</a>
+        <ul class="pl2  ea-server-side-connectors desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences Connector</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-api">Tealium API</a>
+        <ul class="pl2  ea-api desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v3">Tealium API v3</a>
+        <ul class="pl2  api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles-api">iQ Profiles</a>
+        <ul class="pl2  iq-profiles-api desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-get-profile-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-variables-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li></ul>
+      </li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li></ul>
+      </li></ul>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/">Early Access</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/consent/">Consent</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">CookieConsent &#43; Tealium iQ Consent Integration</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      This guide provides detailed steps for integrating the CookieConsent open-source consent management platform (CMP) with Tealium iQ.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This Early Access (EA) product is available without a feature flag or waiting list. As an EA product, its use and performance are not subject to the Service Level Agreement (SLA) or performance warranties applicable to Tealium’s licensed general availability services. We recommend thorough testing, particularly for critical custom implementations like consent. For feedback, questions, or assistance, please contact your Customer Success Manager.</p>
+<p>CookieConsent is a flexible, open-source CMP integrated with Tealium <a href="/iq-tag-management/consent/consent-integrations/about/">Consent Integrations</a>. This guide outlines how to configure CookieConsent using Consent Integration in Tealium iQ. Combined with Consent Integrations, CookieConsent offers a better experience and additional features not found in the <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a>, including:</p>
+<ul>
+<li>A/B testing for consent banners.</li>
+<li>Robust enforcement and <a href="/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/">queue system</a> to ensure no unconsented data is tracked.</li>
+<li>Better accessibility support.</li>
+<li>A block-by-default framework to help prevent issues caused by user errors. For more information, see <a href="/iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict/">Handling conflicts in enforcement conditions</a>.</li>
+<li>Collect (and similar tags) can be set to <a href="/iq-tag-management/consent/consent-integrations/about/#tag-refire">refire</a>, triggering both &ldquo;necessary&rdquo; and &ldquo;targeting&rdquo; tracking on the server-side with clearly marked events to avoid duplicate tracking.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Like the current <a href="https://tealium.com/blog/data-strategy/the-iabs-transparency-and-consent-framework-and-tealium/">Consent Manager</a>, Interactive Advertising Bureau (IAB) Framework - Transparency and Consent Framework (TCF) is not supported by CookieConsent. Customers requiring an IAB Framework - TCF CMP or a Google-certified CMP will need to use an alternative solution. For more information, see <a href="https://cookieconsent.orestbida.com/essential/introduction.html#is-cookieconsent-the-right-tool-for-you">CookieConsent: Is CookieConsent the right tool for you?</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Creating a CookieConsent consent integration requires the following:</p>
+<ul>
+<li>Tealium iQ Tag Management</li>
+<li>Tealium Consent Integrations</li>
+</ul>
+<h3 id="why-use-it">Why use it?</h3>
+<p>CookieConsent replaces Tealium <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a> for customers who seek a robust, non-commercial CMP. It delivers a dependable consent capture layer with flexible and robust enforcement, tailored to meet complex compliance needs.</p>
+<h3 id="categories-services-and-purposes-explained">Categories, services, and purposes explained</h3>
+<p>CookieConsent V3 supports both categories and service-level consent options:</p>
+<ul>
+<li><strong>Categories</strong> are broad groups of purposes for data processing, such as <code>necessary</code> or <code>functional</code>. These define high-level groupings of data use cases.</li>
+<li><strong>Services</strong> are specific vendors or sub-purposes within a category, such as <code>necessary-vendor1</code>. Services allow for more granular consent settings by defining individual entities or distinct purposes within a category.</li>
+</ul>
+<p>Service names combine the category name with either the vendor or sub-purpose name using a hyphen prefix for transparency. For example, within a <code>necessary</code> category, services might include <code>necessary-vendor1</code> or <code>necessary-subpurpose1</code>.</p>
+<p><strong>Example use cases</strong></p>
+<ul>
+<li><strong>Vendor-based service</strong>: In the <code>analytics</code> category, a service could be <code>analytics-google_analytics</code>, representing a specific vendor providing analytics functionality.</li>
+<li><strong>Sub-purpose-based service</strong>: In the <code>functional</code> category, a service could be <code>functional-session_tracking</code>, representing a sub-purpose for functional cookies related to tracking user sessions.</li>
+</ul>
+<p>If services are defined within a category, the category itself is no longer available for mapping. For example, if the <code>necessary</code> category includes services such as <code>necessary-vendor1</code> and <code>necessary-vendor2</code>, only those specific services will be available for mapping.</p>
+<p><strong>Consent behavior:</strong></p>
+<ul>
+<li>In opt-in mode, both the category and its services are allowed.</li>
+<li>In opt-out mode, all except <code>targeting</code> are allowed.</li>
+</ul>
+<h2 id="required-files">Required files</h2>
+<p>The following integration template and extensions are required for this guide:</p>
+<h3 id="cookieconsent-v3-template">CookieConsent v3 template</h3>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code snippet
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 1.0.0-beta4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// base: cookieconsentv3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cookieConsentV3Integration</span> (window) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP specific functionality and labels
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CookieConsentV3&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v1.0.0-beta4&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckIfOptInModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForTiqConsent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToGroupList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Add the new callback function to the CMP integration object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean, true if the CMP is running the &#39;Opt-in&#39; model (GDPR style)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>() <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">mode</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;opt-out&#39;</span>; <span style="color:#75715e">// default to opt-in mode for safety
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return some CMP-specific raw object (must be an object) that contains the needed information about the decision.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// This output is used as the cmpRawOutput argument in functions below.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">CookieConsent</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;object&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getUserPreferences</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getConfig</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// just return whatever Vendor ID is expected be active to short-circuit the ID-based double check - we don&#39;t want or need it in this case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> (window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">keys</span>(window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;(Vendor ID check disabled)&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean - true if the raw decision meets our expectations for the CMP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span> <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">categories</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean - true if the consent decision was explicitly made by the user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span>.<span style="color:#a6e22e">acceptType</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP-specific helper function to generate a key for a service based on its category and name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getServiceKey</span>(<span style="color:#a6e22e">category</span>, <span style="color:#a6e22e">serviceName</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// just add a hyphen between the parent category name and the service name to keep the keys clear
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// &#39;functional-functional_vendor1&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">category</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">serviceName</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP-specific helper function to check if a category is standalone (i.e. has no services) - returns undefined if the category doesn&#39;t exist or the CMP config
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isCategoryStandalone</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">category</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">categoryEntry</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">categories</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">categories</span>[<span style="color:#a6e22e">category</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">categoryEntry</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;object&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">undefined</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">categoryHasServices</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">categoryEntry</span>.<span style="color:#a6e22e">services</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;object&#39;</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">categoryEntry</span>.<span style="color:#a6e22e">services</span>).<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">categoryHasServices</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getAllowedCategoriesAndServices</span>(<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">acceptedServiceObj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span>.<span style="color:#a6e22e">acceptedServices</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">acceptedCategoriesAndServices</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span>.<span style="color:#a6e22e">acceptedCategories</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allCategories</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">categories</span> <span style="color:#f92672">||</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If we&#39;re in opt-in mode AND no consent decision has been made, so we return all defined categories (or their services) marked as read-only (aka, necessary), since 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// &#39;enabled&#39; is only used in opt-out mode and acceptedCategories doesn&#39;t include it (v3.0.1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>) { 
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">purposeArray</span> <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>      Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">allCategories</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">cat</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">catIsReadOnly</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">allCategories</span>[<span style="color:#a6e22e">cat</span>].<span style="color:#a6e22e">readOnly</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">catIsReadOnly</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isCategoryStandalone</span>(<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">cat</span>))  {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">purposeArray</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">cat</span>)
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">catIsReadOnly</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// we need to add all the services in readOnly categories to the accepted services list
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">services</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">allCategories</span>[<span style="color:#a6e22e">cat</span>].<span style="color:#a6e22e">services</span>) <span style="color:#f92672">||</span> {}
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">services</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">service</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">purposeArray</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">getServiceKey</span>(<span style="color:#a6e22e">cat</span>, <span style="color:#a6e22e">service</span>))
+</span></span><span style="display:flex;"><span>          })
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">purposeArray</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">acceptedServiceObj</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;object&#34;</span>) <span style="color:#66d9ef">return</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allAllowed</span> <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">serviceNames</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">serviceNames</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">acceptedCategoriesAndServices</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Only push standalone categories (those without services), since if services are defined, they&#39;re the only things that should matter for purpose mapping. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// (Using the main category switch is strange if there are services defined because it&#39;s not super clear what the user actually consented to, and it&#39;s not designed for that use 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// so it can behave strangely and lead to confusion.)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">catName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">acceptedCategoriesAndServices</span>[<span style="color:#a6e22e">i</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isCategoryStandalone</span>(<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">catName</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">allAllowed</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">catName</span>)
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">acceptedServiceObj</span>[<span style="color:#a6e22e">catName</span>].<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">serviceName</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">allAllowed</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">getServiceKey</span>(<span style="color:#a6e22e">catName</span>, <span style="color:#a6e22e">serviceName</span>))
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">allAllowed</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return an array of consented vendors/purposes - these should match the Purposes in Tealium iQ exactly, if you want to map everything
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getAllowedCategoriesAndServices</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Use the incoming callback feature to avoid some polling when the underlying framework supports it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It&#39;s better to call this too often (no impact) than too little (missed consent changes and the corresponding data)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span> (<span style="color:#a6e22e">triggerRecheck</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">triggerRecheck</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;function&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;cc:onConsent&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">triggerRecheck</span>()
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;cc:onChange&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">triggerRecheck</span>()
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;cc:onModalShow&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Only trigger a recheck on consent popup when consent is implicit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>(<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>()) <span style="color:#f92672">||</span> <span style="color:#a6e22e">triggerRecheck</span>()
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// You shouldn&#39;t need to change this function, or anything below it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">tiqGroupName</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// treat things we don&#39;t understand as an opt-out
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;tiq-group-name-missing&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allowedGroups</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">allowedGroups</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">tiqGroupName</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})(window);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Debugging / development output - uncomment this entire block, then paste/repaste this entire template on your test pages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">function outputDebuggingInfo () {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Checks:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - id:                 ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - well-formed:        ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - explicit:           ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - using callback:     ${typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === &#39;function&#39;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - consented purposes: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  console.log(outputString);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// use the callback function to avoid console posting while debugging and allow testing of the callback function itself
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">if (typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === &#39;function&#39;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(outputDebuggingInfo)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">outputDebuggingInfo();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<h3 id="injection-extension">Injection extension</h3>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code snippet
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * CookieConsent - Inject CMP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Scope       : Pre Loader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Occurrence  : n/a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Condition   : n/a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Description : Loads a specific CookieConsent configuration, then injects the CSS and JS to render the CMP. You may need more than one, conditionally.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CookieConsent variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpDomain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tags.tiqcdn.com&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v3.0.1&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CookieConsent modal configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// All configuration options: https://cookieconsent.orestbida.com/reference/configuration-reference.html
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpConfig</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;opt-in&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">disablePageInteraction</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">guiOptions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">consentModal</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">layout</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;cloud&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bottom center&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">flipButtons</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">equalWeightButtons</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">preferencesModal</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">layout</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar wide&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;right&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">flipButtons</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">equalWeightButtons</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">categories</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">necessary</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">enabled</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">readOnly</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">analytics</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">marketing</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;en&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">translations</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">en</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">consentModal</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;We value your privacy&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;We\&#39;d like to use browser storage to understand how you use our website, and to display information and offers relevant to you.&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">acceptAllBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Accept all&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">acceptNecessaryBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Accept necessary&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">showPreferencesBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Manage preferences&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">footer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;#&#34;&gt;Privacy Policy&lt;/a&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">preferencesModal</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Manage preferences&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">acceptAllBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Accept all&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">acceptNecessaryBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Accept necessary&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">savePreferencesBtn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Accept selection&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">closeIconLabel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Close modal&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">sections</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;We value your privacy&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;We use browser storage to remember your preferences, understand how you use the site, and show you relevant offers.&lt;br&gt;&lt;br&gt;Please make a selection, then click &#34;Accept selection&#34; to consent to those specific purposes. You can change or withdraw your consent at any time.&#39;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Strictly Necessary &lt;span class=&#34;pm__badge&#34;&gt;Always Enabled&lt;/span&gt;&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;This tracking is essential for the proper functioning of the website and cannot be disabled.&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">linkedCategory</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;necessary&#39;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Performance and Analytics&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;This tracking collects information about the performance of our website and how you use it.&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">linkedCategory</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;analytics&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">cookieTable</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">caption</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Analytics cookies&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Name&#39;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Description&#39;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">duration</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Duration&#39;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                  {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;_ga&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Used to distinguish users.&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">duration</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;2 years&#39;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;_ga_1234ABCD&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Used to persist session state.&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">duration</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;2 years&#39;</span>
+</span></span><span style="display:flex;"><span>                  }
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>              }
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Marketing and Social&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;This tracking collects information about how you use our website to show offers you may be interested in.&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">linkedCategory</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;marketing&#39;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;More information&#39;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;To learn more about cookies, please visit &lt;a href=&#34;https://www.cookiesandyou.com/&#34; target=&#34;_blank&#34;&gt;Cookies &amp; You&lt;/a&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;link&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">rel</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;stylesheet&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cmpDomain</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/libs/cookieconsent/&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cmpVersion</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/cookieconsent.css&#39;</span>;
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">c</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cmpDomain</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/libs/cookieconsent/&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cmpVersion</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/cookieconsent.umd.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;load&#39;</span>, <span style="color:#66d9ef">function</span> () { <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">cmpConfig</span>); });
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">s</span>);
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<h3 id="consent-logging-extension">Consent logging extension</h3>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code snippet
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Consent Logging Extension
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Scope: Pre Loader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">logConsentChanges</span>(<span style="color:#a6e22e">event</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealiumAccountForLogging</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;services-caleb&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealiumProfileForLogging</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Retrieve all the fields from the CMP (CookieConsentV3)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getCookie</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">preferences</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getUserPreferences</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This payload can easily be adjusted to fit specific customer needs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userConsent</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;consent_decision&#39;</span>, <span style="color:#75715e">// don&#39;t try to preserve the old payloads
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tealiumAccountForLogging</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tealiumProfileForLogging</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">consent_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">consentId</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cmp_name</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">decision_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">preferences</span>.<span style="color:#a6e22e">acceptType</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">accepted_purposes</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">preferences</span>.<span style="color:#a6e22e">acceptedCategories</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">rejected_purposes</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">preferences</span>.<span style="color:#a6e22e">rejectedCategories</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">consent_model</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckIfOptInModel</span>() <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;opt-in&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;opt-out&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> document.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;?&#39;</span>)[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">decision_timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">lastConsentTimestamp</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">expiration_time</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">expirationTime</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">revision</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">revision</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This won&#39;t necessarily pick up the first decision unless Collect was allowed to run before this decision
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// It&#39;s a race, and this will almost always win by nature of the callback speed I think
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealiumVisitorId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utag</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>(<span style="color:#e6db74">&#39;utag_main&#39;</span>).<span style="color:#a6e22e">v_id</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add the tealium_visitor_id, but only if it exists
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tealiumVisitorId</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">userConsent</span>.<span style="color:#a6e22e">tealium_visitor_id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealiumVisitorId</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Send the data to be logged or distributed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://collect.tealiumiq.com/event&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">userConsent</span>)
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;consent_updated&#39;</span>, (<span style="color:#a6e22e">event</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">logConsentChanges</span>(<span style="color:#a6e22e">event</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<p>Tealium hosts the CMP files for stability and convenience:</p>
+<ul>
+<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js</a></li>
+<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css</a></li>
+</ul>
+<h2 id="integration-steps">Integration steps</h2>
+<p>Complete the following steps to set up the CookieConsent integration in Tealium iQ:</p>
+<ol>
+<li><a href="#step-1-create-a-custom-consent-integration-and-enforcement-rule">Create a custom consent integration and enforcement rule</a>.</li>
+<li><a href="#step-2-create-purpose-group">Create purpose group</a>.</li>
+<li><a href="#step-3-set-up-the-template">Set up the template</a>.</li>
+<li><a href="#step-4-set-up-the-injection-extension">Set up the injection extension</a>.</li>
+<li><a href="#step-5-configure-the-consent-logging-extension">Configure the consent logging extension</a>.</li>
+<li><a href="#step-6-save-and-publish-tealium-iq-profile">Save and publish Tealium iQ profile</a>.</li>
+<li><a href="#test-and-troubleshoot">Test and troubleshoot</a>.</li>
+<li><a href="#customize-configuration">Customize configuration</a>.</li>
+</ol>
+<h2 id="configure-cookieconsent-with-consent-integration-in-tealium-iq">Configure CookieConsent with Consent Integration in Tealium iQ</h2>
+<h3 id="step-1-create-a-custom-consent-integration-and-enforcement-rule">Step 1: Create a custom consent integration and enforcement rule</h3>
+<ol>
+<li>Go to the <strong>iQ Tag Management &gt; Consent Integrations</strong> section.</li>
+<li>Click <strong>Add Integration</strong>.</li>
+<li>Enter a name for the integration that clearly identifies its purpose.</li>
+<li>Select <strong>Custom</strong> from the vendor drop-down list.</li>
+<li>Enter a placeholder value for Vendor ID such as <strong>disabled</strong>.</li>
+<li>Define an appropriate enforcement rule. Include exceptions as needed for specific use cases.</li>
+<li>Click <strong>Next</strong>.</li>
+<li>Select a publish location and click <strong>Next</strong>.</li>
+</ol>
+<h3 id="step-2-create-purpose-group">Step 2: Create purpose group</h3>
+<p>Create a purpose group if one does not already exist:</p>
+<ol>
+<li>Select <strong>+ New Purpose Group</strong> from the purpose group drop-down list.</li>
+<li>Click <strong>Create Purpose Group</strong>.</li>
+<li>Enter a name and description.</li>
+<li>Click <strong>Next</strong>.</li>
+<li>Create purposes:
+<ol>
+<li>For each of your <code>cmpConfig.categories</code> from the <a href="#injection-extension">injection extension</a> code, add a purpose.</li>
+<li>For each purpose, use either the category key (such as <code>necessary</code>) or a specific service key within the category (such as <code>necessary-necessary_vendor1</code>) to map consent decisions in the purpose group.</li>
+</ol>
+</li>
+<li>Click the <strong>Tealium iQ Purpose</strong> tab.</li>
+<li>To ensure Tealium iQ always loads, assign Tealium iQ to a purpose that users cannot opt out such as <strong>Strictly Necessary</strong>.</li>
+<li>Click the <strong>Map Tags</strong> tab.</li>
+<li>Assign each tag to an appropriate purpose.</li>
+<li>Enable tag refiring if you want tags, such as the Tealium Collect tag, to refire when consent is updated in the same event.</li>
+<li>Click <strong>Save</strong> to save the purpose group.</li>
+<li>Click <strong>Save</strong> to save your consent integration.</li>
+<li>Save and publish the Tealium iQ profile to generate the template for your new integration.</li>
+</ol>
+<h3 id="step-3-set-up-the-template">Step 3: Set up the template</h3>
+<ol>
+<li>In the admin menu, click <strong>Manage Templates</strong>.</li>
+<li>Select the template for your consent integration from the drop-down list.</li>
+<li>Paste the <a href="#cookieconsent-v3-template">CookieConsent v3 template</a> code into the template editor.</li>
+<li>Apply the changes and save.</li>
+</ol>
+<h3 id="step-4-set-up-the-injection-extension">Step 4: Set up the injection extension</h3>
+<ol>
+<li>Click <strong>+ Add Extension &gt; Advanced</strong>.</li>
+<li>Add a <strong>Javascript Code</strong> extension.</li>
+<li>Enter a <strong>Title</strong> to identify the extension.</li>
+<li>Under <strong>Scope</strong>, select <strong>Pre Loader</strong>.</li>
+<li>Name the extension and paste the <a href="#injection-extension">injection extension</a> code into the editor.</li>
+<li>Click <strong>Apply</strong>.</li>
+</ol>
+<h3 id="step-5-configure-the-consent-logging-extension">Step 5: Configure the consent logging extension</h3>
+<ol>
+<li>Repeat the steps for adding a new <strong>Javascript Code</strong> extension.</li>
+<li>Set the scope to <strong>Preloader</strong>.</li>
+<li>Paste the <a href="#consent-logging-extension">consent logging extension</a> code into the editor.</li>
+<li>Click <strong>Apply</strong>.</li>
+</ol>
+<h3 id="step-6-save-and-publish-tealium-iq-profile">Step 6: Save and publish Tealium iQ profile</h3>
+<p>Save and publish the Tealium iQ profile to the <strong>Dev</strong> environment and test before publishing to the <strong>Prod</strong> environment. You have now successfully configured CookieConsent with Tealium iQ Consent Integration.</p>
+<h2 id="test-and-troubleshoot">Test and troubleshoot</h2>
+<h3 id="demo-sites">Demo sites</h3>
+<p>Use the following demo sites to verify implementation:</p>
+<ul>
+<li><a href="https://solutions.tealium.net/hosted/cjaquith/tiq-from-querystring.html?account=services-caleb&amp;profile=consent-integration-open-source&amp;env=prod&amp;opt_out_mode=false">Universal Tealium iQ Test Page - Opt-in Mode (GDPR-style)</a></li>
+<li><a href="https://solutions.tealium.net/hosted/cjaquith/tiq-from-querystring.html?account=services-caleb&amp;profile=consent-integration-open-source&amp;env=prod&amp;opt_out_mode=true">Universal Tealium iQ Test Page - Opt-out Mode (California-style)</a></li>
+</ul>
+<h3 id="verify-your-consent-integration-setup">Verify your consent integration setup</h3>
+<ol>
+<li>Visit the <a href="#demo-sites">demo sites</a> above and accept tracking.</li>
+<li>Open the Developer Tools JavaScript console.</li>
+<li>Use the following commands in your browser&rsquo;s Developer Tools to test functionality:
+<ol>
+<li><code>CookieConsent.show(true)</code> to display the banner.</li>
+<li><code>CookieConsent.showPreferences(true)</code> to show the preferences dialog.</li>
+</ol>
+</li>
+<li>Validate the following:
+<ol>
+<li>Check for the correct display of banners and dialogs.</li>
+<li>Verify the consent decision is logged in the <code>cc_cookie</code> cookie.</li>
+<li>Use the <strong>Consent Register</strong> in Developer Tools to monitor consent activity.</li>
+</ol>
+</li>
+</ol>
+<p>Clear cookies (such as <code>cc_cookie</code>) between decisions to reset consent status.</p>
+<h3 id="tests">Tests</h3>
+<p>For a suite of end-to-end integration tests for CookieConsent and Tealium Consent Integration, see <a href="https://solutions.tealium.net/hosted/cookieconsent/integration-test-report/summary.html">CookieConsent + Tealium iQ - End-to-end integration tests</a>.</p>
+<h2 id="customize-configuration">Customize configuration</h2>
+<p>Modify the JSON configuration in the injection extension to match your specific needs, such as categories, services, and styles. For more information about the available CookieConsent configuration options, see <a href="https://cookieconsent.orestbida.com/reference/configuration-reference.html">CookieConsent: Configuration Reference</a>.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://docs.tealium.com/guides/supported-consent-integration/">Consent Integration</a>: Reference for Consent Integration setup.</li>
+<li><a href="https://playground.cookieconsent.orestbida.com/">CookieConsent v3.0.1 Playground</a>: Explore configurations and styles.</li>
+<li><a href="https://cookieconsent.orestbida.com/advanced/ui-customization.html">CookieConsent: UI Customization</a>: Guide for UI customization.</li>
+</ul>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  January 29, 2025 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      </nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Guides
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Partner Integrations
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          About Early Access
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/administration/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Administration
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/audiences/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Audiences
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/consent/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          Consent
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-sources/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data sources
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-storage/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data storage
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/ea-platforms/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Platforms
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/server-side-concurrency/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Server-side Concurrency
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/server-side-connectors/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Server-Side Connectors
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/api/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium API
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

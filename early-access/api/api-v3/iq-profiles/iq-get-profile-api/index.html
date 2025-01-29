@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>iQ GET Profile API | iQ Profiles | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/api/api-v3/iq-profiles/iq-get-profile-api/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "early-access",
+        reading_time  : "4",
+        site_language : "en",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="/help/" class="dim link mid-gray">Help</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/api/api-v3/iq-profiles/iq-get-profile-api/" class="dim link mid-gray">日本語</a>
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="early-access"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Early Access</span></a>
+        <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Early Access</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-administration">Administration</a>
+        <ul class="pl2  ea-administration desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".platform-permissions">Platform Permissions</a>
+        <ul class="pl2  platform-permissions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/administration/platform-permissions/pii-account-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-audiences">Audiences</a>
+        <ul class="pl2  ea-audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/audiences/potential-audience-sizing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">Potential Audience Sizing</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-consent">Consent</a>
+        <ul class="pl2  ea-consent desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-orchestration">Consent Orchestration (Event-level)</a>
+        <ul class="pl2  consent-orchestration desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/consent-orchestration/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-orchestration">About Consent Orchestration</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">Handling conflicts in enforcement conditions</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/consent/cookieconsent-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cookieconsent-consent-integration">CookieConsent &#43; Tealium iQ Consent Integration</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-sources">Data sources</a>
+        <ul class="pl2  ea-data-sources desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".snowflake-data-source">Snowflake Data Source</a>
+        <ul class="pl2  snowflake-data-source desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-snowflake-data-source">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source">Manage</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/snowflake-data-source/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source-error-logs">Error logs</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-storage">Data storage</a>
+        <ul class="pl2  ea-data-storage desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-storage/visitor-deletion-jobs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-platforms">Platforms</a>
+        <ul class="pl2  ea-platforms desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-tealium-shopify-app">Tealium Shopify App</a>
+        <ul class="pl2  ea-tealium-shopify-app desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tealium-shopify-app">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealium configuration</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".install-tealium-shopify-app">Install Tealium app</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/ea-platforms/tealium-shopify-app/data-layer-and-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".variables-events-tealium-shopify-app">Data layer and events</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".server-side-concurrency">Server-side Concurrency</a>
+        <ul class="pl2  server-side-concurrency desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Save and publish</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Profile switcher</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-concurrency/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Concurrency best practices</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-server-side-connectors">Server-Side Connectors</a>
+        <ul class="pl2  ea-server-side-connectors desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences Connector</a></li></ul>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ea-api">Tealium API</a>
+        <ul class="pl2  ea-api desktopmenu animated fadeIn list "><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".api-v3">Tealium API v3</a>
+        <ul class="pl2  api-v3 desktopmenu animated fadeIn list "><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".iq-profiles-api">iQ Profiles</a>
+        <ul class="pl2 bl b--primary bw1 iq-profiles-api desktopmenu animated fadeIn list "><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a></li><li data-level="5" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-get-profile-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-variables-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li></ul>
+      </li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li></ul>
+      </li></ul>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/">Early Access</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/api/">Tealium API</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl3"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/api/api-v3/">Tealium API v3</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl4"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/api/api-v3/iq-profiles/">iQ Profiles</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">iQ GET Profile API</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      iQ GET Profile API uses JSON objects to retrieve data from an iQ Tag Management account profile.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="how-it-works">How it works</h2>
+<p>Use the GET method to retrieve an account profile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>?includes<span style="color:#f92672">={</span>INCLUDE<span style="color:#f92672">}</span>&amp;publishVersion<span style="color:#f92672">={</span>PUBLISH_VERSION<span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="authentication">Authentication</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.</p>
+<p>To learn about generating a bearer token from the API key, see <a href="/api/v3/getting-started/authentication/">Authentication</a>.</p>
+<h2 id="get-operation-parameters">GET operation parameters</h2>
+<p>This command uses the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>publishVersion</td>
+<td>String</td>
+<td>Optional</td>
+<td>The version ID of the profile to retrieve. If you omit this parameter, the most recent version is retrieved.<br> Version IDs are in the format <code>YYYYMMDDhhmm</code><br> Example: <code>&quot;202202111806&quot;</code></td>
+</tr>
+<tr>
+<td>includes</td>
+<td>Array</td>
+<td>Optional</td>
+<td>An array of the configuration components to include in the response. Add this query string parameter for each component to include.<br> For example, to get variables and extensions: <code>&amp;includes=variables&amp;includes=extensions</code> Default: none<br> Values: <code>loadRules</code>, <code>tags</code>, <!--`tags.templateList`, `tags.template`,--> <code>extensions</code>, <code>variables</code>, <code>events</code> , and <code>versionIDs</code></td>
+</tr>
+</tbody>
+</table>
+ <!--<p class="note"><i class="fa fa-exclamation-triangle"></i>To retrieve the list of tag templates for a profile, your GET request must include <code>tags</code> and <code>tags.templateList</code>. For example, <code>&amp;includes=tags&amp;includes=tags.templateList</code>.<br> To retrieve the tag templates themselves, include <code>tags</code> and <code>tags.template</code>. For example, <code>&amp;includes=tags&amp;includes=tags.template</code>.</p>
+-->
+<h3 id="example-curl-request">Example cURL request</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://platform.tealiumapis.com/v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>?includes<span style="color:#f92672">=</span>loadRules&amp;includes<span style="color:#f92672">=</span>extensions&amp;includes<span style="color:#f92672">=</span>tags&amp;includes<span style="color:#f92672">=</span>variables&amp;includes<span style="color:#f92672">=</span>events&amp;includes<span style="color:#f92672">=</span>versionIds&amp;publishVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">202003161355</span>
+</span></span></code></pre></div><h3 id="example-response">Example response</h3>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code snippet
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;my_account&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Version 2022.03.22.2108&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;minorVersion&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;parentVersion&#34;</span>: <span style="color:#e6db74">&#34;202309191127&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;creation&#34;</span>: <span style="color:#e6db74">&#34;202201131654&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customTargets&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionDetails&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;user&#34;</span>: <span style="color:#e6db74">&#34;user1@tealium.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dataCloudLinkedProfiles&#34;</span>: <span style="color:#e6db74">&#34;{}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;libraryType&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;linkedProfiles&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;linkedLibraries&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;Dev&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;LibraryName&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;required&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;Prod&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;LibraryName&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;required&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;variables&#34;</span>:[
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">37</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;uniqueIdentifier&#34;</span>: <span style="color:#e6db74">&#34;dom.viewport_height&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;viewport_height&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;alias&#34;</span>: <span style="color:#e6db74">&#34;Viewport Height&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;dom&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;context&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;imported&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;usedIn&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;tags&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;events&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;extensions&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;consent&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;loadRules&#34;</span>: []
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;loadRules&#34;</span>:[
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;US Site Only&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;notes 1&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202203010000&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202203152359&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;usedIn&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;tags&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;extensions&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;consent&#34;</span>: [
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#34;gdpr&#34;</span>
+</span></span><span style="display:flex;"><span>                ],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;loadRules&#34;</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
+</span></span><span style="display:flex;"><span>                [
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;js.variable1&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;contains&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;js.order_discount&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_equal&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                ],
+</span></span><span style="display:flex;"><span>                [
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;dom.viewport_height&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_end_with_ignore_case&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>},
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;meta.metadata&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_equal_ignore_case&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;7&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                ],
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;extensions&#34;</span>:[
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;extensionId&#34;</span>: <span style="color:#ae81ff">100036</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;extenstionType&#34;</span>: <span style="color:#e6db74">&#34;Javascript Code&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Build Data Layer&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#e6db74">&#34;synclib&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;Pre Loader&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;occurrence&#34;</span>: <span style="color:#e6db74">&#34;Run Always&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;loadRule&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;selectedTargets&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;conditions&#34;</span>:<span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;configuration&#34;</span>: []
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">70</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;extensionId&#34;</span>: <span style="color:#ae81ff">100036</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;Set Data Values&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Set Checkout Step 1 Complete Event&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#e6db74">&#34;synclib&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;inactive&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;scope&#34;</span>:<span style="color:#e6db74">&#34;global&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;occurrence&#34;</span>: <span style="color:#e6db74">&#34;Run Always&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;loadRule&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;selectedTargets&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202204072336&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;conditions&#34;</span>:<span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;configuration&#34;</span>: []
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tags&#34;</span>:[
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;322&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;tagId&#34;</span>:<span style="color:#e6db74">&#34;20048&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;tagName&#34;</span>:<span style="color:#e6db74">&#34;Twitter&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Twitter&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;loadRule&#34;</span>:<span style="color:#e6db74">&#34;50,3&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;loadRuleJoinOperator&#34;</span>:<span style="color:#e6db74">&#34;all&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dataMappings&#34;</span>:[
+</span></span><span style="display:flex;"><span>                { 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;mappings&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;a1&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;a2&#34;</span>
+</span></span><span style="display:flex;"><span>                    ],
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;dom&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;title&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;mappings&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;a3&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;a4&#34;</span>
+</span></span><span style="display:flex;"><span>                    ],
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;static.text&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;height&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;selectedTargets&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;advancedConfiguration&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;bundleFlag&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;syncLoadType&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;optOut&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;sendFlag&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;scriptSource&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;tagTiming&#34;</span>: <span style="color:#e6db74">&#34;DOM Ready&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;configuration&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;config_EMUserSecret&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;multipleLoadRules&#34;</span>: <span style="color:#e6db74">&#34;3,2&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;_multipleLoadRules&#34;</span>: <span style="color:#e6db74">&#34;3,2&#34;</span>
+</span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;rules&#34;</span>: {
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;apply&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;exclude&#34;</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;eventId&#34;</span>: <span style="color:#ae81ff">100045</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Home and Decor Homepage Click&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;eventType&#34;</span>: <span style="color:#e6db74">&#34;mouseevents&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;DOM Ready&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;trackingEvent&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;library&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;eventLoadRuleList&#34;</span>: <span style="color:#e6db74">&#34;all&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;eventTrigger&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;mouseevents&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;cssSelector&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Mouse Events&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;mouseEvent&#34;</span>: <span style="color:#e6db74">&#34;mousedown&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;triggerFrequency&#34;</span>: <span style="color:#e6db74">&#34;runAlways&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;selectedTargets&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;environmentVersions&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;qa&#34;</span>: <span style="color:#e6db74">&#34;202301202252&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#e6db74">&#34;202301202252&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;202301202252&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;eventVariables&#34;</span>: [
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.tealium_event&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;mousedown&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;rules&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;apply&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;exclude&#34;</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;usedIn&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;tags&#34;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;events&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;extensions&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;consent&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;loadRules&#34;</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionIds&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309191128&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309191127&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309061342&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<h3 id="error-messages">Error messages</h3>
+<p>Potential error messages for this endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Error Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><code>&quot;Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} | profile: {PROFILE}&quot;</code><br>  <code>&quot;Variable validation failed - variableId: {VARIABLE ID} | {ACCOUNT} | profile: {PROFILE}. Cause: {cause}&quot;</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>&quot;Profile not found - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br>   <code>&quot;Profile library not found - account: {ACCOUNT} | profile: {PROFILE}&quot;</code> <br>   <code>&quot;Profile (legacy) not found - account: {ACCOUNT} | profile: {PROFILE}&quot;</code> <br>      <code>Error in getting next extension id - {ACCOUNT} profile: {PROFILE}&quot;</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td><code>&quot;Users are currently viewing the same account: {ACCOUNT} | profile: {PROFILE}&quot;</code> <br>  <code>&quot;Conflict with profile extension: _id: {ID}, extType: {TYPE}, name: {NAME} - {ACCOUNT} | profile: {PROFILE}&quot;</code></td>
+</tr>
+<tr>
+<td>500</td>
+<td><code>&quot;Error processing json for extension - account: {ACCOUNT} | profile: {PROFILE}&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>iQ JavaScript Extension API</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"iQ JavaScript Extension API"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"iQ Profiles API Objects "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>iQ Profiles API Objects</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  January 29, 2025 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      </nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Guides
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Partner Integrations
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          About Early Access
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/administration/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Administration
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/audiences/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Audiences
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/consent/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Consent
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-sources/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data sources
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-storage/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data storage
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/ea-platforms/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Platforms
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/server-side-concurrency/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Server-side Concurrency
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/server-side-connectors/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Server-Side Connectors
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/api/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          Tealium API
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

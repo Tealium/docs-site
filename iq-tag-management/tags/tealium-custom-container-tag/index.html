@@ -52,10 +52,7 @@
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
-         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
-<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
-</svg>
-</a>
+         <a href="/help/" class="dim link mid-gray">Help</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -438,7 +435,7 @@
 <p>The Custom Container does not have configuration fields, but it does support the use of load rules, data mappings, and extensions.</p>
 <h3 id="data-mappings">Data mappings</h3>
 <p>Configure data mappings just as you would for other tags. Data mappings are stored in the tag template variable <code>u.data</code>. The Custom Container tag only supports custom data mappings and name you choose in the mapping toolbox is the same you will use in the tag template code to reference the value.</p>
-<p>For example, if you map <code>customer_id</code> to a custom destination named <code>user_id</code> , then in the tag template, whereever you need to use this value, reference it as <code>u.data['user_id']</code>.</p>
+<p>For example, if you map <code>customer_id</code> to a custom destination named <code>user_id</code> , then in the tag template, wherever you need to use this value, reference it as <code>u.data['user_id']</code>.</p>
 <figure><a class="slb" href="/images/iq-tag-management/iq-custom-container-mapping.png"><img src="/images/iq-tag-management/iq-custom-container-mapping.png"
          alt="Custom Container mapping"
          title="Custom Container mapping" width="451" height="183"/>
@@ -479,7 +476,7 @@
 <tr>
 <td>Tag Sending Code</td>
 <td>The vendor&rsquo;s tag requires specific data to be processed or formatted first before the vendor URL is called.</td>
-<td>Lines 74-78. Changes typically include URL modifications, changing a datapoint value to meet vendor specifications, formatting data into query string parameters, ect.</td>
+<td>Lines 74-78. Changes typically include URL modifications, changing a datapoint value to meet vendor specifications, formatting data into query string parameters, etc.</td>
 </tr>
 <tr>
 <td>Loader Callback Function</td>
@@ -494,7 +491,7 @@
 <tr>
 <td>Loader Function Call</td>
 <td>Allows you to load several types of files by the tag you are implementing, such as external JavaScript files. Uncomment the <code>//</code> lines, as needed.</td>
-<td>Lines 96-108. Uncomment line 100 for the loader to call for <code>iframe</code> image requests. Uncomment line 101 for the loader to call for <code>script</code> to load the path to an external JavaScript file. Uncomment the <code>if-else</code> code to load the callback of the <code>u</code> object is not inititialized and to prevent the requested files from running twice.  If your tag does not need a callback, set <code>&quot;cb&quot;:u.loader_cb</code> to <code>&quot;cb&quot;:null</code> instead. <code>c.join(u.data.qsp_delim)</code> is a query string sample, where <code>c</code> is a key-value array, and <code>base_url</code> has the &lsquo;?&rsquo; pre-appended.</td>
+<td>Lines 96-108. Uncomment line 100 for the loader to call for <code>iframe</code> image requests. Uncomment line 101 for the loader to call for <code>script</code> to load the path to an external JavaScript file. Uncomment the <code>if-else</code> code to load the callback of the <code>u</code> object is not initialized and to prevent the requested files from running twice.  If your tag does not need a callback, set <code>&quot;cb&quot;:u.loader_cb</code> to <code>&quot;cb&quot;:null</code> instead. <code>c.join(u.data.qsp_delim)</code> is a query string sample, where <code>c</code> is a key-value array, and <code>base_url</code> has the &lsquo;?&rsquo; pre-appended.</td>
 </tr>
 </tbody>
 </table>
@@ -593,7 +590,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">product_id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">_cprod</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="tealium-event-variable">Tealium event variable</h3>
-<p>Using the <code>tealium_event</code> variable can be helpful when different events require different handling. You can create an <code>if</code> or <code>switch</code> statement to determine which vendor tracking calls to make based on the Tealium tracking call recieved. <code>tealium_event</code> defaults to either &ldquo;view&rdquo; or &ldquo;link&rdquo; when no other event is set.</p>
+<p>Using the <code>tealium_event</code> variable can be helpful when different events require different handling. You can create an <code>if</code> or <code>switch</code> statement to determine which vendor tracking calls to make based on the Tealium tracking call received. <code>tealium_event</code> defaults to either &ldquo;view&rdquo; or &ldquo;link&rdquo; when no other event is set.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="example-1-load-and-track-purchases">Example 1: Load and track purchases</h3>
 <p>The following code was provided by a vendor, and needs to be incorporated into the tag template. The code is separated into two major parts, commented as Part A and Part B. This code demonstrates a common pattern used in JavaScript tags where an external JavaScript file is loaded (Part A) and then a vendor object variable is set with dynamic values to trigger a tracking call (Part B).</p>
@@ -872,7 +869,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 26, 2024 
+          <p>This page was last updated:  January 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

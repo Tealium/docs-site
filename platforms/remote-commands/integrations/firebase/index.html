@@ -52,10 +52,7 @@
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
-         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
-<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
-</svg>
-</a>
+         <a href="/help/" class="dim link mid-gray">Help</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -619,7 +616,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;checkout_progress&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;email_signup&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;order&#34;</span>: <span style="color:#e6db74">&#34;logevent,setscreenname&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;setconsent&#34;</span>: <span style="color:#e6db74">&#34;setconsent&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;setconsent&#34;</span>: <span style="color:#e6db74">&#34;setconsent&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;initiateconversionmeasurement&#34;</span>: <span style="color:#e6db74">&#34;initiateconversionmeasurement&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;resetanalyticsdata&#34;</span>: <span style="color:#e6db74">&#34;resetdata&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="supported-methods">Supported Methods</h2>
@@ -663,6 +662,10 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>setconsent</code></td>
 <td><code>setConsent(consentSettings)</code></td>
+</tr>
+<tr>
+<td><code>resetdata</code></td>
+<td><code>resetAnalyticsData</code></td>
 </tr>
 </tbody>
 </table>
@@ -710,7 +713,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tbody>
 </table>
 <h3 id="track">Track</h3>
-<p>Events triggered by basic interactions with your app are tracked automatically. For more information, see <a href="https://support.google.com/firebase/answer/6317485?hl=en">[GA4] Automatically collected events</a>.</p>
+<p>Events triggered by basic interactions with your app are tracked automatically. For more information, see <a href="https://support.google.com/firebase/answer/6317485?hl=en">GA4: Automatically collected events</a>.</p>
 <h4 id="log-event">Log Event</h4>
 <p>Log an event with parameters and, optionally, an array of items.</p>
 <table>
@@ -737,9 +740,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>firebase_event_name</code> (required)</td>
+<td><code>firebase_event_name</code></td>
 <td><code>String</code></td>
-<td>The event name, mapped to a list of Firebase event names.</td>
+<td>Required. The event name, mapped to a list of Firebase event names.</td>
 </tr>
 <tr>
 <td><code>event</code> (JSON)</td>
@@ -791,9 +794,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>firebase_screen_name</code> (required)</td>
+<td><code>firebase_screen_name</code></td>
 <td><code>String</code></td>
-<td>The name of the current screen.</td>
+<td>Required. The name of the current screen.</td>
 </tr>
 <tr>
 <td><code>firebase_screen_class</code></td>
@@ -1423,14 +1426,14 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>firebase_property_name</code> (required)</td>
+<td><code>firebase_property_name</code></td>
 <td><code>String|[String]</code></td>
-<td>The property name or an array of property names</td>
+<td>Required. The property name or an array of property names</td>
 </tr>
 <tr>
-<td><code>firebase_property_value</code> (required)</td>
+<td><code>firebase_property_value</code></td>
 <td><code>String|[String]]</code></td>
-<td>The property value or an array of property values. If this parameter is an array, it must match the <code>firebase_property_name</code> array length and item order.</td>
+<td>Required. The property value or an array of property values. If this parameter is an array, it must match the <code>firebase_property_name</code> array length and item order.</td>
 </tr>
 </tbody>
 </table>
@@ -1460,9 +1463,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>firebase_user_id</code> (required)</td>
+<td><code>firebase_user_id</code></td>
 <td><code>String</code></td>
-<td>The User ID to set</td>
+<td>Required. The user ID to set</td>
 </tr>
 </tbody>
 </table>
@@ -1477,8 +1480,8 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>config</code></td>
-<td><code>configure()</code></td>
+<td><code>initiateconversionmeasurement</code></td>
+<td><code>initiateOnDeviceConversionMeasurement()</code></td>
 </tr>
 </tbody>
 </table>
@@ -1492,12 +1495,28 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>param_email_address</code> (required)</td>
+<td><code>param_hashed_email_address</code></td>
 <td><code>String</code></td>
-<td>The User email address</td>
+<td>The hashed user email address</td>
+</tr>
+<tr>
+<td><code>param_hashed_phone_number</code></td>
+<td><code>String</code></td>
+<td>The hashed user phone number</td>
+</tr>
+<tr>
+<td><code>param_email_address</code></td>
+<td><code>String</code></td>
+<td>The user email address</td>
+</tr>
+<tr>
+<td><code>param_phone_number</code></td>
+<td><code>String</code></td>
+<td>The user phone number</td>
 </tr>
 </tbody>
 </table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you are sending the parameter hashed, you need to follow the <a href="https://firebase.google.com/docs/tutorials/ads-ios-on-device-measurement/step-3">Firebase documentation on Measure iOS Ads conversions</a> to normalize and hash it. Tealium still needs to receive a <code>String</code> in the parameter. It will be converted to <code>Data</code> as a final step before passing it to <code>Firebase</code>.</p>
 <h3 id="consent">Consent</h3>
 <p>This command sets consent modes.</p>
 <table>
@@ -1524,9 +1543,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </thead>
 <tbody>
 <tr>
-<td><code>firebase_consent_settings</code> (required)</td>
+<td><code>firebase_consent_settings</code></td>
 <td><code>[String:String]</code></td>
-<td>An object containing the consent settings. Keys are consent types, values are <code>granted</code> or <code>denied</code></td>
+<td>Required. An object containing the consent settings. Keys are consent types, values are <code>granted</code> or <code>denied</code></td>
 </tr>
 </tbody>
 </table>
@@ -1562,7 +1581,23 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<p>For more information, see <a href="/client-side-tags/firebase-remote-command-tag/">Firebase Mobile Remote Command Tag setup</a>.</p>
+<p>For more information, see <a href="/client-side-tags/firebase-remote-command-tag/">Firebase: Mobile Remote Command Tag setup</a>.</p>
+<h3 id="reset-analytics-data">Reset Analytics Data</h3>
+<p>Clears all analytics data for this instance from the device and resets the app instance ID.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resetdata</code></td>
+<td><code>resetAnalyticsData()</code></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1623,7 +1658,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 7, 2024 
+          <p>This page was last updated:  January 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1652,6 +1687,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-user" href="javascript:void(0)">Set User</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversion-measurement-ios" href="javascript:void(0)">Conversion Measurement (iOS)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent" href="javascript:void(0)">Consent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reset-analytics-data" href="javascript:void(0)">Reset Analytics Data</a></li>
               </nav>
   </aside></nav>
 

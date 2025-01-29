@@ -52,10 +52,7 @@
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
-         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
-<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
-</svg>
-</a>
+         <a href="/help/" class="dim link mid-gray">Help</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -429,7 +426,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Before you begin, contact your Account Manager to verify the contracted terms for this feature on your account to ensure availability and appropriate licensing is maintained.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Before you begin, contact your Account Manager to verify the contracted terms for this feature on your account to ensure that availability and appropriate licensing is maintained.</p>
 <h2 id="overview">Overview</h2>
 <p>Tealium iQ publishes your <code>utag.js</code> files to our servers. When <code>utag.js</code> is implemented on your website, the file is sourced from <code>tags.tiqcdn.com</code>. If you have requirements that prevent you from loading external JavaScript files (or have other restrictions) we offer the ability to self-host these files on your own server. The generated <code>utag</code> files are still published to our servers, but they are also made available in a <code>.zip</code> archive which can be transferred to your system.</p>
 <p>The main difference in self-hosting is in the code snippet used to load <code>utag.js</code> on your website. The domain and path to that file must be updated to reflect your server location that hosts the files. In the following example, the URL changes from the Tealium standard to a self-hosted location:</p>
@@ -492,7 +489,15 @@
 <p>To download and verify the <code>distro.zip</code> file:</p>
 <ol>
 <li>From the <strong>Versions</strong> tab, find the last published version, expand the <strong>Publish Details</strong> for each environment and click <strong>Download Distro Zip File</strong>.</li>
-<li>Unzip the <code>distro.zip</code> file on your server in the location specified in the custom <strong>Publishing URLs</strong> setting.</li>
+<li>Unzip the <code>distro.zip</code> file on your server in the location specified in the custom <strong>Publishing URLs</strong> setting. <code>distro.zip</code> should contain the following files:
+<ul>
+<li><code>utag.js</code>: The Universal Tag, which loads and executes code to load and run tags based on load rules and conditions.</li>
+<li><code>utag.#.js</code>: The individual tag code, where <code>#</code> represents the tag&rsquo;s UID. For example: <code>utag.1.js</code>.</li>
+<li><code>utag.sync.js</code>: The code to execute prior to page load to support A/B and multivariate testing tags.</li>
+<li><code>utag.v.js</code>: The file required for session counts and billing.</li>
+<li><code>mobile.html</code>: The mobile configuration file.</li>
+</ul>
+</li>
 <li>Using the code from <strong>Code Center</strong>, add the <code>utag.js</code> code snippet to your website.</li>
 <li>Using the browser console, verify that your webpage is loading <code>utag.js</code> from your self-hosted location and not from Tealium (for example, <code>tags.tiqcdn.com</code>).</li>
 </ol>
@@ -576,7 +581,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2024 
+          <p>This page was last updated:  January 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
