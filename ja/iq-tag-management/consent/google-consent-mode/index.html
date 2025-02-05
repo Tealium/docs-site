@@ -288,7 +288,7 @@
         <ul class="pl2  iq-security desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/security/password-policy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".password-policy">パスワードポリシー</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/security/session-timeout/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-session-timeout">セッションタイムアウト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/security/mfa/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-mfa">マルチファクタ認証（MFA）</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/administration/security/mfa/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-mfa">マルチファクター認証 (MFA)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/security/mfa-faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-faq">マルチファクター認証 FAQ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/security/api-keys/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".managing-and-generating-api-keys">APIキーの管理と生成</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -417,7 +417,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Google同意モードの概要と、同意モードマッピングのための翻訳拡張の使用方法について説明します。
+      この記事では、Google同意モードの概要と、同意モードマッピングのための翻訳拡張機能の使用方法について説明します。
     </p>
   
 </div>
@@ -426,26 +426,26 @@
   <p>Google同意モードは、データ収集のためのユーザー同意を管理するための2つのアプローチを提供します：<strong>基本的な同意モード</strong>と<strong>高度な同意モード</strong>。これらのモードを理解することは、データプライバシー規制の遵守とデータ収集戦略の最適化にとって重要です。</p>
 <ul>
 <li>
-<p><strong>基本的な同意モード</strong>：ユーザーの同意が得られない場合にタグとコネクタアクションをブロックする従来のアプローチです。これにより、同意なしに個人を特定可能な情報（PII）を含むデータの無許可収集を防ぎます。</p>
+<p><strong>基本的な同意モード</strong>：ユーザーの同意が得られない場合、タグとコネクタアクションがブロックされる従来のアプローチです。これにより、同意なしに個人を特定可能な情報（PII）を含むデータの無許可収集が防止されます。</p>
 </li>
 <li>
 <p><strong>高度な同意モード</strong>：このアプローチは、同意の状態に関係なくGoogleのタグをロードし、ユーザーの同意決定をGoogleに通知することを提案します。その後、タグは以下のいずれかの方法で適応します：</p>
 <ul>
-<li>トラッキングに同意していないユーザーから匿名データを収集するためのクッキーレスエンドポイントを使用する。</li>
-<li>同意を提供したユーザーに対して標準エンドポイントを使用する。</li>
+<li>トラッキングに同意していないユーザーから匿名データを収集するためのクッキーレスエンドポイントを使用します。</li>
+<li>同意を提供したユーザーに対しては、標準エンドポイントを使用します。</li>
 </ul>
 <p>この高度な戦略は、PIIの使用に対するユーザーの同意を尊重しつつ、分析と広告のコンバージョンのためのデータ収集を最大化することを目指しています。</p>
 </li>
 </ul>
-<p>同意なしでのデータ収集をブロックする（基本）か、標準的なトラッキングに同意していない訪問の匿名データを収集するためのGoogleの方法を採用する（高度）か、どちらの同意モードがあなたのポリシーに合致するかを決定するためには、法務チームやリーダーシップチームと相談することが重要です。</p>
+<p>同意なしでのデータ収集をブロックする（基本）か、標準トラッキングに同意していない訪問の匿名データを収集するためのGoogleの方法を採用する（高度）か、どちらの同意モードがあなたのポリシーに合致するかを決定するためには、法務チームやリーダーシップチームと相談することが重要です。</p>
 <p>詳細については、<a href="https://support.google.com/google-ads/answer/10000067">Google Ads Help: About consent mode</a>を参照してください。</p>
 <h2 id="使い方">使い方</h2>
-<p>Google同意モードを実装するには、同意選択をGoogle同意モード構成にマッピングし、デフォルトの同意構成とあなたの同意管理プラットフォーム（CMP）からのカテゴリマッピングを持つ<a href="/ja/client-side-tags/google-consent-mode-tag/">Google Consent Mode tag</a>を構成するためのJavaScript Code拡張を追加します。訪問が同意選択を行うと、Google同意モードタグはこれらの構成をGoogleタグに通知し、それが適切なデータ収集エンドポイント（デフォルトの収集エンドポイントまたはクッキーレスエンドポイント）を選択してデータをGoogleに送信します。</p>
+<p>Google同意モードを実装するには、同意選択をGoogle同意モード構成にマッピングし、デフォルトの同意構成とあなたの同意管理プラットフォーム（CMP）からのカテゴリマッピングを持つ<a href="/ja/client-side-tags/google-consent-mode-tag/">Google Consent Mode tag</a>を構成するためのJavaScript Code拡張機能を追加します。訪問が同意選択を行うと、Google同意モードタグはこれらの構成をGoogleタグに通知し、それが適切なデータ収集エンドポイント（デフォルトの収集エンドポイントまたはクッキーレスエンドポイント）を選択してデータをGoogleに送信します。</p>
 <p>基本的な同意モードと高度な同意モードの両方で、Google Consent Modeタグは自身でデータを送信しないため、常に発火させることができます。代わりに、他のタグが反応するための信号を提供します。</p>
 <h2 id="同意目的のマッピング">同意目的のマッピング</h2>
-<p>エンドユーザーの同意選択をGoogle同意モード構成にマッピングするには、JavaScript Code拡張が必要です。この拡張を使用して、さまざまな目的やベンダーに対するエンドユーザーの現在の同意決定をキャプチャし、対応するGoogle同意モードの目的や構成に<code>granted</code>または<code>denied</code>（または特定のシナリオで<code>true</code> / <code>false</code>）のステータスを割り当てます。</p>
-<h3 id="javascript拡張テンプレート">JavaScript拡張テンプレート</h3>
-<p>Javascript拡張を構成するには、以下のテンプレートコードを使用します。これはロードルールの後に実行され、常に実行するように構成されています：</p>
+<p>エンドユーザーの同意選択をGoogle同意モード構成にマッピングするには、JavaScript Code拡張機能が必要です。この拡張機能を使用して、さまざまな目的やベンダーに対するエンドユーザーの現在の同意決定をキャプチャし、対応するGoogle同意モードの目的や構成に<code>granted</code>または<code>denied</code>（または特定のシナリオで<code>true</code> / <code>false</code>）のステータスを割り当てます。</p>
+<h3 id="javascript拡張機能のテンプレート">JavaScript拡張機能のテンプレート</h3>
+<p>JavaScript拡張機能を構成するには、以下のテンプレートコードを使用します。これはロードルールの後に実行され、常に実行するように構成されます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">google_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">your</span><span style="color:#f92672">-</span><span style="color:#a6e22e">logic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">here</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
@@ -454,11 +454,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">google_ad_personalization_consent</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">your</span><span style="color:#f92672">-</span><span style="color:#a6e22e">logic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">here</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">google_ads_data_redaction</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">your</span><span style="color:#f92672">-</span><span style="color:#a6e22e">logic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">here</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;true&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;false&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">google_url_passthrough</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">your</span><span style="color:#f92672">-</span><span style="color:#a6e22e">logic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">here</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;true&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;false&#39;</span>;
-</span></span></code></pre></div><p><code>&lt;your-logic-here&gt;</code>を、ユーザーの同意に基づいて<code>granted</code>または<code>denied</code>、<code>true</code>または<code>false</code>のいずれかに評価される条件に置き換えます。</p>
+</span></span></code></pre></div><p><code>&lt;your-logic-here&gt;</code>を、ユーザーの同意に基づいて<code>granted</code>または<code>denied</code>、<code>true</code>または<code>false</code>のいずれかに評価される条件で置き換えます。</p>
 <h3 id="例">例</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>あなたの同意構成により、実装は異なります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>あなたの実装はあなたの同意構成によって異なります。</p>
 <h4 id="consent-managerの例">Consent Managerの例</h4>
-<p>Consent Managerを使用している場合、同意ステータスを決定するロジックは次のようになるかもしれません：</p>
+<p>Consent Managerを使用している場合、同意状態を決定するロジックは次のようになるかもしれません：</p>
 <pre tabindex="0"><code>// After Load Rules - Run Always
 b.consent_decision = (tealiumConsentRegister &amp;&amp; tealiumConsentRegister.currentDecision) || [];
 b.google_ad_storage_consent = b.consent_decision.indexOf(&#39;display_ads&#39;) !== -1  ? &#39;granted&#39; : &#39;denied&#39;;
@@ -479,7 +479,7 @@ b.google_ads_data_redaction = b.consent_decision.indexOf(&#39;C0004&#39;) === -1
 b.google_url_passthrough = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1 ? &#39;true&#39; : &#39;false&#39;;
 </code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>これらの正確な変数名を使用する場合、追加のマッピングは必要ありません。Google同意モードタグの最新バージョンは、デフォルトでこれらの変数を使用します。</p>
 <h3 id="拡張機能の同意パラメータの選択">拡張機能の同意パラメータの選択</h3>
-<p>JavaScript拡張で使用する同意パラメータを特定するには、以下の手順に従います：</p>
+<p>JavaScript拡張機能で使用する同意パラメータを特定するには、次の手順を実行します：</p>
 <ol>
 <li>
 <p>ブラウザのクッキーとキャッシュをクリアします。</p>
@@ -548,7 +548,7 @@ b.google_url_passthrough = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1 ? 
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年January月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -564,7 +564,7 @@ b.google_url_passthrough = b.consent_decision.indexOf(&#39;C0004&#39;) !== -1 ? 
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E3%81%84%E6%96%B9" href="javascript:void(0)">使い方</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E7%9B%AE%E7%9A%84%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">同意目的のマッピング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E6%8B%A1%E5%BC%B5%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JavaScript拡張テンプレート</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JavaScript拡張機能のテンプレート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E5%90%8C%E6%84%8F%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%AE%E9%81%B8%E6%8A%9E" href="javascript:void(0)">拡張機能の同意パラメータの選択</a></li>
               </nav>

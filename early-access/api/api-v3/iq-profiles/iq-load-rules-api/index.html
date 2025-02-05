@@ -98,12 +98,7 @@
         <a href="/early-access/audiences/potential-audience-sizing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">Potential Audience Sizing</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-consent">Consent</a>
-        <ul class="pl2  ea-consent desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-orchestration">Consent Orchestration (Event-level)</a>
-        <ul class="pl2  consent-orchestration desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/consent/consent-orchestration/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-orchestration">About Consent Orchestration</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/consent/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">Handling conflicts in enforcement conditions</a></li></ul>
-      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <ul class="pl2  ea-consent desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/consent/cookieconsent-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cookieconsent-consent-integration">CookieConsent &#43; Tealium iQ Consent Integration</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-sources">Data sources</a>
@@ -311,7 +306,7 @@
 <td>For scheduled load rules, the end date. Date format must be <code>yyyyMMddHHmm</code>.</td>
 </tr>
 <tr>
-<td><code>value.loadRuleCondition</code></td>
+<td><code>value.conditions</code></td>
 <td>Array[object]</td>
 <td>Required</td>
 <td>An array of objects that include variable name, operator, and value. Each object within an array is associated by an <code>and</code>operator while each array within the array is associated by an <code>or</code> operator. The following operators do not accept a value:<br><code>is defined</code><br> <code>is badge assigned</code><br> <code>is badge not assigned</code><br> <code>is not defined</code><br> <code>is not populated</code></td>
@@ -334,7 +329,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;conditions&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
@@ -355,7 +350,7 @@
 <li><code>replace</code> - Update the component.</li>
 <li><code>remove</code> - Delete the component.</li>
 </ul>
-<p>To specify the the type and ID of the component, use the <code>path</code> parameter. The <code>path</code> parameter format is <code>/{TYPE}/{ID}</code>.</p>
+<p>To specify the type and ID of the component, use the <code>path</code> parameter. The <code>path</code> parameter format is <code>/{TYPE}/{ID}</code>.</p>
 <p>For example, to add a load rule use:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;op&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;add&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;path&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;/loadRules&#34;</span>
@@ -380,7 +375,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;conditions&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
@@ -411,7 +406,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;conditions&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
@@ -529,7 +524,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 29, 2025 
+          <p>This page was last updated:  January 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -154,7 +154,7 @@
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>これは、<a href="/ja/api/v2/getting-started/auth/">現行のTealium API</a>の古いバージョンです。</p>
-<p>APIは、有効なTealiumアカウントを持つユーザーのみが使用できます。APIは、メールアドレスとパスワードを使用してユーザーの身元を確認する認証をサポートしています。APIエンドポイントにアクセスする前に、セッションを開始するために認証する必要があります。その後のすべての呼び出しでは、セキュリティ目的でセッションクッキーと<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRFトークン</a>を使用します。</p>
+<p>APIは、有効なTealiumアカウントを持つユーザーのみが使用できます。APIは、ユーザーの身元を確認するために、メールアドレスとパスワードを使用した認証をサポートしています。APIエンドポイントにアクセスする前に、セッションを開始するために認証する必要があります。その後のすべての呼び出しでは、セキュリティ目的でセッションクッキーと<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRFトークン</a>を使用します。</p>
 <h2 id="ログイン">ログイン</h2>
 <p>ログインに成功すると、<strong>JSESSIONID</strong>という名前のクッキーと<strong>utk</strong>という名前のトークンの2つのアイテムが付与されます。これらの値は、その後のすべてのAPI呼び出しを認証するために使用されます。</p>
 <h3 id="リソースurl">リソースURL</h3>
@@ -182,7 +182,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;utk&#34;</span>: <span style="color:#e6db74">&#34;65489FMSTJGF549870KSH&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>このレスポンスから、次のすべてのAPI呼び出しのための以下の値をメモします：</p>
+</span></span></code></pre></div><p>このレスポンスから、次のすべてのAPI呼び出しのための次の値をメモします：</p>
 <p>(サンプル値)</p>
 <ul>
 <li>JSESSION = 3513642946826543477</li>
@@ -190,12 +190,12 @@
 </ul>
 <h3 id="エラーメッセージ">エラーメッセージ</h3>
 <p>呼び出しが失敗すると、APIは<strong>401認証失敗</strong>エラーを返します。以下に表示されるエラーメッセージを示します：</p>
-<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1401,&lt;br&gt;  &quot;message&quot; : &quot;認証に失敗しました&quot;&lt;br&gt;}</code></p>
-<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1402,&lt;br&gt;  &quot;message&quot; : &quot;ログイン試行が多すぎます。10分後に再試行してください&quot; &lt;br&gt;}</code></p>
-<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1469,&lt;br&gt;  &quot;message&quot; : &quot;ユーザーは認証されていますが、適切な権限がないためリクエストは拒否されました&quot; &lt;br&gt;}</code></p>
+<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1401,&lt;br&gt;  &quot;message&quot; : &quot;Authentication Failed&quot;&lt;br&gt;}</code></p>
+<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1402,&lt;br&gt;  &quot;message&quot; : &quot;Too many unsuccessful login attempts. Please try again in 10 minutes&quot; &lt;br&gt;}</code></p>
+<p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1469,&lt;br&gt;  &quot;message&quot; : &quot;Although the user is authenticated, the request is denied due of lack of proper permissions&quot; &lt;br&gt;}</code></p>
 <h2 id="ログアウト">ログアウト</h2>
 <p>ログイン中のユーザーの現在のセッションを終了します。</p>
-<p><strong>注意</strong>：このAPI呼び出しはオプションで、ユーザーのセッションが期限切れになると自動的にログアウトされます。</p>
+<p><strong>注意</strong>：セッションが期限切れになると、ユーザーは自動的にログアウトされるため、このAPI呼び出しを行うことはオプションです。</p>
 <h3 id="リソースurl-1">リソースURL</h3>
 <p>POST <a href="https://api.tealiumiq.com/v1/logout">https://api.tealiumiq.com/v1/logout</a></p>
 <h3 id="リクエストヘッダー">リクエストヘッダー</h3>
@@ -267,7 +267,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月10日
+          <p>最終更新日 ::  2025年January月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

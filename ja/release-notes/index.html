@@ -140,6 +140,9 @@
                 <input class="css-checkbox" type="checkbox" value="api" />
                 <span>API</span>
             </label><label>
+                <input class="css-checkbox" type="checkbox" value="attributes" />
+                <span>属性</span>
+            </label><label>
                 <input class="css-checkbox" type="checkbox" value="audiences" />
                 <span>オーディエンス</span>
             </label><label>
@@ -157,6 +160,9 @@
             </label><label>
                 <input class="css-checkbox" type="checkbox" value="consent-management" />
                 <span>クライアントサイド同意管理</span>
+            </label><label>
+                <input class="css-checkbox" type="checkbox" value="consent-orchestration" />
+                <span>同意オーケストレーション（イベントレベル）</span>
             </label><label>
                 <input class="css-checkbox" type="checkbox" value="cordova" />
                 <span>Tealium for Cordova</span>
@@ -275,7 +281,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const filterOptions = {"iq-tag-management" : {label:"iQタグ管理", class: "color-indigo"},"platforms" : {label:"プラットフォーム", class: "color-indigo"},"server-side" : {label:"サーバーサイド", class: "color-indigo"},"account-admin" : {label:"管理", class: "color-violet"},"administration" : {label:"サーバーサイド管理", class: "color-violet"},"android-java" : {label:"Tealium for Android (Java)", class: "color-violet"},"android-kotlin" : {label:"Tealium for Android（Kotlin）", class: "color-violet"},"api" : {label:"API", class: "color-violet"},"audiences" : {label:"オーディエンス", class: "color-violet"},"client-side-tags" : {label:"クライアントサイドタグ", class: "color-violet"},"connectors" : {label:"コネクタ（全般）", class: "color-violet"},"consent" : {label:"サーバーサイド同意管理", class: "color-violet"},"consent-integrations" : {label:"同意統合", class: "color-violet"},"consent-management" : {label:"クライアントサイド同意管理", class: "color-violet"},"cordova" : {label:"Tealium for Cordova", class: "color-violet"},"csharp" : {label:"Tealium for C#", class: "color-violet"},"data-layer" : {label:"データレイヤー", class: "color-violet"},"data-mappings" : {label:"サーバサイド:データソース", class: "color-violet"},"data-sources" : {label:"データソース", class: "color-violet"},"data-storage" : {label:"DataAccess", class: "color-violet"},"docs" : {label:"ドキュメント", class: "color-violet"},"dotnet-maui" : {label:"Tealium for .NET MAUI", class: "color-violet"},"events" : {label:"イベント", class: "color-violet"},"extensions" : {label:"拡張機能", class: "color-violet"},"flutter" : {label:"Tealium for Flutter", class: "color-violet"},"flutter-v1" : {label:"Tealium for Flutter 1.x", class: "color-violet"},"functions" : {label:"関数", class: "color-violet"},"insights" : {label:"Tealium Insights", class: "color-violet"},"ios-objective-c" : {label:"Tealium for iOS (Objective C)", class: "color-violet"},"ios-swift" : {label:"Tealium for iOS (Swift)", class: "color-violet"},"java" : {label:"Tealium for Java", class: "color-violet"},"javascript" : {label:"Tealium Universal Tag (utag.js)", class: "color-violet"},"labels" : {label:"ラベル", class: "color-violet"},"live-events-and-feeds" : {label:"ライブイベントとフィード", class: "color-violet"},"load-rules" : {label:"ロードルール", class: "color-violet"},"moments-api" : {label:"Moments API", class: "color-violet"},"nativescript" : {label:"Tealium for Nativescript", class: "color-violet"},"profiles" : {label:"プロファイル", class: "color-violet"},"react-native" : {label:"Tealium for React Native", class: "color-violet"},"react-native-v1" : {label:"Tealium for React Native 1.x", class: "color-violet"},"remote-commands" : {label:"リモートコマンド", class: "color-violet"},"save-publish" : {label:"保存・公開", class: "color-violet"},"server-side" : {label:"サーバーサイド", class: "color-violet"},"server-side-connectors" : {label:"コネクタ（個別）", class: "color-violet"},"tags" : {label:"タグ", class: "color-violet"},"tealium-tools" : {label:"Tealiumツール", class: "color-violet"},"templates" : {label:"テンプレート", class: "color-violet"},"trace" : {label:"トレース", class: "color-violet"},"xamarin" : {label:"Tealium for Xamarin", class: "color-violet"},"xamarin-v1" : {label:"Tealium for Xamarin 1.x", class: "color-violet"},};
+    const filterOptions = {"iq-tag-management" : {label:"iQタグ管理", class: "color-indigo"},"platforms" : {label:"プラットフォーム", class: "color-indigo"},"server-side" : {label:"サーバーサイド", class: "color-indigo"},"account-admin" : {label:"管理", class: "color-violet"},"administration" : {label:"サーバーサイド管理", class: "color-violet"},"android-java" : {label:"Tealium for Android (Java)", class: "color-violet"},"android-kotlin" : {label:"Tealium for Android（Kotlin）", class: "color-violet"},"api" : {label:"API", class: "color-violet"},"attributes" : {label:"属性", class: "color-violet"},"audiences" : {label:"オーディエンス", class: "color-violet"},"client-side-tags" : {label:"クライアントサイドタグ", class: "color-violet"},"connectors" : {label:"コネクタ（全般）", class: "color-violet"},"consent" : {label:"サーバーサイド同意管理", class: "color-violet"},"consent-integrations" : {label:"同意統合", class: "color-violet"},"consent-management" : {label:"クライアントサイド同意管理", class: "color-violet"},"consent-orchestration" : {label:"同意オーケストレーション（イベントレベル）", class: "color-violet"},"cordova" : {label:"Tealium for Cordova", class: "color-violet"},"csharp" : {label:"Tealium for C#", class: "color-violet"},"data-layer" : {label:"データレイヤー", class: "color-violet"},"data-mappings" : {label:"サーバサイド:データソース", class: "color-violet"},"data-sources" : {label:"データソース", class: "color-violet"},"data-storage" : {label:"DataAccess", class: "color-violet"},"docs" : {label:"ドキュメント", class: "color-violet"},"dotnet-maui" : {label:"Tealium for .NET MAUI", class: "color-violet"},"events" : {label:"イベント", class: "color-violet"},"extensions" : {label:"拡張機能", class: "color-violet"},"flutter" : {label:"Tealium for Flutter", class: "color-violet"},"flutter-v1" : {label:"Tealium for Flutter 1.x", class: "color-violet"},"functions" : {label:"関数", class: "color-violet"},"insights" : {label:"Tealium Insights", class: "color-violet"},"ios-objective-c" : {label:"Tealium for iOS (Objective C)", class: "color-violet"},"ios-swift" : {label:"Tealium for iOS (Swift)", class: "color-violet"},"java" : {label:"Tealium for Java", class: "color-violet"},"javascript" : {label:"Tealium Universal Tag (utag.js)", class: "color-violet"},"labels" : {label:"ラベル", class: "color-violet"},"live-events-and-feeds" : {label:"ライブイベントとフィード", class: "color-violet"},"load-rules" : {label:"ロードルール", class: "color-violet"},"moments-api" : {label:"Moments API", class: "color-violet"},"nativescript" : {label:"Tealium for Nativescript", class: "color-violet"},"profiles" : {label:"プロファイル", class: "color-violet"},"react-native" : {label:"Tealium for React Native", class: "color-violet"},"react-native-v1" : {label:"Tealium for React Native 1.x", class: "color-violet"},"remote-commands" : {label:"リモートコマンド", class: "color-violet"},"save-publish" : {label:"保存・公開", class: "color-violet"},"server-side" : {label:"サーバーサイド", class: "color-violet"},"server-side-connectors" : {label:"コネクタ（個別）", class: "color-violet"},"tags" : {label:"タグ", class: "color-violet"},"tealium-tools" : {label:"Tealiumツール", class: "color-violet"},"templates" : {label:"テンプレート", class: "color-violet"},"trace" : {label:"トレース", class: "color-violet"},"xamarin" : {label:"Tealium for Xamarin", class: "color-violet"},"xamarin-v1" : {label:"Tealium for Xamarin 1.x", class: "color-violet"},};
     const dropdownToggle = document.querySelector('.dropdown-toggle');
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const selectedTagsContainer = document.querySelector('.selected-filter');
@@ -470,7 +476,230 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-</script><h2 class="rn-date-separator tc mv4 w-100 fw7 f5" id="1月-2025"><span class="bg-white ph3">1月 2025</span><hr></h2>
+</script><h2 class="rn-date-separator tc mv4 w-100 fw7 f5" id="2月-2025"><span class="bg-white ph3">2月 2025</span><hr></h2>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="consent-orchestration" data-rn-category="server-side">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="server-side"><div class="badge color-indigo"><span class="badge-label">サーバーサイド</span></div><div class="badge color-violet"><span class="badge-label">同意オーケストレーション（イベントレベル）</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="consent-orchestration-2025-02-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="tealium-consent-orchestrationが利用可能になりました">Tealium Consent Orchestrationが利用可能になりました</h4>
+<p>イベントレベルの同意とデータ保護を提供するTealium Consent Orchestrationを紹介することを嬉しく思います。これにより、イベントレベルのアクティベーションの同意条件を中央で制御できます。これにより、データ処理がユーザーの構成と法的要件に準拠することを保証します。</p>
+<p>Consent Orchestrationは以下の機能を提供します：</p>
+<ul>
+<li><strong>集中化された同意管理</strong>：サーバーサイドで同意ルールを定義し、それらを目的のグループに組織化して、ユーザープライバシーポリシーの遵守を確保します。</li>
+<li><strong>エラー保護＆データの整合性</strong>：同意が与えられた場合や有効な免除条件が満たされた場合にのみデータが有効化されるようにして、誤ってデータが漏れ出るのを防ぎます。</li>
+<li><strong>柔軟な同意ポリシー</strong>：同意ポリシーをカスタマイズし、選択的に適用して、同意されたデータのみが処理され、さまざまな規制要件に適応することを確保します。</li>
+<li><strong>免除</strong>：明示的なユーザーの同意なしにデータトラッキングが許可される特定の条件の免除を定義し、データ保護規制の遵守を確保しながら柔軟性を提供します。</li>
+<li><strong>イベントレベルのアクティベーションを制御</strong>：EventStreamコネクタアクション、Event関数、EventStore、EventDB、およびAudienceStreamによって処理されるイベントの同意の強制を管理します。</li>
+</ul>
+<p>Consent Orchestrationについての詳細は、<a href="/ja/server-side/consent/consent-orchestration/about/">Consent Orchestrationについて</a>をご覧ください。</p>
+
+                <div class=""><span class="f7">2月 6, 2025</span></div>
+              </div><h2 class="rn-date-separator tc mv4 w-100 fw7 f5" id="1月-2025"><span class="bg-white ph3">1月 2025</span><hr></h2>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="administration" data-rn-category="iq-tag-management">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="iq-tag-management"><div class="badge color-indigo"><span class="badge-label">iQタグ管理</span></div><div class="badge color-violet"><span class="badge-label">サーバーサイド管理</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="administration-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="修正済み">修正済み</h4>
+<ul>
+<li>ユーザーエクスポートに関する問題を修正しました。システムが1つ以上のプロファイルのデータを取得できない問題がありました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="attributes" data-rn-category="server-side">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="server-side"><div class="badge color-indigo"><span class="badge-label">サーバーサイド</span></div><div class="badge color-violet"><span class="badge-label">属性</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="attributes-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="修正点">修正点</h4>
+<ul>
+<li>ビジタースティッチング中にタイムラインの濃淡が誤ったタイムスタンプを記録する問題を修正しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="client-side-tags" data-rn-category="">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key=""><div class="badge color-violet"><span class="badge-label">クライアントサイドタグ</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="client-side-tags-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="新しいタグ">新しいタグ</h4>
+<ul>
+<li>新しいマーケットプレイスタグ：<a href="/ja/client-side-tags/comscore-tag/">Comscoreタグ</a></li>
+<li>新しいマーケットプレイスタグ：<a href="/ja/client-side-tags/mapp-intelligence-smart-pixel-tag/">Mapp Intelligence Smart Pixelタグ</a></li>
+</ul>
+<h4 id="更新と修正">更新と修正</h4>
+<ul>
+<li><a href="/ja/client-side-tags/braze-web-sdk-tag/">Braze Web SDKタグ</a>を更新して&quot;All Events&quot;パラメータを追加しました。</li>
+<li><a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4タグ</a>を更新して、動的マッピングを介した払い戻しイベントをサポートします。</li>
+<li><a href="/ja/client-side-tags/google-consent-mode-tag/">Google Consent Modeタグ</a>を更新して、カスタムデータレイヤー名をサポートします。</li>
+<li><a href="/ja/client-side-tags/mapp-intelligence-tag/">Mapp Intelligenceタグ</a>の名前をMapp Intelligence (Legacy pixel)に変更しました。</li>
+<li><a href="/ja/client-side-tags/merkle-merkury-tag/">Merkle Merkuryタグ</a>を更新して、信頼スコアの構成を修正し、ベースURLを構成フィールドとして追加しました。</li>
+<li><a href="/ja/client-side-tags/nextdoor-conversion-pixel-tag/">Nextdoor Conversion Pixelタグ</a>を更新して、サーバーサイドの重複排除のためのイベントIDを追加しました。</li>
+<li><a href="/ja/client-side-tags/taboola-pixel-tag/">Taboola Pixelタグ</a>を更新して、Unified E-commerceイベントをサポートします。</li>
+<li>Kenshoo Conversionタグの名前を<a href="/ja/client-side-tags/skai-conversion-tag/">Skai Conversionタグ</a>に変更しました。</li>
+<li>At Internet Piano Analyticsタグの名前を<a href="/ja/client-side-tags/piano-analytics-tag/">Piano Analyticsタグ</a>に変更しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="connectors" data-rn-category="server-side">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="server-side"><div class="badge color-indigo"><span class="badge-label">サーバーサイド</span></div><div class="badge color-violet"><span class="badge-label">コネクタ（全般）</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="connectors-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="アップデートと修正">アップデートと修正</h4>
+<ul>
+<li>個々のコネクタのラベルを編集するオプションを追加するために、コネクタダッシュボードを更新しました。</li>
+<li>すべてのプライベートクラウド環境でコネクタダッシュボードのメトリクスを更新しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="docs" data-rn-category="">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key=""><div class="badge color-violet"><span class="badge-label">ドキュメント</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="docs-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="新しい情報">新しい情報</h4>
+<ul>
+<li>新しいガイドが利用可能になりました：<a href="/ja/guides/user-identifier-guide/">ユーザー識別子のベストプラクティスガイド</a>。これは、最適な訪問のスティッチングのために訪問ID属性を構成するタイミングと方法についてのガイドラインを提供します。</li>
+</ul>
+<h4 id="検索の改善">検索の改善</h4>
+<ul>
+<li>スネークケースの変数名（例：<code>tealium_visitor_id</code>）を検索すると、正確な一致が返されるようになりました。</li>
+<li>検索は高度な検索構文をサポートします：
+<ul>
+<li>引用符を使用した正確な一致検索。例えば、正確なフレーズを見つける：<code>&quot;user ID&quot;</code>。</li>
+<li>ハイフンを使用して検索語を除外します。例えば、&ldquo;google conversion&quot;を含むページを見つけるが&quot;connector&quot;は含まない：<code>&quot;google conversion -connector&quot;</code>。</li>
+</ul>
+</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="functions" data-rn-category="server-side">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="server-side"><div class="badge color-indigo"><span class="badge-label">サーバーサイド</span></div><div class="badge color-violet"><span class="badge-label">関数</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="functions-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="修正">修正</h4>
+<ul>
+<li>デフォルトのコードに <code>tealium_event</code> が含まれていないため、テストが &ldquo;セッションIDまたはTealiumイベントがありません&rdquo; エラーで誤って失敗する原因となるカスタム関数のエラーを修正しました。</li>
+<li>Functions APIの <code>getAttributeValueById</code> メソッドが同じ名前だが異なるタイプの誤った属性を返す可能性がある問題を修正しました。</li>
+<li>FunctionsコードエディタからサポートされていないJavaScript APIを削除しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="javascript" data-rn-category="platforms">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="platforms"><div class="badge color-indigo"><span class="badge-label">プラットフォーム</span></div><div class="badge color-violet"><span class="badge-label">Tealium Universal Tag (utag.js)</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="javascript-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="アップデートと修正">アップデートと修正</h4>
+<ul>
+<li>utag 4.52を更新し、<code>utag.v.js</code>を<a href="/ja/iq-tag-management/getting-started/install/self-host/">self-hosting customers</a>のための<code>distro.zip</code>ファイルに含めるようにしました。これにより、適切な機能が保証されます。また、この変更により、utag 4.52にアップデートする顧客の請求も期待通りに機能し続けます。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="labels" data-rn-category="iq-tag-management">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="iq-tag-management"><div class="badge color-indigo"><span class="badge-label">iQタグ管理</span></div><div class="badge color-violet"><span class="badge-label">ラベル</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="labels-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="修正点">修正点</h4>
+<ul>
+<li>タグ、ロードルール、イベント画面のフィルターメニューでラベルがレンダリングされる方法に関する問題を修正しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="server-side-connectors" data-rn-category="">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key=""><div class="badge color-violet"><span class="badge-label">コネクタ（個別）</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="server-side-connectors-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="新しいコネクタ">新しいコネクタ</h4>
+<ul>
+<li>新しいマーケットプレイスコネクタ: <a href="/ja/server-side-connectors/bloomreach-connector/">Bloomreachコネクタ</a></li>
+<li>新しいマーケットプレイスコネクタ: <a href="/ja/server-side-connectors/datadog-connector/">DataDogコネクタ</a></li>
+<li>新しいマーケットプレイスコネクタ: <a href="/ja/server-side-connectors/stackadapt-events-connector/">StackAdapt Eventsコネクタ</a></li>
+<li>新しいマーケットプレイスコネクタ: <a href="/ja/server-side-connectors/taboola-audiences-connector/">Taboola Audiencesコネクタ</a></li>
+</ul>
+<h4 id="更新と修正">更新と修正</h4>
+<ul>
+<li><a href="/ja/server-side-connectors/mixpanel-connector/">Mixpanelコネクタ</a>を更新して、リージョナルエンドポイントの選択を可能にしました。</li>
+<li><a href="/ja/server-side-connectors/snowflake-streaming-connector/">Snowflake Streaming Connector</a>をSnowflake Ingest SDKバージョン3.0.1に更新し、チャネル管理の問題を修正しました。</li>
+<li><a href="/ja/server-side-connectors/stackadapt-events-connector/">StackAdapt Eventsコネクタ</a>を更新して、オプションのParametersセクションでのエラーを修正しました。</li>
+<li>TVSquaredコネクタの名前を<a href="/ja/server-side-connectors/innovidxp-connector/">InnovidXPコネクタ</a>に変更しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="trace" data-rn-category="server-side">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="server-side"><div class="badge color-indigo"><span class="badge-label">サーバーサイド</span></div><div class="badge color-violet"><span class="badge-label">トレース</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="trace-2025-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="修正点">修正点</h4>
+<ul>
+<li>トレース内で、現在のトレースより前に参加したオーディエンスの表示が正しくなかった問題を修正しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 29, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="remote-commands" data-rn-category="platforms">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="platforms"><div class="badge color-indigo"><span class="badge-label">プラットフォーム</span></div><div class="badge color-violet"><span class="badge-label">リモートコマンド</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="remote-commands-2025-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="アップデートと修正">アップデートと修正</h4>
+<ul>
+<li>Firebase Remote Commandを最新のFirebase SDKバージョンに更新しました。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 17, 2025</span></div>
+              </div>
 
               <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="administration" data-rn-category="server-side">
 
@@ -587,6 +816,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h4 id="新しい情報">新しい情報</h4>
 <ul>
 <li>新しいガイドが利用可能になりました：<a href="/ja/guides/customer-spending-levels-guide/">顧客の支出レベルガイド</a>、これは訪問を彼らが支払う金額に基づいてターゲットにする情報を提供します。</li>
+</ul>
+
+                <div class=""><span class="f7">1月 8, 2025</span></div>
+              </div>
+
+              <div class="release-note-item mb4 ba b--light br3 bg-white pa3 relative" data-rn-feature="remote-commands" data-rn-category="platforms">
+
+                <div class="w-80 rn-badges pb3 dib flex flex-wrap items-start" style="gap: 8px;" data-hg-category-key="platforms"><div class="badge color-indigo"><span class="badge-label">プラットフォーム</span></div><div class="badge color-violet"><span class="badge-label">リモートコマンド</span></div></div>
+                <div class="fr pb3 dib">
+                <a class="permalink absolute pointer tooltipped tooltipped-w" aria-label="クリップボードにコピー" id="remote-commands-2025-01-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg></a>
+                </div>
+                
+                <h4 id="アップデートと修正">アップデートと修正</h4>
+<ul>
+<li>Adjust Remote Commandを最新のAdjust SDKバージョンに更新しました。</li>
 </ul>
 
                 <div class=""><span class="f7">1月 8, 2025</span></div>
@@ -4626,7 +4870,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <ul>
 <li>Sizmek Versaタグを<a href="/ja/client-side-tags/amazon-ads-server-tag/">Amazon Ads Server</a>タグに名称変更しました。</li>
 <li><a href="/ja/client-side-tags/namogoo-tag/">Namogoo</a>タグを更新し、イベントとイベントパラメータを含めるようにしました。</li>
-<li><a href="/ja/client-side-tags/at-internet-piano-analytics-tag/">AT Internet Piano tag</a>を更新し、カスタムビジターIDを許可するようにしました。</li>
+<li><a href="/ja/client-side-tags/piano-analytics-tag/">AT Internet Piano tag</a>を更新し、カスタムビジターIDを許可するようにしました。</li>
 <li><a href="/ja/client-side-tags/adobe-experience-platform-web-sdk-tag/">Adobe Experience Platform Web SDK tag</a>を更新し、タグバージョンを選択できるようにしました。</li>
 </ul>
 
@@ -8851,7 +9095,8 @@ Tealium EventStreamからのデータソースキー。</li>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#1%E6%9C%88-2025" href="javascript:void(0)">1月 2025</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2%E6%9C%88-2025" href="javascript:void(0)">2月 2025</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#1%E6%9C%88-2025" href="javascript:void(0)">1月 2025</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#12%E6%9C%88-2024" href="javascript:void(0)">12月 2024</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#11%E6%9C%88-2024" href="javascript:void(0)">11月 2024</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#10%E6%9C%88-2024" href="javascript:void(0)">10月 2024</a></li>

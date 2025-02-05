@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ユーザー識別子の選択におけるベストプラクティス | ガイド | Tealiumドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/guides/user-identifier-guide/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "guides",
+        reading_time  : "1",
+        site_language : "ja",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/guides/user-identifier-guide/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="guides"><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/vip-badge-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">VIPバッジ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/exclude-offline-purchasers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".exclude-offline-purchasers">オフライン購入者を除外する</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/cart-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">カート放棄</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/discount-shopper-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".discount-shopper-guide">ディスカウントショッパー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/browse-abandonment-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".browse-abandonment-guide">ブラウズ放棄</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/user-identifier-guide/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".user-identifier-guide">ユーザー識別子</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/lifetime-value/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ライフタイムバリュー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/supported-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">同意統合</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/abandonment-strategy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">放棄戦略</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/customer-spending-levels-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".customer-spending-levels-guide">顧客の支出レベル</a></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/guides/">ガイド</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">ユーザー識別子の選択におけるベストプラクティス</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      このガイドでは、訪問のID属性に最適なユーザー識別子を選択するためのベストプラクティスを提供します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="ユーザー識別子について">ユーザー識別子について</h2>
+<p>ユーザー識別子は、Tealiumのインストールにおけるデータレイヤー変数で、デバイス、プラットフォーム、ブラウザー間でユーザーを一意に識別します。</p>
+<p>ユーザー識別子は、訪問プロファイルの訪問ID属性を構成するために使用されます。訪問のスティッチングは、訪問ID属性を使用して、訪問ID値が一致する複数のデバイスとブラウザーからの訪問プロファイルを結合します。</p>
+<p>次の図は、ユーザー識別子 <code>hashed_email_address</code>（イベント属性）によって訪問ID属性 <code>Hashed email address</code> が構成される例を示しています：</p>
+<figure><a class="slb" href="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"><img src="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"/>
+    </a>
+</figure>
+<p>ユーザー識別子はTealiumによって自動的に作成または構成されません。これらの属性は、あなたのユースケースに基づいて構成する必要があります。</p>
+<h3 id="要件">要件</h3>
+<p>ユーザー識別子は以下の要件を満たす必要があります：</p>
+<ul>
+<li>訪問ごとに一意であること。</li>
+<li>長さが最低6文字で、少なくとも3つの一意の文字を含むこと。</li>
+<li>プラットフォーム、デバイス、ブラウザー間で一貫した大文字小文字を持つこと。</li>
+<li>すべてのデータソース間で持続すること。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザー識別子が一意でない場合、訪問のスティッチングプロセスが誤って2つの関連性のないプロファイルを結合する可能性があり、これは元に戻すことができません。</p>
+<p>詳細については、<a href="/ja/server-side/visitor-stitching/about/">訪問のスティッチングについて</a>と<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を参照してください。</p>
+<h2 id="ユーザー識別子の選択方法">ユーザー識別子の選択方法</h2>
+<p>ユーザー識別子を選択するために、あなたのウェブサイト、アプリ、またはストアの訪問に対して現在収集している識別子をリストアップします。次に、各識別子について以下を決定します：</p>
+<ul>
+<li>値は訪問ごとに一意ですか？</li>
+<li>それはすべてのデータソースから利用可能ですか？</li>
+</ul>
+<p>あなたのビジネスのすべてのエリアに共通で、各訪問に一意の値を持つ識別子を選択します。例えば、メールアドレスや電話番号はあなたのウェブサイト、モバイルアプリ、またはあなたのビジネスでの対面のやり取りから来ることがあります。</p>
+<p>識別子はまた、オンラインと店舗での購入など、異なるソースからの訪問がスティッチングされるように、すべてのデータソースから利用可能であるべきです。</p>
+<h3 id="良いユーザー識別子の例">良いユーザー識別子の例</h3>
+<figure class="fr ma0"><a class="slb" href="/images/server-side/icon-user-identifiers-circle.png"><img src="/images/server-side/icon-user-identifiers-circle.png"
+         alt="icon-user-identifiers-circle.png"
+         title="icon-user-identifiers-circle.png" class="noshadow" width="200" height="200"/>
+    </a>
+</figure>
+<p>以下は良いユーザー識別子の例です：</p>
+<ul>
+<li>ハッシュ化されたメールアドレス</li>
+<li>ハッシュ化された電話番号</li>
+<li>The Trade Desk Unified ID</li>
+<li>顧客ID</li>
+<li>患者ID</li>
+<li>メンバーID</li>
+<li>アカウントID</li>
+<li>学生ID</li>
+</ul>
+<p>ユーザー識別子のハッシュ化についての詳細は、<a href="#hash-values-that-contain-pii">PIIを含む値のハッシュ化</a>を参照してください。</p>
+<h3 id="良くないユーザー識別子の例">良くないユーザー識別子の例</h3>
+<p>以下のIDは適切なユーザー識別子ではありません：</p>
+<ul>
+<li>マーケティング活性化ID - ユーザーではなく、マーケティングアクションやキャンペーンのID。例えば、Adobe Marketing Cloud IDやGoogle Client ID。</li>
+<li>ベンダーID - ソフトウェアやサービスベンダーのID。</li>
+<li>デバイスID - 複数のユーザーによって使用される可能性があります。</li>
+<li>匿名ID - ユーザーが別のデバイスやブラウザからログインすると変わります。</li>
+</ul>
+<p>マーケティング活性化IDとベンダーIDは良いユーザー識別子にはなりませんが、コネクタアクションで使用するために訪問属性として保存するときには役立ちます。</p>
+<h3 id="ユーザー識別子の最大数">ユーザー識別子の最大数</h3>
+<p>ベストプラクティスは、訪問ID属性を最大2つ構成することです。</p>
+<p>2つ以上の訪問IDが使用されると、特定のスティッチングシナリオでは、プロファイルを結合する代わりに2つの別々のプロファイルが作成される可能性があります。</p>
+<p>また、イベントで1つのユーザー識別子のみを構成することも重要です。1つのイベントで複数のユーザー識別子を構成すると、予期しないスティッチング結果につながる可能性があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問のスティッチングを有効にした後、追加の訪問ID属性を追加する前に、Tealiumのカスタマーサクセスチームに相談することをお勧めします。</p>
+<h2 id="ユーザー識別子の準備">ユーザー識別子の準備</h2>
+<p>以下のベストプラクティスを使用して、ユーザー識別子を検証し、正規化し、訪問ID属性に割り当てる前に準備します。これらの前処理技術は、あなた自身のコードや拡張機能、エンリッチメントを使用して実装することができます。</p>
+<h3 id="メールアドレスの検証">メールアドレスの検証</h3>
+<p>メールアドレスをユーザー識別子として使用する場合、値が有効なメールアドレスであることを確認することがベストプラクティスです。例えば、<code>@</code>記号のチェックや正規表現の使用などです。ユーザー識別子の値が未定義、または他の無効な値である場合、それを訪問ID属性に構成することは避けてください。そうすると、関連性のないプロファイルがスティッチングされる原因となります。</p>
+<p>次の図は、正規表現を使用してメールアドレスを検証するSet Data Values拡張機能の構成の例を示しています：</p>
+<figure><a class="slb" href="/images/guides/uid-guide-set-data-values-config.png"><img src="/images/guides/uid-guide-set-data-values-config.png"/>
+    </a>
+</figure>
+<p>この例では、次の正規表現を使用してメールアドレスを検証し、値を構成します：</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+</code></pre><h3 id="メールアドレスの正規化">メールアドレスの正規化</h3>
+<p>異なるデータソースからの文字列属性（例えばメールアドレス）は、異なる大文字小文字の規則を使用することがあります。例えば、一部は値に大文字を使用し、他の一部はすべて小文字を使用するかもしれません。これらの値を正規化する（すべて小文字に変更する）ことがベストプラクティスです。これは<a href="/ja/iq-tag-management/extensions/extensions-list/lower-casing-extension/">Lower-Casing extension</a>を使用して行います。</p>
+<p>例えば、次のメールアドレスは、小文字に正規化されるまで同一とは見なされません：</p>
+<ul>
+<li><code>abby.adams@acme.com</code></li>
+<li><code>Abby.Adams@acme.com</code></li>
+<li><code>ABBY.ADAMS@ACME.com</code></li>
+</ul>
+<p>ユーザー識別子の値を構成し、値を正規化する方法については、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値の構成</a>を参照してください。</p>
+<h3 id="電話番号の正規化">電話番号の正規化</h3>
+<p>電話番号をユーザー識別子として使用する場合、値を数字のみに正規化することがベストプラクティスです。電話番号に含まれる文字は、国によって異なります：</p>
+<ul>
+<li>数字のグループは、スペース、ダッシュ、ピリオド、またはこれらの文字の組み合わせで区切られることがあります。</li>
+<li>エリアコードや市外局番は括弧で囲まれ、数字の数は異なることがあります。</li>
+<li>電話番号の数字の数も異なることがあり、固定電話と携帯電話では異なることもあります。</li>
+<li>国コードは通常、<code>+</code>に続く1から4桁の数字で始まります。最初と2番目の数字の間にダッシュがあることがあります。一部の国では、国コードを括弧で囲むことがあります。</li>
+</ul>
+<p>次の表は、電話番号のさまざまな形式がどのように正規化されるべきかを示す例を示しています：</p>
+<table>
+<thead>
+<tr>
+<th>国</th>
+<th>番号</th>
+<th>正規化後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ブラジル</td>
+<td>+55 (11) 91234-5678</td>
+<td>5511912345678</td>
+</tr>
+<tr>
+<td>フランス</td>
+<td>+33 6 12.34.56.78</td>
+<td>33612345678</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>+81 90-1234-5678</td>
+<td>819012345678</td>
+</tr>
+<tr>
+<td>ウクライナ</td>
+<td>+380 (50) 987-65-43</td>
+<td>380509876543</td>
+</tr>
+<tr>
+<td>イギリス（固定電話）</td>
+<td>+44 20 1234 5678</td>
+<td>442012345678</td>
+</tr>
+<tr>
+<td>イギリス（携帯電話）</td>
+<td>+44 7723 45678</td>
+<td>44772345678</td>
+</tr>
+<tr>
+<td>アメリカ</td>
+<td>+1 (123) 456-7890</td>
+<td>11234567890</td>
+</tr>
+</tbody>
+</table>
+<h3 id="piiを含む値のハッシュ化">PIIを含む値のハッシュ化</h3>
+<p>メールアドレスや電話番号など、個人を特定可能な情報（PII）を含むユーザー識別子は、ユーザーのプライバシーを保護するためにハッシュ化するべきです。ハッシュ関数（例えばSHA256）は、敏感な情報を含むテキスト値を匿名で一意の固定長の文字列に変換し、その一意性を保持します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>ユーザー識別子は、ハッシュ化する前に正規化されるべきです。</p>
+<p>Crypto拡張機能の使用については、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値の構成</a>と<a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto拡張機能</a>を参照してください。</p>
+<h4 id="crypto拡張機能の例">Crypto拡張機能の例</h4>
+<p>次の例では、<code>customer_email</code>という名前のデータレイヤー変数をハッシュ化します：</p>
+<pre tabindex="0"><code>&gt; utag_data.customer_email
+&lt; &#34;test@tealium.com&#34;
+</code></pre><p>Crypto拡張機能を構成して<code>customer_email</code>をSHA-1暗号化ハッシュ関数で変換すると、新しい値は次のようになります：</p>
+<pre tabindex="0"><code>&gt; utag_data.customer_email
+&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+</code></pre><p><code>customer_email</code>を保持し、ハッシュ値を作成するには、<code>customer_email_hash</code>という名前の2つ目の変数を使用します。まず、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a>を使用してハッシュ変数<code>customer_email_hash</code>を<code>customer_email</code>の値に初期化し、次にCrypto拡張機能でそれをハッシュ化します。これにより、新しいハッシュ値を作成した後も元の値が保持されます：</p>
+<pre tabindex="0"><code>&gt; utag_data.customer_email
+&lt; &#34;test@tealium.com&#34;
+&gt; utag_data.customer_email_hash
+&lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
+</code></pre><h2 id="ユーザー識別子の値を構成する">ユーザー識別子の値を構成する</h2>
+<p>以下の図は、データレイヤー変数を構成し、それをユーザー識別子として使用する例を示しています。値を構成し、値を小文字にし、値をハッシュ化するために3つの拡張機能を使用します。</p>
+<figure><a class="slb" href="/images/guides/uid-guide-lowercase-hash-set-datalayer-variable.png"><img src="/images/guides/uid-guide-lowercase-hash-set-datalayer-variable.png"/>
+    </a>
+</figure>
+<p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a>と<a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto extension</a>を参照してください。</p>
+<h2 id="資格イベントで訪問idを構成する">資格イベントで訪問IDを構成する</h2>
+<p>訪問IDは、資格イベント中にのみ構成する必要があります。資格イベントは、アカウントを作成したり、購入を完了したりするなど、顧客が信頼性のある識別手段を提供するときに発生します。</p>
+<p>例えば、ユーザーが購入時にメールアドレスを提供した場合、そのメールアドレスは、<a href="#verify-and-normalize-email-addresses">Verify and normalize email addresses</a>と<a href="#hash-user-identifiers-that-contain-pii">Hash user identifiers that contain PII</a>で説明されているように、小文字に変換され、ハッシュ化されます。購入イベントが発生したときに、ユーザー識別子の値を訪問ID属性に構成するためにエンリッチメントを使用します。</p>
+<p>以下の図は、購入イベントが発生したときに値を構成するエンリッチメントを持つ訪問ID属性の例を示しています：</p>
+<figure><a class="slb" href="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"><img src="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"/>
+    </a>
+</figure>
+<h2 id="追加のリソース">追加のリソース</h2>
+<ul>
+<li><a href="/ja/server-side/visitor-stitching/about/">About visitor stitching</a></li>
+<li><a href="/ja/server-side/visitor-stitching/guidelines/">Visitor stitching guidelines</a></li>
+<li><a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a></li>
+</ul>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/guides/exclude-offline-purchasers/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>オフライン購入者を除外する</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"オフライン購入者を除外する"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/guides/cart-abandonment-guide/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"カート放棄 "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>カート放棄</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2025年January月31日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" href="javascript:void(0)">ユーザー識別子について</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E9%81%B8%E6%8A%9E%E6%96%B9%E6%B3%95" href="javascript:void(0)">ユーザー識別子の選択方法</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%89%AF%E3%81%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E4%BE%8B" href="javascript:void(0)">良いユーザー識別子の例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%89%AF%E3%81%8F%E3%81%AA%E3%81%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E4%BE%8B" href="javascript:void(0)">良くないユーザー識別子の例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E6%9C%80%E5%A4%A7%E6%95%B0" href="javascript:void(0)">ユーザー識別子の最大数</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E6%BA%96%E5%82%99" href="javascript:void(0)">ユーザー識別子の準備</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">メールアドレスの検証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E6%AD%A3%E8%A6%8F%E5%8C%96" href="javascript:void(0)">メールアドレスの正規化</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E3%81%AE%E6%AD%A3%E8%A6%8F%E5%8C%96" href="javascript:void(0)">電話番号の正規化</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pii%E3%82%92%E5%90%AB%E3%82%80%E5%80%A4%E3%81%AE%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E5%8C%96" href="javascript:void(0)">PIIを含む値のハッシュ化</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ユーザー識別子の値を構成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%B3%87%E6%A0%BC%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A7%E8%A8%AA%E5%95%8Fid%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">資格イベントで訪問IDを構成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E3%81%AE%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9" href="javascript:void(0)">追加のリソース</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          手引き
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium_ja',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

@@ -170,10 +170,19 @@
 <p>Tealium for Android (Kotlin)では、ディープリンクのトラッキングが自動的に有効化されています。</p>
 <p>ディープリンクの自動トラッキングを無効にするには、<a href="/ja/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a>プロパティを<code>false</code>に構成します。</p>
 <h3 id="swift-v2x">Swift v2.x</h3>
-<p>Tealium for iOS (Swift v2.x)では、ディープリンクのトラッキングが自動的に有効化されています。</p>
-<p>ディープリンクの自動トラッキングを無効にするには、<code>info.plist</code>キー<code>TealiumAutotrackingDeepLinkEnabled</code>を<code>false</code>に構成します。</p>
+<p>Tealium for iOS (Swift v2.x)では、メソッドスワッピング技術を通じてディープリンクの自動トラッキングがデフォルトで有効化されています。メソッドスワッピングとは、プログラムの実行時に一つのメソッドの実装を別のものと動的に交換することです。</p>
+<p>メソッドスワッピングを使用したくない場合やディープリンクを自動的にトラッキングしたくない場合は、<code>info.plist</code>のキー<code>TealiumAutotrackingDeepLinkEnabled</code>を<code>false</code>に構成して自動ディープリンクトラッキングを無効にできます。</p>
+<p>メソッドスワッピングなしでディープリンクをトラッキングしたい場合、または<code>SwiftUI</code>を使用している場合は、<code>info.plist</code>で自動トラッキングを無効にした後、アプリケーションコンテンツの<code>View</code>に<code>TealiumAppTrackable</code>ラッパーを使用します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> body: some Scene {
+</span></span><span style="display:flex;"><span>    WindowGroup {
+</span></span><span style="display:flex;"><span>        TealiumAppTrackable {
+</span></span><span style="display:flex;"><span>            ContentView()
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>UIKit</code>を使用している場合は、代わりに<code>tealium</code>インスタンス上の<code>handleDeeplink</code>メソッドを手動で呼び出すことができます。</p>
 <h3 id="swift-v1x">Swift v1.x</h3>
-<p>Tealium for iOS (Swift v1.x)では、ディープリンクを有効にするためにアプリの<code>AppDelegate</code>クラスにコードを1行追加する必要があります。</p>
+<p>Tealium for iOS (Swift v1.x)では、ディープリンクを有効にするためにアプリの<code>AppDelegate</code>クラスに一行のコードを追加する必要があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">application</span>(<span style="color:#66d9ef">_</span> app: UIApplication,
 </span></span><span style="display:flex;"><span>                 open url: URL,
 </span></span><span style="display:flex;"><span>                 options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
@@ -201,7 +210,7 @@
 <tr>
 <td style="text-align:left"><code>deep_link_param_X</code></td>
 <td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">ディープリンクURLの各クエリパラメータ、<code>X</code>はパラメータの名前、例えば<code>deep_link_param_campaign_code</code>。</td>
+<td style="text-align:left">ディープリンクURLの各クエリパラメータ、ここで<code>X</code>はパラメータの名前、例えば<code>deep_link_param_campaign_code</code>。</td>
 <td style="text-align:left"><code>SUMMER</code></td>
 </tr>
 <tr>
@@ -278,7 +287,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2018年November月7日
+          <p>最終更新日 ::  2025年January月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

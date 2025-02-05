@@ -109,7 +109,6 @@
         <a href="/client-side-tags/adobe-test-target-series/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adobe-test-target-series">Adobe Test &amp; Target (Series)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/adroll-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adroll-pixel-tag">AdRoll Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/adroll-smart-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".adroll-smart-pixel-tag">AdRoll Smart Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/advertisingcom-dynamic-retargeter-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".advertisingcom-dynamic-retargeter-tag">Advertising.com Dynamic Retargeter Tag Setup Guide</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/affirm-vcn-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".affirm-vcn-tag">Affirm VCN</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/agilone-webtag-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".agilone-webtag-tag">AgilOne Webtag Setup Guide</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/aim-xr-website-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aim-xr-website-tag">AIM XR Website (formerly DMD)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -165,7 +164,6 @@
         <a href="/client-side-tags/connexity-pixel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connexity-pixel">Connexity Pixel Setup Guide</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/contentsquare-mobile-remote-command-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".contentsquare-mobile-remote-command-tag">ContentSquare Mobile Remote Command</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/contentsquare-ux-analytics-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".contentsquare-ux-analytics-tag">Contentsquare UX Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/convertro-tag-basic-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".convertro-tag-basic-configuration">Convertro</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/cortex-search-abandon-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cortex-search-abandon-tag">Cortex Search Abandon</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/coveo-usage-analytics-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-usage-analytics-tag">Coveo Usage Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/crazy-egg-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".crazy-egg-tag">Crazy Egg</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -423,7 +421,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Google consent mode allows you to adjust how your Google tags behave based on the consent status of your users. When using basic or advanced consent modes, Google tags send consented flags to Google, or dynamically adapt, only utilizing measurement tools for the specified purposes when consent has been given by the user.</p>
+  <p>Google consent mode allows you to adjust how your Google tags behave based on the consent status of your users. When using basic or advanced consent modes, Google tags send consented flags to Google, or dynamically adapt, only using measurement tools for the specified purposes when consent has been given by the user.</p>
 <h2 id="basic-consent-mode">Basic consent mode</h2>
 <p>Basic consent mode follows the traditional consent approach, where tags are blocked unless user consent is granted. The Google Consent Mode tag should always be fired to set consent signals, which are then passed to Google along with the consented Analytics or Ads tag pings. This ensures that Google recognizes the consented status of the tags.</p>
 <h2 id="advanced-consent-mode">Advanced consent mode</h2>
@@ -458,6 +456,7 @@
 When <code>ads_data_redaction</code> is <code>true</code> and <code>ad_storage</code> is <code>denied</code>, ad click identifiers sent in network requests by Google Ads and Floodlight tags are redacted.</li>
 <li><strong>URL Passthrough</strong>: You can optionally elect to pass information through URL parameters across pages to improve measurement quality.</li>
 <li><strong>Wait For Update</strong>: If your consent tool loads asynchronously, it might not always run before your Google tags. To account for this, specify <code>wait_for_update</code> along with a millisecond value to control how long to wait before sending data.</li>
+<li><strong>Data Layer Name</strong>: By default, the data layer initiated and referenced by the global site tag is named <code>dataLayer</code>. Rename the data layer only if your project requires a separate name.</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
 <p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
@@ -477,42 +476,47 @@ When <code>ads_data_redaction</code> is <code>true</code> and <code>ad_storage</
 <tr>
 <td style="text-align:left"><code>tealium_consent</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">Read From Tealium Consent Cookie</td>
+<td style="text-align:left">Read from Tealium Consent Cookie.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_storage_consent</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad Storage Consent</td>
+<td style="text-align:left">Ad Storage Consent.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_user_data</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad User Data</td>
+<td style="text-align:left">Ad User Data.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_personalization</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad Personalization</td>
+<td style="text-align:left">Ad Personalization.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>analytics_storage_consent</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Analytics Storage Consent</td>
+<td style="text-align:left">Analytics Storage Consent.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ads_data_redaction</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">Ads Data Redaction Mapping</td>
+<td style="text-align:left">Ads Data Redaction Mapping.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>url_passthrough</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">URL Passthrough</td>
+<td style="text-align:left">URL Passthrough.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>wait_for_update</code></td>
 <td style="text-align:left">Number</td>
-<td style="text-align:left">Wait For Update</td>
+<td style="text-align:left">Wait for Update.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data_layer_name</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Data Layer Name.</td>
 </tr>
 </tbody>
 </table>
@@ -546,52 +550,52 @@ When <code>ads_data_redaction</code> is <code>true</code> and <code>ad_storage</
 <tr>
 <td style="text-align:left"><code>tealium_consent</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">Read From Tealium Consent Cookie</td>
+<td style="text-align:left">Read from Tealium Consent Cookie.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_storage_consent</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad Storage Consent</td>
+<td style="text-align:left">Ad Storage Consent.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_user_data</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad User Data</td>
+<td style="text-align:left">Ad User Data.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ad_personalization</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Ad Personalization</td>
+<td style="text-align:left">Ad Personalization.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>analytics_storage_consent</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Analytics Storage Consent</td>
+<td style="text-align:left">Analytics Storage Consent.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ads_data_redaction</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">Ads Data Redaction Mapping</td>
+<td style="text-align:left">Ads Data Redaction Mapping.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>url_passthrough</code></td>
 <td style="text-align:left">Boolean</td>
-<td style="text-align:left">URL Passthrough</td>
+<td style="text-align:left">URL Passthrough.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>wait_for_update</code></td>
 <td style="text-align:left">Number</td>
-<td style="text-align:left">Wait For Update</td>
+<td style="text-align:left">Wait for Update.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Custom_Parameter</code></td>
 <td style="text-align:left"></td>
-<td style="text-align:left">Custom Parameter</td>
+<td style="text-align:left">Custom Parameter.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>update</code></td>
 <td style="text-align:left"></td>
-<td style="text-align:left">Update</td>
+<td style="text-align:left">Update.</td>
 </tr>
 </tbody>
 </table>
@@ -660,7 +664,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 23, 2024 
+          <p>This page was last updated:  January 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -964,8 +968,6 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
-  
-  
   
   
   
