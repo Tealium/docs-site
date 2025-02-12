@@ -268,6 +268,7 @@
         <a href="/client-side-tags/mybuys-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mybuys-tag">MyBuys</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/namogoo-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".namogoo-tag">Namogoo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nano-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nano-tag">Nano</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/naver-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".naver-acton-tag">Naver</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-platformone-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-platformone-conversion-tag-setup-guide">Neustar</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-real-user-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-real-user-measurement-tag">Neustar (Real User Measurement)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-fabrick-id-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-fabrick-id-tag">Neustar Fabrick ID</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -439,13 +440,20 @@ Use this tag with AudienceStream to identify and action your visitors.</li>
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.</li>
 <li><strong>Enrich your data layer</strong><br>
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.<br>
-To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable/">Enable Data Layer Enrichment</a>.</li>
+For more information, see <a href="/server-side/attributes/data-layer-enrichment/enable/">Enable Data Layer Enrichment</a>.</li>
 </ul>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>This tag automatically sends all data in <code>utag.data</code>on initial page load or any data object passed to <code>utag.view()</code> or <code>utag.link()</code>.</li>
+<li>This tag automatically sends all data in <code>utag.data</code> on initial page load or any data object passed to <code>utag.view()</code> or <code>utag.link()</code>.</li>
 <li>When using proxy tools to inspect network requests, look for the <code>POST</code> method (instead of GET).</li>
 <li>Specify a value in the <strong>Tealium Profile</strong> field only when <strong>Tealium Collect Endpoint</strong> field is blank and your server-side data collection profile is something other than the current profile.</li>
+</ul>
+<h2 id="best-practices">Best practices</h2>
+<p>Apply the following best practices in your implementation:</p>
+<ul>
+<li>To prioritize third-party client-side tags, position the Tealium Collect tag last in your list of tags to allow them to run first.</li>
+<li>Do not add more than one instance of the Tealium Collect tag in your profile.</li>
+<li>Use the latest version of the uTag Loader template. For more information, see <a href="/platforms/javascript/version-4-50/">Version 4.50&#43; notes</a>.</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>First, go to the tag marketplace and add the Tealium Collect tag. For more information, see <a href="/iq-tag-management/tags/manage/#add-a-tag">Manage tags</a>.</p>
@@ -454,7 +462,7 @@ To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable
 <li><strong>Title</strong>
 <ul>
 <li>Enter a title for this tag.</li>
-<li>Default: <code>Tealium Collect</code></li>
+<li>Default: <code>Tealium Collect</code>.</li>
 </ul>
 </li>
 <li><strong>Tealium Collect Endpoint</strong> (Optional)
@@ -492,13 +500,13 @@ To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable
 <li><strong>Tealium Collection Region</strong>
 <ul>
 <li>The geographic location of the data collection servers.</li>
-<li>Default: Global (recommended)</li>
+<li>Default: Global (recommended).</li>
 <li>If you are not sure what to choose, contact your Account Manager.</li>
 </ul>
 </li>
 <li><strong>Sample Size</strong> (Optional)
 <ul>
-<li>Default: 100% (recommended)</li>
+<li>Default: 100% (recommended).</li>
 <li>Use this option during a trial on high volume sites to limit data collection to a small percentage of visitors.</li>
 </ul>
 </li>
@@ -507,13 +515,13 @@ To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable
 <li>Set to <code>true</code> to use <code>navigator.sendBeacon()</code> to send tracking calls.</li>
 <li>Set to <code>false</code> to use the legacy browser method <code>XMLHttpRequest</code> to send tracking calls.</li>
 <li>SendBeacon is intended for small amounts of data and has a data size limit of 64Kb in most browsers. For more information, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>.</li>
-<li>Default: <code>true</code></li>
+<li>Default: <code>true</code>.</li>
 </ul>
 </li>
 <li><strong>Use HTTP API Endpoint</strong>
 <ul>
 <li>Set to true to use the <a href="/platforms/http-api/endpoint/">HTTP API endpoint</a> instead of the Tealium Collect endpoint.</li>
-<li>Default: <code>false</code></li>
+<li>Default: <code>false</code>.</li>
 </ul>
 </li>
 <li><strong>Visitor Service Override</strong>
@@ -547,13 +555,6 @@ To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable
 </ul>
 </li>
 </ul>
-<h2 id="best-practices">Best practices</h2>
-<p>Apply the following best practices in your implementation:</p>
-<ul>
-<li>To prioritize third-party client-side tags, position this tag last in your list of tags to allow them to run first.</li>
-<li>Do not add more than one instance of this tag in your profile.</li>
-<li>Use the latest version of the uTag Loader template. For more information, see <a href="/platforms/javascript/version-4-50/">Version 4.50&#43; notes</a>.</li>
-</ul>
 <h2 id="advanced">Advanced</h2>
 <p>For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">visitor_service_override</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://visitor-service.example.co.uk&#34;</span>;
@@ -571,7 +572,7 @@ To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable
 <h2 id="implementing-with-mobile">Implementing with mobile</h2>
 <p>For deployments using <a href="/platforms/android-kotlin/install/">Tealium for Android</a> or <a href="/platforms/ios-swift/install/">Tealium for iOS</a>, note the following:</p>
 <ul>
-<li>The default <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> enables the native mobile Tealium Collect service by default.<br>
+<li>The default <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> enable the native mobile Tealium Collect service by default.<br>
 Learn more about the <a href="/platforms/getting-started-mobile/server-side/#native-module">native Collect module for mobile</a>.</li>
 <li>When using the <a href="/platforms/getting-started-mobile/server-side/#javascript-tag">Tealium Collect tag with the Tag Management module for mobile</a>, ensure that the <strong>Tealium Collect</strong> option in the <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> is off to avoid duplicate tracking.</li>
 </ul>
@@ -655,7 +656,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 13, 2024 
+          <p>This page was last updated:  January 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -672,8 +673,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#advanced" href="javascript:void(0)">Advanced</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-trace" href="javascript:void(0)">Working with trace</a></li>
@@ -960,6 +961,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

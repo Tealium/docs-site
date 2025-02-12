@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -290,12 +290,12 @@
         <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/split-io-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".split-io-connector">Split.io</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-cam/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talon-one-campaign-audience-manager-connector">Talon.One CAM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/talonone-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talonone-webhook-connector">Talon.One Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tamber-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/teads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".teads-conversions-connector">Teads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tealium-for-salesforce/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-for-salesforce">Tealium for Salesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -465,16 +465,12 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </thead>
 <tbody>
 <tr>
-<td>Custom Event Name</td>
-<td>Required when choosing <strong>Custom</strong> from the <strong>Event Type</strong> drop-down.</td>
+<td>Event Source</td>
+<td>Select the event source.<ul><li>WEB</li><li>APP</li><li>OFFLINE</li><li>CRM</li></ul></td>
 </tr>
 <tr>
-<td>Pixel ID Override</td>
-<td>Pixel ID that can be found in the <strong>TikTok Events Manager</strong>. This setting overrides <strong>Pixel ID</strong> used in the <strong>Configuration</strong> section.</td>
-</tr>
-<tr>
-<td>Access Token Override</td>
-<td>A custom Access Token to override the value in the Configuration.</td>
+<td>Event Type</td>
+<td>The conversion event name.<ul><li>Achieve a Level</li><li>Add Payment Information</li><li>Add to Cart</li><li>Add to Wishlist</li><li>Check Out</li><li>Click Button</li><li>Complete Payment</li><li>Complete Registration</li><li>Complete the Tutorial</li><li>Contact</li><li>Create a Group</li><li>Create a Role</li><li>Custom</li><li>Download</li><li>Generate a Lead</li><li>Initiate Checkout</li><li>Install the App</li><li>In-app AD Click</li><li>In-app AD Impression</li><li>Join a Group</li><li>Launch the App</li><li>Load an Application</li><li>Loan is Approved</li><li>Loan is Disbursed</li><li>Log in Successfully</li><li>Place an Order</li><li>Purchase</li><li>Rate</li><li>Search</li><li>Spend Credits</li><li>Start the Trial</li><li>Submit Form</li><li>Subscribe</li><li>Unlock an Achievement</li><li>View Content</li></ul></td>
 </tr>
 <tr>
 <td>Event Source ID</td>
@@ -485,12 +481,24 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <td>Required. Timestamp when the event took place with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
 </tr>
 <tr>
+<td>Custom Event Name</td>
+<td>Required when choosing <strong>Custom</strong> from the <strong>Event Type</strong> drop-down.</td>
+</tr>
+<tr>
+<td>Pixel ID Override</td>
+<td>Pixel ID that can be found in the <strong>TikTok Events Manager</strong>. This setting overrides <strong>Pixel ID</strong> used in the <strong>Configuration</strong> section.</td>
+</tr>
+<tr>
+<td>Access Token Override</td>
+<td>A custom access token to override the value in the configuration.</td>
+</tr>
+<tr>
 <td>Event ID</td>
 <td>Any hashed ID that can identify a unique user or session. For example, <code>SessionID_RandomNumber</code>. If you set <a href="/client-side-tags/tiktok-pixel-tag/">Generate Event ID in the TikTok Pixel tag</a> to <code>true</code>, this ID will be automatically generated for every TikTok tracking event.</td>
 </tr>
 <tr>
 <td>Limited Data Use</td>
-<td>This field is only supported when Event Source is <code>WEB</code> or <code>APP</code>. Limited data processing setting. To learn more about the Limited Data Use Feature, see <a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: Limited Data Use</a>.</td>
+<td>Limited data processing setting. This field is only supported when Event Source is <code>WEB</code> or <code>APP</code>. To learn more about the Limited Data Use Feature, see <a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: Limited Data Use</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -513,7 +521,11 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 <tr>
 <td>Ad ID</td>
-<td>The ad ID.</td>
+<td>The ad group ID.</td>
+</tr>
+<tr>
+<td>Creative ID</td>
+<td>The Ad ID.</td>
 </tr>
 <tr>
 <td>Is Retargeting</td>
@@ -563,15 +575,15 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <tbody>
 <tr>
 <td>User Email</td>
-<td>(Recommended). Email address, hashed with SHA256.</td>
+<td>Recommended. The user&rsquo;s email address, hashed with SHA256.</td>
 </tr>
 <tr>
 <td>User Phone Number</td>
-<td>(Recommended). User&rsquo;s phone number, hashed with SHA256. Include country code with <code>+</code> and remove any other characters (spaces, <code>-</code>) between numbers (for example, for the USA: <code>+12125551212</code>). If the country code is <code>86</code>, do not include country code (for example: <code>13800000000</code>).</td>
+<td>Recommended. The user&rsquo;s phone number, hashed with SHA256. Include country code with <code>+</code> and remove any other characters (spaces, <code>-</code>) between numbers (for example, for the USA: <code>+12125551212</code>). If the country code is <code>86</code>, do not include country code (for example: <code>13800000000</code>).</td>
 </tr>
 <tr>
 <td>User External ID</td>
-<td>(Recommended). The external user ID, hashed with SHA256.</td>
+<td>Recommended. The external user ID, hashed with SHA256.</td>
 </tr>
 <tr>
 <td>Cookie ID</td>
@@ -579,23 +591,23 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 <tr>
 <td>IP</td>
-<td>Non-hashed public IP address of the browser. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
+<td>The non-hashed public IP address of the browser. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
 </tr>
 <tr>
 <td>User Agent</td>
-<td>Non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>. Unless you disable automapping, this parameter will be automapped to the <strong>User Agent</strong> of the visitor.</td>
+<td>The non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>. Unless you disable automapping, this parameter will be automapped to the <strong>User Agent</strong> of the visitor.</td>
 </tr>
 <tr>
 <td>IDFA</td>
-<td>iOS identifier for advertisers.</td>
+<td>The iOS identifier for advertisers.</td>
 </tr>
 <tr>
 <td>IDFV</td>
-<td>iOS identifier for vendors.</td>
+<td>The iOS identifier for vendors.</td>
 </tr>
 <tr>
 <td>GAID</td>
-<td>Google Advertising ID.</td>
+<td>The Google Advertising ID.</td>
 </tr>
 <tr>
 <td>Locale</td>
@@ -657,31 +669,87 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <tbody>
 <tr>
 <td>Price</td>
-<td>Price of the item. Supports number data type.</td>
+<td>The price of the item. Supports number and array of numbers data types.</td>
 </tr>
 <tr>
 <td>Quantity</td>
-<td>Number of items. Supports number data type.</td>
+<td>The number of items. Supports integer and array of number data types.</td>
 </tr>
 <tr>
 <td>Content ID</td>
-<td>Product ID in your system.</td>
+<td>The product ID or IDs in your system. Supports string and array of strings data types.</td>
 </tr>
 <tr>
 <td>Content Category</td>
-<td>The category of the page or product.</td>
+<td>The category or categories of the page or product. Supports string and array of strings data types.</td>
 </tr>
 <tr>
 <td>Content Name</td>
-<td>The name of the page or product.</td>
+<td>The name of the page or product. Supports string and array of strings data types.</td>
 </tr>
 <tr>
 <td>Brand</td>
-<td>The brand of the product item.</td>
+<td>The brand of the product item. Supports string and array of strings data types.</td>
 </tr>
 </tbody>
 </table>
-<h5 id="disable-automapping">Disable Automapping</h5>
+<h5 id="app-data">App Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App ID</td>
+<td>The mobile app ID.</td>
+</tr>
+<tr>
+<td>App Version</td>
+<td>The app version number.</td>
+</tr>
+<tr>
+<td>Application Name</td>
+<td>The application name.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="lead-data">Lead Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lead ID</td>
+<td>ID of TikTok leads.</td>
+</tr>
+<tr>
+<td>Lead Event Source</td>
+<td>The lead event source.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="automatic-deduplication-1">Automatic Deduplication</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disable Automapping</td>
+<td>If automapping is disabled, any automapped parameters will not be sent to the vendor by default.</td>
+</tr>
+</tbody>
+</table>
 <p>The connector automaps the following parameters by default:</p>
 <ul>
 <li>TikTok Click ID (<code>ttclid</code>)</li>
@@ -754,7 +822,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 23, 2025 
+          <p>This page was last updated:  February 7, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

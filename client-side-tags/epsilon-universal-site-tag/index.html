@@ -268,6 +268,7 @@
         <a href="/client-side-tags/mybuys-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mybuys-tag">MyBuys</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/namogoo-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".namogoo-tag">Namogoo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nano-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nano-tag">Nano</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/naver-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".naver-acton-tag">Naver</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-platformone-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-platformone-conversion-tag-setup-guide">Neustar</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-real-user-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-real-user-measurement-tag">Neustar (Real User Measurement)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/neustar-fabrick-id-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".neustar-fabrick-id-tag">Neustar Fabrick ID</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -421,17 +422,17 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Epsilon is the leader in outcome-based marketing with a rich, 50-year heritage in helping marketers anticipate, activate, and prove measurable business outcomes.</p>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the Epsilon Site Tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
+  <h2 id="tag-configuration">Tag Configuration</h2>
+<p>Go to the tag marketplace and add the Epsilon Site Tag. For more information about adding a tag, see <a href="/iq-tag-management/tags/manage/">Manage tags</a>.</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>Domain and Tag Path</strong>: The domain to be used within the tag. Refer to the tagging document provided by Epsilon.</li>
-<li><strong>Reverse Proxy Directory Path</strong>: If you are using a Reverse Proxy, enter the path of the Reverse Proxy (typically <code>/tag_path</code> or the custom path you have setup as the root of your Reverse Proxy).</li>
-<li><strong>Company ID</strong>: <code>dtm_cid</code></li>
-<li><strong>Secondary Company ID</strong>: <code>dtm_cmagic</code></li>
-<li><strong>Form ID</strong>: <code>dtm_fid</code></li>
-<li><strong>Integration Type</strong>: Default or Limited. Limited integrations should only be used if specified by Epsilon.</li>
+<li><strong>Domain and Tag Path</strong>: The domain used within the tag. Refer to the tagging document provided by Epsilon.</li>
+<li><strong>Reverse Proxy Directory Path</strong>: If you are using a reverse proxy, enter its path (for example <code>/tag_path</code>, or the custom path you have set up as the root of your reverse proxy).</li>
+<li><strong>Company ID</strong>: The company ID  <code>dtm_cid</code>.</li>
+<li><strong>Secondary Company ID</strong>: <code>dtm_cmagic</code>.</li>
+<li><strong>Form ID</strong>: <code>dtm_fid</code>.</li>
+<li><strong>Integration Type</strong>: The available settings are <code>Default</code> or <code>Limited</code>. Limited integrations should only be used if specified by Epsilon.</li>
+<li><strong>SPA Support</strong>: When enabled, the <code>dtm_clear_tag=all</code> query string parameter is included on all requests.</li>
 </ul>
 <h2 id="data-mappings">Data Mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
@@ -441,33 +442,45 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Domain (<code>tag_domain</code>)</td>
-<td>[String]</td>
+<td><code>tag_domain</code></td>
+<td>String</td>
+<td>Domain.</td>
 </tr>
 <tr>
-<td>Reverse Proxy Directory Path (<code>tag_path</code>)</td>
-<td>[String]</td>
+<td><code>tag_path</code></td>
+<td>String</td>
+<td>Reverse proxy directory path.</td>
 </tr>
 <tr>
-<td>Company ID (<code>dtm_cid</code>)</td>
-<td>[String]</td>
+<td><code>dtm_cid</code></td>
+<td>String</td>
+<td>Company ID.</td>
 </tr>
 <tr>
-<td>Secondary Company ID (<code>dtm_cmagic</code>)</td>
-<td>[String]</td>
+<td><code>dtm_cmagic</code></td>
+<td>String</td>
+<td>Secondary company ID.</td>
 </tr>
 <tr>
-<td>Form ID (<code>dtm_fid</code>)</td>
-<td>[String]</td>
+<td><code>dtm_fid</code></td>
+<td>String</td>
+<td>Form ID.</td>
 </tr>
 <tr>
-<td>Integration Type (<code>integration_type</code>)</td>
-<td>[Boolean]</td>
+<td><code>integration_type</code></td>
+<td>Boolean</td>
+<td>Integration type.</td>
+</tr>
+<tr>
+<td><code>spa_support</code></td>
+<td>Boolean</td>
+<td>SPA support.</td>
 </tr>
 </tbody>
 </table>
@@ -476,29 +489,40 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Promo ID (<code>dtm_promo_id</code>)</td>
-<td>[String]</td>
+<td><code>dtm_promo_id</code></td>
+<td>String</td>
+<td>Promo ID.</td>
 </tr>
 <tr>
-<td>GDPR Consent String (<code>dtmc_tcf_string</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_tcf_string</code></td>
+<td>String</td>
+<td>GDPR consent string.</td>
 </tr>
 <tr>
-<td>Email Hash (<code>dtm_email_hash</code>)</td>
-<td>[String]</td>
+<td><code>dtm_email_hash</code></td>
+<td>String</td>
+<td>Email hash.</td>
 </tr>
 <tr>
-<td>User ID (<code>dtm_user_id</code>)</td>
-<td>[String]</td>
+<td><code>dtm_user_id</code></td>
+<td>String</td>
+<td>User ID.</td>
 </tr>
 <tr>
-<td>Custom (<code>custom.myvar</code>)</td>
-<td>[String]</td>
+<td><code>custom.myvar</code></td>
+<td>String</td>
+<td>Custom.</td>
+</tr>
+<tr>
+<td><code>dtm_cookie_id</code></td>
+<td>String</td>
+<td>Send the Cookie ID as a query parameter.</td>
 </tr>
 </tbody>
 </table>
@@ -507,37 +531,45 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Department (<code>dtmc_department</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_department</code></td>
+<td>String</td>
+<td>Department.</td>
 </tr>
 <tr>
-<td>Category (<code>dtmc_category</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_category</code></td>
+<td>String</td>
+<td>Category.</td>
 </tr>
 <tr>
-<td>Sub-Category (<code>dtmc_sub_category</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_sub_category</code></td>
+<td>String</td>
+<td>Sub-Category.</td>
 </tr>
 <tr>
-<td>Product ID (<code>dtmc_product_id</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_product_id</code></td>
+<td>String</td>
+<td>Product ID.</td>
 </tr>
 <tr>
-<td>Manufacturer Brand (<code>dtmc_brand</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_brand</code></td>
+<td>String</td>
+<td>Manufacturer brand.</td>
 </tr>
 <tr>
-<td>Manufacturer UPC (<code>dtmc_upc</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_upc</code></td>
+<td>String</td>
+<td>Manufacturer UPC.</td>
 </tr>
 <tr>
-<td>Manufacturer Model Part Number (<code>dtmc_mpn</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_mpn</code></td>
+<td>String</td>
+<td>Manufacturer model part number.</td>
 </tr>
 </tbody>
 </table>
@@ -546,49 +578,60 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Conversion Type (<code>dtmc_conv_type</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_conv_type</code></td>
+<td>String</td>
+<td>Conversion type.</td>
 </tr>
 <tr>
-<td>Store Location (<code>dtmc_conv_store_location</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_conv_store_location</code></td>
+<td>String</td>
+<td>Store location.</td>
 </tr>
 <tr>
-<td>Order ID (<code>dtmc_transaction_id</code>) (Overrides <code>_corder</code>)</td>
-<td>[String]</td>
+<td><code>dtmc_transaction_id</code> (Overrides <code>_corder</code></td>
+<td>String</td>
+<td>Order ID.</td>
 </tr>
 <tr>
-<td>Order Subtotal (<code>dtm_conv_val</code>) (Overrides <code>_csubtotal</code>)</td>
-<td>[String]</td>
+<td><code>dtm_conv_val</code> (Overrides <code>_csubtotal</code></td>
+<td>String</td>
+<td>Order subtotal.</td>
 </tr>
 <tr>
-<td>Order Currency (<code>dtm_conv_curr</code>) (Overrides <code>_ccurrency</code>)</td>
-<td>[String]</td>
+<td><code>dtm_conv_curr</code> (Overrides <code>_ccurrency</code></td>
+<td>String</td>
+<td>Order currency.</td>
 </tr>
 <tr>
-<td>Product IDs (<code>product_id</code>) (Overrides <code>_cprod</code>)</td>
-<td>[Array]</td>
+<td><code>product_id</code> (Overrides <code>_cprod</code></td>
+<td>Array</td>
+<td>Product IDs.</td>
 </tr>
 <tr>
-<td>Product Quantities (<code>product_quantity</code>) (Overrides <code>_cquan</code>)</td>
-<td>[Array]</td>
+<td><code>product_quantity</code> (Overrides <code>_cquan</code></td>
+<td>Array</td>
+<td>Product quantities.</td>
 </tr>
 <tr>
-<td>Product Prices (<code>product_unit_price</code>) (Overrides <code>_cprice</code>)</td>
-<td>[Array]</td>
+<td><code>product_unit_price</code> (Overrides <code>_cprice</code></td>
+<td>Array</td>
+<td>Product prices.</td>
 </tr>
 <tr>
-<td>Product Discount Amount (<code>product_discount</code>) (Overrides <code>_cpdisc</code>)</td>
-<td>[Array]</td>
+<td><code>product_discount</code> (Overrides <code>_cpdisc</code></td>
+<td>Array</td>
+<td>Product discount amount.</td>
 </tr>
 <tr>
-<td>Custom Items Attributes (<code>dtm_items.myvar</code>)</td>
-<td>[Array]</td>
+<td><code>dtm_items.myvar</code></td>
+<td>Array</td>
+<td>Custom items attributes.</td>
 </tr>
 </tbody>
 </table>
@@ -652,7 +695,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 28, 2022 
+          <p>This page was last updated:  February 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -952,6 +995,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

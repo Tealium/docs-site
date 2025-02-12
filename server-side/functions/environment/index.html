@@ -521,27 +521,26 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides information on the functions execution environment, rate limits, and execution limits.
+      This article provides information on the execution environment, rate limits, and execution limits for functions.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>On June 15, 2024, we will introduce limits on log messages allowed per function per account and on the total log messages allowed per account for all functions. For more information, see <a href="#function-limitations">Function limitations</a>.</p>
-<h2 id="execution-environment">Execution environment</h2>
-<p>The functions execution environment is built on the <a href="https://www.graalvm.org/%22">GraalVM</a> JavaScript runtime and runs ECMAScript 2020 compatible code.</p>
+  <h2 id="execution-environment">Execution environment</h2>
+<p>The execution environment for functions is built on the <a href="https://www.graalvm.org/%22">GraalVM</a> JavaScript runtime and runs ECMAScript 2020-compatible code.</p>
 <h3 id="function-limitations">Function limitations</h3>
 <ul>
 <li>Functions cannot use third-party libraries except the libraries listed in <a href="/server-side/functions/modules/">APIs and libraries for functions</a>.</li>
-<li>Functions have 32 MB of memory.<br>
+<li>Functions can use up to 32 MB of memory.<br>
 If a function attempts to use more than 32 MB, the following error is written to the log:<br>
 <code>Exception 400 BAD REQUEST - OutOfMemoryError: memory limit 32 mb is exceeded.</code></li>
-<li>Maximum function size is 64 KB, which is approximately 1500 lines of code.<br>
+<li>The maximum function size is 64 KB, which is approximately 1500 lines of code.<br>
 Functions larger than 64 KB cannot be saved until the size has been reduced.</li>
 <li>Function log messages are limited as follows:
 <ul>
-<li><strong>Limit per function per account</strong>: 5MB of log messages per minute. If this limit is reached, logging for the function is throttled for 1 minute. When a function is throttled, information messages are not written to the log. Error and warning messages continue to be written to the log. Full logging resumes after 1 minute.</li>
-<li><strong>Account limit for all functions</strong>: 50MB of log messages per minute. Currently, logging will not be throttled. If this limit is exceeded, Tealium may request that you limit the number of log messages.</li>
+<li><strong>Limit per function per account</strong>: 5 MB of log messages per minute. If this limit is reached, logging for the function is throttled for 1 minute. When a function is throttled, information messages are not written to the log. Error and warning messages continue to be written to the log. Full logging resumes after 1 minute.</li>
+<li><strong>Account limit for all functions</strong>: 50 MB of log messages per minute. Currently, logging will not be throttled. If this limit is exceeded, Tealium may request that you limit the number of log messages.</li>
 </ul>
 </li>
 </ul>
@@ -557,7 +556,7 @@ Functions larger than 64 KB cannot be saved until the size has been reduced.</li
 </ul>
 </li>
 </ul>
-<p>The runtime version for a function is shown in the code tab of the code editor, as shown below: <figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
+<p>The runtime version for a function is shown in the <strong>Code</strong> tab of the code editor, as shown below: <figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
     </a>
 </figure></p>
 <p>Runtime versions may be updated to provide new features. When a new runtime version is available, a message similar to the following is displayed on the <strong>Functions Overview</strong> page: <figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
@@ -570,7 +569,7 @@ Functions larger than 64 KB cannot be saved until the size has been reduced.</li
 <p>Data transformation functions have the following execution limits:</p>
 <ul>
 <li>1 hour of execution time per minute OR</li>
-<li>250,000 invocations per minute (15 mm per hour)</li>
+<li>250,000 invocations per minute (15 million per hour)</li>
 <li>150 milliseconds of execution time for each function invocation<br>
 If a function exceeds the 150 milliseconds execution time, the following error is written to the log:<br>
 <code>Invocation timeout limit of 150 milliseconds is exceeded</code></li>
@@ -599,7 +598,7 @@ If a function exceeds the 10 seconds execution time, the following error is writ
 <p>Execution time = 1000 invocations/second * 100 ms / 1000 = 100 minutes = <strong>1.66 hours execution time per minute</strong></p>
 <p>In this case, the execution rate and execution time are both below the limits.</p>
 <h2 id="execution-rate-and-execution-time-example-2">Execution rate and execution time: example 2</h2>
-<p>In this example, we assume that external API performance temporarily degrades, and the function execution time is 800 ms per invocation. That means that our execution time is increased by 8.</p>
+<p>In this example, we assume that external API performance temporarily degrades, and the function execution time is 800 ms per invocation. That means that the execution time is increased by 8.</p>
 <p>Execution time = (1000 inv/s * 100 ms / 1000) * 8 = 800 minutes = <strong>13.28 hours of execution time per minute</strong>.</p>
 <p>The execution time in this case is 13.28 hours per minute, which is greater than 8 hours/minute maximum. Function invocations may be throttled.</p>
 
@@ -662,7 +661,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 13, 2024 
+          <p>This page was last updated:  February 7, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

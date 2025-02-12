@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -290,12 +290,12 @@
         <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/split-io-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".split-io-connector">Split.io</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-cam/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talon-one-campaign-audience-manager-connector">Talon.One CAM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/talonone-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talonone-webhook-connector">Talon.One Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tamber-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/teads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".teads-conversions-connector">Teads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tealium-for-salesforce/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-for-salesforce">Tealium for Salesforce</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -377,7 +377,7 @@
   <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor SDK:</p>
 <ul>
-<li>Snowflake Ingest SDK Version: 2.1.1</li>
+<li>Snowflake Ingest SDK Version: 3.0.1</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -423,7 +423,7 @@
 </ul>
 <h3 id="staging-tables">Staging tables</h3>
 <p>The staging table in Snowflake that is intended to received data from Tealium must contain specific columns depending on the selected connector action.</p>
-<p>When using either <strong>Send Entire Event Data</strong> or <strong>Send Entire Visitor Data</strong> actions, the staging table must have a <code>VARIANT</code> column to receive the dataset and a column to receive the timestamp. The timestamp column must support the the timestamp data format that is sent.</p>
+<p>When using either <strong>Send Entire Event Data</strong> or <strong>Send Entire Visitor Data</strong> actions, the staging table must have a <code>VARIANT</code> column to receive the dataset and a column to receive the timestamp. The timestamp column must support the timestamp data format that is sent.</p>
 <p>When using either <strong>Send Custom Event Data</strong> or <strong>Send Custom Visitor Data</strong>, the staging table must have a column for each data type. Each data attribute must be assigned to a column. Ensure that each attribute is an accepted Snowflake data type and that the column is formatted properly to receive this data type. To map a timestamp, a separate timestamp column must be added.</p>
 <p>For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>.</p>
 <h3 id="data-types">Data types</h3>
@@ -668,19 +668,41 @@ To successfully assign the public key to the user, ensure the following:
 </tr>
 </tbody>
 </table>
+<h2 id="drop-channels">Drop channels</h2>
+<p>To drop channels that Tealium has created, provide a list of channels in CSV format. You can retrieve the list of channels by running <strong>SHOW CHANNELS</strong> in your Snowflake instance. To drop all channels created by Tealium, leave the list blank.</p>
+<p>To configure channels to drop, use the following steps:</p>
+<ol>
+<li>Go to <strong>Server-Side &gt; EventStream &gt; Event Connectors</strong> or to <strong>Server-Side &gt; AudienceStream &gt; Audience Connectors</strong>.</li>
+<li>Select a Snowflake connector.</li>
+<li>Under <strong>Remote Configuration</strong>, click <strong>Drop Channel</strong>.</li>
+<li>Enter the following information:
+<ul>
+<li><strong>Database Name</strong><br>
+Required. The Snowflake data base name for the table.</li>
+<li><strong>Schema Name</strong><br>
+Required. The name of the schema used in the table.</li>
+<li><strong>Table Name</strong><br>
+Required. The name of the Snowflake table.</li>
+<li><strong>Channel Name</strong><br>
+The names of the Snowflake channels to drop, in CSV format. If no channel name is provided, all channels are dropped.</li>
+</ul>
+</li>
+<li>Click <strong>Drop</strong>.</li>
+</ol>
+<p>If your list of tables is large and the deletion takes longer than 30 seconds, a false error stating that channels were not deleted may occur. We recommend that you validate that channels were successfully deleted by running <strong>SHOW CHANNELS</strong> in your Snowflake instance.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side-connectors/splunk-connector/"
+  <a href="/server-side-connectors/split-io-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Splunk</div>
+      <div>Split.io</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Splunk"</title>
+      <title>"Split.io"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -728,7 +750,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 10, 2024 
+          <p>This page was last updated:  February 11, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -756,6 +778,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#drop-channels" href="javascript:void(0)">Drop channels</a></li>
               </nav>
   </aside></nav>
 
