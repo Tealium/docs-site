@@ -530,81 +530,80 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>2024年6月15日に、アカウントごとの関数ごとのログメッセージの許容量と、すべての関数のアカウントごとの合計ログメッセージの許容量に制限を導入します。詳細は、<a href="#function-limitations">関数の制限</a>を参照してください。</p>
-<h2 id="実行環境">実行環境</h2>
-<p>関数の実行環境は、<a href="https://www.graalvm.org/%22">GraalVM</a> JavaScriptランタイム上に構築され、ECMAScript 2020互換のコードを実行します。</p>
+  <h2 id="実行環境">実行環境</h2>
+<p>関数の実行環境は、<a href="https://www.graalvm.org/%22">GraalVM</a> JavaScriptランタイムを基にしており、ECMAScript 2020互換のコードを実行します。</p>
 <h3 id="関数の制限">関数の制限</h3>
 <ul>
-<li>関数は、<a href="/ja/server-side/functions/modules/">関数用のAPIとライブラリ</a>に記載されているライブラリを除き、サードパーティのライブラリを使用することはできません。</li>
-<li>関数は32MBのメモリを持っています。<br>
+<li>関数は、<a href="/ja/server-side/functions/modules/">APIと関数用ライブラリ</a>に記載されているライブラリを除き、サードパーティのライブラリを使用することはできません。</li>
+<li>関数は最大32MBのメモリを使用できます。<br>
 関数が32MB以上のメモリを使用しようとすると、次のエラーがログに書き込まれます：<br>
 <code>Exception 400 BAD REQUEST - OutOfMemoryError: memory limit 32 mb is exceeded.</code></li>
 <li>最大関数サイズは64KBで、これは約1500行のコードに相当します。<br>
 64KB以上の関数は、サイズが縮小されるまで保存できません。</li>
 <li>関数のログメッセージは以下のように制限されます：
 <ul>
-<li><strong>アカウントごとの関数ごとの制限</strong>：1分あたりのログメッセージは5MBです。この制限に達すると、関数のログは1分間スロットリングされます。関数がスロットリングされているとき、情報メッセージはログに書き込まれません。エラーメッセージと警告メッセージは引き続きログに書き込まれます。完全なログは1分後に再開されます。</li>
-<li><strong>すべての関数のアカウント制限</strong>：1分あたりのログメッセージは50MBです。現在、ログはスロットリングされません。この制限を超えると、Tealiumはログメッセージの数を制限するように要求する場合があります。</li>
+<li><strong>アカウントごとの関数ごとの制限</strong>：1分あたりのログメッセージは5MBまで。この制限に達すると、関数のログは1分間スロットリングされます。関数がスロットリングされると、情報メッセージはログに書き込まれません。エラーメッセージと警告メッセージは引き続きログに書き込まれます。完全なログは1分後に再開されます。</li>
+<li><strong>すべての関数のアカウント制限</strong>：1分あたりのログメッセージは50MBまで。現在、ログはスロットリングされません。この制限を超えると、Tealiumはログメッセージの数を制限するように要求する場合があります。</li>
 </ul>
 </li>
 </ul>
 <h3 id="ランタイムバージョン">ランタイムバージョン</h3>
 <p>関数の実行環境、つまりランタイムバージョンは、関数のタイプにより異なります：</p>
 <ul>
-<li><strong>データ変換関数</strong> – 現在のランタイムバージョンはTransformation V0です。詳細は、<a href="/ja/server-side/functions/data-transformation-functions/about/">データ変換関数について</a>を参照してください。</li>
-<li><strong>イベントと訪問の関数</strong> – 最新のランタイムバージョンはAction V3です。既存の関数はAction V2を使用しており、これは非推奨です。詳細は以下を参照してください：
+<li><strong>データ変換関数</strong> – 現在のランタイムバージョンはTransformation V0です。詳細については、<a href="/ja/server-side/functions/data-transformation-functions/about/">データ変換関数について</a>を参照してください。</li>
+<li><strong>イベントとビジター関数</strong> – 最新のランタイムバージョンはAction V3です。既存の関数はAction V2を使用しており、これは非推奨です。詳細については、以下を参照してください：
 <ul>
-<li><a href="/ja/server-side/functions/event-visitor-functions/v2-functions/">イベントと訪問の関数 V2</a></li>
-<li><a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントと訪問の関数 V3</a></li>
+<li><a href="/ja/server-side/functions/event-visitor-functions/v2-functions/">イベントとビジター関数 V2</a></li>
+<li><a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントとビジター関数 V3</a></li>
 <li><a href="/ja/server-side/functions/event-visitor-functions/migrate-v2-to-v3/">V2関数をV3に移行する</a></li>
 </ul>
 </li>
 </ul>
-<p>関数のランタイムバージョンは、コードエディタのコードタブに表示されます。以下に示すように：<figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
+<p>関数のランタイムバージョンは、コードエディタの<strong>Code</strong>タブに表示されます。以下に示すように：<figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
     </a>
 </figure></p>
-<p>ランタイムバージョンは新機能を提供するために更新されることがあります。新しいランタイムバージョンが利用可能になると、以下のようなメッセージが<strong>関数概要</strong>ページに表示されます：<figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
+<p>ランタイムバージョンは新機能を提供するために更新されることがあります。新しいランタイムバージョンが利用可能になると、以下のようなメッセージが<strong>Functions Overview</strong>ページに表示されます：<figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
          alt="新しいランタイムバージョンが利用可能であることを示す警告メッセージ。更新の名前と概要が含まれています。"
          title="新しいランタイムバージョンが利用可能であることを示す警告メッセージ。更新の名前と概要が含まれています。"/>
     </a>
 </figure></p>
-<p>Tealiumが新しいランタイムバージョンをリリースすると、古いバージョンは非推奨となり、最終的には廃止されます。使用中のランタイムバージョンが非推奨になったり、廃止されたりしたときには、<strong>関数概要</strong>画面と関数の<strong>コード</strong>タブにメッセージが表示されます。</p>
+<p>Tealiumが新しいランタイムバージョンをリリースすると、古いバージョンは非推奨となり、最終的には廃止されます。使用中のランタイムバージョンが非推奨になったり、廃止されたりした場合、<strong>Functions Overview</strong>画面と関数の<strong>Code</strong>タブにメッセージが表示されます。</p>
 <h2 id="データ変換関数の実行時間制限">データ変換関数の実行時間制限</h2>
-<p>データ変換関数には以下の実行制限があります：</p>
+<p>データ変換関数には、以下の実行制限があります：</p>
 <ul>
-<li>1時間の実行時間/分 または</li>
-<li>250,000回の呼び出し/分（1時間あたり15mm）</li>
+<li>1分あたりの実行時間は1時間 OR</li>
+<li>1分あたりの呼び出し回数は250,000回（1時間あたり1500万回）</li>
 <li>各関数呼び出しの実行時間は150ミリ秒<br>
 関数が150ミリ秒の実行時間を超えると、次のエラーがログに書き込まれます：<br>
 <code>Invocation timeout limit of 150 milliseconds is exceeded</code></li>
 </ul>
 <p>これらの実行制限は、アカウントと地域に基づいています。アカウントのすべての関数の実行時間と呼び出し回数の合計は、これらの制限を超えることはできません。</p>
-<p>いずれかの制限を超えると、関数の実行は一時的に停止（スロットリング）されます。次のメッセージが<strong>関数概要</strong>に表示され、スロットリングされた関数の隣に黄色の警告アイコンが表示されます：</p>
+<p>いずれかの制限を超えると、関数の実行は一時的に停止（スロットリング）されます。次のメッセージが<strong>Functions Overview</strong>に表示され、スロットリングされた関数の隣に黄色の警告アイコンが表示されます：</p>
 <figure><a class="slb" href="/images/server-side/throttle-msg.png"><img src="/images/server-side/throttle-msg.png"
          alt="過去24時間で、プロファイルの一部の関数がレート制限に達し、スロットリングされています。"
          title="過去24時間で、プロファイルの一部の関数がレート制限に達し、スロットリングされています。"/>
     </a>
 </figure>
 <p>スロットリングされた関数の詳細を表示する方法については、<a href="/ja/server-side/functions/manage-functions/view-function-statistics/">関数統計を表示する</a>を参照してください。</p>
-<h2 id="イベントと訪問の関数の実行時間制限">イベントと訪問の関数の実行時間制限</h2>
-<p>イベントと訪問の関数には以下の実行制限があります：</p>
+<h2 id="イベントとビジター関数の実行時間制限">イベントとビジター関数の実行時間制限</h2>
+<p>イベントとビジター関数には、以下の実行制限があります：</p>
 <ul>
-<li>実行レート：1分あたり180,000回の呼び出し</li>
+<li>実行レート：1分あたりの呼び出し回数は180,000回</li>
 <li>実行時間：1分あたり8時間</li>
 <li>各関数呼び出しの実行時間：10秒<br>
 関数が10秒の実行時間を超えると、次のエラーがログに書き込まれます：<br>
 <code>Exception 504 - Invocation timeout limit of 10000 milliseconds is exceeded.</code></li>
 </ul>
 <h2 id="実行レートと実行時間例1">実行レートと実行時間：例1</h2>
-<p>この例では、外部APIと通信する関数が呼び出しごとに約100msかかると仮定します。また、アカウントに構成されている関数は1つだけで、この関数の平均実行レートは1秒あたり1000回の呼び出しとします。</p>
+<p>この例では、外部APIと通信する関数が1回の呼び出しにつき約100msかかると仮定します。また、アカウントに構成されている関数は1つだけで、この関数の平均実行レートは1秒あたり1000回の呼び出しとします。</p>
 <p>1分間の時間窓内での実行レートと実行時間は以下の通りです：</p>
-<p>実行レート = 1000 * 60 * 1分 = <strong>1分あたりの呼び出し回数60,000回</strong></p>
-<p>実行時間 = 1000回/秒 * 100 ms / 1000 = 100分 = <strong>1分あたりの実行時間1.66時間</strong></p>
+<p>実行レート = 1000 * 60 * 1分 = <strong>1分あたりの呼び出し回数は60,000回</strong></p>
+<p>実行時間 = 1000回/秒 * 100 ms / 1000 = 100分 = <strong>1分あたりの実行時間は1.66時間</strong></p>
 <p>この場合、実行レートと実行時間はどちらも制限以下です。</p>
 <h2 id="実行レートと実行時間例2">実行レートと実行時間：例2</h2>
-<p>この例では、一時的に外部APIのパフォーマンスが低下し、関数の実行時間が呼び出しごとに800msになると仮定します。つまり、実行時間は8倍に増加します。</p>
-<p>実行時間 = (1000回/秒 * 100 ms / 1000) * 8 = 800分 = <strong>1分あたりの実行時間13.28時間</strong>。</p>
-<p>この場合、1分あたりの実行時間は13.28時間で、これは最大8時間/分を超えています。関数の呼び出しはスロットリングされる可能性があります。</p>
+<p>この例では、一時的に外部APIのパフォーマンスが低下し、関数の実行時間が1回の呼び出しにつき800msになると仮定します。つまり、実行時間は8倍に増加します。</p>
+<p>実行時間 = (1000回/秒 * 100 ms / 1000) * 8 = 800分 = <strong>1分あたりの実行時間は13.28時間</strong>。</p>
+<p>この場合、実行時間は1分あたり13.28時間で、これは最大8時間/分を超えています。関数の呼び出しはスロットリングされる可能性があります。</p>
 
 </div>
 
@@ -665,7 +664,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年September月19日
+          <p>最終更新日 ::  2025年February月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -683,7 +682,7 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%96%A2%E6%95%B0%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">関数の制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">ランタイムバージョン</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E6%8F%9B%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E5%88%B6%E9%99%90" href="javascript:void(0)">データ変換関数の実行時間制限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E8%A8%AA%E5%95%8F%E3%81%AE%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E5%88%B6%E9%99%90" href="javascript:void(0)">イベントと訪問の関数の実行時間制限</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BC%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E5%88%B6%E9%99%90" href="javascript:void(0)">イベントとビジター関数の実行時間制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A1%8C%E3%83%AC%E3%83%BC%E3%83%88%E3%81%A8%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E4%BE%8B1" href="javascript:void(0)">実行レートと実行時間：例1</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A1%8C%E3%83%AC%E3%83%BC%E3%83%88%E3%81%A8%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E4%BE%8B2" href="javascript:void(0)">実行レートと実行時間：例2</a></li>
               </nav>

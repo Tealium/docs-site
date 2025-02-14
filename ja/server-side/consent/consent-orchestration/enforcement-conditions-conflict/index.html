@@ -12,6 +12,8 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/server-side/consent/consent-orchestration/enforcement-conditions-conflict/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -51,6 +53,16 @@
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/server-side/consent/consent-orchestration/enforcement-conditions-conflict/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
       </li>
             
     </ul>
@@ -518,25 +530,25 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Consent Orchestration機能が、プライバシーバイデザインとプライバシーバイデフォルトの原則を遵守しながら、目的グループと免除の条件付き実施における競合をどのように取り扱うかについて説明します。
+      この記事では、Consent Orchestration機能が、プライバシーバイデザインとプライバシーバイデフォルトの原則を遵守しながら、目的グループと免除の条件付き実施の競合をどのように取り扱うかについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="プライバシー原則">プライバシー原則</h2>
-<p>Consent Orchestrationは、明確な同意が得られた場合や明確な条件が満たされた場合にのみデータを処理し、活性化します。これにより、ユーザーの誤操作や誤構成によるデータ漏洩を防ぎ、関連するポリシーや規制の遵守を確保します。</p>
+<p>Consent Orchestrationは、明確な同意が得られた場合や明確な条件が満たされた場合にのみデータを処理し、活性化します。これにより、関連するポリシーと規制に準拠し、ユーザーの誤操作や構成ミスによるデータ漏洩を防ぎます。</p>
 <h2 id="consent-orchestrationが実施条件の競合をどのように取り扱うか">Consent Orchestrationが実施条件の競合をどのように取り扱うか</h2>
-<p>Consent Orchestrationにおける競合は、複数の実施ルールが重複したり、相互に矛盾したりするときに発生します。これらの競合は、複数の同意ポリシーや複雑な実施ルールがあるときにより一般的です。以下に、Consent Orchestrationがこれらの競合をどのように管理し、データ保護を確保するかを説明します：</p>
+<p>Consent Orchestrationにおける競合は、複数の実施ルールが重複したり、相互に矛盾したりするときに発生します。これらの競合は、複数の同意ポリシーがある場合や、実施ルールが複雑な場合によく見られます。以下に、Consent Orchestrationがこれらの競合をどのように管理し、データ保護を確保するかを説明します：</p>
 <ul>
 <li><strong>少なくとも1つの目的グループまたは免除がアクティブな場合</strong>：これは、免除が同意制御なしでデータ処理を許可する一方で、目的グループがデータ処理の厳格なルールを実施するため、競合を生じさせる可能性があります。この競合を解決するために、目的グループが実施され、免除は無視されます。同意信号なしでのデータ処理は許可されません。</li>
 <li><strong>2つ以上の実施ルールが目的グループで重複する場合</strong>：どれを実施すべきか不明なため、データ処理は行われません。</li>
-<li><strong>免除が重複することが許可されている場合</strong>：単一の目的グループが任意の数の免除と重複する場合、目的グループが実施され、免除は無視されます。</li>
+<li><strong>免除が重複することが許可される場合</strong>：単一の目的グループが任意の数の免除と重複する場合、目的グループが実施され、免除は無視されます。</li>
 </ul>
 <p>2つの目的グループが存在し、その実施ルールが両方とも<code>true</code>に評価されるなどの曖昧なシナリオでは、Consent Orchestrationは潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。これにより、ブロックされた活性化からのデータの損失が発生する可能性がありますが、データ漏洩のリスクを軽減するための予防措置です。</p>
 <h3 id="実施条件の競合の例">実施条件の競合の例</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この例は、説明のためのものです。</p>
-<p>競合は、ドメインの競合などの複雑なシナリオで発生することがあります。例えば、ある目的グループがドメインに<code>A</code>が含まれるイベントに適用され、別の目的グループがドメインに<code>B</code>が含まれるイベントに適用される場合があります。ドメインが<code>A</code>と<code>B</code>の両方を含むイベント（例えばドメイン<code>AB</code>）が入ってくると、両方の実施ルールが真と評価され、競合が生じます。このような場合、Consent Orchestrationはどのポリシーを実施すべきかを判断できず、潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。</p>
+<p>競合は、ドメインの競合などの複雑なシナリオで発生することがあります。例えば、ある目的グループはドメインが<code>A</code>を含むイベントに適用され、別の目的グループはドメインが<code>B</code>を含むイベントに適用されるかもしれません。ドメインが<code>A</code>と<code>B</code>の両方を含むイベント（例えば、ドメイン<code>AB</code>）が入ってくると、両方の実施ルールが真と評価され、競合が生じます。このような場合、Consent Orchestrationはどのポリシーを実施すべきかを判断できず、潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。</p>
 <p>以下の表は、アクティブな免除と目的グループの数に応じて、Consent Orchestrationが競合をどのように取り扱うかを示しています：</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この表は、Consent Orchestrationがアクティブな場合（少なくとも1つの免除または目的グループがアクティブで、たとえ実施条件が適用されなくても）にのみ適用されます。免除または目的グループがアクティブでない場合、Consent Orchestrationは非アクティブのままで、どの活性化もブロックしません。</p>
 <table>
@@ -573,7 +585,22 @@
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/server-side/consent/consent-orchestration/enforcement-conditions-conflict/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>実施条件の競合の取り扱い</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"実施条件の競合の取り扱い"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
   
   
   <a href="/ja/server-side/consent/consent-orchestration/about/"
@@ -615,7 +642,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月4日
+          <p>最終更新日 ::  2025年February月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -307,6 +307,7 @@
         <a href="/ja/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchatオーディエンスマッチ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflakeストリーミングコネクタ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/split-io-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".split-io-connector">Split.io</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdaptイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrveアプリイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -440,7 +441,7 @@
 </tr>
 </tbody>
 </table>
-<p>トラックエンドポイントを使用して、アプリ、Web、オフライン、またはCRMイベントを報告します。</p>
+<p>トラックエンドポイントを使用して、アプリ、ウェブ、オフライン、またはCRMイベントを報告します。</p>
 <h2 id="構成の構成">構成の構成</h2>
 <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
@@ -451,8 +452,8 @@ TikTokで構成されたアクセストークン。</li>
 すでにウェブサイトにTikTokピクセルが統合されている場合は、既存のピクセルコードを使用できます。<code>pixel_code</code>は、TikTok広告マネージャーアカウントにログインして見つけることができます。ウェブサイトごとに1つのピクセルを作成することをお勧めします。</li>
 </ul>
 <h3 id="tiktokピクセルとtiktokコンバージョンのwebイベントの重複排除">TikTokピクセルとTikTokコンバージョンのWebイベントの重複排除</h3>
-<p>このコネクタを構成して、Tealium iQタグ管理アカウントのTikTokピクセルタグからイベントIDを受け取るには、以下の命名規則を使用してイベント属性を探します：</p>
-<p>形式：<code>tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;</code></p>
+<p>Tealium iQタグ管理アカウントのTikTokピクセルタグからイベントIDを受け取るようにこのコネクタを構成するには、以下の命名規則を使用してイベント属性を探します：</p>
+<p>フォーマット：<code>tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;</code></p>
 <p>例えば、UIDが<code>174</code>のタグからのイベントは、以下の属性値を送信します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174`
 </code></pre><p>タグのUIDは、Tealium iQの<strong>タグ</strong>テーブルまたはタグ詳細画面で見つけることができます：</p>
@@ -486,7 +487,7 @@ TikTokで構成されたアクセストークン。</li>
 <p>同じイベントソースID（<code>event_source_id</code>）、イベントタイプ（例：<code>AddToCart</code>）、イベントID（<code>event_id</code>）を持つ複数のイベントが受信された場合、TikTokは最初のものを使用し、最初のイベントから48時間以内に受信された後続のイベントを破棄します。後続のイベントが最初のイベントから5分以内に受信された場合、TikTokはそのデータを最初のイベントにマージしようとします。例えば、最初のイベントにユーザーのメール（<code>user.email</code>）が含まれていないが、後続の重複イベント（5分以内に受信）にこの情報が含まれている場合、TikTokはメールデータを最初のイベントにマージします。</p>
 <h3 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h3>
 <p>アクションに名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h4 id="アクション---トラックイベントの送信">アクション - トラックイベントの送信</h4>
 <h5 id="パラメータ">パラメータ</h5>
 <table>
@@ -497,6 +498,22 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>イベントソース</td>
+<td>イベントソースを選択します。<ul><li>WEB</li><li>APP</li><li>OFFLINE</li><li>CRM</li></ul></td>
+</tr>
+<tr>
+<td>イベントタイプ</td>
+<td>コンバージョンイベント名。<ul><li>レベル達成</li><li>支払い情報の追加</li><li>カートに追加</li><li>ウィッシュリストに追加</li><li>チェックアウト</li><li>ボタンクリック</li><li>支払い完了</li><li>登録完了</li><li>チュートリアル完了</li><li>コンタクト</li><li>グループ作成</li><li>ロール作成</li><li>カスタム</li><li>ダウンロード</li><li>リード生成</li><li>チェックアウト開始</li><li>アプリのインストール</li><li>アプリ内広告クリック</li><li>アプリ内広告インプレッション</li><li>グループ参加</li><li>アプリの起動</li><li>アプリケーションのロード</li><li>ローン承認</li><li>ローン支払い</li><li>ログイン成功</li><li>注文</li><li>購入</li><li>評価</li><li>検索</li><li>クレジット消費</li><li>試用開始</li><li>フォームの送信</li><li>購読</li><li>実績解除</li><li>コンテンツ閲覧</li></ul></td>
+</tr>
+<tr>
+<td>イベントソースID</td>
+<td>必須。イベントを追跡するためのID。<ul><li><code>event_source</code>が<code>web</code>の場合、このフィールドにピクセルコードを指定します。</li><li><code>event_source</code>が<code>offline</code>の場合、このフィールドにオフラインイベントIDを指定します。</li><li><code>event_source</code>が<code>app</code>の場合、このフィールドにTikTokアプリIDを指定します。</li><li><code>event_source</code>が<code>crm</code>の場合、このフィールドにCRMイベントIDを指定します。CRMイベントIDを取得するには、<code>/crm/list/</code>を使用します。</li></ul></td>
+</tr>
+<tr>
+<td>イベント時間</td>
+<td>必須。イベントが発生した時刻のタイムスタンプ。ISO 8601形式<code>YYYY-MM-DDThh:mm:ssZ</code>を使用します。タイムスタンプが提供されない場合、現在のタイムスタンプが使用されます。</td>
+</tr>
 <tr>
 <td>カスタムイベント名</td>
 <td><strong>イベントタイプ</strong>ドロップダウンから<strong>カスタム</strong>を選択した場合に必要です。</td>
@@ -510,20 +527,12 @@ TikTokで構成されたアクセストークン。</li>
 <td>構成の値を上書きするカスタムアクセストークン。</td>
 </tr>
 <tr>
-<td>イベントソースID</td>
-<td>必須。イベントを追跡するためのID。<ul><li><code>event_source</code>が<code>web</code>の場合、このフィールドにピクセルコードを指定します。</li><li><code>event_source</code>が<code>offline</code>の場合、このフィールドにオフラインイベントIDを指定します。</li><li><code>event_source</code>が<code>app</code>の場合、このフィールドにTikTokアプリIDを指定します。</li><li><code>event_source</code>が<code>crm</code>の場合、このフィールドにCRMイベントIDを指定します。CRMイベントIDを取得するには、<code>/crm/list/</code>を使用します。</li></ul></td>
-</tr>
-<tr>
-<td>イベント時間</td>
-<td>必須。イベントが発生した時刻のタイムスタンプ。ISO 8601形式<code>YYYY-MM-DDThh:mm:ssZ</code>を使用します。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
-</tr>
-<tr>
 <td>イベントID</td>
 <td>ユニークなユーザーまたはセッションを識別できる任意のハッシュ化されたID。例えば、<code>SessionID_RandomNumber</code>。<a href="/ja/client-side-tags/tiktok-pixel-tag/">TikTokピクセルタグでイベントIDを生成</a>を<code>true</code>に構成すると、このIDはすべてのTikTokトラッキングイベントで自動的に生成されます。</td>
 </tr>
 <tr>
-<td>Limited Data Use</td>
-<td>このフィールドは、イベントソースが<code>WEB</code>または<code>APP</code>の場合にのみサポートされます。限定的なデータ処理構成。Limited Data Use機能の詳細については、<a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: Limited Data Use</a>を参照してください。</td>
+<td>限定データ使用</td>
+<td>限定データ処理構成。このフィールドは、イベントソースが<code>WEB</code>または<code>APP</code>の場合にのみサポートされます。限定データ使用機能について詳しくは、<a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: 限定データ使用</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
@@ -546,15 +555,19 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>広告ID</td>
+<td>広告グループID。</td>
+</tr>
+<tr>
+<td>クリエイティブID</td>
 <td>広告ID。</td>
 </tr>
 <tr>
-<td>リターゲティング中</td>
-<td>ユーザーがユーザーをリターゲティングしているかどうか。</td>
+<td>リターゲティング</td>
+<td>ユーザーがリターゲティングを行っているかどうか。</td>
 </tr>
 <tr>
-<td>アトリビュート</td>
-<td>イベントがプロバイダーに帰属しているかどうか。</td>
+<td>アトリビューション</td>
+<td>イベントがプロバイダーに帰属するかどうか。</td>
 </tr>
 <tr>
 <td>アトリビューションタイプ</td>
@@ -562,7 +575,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>アトリビューションプロバイダー</td>
-<td>アトリビューションプロバイダーの名前。</td>
+<td>アトリビューションプロバイダー名。</td>
 </tr>
 </tbody>
 </table>
@@ -596,27 +609,27 @@ TikTokで構成されたアクセストークン。</li>
 <tbody>
 <tr>
 <td>ユーザーメール</td>
-<td>（推奨）。SHA256でハッシュ化されたメールアドレス。</td>
+<td>推奨。ユーザーのメールアドレス、SHA256でハッシュ化されます。</td>
 </tr>
 <tr>
 <td>ユーザー電話番号</td>
-<td>（推奨）。ユーザーの電話番号、SHA256でハッシュ化。国コードを<code>+</code>で含め、数字の間の他の文字（スペース、<code>-</code>）を削除します（例：USAの場合は<code>+12125551212</code>）。国コードが<code>86</code>の場合、国コードを含めないでください（例：<code>13800000000</code>）。</td>
+<td>推奨。ユーザーの電話番号、SHA256でハッシュ化されます。国コードを<code>+</code>で含め、数字の間の他の文字（スペース、<code>-</code>）を削除します（例：USAの場合：<code>+12125551212</code>）。国コードが<code>86</code>の場合、国コードを含めません（例：<code>13800000000</code>）。</td>
 </tr>
 <tr>
 <td>ユーザー外部ID</td>
-<td>（推奨）。外部ユーザーID、SHA256でハッシュ化。</td>
+<td>推奨。外部ユーザーID、SHA256でハッシュ化されます。</td>
 </tr>
 <tr>
-<td>Cookie ID</td>
+<td>クッキーID</td>
 <td>クッキーのID。</td>
 </tr>
 <tr>
 <td>IP</td>
-<td>ブラウザの非ハッシュ化された公開IPアドレス。ウェブサイト訪問イベントとTikTok広告をマッチさせる確率を上げるため、<strong>IP</strong>と<strong>ユーザーエージェント</strong>の両方を送信することをお勧めします。</td>
+<td>ブラウザの非ハッシュ化された公開IPアドレス。ウェブサイト訪問イベントとTikTok広告のマッチング確率を上げるため、<strong>IP</strong>と<strong>ユーザーエージェント</strong>の両方を送信することをお勧めします。</td>
 </tr>
 <tr>
 <td>ユーザーエージェント</td>
-<td>ユーザーのデバイスからの非ハッシュ化されたユーザーエージェント。ウェブサイト訪問イベントとTikTok広告をマッチさせる確率を上げるため、<strong>IP</strong>と<strong>ユーザーエージェント</strong>の両方を送信することをお勧めします。自動マッピングを無効にしない限り、このパラメータは訪問の<strong>ユーザーエージェント</strong>に自動マッピングされます。</td>
+<td>ユーザーのデバイスからの非ハッシュ化されたユーザーエージェント。ウェブサイト訪問イベントとTikTok広告のマッチング確率を上げるため、<strong>IP</strong>と<strong>ユーザーエージェント</strong>の両方を送信することをお勧めします。自動マッピングを無効にしない限り、このパラメータは訪問の<strong>ユーザーエージェント</strong>に自動マッピングされます。</td>
 </tr>
 <tr>
 <td>IDFA</td>
@@ -632,11 +645,11 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>ロケール</td>
-<td><code>la-CO</code>形式のロケール言語とロケール。ここで<code>la</code>は言語を表す2文字のコードで、<code>CO</code>は国を表す2文字の大文字のコードです。</td>
+<td><code>la-CO</code>形式のロケール言語とロケール。ここで、<code>la</code>は言語を表す2文字のコードで、<code>CO</code>は国を表す2文字の大文字のコードです。</td>
 </tr>
 <tr>
 <td>Attステータス</td>
-<td>ユーザーがモバイルアプリがユーザーまたはデバイスの追跡に関連するアプリデータにアクセスすることを許可したかどうか。これはiOS専用のフィールドです。サポートされている値は<code>AUTHORIZED</code>、<code>DENIED</code>、<code>NOT_DETERMINED</code>、<code>NOT_APPLICABLE</code>です。</td>
+<td>ユーザーがあなたのモバイルアプリに対してユーザーまたはデバイスの追跡に関連するデータへのアクセスを許可したかどうか。これはiOS専用のフィールドです。サポートされている値は<code>AUTHORIZED</code>、<code>DENIED</code>、<code>NOT_DETERMINED</code>、<code>NOT_APPLICABLE</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -651,7 +664,7 @@ TikTokで構成されたアクセストークン。</li>
 <tbody>
 <tr>
 <td>コンテンツタイプ</td>
-<td>商品のタイプ。この値は、商品カタログのデータフィードがどのように構成されているかにより、<code>product</code>または<code>product_group</code>でなければなりません。</td>
+<td>商品のタイプ。この値は<code>product</code>または<code>product_group</code>でなければならず、商品カタログのデータフィードがどのように構成されているかによります。</td>
 </tr>
 <tr>
 <td>通貨</td>
@@ -659,7 +672,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>値</td>
-<td>注文または販売されたアイテムの合計値。</td>
+<td>注文または販売された商品の合計値。</td>
 </tr>
 <tr>
 <td>クエリ</td>
@@ -690,41 +703,97 @@ TikTokで構成されたアクセストークン。</li>
 <tbody>
 <tr>
 <td>価格</td>
-<td>アイテムの価格。数値データタイプをサポートします。</td>
+<td>商品の価格。数値と数値の配列のデータタイプをサポートします。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>アイテムの数。数値データタイプをサポートします。</td>
+<td>商品の数量。整数と数値の配列のデータタイプをサポートします。</td>
 </tr>
 <tr>
-<td>Content ID</td>
-<td>あなたのシステム内の製品ID。</td>
+<td>コンテンツID</td>
+<td>あなたのシステム内の商品IDまたはID。文字列と文字列の配列のデータタイプをサポートします。</td>
 </tr>
 <tr>
-<td>Content Category</td>
-<td>ページまたは製品のカテゴリ。</td>
+<td>コンテンツカテゴリ</td>
+<td>ページまたは商品のカテゴリまたはカテゴリ。文字列と文字列の配列のデータタイプをサポートします。</td>
 </tr>
 <tr>
-<td>Content Name</td>
-<td>ページまたは製品の名前。</td>
+<td>コンテンツ名</td>
+<td>ページまたは商品の名前。文字列と文字列の配列のデータタイプをサポートします。</td>
 </tr>
 <tr>
-<td>Brand</td>
-<td>製品アイテムのブランド。</td>
+<td>ブランド</td>
+<td>商品アイテムのブランド。文字列と文字列の配列のデータタイプをサポートします。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="automappingの無効化">Automappingの無効化</h5>
+<h5 id="アプリデータ">アプリデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリID</td>
+<td>モバイルアプリのID。</td>
+</tr>
+<tr>
+<td>アプリバージョン</td>
+<td>アプリのバージョン番号。</td>
+</tr>
+<tr>
+<td>アプリケーション名</td>
+<td>アプリケーションの名前。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="リードデータ">リードデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>リードID</td>
+<td>TikTokリードのID。</td>
+</tr>
+<tr>
+<td>リードイベントソース</td>
+<td>リードイベントのソース。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="自動重複排除-1">自動重複排除</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自動マッピングの無効化</td>
+<td>自動マッピングが無効化されている場合、自動マッピングされたパラメータはデフォルトでベンダーに送信されません。</td>
+</tr>
+</tbody>
+</table>
 <p>コネクタはデフォルトで以下のパラメータを自動マッピングします：</p>
 <ul>
 <li>TikTok Click ID (<code>ttclid</code>)</li>
 <li>User Agent</li>
 </ul>
-<p>Automappingを無効にするには、<strong>Automappingの無効化</strong>を<code>true</code>に構成します。自動マッピングされたパラメータはベンダーに送信されません。</p>
+<p>自動マッピングを無効にするには、<strong>自動マッピングの無効化</strong>を<code>true</code>に構成します。自動マッピングされたパラメータはベンダーに送信されません。</p>
 <h4 id="カスタムイベント">カスタムイベント</h4>
 <p>このコネクタにカスタムイベントを選択するには：</p>
 <ol>
-<li><strong>イベントタイプ</strong>カテゴリの下で、<strong>コンバージョンイベント名</strong>に<code>カスタム</code>を選択します。</li>
+<li><strong>イベントタイプ</strong>カテゴリの下で、<strong>コンバージョンイベント名</strong>に<code>Custom</code>を選択します。</li>
 <li><strong>カスタムイベント名</strong>フィールドにカスタムイベント名を入力し、<strong>+ マッピングを追加</strong>をクリックします。</li>
 </ol>
 
@@ -787,7 +856,7 @@ TikTokで構成されたアクセストークン。</li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年February月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1089,6 +1158,7 @@ TikTokで構成されたアクセストークン。</li>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

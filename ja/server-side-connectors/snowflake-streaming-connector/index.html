@@ -307,6 +307,7 @@
         <a href="/ja/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchatオーディエンスマッチ</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".snowflake-streaming-connector">Snowflakeストリーミングコネクタ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/split-io-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".split-io-connector">Split.io</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdaptイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrveアプリイベント</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -410,7 +411,7 @@
   <h2 id="api情報">API情報</h2>
 <p>このコネクタは以下のベンダーSDKを使用します:</p>
 <ul>
-<li>Snowflake Ingest SDKバージョン: 2.1.1</li>
+<li>Snowflake Ingest SDKバージョン: 3.0.1</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -445,8 +446,8 @@
 </tbody>
 </table>
 <h2 id="仕組み">仕組み</h2>
-<p>Snowflakeストリーミングコネクタは、強力なSnowflake Snowpipeストリーミング機能を活用して、イベントデータとビジターデータをほぼリアルタイムで直接Snowflakeのステージングテーブルにインポートし、データの遅延を10秒以下に抑えながら、即時に処理と分析が可能な状態にします。全データセットまたは特定の属性をステージングテーブルに送信し、ビジネスニーズに合わせたカスタマイズ可能なデータ統合を実現します。</p>
-<p>Snowpipeストリーミングを使用すると、データのアクセシビリティと分析能力をSnowflake内で向上させ、遅延とコストを削減します。サードパーティの統合を排除し、Snowpipeストリーミングのサーバーレスコンピューティングモデルを使用することで、Snowflakeストリーミングコネクタはコスト効率の良い、安全な接続を提供します。</p>
+<p>Snowflakeストリーミングコネクタは、強力なSnowflake Snowpipeストリーミング機能を活用して、イベントデータとビジターデータをほぼリアルタイムで直接Snowflakeのステージングテーブルにインポートし、データの遅延を10秒以下に抑えながら、即時に処理と分析が可能になります。全データセットまたは特定の属性をステージングテーブルに送信し、ビジネスニーズに合わせたカスタマイズ可能なデータ統合を実現します。</p>
+<p>Snowpipeストリーミングを使用すると、データのアクセシビリティと分析能力をSnowflake内で向上させ、遅延とコストを削減します。サードパーティの統合を排除し、Snowpipeストリーミングのサーバーレス計算モデルを使用することで、Snowflakeストリーミングコネクタはコスト効率の良い、安全な接続を提供します。</p>
 <p>Snowflakeストリーミングコネクタを使用すると、以下のようなユースケースを解放することができます:</p>
 <ul>
 <li>アイデンティティ: クレンジングされ、正規化されたリアルタイムのアイデンティティデータを使用してアイデンティティグラフを作成し、活性化します。</li>
@@ -456,7 +457,7 @@
 </ul>
 <h3 id="ステージングテーブル">ステージングテーブル</h3>
 <p>Tealiumからデータを受け取ることを想定したSnowflakeのステージングテーブルには、選択したコネクタアクションに応じて特定の列が含まれている必要があります。</p>
-<p><strong>全イベントデータを送信</strong>または<strong>全ビジターデータを送信</strong>のアクションを使用する場合、ステージングテーブルにはデータセットを受け取るための<code>VARIANT</code>列と、タイムスタンプを受け取るための列が必要です。タイムスタンプ列は、送信されるタイムスタンプデータ形式をサポートする必要があります。</p>
+<p><strong>全イベントデータを送信</strong>または<strong>全ビジターデータを送信</strong>のアクションを使用する場合、ステージングテーブルにはデータセットを受け取るための<code>VARIANT</code>列と、タイムスタンプを受け取るための列が必要です。タイムスタンプ列は、送信されるタイムスタンプのデータ形式をサポートする必要があります。</p>
 <p><strong>カスタムイベントデータを送信</strong>または<strong>カスタムビジターデータを送信</strong>を使用する場合、ステージングテーブルには各データタイプの列が必要です。各データ属性は列に割り当てられる必要があります。各属性がSnowflakeの受け入れ可能なデータタイプであり、列がこのデータタイプを受け取るために適切にフォーマットされていることを確認します。タイムスタンプをマップするには、別のタイムスタンプ列を追加する必要があります。</p>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: サポートされるJavaデータタイプ</a>を参照してください。</p>
 <h3 id="データタイプ">データタイプ</h3>
@@ -521,7 +522,7 @@
 </ul>
 <h3 id="許可するipアドレス">許可するIPアドレス</h3>
 <p>Snowflakeは、どのシステムからのリクエストを受け入れるかについて厳格なルールがあります。<a href="/ja/server-side/administration/ip-allow-list/">TealiumのIPアドレス</a>をSnowflakeの許可リストに追加する必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>us-west-1</code>とサーバーサイドプロファイルリージョンのアドレスを許可リストに追加する必要があります。これらのアドレスを許可リストに追加しないと、データを取得しようとするとエラーが表示されます。Tealiumはコネクタ構成中に<code>us-west-1</code>のIPアドレスを使用します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>us-west-1</code>とサーバーサイドプロファイルリージョンのアドレスを許可リストに追加する必要があります。これらのアドレスを許可リストに追加しないと、データを取得しようとするとエラーが表示されます。Tealiumは、コネクタの構成中に<code>us-west-1</code>のIPアドレスを使用します。</p>
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
 <p>Snowflakeストリーミングコネクタに対して、以下のSnowflakeテーブル構成を推奨します:</p>
 <ul>
@@ -554,11 +555,11 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 暗号化されたプライベートキーを使用するための暗号化されたプライベートキーパスフレーズ。プライベートキーが暗号化されていない場合は、値を割り当てないでください。</p>
 </li>
 </ul>
-<p>コネクタの認証を完了するために、以下の手順を使用して、Snowflake内で上記のユーザーを公開キー詳細で変更します:</p>
+<p>コネクタの認証を完了するために、以下の手順を使用して、上記のユーザーに公開キーの詳細をSnowflakeで変更します:</p>
 <ol>
 <li>Snowflakeで公開キーを生成します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-a-public-key">公開キーの生成</a>を参照してください。</li>
-<li>Snowflakeで<code>ALTER USER</code>コマンドを使用して公開キーを上記のユーザーに割り当てます。ユーザーの所有者またはSECURITYADMINロール以上のユーザーのみがユーザーを変更できます。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">公開キーをSnowflakeユーザーに割り当てる</a>を参照してください。<br>
-公開キーをユーザーに正常に割り当てるためには、以下を確認してください:
+<li><code>ALTER USER</code>コマンドを使用して、公開キーを上記のユーザーに割り当てます。ユーザーの所有者またはSECURITYADMINロール以上のユーザーのみがユーザーを変更できます。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">公開キーをSnowflakeユーザーに割り当てる</a>を参照してください。<br>
+公開キーをユーザーに正常に割り当てるためには、以下のことを確認してください:
 <ul>
 <li>Snowflakeのユーザー名を二重引用符(<code>&quot;</code>)で入力します。例えば、<code>&quot;SNOWFLAKE.USER&quot;</code>。</li>
 <li>改行なしで公開キーをコピーして貼り付けます。</li>
@@ -568,7 +569,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>Snowflakeは公開キーとプライベートキーのローテーションをサポートしています。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-rotation">キーペアローテーションの構成</a>を参照してください。</p>
 <h2 id="アクション-1">アクション</h2>
-<p>以下のセクションでは、各アクションでサポートされているパラメータをリストアップしています。</p>
+<p>以下のセクションでは、各アクションでサポートされているパラメータをリストアップします。</p>
 <h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
@@ -688,7 +689,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 <td>訪問データを記録するための<strong>VARIANT</strong>列を選択します。</td>
 </tr>
 <tr>
-<td>現在の訪問データを含める</td>
+<td>現在の訪問データを含む</td>
 <td>このオプションを選択すると、訪問データと現在の訪問データの両方がSnowflakeに送信されるデータに含まれます。</td>
 </tr>
 <tr>
@@ -697,23 +698,45 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 </tr>
 <tr>
 <td>タイムスタンプ属性</td>
-<td>(オプション) デフォルトでは、アクションの現在のタイムスタンプが送信されます。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: サポートされているJavaデータタイプ</a>を参照してください。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
+<td>（オプション）デフォルトでは、アクションの現在のタイムスタンプを送信します。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>を参照してください。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
 </tr>
 </tbody>
 </table>
+<h2 id="チャンネルの削除">チャンネルの削除</h2>
+<p>Tealiumが作成したチャンネルを削除するには、CSV形式のチャンネルリストを提供してください。チャンネルのリストは、Snowflakeインスタンスで<strong>SHOW CHANNELS</strong>を実行することで取得できます。Tealiumが作成したすべてのチャンネルを削除するには、リストを空白にしてください。</p>
+<p>削除するチャンネルを構成するには、次の手順を使用します：</p>
+<ol>
+<li><strong>Server-Side &gt; EventStream &gt; Event Connectors</strong>または<strong>Server-Side &gt; AudienceStream &gt; Audience Connectors</strong>に移動します。</li>
+<li>Snowflakeコネクタを選択します。</li>
+<li><strong>Remote Configuration</strong>の下で<strong>Drop Channel</strong>をクリックします。</li>
+<li>次の情報を入力します：
+<ul>
+<li><strong>データベース名</strong><br>
+必須。テーブルのSnowflakeデータベース名。</li>
+<li><strong>スキーマ名</strong><br>
+必須。テーブルで使用されるスキーマの名前。</li>
+<li><strong>テーブル名</strong><br>
+必須。Snowflakeテーブルの名前。</li>
+<li><strong>チャンネル名</strong><br>
+削除するSnowflakeチャンネルの名前、CSV形式。チャンネル名が提供されない場合、すべてのチャンネルが削除されます。</li>
+</ul>
+</li>
+<li><strong>Drop</strong>をクリックします。</li>
+</ol>
+<p>テーブルのリストが大きく、削除に30秒以上かかる場合、チャンネルが削除されなかったという誤ったエラーが発生する可能性があります。チャンネルが正常に削除されたことを確認するために、Snowflakeインスタンスで<strong>SHOW CHANNELS</strong>を実行することをお勧めします。</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/server-side-connectors/splunk-connector/"
+  <a href="/ja/server-side-connectors/split-io-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Splunk</div>
+      <div>Split.io</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Splunk"</title>
+      <title>"Split.io"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -761,7 +784,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月16日
+          <p>最終更新日 ::  2025年February月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -789,6 +812,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">全イベントデータを送信</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BC%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムビジターデータを送信</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E5%85%A8%E4%BD%93%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">訪問データ全体を送信</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">チャンネルの削除</a></li>
               </nav>
   </aside></nav>
 
@@ -1071,6 +1095,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
