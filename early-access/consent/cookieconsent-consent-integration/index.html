@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "13",
+        reading_time  : "14",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -137,7 +137,8 @@
         <ul class="pl2  ea-server-side-connectors desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li></ul>
-      </li><li class="relative w-100 fw8 f5 ">
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/administration/ai-assistant/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ai-assistant">Tealium AI Assistant</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-api">Tealium API</a>
         <ul class="pl2  ea-api desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v3">Tealium API v3</a>
@@ -196,14 +197,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This guide provides detailed steps for integrating the CookieConsent open-source consent management platform (CMP) with Tealium iQ.
+      This guide provides detailed steps for integrating the CookieConsent open-source consent management tool with Tealium iQ.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>This Early Access (EA) product is available without a feature flag or waiting list. As an EA product, its use and performance are not subject to the Service Level Agreement (SLA) or performance warranties applicable to Tealium’s licensed general availability services. We recommend thorough testing, particularly for critical custom implementations like consent. For feedback, questions, or assistance, please contact your Customer Success Manager.</p>
-<p>CookieConsent is a flexible, open-source CMP integrated with Tealium <a href="/iq-tag-management/consent/consent-integrations/about/">Consent Integrations</a>. This guide outlines how to configure CookieConsent using Consent Integration in Tealium iQ. Combined with Consent Integrations, CookieConsent offers a better experience and additional features not found in the <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a>, including:</p>
+<p>CookieConsent is a flexible, open-source consent management tool that can be enforced with Tealium <a href="/iq-tag-management/consent/consent-integrations/about/">Consent Integrations</a>. This guide outlines how to configure CookieConsent using Consent Integration in Tealium iQ. Combined with Consent Integrations, CookieConsent offers a better experience and additional features not found in the <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a>, including:</p>
 <ul>
 <li>A/B testing for consent banners.</li>
 <li>Robust enforcement and <a href="/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/">queue system</a> to ensure no unconsented data is tracked.</li>
@@ -212,6 +213,9 @@
 <li>Collect (and similar tags) can be set to <a href="/iq-tag-management/consent/consent-integrations/about/#tag-refire">refire</a>, triggering both &ldquo;necessary&rdquo; and &ldquo;targeting&rdquo; tracking on the server-side with clearly marked events to avoid duplicate tracking.</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Like the current <a href="https://tealium.com/blog/data-strategy/the-iabs-transparency-and-consent-framework-and-tealium/">Consent Manager</a>, Interactive Advertising Bureau (IAB) Framework - Transparency and Consent Framework (TCF) is not supported by CookieConsent. Customers requiring an IAB Framework - TCF CMP or a Google-certified CMP will need to use an alternative solution. For more information, see <a href="https://cookieconsent.orestbida.com/essential/introduction.html#is-cookieconsent-the-right-tool-for-you">CookieConsent: Is CookieConsent the right tool for you?</a>.</p>
+<h2 id="whos-this-for">Who&rsquo;s this for?</h2>
+<p>CookieConsent is a consent management tool that provides a flexible, open-source approach to managing user consent. Unlike a full consent management platform (CMP), which typically includes additional features such as policy enforcement, analytics, and vendor compliance management, CookieConsent is designed to be a transparent, opinion-free tool that allows businesses to implement consent controls according to their specific needs.</p>
+<p>If you need a customizable and developer-friendly tool that seamlessly integrates with Tealium, CookieConsent is a great option. However, if you require a comprehensive CMP solution, including IAB Framework support or Google-certified consent management, you will need an alternative solution.</p>
 <h2 id="requirements">Requirements</h2>
 <p>Creating a CookieConsent consent integration requires the following:</p>
 <ul>
@@ -219,7 +223,7 @@
 <li>Tealium Consent Integrations</li>
 </ul>
 <h3 id="why-use-it">Why use it?</h3>
-<p>CookieConsent replaces Tealium <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a> for customers who seek a robust, non-commercial CMP. It delivers a dependable consent capture layer with flexible and robust enforcement, tailored to meet complex compliance needs.</p>
+<p>CookieConsent replaces Tealium <a href="/iq-tag-management/consent/consent-management/about/">Consent Manager</a> for customers who seek a robust, non-commercial consent management tool. It delivers a dependable consent capture layer with flexible and robust enforcement, which can be easily tailored to meet complex compliance needs.</p>
 <h3 id="categories-services-and-purposes-explained">Categories, services, and purposes explained</h3>
 <p>CookieConsent V3 supports both categories and service-level consent options:</p>
 <ul>
@@ -567,7 +571,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealiumAccountForLogging</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;services-caleb&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealiumProfileForLogging</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;main&#39;</span>
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Retrieve all the fields from the CMP (CookieConsentV3)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Retrieve all the fields from the consent management tool (CookieConsentV3)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getCookie</span>();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">preferences</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getUserPreferences</span>();
 </span></span><span style="display:flex;"><span>
@@ -614,7 +618,7 @@
     </div>
 </div>
 </div>
-<p>Tealium hosts the CMP files for stability and convenience:</p>
+<p>Tealium hosts the files for stability and convenience:</p>
 <ul>
 <li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js</a></li>
 <li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css</a></li>
@@ -756,7 +760,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 29, 2025 
+          <p>This page was last updated:  February 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -900,6 +904,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           DataAccess
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
         </a>
     </li>
   
@@ -1094,6 +1106,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/server-side-connectors/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Server-Side Connectors
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/administration/ai-assistant/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium AI Assistant
       </a>
       </li>
       
