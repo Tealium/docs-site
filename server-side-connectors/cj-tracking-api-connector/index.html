@@ -112,6 +112,7 @@
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-s3-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-s3-connector">Amazon S3</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector-setup-guide-deprecated">Amplitude (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -284,6 +285,7 @@
         <a href="/server-side-connectors/sendgrid-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sendgrid-connector">SendGrid</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/session-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".session-ai-connector">Session AI</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/sklik-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sklik-connector">Sklik</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/slack-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smart-digital/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -379,13 +381,18 @@
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: CJ API</li>
-<li>API Endpoint: <code>https://tracking.api.cj.com</code></li>
+<li>API Endpoint:
+<ul>
+<li>Without trace (live endpoint): <code>https://tracking.api.cj.com/graphql/</code></li>
+<li>With trace (test endpoint): <code>https://tracking.api.cj.com/graphqltest/</code></li>
+</ul>
+</li>
 <li>Documentation: <a href="https://developers.cj.com/graphql/reference/private/Tracking">CJ API</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
-<li>Max number of requests: 10000</li>
+<li>Max number of requests: 10,000</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 100 MB</li>
 </ul>
@@ -407,15 +414,15 @@
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Personal Access Token</strong><br>
-<strong>Required</strong>: Your CJ Tracking API personal access token. Generate your personal access token by navigating to the <a href="https://developers.cj.com/account/personal-access-tokens">CJ personal access tokens</a> page and logging into your account.</li>
+Required. Your CJ Tracking API personal access token. Generate your personal access token by navigating to the <a href="https://developers.cj.com/account/personal-access-tokens">CJ personal access tokens</a> page and logging into your account.</li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action--send-order-data">Action — Send Order Data</h3>
 <h4 id="parameters">Parameters</h4>
@@ -430,632 +437,632 @@
 <tbody>
 <tr>
 <td style="text-align:left">Enterprise ID</td>
-<td style="text-align:left">enterpriseId</td>
-<td style="text-align:left">(Required) The unique client ID assigned by CJ&rsquo;s Client Integration team.</td>
+<td style="text-align:left"><code>enterpriseId</code></td>
+<td style="text-align:left">Required. The unique client ID assigned by CJ&rsquo;s Client Integration team.</td>
 </tr>
 <tr>
 <td style="text-align:left">Action Tracker ID</td>
-<td style="text-align:left">actionTrackerId</td>
-<td style="text-align:left">(Required) The static value given by the CJ&rsquo;s Client Integration team for the action taken.</td>
+<td style="text-align:left"><code>actionTrackerId</code></td>
+<td style="text-align:left">Required. The static value given by CJ&rsquo;s Client Integration team for the action taken.</td>
 </tr>
 <tr>
 <td style="text-align:left">CJ Event</td>
-<td style="text-align:left">ciEvent</td>
-<td style="text-align:left">(Required) CJ-defined correlating event ID (also known as the CJ Click ID).</td>
+<td style="text-align:left"><code>ciEvent</code></td>
+<td style="text-align:left">Required. CJ-defined correlating event ID (also known as the CJ Click ID).</td>
 </tr>
 <tr>
 <td style="text-align:left">Order ID</td>
-<td style="text-align:left">orderId</td>
-<td style="text-align:left">(Required) Client-defined Order identifier.</td>
+<td style="text-align:left"><code>orderId</code></td>
+<td style="text-align:left">Required. Client-defined Order identifier.</td>
 </tr>
 <tr>
 <td style="text-align:left">Event Time</td>
-<td style="text-align:left">eventTime</td>
-<td style="text-align:left">(Required) The timestamp of the event.</td>
+<td style="text-align:left"><code>eventTime</code></td>
+<td style="text-align:left">Required. The timestamp of the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Order Amount</td>
-<td style="text-align:left">amount</td>
-<td style="text-align:left">(Required) The total order amount.</td>
+<td style="text-align:left"><code>amount</code></td>
+<td style="text-align:left">Required. The total order amount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Order Discount</td>
-<td style="text-align:left">discount</td>
+<td style="text-align:left"><code>discount</code></td>
 <td style="text-align:left">The discount applied to the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Coupon Code</td>
-<td style="text-align:left">coupon</td>
+<td style="text-align:left"><code>coupon</code></td>
 <td style="text-align:left">The coupon code applied to the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
-<td style="text-align:left">currency</td>
+<td style="text-align:left"><code>currency</code></td>
 <td style="text-align:left">The currency used on the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product Prices</td>
-<td style="text-align:left">unitPrice</td>
+<td style="text-align:left"><code>unitPrice</code></td>
 <td style="text-align:left">An array of the unit price of each product in the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product SKUs</td>
-<td style="text-align:left">sku</td>
+<td style="text-align:left"><code>sku</code></td>
 <td style="text-align:left">An array of each product&rsquo;s SKU in the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product Quantities</td>
-<td style="text-align:left">quantity</td>
+<td style="text-align:left"><code>quantity</code></td>
 <td style="text-align:left">An array of the amount ordered of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product Discounts</td>
-<td style="text-align:left">discount</td>
+<td style="text-align:left"><code>discount</code></td>
 <td style="text-align:left">An array of the amount of a product discount applied to the product&rsquo;s unit price.</td>
 </tr>
 <tr>
 <td style="text-align:left">Advertiser Vertical</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">Supported values are: <strong>Retail</strong>, <strong>Finance</strong>, <strong>Travel</strong>, <strong>NetworkServices</strong>.</td>
+<td style="text-align:left">Supported values are: <code>Retail</code>, <code>Finance</code>, <code>Travel</code>, <code>NetworkServices</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Ancillary Spend</td>
-<td style="text-align:left">ancillarySpend</td>
+<td style="text-align:left"><code>ancillarySpend</code></td>
 <td style="text-align:left">The ancillary spend amount for the transaction (Advertiser-only attribute),</td>
 </tr>
 <tr>
 <td style="text-align:left">Annual Fee</td>
-<td style="text-align:left">annualFee</td>
+<td style="text-align:left"><code>annualFee</code></td>
 <td style="text-align:left">Annual fee associated with this product.</td>
 </tr>
 <tr>
 <td style="text-align:left">Application Status</td>
-<td style="text-align:left">applicationStatus</td>
+<td style="text-align:left"><code>applicationStatus</code></td>
 <td style="text-align:left">Identifies the status of the application at the time the transaction is sent to CJ.</td>
 </tr>
 <tr>
 <td style="text-align:left">Apr</td>
-<td style="text-align:left">apr</td>
+<td style="text-align:left"><code>apr</code></td>
 <td style="text-align:left">APR at time of application approval.</td>
 </tr>
 <tr>
 <td style="text-align:left">Apr Transfer</td>
-<td style="text-align:left">aprTransfer</td>
+<td style="text-align:left"><code>aprTransfer</code></td>
 <td style="text-align:left">APR for transfers.</td>
 </tr>
 <tr>
 <td style="text-align:left">Apr Transfer Time</td>
-<td style="text-align:left">aprTransferTime</td>
+<td style="text-align:left"><code>aprTransferTime</code></td>
 <td style="text-align:left">APR transfer period in months.</td>
 </tr>
 <tr>
 <td style="text-align:left">Booking Date</td>
-<td style="text-align:left">bookingDate</td>
+<td style="text-align:left"><code>bookingDate</code></td>
 <td style="text-align:left">The date booking was made in format <code>YYYY-MM-DD</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Booking Status</td>
-<td style="text-align:left">bookingStatus</td>
-<td style="text-align:left">The status of the booking (for example: confirmed, pending, et cetera).</td>
+<td style="text-align:left"><code>bookingStatus</code></td>
+<td style="text-align:left">The status of the booking. For example: <code>confirmed</code>, <code>pending</code>, etc.</td>
 </tr>
 <tr>
 <td style="text-align:left">Booking Value Post Tax</td>
-<td style="text-align:left">bookingValuePostTax</td>
+<td style="text-align:left"><code>bookingValuePostTax</code></td>
 <td style="text-align:left">The value of the booking after taxes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Booking Value Pre Tax</td>
-<td style="text-align:left">bookingValuePreTax</td>
+<td style="text-align:left"><code>bookingValuePreTax</code></td>
 <td style="text-align:left">The value of the booking before taxes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Brand</td>
-<td style="text-align:left">brand</td>
+<td style="text-align:left"><code>brand</code></td>
 <td style="text-align:left">The brand of item or items purchased.</td>
 </tr>
 <tr>
 <td style="text-align:left">Brand ID</td>
-<td style="text-align:left">brandId</td>
+<td style="text-align:left"><code>brandId</code></td>
 <td style="text-align:left">The brand identifier of the item booked.</td>
 </tr>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left">businessUnit</td>
+<td style="text-align:left"><code>businessUnit</code></td>
 <td style="text-align:left">The business unit the customer purchased through.</td>
 </tr>
 <tr>
 <td style="text-align:left">Campaign ID</td>
-<td style="text-align:left">campaignId</td>
+<td style="text-align:left"><code>campaignId</code></td>
 <td style="text-align:left">The advertiser-specific marketing campaign ID.</td>
 </tr>
 <tr>
 <td style="text-align:left">Campaign Name</td>
-<td style="text-align:left">campaignName</td>
+<td style="text-align:left"><code>campaignName</code></td>
 <td style="text-align:left">The advertiser-specific marketing campaign name.</td>
 </tr>
 <tr>
 <td style="text-align:left">Card Category</td>
-<td style="text-align:left">cardCategory</td>
+<td style="text-align:left"><code>cardCategory</code></td>
 <td style="text-align:left">The card category&rsquo;s name.</td>
 </tr>
 <tr>
 <td style="text-align:left">Car Options</td>
-<td style="text-align:left">carOptions</td>
-<td style="text-align:left">Other car options chosen during the transaction (for example, insurance).</td>
+<td style="text-align:left"><code>carOptions</code></td>
+<td style="text-align:left">Other car options chosen during the transaction. For example, <code>insurance</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Cash Advance Fee</td>
-<td style="text-align:left">cashAdvanceFee</td>
+<td style="text-align:left"><code>cashAdvanceFee</code></td>
 <td style="text-align:left">The cash advance fee associated with this product.</td>
 </tr>
 <tr>
 <td style="text-align:left">Category</td>
-<td style="text-align:left">category</td>
+<td style="text-align:left"><code>category</code></td>
 <td style="text-align:left">The category of the item. For example, if a customer applies for a Personal Cash-back Credit card: <code>service_type=cc&amp;item_type=personal&amp;category=cashback</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">City</td>
-<td style="text-align:left">city</td>
+<td style="text-align:left"><code>city</code></td>
 <td style="text-align:left">The city name of the hotel or event&rsquo;s location.</td>
 </tr>
 <tr>
 <td style="text-align:left">Class</td>
-<td style="text-align:left">class</td>
+<td style="text-align:left"><code>class</code></td>
 <td style="text-align:left">The class rating of the item booked or purchased.</td>
 </tr>
 <tr>
 <td style="text-align:left">Confirmation Number</td>
-<td style="text-align:left">confirmationNumber</td>
-<td style="text-align:left">The confirmation number for the provider (for example, a flight confirmation number from an airline).</td>
+<td style="text-align:left"><code>confirmationNumber</code></td>
+<td style="text-align:left">The confirmation number for the provider. For example, a flight confirmation number from an airline.</td>
 </tr>
 <tr>
 <td style="text-align:left">Contract Length</td>
-<td style="text-align:left">contractLength</td>
+<td style="text-align:left"><code>contractLength</code></td>
 <td style="text-align:left">The length of the contract, in months.</td>
 </tr>
 <tr>
 <td style="text-align:left">Contract Type</td>
-<td style="text-align:left">contractType</td>
+<td style="text-align:left"><code>contractType</code></td>
 <td style="text-align:left">An advertiser-specific description of the contract.</td>
 </tr>
 <tr>
 <td style="text-align:left">Country Code</td>
-<td style="text-align:left">countryCode</td>
+<td style="text-align:left"><code>countryCode</code></td>
 <td style="text-align:left">The country where the transaction occurred.</td>
 </tr>
 <tr>
 <td style="text-align:left">Coupon Discount</td>
-<td style="text-align:left">couponDiscount</td>
+<td style="text-align:left"><code>couponDiscount</code></td>
 <td style="text-align:left">Amount discounted from any coupon used.</td>
 </tr>
 <tr>
 <td style="text-align:left">Coupon Type</td>
-<td style="text-align:left">couponType</td>
+<td style="text-align:left"><code>couponType</code></td>
 <td style="text-align:left">The type of coupon used.</td>
 </tr>
 <tr>
 <td style="text-align:left">Credit Line</td>
-<td style="text-align:left">creditLine</td>
+<td style="text-align:left"><code>creditLine</code></td>
 <td style="text-align:left">The amount of credit extended to the customer.</td>
 </tr>
 <tr>
 <td style="text-align:left">Credit Quality</td>
-<td style="text-align:left">creditQuality</td>
+<td style="text-align:left"><code>creditQuality</code></td>
 <td style="text-align:left">Quality of customer&rsquo;s credit. Supported values are: 300-579=Very Poor, 580-669=Fair, 670-739=Good, 740-799=Very Good, 800-850=Exceptional.</td>
 </tr>
 <tr>
 <td style="text-align:left">Credit Report</td>
-<td style="text-align:left">creditReport</td>
+<td style="text-align:left"><code>creditReport</code></td>
 <td style="text-align:left">If the customer received a credit report, purchased it, got a free report, or started a trial for a reporting service.</td>
 </tr>
 <tr>
 <td style="text-align:left">Cruise Type</td>
-<td style="text-align:left">cruiseType</td>
-<td style="text-align:left">The type of cruise (for example: Alaskan, Caribbean, et cetera).</td>
+<td style="text-align:left"><code>cruiseType</code></td>
+<td style="text-align:left">The type of cruise. For example: <code>Alaskan</code>, <code>Caribbean</code>, etc.</td>
 </tr>
 <tr>
 <td style="text-align:left">Customer Country</td>
-<td style="text-align:left">customerCountry</td>
+<td style="text-align:left"><code>customerCountry</code></td>
 <td style="text-align:left">The country the customer purchasing is in, per ISO 3166-1 alpha 2 country codes. For example, <code>US</code>, <code>UK</code>, <code>AU</code>, <code>FR</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Customer Segment</td>
-<td style="text-align:left">customerSegment</td>
+<td style="text-align:left"><code>customerSegment</code></td>
 <td style="text-align:left">The advertiser-specific customer segment.</td>
 </tr>
 <tr>
 <td style="text-align:left">Customer Status</td>
-<td style="text-align:left">customerStatus</td>
+<td style="text-align:left"><code>customerStatus</code></td>
 <td style="text-align:left">If the customer is new or existing.</td>
 </tr>
 <tr>
 <td style="text-align:left">Customer Type</td>
-<td style="text-align:left">customerType</td>
-<td style="text-align:left">The type of customer (for example: company, individual consumer, business, leisure).</td>
+<td style="text-align:left"><code>customerType</code></td>
+<td style="text-align:left">The type of customer. For example: <code>company</code>, <code>individual consumer</code>, <code>business</code>, <code>leisure</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Delivery</td>
-<td style="text-align:left">delivery</td>
+<td style="text-align:left"><code>delivery</code></td>
 <td style="text-align:left">The method of delivery.</td>
 </tr>
 <tr>
 <td style="text-align:left">Description</td>
-<td style="text-align:left">description</td>
+<td style="text-align:left"><code>description</code></td>
 <td style="text-align:left">Product or card description.</td>
 </tr>
 <tr>
 <td style="text-align:left">Destination City</td>
-<td style="text-align:left">destinationCity</td>
+<td style="text-align:left"><code>destinationCity</code></td>
 <td style="text-align:left">The destination city&rsquo;s name.</td>
 </tr>
 <tr>
 <td style="text-align:left">Destination Country</td>
-<td style="text-align:left">destinationCountry</td>
+<td style="text-align:left"><code>destinationCountry</code></td>
 <td style="text-align:left">The service destination&rsquo;s country, formatted using ISO 3166-1 alpha 2 country codes. For example, <code>US</code>, <code>UK</code>, <code>AU</code>, <code>FR</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Destination ID</td>
-<td style="text-align:left">destinationId</td>
-<td style="text-align:left">The service destination ID, typically an advertiser-defined code representing a destination city or destination state/province (for example: <code>728660</code>).</td>
+<td style="text-align:left"><code>destinationId</code></td>
+<td style="text-align:left">The service destination ID, typically an advertiser-defined code representing a destination city or destination state/province. For example: <code>728660</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Destination State</td>
-<td style="text-align:left">destinationState</td>
+<td style="text-align:left"><code>destinationState</code></td>
 <td style="text-align:left">The service destination state/province, formatted using ISO 3166-2 state codes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Domestic</td>
-<td style="text-align:left">domestic</td>
+<td style="text-align:left"><code>domestic</code></td>
 <td style="text-align:left">If the customer resides in the United States.</td>
 </tr>
 <tr>
 <td style="text-align:left">Dropoff Iata</td>
-<td style="text-align:left">dropoffIata</td>
-<td style="text-align:left">IATA code for dropoff location, if it&rsquo;s at an airport.</td>
+<td style="text-align:left"><code>dropoffIata</code></td>
+<td style="text-align:left">IATA code for dropoff location, if the dropoff is at an airport.</td>
 </tr>
 <tr>
 <td style="text-align:left">Dropoff ID</td>
-<td style="text-align:left">dropoffId</td>
-<td style="text-align:left">Unique car rental agency ID for dropoff location.</td>
+<td style="text-align:left"><code>dropoffId</code></td>
+<td style="text-align:left">Unique car rental agency ID for the dropoff location.</td>
 </tr>
 <tr>
 <td style="text-align:left">Duration</td>
-<td style="text-align:left">duration</td>
+<td style="text-align:left"><code>duration</code></td>
 <td style="text-align:left">Duration of event or item in days, such as nights for a hotel stay or length of a trial subscription.</td>
 </tr>
 <tr>
 <td style="text-align:left">End Date Time</td>
-<td style="text-align:left">endDateTime</td>
-<td style="text-align:left">The check-out date/time, departure date/time, et cetera)</td>
+<td style="text-align:left"><code>endDateTime</code></td>
+<td style="text-align:left">The check-out date/time, departure date/time, etc.</td>
 </tr>
 <tr>
 <td style="text-align:left">Flight Fare Type</td>
-<td style="text-align:left">flightFareType</td>
-<td style="text-align:left">The type of flight fare (for example &ldquo;Gotta Get Away&rdquo;).</td>
+<td style="text-align:left"><code>flightFareType</code></td>
+<td style="text-align:left">The type of flight fare. For example <code>Gotta Get Away</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Flight Options</td>
-<td style="text-align:left">flightOptions</td>
-<td style="text-align:left">Other options selected for a flight package (for example, wiki).</td>
+<td style="text-align:left"><code>flightOptions</code></td>
+<td style="text-align:left">Other options selected for a flight package. For example, <code>wiki</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Flight Type</td>
-<td style="text-align:left">flightType</td>
-<td style="text-align:left">The type of flight (for example, direct, layover, overnight).</td>
+<td style="text-align:left"><code>flightType</code></td>
+<td style="text-align:left">The type of flight. For example, <code>direct</code>, <code>layover</code>, <code>overnight</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Flyer Miles</td>
-<td style="text-align:left">flyerMiles</td>
+<td style="text-align:left"><code>flyerMiles</code></td>
 <td style="text-align:left">If flyer miles were earned from this flight.</td>
 </tr>
 <tr>
 <td style="text-align:left">Funded Amount</td>
-<td style="text-align:left">fundedAmount</td>
-<td style="text-align:left">Account of account funding.</td>
+<td style="text-align:left"><code>fundedAmount</code></td>
+<td style="text-align:left">Account of the account funding.</td>
 </tr>
 <tr>
 <td style="text-align:left">Funded Currency</td>
-<td style="text-align:left">fundedCurrency</td>
+<td style="text-align:left"><code>fundedCurrency</code></td>
 <td style="text-align:left">The currency of the account&rsquo;s initial funding.</td>
 </tr>
 <tr>
 <td style="text-align:left">Genre</td>
-<td style="text-align:left">genre</td>
-<td style="text-align:left">The entertainment category or genre (for example, books, movies, streaming, music, et cetera); transaction-level only.</td>
+<td style="text-align:left"><code>genre</code></td>
+<td style="text-align:left">The entertainment category or genre. For example, <code>books</code>, <code>movies</code>, <code>streaming</code>, <code>music</code>, etc. This parameter is transaction-level only.</td>
 </tr>
 <tr>
 <td style="text-align:left">Guests</td>
-<td style="text-align:left">guests</td>
+<td style="text-align:left"><code>guests</code></td>
 <td style="text-align:left">The number of guests.</td>
 </tr>
 <tr>
 <td style="text-align:left">Iata</td>
-<td style="text-align:left">iata</td>
+<td style="text-align:left"><code>iata</code></td>
 <td style="text-align:left">The code for each city in a flight schedule in a comma-separated list; commas must be URL-encoded.</td>
 </tr>
 <tr>
 <td style="text-align:left">Introductory Apr</td>
-<td style="text-align:left">introductoryApr</td>
-<td style="text-align:left">The intro APR for purchases. If the intro APR is not different than overall APR, use the &ldquo;APR&rdquo; parameter.</td>
+<td style="text-align:left"><code>introductoryApr</code></td>
+<td style="text-align:left">The intro APR for purchases. If the introductory APR is not different than overall APR, use the <strong>APR</strong> parameter.</td>
 </tr>
 <tr>
 <td style="text-align:left">Introductory Apr Time</td>
-<td style="text-align:left">introductoryAprTime</td>
+<td style="text-align:left"><code>introductoryAprTime</code></td>
 <td style="text-align:left">The introductory APR period in months.</td>
 </tr>
 <tr>
 <td style="text-align:left">Item ID</td>
-<td style="text-align:left">itemId</td>
-<td style="text-align:left">The ID for item or items purchased. If multiple items, the parameter will use a comma-separated list.</td>
+<td style="text-align:left"><code>itemId</code></td>
+<td style="text-align:left">The ID for item or items purchased. If multiple items, the parameter uses a comma-separated list.</td>
 </tr>
 <tr>
 <td style="text-align:left">Item Name</td>
-<td style="text-align:left">itemName</td>
+<td style="text-align:left"><code>itemName</code></td>
 <td style="text-align:left">The name of the purchased item.</td>
 </tr>
 <tr>
 <td style="text-align:left">Item Type</td>
-<td style="text-align:left">itemType</td>
+<td style="text-align:left"><code>itemType</code></td>
 <td style="text-align:left">The type of item. For example, if a customer applies for a Personal Cash-back Credit card: <code>service_type=cc&amp;item_type=personal&amp;category=cashback</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">Itinerary ID</td>
-<td style="text-align:left">itineraryId</td>
+<td style="text-align:left"><code>itineraryId</code></td>
 <td style="text-align:left">The booking itinerary ID.</td>
 </tr>
 <tr>
 <td style="text-align:left">Lifestage</td>
-<td style="text-align:left">lifestage</td>
-<td style="text-align:left">The general demographic (such as new mover or student or Small biz) that indicate how and why a card will be used.</td>
+<td style="text-align:left"><code>lifestage</code></td>
+<td style="text-align:left">The general demographic (such as new mover or student or small business) that indicates how and why a card will be used.</td>
 </tr>
 <tr>
 <td style="text-align:left">Location</td>
-<td style="text-align:left">location</td>
+<td style="text-align:left"><code>location</code></td>
 <td style="text-align:left">An advertiser-specific ID or name that can be used to identify the store or location the customer will visit or has visited.</td>
 </tr>
 <tr>
 <td style="text-align:left">Loyalty Earned</td>
-<td style="text-align:left">loyaltyEarned</td>
+<td style="text-align:left"><code>loyaltyEarned</code></td>
 <td style="text-align:left">The level of the customer&rsquo;s loyalty status.</td>
 </tr>
 <tr>
 <td style="text-align:left">Loyalty First Time Signup</td>
-<td style="text-align:left">loyaltyFirstTimeSignup</td>
+<td style="text-align:left"><code>loyaltyFirstTimeSignup</code></td>
 <td style="text-align:left">If this order resulted in the consumer joining the loyalty program.</td>
 </tr>
 <tr>
 <td style="text-align:left">Loyalty Level</td>
-<td style="text-align:left">loyaltyLevel</td>
+<td style="text-align:left"><code>loyaltyLevel</code></td>
 <td style="text-align:left">If loyalty points were used.</td>
 </tr>
 <tr>
 <td style="text-align:left">Loyalty Redeemed</td>
-<td style="text-align:left">loyaltyRedeemed</td>
+<td style="text-align:left"><code>loyaltyRedeemed</code></td>
 <td style="text-align:left">if loyalty points were earned.</td>
 </tr>
 <tr>
 <td style="text-align:left">Loyalty Status</td>
-<td style="text-align:left">loyaltyStatus</td>
+<td style="text-align:left"><code>loyaltyStatus</code></td>
 <td style="text-align:left">The customer&rsquo;s status of membership.</td>
 </tr>
 <tr>
 <td style="text-align:left">Margin</td>
-<td style="text-align:left">margin</td>
+<td style="text-align:left"><code>margin</code></td>
 <td style="text-align:left">The advertiser-only attribute that indicates the profit margin for the transaction.</td>
 </tr>
 <tr>
 <td style="text-align:left">Marketing Channel</td>
-<td style="text-align:left">marketingChannel</td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><code>marketingChannel</code></td>
+<td style="text-align:left">The marketing channel.</td>
 </tr>
 <tr>
 <td style="text-align:left">Minimum Balance</td>
-<td style="text-align:left">minimumBalance</td>
+<td style="text-align:left"><code>minimumBalance</code></td>
 <td style="text-align:left">The value of the minimum cash balance requirement for the account.</td>
 </tr>
 <tr>
 <td style="text-align:left">Minimum Deposit</td>
-<td style="text-align:left">minimumDeposit</td>
+<td style="text-align:left"><code>minimumDeposit</code></td>
 <td style="text-align:left">The minimum deposit amount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Minimum Stay Duration</td>
-<td style="text-align:left">minimumStayDuration</td>
+<td style="text-align:left"><code>minimumStayDuration</code></td>
 <td style="text-align:left">The minimum required stay duration, in days.</td>
 </tr>
 <tr>
 <td style="text-align:left">No Cancellation</td>
-<td style="text-align:left">noCancellation</td>
+<td style="text-align:left"><code>noCancellation</code></td>
 <td style="text-align:left">If a no cancellation allowed policy exists on the transaction, <code>yes</code> or <code>no</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Order Subtotal</td>
-<td style="text-align:left">orderSubtotal</td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><code>orderSubtotal</code></td>
+<td style="text-align:left">The subtotal of the order.</td>
 </tr>
 <tr>
 <td style="text-align:left">Origin City</td>
-<td style="text-align:left">originCity</td>
+<td style="text-align:left"><code>originCity</code></td>
 <td style="text-align:left">The service origin city name, such as New York.</td>
 </tr>
 <tr>
 <td style="text-align:left">Origin Country</td>
-<td style="text-align:left">originCountry</td>
+<td style="text-align:left"><code>originCountry</code></td>
 <td style="text-align:left">The service origin country code, formatted using ISO 3166-1 alpha 2 country codes. For example, <code>US</code>, <code>UK</code>, <code>AU</code>, <code>FR</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Origin State</td>
-<td style="text-align:left">originState</td>
+<td style="text-align:left"><code>originState</code></td>
 <td style="text-align:left">The service origin state/province formatted using ISO 3166-2 state codes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Paid at Booking Post Tax</td>
-<td style="text-align:left">paidAtBookingPostTax</td>
+<td style="text-align:left"><code>paidAtBookingPostTax</code></td>
 <td style="text-align:left">Amount paid at booking after taxes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Paid at Booking Pre Tax</td>
-<td style="text-align:left">paidAtBookingPreTax</td>
+<td style="text-align:left"><code>paidAtBookingPreTax</code></td>
 <td style="text-align:left">Amount paid at booking before taxes.</td>
 </tr>
 <tr>
 <td style="text-align:left">Payment Model</td>
-<td style="text-align:left">paymentMethod</td>
-<td style="text-align:left">The model of payment used (for example, advertiser-specific).</td>
+<td style="text-align:left"><code>paymentMethod</code></td>
+<td style="text-align:left">The model of payment used. For example, <code>advertiser-specific</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Pickup Iata</td>
-<td style="text-align:left">pickupIata</td>
+<td style="text-align:left"><code>pickupIata</code></td>
 <td style="text-align:left">The IATA code for an airport pickup location.</td>
 </tr>
 <tr>
 <td style="text-align:left">Pickup ID</td>
-<td style="text-align:left">pickupId</td>
+<td style="text-align:left"><code>pickupId</code></td>
 <td style="text-align:left">The unique car rental agency location ID used for pickup.</td>
 </tr>
 <tr>
 <td style="text-align:left">Platform ID</td>
-<td style="text-align:left">platformId</td>
-<td style="text-align:left">The device that the customer is using (for example, mobile, tablet, et cetera).</td>
+<td style="text-align:left"><code>platformId</code></td>
+<td style="text-align:left">The device that the customer is using. For example, <code>mobile</code>, <code>tablet</code>, etc.</td>
 </tr>
 <tr>
 <td style="text-align:left">Point of Sale</td>
-<td style="text-align:left">pointOfSale</td>
+<td style="text-align:left"><code>pointOfSale</code></td>
 <td style="text-align:left">The customer&rsquo;s point of sale.</td>
 </tr>
 <tr>
 <td style="text-align:left">Port</td>
-<td style="text-align:left">port</td>
+<td style="text-align:left"><code>port</code></td>
 <td style="text-align:left">Departure port for cruises.</td>
 </tr>
 <tr>
 <td style="text-align:left">Preorder</td>
-<td style="text-align:left">preorder</td>
+<td style="text-align:left"><code>preorder</code></td>
 <td style="text-align:left">If the customer purchased the item before it was available for sale.</td>
 </tr>
 <tr>
 <td style="text-align:left">Prepaid</td>
-<td style="text-align:left">prepaid</td>
-<td style="text-align:left">If the customer prepaid the transaction, yes or no.</td>
+<td style="text-align:left"><code>prepaid</code></td>
+<td style="text-align:left">If the customer prepaid the transaction, <code>yes</code> or <code>no</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Prequalify</td>
-<td style="text-align:left">prequalify</td>
+<td style="text-align:left"><code>prequalify</code></td>
 <td style="text-align:left">If the applicant was pre-qualified for the card.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion</td>
-<td style="text-align:left">promotion</td>
-<td style="text-align:left">The promotion applied (for example: summer sale).</td>
+<td style="text-align:left"><code>promotion</code></td>
+<td style="text-align:left">The promotion applied. For example: <code>summer sale</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Amount</td>
-<td style="text-align:left">promotionAmount</td>
-<td style="text-align:left">The numeric amount associated with the promotion (for example, if the promotion is $500 cash back, this value is <code>promotion=dollars&amp;promotion_amt=500</code>)</td>
+<td style="text-align:left"><code>promotionAmount</code></td>
+<td style="text-align:left">The numeric amount associated with the promotion. For example, if the promotion is $500 cash back, this value is <code>promotion=dollars&amp;promotion_amt=500</code>)</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Condition Threshold</td>
-<td style="text-align:left">promotionConditionThreshold</td>
+<td style="text-align:left"><code>promotionConditionThreshold</code></td>
 <td style="text-align:left">The threshold needed to get the discount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Condition Type</td>
-<td style="text-align:left">promotionConditionType</td>
+<td style="text-align:left"><code>promotionConditionType</code></td>
 <td style="text-align:left">Types of promotional conditions.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Ends</td>
-<td style="text-align:left">promotionEnds</td>
+<td style="text-align:left"><code>promotionEnds</code></td>
 <td style="text-align:left">The date the promotion ends formatted using ISO 8601 standards. For example, <code>2022-12-25T15:30:50.111Z</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Starts</td>
-<td style="text-align:left">promotionStarts</td>
+<td style="text-align:left"><code>promotionStarts</code></td>
 <td style="text-align:left">The date the promotion begins formatted using ISO 8601 standards. For example, <code>2022-12-25T15:30:50.111Z</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Promotion Type</td>
-<td style="text-align:left">promotionType</td>
+<td style="text-align:left"><code>promotionType</code></td>
 <td style="text-align:left">The promotion type.</td>
 </tr>
 <tr>
 <td style="text-align:left">Quantity</td>
-<td style="text-align:left">quantity</td>
-<td style="text-align:left">The quantity for a given SKU, simple actions only; if using an item-based action, use QTYx.</td>
+<td style="text-align:left"><code>quantity</code></td>
+<td style="text-align:left">The quantity for a given SKU, simple actions only. If you are using an item-based action, use <code>QTYx</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Rating</td>
-<td style="text-align:left">rating</td>
+<td style="text-align:left"><code>rating</code></td>
 <td style="text-align:left">The star rating of the item booked or purchased.</td>
 </tr>
 <tr>
 <td style="text-align:left">Room Type</td>
-<td style="text-align:left">roomType</td>
+<td style="text-align:left"><code>roomType</code></td>
 <td style="text-align:left">The type of room booked for a hotel or cruise.</td>
 </tr>
 <tr>
 <td style="text-align:left">Rooms</td>
-<td style="text-align:left">rooms</td>
+<td style="text-align:left"><code>rooms</code></td>
 <td style="text-align:left">The number of rooms booked.</td>
 </tr>
 <tr>
 <td style="text-align:left">Service Type</td>
-<td style="text-align:left">serviceType</td>
+<td style="text-align:left"><code>serviceType</code></td>
 <td style="text-align:left">The type of financial service the customer signed up for or purchased.</td>
 </tr>
 <tr>
 <td style="text-align:left">Ship Name</td>
-<td style="text-align:left">shipName</td>
+<td style="text-align:left"><code>shipName</code></td>
 <td style="text-align:left">The name of the cruise ship.</td>
 </tr>
 <tr>
 <td style="text-align:left">Start Date Time</td>
-<td style="text-align:left">startDateTime</td>
+<td style="text-align:left"><code>startDateTime</code></td>
 <td style="text-align:left">The check-in date/time, arrival date/time, or similar start time for the booked or purchased item.</td>
 </tr>
 <tr>
 <td style="text-align:left">State</td>
-<td style="text-align:left">state</td>
+<td style="text-align:left"><code>state</code></td>
 <td style="text-align:left">Defines the state or province where the store is located, formatted using ISO 3166-2 state codes. For example, Alaska’s code is <code>US-AK</code> and Bangkok is <code>TH-10</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Subscription Fee</td>
-<td style="text-align:left">subscriptionFee</td>
+<td style="text-align:left"><code>subscriptionFee</code></td>
 <td style="text-align:left">The cost of subscription fee featured when signing up for free trial.</td>
 </tr>
 <tr>
 <td style="text-align:left">Subscription Length</td>
-<td style="text-align:left">subscriptionLength</td>
-<td style="text-align:left">Product duration (for example: &ldquo;indefinite&rdquo; or 1 month/3 months/6 months).</td>
+<td style="text-align:left"><code>subscriptionLength</code></td>
+<td style="text-align:left">Product duration. For example: <code>indefinite</code>, <code>1 month</code>, <code>3 months</code>, or <code>6 months</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">Tax Amount</td>
-<td style="text-align:left">taxAmount</td>
+<td style="text-align:left"><code>taxAmount</code></td>
 <td style="text-align:left">The amount of tax.</td>
 </tr>
 <tr>
 <td style="text-align:left">Tax Type</td>
-<td style="text-align:left">taxType</td>
+<td style="text-align:left"><code>taxType</code></td>
 <td style="text-align:left">The type of tax.</td>
 </tr>
 <tr>
 <td style="text-align:left">Transfer Fee</td>
-<td style="text-align:left">transferFee</td>
-<td style="text-align:left">The transfer fee amount (for a credit card).</td>
+<td style="text-align:left"><code>transferFee</code></td>
+<td style="text-align:left">The transfer fee amount for a credit card.</td>
 </tr>
 <tr>
 <td style="text-align:left">Travel Type</td>
-<td style="text-align:left">travelType</td>
-<td style="text-align:left">The type of travel being booked (for example: air, car, activities, cruise, events, hotel, package, restaurants, travel guides, vacation rental, other).</td>
+<td style="text-align:left"><code>travelType</code></td>
+<td style="text-align:left">The type of travel being booked. For example: <code>air</code>, <code>car</code>, <code>activities</code>, <code>cruise</code>, <code>events</code>, <code>hotel</code>, <code>package</code>, <code>restaurants</code>, <code>travel guides</code>, <code>vacation rental</code>, <code>other</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Trip Type</td>
-<td style="text-align:left">tripType</td>
-<td style="text-align:left">The type of trip booked or purchased (for example: one-way, round-trip, multi-city, round trip + hotel).</td>
+<td style="text-align:left"><code>tripType</code></td>
+<td style="text-align:left">The type of trip booked or purchased. For example: one-way, round-trip, multi-city, round trip + hotel.</td>
 </tr>
 <tr>
 <td style="text-align:left">Upsell</td>
-<td style="text-align:left">upsell</td>
+<td style="text-align:left"><code>upsell</code></td>
 <td style="text-align:left">If the customer converted from a trial to a subscription.</td>
 </tr>
 <tr>
@@ -1125,7 +1132,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 6, 2022 
+          <p>This page was last updated:  February 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1287,6 +1294,14 @@ No</button>
   
   
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
+        </a>
+    </li>
+  
+  
+  
   
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
@@ -1425,6 +1440,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

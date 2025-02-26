@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "10",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -112,6 +112,7 @@
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-s3-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-s3-connector">Amazon S3</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector-setup-guide-deprecated">Amplitude (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -284,6 +285,7 @@
         <a href="/server-side-connectors/sendgrid-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sendgrid-connector">SendGrid</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/session-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".session-ai-connector">Session AI</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/sklik-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sklik-connector">Sklik</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/slack-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smart-digital/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -392,7 +394,7 @@
 <h2 id="how-it-works">How it Works</h2>
 <p>The Pinterest Conversions API allows advertisers to send conversion events to Pinterest without using the Pinterest tag. By mapping conversions to Pinterest campaigns, you can improve conversion visibility and receive a more accurate picture of the effectiveness of your campaigns and actions that are driving conversions. Additional benefits from Conversion API tracking include enhanced optimization and targeting, greater transparency, and enhancing reporting and analysis.</p>
 <p>The Pinterest Conversions API can receive web, in-app, or offline conversions. Events received within an hour of the event occurring are reported as web or app events. Events received outside of that window are categorized as offline events.</p>
-<p>We recommended using both the Pinterest Conversion connector and the Pinterest Tag together to maximize visibility and track conversions. You can use the Pinterest Conversion connector as a standalone solution, but using both tools together provides the best results.</p>
+<p>We recommend using both the Pinterest Conversion connector and the Pinterest Tag together to maximize visibility and track conversions. You can use the Pinterest Conversion connector as a standalone solution, but using both tools together provides the best results.</p>
 <p>Events that can be tracked include:</p>
 <ul>
 <li><strong>Add to Cart</strong> - Items are added to shopping carts.</li>
@@ -401,13 +403,13 @@
 <li><strong>Lead</strong> - Interest in product or service.</li>
 <li><strong>Page Visit</strong> - Views of primary pages, such as product pages and article pages.</li>
 <li><strong>Search</strong> - Searches on your website.</li>
-<li><strong>Signup</strong> - Sign ups for your products or services.</li>
+<li><strong>Signup</strong> - Signups for your products or services.</li>
 <li><strong>View Category</strong> - Views of category pages.</li>
 <li><strong>Watch Video</strong> - Video views.</li>
 <li><strong>User-Defined Event</strong> - Add any additional events that you’ve defined for the purpose of audience targeting. Unique events are not available for conversion reporting.</li>
 </ul>
 <h2 id="deduplication">Deduplication</h2>
-<p>When redundant implementations are put into place (for example, the Pinterest Conversion API and <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a>), deduplication is required to avoid double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions being attributed than if the connector or tag solution are used independently.</p>
+<p>If redundant implementations exist (for example, the Pinterest Conversion API and <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a>), deduplication is required to prevent double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions to be attributed than if the connector or tag solution is used independently.</p>
 <h3 id="deduplication-for-pinterest-tag-and-pinterest-conversions-api">Deduplication for Pinterest Tag and Pinterest Conversions API</h3>
 <p>The <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a> and Pinterest Conversion API use the Event ID for deduplication. Ensure this value is included when multiple sources are used to track conversion data. To find your Event IDs, complete the following steps:</p>
 <ol>
@@ -458,18 +460,19 @@
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Access Token</strong><br><strong>Required.</strong> Access Token generated through the Pinterest Ads Manager.<br>For more information, see the Pinterest <a href="https://developers.pinterest.com/docs/conversions/conversion-management/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint">Conversions Guide</a>.</li>
 <li><strong>Ad Account ID</strong><br><strong>Required.</strong> Unique identifier of an ad account. To locate your <strong>Ad Account ID</strong> in Pinterest, log into the Pinterest account that owns your advertiser account and navigate to <strong>Ads &gt; Overview</strong>. The <strong>Ad Account ID</strong> is visible in the URL path. For example, <code>ads.pinterest.com/advertiser/{ad_account_id}/...</code> .</li>
 </ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+<p>Click <strong>Done</strong> when you finish configuring the connector.</p>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action--send-conversion-event">Action — Send Conversion Event</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="event-configuration">Event Configuration</h4>
+<p>The following parameters are required:</p>
 <table>
 <thead>
 <tr>
@@ -486,33 +489,30 @@
 <td>Event Action Source</td>
 <td>Source indicating where the conversion event occurred. <br><strong>App Android</strong> - Via mobile in-app events from an Android device.<br><strong>App iOS</strong> - Via mobile in-app events from an iOS device.<br><strong>Offline</strong> - Event is from offline.<br><strong>Web</strong> - Via desktop web browsers as well as mobile web browsers.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="user-data">User Data</h4>
+<p>Data mapping must meet the following requirements:</p>
+<ul>
+<li>Map array type attributes to add multiple values.</li>
+<li>Map single value attribute to add a single value. Only single value attributes should be mapped to the <strong>Client IP Address</strong> and <strong>Client User Agent</strong> fields.</li>
+</ul>
+<p>The following parameters are required:</p>
+<table>
+<thead>
 <tr>
-<td>Event ID</td>
-<td>(Required) A unique ID string that identifies this event and can be used for deduplicating between events ingested via both the Pinterest API for Conversions and the Pinterest Tag.</td>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
-<tr>
-<td>Ad Account ID Override</td>
-<td>This setting overrides Pinterest <strong>Ad Account ID</strong> used in the connector configuration section. Either <strong>Ad Account ID Override</strong> or <strong>Ad Account ID</strong> in the connector configuration section must be provided.</td>
-</tr>
-<tr>
-<td>Event Time</td>
-<td>Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. The event time cannot be in the future of when Pinterest receives the request. If this field is not mapped, it will be initialized with the current timestamp.</td>
-</tr>
-<tr>
-<td>Event Source URL</td>
-<td>URL of the web conversion event.</td>
-</tr>
-<tr>
-<td>Opt Out</td>
-<td>When <strong>Event Action Source</strong> is <strong>Web</strong> or <strong>Offline</strong>, it defines whether the user has opted out of tracking for web conversion events. While when <strong>Event Action Source</strong> is <strong>App Android</strong> or <strong>App iOS</strong>, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.</td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td>Email (already SHA256 hashed)</td>
 <td>Provide an email address which has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.<br></td>
+<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Apple&rsquo;s Identifier for Advertisers (already SHA256 hashed)</td>
@@ -622,13 +622,59 @@
 <td>Click ID</td>
 <td>The unique identifier stored in <code>_epik</code> cookie on your domain or <code>&amp;epik= query</code> parameter in the URL. It may improve reporting performance such as ROAS/CPA.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="conversion-event-parameters">Conversion Event Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event ID</td>
+<td>Required. A String value that contains a unique ID for the event. This ID can be used for deduplication of  events ingested from the Pinterest API for Conversions and the Pinterest Tag.</td>
+</tr>
+<tr>
+<td>Ad Account ID Override</td>
+<td>This setting overrides the Pinterest <strong>Ad Account ID</strong> used in the connector configuration section. Either <strong>Ad Account ID Override</strong> or <strong>Ad Account ID</strong> in the connector configuration section must be provided.</td>
+</tr>
+<tr>
+<td>Event Time</td>
+<td>Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. The event time cannot be later than the time Pinterest received the request. If this field is not mapped, it is initialized with the current timestamp.</td>
+</tr>
+<tr>
+<td>Event Source URL</td>
+<td>URL of the web conversion event.</td>
+</tr>
+<tr>
+<td>Opt Out</td>
+<td>When <strong>Event Action Source</strong> is <strong>Web</strong> or <strong>Offline</strong>, this parameter defines whether the user has opted out of tracking for web conversion events. When <strong>Event Action Source</strong> is <strong>App Android</strong> or <strong>App iOS</strong>, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.</td>
+</tr>
+<tr>
+<td>Event Name Override</td>
+<td>When **Event Name **is set to <strong>Custom</strong>, specify the name of the custom event in this field.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="custom-data">Custom Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Currency</td>
 <td>The ISO 4217 currency code. If not provided, Pinterest will default to the advertiser&rsquo;s currency set during account creation.</td>
 </tr>
 <tr>
 <td>Value</td>
-<td>Total value of the event. Accepted as a string in the request, it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price.</td>
+<td>The total value of the event. The connector accepts a string value and then parses it into a <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double-precision number</a>. For a checkout event with multiple items, use the total price of all items.</td>
 </tr>
 <tr>
 <td>Content IDs</td>
@@ -650,14 +696,56 @@
 <td>Opt Out Type</td>
 <td>Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Array type attributes can be mapped and will be converted to a comma separated string.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="contents-data">Contents Data</h4>
+<ul>
+<li>Provide array type attributes to add multiple items in the conversion. Array type attributes must be of equal length.</li>
+<li>If you map a single value attribute to a parameter, the value applies to every item in the array for the conversion.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Item Price</td>
-<td>The price of a product. Accepted as a string in the request, it will be parsed into a double. For example, if there are two products in a checkout event, the value should be the total price.</td>
+<td>The total value of the event. The connector accepts a string value and then parses it into a <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double-precision number</a>. For a checkout event with multiple items, use the total price of all items.</td>
 </tr>
 <tr>
 <td>Quantity</td>
 <td>The amount of a product.</td>
 </tr>
+<tr>
+<td>ID</td>
+<td>The ID of a product. Recommended for <strong>AddToCart</strong> and <strong>Checkout</strong> events.</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>The name of the product.</td>
+</tr>
+<tr>
+<td>Item Category</td>
+<td>The category of the product.</td>
+</tr>
+<tr>
+<td>Item Brand</td>
+<td>The brand of the product.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="app-information">App Information</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>App ID</td>
 <td>The app store app ID.</td>
@@ -698,13 +786,35 @@
 <td>Language</td>
 <td>Two-character ISO 639-1 language code indicating the user&rsquo;s language.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="automatic-deduplication">Automatic Deduplication</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Tealium iQ Tag ID</td>
-<td>When the Tealium iQ Tag ID is provided, the event ID value sent from Tealium iQ is automatically identified and sent to Pinterest. The UDO value used to identify the the event ID is <code>pinterest_event_id_EVENTNAME_TAGID</code>.</td>
+<td>When the Tealium iQ Tag ID is provided, the event ID value sent from Tealium iQ is automatically identified and sent to Pinterest. The UDO value used to identify the event ID is <code>pinterest_event_id_EVENTNAME_TAGID</code>.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="testing-mode">Testing Mode</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Testing Mode</td>
-<td>Select to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly.</td>
+<td>Select the checkbox to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly.</td>
 </tr>
 </tbody>
 </table>
@@ -768,7 +878,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2024 
+          <p>This page was last updated:  February 19, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -933,6 +1043,14 @@ No</button>
   
   
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
+        </a>
+    </li>
+  
+  
+  
   
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
@@ -1071,6 +1189,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

@@ -572,7 +572,7 @@
 <tr>
 <td><code>attributeId</code></td>
 <td>String<br>Query parameter</td>
-<td>The numeric ID representing a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> from your account.</td>
+<td>The numeric UID representing a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> from your account.</td>
 </tr>
 <tr>
 <td><code>attributeValue</code></td>
@@ -589,92 +589,61 @@
 <p>For more information about anonymous IDs and secondary visitor IDs, see <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">Anonymous IDs, user identifiers, and visitor ID attributes</a>.</p>
 <h2 id="objects">Objects</h2>
 <p>Moments API returns visitor data as JSON objects that contain the audience, badge, and attribute fields you specify in the engine configuration.</p>
-<p>You can configure visitor attributes to be returned with the ID or name, as seen in the following response body example:</p>
+<p>The following table summarizes the data types supported by Moments API:</p>
+<ul>
+<li>Badge</li>
+<li>Boolean</li>
+<li>Date</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+<p>Attributes marked as PII are not supported.</p>
+<p>You can configure audiences and visitor attributes to be returned with the UID or name, as seen in the following body examples:</p>
+<h3 id="name-example">Name example</h3>
+<p>The following example demonstrates a typical JSON payload that uses the names of attributes:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences&#34;</span>: [
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;VIP&#34;</span>, 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Women&#39;s Apparel&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Lifetime visit count&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;30 Days Since Last Login&#34;</span>
 </span></span><span style="display:flex;"><span>    ],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;badges&#34;</span>: [
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;13&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;26&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;52&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Frequent visitor&#34;</span>
 </span></span><span style="display:flex;"><span>    ],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metrics&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5048&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Total direct visits&#34;</span>: <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;properties&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5050&#34;</span>: <span style="color:#e6db74">&#34;&lt;attr_value&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Company Name&#34;</span>: <span style="color:#e6db74">&#34;&lt;attr_value&gt;&#34;</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flags&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5052&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Returning visitor&#34;</span>: <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dates&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5054&#34;</span>: <span style="color:#ae81ff">123456789</span>
-</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;First visit&#34;</span>: <span style="color:#ae81ff">1491233145706</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The following table summarizes the data types supported by Moments API:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Attribute Type</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Badge</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>String</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Array of booleans</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Array of numbers</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Array of strings</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Funnel</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Set of strings</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Tally</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Timeline</td>
-<td>✗</td>
-</tr>
-</tbody>
-</table>
-<p>Attributes marked as PII are not supported.</p>
-<h2 id="headers">Headers</h2>
+</span></span></code></pre></div><h3 id="uid-example">UID example</h3>
+<p>The following example demonstrates a typical JSON payload that uses the UIDs of attributes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;tealium_main_205&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;badges&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;31&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metrics&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;15&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;27330&#34;</span>: <span style="color:#e6db74">&#34;&lt;attr_value&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flags&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;27&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dates&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;23&#34;</span>: <span style="color:#ae81ff">1491233145706</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="headers">Headers</h2>
 <p>The following HTTP headers are required in a Moments API request:</p>
 <ul>
 <li><strong>Referer</strong> - The value compared to the domain allow list. If the referrer and the allow list do not match, the request is refused.
@@ -776,7 +745,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 6, 2024 
+          <p>This page was last updated:  February 26, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -795,7 +764,9 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-anonymous-visitor-id" href="javascript:void(0)">Tealium anonymous visitor ID</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id-attribute" href="javascript:void(0)">Visitor ID attribute</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#objects" href="javascript:void(0)">Objects</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#headers" href="javascript:void(0)">Headers</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#name-example" href="javascript:void(0)">Name example</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid-example" href="javascript:void(0)">UID example</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#headers" href="javascript:void(0)">Headers</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-messages" href="javascript:void(0)">Error messages</a></li>
               </nav>
   </aside></nav>
@@ -934,6 +905,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           DataAccess
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
         </a>
     </li>
   

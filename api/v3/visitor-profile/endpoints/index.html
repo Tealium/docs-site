@@ -184,7 +184,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      The Visitor Privacy API allows you to retrieve a visitor record and get a historical visitor.
+      The Visitor Profile API allows you to retrieve a visitor record and get a historical visitor.
     </p>
   
 </div>
@@ -239,8 +239,8 @@
 </ul>
 <h3 id="example-curl-request">Example cURL request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location -g --request <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/my_account/profiles/profileinuseast?attributeId=5013&amp;attributeValue=liveOnly&amp;searchPriority=[&#34;live&#34;, &#34;historical&#34;]&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer fakeToken&#39;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/{account}/profiles/{profile}?attributeId=5013&amp;attributeValue=liveOnly&amp;searchPriority=[&#34;live&#34;, &#34;historical&#34;]&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span>
 </span></span></code></pre></div><h3 id="example-response">Example response</h3>
 <p>See the example visitor object for the format of the response.</p>
 <h3 id="error-messages">Error messages</h3>
@@ -271,22 +271,28 @@
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must use the region-specific host returned in the authentication API with this call. For more information, see <a href="/api/v3/getting-started/authentication/">Authentication</a>.</p>
 <p>The GET Historical Visitor method is optimized for faster response times by searching only historical visitors.</p>
 <p>Use the following GET command to retrieve a historical visitor record:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v3/customer/visitor/historical/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>?attributeId<span style="color:#f92672">={</span>attributeId<span style="color:#f92672">}</span>&amp;attributeValue<span style="color:#f92672">={</span>attributeValue<span style="color:#f92672">}</span>&amp;prettyName<span style="color:#f92672">={</span>prettyName<span style="color:#f92672">}</span>&amp;responseFilters<span style="color:#f92672">=[</span><span style="color:#e6db74">&#34;{attributeId}&#34;</span>, <span style="color:#e6db74">&#34;{attributeId}&#34;</span><span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET <span style="color:#e6db74">&#39;/v3/customer/visitor/historical/accounts/{account}/profiles/{profile}?attributeId={attributeId}&amp;attributeValue={attributeValue}&amp;prettyName={prettyName}&amp;responseFilters=[&#34;{attributeId}&#34;, &#34;{attributeId}&#34;]&#39;</span>
 </span></span></code></pre></div><p>This command uses the following parameters:</p>
 <ul>
-<li><code>attributeId</code></li>
+<li><code>attributeId</code>
+<ul>
 <li>The numeric ID representing a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> from your account.</li>
+</ul>
+</li>
 <li><code>attributeValue</code>
 <ul>
 <li>The value to look up.</li>
 <li>Values containing special characters must be URL encoded.</li>
 </ul>
 </li>
-<li><code>prettyName</code></li>
+<li><code>prettyName</code>
+<ul>
 <li>A Boolean value indicating how attribute keys display in the response:
 <ul>
 <li><code>true</code> – Attributes display as user-friendly names, such as &ldquo;Lifetime Order Value&rdquo;.</li>
 <li><code>false</code> – Attributes display as numeric ID&rsquo;s, such as &ldquo;28471&rdquo;.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>responseFilters</code>
@@ -297,8 +303,8 @@
 </ul>
 <h3 id="example-curl-request-1">Example cURL request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location -g --request <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/historical/accounts/my_account/profiles/profileinuseast?attributeId=5013&amp;attributeValue=liveOnly&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer fakeToken&#39;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/historical/{account}/profiles/{profile}?attributeId=5013&amp;attributeValue=liveOnly&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span>
 </span></span></code></pre></div><h3 id="example-response-1">Example response</h3>
 <p>See the example visitor object for the format of the response.</p>
 <h3 id="error-messages-1">Error messages</h3>
@@ -385,7 +391,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 24, 2024 
+          <p>This page was last updated:  February 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -544,6 +550,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           DataAccess
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
         </a>
     </li>
   
