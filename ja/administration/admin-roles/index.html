@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>管理者の役割 | プラットフォーム管理 | Tealiumドキュメント</title>
+    <title>管理者ロール | プラットフォーム管理 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -95,7 +95,7 @@
         <a href="/ja/administration/permissions-system-migration-guide/permissions-system-migration-guide-deployment-strategies/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permissions-system-migration-guide-deployment-strategies">デプロイメント戦略</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permissions-system-migration-guide-permissions-enforcement">権限の強制</a></li></ul>
       </li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/administration/admin-roles/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".admin-roles">管理者の役割</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/administration/admin-roles/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".admin-roles">管理者ロール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/permission-groups/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permission-groups">権限グループ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-status-page">ステータスページ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".users">ユーザー</a></li><li class="relative w-100 fw8 f5 ">
@@ -136,7 +136,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">管理者の役割</h1>
+<h1 class="lh-title mt30 mb3">管理者ロール</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -144,80 +144,83 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、プラットフォームの権限システムにおける管理者の役割について説明します。
+      この記事では、プラットフォームの権限システムにおける管理者ロールについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォームの権限は、新規のお客様に対してGA、一部のお客様に対してはEEA（Expanded Early Access）として提供されています。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォームの権限は、新規顧客に対してはGAで提供され、選ばれた顧客に対してはEEA（拡張アーリーアクセス）で提供されています。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>管理者の役割は、クライアント側とサーバー側のユーザーを管理するためのアカウントアクセスレベルのセットを定義し、アカウントレベルの機能を管理し、プロファイルのメンバーシップと構造を管理します。アカウントマネージャーは、管理者の役割を使用して、アカウントと製品機能の管理を他のユーザーに委任することができます。</p>
-<p>以下の管理者の役割が利用可能です：</p>
+<p>管理者ロールは、クライアント側およびサーバー側のユーザーを管理し、アカウントレベルの機能を管理し、プロファイルのメンバーシップと構造を管理するためのアカウントアクセスレベルのセットを定義します。アカウントマネージャーは、他のユーザーにアカウントと製品機能の管理を委任するために管理者ロールを使用できます。</p>
+<p>以下の管理者ロールが利用可能です：</p>
 <ul>
 <li><a href="#account-admin">アカウント管理者</a></li>
 <li><a href="#user-admin">ユーザー管理者</a></li>
 <li><a href="#technical-admin">技術管理者</a></li>
 <li><a href="#privacy-admin">プライバシー管理者</a></li>
 <li><a href="#profile-admin">プロファイル管理者</a></li>
-<li><a href="#account-viewer">アカウント閲覧者</a></li>
+<li><a href="#standard-user">標準ユーザー</a></li>
 </ul>
-<p>管理者の役割がないユーザーは、権限グループへのメンバーシップを通じて取得したアカウントへのアクセスのみを受け取ります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者の役割と権限グループの違いは、管理者の役割がアカウントの側面を管理し、権限グループがプロファイルの側面を管理することです。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者ロールと権限グループの違いは、管理者ロールがアカウントの側面を管理するのに対し、権限グループがプロファイルの側面を管理することです。</p>
 <h3 id="デフォルトのアカウント管理者">デフォルトのアカウント管理者</h3>
-<p>アカウント管理者が権限の強制をオンにすると、システムは自動的にアカウント管理者の役割を、以前にレガシーの権限システムでアカウント管理権限を持っていたすべてのユーザーに割り当てます。</p>
-<p>この自動的な権限の割り当ては、プラットフォームの権限がオンになったときに、少なくとも1人のユーザーがアカウント管理者の役割を持つことを保証します。</p>
-<h2 id="役割">役割</h2>
-<p>あなたのアカウントのユーザーに以下の管理者の役割を付与することができます：</p>
+<p>アカウント管理者が権限の強制を有効にすると、システムは自動的に以前に「アカウント管理」権限を持っていたすべてのユーザーにアカウント管理者ロールを割り当てます。</p>
+<p>この自動権限割り当ては、プラットフォームの権限が有効になったときに少なくとも一人のユーザーがアカウント管理者ロールを持っていることを保証します。</p>
+<h2 id="ロール">ロール</h2>
+<p>アカウント内のユーザーに以下の管理者ロールを付与できます：</p>
 <h3 id="アカウント管理者">アカウント管理者</h3>
-<p>アカウント管理者の役割は、アカウントへの全権とアクセスを持っています。アカウント管理者の役割には、すべてのアカウントレベルの権限とすべてのプロファイルレベルの権限、クライアント側とサーバー側の両方の公開権限が含まれます。</p>
-<p>さらに、アカウント管理者はアカウントの権限の強制を制御し、アカウントをレガシーからプラットフォームの権限に変更します。詳細については、<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限の強制</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>あなたのアカウントの中で少なくとも1人のユーザーがアカウント管理者の役割を持つ必要があります。あなたがアカウントの唯一のアカウント管理者である場合、自分自身からこの役割を削除することはできません。</p>
+<p>アカウント管理者ロールは、アカウントへの完全な権限とアクセスを持っています。アカウント管理者ロールには、すべてのアカウントレベルの権限とすべてのプロファイルレベルの権限が含まれており、クライアント側およびサーバー側の公開権限も含まれます。</p>
+<p>さらに、アカウント管理者はアカウントの権限強制を制御し、アカウントをレガシーからプラットフォームの権限に変更します。詳細については、<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限強制</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>アカウント内に少なくとも一人のユーザーがアカウント管理者ロールを持っている必要があります。あなたがアカウント内で唯一のアカウント管理者ロールを持っている場合、自分自身からこのロールを削除することはできません。</p>
 <h3 id="ユーザー管理者">ユーザー管理者</h3>
-<p>ユーザー管理者の役割は、以下の構成にアクセスできます：</p>
+<p>ユーザー管理者ロールは、以下の構成にアクセスがあります：</p>
 <ul>
-<li><strong>権限の管理</strong>：権限グループの作成、編集、削除。また、ユーザーを権限グループに追加または削除し、プロファイルを権限グループに割り当てることもできます。</li>
-<li><strong>ユーザーの管理</strong>：アカウントからユーザーを追加、編集、削除。</li>
-<li><strong>多要素認証</strong>：アカウント上で<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証</a>を有効にし、無効にします。</li>
-<li><strong>他のユーザーのMFAをリセット</strong>：アカウント内の他のユーザーの多要素認証トークンをリセットします。</li>
+<li><strong>権限の管理</strong>：権限グループの作成、編集、削除。また、ユーザーを権限グループに追加または削除し、プロファイルを権限グループに割り当てることができます。</li>
+<li><strong>ユーザーの管理</strong>：アカウントからユーザーを追加、編集、削除します。</li>
+<li><strong>多要素認証</strong>：アカウントで<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証</a>を有効または無効にします。</li>
+<li><strong>他のユーザーのMFAリセット</strong>：アカウント内の他のユーザーの多要素認証トークンをリセットします。</li>
 <li><strong>パスワードポリシーの構成</strong>：アカウントの<a href="/ja/iq-tag-management/administration/security/password-policy/">パスワードポリシー</a>を管理します。</li>
 <li><strong>SSO管理</strong>：<a href="/ja/administration/single-sign-on/sso/">シングルサインオン(SSO)</a>を有効にし、無効にし、管理します。</li>
-<li><strong>Insights管理</strong>：<a href="/ja/server-side/insights/about/#author-and-reader-roles">Tealium Insights</a>内のユーザーの役割を管理します。</li>
+<li><strong>インサイト管理</strong>：<a href="/ja/server-side/insights/about/#author-and-reader-roles">Tealium Insights</a>内のユーザーロールを管理します。</li>
 </ul>
-<p>また、ユーザー管理者の役割は、アカウント上のすべてのプロファイルを表示することができます。</p>
+<p>また、ユーザー管理者ロールはアカウント上のすべてのプロファイルを閲覧できます。</p>
 <h3 id="技術管理者">技術管理者</h3>
-<p>技術管理者の役割は、以下の構成にアクセスできます：</p>
+<p>技術管理者ロールは、以下の構成にアクセスがあります：</p>
 <ul>
 <li><strong>ファーストパーティドメイン</strong> - <a href="/ja/iq-tag-management/administration/first-party-domains/">ファーストパーティドメイン</a>を管理し、ドメイン名を入力し、証明書を更新します。</li>
 <li><strong>GitHubアカウント</strong> - アカウントを<a href="/ja/iq-tag-management/administration/linking-to-github/about/">GitHubアカウント</a>にリンクし、Advanced JavaScript Code拡張機能で使用します。</li>
 </ul>
 <h3 id="プライバシー管理者">プライバシー管理者</h3>
-<p>プライバシー管理者の役割は、ユーザー管理者の役割を持つユーザーにのみ付与することができます。プライバシー管理者の役割は、以下の構成にアクセスできます：</p>
+<p>プライバシー管理者ロールは、ユーザー管理者ロールを持つユーザーにのみ付与することができます。プライバシー管理者ロールは、以下の構成にアクセスがあります：</p>
 <ul>
 <li><strong>同意管理</strong>：<a href="/ja/iq-tag-management/consent/consent-management/about/">同意パラメータと言語</a>を管理します。これは、同意管理を使用するすべてのプロファイルに適用されます。</li>
-<li><strong>PIIの表示と管理</strong>：個人を特定できる情報（PII）のユーザー権限を管理し、<a href="/ja/server-side/attributes/restricted-data/">制限されたデータ</a>の属性を表示および編集します。</li>
-<li><strong>タグマーケットプレイスポリシー</strong>：<a href="/ja/iq-tag-management/tags/tag-marketplace/tag-marketplace-policy/">タグマーケットプレイスポリシー</a>を有効にし、無効にし、構成します。これにより、このアカウントで使用可能なタグを制御します。</li>
+<li><strong>PIIの表示と管理</strong>：個人識別情報（PII）ユーザー権限を管理し、<a href="/ja/server-side/attributes/restricted-data/">制限されたデータ</a>を持つ属性を表示および編集します。</li>
+<li><strong>タグマーケットポリシー</strong>：<a href="/ja/iq-tag-management/tags/tag-marketplace/tag-marketplace-policy/">タグマーケットポリシー</a>を有効にし、無効にし、構成します。これにより、このアカウントで使用可能なタグを制御します。</li>
 </ul>
 <h3 id="プロファイル管理者">プロファイル管理者</h3>
-<p>プロファイル管理者の役割は、プロファイルとプロファイル構成の管理にアクセスできます。この役割にはプロファイルの編集や公開の権限は含まれておらず、それらはプロファイル管理者が構成できる権限グループを通じて付与されます。</p>
+<p>プロファイル管理者ロールは、プロファイルとプロファイル構成を管理する権限があります。このロールにはプロファイルの編集や公開の権限は含まれておりません。これらの権限は権限グループを通じて付与され、プロファイル管理者が構成できます。</p>
 <ul>
-<li><strong>プロファイルライブラリの管理</strong>：<a href="/ja/iq-tag-management/profiles/profile-libraries/">プロファイルライブラリ</a>を管理します。</li>
-<li><strong>プロファイルの管理</strong>：<a href="/ja/iq-tag-management/profiles/manage/">プロファイルの作成と管理</a>。<p class="note"><i class="fa fa-exclamation-triangle"></i>クライアント側のプロファイルのみがプラットフォームを通じて作成できます。サーバー側のプロファイルを作成するには、Tealiumサポートに連絡してください。</p></li>
+<li><strong>プロファイルライブラリの管理</strong>：<a href="/ja/iq-tag-management/profiles/profile-libraries/">プロファイルライブラリを管理</a>します。</li>
+<li><strong>プロファイルの管理</strong>：<a href="/ja/iq-tag-management/profiles/manage/">プロファイルを作成および管理</a>します。<p class="note"><i class="fa fa-exclamation-triangle"></i>クライアント側のプロファイルのみがプラットフォームを通じて作成できます。サーバー側のプロファイルを作成するには、Tealiumサポートに連絡してください。</p></li>
 </ul>
-<h3 id="アカウント閲覧者">アカウント閲覧者</h3>
-<p>アカウント閲覧者の役割は、アカウント内のすべてを読み取り専用で表示することができます。これは、監査や法的レビューの目的で使用されます。</p>
-<h2 id="ユーザーの管理者の役割を管理する">ユーザーの管理者の役割を管理する</h2>
-<p>ユーザーの管理者の役割を編集するには：</p>
+<h3 id="標準ユーザー">標準ユーザー</h3>
+<p>標準ユーザーロールは、グループ権限を通じてすべての権限を受け取ります。他の管理者ロールに割り当てられていないユーザーは、標準ユーザーロールを受け取ります。</p>
+<h2 id="ユーザーの管理者ロールを管理する">ユーザーの管理者ロールを管理する</h2>
+<p>ユーザーの管理者ロールを編集するには：</p>
 <ol>
-<li>管理メニューで、<strong>権限の管理</strong>をクリックします。</li>
+<li>管理メニューで<strong>権限の管理</strong>をクリックします。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
 <li>編集したいユーザーをクリックします。<strong>ユーザー詳細</strong>スライドアウトが表示されます。</li>
-<li><strong>基本情報</strong>タブをクリックし、<strong>編集</strong>をクリックします。</li>
-<li>ユーザーに必要な管理者の役割を追加または削除します。</li>
+<li><strong>アカウント権限</strong>タブをクリックし、<strong>編集</strong>をクリックします。</li>
+<li>必要な管理者ロールをユーザーに追加または削除します。
+<ul>
+<li>インターフェースは、そのロールに必要な追加の管理者ロールやPII権限を自動的に選択します。</li>
+</ul>
+</li>
 <li>変更を終えたら、<strong>完了</strong>をクリックします。</li>
 </ol>
-<p>ユーザーの管理者の役割への変更は即時に有効になります。</p>
-<p>また、チェックボックスと<strong>一括操作</strong>を使用して、一度に複数のユーザーに役割を割り当てたり、割り当てを解除したりすることもできます。</p>
+<p>ユーザーの管理者ロールの変更は即時に有効になります。</p>
+<p>また、チェックボックスと<strong>一括アクション</strong>を使用して、複数のユーザーに一度にロールを割り当てたり割り当てを解除したりすることもできます。</p>
 
 </div>
 
@@ -278,7 +281,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -294,14 +297,14 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">デフォルトのアカウント管理者</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BD%B9%E5%89%B2" href="javascript:void(0)">役割</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">アカウント管理者</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">ユーザー管理者</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8A%80%E8%A1%93%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">技術管理者</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">プライバシー管理者</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E7%AE%A1%E7%90%86%E8%80%85" href="javascript:void(0)">プロファイル管理者</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E9%96%B2%E8%A6%A7%E8%80%85" href="javascript:void(0)">アカウント閲覧者</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E5%BD%B9%E5%89%B2%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">ユーザーの管理者の役割を管理する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC" href="javascript:void(0)">標準ユーザー</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%AE%A1%E7%90%86%E8%80%85%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">ユーザーの管理者ロールを管理する</a></li>
               </nav>
   </aside></nav>
 
@@ -612,7 +615,7 @@
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/ja/administration/admin-roles/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          管理者の役割
+          管理者ロール
       </a>
       </li>
       

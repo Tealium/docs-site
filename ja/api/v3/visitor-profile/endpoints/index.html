@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ビジタープロファイルAPIエンドポイント | ビジタープロファイルAPI | Tealiumドキュメント</title>
+    <title>訪問プロファイルAPIエンドポイント | ビジタープロファイルAPI | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -176,7 +176,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">ビジタープロファイルAPIエンドポイント</h1>
+<h1 class="lh-title mt30 mb3">訪問プロファイルAPIエンドポイント</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -184,21 +184,21 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Visitor Privacy APIを使用すると、ビジターレコードを取得し、過去のビジターを取得することができます。
+      訪問プロファイルAPIを使用して、訪問の記録を取得し、過去の訪問情報を取得できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="get-visitor">GET Visitor</h2>
+  <h2 id="get-訪問">GET 訪問</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、<a href="/ja/api/v3/getting-started/authentication/">認証</a>を参照してください。</p>
-<p>以下のGETコマンドを使用して、ビジターレコードを取得します：</p>
+<p>訪問の記録を取得するには、以下のGETコマンドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v3/customer/visitor/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>?attributeId<span style="color:#f92672">={</span>attributeId<span style="color:#f92672">}</span>&amp;attributeValue<span style="color:#f92672">={</span>attributeValue<span style="color:#f92672">}</span>&amp;prettyName<span style="color:#f92672">={</span>prettyName<span style="color:#f92672">}</span>&amp;responseFilters<span style="color:#f92672">=[</span><span style="color:#e6db74">&#34;{attributeId}&#34;</span>, <span style="color:#e6db74">&#34;{attributeId}&#34;</span><span style="color:#f92672">]</span>
 </span></span></code></pre></div><p>このコマンドは以下のパラメータを使用します：</p>
 <ul>
 <li><code>attributeId</code>
 <ul>
-<li>アカウントからの<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">ビジターID属性</a>を表す数値ID。</li>
+<li>アカウントからの<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を表す数値ID。</li>
 </ul>
 </li>
 <li><code>attributeValue</code>
@@ -209,42 +209,42 @@
 </li>
 <li><code>prettyName</code>
 <ul>
-<li>属性キーがレスポンスに表示される方法を示すブール値：
+<li>属性キーがレスポンスでどのように表示されるかを示すブール値：
 <ul>
-<li><code>true</code> – 属性は、&ldquo;Lifetime Order Value&quot;のようなユーザーフレンドリーな名前として表示されます。</li>
-<li><code>false</code> – 属性は、&ldquo;28471&quot;のような数値IDとして表示されます。</li>
+<li><code>true</code> – 属性は「Lifetime Order Value」のようなユーザーフレンドリーな名前で表示されます。</li>
+<li><code>false</code> – 属性は「28471」のような数値IDで表示されます。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><code>searchPriority</code>
 <ul>
-<li>リクエストのデータソース、JSON文字列配列として渡されます。デフォルトは<code>[&quot;live&quot;, &quot;historical&quot;]</code>です。
+<li>JSON文字列配列として渡されるリクエストのデータソース。デフォルトは <code>[&quot;live&quot;, &quot;historical&quot;]</code> です。
 <ul>
-<li><code>[&quot;live&quot;]</code> – 現在のビジターに関するウェブサイトからのライブデータを取得します。</li>
-<li><code>[&quot;historical&quot;]</code> — 30分の待機期間後に完了した訪問に関するウェブサイトからの履歴データを取得します。</li>
-<li><code>[&quot;live&quot;, &quot;historical&quot;]</code> — APIはライブビジターデータの取得を試みます。ライブビジターデータが利用できない場合、APIは履歴ビジターデータを取得します。</li>
-<li><code>[&quot;historical&quot;, &quot;live&quot;]</code> — APIは履歴ビジターデータの取得を試みます。履歴データが利用できない場合、APIはライブビジターデータを取得します。</li>
+<li><code>[&quot;live&quot;]</code> – 現在の訪問に関するウェブサイトからのライブデータを取得します。</li>
+<li><code>[&quot;historical&quot;]</code> — 訪問が完了した後30分間の待機期間を経て、ウェブサイトからの歴史的データを取得します。</li>
+<li><code>[&quot;live&quot;, &quot;historical&quot;]</code> — APIはライブ訪問データを取得しようとします。ライブ訪問データが利用できない場合、APIは歴史的訪問データを取得します。</li>
+<li><code>[&quot;historical&quot;, &quot;live&quot;]</code> — APIは歴史的訪問データを取得しようとします。歴史的データが利用できない場合、APIはライブ訪問データを取得します。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><code>responseFilters</code>
 <ul>
-<li>ビジターデータをフィルタリングするためのIDのJSON配列。未構成の場合、APIはすべてのビジターデータを返します。構成されている場合、<code>responseFilters</code>に含まれる<code>attributeId</code>の値がレスポンスに返されます。</li>
-<li>APIが一度に返すことができる<code>attributeId</code>の値の最大数は150です。150以上の<code>attributeId</code>の値を提供すると、APIは最初の150のIDのみを返します。</li>
+<li>訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、<code>responseFilters</code>に含まれる<code>attributeId</code>の値がレスポンスに返されます。</li>
+<li>APIが一度に返すことができる<code>attributeId</code>の最大数は150です。150を超える<code>attributeId</code>の値を提供した場合、APIは最初の150のIDのみを返します。</li>
 <li>例：<code>responseFilters=[&quot;5051&quot;, &quot;5016&quot;]</code></li>
 </ul>
 </li>
 </ul>
-<h3 id="例curlリクエスト">例：cURLリクエスト</h3>
+<h3 id="例-curlリクエスト">例 cURLリクエスト</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location -g --request <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/my_account/profiles/profileinuseast?attributeId=5013&amp;attributeValue=liveOnly&amp;searchPriority=[&#34;live&#34;, &#34;historical&#34;]&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer fakeToken&#39;</span>
-</span></span></code></pre></div><h3 id="例レスポンス">例：レスポンス</h3>
-<p>レスポンスの形式については、例のビジターオブジェクトを参照してください。</p>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/accounts/{account}/profiles/{profile}?attributeId=5013&amp;attributeValue=liveOnly&amp;searchPriority=[&#34;live&#34;, &#34;historical&#34;]&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span>
+</span></span></code></pre></div><h3 id="例-レスポンス">例 レスポンス</h3>
+<p>レスポンスの形式については、訪問オブジェクトの例を参照してください。</p>
 <h3 id="エラーメッセージ">エラーメッセージ</h3>
-<p>このエンドポイントに対する潜在的なエラーメッセージは次のとおりです：</p>
+<p>このエンドポイントに関連する可能性のあるエラーメッセージは次のとおりです：</p>
 <table>
 <thead>
 <tr>
@@ -263,46 +263,52 @@
 </tr>
 <tr>
 <td>404</td>
-<td><code>Visitor was not found, empty response.</code><br><code>{&quot;message&quot;: &quot;Invalid query parameter value for 'searchPriority' detected.&quot;}</code></td>
+<td><code>訪問が見つかりませんでした、空のレスポンスです。</code><br><code>{&quot;message&quot;: &quot;Invalid query parameter value for 'searchPriority' detected.&quot;}</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="get-historical-visitor">GET Historical Visitor</h2>
+<h2 id="get-歴史的訪問">GET 歴史的訪問</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この呼び出しには、認証APIで返された地域固有のホストを使用する必要があります。詳細については、<a href="/ja/api/v3/getting-started/authentication/">認証</a>を参照してください。</p>
-<p>GET Historical Visitorメソッドは、履歴ビジターのみを検索することでレスポンス時間を最適化しています。</p>
-<p>以下のGETコマンドを使用して、履歴ビジターレコードを取得します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v3/customer/visitor/historical/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>?attributeId<span style="color:#f92672">={</span>attributeId<span style="color:#f92672">}</span>&amp;attributeValue<span style="color:#f92672">={</span>attributeValue<span style="color:#f92672">}</span>&amp;prettyName<span style="color:#f92672">={</span>prettyName<span style="color:#f92672">}</span>&amp;responseFilters<span style="color:#f92672">=[</span><span style="color:#e6db74">&#34;{attributeId}&#34;</span>, <span style="color:#e6db74">&#34;{attributeId}&#34;</span><span style="color:#f92672">]</span>
+<p>GET 歴史的訪問メソッドは、歴史的訪問のみを検索することにより、より高速なレスポンス時間を実現するために最適化されています。</p>
+<p>歴史的訪問の記録を取得するには、以下のGETコマンドを使用します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET <span style="color:#e6db74">&#39;/v3/customer/visitor/historical/accounts/{account}/profiles/{profile}?attributeId={attributeId}&amp;attributeValue={attributeValue}&amp;prettyName={prettyName}&amp;responseFilters=[&#34;{attributeId}&#34;, &#34;{attributeId}&#34;]&#39;</span>
 </span></span></code></pre></div><p>このコマンドは以下のパラメータを使用します：</p>
 <ul>
-<li><code>attributeId</code></li>
-<li>アカウントからの<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">ビジターID属性</a>を表す数値ID。</li>
+<li><code>attributeId</code>
+<ul>
+<li>アカウントからの<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を表す数値ID。</li>
+</ul>
+</li>
 <li><code>attributeValue</code>
 <ul>
 <li>検索する値。</li>
 <li>特殊文字を含む値はURLエンコードする必要があります。</li>
 </ul>
 </li>
-<li><code>prettyName</code></li>
-<li>属性キーがレスポンスに表示される方法を示すブール値：
+<li><code>prettyName</code>
 <ul>
-<li><code>true</code> – 属性は、&ldquo;Lifetime Order Value&quot;のようなユーザーフレンドリーな名前として表示されます。</li>
-<li><code>false</code> – 属性は、&ldquo;28471&quot;のような数値IDとして表示されます。</li>
+<li>属性キーがレスポンスでどのように表示されるかを示すブール値：
+<ul>
+<li><code>true</code> – 属性は「Lifetime Order Value」のようなユーザーフレンドリーな名前で表示されます。</li>
+<li><code>false</code> – 属性は「28471」のような数値IDで表示されます。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>responseFilters</code>
 <ul>
-<li>ビジターデータをフィルタリングするためのIDのJSON配列。未構成の場合、APIはすべてのビジターデータを返します。構成されている場合、<code>responseFilters</code>に含まれる<code>attributeId</code>の値がレスポンスに返されます。APIが一度に返すことができる<code>attributeId</code>の値の最大数は150です。150以上の<code>attributeId</code>の値を提供すると、APIは最初の150のIDのみを返します。</li>
+<li>訪問データをフィルタリングするためのIDのJSON配列。構成されていない場合、APIはすべての訪問データを返します。構成されている場合、<code>responseFilters</code>に含まれる<code>attributeId</code>の値がレスポンスに返されます。APIが一度に返すことができる<code>attributeId</code>の最大数は150です。150を超える<code>attributeId</code>の値を提供した場合、APIは最初の150のIDのみを返します。</li>
 </ul>
 </li>
 </ul>
-<h3 id="例curlリクエスト-1">例：cURLリクエスト</h3>
+<h3 id="例-curlリクエスト-1">例 cURLリクエスト</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location -g --request <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/historical/accounts/my_account/profiles/profileinuseast?attributeId=5013&amp;attributeValue=liveOnly&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer fakeToken&#39;</span>
-</span></span></code></pre></div><h3 id="例レスポンス-1">例：レスポンス</h3>
-<p>レスポンスの形式については、例のビジターオブジェクトを参照してください。</p>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>GET <span style="color:#e6db74">&#39;https://us-east-1-platform.tealiumapis.com/v3/customer/visitor/historical/{account}/profiles/{profile}?attributeId=5013&amp;attributeValue=liveOnly&amp;responseFilters=[&#34;5051&#34;, &#34;5016&#34;]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span>
+</span></span></code></pre></div><h3 id="例-レスポンス-1">例 レスポンス</h3>
+<p>レスポンスの形式については、訪問オブジェクトの例を参照してください。</p>
 <h3 id="エラーメッセージ-1">エラーメッセージ</h3>
-<p>このエンドポイントに対する潜在的なエラーメッセージ：</p>
+<p>このエンドポイントに関連する可能性のあるエラーメッセージは次のとおりです：</p>
 <table>
 <thead>
 <tr>
@@ -321,7 +327,7 @@
 </tr>
 <tr>
 <td>404</td>
-<td><code>Visitor was not found, empty response.</code></td>
+<td><code>訪問が見つかりませんでした、空のレスポンスです。</code></td>
 </tr>
 </tbody>
 </table>
@@ -385,7 +391,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -399,13 +405,13 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-visitor" href="javascript:void(0)">GET Visitor</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8Bcurl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">例：cURLリクエスト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9" href="javascript:void(0)">例：レスポンス</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-%E8%A8%AA%E5%95%8F" href="javascript:void(0)">GET 訪問</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">例 cURLリクエスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9" href="javascript:void(0)">例 レスポンス</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-historical-visitor" href="javascript:void(0)">GET Historical Visitor</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8Bcurl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">例：cURLリクエスト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9" href="javascript:void(0)">例：レスポンス</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-%E6%AD%B4%E5%8F%B2%E7%9A%84%E8%A8%AA%E5%95%8F" href="javascript:void(0)">GET 歴史的訪問</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">例 cURLリクエスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9" href="javascript:void(0)">例 レスポンス</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
               </nav>
   </aside></nav>

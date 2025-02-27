@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ビジターID属性 | ビジターのスティッチング | Tealiumドキュメント</title>
+    <title>訪問ID属性 | ビジターのスティッチング | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -343,7 +343,7 @@
         <ul class="pl2 bl b--primary bw1 visitor-stitching desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">ビジタースティッチングについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".anonymous-user-visitor-id-attributes">匿名ID、ユーザー識別子、訪問ID属性</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".visitor-id-attribute">ビジターID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".visitor-id-attribute">訪問ID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/diagram/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-example">訪問のスティッチング例</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/guidelines/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-guidelines">ビジタースティッチングのガイドライン</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".create-visitor-id-attribute">訪問ID属性を作成する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -516,7 +516,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">ビジターID属性</h1>
+<h1 class="lh-title mt30 mb3">訪問ID属性</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -524,60 +524,60 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、ビジターID属性に関する情報、ビジターID属性の使用におけるベストプラクティス、およびそれらに値を割り当てるタイミングと方法について説明します。
+      この記事では、訪問ID属性に関する情報、訪問ID属性の使用におけるベストプラクティス、およびそれらに値を割り当てるタイミングと方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>始める前に、以下を理解しておいてください：</p>
+  <p>始める前に、以下に慣れておくことが重要です：</p>
 <ul>
 <li><a href="/ja/server-side/attributes/about/">属性の使用</a></li>
 <li><a href="/ja/server-side/attributes/enrichments/">エンリッチメントの使用</a></li>
-<li><a href="/ja/server-side/visitor-stitching/about/">ビジタースティッチングについて</a></li>
+<li><a href="/ja/server-side/visitor-stitching/about/">訪問スティッチングについて</a></li>
 </ul>
-<p>ビジターID属性は、AudienceStreamでビジターを一意に識別するために構成されます。ビジターID属性を作成するとき、エンリッチメントを追加して値をユーザー識別子（<code>email_address_hash</code>や<code>customer_id</code>などのイベント属性）に構成します。ビジタースティッチングを正しく機能させるためには、一意のユーザー識別子を選択し、ビジターを識別するタイミングを決定するルールを作成し、選択した属性が各ビジターに対して一意であることを確認する必要があります。ユーザー識別子の選択についての詳細は、<a href="/ja/guides/user-identifier-guide/">ユーザー識別子の選択におけるベストプラクティス</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ビジタースティッチングはデフォルトでは無効になっています。有効にするにはアカウントマネージャーに連絡してください。</p>
-<p>ビジターID属性はビジタースコープで利用可能です。</p>
+<p>訪問ID属性はAudienceStreamで構成され、訪問を一意に識別するために使用されます。訪問ID属性を作成するとき、ユーザー識別子（イベント属性としての<code>email_address_hash</code>や<code>customer_id</code>など）に値を構成するエンリッチメントを追加します。訪問スティッチングが正しく機能するためには、ユニークなユーザー識別子を選択し、訪問を識別するタイミングを決定するルールを作成し、選択した属性が各訪問に対してユニークであることを確認する必要があります。ユーザー識別子の選択についての詳細は<a href="/ja/guides/user-identifier-guide/">ユーザー識別子の選択におけるベストプラクティス</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問スティッチングはデフォルトで無効になっています。有効にするにはアカウントマネージャーに連絡してください。</p>
+<p>訪問ID属性は訪問スコープで利用可能です。</p>
 <figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png"
          alt="Screenshot 2019-11-11 at 1.27.27 PM.png"
          title="Screenshot 2019-11-11 at 1.27.27 PM.png"/>
     </a>
 </figure>
-<h2 id="ビジターid属性のシステム要件">ビジターID属性のシステム要件</h2>
-<p>ビジターID属性は以下のシステム要件を満たす必要があります：</p>
+<h2 id="訪問id属性のシステム要件">訪問ID属性のシステム要件</h2>
+<p>訪問ID属性は以下のシステム要件を満たす必要があります：</p>
 <ul>
-<li><strong>長さ</strong> – 値は6から255文字の間でなければなりません。</li>
-<li><strong>非繰り返し</strong> – 値は少なくとも3つの異なる文字を含む必要があります。2つの異なる文字だけで構成された10文字の識別子（ <code>&quot;a1a1a1a1a1&quot;</code> ）は無効です。</li>
-<li><strong>エンリッチメント</strong> – データタイプがNumberの属性は、ビジターID属性をエンリッチするために使用することはできません。</li>
-<li><strong>サイズ</strong> – ビジターIDの最大サイズは2 KBです。</li>
+<li><strong>長さ</strong> – 値は6文字から255文字の長さでなければなりません。</li>
+<li><strong>非繰り返し</strong> – 値には少なくとも3つの異なる文字が含まれている必要があります。10文字の識別子で異なる文字が2つしかない（<code>&quot;a1a1a1a1a1&quot;</code>）場合は無効です。</li>
+<li><strong>エンリッチメント</strong> – 数値型のデータ属性は訪問ID属性のエンリッチメントに使用できません。</li>
+<li><strong>サイズ</strong> – 訪問IDの最大サイズは2KBです。</li>
 </ul>
 <p>UTF-8文字セットがサポートされています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>システムはこれらの要件を自動的に検証します。ビジターID属性の構成にこれらのルール条件は必要ありません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>システムはこれらの要件を自動的に検証します。訪問ID属性の構成にこれらのルール条件は必要ありません。</p>
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
-<p>ビジターID属性は以下のベストプラクティスに従うべきです：</p>
+<p>訪問ID属性は以下のベストプラクティスに従うべきです：</p>
 <ul>
 <li>
-<p><strong>一意性</strong> - 各ビジターID属性の値は各ビジターに対して一意であるべきです。</p>
+<p><strong>一意性</strong> - 各訪問ID属性の値は各訪問に対して一意であるべきです。</p>
 <ul>
-<li><strong>強い識別子</strong> - ハッシュ化されたメールアドレスや顧客IDのように、一人のビジターに関連付けられ、変更される可能性が低い値のみを使用してください。</li>
-<li><strong>弱い識別子</strong> - 各ビジターに対して一意であることが保証できない値や、時間とともに変更される可能性が高い値（名前やユーザー名、電話番号など）は避けてください。</li>
+<li><strong>強力な識別子</strong> - 単一の訪問に関連付けられ、変更される可能性が低い値のみを使用してください。例えば、ハッシュ化されたメールアドレスや顧客IDなどです。</li>
+<li><strong>弱い識別子</strong> - 各訪問に対して一意であることが保証されない値や、時間の経過とともに変更される可能性が高い値は避けてください。例えば、名前やユーザー名、電話番号などです。</li>
 </ul>
 </li>
 <li>
-<p><strong>大文字小文字の区別</strong> - 値は大文字小文字を区別するので、小文字に変換してください。例えば、<code>FirstLast@example.com</code>と<code>firstlast@example.com</code>のように、一つのメールアドレスが大文字小文字のバリエーションで書かれると、AudienceStreamでは2つの異なるIDとして扱われます。</p>
+<p><strong>大文字と小文字の区別</strong> - 値は大文字と小文字を区別するため、小文字に変換してください。例えば、<code>FirstLast@example.com</code>と<code>firstlast@example.com</code>はAudienceStreamでは異なるIDとして扱われます。</p>
 </li>
 <li>
-<p><strong>値の確認</strong> - メールアドレスを使用している場合、アドレスに<code>@</code>記号が含まれていることを確認することが望ましいかもしれません。また、<code>undefined</code>、<code>unknown</code>、<code>not set</code>などの文字列や、ビジターID属性の有効な値とならないテキストをチェックすることも考慮に入れてください。</p>
+<p><strong>値の検証</strong> - メールアドレスを使用する場合は、アドレスに<code>@</code>記号が含まれているかどうかを確認することが望ましいです。また、<code>undefined</code>、<code>unknown</code>、<code>not set</code>や訪問ID属性の有効な値として不適切な他のテキストが含まれていないかをチェックすることもできます。</p>
 </li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>最も正確なビジターID属性を作成するためのガイドは、<a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/">ビジターID属性の作成</a>を参照してください。</p>
-<h2 id="ビジターid属性に値を構成するタイミング">ビジターID属性に値を構成するタイミング</h2>
-<p>ビジターID属性の値は、顧客が信頼性のある一意の識別手段を提供するイベント（アカウントの登録や購入の完了など）が発生したときに構成します。</p>
-<p>ビジターID属性はマーケティング活動ID（gidなど）であってはなりません。これらのサードパーティ識別子はコネクタで使用するためのビジター属性として保存できますが、ビジターID属性としては推奨されません。</p>
-<h2 id="ビジターid属性をエンリッチする">ビジターID属性をエンリッチする</h2>
-<p>エンリッチメントを使用して、ビジターID属性にビジターのユーザー識別子を保存します。例えば、ユーザーが登録またはサインアップすると、システムは内部IDを生成してデータレイヤーに<code>customer_id</code>として追加するかもしれません。この場合、<code>user_register</code>イベントが発生したときにビジターID属性を<code>customer_id</code>に構成するためにエンリッチメントを使用します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ビジターID属性が構成されると、それは更新できません。</p>
+<p class="tip"><i class="fa fa-info-circle"></i><a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/">訪問ID属性の作成</a>を参照して、できるだけ正確な訪問ID属性を作成するためのガイドをご覧ください。</p>
+<h2 id="訪問id属性に値を構成するタイミング">訪問ID属性に値を構成するタイミング</h2>
+<p>訪問ID属性に値を構成するのは、顧客がアカウントの登録や購入完了など、信頼できる一意の識別手段を提供するイベントが発生したときです。</p>
+<p>訪問ID属性はマーケティング活動ID（例えばgidなど）ではあってはなりません。これらのサードパーティ識別子は訪問属性としてコネクタで使用するために保存することができますが、訪問ID属性としては推奨されません。</p>
+<h2 id="訪問id属性をエンリッチする">訪問ID属性をエンリッチする</h2>
+<p>エンリッチメントを使用して、訪問ID属性に訪問のユーザー識別子を保存します。例えば、ユーザーが登録またはサインアップするとき、システムは内部IDを生成してデータレイヤーに<code>customer_id</code>として追加する場合があります。この場合、<code>user_register</code>イベントが発生したときに訪問ID属性を<code>customer_id</code>に構成するためにエンリッチメントを使用します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問ID属性が構成された後、それを更新することはできません。</p>
 
 </div>
 
@@ -638,7 +638,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -652,10 +652,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BCid%E5%B1%9E%E6%80%A7%E3%81%AE%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A6%81%E4%BB%B6" href="javascript:void(0)">ビジターID属性のシステム要件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8Fid%E5%B1%9E%E6%80%A7%E3%81%AE%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A6%81%E4%BB%B6" href="javascript:void(0)">訪問ID属性のシステム要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9" href="javascript:void(0)">ベストプラクティス</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BCid%E5%B1%9E%E6%80%A7%E3%81%AB%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビジターID属性に値を構成するタイミング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BCid%E5%B1%9E%E6%80%A7%E3%82%92%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%81%99%E3%82%8B" href="javascript:void(0)">ビジターID属性をエンリッチする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8Fid%E5%B1%9E%E6%80%A7%E3%81%AB%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0" href="javascript:void(0)">訪問ID属性に値を構成するタイミング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8Fid%E5%B1%9E%E6%80%A7%E3%82%92%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%81%99%E3%82%8B" href="javascript:void(0)">訪問ID属性をエンリッチする</a></li>
               </nav>
   </aside></nav>
 

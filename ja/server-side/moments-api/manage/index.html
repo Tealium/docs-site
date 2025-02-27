@@ -343,7 +343,7 @@
         <ul class="pl2  visitor-stitching desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">ビジタースティッチングについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".anonymous-user-visitor-id-attributes">匿名ID、ユーザー識別子、訪問ID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-id-attribute">ビジターID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-id-attribute">訪問ID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/diagram/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-example">訪問のスティッチング例</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/guidelines/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-guidelines">ビジタースティッチングのガイドライン</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".create-visitor-id-attribute">訪問ID属性を作成する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -530,48 +530,53 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>アカウントにMoments APIを有効にするには、アカウントマネージャーに連絡してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Moments APIをアカウントで有効にするには、アカウントマネージャーに連絡してください。</p>
 <h2 id="エンジンの作成">エンジンの作成</h2>
-<p>エンジンを作成するには、以下の手順を完了します：</p>
+<p class="tip"><i class="fa fa-info-circle"></i>エンジン属性を選択する前に、プロファイルの変更が公開されていることを確認してください。</p>
+<p>エンジンを作成するには、次の手順を完了します：</p>
 <ol>
 <li>
-<p><strong>AudienceStream &gt; Moments API</strong>に移動し、<strong>+ New Engine</strong>をクリックします。</p>
+<p><strong>AudienceStream &gt; Moments API</strong> に移動し、<strong>+ New Engine</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Details</strong>画面で、以下のエンジン詳細を設定します：</p>
+<p><strong>Details</strong> 画面で、以下のエンジン詳細を構成します：</p>
 <ul>
 <li><strong>Name</strong>: エンジンの名前を入力します。</li>
-<li><strong>Enable Engine</strong>: エンジンをオンとオフに切り替えます。エンジンエンドポイントはデフォルトでオフになっています。エンジンを有効にし、訪問者がアクティブなセッションをログし、システム内でイベントを生成すると、訪問者のデータが利用可能になります。</li>
+<li><strong>Enable Engine</strong>: エンジンをオンまたはオフに切り替えます。デフォルトではエンジンエンドポイントはオフです。エンジンを有効にし、訪問がアクティブなセッションを記録し、システムでイベントを生成した後、訪問のデータが利用可能になります。</li>
 <li><strong>Domain Allow List</strong>: このエンドポイントを使用できるドメインを指定します。詳細については、<a href="/ja/server-side/moments-api/about/#domain-allow-list">About Moments API &gt; Domain allow list</a>を参照してください。</li>
 </ul>
 </li>
 <li>
-<p><strong>Next</strong>をクリックします。</p>
+<p><strong>Next</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Response</strong>画面で、エンジンに含めるオーディエンス、バッジ、属性を選択します。<strong>Example Response</strong>パネルを使用して選択を確認できます。<p class="note"><i class="fa fa-exclamation-triangle"></i>大きなレスポンスでオーディエンス、バッジ、属性の名前を使用すると、ペイロードサイズが増える可能性があります。<br><strong>Select all current and future audiences</strong>機能を使用すると、後でオーディエンスが削除された場合でも、エンジンデータをパージするか、データが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。</p></p>
+<p><strong>Response</strong> 画面で、エンジンに含めるオーディエンス、バッジ、および属性を選択します。<strong>Example Response</strong> パネルを使用して選択を確認できます。<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Select all current and future audiences</strong> 機能を使用する場合、オーディエンスが後で削除されたとしても、エンジンデータを消去するかデータが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。</p></p>
 </li>
 <li>
-<p><strong>Next</strong>をクリックしてエンジンを作成します。</p>
+<p>ペイロードでオーディエンスと訪問属性のID（UID）または名前を使用するかどうかを選択します。大きなレスポンスでIDの代わりにオーディエンス、バッジ、および属性の名前を使用すると、ペイロードサイズに影響を与える可能性があります。</p>
 </li>
 <li>
-<p><strong>Summary</strong>画面で、一意のエンドポイントURLを含むエンドポイント詳細を確認します。</p>
+<p><strong>Next</strong> をクリックしてエンジンを作成します。</p>
 </li>
 <li>
-<p><strong>Done</strong>をクリックします。</p>
+<p><strong>Summary</strong> 画面で、エンドポイントの詳細を含む一意のエンドポイントURLを確認します。</p>
+</li>
+<li>
+<p><strong>Done</strong> をクリックします。エンジンを作成した後、プロファイルを公開する必要はありません。</p>
 </li>
 </ol>
-<p>訪問者のデータは、エンジンが有効になり、訪問者がアクティブなセッションを持つようになった後に収集されます。</p>
+<p>エンジンが有効になり、訪問がアクティブなセッションを持っている場合、訪問データが収集されます。</p>
 <h2 id="エンジンの編集">エンジンの編集</h2>
-<p>エンジンを編集するには、Moments API画面に移動し、更新したいエンジンをクリックします。<strong>Edit Engine</strong>画面から、エンジンの詳細とレスポンス設定を更新し、エンジンデータをパージし、必要に応じてエンジンをオンとオフに切り替えることができます。</p>
-<h2 id="データのパージ">データのパージ</h2>
-<p>ユーザーがAudienceStreamのオーディエンス、バッジ、属性を削除または名前を変更し、それがエンジンでも使用されている場合、エンドポイントのレスポンスで予期しない結果が発生する可能性があります。これらの場合、エンジンデータをパージすることを検討することがあります。データのパージについての詳細は、<a href="/ja/server-side/moments-api/about/#purge-data">About Moments API &gt; Purge Data</a>を参照してください。</p>
-<p>Moments APIは、必要に応じてエンジンデータをパージするための2つの方法を提供します：</p>
+<p>エンジンを編集するには、Moments API画面に移動し、更新したいエンジンをクリックします。<strong>Edit Engine</strong> 画面から、エンジンの詳細とレスポンス構成を更新し、エンジンデータを消去し、必要に応じてエンジンをオンまたはオフに切り替えることができます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>エンジンを編集した後、プロファイルを公開する必要はありません。構成変更を保存してから5分後にMoments APIエンジンの変更が利用可能になります。</p>
+<h2 id="データの消去">データの消去</h2>
+<p>ユーザーがAudienceStreamのオーディエンス、バッジ、属性を削除または名前を変更すると、エンジンでも使用されている場合、エンドポイントのレスポンスに予期しない結果が生じる可能性があります。このような場合、エンジンデータの消去を検討することが望ましいかもしれません。データの消去についての詳細は、<a href="/ja/server-side/moments-api/about/#purge-data">About Moments API &gt; Purge Data</a>を参照してください。</p>
+<p>必要に応じてエンジンデータを消去するための2つの方法がMoments APIにはあります：</p>
 <ol>
-<li><strong>Moments API</strong>画面で、データをパージしたいエンジンの隣にあるアクションメニューをクリックし、<strong>Purge Data</strong>を選択します。</li>
-<li><strong>Edit Engines</strong>画面で、スライドアウトアクションから<strong>Purge Data</strong>をクリックします。</li>
+<li><strong>Moments API</strong> 画面で、データを消去したいエンジンの横にあるアクションメニューをクリックし、<strong>Purge Data</strong> を選択します。</li>
+<li><strong>Edit Engines</strong> 画面で、スライドアウトアクションから <strong>Purge Data</strong> をクリックします。</li>
 </ol>
-<p>データパージ後、以前に保存されていた訪問者のデータは利用できなくなります。</p>
+<p>データを消去した後、以前に保存された訪問データは利用できなくなります。</p>
 
 </div>
 
@@ -632,7 +637,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -648,7 +653,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">エンジンの作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">エンジンの編集</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%91%E3%83%BC%E3%82%B8" href="javascript:void(0)">データのパージ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B6%88%E5%8E%BB" href="javascript:void(0)">データの消去</a></li>
               </nav>
   </aside></nav>
 

@@ -95,7 +95,7 @@
         <a href="/ja/administration/permissions-system-migration-guide/permissions-system-migration-guide-deployment-strategies/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permissions-system-migration-guide-deployment-strategies">デプロイメント戦略</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permissions-system-migration-guide-permissions-enforcement">権限の強制</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/administration/admin-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".admin-roles">管理者の役割</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/administration/admin-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".admin-roles">管理者ロール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/permission-groups/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".permission-groups">権限グループ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-status-page">ステータスページ</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/administration/users/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".users">ユーザー</a></li><li class="relative w-100 fw8 f5 ">
@@ -144,129 +144,130 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、プラットフォーム権限システムでアカウントのユーザーを管理する方法について説明します。
+      この記事では、プラットフォームの権限システムでアカウントのユーザーを管理する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォーム権限は、新規顧客に対してGA、一部の顧客に対してはEEA（Expanded Early Access）になっています。</p>
-<h2 id="仕組み">仕組み</h2>
-<p>Tealiumアカウントへのアクセスが必要な各人は、ログインするためにメールユーザー名とパスワードが必要です。彼らがログインできるようにする前に、アカウントにユーザーを招待し、アカウントを有効化するためのメールを受け取る必要があります。</p>
-<p>ユーザーは、権限グループ、管理者ロール、ユーザーレベルの権限を通じてアカウントに権限を付与されます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォーム権限は、新規顧客に対してGA（一般提供開始）として、選ばれた顧客に対してEEA（拡張アーリーアクセス）として提供されています。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Tealiumアカウントへのアクセスが必要な各人は、ログインするためにメールユーザー名とパスワードが必要です。ログインする前に、ユーザーをアカウントに招待し、アカウントをアクティブにするためのメールを受け取ります。</p>
+<p>ユーザーは、権限グループ、管理者ロール、およびユーザーレベルの権限を通じてアカウントに対する権限を受け取ります。</p>
 <ul>
-<li><a href="/ja/administration/permission-groups/">権限グループ</a>は、プロファイル、製品機能、および公開権限へのアクセスを許可します。ユーザーを複数の権限グループに追加して、複数のプロファイルとそれらのプロファイルへの権限レベルへのアクセスを提供します。</li>
-<li><a href="/ja/administration/admin-roles/">管理者ロール</a>は、ユーザーや権限グループの管理など、信頼できるチームメンバーに特化したまたは非常に機密性の高い責任を委任します。</li>
-<li>ユーザーレベルの権限は、<a href="/ja/iq-tag-management/administration/security/mfa/">マルチファクター認証（MFA）</a>トークン、<a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>、および個人を特定可能な情報（PII）のアクセスレベルを構成します。</li>
+<li><a href="/ja/administration/permission-groups/">権限グループ</a>は、プロファイル、製品機能、および公開権を付与します。複数の権限グループにユーザーを追加して、複数のプロファイルとそれらのプロファイルへの権限レベルへのアクセスを提供します。</li>
+<li><a href="/ja/administration/admin-roles/">管理者ロール</a>は、ユーザーや権限グループの管理など、信頼できるチームメンバーに特別または非常に機密性の高い責任を委任します。</li>
+<li>ユーザーレベルの権限は、<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証（MFA）</a>トークン、<a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>、および個人識別情報（PII）アクセスレベルを構成します。</li>
 </ul>
-<h3 id="ダイナミックなユーザーインターフェース">ダイナミックなユーザーインターフェース</h3>
-<p>統合されたプラットフォーム権限システムでは、ユーザーの権限に基づいてプラットフォームのインターフェースが変更されます：</p>
+<h3 id="動的ユーザーインターフェース">動的ユーザーインターフェース</h3>
+<p>統合されたプラットフォーム権限システムでは、プラットフォームのインターフェースはユーザーの権限に基づいて変更されます：</p>
 <ul>
-<li>ユーザーが製品にアクセスできない場合、その製品はナビゲーションに表示されません。</li>
-<li>ユーザーが一部の機能にはアクセスできるが、他の機能にはアクセスできない場合、ナビゲーションではアクセス可能な機能のみが表示されます。</li>
+<li>ユーザーが製品にアクセス権を持っていない場合、その製品はナビゲーションに表示されません。</li>
+<li>ユーザーがいくつかの機能にアクセスできるが、他の機能にはアクセスできない場合、彼らはナビゲーションでアクセスできる機能のみを見ることができます。</li>
 <li>ユーザーが機能の編集権限を持っていない場合、その機能のページに<strong>編集</strong>ボタンは表示されません。</li>
 </ul>
 <p>詳細については、<a href="/ja/administration/about-permissions/">プラットフォーム権限について</a>を参照してください。</p>
 <h2 id="ユーザーの管理">ユーザーの管理</h2>
-<p>Tealiumプラットフォームでユーザー管理にアクセスするには、管理メニューで<strong>権限を管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。</p>
-<p><strong>ユーザーマネージャー</strong>ダイアログが表示され、アカウント内のすべてのユーザーを一覧表示するテーブルが表示されます。</p>
+<p>Tealiumプラットフォームでユーザー管理にアクセスするには、管理メニューで<strong>権限の管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。</p>
+<p><strong>ユーザーマネージャー</strong>ダイアログが表示され、アカウントのすべてのユーザーをリストする表が表示されます。</p>
 <h3 id="ユーザーのエクスポート">ユーザーのエクスポート</h3>
-<p>ユーザーのエクスポート機能は、アカウントのユーザー、プロファイル、各プロファイルのレガシーユーザー権限を含むカンマ区切りの値（CSV）ファイルをダウンロードします。この機能を使用して、新しいプラットフォーム権限システムで権限グループを作成し、管理者ロールを割り当てる目的で、ユーザーとその権限を監査します。</p>
-<p>このファイルをダウンロードするには2つの方法があります：</p>
+<p>ユーザーのエクスポート機能は、アカウントのユーザー、プロファイル、および各プロファイルのレガシーユーザー権限を含むカンマ区切り値（CSV）ファイルをダウンロードします。この機能を使用して、ユーザーとその権限を監査し、新しいプラットフォーム権限システムで権限グループを作成し、管理者ロールを割り当てるために使用します。</p>
+<p>このファイルをダウンロードする方法は2つあります：</p>
 <ul>
-<li>管理メニューで<strong>ユーザーを管理</strong>をクリックします。<strong>ユーザーを管理</strong>ダイアログが表示されたら、<strong>ユーザーをエクスポート</strong>をクリックします。</li>
-<li>管理メニューで<strong>権限を管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。<strong>ユーザー</strong>テーブルが表示されたら、<strong>ユーザーをエクスポート</strong>をクリックします。</li>
+<li>管理メニューで<strong>ユーザーの管理</strong>をクリックします。<strong>ユーザーの管理</strong>ダイアログが表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
+<li>管理メニューで<strong>権限の管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。<strong>ユーザー</strong>表が表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
 </ul>
-<p>CSVファイルは、権限値を<code>TRUE</code>または<code>FALSE</code>で一覧表示します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ファイルに完全な権限リストが表示されるように、この機能はアカウントのレガシー管理アカウント権限とすべてのプロファイルのユーザー管理権限を必要とします。<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限強制</a>がアクティブな場合、このボタンは表示されなくなります。</p>
-<h3 id="新規ユーザーの追加">新規ユーザーの追加</h3>
-<p>新規ユーザーを追加するには：</p>
+<p>CSVファイルは、権限値を<code>TRUE</code>または<code>FALSE</code>としてリストします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファイルに完全な権限リストが表示されるようにするために、この機能はアカウントのレガシー「アカウントの管理」権限と各プロファイルの「ユーザーの管理」権限が必要です。<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限の強制</a>がアクティブな場合、このボタンはもはや表示されません。</p>
+<h3 id="新しいユーザーの追加">新しいユーザーの追加</h3>
+<p>新しいユーザーを追加するには：</p>
 <ol>
-<li>管理メニューで<strong>権限を管理</strong>をクリックします。<strong>権限を管理</strong>画面が表示されます。</li>
+<li>管理メニューで<strong>権限の管理</strong>をクリックします。<strong>権限の管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
-<li><strong>ユーザーマネージャー</strong>画面で**+ 新規ユーザー**をクリックします。<strong>新規ユーザー追加</strong>スライドアウトが表示されます。</li>
-<li><strong>新規ユーザーメール</strong>ボックスに、最大25のメールアドレスを入力します。これらはカンマ、タブ、セミコロンで区切るか、カンマ区切りの値（CSV）ファイルの内容を貼り付けることができます。</li>
-<li><strong>招待を送信</strong>をクリックします。<strong>権限を管理</strong>画面が表示され、新規ユーザーメールアドレスが<strong>登録待ち</strong>の注記とともにテーブルに表示されます。</li>
+<li><strong>ユーザーマネージャー</strong>画面で**+ 新しいユーザー**をクリックします。<strong>新しいユーザーの追加</strong>スライドアウトが表示されます。</li>
+<li><strong>新しいユーザーのメール</strong>ボックスに最大25のメールアドレスを入力します。カンマ、タブ、セミコロンで区切るか、カンマ区切り値（CSV）ファイルの内容を貼り付けることができます。</li>
+<li><strong>招待状を送信</strong>をクリックします。<strong>権限の管理</strong>画面が表示され、新しいユーザーメールアドレスが<strong>登録待ち</strong>のメモとともに表に表示されます。</li>
 </ol>
-<p>Tealiumは、まだTealiumプラットフォームにアクセスしていないユーザーにメール招待状を送信します。これらの新規ユーザーは、招待を受け入れてパスワードを構成する必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーを追加して招待すると、ユーザーは自動的にアカウントのプロファイルにアクセスすることはありません。プロファイルへのアクセスを提供するために、そのユーザーを[編集]（＃edit-a-user）して権限グループに追加し、アカウントの側面を管理する必要がある場合は管理者ロールを付与し、MFA、APIキー、およびPIIアクセスのユーザーレベルの権限を構成する必要があります。そうしないと、彼らが招待を受け入れてログインしようとするとエラーが表示されます。</p>
+<p>Tealiumは、Tealiumプラットフォームへのアクセスがまだないユーザーにメール招待状を送ります。それらの新しいユーザーは招待を受け入れてパスワードを構成する必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーを追加して招待するとき、ユーザーは自動的にアカウントのプロファイルにアクセスすることはありません。そのユーザーを<a href="#edit-a-user">編集する</a>必要があります。プロファイルへのアクセスを許可するために権限グループに追加し、アカウントの側面を管理する必要がある場合は管理者ロールを付与し、MFA、APIキー、およびPIIアクセスのユーザーレベルの権限を構成します。そうしないと、彼らが招待を受け入れてログインを試みたときにエラーが表示されます。</p>
 <p>ユーザーへの招待を取り消すには：</p>
 <ol>
-<li><strong>ユーザー</strong>タブで、ユーザーのその他のアクションボタンを選択します。</li>
+<li><strong>ユーザー</strong>タブで、ユーザーの詳細アクションボタンを選択します。</li>
 <li><strong>招待を取り消す</strong>をクリックします。</li>
 <li>確認のために<strong>取り消す</strong>をクリックします。</li>
 </ol>
-<h3 id="ユーザー詳細の表示">ユーザー詳細の表示</h3>
-<p>ユーザーの詳細を表示するには、そのユーザーをクリックします。次の3つのタブが含まれるスライドアウトが表示されます：</p>
+<h3 id="ユーザーの詳細を表示">ユーザーの詳細を表示</h3>
+<p>ユーザーの詳細を表示するには、そのユーザーをクリックします。スライドアウトが表示され、次の3つのタブがあります：</p>
 <ul>
-<li><strong>概要</strong>：ユーザーの名前、メールアドレス、主要なアカウント、およびプラットフォーム機能の権限。このタブには、ユーザーのマルチファクター認証（MFA）トークンをリセットし、APIキー認証権限を管理する機能が含まれています。</li>
-<li><strong>アカウント権限</strong>：ユーザーの管理者ロール、Data Connect権限、およびアクセス可能なプロファイルの個人を特定可能な情報（PII）アクセスレベル。</li>
+<li><strong>概要</strong>：ユーザーの名前、メールアドレス、主要アカウント、およびプラットフォーム機能の権限。このタブには、ユーザーの多要素認証（MFA）トークンをリセットし、APIキー認証権限を管理する機能が含まれています。</li>
+<li><strong>アカウント権限</strong>：ユーザーの管理者ロール、Data Connect権限、およびアクセス可能なプロファイルの個人識別情報（PII）アクセスレベル。</li>
 <li><strong>グループ</strong>：ユーザーの権限グループ。</li>
 </ul>
 <h3 id="piiアクセスレベル">PIIアクセスレベル</h3>
-<p>ユーザーは次のいずれかのPIIアクセスレベルに構成できます：</p>
+<p>ユーザーは次のPIIアクセスレベルのいずれかに構成できます：</p>
 <ul>
-<li><strong>No PII</strong>：ユーザーはインターフェース全体でマスクされたPIIデータを表示します。ユーザーは、PIIデータを含むフィールドを編集または管理することはできません。</li>
-<li><strong>表示</strong>：ユーザーはPIIデータを表示できますが、PIIデータを含むフィールドを編集または管理することはできません。</li>
-<li><strong>管理＆表示</strong>：ユーザーは、アカウント全体のすべてのPIIデータフィールドを表示、編集、管理できます。</li>
+<li><strong>No PII</strong>：ユーザーはインターフェース全体でPII制限データを管理および表示できます。</li>
+<li><strong>View</strong>：ユーザーはインターフェース全体でPII制限データを表示できます。</li>
+<li><strong>Manage &amp; View</strong>：ユーザーはアカウント全体のすべてのPIIデータフィールドを表示、編集、および管理できます。</li>
 </ul>
 <h3 id="プロファイル権限">プロファイル権限</h3>
-<p>権限は、ユーザーの権限グループと管理者ロールの間で累積します。たとえば、ユーザーが表示アクセスを持つ1つの権限グループに所属し、別の権限グループに表示および編集アクセスを持ち、プロファイル管理者ロールを持っている場合、テーブルは<strong>表示、編集＆削除</strong>列にチェックマークを表示します。</p>
-<p>ユーザーのプロファイルへのアクセスを確認するには、<strong>概要</strong>タブの<strong>プロファイル</strong>ドロップダウンメニューからそのプロファイルを選択します。そのプロファイルのユーザーの権限が表示されます。この情報は、ユーザーがプロファイルにアクセスする際の問題を診断したり、ユーザーが必要な機能のみにアクセスできるようにするために役立ちます。</p>
+<p>ユーザーの権限グループと管理者ロールの間で権限は累積されます。たとえば、ユーザーが閲覧アクセスを持つ権限グループに1つ、閲覧および編集アクセスを持つ別の権限グループに1つ、およびプロファイル管理者ロールを持っている場合、表には<strong>閲覧、編集、および削除</strong>列にチェックマークが表示されます。</p>
+<p>ユーザーのプロファイルへのアクセスを確認するには、<strong>概要</strong>タブの<strong>プロファイル</strong>ドロップダウンメニューからそのプロファイルを選択します。そのプロファイルに対するユーザーの権限が表示されます。この情報は、ユーザーがプロファイルにアクセスする際の問題を診断するのに役立つか、ユーザーが必要な機能のみにアクセスできるようにするのに役立ちます。</p>
 <h2 id="ユーザーの編集">ユーザーの編集</h2>
 <p>ユーザーを編集するには：</p>
 <ol>
-<li>管理メニューで<strong>権限を管理</strong>をクリックします。<strong>権限を管理</strong>画面が表示されます。</li>
+<li>管理メニューで<strong>権限の管理</strong>をクリックします。<strong>権限の管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
 <li>編集したいユーザーをクリックします。<strong>ユーザー詳細</strong>スライドアウトが表示され、<strong>概要</strong>タブが開きます。
 <ul>
 <li>ユーザーのシングルサインオン（SSO）構成、<a href="/ja/iq-tag-management/administration/security/mfa/">MFAトークン</a>、および<a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>認証権限を管理します。</li>
-<li><a href="/ja/administration/single-sign-on/sso/#federation-id">連盟ID</a>がアカウントで有効になっている場合、<strong>連盟ID</strong>フィールドが表示されます。IDがユーザーのメールアドレスと異なる場合を除き、<strong>連盟ID</strong>フィールドは空白のままにしておきます。</li>
+<li><a href="/ja/administration/single-sign-on/sso/#federation-id">連合ID</a>がアカウントで有効になっている場合、<strong>連合ID</strong>フィールドが表示されます。ユーザーのメールアドレスと異なる場合を除いて、<strong>連合ID</strong>フィールドを空白のままにします。</li>
 </ul>
 </li>
-<li>ユーザーの管理者ロールとPIIアクセスレベルを変更するには、<strong>アカウント権限</strong>をクリックします。
+<li>ユーザーの管理者ロールとPIIアクセスレベルに変更を加えるには、<strong>アカウント権限</strong>をクリックします。
 <ul>
-<li>ユーザーに付与したい管理者ロールを選択します。</li>
+<li>ユーザーに付与する管理者ロールを選択します。</li>
 <li>ユーザーのPIIアクセスレベルを選択します。</li>
 <li>ユーザーのData Connectアクセスレベルを選択します。</li>
+<li>そのロールに必要な追加の管理者ロールまたはPII権限が自動的に選択されます。</li>
 <li>詳細については、<a href="/ja/administration/admin-roles/">管理者ロール</a>を参照してください。</li>
 </ul>
 </li>
-<li>ユーザーの権限グループを変更するには、<strong>グループ</strong>をクリックします。
+<li>ユーザーの権限グループに変更を加えるには、<strong>グループ</strong>をクリックします。
 <ul>
 <li>ユーザーを追加または削除するグループを選択します。</li>
 <li>新しい権限グループを追加するには、<strong>+ 権限グループ</strong>をクリックします。</li>
 <li>詳細については、<a href="/ja/administration/permission-groups/">権限グループ</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>保存</strong>をクリックします。<strong>権限を管理</strong>画面が表示されます。</li>
+<li><strong>保存</strong>をクリックします。<strong>権限の管理</strong>画面が表示されます。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者ロールを持たず、権限グループに所属していないユーザーは、どのプロファイルにもアクセスできません。</p>
-<h2 id="バルクアクションユーザー管理">バルクアクションユーザー管理</h2>
-<p>ユーザーテーブルのチェックボックスと<strong>バルクアクション</strong>を使用して、一度に複数のユーザーに対する変更を行うことができます。</p>
-<p>同時に複数のユーザーの管理者ロールを編集するには：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者ロールを持たず、権限グループにも属していないユーザーは、どのプロファイルにもアクセスできません。</p>
+<h2 id="一括アクションユーザー管理">一括アクションユーザー管理</h2>
+<p>ユーザーテーブルのチェックボックスと<strong>一括操作</strong>を使用して、複数のユーザーに対して一度に変更を加えることができます。</p>
+<p>複数のユーザーの管理者ロールを同時に編集するには：</p>
 <ol>
-<li>管理メニューで、<strong>権限を管理</strong>をクリックします。<strong>権限を管理</strong>画面が表示されます。</li>
+<li>管理メニューで<strong>権限管理</strong>をクリックします。<strong>権限管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
-<li><strong>ユーザー</strong>テーブルのユーザーのチェックボックスを選択します。</li>
+<li><strong>ユーザー</strong>テーブルのユーザーに対してチェックボックスを選択します。</li>
 <li><strong>一括操作</strong>をクリックします。
 <ul>
-<li>複数のユーザーの管理者ロールを編集するには、<strong>管理者ロールを割り当てる</strong>をクリックし、ユーザーに割り当てるロールを選択します。</li>
-<li>複数のユーザーの権限グループを編集するには、<strong>グループに追加</strong>をクリックし、ユーザーを追加するグループを選択し、<strong>保存</strong>をクリックします。</li>
-<li>複数のユーザーのPIIアクセスを編集するには、<strong>PII権限</strong>をクリックし、ユーザーに割り当てるPII権限を選択します。</li>
+<li>複数のユーザーの管理者ロールを編集するには、<strong>管理者ロールの割り当て</strong>をクリックし、ユーザーに割り当てたいロールを選択します。</li>
+<li>複数のユーザーの権限グループを編集するには、<strong>グループへ追加</strong>をクリックし、ユーザーを追加するグループを選択し、<strong>保存</strong>をクリックします。</li>
+<li>複数のユーザーのPIIアクセスを編集するには、<strong>PII権限</strong>をクリックし、ユーザーに割り当てたいPII権限を選択します。</li>
 </ul>
 </li>
 </ol>
 <h2 id="ユーザーの削除">ユーザーの削除</h2>
-<p>ユーザーがアカウントへのアクセスを必要としなくなった場合、そのユーザーをアカウントから削除できます。ただし、この操作はユーザーを他のTealiumアカウントから削除するわけではありません。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この操作は元に戻すことはできません。</p>
+<p>ユーザーがアカウントへのアクセスを必要としなくなった場合、そのユーザーをアカウントから削除することができます。ただし、この操作は他のTealiumアカウントからユーザーを削除するものではありません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この操作は元に戻すことができません。</p>
 <p>アカウントからユーザーを削除するには：</p>
 <ol>
-<li>管理メニューで、<strong>権限を管理</strong>をクリックします。<strong>権限を管理</strong>画面が表示されます。</li>
+<li>管理メニューで<strong>権限管理</strong>をクリックします。<strong>権限管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
-<li>削除したいユーザーまたはユーザーの適切なチェックボックスを選択します。</li>
-<li><strong>一括操作</strong>をクリックし、次に<strong>アクセスを削除</strong>をクリックします。</li>
-<li>確認メッセージが表示されます。続行するには<strong>アクセスを削除</strong>をクリックします。</li>
+<li>削除するユーザーまたはユーザーの適切なチェックボックスを選択します。</li>
+<li><strong>一括操作</strong>をクリックし、次に<strong>アクセス削除</strong>をクリックします。</li>
+<li>確認メッセージが表示されます。続行するには<strong>アクセス削除</strong>をクリックします。</li>
 </ol>
 
 </div>
@@ -328,7 +329,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -342,16 +343,16 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%80%E3%82%A4%E3%83%8A%E3%83%9F%E3%83%83%E3%82%AF%E3%81%AA%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" href="javascript:void(0)">ダイナミックなユーザーインターフェース</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E7%9A%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" href="javascript:void(0)">動的ユーザーインターフェース</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">ユーザーの管理</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">ユーザーのエクスポート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B0%E8%A6%8F%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">新規ユーザーの追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%A9%B3%E7%B4%B0%E3%81%AE%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">ユーザー詳細の表示</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B0%E3%81%97%E3%81%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">新しいユーザーの追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E8%A9%B3%E7%B4%B0%E3%82%92%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">ユーザーの詳細を表示</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pii%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AC%E3%83%99%E3%83%AB" href="javascript:void(0)">PIIアクセスレベル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A8%A9%E9%99%90" href="javascript:void(0)">プロファイル権限</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">ユーザーの編集</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%AB%E3%82%AF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86" href="javascript:void(0)">バルクアクションユーザー管理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%80%E6%8B%AC%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86" href="javascript:void(0)">一括アクションユーザー管理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">ユーザーの削除</a></li>
               </nav>
   </aside></nav>
@@ -663,7 +664,7 @@
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/ja/administration/admin-roles/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          管理者の役割
+          管理者ロール
       </a>
       </li>
       

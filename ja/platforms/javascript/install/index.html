@@ -143,7 +143,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      JavaScript（Web）用のTealiumのインストール方法を学びます。
+      JavaScript（Web）用Tealiumのインストール方法を学びます。
     </p>
   
 </div>
@@ -151,8 +151,8 @@
 <div class="prose nested-links" id="prose">
   <h2 id="インストール">インストール</h2>
 <h3 id="ユニバーサルデータオブジェクト-utag_data">ユニバーサルデータオブジェクト (<code>utag_data</code>)</h3>
-<p>ユニバーサルデータオブジェクト（UDO）は、ウェブページからの動的データをTealiumタグに渡すJavaScriptオブジェクトで、<code>utag_data</code>と呼ばれます。このオブジェクトのプロパティは、ビジネスに特化したプレーンでベンダーニュートラルな用語を使用して命名されます。</p>
-<p>以下は、ユニバーサルタグ <code>utag.js</code>をロードする_前に_ <code>utag_data</code>を宣言する例です：</p>
+<p>ユニバーサルデータオブジェクト（UDO）は、<code>utag_data</code>というJavaScriptオブジェクトで、ウェブページの動的データをTealiumタグに渡します。このオブジェクトのプロパティは、ビジネスに特有のプレーンでベンダーニュートラルな用語を使用して命名されます。</p>
+<p>以下は、ユニバーサルタグ <code>utag.js</code> の読み込み <em>前</em> に <code>utag_data</code> を宣言する例です：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Tealium Universal Data Object --&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span><span style="color:#f92672">=</span>{
@@ -162,13 +162,13 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;country_code&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;US&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;currency_code&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USD&#34;</span>};
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
-</span></span></code></pre></div><p>詳しくはこちら：</p>
+</span></span></code></pre></div><p>詳細はこちら：</p>
 <ul>
 <li><a href="/ja/iq-tag-management/data-layer/how-it-works/">データレイヤーの動作方法</a></li>
 <li><a href="/ja/platforms/javascript/about-utag-data/"><code>utag_data</code></a></li>
 </ul>
 <h3 id="ユニバーサルタグ-utagjs">ユニバーサルタグ (<code>utag.js</code>)</h3>
-<p>ユニバーサルタグは、サイトにサードパーティのタグをロードするために必要なすべての生成コードを含むJavaScriptコードの小さな部分で、<code>utag.js</code>と呼ばれます。以下のコードをページに挿入することで、Tealium iQタグ管理がタグを発火します：</p>
+<p>ユニバーサルタグは、<code>utag.js</code>と呼ばれる小さなJavaScriptコードで、サイトにサードパーティのタグを読み込むために必要なすべての生成コードを含んでいます。Tealium iQタグ管理がタグを発火させるために、次のコードをページに挿入します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Tealium Universal Tag --&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">d</span>) {
@@ -204,18 +204,45 @@
 </tr>
 </tbody>
 </table>
-<p><a href="/ja/iq-tag-management/getting-started/install/utag-sync/">詳しく学ぶ</a> <code>utag.sync.js</code>について。</p>
+<p>例えば、<code>example</code>アカウントの<code>sample</code>プロファイルで<code>prod</code>環境を使用する場合、スクリプトコードの<code>a=</code>行の場所を次のコードに置き換えます：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>//tags.tiqcdn.com/utag/example/sample/prod/utag.js
+</span></span></code></pre></div><p><code>utag.sync.js</code>についての詳細は、<a href="/ja/iq-tag-management/getting-started/install/utag-sync/"><code>utag.sync.js</code></a>をご覧ください。</p>
 <h3 id="コードの取得">コードの取得</h3>
-<p>Tealiumをサイトにインストールするためのコードを見つけて取得するには：</p>
+<p>アカウント名やプロファイル名がわからない場合は、Tealium管理者に問い合わせるか、アカウントの権限システムに応じてプラットフォームからコードスニペットを取得できます：</p>
+<h4 id="プラットフォーム権限">プラットフォーム権限</h4>
+<p>プラットフォーム権限を使用しているアカウントの場合、<strong>iQタグ管理 &gt; 環境管理</strong>にアクセスしてコードスニペットを取得します：</p>
 <ol>
-<li>クライアントサイドの管理メニューで、<strong>Code Center</strong>をクリックします。<strong>Code Center</strong>ダイアログが表示されます。</li>
-<li>デフォルトの<strong>Javascript Type</strong>を<a href="https://community.tealiumiq.com/t5/Getting-Started/Synchronous-vs-Asynchronous-JavaScript-sync-vs-async/ta-p/13490"><strong>Asynchronous</strong></a>（推奨）に構成したままにします。</li>
-<li><strong>Tealium Script</strong>タブで、<strong>Select All</strong>ボタンをクリックしてコードスニペットを選択します。</li>
-<li>選択したユニバーサルタグコードをクリップボードにコピーします。</li>
+<li>クライアントサイドの管理メニューで<strong>環境管理</strong>をクリックします。<strong>環境管理</strong>ダイアログが表示されます。</li>
+<li>使用しているウェブサイトの環境の編集アイコンをクリックします。
+<strong>環境編集</strong>画面が表示されます。</li>
+<li><strong>コードスニペット</strong>セクションで<strong>クリップボードにコピー</strong>をクリックしてコードスニペットを選択します。</li>
+<li>スクリプトコードの<code>a=</code>行の場所を置き換えます。</li>
 </ol>
+<p>詳細は <a href="/ja/iq-tag-management/save-publish/manage-environments/">環境管理</a> をご覧ください。</p>
+<h4 id="レガシー権限">レガシー権限</h4>
+<p>レガシー権限を使用しているアカウントの場合、<strong>iQタグ管理 &gt; コードセンター</strong>にアクセスしてコードスニペットを取得します：</p>
+<ol>
+<li>管理メニューで<strong>コードセンター</strong>をクリックします。<strong>コードセンター</strong>ダイアログが表示されます。</li>
+<li>サイドパネルで環境を選択します。</li>
+<li>テキストボックスに表示されたコードを次のいずれかの方法で選択します：
+<ul>
+<li>クリックしてドラッグしてすべてのコードを選択します。</li>
+<li>コードの上にマウスを移動すると表示される<strong>すべて選択</strong>ボタンをクリックします。
+<figure><a class="slb" href="/images/iq-tag-management/iq-code-center-select-all.png"><img src="/images/iq-tag-management/iq-code-center-select-all.png"
+                 alt="code center select all"
+                 title="code center select all"/>
+            </a>
+        </figure></li>
+</ul>
+</li>
+<li>コードをコピーします。</li>
+<li>サイトのオーサリングツールまたはバックエンドシステムにコードを貼り付けます。</li>
+</ol>
+<p>詳細は <a href="/ja/iq-tag-management/getting-started/install/code-center/">コードセンター</a> をご覧ください。</p>
+<p>詳細は <a href="/ja/iq-tag-management/save-publish/manage-environments/">環境管理</a> をご覧ください。</p>
 <h3 id="コードの配置">コードの配置</h3>
-<p>ユニバーサルタグコードをウェブサイトのすべてのページの開始<code>&lt;body&gt;</code>タグの直後に貼り付けます。この配置は、最大数のベンダーとの互換性を提供し、訪問が次のページに移動する前にサードパーティのトラッキングが完了するようにします。</p>
-<p>以下の例はコードの配置を示しています：</p>
+<p>ウェブサイトのすべてのページで、開始 <code>&lt;body&gt;</code> タグの直後にユニバーサルタグコードを貼り付けます。この位置は、最も多くのベンダーとの互換性を提供し、訪問が次のページに移動する前にサードパーティのトラッキングが完了することを可能にします。</p>
+<p>以下の例は、コードの配置を示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- code --&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
@@ -223,38 +250,38 @@
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">TEALIUM</span> <span style="color:#a6e22e">CODE</span> <span style="color:#a6e22e">SNIPPET</span> <span style="color:#a6e22e">GOES</span> <span style="color:#a6e22e">HERE</span>&gt;
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- code --&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
-</span></span></code></pre></div><p>ユニバーサルタグ <code>utag.js</code>がどのようにロードされるかを理解するために、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">操作の順序</a>について詳しく学びます。</p>
+</span></span></code></pre></div><p><a href="/ja/iq-tag-management/getting-started/order-of-operations/">操作の順序</a>について学び、ユニバーサルタグ <code>utag.js</code> がどのように読み込まれるかを理解します。</p>
 <h2 id="インストールの検証">インストールの検証</h2>
-<p>以下のツールを使用して、<code>utag.js</code>のインストールが正しく動作していることを確認します。</p>
-<h3 id="ユニバーサルタグ-utag-デバッガー">ユニバーサルタグ (utag) デバッガー</h3>
-<p>ユニバーサルタグデバッガー（または &ldquo;utagデバッガー&rdquo;）は、サイトをナビゲートするときにリアルタイムでデータレイヤーとトラッキングコールを検証する簡単な方法を提供します。Web Companionと似ていますが、<code>utag.js</code>内の各トラッキングイベントでキャプチャされるデータに焦点を当てています。</p>
+<p>次のツールを使用して、<code>utag.js</code>のインストールが正しく機能しているかを検証します。</p>
+<h3 id="ユニバーサルタグ-utag-デバッガ">ユニバーサルタグ (utag) デバッガ</h3>
+<p>ユニバーサルタグデバッガ（または「utagデバッガ」）は、サイトをナビゲートする際にリアルタイムでデータレイヤーとトラッキングコールを検証する簡単な方法を提供します。Web Companionに似ていますが、<code>utag.js</code>内の各トラッキングイベントでキャプチャされたデータに焦点を当てています。</p>
 <figure><a class="slb" href="/images/platforms/javascript/utag-monitor.png"><img src="/images/platforms/javascript/utag-monitor.png" width="500" height="500"/>
     </a><figcaption><p>UTAG Monitor</p>
         </figcaption>
 </figure>
-<p><code>utag.js</code>によって行われるトラッキングコールは、ナビゲートするかページ内のイベントをトリガーするとツールに表示され、更新されます。</p>
-<p><a href="/ja/iq-tag-management/troubleshooting/utag-debugger/">詳しく学ぶ</a> ユニバーサルタグデバッガーのインストールと使用方法について。</p>
+<p><code>utag.js</code>によって行われたトラッキングコールは、ページをナビゲートまたはページ内イベントをトリガーするとツールに表示され、更新されます。</p>
+<p><a href="/ja/iq-tag-management/troubleshooting/utag-debugger/">ユニバーサルタグデバッガのインストールと使用方法</a>についてもっと学びましょう</p>
 <h3 id="web-companion">Web Companion</h3>
-<p>Web Companionは、タグの構成を確認し、サイト上のデータを検査し、新しい構成を素早く簡単に作成してテストすることができるブラウザツールです。このツールを起動すると、<code>utag.js</code>ライブラリがサイト上で正しくロードされていることをすばやく確認できます。</p>
+<p>Web Companionは、タグ構成を確認し、サイト上のデータを検査し、新しい構成を迅速かつ簡単に作成してテストすることができるブラウザツールです。このツールをすぐに起動することで、<code>utag.js</code>ライブラリがサイト上で正しく読み込まれていることを確認できます。</p>
 <figure><a class="slb" href="/images/platforms/javascript/web-companion.png"><img src="/images/platforms/javascript/web-companion.png" width="375" height="550"/>
     </a><figcaption><p>Web Companion</p>
         </figcaption>
 </figure>
 <p><strong>アカウント情報</strong><br>
-現在のアカウント、プロファイル、バージョン、ページが実行している環境がこのタブに表示されます。</p>
+このタブには、ページが実行されている現在のアカウント、プロファイル、バージョン、環境が表示されます。</p>
 <p><strong>ターゲット環境（デフォルトでは無効）</strong> <br>
-ページコードで検出された環境はオレンジで囲まれています。現在表示されている環境は青で強調表示されています。環境を変更するには、ロードしたいターゲット環境をクリックし、<strong>Refresh Page</strong>をクリックします。</p>
+ページコードで検出された環境はオレンジ色で囲まれ、現在表示されている環境は青色で強調表示されます。環境を変更するには、読み込みたいターゲット環境をクリックし、<strong>ページを更新</strong>をクリックします。</p>
 <ul>
-<li>この機能を有効にするには、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">公開構成のWeb Companion構成</a>をオンにします。</li>
-<li><a href="/ja/iq-tag-management/troubleshooting/switch-environoment/">環境の切り替え</a>の他の方法について学びます。</li>
+<li>この機能を有効にするには、公開構成で<a href="/ja/iq-tag-management/save-publish/publish-configuration/">Web Companion構成をオンにする</a>必要があります。</li>
+<li><a href="/ja/iq-tag-management/troubleshooting/switch-environoment/">公開環境を切り替える</a>他の方法についても学びましょう。</li>
 </ul>
-<p><strong>Tags &amp; Extensions Tabs</strong>  <br>
-このタブには、どのタグがロードされ、リクエストが正常に送信されたかが表示されます。成功したExtensionsも表示されます。</p>
-<p><strong>Timers</strong><br>
-各Tealium JavaScriptライブラリのロード時間と送信時間がタブの下部に表示されます。</p>
+<p><strong>タグ &amp; 拡張タブ</strong>  <br>
+このタブでは、どのタグが読み込まれ、リクエストが正常に送信されたかを表示します。成功裏に完了した拡張も表示されます。</p>
+<p><strong>タイマー</strong><br>
+各Tealium JavaScriptライブラリの読み込み時間と送信時間がタブの下部に表示されます。</p>
 <p><strong>変更の保存</strong><br>
-Web Companionを通じてプロファイルに適用された変更は、ブックマークレットの下部にキューイングされ、<strong>Save&hellip;<strong>ボタンをクリックするまでコミットされません。変更をコミットしたくない場合は、適切な変更の隣にある</strong>X</strong>ボタンをクリックして、その変更をキューから削除することもできます。</p>
-<p><a href="/ja/iq-tag-management/troubleshooting/web-companion/">詳しく学ぶ</a> Web Companionのインストールと使用方法について。</p>
+プロファイルに適用された変更はブックマークレットの下部にキューされ、<strong>保存&hellip;<strong>ボタンをクリックするまでコミットされません。変更をコミットしたくない場合は、該当する変更の横にある</strong>X</strong>ボタンをクリックしてその変更をキューから削除することもできます。</p>
+<p><a href="/ja/iq-tag-management/troubleshooting/web-companion/">Web Companionのインストールと使用方法</a>についてもっと学びましょう。</p>
 
 </div>
 
@@ -300,7 +327,7 @@ Web Companionを通じてプロファイルに適用された変更は、ブッ�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月8日
+          <p>最終更新日 ::  2025年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -320,7 +347,7 @@ Web Companionを通じてプロファイルに適用された変更は、ブッ�
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%8F%96%E5%BE%97" href="javascript:void(0)">コードの取得</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E9%85%8D%E7%BD%AE" href="javascript:void(0)">コードの配置</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">インストールの検証</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%BF%E3%82%B0-utag-%E3%83%87%E3%83%90%E3%83%83%E3%82%AC%E3%83%BC" href="javascript:void(0)">ユニバーサルタグ (utag) デバッガー</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%BF%E3%82%B0-utag-%E3%83%87%E3%83%90%E3%83%83%E3%82%AC" href="javascript:void(0)">ユニバーサルタグ (utag) デバッガ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web-companion" href="javascript:void(0)">Web Companion</a></li>
               </nav>
   </aside></nav>
