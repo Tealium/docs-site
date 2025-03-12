@@ -372,7 +372,12 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getAllowedCategoriesAndServices</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Use the incoming callback feature to avoid some polling when the underlying framework supports it
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It&#39;s better to call this too often (no impact) than too little (missed consent changes and the corresponding data)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It&#39;s better to call the triggerRecheck function too often (no negative impact) than too little (missed consent changes and the corresponding data).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Ensure to call triggerRecheck every time the CMP has a change in consent status, such as:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - Initial consent pop-up (implicit consent in opt-in model)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - Explicit consent changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - Initial CMP load when a previous decision has been made
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// If this function isn&#39;t defined and included on the window-scoped object, polling will be used instead
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span> (<span style="color:#a6e22e">triggerRecheck</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">triggerRecheck</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;function&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
 </span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;cc:onConsent&#39;</span>, <span style="color:#66d9ef">function</span> () {
@@ -766,7 +771,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2025 
+          <p>This page was last updated:  March 12, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -991,6 +996,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

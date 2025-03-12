@@ -527,7 +527,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      In this step we will show how to safely create a visitor ID attribute and introduce Audience Discovery, where we can validate the identity resolution strategy before committing to it.
+      In this step, we will show how to safely create a visitor ID attribute and introduce Audience Discovery, which allows us to validate the identity resolution strategy before finalizing it.
     </p>
   
 </div>
@@ -535,21 +535,29 @@
 <div class="prose nested-links" id="prose">
   <p>In this example, we will capture email addresses during user registration events based on the requirements from the previous step.</p>
 <h2 id="capture-email-address">Capture email address</h2>
-<p>This step assumes you already have an event attribute for <code>email_address</code> and an event named <code>user_register</code> that sends it. From here we will create a visitor attribute (string) for email address, test it in Audience Discovery, then create the final visitor ID attribute.</p>
+<p>This step assumes you already have an event attribute for <code>email_address</code> and an event named <code>user_register</code> that sends it. From here, we will create a string visitor attribute for email address, test it in Audience Discovery, then create the final visitor ID attribute.</p>
 <ol>
-<li>Navigate to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong> and click <strong>+ Add Attribute</strong>.</li>
+<li>Go to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong> and click <strong>+ Add Attribute</strong>.</li>
 <li>Select the scope of <strong>Visitor</strong> and click <strong>Continue</strong>.</li>
 <li>Select the data type <strong>String</strong> and click <strong>Continue</strong>.</li>
-<li>Enter the name of the attribute, <code>Email Address</code>.</li>
-<li>Click <strong>Add Enrichment</strong> and select <strong>Set String</strong>, and set the Visitor String to the event variable <code>email_address</code></li>
+<li>Enter the attribute name <code>Email Address</code>.</li>
+<li>Click <strong>Add Enrichment</strong>, select <strong>Set String</strong>, and set the <strong>Visitor String</strong> to the event variable <code>email_address</code></li>
 <li>Leave the <strong>WHEN</strong> set to <strong>Any Event</strong>, then click <strong>Create a New Rule</strong>.</li>
-<li>Create a rule that identifies the qualifying event, for example:<br>
-<code>tealium_event equals user_register</code></li>
+<li>Create a rule that identifies the qualifying event, for example:
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">user_register</span>
+      </div>
+  </div>
+</div></li>
 <li>Click <strong>Finish</strong>, then <strong>Save</strong>.</li>
 </ol>
-<p>Now you have a visitor attribute to capture the email address of customers during qualifying events. You can easily extend this logic to include other qualifying events (such as purchases or lead forms) as you encounter them.</p>
+<p>Now, you have a visitor attribute to capture the email address of customers during qualifying events. You can easily extend this logic to include other qualifying events (such as purchases or lead forms) as you encounter them.</p>
 <p>At this point you&rsquo;ll want to save and publish your account and wait a few days for AudienceStream to start collecting this data. Once we have enough sample data we&rsquo;ll use Audience Discovery to validate our identity resolution strategy before finalizing it with the visitor ID attribute.</p>
-<p>Click <strong>Next</strong> to see how to use Audience Discovery to validate the data.</p>
+<p>Click <strong>Visitor ID Discovery</strong> to learn how to use Audience Discovery for data validation.</p>
 
 </div>
 
@@ -610,7 +618,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 11, 2024 
+          <p>This page was last updated:  March 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -814,6 +822,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

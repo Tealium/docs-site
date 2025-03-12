@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -135,59 +135,55 @@
 <div class="prose nested-links" id="prose">
   <h2 id="requirements">Requirements</h2>
 <ul>
-<li><a href="/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub account</a></li>
+<li><a href="/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub account</a>.</li>
 </ul>
-<h2 id="how-it-works">How it Works</h2>
+<h2 id="how-it-works">How it works</h2>
 <p>The Tealium Collect extension for Adobe Experience Platform Launch sends all your events and corresponding data along to Tealium for use with Tealium Customer Data Hub. The Tealium Collect extension for Adobe Experience Platform Launch is a custom template that loads the Tealium Collect JavaScript file once per page.</p>
-<p>For each triggered event, the tag automatically flattens the <code>digitalData</code> object into key-value pairs and posts the data to the Tealium Collect endpoint. A custom endpoint may be specified if you use first-party data collection.</p>
-<p>Learn how data layer variables are flattened in the <a href="/platforms/adobe-launch/data-layer/">data layer</a>.</p>
+<p>For each triggered event, the tag automatically flattens the data layer enrichment object specified in the configuration into key-value pairs and posts the data to the Tealium Collect endpoint. A custom endpoint may be specified if you use first-party data collection.</p>
+<p>For more information about how data layer variables are flattened, see <a href="/platforms/adobe-launch/data-layer/">data layer</a>.</p>
 <h2 id="install">Install</h2>
 <h3 id="tealium-collect">Tealium Collect</h3>
-<p>To install the Tealium Collect extension:</p>
+<p>To install the Tealium Collect extension, use the following steps:</p>
 <ol>
 <li>Go to the Adobe Experience Platform Launch Marketplace.</li>
-<li>In the Extensions menu, click on the <strong>Catalog</strong> tab and search for the <strong>Tealium Collect</strong> extension.</li>
+<li>In the Extensions menu, click the <strong>Catalog</strong> tab and search for the <strong>Tealium Collect</strong> extension.</li>
 <li>Click <strong>Install</strong>.</li>
 <li>Set the following configuration options and then click <strong>Save to Library</strong>:
 <ul>
-<li><strong>Tealium Account</strong> (required): Your Tealium account name.</li>
-<li><strong>Tealium Profile</strong> (required): Your Tealium profile name.</li>
-<li><strong>Endpoint</strong> (optional): Override the Tealium Collect endpoint with your first-party data collection endpoint, such as <code>https://collect.example.co.uk/event</code>.</li>
+<li><strong>Tealium Account</strong>: Required. Your Tealium account name.</li>
+<li><strong>Tealium Profile</strong>: Required. Your Tealium profile name.</li>
+<li><strong>Data Source Key</strong>: Optional. The data source key from your server-side Tealium configuration.</li>
+<li><strong>Collect Tag URL</strong>: Optional. Override the default Tealium Collect URL with your own custom first-fart data hosted file URL. For example: <code>https://collect.example.co.uk/collect.min.js</code>.</li>
+<li><strong>Endpoint</strong>: Optional. Override the Tealium Collect endpoint with your first-party data collection endpoint. For example: <code>https://collect.example.co.uk/event</code>.</li>
 </ul>
 </li>
+<li>Create the rules to fire the Tealium Collect extension. The following example runs the extension for the page view event.</li>
 </ol>
-<p>Create the rules to fire the Tealium Collect extension. The following example runs the extension for the page view event.</p>
 <figure><a class="slb" href="/images/platforms/adobe-launch/adobe-launch-rules.png"><img src="/images/platforms/adobe-launch/adobe-launch-rules.png" width="375" height="500"/>
     </a><figcaption><p>Adobe Launch Rules</p>
         </figcaption>
 </figure>
 <h3 id="data-layer-enrichment">Data Layer Enrichment</h3>
 <p>The Tealium Data Layer Enrichment extension brings server-side attributes from Tealium AudienceStream and injects them into the data layer.</p>
-<p>To install the Data Layer Enrichment extension:</p>
+<p>To install the Data Layer Enrichment extension, use the following steps:</p>
 <ol>
-<li>
-<p>Search for the <strong>Tealium Data Enrichment</strong> extension in the Adobe Extension Catalog.</p>
-</li>
-<li>
-<p>Click the <strong>Install</strong> button to add the extension.</p>
-</li>
-<li>
-<p>Add a <strong>Rule and Action</strong> for <strong>Tealium Data Enrichment</strong></p>
-</li>
-<li>
-<p>Mouse over an installed extension and click <strong>Configure</strong>, the set the following options:</p>
+<li>Search for the <strong>Tealium Data Enrichment</strong> extension in the Adobe Extension Catalog.</li>
+<li>Click the <strong>Install</strong> button to add the extension.</li>
+<li>Add a <strong>Rule and Action</strong> for <strong>Tealium Data Enrichment</strong>.</li>
+<li>Mouse over an installed extension and click <strong>Configure</strong>, then set the following options:
 <ul>
-<li><strong>Tealium Account</strong> (required): Your Tealium account name.</li>
-<li><strong>Tealium Profile</strong> (required): Your Tealium profile name.</li>
-<li><strong>Data Source Key</strong> (optional): The data source key from your server-side Tealium configuration.</li>
-<li><strong>Endpoint</strong> (optional): Override the Tealium Collect endpoint with your first-party data collection endpoint, such as <code>https://collect.example.co.uk/event</code>.</li>
+<li><strong>Tealium Account</strong>: Required. Your Tealium account name.</li>
+<li><strong>Tealium Profile</strong>: Required. Your Tealium profile name.</li>
+<li><strong>Data Source Key</strong>: Optional. The data source key from your server-side Tealium configuration.</li>
+<li><strong>Collect Tag URL</strong>: Optional. Override the default Tealium Collect URL with your own custom first-fart data hosted file URL.</li>
+<li><strong>Endpoint</strong>: Optional. Override the Tealium Collect endpoint with your first-party data collection endpoint, such as <code>https://collect.example.co.uk/event</code>.</li>
+<li><strong>Data Object</strong>: Optional. The name of a JavaScript variable to use as the data layer enrichment object. For example, enter <code>digitalData</code> if you use this as your data layer enrichment object. The extension automatically uses the second parameter in a <code>_satellite.track</code> call for Direct Call events.</li>
+<li><strong>Add Event Listener for adobeDataLayer</strong>: Optional. Automatically track events in adobeDataLayer. Tracks both default and custom Adobe Client Data Layer events.</li>
 </ul>
 </li>
-<li>
-<p>Create a new data element in Adobe Launch to read the data in local storage.</p>
-</li>
+<li>Create a new <a href="https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements">data element</a> in Adobe Launch to read the data in local storage.</li>
 </ol>
-<p>The <a href="/server-side/attributes/data-layer-enrichment/enable/">object</a> is stored in <code>localStorage</code> under the key <code>teal_adobe_enrichment_data</code>. Fetching the key returns the DLE object. The following example retrieves the DLE object from <code>localStorage</code>, then stores all the audiences in an array:</p>
+<p>The <a href="/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment object</a> is stored in <code>localStorage</code> under the key <code>teal_adobe_enrichment_data</code>. Retrieving the key returns the data layer enrichment object. The following example retrieves the data layer enrichment object from <code>localStorage</code> and then stores all the audiences in an array:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dle_object</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(
 </span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;teal_adobe_enrichment_data&#34;</span>));
 </span></span><span style="display:flex;"><span>
@@ -200,7 +196,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="track">Track</h2>
-<p>The direct call events from <code>_satellite.track</code> are processed by Tealium Collect. The first parameter is set to the variable <code>tealium_event</code> in the data layer.  The second parameter contains the additional data layer attributes sent along to the Tealium Collect endpoint.</p>
+<p>The direct call events from <code>_satellite.track</code> are processed by Tealium Collect. The first parameter is set to the variable <code>tealium_event</code> in the data layer. The second parameter contains the additional data layer attributes sent along to the Tealium Collect endpoint.</p>
 <p>The following example is a direct call for the event <code>contact_submit</code>.  We recommend a data layer of key-value pairs, but you may also pass a nested <code>adobeDataLayer</code> object.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">_satellite</span>.<span style="color:#a6e22e">track</span>(<span style="color:#e6db74">&#39;contact_submit&#39;</span>, { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;John Doe&#39;</span> });
 </span></span></code></pre></div><p>The resulting event in Tealium Collect is:</p>
@@ -213,9 +209,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">turbineBuildDate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-07-01T18:10:34Z&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">buildDate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-03-30T16:27:10Z&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>If the data layer object contains nested values, it is automatically flattened before it is sent to the Tealium Collect endpoint.</p>
-<p>Learn more about the <a href="https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo">Adobe Experience Platform Launch object reference</a>.</p>
-<h2 id="source-code">Source Code</h2>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>If the data layer enrichment object contains nested values, it is automatically flattened before it is sent to the Tealium Collect endpoint.</p>
+<p>For more information, see <a href="https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo">Adobe: Adobe Experience Platform Launch object reference</a>.</p>
+<h2 id="source-code">Source code</h2>
 <p>If you are a developer and require a custom implementation, download the <a href="https://github.com/Tealium/tealium-collect-adobe-launch-extension">extension code</a> and modify it as needed.</p>
 
 </div>
@@ -262,7 +258,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 14, 2023 
+          <p>This page was last updated:  March 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -277,12 +273,12 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it Works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install" href="javascript:void(0)">Install</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect" href="javascript:void(0)">Tealium Collect</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-enrichment" href="javascript:void(0)">Data Layer Enrichment</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track" href="javascript:void(0)">Track</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#source-code" href="javascript:void(0)">Source Code</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#source-code" href="javascript:void(0)">Source code</a></li>
               </nav>
   </aside></nav>
 
@@ -472,6 +468,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

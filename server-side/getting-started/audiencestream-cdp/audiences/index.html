@@ -527,40 +527,43 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This document eexplains what an audience is.
+      This document provides information about audiences and describes how to create an audience.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
+  <p>An audience is a group of visitors identified by a shared set of attributes. The conditions for an audience specify the attribute values for visitors in that audience. The more conditions you add, the more specific your audience becomes. Audiences are dynamic, meaning visitors can join or leave audiences as events come in from active visitor sessions.</p>
+<figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
          alt="Audience"
          title="Audience" class="noshadow" width="150" height="143"/>
     </a>
 </figure>
-<p>The more conditions you use to create an audience, the more specific your audience. Audiences are used to trigger vendor actions (connectors) in real-time.</p>
-<p>In this example we will create a simple <strong>VIP</strong> audience using the badge created in the previous steps, but will provide examples of how you could extend this audience to include more conditions.</p>
+<p>The more conditions you use to create an audience, the more specific it becomes. Audiences are used to trigger vendor actions (connectors) in real-time.</p>
+<p>The following example creates a basic VIP audience using <a href="/server-side/getting-started/audiencestream-cdp/badges/">the previously created badge</a>. Since we’re targeting this audience with an email campaign, we’ll also check for a known email address. Finally, we’ll show how to expand the audience with additional conditions.</p>
 <h2 id="create-an-audience">Create an audience</h2>
-<p>To create an audience:</p>
+<p>Use the following steps to create an audience:</p>
 <ol>
 <li>
-<p>Navigate to <strong>AudienceStream &gt; Audiences</strong> and click <strong>+ Add Audience</strong>.</p>
+<p>Go to <strong>AudienceStream &gt; Audiences</strong> and click <strong>+ Add Audience</strong>.</p>
 </li>
 <li>
 <p>Enter a <strong>Name</strong> to uniquely identify the audience, such as <code>VIP</code>. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you use a <a href="/server-side/data-storage/about/">DataAccess</a> product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p></p>
 </li>
 <li>
-<p>Use the <strong>Conditions</strong> drop-downs to create a filter:<br>
-<code>VIP (badge) is assigned</code></p>
-</li>
+<p>Use the <strong>Conditions</strong> drop-downs to create a filter:</p>
+<pre tabindex="0"><code>VIP (badge) is assigned
+AND
+Has Email Address is assigned
+</code></pre></li>
 <li>
 <p>Click <strong>Save</strong>.</p>
 </li>
 <li>
-<p>Save/publish your account.</p>
+<p>Save and publish your account.</p>
 </li>
 </ol>
-<p>While the condition for this audience matches the condition of the badge, by creating an audience you can now take action on these <strong>VIP</strong> customers using connectors. You could further refine this audience by creating more visitor attributes and define additional conditions. Here are some examples:</p>
+<p>This audience contains visitors who have the VIP badge assigned. You can now take action on these <strong>VIP</strong> customers using connectors. You could further refine this audience by creating more visitor attributes and defining additional conditions. Here are some examples:</p>
 <ul>
 <li><strong>VIP - Recent Purchasers (or Past Purchasers)</strong><br>
 Combine the <strong>VIP</strong> badge with a <strong>Last Purchase Date</strong> attribute to create an audience of your best customers that have purchased recently (or not so recently).</li>
@@ -628,7 +631,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 11, 2024 
+          <p>This page was last updated:  March 12, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -832,6 +835,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -353,13 +353,13 @@
         <ul class="pl2  tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/browser-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-browser-extension">Browser extension</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/environment-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-tealium-tools-environment-switcher">Environment Switcher</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/tealium-tools/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">Universal Tag Debugger</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/tealium-tools/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-web-companion-tool-adobe-test-amp-target">Web Companion Adobe Test &amp; Target</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/tealium-tools-version-3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-version-3">Tealium Tools Version 3</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".troubleshooting">Troubleshooting</a>
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/troubleshooting/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">Universal Tag Debugger</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/troubleshooting/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">Validate and troubleshoot tags</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">Switch publish environment</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">Page performance</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -415,13 +415,13 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides an example of Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
+      This article provides an example of a Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>In the following example, we embed an experience on an electronics site to ask the visitor what their level of expertise is. Then, we enrich the visitor profile with this information. This helps you determine the level of comfort the visitor has with the product line, which you might use for suggesting additional services and products such as home installation services, speaker cables, or extended warranties.</p>
+  <p>In the following example, we embed an experience on an electronics site to ask the visitor about their level of expertise. The visitor&rsquo;s response is then enriched in their visitor profile. This helps determine their familiarity with the product line, which can be used to personalize recommendations for additional services and products, such as home installation services, speaker cables, or extended warranties.</p>
 <h2 id="requirements">Requirements</h2>
 <p>This example requires the following:</p>
 <ul>
@@ -446,13 +446,16 @@
 </ul>
 <p>Under <strong>Placement Selector</strong>, enter the CSS property where you want the experience to load (for example, <code>div.col-main</code>).</p>
 <h3 id="create-load-rule">Create load rule</h3>
-<p>To load the experience only on the home page, create the <strong>Home Page</strong> load rule with the following properties:</p>
-<ul>
-<li><strong>Variable</strong>: <code>js.page_type</code></li>
-<li><strong>Operator</strong>: <code>equals (ignore case)</code></li>
-<li><strong>Value</strong>: <code>home</code></li>
-</ul>
-<p>For the purposes of this example, let&rsquo;s assume that the tag UID is <code>123</code>.</p>
+<p>To load the experience only on the home page, create the following rule:</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">js.page_type</span>
+        <span class="operator">EQUALS (IGNORE CASE)</span>
+        <span class="filter">home</span>
+      </div>
+  </div>
+</div>
 <h2 id="step-2-create-audiencestream-attributes">Step 2: Create AudienceStream attributes</h2>
 <p>To configure AudienceStream to enrich attributes with the values from the experiences, use the following steps:</p>
 <ol>
@@ -470,19 +473,20 @@
 </ul>
 </li>
 </ol>
-<p>Because you will eventually create multiple experiences or sets of experiences, you need to ensure that the <code>tealium_event</code> values from experiences only enrich the attributes they are meant to. Update the rules for the attributes to check if the <code>tealium_event</code> values are coming from the appropriate experiences.</p>
-<p>For this example, update the rule for the <strong>Customer_Expertise</strong> visit attribute to check if <code>momentsiq_id</code> matches the UID of the experience you created. This ensures that only the experience in this example enriches the <strong>Customer_Expertise</strong> attribute.</p>
+<p>Since multiple Moments iQ experiences may be created over time, you must ensure that <code>tealium_event</code> values from different experiences enrich only the intended attributes.</p>
+<p>Update the rule for the <code>Customer_Expertise</code> visit attribute to check if <code>momentsiq_id</code> matches the UID of the specific experience created in this example. This ensures that only the correct experience updates the <code>Customer_Expertise</code> attribute.</p>
+<p>In this example, the tag UID is <code>123</code>:</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"><img src="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"
          alt="Attribute conditions"
          title="Attribute conditions"/>
     </a>
 </figure>
 <h2 id="results">Results</h2>
-<p>When the visitor loads the home page, the home page embeds the experience after the beginning of the <code>div.col-main</code> property.</p>
+<p>When the visitor loads the home page, the experience is embedded at the beginning of the <code>div.col-main</code> element.</p>
 <figure><a class="slb" href="/images/moments-iq/momentsiq-example-home-theater.png"><img src="/images/moments-iq/momentsiq-example-home-theater.png"/>
     </a>
 </figure>
-<p>When the customer answers the question, the answer is stored in their visitor profile and they are assigned a badge based on their answer.</p>
+<p>When the customer answers the question, their answer is stored in their visitor profile and they are assigned a badge based on their expertise level.</p>
 
 </div>
 
@@ -528,7 +532,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 23, 2024 
+          <p>This page was last updated:  March 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -736,6 +740,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

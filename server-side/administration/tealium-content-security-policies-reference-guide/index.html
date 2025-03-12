@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -527,8 +527,17 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>For each Tealium product or service you use, add its data center domains to your CSP. Also, add domains of any vendors loaded through Tealium iQ Tag Management.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Each list is a full list, including all data center domains that may be used in the future.</p>
+  <h2 id="how-it-works">How it works</h2>
+<p>CSP (Content Security Policy) is a security feature that helps prevent malicious attacks like cross-site scripting (XSS). It does this by controlling the resources, such as scripts and images, that can be loaded and executed on a web page. To enforce these restrictions, CSP defines rules in HTTP headers or meta tags, limiting content sources and enhancing security.</p>
+<p>For example, consider the following CSP directive:</p>
+<pre tabindex="0"><code>Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; tealium.com;
+</code></pre><ul>
+<li><code>default-src</code> instructs the visitor&rsquo;s browser to only load resources from the same origin as the document unless additional directives set different policies for specific resource types.</li>
+<li><code>script-src</code> instructs the visitor’s browser to load scripts only from the same origin as the document. It also allows scripts from <code>tealium.com</code>.</li>
+</ul>
+<p>For each Tealium product or service you use, add its data center domains to your CSP. This ensures that your site visitors can load the necessary scripts. Also, add the domains of any vendors loaded through Tealium iQ Tag Management.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Each list includes all data center domains that may be used in the future.</p>
+<p>For more information about CSP, see <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP%22">MSDN: Content Security Policy</a>.</p>
 <h2 id="tealium-iq-tag-management">Tealium iQ Tag Management</h2>
 <p>Add the following iQ Tag Management data center domains to your CSP:</p>
 <pre tabindex="0"><code>tags.tiqcdn.com
@@ -554,6 +563,9 @@ collect-us-east-2.tealiumiq.com
 collect-us-west-1.tealiumiq.com 
 collect-us-west-2.tealiumiq.com
 collect.tealiumiq.com
+</code></pre><h3 id="private-cloud-environments">Private cloud environments</h3>
+<p>If you use a private cloud environment, be sure to add that site to your CSP. For example, to add the PC HMT Collect environment, add the following domain:to your CSP:</p>
+<pre tabindex="0"><code>pc-hmt-collect.tealiumiq.com
 </code></pre><h2 id="data-layer-enrichment">Data layer enrichment</h2>
 <p>Add the following Tealium Data Layer Enrichment data center domains to your CSP:</p>
 <pre tabindex="0"><code>visitor-service-ap-northeast-1.tealiumiq.com 
@@ -636,7 +648,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 8, 2023 
+          <p>This page was last updated:  March 11, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -650,9 +662,11 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq-tag-management" href="javascript:void(0)">Tealium iQ Tag Management</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq-tag-management" href="javascript:void(0)">Tealium iQ Tag Management</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect-tag-audiencestream-and-eventstream" href="javascript:void(0)">Tealium Collect Tag, AudienceStream and EventStream</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-enrichment" href="javascript:void(0)">Data layer enrichment</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#private-cloud-environments" href="javascript:void(0)">Private cloud environments</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-enrichment" href="javascript:void(0)">Data layer enrichment</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-api" href="javascript:void(0)">Tealium API</a></li>
               </nav>
   </aside></nav>
@@ -843,6 +857,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

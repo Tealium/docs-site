@@ -355,13 +355,13 @@
         <ul class="pl2 bl b--primary bw1 tealium-tools desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tealium-tools/browser-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-browser-extension">ブラウザ拡張機能</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tealium-tools/environment-switcher/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".iq-tag-management-tealium-tools-environment-switcher">環境スイッチャー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-web-companion-tool-adobe-test-amp-target">Web Companion Adobe Test &amp; Target</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tealium-tools/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tealium-tools/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">ユニバーサルタグデバッガー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-web-companion-tool-adobe-test-amp-target">Web Companion Adobe Test &amp; Targetの使用方法</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tealium-tools/tealium-tools-version-3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-version-3">Tealium Tools バージョン3</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".troubleshooting">トラブルシューティング</a>
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">ユニバーサルタグデバッガー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -424,90 +424,85 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使い方">使い方</h2>
-<p>環境スイッチャーは、特定の環境（Dev、QA、またはProd）および/または特定のアカウント/プロファイルを指定して、ページにロードされるTealiumファイル（<code>utag.js</code>、<code>utag.sync.js</code>）を変更するための強力なテストツールです。</p>
-<p>Tealiumツールの拡張機能を追加することで環境スイッチャーを使用します。詳細については、<a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a>を参照してください。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>環境スイッチャーは、特定の環境（開発、QA、または本番）および/または特定のアカウント/プロファイルを指定してページにロードされるTealiumファイル（<code>utag.js</code>、<code>utag.sync.js</code>）を変更するために使用される強力なテストツールです。</p>
+<p>Tealiumツール拡張機能を追加することで環境スイッチャーを使用します。詳細については、<a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealiumツールブラウザ拡張機能</a>を参照してください。</p>
 <h2 id="環境スイッチャーの使用方法">環境スイッチャーの使用方法</h2>
-<p>環境スイッチャーを起動すると、ページで検出された現在のアカウントとプロファイルが表示され、スイッチャーを調整するための構成タブが表示されます。</p>
-<p>Tealiumツールで環境スイッチャーを利用できるようになったら、以下の手順で起動します：</p>
+<p>環境スイッチャーを起動すると、ページ上で検出された現在のアカウントとプロファイルが表示され、入力に応じてスイッチャーを調整できる構成タブが表示されます。</p>
+<p>Tealiumツールで環境スイッチャーを利用可能にしたら、次の手順で起動します：</p>
 <ol>
-<li>画面の右上にある<strong>Tealiumツール</strong>アイコンをクリックします。</li>
-<li><strong>ホーム</strong>タブをクリックします。</li>
-<li><strong>環境スイッチャー</strong>をクリックします。<br>
-<figure><a class="slb" href="/images/iq-tag-management/tealium-tools-browser-extensions.jpg"><img src="/images/iq-tag-management/tealium-tools-browser-extensions.jpg"
-             alt="Tealium Tools_Browser Extensions.jpg"
-             title="Tealium Tools_Browser Extensions.jpg"/>
-        </a>
-    </figure><br>
-環境スイッチャーの構成画面には、構成タブのセットが表示されます。</li>
+<li>画面右上の <strong>Tealiumツール</strong> アイコンをクリックします。</li>
+<li><strong>ホーム</strong> タブをクリックします。</li>
+<li><strong>環境スイッチャー</strong> をクリックします。<br>
+環境スイッチャーの構成画面が表示され、構成タブのセットが表示されます。</li>
 </ol>
 <h3 id="基本構成">基本構成</h3>
-<p><strong>基本</strong>タブのオプションを使用すると、異なる環境からutag.jsとutag.sync.jsをロードできます。</p>
+<p><strong>基本</strong> タブのオプションを使用すると、異なる環境から <code>utag.js</code> と <code>utag.sync.js</code> をロードできます。</p>
 <p>環境を切り替えるには、以下の手順を実行します：</p>
 <ol>
-<li><strong>基本</strong>タブをクリックします。</li>
+<li><strong>基本</strong> タブをクリックします。</li>
 <li>切り替えたい環境をクリックします。<br>
-新しい環境を選択すると、ページで検出された環境がオレンジ色で囲まれ、ページ上のアクティブな環境（切り替えたもの）が青色で強調表示されます。<br>
+新しい環境を選択すると、ページ上で検出された環境がオレンジ色でアウトライン表示され、ページ上でアクティブな環境（切り替えた環境）が青色でハイライト表示されます。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-basic-tab.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-basic-tab.jpg"
              alt="Tealium Tools_Environment Switcher_Basic Tab.jpg"
              title="Tealium Tools_Environment Switcher_Basic Tab.jpg"/>
         </a>
     </figure></li>
-<li>変更を適用するために<strong>開始</strong>ボタンをクリックします。<br>
-この操作で現在のページが更新されます。</li>
+<li><strong>開始</strong> をクリックして変更を適用します。<br>
+この操作により、現在のページがリフレッシュされます。</li>
 </ol>
 <h3 id="詳細構成"><strong>詳細構成</strong></h3>
-<p><strong>詳細</strong>タブのオプションには、以下の機能が提供されます。</p>
+<p><strong>詳細</strong> タブのオプションには、次の機能があります：</p>
 <ul>
 <li>
-<p>異なるアカウント、プロファイル、環境からTealiumファイルをロードするための詳細なリダイレクト。</p>
-  <p class="tip"><i class="fa fa-info-circle"></i>これは、<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>または<a href="/ja/iq-tag-management/save-publish/custom-publish-environments/">カスタム公開環境</a>を使用する場合に便利です。</p>
+<p>異なるアカウント、プロファイル、および環境からTealiumファイルをロードするための詳細リダイレクト。</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>これは、<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>や<a href="/ja/iq-tag-management/save-publish/custom-publish-environments/">カスタム公開環境</a>を使用する場合に役立ちます。</p>
 </li>
 <li>
 <p>カスタムURLの場所からTealiumファイルをロードするためのURLリダイレクト。</p>
 </li>
 <li>
-<p>各Tealiumファイルとブラウジングセッションの別々の構成。</p>
+<p>各Tealiumファイルとブラウジングセッションのための個別の構成。</p>
 </li>
 </ul>
-<h4 id="詳細なリダイレクト">詳細なリダイレクト</h4>
-<p><strong>アカウント</strong>、<strong>プロファイル</strong>、または<strong>環境</strong>をリダイレクトするには、<strong>詳細リダイレクト</strong>をクリックして展開します。</p>
-<p><strong>ソース</strong>列にそれぞれのソース名を、<strong>宛先</strong>列にそれぞれの宛先名を入力します。<br>
+<h4 id="詳細リダイレクト">詳細リダイレクト</h4>
+<p><strong>アカウント</strong>、<strong>プロファイル</strong>、または<strong>環境</strong>をリダイレクトするには、<strong>詳細リダイレクト</strong> をクリックして展開します。</p>
+<p><strong>ソース</strong> 列にそれぞれのソース名を入力し、<strong>宛先</strong> 列にそれぞれの宛先名を入力します。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-advanced-redirect.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-advanced-redirect.jpg"
          alt="Tealium Tools_Environment Switcher_Advanced Tab_Advanced Redirect.jpg"
          title="Tealium Tools_Environment Switcher_Advanced Tab_Advanced Redirect.jpg"/>
     </a>
 </figure></p>
 <h4 id="urlリダイレクト">URLリダイレクト</h4>
-<p>カスタムURLにリダイレクトするには、<strong>URLリダイレクト</strong>をクリックして展開します。</p>
-<p><strong>ソース</strong>列にソースURLを、<strong>宛先</strong>列に宛先URLを入力します。<br>
+<p>カスタムURLにリダイレクトするには、<strong>URLリダイレクト</strong> をクリックして展開します。</p>
+<p><strong>ソース</strong> 列にソースURLを入力し、<strong>宛先</strong> 列に宛先URLを入力します。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-url-redirect.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-advanced-tab-url-redirect.jpg"
          alt="Tealium Tools_Environment Switcher_Advanced Tab_URL Redirect.jpg"
          title="Tealium Tools_Environment Switcher_Advanced Tab_URL Redirect.jpg"/>
     </a>
 </figure></p>
 <h4 id="詳細オプション">詳細オプション</h4>
-<p><strong>詳細オプション</strong>をクリックして、リダイレクトがどのように適用されるかを選択または選択解除します。</p>
-<p>以下のいずれかを選択または選択解除します：<br>
+<p><strong>詳細オプション</strong> をクリックして、リダイレクトの適用方法を選択または選択解除します。</p>
+<p>次のいずれかを選択または選択解除します：<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-advance-tab-advanced-options.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-advance-tab-advanced-options.jpg"
          alt="Tealium Tools_Environment Switcher_Advance Tab_Advanced Options.jpg"
          title="Tealium Tools_Environment Switcher_Advance Tab_Advanced Options.jpg"/>
     </a>
 </figure></p>
 <ul>
-<li><strong>現在のドメインのみ</strong> - リダイレクトを現在のドメインにのみ適用します。別のサブドメインに移動すると、リダイレクトは適用されません。</li>
+<li><strong>現在のドメインのみ</strong> - リダイレクトを現在のドメインにのみ適用します。別のサブドメインに移動した場合、リダイレクトは適用されません。</li>
 <li><strong>現在のタブのみ</strong> - リダイレクトを現在のブラウザタブにのみ適用します。同じページを表示している他のブラウザタブには影響しません。</li>
-<li><strong>utag.jsに適用</strong> - リダイレクトをutag.jsに適用します。</li>
-<li><strong>utag.sync.jsに適用</strong> - リダイレクトをutag.sync.jsに適用します。</li>
+<li><strong>utag.jsに適用</strong> - utag.jsにリダイレクトを適用します。</li>
+<li><strong>utag.sync.jsに適用</strong> - utag.sync.jsにリダイレクトを適用します。</li>
 <li><strong>utag_cfg_ovrd.pathを構成</strong> - カスタムクッキーパスを構成します。</li>
 </ul>
-<p><strong>開始</strong>をクリックして、すべての変更を適用します。</p>
-<h3 id="アクティブなリダイレクト"><strong>アクティブなリダイレクト</strong></h3>
-<p>環境スイッチャーを使用して変更を行った後、次にスイッチャーを起動すると、<strong>アクティブなリダイレクト</strong>タブがデフォルトのタブとして表示されます。このタブには、現在切り替えられている環境が表示されます。</p>
-<h4 id="アクティブなリダイレクトの無効化">アクティブなリダイレクトの無効化</h4>
-<p>アクティブなリダイレクトを無効にするには、アクション列で<strong>停止</strong>をクリックします。ページが自動的に更新され、Tealiumファイルはページにコード化された通りに正常にロードされます。</p>
+<p><strong>開始</strong> をクリックして、行ったすべての変更を適用します。</p>
+<h3 id="アクティブリダイレクト"><strong>アクティブリダイレクト</strong></h3>
+<p>環境スイッチャーを使用して変更を行った後、<strong>アクティブリダイレクト</strong> タブが次にスイッチャーを起動するときにデフォルトで表示されるタブです。このタブには、現在切り替え中の環境が表示されます。</p>
+<h4 id="アクティブリダイレクトを無効にする">アクティブリダイレクトを無効にする</h4>
+<p>アクティブリダイレクトを無効にするには、アクション列の <strong>停止</strong> をクリックします。ページが自動的にリフレッシュされ、Tealiumファイルはページにコード化された通りに通常通りロードされます。</p>
 <ul>
-<li>このタブを再度訪れると、アクション列で<strong>更新</strong>または<strong>停止</strong>を選択できます。<br>
+<li>このタブを後続の訪問で選択すると、アクション列で <strong>更新</strong> または <strong>停止</strong> を選択できます。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-active-redirects-refresh-and-stop-buttons.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-active-redirects-refresh-and-stop-buttons.jpg"
          alt="Tealium Tools_Environment Switcher_Active Redirects_Refresh and Stop Buttons.jpg"
          title="Tealium Tools_Environment Switcher_Active Redirects_Refresh and Stop Buttons.jpg"/>
@@ -515,52 +510,52 @@
 </figure></li>
 </ul>
 <h3 id="最近のリダイレクト">最近のリダイレクト</h3>
-<p><strong>最近のリダイレクト</strong>タブは、最近使用した構成の履歴を提供し、以前に構成したスイッチャーを簡単に再起動できるようにします。</p>
-<p>以前に構成したスイッチャーを再起動するには：</p>
+<p><strong>最近のリダイレクト</strong> タブは、最近使用した構成の履歴を提供し、以前に構成したスイッチャーを簡単に再活性化できます。</p>
+<p>以前に構成したスイッチャーを再活性化するには：</p>
 <ol>
-<li><strong>最近のリダイレクト</strong>タブをクリックします。<br>
-最近構成したスイッチャーのリストが表示されます。<br>
+<li><strong>最近のリダイレクト</strong> タブをクリックします。<br>
+最近構成されたスイッチャーのリストが表示されます。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-recent-redirects-tab-start.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-recent-redirects-tab-start.jpg"
              alt="Tealium Tools_Environment Switcher_Recent Redirects Tab_Start.jpg"
              title="Tealium Tools_Environment Switcher_Recent Redirects Tab_Start.jpg"/>
         </a>
     </figure></li>
-<li>再起動したいスイッチャーの隣にある<strong>開始</strong>ボタンをクリックします。<br>
-ページが自動的に更新され、変更が適用されます。</li>
+<li>再活性化したいスイッチャーの隣にある <strong>開始</strong> ボタンをクリックします。<br>
+ページが自動的にリフレッシュされ、変更が適用されます。</li>
 </ol>
 <h2 id="トラブルシューティング">トラブルシューティング</h2>
-<p><strong>ヘルプ</strong>タブは、すべてのアクティブなリダイレクトを強制的に停止するか、環境スイッチャーを完全にリセットするためのトラブルシューティングオプションを提供します。</p>
-<h3 id="すべてのアクティブなリダイレクトを強制停止"><strong>すべてのアクティブなリダイレクトを強制停止</strong></h3>
-<p>すべてのアクティブなリダイレクトを強制的に停止するには：</p>
+<p><strong>ヘルプ</strong> タブは、すべてのアクティブリダイレクトを強制停止するか、環境スイッチャーをデフォルト状態にリセットするオプションを提供します。</p>
+<h3 id="すべてのアクティブリダイレクトを強制停止"><strong>すべてのアクティブリダイレクトを強制停止</strong></h3>
+<p>すべてのアクティブリダイレクトを強制停止するには：</p>
 <ol>
-<li><strong>ヘルプ</strong>タブをクリックします。</li>
-<li><strong>すべてのアクティブなリダイレクトを強制停止</strong>をクリックします。<br>
+<li><strong>ヘルプ</strong> タブをクリックします。</li>
+<li><strong>すべてのアクティブリダイレクトを強制停止</strong> をクリックします。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-force-stop-all-active-redirects.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-force-stop-all-active-redirects.jpg"
              alt="Tealium Tools_Environment Switcher_Help Tab_Force Stop All Active Redirects.jpg"
              title="Tealium Tools_Environment Switcher_Help Tab_Force Stop All Active Redirects.jpg"/>
         </a>
     </figure><br>
-アクティブなリダイレクトタブは空になり、すべてのアクティブなリダイレクトが停止します。</li>
+アクティブリダイレクトタブが空になり、すべてのアクティブリダイレクトが停止します。</li>
 </ol>
-<h3 id="環境スイッチャーをデフォルトの状態にリセット"><strong>環境スイッチャーをデフォルトの状態にリセット</strong></h3>
-<p>環境スイッチャーをデフォルトの状態にリセットすると、すべての現在のリダイレクトが停止し、UI構成に保存されたすべての情報が削除され、最近のリダイレクトが削除され、バックエンドサービスが停止し、Tealiumツールのウィンドウが閉じます。</p>
-<p>環境スイッチャーをリセットするには、以下の手順を実行します：</p>
+<h3 id="環境スイッチャーをデフォルト状態にリセット"><strong>環境スイッチャーをデフォルト状態にリセット</strong></h3>
+<p>環境スイッチャーをデフォルト状態にリセットし、現在のリダイレクトをすべて停止し、UI構成に保存されたすべての情報を削除し、最近のリダイレクトを削除し、バックエンドサービスを停止し、Tealiumツールウィンドウを閉じます。</p>
+<p>環境スイッチャーをリセットするには、次の手順を実行します：</p>
 <ol>
-<li><strong>ヘルプ</strong>タブをクリックします。</li>
-<li><strong>強制リセット</strong>をクリックして展開します。</li>
-<li><strong>環境スイッチャーをリセット</strong>をクリックします。<br>
+<li><strong>ヘルプ</strong> タブをクリックします。</li>
+<li><strong>強制リセット</strong> をクリックして展開します。</li>
+<li><strong>環境スイッチャーをリセット</strong> をクリックします。<br>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-reset-environment-switcher.jpg"><img src="/images/iq-tag-management/tealium-tools-environment-switcher-help-tab-reset-environment-switcher.jpg"
              alt="Tealium Tools_Environment Switcher_Help Tab_Reset Environment Switcher.jpg"
              title="Tealium Tools_Environment Switcher_Help Tab_Reset Environment Switcher.jpg"/>
         </a>
     </figure></li>
 </ol>
-<p><strong>アクティブなリダイレクト</strong>タブと<strong>最近のリダイレクト</strong>タブは空になります。すべてのアクティブなリダイレクトが停止し、最近のリダイレクトが削除されます。</p>
+<p><strong>アクティブリダイレクト</strong> および <strong>最近のリダイレクト</strong> タブが空になります。すべてのアクティブリダイレクトが停止し、最近のリダイレクトが削除されます。</p>
 <h2 id="追加情報">追加情報</h2>
 <ul>
-<li><strong><a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a></strong><br>
-Tealiumツールのブラウザ拡張機能の概要とインストール方法。</li>
-<li><strong><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363424-list-of-custom-tealium-tools">List of Custom Tealium Tools</a></strong><br>
+<li><strong><a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealiumツールブラウザ拡張機能</a></strong><br>
+Tealiumツールブラウザ拡張機能の概要とインストール方法について。</li>
+<li><strong><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363424-list-of-custom-tealium-tools">カスタムTealiumツールのリスト</a></strong><br>
 利用可能なカスタムツールに関する詳細情報。</li>
 </ul>
 
@@ -569,13 +564,13 @@ Tealiumツールのブラウザ拡張機能の概要とインストール方法�
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/"
+  <a href="/ja/iq-tag-management/tealium-tools/web-companion/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Web Companion Adobe Test &amp; Target</div>
+      <div>Web Companion</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Web Companion Adobe Test &amp; Target"</title>
+      <title>"Web Companion"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -623,7 +618,7 @@ Tealiumツールのブラウザ拡張機能の概要とインストール方法�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年March月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -637,15 +632,15 @@ Tealiumツールのブラウザ拡張機能の概要とインストール方法�
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E3%81%84%E6%96%B9" href="javascript:void(0)">使い方</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">環境スイッチャーの使用方法</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%9F%BA%E6%9C%AC%E6%A7%8B%E6%88%90" href="javascript:void(0)">基本構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A9%B3%E7%B4%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">詳細構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%81%AA%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88" href="javascript:void(0)">アクティブなリダイレクト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88" href="javascript:void(0)">アクティブリダイレクト</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%9C%80%E8%BF%91%E3%81%AE%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88" href="javascript:void(0)">最近のリダイレクト</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラブルシューティング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%81%AA%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%82%92%E5%BC%B7%E5%88%B6%E5%81%9C%E6%AD%A2" href="javascript:void(0)">すべてのアクティブなリダイレクトを強制停止</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%82%92%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E7%8A%B6%E6%85%8B%E3%81%AB%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">環境スイッチャーをデフォルトの状態にリセット</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%82%92%E5%BC%B7%E5%88%B6%E5%81%9C%E6%AD%A2" href="javascript:void(0)">すべてのアクティブリダイレクトを強制停止</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%82%92%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E7%8A%B6%E6%85%8B%E3%81%AB%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">環境スイッチャーをデフォルト状態にリセット</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E6%83%85%E5%A0%B1" href="javascript:void(0)">追加情報</a></li>
               </nav>
   </aside></nav>
@@ -836,6 +831,14 @@ Tealiumツールのブラウザ拡張機能の概要とインストール方法�
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealiumツール
         </a>
     </li>
   

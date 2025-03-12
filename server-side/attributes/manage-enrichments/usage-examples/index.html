@@ -539,8 +539,8 @@
 <p>Knowing the amount spent across all orders from a visitor is a valuable piece of information. This data can be used for many purposes, such as to offer promotional deals or to assign a badge to visitors whose spending exceeds a certain threshold. Since the value of this attribute will persist for the lifetime of the visitor, it will be visitor-scoped.</p>
 <p>This enrichment has the following requirements:</p>
 <ul>
-<li>an event attribute to identify when a purchase is made, for example: <code>page_type</code>=&ldquo;purchase&rdquo;</li>
-<li>an event attribute for the dollar amount of the purchase, for example: <code>order_total</code>=&ldquo;123.45&rdquo;</li>
+<li>An event attribute to identify when a purchase is made, for example: <code>&quot;tealium_event&quot;: &quot;purchase&quot;</code>.</li>
+<li>An event attribute for the dollar amount of the purchase, for example: <code>&quot;order_total&quot;: &quot;123.45&quot;</code>.</li>
 </ul>
 <p>To configure this enrichment:</p>
 <ol>
@@ -549,10 +549,15 @@
 <li>Select <strong>order_total</strong> from the drop-down list.</li>
 <li>Select <strong>Any Event</strong> from the WHEN drop-down list.</li>
 <li>Create a new rule titled &ldquo;Order Thank You Page&rdquo; with the following condition:
-<ul>
-<li><code>page_type</code> EQUALS &quot; purchase&quot;</li>
-</ul>
-</li>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div></li>
 </ol>
 <h2 id="set-difference-between-two-dates--days-since-last-purchase">Set difference between two dates – &ldquo;Days Since Last Purchase&rdquo;</h2>
 <p>This enrichment calculates the elapsed time between two events and stores the numeric value in one of the following units: minutes, hours, days, weeks, or months.</p>
@@ -564,38 +569,28 @@
 <p>This enrichment will calculate the number of days since a visitor made a purchase. The resulting value is always a positive number.</p>
 <p>This enrichment has the following requirements:</p>
 <ul>
-<li>an event attribute to identify when a purchase is made, for example: <code>page_type</code>=&ldquo;purchase&rdquo;</li>
-<li>an visitor attribute to capture the date of a purchase event</li>
+<li>An event attribute to identify when a purchase is made, for example: <code>tealium_event=&quot;purchase&quot;</code>.</li>
+<li>A visitor attribute to capture the date of a purchase event.</li>
 </ul>
 <p>To configure this enrichment:</p>
 <ol>
-<li>
-<p>Create a visitor attribute with the number data type titled &ldquo;Last Purchase Date&rdquo;.</p>
-</li>
-<li>
-<p>Select <strong>Any Event</strong> from the WHEN drop-down list.</p>
-</li>
-<li>
-<p>Create a new rule (if it doesn&rsquo;t already exist) titled &ldquo;Order Thank You Page&rdquo; with the following condition:</p>
-<ul>
-<li>page_type EQUALS &ldquo;purchase&rdquo;</li>
-</ul>
-</li>
-<li>
-<p>Create a visitor attribute with the number data type titled &ldquo;Days Since Last Purchase&rdquo;.</p>
-</li>
-<li>
-<p>Add the &ldquo;Set Difference Between Two Dates&rdquo; enrichment.</p>
-</li>
-<li>
-<p>Set the two dates to: &ldquo;Visit start&rdquo; (built-in attribute) and &ldquo;Last Purchase Date&rdquo;.</p>
-</li>
-<li>
-<p>Set the units to &ldquo;Days&rdquo;.</p>
-</li>
-<li>
-<p>Select <strong>New Visit</strong> from the WHEN drop-down list.</p>
-</li>
+<li>Create a visitor attribute with the number data type titled &ldquo;Last Purchase Date&rdquo;.</li>
+<li>Select <strong>Any Event</strong> from the WHEN drop-down list.</li>
+<li>Create a new rule (if it doesn&rsquo;t already exist) titled &ldquo;Order Thank You Page&rdquo; with the following condition:
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div></li>
+<li>Create a visitor attribute with the number data type titled <code>Days Since Last Purchase</code>.</li>
+<li>Add the Set Difference Between Two Dates enrichment.</li>
+<li>Set the two dates to: &ldquo;Visit start&rdquo; (built-in attribute) and &ldquo;Last Purchase Date&rdquo;.</li>
+<li>Set the units to &ldquo;Days&rdquo;.</li>
+<li>Select <strong>New Visit</strong> from the WHEN drop-down list.</li>
 </ol>
 <h2 id="split-string-ab-testing--split-test-group">Split string (A/B Testing – &ldquo;Split Test Group&rdquo;</h2>
 <p>This enrichment defines visitor group names and assigns them to an attribute based on a percentage distribution. The names (or values) of your segments can come from another string attribute or from a custom value. This enrichment is helpful in running A/B tests or targeting groups of users.</p>
@@ -609,47 +604,56 @@
 <p>To test a new campaign on a small segment of your visitors, presumably before rolling it out for all visitors, you use the split string enrichments to assign a small percentage of your visitors into the &ldquo;Action&rdquo; group. This identified segment of visitors can then be built into an audience for which you can take actions.</p>
 <p>For this example we will create the following distribution of segments:</p>
 <ul>
-<li>85% - &ldquo;Control&rdquo; - the control group that will not be part of the test</li>
-<li>15% - &ldquo;Variation1&rdquo; - the group to be included in the test</li>
+<li>85% – &ldquo;Control&rdquo;: The control group that will not be part of the test.</li>
+<li>15% – &ldquo;Variation1&rdquo;: The group to be included in the test.</li>
 </ul>
 <p>To configure this enrichment:</p>
 <ol>
-<li>Create a Visit/Visitor attribute with the String data type, titled &ldquo;Split Test Group&rdquo;</li>
-<li>Add the &ldquo;Split String&rdquo; Enrichment</li>
-<li>For each group, set a name and a percent</li>
-<li>Select <strong>New Visit</strong> from the WHEN drop-down list</li>
+<li>Create a string visit attribute named <code>Split Test Group</code>.</li>
+<li>Add the <strong>Split String</strong> enrichment.</li>
+<li>For each group, set a name and a percent.</li>
+<li>Select <strong>New Visit</strong> from the WHEN drop-down list.</li>
 </ol>
-<p>Now you can use this attribute in a rule to include the relevant visitors in an audience. The rule logic might be: &ldquo;Split Test Group&rdquo; EQUALS &ldquo;Variation1&rdquo;.</p>
+<p>Now you can use this attribute in a rule to include the relevant visitors in an audience. The rule logic might be:
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">Split Test Group</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">Variation1</span>
+      </div>
+  </div>
+</div></p>
 <h2 id="store-array-as-set-of-strings--purchase-categories">Store array as set of strings – &ldquo;Purchase Categories&rdquo;</h2>
-<p>The Store Array as Set of String enrichment saves the values from an array of strings attribute into a set of strings attribute. This Enrichment will not create a perpetual set. Meaning, you cannot append to a set of string using this enrichment, it will always overwrite the value. To preserve a set of strings and append new values you must use the Update Set of String By Set of Strings Enrichment.</p>
+<p>The <strong>Store Array as Set of String</strong> enrichment saves the values from an array of strings attribute into a set of strings attribute. This enrichment will not create a perpetual set. Meaning, you cannot append to a set of string using this enrichment, it will always overwrite the value. To preserve a set of strings and append new values you must use the <strong>Update Set of String By Set of Strings</strong> enrichment.</p>
 <ul>
 <li><strong>Attribute:</strong> Purchase Categories</li>
 <li><strong>Scope:</strong> Visit</li>
 <li><strong>Data Type:</strong> Set of Strings</li>
 </ul>
-<p>Starting with an event attribute of the data type Array of Strings called <code>product_category</code>, populated on purchase events to contain the category names of the products purchased. To store this as a Visitor/Visit attribute called &ldquo;Purchase Categories&rdquo;, it must be converted to a Set of Strings. Then, on each purchase event, the <code>product_category</code> values get appended to the &ldquo;Product Categories Purchased&rdquo; attribute via enrichments.</p>
+<p>Starting with an event attribute of the data type array of strings called <code>product_category</code>, populated on purchase events to contain the category names of the products purchased. To store this as a Visitor/Visit attribute called &ldquo;Purchase Categories&rdquo;, it must be converted to a set of strings. Then, on each purchase event, the <code>product_category</code> values get appended to the <code>Product Categories Purchased</code> attribute via enrichments.</p>
 <table>
 <thead>
 <tr>
-<th>Array of Strings (product_category)</th>
+<th>array of strings (product_category)</th>
 <th>Set of Strings (Product Category Purchased)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;]</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
+<td><code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
 </tr>
 <tr>
-<td>[&ldquo;Boots&rdquo;, &ldquo;Belts&rdquo;, &ldquo;Belts&rdquo;]</td>
-<td>&ldquo;Boots&rdquo;, &ldquo;Belts&rdquo;</td>
+<td><code>[&quot;Boots&quot;, &quot;Belts&quot;, &quot;Belts&quot;]</code></td>
+<td><code>&quot;Boots&quot;, &quot;Belts&quot;</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="update-set-of-strings-by-set-of-strings--lifetime-purchase-categories">Update set of strings by set of strings – &ldquo;Lifetime Purchase Categories&rdquo;</h2>
-<p>This enrichment appends the values from one Set of Strings attribute into another Set of Strings attribute. This allows you to store the values that occur in one set (and that change from event to event) into a second set that persists for the life of the visitor.</p>
-<p>In this table Set A is overwritten with new values for each event and the the enrichment is copying those values into Set B where the master list grows.</p>
-<p>We recommend pairing this enrichment with Store Array as Set of Strings Enrichment so that the resulting Set can be preserved before it is overwritten by incoming values.</p>
+<p>This enrichment appends the values from one set of strings attribute into another set of strings attribute. This allows you to store the values that occur in one set (and that change from event to event) into a second set that persists for the life of the visitor.</p>
+<p>In this table <code>Set A</code> is overwritten with new values for each event and the the enrichment is copying those values into <code>Set B</code> where the master list grows.</p>
+<p>We recommend pairing this enrichment with <strong>Store Array as Set of Strings</strong> enrichment so that the resulting set can be preserved before it is overwritten by incoming values.</p>
 <table>
 <thead>
 <tr>
@@ -659,16 +663,16 @@
 </thead>
 <tbody>
 <tr>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
 </tr>
 <tr>
-<td>&ldquo;Shoes&rdquo;, &ldquo;Pants&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Shoes&rdquo;</td>
+<td><code>&quot;Shoes&quot;, &quot;Pants&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;</code></td>
 </tr>
 <tr>
-<td>&ldquo;Shirts&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Watches&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Shoes&rdquo;, &ldquo;Watches&rdquo;</td>
+<td><code>&quot;Shirts&quot;, &quot;Shirts&quot;, &quot;Watches&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;, &quot;Watches&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -677,43 +681,43 @@
 <li><strong>Scope:</strong> Visitor</li>
 <li><strong>Data Type:</strong> Set of Strings</li>
 </ul>
-<p>To maintain an accumulated set of product categories purchased from you will have one Event Array of Strings attribute and two Visit/Visitor Set of Strings attributes: one to capture the views as they happen and one to capture all historical views.</p>
+<p>To maintain an accumulated set of product categories purchased from you will have one event array of strings attribute and two visit and visitor set of strings attributes: one to capture the views as they happen and one to capture all historical views.</p>
 <p>This enrichment has the following requirements:</p>
 <ul>
-<li>an event attribute to identify when a purchase is made. For example, <code>page_type=&quot;purchase&quot;</code></li>
-<li>an Array of Strings event attribute to identify product categories during a purchase, for example: <code>product_category=[&quot;Boots&quot;, &quot;Belts&quot;]</code></li>
-<li>a Set of Strings Visit attribute to capture product categories purchased for the visit</li>
-<li>a Set of String Visitor attribute to capture all product categories purchased</li>
+<li>An event attribute to identify when a purchase is made. For example, <code>tealium_event=&quot;purchase&quot;</code></li>
+<li>An array of strings event attribute to identify product categories during a purchase, for example: <code>&quot;product_category&quot;: [&quot;Boots&quot;, &quot;Belts&quot;]</code>.</li>
+<li>A set of strings visit attribute to capture product categories purchased for the visit.</li>
+<li>A set of strings visitor attribute to capture all product categories purchased.</li>
 </ul>
-<p>To configure this Enrichment:</p>
+<p>To configure this enrichment:</p>
 <ol>
 <li>
-<p>Create an event attribute with the Array of Strings data type named &ldquo;product_category&rdquo;</p>
+<p>Create an event attribute with the array of strings data type named <code>product_category</code>.</p>
 </li>
 <li>
-<p>Create a visit attribute with the Set of Strings data type, named &ldquo;Product Category Purchased&rdquo;</p>
+<p>Create a set of strings visit attribute named <code>Product Category Purchased</code>.</p>
 <ul>
-<li>Add the &ldquo;Store Array as Set of Strings&rdquo; enrichment</li>
-<li>Select the attribute &ldquo;product_category&rdquo;</li>
-<li>Set the WHEN to &ldquo;Any Event&rdquo;</li>
-<li>Set the Rule to the &ldquo;Purchase Page&rdquo; (page_type EQUALS &ldquo;purchase&rdquo;)</li>
+<li>Add the <strong>Store Array as Set of Strings</strong> enrichment.</li>
+<li>Select the attribute <code>product_category</code>.</li>
+<li>Set the <strong>WHEN</strong> to <code>Any Event</code>.</li>
+<li>Set the rule to the <code>Purchase Event</code>.</li>
 </ul>
 </li>
 <li>
-<p>Create a visitor attribute with the Set of Strings data type, named &ldquo;Lifetime Product Category Purchased&rdquo;</p>
+<p>Create a set of strings visitor attribute named <code>Lifetime Product Category Purchased</code>.</p>
 <ul>
-<li>Add the &ldquo;Update Set of Strings by Set of Strings&rdquo; enrichment</li>
-<li>Select the attribute &ldquo;Product Category Purchased&rdquo;</li>
-<li>Set the WHEN to &ldquo;Visit Ended&rdquo;</li>
+<li>Add the <strong>Update Set of Strings by Set of Strings</strong> enrichment.</li>
+<li>Select the attribute <code>Product Category Purchased</code>.</li>
+<li>Set the <em>WHEN</em> to <code>Visit Ended</code>.</li>
 </ul>
 </li>
 </ol>
 <h2 id="set-rolling-average-based-on-timeline--90-day-order-average">Set rolling average based on timeline – &ldquo;90-Day Order Average&rdquo;</h2>
 <p>This enrichment calculates the rolling average (arithmetic mean) of numeric values captured in a timeline attribute.</p>
-<p>This example uses a &ldquo;90-Day Orders&rdquo; timeline to capture order total values over the last 90 days. As the Timeline progresses, entries falling outside the expiration window are discarded and the final rolling average is recalculated with the set of valid entries.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This example also applies to the Set Rolling Sum Based on Timeline enrichment.</p>
+<p>This example uses a &ldquo;90-Day Orders&rdquo; timeline to capture order total values over the last 90 days. As the timeline progresses, entries falling outside the expiration window are discarded and the final rolling average is recalculated with the set of valid entries.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This example also applies to the <strong>Set Rolling Sum Based on Timeline</strong> enrichment.</p>
 <p>The table below illustrates a timeline of entries (assume today is March 25). All entries, including the entry on Jan 1, are included in the arithmetic mean.</p>
-<p><strong>Timeline Attribute: &ldquo;90-Day Orders&rdquo;</strong></p>
+<p><strong>timeline Attribute: &ldquo;90-Day Orders&rdquo;</strong></p>
 <table>
 <thead>
 <tr>
@@ -738,7 +742,7 @@
 </table>
 <p><strong>Rolling Average</strong> is (10.00 + 20.00 + 30.00) ÷ 3 = 20.00</p>
 <p>A few weeks later, the Jan 1 entry is discarded because it falls outside the 90 day expiration and the rolling average is recalculated for the valid entries. Notice how the resulting average changes when an expired entry is excluded from the aggregate.</p>
-<p><strong>Timeline Attribute: &ldquo;90-Day Orders&rdquo;</strong></p>
+<p><strong>timeline Attribute: &ldquo;90-Day Orders&rdquo;</strong></p>
 <table>
 <thead>
 <tr>
@@ -781,36 +785,36 @@
 <li><strong>Scope:</strong> Visitor</li>
 <li><strong>Data Type:</strong> Number</li>
 </ul>
-<p>Starting with a timeline attribute to capture order totals from the <strong>last 90 days</strong>, you will create a new visitor attribute using the Rolling Average enrichment to store average the order totals.</p>
-<p>This Enrichment has the following requirements:</p>
+<p>Starting with a timeline attribute to capture order totals from the <strong>last 90 days</strong>, you will create a new visitor attribute using the <strong>Rolling Average</strong> enrichment to store average the order totals.</p>
+<p>This enrichment has the following requirements:</p>
 <ul>
-<li>an Event String attribute to identify when a purchase is made, for example: page_type=&ldquo;purchase&rdquo;</li>
-<li>an Event Number attribute for the dollar amount of the purchase, for example: order_total=&ldquo;123.45&rdquo;</li>
-<li>a Visitor Timeline attribute to capture order totals for 90 days</li>
-<li>an Visitor Number attribute to capture the average of order totals</li>
+<li>An event string attribute to identify when a purchase is made, for example: <code>tealium_event: &quot;purchase&quot;</code>.</li>
+<li>An event number attribute for the dollar amount of the purchase, for example: <code>order_total: &quot;123.45&quot;</code>.</li>
+<li>A visitor timeline attribute to capture order totals for 90 days.</li>
+<li>An visitor number attribute to capture the average of order totals.</li>
 </ul>
 <p>To configure this enrichment:</p>
 <ol>
 <li>
-<p>Create a Visitor Timeline attribute named &ldquo;90-Day Order Timeline&rdquo;.</p>
+<p>Create a visitor timeline attribute named <code>90-Day Order timeline</code>.</p>
 </li>
 <li>
 <p>Click <strong>Create An Entry &gt; Set Expiration</strong> and set it to &ldquo;90 days&rdquo;.</p>
 </li>
 <li>
-<p>Click <strong>Create An Entry &gt; Update Timeline</strong> and set the following:</p>
+<p>Click <strong>Create An Entry &gt; Update timeline</strong> and set the following:</p>
 <ul>
 <li><strong>Record</strong>: Time of event received</li>
-<li><strong>Capture data</strong>: order_total</li>
+<li><strong>Capture data</strong>: <code>order_total</code></li>
 <li><strong>WHEN</strong>: Any Event</li>
-<li><strong>Rule</strong>: page_type EQUALS &ldquo;purchase&rdquo;</li>
+<li><strong>Rule</strong>: tealium_event EQUALS &ldquo;purchase&rdquo;</li>
 </ul>
 </li>
 <li>
-<p>Create a Visitor Number attribute named &ldquo;90-Day Order Average&rdquo;</p>
+<p>Create a visitor number attribute named <code>90-Day Order Average</code></p>
 </li>
 <li>
-<p>Add the &ldquo;Set Rolling Average Based On Timeline&rdquo; enrichment with &ldquo;order_total&rdquo; and &ldquo;90-Day Order Timeline&rdquo; selected.</p>
+<p>Add the <strong>Set Rolling Average Based On timeline</strong> enrichment with <code>order_total</code> and <strong>90-Day Order timeline</strong> selected.</p>
 </li>
 </ol>
 
@@ -858,7 +862,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  March 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1067,6 +1071,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "7",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -353,13 +353,13 @@
         <ul class="pl2  tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/browser-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-browser-extension">Browser extension</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/environment-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-tealium-tools-environment-switcher">Environment Switcher</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/tealium-tools/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">Universal Tag Debugger</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/tealium-tools/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-management-web-companion-tool-adobe-test-amp-target">Web Companion Adobe Test &amp; Target</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tealium-tools/tealium-tools-version-3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-tools-version-3">Tealium Tools Version 3</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".troubleshooting">Troubleshooting</a>
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/troubleshooting/utag-debugger/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".universal-tag-debugger">Universal Tag Debugger</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/troubleshooting/web-companion/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-web-companion">Web Companion</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">Validate and troubleshoot tags</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">Switch publish environment</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">Page performance</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -504,9 +504,29 @@
 <p><code>.cmpConvertResponseToGroupList</code> - converts the raw decision into a simple array of allowed purpose keys for downstream enforcement. Returns an array of consented purpose keys.</p>
 </li>
 </ul>
+<h3 id="monitor-and-trigger-consent-updates">Monitor and trigger consent updates</h3>
+<ul>
+<li>
+<p><code>.cmpAddCallbackToTriggerRecheck</code> - registers a callback function to be invoked whenever the CMP&rsquo;s consent status changes. This ensures Tealium iQ is promptly updated with the latest consent decisions without relying on polling.</p>
+<p>Ensure that <code>cmpAddCallbackToTriggerRecheck</code> is configured to call <code>triggerRecheck()</code> whenever the CMP signals a consent status change through callbacks or alternative implementation methods. Call <code>triggerRecheck()</code> when the banner pops up for implicit consent or at a similar point in the CMP load. See the comments in the <a href="#custom-integration-template">custom integration template</a> for more details. For integrations that currently support callbacks, see <a href="/iq-tag-management/consent/consent-integrations/supported-vendors/">Supported vendor integrations</a>.</p>
+</li>
+</ul>
 <h2 id="custom-integration-template">Custom Integration template</h2>
 <p>The following is a blank template to help you get started with your own custom integration. The template includes a debugging snippet at the end of the template that you can use to debug and validate your consent integration.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myCustomConsentIntegration</span> (window) {
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code snippet
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myCustomConsentIntegration</span> (window) {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * This template is meant to be edited, for you to build your own support for a custom CMP / capture tool.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
@@ -525,7 +545,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Custom Example&#39;</span>
-</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v1.1.0&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span>
@@ -534,6 +554,9 @@
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForTiqConsent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToGroupList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// REMOVE THE BELOW LINE (comment it out) if you want to use polling / your solution doesn&#39;t support a callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // pull whatever&#39;s been entered as the Vendor ID in the UI for the single relevant integration
@@ -600,6 +623,52 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Use the incoming callback feature to avoid some polling when the underlying framework supports it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// It&#39;s better to call the triggerRecheck function too often (no negative impact) than too little (missed consent changes and the corresponding data).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Make sure to call triggerRecheck every time the CMP has a change in consent status, such as:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - initial consent pop-up (implicit consent in opt-in model)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - explicit consent changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//  - initial CMP load when a previous decision has been made
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// If this function isn&#39;t included in the window-scoped object, polling will be used instead
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpAddCallbackToTriggerRecheck</span> (<span style="color:#a6e22e">triggerRecheck</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this example sets up a listener for cookie changes to stay consistent with the example, but you can listen for anything appropriate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    (function() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        // Original document.cookie descriptor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        const originalCookieDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, &#39;cookie&#39;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        // Create a custom event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        function emitCookieChange(value) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          const event = new CustomEvent(&#39;cookieUpdated&#39;, {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            detail: {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">              cookies: value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          document.dispatchEvent(event);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        // Override the document.cookie property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        Object.defineProperty(document, &#39;cookie&#39;, {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          get: function() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            return originalCookieDescriptor.get.call(document);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          },
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          set: function(value) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            originalCookieDescriptor.set.call(document, value);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            emitCookieChange(value);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      })();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      // Example listener
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      document.addEventListener(&#39;cookieUpdated&#39;, (e) =&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        // trigger the callback function when the opt-out cookie is updated (some false positives are fine here)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        if ((e.detail.cookies.indexOf(optOutCookieName)) !== -1) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            triggerRecheck();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// You shouldn&#39;t need to change this function, or anything below it
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">tiqGroupName</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// treat things we don&#39;t understand as an opt-out
@@ -624,6 +693,10 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  console.log(outputString);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span></code></pre></div>
+    </div>
+</div>
+</div>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
@@ -683,7 +756,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 9, 2024 
+          <p>This page was last updated:  March 12, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -705,6 +778,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#determine-operating-mode" href="javascript:void(0)">Determine operating mode</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fetch-decision" href="javascript:void(0)">Fetch decision</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validate-and-standardize-the-decision" href="javascript:void(0)">Validate and standardize the decision</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#monitor-and-trigger-consent-updates" href="javascript:void(0)">Monitor and trigger consent updates</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-integration-template" href="javascript:void(0)">Custom Integration template</a></li>
               </nav>
   </aside></nav>
@@ -895,6 +969,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Tools
         </a>
     </li>
   
