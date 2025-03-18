@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AudienceStreamを使用したMoments iQ専門知識の例 | モーメンツiQ | Tealiumドキュメント</title>
+    <title>Moments iQの専門知識とAudienceStreamの例 | モーメンツiQ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -344,7 +344,7 @@
         <a href="/ja/iq-tag-management/consent/consent-integrations/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-integrations">同意統合について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">同意統合の決定フロー</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-consent-integrations">同意統合と目的グループの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダーの統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダー統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">検証とデバッグ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/custom-cmp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">カスタムCMP統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enforcement-conditions-conflict">実施条件の競合の取り扱い</a></li></ul>
@@ -410,7 +410,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">AudienceStreamを使用したMoments iQ専門知識の例</h1>
+<h1 class="lh-title mt30 mb3">Moments iQの専門知識とAudienceStreamの例</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -418,74 +418,78 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、訪問を専門知識の評価を通じてMoments iQ体験に導き、この情報で訪問のプロフィールをエンリッチする例を提供します。
+      この記事では、訪問の専門知識を評価し、この情報で訪問プロファイルをエンリッチするMoments iQの体験の例を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>以下の例では、電子機器のサイトに体験を埋め込み、訪問にその専門知識のレベルを尋ねます。その後、この情報で訪問のプロフィールを豊かにします。これにより、訪問が製品ラインにどの程度慣れているかを判断し、ホームインストールサービス、スピーカーケーブル、延長保証などの追加サービスや製品を提案するために使用することができます。</p>
-<h2 id="必要条件">必要条件</h2>
-<p>この例では、以下が必要です：</p>
+  <p>以下の例では、電子機器のサイトに体験を埋め込み、訪問にその専門知識レベルについて尋ねます。訪問の回答はその後、訪問プロファイルで豊かにされます。これにより、製品ラインに対する彼らの精通度を判断するのに役立ち、ホームインストールサービス、スピーカーケーブル、または延長保証などの追加サービスや製品のパーソナライズされた推薦に使用できます。</p>
+<h2 id="要件">要件</h2>
+<p>この例には以下が必要です：</p>
 <ul>
 <li>Moments iQ。</li>
 <li>Tealium AudienceStream。</li>
-<li>最新版の <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>。</li>
+<li>最新バージョンの <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>。</li>
 </ul>
-<h2 id="ステップ1タグを作成する">ステップ1：タグを作成する</h2>
+<h2 id="ステップ-1-タグを作成する">ステップ 1: タグを作成する</h2>
 <p>以下の体験はホームページに表示されます。</p>
-<p>訪問との最初のエンゲージメントのために、以下のプロパティを持つTealium Moments iQタグを追加して<a href="/ja/iq-tag-management/moments-iq/manage/#create-a-moments-iq-tag">Moments iQ体験を作成します</a>：</p>
+<p><a href="/ja/iq-tag-management/moments-iq/manage/#create-a-moments-iq-tag">Create a Moments iQ experience</a> を使用して、以下のプロパティを持つTealium Moments iQタグを追加することで、訪問との最初のエンゲージメントを作成します：</p>
 <ul>
-<li><strong>タイトル</strong>： <code>訪問の専門知識</code></li>
-<li><strong>体験の配置</strong>： <code>中央</code></li>
-<li><strong>体験のタイプ</strong>： <code>埋め込み</code></li>
-<li><strong>体験の位置</strong>： <code>開始後</code></li>
-<li><strong>リダイレクトがタブを開く</strong>： <code>偽</code></li>
-<li><strong>ヘッダーテキスト</strong>： <code>専門知識</code></li>
-<li><strong>メインテキスト</strong>： <code>あなたを知るために私たちを助けてください</code></li>
-<li><strong>質問テキスト</strong>： <code>ホームシアター機器に対するあなたの経験レベルは何ですか？</code></li>
-<li><strong>回答タイプ</strong>： <code>ラジオボタン</code></li>
-<li><strong>回答</strong>： <code>プロフェッショナル|上級|基本|なし</code></li>
+<li><strong>タイトル</strong>: <code>訪問の専門知識</code></li>
+<li><strong>体験の配置</strong>: <code>中央</code></li>
+<li><strong>体験のタイプ</strong>: <code>埋め込み</code></li>
+<li><strong>体験の位置</strong>: <code>開始後</code></li>
+<li><strong>リダイレクトがタブを開く</strong>: <code>False</code></li>
+<li><strong>ヘッダーテキスト</strong>: <code>専門知識</code></li>
+<li><strong>メインテキスト</strong>: <code>あなたを知るためのお手伝いをしてください</code></li>
+<li><strong>質問テキスト</strong>: <code>ホームシアター機器に関するあなたの経験レベルは何ですか？</code></li>
+<li><strong>回答タイプ</strong>: <code>ラジオボタン</code></li>
+<li><strong>回答</strong>: <code>プロフェッショナル|上級|基本|なし</code></li>
 </ul>
-<p><strong>配置セレクター</strong>の下に、体験をロードしたいCSSプロパティを入力します（例えば、<code>div.col-main</code>）。</p>
+<p><strong>配置セレクター</strong>に、体験をロードしたいCSSプロパティを入力します（例：<code>div.col-main</code>）。</p>
 <h3 id="ロードルールを作成する">ロードルールを作成する</h3>
-<p>体験をホームページでのみロードするために、以下のプロパティを持つ<strong>ホームページ</strong>ロードルールを作成します：</p>
-<ul>
-<li><strong>変数</strong>： <code>js.page_type</code></li>
-<li><strong>演算子</strong>： <code>等しい（大文字小文字を無視）</code></li>
-<li><strong>値</strong>： <code>home</code></li>
-</ul>
-<p>この例の目的のために、タグUIDが<code>123</code>であると仮定しましょう。</p>
-<h2 id="ステップ2audiencestream属性を作成する">ステップ2：AudienceStream属性を作成する</h2>
-<p>体験からの値で属性をエンリッチするためにAudienceStreamを構成するには、以下の手順を使用します：</p>
+<p>体験をホームページでのみロードするために、以下のルールを作成します：</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">js.page_type</span>
+        <span class="operator">EQUALS (IGNORE CASE)</span>
+        <span class="filter">home</span>
+      </div>
+  </div>
+</div>
+<h2 id="ステップ-2-audiencestream属性を作成する">ステップ 2: AudienceStream属性を作成する</h2>
+<p>体験からの値で属性をエンリッチするためにAudienceStreamを構成するには、以下のステップを使用します：</p>
 <ol>
-<li>まだ存在しない場合は、以下の属性を作成します：
+<li>まだ存在しない場合、以下の属性を作成します：
 <ul>
-<li><code>momentsiq_answer1</code>の値を保存するルールを持つ文字列の訪問属性としての<strong>Customer_Expertise</strong>。</li>
+<li><strong>Customer_Expertise</strong> は、<code>momentsiq_answer1</code>の値を保存するルールを持つ文字列訪問属性です。</li>
 </ul>
 </li>
-<li>まだ存在しない場合は、以下のバッジを作成します：
+<li>まだ存在しない場合、以下のバッジを作成します：
 <ul>
-<li><strong>Customer_Expertise</strong>訪問属性の値が<code>None</code>であるかどうかを確認する<strong>Beginner</strong>。</li>
-<li><strong>Customer_Expertise</strong>訪問属性の値が<code>Basic</code>であるかどうかを確認する<strong>Basic</strong>。</li>
-<li><strong>Customer_Expertise</strong>訪問属性の値が<code>Advanced</code>であるかどうかを確認する<strong>Advanced</strong>。</li>
-<li><strong>Customer_Expertise</strong>訪問属性の値が<code>Professional</code>であるかどうかを確認する<strong>Professional</strong>。</li>
+<li><strong>Beginner</strong> は、<strong>Customer_Expertise</strong> 訪問属性の値が <code>None</code> であるかどうかをチェックします。</li>
+<li><strong>Basic</strong> は、<strong>Customer_Expertise</strong> 訪問属性の値が <code>Basic</code> であるかどうかをチェックします。</li>
+<li><strong>Advanced</strong> は、<strong>Customer_Expertise</strong> 訪問属性の値が <code>Advanced</code> であるかどうかをチェックします。</li>
+<li><strong>Professional</strong> は、<strong>Customer_Expertise</strong> 訪問属性の値が <code>Professional</code> であるかどうかをチェックします。</li>
 </ul>
 </li>
 </ol>
-<p>複数の体験や体験のセットを最終的に作成するため、<code>tealium_event</code>の値が適切な体験から来るように属性のルールを更新する必要があります。</p>
-<p>この例では、<code>momentsiq_id</code>が作成した体験のUIDと一致するかどうかを確認するために、<strong>Customer_Expertise</strong>訪問属性のルールを更新します。これにより、この例の体験だけが<strong>Customer_Expertise</strong>属性を豊かにします。</p>
+<p>複数のMoments iQ体験が時間をかけて作成される可能性があるため、異なる体験からの <code>tealium_event</code> 値が意図した属性のみをエンリッチするようにする必要があります。</p>
+<p>この例で作成された特定の体験のUIDと一致するかどうかを確認するために、<code>Customer_Expertise</code> 訪問属性のルールを更新します。これにより、正しい体験のみが <code>Customer_Expertise</code> 属性を更新します。</p>
+<p>この例では、タグUIDは <code>123</code> です：</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"><img src="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"
-         alt="属性の条件"
-         title="属性の条件"/>
+         alt="属性条件"
+         title="属性条件"/>
     </a>
 </figure>
 <h2 id="結果">結果</h2>
-<p>訪問がホームページをロードすると、ホームページは<code>div.col-main</code>プロパティの開始後に体験を埋め込みます。</p>
+<p>訪問がホームページをロードすると、体験は <code>div.col-main</code> 要素の始まりに埋め込まれます。</p>
 <figure><a class="slb" href="/images/moments-iq/momentsiq-example-home-theater.png"><img src="/images/moments-iq/momentsiq-example-home-theater.png"/>
     </a>
 </figure>
-<p>顧客が質問に答えると、その答えは訪問のプロフィールに保存され、その答えに基づいてバッジが割り当てられます。</p>
+<p>顧客が質問に答えると、その回答は訪問プロファイルに保存され、専門知識レベルに基づいてバッジが割り当てられます。</p>
 
 </div>
 
@@ -531,7 +535,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月28日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -545,10 +549,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1：タグを作成する</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-1-%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ 1: タグを作成する</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ロードルールを作成する</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972audiencestream%E5%B1%9E%E6%80%A7%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ2：AudienceStream属性を作成する</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-2-audiencestream%E5%B1%9E%E6%80%A7%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ 2: AudienceStream属性を作成する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%90%E6%9E%9C" href="javascript:void(0)">結果</a></li>
               </nav>
   </aside></nav>

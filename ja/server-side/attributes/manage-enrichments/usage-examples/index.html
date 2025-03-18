@@ -118,7 +118,7 @@
         <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">訪問ID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -529,108 +529,116 @@
   
 
   
+    <p class="f4 fw3 lh-copy">
+      このセクションでは、さまざまなエンリッチメントの使用例を示します。
+    </p>
+  
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="数値の増減---ライフタイムオーダー合計-ltv">数値の増減 - &ldquo;ライフタイムオーダー合計 (LTV)&rdquo;</h2>
-<p>このエンリッチメントは、正の値（増加）または負の値（減少）で数値を変更することができます。この値は別の属性から取得することも、静的な数値として構成することもできます。</p>
+  <h2 id="数値の増減--生涯注文合計-ltv">数値の増減 – &ldquo;生涯注文合計 (LTV)&rdquo;</h2>
+<p>このエンリッチメントは、正の値（増加）または負の値（減少）で数値を変更することができます。この値は他の属性から取得するか、静的な数値として構成することができます。</p>
 <ul>
-<li><strong>属性:</strong> ライフタイムバリュー (LTV)</li>
+<li><strong>属性:</strong> 生涯価値 (LTV)</li>
 <li><strong>スコープ:</strong> 訪問</li>
 <li><strong>データタイプ:</strong> 数値</li>
 </ul>
-<p>訪問からのすべての注文で支払われた金額を知ることは、貴重な情報です。このデータは、プロモーションの提供や、支出が一定の閾値を超える訪問にバッジを割り当てるなど、さまざまな目的に使用することができます。この属性の値は訪問のライフタイムにわたって持続するため、訪問スコープになります。</p>
+<p>訪問が全ての注文で使った金額を知ることは、非常に価値のある情報です。このデータは、プロモーションの提供や、特定の閾値を超える支出をした訪問にバッジを割り当てるなど、多くの目的で使用できます。この属性の値は訪問の生涯にわたって持続するため、訪問スコープになります。</p>
 <p>このエンリッチメントには以下の要件があります：</p>
 <ul>
-<li>購入が行われたときに識別するためのイベント属性、例えば：<code>page_type</code>=&ldquo;purchase&rdquo;</li>
-<li>購入のドル額のイベント属性、例えば：<code>order_total</code>=&ldquo;123.45&rdquo;</li>
+<li>購入が行われたことを識別するイベント属性。例：<code>&quot;tealium_event&quot;: &quot;purchase&quot;</code></li>
+<li>購入のドル額を示すイベント属性。例：<code>&quot;order_total&quot;: &quot;123.45&quot;</code></li>
 </ul>
 <p>このエンリッチメントを構成するには：</p>
 <ol>
-<li>&ldquo;ライフタイムオーダー合計 (LTV)&ldquo;というタイトルの訪問属性を数値データタイプで作成します。</li>
-<li>&ldquo;数値の増減&quot;エンリッチメントを追加します。</li>
-<li>ドロップダウンリストから<strong>order_total</strong>を選択します。</li>
-<li>WHENのドロップダウンリストから<strong>Any Event</strong>を選択します。</li>
-<li>&ldquo;Order Thank You Page&quot;という新しいルールを以下の条件で作成します：
-<ul>
-<li><code>page_type</code> EQUALS &quot; purchase&rdquo;</li>
-</ul>
-</li>
+<li>数値データタイプの訪問属性を「生涯注文合計 (LTV)」として作成します。</li>
+<li>「数値の増減」エンリッチメントを追加します。</li>
+<li>ドロップダウンリストから <strong>order_total</strong> を選択します。</li>
+<li>WHEN ドロップダウンリストから <strong>Any Event</strong> を選択します。</li>
+<li>「注文完了ページ」というタイトルの新しいルールを以下の条件で作成します：
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div></li>
 </ol>
-<h2 id="二つの日付間の差を構成---最後の購入からの日数">二つの日付間の差を構成 - &ldquo;最後の購入からの日数&rdquo;</h2>
-<p>このエンリッチメントは、二つのイベント間の経過時間を計算し、その数値を次の単位のいずれかに保存します：分、時間、日、週、または月。</p>
+<h2 id="二つの日付の差を構成--前回の購入からの日数">二つの日付の差を構成 – &ldquo;前回の購入からの日数&rdquo;</h2>
+<p>このエンリッチメントは、二つのイベント間の経過時間を計算し、分、時間、日、週、または月のいずれかの単位で数値として保存します。</p>
 <ul>
-<li><strong>属性:</strong> 最後の購入からの日数</li>
+<li><strong>属性:</strong> 前回の購入からの日数</li>
 <li><strong>スコープ:</strong> 訪問</li>
 <li><strong>データタイプ:</strong> 数値</li>
 </ul>
-<p>このエンリッチメントは、訪問が購入を行ってからの日数を計算します。結果の値は常に正の数です。</p>
+<p>このエンリッチメントは、訪問が購入を行った日数を計算します。結果の値は常に正の数です。</p>
 <p>このエンリッチメントには以下の要件があります：</p>
 <ul>
-<li>購入が行われたときに識別するためのイベント属性、例えば：<code>page_type</code>=&ldquo;purchase&rdquo;</li>
-<li>購入イベントの日付を記録するための訪問属性</li>
+<li>購入が行われたことを識別するイベント属性。例：<code>tealium_event=&quot;purchase&quot;</code></li>
+<li>購入イベントの日付をキャプチャする訪問属性。</li>
 </ul>
 <p>このエンリッチメントを構成するには：</p>
 <ol>
-<li>
-<p>&ldquo;最後の購入日&quot;というタイトルの訪問属性を数値データタイプで作成します。</p>
-</li>
-<li>
-<p>WHENのドロップダウンリストから<strong>Any Event</strong>を選択します。</p>
-</li>
-<li>
-<p>以下の条件で&quot;Order Thank You Page&quot;という新しいルールを作成します（既に存在しない場合）：</p>
-<ul>
-<li>page_type EQUALS &ldquo;purchase&rdquo;</li>
-</ul>
-</li>
-<li>
-<p>&ldquo;最後の購入からの日数&quot;というタイトルの訪問属性を数値データタイプで作成します。</p>
-</li>
-<li>
-<p>&ldquo;二つの日付間の差を構成&quot;エンリッチメントを追加します。</p>
-</li>
-<li>
-<p>二つの日付を構成します：&ldquo;Visit start&rdquo;（組み込み属性）と&quot;Last Purchase Date&rdquo;。</p>
-</li>
-<li>
-<p>単位を&quot;Days&quot;に構成します。</p>
-</li>
-<li>
-<p>WHENのドロップダウンリストから<strong>New Visit</strong>を選択します。</p>
-</li>
+<li>数値データタイプの訪問属性を「最後の購入日」として作成します。</li>
+<li>WHEN ドロップダウンリストから <strong>Any Event</strong> を選択します。</li>
+<li>まだ存在しない場合は、「注文完了ページ」というタイトルの新しいルールを以下の条件で作成します：
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div></li>
+<li>数値データタイプの訪問属性を <code>前回の購入からの日数</code> として作成します。</li>
+<li>二つの日付の差を構成するエンリッチメントを追加します。</li>
+<li>二つの日付を「訪問開始」（組み込み属性）と「最後の購入日」として構成します。</li>
+<li>単位を「日」に構成します。</li>
+<li>WHEN ドロップダウンリストから <strong>New Visit</strong> を選択します。</li>
 </ol>
-<h2 id="文字列の分割-ab-テスト---split-test-group">文字列の分割 (A/B テスト - &ldquo;Split Test Group&rdquo;</h2>
-<p>このエンリッチメントは、訪問グループの名前を定義し、パーセンテージ分布に基づいて属性に割り当てます。セグメントの名前（または値）は、別の文字列属性から取得することも、カスタム値から取得することもできます。このエンリッチメントは、A/Bテストを実行したり、ユーザーグループをターゲットにしたりするのに役立ちます。</p>
-<p>グループの分布は、乱数ジェネレータに基づいて計算されます。エンリッチメントは、値を割り当てる前にセグメントの現在の比率を監視しないため、小さなサンプルでは構成したパーセンテージと正確に一致しない比率を見ることがあります。しかし、割り当ての数が増えるにつれて、割り当ての比率は構成したパーセンテージに徐々に近づくでしょう。</p>
-<p>例えば、50%、30%、20%の分布を持つ3つのセグメントを構成した場合、小さなサンプルセットでは48%、34%、18%の比率を見るかもしれません。しかし、より多くの訪問がセグメントに割り当てられるにつれて、比率の値は期待される値に近づくでしょう。</p>
+<h2 id="文字列の分割-ab-テスト--分割テストグループ">文字列の分割 (A/B テスト – &ldquo;分割テストグループ&rdquo;</h2>
+<p>このエンリッチメントは、訪問グループ名を定義し、パーセンテージ分布に基づいて属性に割り当てます。セグメントの名前（または値）は他の文字列属性から取得するか、カスタム値から取得することができます。このエンリッチメントは、A/B テストを実施する際や、ユーザーグループをターゲットにする際に役立ちます。</p>
+<p>グループの分布はランダムナンバージェネレータに基づいて計算されます。このエンリッチメントは、値を割り当てる前にセグメントの現在の比率を監視しませんので、小さなサンプルで見られる比率が構成したパーセンテージと正確に一致しない場合があります。しかし、割り当ての数が増えるにつれて、割り当ての比率は構成したパーセンテージに徐々に近づいていきます。</p>
+<p>例えば、50%、30%、20%の分布で3つのセグメントを構成した場合、小さなサンプルセットでは48%、34%、18%の比率が見られるかもしれません。しかし、より多くの訪問がセグメントに割り当てられるにつれて、比率値は期待される値に近づいていきます。</p>
 <ul>
-<li><strong>属性:</strong> Split Test Group</li>
+<li><strong>属性:</strong> 分割テストグループ</li>
 <li><strong>スコープ:</strong> 訪問/訪問</li>
 <li><strong>データタイプ:</strong> 文字列</li>
 </ul>
-<p>新しいキャンペーンを訪問の小さなセグメントでテストし、全ての訪問に対して展開する前に、分割文字列のエンリッチメントを使用して訪問の小さなパーセンテージを&quot;Action&quot;グループに割り当てます。この特定の訪問セグメントは、アクションを取るためのオーディエンスを構築するために使用できます。</p>
+<p>新しいキャンペーンを少数の訪問にテストし、その後すべての訪問に展開する前に、分割文字列エンリッチメントを使用して訪問の小さな割合を「アクション」グループに割り当てます。この特定の訪問セグメントは、アクションを取るためのオーディエンスに構築することができます。</p>
 <p>この例では、以下のセグメントの分布を作成します：</p>
 <ul>
-<li>85% - &ldquo;Control&rdquo; - テストの一部とならないコントロールグループ</li>
-<li>15% - &ldquo;Variation1&rdquo; - テストに含まれるグループ</li>
+<li>85% – &ldquo;コントロール&rdquo;: テストには含まれないコントロールグループ。</li>
+<li>15% – &ldquo;バリエーション1&rdquo;: テストに含まれるグループ。</li>
 </ul>
 <p>このエンリッチメントを構成するには：</p>
 <ol>
-<li>&ldquo;Split Test Group&quot;というタイトルの訪問/訪問属性を文字列データタイプで作成します。</li>
-<li>&ldquo;Split String&quot;エンリッチメントを追加します。</li>
-<li>各グループに名前とパーセンテージを構成します。</li>
-<li>WHENのドロップダウンリストから<strong>New Visit</strong>を選択します。</li>
+<li><code>分割テストグループ</code> という名前の文字列訪問属性を作成します。</li>
+<li><strong>文字列の分割</strong> エンリッチメントを追加します。</li>
+<li>各グループに名前とパーセントを構成します。</li>
+<li>WHEN ドロップダウンリストから <strong>New Visit</strong> を選択します。</li>
 </ol>
-<p>これで、この属性をルールに使用して、関連する訪問をオーディエンスに含めることができます。ルールのロジックは次のようになるかもしれません：&ldquo;Split Test Group&rdquo; EQUALS &ldquo;Variation1&rdquo;。</p>
-<h2 id="配列を文字列のセットとして保存---購入カテゴリ">配列を文字列のセットとして保存 - &ldquo;購入カテゴリ&rdquo;</h2>
-<p>Store Array as Set of Stringエンリッチメントは、文字列の配列属性からの値を文字列のセット属性に保存します。このエンリッチメントは永続的なセットを作成しません。つまり、このエンリッチメントを使用して文字列のセットに追加することはできず、常に値を上書きします。文字列のセットを保持し、新しい値を追加するには、Update Set of String By Set of Stringsエンリッチメントを使用する必要があります。</p>
+<p>この属性をルールに使用して、関連する訪問をオーディエンスに含めることができます。ルールのロジックは次のようになるかもしれません：
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">Split Test Group</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">Variation1</span>
+      </div>
+  </div>
+</div></p>
+<h2 id="文字列のセットとして配列を保存--購入カテゴリ">文字列のセットとして配列を保存 – &ldquo;購入カテゴリ&rdquo;</h2>
+<p><strong>Store Array as Set of String</strong> エンリッチメントは、文字列の配列属性から値を文字列のセット属性に保存します。このエンリッチメントは永続的なセットを作成しません。つまり、このエンリッチメントを使用して文字列のセットに新しい値を追加することはできず、常に値を上書きします。文字列のセットを保存し、新しい値を追加するには、<strong>Update Set of String By Set of Strings</strong> エンリッチメントを使用する必要があります。</p>
 <ul>
 <li><strong>属性:</strong> 購入カテゴリ</li>
 <li><strong>スコープ:</strong> 訪問</li>
 <li><strong>データタイプ:</strong> 文字列のセット</li>
 </ul>
-<p>データタイプが文字列の配列である<code>product_category</code>というイベント属性から始めます。これは、購入イベントで購入された製品のカテゴリ名を含むように構成されます。これを訪問/訪問属性である&quot;Purchase Categories&quot;として保存するためには、文字列のセットに変換する必要があります。その後、各購入イベントで、<code>product_category</code>の値がエンリッチメントを介して&quot;Product Categories Purchased&quot;属性に追加されます。</p>
+<p>購入イベントで「製品カテゴリ」という文字列の配列データタイプのイベント属性が入力され、購入された製品のカテゴリ名が含まれる場合、これを「購入カテゴリ」という訪問/訪問属性に文字列のセットとして保存する必要があります。その後、各購入イベントで、<code>product_category</code> の値が <code>Product Categories Purchased</code> 属性にエンリッチメントを通じて追加されます。</p>
 <table>
 <thead>
 <tr>
@@ -640,87 +648,91 @@
 </thead>
 <tbody>
 <tr>
-<td>[&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;]</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
+<td><code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
 </tr>
 <tr>
-<td>[&ldquo;Boots&rdquo;, &ldquo;Belts&rdquo;, &ldquo;Belts&rdquo;]</td>
-<td>&ldquo;Boots&rdquo;, &ldquo;Belts&rdquo;</td>
+<td><code>[&quot;Boots&quot;, &quot;Belts&quot;, &quot;Belts&quot;]</code></td>
+<td><code>&quot;Boots&quot;, &quot;Belts&quot;</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="文字列のセットを文字列のセットで更新---ライフタイム購入カテゴリ">文字列のセットを文字列のセットで更新 - &ldquo;ライフタイム購入カテゴリ&rdquo;</h2>
-<p>このエンリッチメントは、一つの文字列のセット属性からの値を別の文字列のセット属性に追加します。これにより、一つのセットで発生する値（イベントごとに変化する）を、訪問のライフタイムにわたって持続する二つ目のセットに保存することができます。</p>
-<p>この表では、Set Aは各イベントで新しい値に上書きされ、エンリッチメントはそれらの値をSet Bにコピーしてマスターリストを増やしています。</p>
-<p>このエンリッチメントをStore Array as Set of Stringsエンリッチメントと組み合わせることをお勧めします。これにより、結果となるセットが新しい値によって上書きされる前に保存されます。</p>
+<h2 id="文字列のセットを文字列のセットで更新--生涯購入カテゴリ">文字列のセットを文字列のセットで更新 – &ldquo;生涯購入カテゴリ&rdquo;</h2>
+<p>このエンリッチメントは、一つの文字列のセット属性から別の文字列のセット属性に値を追加します。これにより、一つのセットで発生する値（イベントごとに変更される）を、訪問の生涯にわたって持続する二つ目のセットに保存することができます。</p>
+<p>この表では <code>Set A</code> が各イベントで新しい値に上書きされ、エンリッチメントがそれらの値を <code>Set B</code> にコピーしています。ここで、マスターリストが成長します。</p>
+<p><strong>Store Array as Set of Strings</strong> エンリッチメントと組み合わせることをお勧めします。これにより、受信値によって上書きされる前に、結果のセットを保存することができます。</p>
 <table>
 <thead>
 <tr>
-<th>Set A (Event)</th>
-<th>Set B (Visitor)</th>
+<th>Set A (イベント)</th>
+<th>Set B (訪問)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;</td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;</code></td>
 </tr>
 <tr>
-<td>&ldquo;Shoes&rdquo;, &ldquo;Pants&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Shoes&rdquo;</td>
+<td><code>&quot;Shoes&quot;, &quot;Pants&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;</code></td>
 </tr>
 <tr>
-<td>&ldquo;Shirts&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Watches&rdquo;</td>
-<td>&ldquo;Pants&rdquo;, &ldquo;Shirts&rdquo;, &ldquo;Shoes&rdquo;, &ldquo;Watches&rdquo;</td>
+<td><code>&quot;Shirts&quot;, &quot;Shirts&quot;, &quot;Watches&quot;</code></td>
+<td><code>&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;, &quot;Watches&quot;</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>属性:</strong> ライフタイム購入カテゴリ</li>
+<li><strong>属性:</strong> 生涯購入カテゴリ</li>
 <li><strong>スコープ:</strong> 訪問</li>
 <li><strong>データタイプ:</strong> 文字列のセット</li>
 </ul>
-<p>あなたから購入された製品カテゴリの累積セットを維持するためには、一つのイベントの文字列の配列属性と二つの訪問/訪問の文字列のセット属性が必要です：一つはビューが発生するたびにキャプチャするためのもの、もう一つはすべての歴史的なビューをキャプチャするためのものです。</p>
+<p>あなたから購入された製品カテゴリの累積セットを維持するためには、一つのイベント文字列の配列属性と、二つの訪問および訪問文字列のセット属性が必要です：一つは発生するとおりにビューをキャプチャするためのものと、すべての歴史的ビューをキャプチャするためのものです。</p>
 <p>このエンリッチメントには以下の要件があります：</p>
 <ul>
-<li>購入が行われたときに識別するためのイベント属性。例えば、<code>page_type=&quot;purchase&quot;</code></li>
-<li>購入時の製品カテゴリを識別するための文字列の配列イベント属性。例えば、<code>product_category=[&quot;Boots&quot;, &quot;Belts&quot;]</code></li>
-<li>訪問中に購入された製品カテゴリをキャプチャするための文字列のセット訪問属性</li>
-<li>すべての購入された製品カテゴリをキャプチャするための文字列のセット訪問属性</li>
+<li>購入が行われたことを識別するイベント属性。例：<code>tealium_event=&quot;purchase&quot;</code></li>
+<li>購入時の製品カテゴリを識別する文字列の配列イベント属性。例：<code>&quot;product_category&quot;: [&quot;Boots&quot;, &quot;Belts&quot;]</code>.</li>
+<li>訪問で購入された製品カテゴリをキャプチャする文字列のセット訪問属性。</li>
+<li>購入されたすべての製品カテゴリをキャプチャする文字列のセット訪問属性。</li>
 </ul>
 <p>このエンリッチメントを構成するには：</p>
+<hr>
+<h2 id="description-このエンリッチメントはタイムライン属性でキャプチャされた数値の算術平均を計算します">title: &ldquo;タイムラインに基づいたローリング平均の構成 - 「90日間の注文平均」&rdquo;
+linktitle: &ldquo;タイムラインに基づいたローリング平均の構成&rdquo;
+description: &ldquo;このエンリッチメントは、タイムライン属性でキャプチャされた数値の算術平均を計算します。&rdquo;</h2>
 <ol>
-<li>&ldquo;product_category&quot;という名前のイベント属性を文字列の配列データタイプで作成します。</li>
-<li>&ldquo;Product Category Purchased&quot;という名前の訪問属性を文字列のセットデータタイプで作成します。
+<li>
+<p>文字列の配列データ型で <code>product_category</code> というイベント属性を作成します。</p>
+</li>
+<li>
+<p>文字列のセットとして訪問属性 <code>Product Category Purchased</code> を作成します。</p>
 <ul>
-<li>&ldquo;Store Array as Set of Strings&quot;エンリッチメントを追加します。</li>
-<li>属性&quot;product_category&quot;を選択します。</li>
-<li>WHENを&quot;Any Event&quot;に構成します。</li>
+<li><strong>Store Array as Set of Strings</strong> エンリッチメントを追加します。</li>
+<li>属性 <code>product_category</code> を選択します。</li>
+<li><strong>WHEN</strong> を <code>Any Event</code> に構成します。</li>
+<li>ルールを <code>Purchase Event</code> に構成します。</li>
+</ul>
+</li>
+<li>
+<p>文字列のセットとして訪問属性 <code>Lifetime Product Category Purchased</code> を作成します。</p>
+<ul>
+<li><strong>Update Set of Strings by Set of Strings</strong> エンリッチメントを追加します。</li>
+<li>属性 <code>Product Category Purchased</code> を選択します。</li>
+<li><em>WHEN</em> を <code>Visit Ended</code> に構成します。</li>
 </ul>
 </li>
 </ol>
-<ul>
-<li>ルールを「購入ページ」（page_type EQUALS &ldquo;purchase&rdquo;）に構成します。</li>
-</ul>
-<ol>
-<li>文字列のセットデータタイプで訪問属性を作成し、「Lifetime Product Category Purchased」と名付けます。
-<ul>
-<li>「Update Set of Strings by Set of Strings」のエンリッチメントを追加します。</li>
-<li>属性「Product Category Purchased」を選択します。</li>
-<li>WHENを「Visit Ended」に構成します。</li>
-</ul>
-</li>
-</ol>
-<h2 id="タイムラインに基づいたローリング平均の構成---90日間の注文平均">タイムラインに基づいたローリング平均の構成 - &ldquo;90日間の注文平均&rdquo;</h2>
-<p>このエンリッチメントは、タイムライン属性でキャプチャされた数値のローリング平均（算術平均）を計算します。</p>
-<p>この例では、「90日間の注文」タイムラインを使用して、過去90日間の注文合計値をキャプチャします。タイムラインが進むにつれて、有効期限ウィンドウ外のエントリーが破棄され、有効なエントリーのセットで最終的なローリング平均が再計算されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この例は、タイムラインに基づいたローリング合計の構成エンリッチメントにも適用されます。</p>
-<p>以下の表は、エントリーのタイムラインを示しています（今日が3月25日と仮定します）。すべてのエントリー、1月1日のエントリーも含めて、算術平均に含まれます。</p>
-<p><strong>タイムライン属性：「90日間の注文」</strong></p>
+<h2 id="タイムラインに基づいたローリング平均の構成--90日間の注文平均">タイムラインに基づいたローリング平均の構成 – 「90日間の注文平均」</h2>
+<p>このエンリッチメントは、タイムライン属性でキャプチャされた数値の算術平均を計算します。</p>
+<p>この例では、「90日間の注文」タイムラインを使用して、過去90日間の注文合計値をキャプチャします。タイムラインが進むにつれて、有効期限が切れたエントリは破棄され、有効なエントリのセットで最終的なローリング平均が再計算されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この例は、<strong>Set Rolling Sum Based on Timeline</strong> エンリッチメントにも適用されます。</p>
+<p>以下の表は、エントリのタイムラインを示しています（今日が3月25日と仮定）。1月1日のエントリを含むすべてのエントリが算術平均に含まれます。</p>
+<p><strong>タイムライン属性: 「90日間の注文」</strong></p>
 <table>
 <thead>
 <tr>
-<th><strong>有効なエントリー</strong></th>
+<th><strong>有効なエントリ</strong></th>
 <th><strong>注文合計 ($)</strong></th>
 </tr>
 </thead>
@@ -739,14 +751,14 @@
 </tr>
 </tbody>
 </table>
-<p><strong>ローリング平均</strong>は (10.00 + 20.00 + 30.00) ÷ 3 = 20.00</p>
-<p>数週間後、1月1日のエントリーは90日の有効期限を超えているため破棄され、有効なエントリーでローリング平均が再計算されます。集計から期限切れのエントリーが除外されると、結果として得られる平均がどのように変化するかに注目してください。</p>
-<p><strong>タイムライン属性：「90日間の注文」</strong></p>
+<p><strong>ローリング平均</strong> は (10.00 + 20.00 + 30.00) ÷ 3 = 20.00</p>
+<p>数週間後、1月1日のエントリは90日の有効期限を超えたため破棄され、有効なエントリのローリング平均が再計算されます。有効期限が切れたエントリが集計から除外されると、結果の平均がどのように変化するかに注目してください。</p>
+<p><strong>タイムライン属性: 「90日間の注文」</strong></p>
 <table>
 <thead>
 <tr>
-<th><strong>期限切れのエントリー</strong></th>
-<th><strong>注文合計 ($)</strong></th>
+<th><strong>有効期限が切れたエントリ</strong></th>
+<th><strong>注文合計 (in $)</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -759,8 +771,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>有効なエントリー</strong></th>
-<th><strong>注文合計 ($)</strong></th>
+<th><strong>有効なエントリ</strong></th>
+<th><strong>注文合計 (in $)</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -778,42 +790,42 @@
 </tr>
 </tbody>
 </table>
-<p><strong>ローリング平均</strong>は (20.00 + 30.00 + 40.00) ÷ 3 = 30.00</p>
+<p><strong>ローリング平均</strong> は (20.00 + 30.00 + 40.00) ÷ 3 = 30.00</p>
 <ul>
 <li><strong>属性:</strong> 90日間の注文平均</li>
-<li><strong>範囲:</strong> 訪問</li>
+<li><strong>スコープ:</strong> 訪問</li>
 <li><strong>データタイプ:</strong> 数値</li>
 </ul>
-<p><strong>過去90日間</strong>の注文合計をキャプチャするためのタイムライン属性から始めて、注文合計の平均を保存するための新しい訪問属性を作成します。</p>
+<p><strong>過去90日間</strong>の注文合計をキャプチャするためのタイムライン属性から始めて、<strong>ローリング平均</strong> エンリッチメントを使用して注文合計の平均を格納する新しい訪問属性を作成します。</p>
 <p>このエンリッチメントには以下の要件があります：</p>
 <ul>
-<li>購入が行われたときに識別するためのイベント文字列属性、例えば：page_type=&ldquo;purchase&rdquo;</li>
-<li>購入のドル額のためのイベント数値属性、例えば：order_total=&ldquo;123.45&rdquo;</li>
-<li>90日間の注文合計をキャプチャするための訪問タイムライン属性</li>
-<li>注文合計の平均をキャプチャするための訪問数値属性</li>
+<li>購入が行われたときを識別するイベント文字列属性、例えば: <code>tealium_event: &quot;purchase&quot;</code>。</li>
+<li>購入のドル額に関するイベント数値属性、例えば: <code>order_total: &quot;123.45&quot;</code>。</li>
+<li>90日間の注文合計をキャプチャする訪問タイムライン属性。</li>
+<li>注文合計の平均をキャプチャする訪問数値属性。</li>
 </ul>
 <p>このエンリッチメントを構成するには：</p>
 <ol>
 <li>
-<p>「90日間の注文タイムライン」という名前の訪問タイムライン属性を作成します。</p>
+<p><code>90-Day Order timeline</code> という訪問タイムライン属性を作成します。</p>
 </li>
 <li>
-<p><strong>エントリーを作成 &gt; 有効期限を構成</strong>をクリックし、「90日間」に構成します。</p>
+<p><strong>Create An Entry &gt; Set Expiration</strong> をクリックし、「90 days」に構成します。</p>
 </li>
 <li>
-<p><strong>エントリーを作成 &gt; タイムラインを更新</strong>をクリックし、以下を構成します：</p>
+<p><strong>Create An Entry &gt; Update timeline</strong> をクリックし、以下を構成します：</p>
 <ul>
-<li><strong>記録</strong>: イベント受信時刻</li>
-<li><strong>データのキャプチャ</strong>: order_total</li>
-<li><strong>WHEN</strong>: 任意のイベント</li>
-<li><strong>ルール</strong>: page_type EQUALS &ldquo;purchase&rdquo;</li>
+<li><strong>Record</strong>: イベント受信時の時間</li>
+<li><strong>Capture data</strong>: <code>order_total</code></li>
+<li><strong>WHEN</strong>: Any Event</li>
+<li><strong>Rule</strong>: tealium_event EQUALS &ldquo;purchase&rdquo;</li>
 </ul>
 </li>
 <li>
-<p>「90日間の注文平均」という名前の訪問数値属性を作成します。</p>
+<p><code>90-Day Order Average</code> という訪問数値属性を作成します。</p>
 </li>
 <li>
-<p>「タイムラインに基づいたローリング平均の構成」エンリッチメントを追加し、「order_total」と「90日間の注文タイムライン」を選択します。</p>
+<p><strong>Set Rolling Average Based On timeline</strong> エンリッチメントを追加し、<code>order_total</code> と <strong>90-Day Order timeline</strong> を選択します。</p>
 </li>
 </ol>
 
@@ -861,7 +873,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -875,12 +887,12 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E5%A2%97%E6%B8%9B---%E3%83%A9%E3%82%A4%E3%83%95%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC%E5%90%88%E8%A8%88-ltv" href="javascript:void(0)">数値の増減 - “ライフタイムオーダー合計 (LTV)”</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%8C%E3%81%A4%E3%81%AE%E6%97%A5%E4%BB%98%E9%96%93%E3%81%AE%E5%B7%AE%E3%82%92%E6%A7%8B%E6%88%90---%E6%9C%80%E5%BE%8C%E3%81%AE%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89%E3%81%AE%E6%97%A5%E6%95%B0" href="javascript:void(0)">二つの日付間の差を構成 - “最後の購入からの日数”</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E5%88%86%E5%89%B2-ab-%E3%83%86%E3%82%B9%E3%83%88---split-test-group" href="javascript:void(0)">文字列の分割 (A/B テスト - “Split Test Group”</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E3%82%92%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%A8%E3%81%97%E3%81%A6%E4%BF%9D%E5%AD%98---%E8%B3%BC%E5%85%A5%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">配列を文字列のセットとして保存 - “購入カテゴリ”</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%A7%E6%9B%B4%E6%96%B0---%E3%83%A9%E3%82%A4%E3%83%95%E3%82%BF%E3%82%A4%E3%83%A0%E8%B3%BC%E5%85%A5%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">文字列のセットを文字列のセットで更新 - “ライフタイム購入カテゴリ”</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%9F%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E5%B9%B3%E5%9D%87%E3%81%AE%E6%A7%8B%E6%88%90---90%E6%97%A5%E9%96%93%E3%81%AE%E6%B3%A8%E6%96%87%E5%B9%B3%E5%9D%87" href="javascript:void(0)">タイムラインに基づいたローリング平均の構成 - “90日間の注文平均”</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E5%A2%97%E6%B8%9B--%E7%94%9F%E6%B6%AF%E6%B3%A8%E6%96%87%E5%90%88%E8%A8%88-ltv" href="javascript:void(0)">数値の増減 – “生涯注文合計 (LTV)”</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%8C%E3%81%A4%E3%81%AE%E6%97%A5%E4%BB%98%E3%81%AE%E5%B7%AE%E3%82%92%E6%A7%8B%E6%88%90--%E5%89%8D%E5%9B%9E%E3%81%AE%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89%E3%81%AE%E6%97%A5%E6%95%B0" href="javascript:void(0)">二つの日付の差を構成 – “前回の購入からの日数”</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E5%88%86%E5%89%B2-ab-%E3%83%86%E3%82%B9%E3%83%88--%E5%88%86%E5%89%B2%E3%83%86%E3%82%B9%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97" href="javascript:void(0)">文字列の分割 (A/B テスト – “分割テストグループ”</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%A8%E3%81%97%E3%81%A6%E9%85%8D%E5%88%97%E3%82%92%E4%BF%9D%E5%AD%98--%E8%B3%BC%E5%85%A5%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">文字列のセットとして配列を保存 – “購入カテゴリ”</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%92%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%A7%E6%9B%B4%E6%96%B0--%E7%94%9F%E6%B6%AF%E8%B3%BC%E5%85%A5%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">文字列のセットを文字列のセットで更新 – “生涯購入カテゴリ”</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%9F%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E5%B9%B3%E5%9D%87%E3%81%AE%E6%A7%8B%E6%88%90--90%E6%97%A5%E9%96%93%E3%81%AE%E6%B3%A8%E6%96%87%E5%B9%B3%E5%9D%87" href="javascript:void(0)">タイムラインに基づいたローリング平均の構成 – 「90日間の注文平均」</a></li>
               </nav>
   </aside></nav>
 

@@ -118,7 +118,7 @@
         <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">訪問ID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -530,15 +530,24 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealiumの製品やサービスを使用する場合、そのデータセンタードメインをCSPに追加します。また、Tealium iQタグ管理を通じてロードされるベンダーのドメインも追加します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>各リストは完全なリストであり、将来使用される可能性のあるすべてのデータセンタードメインを含んでいます。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>CSP（コンテンツセキュリティポリシー）は、クロスサイトスクリプティング（XSS）などの悪意のある攻撃を防ぐためのセキュリティ機能です。これは、ウェブページ上でロードおよび実行できるリソース（スクリプトや画像など）を制御することによって実現します。これらの制限を強制するために、CSPはHTTPヘッダーやメタタグでルールを定義し、コンテンツソースを制限してセキュリティをエンリッチメントします。</p>
+<p>例えば、以下のCSPディレクティブを考えてみましょう：</p>
+<pre tabindex="0"><code>Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; tealium.com;
+</code></pre><ul>
+<li><code>default-src</code> は、追加のディレクティブが特定のリソースタイプに対して異なるポリシーを構成していない限り、ドキュメントと同じオリジンからのリソースのみをロードするよう訪問のブラウザに指示します。</li>
+<li><code>script-src</code> は、ドキュメントと同じオリジンからのスクリプトのみをロードするよう訪問のブラウザに指示します。また、<code>tealium.com</code> からのスクリプトも許可します。</li>
+</ul>
+<p>Tealiumの製品やサービスを使用する場合は、そのデータセンタードメインをCSPに追加してください。これにより、サイト訪問が必要なスクリプトをロードできるようになります。また、Tealium iQタグ管理を通じてロードされるベンダーのドメインも追加してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>各リストには、将来使用される可能性のあるすべてのデータセンタードメインが含まれています。</p>
+<p>CSPについての詳細は、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">MSDN: Content Security Policy</a>を参照してください。</p>
 <h2 id="tealium-iqタグ管理">Tealium iQタグ管理</h2>
-<p>以下のiQタグ管理データセンタードメインをCSPに追加します：</p>
+<p>以下のiQタグ管理データセンタードメインをCSPに追加してください：</p>
 <pre tabindex="0"><code>tags.tiqcdn.com
 tags.tiqcdn.cn
 tags-eu.tiqcdn.com
 </code></pre><h2 id="tealium-collectタグaudiencestreameventstream">Tealium Collectタグ、AudienceStream、EventStream</h2>
-<p>以下のTealium Collectタグ、Tealium AudienceStream、Tealium EventStreamデータセンタードメインをCSPに追加します：</p>
+<p>以下のTealium Collectタグ、Tealium AudienceStream、Tealium EventStreamデータセンタードメインをCSPに追加してください：</p>
 <pre tabindex="0"><code>collect-ap-east-1.tealiumiq.com 
 collect-ap-northeast-1.tealiumiq.com 
 collect-ap-northeast-2.tealiumiq.com 
@@ -557,8 +566,11 @@ collect-us-east-2.tealiumiq.com
 collect-us-west-1.tealiumiq.com 
 collect-us-west-2.tealiumiq.com
 collect.tealiumiq.com
+</code></pre><h3 id="プライベートクラウド環境">プライベートクラウド環境</h3>
+<p>プライベートクラウド環境を使用している場合は、そのサイトをCSPに追加してください。例えば、PC HMT Collect環境を追加するには、以下のドメインをCSPに追加します：</p>
+<pre tabindex="0"><code>pc-hmt-collect.tealiumiq.com
 </code></pre><h2 id="データレイヤーのエンリッチメント">データレイヤーのエンリッチメント</h2>
-<p>以下のTealiumデータレイヤーエンリッチメントデータセンタードメインをCSPに追加します：</p>
+<p>以下のTealiumデータレイヤーエンリッチメントデータセンタードメインをCSPに追加してください：</p>
 <pre tabindex="0"><code>visitor-service-ap-northeast-1.tealiumiq.com 
 visitor-service-ap-northeast-2.tealiumiq.com 
 visitor-service-ap-northeast-3.tealiumiq.com 
@@ -577,7 +589,7 @@ visitor-service-us-west-1.tealiumiq.com
 visitor-service-us-west-2.tealiumiq.com
 visitor-service.tealiumiq.com
 </code></pre><h2 id="tealium-api">Tealium API</h2>
-<p>以下のTealium APIデータセンタードメインをCSPに追加します：</p>
+<p>以下のTealium APIデータセンタードメインをCSPに追加してください：</p>
 <pre tabindex="0"><code>api.tealiumiq.com
 </code></pre>
 </div>
@@ -639,7 +651,7 @@ visitor-service.tealiumiq.com
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -653,9 +665,11 @@ visitor-service.tealiumiq.com
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86" href="javascript:void(0)">Tealium iQタグ管理</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86" href="javascript:void(0)">Tealium iQタグ管理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect%E3%82%BF%E3%82%B0audiencestreameventstream" href="javascript:void(0)">Tealium Collectタグ、AudienceStream、EventStream</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">データレイヤーのエンリッチメント</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%99%E3%83%BC%E3%83%88%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E7%92%B0%E5%A2%83" href="javascript:void(0)">プライベートクラウド環境</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">データレイヤーのエンリッチメント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-api" href="javascript:void(0)">Tealium API</a></li>
               </nav>
   </aside></nav>

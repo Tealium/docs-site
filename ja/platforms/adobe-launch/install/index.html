@@ -135,59 +135,55 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li><a href="/ja/server-side/getting-started/intro-cdh/">Tealium Customer Data Hubアカウント</a></li>
+<li><a href="/ja/server-side/getting-started/intro-cdh/">Tealium Customer Data Hubアカウント</a>。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Adobe Experience Platform Launch用のTealium Collect拡張機能は、すべてのイベントと対応するデータをTealiumに送信し、Tealium Customer Data Hubで使用します。Adobe Experience Platform Launch用のTealium Collect拡張機能は、ページごとに一度Tealium Collect JavaScriptファイルをロードするカスタムテンプレートです。</p>
-<p>トリガーされた各イベントについて、タグは自動的に<code>digitalData</code>オブジェクトをキー-値のペアにフラット化し、データをTealium Collectエンドポイントに投稿します。ファーストパーティデータコレクションを使用する場合、カスタムエンドポイントを指定することができます。</p>
-<p>データレイヤー変数がどのようにフラット化されるかについては、<a href="/ja/platforms/adobe-launch/data-layer/">データレイヤー</a>を参照してください。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Adobe Experience Platform Launch用のTealium Collect拡張機能は、すべてのイベントと対応するデータをTealiumに送信し、Tealium Customer Data Hubで使用します。Adobe Experience Platform Launch用のTealium Collect拡張機能は、ページごとに一度Tealium CollectのJavaScriptファイルを読み込むカスタムテンプレートです。</p>
+<p>トリガーされた各イベントについて、タグは構成で指定されたデータレイヤーのエンリッチメントオブジェクトをキーと値のペアに自動的にフラット化し、データをTealium Collectエンドポイントに投稿します。ファーストパーティデータ収集を使用する場合は、カスタムエンドポイントを指定できます。</p>
+<p>データレイヤー変数がどのようにフラット化されるかの詳細については、<a href="/ja/platforms/adobe-launch/data-layer/">データレイヤー</a>を参照してください。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="tealium-collect">Tealium Collect</h3>
-<p>Tealium Collect拡張機能をインストールするには：</p>
+<p>Tealium Collect拡張機能をインストールするには、以下の手順を使用します：</p>
 <ol>
-<li>Adobe Experience Platform Launch Marketplaceに移動します。</li>
-<li>拡張機能メニューで、<strong>カタログ</strong>タブをクリックし、<strong>Tealium Collect</strong>拡張機能を検索します。</li>
+<li>Adobe Experience Platform Launch Marketplaceにアクセスします。</li>
+<li>拡張機能メニューで<strong>カタログ</strong>タブをクリックし、<strong>Tealium Collect</strong>拡張機能を検索します。</li>
 <li><strong>インストール</strong>をクリックします。</li>
 <li>次の構成オプションを構成し、<strong>ライブラリに保存</strong>をクリックします：
 <ul>
-<li><strong>Tealiumアカウント</strong>（必須）：あなたのTealiumアカウント名。</li>
-<li><strong>Tealiumプロファイル</strong>（必須）：あなたのTealiumプロファイル名。</li>
-<li><strong>エンドポイント</strong>（オプション）：ファーストパーティデータコレクションエンドポイントなど、Tealium Collectエンドポイントを上書きします。例：<code>https://collect.example.co.uk/event</code>。</li>
+<li><strong>Tealiumアカウント</strong>：必須。あなたのTealiumアカウント名。</li>
+<li><strong>Tealiumプロファイル</strong>：必須。あなたのTealiumプロファイル名。</li>
+<li><strong>データソースキー</strong>：オプション。サーバーサイドTealium構成からのデータソースキー。</li>
+<li><strong>Collect Tag URL</strong>：オプション。デフォルトのTealium Collect URLを独自のカスタムファーストパーティデータホストファイルURLで上書きします。例：<code>https://collect.example.co.uk/collect.min.js</code>。</li>
+<li><strong>エンドポイント</strong>：オプション。Tealium Collectエンドポイントをファーストパーティデータ収集エンドポイントで上書きします。例：<code>https://collect.example.co.uk/event</code>。</li>
 </ul>
 </li>
+<li>Tealium Collect拡張機能を発火させるルールを作成します。次の例は、ページビューイベントのための拡張機能を実行します。</li>
 </ol>
-<p>Tealium Collect拡張機能を発火するルールを作成します。次の例は、ページビューイベントの拡張機能を実行します。</p>
 <figure><a class="slb" href="/images/platforms/adobe-launch/adobe-launch-rules.png"><img src="/images/platforms/adobe-launch/adobe-launch-rules.png" width="375" height="500"/>
     </a><figcaption><p>Adobe Launch Rules</p>
         </figcaption>
 </figure>
-<h3 id="data-layer-enrichment">Data Layer Enrichment</h3>
-<p>Tealium Data Layer Enrichment拡張機能は、Tealium AudienceStreamからのサーバーサイド属性を取得し、それらをデータレイヤーに注入します。</p>
-<p>Data Layer Enrichment拡張機能をインストールするには：</p>
+<h3 id="データレイヤーエンリッチメント">データレイヤーエンリッチメント</h3>
+<p>Tealium Data Layer Enrichment拡張機能は、Tealium AudienceStreamからのサーバーサイド属性を取り込み、データレイヤーに注入します。</p>
+<p>Data Layer Enrichment拡張機能をインストールするには、以下の手順を使用します：</p>
 <ol>
-<li>
-<p>Adobe Extension Catalogで<strong>Tealium Data Enrichment</strong>拡張機能を検索します。</p>
-</li>
-<li>
-<p>拡張機能を追加するために<strong>インストール</strong>ボタンをクリックします。</p>
-</li>
-<li>
-<p><strong>Tealium Data Enrichment</strong>の<strong>ルールとアクション</strong>を追加します。</p>
-</li>
-<li>
-<p>インストール済みの拡張機能の上にマウスを置き、<strong>構成</strong>をクリックし、次のオプションを構成します：</p>
+<li>Adobe Extension Catalogで<strong>Tealium Data Enrichment</strong>拡張機能を検索します。</li>
+<li>拡張機能を追加するために<strong>インストール</strong>ボタンをクリックします。</li>
+<li><strong>Tealium Data Enrichment</strong>のための<strong>ルールとアクション</strong>を追加します。</li>
+<li>インストールされた拡張機能にマウスオーバーし、<strong>構成</strong>をクリックして、次のオプションを構成します：
 <ul>
-<li><strong>Tealiumアカウント</strong>（必須）：あなたのTealiumアカウント名。</li>
-<li><strong>Tealiumプロファイル</strong>（必須）：あなたのTealiumプロファイル名。</li>
-<li><strong>データソースキー</strong>（オプション）：サーバーサイドTealium構成からのデータソースキー。</li>
-<li><strong>エンドポイント</strong>（オプション）：ファーストパーティデータコレクションエンドポイントなど、Tealium Collectエンドポイントを上書きします。例：<code>https://collect.example.co.uk/event</code>。</li>
+<li><strong>Tealiumアカウント</strong>：必須。あなたのTealiumアカウント名。</li>
+<li><strong>Tealiumプロファイル</strong>：必須。あなたのTealiumプロファイル名。</li>
+<li><strong>データソースキー</strong>：オプション。サーバーサイドTealium構成からのデータソースキー。</li>
+<li><strong>Collect Tag URL</strong>：オプション。デフォルトのTealium Collect URLを独自のカスタムファーストパーティデータホストファイルURLで上書きします。</li>
+<li><strong>エンドポイント</strong>：オプション。Tealium Collectエンドポイントをファーストパーティデータ収集エンドポイントで上書きします。例：<code>https://collect.example.co.uk/event</code>。</li>
+<li><strong>データオブジェクト</strong>：オプション。データレイヤーエンリッチメントオブジェクトとして使用するJavaScript変数の名前。例えば、データレイヤーエンリッチメントオブジェクトとして<code>digitalData</code>を使用している場合は、これを入力します。拡張機能は、Direct Callイベントの<code>_satellite.track</code>呼び出しの第二パラメータを自動的に使用します。</li>
+<li><strong>adobeDataLayerのイベントリスナーを追加</strong>：オプション。adobeDataLayerのイベントを自動的にトラックします。デフォルトおよびカスタムのAdobe Client Data Layerイベントの両方をトラックします。</li>
 </ul>
 </li>
-<li>
-<p>Adobe Launchで新しいデータ要素を作成し、ローカル保存内のデータを読み取ります。</p>
-</li>
+<li>Adobe Launchでローカル保存内のデータを読み取るための新しい<a href="https://experienceleague.adobe.com/en/docs/experience-platform/tags/ui/data-elements">データエレメント</a>を作成します。</li>
 </ol>
-<p><a href="/ja/server-side/attributes/data-layer-enrichment/enable/">オブジェクト</a>は<code>localStorage</code>のキー<code>teal_adobe_enrichment_data</code>の下に保存されます。キーを取得すると、DLEオブジェクトが返されます。次の例では、<code>localStorage</code>からDLEオブジェクトを取得し、すべてのオーディエンスを配列に保存します：</p>
+<p><a href="/ja/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment object</a>は<code>localStorage</code>のキー<code>teal_adobe_enrichment_data</code>の下に保存されます。キーを取得すると、データレイヤーエンリッチメントオブジェクトが返されます。次の例では、<code>localStorage</code>からデータレイヤーエンリッチメントオブジェクトを取得し、すべてのオーディエンスを配列に格納します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dle_object</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(
 </span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;teal_adobe_enrichment_data&#34;</span>));
 </span></span><span style="display:flex;"><span>
@@ -199,24 +195,24 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="トラッキング">トラッキング</h2>
-<p><code>_satellite.track</code>からの直接呼び出しイベントはTealium Collectによって処理されます。最初のパラメータはデータレイヤーの変数<code>tealium_event</code>に構成されます。2番目のパラメータには、Tealium Collectエンドポイントに送信される追加のデータレイヤー属性が含まれます。</p>
-<p>次の例は、イベント<code>contact_submit</code>の直接呼び出しです。キー-値のペアのデータレイヤーを推奨しますが、ネストされた<code>adobeDataLayer</code>オブジェクトも渡すことができます。</p>
+</span></span></code></pre></div><h2 id="トラック">トラック</h2>
+<p><code>_satellite.track</code>からのダイレクトコールイベントはTealium Collectによって処理されます。最初のパラメータはデータレイヤーの変数<code>tealium_event</code>に構成され、第二パラメータにはTealium Collectエンドポイントに送信される追加のデータレイヤー属性が含まれます。</p>
+<p>次の例は、イベント<code>contact_submit</code>のためのダイレクトコールです。キーと値のペアのデータレイヤーを推奨しますが、ネストされた<code>adobeDataLayer</code>オブジェクトも渡すことができます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">_satellite</span>.<span style="color:#a6e22e">track</span>(<span style="color:#e6db74">&#39;contact_submit&#39;</span>, { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;John Doe&#39;</span> });
-</span></span></code></pre></div><p>Tealium Collectでの結果のイベントは次のとおりです：</p>
+</span></span></code></pre></div><p>Tealium Collectでの結果のイベントは：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;tealium_event&#34;</span> : <span style="color:#e6db74">&#34;contact_submit&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span> : <span style="color:#e6db74">&#34;John Doe&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>イベントパラメータに加えて、<code>_satellite.buildInfo</code>で見つかった値も直接呼び出しイベントトラッキングのためのデータレイヤーに含まれます。</p>
+</span></span></code></pre></div><p>イベントパラメータに加えて、<code>_satellite.buildInfo</code>で見つかった値もダイレクトコールイベントトラッキングのためのデータレイヤーに含まれます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">turbineVersion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;14.0.0&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">turbineBuildDate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-07-01T18:10:34Z&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">buildDate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2016-03-30T16:27:10Z&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>データレイヤーオブジェクトがネストされた値を含む場合、それは自動的にフラット化されてTealium Collectエンドポイントに送信されます。</p>
-<p><a href="https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo">Adobe Experience Platform Launchオブジェクトリファレンス</a>について詳しく学びましょう。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>データレイヤーエンリッチメントオブジェクトにネストされた値が含まれている場合、Tealium Collectエンドポイントに送信される前に自動的にフラット化されます。</p>
+<p>詳細については、<a href="https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo">Adobe: Adobe Experience Platform Launchオブジェクトリファレンス</a>を参照してください。</p>
 <h2 id="ソースコード">ソースコード</h2>
-<p>開発者であり、カスタム実装が必要な場合は、<a href="https://github.com/Tealium/tealium-collect-adobe-launch-extension">拡張機能コード</a>をダウンロードし、必要に応じて修正します。</p>
+<p>カスタム実装が必要な開発者の場合は、<a href="https://github.com/Tealium/tealium-collect-adobe-launch-extension">拡張コード</a>をダウンロードして必要に応じて修正してください。</p>
 
 </div>
 
@@ -262,7 +258,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -277,11 +273,11 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect" href="javascript:void(0)">Tealium Collect</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-enrichment" href="javascript:void(0)">Data Layer Enrichment</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">データレイヤーエンリッチメント</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">トラック</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">ソースコード</a></li>
               </nav>
   </aside></nav>

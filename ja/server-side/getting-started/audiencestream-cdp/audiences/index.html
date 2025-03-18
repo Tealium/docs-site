@@ -118,7 +118,7 @@
         <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">訪問ID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -530,47 +530,50 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このドキュメントでは、オーディエンスとは何かを説明します。
+      このドキュメントではオーディエンスについての情報を提供し、オーディエンスの作成方法を説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
+  <p>オーディエンスとは、共通の属性セットによって識別される訪問のグループです。オーディエンスの条件は、そのオーディエンスに属する訪問の属性値を指定します。条件を追加するほど、オーディエンスはより具体的になります。オーディエンスは動的であり、訪問はアクティブな訪問セッションからのイベントが入るとオーディエンスに参加したり離れたりします。</p>
+<figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
          alt="Audience"
          title="Audience" class="noshadow" width="150" height="143"/>
     </a>
 </figure>
-<p>オーディエンスを作成するために使用する条件が多ければ多いほど、オーディエンスはより具体的になります。オーディエンスは、リアルタイムでベンダーのアクション（コネクタ）をトリガーするために使用されます。</p>
-<p>この例では、前のステップで作成したバッジを使用してシンプルな<strong>VIP</strong>オーディエンスを作成しますが、このオーディエンスにさらに条件を追加して拡張する方法を示します。</p>
+<p>オーディエンスを作成するために使用する条件が多いほど、それはより具体的になります。オーディエンスはリアルタイムでベンダーアクション（コネクター）をトリガーするために使用されます。</p>
+<p>次の例では、<a href="/ja/server-side/getting-started/audiencestream-cdp/badges/">以前に作成されたバッジ</a>を使用して基本的なVIPオーディエンスを作成します。このオーディエンスをメールキャンペーンでターゲットにするため、既知のメールアドレスもチェックします。最後に、追加の条件でオーディエンスを拡張する方法を示します。</p>
 <h2 id="オーディエンスの作成">オーディエンスの作成</h2>
-<p>オーディエンスを作成するには：</p>
+<p>オーディエンスを作成するには、以下の手順に従ってください：</p>
 <ol>
 <li>
-<p><strong>AudienceStream &gt; Audiences</strong>に移動し、<strong>+ Add Audience</strong>をクリックします。</p>
+<p><strong>AudienceStream &gt; Audiences</strong> に移動し、<strong>+ Add Audience</strong> をクリックします。</p>
 </li>
 <li>
-<p>オーディエンスを一意に識別するための<strong>Name</strong>を入力します。例えば、<code>VIP</code>とします。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、オーディエンス名は128文字以下でなければなりません。そうでない場合、DataAccessはオーディエンス名を切り詰め、エラーが発生する可能性があります。</p></p>
+<p>オーディエンスを一意に識別するための <strong>Name</strong> を入力します。例えば <code>VIP</code> とします。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。</p></p>
 </li>
 <li>
-<p><strong>Conditions</strong>のドロップダウンを使用してフィルタを作成します：<br>
-<code>VIP (badge) is assigned</code></p>
+<p><strong>Conditions</strong> ドロップダウンを使用してフィルターを作成します：</p>
+<pre tabindex="0"><code>VIP (badge) is assigned
+AND
+Has Email Address is assigned
+</code></pre></li>
+<li>
+<p><strong>Save</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Save</strong>をクリックします。</p>
-</li>
-<li>
-<p>アカウントを保存/公開します。</p>
+<p>アカウントを保存して公開します。</p>
 </li>
 </ol>
-<p>このオーディエンスの条件はバッジの条件と一致しますが、オーディエンスを作成することで、これらの<strong>VIP</strong>顧客に対してコネクタを使用してアクションを実行することができます。さらに訪問属性を作成し、追加の条件を定義することで、このオーディエンスをさらに洗練させることができます。以下にいくつかの例を示します：</p>
+<p>このオーディエンスにはVIPバッジが割り当てられている訪問が含まれています。これで、コネクターを使用してこれらの <strong>VIP</strong> 顧客に対してアクションを取ることができます。さらにこのオーディエンスを洗練させるために、より多くの訪問属性を作成し、追加の条件を定義することができます。いくつかの例を挙げます：</p>
 <ul>
 <li><strong>VIP - 最近の購入者（または過去の購入者）</strong><br>
-<strong>VIP</strong>バッジと<strong>Last Purchase Date</strong>属性を組み合わせて、最近（またはそれほど最近でない）購入した最高の顧客のオーディエンスを作成します。</li>
+<strong>VIP</strong> バッジと <strong>最終購入日</strong> 属性を組み合わせて、最近（またはそれほど最近ではない）購入した最良の顧客のオーディエンスを作成します。</li>
 <li><strong>VIP - iOSファン（またはAndroidファン）</strong><br>
-<strong>VIP</strong>バッジと**Lifetime operating systems used (favorite)**属性を組み合わせて、特定のデバイスユーザーを対象とするオーディエンスを作成します。</li>
+<strong>VIP</strong> バッジと <strong>使用したオペレーティングシステムの寿命（お気に入り）</strong> 属性を組み合わせて、特定のデバイスユーザーをターゲットにするオーディエンスを作成します。</li>
 </ul>
-<p><strong>Next</strong>をクリックして、コネクタを使用してオーディエンスを活性化する方法を学びます。</p>
+<p><strong>Next</strong> をクリックして、コネクターを使用してオーディエンスをアクティブ化する方法を学びます。</p>
 
 </div>
 
@@ -631,7 +634,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -118,7 +118,7 @@
         <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">訪問ID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -524,56 +524,56 @@
 
   
     <p class="f4 fw3 lh-copy">
-      永続的なクッキーマッチングは、iQタグ管理のクッキーマッチングタグと連携して、サードパーティのベンダーユーザー識別子をリクエストします。
+      永続的なクッキーマッチングは、iQタグ管理のクッキーマッチングタグを使用して、サードパーティのベンダーのユーザー識別子を要求する方法です。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>サードパーティのベンダーが匿名の識別子をTealiumに送り返し、その訪問に関連付けます。その訪問のデータは、その後、<a href="/ja/server-side/attributes/data-layer-enrichment/about/">データレイヤーのエンリッチメント</a>を通じてウェブサイトに返されます。このプロセスにより、複数のドメイン間でのイベントが同一の訪問に関連付けられます。</p>
-<p>以下がその仕組みです：</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>サードパーティのベンダーは匿名識別子をTealiumに送信し、その訪問に関連付けられます。その後、訪問データは<a href="/ja/server-side/attributes/data-layer-enrichment/about/">data layer enrichment</a>を通じてウェブサイトに返送されます。このプロセスにより、複数のドメインにわたるイベントが同じ訪問に関連付けられます。</p>
+<p>以下のように動作します：</p>
 <ul>
-<li>iQタグ管理では、特定のベンダーのクッキーマッチングタグが追加されます。ページで実行されると、訪問の識別子を要求し、それを送り返すためのリターンエンドポイントを提供するリクエストをベンダーに送ります。</li>
-<li>ベンダーは、要求された識別子（クッキーID）を持ってCustomer Data Hubにリクエストを返します。</li>
-<li>Customer Data Hubでは、クッキーマッチングリクエストが受け取られ、識別子がTealiumのサードパーティクッキーに保存されます。</li>
-<li>その後収集されるEventStreamイベントでは、サードパーティのクッキーの値がイベント属性として利用可能になります。このプロセスはクッキーが期限切れになるまで続きます。</li>
+<li>iQタグ管理で、特定のベンダーのクッキーマッチングタグが追加されます。ページで実行されると、訪問識別子を要求し、それを送信するための返送エンドポイントをベンダーに提供します。</li>
+<li>ベンダーは、要求された識別子（クッキーID）を持ってカスタマーデータハブにリクエストを返します。</li>
+<li>カスタマーデータハブで、クッキーマッチングリクエストが受信され、識別子はTealiumのサードパーティクッキーに保存されます。</li>
+<li>その後のEventStreamイベントで収集されたデータには、サードパーティクッキーの値がイベント属性として利用可能になります。このプロセスはクッキーが期限切れになるまで続きます。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Cookie Sync（TCS）クッキーは1年間有効で、または保存容量の4093バイトに達したときに有効です。</p>
-<p>例として、TiQのクッキーマッチングタグとベンダーとの間のやり取りは次のようになるかもしれません：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Cookie Sync（TCS）クッキーは1年間、または4093バイトの保存容量に達するまで有効です。</p>
+<p>例として、TiQクッキーマッチングタグとベンダーとのやり取りは次のようになるかもしれません：</p>
 <ul>
-<li><strong>Tealium Cookie Matching Tag:</strong><br>
-&ldquo;こんにちは、私はTealiumです。訪問IDを教えていただけますか？後でこの人が誰であるか、そしてあなたが理解できる方法で彼らについて何かを教えることができます。&rdquo;</li>
-<li><strong>ベンダー:</strong><br>
-&ldquo;もちろんです。これが訪問IDです。&rdquo;</li>
-<li><strong>Tealium Cookie Matching Tag</strong><br>
-&ldquo;ありがとう。提供していただいた訪問IDをCustomer Data Hubに保存します。有用なデータが出てきたら、そのデータを活用してあなたの利益になるように返します。&rdquo;</li>
+<li><strong>Tealiumクッキーマッチングタグ：</strong><br>
+「こんにちは、私はTealiumです。訪問IDを教えてもらえますか？後でこの人が誰であるか、そしてあなたが理解できる方法で彼らについて何かを教えます。」</li>
+<li><strong>ベンダー：</strong><br>
+「もちろんです。これが訪問IDです。」</li>
+<li><strong>Tealiumクッキーマッチングタグ：</strong><br>
+「ありがとう。あなたが提供した訪問IDをカスタマーデータハブに保存します。有用なデータが出てくるにつれて、そのデータを活用してあなたの利益のために返していきます。」</li>
 </ul>
 <h3 id="フローダイアグラム">フローダイアグラム</h3>
-<p>以下のダイアグラムは、Tealium Customer Data Hubと顧客ウェブサイト間のデータフローを説明しています。</p>
+<p>以下のダイアグラムは、Tealiumカスタマーデータハブと顧客ウェブサイト間のデータの流れを説明しています。</p>
 <figure><a class="slb" href="/images/server-side/cookie-sync-persistence-diagram-1.jpg"><img src="/images/server-side/cookie-sync-persistence-diagram-1.jpg"
          alt="Cookie Sync Persistence Diagram_1.jpg"
          title="Cookie Sync Persistence Diagram_1.jpg"/>
     </a>
 </figure>
 <ul>
-<li><strong>標準的なイベント収集</strong><br>
-Tealium Collectタグは、クッキーシンクデータが必要ないアクションに対して発火します。__ この時点では、サードパーティのクッキーシンクデータは添付されていません。</li>
+<li><strong>標準イベント収集</strong><br>
+Tealium Collectタグは、クッキーシンクデータが不要なアクションのために発火します。この時点ではサードパーティのクッキーシンクデータは添付されていません。</li>
 <li><strong>クッキーマッチングリクエスト</strong><br>
-クッキーシンクリクエストが顧客サイトからベンダーのクッキーマッチングサービスに送信されます。</li>
+顧客サイトからベンダーのクッキーマッチングサービスにクッキーシンクリクエストが送信されます。</li>
 <li><strong>クッキーマッチレスポンス</strong><br>
-クッキーシンクサービスは&quot;302&quot;リダイレクトを顧客サイトに送信します。</li>
-<li><strong>Customer Data Hubがクッキーを保存</strong><br>
-顧客サイトが受け取ったクッキーシンクリダイレクトはCustomer Data Hubに転送され、マッチした識別子がサードパーティのTealiumクッキーに保存されます。</li>
-<li><strong>Tealiumサードパーティクッキーの更新</strong><br>
-Customer Data Hubから顧客サイトへのリダイレクトは、ベンダーからの同期された識別子を含むサードパーティクッキーを構成します。</li>
+クッキーシンクサービスは「302」リダイレクトを顧客サイトに送信します。</li>
+<li><strong>カスタマーデータハブがクッキーを保存</strong><br>
+顧客サイトによって受信されたクッキーシンクリダイレクトはカスタマーデータハブに転送され、そこでマッチした識別子がサードパーティのTealiumクッキーに保存されます。</li>
+<li><strong>Tealiumサードパーティクッキー更新</strong><br>
+カスタマーデータハブからのリダイレクトは顧客サイトに戻り、ベンダーから同期された識別子を含むサードパーティクッキーを構成します。</li>
 <li><strong>永続化されたクッキーを持つイベント収集</strong><br>
-顧客サイトは、永続化されたクッキーデータを含むTealium Collectタグのリクエストを送信します。__ Collectタグは、すべて（または一部またはプリセットの遅延時間）のクッキーシンクタグが完了するのを待ってから、訪問識別子に依存するアクションが発火できるように、サードパーティのクッキーシンクデータとともに再度発火します。__ この時点で、サードパーティのクッキーシンクデータが添付されます。</li>
+その後、顧客サイトは永続化されたクッキーデータを含むTealium Collectタグリクエストを送信します。collectタグはすべてのクッキーシンクタグが完了するのを待ち、その後再び発火して訪問識別子に依存するアクションが発火できるようにサードパーティのクッキーシンクデータを添付します。</li>
 <li><strong>EventStreamアクション</strong><br>
-最終ステップでは、EventStreamイベントには永続化されたベンダー識別子がイベント属性として含まれ、これらはコネクタアクションでマッピングできるようになります。</li>
+最後のステップでは、EventStreamイベントには永続化されたベンダー識別子がイベント属性として含まれ、コネクタアクションでマッピング可能になります。</li>
 </ul>
 <h2 id="サポートされているマーケットプレイスタグ">サポートされているマーケットプレイスタグ</h2>
-<p>以下の表は、永続的なクッキーマッチングサービスをサポートするTealiumマーケットプレイスタグのコールバック方法とコールバックフォーマットを一覧にしています：</p>
+<p>以下の表は、永続的なクッキーマッチングサービスをサポートするTealiumマーケットプレイスタグのコールバック方法とフォーマットをリストしています：</p>
 <table>
 <thead>
 <tr>
@@ -584,27 +584,27 @@ Customer Data Hubから顧客サイトへのリダイレクトは、ベンダー
 </thead>
 <tbody>
 <tr>
-<td><a href="/ja/server-side/data-sources/vdata-endpoint/">Visitor Data</a>を呼び出す</td>
+<td>Calls <a href="/ja/server-side/data-sources/vdata-endpoint/">Visitor Data</a></td>
 <td>vdataコールを行うためのコールバックを使用します。</td>
 <td><ul><li><a href="/ja/client-side-tags/criteo-cookie-matching-service-tag/">Criteo Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/ibm-ubx-cookie-matching-service-tag/">IBM UBX Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/intelliad-cookie-matching-service-tag/">intelliAd Cookie Matching Service</a></li><li>Yahoo Cookie Matching Service</li><li><a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service</a></li></ul></td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/data-sources/vdata-endpoint/">Visitor Data</a>を呼び出す</td>
-<td>フォーマット済み（<code>url+vdata+query-params</code>）</td>
+<td>Calls <a href="/ja/server-side/data-sources/vdata-endpoint/">Visitor Data</a></td>
+<td>Formatted (<code>url+vdata+query-params</code>)</td>
 <td><ul><li><a href="/ja/client-side-tags/xandr-cookie-matching-service-tag/">XandrCookie Matching Service</a></li><li>Google Analytics Cookie Matching Service</li><li>Sizmek Cookie Matching Service</li></ul></td>
 </tr>
 <tr>
-<td>vdataを呼び出さない</td>
-<td>一つのクッキーから別のクッキーにIDをコピーします</td>
-<td><ul><li>Adobe Analytics Cookie Matching Service</li><li><a href="/ja/client-side-tags/basis-technologies-cookie-matching-service-tag/">Basis Technologies Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/dataxu-cookie-matching-service-tag/">DataXu Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/google-cookie-matching-service/">Google Cookie Matching Service for Doubleclick</a></li><li><a href="/ja/client-side-tags/liveramp-realtime-identity-link-pixel-tag/">LiveRamp Realtime IdentityLink Pixel</a> (formerly LiveRamp Cookie Matching Service)</li><li><a href="/ja/client-side-tags/mediamath-tag-basic-configuration/">MediaMath Cookie Matching Service</a></li><li>RadiumOne Cookie Matching Service</li><li>Tapad Cookie Matching Service</li></ul></td>
+<td>Does not call vdata</td>
+<td>あるクッキーから別のクッキーにIDをコピーする</td>
+<td><ul><li>Adobe Analytics Cookie Matching Service</li><li><a href="/ja/client-side-tags/basis-technologies-cookie-matching-service-tag/">Basis Technologies Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/dataxu-cookie-matching-service-tag/">DataXu Cookie Matching Service</a></li><li><a href="/ja/client-side-tags/google-cookie-matching-service/">Google Cookie Matching Service for Doubleclick</a></li><li><a href="/ja/client-side-tags/mediamath-tag-basic-configuration/">MediaMath Cookie Matching Service</a></li><li>RadiumOne Cookie Matching Service</li><li>Tapad Cookie Matching Service</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h2 id="クッキーマッチングタグの追加">クッキーマッチングタグの追加</h2>
-<p>クッキーマッチングタグを追加するには、以下の手順を使用します：</p>
+<h2 id="クッキーマッチングタグを追加する">クッキーマッチングタグを追加する</h2>
+<p>クッキーマッチングタグを追加するには、次の手順に従ってください：</p>
 <ol>
 <li>iQタグ管理（TiQ）にログインします。</li>
-<li>左側のサイドバーで、<strong>iQタグ管理 &gt; タグ</strong>に移動します。</li>
+<li>左サイドバーで、<strong>iQタグ管理 &gt; タグ</strong>に進みます。</li>
 <li><strong>+ タグを追加</strong>をクリックします。</li>
 <li>左パネルで<strong>Cookie Match</strong>をクリックします。<br>
 クッキーマッチングサービスをサポートする利用可能なマーケットプレイスタグのリストが表示されます。<br>
@@ -615,11 +615,11 @@ Customer Data Hubから顧客サイトへのリダイレクトは、ベンダー
 </figure></li>
 <li>追加したいタグの隣にある**+ 追加**をクリックします。</li>
 <li>画面の指示に従ってタグを構成します。</li>
-<li>変更を保存し、公開します。</li>
+<li>変更を保存して公開します。</li>
 </ol>
-<h3 id="タグを最新の機能に更新するにはどうすればよいですか">タグを最新の機能に更新するにはどうすればよいですか？</h3>
-<p>タグが最新バージョンで、最新の機能を含んでいることを確認するには、タグをクリックし、左のナビゲーションパネルでツールチップセクションを表示します。Tipsセクションには、新しいバージョンのタグが利用可能であることを通知し、現在のバージョンを無効にし、タグマーケットプレイスから新しいタグを追加するよう指示する通知が含まれます。</p>
-<p><a href="/ja/iq-tag-management/tags/manage/">詳細を学ぶ</a> タグマーケットプレイスからタグを追加し、構成する方法について。</p>
+<h3 id="最新の機能を取得するためにタグをどのように更新しますか">最新の機能を取得するためにタグをどのように更新しますか？</h3>
+<p>タグが最新バージョンであり、最新の機能を含んでいることを確認するには、タグをクリックし、左ナビゲーションパネルのツールチップセクションを表示します。ツールチップセクションには、新しいバージョンのタグが利用可能であることを示す通知が含まれており、現在のバージョンを無効にしてタグマーケットプレイスから新しいタグを追加するよう指示します。</p>
+<p><a href="/ja/iq-tag-management/tags/manage/">Learn more</a> タグマーケットプレイスからタグを追加および構成する方法について学びます。</p>
 
 </div>
 
@@ -665,7 +665,7 @@ Customer Data Hubから顧客サイトへのリダイレクトは、ベンダー
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -679,11 +679,11 @@ Customer Data Hubから顧客サイトへのリダイレクトは、ベンダー
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%83%AD%E3%83%BC%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0" href="javascript:void(0)">フローダイアグラム</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E3%82%BF%E3%82%B0" href="javascript:void(0)">サポートされているマーケットプレイスタグ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">クッキーマッチングタグの追加</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%82%92%E6%9C%80%E6%96%B0%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%AB%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%82%88%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B" href="javascript:void(0)">タグを最新の機能に更新するにはどうすればよいですか？</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%BF%E3%82%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">クッキーマッチングタグを追加する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%9C%80%E6%96%B0%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%82%BF%E3%82%B0%E3%82%92%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E6%9B%B4%E6%96%B0%E3%81%97%E3%81%BE%E3%81%99%E3%81%8B" href="javascript:void(0)">最新の機能を取得するためにタグをどのように更新しますか？</a></li>
               </nav>
   </aside></nav>
 

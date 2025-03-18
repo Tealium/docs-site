@@ -344,7 +344,7 @@
         <a href="/ja/iq-tag-management/consent/consent-integrations/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-integrations">同意統合について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">同意統合の決定フロー</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-consent-integrations">同意統合と目的グループの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダーの統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダー統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">検証とデバッグ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/custom-cmp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">カスタムCMP統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enforcement-conditions-conflict">実施条件の競合の取り扱い</a></li></ul>
@@ -424,34 +424,54 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ロードルールは、タグがあなたのサイトやアプリでロードされるタイミングを決定します。ロードルールは、データレイヤーの値に基づく1つ以上の条件です。例えば、検索ページを識別するロードルールの条件は次のようになるかもしれません：</p>
-<pre tabindex="0"><code>page_type equals search
-</code></pre><p>デフォルトのロードルールは <strong>All Pages</strong> で、条件は含まれておらず、常に真です。</p>
-<p>以下のコンポーネントはロードルールを使用します：</p>
+  <p>ロードルールは、サイトやアプリでタグがロードされるタイミングを決定します。ロードルールは、データレイヤーの値に基づいた1つ以上の条件です。例えば、検索ページを識別するロードルール条件は次のようになります：</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_type</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">search</span>
+      </div>
+  </div>
+</div>
+<p>デフォルトのロードルールは<strong>全ページ</strong>で、条件を含まず、常に真です。</p>
+<p>ロードルールを使用するコンポーネントは以下の通りです：</p>
 <ul>
 <li>タグ</li>
-<li>同意管理</li>
+<li>イベント</li>
+<li>同意管理者</li>
 <li>通貨変換エクステンション</li>
-<li>データ検証エクステンション</li>
 <li>チャネルエクステンション</li>
 </ul>
 <h2 id="ブール論理">ブール論理</h2>
-<p>複数の条件をブール論理を使用して組み合わせて、より複雑なロードルールを形成することができます。例えば、検索ページでタグをロードするが、ユーザーがログインしていない場合のみ、ロードルールの条件は次のようになるかもしれません：</p>
-<pre tabindex="0"><code>page_type equals search
-AND
-is_logged_in equals 1
-</code></pre><p>この複雑な論理は、単一のルールに組み合わせるか、2つのルールを作成してから、<strong>Match All Rules</strong> 構成を使用して強制することができます。<a href="/ja/iq-tag-management/load-rules/manage/">タグにロードルールを割り当てる方法</a>を参照してください。</p>
+<p>複数の条件をブール論理を使用して組み合わせることで、より複雑なロードルールを形成できます。例えば、検索ページでタグをロードするが、ユーザーがログインしている場合のみというロードルール条件は次のようになります：</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_type</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">search</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">is_logged_in</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">1</span>
+      </div>
+  </div>
+</div>
+<p>この複雑な論理は単一のルールに組み合わせるか、2つのルールとして作成し、<strong>すべてのルールに一致</strong>構成を使用して強制することができます。詳細は<a href="/ja/iq-tag-management/load-rules/manage/">タグにロードルールを割り当てる方法</a>を参照してください。</p>
 <h4 id="and論理">AND論理</h4>
-<p>AND論理を使用して、すべての条件が真である場合にのみ真となるルールを作成します。例えば、AND論理を使用して3つの条件を組み合わせたルールは、各個別の条件が真である場合にのみ真と評価されます。条件のいずれかが偽と評価されると、ルール全体も偽と評価されます。</p>
+<p>AND論理を使用して、すべての条件が真と評価された場合にのみ真となるルールを作成します。例えば、AND論理を使用して3つの条件を組み合わせたルールは、各個別の条件も真と評価された場合にのみ真と評価されます。いずれかの条件が偽と評価されると、ルール全体も偽と評価されます。</p>
 <h4 id="or論理">OR論理</h4>
-<p>OR論理を使用して、条件のいずれかが真である場合に真となるルールを作成します。例えば、OR論理を使用して3つの条件を組み合わせたルールは、個々の条件のいずれかが真である場合に真と評価されます。OR論理を使用するルールは、すべての個々の条件が偽である場合にのみ偽と評価されます。</p>
+<p>OR論理を使用して、いずれかの条件が真と評価された場合に真となるルールを作成します。例えば、OR論理を使用して3つの条件を組み合わせたルールは、いずれかの個別の条件が真と評価された場合に真と評価されます。OR論理を使用するルールは、すべての個別の条件が偽と評価された場合にのみ偽と評価されます。</p>
 <h2 id="比較演算子のリスト">比較演算子のリスト</h2>
-<p>各ルール条件は、比較演算子とデータレイヤーからの変数を使用します。以下の表は、ロードルールの条件で使用できる比較演算子のリストを示しています。名前に <code>(ignore case)</code> が含まれる演算子の場合、変数のテキスト値は比較前に小文字に変換されます。</p>
+<p>各ルール条件は比較演算子とデータレイヤーの変数を使用します。以下の表は、ロードルール条件で使用できる比較演算子をリストしています。名前に「(ignore case)」が含まれる演算子の場合、変数のテキスト値は比較前に小文字に変換されます。</p>
 <table>
 <thead>
 <tr>
 <th><strong>比較演算子</strong></th>
-<th><strong>タグがページ上でロードされるとき</strong></th>
+<th><strong>ページ上でタグがロードされるタイミング</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -481,23 +501,23 @@ is_logged_in equals 1
 </tr>
 <tr>
 <td><code>equals</code><br> <code>equals (ignore case)</code></td>
-<td>変数が指定された値と等しい。</td>
+<td>変数が指定された値と等しいです。</td>
 </tr>
 <tr>
 <td><code>greater than</code></td>
-<td>変数が指定された値より大きい。</td>
+<td>変数が指定された値より大きいです。</td>
 </tr>
 <tr>
 <td><code>greater than or equal to</code></td>
-<td>変数が指定された値以上である。</td>
+<td>変数が指定された値以上です。</td>
 </tr>
 <tr>
 <td><code>is badge assigned</code></td>
-<td>バッジが訪問に割り当てられています。<br> <a href="/ja/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment</a>の使用に適しています。</td>
+<td>バッジが訪問に割り当てられています。<br> <a href="/ja/server-side/attributes/data-layer-enrichment/enable/">データレイヤーのエンリッチメント</a>で使用します。</td>
 </tr>
 <tr>
 <td><code>is badge not assigned</code></td>
-<td>バッジが訪問に割り当てられていません。<br> <a href="/ja/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment</a>の使用に適しています。</td>
+<td>バッジが訪問に割り当てられていません。<br> <a href="/ja/server-side/attributes/data-layer-enrichment/enable/">データレイヤーのエンリッチメント</a>で使用します。</td>
 </tr>
 <tr>
 <td><code>is defined</code></td>
@@ -509,23 +529,23 @@ is_logged_in equals 1
 </tr>
 <tr>
 <td><code>is populated</code></td>
-<td>変数がデータレイヤーで定義されており、空白や空ではありません。</td>
+<td>変数がデータレイヤーで定義され、空白または空ではありません。</td>
 </tr>
 <tr>
 <td><code>is not populated</code></td>
-<td>変数がデータレイヤーで定義されており、空白や空です。</td>
+<td>変数がデータレイヤーで定義され、空白または空です。</td>
 </tr>
 <tr>
 <td><code>less than</code></td>
-<td>変数が指定された値より小さい。</td>
+<td>変数が指定された値より小さいです。</td>
 </tr>
 <tr>
 <td><code>less than or equal to</code></td>
-<td>変数が指定された値以下である。</td>
+<td>変数が指定された値以下です。</td>
 </tr>
 <tr>
 <td><code>regular expression</code></td>
-<td>変数が正規表現と一致します。</td>
+<td>変数が正規表現に一致します。</td>
 </tr>
 <tr>
 <td><code>starts with</code><br> <code>starts with (ignore case)</code></td>
@@ -534,16 +554,16 @@ is_logged_in equals 1
 </tbody>
 </table>
 <h2 id="ロードルールと同意の強制">ロードルールと同意の強制</h2>
-<p>既存のロードルールに同意条件を追加することは可能ですが、あなたのユースケースでは、より信頼性の高い同意の強制のためにConsent Integrationsを使用する必要があるかもしれません。</p>
-<p>Consent Integrationsは、Tealium iQ Managementの機能で、組織がクライアントサイドのデータ活性化プロセスに同意の強制を簡単に組み込むことができます。ロードルールがページビューやユーザーのインタラクションなどの条件に基づいてタグを発火するのに対し、Consent Integrationsはデータ収集と処理活動中にユーザーの同意が尊重されることに専念しています。詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/about/">Consent Integrations</a>を参照してください。</p>
-<p>同意の強制のためにロードルールを使用すると、以下の問題が発生する可能性があります：</p>
+<p>既存のロードルールに同意条件を追加することは可能ですが、より信頼性の高い同意の強制を行うためには、Consent Integrationsを使用することが必要になる場合があります。</p>
+<p>Consent Integrationsは、Tealium iQ Managementの機能で、組織がクライアントサイドのデータ活性化プロセスに同意の強制を簡単に組み込むことを可能にします。ロードルールとは異なり、ページビューやユーザーのインタラクションなどの条件に基づいてタグの発火を制御するのではなく、Consent Integrationsはデータ収集と処理活動中にユーザーの同意が尊重されることに専念します。詳細は<a href="/ja/iq-tag-management/consent/consent-integrations/about/">Consent Integrationsについて</a>を参照してください。</p>
+<p>ロードルールを使用した同意の強制では、次のような問題が発生する可能性があります：</p>
 <ul>
-<li>初期イベントの欠落</li>
+<li>初期イベントの見逃し</li>
 <li>データ漏洩</li>
-<li>サーバーサイドツールを完全にトリガーするのが難しい</li>
+<li>サーバーサイドツールの完全なトリガリングの困難</li>
 </ul>
-<p>さらに、<a href="/ja/platforms/javascript/track/"><code>utag.track</code></a>呼び出しでタグIDのオプションの配列(<code>uid_array</code>)を使用して、ロードルールを尊重せずにタグを発火させることができます。<code>uid_array</code>パラメータとともに同意の強制のためのロードルールを使用すると、同意条件はルールの残りとともに無視されます。</p>
-<p>ロードルールとConsent Integrationsについての詳細は、<a href="https://tealium.com/blog/data-governance-privacy/beyond-load-rules-leveraging-consent-integrations-for-compliance/">Beyond Load Rules: Leveraging Consent Integrations for Compliance</a>を参照してください。</p>
+<p>さらに、<a href="/ja/platforms/javascript/track/"><code>utag.track</code></a>の呼び出しでタグIDのオプショナル配列(<code>uid_array</code>)を使用することで、ロードルールを尊重せずにタグを発火させることができます。<code>uid_array</code>パラメータを使用してロードルールを使用した同意の強制を行う場合、同意条件はルールの残りとともに無視されます。</p>
+<p>ロードルールとConsent Integrationsについての詳細は、<a href="https://tealium.com/blog/data-governance-privacy/beyond-load-rules-leveraging-consent-integrations-for-compliance/">ロードルールを超えて：コンプライアンスのためのConsent Integrationsの活用</a>を参照してください。</p>
 
 </div>
 
@@ -589,7 +609,7 @@ is_logged_in equals 1
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月16日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

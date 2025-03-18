@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ビジターID パート1 | AudienceStream CDP | Tealiumドキュメント</title>
+    <title>訪問ID パート1 | AudienceStream CDP | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -118,7 +118,7 @@
         <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".audiencestream-visitor-id-part-1">訪問ID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -522,7 +522,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">ビジターID パート1</h1>
+<h1 class="lh-title mt30 mb3">訪問ID パート1</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -530,29 +530,37 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このステップでは、ビジターID属性を安全に作成する方法と、Audience Discoveryを紹介します。これにより、コミットする前にアイデンティティ解決戦略を検証することができます。
+      このステップでは、訪問ID属性を安全に作成する方法を示し、オーディエンスディスカバリーを紹介します。これにより、最終決定を行う前にアイデンティティ解決戦略を検証できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>この例では、前のステップの要件に基づいてユーザー登録イベント中にメールアドレスをキャプチャします。</p>
+  <p>この例では、前のステップからの要件に基づいて、ユーザー登録イベント中にメールアドレスをキャプチャします。</p>
 <h2 id="メールアドレスのキャプチャ">メールアドレスのキャプチャ</h2>
-<p>このステップでは、すでに <code>email_address</code> のイベント属性とそれを送信する <code>user_register</code> という名前のイベントがあることを前提としています。ここから、メールアドレスのビジター属性（文字列）を作成し、Audience Discoveryでテストし、最終的なビジターID属性を作成します。</p>
+<p>このステップでは、すでに <code>email_address</code> のイベント属性と、それを送信する <code>user_register</code> というイベントがあることを前提としています。ここから、メールアドレスのための文字列訪問属性を作成し、オーディエンスディスカバリーでテストした後、最終的な訪問ID属性を作成します。</p>
 <ol>
 <li><strong>AudienceStream &gt; Visitor/Visit Attributes</strong> に移動し、<strong>+ Add Attribute</strong> をクリックします。</li>
-<li><strong>Visitor</strong> の範囲を選択し、<strong>Continue</strong> をクリックします。</li>
+<li>スコープを <strong>Visitor</strong> に構成し、<strong>Continue</strong> をクリックします。</li>
 <li>データタイプ <strong>String</strong> を選択し、<strong>Continue</strong> をクリックします。</li>
-<li>属性の名前、<code>Email Address</code> を入力します。</li>
-<li><strong>Add Enrichment</strong> をクリックし、<strong>Set String</strong> を選択し、Visitor Stringをイベント変数 <code>email_address</code> に設定します。</li>
-<li><strong>WHEN</strong> を <strong>Any Event</strong> に設定したままにし、<strong>Create a New Rule</strong> をクリックします。</li>
-<li>資格を持つイベントを特定するルールを作成します。例えば：<br>
-<code>tealium_event equals user_register</code></li>
-<li><strong>Finish</strong> をクリックし、次に <strong>Save</strong> をクリックします。</li>
+<li>属性名に <code>Email Address</code> を入力します。</li>
+<li><strong>Add Enrichment</strong> をクリックし、<strong>Set String</strong> を選択して、イベント変数 <code>email_address</code> に <strong>Visitor String</strong> を構成します。</li>
+<li><strong>WHEN</strong> は <strong>Any Event</strong> のままにして、<strong>Create a New Rule</strong> をクリックします。</li>
+<li>例えば、次のようなルールを作成します：
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">user_register</span>
+      </div>
+  </div>
+</div></li>
+<li><strong>Finish</strong> をクリックし、その後 <strong>Save</strong> をクリックします。</li>
 </ol>
-<p>これで、資格を持つイベント中に顧客のメールアドレスをキャプチャするビジター属性ができました。このロジックは、他の資格を持つイベント（購入やリードフォームなど）に遭遇したときに簡単に拡張することができます。</p>
-<p>この時点で、アカウントを保存して公開し、AudienceStreamがこのデータを収集し始めるまで数日待つことになります。十分なサンプルデータが揃ったら、Audience Discoveryを使用してアイデンティティ解決戦略を検証し、ビジターID属性でそれを確定します。</p>
-<p>データの検証方法を見るには、<strong>Next</strong> をクリックしてください。</p>
+<p>これで、適格なイベント中に顧客のメールアドレスをキャプチャする訪問属性ができました。このロジックを他の資格イベント（購入やリードフォームなど）にも拡張することができます。</p>
+<p>この時点で、アカウントを保存して公開し、オーディエンスストリームがこのデータの収集を開始するのを数日待ちます。十分なサンプルデータが得られたら、オーディエンスディスカバリーを使用してアイデンティティ解決戦略を検証し、訪問ID属性でそれを最終決定します。</p>
+<p>データ検証のためのオーディエンスディスカバリーの使用方法を学ぶには、<strong>Visitor ID Discovery</strong> をクリックしてください。</p>
 
 </div>
 
@@ -613,7 +621,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年April月11日
+          <p>最終更新日 ::  2025年March月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
