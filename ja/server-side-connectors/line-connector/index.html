@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LINEコネクタ設定ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
+    <title>LINEコネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -107,7 +107,7 @@
         <a href="/ja/server-side-connectors/airship-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/algolia-insights-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/amazon-ads-audience-management-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-ads-audience-management-connector">Amazon Ads Audience Management</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/amazon-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/amazon-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/amazon-advertising-dsp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -397,7 +397,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">LINEコネクタ設定ガイド</h1>
+<h1 class="lh-title mt30 mb3">LINEコネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -405,77 +405,137 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、LINEコネクタの設定方法について説明します。
+      この記事では、LINEコネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="必要条件">必要条件</h2>
-<p>LINEコネクタには以下のものが必要です：</p>
+<p>LINEコネクタには以下が必要です：</p>
 <ul>
-<li>LINEチャネルアクセストークン。詳細については、<a href="https://developers.line.biz/en/docs/messaging-api/overview/">Messaging API概要</a>を参照してください。</li>
+<li>LINE：チャネルアクセストークン。詳細については、<a href="https://developers.line.biz/en/docs/messaging-api/overview/">メッセージングAPI概要</a>を参照してください。</li>
 </ul>
-<h2 id="サポートされているアクション">サポートされているアクション</h2>
+<h2 id="api情報">API情報</h2>
+<p>このコネクタは以下のベンダーAPIを使用します：</p>
+<ul>
+<li>API名：LINE Audience API</li>
+<li>APIバージョン：v2</li>
+<li>APIエンドポイント：<code>https://api.line.me/v2</code></li>
+<li>ドキュメント：<a href="https://developers.line.biz/en/reference/messaging-api/#manage-audience-group">LINE：Audience API</a></li>
+</ul>
+<h2 id="サポートされるアクション">サポートされるアクション</h2>
 <table>
 <thead>
 <tr>
 <th><strong>アクション名</strong></th>
-<th><strong>オーディエンスにトリガー</strong></th>
-<th><strong>ストリームにトリガー</strong></th>
+<th><strong>オーディエンスに対するトリガー</strong></th>
+<th><strong>ストリームに対するトリガー</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>プッシュメッセージ - テキスト</td>
+<td>オーディエンスへのユーザー追加</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>プッシュメッセージ - 画像</td>
+<td>メッセージ送信 - テキスト</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>プッシュメッセージ - ビデオ</td>
+<td>メッセージ送信 - 画像</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>プッシュメッセージ - オーディオ</td>
+<td>メッセージ送信 - ビデオ</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>プッシュメッセージ - 位置情報</td>
+<td>メッセージ送信 - オーディオ</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>プッシュメッセージ - ステッカー</td>
+<td>メッセージ送信 - 位置情報</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - ステッカー</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - イメージマップ</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - テンプレートメッセージ（ボタンテンプレート）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - テンプレートメッセージ（確認テンプレート）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - テンプレートメッセージ（カルーセルテンプレート）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - テンプレートメッセージ（画像カルーセルテンプレート）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>メッセージ送信 - フレックス</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="設定の構成">設定の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいLINEコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
-<p>ベンダーを設定するには、以下の手順に従ってください：</p>
-<ul>
-<li>
-<p><strong>設定</strong>タブで、コネクタインスタンスにタイトルを提供します。</p>
-</li>
-<li>
-<p>LINEでアカウントを設定した際に設定したチャネルアクセストークンを入力します。</p>
-</li>
-<li>
-<p>実装に関する追加のメモを提供します。</p>
-</li>
-</ul>
-<h2 id="アクション設定---パラメータとオプション">アクション設定 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動してアクションを設定し、それらをトリガーします。</p>
-<p>このセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
-<h3 id="アクション---プッシュメッセージ---テキスト">アクション - プッシュメッセージ - テキスト</h3>
+<h2 id="構成方法">構成方法</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいLINEコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
+<p>ベンダーを構成するには、次の手順に従います：</p>
+<ol>
+<li><strong>構成</strong>タブで、コネクタインスタンスのタイトルを入力します。</li>
+<li>LINEアカウントで構成したチャネルアクセストークンを入力します。</li>
+<li>実装に関する追加の注意事項を提供します。</li>
+</ol>
+<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
+<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動してアクションを構成し、トリガーします。</p>
+<p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="アクション---オーディエンスへのユーザー追加">アクション - オーディエンスへのユーザー追加</h3>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オーディエンスグループID</td>
+<td>ドロップダウンリストからオーディエンスグループを選択するか、手動で入力します。</td>
+</tr>
+<tr>
+<td>ユーザーID</td>
+<td>ユーザーIDまたはIFA（広告用識別子）。複数のユーザーIDを送信するには、このパラメータに配列をマッピングします。</td>
+</tr>
+<tr>
+<td>説明</td>
+<td>この更新アクションの説明。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---メッセージ送信---テキスト">アクション - メッセージ送信 - テキスト</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -486,20 +546,20 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。アカウントの追加やメッセージの送信などのユーザーのアクションが行われると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
 <td>メッセージデータ</td>
-<td>(必須) ユーザーに送信するメッセージの内容。このフィールドは2,000文字に制限され、ユニコード絵文字をサポートし、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Tealiumテンプレートエンジン</a>をサポートします。</td>
+<td>必須。ユーザーに送信するメッセージの内容。このフィールドは2,000文字に制限され、Unicodeの絵文字をサポートし、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Tealiumテンプレートエンジン</a>をサポートします。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td>これらのフィールドは、メッセージデータで使用される変数名に属性をマッピングします。ネストされたテンプレート変数はドット表記で名前を付けます。例：<code>items.name</code>。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</td>
+<td>これらのフィールドは、メッセージデータで使用される変数名に属性をマッピングします。ネストされたテンプレート変数にはドット表記を使用します。例：<code>items.name</code>。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---プッシュメッセージ---画像">アクション - プッシュメッセージ - 画像</h3>
+<h3 id="アクション---メッセージ送信---画像">アクション - メッセージ送信 - 画像</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -510,20 +570,20 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
-<td>Original Content URL</td>
-<td>(必須) ユーザーに送信する画像のURL。URLはHTTPSを使用し、1,000文字を超えてはなりません。画像は、最大寸法が1,024ピクセル×1,024ピクセル、最大サイズが1MBのJPEGでなければなりません。</td>
+<td>オリジナルコンテンツURL</td>
+<td>必須。ユーザーに送信する画像のURL。URLはHTTPSを使用し、1,000文字を超えてはなりません。画像はJPEG形式で、最大寸法は1,024ピクセル×1,024ピクセル、最大サイズは1MBです。</td>
 </tr>
 <tr>
-<td>Preview Image URL</td>
-<td>(必須) ユーザーに送信するプレビュー画像のURL。URLはHTTPを使用し、1,000文字を超えてはなりません。画像は、最大寸法が240ピクセル×240ピクセル、最大サイズが1MBのJPEG形式でなければなりません。</td>
+<td>プレビュー画像URL</td>
+<td>必須。ユーザーに送信するプレビュー画像のURL。URLはHTTPを使用し、1,000文字を超えてはなりません。画像はJPEG形式で、最大寸法は240ピクセル×240ピクセル、最大サイズは1MBです。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---プッシュメッセージ---ビデオ">アクション - プッシュメッセージ - ビデオ</h3>
+<h3 id="アクション---メッセージ送信---ビデオ">アクション - メッセージ送信 - ビデオ</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -534,20 +594,20 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
-<td>Original Content URL</td>
-<td>(必須) ユーザーに送信するビデオのURL。URLはHTTPSを使用し、1,000文字を超えてはなりません。ビデオは、最大長が1分、最大サイズが10MBのMP4形式でなければなりません。</td>
+<td>オリジナルコンテンツURL</td>
+<td>必須。ユーザーに送信するビデオのURL。URLはHTTPSプロトコルを使用し、1,000文字を超えてはなりません。ビデオはMP4形式で、最大持続時間は1分、最大サイズは10MBです。</td>
 </tr>
 <tr>
-<td>Preview Image URL</td>
-<td>(必須) ユーザーに送信するプレビュー画像のURL。URLはHTTPを使用し、1,000文字を超えてはなりません。画像は、最大寸法が240ピクセル×240ピクセル、最大サイズが1MBのJPEG形式でなければなりません。</td>
+<td>プレビュー画像URL</td>
+<td>必須。ユーザーに送信するプレビュー画像のURL。URLはHTTPを使用し、1,000文字を超えてはなりません。画像はJPEG形式で、最大寸法は240ピクセル×240ピクセル、最大サイズは1MBです。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---プッシュメッセージ---オーディオ">アクション - プッシュメッセージ - オーディオ</h3>
+<h3 id="アクション---メッセージ送信---オーディオ">アクション - メッセージ送信 - オーディオ</h3>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
@@ -558,20 +618,20 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
-<td>Original Content URL</td>
-<td>(必須) ユーザーに送信するオーディオのURL。URLはHTTPSを使用し、1,000文字を超えてはなりません。オーディオは、最大長が1分、最大サイズが10MBのM4A形式でなければなりません。</td>
+<td>オリジナルコンテンツURL</td>
+<td>必須。ユーザーに送信するオーディオのURL。URLはHTTPSプロトコルを使用し、1,000文字を超えてはなりません。オーディオはM4A形式で、最大持続時間は1分、最大サイズは10MBです。</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>(必須) オーディオファイルの長さ（ミリ秒）。</td>
+<td>持続時間</td>
+<td>必須。オーディオファイルの長さ（ミリ秒単位）。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---プッシュメッセージ---位置情報">アクション - プッシュメッセージ - 位置情報</h3>
+<h3 id="アクション---メッセージ送信---位置情報">アクション - メッセージ送信 - 位置情報</h3>
 <h4 id="パラメータ-4">パラメータ</h4>
 <table>
 <thead>
@@ -582,28 +642,28 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
-<td>Title</td>
-<td>(必須) ユーザーに送信する位置情報の名前。</td>
+<td>タイトル</td>
+<td>必須。ユーザーに送信する位置情報の名前。</td>
 </tr>
 <tr>
-<td>Address</td>
-<td>(必須) ユーザーに送信する位置情報の住所。</td>
+<td>住所</td>
+<td>必須。ユーザーに送信する位置情報の住所。</td>
 </tr>
 <tr>
-<td>Latitude</td>
-<td>(必須) ユーザーに送信する位置情報の緯度。</td>
+<td>緯度</td>
+<td>必須。ユーザーに送信する位置情報の緯度。</td>
 </tr>
 <tr>
-<td>Longitude</td>
-<td>(必須) ユーザーに送信する位置情報の経度。</td>
+<td>経度</td>
+<td>必須。ユーザーに送信する位置情報の経度。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---プッシュメッセージ---ステッカー">アクション - プッシュメッセージ - ステッカー</h3>
+<h3 id="アクション---メッセージ送信---ステッカー">アクション - メッセージ送信 - ステッカー</h3>
 <h4 id="パラメータ-5">パラメータ</h4>
 <table>
 <thead>
@@ -614,29 +674,715 @@
 </thead>
 <tbody>
 <tr>
-<td>Contact ID</td>
-<td>(必須) このパラメータは、LINEビジネスセンターのチャネルコンソールで設定されたウェブフックから受け取ったIDです。ユーザーがアカウントの追加やメッセージの送信などのアクションを実行すると、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
 </tr>
 <tr>
-<td>Package ID</td>
-<td>(必須) ステッカーが所属するパッケージのID。</td>
+<td>パッケージID</td>
+<td>必須。ステッカーが属するパッケージのID。</td>
 </tr>
 <tr>
-<td>Sticker ID</td>
-<td>(必須) ユーザーに送信するステッカーのID。</td>
+<td>ステッカーID</td>
+<td>必須。ユーザーに送信するステッカーのID。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="ベンダードキュメンテーション">ベンダードキュメンテーション</h2>
+<h3 id="メッセージ送信---イメージマップ">メッセージ送信 - イメージマップ</h3>
+<h4 id="パラメータ-6">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>連絡先ID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。ユーザーがアカウントを追加するなどのアクションを行うと、HTTPS POSTリクエストがウェブフックURLに送信されます。</td>
+</tr>
+<tr>
+<td>ベースURL</td>
+<td>必須。ベース画像のURL。URLはHTTPSプロトコルを使用し、1,000文字を超えてはなりません。</td>
+</tr>
+<tr>
+<td>代替テキスト</td>
+<td>必須。ベース画像の代替テキストで、最大400文字です。代替テキストは通知やチャットリストに表示されます。</td>
+</tr>
+<tr>
+<td>ベースサイズ - 幅</td>
+<td>必須。ベース画像の幅（ピクセル単位）。この値を<code>1040</code>に構成します。</td>
+</tr>
+<tr>
+<td>ベースサイズ - 高さ</td>
+<td>必須。ベース画像の高さ（ピクセル単位）。画像の幅が1040ピクセルの場合の高さに構成します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="アクションデータ">アクションデータ</h4>
+<p>すべてのアクションデータパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>タイプ</td>
+<td>アクションのタイプ。可能な値は <code>uri</code> と <code>message</code> です。</td>
+</tr>
+<tr>
+<td>エリア - X</td>
+<td>imagemapエリアの左端からのアクションエリアの水平位置。最小値は <code>0</code> です。</td>
+</tr>
+<tr>
+<td>エリア - Y</td>
+<td>imagemapエリアの上端からのアクションエリアの垂直位置。最小値は <code>0</code> です。</td>
+</tr>
+<tr>
+<td>エリア - 幅</td>
+<td>アクションエリアの幅。</td>
+</tr>
+<tr>
+<td>エリア - 高さ</td>
+<td>アクションエリアの高さ。</td>
+</tr>
+<tr>
+<td>ラベル</td>
+<td>アクションのラベル。</td>
+</tr>
+<tr>
+<td>リンクURI</td>
+<td><code>uri</code> タイプのアクションの場合、アクションのリンクのURI。</td>
+</tr>
+<tr>
+<td>テキスト</td>
+<td>メッセージタイプのアクションの場合、アクションのテキスト。</td>
+</tr>
+<tr>
+<td>クリップボードテキスト</td>
+<td>クリップボードにコピーされるテキスト。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ビデオデータ">ビデオデータ</h4>
+<p>imagemapにビデオを構成する場合に必要なパラメータは以下の通りです：</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オリジナルコンテンツURL</td>
+<td>ビデオファイルのURL。URLは2,000文字を超えてはならず、HTTPSプロトコルを使用する必要があります。ビデオは.mp4形式で、200MBを超えてはなりません。</td>
+</tr>
+<tr>
+<td>プレビュー画像URL</td>
+<td>プレビュー画像のURL。URLは2,000文字を超えてはならず、HTTPSプロトコルを使用する必要があります。画像はJPEGまたはPNG形式を使用し、1MBを超えてはなりません。</td>
+</tr>
+<tr>
+<td>エリア - X</td>
+<td>imagemapエリアの左端からのビデオエリアの水平位置。最小値は <code>0</code> です。</td>
+</tr>
+<tr>
+<td>エリア - Y</td>
+<td>imagemapエリアの上端からのビデオエリアの垂直位置。最小値は <code>0</code> です。</td>
+</tr>
+<tr>
+<td>エリア - 幅</td>
+<td>ビデオエリアの幅。</td>
+</tr>
+<tr>
+<td>エリア - 高さ</td>
+<td>ビデオエリアの高さ。</td>
+</tr>
+</tbody>
+</table>
+<p>ビデオが終了した後にラベルが表示される場合に必要なパラメータは以下の通りです：</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外部リンク - リンクURI</td>
+<td>ウェブページのURL。URLは1,000文字を超えてはならず、<code>http</code>, <code>https</code>, <code>line</code>, <code>tel</code>のプロトコルを使用できます。</td>
+</tr>
+<tr>
+<td>外部リンク - ラベル</td>
+<td>ビデオが終了した後に表示されるラベル。ラベルは30文字を超えてはなりません。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="プッシュメッセージ---テンプレートメッセージボタンテンプレート">プッシュメッセージ - テンプレートメッセージ（ボタンテンプレート）</h3>
+<h4 id="パラメータ-7">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンタクトID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャンネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。アカウントの追加やメッセージの送信などのアクションが行われると、ウェブフックURLにHTTPS POSTリクエストが送信されます。</td>
+</tr>
+<tr>
+<td>代替テキスト</td>
+<td>必須。メッセージの代替テキスト。テキストは400文字を超えてはならず、通知やチャットリストに表示されます。</td>
+</tr>
+<tr>
+<td>テンプレート - テキスト</td>
+<td>必須。メッセージテキスト。画像やタイトルがないテキストは400文字を超えてはならず、画像やタイトルがある場合は60文字を超えてはなりません。</td>
+</tr>
+<tr>
+<td>テンプレート - サムネイル画像URL</td>
+<td>必須。画像のサムネイルのURL。URLは2,000文字を超えてはならず、HTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>テンプレート - 画像アスペクト比</td>
+<td>必須。画像のアスペクト比。許可される値は <code>rectangle</code> または <code>square</code> です。デフォルト値は <code>rectangle</code> です。</td>
+</tr>
+<tr>
+<td>テンプレート - 画像サイズ</td>
+<td>必須。画像のサイズ。許可される値は <code>cover</code> または <code>contain</code> です。デフォルト値は <code>cover</code> です。</td>
+</tr>
+<tr>
+<td>テンプレート - 画像背景色</td>
+<td>必須。画像の背景色を16進数形式で。デフォルト値は <code>#FFFFFF</code>（白）です。</td>
+</tr>
+<tr>
+<td>テンプレート - タイトル</td>
+<td>必須。メッセージのタイトル。タイトルは40文字を超えてはなりません。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---アクション">テンプレート - アクション</h4>
+<p>すべてのテンプレート - アクションパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>タイプ</td>
+<td>必須。アクションのタイプ。許可される値は: <code>postback</code>, <code>message</code>, <code>uri</code>, <code>datetimepicker</code>, <code>camera</code>, <code>cameraRoll</code>, <code>location</code>, <code>richmenuswitch</code>, <code>clipboard</code>です。</td>
+</tr>
+<tr>
+<td>ラベル</td>
+<td>必須。アクションのラベル。オブジェクトに構成されたアクションに基づいて仕様が異なります。</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>必須。ウェブフックを通じて <code>postback.data</code> プロパティのポストバックイベントで返される文字列。</td>
+</tr>
+<tr>
+<td>表示テキスト</td>
+<td>必須。アクションが実行されたときにLINEチャット画面にユーザーによって送信されたメッセージとして表示されるテキスト。</td>
+</tr>
+<tr>
+<td>テキスト</td>
+<td>必須。<code>message</code> タイプのアクションの場合、アクションが実行されたときに送信されるテキスト。</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>必須。<code>uri</code> タイプのアクションの場合、アクションが実行されたときに開かれるURI。URLはHTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>代替URI - デスクトップ</td>
+<td>必須。<code>uri</code> タイプのアクションの場合、アクションが実行されたときにLINE for macOSおよびWindowsで開かれるURI。</td>
+</tr>
+<tr>
+<td>モード</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、アクションモード。許可される値は: <code>date</code>, <code>time</code>, <code>datetime</code>です。</td>
+</tr>
+<tr>
+<td>初期値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、日付または時間の初期値。</td>
+</tr>
+<tr>
+<td>最大値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、選択可能な最大の日付または時間値。</td>
+</tr>
+<tr>
+<td>最小値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、選択可能な最小の日付または時間値。</td>
+</tr>
+<tr>
+<td>入力オプション</td>
+<td>必須。ユーザーアクションに基づく表示方法。許可される値は: <code>closeRichMenu</code>, <code>openRichMenu</code>, <code>openKeyboard</code>, <code>openVoice</code>です。</td>
+</tr>
+<tr>
+<td>入力テキスト</td>
+<td>必須。<strong>入力オプション</strong>パラメータが <code>openKeyboard</code> に構成され、キーボードが開かれた場合、入力フィールドのデフォルト文字列。</td>
+</tr>
+<tr>
+<td>クリップボードテキスト</td>
+<td>必須。<code>clipboard</code> タイプのアクションの場合、クリップボードにコピーするテキスト。</td>
+</tr>
+<tr>
+<td>リッチメニューエイリアスID</td>
+<td>必須。切り替えるリッチメニューのエイリアスID。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---デフォルトアクション">テンプレート - デフォルトアクション</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>タイプ</td>
+<td>必須。アクションのタイプ。許可される値は: <code>postback</code>, <code>message</code>, <code>uri</code>, <code>datetimepicker</code>, <code>camera</code>, <code>cameraRoll</code>, <code>location</code>, <code>richmenuswitch</code>, <code>clipboard</code>です。</td>
+</tr>
+<tr>
+<td>ラベル</td>
+<td>必須。アクションのラベル。オブジェクトに構成されたアクションに基づいて仕様が異なります。</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>必須。ウェブフックを通じて <code>postback.data</code> プロパティのポストバックイベントで返される文字列。</td>
+</tr>
+<tr>
+<td>表示テキスト</td>
+<td>必須。アクションが実行されたときにLINEチャット画面にユーザーによって送信されたメッセージとして表示されるテキスト。</td>
+</tr>
+<tr>
+<td>テキスト</td>
+<td>必須。<code>message</code> タイプのアクションの場合、アクションが実行されたときに送信されるテキスト。</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>必須。<code>uri</code> タイプのアクションの場合、アクションが実行されたときに開かれるURI。URLはHTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>代替URI - デスクトップ</td>
+<td>必須。<code>uri</code> タイプのアクションの場合、アクションが実行されたときにLINE for macOSおよびWindowsで開かれるURI。</td>
+</tr>
+<tr>
+<td>モード</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、アクションモード。許可される値は: <code>date</code>, <code>time</code>, <code>datetime</code>です。</td>
+</tr>
+<tr>
+<td>初期値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、日付または時間の初期値。</td>
+</tr>
+<tr>
+<td>最大値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、選択可能な最大の日付または時間値。</td>
+</tr>
+<tr>
+<td>最小値</td>
+<td>必須。<code>datetimepicker</code> タイプのアクションの場合、選択可能な最小の日付または時間値。</td>
+</tr>
+<tr>
+<td>入力オプション</td>
+<td>必須。ユーザーアクションに基づく表示方法。許可される値は: <code>closeRichMenu</code>, <code>openRichMenu</code>, <code>openKeyboard</code>, <code>openVoice</code>です。</td>
+</tr>
+<tr>
+<td>入力テキスト</td>
+<td>必須。<strong>入力オプション</strong>パラメータが <code>openKeyboard</code> に構成され、キーボードが開かれた場合、入力フィールドのデフォルト文字列。</td>
+</tr>
+<tr>
+<td>クリップボードテキスト</td>
+<td>必須。<code>clipboard</code> タイプのアクションの場合、クリップボードにコピーするテキスト。</td>
+</tr>
+<tr>
+<td>リッチメニューエイリアスID</td>
+<td>必須。切り替えるリッチメニューのエイリアスID。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="プッシュメッセージ---テンプレートメッセージ確認テンプレート">プッシュメッセージ - テンプレートメッセージ（確認テンプレート）</h3>
+<h4 id="パラメータ-8">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンタクトID</td>
+<td>必須。このパラメータは、LINEビジネスセンターの<strong>チャンネルコンソール</strong>で構成されたウェブフックから受け取ったIDです。アカウントの追加やメッセージの送信などのアクションが行われると、ウェブフックURLにHTTPS POSTリクエストが送信されます。</td>
+</tr>
+<tr>
+<td>代替テキスト</td>
+<td>必須。メッセージの代替テキスト。テキストは400文字を超えてはならず、通知やチャットリストに表示されます。</td>
+</tr>
+<tr>
+<td>テンプレート - テキスト</td>
+<td>必須。メッセージテキスト。画像やタイトルがないテキストは400文字を超えてはならず、画像やタイトルがある場合は60文字を超えてはなりません。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---アクション-1">テンプレート - アクション</h4>
+<p>すべてのテンプレート - アクションのパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>必須。アクションのタイプ。許可される値は：<code>postback</code>、<code>message</code>、<code>uri</code>、<code>datetimepicker</code>、<code>camera</code>、<code>cameraRoll</code>、<code>location</code>、<code>richmenuswitch</code>、<code>clipboard</code>です。</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>必須。アクションのラベル。オブジェクトによって仕様が異なります。</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>必須。<code>postback.data</code>プロパティを通じてwebhookを介して返される文字列。</td>
+</tr>
+<tr>
+<td>Display Text</td>
+<td>必須。アクションが実行されたときにLINEチャット画面に表示されるメッセージとしてユーザーによって送信されるテキスト。</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>必須。<code>message</code>タイプのアクションの場合、アクションが実行されたときに送信されるテキスト。</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、アクションが実行されたときに開かれるURI。URLはHTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>Alternative URI - Desktop</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、LINE for macOSおよびWindowsでアクションが実行されたときに開かれるURI。</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、アクションモード。許可される値は：<code>date</code>、<code>time</code>、<code>datetime</code>です。</td>
+</tr>
+<tr>
+<td>Initial</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、日付または時間の初期値。</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最大の日付または時間の値。</td>
+</tr>
+<tr>
+<td>Min</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最小の日付または時間の値。</td>
+</tr>
+<tr>
+<td>Input Option</td>
+<td>必須。ユーザーアクションに基づく表示方法。許可される値は：<code>closeRichMenu</code>、<code>openRichMenu</code>、<code>openKeyboard</code>、<code>openVoice</code>です。</td>
+</tr>
+<tr>
+<td>Fill In Text</td>
+<td>必須。<strong>Input Option</strong>パラメータが<code>openKeyboard</code>に構成され、キーボードが開かれたときの入力フィールドのデフォルト文字列。</td>
+</tr>
+<tr>
+<td>Clipboard Text</td>
+<td>必須。<code>clipboard</code>タイプのアクションの場合、クリップボードにコピーするテキスト。</td>
+</tr>
+<tr>
+<td>Rich Menu Alias ID</td>
+<td>必須。切り替えるリッチメニューのエイリアスID。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="プッシュメッセージ---テンプレートメッセージカルーセルテンプレート">プッシュメッセージ - テンプレートメッセージ（カルーセルテンプレート）</h3>
+<h4 id="パラメータ-9">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>必須。このパラメータは、<strong>チャンネルコンソール</strong>で構成されたwebhookから受け取ったIDです。アカウントの追加やメッセージの送信などのアクションが行われると、HTTPS POSTリクエストがwebhook URLに送信されます。</td>
+</tr>
+<tr>
+<td>Alternative Text</td>
+<td>必須。基本画像の代替テキスト。テキストの最大長は400文字です。代替テキストは通知やチャットリストに表示されます。</td>
+</tr>
+<tr>
+<td>Image Aspect Ratio</td>
+<td>必須。画像のアスペクト比。許可される値は<code>rectangle</code>または<code>square</code>です。デフォルト値は<code>rectangle</code>です。</td>
+</tr>
+<tr>
+<td>Image Size</td>
+<td>必須。画像のサイズ。許可される値は<code>cover</code>または<code>contain</code>です。デフォルト値は<code>cover</code>です。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---カラム">テンプレート - カラム</h4>
+<p>すべてのテンプレート - カラムのパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>必須。メッセージテキスト。画像やタイトルがないテキストは120文字を超えてはならず、画像やタイトルがあるテキストは60文字を超えてはなりません。</td>
+</tr>
+<tr>
+<td>Thumbnail Image URL</td>
+<td>必須。画像のサムネイルのURL。URLは2,000文字を超えてはならず、HTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>Image Background Color</td>
+<td>必須。画像の背景色を16進数形式で。デフォルト値は<code>#FFFFFF</code>（白）です。</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>必須。メッセージのタイトル。タイトルは40文字を超えてはなりません。</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>必須。項目がタップされたときに実行するアクション。</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td><ul><li>必須。<strong>Actions</strong>パラメータのテンプレート - カラムセクションで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine//">テンプレートガイド</a>を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---カラム---デフォルトアクション">テンプレート - カラム - デフォルトアクション</h4>
+<p>すべてのテンプレート - カラム - デフォルトアクションのパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>必須。アクションのタイプ。許可される値は：<code>postback</code>、<code>message</code>、<code>uri</code>、<code>datetimepicker</code>、<code>camera</code>、<code>cameraRoll</code>、<code>location</code>、<code>richmenuswitch</code>、<code>clipboard</code>です。</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>必須。アクションのラベル。オブジェクトによって仕様が異なります。</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>必須。<code>postback.data</code>プロパティを通じてwebhookを介して返される文字列。</td>
+</tr>
+<tr>
+<td>Display Text</td>
+<td>必須。アクションが実行されたときにLINEチャット画面に表示されるメッセージとしてユーザーによって送信されるテキスト。</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>必須。<code>message</code>タイプのアクションの場合、アクションが実行されたときに送信されるテキスト。</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、アクションが実行されたときに開かれるURI。URLはHTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>Alternative URI - Desktop</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、LINE for macOSおよびWindowsでアクションが実行されたときに開かれるURI。</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、アクションモード。許可される値は：<code>date</code>、<code>time</code>、<code>datetime</code>です。</td>
+</tr>
+<tr>
+<td>Initial</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、日付または時間の初期値。</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最大の日付または時間の値。</td>
+</tr>
+<tr>
+<td>Min</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最小の日付または時間の値。</td>
+</tr>
+<tr>
+<td>Input Option</td>
+<td>必須。ユーザーアクションに基づく表示方法。許可される値は：<code>closeRichMenu</code>、<code>openRichMenu</code>、<code>openKeyboard</code>、<code>openVoice</code>です。</td>
+</tr>
+<tr>
+<td>Fill In Text</td>
+<td>必須。<strong>Input Option</strong>パラメータが<code>openKeyboard</code>に構成され、キーボードが開かれたときの入力フィールドのデフォルト文字列。</td>
+</tr>
+<tr>
+<td>Clipboard Text</td>
+<td>必須。<code>clipboard</code>タイプのアクションの場合、クリップボードにコピーするテキスト。</td>
+</tr>
+<tr>
+<td>Rich Menu Alias ID</td>
+<td>必須。切り替えるリッチメニューのエイリアスID。</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>必須。テンプレート変数をデータとして提供します。これらのフィールドは、メッセージデータで使用される変数名に属性をマッピングします。ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="プッシュメッセージ---テンプレートメッセージイメージカルーセルテンプレート">プッシュメッセージ - テンプレートメッセージ（イメージカルーセルテンプレート）</h3>
+<h4 id="パラメータ-10">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>必須。このパラメータは、<strong>チャンネルコンソール</strong>で構成されたwebhookから受け取ったIDです。アカウントの追加やメッセージの送信などのアクションが行われると、HTTPS POSTリクエストがwebhook URLに送信されます。</td>
+</tr>
+<tr>
+<td>Alternative Text</td>
+<td>必須。基本画像の代替テキスト。テキストの最大長は400文字です。代替テキストは通知やチャットリストに表示されます。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="テンプレート---カラムパラメータ">テンプレート - カラムパラメータ</h4>
+<p>すべてのテンプレート - カラムパラメータは配列です。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画像 URL</td>
+<td>必須。画像のサムネイルのURL。URLは2,000文字を超えてはならず、HTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>アクション - タイプ</td>
+<td>必須。アクションのタイプ。許可される値は：<code>postback</code>、<code>message</code>、<code>uri</code>、<code>datetimepicker</code>、<code>camera</code>、<code>cameraRoll</code>、<code>location</code>、<code>richmenuswitch</code>、<code>clipboard</code>です。</td>
+</tr>
+<tr>
+<td>アクション - ラベル</td>
+<td>必須。アクションのラベル。オブジェクトによって仕様が異なります。</td>
+</tr>
+<tr>
+<td>アクション - データ</td>
+<td>必須。<code>postback.data</code>プロパティを通じてwebhookを通じて返される文字列。</td>
+</tr>
+<tr>
+<td>アクション - 表示テキスト</td>
+<td>必須。アクションが実行されたときにLINEチャット画面に表示されるメッセージとしてユーザーによって送信されるテキスト。</td>
+</tr>
+<tr>
+<td>アクション - テキスト</td>
+<td>必須。<code>message</code>タイプのアクションの場合、アクションが実行されたときに送信されるテキスト。</td>
+</tr>
+<tr>
+<td>アクション - URI</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、アクションが実行されたときに開かれるURI。URLはHTTPSプロトコルを使用する必要があります。</td>
+</tr>
+<tr>
+<td>アクション - 代替URI - デスクトップ</td>
+<td>必須。<code>uri</code>タイプのアクションの場合、アクションが実行されたときにLINE for macOSおよびWindowsで開かれるURI。</td>
+</tr>
+<tr>
+<td>アクション - モード</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、アクションモード。許可される値は：<code>date</code>、<code>time</code>、<code>datetime</code>です。</td>
+</tr>
+<tr>
+<td>アクション - 初期値</td>
+<td><code>datetimepicker</code>タイプのアクションの場合、日付または時間の初期値。</td>
+</tr>
+<tr>
+<td>アクション - 最大値</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最大の日付または時間の値。</td>
+</tr>
+<tr>
+<td>アクション - 最小値</td>
+<td>必須。<code>datetimepicker</code>タイプのアクションの場合、選択可能な最小の日付または時間の値。</td>
+</tr>
+<tr>
+<td>アクション - 入力オプション</td>
+<td>必須。ユーザーアクションに基づく表示方法。許可される値は：<code>closeRichMenu</code>、<code>openRichMenu</code>、<code>openKeyboard</code>、<code>openVoice</code>です。</td>
+</tr>
+<tr>
+<td>アクション - 入力テキスト</td>
+<td>必須。<strong>入力オプション</strong>パラメータが<code>openKeyboard</code>に構成され、キーボードが開かれたときの入力フィールドのデフォルト文字列。</td>
+</tr>
+<tr>
+<td>アクション - クリップボードテキスト</td>
+<td>必須。<code>clipboard</code>タイプのアクションの場合、クリップボードにコピーするテキスト。</td>
+</tr>
+<tr>
+<td>アクション - リッチメニューエイリアスID</td>
+<td>必須。切り替えるリッチメニューエイリアスID。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="プッシュメッセージ---フレックス">プッシュメッセージ - フレックス</h3>
+<h4 id="パラメータ-11">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンタクトID</td>
+<td>必須。<strong>チャンネルコンソール</strong>のLINEビジネスセンターで構成されたwebhookから受け取ったID。アカウントの追加やメッセージの送信などのアクションが行われると、HTTPS POSTリクエストがwebhook URLに送信されます。</td>
+</tr>
+<tr>
+<td>代替テキスト</td>
+<td>必須。基本画像の代替テキスト。最大テキスト長は400文字です。代替テキストは通知やチャットリストに表示されます。</td>
+</tr>
+<tr>
+<td>コンテンツ</td>
+<td>必須。フレックスメッセージコンテナの内容。</td>
+</tr>
+<tr>
+<td>テンプレート変数</td>
+<td>これらのフィールドは、メッセージデータで使用される変数名に属性をマッピングします。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。詳細は<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</td>
+</tr>
+<tr>
+<td>テンプレート</td>
+<td><ul><li>必須。メッセージデータセクションで参照されるテンプレートを提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine//">テンプレートガイド</a>を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ベンダー文書">ベンダー文書</h2>
 <ul>
-<li><a href="https://developers.line.biz/en/docs/messaging-api/">LINE Developers - Messaging API</a></li>
-<li><a href="https://developers.line.biz/en/reference/messaging-api/#webhooks">LINE API Reference - Webhooks</a></li>
-<li><a href="https://developers.line.biz/en/reference/messaging-api/#send-push-message">LINE API Reference - Push Message</a></li>
-<li><a href="https://developers.line.biz/en/docs/messaging-api/sending-messages/">LINE API Reference - Send Message Object (Text, Image, Sticker, etc.)</a></li>
+<li><a href="https://developers.line.biz/en/docs/messaging-api/">LINE: 開発者 - メッセージングAPI</a></li>
+<li><a href="https://developers.line.biz/en/reference/messaging-api/#webhooks">LINE: APIリファレンス - Webhooks</a></li>
+<li><a href="https://developers.line.biz/en/reference/messaging-api/#send-push-message">LINE: APIリファレンス - プッシュメッセージ</a></li>
+<li><a href="https://developers.line.biz/en/docs/messaging-api/sending-messages/">LINE: APIリファレンス - メッセージオブジェクトの送信 (テキスト、画像、ステッカーなど)</a></li>
 </ul>
-<h5 id="追加の参考資料">追加の参考資料</h5>
+<h5 id="追加参照">追加参照</h5>
 <ul>
-<li><a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Tealium Webhook - Template Variables Guide</a></li>
+<li><a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Tealium Webhook - テンプレート変数ガイド</a></li>
 </ul>
 
 </div>
@@ -698,7 +1444,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月16日
+          <p>最終更新日 ::  2025年March月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -713,16 +1459,24 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされているアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">設定の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E8%A8%AD%E5%AE%9A---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション設定 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" href="javascript:void(0)">アクション - プッシュメッセージ - テキスト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E7%94%BB%E5%83%8F" href="javascript:void(0)">アクション - プッシュメッセージ - 画像</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%93%E3%83%87%E3%82%AA" href="javascript:void(0)">アクション - プッシュメッセージ - ビデオ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%AA" href="javascript:void(0)">アクション - プッシュメッセージ - オーディオ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1" href="javascript:void(0)">アクション - プッシュメッセージ - 位置情報</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%82%B9%E3%83%86%E3%83%83%E3%82%AB%E3%83%BC" href="javascript:void(0)">アクション - プッシュメッセージ - ステッカー</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ベンダードキュメンテーション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%82%8B%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされるアクション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E6%96%B9%E6%B3%95" href="javascript:void(0)">構成方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%B8%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション - オーディエンスへのユーザー追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" href="javascript:void(0)">アクション - メッセージ送信 - テキスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E7%94%BB%E5%83%8F" href="javascript:void(0)">アクション - メッセージ送信 - 画像</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E3%83%93%E3%83%87%E3%82%AA" href="javascript:void(0)">アクション - メッセージ送信 - ビデオ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%AA" href="javascript:void(0)">アクション - メッセージ送信 - オーディオ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1" href="javascript:void(0)">アクション - メッセージ送信 - 位置情報</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E3%82%B9%E3%83%86%E3%83%83%E3%82%AB%E3%83%BC" href="javascript:void(0)">アクション - メッセージ送信 - ステッカー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E9%80%81%E4%BF%A1---%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%83%E3%83%97" href="javascript:void(0)">メッセージ送信 - イメージマップ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%9C%E3%82%BF%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">プッシュメッセージ - テンプレートメッセージ（ボタンテンプレート）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E7%A2%BA%E8%AA%8D%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">プッシュメッセージ - テンプレートメッセージ（確認テンプレート）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%AB%E3%83%AB%E3%83%BC%E3%82%BB%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">プッシュメッセージ - テンプレートメッセージ（カルーセルテンプレート）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%AB%E3%83%AB%E3%83%BC%E3%82%BB%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">プッシュメッセージ - テンプレートメッセージ（イメージカルーセルテンプレート）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8---%E3%83%95%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9" href="javascript:void(0)">プッシュメッセージ - フレックス</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>
 

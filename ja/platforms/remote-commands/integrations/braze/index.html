@@ -93,7 +93,7 @@
         <a href="/ja/platforms/remote-commands/sync-analytics-hybrid-apps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-sync-analytics">ハイブリッドアプリでのセッションの同期</a></li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".remote-commands-integrations">統合</a>
         <ul class="pl2 bl b--primary bw1 remote-commands-integrations desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">Adjust</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">調整</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/appsflyer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-appsflyer">AppsFlyer</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-airship">エアシップ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/branch/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-branch">Branch</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -152,86 +152,91 @@
 
   
     <p class="f4 fw3 lh-copy">
-      AndroidおよびSwift/iOSにおけるBrazeのTealiumリモートコマンド統合です。
+      AndroidおよびSwift/iOS用BrazeのTealiumリモートコマンド統合。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="要件">要件</h2>
+  <h2 id="必要条件">必要条件</h2>
 <ul>
 <li>Braze APIキー</li>
-<li>これらのモバイル ライブラリのうちのいずれか:
+<li>以下のいずれかのモバイルライブラリ：
 <ul>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0 以降)</li>
-<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (5.9.0 以降 (Braze 1.0.0 以降用) または 5.9.0 以前 (旧バージョン用))</li>
-<li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (Braze 1.0.0+用は5.9.0+、それ以前のバージョン用は&lt;5.9.0)</li>
+<li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a> (2.8.0+)</li>
 </ul>
 </li>
-<li>これらのリモート コマンド統合のいずれか:
+<li>以下のいずれかのリモートコマンド統合：
 <ul>
-<li><a href="/ja/platforms/remote-commands/integrations/braze/#json-template">Braze Remote Command JSON File</a> (Android-Kotlin 1.0.0 以降または iOS-Swift 2.1.0 以降が必要)</li>
-<li>Brazeリモートコマンドタグ（Tealium iQ Tag Management）</li>
+<li><a href="/ja/platforms/remote-commands/integrations/braze/#json-template">Braze Remote Command JSON File</a> (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)</li>
+<li>Tealium iQ Tag Management内のBraze Remote Commandタグ</li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Braze 統合は、これらのアイテムを使用します:</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Braze統合は以下の項目を使用します：</p>
 <ol>
-<li>Braze ネイティブ SDK</li>
-<li>Braze メソッドをラップするリモート コマンド モジュール</li>
-<li>イベント トラッキングをネイティブ Braze コールに翻訳する、JSON 構成ファイルまたは Remote Command タグのいずれか</li>
+<li>BrazeネイティブSDK。</li>
+<li>Brazeメソッドをラップするリモートコマンドモジュール。</li>
+<li>JSON構成ファイルまたはイベントトラッキングをネイティブのBrazeコールに変換するRemote Commandタグのいずれか。</li>
 </ol>
-<p>Braze リモート コマンド モジュールをアプリに追加すると、必要な Braze ライブラリが自動的にインストールされ、ビルドされます。この際、ベンダー固有のコードをアプリに追加する必要はありません。依存関係マネージャのインストールを使用している場合、Braze SDKを個別にインストールする必要はありません。</p>
-<p>リモート コマンド オプションは、次の 2 つがあります: A JSON 構成ファイル、または、マッピングを構成するための iQ タグ管理の使用。A JSON 構成ファイルは、リモートでホスティングするか、またはアプリ内でローカルでホスティングするかのいずれでも、ベンダー統合の推奨オプションです。iQ タグ管理を使用する場合は、ベンダー統合用のリモート コマンド タグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>の詳細は、こちらから参照してください。</p>
+<p>アプリにBrazeリモートコマンドモジュールを追加すると、アプリにベンダー固有のコードを追加することなく、必要なBrazeライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Braze SDKを別途インストールする必要はありません。</p>
+<p>リモートコマンドオプションには、JSON構成ファイルを使用するか、iQ Tag Managementを使用してマッピングを構成するかの2つがあります。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルの使用を推奨します。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合についての詳細はこちら</a>をご覧ください。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="依存関係マネージャ">依存関係マネージャ</h3>
-<p>次の依存関係マネージャのいずれかをインストールに使用することをお勧めします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iOS（Objective-C）ライブラリを使用している場合は、手動インストール方法を使用してください。CocoaPodsおよびCarthageオプションは、Tealium iOS（Swift）ライブラリを使用している場合にのみ使用可能です。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>CocoaPodsを使用してiOSのBrazeリモートコマンドをインストールするには：</p>
-<ol>
-<li>
-<p><code>tealium-swift</code>と<code>pod &quot;Appboy-iOS-SDK&quot;</code>がPodfileに存在する場合は削除します。<code>tealium-swift</code>の依存関係は<code>TealiumBraze</code>フレームワークに既に含まれています。</p>
-</li>
-<li>
-<p>次の依存関係をPodfileに追加します。</p>
-</li>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
+  <ol>
+<li>Xcodeプロジェクトで、<strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>を選択します。</li>
+<li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-ios-braze-remote-command</code>。</li>
+<li>バージョンルールを構成します。通常は<code>Up to next major</code>が推奨されます。現在の<code>TealiumBraze</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールする<code>TealiumBraze</code>モジュールを選択し、そのモジュールをインストールしたいアプリターゲットを選択します。</li>
 </ol>
+<p>プロジェクトに複数のアプリターゲットがあり、それらのターゲットに<code>TealiumBraze</code>モジュールが必要な場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
+<p>追加のアプリターゲットに<code>TealiumBraze</code>をインストールするには：</p>
+<ol>
+<li><strong>Project Navigator</strong>でXcodeプロジェクトを選択します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションのアプリターゲットを選択します。</li>
+<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、アプリターゲットに<code>TealiumBraze</code>モジュールを追加します。</li>
+</ol>
+<p>Tealium Swiftライブラリから追加のモジュールを追加するには、<a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a>の指示に従ってください。</p>
+</div>
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <ol>
+<li>
+<p>Podfileから<code>tealium-swift</code>と<code>pod &quot;BrazeKit&quot;</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumBraze</code>フレームワークに含まれています。</p>
+</li>
+<li>
+<p>Podfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumBraze&#34;</span>
-</span></span></code></pre></div><p><code>TealiumBraze</code>ポッドには以下の<code>TealiumSwift</code>依存関係が含まれています。</p>
+</span></span></code></pre></div><p><code>TealiumBraze</code>ポッドには次の<code>TealiumSwift</code>依存関係が含まれています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
-</span></span></code></pre></div><ol start="3">
-<li>モジュール<code>TealiumSwift</code>および<code>TealiumBraze</code>を、<code>TealiumHelper</code>ファイル、<code>Tealium</code>クラスにアクセスするその他のファイル、またはBrazeリモートコマンドにインポートします。</li>
+</span></span></code></pre></div></li>
+<li>
+<p><code>TealiumHelper</code>ファイルおよび<code>Tealium</code>クラスまたはBrazeリモートコマンドにアクセスするその他のファイルで<code>TealiumSwift</code>および<code>TealiumBraze</code>モジュールをインポートします。</p>
+</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>Carthageを使用してiOSのBrazeリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><code>tealium-swift</code>をCartfileから削除します。<code>tealium-swift</code>の依存関係は<code>TealiumBraze</code>フレームワークに既に含まれています。</p>
+<p>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumBraze</code>フレームワークに含まれています。</p>
 </li>
 <li>
-<p>以下の行がCartfileに存在する場合は、その行を削除します。</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;Appboy/Appboy-iOS-SDK&#34;</span>
-</span></span></code></pre></div><ol start="3">
-<li>次の依存関係をCartfileに追加します。</li>
-</ol>
+<p>Cartfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-braze-remote-command&#34;</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK (バージョン 1.x) および <code>TealiumBraze</code> バージョン 1.x では、 <code>TealiumDelegate</code> モジュールがインストールに含まれている必要があります。</p>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>Mavenを使用してAndroidのBrazeリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> または <a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a> をインストールして、Tealium Maven URL を、プロジェクトのトップレベル <code>build.gradle</code> ファイルに追加します (まだ済んでいない場合)。</p>
+<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、まだ行っていない場合はプロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
@@ -242,130 +247,171 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>アプリプロジェクトの<code>build.gradle</code>ファイルに次の依存関係を追加して、Braze SDKとTealium-Brazeの両方のリモートコマンドをインポートします。</p>
+<p>アプリプロジェクトの<code>build.gradle</code>ファイルにBraze SDKとTealium-Brazeリモートコマンドの依存関係を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:braze:3.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.braze:android-sdk-ui:29.0.1&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <ol>
+<li>
+<p>React Nativeプロジェクトのルートに移動します。</p>
+</li>
+<li>
+<p>次のコマンドで<code>tealium-react-braze</code>パッケージをダウンロードしてインストールします：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn add tealium-react-braze
+</span></span></code></pre></div></li>
+<li>
+<p>NPMパッケージのバージョン1.0.7でReact Native Autolinkingが有効になっており、React Nativeのバージョン0.60+を使用している場合、<code>react-native link</code>を実行する必要はありません。</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:braze:1.0.0&#39;</span>
-</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.appboy:android-sdk-ui:10.1.0&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<h3 id="手動による手順ios">手動による手順（iOS）</h3>
-<p>Braze リモート コマンドを手動でインストールするには、 <a href="/ja/platforms/ios-swift/">Tealium for Swift</a> ライブラリがインストールされている必要があります。iOSプロジェクトのBrazeリモートコマンドをインストールするには：</p>
-<ol>
-<li>
-<p><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/">Braze SDK</a>をまだインストールしていない場合はインストールします。</p>
-</li>
-<li>
-<p><a href="https://github.com/tealium/tealium-ios-braze-remote-command">Tealium iOS Brazeリモートコマンド</a>レポジトリをクローンして、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
-</li>
-<li>
-<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> 構成フラッグを <code>true</code>に構成します</p>
-</li>
-</ol>
-<h2 id="初期化">初期化</h2>
-<p>すべてのTealiumライブラリでは、初期化時にBrazeリモートコマンドを登録する必要があります。</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>Tealium の Kotlin ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
+<h3 id="手動インストール">手動インストール</h3>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// New code to add the Braze Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> brazeRemoteCommand = BrazeRemoteCommand(application,
-</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>                            sessionHandlingBlacklist,
-</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>                            inAppMessageBlacklist)
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Brazeリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリのインストールが必要です。iOSプロジェクト用のBrazeリモートコマンドをインストールするには：</p>
+<ol>
+<li>
+<p>まだ行っていない場合は、<a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/">Braze SDK</a>をインストールします。</p>
+</li>
+<li>
+<p><a href="https://github.com/tealium/tealium-ios-braze-remote-command">Tealium iOS Brazeリモートコマンド</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
+</li>
+<li>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します。</p>
+</li>
+</ol>
+</div>
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Brazeリモートコマンドの手動インストールには、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>のインストールが必要です。</p>
+<p>Androidプロジェクト用のBrazeリモートコマンドをインストールするには：</p>
+<ol>
+<li>
+<p>プロジェクトルートの<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        flatDir <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            dirs <span style="color:#e6db74">&#39;libs&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に<code>tealium-braze.aar</code>を追加します。</p>
+</li>
+<li>
+<p><code>build.gradle</code>ファイルにTealiumライブラリの依存関係を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      implementation<span style="color:#f92672">(</span>name:<span style="color:#e6db74">&#39;tealium-braze&#39;</span><span style="color:#f92672">,</span> ext:<span style="color:#e6db74">&#39;aar&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div>
+
+<h2 id="初期化">初期化</h2>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>TealiumのiOS（Swift）ライブラリ用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドを使用するために必要</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//              or simply to override settings locally.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    brazeRemoteCommand.registerConfigOverride { builder <span style="color:#f92672">-&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// builder.setIsLocationCollectionEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setGeofencesEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(brazeRemoteCommand, filename = <span style="color:#e6db74">&#34;braze.json&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> braze = BrazeRemoteCommand(brazeLocation: BrazeLocationProvider()) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let braze = BrazeRemoteCommand(type: .local(file: &#34;braze&#34;), brazeLocation: BrazeLocationProvider()) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let braze = BrazeRemoteCommand(type: .remote(url: &#34;https://some.domain.com/braze.json&#34;), brazeLocation: BrazeLocationProvider()) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(braze)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>TealiumのKotlinライブラリ用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
 </span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands, <span style="color:#a6e22e">Dispatchers</span>.TagManagement));
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// New code to add the Braze Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> brazeRemoteCommand = BrazeRemoteCommand(application,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Braze Remote Commandを追加する新しいコード
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> braze = BrazeRemoteCommand(application,
 </span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>                            sessionHandlingBlacklist,
 </span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>                            inAppMessageBlacklist)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//              or simply to override settings locally.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    brazeRemoteCommand.registerConfigOverride { builder <span style="color:#f92672">-&gt;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// builder.setIsLocationCollectionEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setGeofencesEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityEnabled(true);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// オプション：Tealium IQのタグでまだサポートされていない構成オプションを構成するか、
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//              ローカルで構成を上書きする。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    braze.registerConfigOverride { builder <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// builder.setIsLocationCollectionEnabled(true);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// builder.setGeofencesEnabled(true);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityEnabled(true);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(brazeRemoteCommand);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// コマンドを登録
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(braze); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(braze, filename = &#34;braze.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(braze, remoteUrl = &#34;https://some.domain.com/braze.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="android-java">Android (Java)</h3>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>Android 向けの JSON Remote Command ファイル機能は、Kotlin SDK でのみ利用できます。</p>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
+<div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
+  <p>TealiumのAndroid（Java）ライブラリ用のRemote Commandタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tealium.remotecommands.BrazeRemoteCommand<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>BrazeRemoteCommand braze<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initialize with default configuration options.
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// デフォルトの構成オプションで初期化。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>braze <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BrazeRemoteCommand<span style="color:#f92672">(</span>config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Or alternatively initialize with some additional config options:
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// または追加の構成オプションで初期化する場合：
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Set<span style="color:#f92672">&lt;</span>Class<span style="color:#f92672">&gt;</span> sessionHandlingBlacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
 </span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Class<span style="color:#f92672">&gt;</span> inAppMessageBlacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// sessionHandlingBlacklist.add(MainActivity.class);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// inAppMessageBlacklist.add(UserActivity.class);
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>braze <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BrazeRemoteCommand<span style="color:#f92672">(</span>config<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span>                     <span style="color:#75715e">// sessiongHandlingEnabled
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span>                     <span style="color:#75715e">// sessionHandlingEnabled
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        sessionHandlingBlacklist<span style="color:#f92672">,</span> <span style="color:#75715e">// sessionHandlingBlacklist
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span>                     <span style="color:#75715e">// registerInAppMessageManager
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        inAppMessageBlacklist<span style="color:#f92672">);</span>   <span style="color:#75715e">// inAppMessageBlackList
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//              or simply to override settings locally.
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// オプション：Tealium IQのタグでまだサポートされていない構成オプションを構成するか、
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//              ローカルで構成を上書きする。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>braze<span style="color:#f92672">.</span><span style="color:#a6e22e">registerConfigOverride</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> BrazeRemoteCommand<span style="color:#f92672">.</span><span style="color:#a6e22e">ConfigOverrider</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onOverride</span><span style="color:#f92672">(</span>AppboyConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -374,69 +420,47 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">});</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// register the command
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// コマンドを登録
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>braze<span style="color:#f92672">);</span>
 </span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>Tealium の iOS (Swift) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <p>React Native用のJSON構成ファイルまたはRemote Commandタグでリモートコマンドを初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">BrazeRemoteCommand</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-braze&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">BrazeRemoteCommand</span>.<span style="color:#a6e22e">initialize</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">braze</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">BrazeRemoteCommand</span>.<span style="color:#a6e22e">name</span> } 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> braze = BrazeRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;braze&#34;</span>))
-</span></span><span style="display:flex;"><span>	remoteCommands.add(braze)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> braze = BrazeRemoteCommand()
-</span></span><span style="display:flex;"><span>	remoteCommands.add(braze)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//let braze = { id: BrazeRemoteCommand.name, path: &#34;braze.json&#34; } 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//let braze = { id: BrazeRemoteCommand.name, url: &#34;https://some.domain.com/braze.json&#34; } 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumConfig</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">remoteCommands</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">braze</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<h2 id="json-テンプレート">JSON テンプレート</h2>
-<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON 構成ファイル</a>を使用してリモート コマンドを構成しようとする場合は、まず、以下のテンプレートを参照します。テンプレートには、標準的な E コマースのインストールに用いられる共通マッピングが含まれます。必要に応じて、マッピングを編集します。</p>
+<h2 id="jsonテンプレート">JSONテンプレート</h2>
+<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;api_key&#34;</span>: <span style="color:#e6db74">&#34;YOUR_API_KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;custom_endpoint&#34;</span>: <span style="color:#e6db74">&#34;sdk.iad-01.braze.com&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;session_timeout&#34;</span>: <span style="color:#ae81ff">30</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;disable_location&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;trigger_interval_seconds&#34;</span>: <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;trigger_interval_seconds&#34;</span>: <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_automatic_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_automatic_location&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;push_story_identifier&#34;</span>: <span style="color:#e6db74">&#34;YOUR_IDENTIFIER&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;use_uuid_as_device_id&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;forward_universal_links&#34;</span>: <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;user_id&#34;</span>,
@@ -456,18 +480,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;pet_names&#34;</span>: <span style="color:#e6db74">&#34;set_custom_array_attribute.pet_names&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;pet_names_append&#34;</span>: <span style="color:#e6db74">&#34;append_custom_array_attribute.pet_names_append&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;pet_names_remove&#34;</span>: <span style="color:#e6db74">&#34;remove_custom_array_attribute.pet_names_remove&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;facebook_user&#34;</span>: <span style="color:#e6db74">&#34;facebook_user&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;number_of_friends&#34;</span>: <span style="color:#e6db74">&#34;friends_count&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;list_of_likes&#34;</span>: <span style="color:#e6db74">&#34;likes&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;facebook_user_properties&#34;</span>: <span style="color:#e6db74">&#34;facebook_user&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;social_media_user_description&#34;</span>: <span style="color:#e6db74">&#34;description&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;twitter_id&#34;</span>: <span style="color:#e6db74">&#34;twitter_id&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;twitter_name&#34;</span>: <span style="color:#e6db74">&#34;twitter_name&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;twitter_user_description&#34;</span>: <span style="color:#e6db74">&#34;description&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;profile_image_url&#34;</span>: <span style="color:#e6db74">&#34;profile_image_url&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;screen_name&#34;</span>: <span style="color:#e6db74">&#34;screen_name&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;number_of_followers&#34;</span>: <span style="color:#e6db74">&#34;followers_count&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;number_of_statuses&#34;</span>: <span style="color:#e6db74">&#34;statuses_count&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;email_notification&#34;</span>: <span style="color:#e6db74">&#34;email_notification&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;push_notification&#34;</span>: <span style="color:#e6db74">&#34;push_notification&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;event_name&#34;</span>,
@@ -475,20 +488,19 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;start_date&#34;</span>: <span style="color:#e6db74">&#34;event.start_date&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;high_score&#34;</span>: <span style="color:#e6db74">&#34;event.high_score&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_id&#34;</span>: <span style="color:#e6db74">&#34;product_id&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_quantity&#34;</span>: <span style="color:#e6db74">&#34;quantity&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_quantity&#34;</span>: <span style="color:#e6db74">&#34;product_qty&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_unit_price&#34;</span>: <span style="color:#e6db74">&#34;product_unit_price&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;currency_code&#34;</span>: <span style="color:#e6db74">&#34;order_currency&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;currency_code&#34;</span>: <span style="color:#e6db74">&#34;product_currency&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;rewards_member&#34;</span>: <span style="color:#e6db74">&#34;purchase.rewards_member&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;rewards_points_earned&#34;</span>: <span style="color:#e6db74">&#34;purchase.rewards_points_earned&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;date_joined_program&#34;</span>: <span style="color:#e6db74">&#34;purchase.date_joined_program&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;latitude&#34;</span>: <span style="color:#e6db74">&#34;location_latitude&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;longitude&#34;</span>: <span style="color:#e6db74">&#34;location_longitude&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;horizontal_accuracy&#34;</span>: <span style="color:#e6db74">&#34;location_horizontal_accuracy&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;horizontal_accuracy&#34;</span>: <span style="color:#e6db74">&#34;location_horizontal_accuracy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;vertical_accuracy&#34;</span>: <span style="color:#e6db74">&#34;location_vertical_accuracy&#34;</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;launch&#34;</span>: <span style="color:#e6db74">&#34;initialize&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;twitter&#34;</span>: <span style="color:#e6db74">&#34;twitteruser&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;facebook&#34;</span>: <span style="color:#e6db74">&#34;facebookuser&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;setengagement&#34;</span>: <span style="color:#e6db74">&#34;emailnotification,pushnotification&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;log_custom_event&#34;</span>: <span style="color:#e6db74">&#34;logcustomevent&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;set_location&#34;</span>: <span style="color:#e6db74">&#34;setlastknownlocation&#34;</span>,
@@ -505,7 +517,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="サポートされているメソッド">サポートされているメソッド</h2>
-<p>以下のBrazeメソッドは、以下のTealiumコマンドを使用し、Brazeリモートコマンドタグのデータマッピングを使用してトリガーされます。</p>
+<p>各Brazeメソッドにコマンドをマッピングします。Brazeメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
 <table>
 <thead>
 <tr>
@@ -515,24 +527,32 @@
 </thead>
 <tbody>
 <tr>
+<td><code>addtosubscriptiongroup</code></td>
+<td><code>user.addToSubscriptionGroup(id:)</code></td>
+</tr>
+<tr>
 <td><code>appendcustomarrayattribute</code></td>
-<td><code>addToCustomAttributeArrayWithKey()</code></td>
+<td><code>user.addToCustomAttributeArray()</code></td>
 </tr>
 <tr>
 <td><code>emailnotification</code></td>
-<td><code>setEmailNotificationSubscriptionType()</code></td>
+<td><code>user.set(emailSubscriptionState:)</code></td>
 </tr>
 <tr>
-<td><code>facebookuser</code></td>
-<td><code>facebookUser()</code></td>
+<td><code>enablesdk</code></td>
+<td><code>enabled = true/false</code></td>
+</tr>
+<tr>
+<td><code>flush</code></td>
+<td><code>requestImmediateDataFlush()</code></td>
 </tr>
 <tr>
 <td><code>incrementcustomattribute</code></td>
-<td><code>incrementCustomUserAttribute()</code></td>
+<td><code>user.incrementCustomUserAttribute()</code></td>
 </tr>
 <tr>
 <td><code>initialize</code></td>
-<td><code>startWithApiKey()</code></td>
+<td><code>Braze(configuration:)</code></td>
 </tr>
 <tr>
 <td><code>logcustomevent</code></td>
@@ -544,134 +564,224 @@
 </tr>
 <tr>
 <td><code>pushnotification</code></td>
-<td><code>setPushNotificationSubscriptionType()</code></td>
+<td><code>user.set(pushNotificationSubscriptionState:)</code></td>
+</tr>
+<tr>
+<td><code>removefromsubscriptiongroup</code></td>
+<td><code>user.removeFromSubscriptionGroup(id:)</code></td>
 </tr>
 <tr>
 <td><code>removecustomarrayattribute</code></td>
-<td><code>removeFromCustomAttributeArrayWithKey()</code></td>
+<td><code>user.removeFromCustomAttributeArray()</code></td>
+</tr>
+<tr>
+<td><code>setadtrackingenabled</code></td>
+<td><code>set(adTrackingEnabled:)</code></td>
 </tr>
 <tr>
 <td><code>setcustomattribute</code></td>
-<td><code>setCustomAttributeWithKey()</code></td>
+<td><code>user.setCustomAttribute())</code></td>
 </tr>
 <tr>
 <td><code>setcustomarrayattribute</code></td>
-<td><code>setCustomAttributeArrayWithKey()</code></td>
+<td><code>user.setCustomAttributeArray()</code></td>
 </tr>
 <tr>
 <td><code>setlastknownlocation</code></td>
-<td><code>setLastKnownLocationWithLatitude()</code></td>
+<td><code>user.setLastKnownLocation()</code></td>
 </tr>
 <tr>
-<td><code>twitteruser</code></td>
-<td><code>twitterUser()</code></td>
-</tr>
-<tr>
-<td><code>unsetcustomattribute</code></td>
-<td><code>unsetCustomAttributeWithKey()</code></td>
+<td><code>setsdkauthsignature</code></td>
+<td><code>set(sdkAuthenticationSignature:)</code></td>
 </tr>
 <tr>
 <td><code>useralias</code></td>
-<td><code>addAlias()</code></td>
+<td><code>user.add(alias:)</code></td>
+</tr>
+<tr>
+<td><code>unsetcustomattribute</code></td>
+<td><code>user.unsetCustomAttribute()</code></td>
 </tr>
 <tr>
 <td><code>userattribute</code></td>
-<td><code>ABKUser()</code></td>
+<td><code>user.set()</code></td>
 </tr>
 <tr>
 <td><code>useridentifier</code></td>
 <td><code>changeUser()</code></td>
 </tr>
+<tr>
+<td><code>wipedata</code></td>
+<td><code>wipeData()</code></td>
+</tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Braze SDKはTealium SDKとともにインストールされているため、対応するタグ構成があれば任意のネイティブBraze機能をトリガーしてください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Braze SDKはTealium SDKと一緒にインストールされているため、対応するタグ構成でネイティブのBraze機能をトリガーできます。</p>
 <h3 id="sdkのセットアップ">SDKのセットアップ</h3>
 <h4 id="初期化-1">初期化</h4>
-<p>Braze SDKは起動時に自動的に初期化されます。Braze APIキーはタグ構成で構成されます。</p>
+<p>Braze APIキーとカスタムエンドポイントが必要で、タグ構成で構成する必要があります。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Brazeメソッド (iOS)</th>
+<th>Brazeメソッド (Android)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>initialize</code></td>
-<td><code>startWithApiKey()</code></td>
+<td><code>Braze(configuration:)</code></td>
 <td><code>configure()</code></td>
 </tr>
 </tbody>
 </table>
-<p>起動オプションの構成には、以下のマッピングが使用されます。</p>
+<p>以下のマッピングは起動オプションを構成するために使用されます。</p>
 <table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>custom_endpoint</code></td>
+<td><code>api_key</code> (必須)</td>
 <td><code>String</code></td>
-<td>カスタムAPIエンドポイントを構成します。<code>sdk.api.braze.eu</code>の形式で送信されます</td>
+<td>APIキーを構成します</td>
+</tr>
+<tr>
+<td><code>custom_endpoint</code> (必須)</td>
+<td><code>String</code></td>
+<td>カスタムAPIエンドポイントを構成します。この形式で送信されます <code>sdk.api.braze.eu</code></td>
 </tr>
 <tr>
 <td><code>device_options</code></td>
-<td><code>Int</code></td>
-<td>Braze SDKによって収集されるデバイスフィールドのホワイトリストを指定するキー（デフォルトではすべてのフィールドが収集されます）</td>
+<td><code>[String]</code></td>
+<td>Braze SDKによって収集されるデバイスフィールドのホワイトリスト（デフォルトでは、すべてのフィールドが収集されます）。</td>
 </tr>
 <tr>
-<td><code>disable_location</code></td>
-<td><code>Int</code></td>
-<td>位置データの自動収集を無効にします（<code>1</code>または<code>0</code>）</td>
+<td><code>enable_automatic_geofences</code></td>
+<td><code>Bool</code></td>
+<td>ジオフェンスの自動収集を有効にします（<code>true</code> または <code>false</code>）。</td>
+</tr>
+<tr>
+<td><code>enable_automatic_location</code></td>
+<td><code>Bool</code></td>
+<td>位置情報の収集を有効にします（<code>true</code> または <code>false</code>）。</td>
 </tr>
 <tr>
 <td><code>enable_geofences</code></td>
-<td><code>Int</code></td>
-<td>ジオフェンスの自動収集を有効にします（<code>1</code>または<code>0</code>）</td>
+<td><code>Bool</code></td>
+<td>ジオフェンスの収集を有効にします（<code>true</code> または <code>false</code>）。</td>
 </tr>
 <tr>
 <td><code>flush_interval</code></td>
 <td><code>Double</code></td>
-<td>データフラッシュ間隔（秒単位）を構成します。値はNSTimeIntervalsに変換され、<code>1.0</code>より大きくなければなりません</td>
+<td>データフラッシュ間隔を構成します（秒単位）。値はNSTimeIntervalsに変換され、<code>1.0</code>より大きくなければなりません。</td>
+</tr>
+<tr>
+<td><code>is_sdk_authentication_enabled</code></td>
+<td><code>Bool</code></td>
+<td>SDK認証を有効にします、デフォルトは<code>false</code>です。</td>
 </tr>
 <tr>
 <td><code>push_story_identifier</code></td>
 <td><code>String</code></td>
-<td>このキーは、Push Story Notification Content拡張機能のアプリグループ名を表す文字列値に構成されます。</td>
+<td>このキーは、Push Story Notification Content拡張のアプリグループ名を表す文字列値に構成されます。</td>
 </tr>
 <tr>
 <td><code>request_processing_policy</code></td>
-<td><code>Int</code></td>
-<td>SDKリクエスト処理の可能な値（デフォルトはABKAutomaticRequestProcessing）</td>
+<td><code>String</code></td>
+<td>SDKのリクエスト処理の可能な値（<code>manual</code> または <code>automatic</code>）。デフォルトは <code>automatic</code>です。</td>
 </tr>
 <tr>
 <td><code>session_timeout</code></td>
-<td><code>Int</code>（秒）</td>
-<td>セッションタイムアウト（秒単位。デフォルト：<code>30</code>秒）</td>
+<td><code>Int</code> (秒)</td>
+<td>セッションタイムアウトは秒単位です（デフォルトは <code>30</code> 秒）。</td>
 </tr>
 <tr>
 <td><code>trigger_interval_seconds</code></td>
-<td><code>Int</code>（秒）</td>
-<td>アプリ内メッセージがトリガーされる最小間隔をオーバーライドします（デフォルト：<code>30</code>秒）</td>
+<td><code>Int</code> (秒)</td>
+<td>アプリ内メッセージトリガー間の最小間隔をオーバーライドします（デフォルトは <code>30</code> 秒）。</td>
+</tr>
+<tr>
+<td><code>use_uuid_as_device_id</code></td>
+<td><code>Bool</code></td>
+<td>(iOS) デバイスIDとしてランダムに生成されたUUIDを使用するかどうかを決定します（デフォルトは <code>true</code>）。</td>
+</tr>
+<tr>
+<td><code>forward_universal_links</code></td>
+<td><code>Bool</code></td>
+<td>SDKが自動的にユニバーサルリンクを認識し、システムメソッドに転送するかどうかを指定します（デフォルトは <code>false</code>）。</td>
 </tr>
 </tbody>
 </table>
 <p>Android</p>
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/">Braze開発者ガイド：SDKの初期セットアップ</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/">Braze開発者ガイド: 初期SDKセットアップ</a></li>
 </ul>
 <p>iOS</p>
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup">Braze開発者ガイド：SDKの初期セットアップ</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze開発者ガイド：ネットワークトラフィックの微調整</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze開発者ガイド：ロケーションとジオフェンス</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze開発者ガイド：Push Storyのセットアップ</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/">Braze開発者ガイド：セッションのトラッキング</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup">Braze開発者ガイド: 初期SDKセットアップ</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze開発者ガイド: ネットワークトラフィック制御の詳細</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze開発者ガイド: 位置情報とジオフェンス</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze開発者ガイド: Push Storyの構成</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/">Braze開発者ガイド: セッションの追跡</a></li>
+</ul>
+<h4 id="sdk認証署名の構成">SDK認証署名の構成</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Brazeメソッド (iOS)</th>
+<th>Brazeメソッド (Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setsdkauthsignature</code></td>
+<td><code>set(sdkAuthenticationSignature:)</code></td>
+<td><code>setSdkAuthenticationSignature</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sdk_authentication_signature</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="フラッシュ">フラッシュ</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Brazeメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flush</code></td>
+<td><code>requestImmediateDataFlush</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Braze開発者ガイド: アナリティクスの無効化
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">iOS</a></li>
+</ul>
+</li>
 </ul>
 <h3 id="ユーザートラッキング">ユーザートラッキング</h3>
 <h4 id="ユーザーidの割り当て">ユーザーIDの割り当て</h4>
@@ -693,25 +803,29 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>user_id</code> (required)</td>
+<td><code>user_id</code> (必須)</td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>sdk_authentication_signature</code></td>
 <td><code>String</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：ユーザーID
+<li>Braze開発者ガイド: アナリティクス ユーザーID
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#assigning-a-user-id">Android</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="ユーザーのエイリアシング">ユーザーのエイリアシング</h4>
+<h4 id="ユーザーのエイリアス作成">ユーザーのエイリアス作成</h4>
 <table>
 <thead>
 <tr>
@@ -722,7 +836,7 @@
 <tbody>
 <tr>
 <td><code>useralias</code></td>
-<td><code>addAlias</code></td>
+<td><code>user.add(alias:)</code></td>
 </tr>
 </tbody>
 </table>
@@ -730,22 +844,22 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>user_alias</code> (required)</td>
+<td><code>user_alias</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>alias_label</code> (required)</td>
+<td><code>alias_label</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：ユーザーのエイリアシング
+<li>Braze開発者ガイド: アナリティクス ユーザーエイリアス
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#aliasing-users">Android</a></li>
@@ -753,18 +867,18 @@
 </li>
 </ul>
 <h3 id="ユーザー属性">ユーザー属性</h3>
-<h4 id="標準的な属性">標準的な属性</h4>
+<h4 id="標準属性">標準属性</h4>
 <table>
 <thead>
 <tr>
-<th>Event</th>
+<th>イベント</th>
 <th>Brazeメソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>userattribute</td>
-<td><code>ABKUser/AppboyUser</code>オブジェクトのフィールドを構成します</td>
+<td><code>Braze.User</code>オブジェクトのフィールドを構成</td>
 </tr>
 </tbody>
 </table>
@@ -772,7 +886,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -809,38 +923,32 @@
 <td><code>String</code></td>
 </tr>
 <tr>
-<td><code>avatar_image_url</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
 <td><code>gender</code></td>
 <td><code>String</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：ユーザー属性
+<li>Braze開発者ガイド: アナリティクス ユーザー属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-standard-user-attributes">Android</a></li>
 </ul>
 </li>
-<li><a href="https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification">Braze開発者ガイド：ユーザーデータAPI</a></li>
+<li><a href="https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification">Braze開発者ガイド: ユーザーデータAPI</a></li>
 </ul>
 <h4 id="カスタム属性の構成">カスタム属性の構成</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Brazeメソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setcustomattribute</code></td>
-<td><code>setCustomAttributeWithKey</code></td>
-<td><code>setCustomUserAttribute</code></td>
+<td><code>user.setCustomAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -848,7 +956,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -859,27 +967,25 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：カスタム属性
+<li>Braze開発者ガイド: アナリティクス カスタム属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="カスタム属性の構成解除">カスタム属性の構成解除</h4>
+<h4 id="カスタム属性の解除">カスタム属性の解除</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setcustomattribute</code></td>
-<td><code>unsetCustomAttributeWithKey</code></td>
-<td><code>unsetCustomUserAttribute</code></td>
+<td><code>user.unsetCustomAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -887,7 +993,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -898,25 +1004,25 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：カスタム属性
+<li>Braze 開発者ガイド: アナリティクス カスタム属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="カスタム属性の増分">カスタム属性の増分</h4>
+<h4 id="カスタム属性のインクリメント">カスタム属性のインクリメント</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>incrementcustomattribute</code></td>
-<td><code>incrementCustomUserAttribute</code></td>
+<td><code>user.incrementCustomUserAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -924,7 +1030,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -935,7 +1041,7 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：属性の増分
+<li>Braze 開発者ガイド: アナリティクス 属性のインクリメント
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
@@ -947,15 +1053,13 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>setcustomarrayattribute</td>
-<td><code>setCustomAttributeArrayWithKey</code></td>
-<td><code>setCustomAttributeArray</code></td>
+<td><code>setcustomarrayattribute</code></td>
+<td><code>user.setCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -963,7 +1067,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -974,7 +1078,7 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：配列属性
+<li>Braze 開発者ガイド: アナリティクス 配列属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
@@ -986,15 +1090,13 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>appendcustomarrayattribute</code></td>
-<td><code>addToCustomAttributeArrayWithKey</code></td>
-<td><code>addToCustomAttributeArray</code></td>
+<td><code>user.addToCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1002,7 +1104,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -1013,27 +1115,25 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：配列属性
+<li>Braze 開発者ガイド: アナリティクス 配列属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="カスタムarray属性の削除">カスタムarray属性の削除</h4>
+<h4 id="カスタム配列属性の削除">カスタム配列属性の削除</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>removecustomarrayattribute</td>
-<td><code>removeFromCustomAttributeArrayWithKey</code></td>
-<td><code>removeFromCustomAttributeArray</code></td>
+<td><code>removecustomarrayattribute</code></td>
+<td><code>user.removeFromCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1041,7 +1141,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
@@ -1052,121 +1152,10 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：配列属性
+<li>Braze 開発者ガイド: アナリティクス 配列属性
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="ソーシャルデータトラッキング">ソーシャルデータトラッキング</h3>
-<h4 id="facebook">Facebook</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Brazeメソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>facebookuser</code></td>
-<td><code>ABKFacebookUser/FacebookUser</code>オブジェクトを初期化します</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>facebook_id</code></td>
-<td><code>[String: Any]</code> / <code>String</code></td>
-</tr>
-<tr>
-<td><code>friends_count</code></td>
-<td><code>Int</code></td>
-</tr>
-<tr>
-<td><code>likes</code></td>
-<td><code>[Any]</code> / <code>String[]</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Braze開発者ガイド：ソーシャルデータ
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
-</ul>
-</li>
-</ul>
-<h4 id="twitter">Twitter</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Brazeメソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>twitteruser</code></td>
-<td><code>ABKTwitterUser/TwitterUser</code>オブジェクトを初期化します</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>description</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>twitter_name</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>profile_image_url</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>screen_name</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>followers_count</code></td>
-<td><code>Int</code></td>
-</tr>
-<tr>
-<td><code>friends_count</code></td>
-<td><code>Int</code></td>
-</tr>
-<tr>
-<td><code>statuses_count</code></td>
-<td><code>Int</code></td>
-</tr>
-<tr>
-<td><code>twitter_id</code></td>
-<td><code>Int</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Braze開発者ガイド：ソーシャルデータ
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
 </ul>
 </li>
 </ul>
@@ -1176,7 +1165,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1190,12 +1179,12 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>event_name</code> (required)</td>
+<td><code>event_name</code> (必須)</td>
 <td><code>String</code></td>
 </tr>
 <tr>
@@ -1205,7 +1194,7 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：カスタムイベント
+<li>Braze 開発者ガイド: アナリティクス カスタムイベント
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/">Android</a></li>
@@ -1218,7 +1207,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1232,7 +1221,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 <th>例</th>
 </tr>
 </thead>
@@ -1245,24 +1234,88 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：Eメールサブスクリプション
+<li>Braze 開発者ガイド: アナリティクス Eメール登録
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
 </ul>
 </li>
 </ul>
+<h4 id="サブスクリプショングループへの追加">サブスクリプショングループへの追加</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Braze メソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addtosubscriptiongroup</code></td>
+<td><code>user.addToSubscriptionGroup(id:)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subscription_group_id</code> (必須)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states">Braze 開発者ガイド: サブスクリプショングループ</a></li>
+</ul>
+<h4 id="サブスクリプショングループからの削除">サブスクリプショングループからの削除</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Braze メソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removefromsubscriptiongroup</code></td>
+<td><code>user.removeFromSubscriptionGroup(id:)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subscription_group_id</code> (必須)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states">Braze 開発者ガイド: サブスクリプショングループ</a></li>
+</ul>
 <h4 id="プッシュ通知">プッシュ通知</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>pushnotification</td>
+<td><code>pushnotification</code></td>
 <td><code>setPushNotificationSubscriptionType</code></td>
 </tr>
 </tbody>
@@ -1271,7 +1324,7 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 <th>例</th>
 </tr>
 </thead>
@@ -1284,7 +1337,7 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：プッシュ通知
+<li>Braze 開発者ガイド: アナリティクス プッシュ通知
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
@@ -1292,17 +1345,17 @@
 </li>
 </ul>
 <h3 id="購入トラッキング">購入トラッキング</h3>
-<h4 id="購入記録">購入記録</h4>
+<h4 id="購入ログ">購入ログ</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>logpurchase</td>
+<td><code>logpurchase</code></td>
 <td><code>logPurchase</code></td>
 </tr>
 </tbody>
@@ -1311,24 +1364,24 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>product_id</code> (required)</td>
+<td><code>product_id</code> (必須)</td>
 <td><code>[String]</code> / <code>String[]</code></td>
 </tr>
 <tr>
-<td><code>currency</code> (required)</td>
+<td><code>product_currency</code> (必須)</td>
 <td><code>String</code> / <code>String</code></td>
 </tr>
 <tr>
-<td><code>price</code> (required)</td>
-<td><code>[Double]</code> /<code>Double[]</code></td>
+<td><code>price</code> (必須)</td>
+<td><code>[Double]</code> / <code>Double[]</code></td>
 </tr>
 <tr>
-<td><code>quantity</code></td>
+<td><code>product_qty</code></td>
 <td><code>[Int]</code> / <code>Int[]</code></td>
 </tr>
 <tr>
@@ -1338,26 +1391,26 @@
 </tbody>
 </table>
 <ul>
-<li>Braze開発者ガイド：アナリティクス：購入イベント
+<li>Braze 開発者ガイド: アナリティクス 購入イベント
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/">iOS</a></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/logging_purchases/">Android</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="位置追跡">位置追跡</h3>
-<h4 id="最後に認識されたユーザーの位置を構成">最後に認識されたユーザーの位置を構成</h4>
+<h3 id="位置情報トラッキング">位置情報トラッキング</h3>
+<h4 id="ユーザーの最後の既知の位置の構成">ユーザーの最後の既知の位置の構成</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド</th>
+<th>Braze メソッド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setlastknownlocation</code></td>
-<td><code>setLastKnownLocationWithLatitude</code></td>
+<td><code>user.setLastKnownLocation</code></td>
 </tr>
 </tbody>
 </table>
@@ -1365,20 +1418,20 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>latitude</code> (required)</td>
+<td><code>latitude</code> (必須)</td>
 <td><code>Double</code></td>
 </tr>
 <tr>
-<td><code>longitude</code> (required)</td>
+<td><code>longitude</code> (必須)</td>
 <td><code>Double</code></td>
 </tr>
 <tr>
-<td><code>horizontalAccuracy</code> (required)</td>
+<td><code>horizontalAccuracy</code> (必須)</td>
 <td><code>Double</code></td>
 </tr>
 <tr>
@@ -1392,23 +1445,94 @@
 </tbody>
 </table>
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking">Braze開発者ガイド：アナリティクス：位置追跡</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking">Braze 開発者ガイド: アナリティクス 位置情報トラッキング</a></li>
 </ul>
-<h3 id="データプライバシー">データプライバシー</h3>
+<h3 id="データプライバシー同意オプション">データプライバシー（同意オプション）</h3>
 <h4 id="sdkの有効化">SDKの有効化</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Brazeメソッド（iOS）</th>
-<th>Brazeメソッド（Android）</th>
+<th>Braze メソッド (iOS)</th>
+<th>Braze メソッド (Android)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>enable_sdk</code></td>
-<td><code>enableSDK</code></td>
-<td><code>enableSdk/disableSdk</code></td>
+<td><code>enablesdk</code></td>
+<td><code>enabled</code></td>
+<td><code>enableSdk</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Braze 開発者ガイド: アナリティクス 無効化
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="sdkの無効化">SDKの無効化</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Braze メソッド (iOS)</th>
+<th>Braze メソッド (Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disablesdk</code></td>
+<td><code>enabled</code></td>
+<td><code>disableSdk</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Braze 開発者ガイド: アナリティクス 無効化
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="データの消去">データの消去</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Braze メソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wipedata</code></td>
+<td><code>wipeData</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Braze 開発者ガイド: アナリティクスの無効化
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="広告トラッキングの有効化構成">広告トラッキングの有効化構成</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Braze メソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setadtrackingenabled</code></td>
+<td><code>set(adTrackingEnabled:)</code></td>
 </tr>
 </tbody>
 </table>
@@ -1416,49 +1540,46 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
-<th>例</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>enable_sdk</code></td>
-<td><code>Boolean</code></td>
-<td><code>true / false</code></td>
+<td><code>ad_tracking_enabled</code> (必須)</td>
+<td><code>Bool</code></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Braze開発者ガイド：アナリティクス：無効化
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
-</ul>
-</li>
-</ul>
-<h4 id="データのワイプ">データのワイプ</h4>
-<table>
-<thead>
-<tr>
-<th>リモートコマンド</th>
-<th>Brazeメソッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>wipe_data</code></td>
-<td><code>wipeData</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Braze開発者ガイド：アナリティクス：無効化
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
-</ul>
-</li>
-</ul>
+<h2 id="braze-インスタンスへのアクセス-ios">Braze インスタンスへのアクセス (iOS)</h2>
+<p>リモートコマンドは、イベントや購入のログ記録など、Brazeが提供する機能の一部をアプリにマッピングする便利な方法を提供します。
+しかし、コンテンツカード、機能フラグ、通知などのいくつかのBraze機能は、アプリにBrazeインスタンスを使用して統合する必要があります。</p>
+<p>Brazeインスタンスに直接アクセスするには、<code>onReady</code> メソッドを使用します。<code>onReady</code> メソッドは、適切に構成された後に完了ブロックでBrazeインスタンスを返します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>brazeRemoteCommand.onReady { braze <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ここでBrazeインスタンスを使用</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Brazeインスタンスへの参照を取得したら、Brazeのドキュメントに記載されているように使用してください。</p>
+<h3 id="自動プッシュ統合">自動プッシュ統合</h3>
+<p>最新のBrazeバージョンは、リモート通知の処理を自動化する方法をサポートしています。詳細については、<a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#automatic-push-integration">Braze 開発者ガイド: 自動プッシュ統合</a>を参照してください。</p>
+<p>この機能を使用するには、アプリデリゲートの <code>didFinishLaunchingWithOptions</code> メソッドでメインスレッド上で同期的にBrazeインスタンスを初期化する必要があります。これは、リモートコマンド構成を使用するのではなく、Brazeインスタンスを直接構成する必要があることを意味します。</p>
+<p>Brazeインスタンスを直接構成するには、このコードを使用します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">application</span>(<span style="color:#66d9ef">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeConfig = Braze.Configuration(apiKey: <span style="color:#e6db74">&#34;YOUR_API_KEY&#34;</span>, endpoint: <span style="color:#e6db74">&#34;YOUR_ENDPOINT&#34;</span>)
+</span></span><span style="display:flex;"><span>    brazeConfig.push.automation = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 他のすべての構成をここに追加</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeInstanceWrapper = BrazeInstance()
+</span></span><span style="display:flex;"><span>    brazeInstanceWrapper.initializeBraze(brazeConfig: brazeConfig)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeCommand = BrazeRemoteCommand(brazeInstance: brazeInstanceWrapper)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> tealiumConfig = TealiumConfig(...)
+</span></span><span style="display:flex;"><span>    tealiumConfig.remoteCommands = [brazeCommand]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// tealiumの初期化を完了</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="マニュアルプッシュ統合">マニュアルプッシュ統合</h3>
+<p>マニュアルプッシュ統合を実装するには、リモートコマンド構成を維持し、Brazeインスタンスに直接アクセスしてプッシュ統合を有効にします。</p>
+<p>詳細については、<a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#manual-push-integration">Braze 開発者ガイド: マニュアルプッシュ統合</a>を参照してください。</p>
 
 </div>
 
@@ -1519,7 +1640,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年March月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1533,26 +1654,25 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">依存関係マネージャ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E6%89%8B%E9%A0%86ios" href="javascript:void(0)">手動による手順（iOS）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">手動インストール</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-kotlin" href="javascript:void(0)">Android (Kotlin)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-java" href="javascript:void(0)">Android (Java)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ios-swift" href="javascript:void(0)">iOS (Swift)</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json-%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSON テンプレート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ユーザートラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%B1%9E%E6%80%A7" href="javascript:void(0)">ユーザー属性</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ソーシャルデータトラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">カスタムイベントトラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%80%9A%E7%9F%A5" href="javascript:void(0)">通知</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%B3%BC%E5%85%A5%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">購入トラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%8D%E7%BD%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">位置追跡</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC" href="javascript:void(0)">データプライバシー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">位置情報トラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E5%90%8C%E6%84%8F%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">データプライバシー（同意オプション）</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#braze-%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9-ios" href="javascript:void(0)">Braze インスタンスへのアクセス (iOS)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E7%B5%B1%E5%90%88" href="javascript:void(0)">自動プッシュ統合</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E7%B5%B1%E5%90%88" href="javascript:void(0)">マニュアルプッシュ統合</a></li>
               </nav>
   </aside></nav>
 

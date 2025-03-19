@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>リモートコマンド: Firebase | 統合 | Tealiumドキュメント</title>
+    <title>リモートコマンド：Firebase | 統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -93,7 +93,7 @@
         <a href="/ja/platforms/remote-commands/sync-analytics-hybrid-apps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-sync-analytics">ハイブリッドアプリでのセッションの同期</a></li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".remote-commands-integrations">統合</a>
         <ul class="pl2 bl b--primary bw1 remote-commands-integrations desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">Adjust</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">調整</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/appsflyer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-appsflyer">AppsFlyer</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-airship">エアシップ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/remote-commands/integrations/branch/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-branch">Branch</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -144,7 +144,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">リモートコマンド: Firebase</h1>
+<h1 class="lh-title mt30 mb3">リモートコマンド：Firebase</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -152,37 +152,37 @@
 
   
     <p class="f4 fw3 lh-copy">
-      AndroidとSwift/iOSでのFirebaseに対するTealiumリモートコマンド統合
+      AndroidおよびSwift/iOS用Firebaseに対するTealiumリモートコマンド統合
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="必要条件">必要条件</h2>
+  <h2 id="要件">要件</h2>
 <ul>
 <li>以下のいずれかのライブラリ：
 <ul>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0以降)</li>
-<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (Firebase 2.0.0+の場合は5.9.0以降、それ以前のバージョンの場合は5.9.0以前)</li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a>（1.0.0以降）</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a>（Firebase 2.0.0+の場合は5.9.0以降、それ以前のバージョンの場合は5.9.0以前）</li>
 <li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul>
 </li>
 <li>以下のいずれかのリモートコマンド統合：
 <ul>
-<li><a href="/ja/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a> (Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要)</li>
-<li>Tealium iQタグ管理内の<a href="/ja/client-side-tags/firebase-remote-command-tag/">Firebase Remote Command tag</a></li>
+<li><a href="/ja/platforms/remote-commands/integrations/firebase/#json-template">FirebaseリモートコマンドJSONファイル</a>（Android-Kotlin 1.0.0以降またはiOS-Swift 2.1.0以降が必要）</li>
+<li>Tealium iQタグ管理の<a href="/ja/client-side-tags/firebase-remote-command-tag/">Firebaseリモートコマンドタグ</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Firebase統合は以下の3つの要素を使用します：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Firebase統合は3つの要素を使用します：</p>
 <ol>
 <li>FirebaseネイティブSDK</li>
 <li>Firebaseメソッドをラップするリモートコマンドモジュール</li>
-<li>イベントトラッキングをネイティブFirebase呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ</li>
+<li>イベントトラッキングをネイティブFirebaseコールに変換するJSON構成ファイルまたはリモートコマンドタグ</li>
 </ol>
-<p>Firebaseリモートコマンドモジュールをアプリに追加すると、必要なFirebaseライブラリが自動的にインストールされ、ビルドされます。これにより、アプリにベンダー固有のコードを追加する必要がありません。依存関係マネージャのインストールを使用している場合、Firebase SDKを別途インストールする必要はありません。</p>
-<p>リモートコマンドのオプションは2つあります：JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成する方法です。ベンダー統合には、リモートまたはアプリ内でローカルにホストされるJSON構成ファイルが推奨されます。iQタグ管理を使用している場合は、ベンダー統合のリモートコマンドタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>について詳しくはこちらをご覧ください。</p>
+<p>Firebaseリモートコマンドモジュールをアプリに追加すると、アプリにベンダー固有のコードを追加することなく、必要なFirebaseライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Firebase SDKを別途インストールする必要はありません。</p>
+<p>リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQタグ管理を使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のためにリモートまたはアプリ内にローカルでホストされることを推奨されるオプションです。iQタグ管理を使用している場合は、ベンダー統合のリモートコマンドタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合についての詳細はこちら</a>。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="依存関係マネージャ">依存関係マネージャ</h3>
 
@@ -191,7 +191,7 @@
   <div class="tab-content"><div class="tab-pane" data-lang="Carthage" title="Carthage">
   <ol>
 <li>
-<p>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumFirebase</code>フレームワークに含まれています。</p>
+<p>Cartfileから<code>tealium-swift</code>を削除します。<code>TealiumFirebase</code>フレームワークには<code>tealium-swift</code>の依存関係がすでに含まれています。</p>
 </li>
 <li>
 <p>Cartfileに以下の行が存在する場合は削除します：</p>
@@ -202,7 +202,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span>
 </span></span></code></pre></div></li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>FirebaseはCarthageバイナリインストールを使用しているため、Carthageの<code>--use-xcframeworks</code>フラグを使用して<code>TealiumFirebase</code>モジュールを<code>xcframework</code>としてビルドすることはできません。依存関係のビルドには、Carthage公式の<a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md">Xcode 12ワークアラウンド</a>の使用を推奨します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>FirebaseはCarthageバイナリインストールを使用しているため、Carthageの<code>--use-xcframeworks</code>フラグを使用して<code>TealiumFirebase</code>モジュールを<code>xcframework</code>としてビルドすることはできません。依存関係をビルドするためにCarthage公式の<a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md">Xcode 12ワークアラウンド</a>を使用することをお勧めします。</p>
 </div>
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
   <ol>
@@ -213,39 +213,40 @@
 <li>
 <p>Podfileに以下の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumFirebase&#34;</span>
-</span></span></code></pre></div><p><code>TealiumFirebase</code> podには以下の<code>TealiumSwift</code>依存関係が含まれています：</p>
+</span></span></code></pre></div><p><code>TealiumFirebase</code>ポッドには以下の<code>TealiumSwift</code>依存関係が含まれています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
 </span></span></code></pre></div></li>
 <li>
-<p><code>TealiumHelper</code>ファイルと、<code>Tealium</code>クラスまたはFirebaseリモートコマンドにアクセスする他のファイルで、<code>TealiumSwift</code>と<code>TealiumFirebase</code>モジュールをインポートします。</p>
+<p><code>TealiumHelper</code>ファイルおよび<code>Tealium</code>クラスまたはFirebaseリモートコマンドにアクセスするその他のファイルで<code>TealiumSwift</code>および<code>TealiumFirebase</code>モジュールをインポートします。</p>
 </li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Cordova" title="Cordova">
-  <p>CordovaのTealium Firebaseライブラリをインストールするには、Cordovaアプリプロジェクトで以下のコマンドを実行します：</p>
+  <p>Cordovaアプリプロジェクトで以下のコマンドを実行して、Tealium Firebaseライブラリをインストールします：</p>
 <pre tabindex="0"><code>cordova plugin add tealium-cordova-firebase-plugin
 </code></pre>
 </div>
 <div class="tab-pane" data-lang="Flutter" title="Flutter">
-  <p>FlutterのTealium Firebaseライブラリをインストールするには、以下のコマンドを実行します：</p>
+  <p>以下のコマンドを実行して、Flutter用のTealium Firebaseライブラリをインストールします：</p>
 <pre tabindex="0"><code>flutter pub add tealium_firebase
 import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </code></pre>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <ol>
-<li>
-<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、プロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します（まだ行っていない場合）。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>    maven <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      url <span style="color:#e6db74">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div></li>
+  <p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、まだ行っていない場合はプロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します。</p>
+<pre><code>  ```groovy
+  allprojects {
+    repositories {
+      mavenCentral()
+      maven {
+        url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+      }
+    }
+  }
+  ```
+</code></pre>
+<ol>
 <li>
 <p><code>build.gradle</code>ファイルに以下の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
@@ -264,7 +265,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn add tealium-react-firebase
 </span></span></code></pre></div></li>
 <li>
-<p>NPMパッケージのバージョン1.0.7でReact Native Autolinkingが有効化され、React Nativeのバージョン0.60+を使用している場合、<code>react-native link</code>を実行する必要はありません。</p>
+<p>NPMパッケージのバージョン1.0.7ではReact Native Autolinkingが有効になっており、React Nativeのバージョン0.60+を使用している場合、<code>react-native link</code>を実行する必要はありません。</p>
 </li>
 </ol>
 </div>
@@ -272,21 +273,21 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
   <ol>
 <li>Xcodeプロジェクトで<strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>を選択します。</li>
 <li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-ios-firebase-remote-command</code>。</li>
-<li>バージョンルールを構成します。通常、<code>Up to next major</code>を推奨します。現在の<code>TealiumFirebase</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
-<li>インストールする<code>TealiumFirebase</code>モジュールを選択し、モジュールをインストールするアプリターゲットを選択します。</li>
+<li>バージョンルールを構成します。通常、<code>Up to next major</code>を推奨します。現在の<code>TealiumFirebase</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールする<code>TealiumFirebase</code>モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。</li>
 </ol>
-<p>プロジェクトに複数のアプリターゲットがあり、<code>TealiumFirebase</code>モジュールを他のアプリターゲットにも必要とする場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
+<p>プロジェクトに複数のアプリターゲットがあり、複数のアプリターゲットに<code>TealiumFirebase</code>モジュールが必要な場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
 <p><code>TealiumFirebase</code>を追加のアプリターゲットにインストールするには：</p>
 <ol>
 <li><strong>Project Navigator</strong>でXcodeプロジェクトを選択します。</li>
-<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションの下のアプリターゲットを選択します。</li>
-<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、アプリターゲットに<code>TealiumFirebase</code>モジュールを追加します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションのアプリターゲットを選択します。</li>
+<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、<code>TealiumFirebase</code>モジュールをアプリターゲットに追加します。</li>
 </ol>
 <p>Tealium Swiftライブラリから追加のモジュールを追加するには、<a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a>の指示に従ってください。</p>
 </div>
 <div class="tab-pane" data-lang="Xamarin" title="Xamarin">
   <p>Visual Studioの組み込みNuGetパッケージマネージャを使用して、Xamarin用のTealium Firebaseライブラリを直接インストールします。</p>
-<p><a href="https://www.nuget.org/packages/Tealium.RemoteCommands.Firebase.Xamarin">NuGet Package: Tealium.RemoteCommands.Firebase.Xamarin</a></p>
+<p><a href="https://www.nuget.org/packages/Tealium.RemoteCommands.Firebase.Xamarin">NuGetパッケージ：Tealium.RemoteCommands.Firebase.Xamarin</a></p>
 </div>
 </div>
 </div>
@@ -296,13 +297,13 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>Firebaseリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリがインストールされている必要があります。iOSプロジェクトのFirebaseリモートコマンドをインストールするには：</p>
+  <p>Firebaseリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリがインストールされている必要があります。iOSプロジェクト用のFirebaseリモートコマンドをインストールするには：</p>
 <ol>
 <li>
 <p>まだ行っていない場合は、<a href="https://firebase.google.com/docs/ios/setup">Firebase SDK</a>をインストールします。</p>
 </li>
 <li>
-<p><a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
+<p><a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebaseリモートコマンド</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
 </li>
 <li>
 <p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します。</p>
@@ -311,10 +312,10 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </div>
 <div class="tab-pane" data-lang="Android" title="Android">
   <p>Firebaseリモートコマンドの手動インストールには、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>がインストールされている必要があります。</p>
-<p>AndroidプロジェクトのFirebaseリモートコマンドをインストールするには：</p>
+<p>Androidプロジェクト用のFirebaseリモートコマンドをインストールするには：</p>
 <ol>
 <li>
-<p>プロジェクトのルート<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します：</p>
+<p>プロジェクトルートの<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
@@ -339,18 +340,18 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </div>
 
 <h2 id="初期化">初期化</h2>
-<p>すべてのTealiumライブラリについて、初期化時にFirebaseのモバイルリモートコマンドを登録します。</p>
+<p>すべてのTealiumライブラリにおいて、初期化時にFirebaseモバイルリモートコマンドを登録します。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
-  <p>TealiumのAndroid（Java）ライブラリ用のRemote Commandタグを使用してリモートコマンドを初期化します：</p>
+  <p>TealiumのAndroid（Java）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>RemoteCommand firebase <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FirebaseRemoteCommand<span style="color:#f92672">(</span>application<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>firebase<span style="color:#f92672">);</span>
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
-  <p>JSON構成ファイルまたはTealiumのKotlinライブラリ用のRemote Commandタグを使用してリモートコマンドを初期化します：</p>
+  <p>JSON構成ファイルまたはTealiumのKotlinライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
@@ -403,7 +404,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Flutter" title="Flutter">
-  <p>以下の内容を持つ<code>Google-Servives.json</code>または<code>.plist</code>ファイルをプラットフォームオブジェクトに追加します：</p>
+  <p>プラットフォームオブジェクトに以下の内容の<code>Google-Servives.json</code>または<code>.plist</code>ファイルを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// WebViewリモートコマンド
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">var</span> <span style="color:#960050;background-color:#1e0010">webViewFirebase</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">RemoteCommand(TealiumFirebase.commandName)</span>
 </span></span><span style="display:flex;"><span>
@@ -422,12 +423,13 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">var</span> <span style="color:#960050;background-color:#1e0010">config</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">TealiumConfig(</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#960050;background-color:#1e0010">remoteCommands:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">webViewFirebase</span> <span style="color:#75715e">// または `localFirebase`、または `remoteFirebase`
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">webViewFirebase</span> <span style="color:#75715e">// または `localFirebase`, または `remoteFirebase`
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ]<span style="color:#960050;background-color:#1e0010">)</span>
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="React Native" title="React Native">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">FirebaseRemoteCommand</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-firebase&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">FirebaseRemoteCommand</span>.<span style="color:#a6e22e">initialize</span>();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Webviewタグ
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firebase</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FirebaseRemoteCommand</span>.<span style="color:#a6e22e">name</span> } 
@@ -444,7 +446,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>JSON構成ファイルまたはTealiumのiOS（Swift）ライブラリ用のRemote Commandタグを使用してリモートコマンドを初期化します：</p>
+  <p>JSON構成ファイルまたはTealiumのiOS（Swift）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
@@ -525,7 +527,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </div>
 
 <h2 id="jsonテンプレート">JSONテンプレート</h2>
-<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用してリモートコマンドを構成している場合は、以下のテンプレートを参照して開始してください。テンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集します。</p>
+<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;firebase_analytics_enabled&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
@@ -561,7 +563,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_list&#34;</span>: <span style="color:#e6db74">&#34;items.param_item_list&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_location_id&#34;</span>: <span style="color:#e6db74">&#34;items.param_item_location_id&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_name&#34;</span>: <span style="color:#e6db74">&#34;items.param_item_name&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&#34;product_variant&#34;</span>: <span style="color:#e6db74">&#34;items.param_item_variant&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_variant&#34;</span>: <span style="color:#e6db74">&#34;items.param_item_variant&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;current_level&#34;</span>: <span style="color:#e6db74">&#34;event.param_level&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;most_recent_location&#34;</span>: <span style="color:#e6db74">&#34;event.param_location&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;campaign_medium&#34;</span>: <span style="color:#e6db74">&#34;event.param_medium&#34;</span>,
@@ -622,7 +624,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="サポートされているメソッド">サポートされているメソッド</h2>
-<p>Firebaseメソッドにはそれぞれコマンドがマッピングされています。Firebaseメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
+<p>Firebaseメソッドに対応するコマンドをマッピングします。Firebaseメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
 <table>
 <thead>
 <tr>
@@ -669,8 +671,8 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<h3 id="sdkのセットアップ">SDKのセットアップ</h3>
-<h3 id="configure">Configure</h3>
+<h3 id="sdkの構成">SDKの構成</h3>
+<h3 id="構成">構成</h3>
 <table>
 <thead>
 <tr>
@@ -685,11 +687,11 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<p>以下のパラメーターはSDKのセットアップに使用されます：</p>
+<p>SDKを構成するために使用されるパラメータは次のとおりです：</p>
 <table>
 <thead>
 <tr>
-<th>パラメーター</th>
+<th>パラメータ</th>
 <th>タイプ</th>
 <th>説明</th>
 </tr>
@@ -698,12 +700,12 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>firebase_session_timeout_seconds</code></td>
 <td><code>String</code></td>
-<td>セッションの長さを秒単位で表した文字列。</td>
+<td>セッションの長さを秒単位で表した文字列です。</td>
 </tr>
 <tr>
 <td><code>firebase_analytics_enabled</code></td>
 <td><code>String</code></td>
-<td>アナリティクスを有効または無効にするブール値を表す文字列（デフォルトは <code>true</code>）。</td>
+<td>分析を有効または無効にするためのブール値を表す文字列（デフォルトは <code>true</code>）。</td>
 </tr>
 <tr>
 <td><code>firebase_log_level</code> (iOS)</td>
@@ -713,9 +715,9 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tbody>
 </table>
 <h3 id="トラック">トラック</h3>
-<p>アプリとの基本的なインタラクションによってトリガーされるイベントは自動的にトラックされます。詳細については、<a href="https://support.google.com/firebase/answer/6317485?hl=ja">GA4: 自動的に収集されるイベント</a>を参照してください。</p>
-<h4 id="ログイベント">ログイベント</h4>
-<p>パラメーターと、オプションでアイテムの配列を持つイベントをログします。</p>
+<p>アプリとの基本的なやり取りによってトリガーされるイベントは自動的に追跡されます。詳細については、<a href="https://support.google.com/firebase/answer/6317485?hl=ja">GA4: 自動収集されるイベント</a>を参照してください。</p>
+<h4 id="イベントログ">イベントログ</h4>
+<p>パラメータと、オプションでアイテムの配列を使用してイベントをログします。</p>
 <table>
 <thead>
 <tr>
@@ -733,7 +735,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <table>
 <thead>
 <tr>
-<th>パラメーター</th>
+<th>パラメータ</th>
 <th>タイプ</th>
 <th>説明</th>
 </tr>
@@ -742,22 +744,22 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>firebase_event_name</code></td>
 <td><code>String</code></td>
-<td>必須。イベント名。Firebaseのイベント名のリストにマッピングされます。</td>
+<td>必須。イベント名で、Firebaseイベント名のリストにマッピングされます。</td>
 </tr>
 <tr>
 <td><code>event</code> (JSON)</td>
 <td><code>[String:Any]</code></td>
-<td>このイベントのすべてのパラメーターを含むオブジェクト。Firebaseのパラメーターリストにマッピングされます。</td>
+<td>このイベントのすべてのパラメータを含むオブジェクトで、Firebaseパラメータのリストにマッピングされます。</td>
 </tr>
 <tr>
 <td><code>firebase_event_params</code> (Tag)</td>
 <td><code>[String:Any]</code></td>
-<td>このイベントのすべてのパラメーターを含むオブジェクト（タグによって使用されます）。Firebaseのパラメーターリストにマッピングされます。</td>
+<td>このイベントのすべてのパラメータを含むオブジェクト（タグによって使用されます）、Firebaseパラメータのリストにマッピングされます。</td>
 </tr>
 <tr>
 <td><code>items</code> (JSON)</td>
 <td><code>[String:[Any]]</code></td>
-<td>このイベントのアイテムの配列を含むオブジェクト。すべての配列は同じ数の要素を含み、すべての要素は単一のアイテムの配列に正規化できます。</td>
+<td>このイベントのアイテムの配列を含むオブジェクト。すべての配列には同じ数の要素が含まれ、すべての要素は単一のアイテム配列に正規化できます。</td>
 </tr>
 <tr>
 <td><code>param_items</code> (Tag)</td>
@@ -767,7 +769,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tbody>
 </table>
 <h4 id="スクリーン名の構成">スクリーン名の構成</h4>
-<p>このコマンドは特定のログイベントで、ユーティリティとして追加されます。</p>
+<p>このコマンドは、ユーティリティとして追加された特定のログイベントです。</p>
 <table>
 <thead>
 <tr>
@@ -787,7 +789,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <table>
 <thead>
 <tr>
-<th>パラメーター</th>
+<th>パラメータ</th>
 <th>タイプ</th>
 <th>説明</th>
 </tr>
@@ -796,17 +798,17 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>firebase_screen_name</code></td>
 <td><code>String</code></td>
-<td>必須。現在のスクリーンの名前。</td>
+<td>必須。現在のスクリーンの名前です。</td>
 </tr>
 <tr>
 <td><code>firebase_screen_class</code></td>
 <td><code>String</code></td>
-<td>現在のスクリーンのクラス。</td>
+<td>現在のスクリーンのクラスです。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="デフォルトパラメーターの構成">デフォルトパラメーターの構成</h4>
-<p>このコマンドは、すべてのログイベントで送信されるパラメーターを構成します。</p>
+<h4 id="デフォルトパラメータの構成">デフォルトパラメータの構成</h4>
+<p>このコマンドは、すべてのログイベントで送信されるパラメータを構成します。</p>
 <table>
 <thead>
 <tr>
@@ -824,7 +826,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <table>
 <thead>
 <tr>
-<th>パラメーター</th>
+<th>パラメータ</th>
 <th>タイプ</th>
 <th>説明</th>
 </tr>
@@ -833,25 +835,25 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>default</code> (JSON)</td>
 <td><code>[String:Any]</code></td>
-<td>キー値のデフォルトパラメーターを持つオブジェクト。</td>
+<td>キーと値のデフォルトパラメータを含むオブジェクトです。</td>
 </tr>
 <tr>
 <td><code>firebase_default_params</code> (Tag)</td>
 <td><code>String</code></td>
-<td>キー値のデフォルトパラメーターを持つオブジェクト（タグによって使用されます）。</td>
+<td>キーと値のデフォルトパラメータを含むオブジェクト（タグによって使用されます）。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="マッピング">マッピング</h3>
-<p><code>logEvent</code>メソッドで送信されるパラメーターとイベントは、Tealiumの値からFirebaseの定数名にマッピングされます。</p>
-<p>以下の表は、iOSとAndroidで利用可能なキーを定数にマッピングしたものです。パラメーターがTealiumのマッピングから欠落している場合は、Firebaseの定数値を直接使用できます。</p>
+<p><code>logEvent</code> メソッドで送信されるパラメータとイベントは、Tealiumの値からFirebaseの定数名にマッピングされます。</p>
+<p>以下の表は、iOSとAndroidで利用可能なキーを定数にマッピングしたものです。Tealiumのマッピングからパラメータが欠けている場合は、Firebaseの定数値を直接使用できます。</p>
 <h4 id="イベントマッピング">イベントマッピング</h4>
 <table>
 <thead>
 <tr>
-<th>Tealiumキー</th>
-<th>Firebaseイベント (iOS)</th>
-<th>Firebaseイベント (Android)</th>
+<th>Tealium Key</th>
+<th>Firebase Event (iOS)</th>
+<th>Firebase Event (Android)</th>
 </tr>
 </thead>
 <tbody>
@@ -973,66 +975,66 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>event_select_promotion</code></td>
 <td><code>AnalyticsEventSelectPromotion</code></td>
-<td><code>プロモーションを選択</code></td>
+<td><code>SELECT_PROMOTION</code></td>
 </tr>
 <tr>
 <td><code>event_share</code></td>
 <td><code>AnalyticsEventShare</code></td>
-<td><code>共有</code></td>
+<td><code>SHARE</code></td>
 </tr>
 <tr>
 <td><code>event_signup</code></td>
 <td><code>AnalyticsEventSignUp</code></td>
-<td><code>サインアップ</code></td>
+<td><code>SIGN_UP</code></td>
 </tr>
 <tr>
 <td><code>event_spend_virtual_currency</code></td>
 <td><code>AnalyticsEventSpendVirtualCurrency</code></td>
-<td><code>バーチャル通貨を使う</code></td>
+<td><code>SPEND_VIRTUAL_CURRENCY</code></td>
 </tr>
 <tr>
 <td><code>event_tutorial_begin</code></td>
 <td><code>AnalyticsEventTutorialBegin</code></td>
-<td><code>チュートリアル開始</code></td>
+<td><code>TUTORIAL_BEGIN</code></td>
 </tr>
 <tr>
 <td><code>event_tutorial_complete</code></td>
 <td><code>AnalyticsEventTutorialComplete</code></td>
-<td><code>チュートリアル完了</code></td>
+<td><code>TUTORIAL_COMPLETE</code></td>
 </tr>
 <tr>
 <td><code>event_unlock_achievement</code></td>
 <td><code>AnalyticsEventUnlockAchievement</code></td>
-<td><code>実績解除</code></td>
+<td><code>UNLOCK_ACHIEVEMENT</code></td>
 </tr>
 <tr>
 <td><code>event_view_cart</code></td>
 <td><code>AnalyticsEventViewCart</code></td>
-<td><code>カートを見る</code></td>
+<td><code>VIEW_CART</code></td>
 </tr>
 <tr>
 <td><code>event_view_item</code></td>
 <td><code>AnalyticsEventViewItem</code></td>
-<td><code>アイテムを見る</code></td>
+<td><code>VIEW_ITEM</code></td>
 </tr>
 <tr>
 <td><code>event_view_item_list</code></td>
 <td><code>AnalyticsEventViewItemList</code></td>
-<td><code>アイテムリストを見る</code></td>
+<td><code>VIEW_ITEM_LIST</code></td>
 </tr>
 <tr>
 <td><code>event_view_promotion</code></td>
 <td><code>AnalyticsEventViewPromotion</code></td>
-<td><code>プロモーションを見る</code></td>
+<td><code>VIEW_PROMOTION</code></td>
 </tr>
 <tr>
 <td><code>event_view_search_results</code></td>
 <td><code>AnalyticsEventViewSearchResults</code></td>
-<td><code>検索結果を見る</code></td>
+<td><code>VIEW_SEARCH_RESULTS</code></td>
 </tr>
 </tbody>
 </table>
-<h4 id="パラメータのマッピング">パラメータのマッピング</h4>
+<h4 id="パラメータマッピング">パラメータマッピング</h4>
 <table>
 <thead>
 <tr>
@@ -1045,12 +1047,12 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_achievement_id</code></td>
 <td><code>AnalyticsParameterAchievementID</code></td>
-<td><code>実績_ID</code></td>
+<td><code>ACHIEVEMENT_ID</code></td>
 </tr>
 <tr>
 <td><code>param_ad_format</code></td>
 <td><code>AnalyticsParameterAdFormat</code></td>
-<td><code>広告フォーマット</code></td>
+<td><code>AD_FORMAT</code></td>
 </tr>
 <tr>
 <td><code>param_ad_network_click_id</code></td>
@@ -1060,22 +1062,22 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_ad_platform</code></td>
 <td><code>AnalyticsParameterAdPlatform</code></td>
-<td><code>広告プラットフォーム</code></td>
+<td><code>AD_PLATFORM</code></td>
 </tr>
 <tr>
 <td><code>param_ad_source</code></td>
 <td><code>AnalyticsParameterAdSource</code></td>
-<td><code>広告ソース</code></td>
+<td><code>AD_SOURCE</code></td>
 </tr>
 <tr>
 <td><code>param_ad_unit_name</code></td>
 <td><code>AnalyticsParameterAdUnitName</code></td>
-<td><code>広告ユニット名</code></td>
+<td><code>AD_UNIT_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_affiliation</code></td>
 <td><code>AnalyticsParameterAffiliation</code></td>
-<td><code>所属</code></td>
+<td><code>AFFILIATION</code></td>
 </tr>
 <tr>
 <td><code>param_cp1</code></td>
@@ -1085,7 +1087,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_campaign</code></td>
 <td><code>AnalyticsParameterCampaign</code></td>
-<td><code>キャンペーン</code></td>
+<td><code>CAMPAIGN</code></td>
 </tr>
 <tr>
 <td><code>param_campaign_id</code></td>
@@ -1095,22 +1097,22 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_character</code></td>
 <td><code>AnalyticsParameterCharacter</code></td>
-<td><code>キャラクター</code></td>
+<td><code>CHARACTER</code></td>
 </tr>
 <tr>
 <td><code>param_content</code></td>
 <td><code>AnalyticsParameterContent</code></td>
-<td><code>コンテンツ</code></td>
+<td><code>CONTENT</code></td>
 </tr>
 <tr>
 <td><code>param_content_type</code></td>
 <td><code>AnalyticsParameterContentType</code></td>
-<td><code>コンテンツタイプ</code></td>
+<td><code>CONTENT_TYPE</code></td>
 </tr>
 <tr>
 <td><code>param_coupon</code></td>
 <td><code>AnalyticsParameterCoupon</code></td>
-<td><code>クーポン</code></td>
+<td><code>COUPON</code></td>
 </tr>
 <tr>
 <td><code>param_creative_format</code></td>
@@ -1120,132 +1122,132 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_creative_name</code></td>
 <td><code>AnalyticsParameterCreativeName</code></td>
-<td><code>クリエイティブ名</code></td>
+<td><code>CREATIVE_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_creative_slot</code></td>
 <td><code>AnalyticsParameterCreativeSlot</code></td>
-<td><code>クリエイティブスロット</code></td>
+<td><code>CREATIVE_SLOT</code></td>
 </tr>
 <tr>
 <td><code>param_currency</code></td>
 <td><code>AnalyticsParameterCurrency</code></td>
-<td><code>通貨</code></td>
+<td><code>CURRENCY</code></td>
 </tr>
 <tr>
 <td><code>param_destination</code></td>
 <td><code>AnalyticsParameterDestination</code></td>
-<td><code>目的地</code></td>
+<td><code>DESTINATION</code></td>
 </tr>
 <tr>
 <td><code>param_discount</code></td>
 <td><code>AnalyticsParameterDiscount</code></td>
-<td><code>割引</code></td>
+<td><code>DISCOUNT</code></td>
 </tr>
 <tr>
 <td><code>param_end_date</code></td>
 <td><code>AnalyticsParameterEndDate</code></td>
-<td><code>終了日</code></td>
+<td><code>END_DATE</code></td>
 </tr>
 <tr>
 <td><code>param_extend_session</code></td>
 <td><code>AnalyticsParameterExtendSession</code></td>
-<td><code>セッションを延長</code></td>
+<td><code>EXTEND_SESSION</code></td>
 </tr>
 <tr>
 <td><code>param_flight_number</code></td>
 <td><code>AnalyticsParameterFlightNumber</code></td>
-<td><code>フライト番号</code></td>
+<td><code>FLIGHT_NUMBER</code></td>
 </tr>
 <tr>
 <td><code>param_group_id</code></td>
 <td><code>AnalyticsParameterGroupID</code></td>
-<td><code>グループ_ID</code></td>
+<td><code>GROUP_ID</code></td>
 </tr>
 <tr>
 <td><code>param_index</code></td>
 <td><code>AnalyticsParameterIndex</code></td>
-<td><code>インデックス</code></td>
+<td><code>INDEX</code></td>
 </tr>
 <tr>
 <td><code>param_item_brand</code></td>
 <td><code>AnalyticsParameterItemBrand</code></td>
-<td><code>アイテムブランド</code></td>
+<td><code>ITEM_BRAND</code></td>
 </tr>
 <tr>
 <td><code>param_item_category</code></td>
 <td><code>AnalyticsParameterItemCategory</code></td>
-<td><code>アイテムカテゴリ</code></td>
+<td><code>ITEM_CATEGORY</code></td>
 </tr>
 <tr>
 <td><code>param_item_category2</code></td>
 <td><code>AnalyticsParameterItemCategory2</code></td>
-<td><code>アイテムカテゴリ2</code></td>
+<td><code>ITEM_CATEGORY2</code></td>
 </tr>
 <tr>
 <td><code>param_item_category3</code></td>
 <td><code>AnalyticsParameterItemCategory3</code></td>
-<td><code>アイテムカテゴリ3</code></td>
+<td><code>ITEM_CATEGORY3</code></td>
 </tr>
 <tr>
 <td><code>param_item_category4</code></td>
 <td><code>AnalyticsParameterItemCategory4</code></td>
-<td><code>アイテムカテゴリ4</code></td>
+<td><code>ITEM_CATEGORY4</code></td>
 </tr>
 <tr>
 <td><code>param_item_category5</code></td>
 <td><code>AnalyticsParameterItemCategory5</code></td>
-<td><code>アイテムカテゴリ5</code></td>
+<td><code>ITEM_CATEGORY5</code></td>
 </tr>
 <tr>
 <td><code>param_item_id</code></td>
 <td><code>AnalyticsParameterItemID</code></td>
-<td><code>アイテム_ID</code></td>
+<td><code>ITEM_ID</code></td>
 </tr>
 <tr>
 <td><code>param_item_list_id</code></td>
 <td><code>AnalyticsParameterItemListID</code></td>
-<td><code>アイテムリスト_ID</code></td>
+<td><code>ITEM_LIST_ID</code></td>
 </tr>
 <tr>
 <td><code>param_item_list_name</code></td>
 <td><code>AnalyticsParameterItemListName</code></td>
-<td><code>アイテムリスト名</code></td>
+<td><code>ITEM_LIST_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_item_name</code></td>
 <td><code>AnalyticsParameterItemName</code></td>
-<td><code>アイテム名</code></td>
+<td><code>ITEM_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_item_variant</code></td>
 <td><code>AnalyticsParameterItemVariant</code></td>
-<td><code>アイテムバリアント</code></td>
+<td><code>ITEM_VARIANT</code></td>
 </tr>
 <tr>
 <td><code>param_items</code></td>
 <td><code>AnalyticsParameterItems</code></td>
-<td><code>アイテム</code></td>
+<td><code>ITEMS</code></td>
 </tr>
 <tr>
 <td><code>param_level</code></td>
 <td><code>AnalyticsParameterLevel</code></td>
-<td><code>レベル</code></td>
+<td><code>LEVEL</code></td>
 </tr>
 <tr>
 <td><code>param_level_name</code></td>
 <td><code>AnalyticsParameterLevelName</code></td>
-<td><code>レベル名</code></td>
+<td><code>LEVEL_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_location</code></td>
 <td><code>AnalyticsParameterLocation</code></td>
-<td><code>場所</code></td>
+<td><code>LOCATION</code></td>
 </tr>
 <tr>
 <td><code>param_location_id</code></td>
 <td><code>AnalyticsParameterLocationID</code></td>
-<td><code>場所_ID</code></td>
+<td><code>LOCATION_ID</code></td>
 </tr>
 <tr>
 <td><code>param_marketing_tactic</code></td>
@@ -1255,92 +1257,92 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_medium</code></td>
 <td><code>AnalyticsParameterMedium</code></td>
-<td><code>媒体</code></td>
+<td><code>MEDIUM</code></td>
 </tr>
 <tr>
 <td><code>param_method</code></td>
 <td><code>AnalyticsParameterMethod</code></td>
-<td><code>方法</code></td>
+<td><code>METHOD</code></td>
 </tr>
 <tr>
 <td><code>param_number_nights</code></td>
 <td><code>AnalyticsParameterNumberOfNights</code></td>
-<td><code>宿泊数</code></td>
+<td><code>NUMBER_OF_NIGHTS</code></td>
 </tr>
 <tr>
 <td><code>param_number_pax</code></td>
 <td><code>AnalyticsParameterNumberOfPassengers</code></td>
-<td><code>乗客数</code></td>
+<td><code>NUMBER_OF_PASSENGERS</code></td>
 </tr>
 <tr>
 <td><code>param_number_rooms</code></td>
 <td><code>AnalyticsParameterNumberOfRooms</code></td>
-<td><code>部屋数</code></td>
+<td><code>NUMBER_OF_ROOMS</code></td>
 </tr>
 <tr>
 <td><code>param_origin</code></td>
 <td><code>AnalyticsParameterOrigin</code></td>
-<td><code>起源</code></td>
+<td><code>ORIGIN</code></td>
 </tr>
 <tr>
 <td><code>param_payment_type</code></td>
 <td><code>AnalyticsParameterPaymentType</code></td>
-<td><code>支払いタイプ</code></td>
+<td><code>PAYMENT_TYPE</code></td>
 </tr>
 <tr>
 <td><code>param_price</code></td>
 <td><code>AnalyticsParameterPrice</code></td>
-<td><code>価格</code></td>
+<td><code>PRICE</code></td>
 </tr>
 <tr>
 <td><code>param_promotion_id</code></td>
 <td><code>AnalyticsParameterPromotionID</code></td>
-<td><code>プロモーション_ID</code></td>
+<td><code>PROMOTION_ID</code></td>
 </tr>
 <tr>
 <td><code>param_promotion_name</code></td>
 <td><code>AnalyticsParameterPromotionName</code></td>
-<td><code>プロモーション名</code></td>
+<td><code>PROMOTION_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_quantity</code></td>
 <td><code>AnalyticsParameterQuantity</code></td>
-<td><code>数量</code></td>
+<td><code>QUANTITY</code></td>
 </tr>
 <tr>
 <td><code>param_score</code></td>
 <td><code>AnalyticsParameterScore</code></td>
-<td><code>スコア</code></td>
+<td><code>SCORE</code></td>
 </tr>
 <tr>
 <td><code>param_search_term</code></td>
 <td><code>AnalyticsParameterSearchTerm</code></td>
-<td><code>検索語</code></td>
+<td><code>SEARCH_TERM</code></td>
 </tr>
 <tr>
 <td><code>param_shipping</code></td>
 <td><code>AnalyticsParameterShipping</code></td>
-<td><code>配送</code></td>
+<td><code>SHIPPING</code></td>
 </tr>
 <tr>
 <td><code>param_shipping_tier</code></td>
 <td><code>AnalyticsParameterShippingTier</code></td>
-<td><code>配送ティア</code></td>
+<td><code>SHIPPING_TIER</code></td>
 </tr>
 <tr>
 <td><code>param_screen_name</code></td>
 <td><code>AnalyticsParameterScreenName</code></td>
-<td><code>スクリーン名</code></td>
+<td><code>SCREEN_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_screen_class</code></td>
 <td><code>AnalyticsParameterScreenClass</code></td>
-<td><code>スクリーンクラス</code></td>
+<td><code>SCREEN_CLASS</code></td>
 </tr>
 <tr>
 <td><code>param_source</code></td>
 <td><code>AnalyticsParameterSource</code></td>
-<td><code>ソース</code></td>
+<td><code>SOURCE</code></td>
 </tr>
 <tr>
 <td><code>param_source_platform</code></td>
@@ -1350,42 +1352,42 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 <tr>
 <td><code>param_start_date</code></td>
 <td><code>AnalyticsParameterStartDate</code></td>
-<td><code>開始日</code></td>
+<td><code>START_DATE</code></td>
 </tr>
 <tr>
 <td><code>param_success</code></td>
 <td><code>AnalyticsParameterSuccess</code></td>
-<td><code>成功</code></td>
+<td><code>SUCCESS</code></td>
 </tr>
 <tr>
 <td><code>param_tax</code></td>
 <td><code>AnalyticsParameterTax</code></td>
-<td><code>税金</code></td>
+<td><code>TAX</code></td>
 </tr>
 <tr>
 <td><code>param_term</code></td>
 <td><code>AnalyticsParameterTerm</code></td>
-<td><code>期間</code></td>
+<td><code>TERM</code></td>
 </tr>
 <tr>
 <td><code>param_transaction_id</code></td>
 <td><code>AnalyticsParameterTransactionID</code></td>
-<td><code>トランザクション_ID</code></td>
+<td><code>TRANSACTION_ID</code></td>
 </tr>
 <tr>
 <td><code>param_travel_class</code></td>
 <td><code>AnalyticsParameterTravelClass</code></td>
-<td><code>旅行クラス</code></td>
+<td><code>TRAVEL_CLASS</code></td>
 </tr>
 <tr>
 <td><code>param_value</code></td>
 <td><code>AnalyticsParameterValue</code></td>
-<td><code>値</code></td>
+<td><code>VALUE</code></td>
 </tr>
 <tr>
 <td><code>param_virtual_currency_name</code></td>
 <td><code>AnalyticsParameterVirtualCurrencyName</code></td>
-<td><code>バーチャル通貨名</code></td>
+<td><code>VIRTUAL_CURRENCY_NAME</code></td>
 </tr>
 <tr>
 <td><code>param_user_signup_method</code></td>
@@ -1400,13 +1402,13 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tbody>
 </table>
 <h3 id="ユーザー構成">ユーザー構成</h3>
-<h4 id="ユーザープロパティ構成">ユーザープロパティ構成</h4>
-<p>このコマンドは、ユーザープロパティ名と値の単一またはリストを構成します。</p>
+<h4 id="ユーザープロパティの構成">ユーザープロパティの構成</h4>
+<p>このコマンドは、1つまたは複数のユーザープロパティ名と値を構成します。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Firebaseメソッド</th>
+<th>Firebase メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1432,18 +1434,18 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 <tr>
 <td><code>firebase_property_value</code></td>
-<td><code>String|[String]]</code></td>
-<td>必須。プロパティ値またはプロパティ値の配列。このパラメータが配列の場合、<code>firebase_property_name</code>配列の長さと項目の順序と一致していなければなりません。</td>
+<td><code>String|[String]</code></td>
+<td>必須。プロパティ値またはプロパティ値の配列。このパラメータが配列の場合、<code>firebase_property_name</code> 配列の長さと項目の順序と一致する必要があります。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="ユーザーid構成">ユーザーID構成</h4>
-<p>このコマンドは、ユーザーIDを構成します。</p>
+<h4 id="ユーザーidの構成">ユーザーIDの構成</h4>
+<p>このコマンドはユーザーIDを構成します。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Firebaseメソッド</th>
+<th>Firebase メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1469,13 +1471,13 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<h3 id="コンバージョン測定-ios">コンバージョン測定 (iOS)</h3>
-<p>このコマンドは、コンバージョン測定を開始します。</p>
+<h3 id="コンバージョン測定ios">コンバージョン測定（iOS）</h3>
+<p>このコマンドはコンバージョン測定を開始します。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Firebaseメソッド</th>
+<th>Firebase メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1516,14 +1518,14 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>パラメータをハッシュ化して送信する場合は、<a href="https://firebase.google.com/docs/tutorials/ads-ios-on-device-measurement/step-3">FirebaseのiOS広告コンバージョン測定のドキュメンテーション</a>に従って正規化とハッシュ化を行う必要があります。Tealiumはパラメータで<code>String</code>を受け取る必要があります。これは、<code>Firebase</code>に渡す前の最終ステップとして<code>Data</code>に変換されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>パラメータをハッシュ化して送信する場合は、<a href="https://firebase.google.com/docs/tutorials/ads-ios-on-device-measurement/step-3">Firebase ドキュメントの iOS 広告のコンバージョン測定</a>に従って正規化およびハッシュ化する必要があります。Tealiumはパラメータを <code>String</code> として受け取る必要があります。これは最終的に <code>Firebase</code> に渡す前に <code>Data</code> に変換されます。</p>
 <h3 id="同意">同意</h3>
-<p>このコマンドは、同意モードを構成します。</p>
+<p>このコマンドは同意モードを構成します。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Firebaseメソッド</th>
+<th>Firebase メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1549,13 +1551,13 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<h4 id="サポートされている同意タイプ">サポートされている同意タイプ</h4>
+<h4 id="サポートされる同意タイプ">サポートされる同意タイプ</h4>
 <table>
 <thead>
 <tr>
 <th>同意タイプ</th>
-<th>最小Firebase iOSバージョン</th>
-<th>最小Firebase Androidバージョン</th>
+<th>最小 Firebase iOS バージョン</th>
+<th>最小 Firebase Android バージョン</th>
 </tr>
 </thead>
 <tbody>
@@ -1581,14 +1583,14 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </tr>
 </tbody>
 </table>
-<p>詳細については、<a href="/ja/client-side-tags/firebase-remote-command-tag/">Firebase: モバイルリモートコマンドタグの構成</a>を参照してください。</p>
+<p>詳細については、<a href="/ja/client-side-tags/firebase-remote-command-tag/">Firebase: Mobile Remote Command Tag setup</a>を参照してください。</p>
 <h3 id="アナリティクスデータのリセット">アナリティクスデータのリセット</h3>
-<p>このインスタンスのデバイスからすべてのアナリティクスデータをクリアし、アプリインスタンスIDをリセットします。</p>
+<p>このデバイスのすべてのアナリティクスデータをクリアし、アプリインスタンスIDをリセットします。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Firebaseメソッド</th>
+<th>Firebase メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -1658,7 +1660,7 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年March月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1672,20 +1674,20 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">依存関係マネージャ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">手動インストール</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure" href="javascript:void(0)">Configure</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">SDKの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">トラック</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">マッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%A7%8B%E6%88%90" href="javascript:void(0)">ユーザー構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E6%B8%AC%E5%AE%9A-ios" href="javascript:void(0)">コンバージョン測定 (iOS)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E6%B8%AC%E5%AE%9Aios" href="javascript:void(0)">コンバージョン測定（iOS）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F" href="javascript:void(0)">同意</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%83%8A%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AF%E3%82%B9%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">アナリティクスデータのリセット</a></li>
               </nav>

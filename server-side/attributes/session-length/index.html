@@ -12,6 +12,8 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/server-side/attributes/session-length/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -27,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -51,6 +53,16 @@
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
          <a href="/help/" class="dim link mid-gray">Help</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/server-side/attributes/session-length/" class="dim link mid-gray">日本語</a>
+        
+      
       </li>
             
     </ul>
@@ -506,31 +518,31 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article explains visit session length in AudienceStream
+      This article explains visit session length in AudienceStream.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h3 id="how-it-works">How it works</h3>
+  <h2 id="how-it-works">How it works</h2>
 <p>Session length determines when AudienceStream ends a visit. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.</p>
 <h2 id="session-lengths">Session lengths</h2>
 <p>In AudienceStream, the default session length is set based on the platform that sends the events:</p>
 <ul>
-<li><strong>Web</strong>: 30 min (10 min if one event and no follow-up events)</li>
-<li><strong>Mobile App</strong>: 2 min</li>
-<li><strong>Omnichannel</strong>: 1 min</li>
-<li><strong>File Import</strong>: 1 min</li>
-<li><strong>Collect API</strong>: 30 min</li>
+<li><strong>Web</strong>: 30 minutes (10 minutes if one event and no follow-up events).</li>
+<li><strong>Mobile App</strong>: 2 minutes.</li>
+<li><strong>Omnichannel</strong>: 1 minute.</li>
+<li><strong>File Import</strong>: 1 minute.</li>
+<li><strong>Collect API</strong>: 30 minutes.</li>
 </ul>
 <p>The platform is based on the reserved attribute named <code>platform</code> according to the following values:</p>
 <ul>
-<li><strong>Web</strong> - <code>platform</code> is set to <code>web</code> or not set.</li>
-<li><strong>Mobile</strong> - <code>platform</code> is set to one of <code>android</code>,<code>ios</code>,<code>win</code>,<code>bb10</code>,<code>native_mobile</code>.</li>
+<li><strong>Web</strong>: <code>platform</code> is set to <code>web</code> or not set.</li>
+<li><strong>Mobile</strong>: <code>platform</code> is set to one of the following: <code>android</code>,<code>ios</code>,<code>win</code>,<code>bb10</code>, or <code>native_mobile</code>.</li>
 </ul>
 <h2 id="customize-session-length">Customize session length</h2>
 <p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. For example, to set the session length to five minutes, add the following to the event: <code>&quot;_dc_ttl_&quot;: 300000</code>. The session length cannot be changed after it has been set.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom length, you must omit the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom session length, omit the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
 
 </div>
 
@@ -591,7 +603,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 7, 2025 
+          <p>This page was last updated:  March 18, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -605,8 +617,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#session-lengths" href="javascript:void(0)">Session lengths</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#session-lengths" href="javascript:void(0)">Session lengths</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#customize-session-length" href="javascript:void(0)">Customize session length</a></li>
               </nav>
   </aside></nav>
