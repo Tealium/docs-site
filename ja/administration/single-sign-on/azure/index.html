@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Azure IdPとのSSO設定 | シングルサインオン (SSO) | Tealiumドキュメント</title>
+    <title>Azure IdPとのSSO構成 | シングルサインオン (SSO) | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -181,7 +181,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Azure IdPとのSSO設定</h1>
+<h1 class="lh-title mt30 mb3">Azure IdPとのSSO構成</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -189,21 +189,21 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、新しいTealium SSO接続を作成するためのメタデータファイルにアクセスし、ダウンロードするためのAzureの設定方法について説明します。
+      この記事では、新しいTealium SSO接続を作成するためのメタデータファイルにアクセスしてダウンロードするためにAzureを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><a href="/ja/administration/single-sign-on/sso/#step-1-configure-your-idp">SSOの設定: ステップ1</a>でTealiumのメタデータファイルをダウンロードした後、以下の手順を完了してAzureをTealium SSOで使用するように設定します：</p>
+  <p><a href="/ja/administration/single-sign-on/sso/#step-1-configure-your-idp">SSOの構成：ステップ1</a>でTealiumのメタデータファイルをダウンロードした後、以下の手順でAzureをTealium SSOで使用するように構成します：</p>
 <ol>
 <li>Azureアカウントにログインし、<strong>Identity &gt; Applications &gt; Enterprise applications &gt; All applications</strong>に移動します。</li>
 <li><strong>+ New Application</strong>をクリックします。</li>
 <li><strong>+ Create your own application</strong>をクリックします。</li>
-<li>アプリケーション名を入力します。アプリケーションが何のために作成されたのかを他の人が知ることができる名前を推奨します。例えば、<code>tealium</code>、<code>tealium-iq-user-federation</code>などです。
+<li>アプリケーション名を入力します。他のユーザーがその目的を理解できるような名前を付けることをお勧めします。例えば、<code>tealium</code>, <code>tealium-iq-user-federation</code>などです。
 <figure><a class="slb" href="/images/iq-tag-management/administration/security/azure-application-name.png"><img src="/images/iq-tag-management/administration/security/azure-application-name.png"
-         alt="Azure  applications name screen"
-         title="Azure  applications name screen"/>
+         alt="Azure applications name screen"
+         title="Azure applications name screen"/>
     </a>
 </figure></li>
 <li>**Integrate any other application you don&rsquo;t find in the gallery (Non-gallery)**が選択されていることを確認します。</li>
@@ -215,13 +215,13 @@
          title="Azure SAML screen"/>
     </a>
 </figure></li>
-<li><strong>Set up Single Sign-On with SAML</strong>画面で、<strong>Upload metadata file</strong>をクリックします。<a href="/ja/administration/single-sign-on/sso/#step-1-configure-your-idp">SSOの設定: ステップ1</a>でダウンロードしたメタデータファイルをアップロードします。
+<li><strong>Set up Single Sign-On with SAML</strong>画面で、<strong>Upload metadata file</strong>をクリックします。<a href="/ja/administration/single-sign-on/sso/#step-1-configure-your-idp">SSOの構成：ステップ1</a>でダウンロードしたメタデータファイルをアップロードします。
 <figure><a class="slb" href="/images/iq-tag-management/administration/security/azure-metadata.png"><img src="/images/iq-tag-management/administration/security/azure-metadata.png"
          alt="Azure metadata upload screen"
          title="Azure metadata upload screen"/>
     </a>
 </figure></li>
-<li>Tealiumのメタデータファイルをアップロードすると、アップロードしたファイルから基本的なSAML設定情報が表示されます。これらの設定を変更する必要はありません。
+<li>Tealiumのメタデータファイルをアップロードすると、アップロードされたファイルから基本的なSAML構成情報が表示されます。これらの構成を変更する必要はありません。
 <figure><a class="slb" href="/images/iq-tag-management/administration/security/azure-saml-configuration.png"><img src="/images/iq-tag-management/administration/security/azure-saml-configuration.png"
          alt="Azure SAML configuration screen"
          title="Azure SAML configuration screen"/>
@@ -233,9 +233,9 @@
     </a>
 </figure></li>
 <li><strong>Save</strong>をクリックします。</li>
-<li><strong>Test single sign-on</strong>ダイアログで、<strong>No, I&rsquo;ll test later</strong>をクリックします。</li>
+<li><strong>Test single sign-on</strong>ウィンドウで、<strong>No, I&rsquo;ll test later</strong>をクリックします。</li>
 <li><strong>Set up Single Sign-On with SAML</strong>画面で、<strong>Attributes &amp; Claims</strong>セクションに移動し、編集アイコンをクリックします。</li>
-<li><strong>+ Add new claim</strong>をクリックし、以下の設定で新しいクレームを追加します：
+<li><strong>+ Add new claim</strong>をクリックし、以下の構成で新しいクレームを追加します：
 <ul>
 <li><strong>Claim name</strong>: <code>email</code></li>
 <li><strong>Type</strong>: <code>SAML</code></li>
@@ -248,8 +248,14 @@
          title="Azure download metadata screen"/>
     </a>
 </figure></li>
-<li>このファイルをコンピュータに保存します。このファイルは、<a href="/ja/administration/single-sign-on/sso/#step-2-connect-to-your-idp">Tealium SSO設定</a>を完了するために使用します。</li>
+<li>このファイルをコンピュータに保存します。このファイルを使用して、<a href="/ja/administration/single-sign-on/sso/#step-2-connect-to-your-idp">Tealium SSO構成</a>を完了します。</li>
 </ol>
+<p>以下の例は、動作する構成を示しています：</p>
+<figure><a class="slb" href="/images/iq-tag-management/administration/security/azure-attributes-and-claims.png"><img src="/images/iq-tag-management/administration/security/azure-attributes-and-claims.png"
+         alt="Azure attributes and claims screen"
+         title="Azure attributes and claims screen"/>
+    </a>
+</figure>
 
 </div>
 
@@ -310,7 +316,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -533,7 +539,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   

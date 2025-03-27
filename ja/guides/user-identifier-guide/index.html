@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ユーザー識別子の選択におけるベストプラクティス | ガイド | Tealiumドキュメント</title>
+    <title>ユーザー識別子の選択に関するベストプラクティス | ガイド | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -159,7 +159,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">ユーザー識別子の選択におけるベストプラクティス</h1>
+<h1 class="lh-title mt30 mb3">ユーザー識別子の選択に関するベストプラクティス</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -167,104 +167,104 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このガイドでは、訪問のID属性に最適なユーザー識別子を選択するためのベストプラクティスを提供します。
+      このガイドでは、訪問のID属性に最適なユーザー識別子を選択するためのベストプラクティスについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="ユーザー識別子について">ユーザー識別子について</h2>
-<p>ユーザー識別子は、Tealiumのインストールにおけるデータレイヤー変数で、デバイス、プラットフォーム、ブラウザー間でユーザーを一意に識別します。</p>
-<p>ユーザー識別子は、訪問プロファイルの訪問ID属性を構成するために使用されます。訪問のスティッチングは、訪問ID属性を使用して、訪問ID値が一致する複数のデバイスとブラウザーからの訪問プロファイルを結合します。</p>
-<p>次の図は、ユーザー識別子 <code>hashed_email_address</code>（イベント属性）によって訪問ID属性 <code>Hashed email address</code> が構成される例を示しています：</p>
+<p>ユーザー識別子は、デバイス、プラットフォーム、ブラウザー間でユーザーを一意に識別するTealiumインストールのデータレイヤー変数です。</p>
+<p>ユーザー識別子は、訪問プロファイルの訪問ID属性を構成するために使用されます。訪問スティッチングは、訪問ID属性を使用して、一致する訪問ID値を持つ複数のデバイスおよびブラウザーからの訪問プロファイルを結合します。</p>
+<p>次の図は、ユーザー識別子 <code>hashed_email_address</code>（イベント属性）によって構成される訪問ID属性 <code>Hashed email address</code> の例を示しています：</p>
 <figure><a class="slb" href="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"><img src="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"/>
     </a>
 </figure>
-<p>ユーザー識別子はTealiumによって自動的に作成または構成されません。これらの属性は、あなたのユースケースに基づいて構成する必要があります。</p>
+<p>ユーザー識別子はTealiumによって自動的に作成または構成されるものではありません。これらの属性は、使用事例に基づいて構成する必要があります。</p>
 <h3 id="要件">要件</h3>
-<p>ユーザー識別子は以下の要件を満たす必要があります：</p>
+<p>ユーザー識別子は、以下の要件を満たす必要があります：</p>
 <ul>
-<li>訪問ごとに一意であること。</li>
-<li>長さが最低6文字で、少なくとも3つの一意の文字を含むこと。</li>
+<li>各訪問に対して一意であること。</li>
+<li>最低6文字の長さで、少なくとも3つの一意の文字を含むこと。</li>
 <li>プラットフォーム、デバイス、ブラウザー間で一貫した大文字小文字を持つこと。</li>
-<li>すべてのデータソース間で持続すること。</li>
+<li>すべてのデータソースで持続すること。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザー識別子が一意でない場合、訪問のスティッチングプロセスが誤って2つの関連性のないプロファイルを結合する可能性があり、これは元に戻すことができません。</p>
-<p>詳細については、<a href="/ja/server-side/visitor-stitching/about/">訪問のスティッチングについて</a>と<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザー識別子が一意でない場合、訪問スティッチングプロセスは誤って2つの関連性のないプロファイルを結合する可能性があり、これは元に戻すことができません。</p>
+<p>詳細については、<a href="/ja/server-side/visitor-stitching/about/">訪問スティッチングについて</a>および<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を参照してください。</p>
 <h2 id="ユーザー識別子の選択方法">ユーザー識別子の選択方法</h2>
-<p>ユーザー識別子を選択するために、あなたのウェブサイト、アプリ、またはストアの訪問に対して現在収集している識別子をリストアップします。次に、各識別子について以下を決定します：</p>
+<p>ユーザー識別子を選択するには、ウェブサイト、アプリ、または店舗の訪問に対して現在収集している識別子をリストアップします。次に、各識別子について以下を決定します：</p>
 <ul>
-<li>値は訪問ごとに一意ですか？</li>
-<li>それはすべてのデータソースから利用可能ですか？</li>
+<li>各訪問に対して値が一意であるか？</li>
+<li>すべてのデータソースから利用可能か？</li>
 </ul>
-<p>あなたのビジネスのすべてのエリアに共通で、各訪問に一意の値を持つ識別子を選択します。例えば、メールアドレスや電話番号はあなたのウェブサイト、モバイルアプリ、またはあなたのビジネスでの対面のやり取りから来ることがあります。</p>
-<p>識別子はまた、オンラインと店舗での購入など、異なるソースからの訪問がスティッチングされるように、すべてのデータソースから利用可能であるべきです。</p>
+<p>ビジネスのすべての領域に共通の識別子を選択し、各訪問に対して一意の値を持つものを選びます。たとえば、メールアドレスや電話番号は、ウェブサイト、モバイルアプリ、またはビジネスでの対面のやり取りから得られる可能性があります。</p>
+<p>識別子は、オンラインおよび店舗での購入など、異なるソースからの訪問がスティッチングされるために、すべてのデータソースから利用可能であることが重要です。</p>
 <h3 id="良いユーザー識別子の例">良いユーザー識別子の例</h3>
 <figure class="fr ma0"><a class="slb" href="/images/server-side/icon-user-identifiers-circle.png"><img src="/images/server-side/icon-user-identifiers-circle.png"
          alt="icon-user-identifiers-circle.png"
          title="icon-user-identifiers-circle.png" class="noshadow" width="200" height="200"/>
     </a>
 </figure>
-<p>以下は良いユーザー識別子の例です：</p>
+<p>以下は良いユーザー識別子です：</p>
 <ul>
-<li>ハッシュ化されたメールアドレス</li>
-<li>ハッシュ化された電話番号</li>
+<li>Hashed email address</li>
+<li>Hashed phone number</li>
 <li>The Trade Desk Unified ID</li>
-<li>顧客ID</li>
-<li>患者ID</li>
-<li>メンバーID</li>
-<li>アカウントID</li>
-<li>学生ID</li>
+<li>Customer ID</li>
+<li>Patient ID</li>
+<li>Member ID</li>
+<li>Account ID</li>
+<li>Student ID</li>
 </ul>
 <p>ユーザー識別子のハッシュ化についての詳細は、<a href="#hash-values-that-contain-pii">PIIを含む値のハッシュ化</a>を参照してください。</p>
-<h3 id="良くないユーザー識別子の例">良くないユーザー識別子の例</h3>
+<h3 id="不適切なユーザー識別子の例">不適切なユーザー識別子の例</h3>
 <p>以下のIDは適切なユーザー識別子ではありません：</p>
 <ul>
-<li>マーケティング活性化ID - ユーザーではなく、マーケティングアクションやキャンペーンのID。例えば、Adobe Marketing Cloud IDやGoogle Client ID。</li>
-<li>ベンダーID - ソフトウェアやサービスベンダーのID。</li>
+<li>マーケティング活動ID - ユーザーではなく、マーケティングアクションやキャンペーン用のIDです。たとえば、Adobe Marketing Cloud IDやGoogle Client IDなどです。</li>
+<li>ベンダーID - ソフトウェアまたはサービスベンダー用のIDです。</li>
 <li>デバイスID - 複数のユーザーによって使用される可能性があります。</li>
-<li>匿名ID - ユーザーが別のデバイスやブラウザからログインすると変わります。</li>
+<li>匿名ID - ユーザーが異なるデバイスやブラウザーからログインすると変更されます。</li>
 </ul>
-<p>マーケティング活性化IDとベンダーIDは良いユーザー識別子にはなりませんが、コネクタアクションで使用するために訪問属性として保存するときには役立ちます。</p>
+<p>マーケティング活動IDとベンダーIDは良いユーザー識別子にはなりませんが、コネクタアクションで使用するために訪問属性として保存すると便利です。</p>
 <h3 id="ユーザー識別子の最大数">ユーザー識別子の最大数</h3>
-<p>ベストプラクティスは、訪問ID属性を最大2つ構成することです。</p>
-<p>2つ以上の訪問IDが使用されると、特定のスティッチングシナリオでは、プロファイルを結合する代わりに2つの別々のプロファイルが作成される可能性があります。</p>
-<p>また、イベントで1つのユーザー識別子のみを構成することも重要です。1つのイベントで複数のユーザー識別子を構成すると、予期しないスティッチング結果につながる可能性があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問のスティッチングを有効にした後、追加の訪問ID属性を追加する前に、Tealiumのカスタマーサクセスチームに相談することをお勧めします。</p>
+<p>ベストプラクティスとしては、最大で2つの訪問ID属性を構成することです。</p>
+<p>2つ以上の訪問IDを使用する場合、特定のスティッチングシナリオでは、プロファイルを結合するのではなく、2つの別々のプロファイルを作成する可能性があります。</p>
+<p>また、イベントで1つのユーザー識別子のみを構成することが重要です。単一のイベントで複数のユーザー識別子を構成すると、予期しないスティッチング結果につながることもあります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問スティッチングを有効にした後、追加の訪問ID属性を追加する前に、Tealiumカスタマーサクセスチームに相談することをお勧めします。</p>
 <h2 id="ユーザー識別子の準備">ユーザー識別子の準備</h2>
-<p>以下のベストプラクティスを使用して、ユーザー識別子を検証し、正規化し、訪問ID属性に割り当てる前に準備します。これらの前処理技術は、あなた自身のコードや拡張機能、エンリッチメントを使用して実装することができます。</p>
+<p>訪問ID属性に割り当てる前に、ユーザー識別子を検証および正規化するためのベストプラクティスを使用します。これらの前処理技術は、独自のコードまたは拡張機能およびエンリッチメントを使用して実装できます。</p>
 <h3 id="メールアドレスの検証">メールアドレスの検証</h3>
-<p>メールアドレスをユーザー識別子として使用する場合、値が有効なメールアドレスであることを確認することがベストプラクティスです。例えば、<code>@</code>記号のチェックや正規表現の使用などです。ユーザー識別子の値が未定義、または他の無効な値である場合、それを訪問ID属性に構成することは避けてください。そうすると、関連性のないプロファイルがスティッチングされる原因となります。</p>
+<p>メールアドレスをユーザー識別子として使用する場合、値が有効なメールアドレスであることを確認することがベストプラクティスです。たとえば、<code>@</code>記号が含まれているかどうかを確認するか、正規表現を使用します。ユーザー識別子の値が未定義である場合や他の無効な値である場合、それを使用して訪問ID属性を構成することは望ましくありません。そうすると、関連性のないプロファイルがスティッチングされる原因となります。</p>
 <p>次の図は、正規表現を使用してメールアドレスを検証するSet Data Values拡張機能の構成の例を示しています：</p>
 <figure><a class="slb" href="/images/guides/uid-guide-set-data-values-config.png"><img src="/images/guides/uid-guide-set-data-values-config.png"/>
     </a>
 </figure>
-<p>この例では、次の正規表現を使用してメールアドレスを検証し、値を構成します：</p>
+<p>この例では、次の正規表現を使用してメールアドレスを検証し、値を構成しています：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
 </code></pre><h3 id="メールアドレスの正規化">メールアドレスの正規化</h3>
-<p>異なるデータソースからの文字列属性（例えばメールアドレス）は、異なる大文字小文字の規則を使用することがあります。例えば、一部は値に大文字を使用し、他の一部はすべて小文字を使用するかもしれません。これらの値を正規化する（すべて小文字に変更する）ことがベストプラクティスです。これは<a href="/ja/iq-tag-management/extensions/extensions-list/lower-casing-extension/">Lower-Casing extension</a>を使用して行います。</p>
-<p>例えば、次のメールアドレスは、小文字に正規化されるまで同一とは見なされません：</p>
+<p>異なるデータソースからの文字列属性（例：メールアドレス）は、異なる大文字小文字の規則を使用する場合があります。たとえば、一部は値に大文字を使用し、他はすべて小文字を使用する場合があります。これらの値を正規化する（すべて小文字に変更する）ことがベストプラクティスです。たとえば、<a href="/ja/iq-tag-management/extensions/extensions-list/lower-casing-extension/">Lower-Casing extension</a>を使用します。</p>
+<p>たとえば、次のメールアドレスは、小文字に正規化されない限り、同じものとは見なされません：</p>
 <ul>
 <li><code>abby.adams@acme.com</code></li>
 <li><code>Abby.Adams@acme.com</code></li>
 <li><code>ABBY.ADAMS@ACME.com</code></li>
 </ul>
-<p>ユーザー識別子の値を構成し、値を正規化する方法については、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値の構成</a>を参照してください。</p>
+<p>ユーザー識別子の値を構成し、値を正規化する方法については、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値を構成する</a>を参照してください。</p>
 <h3 id="電話番号の正規化">電話番号の正規化</h3>
-<p>電話番号をユーザー識別子として使用する場合、値を数字のみに正規化することがベストプラクティスです。電話番号に含まれる文字は、国によって異なります：</p>
+<p>電話番号をユーザー識別子として使用する場合、値を数字のみを含むように正規化することがベストプラクティスです。電話番号に含まれる文字は国によって異なります。たとえば：</p>
 <ul>
-<li>数字のグループは、スペース、ダッシュ、ピリオド、またはこれらの文字の組み合わせで区切られることがあります。</li>
-<li>エリアコードや市外局番は括弧で囲まれ、数字の数は異なることがあります。</li>
-<li>電話番号の数字の数も異なることがあり、固定電話と携帯電話では異なることもあります。</li>
-<li>国コードは通常、<code>+</code>に続く1から4桁の数字で始まります。最初と2番目の数字の間にダッシュがあることがあります。一部の国では、国コードを括弧で囲むことがあります。</li>
+<li>数字のグループはスペース、ダッシュ、ピリオド、またはこれらの文字の組み合わせで区切られる場合があります。</li>
+<li>エリアコードまたは市外局番は括弧で囲まれることがあり、数字の数は異なる場合があります。</li>
+<li>電話番号の数字の数も異なる場合があり、固定電話と携帯電話では異なる場合があります。</li>
+<li>国コードは通常、<code>+</code>に続いて1〜4桁の数字で始まります。最初と2番目の数字の間にダッシュがある場合があります。一部の国では国コードを括弧で囲むことがあります。</li>
 </ul>
-<p>次の表は、電話番号のさまざまな形式がどのように正規化されるべきかを示す例を示しています：</p>
+<p>次の表は、電話番号のさまざまな形式がどのように正規化されるべきかの例を示しています：</p>
 <table>
 <thead>
 <tr>
 <th>国</th>
 <th>番号</th>
-<th>正規化後</th>
+<th>正規化された値</th>
 </tr>
 </thead>
 <tbody>
@@ -306,31 +306,31 @@
 </tbody>
 </table>
 <h3 id="piiを含む値のハッシュ化">PIIを含む値のハッシュ化</h3>
-<p>メールアドレスや電話番号など、個人を特定可能な情報（PII）を含むユーザー識別子は、ユーザーのプライバシーを保護するためにハッシュ化するべきです。ハッシュ関数（例えばSHA256）は、敏感な情報を含むテキスト値を匿名で一意の固定長の文字列に変換し、その一意性を保持します。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>ユーザー識別子は、ハッシュ化する前に正規化されるべきです。</p>
-<p>Crypto拡張機能の使用については、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値の構成</a>と<a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto拡張機能</a>を参照してください。</p>
-<h4 id="crypto拡張機能の例">Crypto拡張機能の例</h4>
-<p>次の例では、<code>customer_email</code>という名前のデータレイヤー変数をハッシュ化します：</p>
+<p>個人を特定できる情報（PII）を含むユーザー識別子、たとえばメールアドレスや電話番号は、ユーザーのプライバシーを保護するためにハッシュ化する必要があります。ハッシュ関数（例：SHA256）は、機密情報を含むテキスト値を匿名で一意の固定長の文字列に変換し、その一意性を保持します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>ユーザー識別子は、ハッシュ化する前に正規化する必要があります。</p>
+<p>Crypto拡張機能の使用についての情報は、<a href="#set-the-value-of-a-user-identifier">ユーザー識別子の値を構成する</a>および<a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto extension</a>を参照してください。</p>
+<h4 id="暗号拡張の例">暗号拡張の例</h4>
+<p>次の例では、<code>customer_email</code> というデータレイヤー変数をハッシュ化しています：</p>
 <pre tabindex="0"><code>&gt; utag_data.customer_email
 &lt; &#34;test@tealium.com&#34;
-</code></pre><p>Crypto拡張機能を構成して<code>customer_email</code>をSHA-1暗号化ハッシュ関数で変換すると、新しい値は次のようになります：</p>
+</code></pre><p>暗号拡張を構成して <code>customer_email</code> をSHA-1 暗号ハッシュ関数を使用して変換すると、新しい値は次のようになります：</p>
 <pre tabindex="0"><code>&gt; utag_data.customer_email
 &lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
-</code></pre><p><code>customer_email</code>を保持し、ハッシュ値を作成するには、<code>customer_email_hash</code>という名前の2つ目の変数を使用します。まず、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a>を使用してハッシュ変数<code>customer_email_hash</code>を<code>customer_email</code>の値に初期化し、次にCrypto拡張機能でそれをハッシュ化します。これにより、新しいハッシュ値を作成した後も元の値が保持されます：</p>
+</code></pre><p><code>customer_email</code> を保持し、ハッシュ値を作成するには、<code>customer_email_hash</code> という名前の第二の変数を使用します。まず、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a>を使用してハッシュ変数 <code>customer_email_hash</code> を <code>customer_email</code> の値に初期化し、その後で暗号拡張でハッシュ化します。これにより、新しいハッシュ値を作成した後も元の値を保持できます：</p>
 <pre tabindex="0"><code>&gt; utag_data.customer_email
 &lt; &#34;test@tealium.com&#34;
 &gt; utag_data.customer_email_hash
 &lt; &#34;05fcf31275aa13408ace62e84dac60ae4b805a65&#34;
 </code></pre><h2 id="ユーザー識別子の値を構成する">ユーザー識別子の値を構成する</h2>
-<p>以下の図は、データレイヤー変数を構成し、それをユーザー識別子として使用する例を示しています。値を構成し、値を小文字にし、値をハッシュ化するために3つの拡張機能を使用します。</p>
+<p>次の図は、データレイヤー変数を構成し、値を小文字にし、値をハッシュ化するために3つの拡張を使用してユーザー識別子として使用されるデータレイヤー変数の値を構成する例を示しています。</p>
 <figure><a class="slb" href="/images/guides/uid-guide-lowercase-hash-set-datalayer-variable.png"><img src="/images/guides/uid-guide-lowercase-hash-set-datalayer-variable.png"/>
     </a>
 </figure>
-<p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a>と<a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto extension</a>を参照してください。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a> および <a href="/ja/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto extension</a> を参照してください。</p>
 <h2 id="資格イベントで訪問idを構成する">資格イベントで訪問IDを構成する</h2>
-<p>訪問IDは、資格イベント中にのみ構成する必要があります。資格イベントは、アカウントを作成したり、購入を完了したりするなど、顧客が信頼性のある識別手段を提供するときに発生します。</p>
-<p>例えば、ユーザーが購入時にメールアドレスを提供した場合、そのメールアドレスは、<a href="#verify-and-normalize-email-addresses">Verify and normalize email addresses</a>と<a href="#hash-user-identifiers-that-contain-pii">Hash user identifiers that contain PII</a>で説明されているように、小文字に変換され、ハッシュ化されます。購入イベントが発生したときに、ユーザー識別子の値を訪問ID属性に構成するためにエンリッチメントを使用します。</p>
-<p>以下の図は、購入イベントが発生したときに値を構成するエンリッチメントを持つ訪問ID属性の例を示しています：</p>
+<p>訪問IDは、資格イベントが発生したときにのみ構成されるべきです。資格イベントは、アカウントの作成や購入の完了など、信頼できる識別手段を顧客が提供するときに発生します。</p>
+<p>例えば、購入時にユーザーがメールアドレスを提供する場合、そのメールアドレスは小文字にされ、ハッシュ化されます。これは、<a href="#verify-and-normalize-email-addresses">Verify and normalize email addresses</a> および <a href="#hash-user-identifiers-that-contain-pii">Hash user identifiers that contain PII</a> で説明されています。購入イベントが発生したときにユーザー識別子の値を訪問ID属性に構成するためにエンリッチメントを使用します。</p>
+<p>次の図は、購入イベントが発生したときに値を構成するエンリッチメントを持つ訪問ID属性の例を示しています：</p>
 <figure><a class="slb" href="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"><img src="/images/guides/uid-guide-set-visitor-id-attribute-at-purchase.png"/>
     </a>
 </figure>
@@ -400,7 +400,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -418,7 +418,7 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E9%81%B8%E6%8A%9E%E6%96%B9%E6%B3%95" href="javascript:void(0)">ユーザー識別子の選択方法</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%89%AF%E3%81%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E4%BE%8B" href="javascript:void(0)">良いユーザー識別子の例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%89%AF%E3%81%8F%E3%81%AA%E3%81%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E4%BE%8B" href="javascript:void(0)">良くないユーザー識別子の例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%8D%E9%81%A9%E5%88%87%E3%81%AA%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E4%BE%8B" href="javascript:void(0)">不適切なユーザー識別子の例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E6%9C%80%E5%A4%A7%E6%95%B0" href="javascript:void(0)">ユーザー識別子の最大数</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E6%BA%96%E5%82%99" href="javascript:void(0)">ユーザー識別子の準備</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">メールアドレスの検証</a></li>
@@ -640,7 +640,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   

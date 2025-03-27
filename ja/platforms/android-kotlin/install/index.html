@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -201,7 +201,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Android（Kotlin）用のTealium SDKのインストール方法を学びます。
+      Tealium SDK for Android (Kotlin)のインストール方法を学びます。
     </p>
   
 </div>
@@ -212,22 +212,22 @@
 <li><a href="https://developer.android.com/studio">Android Studio</a></li>
 <li>Android SDK (Lollipop/5.0+ / API Level 21+)</li>
 <li><a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/">Tealium iQ Mobile Profile</a></li>
-<li><a href="/ja/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub account</a></li>
+<li><a href="/ja/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub アカウント</a></li>
 </ul>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>Android（Kotlin）の<a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">サンプルアプリ</a>を探索して、Tealiumライブラリ、トラッキングイベント、ベストプラクティスの実装についての知識を深めます。</p>
-<p>さらに、Tealiumの機能をすべて中央のヘルパークラスに抽象化することをお勧めします。私たちの<a href="https://github.com/Tealium/tealium-kotlin/blob/master/mobile/src/main/java/com/tealium/mobile/TealiumHelper.kt">サンプルヘルパークラス</a>を探索してみてください。</p>
+<p>Android (Kotlin)の<a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">サンプルアプリ</a>を探索して、Tealiumライブラリ、イベントのトラッキング、およびベストプラクティスの実装についての知識を深めましょう。</p>
+<p>さらに、Tealiumの機能を中央のヘルパークラスに抽象化することをお勧めします。私たちの<a href="https://github.com/Tealium/tealium-kotlin/blob/master/mobile/src/main/java/com/tealium/mobile/TealiumHelper.kt">サンプルヘルパークラス</a>を探索してください。</p>
 <h2 id="コードの取得">コードの取得</h2>
-<p><a href="https://github.com/Tealium/tealium-kotlin">Tealium Androidライブラリ</a>をクローンします。ダウンロードするのではなく、ライブラリをクローンすることで、将来のリリースに簡単に更新できます。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>TealiumクラスとAndroid用のTealiumメソッドの完全なリストについては、<a href="/ja/platforms/android-kotlin/api/">Tealium API</a>を参照してください。</p>
+<p><a href="https://github.com/Tealium/tealium-kotlin">Tealium Androidライブラリ</a>をクローンします。ライブラリをダウンロードするのではなく、クローンすることで将来のリリースに簡単に更新できます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Android用Tealiumクラスとメソッドの完全なリストについては、<a href="/ja/platforms/android-kotlin/api/">Tealium API</a>を参照してください。</p>
 <h2 id="インストール">インストール</h2>
-<p>Tealium Kotlinライブラリはモジュールに分割されています。可能な限り最小のインストールサイズを維持するために、必要な機能を達成するために必要なモジュールのみをインストールすることをお勧めします。</p>
-<p>Tealium KotlinライブラリはMavenまたは手動でインストールします。</p>
+<p>Tealium Kotlinライブラリはモジュールに分かれています。可能な限りインストールサイズを小さく保つために、必要な機能を実現するために必要なモジュールのみをインストールすることをお勧めします。</p>
+<p>Mavenまたは手動でTealium Kotlinライブラリをインストールします。</p>
 <h3 id="maven">Maven</h3>
-<p>Android用のTealiumライブラリをMavenでインストールするには（推奨）：</p>
+<p>Android用TealiumライブラリをMavenでインストールするには（推奨）：</p>
 <ol>
 <li>
-<p>プロジェクトのトップレベルの <code>build.gradle</code> ファイルにTealium Maven URLを追加します：</p>
+<p>Tealium Maven URLをプロジェクトのトップレベルの<code>build.gradle</code>ファイルに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
@@ -238,17 +238,17 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>プロジェクトモジュールの <code>build.gradle</code> ファイルに、次のMaven依存関係を追加します：</p>
+<p>プロジェクトモジュールの<code>build.gradle</code>ファイルに次のMaven依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium:kotlin-core:1.6.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ol>
 <h3 id="手動">手動</h3>
-<p>Android用のTealiumライブラリを手動でインストールするには：</p>
+<p>Android用Tealiumライブラリを手動でインストールするには：</p>
 <ol>
 <li>
-<p>プロジェクトルートの <code>build.gradle</code> ファイルに <code>flatDir</code> を追加します：</p>
+<p><code>flatDir</code>をプロジェクトルートの<code>build.gradle</code>ファイルに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
@@ -259,18 +259,18 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p><code>tealium-kotlin-1.5.x.aar</code> を <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> に追加します。</p>
+<p><code>tealium-kotlin-1.5.x.aar</code>を<code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に追加します。</p>
 </li>
 <li>
-<p><code>build.gradle</code> ファイルにTealiumライブラリの依存関係を追加します：</p>
+<p><code>build.gradle</code>ファイルにTealiumライブラリの依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      implementation<span style="color:#f92672">(</span>name:<span style="color:#e6db74">&#39;tealium-kotlin-1.6.0&#39;</span><span style="color:#f92672">,</span> ext:<span style="color:#e6db74">&#39;aar&#39;</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ol>
 <h2 id="初期化">初期化</h2>
-<p>Tealiumを初期化するには、<a href="/ja/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a>インスタンスを設定し、それを<a href="/ja/platforms/android-kotlin/api/tealium/"><code>Tealium</code></a>インスタンスに渡します。アプリのグローバルアプリケーションクラスの <code>onCreate()</code> メソッド内でTealium Kotlinライブラリを初期化することをお勧めします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>トラッキングヘルパークラスを使用して<a href="/ja/platforms/android-kotlin/api/tealium/#class-tealium"><code>Tealium</code></a>インスタンスを管理します。これにより、Tealium Kotlinライブラリの単一のエントリポイントが提供され、将来のアップグレードが簡素化されます。</p>
+<p>Tealiumを初期化するには、<a href="/ja/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a>インスタンスを構成し、それを<a href="/ja/platforms/android-kotlin/api/tealium/"><code>Tealium</code></a>インスタンスに渡します。Tealium Kotlinライブラリは、アプリのグローバルアプリケーションクラスの<code>onCreate()</code>メソッド内で初期化することをお勧めします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>トラッキングヘルパークラスを使用して<a href="/ja/platforms/android-kotlin/api/tealium/#class-tealium"><code>Tealium</code></a>インスタンスを管理し、Tealium Kotlinライブラリのシングルポイントエントリを提供し、将来のアップグレードを簡素化します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> tealium: Tealium
@@ -288,62 +288,12 @@
 </span></span><span style="display:flex;"><span>    tealium = <span style="color:#a6e22e">Tealium</span>.create(<span style="color:#e6db74">&#34;tealium_instance&#34;</span>, tealiumConfig)
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>以下を置き換えます：</p>
+</span></span></code></pre></div><p>次の項目を置き換えてください：</p>
 <ul>
-<li><code>ACCOUNT</code>: ライブラリを初期化するために使用したいTealiumアカウント名（小文字）。</li>
-<li><code>PROFILE</code>: ライブラリを初期化するために使用したいTealiumプロファイル名（小文字）。</li>
+<li><code>ACCOUNT</code>: ライブラリを初期化するために使用するTealiumアカウント名（小文字）。</li>
+<li><code>PROFILE</code>: ライブラリを初期化するために使用するTealiumプロファイル名（小文字）。</li>
 <li><code>DATASOURCE_ID</code>: TealiumデータソースID。</li>
 </ul>
-<h2 id="ディスパッチャー">ディスパッチャー</h2>
-<p>データをTealiumエコシステムに送信するには、以下のディスパッチャーから選択します：</p>
-<ul>
-<li><strong>Tag Management</strong> <br>
-<a href="/ja/platforms/android-kotlin/module-list/tag-management/">TagManagement Dispatcher</a>を追加して、Tealium iQ Tag Managementを使用し、そのタグ管理設定ロジックを利用します。</li>
-<li><strong>Collect</strong><br>
-<a href="/ja/platforms/android-kotlin/module-list/collect/">Collect Dispatcher</a>を追加して、Tealium Customer Data Hubのサーバーサイドソリューションを使用します。</li>
-</ul>
-<h2 id="ログレベル">ログレベル</h2>
-<p>ログレベルは <code>TealiumConfig</code> インスタンスからの環境に設定されます。</p>
-<p>異なるログレベルを使用するには、<a href="/ja/platforms/android-kotlin/api/tealium-config/#loglevel"><code>logLevel</code></a>プロパティを設定します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>config.logLevel = <span style="color:#a6e22e">LogLevel</span>.DEV <span style="color:#75715e">// or LogLevel.QA, LogLevel.PROD
-</span></span></span></code></pre></div><h2 id="クッキー">クッキー</h2>
-<p>クッキーはデフォルトでwebviewで有効になっています。</p>
-<h2 id="イベントバッチング">イベントバッチング</h2>
-<p>イベントバッチングは、<code>TealiumConfig</code> インスタンス上でローカルに設定するか、または<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/">Mobile Publish Settings</a>を使用してリモートで設定できます。バッチサイズを1より大きい値に設定すると有効になります。キュー内のイベント数がバッチサイズと等しいときにイベントがディスパッチされます。</p>
-<p>以下は、ローカルでバッチングを設定するときの可能なオプションを示しています：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">TealiumHelper</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> tealium: Tealium
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">init</span>(app: Application) {
-</span></span><span style="display:flex;"><span>            config.overrideDefaultLibrarySettings = LibrarySettings(
-</span></span><span style="display:flex;"><span>                batching = Batching(
-</span></span><span style="display:flex;"><span>                    batchSize = <span style="color:#ae81ff">10</span>,             <span style="color:#75715e">// send in batches of 10 (default: 1)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    maxQueueSize = <span style="color:#ae81ff">1000</span>,        <span style="color:#75715e">// maximum of 1000 queued events (default: 100)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    expiration = <span style="color:#a6e22e">TimeUnit</span>.DAYS  <span style="color:#75715e">// queue for a maxumum of 5 days (default: 86400)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        .toSeconds(<span style="color:#ae81ff">5</span>).toInt()     
-</span></span><span style="display:flex;"><span>                )
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="javaからの移行">Javaからの移行</h2>
-<p><a href="https://github.com/Tealium/tealium-android">Javaライブラリ</a>からKotlinライブラリに移行するとき、以下の保存データが自動的に移行されます：</p>
-<ul>
-<li>同意の設定</li>
-<li>ライフサイクルデータ</li>
-<li>永続データ
-* <a href="/ja/platforms/android-java/data-management/#persistent-data">Persistent Data</a> APIを通じて追加されたカスタム永続データ
-* Tealium永続データ：<code>app_uuid</code>, <code>tealium_visitor_id</code></li>
-</ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Kotlinライブラリへの移行が完了すると、Javaライブラリからのレガシーデータは削除されます。その後、Javaライブラリに戻ると、新しい <code>tealium_visitor_id</code> と <code>app_uuid</code> が生成され、カスタム永続データが失われます。</p>
-<h2 id="android-wear">Android Wear</h2>
-<p>Android Wearアプリの場合、データ収集にはCollectモジュールを使用します。Android Wear OSがwebviewのサポートを提供していないため、Tag Managementモジュールはサポートされていません。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Androidを使用してAndroid Wearアプリを開発している場合、<a href="https://developer.android.com/training/wearables/apps/creating">Googleは</a>スタンドアロンアプリの作成を推奨しています。</p>
-<h2 id="マルチプロセスアプリ">マルチプロセスアプリ</h2>
-<h4 id="android-9-マルチプロセスアプリケーション">Android 9+ マルチプロセスアプリケーション</h4>
-<p>Android 9では、マルチプロセスアプリケーションの <code>WebView</code> データディレクトリに関する動作の変更が導入されました。この変更により、<code>WebView</code> は複数のプロセス間で単一のデータディレクトリを共有しなくなりました。通常、<code>WebView</code> を使用するすべてのアクティビティを同じプロセスに配置することをお勧めします。</p>
-<p>Tag Managementモジュールを使用し、<code>WebView</code> の追加インスタンスを実装する場合、アプリがクラッシュするのを防ぐために、Tealiumインスタンスを作成する前に <code>WebView.setDataDirectorySuffix()</code> を呼び出すことをお勧めします。</p>
-<p>Tag Managementモジュールからクッキーとウェブデータにアクセスする必要がある場合は、<code>CookieManager.getCookie()</code> および <code>CookieManager.setCookie()</code> メソッドを使用してプロセス間でコピーします。</p>
-<p>詳細については、<a href="https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs">Web-based data directories separated by process</a>を参照してください。</p>
 
 </div>
 
@@ -389,7 +339,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -410,13 +360,6 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#maven" href="javascript:void(0)">Maven</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95" href="javascript:void(0)">手動</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%82%A3%E3%82%B9%E3%83%91%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC" href="javascript:void(0)">ディスパッチャー</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%83%AC%E3%83%99%E3%83%AB" href="javascript:void(0)">ログレベル</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">クッキー</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%90%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントバッチング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#java%E3%81%8B%E3%82%89%E3%81%AE%E7%A7%BB%E8%A1%8C" href="javascript:void(0)">Javaからの移行</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-wear" href="javascript:void(0)">Android Wear</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%A2%E3%83%97%E3%83%AA" href="javascript:void(0)">マルチプロセスアプリ</a></li>
               </nav>
   </aside></nav>
 
@@ -629,7 +572,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   

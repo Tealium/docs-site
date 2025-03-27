@@ -468,56 +468,88 @@
 
   
     <p class="f4 fw3 lh-copy">
-      同意構成マネージャーは、あなたのウェブサイトにトラッキング構成オプションを簡単にデプロイすることができます。顧客は、許可するタグのカテゴリを指定することができます。このツールは、構成ポップアップを生成するコードを完全にカスタマイズし、グローバルな顧客向けにコンテンツを翻訳する能力を提供します。
+      同意構成マネージャーは、ウェブサイトにトラッキング構成オプションを簡単に展開することができます。顧客は許可するタグのカテゴリを指定できます。このツールは、構成ポップアップを生成するコードをカスタマイズする完全なアクセス権と、グローバルな顧客向けにコンテンツを翻訳する能力を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>同意構成マネージャーは、<a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/">Consent Prompt Manager</a>と連携して、顧客にトラッキングオプションを提示し、以前に<a href="/ja/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager extension</a>で提供されていた機能を置き換えます。</p>
-<p>同意構成マネージャーは、タグを<code>Analytics</code>、<code>Display Ads</code>、<code>Email Marketing</code>などの機能と目的に基づいてカテゴリに分けます。これらのカテゴリは顧客に提示され、トラッキングを許可するか否定するかを切り替えるボタンとして表示されます。例えば、ユーザーが<code>Marketing</code>カテゴリをオプトアウトすると、マーケティングカテゴリに分類されたタグは抑制されます。必要に応じて、顧客は同意構成ポップアップを使用して、許可するトラッキングの種類についての選択を引き続きアクセスすることができます。</p>
+<p>同意構成マネージャーは、<a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/">明示的同意プロンプトマネージャー</a>と連携して、顧客にトラッキングオプションを提示し、以前の<a href="/ja/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">プライバシーマネージャー拡張機能</a>の機能を置き換えます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>cmGeneral</code>の新しいバージョンでは、同意構成マネージャーは明示的同意プロンプトマネージャーが必要です。これは、彼らが共有する強制ルールのためです。明示的同意プロンプトが無効の場合、同意構成マネージャーは期待通りに動作しません。明示的同意プロンプトを表示せずに同意構成マネージャーを使用するには、以下の<a href="#use-the-consent-preferences-manager-without-showing-the-explicit-consent-prompt">明示的同意プロンプトを表示せずに同意構成マネージャーを使用する</a>セクションを参照してください。</p>
+<p>同意構成マネージャーは、<code>Analytics</code>、<code>Display Ads</code>、または<code>Email Marketing</code>などの機能と目的に基づいてタグをカテゴリに分類します。これらのカテゴリは顧客に提示され、トラッキングを許可または禁止するためのトグルボタンとして表示されます。たとえば、ユーザーが<code>Marketing</code>カテゴリのオプトアウトを選択した場合、マーケティングカテゴリに分類されたタグは抑制されます。必要に応じて、顧客は同意構成ポップアップを使用して、許可するトラッキングの種類についての選択を再アクセスすることができます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>同意構成マネージャーは、オプトアウトしたカテゴリのタグの読み込みを自動的に抑制します。</p>
-<p>構成ポップアップの例:</p>
+<p>構成ポップアップの例：</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-preferences-prompt.png"><img src="/images/iq-tag-management/consent-preferences-prompt.png"
-         alt="Consent Preferences Prompt"
-         title="Consent Preferences Prompt" width="451" height="322"/>
+         alt="同意構成プロンプト"
+         title="同意構成プロンプト" width="451" height="322"/>
     </a>
 </figure>
-<p>iQ Tag Management Consent Preferences Managerは、既存のインストールを使用して、トラッキング構成プロンプトの作成とデプロイを簡素化します。公開後、ページコードにシンプルなJavaScript関数呼び出しを追加してポップアップをトリガーします。</p>
-<h2 id="eventstreamの同意カテゴリ">EventStreamの同意カテゴリ</h2>
-<p>同意構成の変更は、Tealium EventStreamコネクタによっても認識されます。コネクタアクションの同意カテゴリは、<strong>Action</strong>構成画面に表示されます：</p>
+<p>iQタグ管理の同意構成マネージャーは、既存のインストールを使用してウェブサイトにトラッキング構成プロンプトの作成と展開を簡素化します。公開後、ページコードに単純なJavaScript関数呼び出しを追加してポップアップをトリガーします。</p>
+<h2 id="明示的同意プロンプトを表示せずに同意構成マネージャーを使用する">明示的同意プロンプトを表示せずに同意構成マネージャーを使用する</h2>
+<p><code>cmGeneral</code>の最近のバージョンでは、同意構成マネージャーは明示的同意プロンプトマネージャーが必要です。これは、彼らが共有する強制ルールのためです。</p>
+<p>明示的同意プロンプトを表示せずに同意構成マネージャーを使用するには、<strong>Before Load Rules</strong>にスコープされたJavaScript Code拡張機能に次のコードを追加し、一度実行するように構成します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// SCOPE: Before Load Rules (run once)  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">consent_prompt</span>.<span style="color:#a6e22e">noShow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkForLoadedConsent</span>() { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foundDecision</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">!!</span><span style="color:#a6e22e">foundDecision</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkForImplicitDecision</span>() { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foundDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">checkForLoadedConsent</span>(); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foundExplicitDecision</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span> <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>        window.<span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;explicit&#39;</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">foundDecision</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">foundExplicitDecision</span>; 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showPreferences</span>() { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">utag</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">showConsentPreferences</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">showConsentPreferences</span>(); 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// If the decision is only implicit, pop up the Preferences Modal to prompt a decision  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">checkForLoadedConsent</span>()) { 
+</span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;consent_loaded&#39;</span>, (<span style="color:#a6e22e">event</span>) =&gt; { 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">checkForImplicitDecision</span>() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getEnforcementMode</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;opt-in&#39;</span>) 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">showPreferences</span>(); 
+</span></span><span style="display:flex;"><span>    }); 
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">checkForImplicitDecision</span>() <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getEnforcementMode</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;opt-in&#39;</span>) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">showPreferences</span>(); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="eventstream同意カテゴリ">EventStream同意カテゴリ</h2>
+<p>同意構成の変更はTealium EventStreamコネクタにも適用されます。コネクタアクションの同意カテゴリは、<strong>Action</strong>構成画面に表示されます：</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-categories-connector-action.png"><img src="/images/iq-tag-management/consent-categories-connector-action.png"
-         alt="Connector Action"
-         title="Connector Action"/>
+         alt="コネクタアクション"
+         title="コネクタアクション"/>
     </a>
 </figure>
-<p>顧客が同意カテゴリの構成を行うと、それらは後続のサーバーサイドリクエストに含まれます。顧客がオプトインしたカテゴリのコネクタアクションのみがトリガーされます。</p>
+<p>顧客が同意カテゴリ構成を行うと、それらはサーバーサイドのリクエストに含まれます。顧客がオプトインしたカテゴリのコネクタアクションのみがトリガーされます。</p>
 <h4 id="例">例</h4>
-<p><code>Analytics</code>と<code>Personalization</code>の2つのコネクタを構成しています。顧客は、構成フォームで<code>Analytics</code>のトラッキングを許可するが、<code>Personalization</code>は許可しないという部分的な同意を与えます。</p>
+<p><code>Analytics</code>と<code>Personalization</code>の2つのコネクタが構成されているとします。顧客が構成フォームで部分的に同意し、<code>Analytics</code>のトラッキングは許可しますが、<code>Personalization</code>は許可しません。</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-server-side-categories-example.png"><img src="/images/iq-tag-management/consent-server-side-categories-example.png"
-         alt="Server-side Categories Example"
-         title="Server-side Categories Example"/>
+         alt="サーバーサイドカテゴリの例"
+         title="サーバーサイドカテゴリの例"/>
     </a>
 </figure>
-<p><code>Analytics</code>カテゴリのコネクタアクションのみがトリガーされます。<code>Personalization</code>とカテゴライズされたコネクタアクションはすべて抑制されます。</p>
-<h2 id="audiencestreamの同意カテゴリ">AudienceStreamの同意カテゴリ</h2>
-<p>Tealium AudienceStreamは<code>CDP</code>同意カテゴリに分類されます。AudienceStreamで属性とコネクタを処理するためには、訪問が<code>CDP</code>カテゴリにオプトインしている必要があります。</p>
-<h2 id="dataaccessの同意カテゴリ">DataAccessの同意カテゴリ</h2>
-<p>EventStoreとEventDBは<code>Big Data</code>同意カテゴリに分類されます。EventStoreとEventDBにイベントデータを保存するためには、訪問が<code>Big Data</code>カテゴリにオプトインしている必要があります。</p>
-<p>AudienceDBは<code>CDP</code>同意カテゴリに分類されます。AudienceDBにオーディエンスデータを保存するためには、訪問が<code>CDP</code>カテゴリにオプトインしている必要があります。</p>
+<p><code>Analytics</code>カテゴリのコネクタアクションのみがトリガーされます。<code>Personalization</code>に分類されるコネクタアクションは抑制されます。</p>
+<h2 id="audiencestream同意カテゴリ">AudienceStream同意カテゴリ</h2>
+<p>Tealium AudienceStreamは<code>CDP</code>同意カテゴリに分類されます。AudienceStreamで属性とコネクタを処理するためには、訪問は<code>CDP</code>カテゴリにオプトインしている必要があります。</p>
+<h2 id="dataaccess同意カテゴリ">DataAccess同意カテゴリ</h2>
+<p>EventStoreとEventDBは<code>Big Data</code>同意カテゴリに分類されます。EventStoreとEventDBにイベントデータを保存するためには、訪問は<code>Big Data</code>カテゴリにオプトインしている必要があります。</p>
+<p>AudienceDBは<code>CDP</code>同意カテゴリに分類されます。AudienceDBにオーディエンスデータを保存するためには、訪問は<code>CDP</code>カテゴリにオプトインしている必要があります。</p>
 <h2 id="機能">機能</h2>
-<p>同意構成マネージャーは以下の機能を提供します：</p>
+<p>同意構成マネージャーは次の機能を提供します：</p>
 <ul>
-<li>ディスプレイテンプレート</li>
+<li>表示テンプレート</li>
 <li>カスタマイズ可能なスタイルとレイアウト</li>
-<li>マルチ言語対応</li>
+<li>多言語サポート</li>
 <li>タグカテゴリ</li>
 </ul>
-<p>すべての構成は、JavaScriptライブラリ（utag.js）の既存のインストールにバンドルされています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>構成プロンプトを有効化し、構成した後、変更は次回の公開時にリリースされます。</p>
+<p>すべての構成は、JavaScriptライブラリ（utag.js）の既存のインストールと一緒にバンドルされています。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>構成プロンプトをアクティブ化して構成すると、次の公開で変更がリリースされます。</p>
 <h2 id="グローバル構成">グローバル構成</h2>
-<p>同意構成マネージャーは、グローバル構成を使用することで複数のプロファイルを同時に構成することができます。これにより、アカウントレベルで構成ポップアップを構成し、各プロファイルがグローバル構成を継承することができます。<a href="/ja/iq-tag-management/consent/consent-management/global-parameters/">global consent content</a>について詳しく学びましょう。</p>
+<p>同意構成マネージャーは、グローバル構成を使用することで複数のプロファイルで同時に構成可能です。これにより、アカウントレベルで構成ポップアップを構成し、各プロファイルがグローバル構成を継承することができます。<a href="/ja/iq-tag-management/consent/consent-management/global-parameters/">グローバル同意コンテンツ</a>についてもっと学びましょう。</p>
 
 </div>
 
@@ -563,7 +595,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月12日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -578,9 +610,10 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventstream%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">EventStreamの同意カテゴリ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">AudienceStreamの同意カテゴリ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dataaccess%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">DataAccessの同意カテゴリ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%98%8E%E7%A4%BA%E7%9A%84%E5%90%8C%E6%84%8F%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%9B%E3%81%9A%E3%81%AB%E5%90%8C%E6%84%8F%E6%A7%8B%E6%88%90%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">明示的同意プロンプトを表示せずに同意構成マネージャーを使用する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventstream%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">EventStream同意カテゴリ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">AudienceStream同意カテゴリ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dataaccess%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" href="javascript:void(0)">DataAccess同意カテゴリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A9%9F%E8%83%BD" href="javascript:void(0)">機能</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E6%A7%8B%E6%88%90" href="javascript:void(0)">グローバル構成</a></li>
               </nav>
@@ -795,7 +828,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   

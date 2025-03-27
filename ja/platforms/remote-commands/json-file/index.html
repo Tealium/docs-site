@@ -184,7 +184,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      JSONファイルを使用してリモートコマンドを設定します。
+      JSONファイルを使用してリモートコマンドを構成します。
     </p>
   
 </div>
@@ -202,40 +202,44 @@
 <li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a> (2.9.0+)</li>
 </ul>
 <h2 id="jsonファイル">JSONファイル</h2>
-<p>JSONファイルを使用してベンダーの統合を設定します。</p>
-<p>このファイルをアプリ内でローカルに読み込むか、リモートホストされたURLから読み込むことができます。
-ファイルをローカルに読み込む場合は、アプリケーションにバンドルされ、その名前をコード内のリモートコマンドに渡す必要があります。</p>
-<p>各ベンダー統合のために<a href="/ja/platforms/remote-commands/how-it-works/#vendor-templates">JSONテンプレートファイル</a>が用意されています。各JSONテンプレートファイルには、<code>config</code>、<code>mappings</code>、<code>commands</code>の3つのメインセクションとオプションの<code>statics</code>セクションがあります。</p>
-<h3 id="設定マッピング">設定マッピング</h3>
-<p><code>config</code>セクションでは、ベンダーSDKの初期化オプション（クライアントID、APIキー、ログレベルなど）を設定します。次の例では、アプリケーションIDを設定しています。</p>
+<p>JSONファイルを使用してベンダー統合を構成します。</p>
+<p>このファイルをアプリ内でローカルにロードするか、リモートホストされたURLからロードします。
+ファイルをローカルにロードする場合、アプリケーションにバンドルする必要があり、その名前をコード内のリモートコマンドに渡す必要があります。</p>
+<p>各ベンダー統合用の<a href="/ja/platforms/remote-commands/how-it-works/#vendor-templates">JSONテンプレートファイル</a>が用意されています。各JSONテンプレートファイルには、<code>config</code>、<code>mappings</code>、<code>commands</code>の3つの主要セクションと、オプションの<code>statics</code>セクションがあります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>クロスプラットフォームフレームワークでは、JSONファイルを各プラットフォーム固有のディレクトリに配置します。Androidの場合は<code>&lt;project&gt;/app/src/main/assets</code>にファイルを配置します。iOSの場合はトップレベルにファイルを配置します。</p>
+<h3 id="構成マッピング">構成マッピング</h3>
+<p><code>config</code>セクションは、クライアントID、APIキー、またはログレベルなどのベンダーSDK初期化オプションを構成します。例えば、以下はアプリケーションIDを構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;applicationid&#34;</span>: <span style="color:#e6db74">&#34;appid123&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="データマッピング">データマッピング</h3>
-<p><code>mappings</code>セクションでは、データマッピングを定義します。次のマッピングでは、データレイヤー変数<code>product_id</code>をベンダーパラメーター<code>param_item_id</code>に割り当てています。</p>
+<p><code>mappings</code>セクションはデータマッピングを定義します。以下のマッピングは、データレイヤー変数<code>product_id</code>をベンダーパラメータ<code>param_item_id</code>に割り当てます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_id&#34;</span>: <span style="color:#e6db74">&#34;param_item_id&#34;</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>ベンダーパラメーターは、ドット表記法を使用してペイロード内の特定のオブジェクトにマッピングをスコープするためにプレフィックスを使用することができます。プレフィックスはオブジェクトを定義し、<code>.</code>の右側の値はオブジェクトのプロパティになります。次のマッピングでは、<code>product_id</code>を<code>event</code>オブジェクトの<code>param_item_id</code>変数に割り当てています。リモートコマンドパーサーは、<code>param_item_id</code>を持つ<code>event</code>オブジェクトを作成します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">ベンダーパラメータは、ペイロード内の特定のオブジェクトにマッピングをスコープするためにドット表記でプレフィックスを使用する場合があります。プレフィックスはオブジェクトを定義し、`.`の右側の値はオブジェクトのプロパティになります。例えば、以下のマッピングは`product_id`を`event`オブジェクトの`param_item_id`変数に割り当てます。リモートコマンドパーサーは`param_item_id`をプロパティの</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">つとして`event`オブジェクトを作成します。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```json</span>
+</span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_id&#34;</span>: <span style="color:#e6db74">&#34;event.param_item_id&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>オブジェクトのプレフィックスは通常、<code>event.</code>、<code>product.</code>、<code>purchase.</code>ですが、ベンダー統合に使用されるオブジェクトのプレフィックスは任意のカスタムオブジェクト名にすることもできます。ベンダー統合に使用されるオブジェクトのプレフィックスについては、<a href="/ja/platforms/remote-commands/how-it-works/#vendor-templates">JSONテンプレートファイル</a>を参照してください。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>オブジェクトプレフィックスは通常<code>event.</code>、<code>product.</code>、または<code>purchase.</code>ですが、任意のカスタムオブジェクト名を使用することができます。ベンダー統合に使用されるオブジェクトプレフィックスを確認するには、<a href="/ja/platforms/remote-commands/how-it-works/#vendor-templates">JSONテンプレートファイル</a>を参照してください。</p>
 <h3 id="コマンド">コマンド</h3>
-<p><code>commands</code>セクションでは、Tealiumのイベント名をベンダーのイベントにマッピングします。基本的な実装では、キーはTealiumのイベント名であり、右側の値はベンダーのメソッドのTealiumラッパーです。次の例では、Tealiumのイベント<code>cart_add</code>をベンダーメソッド<code>logevent</code>にマッピングしています。</p>
+<p><code>commands</code>セクションはTealiumのイベント名をベンダーのイベントにマッピングします。基本的な実装では、キーはTealiumのイベント名であり、右の値はベンダーの方法のTealiumラッパーです。次の例では、Tealiumイベント<code>cart_add</code>がベンダーメソッド<code>logevent</code>にマッピングされています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;cart_add&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="すべてのイベント---すべてのビュー">すべてのイベント - すべてのビュー</h4>
-<p>すべてのイベントと/またはすべてのビューを特定のコマンドにマッピングする場合は、<code>all_events</code>または<code>all_views</code>をコマンドキーとして指定します。</p>
+<p>特定のコマンドにすべてのイベントやすべてのビューをマッピングしたい場合は、コマンドキーとして<code>all_events</code>または<code>all_views</code>を指定します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;all_events&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
@@ -243,34 +247,35 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="複合キー">複合キー</h3>
-<p>Swiftライブラリのバージョン2.9.0以降とKotlinリモートコマンドモジュールのバージョン1.3.0以降では、他のDataLayer変数が特定の値に一致する場合にコマンドをトリガーすることもできます。</p>
-<p>これを行うには、データレイヤーキーとデータレイヤーの値を<code>:</code>で区切って含む複合キーを作成する必要があります。</p>
-<p>例：</p>
+<p>Swiftライブラリのバージョン2.9.0およびKotlinリモートコマンドモジュールのバージョン1.3.0から、他のDataLayer変数が特定の値と一致する場合にもコマンドをトリガーすることができます。</p>
+<p>これを行うには、データレイヤーキーとデータレイヤー値を<code>:</code>で区切って複合キーを作成する必要があります。</p>
+<p>例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;screen_view:cart_view&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>この場合、リモートコマンドはデータレイヤーで<code>screen_view</code>を検索し、見つかった場合はその値を文字列<code>cart_view</code>と比較します。
-一致する場合、リモートコマンドは<code>logevent</code>コマンドをトリガーします。</p>
-<p>互換性のため、および使用の簡便さのために、データレイヤーキーが指定されていない場合、<code>tealium_event</code>が暗黙的に指定されます。したがって、次の2つのコマンドは完全に同じです。</p>
+</span></span></code></pre></div><p>この場合、リモートコマンドはデータレイヤーで<code>screen_view</code>を探し、見つかった場合、その値が文字列<code>cart_view</code>と比較されます。
+それらが同一であれば、リモートコマンドは<code>logevent</code>コマンドをトリガーします。</p>
+<p>互換性を保つため、および使用を容易にするために、データレイヤーキーが指定されていない場合は、<code>tealium_event</code>が暗黙のうちに指定されます。したがって、これらの2つのコマンドは完全に同一です：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;cart_add&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tealium_event:cart_add&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>一つのコマンドをトリガーするために複数の条件を持ちたい場合は、カンマで区切って<code>dataLayerKey:dataLayerValue</code>のリストを作成します。</p>
-<p>例：</p>
+</span></span></code></pre></div><p>場合によっては、コマンドをトリガーするために複数の条件を持ちたい場合がありますので、カンマで区切って<code>dataLayerKey:dataLayerValue</code>のリストを作成します。</p>
+<p>例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;screen_view:cart_view,cart_is_empty:false&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>この場合、<code>logevent</code>コマンドは<code>screen_view==cart_view</code>かつ<code>cart_is_empty==false</code>の両方の条件が一致した場合にのみトリガーされます。</p>
-<h4 id="デリミタの上書き">デリミタの上書き</h4>
-<p>Swift SDKのバージョン2.9.1以降では、デフォルトのデリミタを上書きして、データレイヤーの値にカンマやコロンが含まれている場合に独自のデリミタを使用することができます。</p>
-<p>JSONの設定部分に<code>keys_equality_delimiter</code>と<code>keys_separation_delimiter</code>のキーを追加して、好みの文字列でデリミタを上書きします。デリミタを上書きする場合は、複合キーでもそれらを使用する必要があります。</p>
+</span></span></code></pre></div><p>この場合、<code>logevent</code>コマンドは<code>screen_view==cart_view</code>と<code>cart_is_empty==false</code>の両方が真の場合にのみトリガーされます。</p>
+<h4 id="区切り文字の上書き">区切り文字の上書き</h4>
+<p>Swift SDKのバージョン2.9.1から、データレイヤー値にカンマやコロンが含まれている場合に備えて、デフォルトの区切り文字を独自の文字列に上書きすることができます。</p>
+<p>区切り文字<code>:</code>と<code>,</code>をお好みの文字列に上書きするには、JSONの構成部分に<code>keys_equality_delimiter</code>と<code>keys_separation_delimiter</code>のキーを追加します。</p>
+<p>もちろん、区切り文字を上書きした場合は、複合キーでそれらを使用する必要があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;keys_equality_delimiter&#34;</span>: <span style="color:#e6db74">&#34;==&#34;</span>,
@@ -282,10 +287,10 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="静的マッピング">静的マッピング</h3>
-<p>複合キーを使用するもう一つの機能は、静的マッピングです。これにはSwift 2.9.0+およびKotlin 1.3.0+が必要です。</p>
-<p>静的マッピングを使用すると、リモートコマンドが使用するためにデータレイヤーに静的な値を追加することができます。</p>
-<p>他のマッピングやコマンドは、これらの値を使用して他のコマンドをトリガーしたり、パラメーターを追加したりすることができます。</p>
-<p>例：</p>
+<p>複合キーを使用するもう一つの機能は静的マッピングです。これにはSwift 2.9.0+とKotlin 1.3.0+が必要です。</p>
+<p>静的マッピングを使用すると、リモートコマンドが使用するデータレイヤーに静的値を追加することができます。</p>
+<p>他のマッピングやコマンドがそれらの値を使用して他のコマンドをトリガーしたり、パラメータを追加したりすることができます。</p>
+<p>例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;statics&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;screen_view:cart_view,cart_is_empty:false&#34;</span>: {
@@ -294,9 +299,9 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>これにより、2つのキー<code>possible_buyer</code>と<code>apply_discount_percentage</code>がコマンドのペイロードにそれぞれの値（trueと20.0）とともに追加されます。複合キーの両方の条件が一致すると想定されます。</p>
+</span></span></code></pre></div><p>これにより、複合キーの条件が一致した場合、コマンドのペイロードに<code>possible_buyer</code>と<code>apply_discount_percentage</code>の2つのキーとそれぞれの値（trueおよび20.0）が追加されます。</p>
 <h3 id="例">例</h3>
-<p>次はJSON設定の例です。</p>
+<p>以下はJSON構成の例です：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;analytics_enabled&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
@@ -333,18 +338,18 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="読み込みオプション">読み込みオプション</h3>
-<p>JSON設定ファイルを読み込む方法には2つのオプションがあります：ローカルファイルとホストされたURL。</p>
+</span></span></code></pre></div><h3 id="ロードオプション">ロードオプション</h3>
+<p>JSON構成ファイルをロードするには2つのオプションがあります：ローカルファイルとして、またはホストされたURLからです。</p>
 <h4 id="ローカルファイルコマンド">ローカルファイルコマンド</h4>
-<p>アプリケーション内にリモートコマンドの設定JSONをバンドルし、その名前をRemoteCommandの初期化メソッドに渡します。</p>
-<p>TealiumSwift 2.13.0以降とTealiumKotlin RemoteCommandDispatcher 1.4.0以降では、ローカルRemoteCommandsに対して、拡張子の有無の両方の名前を受け入れるようになりました。</p>
-<p>それ以前のバージョンのライブラリを使用している場合は、iOSでは拡張子なしの名前を、Kotlinでは拡張子を含む名前を渡す必要があります。</p>
-<p>これは、特定のネイティブTealiumライブラリに依存するため、すべてのクロスプラットフォームライブラリに当てはまります。</p>
+<p>アプリケーション内にリモートコマンド構成JSONをバンドルし、その名前をRemoteCommand初期化メソッドに渡します。</p>
+<p>TealiumSwift 2.13.0およびTealiumKotlin RemoteCommandDispatcher 1.4.0から、ローカルRemoteCommandsについては、拡張子があるかないかにかかわらず名前を受け付けます。</p>
+<p>これらのライブラリの以前のバージョンを使用している場合は、iOSでは拡張子なしの名前を、Kotlinでは拡張子付きの名前を渡す必要があります。</p>
+<p>この状況は、ターゲットとする具体的なネイティブTealiumライブラリに依存するすべてのクロスプラットフォームライブラリにも当てはまります。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>iOS（Swift）アプリ内に保存されたローカル設定ファイルを使用するには：</p>
+  <p>iOS（Swift）アプリでローカル構成ファイルを使用するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>)
@@ -355,20 +360,20 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> facebook = FacebookRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;facebook&#34;</span>)) <span style="color:#75715e">// またはTealiumSwift 2.13.0+では同等の &#34;facebook.json&#34;</span>
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> facebook = FacebookRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;facebook&#34;</span>)) <span style="color:#75715e">// または同等に &#34;facebook.json&#34; TealiumSwift 2.13.0+で</span>
 </span></span><span style="display:flex;"><span>	remoteCommands.add(facebook)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Android" title="Android">
-  <p>Android（Kotlin）アプリ内に保存されたローカル設定ファイルを使用するには：</p>
+  <p>Android（Kotlin）アプリでローカル構成ファイルを使用するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
 </span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">val</span> facebook = FacebookRemoteCommand(<span style="color:#66d9ef">this</span>);
-</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(facebook, filename = <span style="color:#e6db74">&#34;facebook.json&#34;</span>) <span style="color:#75715e">// またはTealiumKotlin RemoteCommandDispatcher 1.4.0+では同等の &#34;facebook&#34;
+</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(facebook, filename = <span style="color:#e6db74">&#34;facebook.json&#34;</span>); <span style="color:#75715e">// または同等に &#34;facebook&#34; TealiumKotlin RemoteCommandDispatcher 1.4.0+で
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div>
 </div>
@@ -376,14 +381,14 @@
 </div>
 
 <h4 id="リモートurlコマンド">リモートURLコマンド</h4>
-<p><a href="/ja/iq-tag-management/data-layer/hosted-data-layer/use-case-supplementing-product-data/">ホストされたデータレイヤー</a>を使用して、URLからアクセス可能な設定ファイルをホストします。</p>
-<p>TealiumSwift 2.13.0以降とTealiumKotlin RemoteCommandDispatcher 1.4.0以降では、URL RemoteCommandsに対して、JSON設定がダウンロードできない場合（またはダウンロード中である間）に使用されるバックアップのローカルリモートコマンドを提供することもできます。</p>
-<p>そのために、ローカルコマンドのためにJSONファイルをバンドルします。バックアップとして、AndroidとiOSプラットフォームは、追加するリモートコマンドの<code>commandId</code>で指定された名前の設定ファイルを探します。オプションで、Androidの場合はファイル名が利用可能な場合には、ファイル名をバンドルと一緒に渡すことで、<code>commandId</code>の代わりにファイル名が使用されます。</p>
+<p>構成ファイルをURLとしてホストし、<a href="/ja/iq-tag-management/data-layer/hosted-data-layer/use-case-supplementing-product-data/">ホストされたデータレイヤー</a>を使用してアクセス可能にします。</p>
+<p>TealiumSwift 2.13.0およびTealiumKotlin RemoteCommandDispatcher 1.4.0から、URL RemoteCommandsについても、JSON構成がダウンロードできない場合（またはダウンロード中の場合）、またはすでにキャッシュされていない場合に使用されるバックアップローカルリモートコマンドを提供できます。</p>
+<p>そのためには、ローカルコマンド用のJSONファイルをバンドルします。バックアップとして、AndroidおよびiOSプラットフォームは、追加するRemote Commandの<code>commandId</code>で名付けられた構成ファイルを探します。オプションとして、Androidでファイル名が利用可能な場合は、バンドルと共にファイル名を渡すと、<code>commandId</code>の代わりにファイル名が使用されます。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>ホストされた設定ファイルをiOS（Swift）アプリで使用するには：</p>
+  <p>iOS（Swift）アプリでホストされた構成ファイルを使用するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>)
@@ -400,14 +405,14 @@
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Android" title="Android">
-  <p>ホストされた設定ファイルをAndroid（Kotlin）アプリで使用するには：</p>
+  <p>Android（Kotlin）アプリでホストされた構成ファイルを使用するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
 </span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">val</span> facebook = FacebookRemoteCommand(<span style="color:#66d9ef">this</span>);
-</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(facebook, remoteUrl = <span style="color:#e6db74">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/facebook.json&#34;</span>)
+</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(facebook, remoteUrl = <span style="color:#e6db74">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/facebook.json&#34;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
@@ -474,7 +479,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -490,13 +495,13 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">JSONファイル</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">設定マッピング</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">構成マッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89" href="javascript:void(0)">コマンド</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E5%90%88%E3%82%AD%E3%83%BC" href="javascript:void(0)">複合キー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%9D%99%E7%9A%84%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">静的マッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">読み込みオプション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ロードオプション</a></li>
               </nav>
   </aside></nav>
 
@@ -709,7 +714,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   

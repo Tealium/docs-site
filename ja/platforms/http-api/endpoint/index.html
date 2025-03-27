@@ -165,7 +165,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、HTTP APIを使用してTealium Customer Data Hubにイベントデータを送信する方法について説明します。
+      この記事では、イベント用のHTTP APIを使用してTealium Customer Data Hubにデータを送信する方法について説明します。
     </p>
   
 </div>
@@ -177,16 +177,16 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://collect.tealiumiq.com/event
 </span></span></code></pre></div><h2 id="レート制限">レート制限</h2>
 <p>Tealium Collect APIは、最大100リクエスト/秒のレート制限をサポートしています。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>ビジネスニーズがより高い呼び出し制限を要求する場合は、Tealiumアカウントマネージャーに連絡してください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>ビジネスニーズがより高い呼び出し制限を必要とする場合は、Tealiumアカウントマネージャーに連絡してください。</p>
 <h2 id="標準パラメータ">標準パラメータ</h2>
 <p>Tealium Collectは、各リクエストに以下の標準パラメータをサポートしています：</p>
 <ul>
 <li><code>tealium_account</code>: あなたのTealiumアカウントの名前。</li>
-<li><code>tealium_profile</code>: あなたのTealiumプロファイルの名前。デフォルトは <strong>main</strong> です。</li>
-<li><code>tealium_datasource</code>: 任意。Customer Data Hubからのデータソースキー。詳細については<a href="/ja/server-side/data-sources/about-data-sources/">データソースについて</a>を参照してください。</li>
+<li><code>tealium_profile</code>: あなたのTealiumプロファイルの名前。デフォルトは<strong>main</strong>です。</li>
+<li><code>tealium_datasource</code>: オプション。Customer Data Hubからのデータソースキー。詳細については、<a href="/ja/server-side/data-sources/about-data-sources/">データソースについて</a>を参照してください。</li>
 <li><code>tealium_event</code>: 推奨。トラッキング目的のイベント名。</li>
-<li><code>tealium_visitor_id</code>: AudienceStream用に必要。イベントに関連付けられた訪問の一意の識別子（<a href="#visitor-identifiers">訪問識別子</a>セクションを参照）。データの出所によって、この識別子は訪問が使用しているデバイスに関連付けられた匿名のGUID（グローバル一意識別子）であるか、訪問の既知のユーザー識別子に基づいている場合があります。</li>
-<li><code>tealium_trace_id</code>: 任意。<a href="/ja/server-side/trace/about/">Trace</a>で使用します。</li>
+<li><code>tealium_visitor_id</code>: AudienceStream用に必須。イベントに関連付けられた訪問の一意の識別子（<a href="#visitor-identifiers">訪問識別子</a>セクションを参照）。データのソースによっては、この識別子は訪問が使用しているデバイスに関連付けられた匿名のGUID（グローバル一意識別子）であるか、訪問の既知のユーザー識別子に基づいている場合があります。</li>
+<li><code>tealium_trace_id</code>: オプション。<a href="/ja/server-side/trace/about/">Trace</a>で使用します。</li>
 </ul>
 <p>リクエストの形式は使用されるHTTPメソッドによって異なります。以下の例では、プレースホルダー値は次の形式で中括弧で表されています：<code>{VALUE}</code>。</p>
 <h2 id="カスタムイベントパラメータ">カスタムイベントパラメータ</h2>
@@ -194,12 +194,12 @@
 <h2 id="訪問識別子">訪問識別子</h2>
 <p>AudienceStreamは、以下の組み合わせを使用して訪問を追跡します：</p>
 <ul>
-<li><strong>匿名ID</strong>: 通常、訪問を匿名で追跡するために使用されるID（例えば、デバイスやブラウザから）。<a href="#known-visitors-server-to-server">既知の訪問</a>の場合、ユーザー識別子に基づいた値を使用できます。</li>
+<li><strong>匿名ID</strong>: 訪問を匿名で追跡するために通常使用されるID（例えば、デバイスやブラウザから）。<a href="#known-visitors-server-to-server">既知の訪問</a>の場合、ユーザー識別子に基づいた値を使用できます。</li>
 <li><strong>ユーザー識別子</strong>: 訪問が既知の場合に送信されます。特定のデバイスではなく、ユーザーを識別する値に基づいています。</li>
 </ul>
 <h3 id="匿名id">匿名ID</h3>
 <p>匿名IDは、AudienceStreamが訪問をイベントや訪問間で関連付けるために使用する匿名識別子です。この値はGUIDであり、訪問に対して一貫性がある必要があります。この値は、サーバーサイドプロファイルごとに一意でなければなりません。</p>
-<p>匿名IDのキー名は <code>tealium_visitor_id</code> です。</p>
+<p>匿名IDのキー名は<code>tealium_visitor_id</code>です。</p>
 <p>ビジネスケースに応じて、匿名値または既知のユーザー識別子に基づいた値を使用できます。</p>
 <h4 id="匿名値">匿名値</h4>
 <table>
@@ -216,8 +216,8 @@
 </tr>
 </tbody>
 </table>
-<p>Tealium iQタグ管理を使用してAPIコールをサーバー間で送信し、匿名訪問プロファイルをエンリッチする場合、<code>tealium_visitor_id</code> の値は <code>utag_main_v_id</code> クッキーの値と一致する必要があります。utag.jsの組み込み変数についての詳細は、<a href="/ja/platforms/javascript/data-layer/">JavaScript (Web) &gt; データレイヤー</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Adobe LaunchまたはGoogle Tag Managerを使用している場合、値は <strong>TEAL</strong> クッキーの <code>v</code> 部分と一致する必要があります。</p>
+<p>Tealium iQ Tag Managementを使用してAPIコールをサーバー間で送信し、匿名訪問プロファイルをエンリッチする場合、<code>tealium_visitor_id</code>の値は<code>utag_main_v_id</code>クッキーの値と一致する必要があります。utag.jsの組み込み変数についての詳細は、<a href="/ja/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Adobe LaunchまたはGoogle Tag Managerを使用している場合、値は<strong>TEAL</strong>クッキーの<code>v</code>部分と一致する必要があります。</p>
 <h4 id="既知の訪問サーバー間">既知の訪問サーバー間</h4>
 <table>
 <thead>
@@ -233,32 +233,32 @@
 </tr>
 </tbody>
 </table>
-<p>訪問ID属性（例：<code>email_address</code>）の値が存在する場合に既知の訪問のデータを送信するとき、以下のものを連結して含めます：</p>
+<p>訪問ID属性（例えば<code>email_address</code>）の値が存在する場合に既知の訪問のデータを送信するとき、以下のものを連結して含めます：</p>
 <ul>
 <li>
 <p>アカウント</p>
 </li>
 <li>
 <p>プロファイル<br>
-プロファイル名を含めることで、<code>tealium_visitor_id</code> が各サーバーサイドプロファイルに一意であることを確実にします。これは、同じ訪問プロファイルが地域内の複数のサーバーサイドプロファイルに送信される場合に重要です。</p>
+プロファイル名を含めることで、<code>tealium_visitor_id</code>が各サーバーサイドプロファイルに固有であることを確実にします。これは、同じ訪問プロファイルが地域内の複数のサーバーサイドプロファイルに送信される場合に重要です。</p>
 </li>
 <li>
 <p>訪問ID属性IDと値 <p class="tip"><i class="fa fa-info-circle"></i>訪問ID属性IDは、属性リストの属性名の隣または展開された詳細内で見つけることができます。詳細については、<a href="/ja/server-side/attributes/about/#attribute-ids">属性について</a>を参照してください。</p></p>
 </li>
 <li>
-<p><code>tealium_visitor_id</code> パラメータ内の値</p>
+<p><code>tealium_visitor_id</code>パラメータ内の値</p>
 </li>
 </ul>
 <p>例えば、以下の値の場合：</p>
 <ul>
-<li>アカウント名: <code>my-account</code></li>
-<li>プロファイル: <code>main</code></li>
-<li>訪問ID属性ID: <code>7688</code></li>
-<li>伝えたい顧客番号の値: <code>45653454</code></li>
+<li>アカウント名：<code>my-account</code></li>
+<li>プロファイル：<code>main</code></li>
+<li>訪問ID属性ID：<code>7688</code></li>
+<li>伝えたい顧客番号の値：<code>45653454</code></li>
 </ul>
 <p>これらの値を以下の方法で連結します：</p>
 <pre tabindex="0"><code>tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
-</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i><code>tealium_visitor_id</code> が正しくフォーマットされていることを確認してから進めてください。フォーマットが正しくないパラメータはAudienceStreamでエラーを引き起こし、適切に追跡されない可能性があります。</p>
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i><code>tealium_visitor_id</code>が正しくフォーマットされていることを確認してから進めてください。フォーマットが正しくないパラメータはAudienceStreamでエラーを引き起こし、適切に追跡されない可能性があります。</p>
 <p>例 JSON：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>    : <span style="color:#e6db74">&#34;my-account&#34;</span>,
@@ -268,21 +268,21 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customer_number&#34;</span>    : <span style="color:#e6db74">&#34;45653454&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;__my-account_main__7688_45653454__&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>匿名訪問でも既知の訪問でも、APIコールに一貫性のある <code>tealium_visitor_id</code> が含まれていない場合、各イベントは新しい訪問を生成し、訪問のスティッチングが不可能になります。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>匿名訪問であっても既知の訪問であっても、APIコールに一貫した<code>tealium_visitor_id</code>が含まれていない場合、各イベントは新しい訪問を生成し、訪問のスティッチングが不可能になります。</p>
 <h3 id="ユーザー識別子">ユーザー識別子</h3>
-<p>AudienceStreamを使用する場合、トラッキングコールで既知のユーザー識別子を渡すことができます。例えば、<code>email_address</code> や <code>login_id</code> です。</p>
-<p>EventStreamを使用していて、ベンダーコネクタにIDを提供する必要がある場合も、ユーザー識別子が必要です。</p>
-<p>AudienceStreamでは、これらのユーザー識別子は <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>をエンリッチするために使用されます。</p>
+<p>AudienceStreamを使用する場合、トラッキングコールに既知のユーザー識別子（例えば、<code>email_address</code>や<code>login_id</code>）を渡すことができます。</p>
+<p>ユーザー識別子は、EventStreamを使用してベンダーコネクタにIDを提供する必要がある場合にも必要です。</p>
+<p>AudienceStreamでは、これらのユーザー識別子は<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>をエンリッチするために使用されます。</p>
 <h3 id="訪問の切り替え">訪問の切り替え</h3>
-<p>ファーストパーティクッキーが利用できない場合、サーバーサイドは次の優先順位で来るデータを使用して訪問のIDを決定します：</p>
+<p>ファーストパーティクッキーが利用できない場合、サーバーサイドは次の優先順位で受信データを使用して訪問のIDを決定します：</p>
 <ul>
-<li><code>TAPID</code> クッキー、または <code>tealium_thirdparty_visitor_id</code> とも呼ばれます</li>
+<li><code>TAPID</code>クッキー、別名<code>tealium_thirdparty_visitor_id</code></li>
 <li><code>tealium_visitor_id</code></li>
-<li><code>utag_main v_id</code>、または <code>tealium_firstparty_visitor_id</code> とも呼ばれます</li>
+<li><code>utag_main v_id</code>、別名<code>tealium_firstparty_visitor_id</code></li>
 </ul>
-<p>AudienceStreamが <code>TAPID</code> のIDを他のIDより優先して訪問プロファイルを使用するため、これは同じデバイス上の複数のユーザーの追跡に問題を引き起こす可能性があります。</p>
-<p>例えば、ユーザーがログインしてそのIDが <code>TAPID</code> に追加された場合、そのデバイスのすべての匿名ユーザーのトラフィックはそのユーザーに記録されます。別のユーザーがそのデバイスにログインした場合、匿名クッキーがクリアされていないと仮定すると、AudienceStreamは引き続き最初のユーザーの活動を記録します。訪問が共有スマートテレビや公共のキオスクを使用する場合、これは訪問プロファイルのデータ汚染を引き起こす可能性があります。</p>
-<p>エンドポイントが <code>tealium_visitor_id</code> と <code>tealium_thirdparty_visitor_id</code> の値をイベントでどのように扱うかを制御するために、以下のパラメータを使用します：</p>
+<p>AudienceStreamは、訪問プロファイルを使用するために<code>TAPID</code>のIDを他のIDより優先するため、同じデバイス上の複数のユーザーを追跡する際に問題を引き起こす可能性があります。</p>
+<p>たとえば、ユーザーがログインしてそのIDが<code>TAPID</code>に追加された場合、そのデバイスのすべての匿名ユーザーのトラフィックはそのユーザーに記録されます。別のユーザーがそのデバイスにログインした場合、匿名クッキーがクリアされていないと仮定すると、AudienceStreamは引き続き最初のユーザーにアクティビティを記録します。訪問が共有スマートテレビや公共のキオスクを使用する場合、これにより訪問プロファイルのデータが汚染される可能性があります。</p>
+<p>エンドポイントがイベント内の<code>tealium_visitor_id</code>および<code>tealium_thirdparty_visitor_id</code>値を処理する方法を制御するためのパラメータを以下に示します：</p>
 <table>
 <thead>
 <tr>
@@ -295,40 +295,37 @@
 <tr>
 <td><code>tealium_override_tapid</code></td>
 <td>文字列</td>
-<td>この値で <code>tealium_visitor_id</code> と <code>tealium_thirdparty_visitor_id</code> を上書きします。</td>
+<td>この値で<code>tealium_visitor_id</code>および<code>tealium_thirdparty_visitor_id</code>を上書きします。</td>
 </tr>
 <tr>
 <td><code>tealium_skip_3rd_party_vid_cookies</code></td>
 <td>ブール値</td>
-<td><code>TAPID</code> サードパーティクッキーの収集をスキップするために <code>true</code> に構成します。</td>
+<td><code>TAPID</code>サードパーティクッキーの収集をスキップするには<code>true</code>に構成します。</td>
 </tr>
 <tr>
 <td><code>tealium_delete_3rd_party_vid_cookies</code></td>
 <td>ブール値</td>
-<td><code>TAPID</code> サードパーティクッキーを削除するために <code>true</code> に構成します。</td>
+<td><code>TAPID</code>サードパーティクッキーを削除するには<code>true</code>に構成します。</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>tealium_override_tapid</code> の値は、<code>tealium_delete_3rd_party_vid_cookies</code> パラメータがクッキーを削除するのを防ぎます。</li>
-<li>TAPIDから <code>account/profile</code> 情報を削除するとそのクッキーが空になる場合、クライアントからそのクッキーを削除するために <code>set-cookie maxAge=0</code> が返されます。</li>
+<li><code>tealium_override_tapid</code>値は、<code>tealium_delete_3rd_party_vid_cookies</code>パラメータがクッキーを削除するのを防ぎます。</li>
+<li>TAPIDから<code>account/profile</code>情報を削除するとそのクッキーが空になる場合、クライアントからそのクッキーを削除するために<code>set-cookie maxAge=0</code>が返されます。</li>
 </ul>
 <h2 id="ボットフィルタリング">ボットフィルタリング</h2>
-<h2 id="description-ボットトラフィックはサイトやアプリへの非人間的な訪問を指しますtealiumのサーバーサイド製品は各イベントのユーザーエージェントを既知のボットのリストと比較することで自動的にボットトラフィックをフィルタリングします">Tealiumサーバーサイド製品を通じて収集されたデータの正確性を維持するためには、サーバーサイドのボットフィルタリングが不可欠です。&mdash;
-title: &ldquo;ボットトラフィックについて&rdquo;
-linktitle: &ldquo;ボットトラフィック&rdquo;
-description: &ldquo;ボットトラフィックは、サイトやアプリへの非人間的な訪問を指します。Tealiumのサーバーサイド製品は、各イベントのユーザーエージェントを既知のボットのリストと比較することで自動的にボットトラフィックをフィルタリングします。&rdquo;</h2>
-<p>ボットトラフィックは、サイトやアプリへの非人間的な訪問を指します。Tealiumのサーバーサイド製品は、各イベントのユーザーエージェントを既知のボットのリストと比較することで自動的にボットトラフィックをフィルタリングします。フィルタリングされたイベントは処理されず、使用量にはカウントされません。</p>
-<p>詳細およびボットとして認識されるユーザーエージェントの完全なリストについては、<a href="/ja/server-side/administration/server-side-bot-filtering/">サーバーサイドボットフィルタリング</a>をご覧ください。</p>
+<p>Tealiumのサーバーサイド製品を通じて収集されたデータの正確性を維持するためには、サーバーサイドのボットフィルタリングが不可欠です。</p>
+<p>ボットトラフィックとは、サイトやアプリへの非人間による訪問を指します。Tealiumのサーバーサイド製品は、各イベントのユーザーエージェントを既知のボットのリストと比較することにより、ボットトラフィックを自動的にフィルタリングします。フィルタリングされたイベントは処理されず、使用量にはカウントされません。</p>
+<p>ボットとして認識されるユーザーエージェントの完全なリストについては、<a href="/ja/server-side/administration/server-side-bot-filtering/">サーバーサイドボットフィルタリング</a>を参照してください。</p>
 <h2 id="方法">方法</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>ブラウザからCollect APIトラフィックを送信する場合、GETメソッドはリクエストのHTTPリファラーURLに基づいてページURLを構成し、これには現在のページのホスト名のみが含まれます。GETメソッドでは、現在のページのクエリパラメーターやパス名は含まれません。この情報を含めるには、POSTメソッドを使用してください。</p>
 <h3 id="get">GET</h3>
-<p>GETメソッドは、指定されたリソースからデータを要求するために使用されます。エンドポイントのクエリ文字列でキーと値のペアを使用してデータを渡し、HTMLベースの実装と互換性を持たせるために1x1の透明GIFを返します。</p>
+<p>GETメソッドは、指定されたリソースからデータを要求するために使用されます。エンドポイントのクエリ文字列にキーと値のペアを使用してデータを渡し、HTMLベースの実装と互換性を持たせるために1x1の透明GIFを返します。</p>
 <p>curlを使用した例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -X GET <span style="color:#e6db74">&#34;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&#34;</span>
 </span></span></code></pre></div><h3 id="post">POST</h3>
-<p>POSTメソッドは、データをサーバーに送信してリソースを作成/更新するために使用されます。JSONペイロードをサポートし、リクエストヘッダーは <code>Content-Type: application/json</code> に構成され、ペイロードは有効なJSON文字列としてフォーマットされている必要があります。</p>
-<p><code>user_login</code> イベントの例：</p>
+<p>POSTメソッドは、データをサーバーに送信してリソースを作成/更新するために使用されます。リクエストヘッダーを<code>Content-Type: application/json</code>に構成し、ペイロードを有効なJSON文字列としてフォーマットする必要があります。</p>
+<p><code>user_login</code>イベントの例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_account&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_profile&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
@@ -359,15 +356,15 @@ description: &ldquo;ボットトラフィックは、サイトやアプリへの
 </tr>
 </tbody>
 </table>
-<p><code>400 Bad Request</code> ステータスコードは、以下のいずれかが真である場合に発生します：</p>
+<p><code>400 Bad Request</code>ステータスコードは、以下のいずれかが真である場合に発生します：</p>
 <ul>
-<li>JSONキーにピリオドが含まれている、無効である、または1 MBを超える。</li>
-<li>ファイルタイプパラメーターに <code>json</code> または <code>javascript</code> 以外の値が含まれている。</li>
-<li><code>account</code>、<code>profile</code>、および <code>datalayer_id</code> の組み合わせが250文字を超えるか、制限された文字を含んでいる。</li>
-<li><code>tealium_account</code> または <code>tealium_profile</code> が欠落しているか、誤植がある。</li>
+<li>JSONキーにピリオドが含まれている、無効である、または1MBを超える。</li>
+<li>ファイルタイプパラメーターに<code>json</code>または<code>javascript</code>以外の値が含まれている。</li>
+<li><code>account</code>、<code>profile</code>、および<code>datalayer_id</code>の組み合わせが250文字を超えるか、制限された文字を含んでいる。</li>
+<li><code>tealium_account</code>または<code>tealium_profile</code>が欠落しているか、誤植がある。</li>
 <li>リクエストボディが空です。</li>
 </ul>
-<p>必要な <code>tealium_account</code> または <code>tealium_profile</code> パラメータ値が欠落している場合の <code>400 Bad Request</code> レスポンスの例を <code>X-Error</code> ヘッダーで示します：</p>
+<p>必要な<code>tealium_account</code>または<code>tealium_profile</code>パラメータ値が欠落している場合の<code>400 Bad Request</code>レスポンスの例を、<code>X-Error</code>ヘッダーで示します：</p>
 <pre tabindex="0"><code>&gt; GET /event?tealium_account=jentest-as&amp;tealium_profile=&amp;tealium_visitor_id=sendgeteventhttps@testing.com&amp;tealium_datasource=utc2cj&amp;customer_city=Honolulu&amp;customer_state=Hawaii&amp;Flag=true&amp;Number=45&amp;String=ascent&amp;String_Array=[hello,howareyou,whatsup,yoyoyo]&amp;Number_Array=[2.222,3.000,19.12,28.3]&amp;Flag_Array=[true,false,false,true]&amp;Combo_Array=[1,salutations,2324,world,22jjfssl]&amp;Array_of_Array=[[1,2,3],heyworld]&amp;myvariable=unicorns HTTP/1.1
 &gt; Host: qa21-collect.tealiumiq.com
 &gt; User-Agent: curl/7.54.0
@@ -390,12 +387,12 @@ description: &ldquo;ボットトラフィックは、サイトやアプリへの
 &lt; Connection: keep-alive
 </code></pre><h2 id="例">例</h2>
 <h3 id="htmlの例">HTMLの例</h3>
-<p>Tealium Collectは、HTML内の <code>&lt;img&gt;</code> タグで参照されます。ブラウザのキャッシュのため、ランダムに生成された値を含む追加パラメータであるキャッシュバスターを含めることが重要です。以下の例を参照してください：</p>
+<p>Tealium Collectは、HTML内の<code>&lt;img&gt;</code>タグで参照されます。ブラウザキャッシュのため、ランダムに生成された値を含む追加パラメーターであるキャッシュバスターを含めることが重要です。以下の例を参照してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cb</span><span style="color:#f92672">=</span>Math.<span style="color:#a6e22e">random</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">100000000000</span>;
 </span></span></code></pre></div><p>この変数はTealium Collectピクセルのクエリ文字列に追加されます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=&#39; + cb + &#39;&#34;</span>/&gt;
 </span></span></code></pre></div><h3 id="javascriptの例">JavaScriptの例</h3>
-<p>Tealium Collectはクロスドメインリクエストをサポートしており、以下の例のように、あなたのウェブサイトから私たちのドメインにPOSTを送信することができます：</p>
+<p>Tealium Collectはクロスドメインリクエストをサポートしており、以下の例のように、あなたのウェブサイトから私たちのドメインへPOSTを送信することができます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_account&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_profile&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
@@ -451,7 +448,7 @@ description: &ldquo;ボットトラフィックは、サイトやアプリへの
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月14日
+          <p>最終更新日 ::  2025年March月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -693,7 +690,7 @@ description: &ldquo;ボットトラフィックは、サイトやアプリへの
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ティーリアムアイデンティティパートナー
+          ティーリウム・アイデンティティ・パートナーズ
         </a>
     </li>
   
