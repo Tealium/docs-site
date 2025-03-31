@@ -571,7 +571,7 @@
 <li><a href="/ja/server-side/attributes/enrichments/">エンリッチメントの使用</a></li>
 <li><a href="/ja/server-side/visitor-stitching/about/">訪問スティッチングについて</a></li>
 </ul>
-<p>訪問ID属性はAudienceStreamで構成され、訪問を一意に識別するために使用されます。訪問ID属性を作成するとき、ユーザー識別子（イベント属性としての<code>email_address_hash</code>や<code>customer_id</code>など）に値を構成するエンリッチメントを追加します。訪問スティッチングが正しく機能するためには、ユニークなユーザー識別子を選択し、訪問を識別するタイミングを決定するルールを作成し、選択した属性が各訪問に対してユニークであることを確認する必要があります。ユーザー識別子の選択についての詳細は<a href="/ja/guides/user-identifier-guide/">ユーザー識別子の選択におけるベストプラクティス</a>を参照してください。</p>
+<p>訪問ID属性はAudienceStreamで構成され、訪問を一意に識別するために使用されます。訪問ID属性を作成するとき、ユーザー識別子（イベント属性としての<code>email_address_hash</code>や<code>customer_id</code>など）に値を構成するエンリッチメントを追加します。訪問スティッチングが正しく機能するためには、一意のユーザー識別子を選択し、訪問を識別するタイミングを決定するルールを作成し、選択した属性が各訪問に対して一意であることを確認する必要があります。ユーザー識別子の選択についての詳細は、<a href="/ja/guides/user-identifier-guide/">ユーザー識別子の選択におけるベストプラクティス</a>を参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>訪問スティッチングはデフォルトで無効になっています。有効にするにはアカウントマネージャーに連絡してください。</p>
 <p>訪問ID属性は訪問スコープで利用可能です。</p>
 <figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.27.27-pm.png"
@@ -582,10 +582,10 @@
 <h2 id="訪問id属性のシステム要件">訪問ID属性のシステム要件</h2>
 <p>訪問ID属性は以下のシステム要件を満たす必要があります：</p>
 <ul>
-<li><strong>長さ</strong> – 値は6文字から255文字の長さでなければなりません。</li>
-<li><strong>非繰り返し</strong> – 値には少なくとも3つの異なる文字が含まれている必要があります。10文字の識別子で異なる文字が2つしかない（<code>&quot;a1a1a1a1a1&quot;</code>）場合は無効です。</li>
-<li><strong>エンリッチメント</strong> – 数値型のデータ属性は訪問ID属性のエンリッチメントに使用できません。</li>
-<li><strong>サイズ</strong> – 訪問IDの最大サイズは2KBです。</li>
+<li><strong>長さ</strong>：値は6文字から255文字の長さでなければなりません。</li>
+<li><strong>非繰り返し</strong>：値には少なくとも3つの異なる文字が含まれている必要があります。2つの異なる文字しかない10文字の識別子（<code>&quot;a1a1a1a1a1&quot;</code>）は無効です。</li>
+<li><strong>エンリッチメント</strong>：データタイプがNumberの属性は、訪問ID属性のエンリッチメントに使用できません。</li>
+<li><strong>サイズ</strong>：訪問ID属性の最大サイズは2 KBです。</li>
 </ul>
 <p>UTF-8文字セットがサポートされています。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>システムはこれらの要件を自動的に検証します。訪問ID属性の構成にこれらのルール条件は必要ありません。</p>
@@ -595,20 +595,20 @@
 <li>
 <p><strong>一意性</strong> - 各訪問ID属性の値は各訪問に対して一意であるべきです。</p>
 <ul>
-<li><strong>強力な識別子</strong> - 単一の訪問に関連付けられ、変更される可能性が低い値のみを使用してください。例えば、ハッシュ化されたメールアドレスや顧客IDなどです。</li>
-<li><strong>弱い識別子</strong> - 各訪問に対して一意であることが保証されない値や、時間の経過とともに変更される可能性が高い値は避けてください。例えば、名前やユーザー名、電話番号などです。</li>
+<li><strong>強力な識別子</strong> - 単一の訪問に関連付けられる可能性があり、変更される可能性が低い値のみを使用してください。例えば、ハッシュ化されたメールアドレスや顧客IDなどです。</li>
+<li><strong>弱い識別子</strong> - 各訪問に対して一意であることが保証されない値や、時間の経過とともに変更される可能性が高い値は避けてください。例えば、名前やユーザーネーム、電話番号などです。</li>
 </ul>
 </li>
 <li>
 <p><strong>大文字と小文字の区別</strong> - 値は大文字と小文字を区別するため、小文字に変換してください。例えば、<code>FirstLast@example.com</code>と<code>firstlast@example.com</code>はAudienceStreamでは異なるIDとして扱われます。</p>
 </li>
 <li>
-<p><strong>値の検証</strong> - メールアドレスを使用する場合は、アドレスに<code>@</code>記号が含まれているかどうかを確認することが望ましいです。また、<code>undefined</code>、<code>unknown</code>、<code>not set</code>や訪問ID属性の有効な値として不適切な他のテキストが含まれていないかをチェックすることもできます。</p>
+<p><strong>値の検証</strong> - メールアドレスを使用する場合、アドレスに<code>@</code>記号が含まれているかどうかを確認することが望ましいです。また、<code>undefined</code>、<code>unknown</code>、<code>not set</code>やその他の訪問ID属性の有効な値ではないテキストを文字列でチェックすることもできます。</p>
 </li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i><a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/">訪問ID属性の作成</a>を参照して、できるだけ正確な訪問ID属性を作成するためのガイドをご覧ください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>最も正確な訪問ID属性を作成するためのガイドについては、<a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/">訪問ID属性の作成</a>を参照してください。</p>
 <h2 id="訪問id属性に値を構成するタイミング">訪問ID属性に値を構成するタイミング</h2>
-<p>訪問ID属性に値を構成するのは、顧客がアカウントの登録や購入完了など、信頼できる一意の識別手段を提供するイベントが発生したときです。</p>
+<p>訪問ID属性に値を構成するのは、顧客が信頼できる一意の識別手段を提供するイベントが発生したときです。例えば、アカウントの登録や購入の完了などです。</p>
 <p>訪問ID属性はマーケティング活動ID（例えばgidなど）ではあってはなりません。これらのサードパーティ識別子は訪問属性としてコネクタで使用するために保存することができますが、訪問ID属性としては推奨されません。</p>
 <h2 id="訪問id属性をエンリッチする">訪問ID属性をエンリッチする</h2>
 <p>エンリッチメントを使用して、訪問ID属性に訪問のユーザー識別子を保存します。例えば、ユーザーが登録またはサインアップするとき、システムは内部IDを生成してデータレイヤーに<code>customer_id</code>として追加する場合があります。この場合、<code>user_register</code>イベントが発生したときに訪問ID属性を<code>customer_id</code>に構成するためにエンリッチメントを使用します。</p>
@@ -673,7 +673,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2025年March月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -887,7 +887,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          Tealiumツール
+          ティーリウムツール
         </a>
     </li>
   
