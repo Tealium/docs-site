@@ -225,6 +225,7 @@
         <a href="/server-side-connectors/google-bigquery-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-bigquery-connector">Google BigQuery</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-campaign-manager-360-floodlight-connector-setup-guide">Google Campaign Manager 360 Floodlight</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-cloud-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-storage-connector">Google Cloud Storage</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-display-video-360-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-display-amp-video-360-connector-setup-guide">Google Display and Video 360</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -414,31 +415,20 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
-<table>
-<thead>
-<tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Send Conversion</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
-<h2 id="api-information">API information</h2>
-<p>This connector uses the following vendor API:</p>
+  <h2 id="api-information">API information</h2>
+<p>This connector uses the following vendor APIs:</p>
 <ul>
 <li>API Name: ROKT API</li>
-<li>API Version: 2020-05-21</li>
-<li>API Endpoint: <code>&lt;https://api.rokt.com&gt;</code></li>
-<li>Documentation: <a href="https://docs.rokt.com/docs/developers/api-reference/event/overview">ROKT Event API</a></li>
+<li>API Endpoints:
+<ul>
+<li><code>https://api.rokt.com/v1/events</code></li>
+<li><code>https://api.rokt.com/v2/events</code></li>
+<li><code>https://api.rokt.com/v3/import/suppression</code></li>
 </ul>
+</li>
+<li>Documentation: <a href="https://docs.rokt.com/developers/api-reference/custom-audience-import/">Custom Audience Import API</a></li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The send event actions support both v1 and v2 authentication methods. You can specify the API to use at the action level. However, the Update custom audience actions only support the v2 authentication method. For more information, see the <a href="https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret">Rokt: Event API v1</a> or <a href="https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2">Rokt: Event API v2</a> documentation.</p>
 <h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -466,9 +456,6 @@
 </ul>
 </li>
 </ul>
-<p>For more information, see the Rokt documentation for the API version you are using:
-*   v1: <a href="https://docs.rokt.com/developers/api-reference/event-api#generating-app-id-and-app-secret">Event API | Rokt documentation</a>.
-*   v2: <a href="https://docs.rokt.com/developers/api-reference/event-api/#authentication-v2">Event API | Rokt documentation</a>.</p>
 <p>Click <strong>Done</strong> when you have finished configuring the connector.</p>
 <h2 id="actions">Actions</h2>
 <table>
@@ -493,12 +480,12 @@
 <tr>
 <td>Update custom audience</td>
 <td>✓</td>
-<td>✓</td>
+<td>✗</td>
 </tr>
 <tr>
 <td>Update custom audience (Batch)</td>
 <td>✓</td>
-<td>✓</td>
+<td>✗</td>
 </tr>
 </tbody>
 </table>
@@ -516,7 +503,7 @@
 <tbody>
 <tr>
 <td>Event ID</td>
-<td>If not mapped, Tealium generates a <code>UUID</code> for this value.</td>
+<td>If not mapped, Tealium generates a UUID for this value.</td>
 </tr>
 <tr>
 <td>Event Time</td>
@@ -528,7 +515,7 @@
 </tr>
 <tr>
 <td>Version</td>
-<td>Default is <code>V2</code>. Set to <code>V1</code> to send events to the V1 endpoint using the <strong>App ID</strong> and <strong>App Secret</strong> keys. Set to <code>V2</code> to send events to the V2 endpoint using the <strong>rpub</strong> and <strong>rsec</strong> keys.</td>
+<td><code>V2</code> is the default. Set to <code>V1</code> to send events to the V1 endpoint using the <strong>App ID</strong> and <strong>App Secret</strong> keys. Set to <code>V2</code> to send events to the V2 endpoint using the <code>rpub</code> and <code>rsec</code> keys.</td>
 </tr>
 </tbody>
 </table>
@@ -544,7 +531,7 @@
 <tbody>
 <tr>
 <td>Event ID</td>
-<td>If not mapped, Tealium generates a <code>UUID</code> for this value.</td>
+<td>If not mapped, Tealium generates a UUID for this value.</td>
 </tr>
 <tr>
 <td>Event Time</td>
@@ -556,7 +543,7 @@
 </tr>
 <tr>
 <td>Version</td>
-<td><code>V1</code> is the default. Set to <code>V1</code> to send events to the V1 endpoint using the <strong>App ID</strong> and <strong>App Secret</strong> keys. Set to <code>V2</code> to send events to the V2 endpoint using the <strong>rpub</strong> and <strong>rsec</strong> keys.</td>
+<td><code>V1</code> is the default. Set to <code>V1</code> to send events to the V1 endpoint using the <strong>App ID</strong> and <strong>App Secret</strong> keys. Set to <code>V2</code> to send events to the V2 endpoint using the <code>rpub</code> and <code>rsec</code> keys.</td>
 </tr>
 </tbody>
 </table>
@@ -584,7 +571,7 @@
 </tr>
 <tr>
 <td>SHA-256 Hashed</td>
-<td></td>
+<td>Select this checkbox if you want Tealium to SHA-256 hash the raw email addresses provided in the email field.</td>
 </tr>
 </tbody>
 </table>
@@ -612,7 +599,7 @@
 </tr>
 <tr>
 <td>SHA-256 Hashed</td>
-<td></td>
+<td>Select this checkbox if you want Tealium to SHA-256 hash the raw email addresses provided in the email field.</td>
 </tr>
 </tbody>
 </table>
@@ -676,7 +663,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 18, 2024 
+          <p>This page was last updated:  April 2, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -690,8 +677,7 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
@@ -995,6 +981,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
