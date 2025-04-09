@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "21",
+        reading_time  : "18",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -268,6 +268,7 @@
         <a href="/server-side-connectors/marigold-engage-by-sailthru-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".marigold-engage-by-sailthru-connector">Marigold Engage by Sailthru</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/marketo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".marketo-connector">Marketo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/mediamath-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mediamath-connector">MediaMath</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-azure-blob-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-azure-blob-storage-connector">Microsoft Azure Blob Storage</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/microsoft-azure-event-hubs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-azure-event-hubs-connector">Microsoft Azure Event Hubs</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/microsoft-azure-service-bus-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-azure-service-bus-connector">Microsoft Azure Service Bus</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/microsoft-bing-ads-offline-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-bing-ads-offline-conversions">Microsoft Bing Ads Offline Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -310,6 +311,7 @@
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-email-studio-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-connector-legacy">Salesforce Email Studio (Legacy)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -416,8 +418,8 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The Adobe Analytics 2.0 Connector in the Tealium Customer Data Hub uses Adobe&rsquo;s <a href="https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/index.md">Data Insertion API</a> to send analytics data server-side, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>August 12, 2026: The end of life date for the Adobe Analytics 1.4 API is August 12, 2026, including WSSE authentication. After this date, the Adobe Analytics 1.4 API and WSSE authentication will no longer be supported or available.</p>
+<p>The Adobe Analytics 2.0 connector uses the <a href="https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/">Adobe Bulk Data Insertion API</a> to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The end of life date for the Adobe Analytics 1.4 API is August 12, 2026, including WSSE authentication. After this date, the Adobe Analytics 1.4 API and WSSE authentication will no longer be supported or available.</p>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
@@ -440,8 +442,199 @@
 </tr>
 </tbody>
 </table>
-<h2 id="generate-the-client-id-and-client-secret-in-adobe">Generate the Client ID and Client Secret in Adobe</h2>
-<p>Configuring the Adobe Analytics 2.0 Connector requires the Client ID (API Key) and Client Secret for the Adobe Analytics 2.0 API. To create credentials in the Adobe Developer Console and obtain the Client ID (API Key) and Client Secret for Adobe Analytics 2.0 API, use the following steps:</p>
+<p>Enter these credentials during configuration of the Adobe Analytics 2.0 connector and test the connection.</p>
+<h2 id="adobe-analytics-20-connector-differences">Adobe Analytics 2.0 connector differences</h2>
+<p>The following Adobe Analytics 1.4 connector features are not available in the Adobe Analytics 2.0 connector:</p>
+<ul>
+<li>Custom Field Mapping (Advanced)</li>
+<li>Enable auto-mapping of Lifecycle Event Attributes for Mobile Data-sources</li>
+</ul>
+<p>Some Adobe Analytics 1.4 parameters are not available in the Adobe Analytics 2.0 connector, as shown in the following table. An ✗ in the <strong>Adobe Analytics 2.0 parameter</strong> column indicates that parameter is not available in the 2.0 connector.</p>
+<table>
+<thead>
+<tr>
+<th>Adobe Analytics 1.4 parameter</th>
+<th>Adobe Analytics 2.0 parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a4t</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>architecture</td>
+<td>hints.architecture</td>
+</tr>
+<tr>
+<td>bitness</td>
+<td>hints.bitness</td>
+</tr>
+<tr>
+<td>browserHeight</td>
+<td>browserHeight</td>
+</tr>
+<tr>
+<td>browserWidth</td>
+<td>browserWidth</td>
+</tr>
+<tr>
+<td>campaign</td>
+<td>campaign</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>channel</td>
+</tr>
+<tr>
+<td>connectionType</td>
+<td>connectionType</td>
+</tr>
+<tr>
+<td>cookiesEnabled</td>
+<td>cookiesEnabled</td>
+</tr>
+<tr>
+<td>currencyCode</td>
+<td>currencyCode</td>
+</tr>
+<tr>
+<td>customerPerspective</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>fallbackVisitorID</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>homePage</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>imsregion</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>ipaddress</td>
+<td>ipaddress</td>
+</tr>
+<tr>
+<td>javaEnabled</td>
+<td>javaEnabled</td>
+</tr>
+<tr>
+<td>javaScriptVersion</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>language</td>
+<td>language</td>
+</tr>
+<tr>
+<td>linkName</td>
+<td>linkName</td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>linkType</td>
+</tr>
+<tr>
+<td>linkURL</td>
+<td>linkURL</td>
+</tr>
+<tr>
+<td>marketingCloudOrgID</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>marketingCloudVisitorID</td>
+<td>marketingCloudVisitorID</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>hints.mobile</td>
+</tr>
+<tr>
+<td>pageName</td>
+<td>pageName</td>
+</tr>
+<tr>
+<td>pageType</td>
+<td>pageType</td>
+</tr>
+<tr>
+<td>pageURL</td>
+<td>pageURL</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>hints.platform</td>
+</tr>
+<tr>
+<td>platformVersion</td>
+<td>hints.platformversion</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>purchaseID</td>
+<td>purchaseID</td>
+</tr>
+<tr>
+<td>referrer</td>
+<td>referrer</td>
+</tr>
+<tr>
+<td>reportSuiteID</td>
+<td>reportSuiteID</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>resolution</td>
+</tr>
+<tr>
+<td>server</td>
+<td>server</td>
+</tr>
+<tr>
+<td>state</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>transactionID</td>
+<td>transactionID</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>userAgent</td>
+</tr>
+<tr>
+<td>visitorID</td>
+<td>visitorID</td>
+</tr>
+<tr>
+<td>wow64</td>
+<td>hints.wow64</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>zip</td>
+</tr>
+</tbody>
+</table>
+<p>For information on migrating Adobe Analytics 1.4 connectors to Adobe Analytics 2.0 connectors, see <a href="#migrator-tool">Migrator Tool</a>.</p>
+<h2 id="connector-configuration">Connector Configuration</h2>
+<p>Configuring the Adobe Analytics 2.0 Connector requires the Client ID (API Key) and Client Secret for the Adobe Analytics 2.0 API. To create credentials in the Adobe Developer Console and obtain the Client ID and Client Secret for Adobe Analytics 2.0 API, use the following steps:</p>
 <ol>
 <li>Go to the Adobe Developer Console and log in with your Adobe ID.</li>
 <li>Click <strong>Create a new project</strong>.</li>
@@ -454,50 +647,28 @@
 <li>To retrieve 5h43 Client ID and Client Secret, go to the <strong>Credentials</strong> section in your project.</li>
 <li>To view and copy the Client ID and Client Secret, click <strong>Retrieve Client Secret</strong>.</li>
 </ol>
-<p>Enter these credentials during configuration of the Adobe Analytics 2.0 connector and test the connection.</p>
-<h2 id="connector-configuration">Connector Configuration</h2>
-<p>Use the following steps in the interface to configure the Adobe Analytics connector:</p>
+<p>After you have obtained the Client ID and Client Secret, use the following steps in the interface to configure an Adobe Analytics connector:</p>
 <ol>
-<li>
-<p>Go to the <strong>Connector Marketplace</strong> and add the Adobe Analytics connector.<br>
-For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</p>
-</li>
-<li>
-<p>In the <strong>Title</strong> field, enter a title for the connector.</p>
-</li>
-<li>
-<p>In the <strong>Data Insertion Domain</strong> field, enter the domain for your Adobe Analytics data collection servers. For example, <code>namespace.122.2o7.net</code>.</p>
-</li>
-<li>
-<p>In the <strong>Report Suite ID</strong> field, enter your Report Suite ID.<br>
-This is the Report Suite used to submit the data. To send data to multiple destinations use a comma-separated list of report suites.</p>
- <p class="note"><i class="fa fa-exclamation-triangle"></i>This value can also be set with a data mapping.</p>
-</li>
-<li>
-<p>In the <strong>Notes</strong> field, enter any relevant notes about this connector.</p>
-</li>
-<li>
-<p>Click <strong>Next</strong>.<br>
-The <strong>Actions</strong> tab is displayed.</p>
-</li>
+<li>Go to the <strong>Connector Marketplace</strong> and add the Adobe Analytics connector.<br>
+For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</li>
+<li>Select an <strong>Audience</strong> and a <strong>Trigger</strong>, then click <strong>Continue</strong>.</li>
+<li>Click <strong>Add Connector</strong>.</li>
+<li>Enter a <strong>Name</strong> for the connector.</li>
+<li>Enter the <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+<li>(Optional) Click <strong>Test Connection</strong>.</li>
+<li>Click <strong>Done</strong>, then click <strong>Continue</strong>.<br>
+The next step is <a href="#configure-an-action">configuring an action</a>.</li>
 </ol>
-<h2 id="actions">Actions</h2>
-<p>The Adobe Analytics 2.0 connector has the following actions:</p>
-<ul>
-<li>Send Analytics Event</li>
-<li>Send Analytics Event (Batch)</li>
-</ul>
-<p>The parameters for these two actions are the same.</p>
 <h3 id="batch-limits">Batch Limits</h3>
-<p>Adobe Analytics 2.0 only allows a compressed file to be sent in each call, which means the connector cannot perform a real-time action. The connector performs a 20-second micro-batched action instead.</p>
+<p>Adobe Analytics 2.0 only allows a compressed file to be sent in each call, which means the connector cannot perform a real-time action. The connector performs a 30-second micro-batched action instead.</p>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 250,000</li>
 <li>Maximum time since oldest request: 30 minutes</li>
 <li>Maximum size of requests: Compressed file 100 MB, Uncompressed file 1GB</li>
 </ul>
-<h2 id="configure-an-action">Configure an action</h2>
-<p>Select <strong>Send Analytics Event</strong> or <strong>Send Analytics Event (Batch)</strong> from the drop-down list, then configure the following parameters:</p>
+<h3 id="configure-an-action">Configure an action</h3>
+<p>Select an action, then configure the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -508,7 +679,7 @@ The <strong>Actions</strong> tab is displayed.</p>
 <tbody>
 <tr>
 <td>Event Parameters</td>
-<td><ul><li>See &ldquo;General Attributes&rdquo; below</li></ul></td>
+<td><ul><li>See &ldquo;General Attributes&rdquo; below.</li></ul></td>
 </tr>
 <tr>
 <td>Context Data</td>
@@ -532,15 +703,19 @@ The <strong>Actions</strong> tab is displayed.</p>
 </tr>
 <tr>
 <td>Events</td>
-<td><ul><li>Specify a list of events, or a comma-separated custom value.</li><li>see <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en">Adobe Analytics Configure Events Implementation</a></li></ul></td>
+<td><ul><li>Specify a list of events, or comma-separated custom values.</li><li>FOr more information, see <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en">Adobe Analytics Configure Events Implementation</a></li></ul></td>
 </tr>
 <tr>
 <td>Event Mapping</td>
-<td><ul><li>Map a potential value contained in the Events Array (configured above) to the Adobe Analytics Custom Event name.</li><li>For example, registration to <code>event3</code> would replace <code>registration</code> with <code>event3</code> in the event payload.</li></ul></td>
+<td><ul><li>Map a potential value contained in the Events Array to the Adobe Analytics Custom Event name.</li><li>For example: Mapping purchase to 3, will replace purchase with event3, so the final output based on the original Events example would change from event1,event2,event3,purchase to event1,event2,event3,event4.</li></ul></td>
 </tr>
 <tr>
 <td>Event Values</td>
-<td><ul><li>Specify values for <code>Counter</code>, <code>Numeric</code>, and <code>Currency</code> events.</li><li>To specify an event, use a number.</li><li>As an example, 1 will be sent over as <code>event1</code>.</li></ul></td>
+<td><ul><li>Specify values for <code>Counter</code>, <code>Numeric</code>, and <code>Currency</code> events.</li><li>To specify an event, use a number.</li><li>For example, mapping 9.99 to 2 results in the following output: <code>event1,event2=9.99,event3,event4</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Event Serialization</td>
+<td><ul><li>Specifies event IDs to use to serialize events.</li><li>For more information see, <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/event-serialization#vars">Event Serialization</a>.</li><li>For example, mapping page_view to 3, results in the following output: <code>event1,event2,event3:page_view,event4</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Products</td>
@@ -563,97 +738,6 @@ The <strong>Actions</strong> tab is displayed.</p>
 <p>When you are done configuring parameters, click <strong>Save</strong>, and then Save and Publish your changes.</p>
 <h2 id="general-attributes">General Attributes</h2>
 <p>For a full reference of all attributes, including details on exactly what each field should contain, see Adobe&rsquo;s <a href="https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/reference/r_supported_tags.md">API documentation</a> and the <a href="#visitor-and-experience-cloud-ids">Visitor &amp; Experience Cloud IDs</a> section of this article.</p>
-<h3 id="report-suite-ids">Report Suite IDs</h3>
-<ul>
-<li>Specify a report suite ID, which will override any value previously entered in the Connector Configuration UI. If you do not need to override that value, you can leave this field blank. You can use either a data layer variable, or a <strong>Custom Value</strong>. If you wish to send data to multiple report suites, you may use a comma-separated list.</li>
-<li>This will overwrite the value defined in the Configuration Tab</li>
-<li>Specifies the report suites where you want to submit data. Contained in the URL</li>
-<li>If specifying Data Layer attributes, use simple attribute types per row. We will format the data correctly to be passed along</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>Map From</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Notes</strong></th>
-<th><strong>Sample Connector Output</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Customer Data Hub attribute containing a persistent visitor ID (e.g., tealium_visitor_id)</td>
-<td>visitorID*</td>
-<td><ul><li>Ensure that this is a visitor-level persistent value.</li><li>Example: Tealium Visitor ID</li></ul></td>
-<td><code>&lt;visitorID&gt;01619ea9a91a001af7e29b75797104079005c07101008M&lt;/visitorID&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing a page name/title</td>
-<td>pageName</td>
-<td><ul><li>String value</li></ul></td>
-<td><code>&lt;pageName&gt;Homepage&lt;/pageName&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the current URL (e.g., built-in &ldquo;Current URL&rdquo; attribute)</td>
-<td>pageURL</td>
-<td><ul><li>String value</li></ul></td>
-<td><code>&lt;pageURL&gt;http://www.tealium.com&lt;/pageURL&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the Adobe Experience Cloud ID</td>
-<td>marketingCloudVisitorID*</td>
-<td><ul><li>Usually retrieved via the Visitor API JavaScript tag.</li><li>Implemented in iQ Tag Management.</li></ul></td>
-<td><code>&lt;marketingCloudVisitorID&gt;&lt;/marketingCloudVisitorID&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the link name</td>
-<td>linkName</td>
-<td><ul><li>String value.</li><li>Example: tealium_event</li></ul></td>
-<td><code>&lt;linkName&gt;Buy Now&lt;/linkName&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the URL of the link clicked</td>
-<td>linkURL</td>
-<td><ul><li>String value</li></ul></td>
-<td><code>&lt;linkURL&gt;https://www.tealium.com/products/widgets/buynow&lt;/linkURL&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the order ID</td>
-<td>purchaseID</td>
-<td><ul><li>String value.</li><li>E-commerce Order ID</li></ul></td>
-<td><code>&lt;purchaseID&gt;ORD12345&lt;/purchaseID&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the document referrer</td>
-<td>referrer</td>
-<td><ul><li>Recommend using built-in &ldquo;Referring URL&rdquo; attribute.</li></ul></td>
-<td><code>&lt;referrer&gt;https://www.tealium.com/shop&lt;/referrer&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the timestamp from the time the event occurred</td>
-<td>timestamp</td>
-<td><ul><li>Optional.</li><li>Unix epoch seconds or ISO 8601 format.</li><li>Do not map if your report suite is not explicitly configured to accept timestamped hits.</li><li>For more information, see the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/timestamp.html?lang=en">Timestamp Implementation Guide</a>.</li></ul></td>
-<td><code>&lt;timestamp&gt;1519207951063&lt;/timestamp&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the IP address of the visitor</td>
-<td>ipaddress</td>
-<td><ul><li>To use this optional attribute, you must have enabled the Visitor IP attribute in your account.</li><li>Contact your account manager if you need this feature.</li></ul></td>
-<td><code>&lt;ipaddress&gt;127.0.0.1&lt;/ipaddress&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the user agent of the browser/device</td>
-<td>userAgent</td>
-<td><ul><li>Recommend using the built-in User Agent attribute in Customer Data Hub</li></ul></td>
-<td><code>&lt;userAgent&gt;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36&lt;/userAgent&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the transaction ID for a custom event (not order ID)</td>
-<td>transactionID</td>
-<td><ul><li>This is not the same as purchaseID.</li><li>See the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/transactionid.html?lang=en">Adobe Analytics</a> documentation for details.</li></ul></td>
-<td><code>&lt;transactionID&gt;CMPSUMMER18&lt;/transactionID&gt;</code></td>
-</tr>
-</tbody>
-</table>
 <h3 id="user-agent-client-hints">User Agent Client Hints</h3>
 <p>Client Hints, from Chromium browsers such as Google Chrome and Microsoft Edge, offer device-specific information. This set of data replaces the user agent string as the primary source for device information.</p>
 <p>These mapping selections appear in the <strong>Event Parameters</strong> section.</p>
@@ -671,69 +755,40 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td>Customer Data Hub attribute containing the system architecture hint.</td>
 <td><code>hints.architecture</code></td>
 <td><ul><li>String value.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;architecture&gt;x64&lt;/architecture&gt;</code></td>
+<td><code>x64</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute containing the number of bits that the application running uses.</td>
 <td><code>hints.bitness</code></td>
 <td><ul><li>String value.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;bitness&gt;64&lt;/bitness&gt;</code></td>
-</tr>
-<tr>
-<td>Customer Data Hub attribute containing the brands hint.</td>
-<td><code>brands</code></td>
-<td><ul><li>Send as an array of objects.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;brands&gt;&lt;brand&gt;&lt;name&gt;Chromium&lt;/name&gt;&lt;version&gt;100&lt;/version&gt;&lt;/brand&gt;&lt;/brands&gt;</code></td>
+<td><code>64</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute indicating whether the custom event occurred through a mobile connection.</td>
 <td><code>hints.mobile</code></td>
 <td><ul><li>Boolean value.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;mobile&gt;true&lt;/mobile&gt;</code></td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute containing the platform hint.</td>
 <td>hints.platform</td>
 <td><ul><li>String value.</li></ul></td>
-<td><code>&lt;platform&gt;win&lt;/platform&gt;</code></td>
+<td><code>win</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute containing the platform version hint.</td>
-<td><code>platformVersion</code></td>
+<td><code>hints.platformVersion</code></td>
 <td><ul><li>String value.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;platformVersion&gt;10&lt;/platformVersion&gt;</code></td>
+<td><code>10</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute containing an indicator that Windows is running the 32-bit subsystem. For more information, see <a href="https://en.wikipedia.org/wiki/WoW64">WoW64 at Wikipedia</a></td>
-<td><code>wow64</code></td>
+<td><code>hints.wow64</code></td>
 <td><ul><li>Boolean value.</li><li>For more information, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/user-agent-client-hints.html">User agent client hints</a> at Adobe.</li></ul></td>
-<td><code>&lt;wow64&gt;true&lt;/wow64&gt;</code></td>
+<td><code>true</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="link-type">Link Type</h3>
-<p>This field is used for link tracking, and allows setting of a <a href="https://experienceleague.adobe.com/docs/analytics/components/dimensions/custom-link.html?lang=en">Link Type</a>.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Map From</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Select any attribute from the drop-down list or enter custom value</td>
-<td>Link type: &ldquo;d&rdquo; - Download Link &ldquo;e&rdquo; - Exit Link &ldquo;o&rdquo; - Custom (other) Link</td>
-<td>Sends a Link Type to Adobe Analytics only if the attribute selected has a value*</td>
-<td>Map: (Custom Value): &ldquo;true&rdquo; to &ldquo;o&rdquo;</td>
-<td><code>&lt;linkType&gt;o&lt;/linkType&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If the attribute selected has a value of <code>null</code>, <code>undefined</code> or <code>&quot;&quot;</code> (empty string), the Link Type will not be set on the outgoing request.</p>
 <h3 id="context-data">Context Data</h3>
 <p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en">Context Data</a> may be used as a more user-friendly alternative to props and eVars. You can map any event attribute or visitor attribute to Context Data variables in Adobe Analytics. Context Data variables may have any name, but is is an Adobe best practice is to prefix all variables with a unique key, such as your company name. Some variables are reserved and may only be used for predetermined functionality, such as Lifecycle Metrics; these variables are prefixed with <code>a.</code>.</p>
 <table>
@@ -743,7 +798,6 @@ The <strong>Actions</strong> tab is displayed.</p>
 <th><strong>Map To</strong></th>
 <th><strong>Description</strong></th>
 <th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -752,12 +806,11 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td>companyname.someproperty</td>
 <td>Maps a defined Customer Data Hub attribute to a Context Data attribute</td>
 <td>Map: (Customer Data Hub Attribute) Campaign Name to &ldquo;tealium.productColor&rdquo;</td>
-<td><code>&lt;contextData&gt;&lt;tealium.productColor&gt;Red&lt;/tealium.productColor&gt;&lt;/contextData&gt;</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="analytics-evars">Analytics eVars</h3>
-<p>This field is used to map Customer Data Hub attributes to <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en">eVars</a>. eVars must be specified using the word &ldquo;eVar&rdquo; (not case-sensitive), plus the number of the eVar, for example, &ldquo;eVar11&rdquo;. Valid range is 1 through 250.</p>
+<p>This field is used to map Customer Data Hub attributes to <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en">eVars</a>. eVars must be specified by mapping an attribute to a number. Valid range is 1 through 250.</p>
 <table>
 <thead>
 <tr>
@@ -765,21 +818,19 @@ The <strong>Actions</strong> tab is displayed.</p>
 <th><strong>Map To</strong></th>
 <th><strong>Description</strong></th>
 <th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Select any attribute from dropdown, or enter custom value</td>
-<td>eVarX, where X is an integer in the range 1-250</td>
+<td>X, where X is an integer in the range 1-250</td>
 <td>Maps a defined Customer Data Hub attribute to an eVar in your analytics reports</td>
-<td>Map: (Customer Data Hub Attribute) Campaign Name to &ldquo;eVar75&rdquo;</td>
-<td><code>&lt;eVar75&gt;Summer2018&lt;/eVar75&gt;</code></td>
+<td>For example, map &ldquo;event_count&rdquo; to &ldquo;1&rdquo; for eVar1.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="analytics-property-name-sprops">Analytics Property Name (s.props)</h3>
-<p>This field is used to map Customer Data Hub attributes to <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en">props</a>. Props must be specified using the word <code>prop</code>, plus the number of the prop, for example, &ldquo;prop4&rdquo;. Valid range is 1 through 75. <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en#list-props">List props</a> are supported, but these require prior configuration in your Adobe Analytics Report Suite admin interface.</p>
+<p>This field is used to map Customer Data Hub attributes to <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en">props</a>. Props must be specified using the word <code>prop</code>, plus the number of the prop, for example, &ldquo;prop4&rdquo;.Props must be specified by mapping an attribute to a number. Valid range is 1 through 75. <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en#list-props">List props</a> are supported, but these require prior configuration in your Adobe Analytics Report Suite admin interface.</p>
 <table>
 <thead>
 <tr>
@@ -787,25 +838,20 @@ The <strong>Actions</strong> tab is displayed.</p>
 <th><strong>Map To</strong></th>
 <th><strong>Description</strong></th>
 <th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Select any attribute from dropdown, or enter custom value</td>
-<td>propX, where X is an integer in the range 1-75</td>
+<td>X, where X is an integer in the range 1-75</td>
 <td>Maps a defined Customer Data Hub attribute to a prop in your analytics reports</td>
-<td>Map: (Customer Data Hub Attribute) Link Name to &ldquo;prop4&rdquo;</td>
-<td><code>&lt;prop4&gt;Buy Now&lt;/prop4&gt;</code></td>
+<td>Map &ldquo;lifetime_value&rdquo; to &ldquo;1&rdquo; for prop1.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="events-sevents">Events (s.events)</h3>
 <p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en">Events</a> allow you to measure how frequently a particular event is occurring on your website or in your app. The events variable is a comma-separated string listing all the events that should be counted for a particular analytics event. Both <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en">predefined events</a> and <a href="https://experienceleague.adobe.com/docs/analytics/components/metrics/custom-events.html?lang=en">custom events</a> are sent in the same string.</p>
-<p>In the Adobe Analytics connector, the following two methods are used to specify events:</p>
-<ul>
-<li>Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in iQ Tag Management, an Enrichment, or directly in your data layer).</li>
-</ul>
+<p>Map an array value containing a list of event names that has been populated elsewhere (for example, an extension in iQ Tag Management, an Enrichment, or directly in your data layer).</p>
 <table>
 <thead>
 <tr>
@@ -816,13 +862,13 @@ The <strong>Actions</strong> tab is displayed.</p>
 <tbody>
 <tr>
 <td>Customer Data Hub attribute representing a list of events</td>
-<td><code>&lt;events&gt;event1,event5,event9&lt;/events&gt;</code></td>
+<td><code>event1,event5,event9</code></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Specify an array of string values which map to specific event numbers, and specify the event number mappings in the &ldquo;Custom Event Mapping&rdquo; section as follows:</li>
-</ul>
+<h3 id="events-mapping">Events Mapping</h3>
+<p>If you need to rename any event name above by an event X, it can be renamed by mapping.</p>
+<p>For example, mapping <code>purchase</code> to <code>3</code>, replaces <code>purchase</code> with <code>event3</code>, so the final output based on the Events Mapping example in the <a href="#configure-an-action">Configure an action</a> section would change from <code>event1,event2,event3,purchase</code> to <code>event1,event2,event3,event4</code>.</p>
 <table>
 <thead>
 <tr>
@@ -830,7 +876,7 @@ The <strong>Actions</strong> tab is displayed.</p>
 <th style="text-align:left">Map To</th>
 <th style="text-align:left">Example Event Array</th>
 <th style="text-align:left">Example Input</th>
-<th style="text-align:left">Sample Connector Output</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -839,12 +885,12 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td style="text-align:left">Name of event to trigger, for example, event8</td>
 <td style="text-align:left">[&ldquo;newsletter_registration&rdquo;, &ldquo;homepage_viewed&rdquo;]</td>
 <td style="text-align:left">&ldquo;newsletter_registration&rdquo;</td>
-<td style="text-align:left"><code>&lt;events&gt;event8&lt;/events&gt;</code> (because string &ldquo;newsletter_registration&rdquo; appeared in the events array)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="event-value-mapping">Event Value Mapping</h3>
-<p>This field allows numerical values to be assigned to events. This field is not correlated to the &ldquo;Custom Event Mapping&rdquo; field; that is, if &ldquo;event2&rdquo; is specified in the &ldquo;Custom Event Mapping&rdquo; and is also specified as a &ldquo;Value&rdquo; event, it would be included in the event variable twice - once with no value, and once with.</p>
+<h3 id="event-values">Event Values</h3>
+<p>This field allows numerical values to be assigned to events.</p>
 <table>
 <thead>
 <tr>
@@ -859,14 +905,14 @@ The <strong>Actions</strong> tab is displayed.</p>
 <tr>
 <td style="text-align:left">Attribute representing a numerical value</td>
 <td style="text-align:left">Number</td>
-<td style="text-align:left">eventX, where X is the number of the event</td>
+<td style="text-align:left">X, where X is the number of the event</td>
 <td style="text-align:left">Map &ldquo;9&rdquo; to &ldquo;event5&rdquo;</td>
-<td style="text-align:left"><code>&lt;events&gt;event5=9&lt;/events&gt;</code></td>
+<td style="text-align:left"><code>event5=9</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="event-serialization">Event Serialization</h3>
-<p>Configure event serialization by mapping an attribute that contains the event ID to a number that specifies the event. For example, mapping &ldquo;ABC123&rdquo; to &ldquo;2&rdquo; sends &ldquo;event2=ABC123&rdquo;.</p>
+<p>Configure event serialization by mapping an attribute that contains the event ID to a number that specifies the event.</p>
 <table>
 <thead>
 <tr>
@@ -883,159 +929,10 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td style="text-align:left">String</td>
 <td style="text-align:left">The event number</td>
 <td style="text-align:left">Map &ldquo;ABC123&rdquo; to &ldquo;1&rdquo;,<br> Map &ldquo;ABC123&rdquo; to &ldquo;2&rdquo;</td>
-<td style="text-align:left"><code>&lt;events&gt;event1=ABC123,event2:ABC123&lt;/events&gt;</code></td>
+<td style="text-align:left"><code>event1:ABC123,event2:ABC123</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="lifecycle-events">Lifecycle Events</h3>
-<p>Adobe Analytics has the ability to track Application Lifecycle events. The Tealium mobile libraries each have an optional module available to support this feature, which automatically generates the required data for Adobe Analytics.</p>
-<table>
-<thead>
-<tr>
-<th>Tealium Attribute</th>
-<th>Adobe Variable</th>
-<th>Description</th>
-<th>Data Type</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lifecycle_diddetect_crash</td>
-<td>a.CrashEvent</td>
-<td>Was a crash detected during this launch/wake event. Populated only if true.</td>
-<td>Boolean</td>
-<td>true</td>
-</tr>
-<tr>
-<td>lifecycle_dayofweek_local</td>
-<td>a.DayOfWeek</td>
-<td>Local day of week that call was made - 1=Sunday, 2=Monday, etc.</td>
-<td>Number</td>
-<td>13</td>
-</tr>
-<tr>
-<td>lifecycle_dayssincelaunch</td>
-<td>a.DaysSinceFirstUse</td>
-<td>Days since first launch in integer increments</td>
-<td>Number</td>
-<td>23</td>
-</tr>
-<tr>
-<td>lifecycle_dayssinceupdate</td>
-<td>a.DaysSinceLastUpgrade</td>
-<td>Days since the last detected app version update in integer increments</td>
-<td>Number</td>
-<td>46</td>
-</tr>
-<tr>
-<td>lifecycle_dayssincelastwake</td>
-<td>a.DaysSinceLastUse</td>
-<td>Days since last detected wake in integer increments</td>
-<td>Number</td>
-<td>1</td>
-</tr>
-<tr>
-<td>lifecycle_firstlaunchdate_MMDDYYYY</td>
-<td>a.InstallDate</td>
-<td>GMT Timestamp formatted as MM/DD/YYYY</td>
-<td>String</td>
-<td>01/18/2012</td>
-</tr>
-<tr>
-<td>lifecycle_hourofday_local</td>
-<td>a.HourOfDay</td>
-<td>Local hour of day that call was made (24 hour format)</td>
-<td>String</td>
-<td>true</td>
-</tr>
-<tr>
-<td>lifecycle_isfirstlaunch</td>
-<td>a.InstallEvent</td>
-<td>Only present if call is very first launch/wake call</td>
-<td>String</td>
-<td>true</td>
-</tr>
-<tr>
-<td>lifecycle_isfirstlaunchupdate</td>
-<td>a.UpgradeEvent</td>
-<td>Only present if call is first launch/wake after a detected updated</td>
-<td>Boolean</td>
-<td>true</td>
-</tr>
-<tr>
-<td>lifecycle_isfirstwakemonth</td>
-<td>a.MonthlyEngUserEvent</td>
-<td>Only present if call is first launch/wake of the month</td>
-<td>Boolean</td>
-<td>true</td>
-</tr>
-<tr>
-<td>lifecycle_priorsecondsawake</td>
-<td>a.PrevSessionLength</td>
-<td>Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with lifecycle_type: launch calls.</td>
-<td>Number</td>
-<td>126</td>
-</tr>
-<tr>
-<td>lifecycle_totalwakecount</td>
-<td>a.Launches</td>
-<td>Total number of launches + wakes since install (only reset if app deleted)</td>
-<td>Number</td>
-<td>&ldquo;563&rdquo;</td>
-</tr>
-<tr>
-<td>lifecycle_type</td>
-<td>a.LaunchEvent if lifecycle_type == &ldquo;launch&rdquo;</td>
-<td>Type of lifecycle call</td>
-<td>String</td>
-<td>&ldquo;launch&rdquo;, &ldquo;wake&rdquo;, &ldquo;sleep&rdquo;</td>
-</tr>
-<tr>
-<td>device (obj-c/android) or model_name (swift)</td>
-<td>a.DeviceName</td>
-<td>Device model</td>
-<td>String</td>
-<td>iPhone 7 Plus</td>
-</tr>
-<tr>
-<td>carrier (obj-c/android) or network_name (swift)</td>
-<td>a.CarrierName</td>
-<td>Network carrier name</td>
-<td>String</td>
-<td>Verizon</td>
-</tr>
-<tr>
-<td>device_resolution</td>
-<td>a.Resolution</td>
-<td>Screen Resolution</td>
-<td>String</td>
-<td>1080x1920</td>
-</tr>
-<tr>
-<td>resolution</td>
-<td>Screen Resolution</td>
-<td>String</td>
-<td>1080x1920</td>
-<td></td>
-</tr>
-<tr>
-<td>app_id</td>
-<td>a.AppID</td>
-<td>App ID</td>
-<td>String</td>
-<td>Digital Velocity 1.0</td>
-</tr>
-<tr>
-<td>device_os_version (obj-c/android) or os_version (swift)</td>
-<td>a.OSVersion</td>
-<td>Operating system version</td>
-<td>String</td>
-<td>11.1</td>
-</tr>
-</tbody>
-</table>
-<p>For more information, see <a href="https://marketing.adobe.com/resources/help/en_US/mobile/android/metrics.html">Adobe: Lifecycle Metrics</a>.</p>
 <h3 id="products">Products</h3>
 <p>The <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">Products</a> variable is used wherever it is necessary to capture e-commerce information about one or more products on a particular page (Category, Product ID, Price, Quantity).</p>
 <p>Only Customer Data Hub attributes with Array data types may be used to populate the Products variable. All arrays must be equal in length. For example:, if there are five products on the page, Product ID, Quantity, Price, and Category must all be five elements in length).</p>
@@ -1055,32 +952,32 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td>Array</td>
 <td>Products Category</td>
 <td><code>[&quot;Shoes&quot;, &quot;Shirts&quot;]</code></td>
-<td><code>&lt;products&gt;Shoes;;;,Shirts;;;</code></products>`</td>
+<td><code>Shoes;;;,Shirts;;;</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute representing Product ID</td>
 <td>Array</td>
 <td>Products ID</td>
 <td><code>[&quot;ABC123&quot;, &quot;EFG234&quot;]</code></td>
-<td><code>&lt;products&gt;;ABC123;;,;EFG234;;</code></products>`</td>
+<td><code>;ABC123;;,;EFG234;;</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute representing Quantity</td>
 <td>Array</td>
 <td>Products Quantity</td>
 <td><code>[&quot;1&quot;, &quot;2&quot;]</code></td>
-<td><code>&lt;products&gt;;;1;,;;2;;</code></products>`</td>
+<td><code>;;1;,;;2;;</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute representing Price</td>
 <td>Array</td>
 <td>Products Price</td>
 <td><code>[&quot;149.99&quot;, &quot;79.80&quot;]</code></td>
-<td><code>&lt;products&gt;;;;149.99,;;;79.80</code></products>`</td>
+<td><code>;;;149.99,;;;79.80</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="product-event-value-mapping">Product Event Value Mapping</h3>
+<h3 id="product-events">Product Events</h3>
 <p>This field allows a custom conversion event to be assigned to each product in the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">Products</a> variable, and a numerical value to be assigned to each event.</p>
 <p>If a simple variable is mapped (a singular value, or a custom text value), then the same value is applied to all products in the list. If a list (array) value is mapped, then the array must have the same length as the rest of the product arrays, and each item in the array will have a different value (according to its position in the array).</p>
 <p>For these examples, assume the following product arrays are present as event attributes:</p>
@@ -1099,22 +996,22 @@ The <strong>Actions</strong> tab is displayed.</p>
 <tr>
 <td>Custom text value containing a numerical value</td>
 <td>String</td>
-<td>Name of event to trigger, e.g., event8</td>
+<td>Name of event to trigger. For example, event8.</td>
 <td>&ldquo;9.99&rdquo; (custom value)</td>
-<td><code>&lt;events&gt;event8&lt;/events&gt;&lt;products&gt;Footwear;Running Shoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99&lt;/products&gt;</code></td>
+<td><code>Footwear;RunningShoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute representing numerical array</td>
 <td>Array</td>
-<td>Name of event to trigger, e.g., event12</td>
+<td>Name of event to trigger. For example, event12.</td>
 <td>[&ldquo;1.99&rdquo;, &ldquo;4.99&rdquo;]</td>
-<td><code>&lt;events&gt;event8&lt;/events&gt;&lt;products&gt;Footwear;Running Shoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99&lt;/products&gt;</code></td>
+<td><code>Footwear;RunningShoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="product-merchandising-evars">Product Merchandising eVars</h3>
+<h3 id="product-evars">Product eVars</h3>
 <p>This field allows eVars to be assigned to each product in the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">Products</a> variable.</p>
-<p>These work in the same way as the &ldquo;Product Event Value Mapping&rdquo; field, detailed above.</p>
+<p>These work in the same way as the <strong>Product Events</strong> field, described above.</p>
 <table>
 <thead>
 <tr>
@@ -1129,45 +1026,23 @@ The <strong>Actions</strong> tab is displayed.</p>
 <tr>
 <td>Custom text value containing a numerical value</td>
 <td>String</td>
-<td>Name of event to trigger, e.g., event8</td>
+<td>Name of event to trigger. For example, event8.</td>
 <td>&ldquo;9.99&rdquo; (custom value)</td>
-<td><code>&lt;events&gt;event8&lt;/events&gt;&lt;products&gt;Footwear;Running Shoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99&lt;/products&gt;</code></td>
+<td><code>Footwear;RunningShoes;1;99.99;event8=9.99,Apparel;T-Shirt;1;49.99;event8=9.99</code></td>
 </tr>
 <tr>
 <td>Customer Data Hub attribute representing an array of numerical data</td>
 <td>Array</td>
-<td>Name of event to trigger, e.g., event12</td>
+<td>Name of event to trigger. For example, event12.</td>
 <td>[&ldquo;1.99&rdquo;, &ldquo;4.99&rdquo;]</td>
-<td><code>&lt;events&gt;event8&lt;/events&gt;&lt;products&gt;Footwear;Running Shoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99&lt;/products&gt;</code></td>
+<td><code>Shoes;1;99.99;event12=1.99,Apparel;T-Shirt;1;49.99;event12=4.99</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="hierarchy-data">Hierarchy Data</h3>
-<p>Page <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en">Hierarchy</a> helps to classify a page within your site/app&rsquo;s navigation structure. There are five (5) available slots: hier1 - hier5. The only supported Customer Data Hub attribute type that can be used as a hierarchy var is an Array.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Map From</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Select any attribute from dropdown, or enter custom value</td>
-<td>Array</td>
-<td>hier1 - hier5 (drop-down selection)</td>
-<td>Maps a defined Customer Data Hub attribute in Array format to a specified hierarchy variable in Adobe Analytics</td>
-<td>Map: (Customer Data Hub Attribute) Page Classification to &ldquo;hier1&rdquo;</td>
-<td><code>&lt;hier1&gt;Article&lt;/hier1&gt;</code></td>
-</tr>
-</tbody>
-</table>
+<h3 id="hierarchy">Hierarchy</h3>
+<p>Page <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en">Hierarchy</a> helps to classify a page within your site/app&rsquo;s navigation structure. There are five (5) available slots: hier1 - hier5.</p>
 <h3 id="list-data">List Data</h3>
-<p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en">List Variables</a> are delimited strings containing multiple values, and are often used for attribution purposes. A maximum of 3 list variables is available for each Report Suite. The only supported Customer Data Hub attribute type that can be used as a list var is an Array.</p>
+<p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en">List Variables</a> are delimited strings containing multiple values, and are often used for attribution purposes. A maximum of 3 list variables is available for each Report Suite. Array vars will be converted to a comma separated string.</p>
 <table>
 <thead>
 <tr>
@@ -1186,13 +1061,26 @@ The <strong>Actions</strong> tab is displayed.</p>
 <td>list1, list2, list3 (dropdown selection)</td>
 <td>Maps a defined Customer Data Hub attribute in Array format to a specified list variable in Adobe Analytics</td>
 <td>Map: (Customer Data Hub Attribute) Referrer List to &ldquo;list1&rdquo;</td>
-<td><code>&lt;list1&gt;google.com&lt;/list1&gt;</code></td>
+<td><code>google.com,yahoo.com</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="customer-id-values">Customer ID values</h3>
+<h3 id="custom-id-values">Custom ID values</h3>
 <p>Adobe offers a way to simplify the process of generating an identifier used by the Adobe Experience Cloud Identity Service. Adobe can use one of the customer IDs in the <a href="https://experienceleague.adobe.com/en/docs/id-service/using/id-service-api/methods/setcustomerids">setCustomerIDs</a> method as a seed to generate an Adobe Experience Cloud visitor ID for you.</p>
 <p>For more information, refer to <a href="https://github.com/AdobeDocs/analytics-2.0-apis/blob/main/src/pages/guides/endpoints/bulk-data-insertion/mcseed.md">Adobe Analytics 2.0 APIS</a>.</p>
+<h4 id="fields">Fields</h4>
+<ul>
+<li><strong>customerIDType</strong> – Specifies the type of Customer ID for which you wish to provide values. For example, <code>email</code>.</li>
+<li><strong>id</strong> – The ID used in the Experience Cloud Identity Service <code>setCustomerIDs</code> method. Mapped to customerID.[customerIDType].id. For example, customerID.email.id ↔︎ Customer Email.</li>
+<li><strong>isMCSeed</strong> – An integer boolean that lets you use <code>customerID.[customerIDType].id</code> as the hit&rsquo;s identifier. Use <code>1</code> for true and <code>0</code> for false.</li>
+<li><strong>authState</strong> – The authState used in the Experience Cloud Identity Service <code>setCustomerIDs</code> method. String values are not case-sensitive. The supported values are as follows:
+<ul>
+<li><code>0</code> or an empty string: Not logged in</li>
+<li><code>1</code> or <code>AUTHENTICATED</code>: Logged in</li>
+<li><code>2</code> or <code>LOGGED_OUT</code>: Logged out.</li>
+</ul>
+</li>
+</ul>
 <h4 id="method-parameters">Method parameters</h4>
 <table>
 <thead>
@@ -1223,24 +1111,22 @@ The <strong>Actions</strong> tab is displayed.</p>
 <h2 id="visitor-and-experience-cloud-ids">Visitor and Experience Cloud IDs</h2>
 <p>See the Adobe Analytics documentation on <a href="https://experienceleague.adobe.com/docs/analytics/components/metrics/unique-visitors.html?lang=en">Visitor IDs</a>, and the order of preference in the event that multiple IDs are provided.</p>
 <h3 id="use-case-1-no-prior-adobe-analytics-implementation">Use Case 1: No prior Adobe Analytics implementation</h3>
-<p>If this will be a brand new Adobe Analytics implementation, 100% server-side, you may use your own unique visitor ID, and pass it to the visitorID attribute in the connector. You will need to decide what constitutes a suitable visitor ID, within the <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/visitorID.html">constraints</a> set out by Adobe.</p>
+<p>If this will be a brand new Adobe Analytics implementation, 100% server-side, you may use your own unique visitor ID, and pass it to the visitorID attribute in the connector. You will need to decide what constitutes a suitable visitor ID, within the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/visitorid.html?lang=en">constraints</a> set out by Adobe.</p>
 <h3 id="use-case-2-migrating-from-existing-adobe-analytics-client-side-javascript">Use Case 2: Migrating from existing Adobe Analytics client-side JavaScript</h3>
 <p>If you are migrating from a JavaScript-based Adobe Analytics tag to the server-side connector, you will need to keep a consistent visitor ID to avoid &ldquo;losing&rdquo; visitors when/if you migrate fully. You will also need to migrate the visitor IDs if you are implementing the Adobe Analytics Customer Data Hub connector as a secondary collection mechanism (where you are still using the JavaScript tag on your web pages or in your apps as the primary collection mechanism).</p>
-<p>Use the following steps to migrate from existing Adobe Analytics client-side JavaScript, as described in this use case:</p>
+<p>To migrate from existing Adobe Analytics client-side JavaScript, use the following steps:</p>
+<h4 id="step-1-configure-the-adobe-experience-cloud-id-tag">Step 1: Configure the Adobe Experience Cloud ID tag</h4>
+<p>Follow <a href="/client-side-tags/adobe-experience-cloud-id-service-tag/">these instructions</a> to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.</p>
+<h4 id="step-2-store-the-adobe-visitor-ids-in-a-first-party-cookie">Step 2: Store the Adobe visitor IDs in a first-party cookie</h4>
+<p>Storing the Adobe visitor IDs in a first-party cookie ensures that the value is transmitted to the Customer Data Hub on each hit, without needing to re-request the value for the duration of the session.</p>
 <ol>
 <li>
-<p>Follow <a href="/client-side-tags/adobe-experience-cloud-id-service-tag/">these instructions</a> to configure the Adobe Experience Cloud ID tag and set up the tag in iQ Tag Management.</p>
-</li>
-<li>
-<p>In this step, you will store the Adobe visitor IDs in a first-party cookie. This will ensure that the value is transmitted to the Customer Data Hub on each hit, without needing to re-request the value for the duration of the session.</p>
-<ul>
-<li>
-<p>In iQ Tag Management, go to the Data Layer tab, and create two (2) new First Party Cookie variables called <code>utag_main_adobe_mcid</code> and <code>utag_main_aa_vid</code> .</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>You may rename these variables if you wish, but be sure to retain the <code>utag_main_</code>&quot; prefix, which will save cookie space by stacking into the <code>utag_main</code> cookie. If you rename the variables, you will need to also update the JavaScript snippet below</p>
+<p>In iQ Tag Management, go to the Data Layer tab, and create two (2) new First Party Cookie variables called <code>utag_main_adobe_mcid</code> and <code>utag_main_aa_vid</code>.</p>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i>You may rename these variables if you wish, but be sure to retain the <code>utag_main_</code> prefix, which will save cookie space by stacking into the <code>utag_main</code> cookie. If you rename the variables, you will need to also update the JavaScript snippet below</p>
 </li>
 <li>
 <p>Create a new JavaScript Code extension, scoped to the Adobe Experience Cloud ID Service tag, and paste in the following code:</p>
-<pre tabindex="0"><code>`if (typeof vAPI !== &#34;undefined&#34;) {
+<pre tabindex="0"><code>if (typeof vAPI !== &#34;undefined&#34;) {
   vAPI.getInstance(u.data.adobe_org_id,
     function (visitor) {
       var mcID = visitor.getMarketingCloudVisitorID(),
@@ -1257,9 +1143,9 @@ The <strong>Actions</strong> tab is displayed.</p>
         // utag.track is used to avoid calling other third-party tags; only the collect tag should respond
         // utag.track(&#34;adobe_vid_updated&#34;, {});
       }
-       },&lt;br&gt;
-       u.clearEmptyKeys(u.data.config), u.data.customer_ids);
-  }`
+    },
+    u.clearEmptyKeys(u.data.config), u.data.customer_ids);
+}
 </code></pre><p>This creates a callback to the Adobe Visitor ID service that is called when the visitor ID(s) have been successfully retrieved from Adobe&rsquo;s servers, and stores the Visitor ID and Experience Cloud ID in Tealium&rsquo;s own first-party cookie (<code>utag_main</code>). The cookie expires at the end of the session in case the Visitor ID gets updated in future. To make the cookie persistent (non-expiring), set <code>sessionExpiry</code> to <code>&quot;&quot;</code> in the above code.</p>
 </li>
 <li>
@@ -1280,43 +1166,64 @@ The <strong>Actions</strong> tab is displayed.</p>
   </div>
 </div>
 </li>
-</ul>
-</li>
-<li>
-<p>Configure the Customer Data Hub for AudienceStream and EventStream.</p>
-<ul>
-<li>
-<p>AudienceStream Configuration - If you have AudienceStream, you may store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to <code>visitorID</code> and <code>marketingCloudVisitorID</code> in the connector configuration.</p>
-</li>
-<li>
-<p>EventStream Configuration  - If you only have EventStream, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie. If you have already published your iQ Tag Management configuration from the previous step to Prod, you will find the new <code>utag_main_adobe_mcid</code> and <code>utag_main_aa_vid</code> values already present in your <a href="/server-side/attributes/manage-enrichments/add-enrichment/">Event Attributes</a>.</p>
-</li>
-</ul>
-<p>If you have not published to Prod, you may manually add the event attributes, using the <strong>First Party Cookie</strong> string attribute type. Once you have defined these attributes, you may now choose them in the Adobe Analytics connector and map them to <code>marketingCloudVisitorID</code> and <code>visitorID</code> , respectively.</p>
-</li>
 </ol>
+<h4 id="step-3-configure-the-customer-data-hub-for-audiencestream-and-eventstream">Step 3: Configure the Customer Data Hub for AudienceStream and EventStream</h4>
+<ul>
+<li><strong>AudienceStream</strong> – If you have AudienceStream, you may store the Adobe Visitor ID and Experience Cloud ID as visitor-level string attributes. Do not store them as Visitor ID attributes. For any actions triggered by an audience event, you may then map the new attribute to <code>visitorID</code> and <code>marketingCloudVisitorID</code> in the connector configuration.</li>
+<li><strong>EventStream</strong> – If you only have EventStream, you do not have the ability to store visitor ID variables, which is why we stored the value in a cookie.
+<ul>
+<li>If you have already published your iQ Tag Management configuration from the previous step to Prod, you will find the new <code>utag_main_adobe_mcid</code> and <code>utag_main_aa_vid</code> values already present in your event attributes.</li>
+<li>If you have not published to Prod, you may manually add the event attributes, using the <strong>First Party Cookie</strong> string attribute type. After you have defined these attributes, you may now choose them in the Adobe Analytics connector and map them to <code>marketingCloudVisitorID</code> and <code>visitorID</code> , respectively.</li>
+</ul>
+</li>
+</ul>
 <h2 id="debugging-common-issues">Debugging Common Issues</h2>
 <ul>
 <li>
-<p>To test the connector, we recommend using <a href="/server-side/trace/about/">trace</a>. While running a trace, look for the &ldquo;HTTP Request Body&rdquo; field, which will show the formatted XML that was sent to Adobe. You can compare the XML output to the &ldquo;Sample Connector Output&rdquo; fields in the above tables to verify the output.</p>
+<p>To test the connector, we recommend using <a href="/server-side/trace/about/">trace</a>. While running a trace, look for the &ldquo;HTTP Request Body&rdquo; field, which will show a sample of the CSV header and the first line that will be sent to Adobe when the batch call is executed. You can compare the CSV output to the &ldquo;Sample Connector Output&rdquo; fields in the above tables to verify the output.</p>
 </li>
 <li>
 <p>Look for any errors in the response code being returned from Adobe. Anything other than HTTP Response Status: 200/Successful indicates that there was an error with the request.</p>
-</li>
-<li>
-<p>The full URL structure for the Data Insertion API follows the format <code>http://namespace.112.2o7.net/b/ss//6</code>. Note that the double forward slash is intentional and valid (in the JavaScript Adobe Analytics implementation, the Report Suite ID would reside here). <code>/6</code> indicates that an XML payload is being transmitted, and the reportSuite value is sent as part of the XML payload. This is the value you will see when running a <a href="/server-side/trace/about/">trace</a> session.</p>
   <p class="note"><i class="fa fa-exclamation-triangle"></i>You do not need to enter the full URL value into the connector configuration; Tealium auto-generates the URL based on the Data Insertion Domain value. You will only see the full URL when running a Trace session.</p>
 </li>
 <li>
-<p>For your specific implementation, you may have a different value for the Data Insertion Domain (for example, <code>sc.omtrdc.net</code>), but the namespace should always precede the domain (for example, <code>namespace.sc.omtrdc.net</code>), except where you have your own first-party tracking domain (for example, <code>smetrics.acme.com</code>).</p>
-</li>
-<li>
-<p>If data is not being received by Adobe Analytics, check the <a href="https://experienceleague.adobe.com/docs/analytics/technotes/timestamps-optional.html?lang=en"><strong>Timestamps Optional</strong></a> section of your report suite. If timestamp is not optional, be sure to map a valid timestamp.</p>
+<p>If data is not being received by Adobe Analytics, check the <a href="https://experienceleague.adobe.com/docs/analytics/technotes/timestamps-optional.html?lang=en">Timestamps Optional</a> section of your report suite. If timestamp is not optional, be sure to map a valid timestamp.</p>
 </li>
 <li>
 <p>We highly recommend that you map to User Agent or Client Hints. Not mapping this value will result in Adobe picking up the server&rsquo;s User Agent (for example, <code>Apache-HttpClient/4.5.5(Java/11.0.17</code>), which may be identified as bot traffic.</p>
 </li>
 </ul>
+<h2 id="migrator-tool">Migrator tool</h2>
+<p>Using the Adobe Analytics 2.0 Migrator tool, you can migrate existing Adobe Analytics 1.4 connectors into the Adobe Analytics 2.0 connector.</p>
+<p>Before using the Migrator Tool, note the following limitations:</p>
+<ul>
+<li>This tool does not migrate the 1.4 attributes that are unavailable in version 2.0. For more information, refer to the table of 1.4 and 2.0 attributes in the <a href="#adobe-analytics-20-connector-differences">Adobe Analytics 2.0 connector differences</a> section.</li>
+<li>Lifecycle Event Attributes for mobile data-source attributes are unavailable in the 2.0 API, so the auto-mapping of these attributes will not be migrated.</li>
+<li>Adobe Analytics 2.0 does not support custom attributes; therefore, the attributes in this section of the 1.4 connectors will not be migrated.</li>
+</ul>
+<p>To migrate Adobe Analytics 1.4 connectors, use the following steps:</p>
+<ol>
+<li>Go to <strong>Server-Side</strong>, then open the Tealium Tools extension for Google Chrome.</li>
+<li>In Tealium Tools, click the <strong>Tool Catalogue</strong> tab, then click <strong>Adobe Analytics 2.0 Migrator</strong>. For more information, see <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools</a>.</li>
+<li>Select how actions should be migrated.
+<ul>
+<li>To disable existing Adobe Analytics 1.4 actions as part of the migration, select <strong>Disable existing action</strong>.</li>
+<li>To migrate only active actions, select <strong>Migrate only active actions</strong>.</li>
+</ul>
+</li>
+<li>Select the scope of the migration from the drop-down list:
+<ul>
+<li>All Adobe Analytics 1.4 actions</li>
+<li>Specific Adobe Analytics 1.4 action</li>
+<li>Specific Adobe Analytics 1.4 connector</li>
+</ul>
+</li>
+<li>Enter the Adobe Analytics <strong>Client ID</strong> and <strong>Client secret</strong> for the project.</li>
+<li>Click <strong>Start</strong>.<br>
+The Migrator tool automatically migrates existing Adobe Analytics 1.4 connectors to new Adobe Analytics 2.0 connectors. The name of the connector will be the same, with the suffix &ldquo;2.0 (Migrated)&rdquo;.</li>
+<li>Verify the new connector configurations and actions.</li>
+<li>Save and publish your profile.</li>
+</ol>
 
 </div>
 
@@ -1377,7 +1284,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 12, 2025 
+          <p>This page was last updated:  April 9, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1393,32 +1300,30 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-the-client-id-and-client-secret-in-adobe" href="javascript:void(0)">Generate the Client ID and Client Secret in Adobe</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-analytics-20-connector-differences" href="javascript:void(0)">Adobe Analytics 2.0 connector differences</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-configuration" href="javascript:void(0)">Connector Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-action" href="javascript:void(0)">Configure an action</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#general-attributes" href="javascript:void(0)">General Attributes</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#report-suite-ids" href="javascript:void(0)">Report Suite IDs</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-agent-client-hints" href="javascript:void(0)">User Agent Client Hints</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#link-type" href="javascript:void(0)">Link Type</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-action" href="javascript:void(0)">Configure an action</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#general-attributes" href="javascript:void(0)">General Attributes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-agent-client-hints" href="javascript:void(0)">User Agent Client Hints</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#context-data" href="javascript:void(0)">Context Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analytics-evars" href="javascript:void(0)">Analytics eVars</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analytics-property-name-sprops" href="javascript:void(0)">Analytics Property Name (s.props)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-sevents" href="javascript:void(0)">Events (s.events)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-value-mapping" href="javascript:void(0)">Event Value Mapping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-mapping" href="javascript:void(0)">Events Mapping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-values" href="javascript:void(0)">Event Values</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-serialization" href="javascript:void(0)">Event Serialization</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#lifecycle-events" href="javascript:void(0)">Lifecycle Events</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#products" href="javascript:void(0)">Products</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-event-value-mapping" href="javascript:void(0)">Product Event Value Mapping</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-merchandising-evars" href="javascript:void(0)">Product Merchandising eVars</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#hierarchy-data" href="javascript:void(0)">Hierarchy Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-events" href="javascript:void(0)">Product Events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-evars" href="javascript:void(0)">Product eVars</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#hierarchy" href="javascript:void(0)">Hierarchy</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#list-data" href="javascript:void(0)">List Data</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#customer-id-values" href="javascript:void(0)">Customer ID values</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-id-values" href="javascript:void(0)">Custom ID values</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-and-experience-cloud-ids" href="javascript:void(0)">Visitor and Experience Cloud IDs</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-1-no-prior-adobe-analytics-implementation" href="javascript:void(0)">Use Case 1: No prior Adobe Analytics implementation</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-2-migrating-from-existing-adobe-analytics-client-side-javascript" href="javascript:void(0)">Use Case 2: Migrating from existing Adobe Analytics client-side JavaScript</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#debugging-common-issues" href="javascript:void(0)">Debugging Common Issues</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrator-tool" href="javascript:void(0)">Migrator tool</a></li>
               </nav>
   </aside></nav>
 
@@ -1715,6 +1620,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

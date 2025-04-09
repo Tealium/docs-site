@@ -168,6 +168,10 @@
         <ul class="pl2  ea-data-storage desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/data-storage/visitor-deletion-jobs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">Functions</a>
+        <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">Functions dashboard</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-log-streaming">Log Streaming</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">Connector error logging</a></li></ul>
@@ -371,7 +375,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">acceptedCategoriesAndServices</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">userPreferences</span>.<span style="color:#a6e22e">acceptedCategories</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allCategories</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">categories</span> <span style="color:#f92672">||</span> {}
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If we&#39;re in opt-in mode AND no consent decision has been made, so we return all defined categories (or their services) marked as read-only (aka, necessary), since 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// &#39;enabled&#39; is only used in opt-out mode and acceptedCategories doesn&#39;t include it (v3.0.1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// &#39;enabled&#39; is only used in opt-out mode and `acceptedCategories` doesn&#39;t include it (v3.1.0)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>) { 
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">purposeArray</span> <span style="color:#f92672">=</span> []
 </span></span><span style="display:flex;"><span>      Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">allCategories</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">cat</span>) {
@@ -490,7 +494,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// CookieConsent variables
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpDomain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tags.tiqcdn.com&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v3.0.1&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cmpVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v3.1.0&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// CookieConsent modal configuration
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// All configuration options: https://cookieconsent.orestbida.com/reference/configuration-reference.html
@@ -671,8 +675,8 @@
 </div>
 <p>Tealium hosts the files for stability and convenience:</p>
 <ul>
-<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.umd.js</a></li>
-<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css">https://tags.tiqcdn.com/libs/cookieconsent/v3.0.1/cookieconsent.css</a></li>
+<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.1.0/cookieconsent.umd.js">https://tags.tiqcdn.com/libs/cookieconsent/v3.1.0/cookieconsent.umd.js</a></li>
+<li><a href="https://tags.tiqcdn.com/libs/cookieconsent/v3.1.0/cookieconsent.css">https://tags.tiqcdn.com/libs/cookieconsent/v3.1.0/cookieconsent.css</a></li>
 </ul>
 <h2 id="integration-steps">Integration steps</h2>
 <p>Complete the following steps to set up the CookieConsent integration in Tealium iQ:</p>
@@ -778,7 +782,7 @@
 <h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="https://docs.tealium.com/guides/supported-consent-integration/">Consent Integration</a>: Reference for Consent Integration setup.</li>
-<li><a href="https://playground.cookieconsent.orestbida.com/">CookieConsent v3.0.1 Playground</a>: Explore configurations and styles.</li>
+<li><a href="https://playground.cookieconsent.orestbida.com/">CookieConsent v3.1.0 Playground</a>: Explore configurations and styles.</li>
 <li><a href="https://cookieconsent.orestbida.com/advanced/ui-customization.html">CookieConsent: UI Customization</a>: Guide for UI customization.</li>
 </ul>
 
@@ -811,7 +815,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 12, 2025 
+          <p>This page was last updated:  April 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1188,6 +1192,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/data-storage/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Data storage
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/functions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Functions
       </a>
       </li>
       
