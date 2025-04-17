@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -471,39 +471,39 @@
 <li>Familiarize yourself with <a href="/iq-tag-management/extensions/about/">how extensions work</a>.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>Use this extension to set the value of a data layer variable using text, another data layer variable, or JavaScript code. The data layer variable is specified in the <strong>Set</strong> configuration option, and the new value assigned is specified in the <strong>To</strong> field. Multiple variables can be assigned in one instance of the extension. An optional condition may be added to control when the value is assigned.</p>
+<p>Use this extension to set the value of a data layer variable using text, another data layer variable, or JavaScript code. The data layer variable is specified in the <strong>Set</strong> configuration option, and the new value assigned is specified in the <strong>To</strong> text box. Multiple variables can be assigned in one instance of the extension. An optional condition may be added to control when the value is assigned.</p>
 <h2 id="using-the-extension">Using the extension</h2>
 <p>Once the extension is added, the following configuration options are available:</p>
 <ul>
 <li>
-<p><strong>Set</strong>: The data layer variable to set. Select from a drop-down list of variables. Create a new variable by clicking the <strong>+</strong> button next to the drop-down.</p>
+<p><strong>Set</strong>: The data layer variable you want to assign a value to. Select from a drop-down list of variables or create a new variable by clicking the <strong>+ Add Variable</strong> button.</p>
 </li>
 <li>
 <p><strong>To</strong>: The value to assign to the variable. Click the <strong>+</strong> button to set another variable, or the <strong>-</strong> button to remove a variable from the extension.<br>
 The value can be one of these options:</p>
 <ul>
-<li><strong>Text</strong>: set the value to a text value that you type.</li>
-<li><strong>Variable</strong>: set to the value of another data layer variable.</li>
-<li><strong>JS Code</strong>: set to the value of a JavaScript code statement.</li>
+<li><strong>Text</strong>: Set the value to a text value that you type.</li>
+<li><strong>Variable</strong>: Set to the value of another data layer variable.</li>
+<li><strong>JS Code</strong>: Set to the value of a JavaScript code statement.</li>
 </ul>
 </li>
 <li>
-<p><strong>Condition</strong>: (Optional) A condition is added to control when variables are assigned. If a condition is added, it must evaluate to <code>true</code> for the variables to be assigned new values.</p>
+<p><strong>Condition</strong>: Optional. A condition is added to control when variables are assigned. If a condition is added, it must evaluate to <code>true</code> for the variables to be assigned new values.</p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
 <h3 id="set-a-text-value">Set a text value</h3>
-<p>This example shows how to set a variable to a text value. In this scenario a condition is used to detect if a query string parameter named <code>q</code> is populated, then the data layer variable <code>page_type</code> is set to the text value <code>search</code> to indicate that this is a search results page.</p>
+<p>This example shows how to set a variable to a text value. In this scenario, a condition is used to detect if a query string parameter named <code>q</code> is populated, then the data layer variable <code>page_type</code> is set to the text value <code>search</code> to indicate that this is a search results page.</p>
 <ol>
 <li>Add the <strong>Set Data Values</strong> extension.</li>
-<li>Set the <strong>Title</strong> to <strong>Set search as the page type</strong>.</li>
-<li>Select the variable <strong>page_type</strong> from the the drop-down menu.</li>
+<li>Set <strong>Title</strong> to <code>Set search as the page type</code>.</li>
+<li>Select the variable <code>page_type</code> from the drop-down menu.</li>
 <li>Set the value type to <strong>Text</strong>.</li>
 <li>In the text box, enter <code>search</code>.</li>
 <li>Click <strong>Add Condition</strong> and set the following:
 <ul>
-<li>Select the variable <strong>q (js)</strong>.</li>
-<li>Set the condition to <strong>is defined</strong>.</li>
+<li>Select the variable <code>q (js)</code>.</li>
+<li>Set the condition to <code>is defined</code>.</li>
 </ul>
 </li>
 </ol>
@@ -516,40 +516,40 @@ The value can be one of these options:</p>
 <p>This example shows how to set a variable to the value of another variable. In this scenario, if the variable <code>page_name</code> does not have a value it is set to the value of the <code>document.title</code> variable.</p>
 <ol>
 <li>Add the Set Data Values extension.</li>
-<li>Set the <strong>Title</strong> to <code>Set page_name</code>.</li>
-<li>Select the variable <strong>page_name</strong> from the the drop-down menu.</li>
+<li>Set <strong>Title</strong> to <code>Set page_name</code>.</li>
+<li>Select the variable <code>page_name</code> from the the drop-down menu.</li>
 <li>Set the value type to <strong>Variable</strong>. A variable drop-down list appears.</li>
-<li>Select <strong>document title</strong> from the drop-down menu.</li>
+<li>Select <code>Document Title</code> from the drop-down menu.</li>
 <li>Click <strong>Add Condition</strong> and set the following:
 <ul>
-<li>Select the variable <strong>page_name</strong>.</li>
-<li>Set the condition to <strong>is not defined</strong>.</li>
-<li>Click <strong>+</strong> to add an <strong>Or</strong> condition.</li>
-<li>Select the variable <strong>page_name</strong>.</li>
-<li>Set the condition to <strong>is defined</strong>.</li>
-<li>Click <strong>+</strong> to add an <strong>And</strong> condition.</li>
-<li>Select the variable <strong>page_name</strong>.</li>
-<li>Set the condition to <strong>is not populated</strong>.</li>
+<li>Select the variable <code>page_name</code>.</li>
+<li>Set the condition to <code>is not defined</code>.</li>
+<li>Click <strong>+</strong> outside of the <strong>Condition</strong> box to add an <strong>Or</strong> condition.</li>
+<li>Select the variable <code>page_name</code>.</li>
+<li>Set the condition to <code>is defined</code>.</li>
+<li>Click <strong>+</strong> next to the <code>is defined</code> text box to add an <strong>And</strong> condition.</li>
+<li>Select the variable <code>page_name</code>.</li>
+<li>Set the condition to<code> is not populated</code>.</li>
 </ul>
 </li>
 </ol>
-<figure><a class="slb" href="/images/iq-tag-management/setdatavalues-1.png"><img src="/images/iq-tag-management/setdatavalues-1.png"
-         alt="Set Data Values 1"
-         title="Set Data Values 1" width="600" height="400"/>
+<figure><a class="slb" href="/images/iq-tag-management/setdatavalues-2.png"><img src="/images/iq-tag-management/setdatavalues-2.png"
+         alt="Set Data Values 2"
+         title="Set Data Values 2" width="650"/>
     </a>
 </figure>
 <h3 id="set-a-javascript-code-value">Set a JavaScript code value</h3>
 <p>This example shows how to set a variable to the value returned by a JavaScript statement. In this scenario, the number of search results on a search page is determined by using jQuery to select the number of search result link elements on the page. The variable <code>search_results</code> is set to the value returned by the JavaScript code.</p>
 <ol>
 <li>Add the Set Data Values extension.</li>
-<li>Set the <strong>Title</strong> to <code>Determine number of search results</code>.</li>
+<li>Set <strong>Title</strong> to <code>Determine number of search results</code>.</li>
 <li>Select the variable <strong>search_results</strong> from the drop-down menu.</li>
 <li>Set the value type to <strong>JS Code</strong>.</li>
-<li>In the text box enter JavaScript code, exactly how it would appear in the page (or a browser console). This example uses a simple jQuery selector and the <code>.length</code> property: <code>$('.search-results a').length;</code>.</li>
+<li>In the text box, enter JavaScript code, exactly how it would appear in the page (or a browser console). This example uses a simple jQuery selector and the <code>.length</code> property: <code>$('.search-results a').length;</code>.</li>
 <li>Click <strong>Add Condition</strong> and set the following:
 <ul>
-<li>Select the variable <strong>page_type</strong>.</li>
-<li>Set the condition to <strong>equals</strong> and enter <code>search</code> in the text field.</li>
+<li>Select the variable <code>page_type</code>.</li>
+<li>Set the condition to <code>equals</code> and enter <code>search</code> in the text box.</li>
 </ul>
 </li>
 </ol>
@@ -618,7 +618,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 28, 2023 
+          <p>This page was last updated:  April 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

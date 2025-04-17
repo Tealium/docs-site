@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "9",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -417,7 +417,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>CJ recommends that you use the Universal Tag and Tracking API concurrently for web tracking events because each will support or enhance CJ&rsquo;s offerings. Using the Tracking API requires back-end changes on the CJ side and requires collaboration with your Client Integration team. Contact your CJ account team or <code>support@cj.com</code> for more details.</p>
+  <p>CJ recommends that you use the Universal Tag and Tracking API concurrently for web tracking events because each supports or enhances CJ&rsquo;s offerings. Using the Tracking API requires back-end changes on the CJ side and requires collaboration with your Client Integration team. Contact your CJ account team or <code>support@cj.com</code> for more details.</p>
 <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -449,6 +449,16 @@
 <tbody>
 <tr>
 <td style="text-align:left">Send Order Data</td>
+<td style="text-align:left">✗</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Order Restatement</td>
+<td style="text-align:left">✗</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Order Cancellation</td>
 <td style="text-align:left">✗</td>
 <td style="text-align:left">✓</td>
 </tr>
@@ -1099,7 +1109,7 @@ Required. Your CJ Tracking API personal access token. Generate your personal acc
 <tr>
 <td style="text-align:left">Trip Type</td>
 <td style="text-align:left"><code>tripType</code></td>
-<td style="text-align:left">The type of trip booked or purchased. For example: one-way, round-trip, multi-city, round trip + hotel.</td>
+<td style="text-align:left">The type of trip booked or purchased. For example: one-way, round-trip, multi-city, round trip and hotel.</td>
 </tr>
 <tr>
 <td style="text-align:left">Upsell</td>
@@ -1113,6 +1123,169 @@ Required. Your CJ Tracking API personal access token. Generate your personal acc
 </tr>
 </tbody>
 </table>
+<h3 id="action---send-order-restatement">Action - Send Order Restatement</h3>
+<p>This action lets you send order restatements to CJ Tracking. Order restatements allow attributes to be changed for, or added to, a commissionable order that is not already locked or closed. This action completely overwrites the current state of the order and updates the order to contain only the information provided in the restatement.</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Destination</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise ID</td>
+<td><code>enterpriseId</code></td>
+<td>Required</td>
+<td>Unique client ID assigned by CJ&rsquo;s Client Integration team.</td>
+</tr>
+<tr>
+<td>Action Tracker ID</td>
+<td><code>actionTrackerId</code></td>
+<td>Required</td>
+<td>Static value given by CJ&rsquo;s Client Integration team for the action taken.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td><code>orderId</code></td>
+<td>Required</td>
+<td>Client defined order identifier.</td>
+</tr>
+<tr>
+<td>Update Time</td>
+<td><code>updateTime</code></td>
+<td>Required</td>
+<td>A datetime in UTC ISO 8601 format with <code>Z</code> as the zone designator for UTC offset, rendered in JSON as a string. For example: <code>1970-03-27T12:13:14-05:00</code> or <code>1970-03-27T12:18:14Z</code>.</td>
+</tr>
+<tr>
+<td>CJ Event</td>
+<td><code>cjEvent</code></td>
+<td>Optional</td>
+<td>CJ defined correlating event ID (also referred to as CJ Click ID).</td>
+</tr>
+<tr>
+<td>Order Amount</td>
+<td><code>amount</code></td>
+<td>Optional</td>
+<td>Total order amount.</td>
+</tr>
+<tr>
+<td>Order Discount</td>
+<td><code>discount</code></td>
+<td>Optional</td>
+<td>Discount applied to the order.</td>
+</tr>
+<tr>
+<td>Vertical Parameters</td>
+<td><code>verticalParameters</code></td>
+<td>Optional</td>
+<td>Additional information to capture specific verticals the restatement is associated with.</td>
+</tr>
+<tr>
+<td>Custom Parameters</td>
+<td><code>customParameters</code></td>
+<td>Optional</td>
+<td>If any items are present in the array, values cannot be null.</td>
+</tr>
+<tr>
+<td>Items</td>
+<td><code>items</code></td>
+<td>Optional</td>
+<td>If any items are present in the array, values cannot be null.</td>
+</tr>
+<tr>
+<td>Coupon Code</td>
+<td><code>coupon</code></td>
+<td>Optional</td>
+<td>Coupon code applied to the order.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td><code>currency</code></td>
+<td>Optional</td>
+<td>Currency used for the order. For example, <code>USD</code>.</td>
+</tr>
+<tr>
+<td>Bypass Channel</td>
+<td><code>bypassChannel</code></td>
+<td>Optional</td>
+<td>Customizes the attribution process for transactions. For example, <code>Channel=CJ</code>. The value can be one of the following: <ul><li><code>CJ</code></li><li><code>Direct</code></li><li><code>Affiliate_other</code></li><li><code>Display</code></li><li><code>Social</code></li><li><code>Search</code></li><li><code>Email</code></li><li><code>Other</code></td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>status</code></td>
+<td>Optional</td>
+<td>The status of the order. Value can be <code>Pending</code> or <code>Accepted</code>.</td>
+</tr>
+<tr>
+<td>Reason for Correction</td>
+<td><code>correctionReason</code></td>
+<td>Optional</td>
+<td>The value can be one of the following: <ul><li><code>InvalidCreditCard</code></li><li><code>UnqualifiedLead</code></li><li><code>CannotShipSoldOut</code></li><li><code>DuplicateOrder</code></li><li><code>ReturnedMerchandise</code></li><li><code>Other</code></li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---send-order-cancellation">Action - Send Order Cancellation</h3>
+<p>This Action tells CJ that you want to cancel an existing order and do not want to pay a commission or fee for that order. This concept is similar to what CJ traditionally calls a full correction.</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Destination</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise ID</td>
+<td><code>enterpriseId</code></td>
+<td>Required</td>
+<td>Unique client ID assigned by CJ&rsquo;s Client Integration team.</td>
+</tr>
+<tr>
+<td>Action Tracker ID</td>
+<td><code>actionTrackerId</code></td>
+<td>Required</td>
+<td>Static value given by CJ&rsquo;s Client Integration team for the action taken.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td><code>orderId</code></td>
+<td>Required</td>
+<td>Client defined order identifier.</td>
+</tr>
+<tr>
+<td>Update Time</td>
+<td><code>updateTime</code></td>
+<td>Required</td>
+<td>A datetime in UTC ISO 8601 format with <code>Z</code> as the zone designator for UTC offset, rendered in JSON as a string. For example, <code>1970-03-27T12:13:14-05:00</code> or <code>1970-03-27T12:18:14Z</code>.</td>
+</tr>
+<tr>
+<td>Reason for Cancellation</td>
+<td><code>correctionReason</code></td>
+<td>Optional</td>
+<td>The value can be one of the following: <ul><li><code>InvalidCreditCard</code></li><li><code>UnqualifiedLead</code></li><li><code>CannotShipSoldOut</code></li><li>``DuplicateOrder</li><li><code>ReturnedMerchandise</code></li><li><code>Other</code></li></ul></td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>status</code></td>
+<td>Optional</td>
+<td>If the order you intend to cancel uses open-ended locking, you must set Status to <code>Declined</code> for the cancellation request.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vendor-documentation">Vendor documentation</h2>
+<p>For additional information, see the following vendor documentation:</p>
+<ul>
+<li><a href="https://developers.cj.com/docs/advertiser-api-tracking/api-overview">CJ Tracking API Overview</a></li>
+<li><a href="https://developers.cj.com/docs/advertiser-api-tracking/restatements">Order Restatements</a></li>
+<li><a href="https://developers.cj.com/docs/advertiser-api-tracking/cancellations">Order Cancellations</a></li>
+</ul>
 
 </div>
 
@@ -1173,7 +1346,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 25, 2025 
+          <p>This page was last updated:  April 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1193,6 +1366,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-order-data" href="javascript:void(0)">Action — Send Order Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-order-restatement" href="javascript:void(0)">Action - Send Order Restatement</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-order-cancellation" href="javascript:void(0)">Action - Send Order Cancellation</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
               </nav>
   </aside></nav>
 

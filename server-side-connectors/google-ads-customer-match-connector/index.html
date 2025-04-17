@@ -453,9 +453,9 @@
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Customer ID</strong><br>
-Required: Provide the Ads account customer ID to manage.</li>
+Required. Provide the Ads account customer ID to manage.</li>
 <li><strong>Manager Customer ID</strong><br>
-Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID must be set and have full access to the Ads account.</li>
+Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID must be set and have full access to the Ads account.</li>
 </ul>
 <h3 id="create-user-list">Create user list</h3>
 <p>To create a User List, click <strong>Create User List</strong> and enter the following information:</p>
@@ -469,11 +469,11 @@ Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td>List Name</td>
-<td>Required. User List name.</td>
+<td>Required. User list name.</td>
 </tr>
 <tr>
 <td>List Type</td>
-<td>Required. The List Type. This affects the type of user identification information to be used with this list:<ul><li><code>CONTACT_INFO</code>: Users are matched from customer info such as email address, phone number, or physical address.</li><li><code>CRM_ID</code>: Users are matched from advertiser generated and assigned user ID.</li><li><code>MOBILE_ADVERTISING_ID</code>: Users are matched from mobile advertising ID.</li></ul></td>
+<td>Required. The list type. This affects the type of user identification information to be used with this list:<ul><li><code>CONTACT_INFO</code>: Users are matched from customer info such as email address, phone number, or physical address.</li><li><code>CRM_ID</code>: Users are matched from advertiser generated and assigned user ID.</li><li><code>MOBILE_ADVERTISING_ID</code>: Users are matched from mobile device ID (advertising ID/IDFA).</li></ul></td>
 </tr>
 <tr>
 <td>App ID</td>
@@ -517,7 +517,7 @@ Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td><code>CONTACT_INFO</code></td>
-<td>Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.<ul><li><strong>Address Info: Country Code</strong> - 2-letter country code in ISO 3166-1 alpha-2 of the user&rsquo;s address.</li><li><strong>Address Info: First Name (already SHA256 hashed)</strong> - Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: First Name (apply SHA256 hash)</strong> - Provide a plain text first name and the connector will hash this value using SHA256 hash.</li><li><strong>Address Info: Last Name (already SHA256 hashed)</strong> - Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: Last Name (apply SHA256 hash)</strong> - Provide a plain text last name and the connector will hash this value using the SHA256 hash.</li><li><strong>Address Info: Postal Code</strong> - Provide a postal code of the user&rsquo;s address.</li><li><strong>Email Address (already SHA256 hashed)</strong> - Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Email Address (apply SHA256 hash)</strong> - Provide a plain text email address or array of email addresses and the connector will hash these values using the SHA256 hash.</li><li><strong>Phone Number (already SHA256 hashed)</strong> - Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.</li><li><strong>Phone Number (apply SHA256 hash)</strong> - Provide a plain text phone number or array of phone numbers and the connector will hash the values using the SHA256 hash.</li></ul></td>
+<td>Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.<ul><li><strong>Address Info: Country Code</strong> - 2-letter country code, in ISO 3166-1 alpha-2 format, of the user&rsquo;s address.</li><li><strong>Address Info: First Name (already SHA256 hashed)</strong> - Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: First Name (apply SHA256 hash)</strong> - Provide a plain text first name and the connector hashes this value using SHA256 hash.</li><li><strong>Address Info: Last Name (already SHA256 hashed)</strong> - Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: Last Name (apply SHA256 hash)</strong> - Provide a plain text last name and the connector hashes this value using the SHA256 hash.</li><li><strong>Address Info: Postal Code</strong> - Provide a postal code of the user&rsquo;s address.</li><li><strong>Email Address (already SHA256 hashed)</strong> - Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Email Address (apply SHA256 hash)</strong> - Provide a plain text email address or array of email addresses and the connector hashes these values using the SHA256 hash.</li><li><strong>Phone Number (already SHA256 hashed)</strong> - Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.</li><li><strong>Phone Number (apply SHA256 hash)</strong> - Provide a plain text phone number or array of phone numbers and the connector hashes the values using the SHA256 hash.</li></ul></td>
 </tr>
 <tr>
 <td><code>CRM_ID</code></td>
@@ -533,7 +533,7 @@ Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
-<li>Max number of requests: 33000</li>
+<li>Max number of requests: 33,000</li>
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 40 MB</li>
 </ul>
@@ -548,12 +548,12 @@ Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td>Remarketing List</td>
-<td>Select a remarketing user list. For more information, see <a href="https://developers.google.com/google-ads/api/docs/remarketing/overview">Remarketing and Audience Targeting</a>. Available options contain only user lists of first party CRM data type. To create a user list, see <a href="#create-user-list">Create user list</a>.</td>
+<td>Select a remarketing user list. For more information, see <a href="https://developers.google.com/google-ads/api/docs/remarketing/overview">Google Ads: Remarketing and Audience Targeting</a>. Available options contain only user lists of first-party CRM data type. To create a user list, see <a href="#create-user-list">Create user list</a>.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="consent">Consent</h4>
-<p>When using the <strong>Add User to Remarketing List</strong> action, the connector will send values of <code>GRANTED</code> for the <code>adUserData</code> and <code>adPersonalization</code> parameters. To prevent non-consented visitors from being added to lists, create an audience with rules that check visitor profile consent status. Then use the <strong>Remove from Remarketing List</strong> action to remove visitors that have not given consent from lists</p>
+<p>When using the <strong>Add User to Remarketing List</strong> action, the connector sends values of <code>GRANTED</code> for the <code>adUserData</code> and <code>adPersonalization</code> parameters. To prevent non-consented visitors from being added to lists, create an audience with rules that check visitor profile consent status. Then use the <strong>Remove from Remarketing List</strong> action to remove visitors that have not given consent from lists.</p>
 <h3 id="action---remove-user-from-remarketing-list">Action - Remove User from Remarketing List</h3>
 <h4 id="batch-limits-1">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
@@ -573,7 +573,7 @@ Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td>Remarketing List</td>
-<td>Select a remarketing user list. For more information, see <a href="https://developers.google.com/google-ads/api/docs/remarketing/overview">Remarketing and Audience Targeting</a>.<br>Available options contain only user lists of first party CRM data type.</td>
+<td>Select a remarketing user list. For more information, see <a href="https://developers.google.com/google-ads/api/docs/remarketing/overview">Google Ads: Remarketing and Audience Targeting</a>. Available options contain only user lists of first-party CRM data type.</td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +637,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 27, 2025 
+          <p>This page was last updated:  April 14, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

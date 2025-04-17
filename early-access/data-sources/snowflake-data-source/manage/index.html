@@ -309,7 +309,7 @@ To create a new connection, enter the following account details on the <strong>N
 <li><strong>Database Name</strong>: The name of the Snowflake database to connect to.</li>
 <li><strong>Database Schema</strong>: The name of the Snowflake database schema to connect to.</li>
 <li><strong>Connection Role</strong>: The role assigned to the user in Snowflake. This role must have <code>USAGE</code> privileges. For more information, see <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: Custom roles</a> and <a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: Access control privileges</a>.</li>
-<li><strong>Username</strong> and <strong>Password</strong>: The username and password used to connect to your Snowflake database, schema, warehouse, and table or view.</li>
+<li><strong>Username</strong> and <strong>Password</strong>: The username and password for the service user with access to your Snowflake database, schema, warehouse, and table or view. For more information, see <a href="/early-access/data-sources/snowflake-data-source/about/#authentication">Authentication</a>.</li>
 </ul>
 </li>
 <li>Click <strong>Save</strong>.</li>
@@ -326,9 +326,10 @@ To create a new connection, enter the following account details on the <strong>N
 <li>Select a query mode.<br>
 The query modes determine which column(s) in your Snowflake table or view will be used to detect new and/or modified rows.
 <ul>
-<li>If you select <strong>Timestamp + Incrementing</strong> (recommended) you must list two columns, a timestamp column and a strictly incrementing column, to detect new and modified rows.</li>
-<li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must list the name of one column to use to detect either new and modified rows or new rows only.<br>
-For more information, see <a href="/early-access/data-sources/snowflake-data-source/about/#query-modes">About Snowflake data source &gt; Query modes</a>.</li>
+<li>If you select <strong>Timestamp + Incrementing</strong> (recommended) you must select two columns, a timestamp column and a strictly incrementing column, to detect new and modified rows.</li>
+<li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must select a column to use to detect either new and modified rows or new rows only.
+For more information, see <a href="/early-access/data-sources/snowflake-data-source/about/#query-modes">About Snowflake data source &gt; Query modes</a>.<br>
+For the <strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> modes, the selected timestamp column must be one of the following Snowflake data types: <code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, or <code>TIMESTAMP_NTZ</code>. For more information, see the <a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: Date &amp; time data types</a>.</li>
 </ul>
 </li>
 <li>Configure the query.
@@ -424,7 +425,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2025 
+          <p>This page was last updated:  April 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -265,15 +265,31 @@
 <ul>
 <li>Tealium EventStream or Tealium AudienceStream</li>
 <li>Snowflake account</li>
-<li>Snowflake role with <code>USAGE</code> privileges</li>
+<li>Snowflake role with <code>USAGE</code> privileges and user type of <code>LEGACY_SERVICE</code>.<br>
+For more information, see <a href="#authentication">Authentication</a>.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>Use the Snowflake data source to import bulk data from a Snowflake table or view at near real-time speeds. After you import your data, transform and map it to Tealium attributes and build better audiences for targeted activation.</p>
-<p>To get started, create one Snowflake data source per Snowflake table or view and customize the query mode and SQL <code>WHERE</code> clause for your data set. Then map your database columns to Tealium attributes. Each imported row from a Snowflake source is processed as an event in Tealium.</p>
+<p>To get started, create one Snowflake data source per Snowflake table or view and customize the query mode and SQL <code>WHERE</code> clause for your dataset. Then map your database columns to Tealium attributes. Each imported row from a Snowflake source is processed as an event in Tealium.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>A maximum of 10 cloud data warehouse data sources per profile can be enabled at a time.</p>
-<h2 id="rate-limits">Rate limits</h2>
-<p>Imports from Snowflake are typically limited to 50 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a></p>
-<p>The Snowflake data source fetches data at a maximum of 1,000 rows at a time.</p>
+<h2 id="authentication">Authentication</h2>
+<p>To authorize a connection, create a service user specifically for this integration. A service user is declared in the Snowflake user object with <code>TYPE = SERVICE</code> or <code>LEGACY_SERVICE</code>. These types of users will not be subject to Snowflake MFA policies.</p>
+<p>For more information, see <a href="https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/">Snowflake: Phased approach to block single-factor authentication</a>.</p>
+<p>Here is an example SQL command to create a service user:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COMMENT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Service user to connect to Tealium&#39;</span>
+</span></span><span style="display:flex;"><span>    PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;YOUR_LONG_PASSWORD_HERE&#39;</span>
+</span></span><span style="display:flex;"><span>    DISABLED <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>
+</span></span><span style="display:flex;"><span>    MUST_CHANGE_PASSWORD <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> LEGACY_SERVICE;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_READER <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> USERS;
+</span></span></code></pre></div><h2 id="rate-limits">Rate limits</h2>
+<p>Imports from Snowflake are typically limited to 500 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a></p>
+<h2 id="batch-size">Batch size</h2>
+<p>The Snowflake data source imports data in batches, with a maximum of 1,000 rows per batch. This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
 <h2 id="snowflake-tables">Snowflake tables</h2>
 <p>Each Snowflake data source supports importing data from one Snowflake table or view. To import data from multiple Snowflake tables, create a view in Snowflake and select the view in the data source configuration. For more information about views in Snowflake, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</p>
 <h2 id="data-types">Data types</h2>
@@ -324,20 +340,36 @@
 <li><strong>Visit length</strong>: A visit started by a Snowflake data source event lasts for 60 seconds.</li>
 <li><strong>Visitor ID mapping</strong>: If you map an AudienceStream visitor ID attribute in your Snowflake data source configuration, the visitor ID is set directly to the value of the column you choose and no additional enrichment is needed.</li>
 </ul>
-<h2 id="configuration">Configuration</h2>
-<h3 id="query-modes">Query Modes</h3>
-<p>The Snowflake data source supports three query modes to let you control how data is imported from your Snowflake table or view:</p>
+<h2 id="query-modes">Query Modes</h2>
+<p>The Snowflake data source supports three query modes to control how data is imported from your Snowflake table or view. Each mode uses a timestamp column, an increment column, or both to determine which rows to import.</p>
+<h3 id="requirements-for-columns">Requirements for columns</h3>
+<p>To use query modes effectively, you must have one or both of the following:</p>
+<ul>
+<li><strong>Timestamp column</strong><br>
+A timestamp column set to the current time when a row is added or modified. This column must be one of the following Snowflake data types: <code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, or <code>TIMESTAMP_NTZ</code>.<br>
+For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: Date &amp; time</a>.</li>
+<li><strong>Increment column</strong><br>
+A numeric column that increments in value for every row added. A recommended definition for an auto-increment column is:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div>For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-numeric">Snowflake: Numeric data types</a>.</li>
+</ul>
+<h3 id="available-query-modes">Available Query Modes</h3>
+<p>Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see <a href="#query-mode-example">Query mode example</a>.</p>
 <h4 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h4>
-<p class="tip"><i class="fa fa-info-circle"></i><strong>Timestamp + Incrementing</strong> is the most reliable mode to ensure that all rows are imported as expected.</p>
-<p>Tealium imports new or modified rows based on a timestamp column and an auto-increment column. In this mode, rows with a newer timestamp than the previous import and/or a larger auto-increment value than the last imported row are imported.</p>
-<h4 id="additional-modes">Additional modes</h4>
-<p><strong>Timestamp</strong><br>
-Tealium imports new or modified rows based on a timestamp column. In this mode, rows with a newer timestamp than the previous import are imported. Use this mode if your table has a timestamp column that gets set or updated on every update.
-<strong>Timestamp</strong> is not as reliable as <strong>Timestamp + Incrementing</strong> because rows may be missed if there are duplicate timestamps in different batches of data, as shown in the example below.</p>
-<p><strong>Incrementing</strong>
-Tealium imports rows based on an auto-increment column. In this mode, rows with a larger auto-increment value than the last imported row are imported. Use this mode if you only have an auto-increment column and do not have a timestamp column.
-<strong>Incrementing</strong> is not as reliable as <strong>Timestamp + Incrementing</strong> because it cannot detect modifications or deletions of existing rows.</p>
-<p>The Snowflake data source does not support bulk query modes.</p>
+<p>This mode uses both a timestamp column and an incrementing column to import new or modified rows. Rows are imported if they have:</p>
+<ul>
+<li>A newer timestamp than the previous import, and/or</li>
+<li>A larger increment value than the last imported row.</li>
+</ul>
+<p>This mode provides the highest reliability for ensuring that all rows are imported as intended.</p>
+<h4 id="timestamp">Timestamp</h4>
+<p>This mode uses a timestamp column to import new or updated rows. Rows are imported if they have a newer timestamp than the previous import.</p>
+<p>Use this mode if your table has a timestamp column set on every insert or update operation.</p>
+<p>Be aware that if the number of rows with the same timestamp exceeds the <a href="#batch-size">batch size</a>, then some rows will not be imported.</p>
+<h4 id="incrementing">Incrementing</h4>
+<p>This mode uses an incrementing column to import rows. Rows are imported if they have a larger increment value than the last imported row. Rows with an increment value less than or equal to the maximum value from the previous import are skipped. This mode does not detect modifications to existing rows.</p>
+<p>Use this mode if your table does not have a timestamp column.</p>
+<p>If you maintain your own increment column, as opposed to using an auto-increment column, ensure that the values always increase.</p>
 <h3 id="query-mode-example">Query mode example</h3>
 <p>The following example shows how batch processing of rows and query modes work together. In the following table, <code>modification_time</code> is the timestamp column and <code>customer_id</code> is the incrementing column.</p>
 <table>
@@ -350,14 +382,14 @@ Tealium imports rows based on an auto-increment column. In this mode, rows with 
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>01Apr 13:00</td>
-<td>A</td>
+<td><code>1</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>A</code></td>
 </tr>
 <tr>
-<td>2</td>
-<td>01Apr 13:00</td>
-<td>B</td>
+<td><code>2</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>B</code></td>
 </tr>
 <tr>
 <td>&hellip;</td>
@@ -365,39 +397,39 @@ Tealium imports rows based on an auto-increment column. In this mode, rows with 
 <td>&hellip;</td>
 </tr>
 <tr>
-<td>1000</td>
-<td>01Apr 13:00</td>
-<td>D</td>
+<td><code>1000</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>D</code></td>
 </tr>
 <tr>
-<td>1001</td>
-<td>01Apr 13:00</td>
-<td>E</td>
+<td><code>1001</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>E</code></td>
 </tr>
 <tr>
-<td>1002</td>
-<td>02Apr 14:00</td>
-<td>A</td>
+<td><code>1002</code></td>
+<td><code>02Apr 14:00</code></td>
+<td><code>A</code></td>
 </tr>
 </tbody>
 </table>
 <p>The Snowflake data source fetches data 1,000 rows at a time and marks the maximum value of the timestamp and/or incrementing column(s) from the batch of data.</p>
 <ul>
-<li>Using <strong>Timestamp + Incrementing</strong> mode: The data source fetches rows 1-1000. The next time the data source fetches the data, it will look for rows where either<br>
+<li>Using <strong>Timestamp + Incrementing</strong> mode: The data source fetches rows 1-1000. The next time the data source fetches the data, it looks for rows where either<br>
 <code>modification_time</code> is <code>01Apr 13:00</code> and the <code>customer_id</code> is greater than <code>1000</code><br>
 or<br>
 <code>modification_time</code> is greater than <code>01Apr 13:00</code></li>
-<li>Using <strong>Timestamp</strong> mode (<code>modification_time</code> in the example): The data source will fetch rows 1-1000 and mark the maximum timestamp of <code>01Apr 13:00</code>. The next time the data source fetches the data, it will look for a timestamp greater than <code>01Apr 13:00</code>. In this case, row 1001 would be skipped because it has the same timestamp value but was fetched in different batch of data.</li>
-<li>Using <strong>Incrementing</strong> mode: The data source will fetch rows 1-1000 and mark the maximum auto-increment value of <code>1000</code>, but rows with new data and an updated timestamp column would not be processed. Only newly added rows that further increment the incrementing column (<code>customer_id</code> in the example) would be processed.</li>
+<li>Using <strong>Incrementing</strong> mode: The data source fetches rows 1-1000 and marks the maximum incrementing value of <code>1000</code>. On the next import, rows 1-1000 are skipped even if they were modified since the first import. Only new rows that increment the incrementing column (<code>customer_id</code> in the example) are processed.</li>
+<li>Using <strong>Timestamp</strong> mode (<code>modification_time</code> in the example): The data source fetches rows 1-1000 and marks the maximum timestamp of <code>01Apr 13:00</code>. On the next import, rows with a timestamp greater than <code>01Apr 13:00</code> are imported. In this case, row <code>1001</code> is skipped because it has the same timestamp value that was fetched in the previous batch of data.</li>
 </ul>
-<h3 id="sql-query">SQL Query</h3>
+<h2 id="sql-query">SQL Query</h2>
 <p>In the Snowflake data source <strong>Query Configuration</strong>, select the columns you want to import into Tealium. To add additional conditions for processing, use the SQL <code>WHERE</code> clause. This option adds a <code>WHERE</code> statement to your query. <code>WHERE</code> statements support basic SQL syntax.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple Snowflake tables, create a view in Snowflake and select the view in the data source configuration. For more information, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</p>
-<h3 id="column-mapping">Column mapping</h3>
+<h2 id="column-mapping">Column mapping</h2>
 <p>The column mapping configuration determines the event attributes that correspond to each column in the Snowflake table.</p>
 <p>Column names are often different from the attribute names in the Customer Data Hub, so this mapping ensures that the data is imported properly. For example, a table might have a column named <code>postalCode</code>, but the matching event attribute is named <code>customer_zip</code>, so you need a mapping to associate them.</p>
 <p>For information about mapping Snowflake data types to Tealium data types, see the <a href="#data-types">Data Types</a> section.</p>
-<h3 id="visitor-id-mapping">Visitor ID mapping</h3>
+<h2 id="visitor-id-mapping">Visitor ID mapping</h2>
 <p>To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in the Snowflake table has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the <code>tealium_visitor_id</code> attribute and matched directly to any existing visitor profiles.</p>
 <p>For more information about Visitor ID Mapping in AudienceStream, see <a href="/server-side/data-sources/visitor-identification/">Visitor Identification using Tealium Data Sources</a>.</p>
 <h2 id="ip-addresses-to-allow">IP Addresses to allow</h2>
@@ -447,7 +479,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2025 
+          <p>This page was last updated:  April 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -463,17 +495,20 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snowflake-tables" href="javascript:void(0)">Snowflake tables</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-modes" href="javascript:void(0)">Query Modes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-modes" href="javascript:void(0)">Query Modes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements-for-columns" href="javascript:void(0)">Requirements for columns</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#available-query-modes" href="javascript:void(0)">Available Query Modes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode-example" href="javascript:void(0)">Query mode example</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-query" href="javascript:void(0)">SQL Query</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-query" href="javascript:void(0)">SQL Query</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id-mapping" href="javascript:void(0)">Visitor ID mapping</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP Addresses to allow</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP Addresses to allow</a></li>
               </nav>
   </aside></nav>
 
