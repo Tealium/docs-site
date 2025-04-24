@@ -269,6 +269,7 @@
         <a href="/client-side-tags/iadvize-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iadvize-tag">iAdvize</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/ibm-ubx-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ibm-ubx-cookie-matching-service-tag">IBM UBX Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/impact-universal-tracking-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".impact-universal-tracking-tag">Impact Universal Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/innovidxp-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".innovidxp-tag">InnovidXP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/intelliad-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".intelliad-cookie-matching-service-tag">intelliAd Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/intent-media-advertiser-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".intent-media-advertiser-pixel-tag">Intent Media Advertiser Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/invocajs-web-integration-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".invocajs-web-integration-tag">InvocaJS Web Integration</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -471,9 +472,9 @@
 <ul>
 <li>Use mapping to override the standard configuration values and trigger events.</li>
 <li>Purchase event fires when <strong>Order ID</strong> is set.</li>
-<li>To make Reddit Pixel Event IDs available as server-side attributes, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
-<li>We recommend using the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> Conversion ID configuration only if you are implementing both the Reddit Pixel tag and the Reddit Conversions connector. Using the Conversion ID configuration prevents the same conversion event from being counted twice if it is sent across both sources. If this value is passed improperly, it will impact attribution and campaign performance.</li>
-<li>We recommend using Advanced Matching for the most accurate conversion tracking and reporting from Reddit. Email addresses can be passed as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.</li>
+<li>To make Reddit Pixel event IDs available as server-side attributes, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
+<li>We recommend using the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> Conversion ID configuration only if you are implementing both the Reddit Pixel tag and the Reddit Conversions connector. Using the Conversion ID configuration prevents the same conversion event from being counted twice if it is sent across both sources. If this value is passed improperly, it impacts attribution and campaign performance.</li>
+<li>We recommend using Advanced Matching for the most accurate conversion tracking and reporting from Reddit. Email addresses and phone numbers can be passed as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
@@ -486,18 +487,18 @@
 </li>
 <li><strong>Send Page Visit</strong>
 <ul>
-<li>By default, Page Visit events are automatically recorded each page on your site.</li>
-<li>If you do not want the snippet to send a Page Visit event to the Reddit Pixel, set the this option to false.</li>
+<li>By default, page visit events are automatically recorded each page on your site.</li>
+<li>If you do not want the snippet to send a page visit event to the Reddit Pixel, set the this option to <code>false</code>.</li>
 </ul>
 </li>
 <li><strong>Generate Event ID</strong>:
 <ul>
-<li>Automatically generate an Event ID for every Reddit tracking event.</li>
+<li>Automatically generate an event ID for every Reddit tracking event.</li>
 </ul>
 </li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
@@ -514,22 +515,22 @@
 <tr>
 <td><code>account_id</code></td>
 <td>String</td>
-<td>Account ID</td>
+<td>Account ID.</td>
 </tr>
 <tr>
 <td><code>send_page_visit</code></td>
 <td>Boolean</td>
-<td>Send page visit</td>
+<td>Send page visit.</td>
 </tr>
 <tr>
 <td><code>generate_event_id</code></td>
 <td>Boolean</td>
-<td>Generate event ID</td>
+<td>Generate event ID.</td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
 <td>String</td>
-<td>Event ID</td>
+<td>Event ID.</td>
 </tr>
 </tbody>
 </table>
@@ -546,17 +547,22 @@
 <tr>
 <td><code>itemCount</code></td>
 <td>Number</td>
-<td>Item Count</td>
+<td>Item count.</td>
 </tr>
 <tr>
 <td><code>value</code></td>
 <td>Number</td>
-<td>Value</td>
+<td>Value.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
 <td>String</td>
-<td>Currency (Overrides <code>_ccurrency</code>)</td>
+<td>Currency (Overrides <code>_ccurrency</code>).</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td>String</td>
+<td>Transaction ID.</td>
 </tr>
 </tbody>
 </table>
@@ -572,39 +578,39 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>PageVisit</code></td>
-<td style="text-align:left">Page visit</td>
+<td style="text-align:left">Page visit.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">View content</td>
+<td style="text-align:left">View content.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Search</code></td>
-<td style="text-align:left">Search</td>
+<td style="text-align:left">Search.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToCart</code></td>
-<td style="text-align:left">Add to cart</td>
+<td style="text-align:left">Add to cart.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">Add to wishlist</td>
+<td style="text-align:left">Add to wishlist.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
-<td style="text-align:left">Purchase</td>
+<td style="text-align:left">Purchase.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Lead</code></td>
-<td style="text-align:left">Lead</td>
+<td style="text-align:left">Lead.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>SignUp</code></td>
-<td style="text-align:left">Sign up</td>
+<td style="text-align:left">Sign up.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Custom</code></td>
-<td style="text-align:left">Custom events</td>
+<td style="text-align:left">Custom events.</td>
 </tr>
 </tbody>
 </table>
@@ -620,71 +626,71 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>currency</code></td>
-<td style="text-align:left">Currency</td>
+<td style="text-align:left">Currency.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content_category</code></td>
-<td style="text-align:left">Content category</td>
+<td style="text-align:left">Content category.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content_name</code></td>
-<td style="text-align:left">Content name</td>
+<td style="text-align:left">Content name.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content_ids</code></td>
-<td style="text-align:left">Content IDs</td>
+<td style="text-align:left">Content IDs.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content_type</code></td>
-<td style="text-align:left">Content type</td>
+<td style="text-align:left">Content type.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>contents</code></td>
-<td style="text-align:left">Contents</td>
+<td style="text-align:left">Contents.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>num_items</code></td>
-<td style="text-align:left">Number of items</td>
+<td style="text-align:left">Number of items.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>value</code></td>
-<td style="text-align:left">Value</td>
+<td style="text-align:left">Value.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>PageVisit</code></td>
-<td style="text-align:left">Page visit</td>
+<td style="text-align:left">Page visit.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">View content</td>
+<td style="text-align:left">View content.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Search</code></td>
-<td style="text-align:left">Search</td>
+<td style="text-align:left">Search.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToCart</code></td>
-<td style="text-align:left">Add to cart</td>
+<td style="text-align:left">Add to cart.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">Add to wishlist</td>
+<td style="text-align:left">Add to wishlist.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
-<td style="text-align:left">Purchase</td>
+<td style="text-align:left">Purchase.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Lead</code></td>
-<td style="text-align:left">Lead</td>
+<td style="text-align:left">Lead.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>SignUp</code></td>
-<td style="text-align:left">Sign up</td>
+<td style="text-align:left">Sign up.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Custom_Event</code></td>
-<td style="text-align:left">Custom event</td>
+<td style="text-align:left">Custom event.</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +700,6 @@
 <tr>
 <th style="text-align:left">Variable</th>
 <th style="text-align:left">Data Type</th>
-<th style="text-align:left">Destination</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
@@ -702,26 +707,27 @@
 <tr>
 <td style="text-align:left"><code>email</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Email address</td>
-<td style="text-align:left">City</td>
+<td style="text-align:left">Email address.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>phoneNumber</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Phone number.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>idfa</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">IDFA</td>
-<td style="text-align:left">State</td>
+<td style="text-align:left">IDFA.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>aaid</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">AAID</td>
-<td style="text-align:left">Zip code</td>
+<td style="text-align:left">AAID.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>externalId</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">External ID</td>
-<td style="text-align:left">External ID</td>
+<td style="text-align:left">External ID.</td>
 </tr>
 </tbody>
 </table>
@@ -813,7 +819,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 1, 2024 
+          <p>This page was last updated:  April 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1133,6 +1139,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

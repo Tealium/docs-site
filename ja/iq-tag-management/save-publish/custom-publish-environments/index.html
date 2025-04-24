@@ -304,7 +304,7 @@
         <a href="/ja/iq-tag-management/save-publish/about-saving/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-saving">保存について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/about-publishing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-publishing">公開について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/save-publish-a-version/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".saving-and-publishing">バージョンの保存と公開</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/save-publish/manage-environments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-sp-manage-environments">環境管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/save-publish/manage-environments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-sp-manage-environments">環境の管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-versions">バージョン履歴</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/publish-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".publish-configuration">公開構成</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/custom-publish-environments/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".custom-publish-environments">カスタム公開環境</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -456,49 +456,43 @@
 
   
     <p class="f4 fw3 lh-copy">
-      3つのデフォルト環境以上が必要な場合、より多くのオプションを提供するためにカスタム環境を作成できます。
+      3つのデフォルト環境だけでは不十分な場合、より多くのオプションを提供するためにカスタム環境を作成できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>3つのデフォルト環境以上が必要な場合は、カスタム環境を作成します。カスタム環境は、以下のシナリオで役立ちます：</p>
+<p>カスタム環境は、以下のシナリオに役立ちます：</p>
 <ul>
-<li>開発者が通常のワークフローに影響を与えることなく、長期間にわたって変更を加えるためのサンドボックスまたはローカル環境を作成する。</li>
+<li>開発者が通常のワークフローに影響を与えることなく長期的な変更を行うためのサンドボックスまたはローカル環境を作成する。</li>
 <li>組織の内部テスト環境に合わせたステージング環境を作成する。</li>
 <li>変更を段階的に小規模な顧客グループにリリースして、潜在的な負の影響を最小限に抑えるための代替プロダクション環境を作成する。</li>
 </ul>
-<p>プロファイルを公開する環境は、サイトにロードするユニバーサルタグ（<code>utag.js</code>）のURLに対応します。デフォルトの環境は以下のURLパスに対応しています：</p>
+<p>プロファイルを公開する環境は、サイトでロードするユニバーサルタグ（<code>utag.js</code>）のURLに対応します。デフォルトの環境は以下のURLパスに対応しています：</p>
 <ul>
 <li><strong>Dev</strong> - <code>/utag/account/profile/dev/utag.js</code></li>
 <li><strong>QA</strong> - <code>/utag/account/profile/qa/utag.js</code></li>
 <li><strong>Prod</strong> - <code>/utag/account/profile/prod/utag.js</code></li>
 </ul>
-<p>カスタム環境名は、<code>utag.js</code>のURLで大文字と小文字が区別されます。例えば、<code>Preview</code>という名前のカスタム環境を作成した場合、その環境の<code>utag.js</code>ファイルへのURLパスは次のようになります：<code>/utag/ACCOUNT/PROFILE/Preview/utag.js</code></p>
+<p>カスタム環境名は、<code>utag.js</code>のURLで大文字と小文字が区別されます。例えば、<code>Preview</code>というカスタム環境を作成した場合、その環境の<code>utag.js</code>ファイルへのURLパスは次のようになります：<code>/utag/ACCOUNT/PROFILE/Preview/utag.js</code></p>
 <p>カスタム公開環境をテストするには、<a href="/ja/iq-tag-management/tealium-tools/web-companion/">Web Companion</a>または<a href="/ja/iq-tag-management/tealium-tools/environment-switcher/">Environment Switcher Tealium Tool</a>を使用できます。</p>
-<h2 id="カスタム公開環境の有効化">カスタム公開環境の有効化</h2>
-<p>カスタム環境を作成する前に、機能を有効にする必要があります。</p>
-<p>カスタム公開環境を有効にするには：</p>
-<ol>
-<li>管理メニューで<strong>公開構成の構成</strong>をクリックします。<strong>公開構成</strong>ダイアログが表示されます。</li>
-<li><strong>実装</strong>セクションで、<strong>カスタム公開環境</strong>トグルを<strong>オン</strong>に構成します。</li>
-<li><strong>保存</strong>をクリックします。</li>
-</ol>
-<p>機能が有効になりました。</p>
-<p>カスタム環境の管理方法については、<a href="/ja/iq-tag-management/save-publish/manage-environments/#manage-custom-publish-environments">カスタム公開環境の管理</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>カスタム公開環境を作成すると、その環境はプロファイルのすべてのタグ、拡張機能、イベントリスナーの<strong>公開場所</strong>に追加されます。</p>
+<p>カスタム環境の作成と管理についての詳細情報：</p>
+<ul>
+<li>プラットフォーム権限：<a href="/ja/iq-tag-management/save-publish/manage-environments/">環境管理</a>。</li>
+<li>旧権限：<a href="/ja/iq-tag-management/getting-started/install/code-center/">コードセンター</a>。</li>
+</ul>
 <h2 id="カスタム環境への公開">カスタム環境への公開</h2>
 <p>カスタム環境に公開するには：</p>
 <ol>
 <li><strong>保存/公開</strong>をクリックします。</li>
-<li><strong>公開先</strong>セクションで新しいオプション<strong>カスタム</strong>をクリックします。カスタム公開履歴エリアの上に<strong>カスタム環境</strong>ドロップダウンが表示されます。
-<figure><a class="slb" href="/images/iq-tag-management/iq-custom-publish-environment-save-publish.png"><img src="/images/iq-tag-management/iq-custom-publish-environment-save-publish.png"
+<li><strong>公開場所</strong>セクションで、<strong>カスタム</strong>チェックボックスを選択します。ドロップダウンリストが表示されます：
+<figure><a class="slb" href="/images/iq-tag-management/save-publish/iq-custom-publish-environment-save-publish.png"><img src="/images/iq-tag-management/save-publish/iq-custom-publish-environment-save-publish.png"
              alt="カスタム公開環境 - 保存/公開"
              title="カスタム公開環境 - 保存/公開"/>
         </a>
     </figure></li>
-<li>複数のカスタム公開環境がある場合は、ドロップダウンリストから公開したい環境を選択する必要があります。
+<li>ドロップダウンリストから公開したい環境を選択します。
 <ul>
 <li>一度に1つのカスタム環境にのみ公開できます。複数の環境に公開するには、それぞれの環境で公開プロセスを繰り返します。</li>
 </ul>
@@ -565,7 +559,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2025年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -580,7 +574,6 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E5%85%AC%E9%96%8B%E7%92%B0%E5%A2%83%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">カスタム公開環境の有効化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E7%92%B0%E5%A2%83%E3%81%B8%E3%81%AE%E5%85%AC%E9%96%8B" href="javascript:void(0)">カスタム環境への公開</a></li>
               </nav>
   </aside></nav>

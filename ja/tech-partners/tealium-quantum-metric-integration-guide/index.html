@@ -412,13 +412,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium iQタグ管理でQuantum Metricタグを構成し、Quantum MetricタグがセッションリプレイURLをTealium AudienceStreamに送信できるようにすることで、TealiumとQuantum Metricを最大限に活用する方法を説明します。
+      この記事では、Tealium iQタグ管理でQuantum Metricタグを構成し、Quantum MetricタグがセッションリプレイURLをTealium AudienceStreamに送信するようにすることで、TealiumとQuantum Metricを最大限に活用する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>TealiumとQuantum Metricの双方向統合により、主要な顧客セグメントがデジタル製品をどのように体験しているかについてより深い洞察を得ることができます。</p>
+  <p>TealiumとQuantum Metricの双方向統合により、重要な顧客セグメントがデジタル製品をどのように体験しているかについての洞察が深まります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>utag</code> バージョン4.50以降を使用する場合、<code>utag.js</code> の <a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> 構成</a>を <code>true</code> に構成する必要があります。この構成により、訪問IDがクッキー同期のために利用可能になります。詳細については、<a href="/ja/platforms/javascript/version-4-50/#updating-to-version-450-or-later">utag 4.50リリースノート</a>および<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-">utag 4.50+へのアップグレード時のtealium_visitor_idに関する考慮事項</a>を参照してください。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li><strong>Tealium</strong>
@@ -430,33 +431,21 @@
 </li>
 <li><strong>Quantum Metric</strong>
 <ul>
-<li>ネイティブまたはWeb用のプラットフォーム（必須）</li>
+<li>ネイティブまたはWeb用プラットフォーム（必須）</li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Quantum Metricは、デジタルエクスペリエンスインテリジェンスプラットフォームであり、すべてのデバイスでのすべての顧客インタラクションに対する比類のない可視性を提供し、データ駆動型の意思決定を迅速化します。技術的な洞察と行動的な洞察の両方を自動的に優先するように設計されたこのプラットフォームは、組織全体の顧客体験（CX）の整合性を促進し、デジタル変革を推進します。Quantum Metricの基盤はパフォーマンスとセキュリティであり、顧客はリアルタイムのユーザー洞察を安全に、かつ大規模に得ることができます。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Quantum Metricは、デジタルエクスペリエンスインテリジェンスプラットフォームであり、すべてのデバイスにわたるすべての顧客のインタラクションに対する前例のない可視性を提供し、データ駆動の意思決定を迅速化します。技術的および行動的な洞察を自動的に優先するように構築されたこのプラットフォームは、組織の顧客体験（CX）の整合を促進することで、企業のデジタル変革を支援します。パフォーマンスとセキュリティはQuantum Metricの基盤であり、顧客がリアルタイムのユーザー洞察を安全かつ大規模に得ることを可能にします。</p>
 <p>詳細については、<a href="https://tealium.com/technology-partner/quantum-metric/">TealiumとQuantum Metricのパートナーシップ概要</a>をご覧ください。</p>
-<h2 id="タグの構成">タグの構成</h2>
-<p>Quantum Metricタグを追加し構成するには、まずTealiumタグマーケットプレイスからタグを追加し構成する必要があります。その後、Tealium AudienceStreamがQuantum Metric Replay URLを受信できるようにします。</p>
-<h3 id="tealiumアカウントでタグを追加し構成する">Tealiumアカウントでタグを追加し構成する</h3>
-<p>TealiumタグマーケットプレイスからQuantum Metricタグを追加し構成します：</p>
-<ol>
-<li>Tealiumアカウントにログインします。</li>
-<li>タグマーケットプレイスから<a href="/ja/iq-tag-management/tags/manage/">新しいタグを追加</a>する手順に従います。<br>
-Quantum Metricタグを見つけるには、ベンダー名の検索フィールドに<strong>Quantum</strong>と入力します。</li>
-<li><strong>Quantum Metric</strong>を選択し、そのタグをアカウントに追加します。</li>
-<li>サブスクリプション名フィールドに、Quantum Metricクライアントサービスマネージャーから提供された名前を入力します。</li>
-<li><strong>適用</strong>をクリックします。</li>
-<li>（オプション）ロードルールとデータマッピングを定義します。</li>
-<li><strong>完了</strong>をクリックします。</li>
-<li>変更を保存し、希望する環境に公開します。</li>
-</ol>
+<h2 id="タグ構成">タグ構成</h2>
+<p>Tealium AudienceStreamがQuantum Metric Replay URLを受信するように構成する前に、まずQuantum Metricタグを追加して構成する必要があります。</p>
+<p>詳細については、<a href="/ja/client-side-tags/quantum-metric-tag/">Quantum Metricタグ</a>を参照してください。</p>
 <h3 id="audiencestreamを有効にする">AudienceStreamを有効にする</h3>
-<p>Quantum Metric Replay URLをAudienceStreamに送信するように構成する前に、Quantum MetricからTealiumに送信する目的のターゲット行動と体験を決定するために、Quantum Metricクライアントサービスマネージャーに相談してください。</p>
-<p>Quantum Metricからのデータを受信するためにAudienceStreamを有効にします：</p>
+<p>Quantum MetricからAudienceStreamに送信する目的のターゲット行動や体験を決定するために、Quantum Metricのクライアントサービスマネージャーに相談してください。</p>
+<p>AudienceStreamがQuantum Metricからのデータを受信するように構成します：</p>
 <ol>
-<li>iQタグ管理のQuantum Metricタグに移動します。</li>
+<li>iQタグ管理でQuantum Metricタグに移動します。</li>
 <li>詳細を展開し、<strong>編集</strong>をクリックします。</li>
 <li>Send Replay URLフィールドを<strong>True</strong>に構成します。<br>
 <figure><a class="slb" href="/images/tech-partners/quantum-metric-tag-configuration.jpg"><img src="/images/tech-partners/quantum-metric-tag-configuration.jpg"/>
@@ -471,14 +460,14 @@ Quantum Metricタグを見つけるには、ベンダー名の検索フィール
 </ul>
 </li>
 <li><strong>適用</strong>をクリックします。</li>
-<li>変更を保存し、希望する環境に公開します。</li>
+<li>変更を希望の環境に保存して公開します。</li>
 </ol>
 <h3 id="ライブイベントで表示">ライブイベントで表示</h3>
-<p>Quantum Metricタグが構成され、AudienceStreamへのReplay URLの送信が有効になると、ライブイベントフィードで活動を表示することができます。</p>
-<p>ライブイベントで表示するための手順は次のとおりです：</p>
+<p>Quantum Metricタグが構成され、AudienceStreamへのReplay URLの送信が有効になった後、ライブイベントフィードで活動を確認できます。</p>
+<p>ライブイベントで表示するには、次の手順を実行します：</p>
 <ol>
-<li>Customer Data Hubの左側のサイドバーで、<strong>Event Stream &gt; Live Events</strong>をクリックします。</li>
-<li>イベント属性<code>quantum_metric_replay_url</code>または<code>quantum_metric_user_id</code>を含むイベントをフィルタリングして、Quantum Metricからのイベントを探します。<br>
+<li>顧客データハブの左サイドバーで、<strong>イベントストリーム &gt; ライブイベント</strong>をクリックします。</li>
+<li><code>quantum_metric_replay_url</code>または<code>quantum_metric_user_id</code>を含むイベントをフィルタリングして、Quantum Metricからのイベントを探します。<br>
 <figure><a class="slb" href="/images/tech-partners/quantummetric-live-events.png"><img src="/images/tech-partners/quantummetric-live-events.png"/>
         </a>
     </figure></li>
@@ -529,7 +518,7 @@ Quantum Metricタグを見つけるには、ベンダー名の検索フィール
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -544,10 +533,9 @@ Quantum Metricタグを見つけるには、ベンダー名の検索フィール
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A7%E3%82%BF%E3%82%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealiumアカウントでタグを追加し構成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">AudienceStreamを有効にする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">AudienceStreamを有効にする</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A7%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">ライブイベントで表示</a></li>
               </nav>
   </aside></nav>

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>データ値構成拡張 | 拡張機能のリスト | Tealiumドキュメント</title>
+    <title>データ値構成拡張機能 | 拡張機能のリスト | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -304,7 +304,7 @@
         <a href="/ja/iq-tag-management/save-publish/about-saving/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-saving">保存について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/about-publishing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-publishing">公開について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/save-publish-a-version/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".saving-and-publishing">バージョンの保存と公開</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/save-publish/manage-environments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-sp-manage-environments">環境管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/save-publish/manage-environments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-sp-manage-environments">環境の管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-versions">バージョン履歴</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/publish-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".publish-configuration">公開構成</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/save-publish/custom-publish-environments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".custom-publish-environments">カスタム公開環境</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -454,7 +454,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">データ値構成拡張</h1>
+<h1 class="lh-title mt30 mb3">データ値構成拡張機能</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -462,7 +462,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      データ値構成拡張は、テキスト、別のデータレイヤー変数、またはJavaScriptコードを使用してデータレイヤー変数の値を構成します。
+      データ値構成拡張機能は、テキスト、別のデータレイヤー変数、またはJavaScriptコードを使用してデータレイヤー変数の値を構成します。
     </p>
   
 </div>
@@ -471,94 +471,94 @@
   <h2 id="前提条件">前提条件</h2>
 <ul>
 <li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
-<li><a href="/ja/iq-tag-management/extensions/about/">拡張機能の動作方法</a>について理解しておく。</li>
+<li><a href="/ja/iq-tag-management/extensions/about/">拡張機能の仕組み</a>について理解しておくこと。</li>
 </ul>
-<h2 id="動作方法">動作方法</h2>
-<p>この拡張機能を使用して、テキスト、別のデータレイヤー変数、またはJavaScriptコードを使用してデータレイヤー変数の値を構成します。データレイヤー変数は<strong>構成</strong>構成オプションで指定され、新しく割り当てられる値は<strong>To</strong>フィールドで指定されます。拡張機能の一つのインスタンスで複数の変数を割り当てることができます。値が割り当てられるタイミングを制御するためのオプションの条件を追加することができます。</p>
-<h2 id="拡張機能の使用">拡張機能の使用</h2>
-<p>拡張機能が追加されると、以下の構成オプションが利用可能になります：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>この拡張機能を使用して、テキスト、別のデータレイヤー変数、またはJavaScriptコードを使用してデータレイヤー変数の値を構成します。データレイヤー変数は<strong>Set</strong>構成オプションで指定され、新しい値は<strong>To</strong>テキストボックスで指定されます。拡張機能の一回のインスタンスで複数の変数に値を割り当てることができます。オプションで条件を追加して、値が割り当てられるタイミングを制御できます。</p>
+<h2 id="拡張機能の使用方法">拡張機能の使用方法</h2>
+<p>拡張機能を追加すると、以下の構成オプションが利用可能になります：</p>
 <ul>
 <li>
-<p><strong>構成</strong>：構成するデータレイヤー変数。変数のドロップダウンリストから選択します。**+**ボタンをクリックして新しい変数を作成します。</p>
+<p><strong>Set</strong>: 値を割り当てたいデータレイヤー変数。変数のドロップダウンリストから選択するか、<strong>+ Add Variable</strong>ボタンをクリックして新しい変数を作成します。</p>
 </li>
 <li>
-<p><strong>To</strong>：変数に割り当てる値。**+<strong>ボタンをクリックして別の変数を構成するか、</strong>-**ボタンをクリックして変数を拡張機能から削除します。<br>
+<p><strong>To</strong>: 変数に割り当てる値。別の変数を構成するには**+<strong>ボタンをクリックし、拡張機能から変数を削除するには</strong>-**ボタンをクリックします。
 値は以下のオプションのいずれかになります：</p>
 <ul>
-<li><strong>テキスト</strong>：入力したテキスト値に構成します。</li>
-<li><strong>変数</strong>：別のデータレイヤー変数の値に構成します。</li>
-<li><strong>JSコード</strong>：JavaScriptコードステートメントの値に構成します。</li>
+<li><strong>Text</strong>: タイプしたテキスト値に構成します。</li>
+<li><strong>Variable</strong>: 別のデータレイヤー変数の値に構成します。</li>
+<li><strong>JS Code</strong>: JavaScriptコードステートメントの値に構成します。</li>
 </ul>
 </li>
 <li>
-<p><strong>条件</strong>：（オプション）条件が追加され、変数が割り当てられるタイミングを制御します。条件が追加された場合、新しい値を割り当てるためには<code>true</code>に評価されなければなりません。</p>
+<p><strong>Condition</strong>: オプション。変数が割り当てられるタイミングを制御するための条件を追加します。条件が追加された場合、変数に新しい値が割り当てられるためには、条件が<code>true</code>と評価されなければなりません。</p>
 </li>
 </ul>
 <h2 id="例">例</h2>
-<h3 id="テキスト値の構成">テキスト値の構成</h3>
-<p>この例では、変数をテキスト値に構成する方法を示します。このシナリオでは、クエリストリングパラメータ<code>q</code>が入力されているかどうかを検出するための条件が使用され、データレイヤー変数<code>page_type</code>がテキスト値<code>search</code>に構成され、これが検索結果ページであることを示します。</p>
+<h3 id="テキスト値を構成する">テキスト値を構成する</h3>
+<p>この例では、変数にテキスト値を構成する方法を示します。このシナリオでは、クエリ文字列パラメーター<code>q</code>が入力されているかどうかを検出する条件を使用し、データレイヤー変数<code>page_type</code>をテキスト値<code>search</code>に構成して、これが検索結果ページであることを示します。</p>
 <ol>
-<li><strong>データ値構成</strong>拡張機能を追加します。</li>
-<li><strong>タイトル</strong>を<strong>ページタイプとして検索を構成</strong>に構成します。</li>
-<li>ドロップダウンメニューから変数<strong>page_type</strong>を選択します。</li>
-<li>値のタイプを<strong>テキスト</strong>に構成します。</li>
-<li>テキストボックスに<code>search</code>を入力します。</li>
-<li><strong>条件を追加</strong>をクリックし、以下を構成します：
+<li><strong>Set Data Values</strong>拡張機能を追加します。</li>
+<li><strong>Title</strong>に<code>Set search as the page type</code>を構成します。</li>
+<li>ドロップダウンメニューから変数<code>page_type</code>を選択します。</li>
+<li>値のタイプを<strong>Text</strong>に構成します。</li>
+<li>テキストボックスに<code>search</code>と入力します。</li>
+<li><strong>Add Condition</strong>をクリックして以下を構成します：
 <ul>
-<li>変数**q (js)**を選択します。</li>
-<li>条件を<strong>定義されている</strong>に構成します。</li>
+<li>変数<code>q (js)</code>を選択します。</li>
+<li>条件を<code>is defined</code>に構成します。</li>
 </ul>
 </li>
 </ol>
 <figure><a class="slb" href="/images/iq-tag-management/setdatavalues-1.png"><img src="/images/iq-tag-management/setdatavalues-1.png"
-         alt="データ値構成"
-         title="データ値構成" width="600" height="371"/>
+         alt="Set Data Values"
+         title="Set Data Values" width="600" height="371"/>
     </a>
 </figure>
-<h3 id="変数値の構成">変数値の構成</h3>
-<p>この例では、変数を別の変数の値に構成する方法を示します。このシナリオでは、変数<code>page_name</code>が値を持っていない場合、<code>document.title</code>変数の値に構成されます。</p>
+<h3 id="変数値を構成する">変数値を構成する</h3>
+<p>この例では、変数を別の変数の値に構成する方法を示します。このシナリオでは、変数<code>page_name</code>に値がない場合、<code>document.title</code>変数の値に構成されます。</p>
 <ol>
-<li>データ値構成拡張機能を追加します。</li>
-<li><strong>タイトル</strong>を<code>page_nameを構成</code>に構成します。</li>
-<li>ドロップダウンメニューから変数<strong>page_name</strong>を選択します。</li>
-<li>値のタイプを<strong>変数</strong>に構成します。変数のドロップダウンリストが表示されます。</li>
-<li>ドロップダウンメニューから<strong>document title</strong>を選択します。</li>
-<li><strong>条件を追加</strong>をクリックし、以下を構成します：
+<li>Set Data Values拡張機能を追加します。</li>
+<li><strong>Title</strong>に<code>Set page_name</code>を構成します。</li>
+<li>ドロップダウンメニューから変数<code>page_name</code>を選択します。</li>
+<li>値のタイプを<strong>Variable</strong>に構成します。変数のドロップダウンリストが表示されます。</li>
+<li>ドロップダウンメニューから<code>Document Title</code>を選択します。</li>
+<li><strong>Add Condition</strong>をクリックして以下を構成します：
 <ul>
-<li>変数<strong>page_name</strong>を選択します。</li>
-<li>条件を<strong>定義されていない</strong>に構成します。</li>
-<li><strong>+<strong>をクリックして</strong>Or</strong>条件を追加します。</li>
-<li>変数<strong>page_name</strong>を選択します。</li>
-<li>条件を<strong>定義されている</strong>に構成します。</li>
-<li><strong>+<strong>をクリックして</strong>And</strong>条件を追加します。</li>
-<li>変数<strong>page_name</strong>を選択します。</li>
-<li>条件を<strong>入力されていない</strong>に構成します。</li>
+<li>変数<code>page_name</code>を選択します。</li>
+<li>条件を<code>is not defined</code>に構成します。</li>
+<li><strong>Condition</strong>ボックスの外にある**+<strong>をクリックして</strong>Or**条件を追加します。</li>
+<li>変数<code>page_name</code>を選択します。</li>
+<li>条件を<code>is defined</code>に構成します。</li>
+<li><code>is defined</code>テキストボックスの隣にある**+<strong>をクリックして</strong>And**条件を追加します。</li>
+<li>変数<code>page_name</code>を選択します。</li>
+<li>条件を<code>is not populated</code>に構成します。</li>
 </ul>
 </li>
 </ol>
-<figure><a class="slb" href="/images/iq-tag-management/setdatavalues-1.png"><img src="/images/iq-tag-management/setdatavalues-1.png"
-         alt="データ値構成1"
-         title="データ値構成1" width="600" height="400"/>
+<figure><a class="slb" href="/images/iq-tag-management/setdatavalues-2.png"><img src="/images/iq-tag-management/setdatavalues-2.png"
+         alt="Set Data Values 2"
+         title="Set Data Values 2" width="650"/>
     </a>
 </figure>
-<h3 id="javascriptコード値の構成">JavaScriptコード値の構成</h3>
-<p>この例では、JavaScriptステートメントが返す値に変数を構成する方法を示します。このシナリオでは、検索ページ上の検索結果の数は、jQueryを使用してページ上の検索結果リンク要素の数を選択することで決定されます。変数<code>search_results</code>はJavaScriptコードが返す値に構成されます。</p>
+<h3 id="javascriptコード値を構成する">JavaScriptコード値を構成する</h3>
+<p>この例では、JavaScriptステートメントによって返される値に変数を構成する方法を示します。このシナリオでは、検索ページ上の検索結果リンク要素の数をjQueryを使用して選択することによって、検索結果の数が決定されます。変数<code>search_results</code>はJavaScriptコードによって返される値に構成されます。</p>
 <ol>
-<li>データ値構成拡張機能を追加します。</li>
-<li><strong>タイトル</strong>を<code>検索結果の数を決定</code>に構成します。</li>
+<li>Set Data Values拡張機能を追加します。</li>
+<li><strong>Title</strong>に<code>Determine number of search results</code>を構成します。</li>
 <li>ドロップダウンメニューから変数<strong>search_results</strong>を選択します。</li>
-<li>値のタイプを<strong>JSコード</strong>に構成します。</li>
-<li>テキストボックスにJavaScriptコードを入力します。この例では、シンプルなjQueryセレクタと<code>.length</code>プロパティを使用しています：<code>$('.search-results a').length;</code>。</li>
-<li><strong>条件を追加</strong>をクリックし、以下を構成します：
+<li>値のタイプを<strong>JS Code</strong>に構成します。</li>
+<li>テキストボックスにページ内でのJavaScriptコードをそのまま入力します（またはブラウザコンソールで）。この例では、シンプルなjQueryセレクタと<code>.length</code>プロパティを使用します：<code>$('.search-results a').length;</code>。</li>
+<li><strong>Add Condition</strong>をクリックして以下を構成します：
 <ul>
-<li>変数<strong>page_type</strong>を選択します。</li>
-<li>条件を<strong>等しい</strong>に構成し、テキストフィールドに<code>search</code>を入力します。</li>
+<li>変数<code>page_type</code>を選択します。</li>
+<li>条件を<code>equals</code>に構成し、テキストボックスに<code>search</code>を入力します。</li>
 </ul>
 </li>
 </ol>
 <figure><a class="slb" href="/images/iq-tag-management/setdatavalues-3.png"><img src="/images/iq-tag-management/setdatavalues-3.png"
-         alt="データ値構成3"
-         title="データ値構成3" width="600" height="391"/>
+         alt="Set Data Values 3"
+         title="Set Data Values 3" width="600" height="391"/>
     </a>
 </figure>
 
@@ -621,7 +621,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -636,12 +636,12 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">拡張機能の使用</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">拡張機能の使用方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%80%A4%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">テキスト値の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%95%B0%E5%80%A4%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">変数値の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E3%82%B3%E3%83%BC%E3%83%89%E5%80%A4%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">JavaScriptコード値の構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">テキスト値を構成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">変数値を構成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E3%82%B3%E3%83%BC%E3%83%89%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">JavaScriptコード値を構成する</a></li>
               </nav>
   </aside></nav>
 

@@ -151,6 +151,7 @@
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-redshift-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-redshift-connector">Amazon Redshift</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-s3-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-s3-connector">Amazon S3</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -434,7 +435,7 @@
 <li>API Name: Google Campaign Manager 360 API</li>
 <li>API Version: v4</li>
 <li>API Endpoint: <code>https://dfareporting.googleapis.com/dfareporting</code></li>
-<li>Documentation: <a href="https://developers.google.com/doubleclick-advertisers/guides/conversions_ec">Google Campaign Manager 360 API &gt; Enhanced Conversions</a></li>
+<li>Documentation: <a href="https://developers.google.com/doubleclick-advertisers/guides/conversions_ec">Google: Campaign Manager 360 API - Enhanced Conversions</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
@@ -443,20 +444,20 @@
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
-<p>In addition, the connector will send batched conversions after a two hour delay so that Google can index the client-side conversions.</p>
+<p>In addition, the connector sends batched conversions after a two-hour delay so that Google can index the client-side conversions.</p>
 <h2 id="trace">Trace</h2>
-<p>The Tealium <a href="/server-side/trace/about/">Trace</a> feature bypasses configured batching and delays to permit real-time debugging. The Google indexing of client-side conversions is not immediate, and you will encounter 404 Not Found errors when using Trace with this connector.</p>
+<p>The Tealium <a href="/server-side/trace/about/">Trace</a> feature bypasses configured batching and delays to permit real-time debugging. The Google indexing of client-side conversions is not immediate, and you will encounter <code>404 Not Found</code> errors when using Trace with this connector.</p>
 <h2 id="pii-mapping-restrictions">PII mapping restrictions</h2>
 <p>Ensure that you adhere to the following restrictions with PII data when using the Floodlight (<code>gtag.js</code>) tag with this connector:</p>
 <ul>
-<li>You must send PII data for the connector to work. If the connector data does not include any PII when it connects with Google, the connector will generate a missing PII error and it will not send any data to Google. The PII data must include at least one of the following:
+<li>You must send PII data for the connector to work. If the connector data does not include any PII when it connects with Google, the connector generates a missing PII error and it does not send any data to Google. The PII data must include at least one of the following:
 <ul>
 <li>Email Address</li>
 <li>Phone Number</li>
-<li>All Address information (First Name, Last Name, Street Address, City, State, Postal Code, Country Code)</li>
+<li>All address information (First Name, Last Name, Street Address, City, State, Postal Code, Country Code)</li>
 </ul>
 </li>
-<li>Send PII data either through the Floodlight (<code>gtag.js</code>) tag or the Google SA360 Enhanced Conversions connector, but not both. Mapping PII in both will result in <code>conversion already enhanced</code> errors in the connector.</li>
+<li>Send PII data either through the Floodlight (<code>gtag.js</code>) tag or the Google SA360 Enhanced Conversions connector, but not both. Mapping PII in both results in <code>conversion already enhanced</code> errors in the connector.</li>
 <li>To avoid connector errors, we recommend restricting any conversions without PII by adding conditions to the event feed or event specifications requiring PII.</li>
 </ul>
 <h2 id="connector-actions">Connector Actions</h2>
@@ -471,7 +472,7 @@
 <tbody>
 <tr>
 <td>Send Conversion</td>
-<td>✗</td>
+<td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
@@ -488,7 +489,8 @@
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action--send-conversion">Action — Send Conversion</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="conversion-data">Conversion Data</h4>
+<p>Required parameters:</p>
 <table>
 <thead>
 <tr>
@@ -499,19 +501,19 @@
 <tbody>
 <tr>
 <td>Floodlight Configuration ID</td>
-<td>(Required) The Floodlight configuration ID of this conversion.</td>
+<td>Required. The Floodlight configuration ID of this conversion.</td>
 </tr>
 <tr>
 <td>Floodlight Activity ID</td>
-<td>(Required) The Floodlight activity ID of this conversion.</td>
+<td>Required. The Floodlight activity ID of this conversion.</td>
 </tr>
 <tr>
 <td>Match ID</td>
-<td>(Required) A unique advertiser-created event identifier that Google uses to match the connector-enhanced conversion calls with a client-side Floodlight event. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag.</td>
+<td>Required. A unique advertiser-created event identifier that Google uses to match the connector-enhanced conversion calls with a client-side Floodlight event. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag.</td>
 </tr>
 <tr>
 <td>Ordinal</td>
-<td>(Required) The ordinal of the conversion. This parameter can be used to deduplicate conversions of the same user and day by passing the same value (for example, <code>1</code>) for each event. Use a unique value to disable deduplication, for example, <code>order_id</code> for purchase events or <code>tealium_random</code> for non-purchase events. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag. If transaction ID is used in the tag, map the attribute containing that value.</td>
+<td>Required. The ordinal of the conversion. This parameter can be used to deduplicate conversions of the same user and day by passing the same value (for example, <code>1</code>) for each event. Use a unique value to disable deduplication, for example, <code>order_id</code> for purchase events or <code>tealium_random</code> for non-purchase events. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag. If transaction ID is used in the tag, map the attribute containing that value.</td>
 </tr>
 <tr>
 <td>Timestamp Micros</td>
@@ -519,16 +521,26 @@
 </tr>
 <tr>
 <td>Quantity</td>
-<td>(Required) Quantity of the conversion. If you map an array, the connector sums the values in the array. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
+<td>Required. Quantity of the conversion. If you map an array, the connector sums the values in the array. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
 </tr>
 <tr>
 <td>Value</td>
-<td>(Required) Value of the conversion. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
+<td>Required. Value of the conversion. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
 </tr>
 <tr>
 <td>Profile ID</td>
 <td>Overwrites the value defined in the configuration tab of the connector.</td>
 </tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
 <td>Provide an email address which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
@@ -644,11 +656,11 @@
 <tbody>
 <tr>
 <td><code>NOT_FOUND</code></td>
-<td>&ldquo;MatchId <code>{matchId}</code> cannot be found.&quot;<br>Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the iQ Tag Management tag setup. This can also be a result of the use of the <a href="/client-side-tags/google-consent-mode-tag/">Google Consent Mode tag</a>, where consent was denied for the tag, but the conversion enhancement was sent through the connector.</td>
+<td>&ldquo;MatchId <code>{matchId}</code> cannot be found.&rdquo; Google could find no matching conversion from client-side tag pings. This is not an issue with the connector, but may be a cause for investigation into the iQ Tag Management tag setup. This can also be a result of the use of the <a href="/client-side-tags/google-consent-mode-tag/">Google Consent Mode tag</a>, where consent was denied for the tag, but the conversion enhancement was sent through the connector.</td>
 </tr>
 <tr>
 <td><code>NOT_FOUND</code></td>
-<td>&ldquo;Specified conversion doesn&rsquo;t exist.&quot;<br>The conversion was received from the client-side tag, but has not yet been indexed by Google for enhancing. Tealium will retry these calls up to three times.</td>
+<td>&ldquo;Specified conversion doesn&rsquo;t exist.&rdquo; The conversion was received from the client-side tag, but has not yet been indexed by Google for enhancing. Tealium will retry these calls up to three times.</td>
 </tr>
 </tbody>
 </table>
@@ -712,7 +724,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2024 
+          <p>This page was last updated:  April 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1034,6 +1046,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

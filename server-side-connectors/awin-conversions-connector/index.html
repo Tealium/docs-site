@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -151,6 +151,7 @@
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-pinpoint-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-pinpoint-connector">Amazon Pinpoint</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-redshift-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-redshift-connector">Amazon Redshift</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-s3-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-s3-connector">Amazon S3</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amobee-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amobee-connector-setup-guide">Amobee</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-connector">Amplitude</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -422,7 +423,7 @@
 <ul>
 <li>API Name: Awin API</li>
 <li>API Endpoint: <code>https://www.awin1.com</code></li>
-<li>Documentation: <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guides">Awin API</a></li>
+<li>Documentation: <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guides">Awin: Awin API</a></li>
 <li>Authentication Type: OAuth2.0</li>
 <li>Tag Documentation: <a href="/client-side-tags/awin-tag/">Awin tag</a></li>
 </ul>
@@ -434,7 +435,7 @@
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Token</strong><br>
-Required. This token is linked to your personal user account. For more information on creating your token, see <a href="https://developer.awin.com/apidocs/api-authentication">AWIN: AWAuthentication and Authorization</a>.</li>
+Required. This token is linked to your personal user account. For more information about creating your token, see <a href="https://developer.awin.com/apidocs/api-authentication">AWIN: AWAuthentication and Authorization</a>.</li>
 <li><strong>Merchant (Advertiser ID)</strong><br>
 Applicable Awin advertiser ID. Contact your Awin account manager for support.</li>
 </ul>
@@ -475,7 +476,7 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-conversion">Send Conversion</h3>
-<p>Server to Server Tracking is now a mandatory element of tracking. The requirement is that conversion data is sent (via a HTTPS request through the Tealium Connector) directly from the Tealium Customer Data Hub to Awin’s servers.</p>
+<p>Server to Server Tracking is a mandatory element of tracking. The requirement is that conversion data is sent (via a HTTPS request through the Tealium Connector) directly from the Tealium Customer Data Hub to Awin’s servers.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -494,12 +495,12 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <td style="text-align:left">Required. The unique booking or order ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">Merchant (Advertiser ID) (override)</td>
-<td style="text-align:left">The advertiser program ID.</td>
+<td style="text-align:left">Merchant (Advertiser ID)</td>
+<td style="text-align:left">The advertiser program ID. This value overwrites the value from the configuration screen.</td>
 </tr>
 <tr>
 <td style="text-align:left">Commission Group Code</td>
-<td style="text-align:left">Recommended. The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are uppercase alphanumerics, underscores, and hyphens. If this parameter is not populated, Awin will fall back to the default commission group.</td>
+<td style="text-align:left">Recommended. The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are uppercase alphanumerics, underscores, and hyphens. If this parameter is not populated, Awin uses the default commission group.</td>
 </tr>
 <tr>
 <td style="text-align:left">Commission Group Amount</td>
@@ -507,7 +508,7 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </tr>
 <tr>
 <td style="text-align:left">Channel</td>
-<td style="text-align:left">The channel name of the last click referrer. Always use <strong>aw</strong> for Awin, which is the default value. This value must be 20 alphanumeric characters or less. We strongly suggest that you include this parameter so the Awin system knows how to process each conversion based on the source of the traffic. Example values may include: <code>aw</code> (which should always be used for Awin), <code>display</code>, or <code>ppc</code>.</td>
+<td style="text-align:left">The channel name of the last click referrer. Always use <strong>aw</strong> for Awin, which is the default value. This value must be 20 alphanumeric characters or less. We strongly suggest that you include this parameter so the Awin system knows how to process each conversion based on the source of the traffic. Example values may include: <code>aw</code> (which should always be used for Awin), <code>display</code>, or <code>ppc</code>. For more information, see <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/De-duplication#Channel_Parameter">Awin: Channel parameter</a>.</td>
 </tr>
 <tr>
 <td style="text-align:left">AWC parameter</td>
@@ -519,7 +520,7 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </tr>
 <tr>
 <td style="text-align:left">Currency Code</td>
-<td style="text-align:left"><ul><li>Recommended. The ISO currency code of the currency that was used in the transaction, for example GBP or USD.</li><li>This parameter is highly recommended to maintain accurate tracking.</li></ul></td>
+<td style="text-align:left"><ul><li>Recommended. The ISO currency code of the currency that was used in the transaction, for example <code>GBP</code> or <code>USD</code>.</li><li>This parameter is highly recommended to maintain accurate tracking.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Custom Parameters</td>
@@ -532,7 +533,7 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </tbody>
 </table>
 <h3 id="product-level-conversion">Product Level Conversion</h3>
-<p>Product Level Tracking enables an advertiser to produce much more in-depth reporting where the performance of individual products can be measured.</p>
+<p>Product Level Tracking lets an advertiser produce much more in-depth reporting where the performance of individual products can be measured.</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -551,12 +552,12 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <td style="text-align:left">Required. The unique booking or order ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">Merchant (Advertiser ID) (override)</td>
-<td style="text-align:left">The advertiser program ID.</td>
+<td style="text-align:left">Merchant (Advertiser ID)</td>
+<td style="text-align:left">The advertiser program ID. This value overwrites the value from the configuration screen.</td>
 </tr>
 <tr>
 <td style="text-align:left">Commission Group Code</td>
-<td style="text-align:left">Recommended. The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are upper-case alphanumerics, underscores, and hyphens. If this parameter is not populated, Awin uses the default commission group.</li></ul></td>
+<td style="text-align:left">Recommended. The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are upper-case alphanumerics, underscores, and hyphens. If this parameter is not populated, Awin uses the default commission group. The commission group code or codes is mapped to the parts parameter, and will also be mapped at the product level.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Commission Group Amount</td>
@@ -576,31 +577,11 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </tr>
 <tr>
 <td style="text-align:left">Currency Code</td>
-<td style="text-align:left">Recommended. The ISO currency code of the currency that was used in the transaction, for example, GBP or USD.</td>
+<td style="text-align:left">Recommended. The ISO currency code of the currency that was used in the transaction, for example, <code>GBP</code> or <code>USD</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product Name</td>
 <td style="text-align:left">Required. An array of product names in the transaction.</td>
-</tr>
-<tr>
-<td style="text-align:left">Product ID</td>
-<td style="text-align:left">Required. An array of unique product IDs in the transaction.</td>
-</tr>
-<tr>
-<td style="text-align:left">Product Quantity</td>
-<td style="text-align:left">Required. An array of the quantity of each of the products in the transaction.</td>
-</tr>
-<tr>
-<td style="text-align:left">Product SKU</td>
-<td style="text-align:left">Required. An array of the SKU of each of the products in the transaction.</td>
-</tr>
-<tr>
-<td style="text-align:left">Product Item Price</td>
-<td style="text-align:left">Required. An array of the prices for a single quantity of each of the products in the transaction. This single unit price must reflect the price after any relevant discount is applied, but before any taxes or additional charges are applied. The value must be a float, no thousand separator is allowed, and the decimal place must be a standard dot character.</td>
-</tr>
-<tr>
-<td style="text-align:left">Product Category</td>
-<td style="text-align:left">Required. An array of each product&rsquo;s category in the transaction.</td>
 </tr>
 <tr>
 <td style="text-align:left">Custom Parameters</td>
@@ -609,6 +590,37 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <tr>
 <td style="text-align:left">Test Mode</td>
 <td style="text-align:left">Incoming tracking requests are not processed for the purposes of testing.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="product">Product</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product ID</td>
+<td>Required. An array of unique product IDs in the transaction.</td>
+</tr>
+<tr>
+<td>Product Quantity</td>
+<td>Required. An array of the quantity of each of the products in the transaction.</td>
+</tr>
+<tr>
+<td>Product SKU</td>
+<td>Required. An array of the SKU of each of the products in the transaction.</td>
+</tr>
+<tr>
+<td>Product Item Price</td>
+<td>Required. An array of the prices for a single quantity of each of the products in the transaction. This single unit price must reflect the price after any relevant discount is applied, but before any taxes or additional charges are applied. The value must be a float, no thousand separator is allowed, and the decimal place must be a standard dot character.</td>
+</tr>
+<tr>
+<td>Product Category</td>
+<td>Required. An array of each product&rsquo;s category in the transaction.</td>
 </tr>
 </tbody>
 </table>
@@ -672,7 +684,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 24, 2025 
+          <p>This page was last updated:  April 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -990,6 +1002,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -156,13 +156,13 @@
         <a href="/ja/early-access/connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-connectors-new">コネクタについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/connectors/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface-ea">コネクターインターフェース</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector-ea">コネクタを追加する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors-ea">コネクターの管理</a></li></ul>
+        <a href="/ja/early-access/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors-ea">コネクタの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".server-side-concurrency">サーバーサイドの並行性</a>
         <ul class="pl2  server-side-concurrency desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">保存と公開</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">概要</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/server-side-concurrency/profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">プロファイルスイッチャー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/server-side-concurrency/profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">プロファイル切り替え機能</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">同時アクセスユーザー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">並行処理のベストプラクティス</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -209,7 +209,8 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">関数</a>
         <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">関数ダッシュボード</a></li></ul>
+        <a href="/ja/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">関数ダッシュボード</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/functions/crypto-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">暗号ライブラリ</a></li></ul>
       </li></ul></li></ul>
 </nav>
 </div>
@@ -263,21 +264,37 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>SnowflakeデータソースはEarly Access中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>SnowflakeデータソースはEarly Access中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
 <h2 id="要件">要件</h2>
 <p>この機能には以下が必要です：</p>
 <ul>
 <li>Tealium EventStreamまたはTealium AudienceStream</li>
 <li>Snowflakeアカウント</li>
-<li><code>USAGE</code>権限を持つSnowflakeロール</li>
+<li><code>USAGE</code>権限を持つSnowflakeロールとユーザータイプは<code>LEGACY_SERVICE</code>です。<br>
+詳細については、<a href="#authentication">認証</a>を参照してください。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
-<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューからほぼリアルタイムで大量データをインポートします。データをインポートした後、Tealium属性に変換してマッピングし、ターゲットアクティベーションのためのより良いオーディエンスを構築します。</p>
-<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、データセットのクエリモードとSQLの<code>WHERE</code>句をカスタマイズします。次に、データベースの列をTealium属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
+<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューからほぼリアルタイムの速度で大量データをインポートします。データをインポートした後、Tealium属性に変換してマッピングし、ターゲットアクティベーションのためのより良いオーディエンスを構築します。</p>
+<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、クエリモードとSQLの<code>WHERE</code>句をデータセットに合わせてカスタマイズします。次に、データベースの列をTealium属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイルごとに最大10個のクラウドデータウェアハウスデータソースを有効にすることができます。</p>
-<h2 id="レート制限">レート制限</h2>
-<p>Snowflakeからのインポートは通常、アカウントごとに秒間50イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限は引き続き適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
-<p>Snowflakeデータソースは、一度に最大1,000行のデータを取得します。</p>
+<h2 id="認証">認証</h2>
+<p>接続を承認するには、この統合用に特別にサービスユーザーを作成します。サービスユーザーはSnowflakeユーザーオブジェクトで<code>TYPE = SERVICE</code>または<code>LEGACY_SERVICE</code>として宣言されます。これらのタイプのユーザーはSnowflakeのMFAポリシーの対象となりません。</p>
+<p>詳細については、<a href="https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/">Snowflake: 単一要素認証をブロックする段階的アプローチ</a>を参照してください。</p>
+<p>サービスユーザーを作成するSQLコマンドの例は以下の通りです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COMMENT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Tealiumに接続するためのサービスユーザー&#39;</span>
+</span></span><span style="display:flex;"><span>    PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;YOUR_LONG_PASSWORD_HERE&#39;</span>
+</span></span><span style="display:flex;"><span>    DISABLED <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>
+</span></span><span style="display:flex;"><span>    MUST_CHANGE_PASSWORD <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> LEGACY_SERVICE;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_READER <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> USERS;
+</span></span></code></pre></div><h2 id="レート制限">レート制限</h2>
+<p>Snowflakeからのインポートは通常、アカウントごとに秒間500イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限も適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
+<h2 id="バッチサイズ">バッチサイズ</h2>
+<p>Snowflakeデータソースはバッチでデータをインポートし、バッチあたりの最大行数は1,000行です。この動作は、<a href="#query-modes">クエリモード</a>を選択する際に考慮することが重要です。</p>
 <h2 id="snowflakeテーブル">Snowflakeテーブル</h2>
 <p>各Snowflakeデータソースは、一つのSnowflakeテーブルまたはビューからデータをインポートすることをサポートしています。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。Snowflakeのビューについての詳細は、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
@@ -311,39 +328,55 @@
 <td style="text-align:left">文字列の配列、数値の配列、またはブールの配列</td>
 </tr>
 <tr>
-<td style="text-align:left">オブジェクト、バリアント、地理、幾何、およびベクターデータタイプ</td>
+<td style="text-align:left">オブジェクト、バリアント、地理、ジオメトリ、ベクターデータタイプ</td>
 <td style="text-align:left">文字列属性</td>
 </tr>
 </tbody>
 </table>
-<p>Snowflakeデータタイプの詳細については、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
+<p>Snowflakeデータタイプについての詳細は、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
 <h2 id="イベント">イベント</h2>
 <p>デフォルトのTealium <a href="/ja/server-side/getting-started/order-of-operations/">データ収集の操作順序</a>では、Snowflakeデータソースからのイベントは<strong>イベント受信</strong>ステップの前に処理され、操作の順序は変更されません。</p>
 <p>Snowflakeデータソースのイベントは、他のデータソースからのイベントと同様にEventStreamおよびAudienceStreamに送信されますが、以下の重要な例外があります：</p>
 <ul>
 <li><strong>ブラウザ固有の属性</strong>：ユーザーエージェントなどのブラウザ固有の属性は入力されません。</li>
-<li><strong>エンリッチメント</strong>：AudienceStreamの事前ロードされた属性に対するエンリッチメントは実行されませんが、<code>First visit</code>属性を除きます。</li>
+<li><strong>エンリッチメント</strong>：AudienceStreamの事前ロードされた属性に対するエンリッチメントは実行されませんが、「最初の訪問」属性を除きます。</li>
 <li><strong>関数</strong>：データ変換関数は実行されません。</li>
-<li><strong>単一ページ訪問</strong>：受信イベントは単一ページ訪問/訪問の基準から除外されます。他のデータソースからの単一ページ訪問および訪問はAudienceStreamに保持されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamでの単一ページ訪問はどのように処理されますか？</a> (Tealiumログインが必要)を参照してください。</li>
+<li><strong>単一ページ訪問</strong>：受信イベントは単一ページ訪問/訪問の基準から除外されます。他のデータソースからの単一ページ訪問および訪問はAudienceStreamに保持されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamで単一ページ訪問がどのように処理されるか</a>を参照してください（Tealiumログインが必要です）。</li>
 <li><strong>訪問の長さ</strong>：Snowflakeデータソースイベントによって開始された訪問は60秒間続きます。</li>
 <li><strong>訪問IDマッピング</strong>：Snowflakeデータソース構成でAudienceStream訪問ID属性をマッピングする場合、訪問IDは選択した列の値に直接構成され、追加のエンリッチメントは必要ありません。</li>
 </ul>
-<h2 id="構成">構成</h2>
-<h3 id="クエリモード">クエリモード</h3>
-<p>Snowflakeデータソースは、Snowflakeテーブルまたはビューからデータをインポートする方法を制御するために、3つのクエリモードをサポートしています：</p>
+<h2 id="クエリモード">クエリモード</h2>
+<p>Snowflakeデータソースは、Snowflakeテーブルまたはビューからデータをインポートする方法を制御するために、3つのクエリモードをサポートしています。各モードはタイムスタンプ列、インクリメント列、またはその両方を使用して、インポートする行を決定します。</p>
+<h3 id="列の要件">列の要件</h3>
+<p>クエリモードを効果的に使用するためには、以下のいずれかが必要です：</p>
+<ul>
+<li><strong>タイムスタンプ列</strong><br>
+行が追加または変更された現在の時間に構成されたタイムスタンプ列。この列は、次のいずれかのSnowflakeデータタイプでなければなりません：<code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, または <code>TIMESTAMP_NTZ</code>。<br>
+詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: 日付＆時間</a>を参照してください。</li>
+<li><strong>インクリメント列</strong><br>
+行が追加されるたびに値が増加する数値列。自動インクリメント列の推奨定義は以下の通りです：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div>詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-numeric">Snowflake: 数値データタイプ</a>を参照してください。</li>
+</ul>
+<h3 id="利用可能なクエリモード">利用可能なクエリモード</h3>
+<p>使用事例の要件に合わせてモードを選択します。これらのモードの動作例については、<a href="#query-mode-example">クエリモードの例</a>を参照してください。</p>
 <h4 id="タイムスタンプ--インクリメント推奨">タイムスタンプ + インクリメント（推奨）</h4>
-<p class="tip"><i class="fa fa-info-circle"></i><strong>タイムスタンプ + インクリメント</strong>は、すべての行が期待通りにインポートされることを確実にするための最も信頼性の高いモードです。</p>
-<p>Tealiumは、タイムスタンプ列と自動インクリメント列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプを持つ行と/または前回インポートされた行より大きい自動インクリメント値を持つ行がインポートされます。</p>
-<h4 id="追加のモード">追加のモード</h4>
-<p><strong>タイムスタンプ</strong><br>
-Tealiumはタイムスタンプ列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプを持つ行がインポートされます。テーブルに更新ごとに構成または更新されるタイムスタンプ列がある場合は、このモードを使用します。
-<strong>タイムスタンプ</strong>は、異なるデータバッチで重複するタイムスタンプがある場合、行が見逃される可能性があるため、<strong>タイムスタンプ + インクリメント</strong>ほど信頼性がありません。以下の例で示されています。</p>
-<p><strong>インクリメント</strong>
-Tealiumは自動インクリメント列に基づいて行をインポートします。このモードでは、前回インポートされた行より大きい自動インクリメント値を持つ行がインポートされます。タイムスタンプ列がなく、自動インクリメント列のみを持っている場合は、このモードを使用します。
-<strong>インクリメント</strong>は、既存の行の変更または削除を検出できないため、<strong>タイムスタンプ + インクリメント</strong>ほど信頼性がありません。</p>
-<p>Snowflakeデータソースは、一括クエリモードをサポートしていません。</p>
+<p>このモードは、タイムスタンプ列とインクリメント列の両方を使用して、新規または変更された行をインポートします。行は以下の場合にインポートされます：</p>
+<ul>
+<li>前回のインポートより新しいタイムスタンプがある場合、および/または</li>
+<li>最後にインポートされた行よりも大きいインクリメント値がある場合。</li>
+</ul>
+<p>このモードは、すべての行が意図した通りにインポートされることを最も確実に保証します。</p>
+<h4 id="タイムスタンプ">タイムスタンプ</h4>
+<p>このモードは、タイムスタンプ列を使用して新規または更新された行をインポートします。行は、前回のインポートより新しいタイムスタンプがある場合にインポートされます。</p>
+<p>テーブルに挿入または更新操作ごとにタイムスタンプ列が構成されている場合、このモードを使用します。</p>
+<p>同じタイムスタンプを持つ行の数が<a href="#batch-size">バッチサイズ</a>を超える場合、一部の行はインポートされないことに注意してください。</p>
+<h4 id="インクリメント">インクリメント</h4>
+<p>このモードは、インクリメント列を使用して行をインポートします。行は、最後にインポートされた行よりも大きいインクリメント値がある場合にインポートされます。前回のインポートからの最大値以下のインクリメント値を持つ行はスキップされます。このモードは、既存の行の変更を検出しません。</p>
+<p>テーブルにタイムスタンプ列がない場合、このモードを使用します。</p>
+<p>自動インクリメント列を使用せずに独自のインクリメント列を維持する場合、値が常に増加することを確認してください。</p>
 <h3 id="クエリモードの例">クエリモードの例</h3>
-<p>次の例は、行のバッチ処理とクエリモードがどのように連携するかを示しています。次の表では、<code>modification_time</code>がタイムスタンプ列で、<code>customer_id</code>がインクリメント列です。</p>
+<p>次の例は、行のバッチ処理とクエリモードがどのように連携して動作するかを示しています。以下の表では、<code>modification_time</code> がタイムスタンプ列であり、<code>customer_id</code> が増加列です。</p>
 <table>
 <thead>
 <tr>
@@ -354,14 +387,14 @@ Tealiumは自動インクリメント列に基づいて行をインポートし�
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>01Apr 13:00</td>
-<td>A</td>
+<td><code>1</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>A</code></td>
 </tr>
 <tr>
-<td>2</td>
-<td>01Apr 13:00</td>
-<td>B</td>
+<td><code>2</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>B</code></td>
 </tr>
 <tr>
 <td>&hellip;</td>
@@ -369,43 +402,40 @@ Tealiumは自動インクリメント列に基づいて行をインポートし�
 <td>&hellip;</td>
 </tr>
 <tr>
-<td>1000</td>
-<td>01Apr 13:00</td>
-<td>D</td>
+<td><code>1000</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>D</code></td>
 </tr>
 <tr>
-<td>1001</td>
-<td>01Apr 13:00</td>
-<td>E</td>
+<td><code>1001</code></td>
+<td><code>01Apr 13:00</code></td>
+<td><code>E</code></td>
 </tr>
 <tr>
-<td>1002</td>
-<td>02Apr 14:00</td>
-<td>A</td>
+<td><code>1002</code></td>
+<td><code>02Apr 14:00</code></td>
+<td><code>A</code></td>
 </tr>
 </tbody>
 </table>
-<p>Snowflakeデータソースは、一度に1,000行のデータを取得し、バッチのデータからタイムスタンプおよび/またはインクリメント列の最大値をマークします。</p>
+<p>Snowflake データソースは、一度に 1,000 行のデータを取得し、バッチデータからタイムスタンプおよび/または増加列の最大値をマークします。</p>
 <ul>
-<li><strong>タイムスタンプ + インクリメント</strong>モードを使用する場合：データソースは1-1000行を取得します。次にデータソースがデータを取得するとき、次の条件のいずれかで行を探します：
-<code>modification_time</code>が<code>01Apr 13:00</code>で、<code>customer_id</code>が<code>1000</code>より大きい
-または
-<code>modification_time</code>が<code>01Apr 13:00</code>より大きい</li>
-<li><strong>タイムスタンプ</strong>モード（例の<code>modification_time</code>）を使用する場合：データソースは1-1000行を取得し、最大タイムスタンプ<code>01Apr 13:00</code>をマークします。次にデータソースがデータを取得するとき、<code>01Apr 13:00</code>より大きいタイムスタンプを探します。この場合、行1001は同じタイムスタンプ値を持っていますが、異なるデータバッチで取得されたため、スキップされます。</li>
-<li><strong>インクリメント</strong>モードを使用する場合：データソースは1-1000行を取得し、最大自動インクリメント値<code>1000</code>をマークしますが、新しいデータを持ち、更新されたタイムスタンプ列を持つ行は処理されません。例の<code>customer_id</code>でさらにインクリメントされた新規追加行のみが処理されます。</li>
+<li><strong>タイムスタンプ + 増加</strong> モードを使用する場合: データソースは行 1-1000 を取得します。次にデータソースがデータを取得する際には、<code>modification_time</code> が <code>01Apr 13:00</code> で <code>customer_id</code> が <code>1000</code> より大きい行、または <code>modification_time</code> が <code>01Apr 13:00</code> より大きい行を探します。</li>
+<li><strong>増加</strong> モードを使用する場合: データソースは行 1-1000 を取得し、増加値の最大値 <code>1000</code> をマークします。次のインポートでは、最初のインポート以降に変更されたとしても、行 1-1000 はスキップされます。例の <code>customer_id</code> を増加させる新しい行のみが処理されます。</li>
+<li><strong>タイムスタンプ</strong> モード (<code>modification_time</code> が例) を使用する場合: データソースは行 1-1000 を取得し、最大タイムスタンプ <code>01Apr 13:00</code> をマークします。次のインポートでは、<code>01Apr 13:00</code> より大きいタイムスタンプの行がインポートされます。この場合、行 <code>1001</code> は同じタイムスタンプ値であるため、前回のデータバッチで取得されたためスキップされます。</li>
 </ul>
-<h3 id="sqlクエリ">SQLクエリ</h3>
-<p>Snowflakeデータソースの<strong>クエリ構成</strong>で、Tealiumにインポートしたい列を選択します。処理の追加条件を追加するには、SQLの<code>WHERE</code>句を使用します。このオプションはクエリに<code>WHERE</code>文を追加します。<code>WHERE</code>文は基本的なSQL構文をサポートしています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
-<h3 id="列マッピング">列マッピング</h3>
-<p>カラムマッピング構成は、Snowflakeテーブルの各カラムに対応するイベント属性を決定します。</p>
-<p>カラム名はしばしばCustomer Data Hubの属性名と異なるため、このマッピングによりデータが適切にインポートされることを保証します。例えば、テーブルには<code>postalCode</code>というカラムがあるかもしれませんが、対応するイベント属性は<code>customer_zip</code>と名付けられているため、それらを関連付けるマッピングが必要です。</p>
-<p>SnowflakeデータタイプをTealiumデータタイプにマッピングする情報については、<a href="#data-types">データタイプ</a>セクションを参照してください。</p>
-<h3 id="訪問idのマッピング">訪問IDのマッピング</h3>
-<p>インポートされたデータがWeb、モバイル、またはHTTP APIなどの他のソースと繋がるようにするためには、Snowflakeテーブルの各行に一意の訪問IDを持つカラムがあることを確認してください。次に、訪問IDカラムと対応するイベント属性をAudienceStreamでの訪問識別のための一意の属性タイプである訪問ID属性にマッピングします。マッピングされたイベント属性の値は<code>tealium_visitor_id</code>属性に割り当てられ、既存の訪問プロファイルと直接照合されます。</p>
-<p>AudienceStreamでの訪問IDマッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用した訪問識別</a>を参照してください。</p>
-<h2 id="許可するipアドレス">許可するIPアドレス</h2>
-<p>Snowflakeアカウントがリクエストを受け入れるシステムに厳しいルールを設けている場合は、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>をSnowflakeの許可リストに追加してください。</p>
+<h2 id="sql-クエリ">SQL クエリ</h2>
+<p>Snowflake データソースの <strong>クエリ構成</strong> で、Tealium にインポートしたい列を選択します。処理の追加条件を使用するには、SQL の <code>WHERE</code> 句を使用します。このオプションはクエリに <code>WHERE</code> 文を追加します。<code>WHERE</code> 文は基本的な SQL 構文をサポートします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code> 句は複数のテーブルからのサブクエリをサポートしていません。複数の Snowflake テーブルからデータをインポートするには、Snowflake でビューを作成し、データソース構成でビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
+<h2 id="列マッピング">列マッピング</h2>
+<p>列マッピング構成は、Snowflake テーブルの各列に対応するイベント属性を決定します。</p>
+<p>列名はしばしば Customer Data Hub の属性名と異なるため、このマッピングはデータが適切にインポートされることを保証します。たとえば、テーブルには <code>postalCode</code> という列があるかもしれませんが、対応するイベント属性は <code>customer_zip</code> という名前ですので、それらを関連付けるマッピングが必要です。</p>
+<p>Snowflake データタイプを Tealium データタイプにマッピングする情報については、<a href="#data-types">データタイプ</a> セクションを参照してください。</p>
+<h2 id="訪問-id-マッピング">訪問 ID マッピング</h2>
+<p>インポートされたデータがウェブ、モバイル、または HTTP API など他のソースと繋がるようにするために、Snowflake テーブルの各行に一意の訪問 ID を持つ列があることを確認します。その後、訪問 ID 列と対応するイベント属性を訪問 ID 属性（AudienceStream での訪問識別用の一意の属性タイプ）にマッピングします。マッピングされたイベント属性の値は <code>tealium_visitor_id</code> 属性に割り当てられ、既存の訪問プロファイルに直接一致します。</p>
+<p>AudienceStream での訪問 ID マッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealium データソースを使用した訪問識別</a>を参照してください。</p>
+<h2 id="許可する-ip-アドレス">許可する IP アドレス</h2>
+<p>Snowflake アカウントに厳格なシステム要求ルールがある場合、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IP アドレス</a> を Snowflake の許可リストに追加します。</p>
 
 </div>
 
@@ -451,7 +481,7 @@ Tealiumは自動インクリメント列に基づいて行をインポートし�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月28日
+          <p>最終更新日 ::  2025年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -467,17 +497,20 @@ Tealiumは自動インクリメント列に基づいて行をインポートし�
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">レート制限</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA" href="javascript:void(0)">バッチサイズ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snowflake%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB" href="javascript:void(0)">Snowflakeテーブル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%81%AE%E8%A6%81%E4%BB%B6" href="javascript:void(0)">列の要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">利用可能なクエリモード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E4%BE%8B" href="javascript:void(0)">クエリモードの例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql%E3%82%AF%E3%82%A8%E3%83%AA" href="javascript:void(0)">SQLクエリ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-%E3%82%AF%E3%82%A8%E3%83%AA" href="javascript:void(0)">SQL クエリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">列マッピング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8Fid%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">訪問IDのマッピング</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8Bip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可するIPアドレス</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F-id-%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">訪問 ID マッピング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8B-ip-%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可する IP アドレス</a></li>
               </nav>
   </aside></nav>
 

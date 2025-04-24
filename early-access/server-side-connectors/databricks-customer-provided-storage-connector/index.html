@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Databricks (AWS S3) Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Databricks Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "10",
+        reading_time  : "15",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -170,6 +170,7 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">Functions</a>
         <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/functions/crypto-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Crypto library</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">Functions dashboard</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-log-streaming">Log Streaming</a>
@@ -186,7 +187,7 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ea-server-side-connectors">Server-Side Connectors</a>
         <ul class="pl2 bl b--primary bw1 ea-server-side-connectors desktopmenu animated fadeIn list "><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-aws-s3-connector">Databricks Connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-api">Tealium API</a>
@@ -239,7 +240,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Databricks (AWS S3) Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Databricks Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -247,13 +248,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Databricks (AWS S3) connector.
+      This article describes how to set up the Databricks connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="actions">Actions</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector is only available by using <a href="/early-access/connectors/about/">the new connectors interface</a> available by clicking <strong>Connectors</strong> in the left navigation.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -286,14 +288,35 @@
 </tbody>
 </table>
 <h2 id="how-it-works">How it works</h2>
-<p>The Databricks (AWS S3) connector requires two sets of connections: Tealium to AWS S3 and Databricks to AWS S3.</p>
-<h3 id="tealium-to-aws-s3-connection">Tealium to AWS S3 connection</h3>
-<p>Tealium requires a connection to an AWS S3 instance to list buckets and upload event and audience data into S3 objects. You have two options for authentication for the Databricks (AWS S3) connector:</p>
+<p>The Databricks connector requires two sets of connections:</p>
+<ul>
+<li>Tealium to a compatible cloud storage solution (AWS S3, Azure Blob Storage or Google Cloud Storage).</li>
+<li>Databricks to that same cloud storage solution..</li>
+</ul>
+<h3 id="tealium-to-cloud-storage-connection">Tealium to cloud storage connection</h3>
+<p>Tealium requires a connection to an AWS S3, Azure Blob Storage, or Google Cloud Storage instance to list buckets and upload event and audience data into cloud storage objects and files. You have the following options for authentication for the Databricks connector:</p>
+<ul>
+<li><a href="#aws-s3-settings">AWS S3</a>
 <ul>
 <li>Provide an Access Key and Access Secret.</li>
 <li>Provide STS (Security Token Service) credentials.</li>
 </ul>
-<h4 id="access-key-and-secret-credentials">Access Key and Secret credentials</h4>
+</li>
+<li><a href="#azure-blob-storage-settings">Azure Blob Storage</a>
+<ul>
+<li>Client credentials.</li>
+<li>Authorization Code flow (SSO).</li>
+<li>Shared Access Signature (SAS).</li>
+</ul>
+</li>
+<li><a href="#google-cloud-storage-settings">Google Cloud Storage</a>
+<ul>
+<li>Sign in with Google (SSO).</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-s3-settings">AWS S3 settings</h4>
+<h5 id="access-key-and-secret-credentials">Access Key and Secret credentials</h5>
 <p>To find your AWS Access Key and Secret:</p>
 <ol>
 <li>Log in to the AWS Management Console and go to the IAM (Identity and Access Management) service.</li>
@@ -332,7 +355,7 @@
 </ol>
 </li>
 </ol>
-<h4 id="sts-credentials">STS credentials</h4>
+<h5 id="sts-credentials-settings">STS credentials settings</h5>
 <ol>
 <li>Log in to the AWS Management Console and go to the IAM (Identity and Access Management) service.</li>
 <li>Click <strong>Roles</strong> and then <strong>Create role</strong>.</li>
@@ -391,69 +414,156 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="databricks-to-aws-s3-connection">Databricks to AWS S3 connection</h3>
+</span></span></code></pre></div><h4 id="azure-blob-storage-settings">Azure Blob Storage settings</h4>
+<h5 id="client-credentials">Client credentials</h5>
+<p>To retrieve the tenant ID, client ID, and client secret for an application in Azure,  use the following steps:</p>
+<p><strong>Step 1: Access Azure Portal</strong></p>
+<ol>
+<li>Go to Azure Portal.</li>
+<li>Sign in with your Azure account.</li>
+</ol>
+<p><strong>Step 2: Go to the App Registration</strong></p>
+<ol>
+<li>In the search bar at the top, enter <code>Azure Active Directory</code> and select it.</li>
+<li>In the left menu, click <strong>App registrations</strong>.</li>
+<li>Locate your registered application.</li>
+</ol>
+<p><strong>Step 3: Find the Tenant ID &amp; Client ID</strong></p>
+<ol>
+<li>Click your application.</li>
+<li>In the <strong>Overview</strong> section, locate the following information:
+<ul>
+<li><strong>Tenant ID</strong> (also known as <strong>Directory ID</strong>) is listed under <strong>Tenant ID</strong>.</li>
+<li><strong>Client ID</strong> (also known as <strong>Application ID</strong>) is displayed as <strong>Application (client) ID</strong>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Step 4: Generate Client Secret</strong></p>
+<ol>
+<li>In the left menu, go to <strong>Certificates &amp; secrets</strong>.</li>
+<li>Under <strong>Client secrets</strong>, click <strong>New client secret</strong>.</li>
+<li>Provide a description and select an expiration time.</li>
+<li>Click <strong>Add</strong>.</li>
+<li>Once generated, copy the client secret immediately, because you won’t be able to view it again after leaving the page.</li>
+</ol>
+<h5 id="shared-access-signature-sas">Shared Access Signature (SAS)</h5>
+<p>To generate a Shared Access Signature (SAS) token in Azure, use the following steps:</p>
+<p><strong>Step 1: Access Azure Portal</strong></p>
+<ol>
+<li>Go to the Azure Portal.</li>
+<li>Sign in with your Azure account.</li>
+</ol>
+<p><strong>Step 2: Go to Storage Account</strong></p>
+<ol>
+<li>In the search bar, enter <code>Storage accounts</code> and select it.</li>
+<li>Choose the storage account where you want to generate the SAS token.</li>
+</ol>
+<p><strong>Step 3: Generate SAS Token</strong></p>
+<p>Option 1: Use the Azure Portal</p>
+<ol>
+<li>In the <strong>Storage Account</strong>, go to <strong>Shared access signature</strong> under the <strong>Security + networking</strong> section.</li>
+<li>Configure the permissions needed (<code>Read</code>, <code>Write</code>, <code>Delete</code>, <code>List</code>, etc.).</li>
+<li>Set the expiration date and time to define how long the token remains valid.</li>
+<li>Choose the allowed services (<code>Blob</code>, <code>File</code>, <code>Queue</code>, and <code>Table</code>).</li>
+<li>Click <strong>Generate SAS and connection string</strong>.</li>
+<li>Copy the SAS token or the connection string, which contains the SAS token.</li>
+</ol>
+<p>Option 2: Use Azure Storage Explorer</p>
+<ol>
+<li>Open Azure Storage Explorer and sign in to your Azure account.</li>
+<li>Locate the storage account and right-click a <em>Blob Container</em> or File Share.</li>
+<li>Select <strong>Get Shared Access Signature</strong>.</li>
+<li>Configure permissions and expiration settings.</li>
+<li>Click <strong>Create</strong> and copy the generated SAS URL or token.</li>
+</ol>
+<p>Option 3: Use Azure CLI</p>
+<ol>
+<li>Run the following command in Azure CLI to generate a SAS token:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>    az storage blob generate-sas <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --account-name &lt;your-storage-account&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --container-name &lt;your-container&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --name &lt;your-blob&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --permissions r <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --expiry 2026-04-25T12:00:00Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --output tsv
+</span></span></code></pre></div><p>This will output a SAS token, which can be appended to the storage URL to provide controlled access.</p>
+<h5 id="authorization-code-flow-sso">Authorization Code flow (SSO)</h5>
+<p>When you click <strong>Establish Connection</strong>, you&rsquo;re initiating a secure authentication process known as the Authorization Code Flow. This allows your application to gain access to your Azure Blob Storage without requiring you to manually enter credentials, ensuring a seamless and secure experience.</p>
+<p>You will see the following:</p>
+<ol>
+<li><strong>Redirect to Sign-In:</strong> You&rsquo;re temporarily directed to your organization’s Identity Provider (IdP), such as Azure Active Directory, where you log in using your existing credentials.</li>
+<li><strong>Granting Consent</strong>: After authenticating, you&rsquo;ll see a consent screen explaining the permissions that Tealium’s app is requesting—specifically, access to your Blob Storage.</li>
+<li><strong>Secure Access to Blob Storage</strong>: Tealium’s application now has permissions to interact with your storage while maintaining Azure&rsquo;s security policies.</li>
+</ol>
+<h4 id="google-cloud-storage-settings">Google Cloud Storage settings</h4>
+<h5 id="sign-in-with-google">Sign in with Google</h5>
+<p>When you click <strong>Sign in with Google</strong>, you initiate a secure authorization process that allows your application to access Google Cloud Storage with your Google account. This process ensures a seamless experience while maintaining security and control over your data.</p>
+<p>You will see the following:</p>
+<ol>
+<li><strong>Redirect to Google Sign-In</strong>: You are temporarily redirected to Google’s authentication page, where you log in using your Google account credentials.</li>
+<li><strong>Granting Consent</strong>: After signing in, you’ll be presented with a consent screen detailing the permissions Tealium’s app is requesting—such as access to your Cloud Storage.</li>
+<li><strong>Receiving an Authorization Code</strong>: After you approve, Google generates a one-time authorization code and sends it back to your application.</li>
+<li><strong>Secure Access to Cloud Storage</strong>: Tealium’s application now has permissions to interact with your storage while adhering to Google’s security policies.</li>
+</ol>
+<h3 id="databricks-to-aws-s3-connection">Databricks to AWS S3 connection</h3>
 <p>To connect Databricks to an AWS S3 instance, you must first create an IAM role in your AWS instance that can be used to create storage credentials in the Databricks instance. For more information about creating the AWS IAM role, see <a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html">Databricks: Create a storage credential for connecting to AWS S3</a>.</p>
 <p>After the storage credentials have been created, define the external location in the AWS S3 instance that you will pull data from. For more information, see <a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/external-locations.html">Databricks: Create an external location to connect cloud storage to Databricks</a>.</p>
+<h3 id="databricks-to-azure-blob-storage-connection">Databricks to Azure Blob Storage connection</h3>
+<p>To connect Databricks to an Azure Blob Storage instance, you need to create a storage credential using Azure service principals or managed identities. This allows Databricks to authenticate and access the Blob Storage securely.  For more information, see <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Create a storage credential for connecting to Azure Blob Storage</a>.</p>
+<p>Once the storage credentials are configured, define an external location in Azure Blob Storage that Databricks will use for reading and writing data. For more information, see <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations">Databricks: Create an external location to connect cloud storage to Databricks</a>.</p>
+<h3 id="databricks-to-google-cloud-storage-connection">Databricks to Google Cloud Storage connection</h3>
+<p>To integrate Google Cloud Storage with Databricks, you first need to set up a service account in Google Cloud with the required permissions to access storage buckets. Then, you create a storage credential in Databricks to use this service account for authentication. For more information, see <a href="https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Create a storage credential for connecting to Google Cloud Storage</a>.</p>
+<p>After setting up the storage credentials, you must define an external location in Google Cloud Storage, specifying the bucket and permissions necessary for Databricks to interact with the data. For more information, see <a href="https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/external-locations">Databricks: Create an external location to connect cloud storage to Databricks</a>.</p>
 <h2 id="batch-limits">Batch Limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 100,000</li>
-<li>Maximum time since oldest request: 10 minutes</li>
+<li>Maximum time since oldest request: You can set a custom TTL between 1 and 60 minutes. The default value is 10 minutes.</li>
 <li>Maximum size of requests: 10 MB</li>
 </ul>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Authentication Type</strong>
+<li><strong>Cloud Solution</strong>: Select the cloud solution you are using. Available options are <code>AWS S3</code>, <code>Azure Blob Storage</code>, <code>Google Cloud Storage</code>.</li>
+<li><strong>Databricks Host URL</strong>: Provide the Databricks account URL. For example: <code>https://{ACCOUNT_NAME}.cloud.databricks.com</code>.</li>
+<li><strong>Databricks Token</strong>: Provide the Databricks access token. To create an access token in Databricks, click the user avatar in Databricks and go to <strong>Settings &gt; Developer &gt; Access Tokens &gt; Manage &gt; Generate New Token</strong>.</li>
+</ul>
+<p>Authentication settings vary based on the cloud solution you use:</p>
+<h3 id="amazon-aws-s3">Amazon AWS S3</h3>
 <ul>
-<li>(Required) Select the authentication type. Available options are: <strong>STS</strong> and <strong>Access Key</strong>.</li>
-<li>STS: Requires the following fields <strong>Assume Role: ARN</strong> and <strong>Assume Role: Session Name</strong>.</li>
-<li>Access Key: Requires the following fields <strong>AWS Access Key</strong> and <strong>AWS Secret Access Key</strong>.</li>
+<li><strong>Region</strong>: Required. Select a region.</li>
+<li><strong>Authentication Type</strong>: Required. Select the authentication type for your platform:
+<ul>
+<li>Provide an Access Key and Access Secret.
+<ul>
+<li><strong>Access Key - AWS Access Key</strong>: Required for Access Key authentication. Provide the AWS access key.</li>
+<li><strong>Access Key - AWS Secret Access Key</strong>: Required for Access Key authentication. Provide the AWS secret access key.</li>
 </ul>
 </li>
-<li><strong>Region</strong>
+<li>Provide STS (Security Token Service) credentials.
 <ul>
-<li>(Required) Select a region.</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: ARN</strong>
-<ul>
-<li>Required for STS authentication. Provide the Amazon Resource Name (ARN) of the role to assume. For example: <code>arn:aws:iam:222222222222:role/myrole</code>. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: Switch to an IAM role (AWS API)</a>.</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: Session Name</strong>
-<ul>
-<li>Required for STS authentication. Provide the session name of the role to assume. Minimum length of 2, maximum length of 64.</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: External ID</strong>
-<ul>
-<li>Required for STS authentication. Provide a third-party external identifier. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: Access to AWS accounts owned by third parties</a>.</li>
-</ul>
-</li>
-<li><strong>Access Key - AWS Access Key</strong>
-<ul>
-<li>Required for Access Key authentication. Provide the AWS access key.</li>
-</ul>
-</li>
-<li><strong>Access Key - AWS Secret Access Key</strong>
-<ul>
-<li>Required for Access Key authentication. Provide the AWS secret access key.</li>
-</ul>
-</li>
-<li><strong>Databricks Host URL</strong>
-<ul>
-<li>Provide the Databricks account URL.</li>
-<li>For example: <code>https://{ACCOUNT_NAME}.cloud.databricks.com</code>.</li>
-</ul>
-</li>
-<li><strong>Databricks Token</strong>
-<ul>
-<li>Provide the Databricks access token. To create an access token in Databricks, click the user avatar in Databricks and navigate to <strong>Settings &gt; Developer &gt; Access Tokens &gt; Manage &gt; Generate New Token</strong>.</li>
+<li><strong>STS - Assume Role: ARN</strong>: Required for STS authentication. Provide the Amazon Resource Name (ARN) of the role to assume. For example: <code>arn:aws:iam:222222222222:role/myrole</code>. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: Switch to an IAM role (AWS API)</a>.</li>
+<li><strong>STS - Assume Role: Session Name</strong>: Required for STS authentication. Provide the session name of the role to assume. Minimum length of 2, maximum length of 64.</li>
+<li><strong>STS - Assume Role: External ID</strong>: Required for STS authentication. Provide a third-party external identifier. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: Access to AWS accounts owned by third parties</a>.</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h3 id="azure-blob-storage">Azure Blob Storage</h3>
+<ul>
+<li><strong>Tenant ID</strong>: The unique identifier for your Azure Active Directory instance, representing your organization.</li>
+<li><strong>Authentication type</strong>: Select the authentication type. Available options are: Client credentials, Authorization Code flow (SSO) and Shared Access Signature (SAS).</li>
+<li><strong>Client ID</strong>: The unique identifier assigned to your application registered in Azure Active Directory.</li>
+<li><strong>Client Secret</strong>: The string that acts like a password, used by the application to authenticate with Azure Active Directory.</li>
+<li><strong>Shared Access Signature</strong>: Provide the special set of query parameters that indicate how the resources may be accessed by Tealium.</li>
+<li><strong>Storage account name</strong>: The unique name of your Azure Storage account, used to access storage services like Blob, File, Queue, and Table storage.</li>
+<li><strong>API version</strong>: The API version compatible with your Azure Storage instance. The default version is <code>2025-01-05</code>.</li>
+</ul>
+<h3 id="google-cloud-storage">Google Cloud Storage</h3>
+<p>Click <strong>Sign in with Google</strong> and follow the on-screen instructions.</p>
 <h2 id="create-a-notebook">Create a notebook</h2>
 <p>Notebooks in Databricks are documents that contain executable code, visualizations, and narrative text. They are used for data exploration, visualization, and collaboration. In the connector configuration, you have the option to create a new notebook while you create a new connector by clicking <strong>Create Notebook</strong> in the configuration step.</p>
 <ol>
@@ -473,7 +583,7 @@
 <li>Click on <strong>Copy URL/Path &gt; Full Path</strong>. The path name will be in the following format: <code>/Workspace/Users/myemail@company.com</code>. Add the virtual folder and notebook name that you want separated by a slash <code>/</code>. For example, <code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>.</li>
 </ol>
 </li>
-<li>For <strong>S3 Bucket</strong>, select the S3 bucket to connect to Databricks.</li>
+<li>For <em><em>Cloud</em> bucket</em>, select the cloud storage bucket to connect to Databricks.</li>
 <li>The <strong>Overwrite</strong> option indicates whether to overwrite an existing notebook in the specified workspace if one already exists.</li>
 </ol>
 <h2 id="create-a-job">Create a job</h2>
@@ -490,7 +600,7 @@
 <li>Click on <strong>Copy URL/Path &gt; Full Path</strong>. The path name will be in the following format: <code>/Workspace/Users/myemail@company.com</code>. Add the virtual folder and notebook name that you want separated by a slash <code>/</code>. For example, <code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>.</li>
 </ol>
 </li>
-<li>For <strong>S3 Bucket</strong>, select the S3 bucket to connect to Databricks.</li>
+<li>For <strong>Cloud Bucket</strong>, select the cloud storage bucket to connect to Databricks.</li>
 <li>For <strong>Trigger Type</strong>, select when to process the data. Available options are:
 <ul>
 <li><strong>File Arrived</strong>: Process data every time a new file arrives.</li>
@@ -515,8 +625,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3 Bucket</td>
-<td>Select the Amazon S3 bucket or provide a custom value.</td>
+<td>Cloud Bucket</td>
+<td>Select the cloud bucket or provide a custom value.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -555,8 +665,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3 Bucket</td>
-<td>Select the Amazon S3 bucket or provide a custom value.</td>
+<td>Cloud Bucket</td>
+<td>Select the cloud bucket or provide a custom value.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -585,8 +695,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3 Bucket</td>
-<td>Select the Amazon S3 bucket or provide a custom value.</td>
+<td>Cloud Bucket</td>
+<td>Select the cloud bucket or provide a custom value.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -629,8 +739,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3 Bucket</td>
-<td>Select the Amazon S3 bucket or provide a custom value.</td>
+<td>Cloud Bucket</td>
+<td>Select the cloud  bucket or provide a custom value.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -693,7 +803,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 27, 2025 
+          <p>This page was last updated:  April 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -709,11 +819,16 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-to-aws-s3-connection" href="javascript:void(0)">Tealium to AWS S3 connection</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-to-cloud-storage-connection" href="javascript:void(0)">Tealium to cloud storage connection</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks-to-aws-s3-connection" href="javascript:void(0)">Databricks to AWS S3 connection</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks-to-azure-blob-storage-connection" href="javascript:void(0)">Databricks to Azure Blob Storage connection</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks-to-google-cloud-storage-connection" href="javascript:void(0)">Databricks to Google Cloud Storage connection</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-notebook" href="javascript:void(0)">Create a notebook</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-aws-s3" href="javascript:void(0)">Amazon AWS S3</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#azure-blob-storage" href="javascript:void(0)">Azure Blob Storage</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#google-cloud-storage" href="javascript:void(0)">Google Cloud Storage</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-notebook" href="javascript:void(0)">Create a notebook</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-job" href="javascript:void(0)">Create a job</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>

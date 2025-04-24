@@ -176,7 +176,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-profiles">プロファイル</a>
         <ul class="pl2  ss-profiles desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-profiles">プロファイルについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/profiles/ss-profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-profile-switcher">プロファイル切り替え</a></li></ul>
+        <a href="/ja/server-side/profiles/ss-profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-profile-switcher">プロファイルスイッチャー</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-sources">データソース</a>
         <ul class="pl2  data-sources desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -559,7 +559,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、サーバーサイドバージョン履歴機能を使用して、サーバーサイドのバージョンとリビジョンを表示および比較する方法について説明します。
+      この記事では、サーバーサイドのバージョンとリビジョンを表示および比較するためにバージョン履歴を使用する方法について説明します。
     </p>
   
 </div>
@@ -568,13 +568,13 @@
   <h2 id="動作方法">動作方法</h2>
 <p>サイドバーで <strong>バージョン履歴</strong> をクリックして、バージョン履歴を表示します。</p>
 <figure><a class="slb" href="/images/server-side/versions/server-side-versions-table.png"><img src="/images/server-side/versions/server-side-versions-table.png"
-         alt="Versions interface"
-         title="Versions interface"/>
+         alt="バージョンインターフェース"
+         title="バージョンインターフェース"/>
     </a>
 </figure>
-<p><strong>最新の公開</strong> ボックスには、現在公開されているサーバーサイドバージョンが表示されます。バージョンテーブルには、現在のプロファイルのバージョンとリビジョンのすべての公開および保存アクションがリストされています。</p>
+<p><strong>最新の公開</strong> ボックスには、現在公開されているサーバーサイドのバージョンが表示されます。バージョンテーブルには、現在のプロファイルのバージョンとリビジョンのすべての公開および保存アクションがリストされています。</p>
 <h2 id="バージョンテーブル">バージョンテーブル</h2>
-<p>バージョンテーブルには、各アクションに関する以下の情報がリストされています：</p>
+<p>バージョンテーブルには、各アクションについて以下の情報がリストされています：</p>
 <ul>
 <li><strong>バージョン</strong>: バージョンの名前、アクションを実行した人、およびアクションの日付。</li>
 <li><strong>ステータス</strong>: バージョンが保存されたか公開されたか。</li>
@@ -584,7 +584,7 @@
 <p>追加アクションには以下が含まれます：</p>
 <ul>
 <li><strong>このバージョンをロード</strong>: 選択したリビジョンに切り替えます。</li>
-<li><strong>このリビジョンに戻る</strong>: 選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。リビジョンが過去3ヶ月以内に公開され、公開権限がある場合、選択したリビジョンに戻ることができます。</li>
+<li><strong>このリビジョンに戻る</strong>: 選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。リビジョンが過去3ヶ月以内に公開され、公開権限を持っている場合、選択したリビジョンに戻ることができます。</li>
 </ul>
 <p>テーブルはまた、選択したリビジョンとテーブル内の他のリビジョンとの間の分岐関係を表示します。</p>
 <ul>
@@ -597,8 +597,8 @@
 <h2 id="リビジョンの詳細">リビジョンの詳細</h2>
 <p>リビジョンの詳細を表示するには、<strong>詳細</strong> をクリックします。<strong>リビジョン詳細</strong> ウィンドウが表示されます：</p>
 <figure><a class="slb" href="/images/server-side/versions/server-side-version-details.png"><img src="/images/server-side/versions/server-side-version-details.png"
-         alt="Revision details"
-         title="Revision details"/>
+         alt="リビジョンの詳細"
+         title="リビジョンの詳細"/>
     </a>
 </figure>
 <p><strong>リビジョン詳細</strong> ウィンドウの上部には、アカウント、プロファイル、およびバージョン名が表示されます。また、以下の情報が表示されます：</p>
@@ -620,13 +620,14 @@
 <li><strong>アクション</strong>: アイテムに対して実行されたアクション（作成、更新、削除）。</li>
 <li><strong>ユーザー</strong>: 変更を実行したユーザー。</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>変更の歴史データが存在しない場合、システムは変更を行ったユーザーとして <strong>システム</strong> を表示します。</p>
 <h3 id="リビジョンの復元">リビジョンの復元</h3>
-<p><strong>このリビジョンに戻る</strong> オプションは、選択したリビジョンが3ヶ月以内に公開され、<a href="/ja/administration/permission-groups/#publishing-permissions">プロファイルへの公開権限</a>を持つユーザーに利用可能です。<strong>このリビジョンに戻る</strong> をクリックして、選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。</p>
+<p><strong>このリビジョンに戻る</strong> オプションは、選択したリビジョンが3ヶ月以内に公開された場合に、<a href="/ja/administration/permission-groups/#publishing-permissions">プロファイルへの公開権限を持つユーザー</a>に利用可能です。<strong>このリビジョンに戻る</strong> をクリックして、選択したリビジョンを複製して公開します。テーブルは新しい情報で更新されます。</p>
 <h3 id="リビジョンの比較">リビジョンの比較</h3>
 <p>テーブルから2つのリビジョンを選択し、<strong>比較</strong> をクリックしてそれらの違いを確認します。</p>
 <figure><a class="slb" href="/images/server-side/versions/server-side-versions-table-compare.png"><img src="/images/server-side/versions/server-side-versions-table-compare.png"
-         alt="Versions interface versions selection for comparison"
-         title="Versions interface versions selection for comparison"/>
+         alt="バージョンインターフェースのバージョン選択の比較"
+         title="バージョンインターフェースのバージョン選択の比較"/>
     </a>
 </figure>
 <p><strong>リビジョンの比較</strong> ウィンドウが表示され、違いがある場合はそれが表示されます：</p>
@@ -636,8 +637,8 @@
 <li><strong>アクション</strong>: アイテムに対して実行されたアクション（追加、含まれていない、更新）。</li>
 </ul>
 <figure><a class="slb" href="/images/server-side/versions/server-side-versions-diff.png"><img src="/images/server-side/versions/server-side-versions-diff.png"
-         alt="Differences between versions"
-         title="Differences between versions"/>
+         alt="バージョン間の違い"
+         title="バージョン間の違い"/>
     </a>
 </figure>
 <p><strong>リビジョンの比較</strong> ウィンドウは読み取り専用です。このウィンドウで変更を加えることはできません。</p>
@@ -686,7 +687,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月19日
+          <p>最終更新日 ::  2025年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

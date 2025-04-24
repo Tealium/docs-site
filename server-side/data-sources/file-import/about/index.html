@@ -482,7 +482,6 @@
         <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".concurrent-user-management">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/versions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-versions">Versions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-labels">Labels</a>
@@ -576,8 +575,14 @@
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To be successfully imported, you must format your CSV files correctly. For information on file and data formats, see <a href="/server-side/data-sources/file-import/prepare-a-csv-file/">Prepare a CSV file for import</a>.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Use the Tealium server to connect to a file service (such as an Amazon S3 bucket), read the file, and import the data. Each imported row is processed as an event. After importing, the data can then be enriched, stitched to existing visitor profiles, and sent to other vendors.</p>
-<h3 id="rate-limits">Rate limits</h3>
-<p>Rows processed per second will vary. Rate limits will typically be a maximum of 100 rows per second at peak rate and 50 rows per second at a minimum rate.</p>
+<h3 id="processing-rate">Processing rate</h3>
+<p>File import is a batched ingestion process for historical data and is not intended for real-time event data.
+File rows are processed at a variable rate based on the regional load in our multi-tenant environment, but most files are processed within 24 hours.</p>
+<p>For real-time processing of large volumes of event data, use any of the following:</p>
+<ul>
+<li><a href="/platforms/http-api/endpoint/">HTTP API</a></li>
+<li><a href="/server-side/data-sources/webhooks/http-api-advanced/">Advanced HTTP API</a></li>
+</ul>
 <h3 id="events">Events</h3>
 <p>In the default Tealium <a href="/server-side/getting-started/order-of-operations/">data collection order of operations</a>, events from a file import data source are processed before the <em>Event received</em> step and do not change the order of operations.</p>
 <p>File import events are sent to EventStream and AudienceStream in the same way as events from other data sources with the following important exceptions:</p>
@@ -703,7 +708,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 8, 2024 
+          <p>This page was last updated:  April 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -719,7 +724,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#processing-rate" href="javascript:void(0)">Processing rate</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-up-a-file-import-data-source" href="javascript:void(0)">Set up a file import data source</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-csv-column-mapping-and-file-transfer-service-configuration" href="javascript:void(0)">Step 1: CSV column mapping and file transfer service configuration</a></li>
