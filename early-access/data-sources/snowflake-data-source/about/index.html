@@ -270,11 +270,18 @@
 For more information, see <a href="#authentication">Authentication</a>.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>Use the Snowflake data source to import bulk data from a Snowflake table or view at near real-time speeds. After you import your data, transform and map it to Tealium attributes and build better audiences for targeted activation.</p>
+<p>Use the Snowflake data source to import bulk data from a Snowflake table or view at near real-time speeds. Once imported, the data can be transformed, mapped to Tealium attributes, and used to create enhanced audiences for targeted activation.</p>
 <p>To get started, create one Snowflake data source per Snowflake table or view and customize the query mode and SQL <code>WHERE</code> clause for your dataset. Then map your database columns to Tealium attributes. Each imported row from a Snowflake source is processed as an event in Tealium.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>A maximum of 10 cloud data warehouse data sources per profile can be enabled at a time.</p>
 <h2 id="authentication">Authentication</h2>
-<p>To authorize a connection, create a service user specifically for this integration. A service user is declared in the Snowflake user object with <code>TYPE = SERVICE</code> or <code>LEGACY_SERVICE</code>. These types of users will not be subject to Snowflake MFA policies.</p>
+<h3 id="key-pair">Key-pair</h3>
+<p>To authorize a connection using an RSA key pair, Tealium can generate an unencrypted key for you. This generated public key must be assigned to the Snowflake user with access to your Snowflake table or view.</p>
+<p>You can select from the following key algorithms based on your security requirements: RSA-2048, RSA-3072, or RSA-4096.</p>
+<p>After the key is generated, download the public key file and assign the key to a Snowflake user. The key fingerprint is also provided if you need to verify that the user&rsquo;s public key was assigned correctly.</p>
+<p>For details, see <a href="/early-access/data-sources/snowflake-data-source/manage/#step-1-establish-a-snowflake-connection">Step 1: Establish a Snowflake connection</a>.</p>
+<h3 id="single-factor-password-legacy">Single-factor password (legacy)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This option is not available for new connections and is only supported for existing customers with this type of connection.</p>
+<p>To authorize a connection using a basic username and password, create a service user specifically for this integration. A service user is declared in the Snowflake user object with <code>TYPE = SERVICE</code> or <code>LEGACY_SERVICE</code>. These types of users are not subject to Snowflake MFA policies.</p>
 <p>For more information, see <a href="https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/">Snowflake: Phased approach to block single-factor authentication</a>.</p>
 <p>Here is an example SQL command to create a service user:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user
@@ -480,7 +487,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 17, 2025 
+          <p>This page was last updated:  April 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -497,7 +504,9 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#key-pair" href="javascript:void(0)">Key-pair</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#single-factor-password-legacy" href="javascript:void(0)">Single-factor password (legacy)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snowflake-tables" href="javascript:void(0)">Snowflake tables</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>

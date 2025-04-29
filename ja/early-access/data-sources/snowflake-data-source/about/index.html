@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -274,13 +274,20 @@
 詳細については、<a href="#authentication">認証</a>を参照してください。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
-<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューからほぼリアルタイムの速度で大量データをインポートします。データをインポートした後、Tealium属性に変換してマッピングし、ターゲットアクティベーションのためのより良いオーディエンスを構築します。</p>
-<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、クエリモードとSQLの<code>WHERE</code>句をデータセットに合わせてカスタマイズします。次に、データベースの列をTealium属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
+<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューからほぼリアルタイムの速度で大量データをインポートします。インポートされたデータは変換され、Tealiumの属性にマッピングされ、ターゲットアクティベーションのためのエンリッチメントされたオーディエンスを作成するために使用できます。</p>
+<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、データセットのためのクエリモードとSQLの<code>WHERE</code>句をカスタマイズします。次に、データベースの列をTealiumの属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイルごとに最大10個のクラウドデータウェアハウスデータソースを有効にすることができます。</p>
 <h2 id="認証">認証</h2>
-<p>接続を承認するには、この統合用に特別にサービスユーザーを作成します。サービスユーザーはSnowflakeユーザーオブジェクトで<code>TYPE = SERVICE</code>または<code>LEGACY_SERVICE</code>として宣言されます。これらのタイプのユーザーはSnowflakeのMFAポリシーの対象となりません。</p>
-<p>詳細については、<a href="https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/">Snowflake: 単一要素認証をブロックする段階的アプローチ</a>を参照してください。</p>
-<p>サービスユーザーを作成するSQLコマンドの例は以下の通りです：</p>
+<h3 id="キーペア">キーペア</h3>
+<p>RSAキーペアを使用して接続を認証するには、Tealiumが暗号化されていないキーを生成できます。この生成された公開キーは、SnowflakeテーブルまたはビューにアクセスするSnowflakeユーザーに割り当てる必要があります。</p>
+<p>セキュリティ要件に基づいて、RSA-2048、RSA-3072、またはRSA-4096のキーアルゴリズムから選択できます。</p>
+<p>キーが生成された後、公開キーのファイルをダウンロードし、Snowflakeユーザーにキーを割り当てます。ユーザーの公開キーが正しく割り当てられたことを確認する必要がある場合は、キーのフィンガープリントも提供されます。</p>
+<p>詳細については、<a href="/ja/early-access/data-sources/snowflake-data-source/manage/">Snowflakeデータソースの管理</a>を参照してください。</p>
+<h3 id="シングルファクターパスワードレガシー">シングルファクターパスワード（レガシー）</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このオプションは新しい接続には利用できず、このタイプの接続を持つ既存の顧客のみがサポートされています。</p>
+<p>基本的なユーザー名とパスワードを使用して接続を認証するには、この統合のために特別にサービスユーザーを作成します。サービスユーザーはSnowflakeユーザーオブジェクトで<code>TYPE = SERVICE</code>または<code>LEGACY_SERVICE</code>と宣言されます。これらのタイプのユーザーはSnowflake MFAポリシーの対象ではありません。</p>
+<p>詳細については、<a href="https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/">Snowflake: シングルファクター認証をブロックする段階的アプローチ</a>を参照してください。</p>
+<p>サービスユーザーを作成するためのSQLコマンドの例は次のとおりです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> my_legacy_service_user
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COMMENT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Tealiumに接続するためのサービスユーザー&#39;</span>
 </span></span><span style="display:flex;"><span>    PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;YOUR_LONG_PASSWORD_HERE&#39;</span>
@@ -294,11 +301,11 @@
 </span></span></code></pre></div><h2 id="レート制限">レート制限</h2>
 <p>Snowflakeからのインポートは通常、アカウントごとに秒間500イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限も適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
 <h2 id="バッチサイズ">バッチサイズ</h2>
-<p>Snowflakeデータソースはバッチでデータをインポートし、バッチあたりの最大行数は1,000行です。この動作は、<a href="#query-modes">クエリモード</a>を選択する際に考慮することが重要です。</p>
+<p>Snowflakeデータソースはデータをバッチでインポートし、バッチあたりの最大行数は1,000行です。この動作は、<a href="#query-modes">クエリモード</a>を選択する際に考慮することが重要です。</p>
 <h2 id="snowflakeテーブル">Snowflakeテーブル</h2>
 <p>各Snowflakeデータソースは、一つのSnowflakeテーブルまたはビューからデータをインポートすることをサポートしています。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。Snowflakeのビューについての詳細は、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeデータタイプをマッピングしてください：</p>
+<p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートしています。データが正しくインポートされるように、次のガイドラインに従ってSnowflakeデータタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -336,47 +343,47 @@
 <p>Snowflakeデータタイプについての詳細は、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
 <h2 id="イベント">イベント</h2>
 <p>デフォルトのTealium <a href="/ja/server-side/getting-started/order-of-operations/">データ収集の操作順序</a>では、Snowflakeデータソースからのイベントは<strong>イベント受信</strong>ステップの前に処理され、操作の順序は変更されません。</p>
-<p>Snowflakeデータソースのイベントは、他のデータソースからのイベントと同様にEventStreamおよびAudienceStreamに送信されますが、以下の重要な例外があります：</p>
+<p>Snowflakeデータソースのイベントは、他のデータソースからのイベントと同様にEventStreamおよびAudienceStreamに送信されますが、次の重要な例外があります：</p>
 <ul>
 <li><strong>ブラウザ固有の属性</strong>：ユーザーエージェントなどのブラウザ固有の属性は入力されません。</li>
-<li><strong>エンリッチメント</strong>：AudienceStreamの事前ロードされた属性に対するエンリッチメントは実行されませんが、「最初の訪問」属性を除きます。</li>
+<li><strong>エンリッチメント</strong>：AudienceStreamの事前読み込み属性に対するエンリッチメントは実行されませんが、「最初の訪問」属性を除きます。</li>
 <li><strong>関数</strong>：データ変換関数は実行されません。</li>
-<li><strong>単一ページ訪問</strong>：受信イベントは単一ページ訪問/訪問の基準から除外されます。他のデータソースからの単一ページ訪問および訪問はAudienceStreamに保持されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamで単一ページ訪問がどのように処理されるか</a>を参照してください（Tealiumログインが必要です）。</li>
+<li><strong>シングルページ訪問</strong>：受信イベントはシングルページ訪問/訪問の基準から除外されます。他のデータソースからのシングルページ訪問および訪問はAudienceStreamに保持されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamでのシングルページ訪問はどのように処理されますか？</a> (Tealiumログインが必要)を参照してください。</li>
 <li><strong>訪問の長さ</strong>：Snowflakeデータソースイベントによって開始された訪問は60秒間続きます。</li>
 <li><strong>訪問IDマッピング</strong>：Snowflakeデータソース構成でAudienceStream訪問ID属性をマッピングする場合、訪問IDは選択した列の値に直接構成され、追加のエンリッチメントは必要ありません。</li>
 </ul>
 <h2 id="クエリモード">クエリモード</h2>
 <p>Snowflakeデータソースは、Snowflakeテーブルまたはビューからデータをインポートする方法を制御するために、3つのクエリモードをサポートしています。各モードはタイムスタンプ列、インクリメント列、またはその両方を使用して、インポートする行を決定します。</p>
 <h3 id="列の要件">列の要件</h3>
-<p>クエリモードを効果的に使用するためには、以下のいずれかが必要です：</p>
+<p>クエリモードを効果的に使用するためには、次のいずれかが必要です：</p>
 <ul>
 <li><strong>タイムスタンプ列</strong><br>
-行が追加または変更された現在の時間に構成されたタイムスタンプ列。この列は、次のいずれかのSnowflakeデータタイプでなければなりません：<code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, または <code>TIMESTAMP_NTZ</code>。<br>
+行が追加または変更されたときに現在の時間に構成されるタイムスタンプ列。この列は次のいずれかのSnowflakeデータタイプでなければなりません：<code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, または <code>TIMESTAMP_NTZ</code>。<br>
 詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: 日付＆時間</a>を参照してください。</li>
 <li><strong>インクリメント列</strong><br>
-行が追加されるたびに値が増加する数値列。自動インクリメント列の推奨定義は以下の通りです：
+追加される行ごとに値が増加する数値列。自動インクリメント列の推奨定義は次のとおりです：
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div>詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-numeric">Snowflake: 数値データタイプ</a>を参照してください。</li>
 </ul>
 <h3 id="利用可能なクエリモード">利用可能なクエリモード</h3>
 <p>使用事例の要件に合わせてモードを選択します。これらのモードの動作例については、<a href="#query-mode-example">クエリモードの例</a>を参照してください。</p>
 <h4 id="タイムスタンプ--インクリメント推奨">タイムスタンプ + インクリメント（推奨）</h4>
-<p>このモードは、タイムスタンプ列とインクリメント列の両方を使用して、新規または変更された行をインポートします。行は以下の場合にインポートされます：</p>
+<p>このモードは、タイムスタンプ列とインクリメント列の両方を使用して、新規または変更された行をインポートします。次の条件を満たす行がインポートされます：</p>
 <ul>
 <li>前回のインポートより新しいタイムスタンプがある場合、および/または</li>
 <li>最後にインポートされた行よりも大きいインクリメント値がある場合。</li>
 </ul>
 <p>このモードは、すべての行が意図した通りにインポートされることを最も確実に保証します。</p>
 <h4 id="タイムスタンプ">タイムスタンプ</h4>
-<p>このモードは、タイムスタンプ列を使用して新規または更新された行をインポートします。行は、前回のインポートより新しいタイムスタンプがある場合にインポートされます。</p>
+<p>このモードはタイムスタンプ列を使用して、新規または更新された行をインポートします。前回のインポートより新しいタイムスタンプがある行がインポートされます。</p>
 <p>テーブルに挿入または更新操作ごとにタイムスタンプ列が構成されている場合、このモードを使用します。</p>
-<p>同じタイムスタンプを持つ行の数が<a href="#batch-size">バッチサイズ</a>を超える場合、一部の行はインポートされないことに注意してください。</p>
+<p>ただし、同じタイムスタンプを持つ行の数が<a href="#batch-size">バッチサイズ</a>を超える場合、一部の行はインポートされない可能性があることに注意してください。</p>
 <h4 id="インクリメント">インクリメント</h4>
-<p>このモードは、インクリメント列を使用して行をインポートします。行は、最後にインポートされた行よりも大きいインクリメント値がある場合にインポートされます。前回のインポートからの最大値以下のインクリメント値を持つ行はスキップされます。このモードは、既存の行の変更を検出しません。</p>
-<p>テーブルにタイムスタンプ列がない場合、このモードを使用します。</p>
-<p>自動インクリメント列を使用せずに独自のインクリメント列を維持する場合、値が常に増加することを確認してください。</p>
+<p>このモードは、インクリメント列を使用して行をインポートします。前回のインポートからの最大値よりも大きいインクリメント値を持つ行がインポートされます。前回のインポートからの最大値以下のインクリメント値を持つ行はスキップされます。このモードは、既存の行の変更を検出しません。</p>
+<p>テーブルにタイムスタンプ列がない場合は、このモードを使用してください。</p>
+<p>自動インクリメント列を使用するのではなく、自分でインクリメント列を管理する場合は、値が常に増加するようにしてください。</p>
 <h3 id="クエリモードの例">クエリモードの例</h3>
-<p>次の例は、行のバッチ処理とクエリモードがどのように連携して動作するかを示しています。以下の表では、<code>modification_time</code> がタイムスタンプ列であり、<code>customer_id</code> が増加列です。</p>
+<p>次の例は、行のバッチ処理とクエリモードがどのように連携するかを示しています。以下の表では、<code>modification_time</code>がタイムスタンプ列で、<code>customer_id</code>がインクリメント列です。</p>
 <table>
 <thead>
 <tr>
@@ -418,24 +425,24 @@
 </tr>
 </tbody>
 </table>
-<p>Snowflake データソースは、一度に 1,000 行のデータを取得し、バッチデータからタイムスタンプおよび/または増加列の最大値をマークします。</p>
+<p>Snowflakeデータソースは、一度に1,000行のデータを取得し、バッチデータからタイムスタンプおよび/またはインクリメント列の最大値をマークします。</p>
 <ul>
-<li><strong>タイムスタンプ + 増加</strong> モードを使用する場合: データソースは行 1-1000 を取得します。次にデータソースがデータを取得する際には、<code>modification_time</code> が <code>01Apr 13:00</code> で <code>customer_id</code> が <code>1000</code> より大きい行、または <code>modification_time</code> が <code>01Apr 13:00</code> より大きい行を探します。</li>
-<li><strong>増加</strong> モードを使用する場合: データソースは行 1-1000 を取得し、増加値の最大値 <code>1000</code> をマークします。次のインポートでは、最初のインポート以降に変更されたとしても、行 1-1000 はスキップされます。例の <code>customer_id</code> を増加させる新しい行のみが処理されます。</li>
-<li><strong>タイムスタンプ</strong> モード (<code>modification_time</code> が例) を使用する場合: データソースは行 1-1000 を取得し、最大タイムスタンプ <code>01Apr 13:00</code> をマークします。次のインポートでは、<code>01Apr 13:00</code> より大きいタイムスタンプの行がインポートされます。この場合、行 <code>1001</code> は同じタイムスタンプ値であるため、前回のデータバッチで取得されたためスキップされます。</li>
+<li><strong>タイムスタンプ + インクリメント</strong> モードを使用する場合: データソースは1-1000行を取得します。次にデータソースがデータを取得する際には、<code>modification_time</code>が<code>01Apr 13:00</code>で<code>customer_id</code>が<code>1000</code>より大きい行、または<code>modification_time</code>が<code>01Apr 13:00</code>より大きい行を探します。</li>
+<li><strong>インクリメント</strong> モードを使用する場合: データソースは1-1000行を取得し、<code>1000</code>の最大インクリメント値をマークします。次のインポートでは、最初のインポート以降に変更された場合でも、1-1000行はスキップされます。例の<code>customer_id</code>をインクリメントする新しい行のみが処理されます。</li>
+<li><strong>タイムスタンプ</strong> モード (<code>modification_time</code>が例) を使用する場合: データソースは1-1000行を取得し、<code>01Apr 13:00</code>の最大タイムスタンプをマークします。次のインポートでは、<code>01Apr 13:00</code>より大きいタイムスタンプの行がインポートされます。この場合、<code>1001</code>行は同じタイムスタンプ値であるため、前回のデータバッチで取得されたためスキップされます。</li>
 </ul>
-<h2 id="sql-クエリ">SQL クエリ</h2>
-<p>Snowflake データソースの <strong>クエリ構成</strong> で、Tealium にインポートしたい列を選択します。処理の追加条件を使用するには、SQL の <code>WHERE</code> 句を使用します。このオプションはクエリに <code>WHERE</code> 文を追加します。<code>WHERE</code> 文は基本的な SQL 構文をサポートします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code> 句は複数のテーブルからのサブクエリをサポートしていません。複数の Snowflake テーブルからデータをインポートするには、Snowflake でビューを作成し、データソース構成でビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
+<h2 id="sqlクエリ">SQLクエリ</h2>
+<p>Snowflakeデータソースの<strong>クエリ構成</strong>で、Tealiumにインポートしたい列を選択します。処理の追加条件を使用するには、SQLの<code>WHERE</code>句を使用します。このオプションはクエリに<code>WHERE</code>文を追加します。<code>WHERE</code>文は基本的なSQL構文をサポートします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
 <h2 id="列マッピング">列マッピング</h2>
-<p>列マッピング構成は、Snowflake テーブルの各列に対応するイベント属性を決定します。</p>
-<p>列名はしばしば Customer Data Hub の属性名と異なるため、このマッピングはデータが適切にインポートされることを保証します。たとえば、テーブルには <code>postalCode</code> という列があるかもしれませんが、対応するイベント属性は <code>customer_zip</code> という名前ですので、それらを関連付けるマッピングが必要です。</p>
-<p>Snowflake データタイプを Tealium データタイプにマッピングする情報については、<a href="#data-types">データタイプ</a> セクションを参照してください。</p>
-<h2 id="訪問-id-マッピング">訪問 ID マッピング</h2>
-<p>インポートされたデータがウェブ、モバイル、または HTTP API など他のソースと繋がるようにするために、Snowflake テーブルの各行に一意の訪問 ID を持つ列があることを確認します。その後、訪問 ID 列と対応するイベント属性を訪問 ID 属性（AudienceStream での訪問識別用の一意の属性タイプ）にマッピングします。マッピングされたイベント属性の値は <code>tealium_visitor_id</code> 属性に割り当てられ、既存の訪問プロファイルに直接一致します。</p>
-<p>AudienceStream での訪問 ID マッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealium データソースを使用した訪問識別</a>を参照してください。</p>
-<h2 id="許可する-ip-アドレス">許可する IP アドレス</h2>
-<p>Snowflake アカウントに厳格なシステム要求ルールがある場合、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IP アドレス</a> を Snowflake の許可リストに追加します。</p>
+<p>列マッピング構成は、Snowflakeテーブルの各列に対応するイベント属性を決定します。</p>
+<p>列名はしばしばCustomer Data Hubの属性名と異なるため、このマッピングはデータが適切にインポートされることを保証します。たとえば、テーブルには<code>postalCode</code>という列があるかもしれませんが、対応するイベント属性は<code>customer_zip</code>という名前ですので、それらを関連付けるマッピングが必要です。</p>
+<p>SnowflakeデータタイプをTealiumデータタイプにマッピングする情報については、<a href="#data-types">データタイプ</a>セクションを参照してください。</p>
+<h2 id="訪問idマッピング">訪問IDマッピング</h2>
+<p>インポートされたデータがウェブ、モバイル、またはHTTP APIなどの他のソースと繋がるようにするために、Snowflakeテーブルの各行に一意の訪問IDの列があることを確認してください。その後、訪問ID列と対応するイベント属性を訪問ID属性（AudienceStreamでの訪問識別のための一意の属性タイプ）にマッピングします。マッピングされたイベント属性の値は<code>tealium_visitor_id</code>属性に割り当てられ、既存の訪問プロファイルに直接マッチします。</p>
+<p>AudienceStreamでの訪問IDマッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用した訪問識別</a>を参照してください。</p>
+<h2 id="許可するipアドレス">許可するIPアドレス</h2>
+<p>Snowflakeアカウントに厳格なシステム要求ルールがある場合は、<a href="/ja/server-side/administration/ip-allow-list/">TealiumのIPアドレス</a>をSnowflakeの許可リストに追加してください。</p>
 
 </div>
 
@@ -481,7 +488,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月22日
+          <p>最終更新日 ::  2025年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -498,7 +505,9 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">レート制限</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AD%E3%83%BC%E3%83%9A%E3%82%A2" href="javascript:void(0)">キーペア</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%BC%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC" href="javascript:void(0)">シングルファクターパスワード（レガシー）</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">レート制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA" href="javascript:void(0)">バッチサイズ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snowflake%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB" href="javascript:void(0)">Snowflakeテーブル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
@@ -507,10 +516,10 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%81%AE%E8%A6%81%E4%BB%B6" href="javascript:void(0)">列の要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">利用可能なクエリモード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E4%BE%8B" href="javascript:void(0)">クエリモードの例</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-%E3%82%AF%E3%82%A8%E3%83%AA" href="javascript:void(0)">SQL クエリ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql%E3%82%AF%E3%82%A8%E3%83%AA" href="javascript:void(0)">SQLクエリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">列マッピング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F-id-%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">訪問 ID マッピング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8B-ip-%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可する IP アドレス</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8Fid%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">訪問IDマッピング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8Bip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可するIPアドレス</a></li>
               </nav>
   </aside></nav>
 

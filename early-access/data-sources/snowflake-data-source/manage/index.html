@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -291,13 +291,11 @@ use the <code>xy12345.us-east-2.aws.snowflakecomputing.com</code> portion as you
 <p>Connection role</p>
 </li>
 <li>
-<p>Snowflake username and password</p>
+<p>Snowflake username</p>
 </li>
 </ul>
-<ol>
-<li>In the <strong>Connection Configuration</strong> screen, confirm the name of the data source.</li>
-<li>Select an existing connection configuration from the drop-down list or create a new connection by clicking the <strong>+</strong> icon.<br>
-To create a new connection, enter the following account details on the <strong>New Snowflake Connection Configuration</strong> screen. Depending on your Snowflake account settings, connection information may be case sensitive.
+<p>On the <strong>Connection Configuration</strong> screen, confirm the name of the data source, then select an existing connection from the drop-down list or create a new connection by clicking the <strong>+</strong> icon.</p>
+<p>To configure a new connection, enter the following connection details. Depending on your Snowflake account settings, connection information may be case sensitive.</p>
 <ul>
 <li><strong>Snowflake Connection Configuration Name</strong>: Provide a name for the reusable connection configuration.</li>
 <li><strong>Account Identifier</strong>: The Snowflake account identifier without the <code>http://</code> prefix in the following format:
@@ -310,14 +308,26 @@ To create a new connection, enter the following account details on the <strong>N
 <li><strong>Database Name</strong>: The name of the Snowflake database to connect to.</li>
 <li><strong>Database Schema</strong>: The name of the Snowflake database schema to connect to.</li>
 <li><strong>Connection Role</strong>: The role assigned to the user in Snowflake. This role must have <code>USAGE</code> privileges. For more information, see <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: Custom roles</a> and <a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: Access control privileges</a>.</li>
-<li><strong>Username</strong> and <strong>Password</strong>: The username and password for the service user with access to your Snowflake database, schema, warehouse, and table or view. For more information, see <a href="/early-access/data-sources/snowflake-data-source/about/#authentication">Authentication</a>.</li>
+<li><strong>Authentication Method</strong>:
+<ul>
+<li><strong>Key-Pair</strong>:
+<ol>
+<li>Enter the username of the user with access to your Snowflake database, schema, warehouse, and table or view.</li>
+<li>Generate a key-pair using one of the following encryption algorithms: RSA-2048, RSA-3072, RSA-4096.</li>
+<li>Download the public key file. The key is only the text between the lines <code>-----BEGIN PUBLIC KEY-----</code> and <code>-----END PUBLIC KEY-----</code>.</li>
+<li>Assign the public key to the user in Snowflake with the following command:
+<pre tabindex="0"><code>ALTER USER example_user
+SET RSA_PUBLIC_KEY=&#39;your_public_key&#39;;
+</code></pre>For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Assign a public key to a Snowflake user</a>.</li>
+<li>Copy the key fingerprint if you want to verify that the key was assigned to the user correctly by following instructions at <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#verify-the-user-s-public-key-fingerprint">Snowflake: Verify the user’s public key fingerprint</a>.</li>
+</ol>
+</li>
+<li><strong>Username</strong> and <strong>Password</strong> (legacy): The username and password for the service user with access to your Snowflake database, schema, warehouse, and table or view. This option is only supported for existing connections. For more information, see <a href="/early-access/data-sources/snowflake-data-source/about/#authentication">Authentication</a>.</li>
 </ul>
 </li>
-<li>Click <strong>Save</strong>.</li>
-<li>In the <strong>Connection Configuration</strong> screen, click <strong>Establish Connection</strong>.</li>
-<li>After you successfully connect to Snowflake, select the data source table from the <strong>Table Selection</strong> drop-down list. To import data from multiple Snowflake tables, create a view in Snowflake and select it from the drop-down list. For more information, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</li>
-<li>Click <strong>Continue</strong>.</li>
-</ol>
+</ul>
+<p>Click <strong>Save</strong> to return to the the <strong>Connection Configuration</strong> screen, then click <strong>Establish Connection</strong>.</p>
+<p>After you successfully connect to Snowflake, select the data source table from the <strong>Table Selection</strong> drop-down list. To import data from multiple Snowflake tables, create a view in Snowflake and select it from the drop-down list. For more information, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</p>
 <h2 id="step-2-enable-processing">Step 2: Enable processing</h2>
 <p>Toggle on <strong>Enable Processing</strong> if you want the Snowflake data source to begin processing immediately after you save and publish your profile.</p>
 <p>When you are done, click <strong>Continue</strong>.</p>
@@ -426,7 +436,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 16, 2025 
+          <p>This page was last updated:  April 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
