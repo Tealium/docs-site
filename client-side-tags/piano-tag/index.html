@@ -462,24 +462,26 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to configure Piano in your Tealium iQ Tag Management account.
+      This article describes how to configure the Piano tag in your Tealium iQ Tag Management account.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Piano (formerly Tinypass) is a SaaS company specializing in advanced media business processes and online commerce optimization software.</p>
+  <h2 id="tag-tips">Tag Tips</h2>
+<ul>
+<li>Replace <code>custom</code> with your datapoint name when mapping custom values.</li>
+</ul>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
-<li>Application ID (Required): Your unique ID provided by Piano.</li>
-<li>Use Sandbox: Set to true if you are using a Piano Sandbox. The default is false.</li>
-<li>Track Pages: Set to false to disable page tracking. The default is true.</li>
+<li><strong>Application ID</strong>: Required. Your unique ID provided by Piano.</li>
+<li><strong>Use Sandbox</strong>: Set to <code>true</code> if you are using a Piano Sandbox. The default is <code>false</code>.</li>
+<li><strong>Track Pages</strong>: Set to <code>false</code> to disable page tracking. The default is <code>true</code>.</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
-<p>Recommended Load Rule: All Pages</p>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-mappings/manage/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
 <p>The destination variables for the Piano tag are built into its <strong>Data Mapping</strong> tab. Available categories are:</p>
@@ -487,69 +489,82 @@
 <table>
 <thead>
 <tr>
-<th><strong>Destination Name</strong></th>
-<th><strong>Description</strong></th>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Application ID (AID)</td>
-<td>Your unique ID provided by Piano. Use this to override the configuration value.</td>
+<td><code>AID</code></td>
+<td>String</td>
+<td>Your unique application ID provided by Piano. Use this to override the configuration value.</td>
 </tr>
 <tr>
-<td>Use Sandbox (isSandbox)</td>
-<td>Set to true if you are using a Piano Sandbox. Use this to override the configuration value. Options: true, false.</td>
+<td><code>isSandbox</code></td>
+<td>Boolean</td>
+<td>Set to <code>true</code> if you are using a Piano Sandbox. Use this to override the configuration value. Available options are <code>true</code> and <code>false</code>.</td>
 </tr>
 <tr>
-<td>Track Pages (trackPages)</td>
-<td>Set to false to disable page tracking. Use this to override the configuration value. Options: true, false.</td>
+<td><code>trackPages</code></td>
+<td>Boolean</td>
+<td>Set to false to <code>disable</code> page tracking. Use this to override the configuration value. Available options are <code>true</code> and <code>false</code>.</td>
 </tr>
 <tr>
-<td>Native Content (contentNative)</td>
-<td>Set to true to indicate sponsored content. Options: true, false.</td>
+<td><code>contentNative</code></td>
+<td>Boolean</td>
+<td>Set to <code>true</code> to indicate sponsored content. Available options are <code>true</code> and <code>false</code>.</td>
 </tr>
 <tr>
-<td>Published Date (contentCreated)</td>
+<td><code>contentCreated</code></td>
+<td>String</td>
 <td>An ISO 8601 formatted string local to website timezone representing the publish date and time of the content.</td>
 </tr>
 <tr>
-<td>Author (contentAuthor)</td>
-<td>A string representing the author for the published content.</td>
+<td><code>contentAuthor</code></td>
+<td>String</td>
+<td>The author for the published content.</td>
 </tr>
 <tr>
-<td>Section (contentSection)</td>
-<td>A string representing the section in which the content currently viewed belongs.</td>
+<td><code>contentSection</code></td>
+<td>String</td>
+<td>The section in which the content currently viewed belongs.</td>
 </tr>
 <tr>
-<td>Page Tags (tags)</td>
+<td><code>tags</code></td>
+<td>Array of Strings</td>
 <td>An array of tags related to the page content.</td>
 </tr>
 <tr>
-<td>AAM Reporting Zone (zone)</td>
+<td><code>zone</code></td>
+<td>String</td>
 <td>Used to indicate the AAM platform or subsection of your site.</td>
 </tr>
 <tr>
-<td>Custom Variable (variable.custom)</td>
-<td>Additional variable data that can be used for segmentation. Replace &ldquo;custom&rdquo; with the name of the variable.</td>
+<td><code>variable.custom</code></td>
+<td>String</td>
+<td>Additional variable data that can be used for segmentation. Replace <code>custom</code> with the name of the variable.</td>
 </tr>
 <tr>
-<td>Custom User Parameter (param.user.custom)</td>
-<td>Additional parameter describing the current user. Replace &ldquo;custom&rdquo; with the name of the parameter.</td>
+<td><code>param.user.custom</code></td>
+<td>String</td>
+<td>Additional parameter describing the current user. Replace <code>custom</code> with the name of the parameter.</td>
 </tr>
 <tr>
-<td>Custom Content Parameter (param.content.custom)</td>
-<td>Additional parameter describing the content consumed. Replace &ldquo;custom&rdquo; with the name of the parameter.</td>
+<td><code>param.content.custom</code></td>
+<td>String</td>
+<td>Additional parameter describing the content consumed. Replace <code>custom</code> with the name of the parameter.</td>
 </tr>
 <tr>
-<td>Custom Request Parameter (param.request.custom)</td>
-<td>Additional parameter describing the page request. Replace &ldquo;custom&rdquo; with the name of the parameter.</td>
+<td><code>param.request.custom</code></td>
+<td>String</td>
+<td>Additional parameter describing the page request. Replace <code>custom</code> with the name of the parameter.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
-<li><a href="http://vx.piano.io/javascript">PianoVX JavaScript Sections</a></li>
-<li><a href="http://vx.piano.io/javascript-overview">PianoVX JavaScript Overview</a></li>
+<li><a href="https://docs.piano.io/track/implementing-piano/">Piano: Implementation</a></li>
 </ul>
 
 </div>
@@ -611,7 +626,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 12, 2018 
+          <p>This page was last updated:  April 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -625,7 +640,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag Tips</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>

@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "11",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -341,8 +341,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".linking-to-github">Linking to GitHub</a>
         <ul class="pl2  linking-to-github desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/linking-to-github/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-linking-to-github">About linking to GitHub</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linking-to-github-faq">Linking to GitHub FAQ</a></li></ul>
+        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/client-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-bot-filtering">Client-side bot filtering</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -492,12 +491,12 @@
 <li>
 <p><strong>Experience Type</strong>: The type of experience to create.</p>
 <ul>
-<li><strong>Modal</strong>: The experience will appear as a popup window.</li>
-<li><strong>Embedded</strong>: The experience will appear embedded in the page.</li>
+<li><strong>Modal</strong>: The experience appears as a popup window.</li>
+<li><strong>Embedded</strong>: The experience appears embedded in the page.</li>
 </ul>
 </li>
 <li>
-<p><strong>Experience Placement</strong>: The location of a modal window. This is only used with the <strong>Modal</strong> placement option.</p>
+<p><strong>Experience Placement</strong>: The location of a modal window. This setting is only used with the <strong>Modal</strong> placement option.</p>
 </li>
 <li>
 <p><strong>Placement Selector</strong>: A CSS selector to identify the page element to place the experience. This is used only with the <strong>Embedded</strong> placement option. For more information about how to determine an element’s selector, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">How to Determine the CSS Selector of an Element</a>.</p>
@@ -513,7 +512,7 @@
 </ul>
 </li>
 <li>
-<p><strong>Redirect URL</strong>: The URL to redirect the visitor to when the primary button is clicked. Leave this field empty if you do not want to redirect the URL. For example, this can redirect to a thank you page that offers a special offer or a page that contains another experience to ask a follow-up question.</p>
+<p><strong>Redirect URL</strong>: A pipe (|) delimited list of URLs to redirect the visitor to when the primary button is clicked. Each URL corresponds to an answer in the answer list, matched by position (first URL for the first answer, second for the second, etc.). The number of URLs must match the number of answers. Leave this field empty if you do not want to redirect. For example, this can redirect to a thank you page that offers a special offer or a page that contains another experience to ask a follow-up question. Because the pipe character is a delimiter, you cannot use a pipe character in a redirection URL.</p>
 </li>
 <li>
 <p><strong>Redirect Opens Tab</strong>: Select <code>True</code> to open a new tab when the visitor is redirected. This option is available only if you enter a value for <strong>Redirect URL</strong>.</p>
@@ -522,7 +521,7 @@
 <h2 id="experience-background-image">Experience background image</h2>
 <p>Complete the following steps to add a background image to the experience:</p>
 <ol>
-<li>Under <strong>Image Position</strong>, select whether the image will align with the left or the right of the experience window.</li>
+<li>Under <strong>Image Position</strong>, select whether the image aligns with the left or the right of the experience window.</li>
 <li>Under <strong>Image URL</strong>, enter a link to an https-secured, externally hosted image. Suggested image size: 500px by 400px. The file must have a <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, or <code>.svg</code> file extension.</li>
 </ol>
 <h2 id="experience-text">Experience text</h2>
@@ -533,26 +532,26 @@
 <li><strong>Question Text</strong>: The question to ask your visitors.</li>
 </ul>
 <h2 id="answers">Answers</h2>
-<p>Moments iQ provides multiple question formats that allow you to customize the questions that will guide the visitor to the right experience on your site.</p>
+<p>Moments iQ provides multiple question formats that allow you to customize the questions that guides the visitor to the right experience on your site.</p>
 <p>Configure the question and answers with the following settings:</p>
 <ul>
 <li><strong>Answer Type</strong>: The input type for the answer.
 <ul>
 <li><strong>Radio</strong>: The visitor can select only a single answer from the displayed list.</li>
-<li><strong>Text</strong>: The visitor can enter their answer in a single line text box.</li>
+<li><strong>Text</strong>: The visitor can enter their answer in a single line field.</li>
 <li><strong>Checkbox</strong>: The visitor can select one or more checkboxes with a label.</li>
 <li><strong>Button</strong>: The visitor can select one of two answers displayed as buttons.</li>
 </ul>
 </li>
 <li><strong>Answers</strong>: The answers to the question:
 <ul>
-<li><strong>Radio</strong>: A pipe (|) delimited list of answers to display next to each radio button.<br>
+<li><strong>Radio</strong>: A pipe (|) delimited list of answers to display next to each radio button. Because the pipe character is a delimiter, you cannot use a pipe character in a radio button label.
 Example: <code>Red|Green|Blue|Teal</code></li>
-<li><strong>Text</strong>: The placeholder text for the text box.<br>
+<li><strong>Text</strong>: The placeholder text for the field.<br>
 Example: <code>[&quot;What is your favorite color?&quot;]</code></li>
-<li><strong>Checkbox</strong>: A pipe (|) delimited list of answers to display next to each checkbox.<br>
+<li><strong>Checkbox</strong>: A pipe (|) delimited list of answers to display next to each checkbox. Because the pipe character is a delimiter, you cannot use a pipe character in a checkbox label.
 Example: <code>Red|Green|Blue|Teal</code></li>
-<li><strong>Button</strong>: A pipe (|) delimited list of answers to override the primary and secondary button text. Moments iQ uses only the first two values.
+<li><strong>Button</strong>: A pipe (|) delimited list of answers to override the primary and secondary button text. Moments iQ uses only the first two values. Because the pipe character is a delimiter, you cannot use a pipe character in a button label.
 Example: <code>Red|Green</code></li>
 </ul>
 </li>
@@ -805,9 +804,9 @@ Example: <code>Red|Green</code></li>
 <li>B object (for example, <code>{{b.customer_alias}}</code>)</li>
 <li>AudienceStream attributes, through the B object (for example, <code>{{b.variable_name}}</code>)</li>
 </ul>
-<p>You can set a fallback value that appears when there is no data to insert. Fallback values appear after a pair of pipe characters (for example, <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
+<p>You can set a fallback value that appears when no data is available to insert. Fallback values appear after a pair of pipe characters (for example, <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the experience on all pages or set conditions for when your experience will appear. For more information about load rules and events, see <a href="/iq-tag-management/load-rules/about/">Load Rules</a> and <a href="/iq-tag-management/events/about/">Events</a>.</p>
+<p>Load the experience on all pages or set conditions for when your experience appears. For more information about load rules and events, see <a href="/iq-tag-management/load-rules/about/">Load Rules</a> and <a href="/iq-tag-management/events/about/">Events</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To avoid data collisions, only one Moments iQ experience can appear on a page at a time. If you have multiple experiences, configure the load rules to ensure that only one experience loads at any time.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Use the following mappings with extensions to get dynamic values in the configurations or keep styling consistent from experience to experience:</p>
@@ -1266,7 +1265,7 @@ momentsiq_suppress, Local Storage Variable
 </figure>
 <p>For more information, see <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist data value extension</a>.</p>
 <h2 id="server-side-integration">Server-side integration</h2>
-<p>If you plan to integrate Moments iQ with server-side products such as AudienceStream or EventStream, you will need to collect the data through the Tealium Collect tag and link Tealium iQ to an AudienceStream profile.</p>
+<p>If you plan to integrate Moments iQ with server-side products such as AudienceStream or EventStream, you need to collect the data through the Tealium Collect tag and link Tealium iQ to an AudienceStream profile.</p>
 <p>To enrich server-side attributes, create a rule to ensure that <code>momentsiq_answer1</code> contains an answer and that <code>momentsiq_id</code> matches the UID of the experience you created.</p>
 <p>Example:</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png"><img src="/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png"
@@ -1274,7 +1273,7 @@ momentsiq_suppress, Local Storage Variable
          title="Attribute and rules configuration"/>
     </a>
 </figure>
-<p>Also, if you plan to leverage AudienceStream variables in Moments iQ rules, you will need to enable data layer enrichment.</p>
+<p>Also, if you plan to leverage AudienceStream variables in Moments iQ rules, you need to enable data layer enrichment.</p>
 <p>For more information, see <a href="/server-side/attributes/data-layer-enrichment/about/">About data layer enrichment</a> and <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</p>
 <h2 id="save-and-publish">Save and publish</h2>
 <p>To test and release your experience, follow the same workflow for other tags. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
@@ -1338,7 +1337,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  May 2, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

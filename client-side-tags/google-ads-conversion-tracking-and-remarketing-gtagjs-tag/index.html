@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "8",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -481,12 +481,22 @@
 <li>List of prices.</li>
 </ul>
 </li>
+<li>We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals. For more information, see <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web Connector</a>.</li>
 <li>Use mapping to dynamically override the standard configuration values and the E-Commerce extension values.</li>
 <li>Pass custom conversion variables by mapping to <strong>Custom Conversion Variable</strong> and replacing <code>myvar</code> with your custom variable name.</li>
 <li><a href="https://support.google.com/google-ads/answer/7305793">Google: Dynamic Remarketing documentation</a>.</li>
 <li><a href="https://developers.google.com/adwords-remarketing-tag/">Google: Google Ads documentation</a>.</li>
 <li>Use the <a href="/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto Extension</a> to encrypt and populate the <strong>Hashed Email</strong> and <strong>Phone Number</strong> values.</li>
 </ul>
+<h2 id="enhanced-conversions">Enhanced Conversions</h2>
+<p>Google’s Enhanced Conversions for Web feature can improve the accuracy of your conversion measurements. It supplements your existing conversion tags by sending hashed first-party conversion data from your website in a privacy safe way.</p>
+<ul>
+<li>Before enabling Enhanced Conversions, you must enable enhanced conversions in your Google Ads account. For more information, see <a href="https://support.google.com/google-ads/answer/13258081?sjid=1600196321043643540-NC">Google: Set up enhanced conversions for web using the Google tag</a>.</li>
+<li>If you are using the server-side Enhanced Conversions for Web connector to supplement this client-side tag, map a unique value, such as <code>tealium_random</code>, to <strong>Transaction ID</strong> for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set <strong>Implementation Type</strong> to <code>API</code>.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Support for enhanced conversions was added in June, 2022. If you are running an older version of the tag and want to use this feature, you must update the tag template. For more information, see <a href="/iq-tag-management/templates/manage/">Managing Tag Templates</a>.</p>
+<h2 id="deduplication">Deduplication</h2>
+<p>Google uses the transaction ID to deduplicate if the same conversion event is sent from  client-side and server-side conversions. The Transaction ID should be unique to each conversion event. The server-side value of this ID should equal the matching client-side event ID. We recommend using <code>order_ID</code> for purchases and <code>tealium_random</code> for other events.</p>
 <h2 id="dynamic-remarketing">Dynamic Remarketing</h2>
 <p>The Google Ads Conversion Tracking and Remarketing tag supports dynamic remarketing that lets you personalize ads based on previous visitor activity on your website. To use remarketing features with this tag, set <strong>Enable Remarketing</strong> to <strong>On</strong> in the tag configuration.</p>
 <p>When you enable remarketing, this tag automatically pulls in data from the <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce extension</a> to populate the Google Ads <strong>Retail</strong> parameters. To pass the values with a remarketing event, go to <strong>Data Mapping &gt; Event-specific parameters</strong> and map the relevant data layer attribute to the remarketing event attribute.</p>
@@ -512,7 +522,7 @@
 <li>Use mapping to dynamically override this value and the E-Commerce extension value.</li>
 </ul>
 </li>
-<li><strong>Global Object</strong>: This is the name of the <strong>Global Object</strong> used for the event queue. If not specified, <code>gtag</code> is used.
+<li><strong>Global Object</strong>: This value is the name of the <strong>Global Object</strong> used for the event queue. If not specified, <code>gtag</code> is used.
 <ul>
 <li>Not required for most implementations.</li>
 </ul>
@@ -520,7 +530,7 @@
 <li><strong>Data Layer Name</strong>: By default, the data layer initiated and referenced by the global site tag is named <strong>dataLayer</strong>. Rename the data layer only if your project requires a separate name.</li>
 <li><strong>Enable Remarketing</strong>: When Remarketing is enabled, this tag will automatically pull in data from the E-Commerce Extension to populate the Google Ads <strong>Retail</strong> parameters.
 <ul>
-<li>Mapping directly to the <strong>Retail</strong> tab in the toolbox will override the data pulled in via the E-Commerce Extension.</li>
+<li>Mapping directly to the <strong>Retail</strong> tab in the toolbox will override the data pulled in through the E-Commerce Extension.</li>
 </ul>
 </li>
 <li><strong>Page Type</strong>: Select a default page type here and use mapping to dynamically override this value.</li>
@@ -531,21 +541,19 @@
 </li>
 <li><strong>Enable Enhanced Conversions</strong>
 <ul>
-<li>The <strong>Enhanced Conversions for Web</strong> feature can improve the accuracy of your conversion measurements. It supplements your existing conversion tags by sending hashed first-party conversion data from your website in a privacy safe way.</li>
-<li>Support for enhanced conversions was added in June, 2022. If you are running an older version of the tag and want to use this feature, you must update the tag template. For more information, see: <a href="/iq-tag-management/templates/about/">Managing Tag Templates</a>.</li>
-<li>Before enabling <strong>Enhanced Conversions</strong>, you must enable enhanced conversions in your Google Ads account. For more information, see <a href="https://support.google.com/google-ads/answer/13258081?sjid=1600196321043643540-NC">Set up enhanced conversions for web using the Google tag</a>.</li>
+<li>Only enable this option if you are sending PII (Personally Identifiable Information) through the tag.</li>
 <li>If you are using the server-side <strong>Enhanced Conversions for Web</strong> connector to supplement this client-side tag, map a unique value, such as <code>tealium_random</code>, to <strong>Transaction ID</strong> for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set <strong>Implementation Type</strong> to <code>API</code>.</li>
 <li>For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in EventStream, see <a href="/tech-partners/tealium-google-enhanced-conversions-integration-guide/">Tealium + Google Enhanced Conversions Integration Guide</a>.</li>
 </ul>
 </li>
 <li><strong>Enable Event Matching for Server-side Enhanced Conversions</strong>
 <ul>
-<li>Enable event matching to use Automatic Transaction ID functionality in the <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web connector</a>.</li>
+<li>Enable event matching to use Automatic Transaction ID in the <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web connector</a>.</li>
 </ul>
 </li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
@@ -1240,7 +1248,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="enhanced-conversions">Enhanced Conversions</h3>
+<h3 id="enhanced-conversions-1">Enhanced Conversions</h3>
 <table>
 <thead>
 <tr>
@@ -1387,7 +1395,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 6, 2025 
+          <p>This page was last updated:  April 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1402,6 +1410,8 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enhanced-conversions" href="javascript:void(0)">Enhanced Conversions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dynamic-remarketing" href="javascript:void(0)">Dynamic Remarketing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>

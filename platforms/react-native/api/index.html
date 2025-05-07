@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "11",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1207,19 +1207,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="tealiumdispatch">TealiumDispatch</h3>
-<p>An interface that defines the type of dispatch to be tracked.</p>
-<h4 id="tealiumview">TealiumView</h4>
-<p>To track screen views, pass an instance of <code>TealiumView(viewName, data)</code> to the <code>track()</code> method. <code>TealiumView</code> is comprised of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
-<p>The following is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumView</span>(<span style="color:#e6db74">&#34;VIEW_NAME&#34;</span>, {<span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value&#34;</span>})
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealView</span>)
-</span></span></code></pre></div><h4 id="tealiumevent">TealiumEvent</h4>
-<p>To track non-view events, pass an instance of <code>TealiumEvent(eventName, data)</code> to the <code>track()</code> method. <code>TealiumEvent</code> is comprised of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
-<p>The following is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumEvent</span>(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, {<span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value&#34;</span>})
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>)
-</span></span></code></pre></div><h3 id="terminateintance"><code>terminateIntance()</code></h3>
+<h3 id="terminateintance"><code>terminateIntance()</code></h3>
 <p>Disables the Tealium library and removes all module references. Re-enable by creating a new Tealium instance if required.</p>
 <p><code>Tealium.terminateIntance();</code></p>
 <h3 id="track"><code>track()</code></h3>
@@ -1231,20 +1219,27 @@
 <th style="text-align:left">Parameters</th>
 <th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>dispatch</code></td>
+<td style="text-align:left"><code>tealEvent</code></td>
 <td style="text-align:left"><a href="#tealiumdispatch"><code>TealiumDispatch</code></a></td>
 <td style="text-align:left">Tealium dispatch with the event name and data layer</td>
-<td style="text-align:left"><code>TealiumEvent(&quot;button_click&quot;, { &quot;button_name&quot;: &quot;Submit&quot; })</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="visitorprofile">VisitorProfile</h3>
-<p>The visitor profile is an object that contains friendly names for each attribute. There is a <code>currentVisit</code> property that allows you to distinguish visitor/visit attribute types. Access each attribute value by ID using a subscript. If the attribute does not exist, <code>null</code> is returned. See the below list for examples.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumEvent</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cart_add&#39;</span>, 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;product_price&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>);
+</span></span></code></pre></div><h3 id="visitorprofile">VisitorProfile</h3>
+<p>The visitor profile is an object that contains friendly names for each attribute. There is a <code>currentVisit</code> property that lets you distinguish visitor/visit attribute types. Access each attribute value by ID using a subscript. If the attribute does not exist, <code>null</code> is returned. See the below list for examples.</p>
 <p><strong>Attribute Types</strong></p>
 <table>
 <thead>
@@ -1365,6 +1360,82 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello-world&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://you.domain.com/hello-mappings.json&#34;</span>
 </span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="interface-tealiumdispatch">Interface: <code>TealiumDispatch</code></h2>
+<p>An interface that defines the type of event to be tracked. The following classes implement <code>TealiumDispatch</code>:</p>
+<h3 id="class-tealiumevent">Class: <code>TealiumEvent</code></h3>
+<p>To track a user&rsquo;s interaction with a screen, pass an instance of <code>TealiumEvent(tealiumEvent, dataLayer)</code> to the <a href="#track"><code>track()</code></a> method. <code>TealiumEvent</code> consists of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional event data object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumEvent</span>(<span style="color:#a6e22e">tealiumEvent</span>, {<span style="color:#a6e22e">eventData</span>})
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>)
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Parameters</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>tealiumEvent</code></td>
+<td style="text-align:left"><code>string</code></td>
+<td style="text-align:left">The event name, passed as the <code>tealium_event</code> attribute</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>eventData</code></td>
+<td style="text-align:left"><code>object</code></td>
+<td style="text-align:left">(Optional) Data to be sent with the event in key-value format.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumEvent</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cart_add&#39;</span>, 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;product_price&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>);
+</span></span></code></pre></div><h3 id="class-tealiumview">Class: <code>TealiumView</code></h3>
+<p>To track screen views, pass an instance of <code>TealiumView(tealiumEvent, dataLayer)</code> to the <a href="#track"><code>Track()</code></a> method. <code>TealiumView</code> consists of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> screenView = TealiumView(tealiumEvent, {eventData})
+</span></span><span style="display:flex;"><span>tealium?.track(screenView)
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Parameters</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>tealiumEvent</code></td>
+<td style="text-align:left"><code>string</code></td>
+<td style="text-align:left"><code>tealium_event</code> name of view event or screen.</td>
+<td style="text-align:left"><code>purchase</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>eventData</code></td>
+<td style="text-align:left"><code>Dictionary&lt;string, object&gt;</code></td>
+<td style="text-align:left">Optional. Data to be sent with the event in key-value format.</td>
+<td style="text-align:left"><code>'purchase', {&quot;customer_id&quot;, &quot;abc123&quot;, &quot;order_total&quot;: 10.00, &quot;product_id&quot;: [&quot;PROD123&quot;, &quot;PROD456&quot;], &quot;order_id&quot;: &quot;0123456789&quot;}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">screenView</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumView</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;purchase&#39;</span>, 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;order_total&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10.00</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">screenView</span>);
 </span></span></code></pre></div>
 </div>
 
@@ -1410,7 +1481,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 9, 2024 
+          <p>This page was last updated:  April 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1450,11 +1521,13 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#removeremotecommand" href="javascript:void(0)">removeRemoteCommand()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealiumenvironment" href="javascript:void(0)">TealiumEnvironment</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealiumconfig" href="javascript:void(0)">TealiumConfig</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealiumdispatch" href="javascript:void(0)">TealiumDispatch</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#terminateintance" href="javascript:void(0)">terminateIntance()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track" href="javascript:void(0)">track()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitorprofile" href="javascript:void(0)">VisitorProfile</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remotecommand" href="javascript:void(0)">RemoteCommand</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#interface-tealiumdispatch" href="javascript:void(0)">Interface: TealiumDispatch</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#class-tealiumevent" href="javascript:void(0)">Class: TealiumEvent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#class-tealiumview" href="javascript:void(0)">Class: TealiumView</a></li>
               </nav>
   </aside></nav>
 

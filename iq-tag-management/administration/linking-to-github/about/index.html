@@ -341,8 +341,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".linking-to-github">Linking to GitHub</a>
         <ul class="pl2 bl b--primary bw1 linking-to-github desktopmenu animated fadeIn list "><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/linking-to-github/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-linking-to-github">About linking to GitHub</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linking-to-github-faq">Linking to GitHub FAQ</a></li></ul>
+        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/client-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-bot-filtering">Client-side bot filtering</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -459,25 +458,35 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to create a secure link between your GitHub account and your iQ Tag Management account using an access token. Once linked, use the Advanced JavaScript Code extension to reference and synchronize files from a GitHub repository. Your code remains safely stored in GitHub, but is available to publish in your iQ configuration.
+      This article describes how to create a secure link between your GitHub account and your iQ Tag Management account using an access token.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="prerequisites">Prerequisites</h2>
+  <p>Once linked, use the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code extension</a> to reference and synchronize files from a GitHub repository. Your code remains safely stored in GitHub, but is available to publish in your iQ Tag Management configuration.</p>
+<h2 id="requirements">Requirements</h2>
+<h4 id="github-requirements">GitHub requirements</h4>
 <ul>
-<li>A GitHub account with at least one public repository, which can be empty.</li>
-<li>A <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub personal access token</a>.</li>
+<li>A GitHub account:
+<ul>
+<li>With at least one public repository, which can be empty.</li>
+<li>With a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub personal access token</a>.</li>
+<li>Hosted at <code>github.com</code>. Self-hosted GitHub Enterprise Server accounts are not supported.</li>
+</ul>
+</li>
 <li>Working knowledge of GitHub and experience working with GitHub repositories.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not use GitHub or do not have a public GitHub repository, we recommend that you use the <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript Extension API</a> instead of linking to GitHub.</p>
+<h4 id="tealium-requirements">Tealium requirements</h4>
+<ul>
 <li>The Manage Account permission in your Tealium account.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not use GitHub or encounter permissions issues with the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript extension</a> because you do not have a public GitHub repository, we recommend that you use the <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript Extension API</a> instead of linking to GitHub.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>The GitHub integration creates a seamless workflow between your code management process in GitHub and publishing in iQ Tag Management. Use your GitHub username and <a href="https://github.com/settings/tokens">personal access token</a> to create a link to your GitHub account. Only one link is needed for all the profiles in your Tealium account.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Your GitHub account must have at least one public repository for the link to succeed.</p>
 <p>Once the account is linked, the JavaScript files in your repositories are available to be referenced in your iQ Tag Management configuration. When a file from your GitHub repository is referenced it remains safely in your GitHub repository, but the code is now available to publish as part of your iQ Tag Management configuration.</p>
-<p>As you commit changes to the referenced files in your GitHub repository, you must synchronize those files in iQ Tag Management to get the latest versions. When you synchronize the referenced files you will have unsaved changes that must be saved and published.</p>
+<p>As you commit changes to the referenced files in your GitHub repository, you must synchronize those files in iQ Tag Management to get the latest versions. When you synchronize the referenced files, you will have unsaved changes that must be saved and published.</p>
 <h2 id="supported-features">Supported features</h2>
 <p>The following features support the GitHub integration:</p>
 <ul>
@@ -528,7 +537,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  May 2, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -542,7 +551,7 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-features" href="javascript:void(0)">Supported features</a></li>
               </nav>

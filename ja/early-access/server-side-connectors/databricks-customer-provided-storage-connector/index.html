@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Databricks (AWS S3) コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
+    <title>Databricks コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -168,7 +168,7 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ea-server-side-connectors">サーバーサイドコネクタ</a>
         <ul class="pl2 bl b--primary bw1 ea-server-side-connectors desktopmenu animated fadeIn list "><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-aws-s3-connector">Databricks (AWS S3) コネクタ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-aws-s3-connector">Databricks コネクタ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversionsコネクタ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ea-data-storage">データストレージ</a>
@@ -209,8 +209,8 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">関数</a>
         <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">関数ダッシュボード</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/functions/crypto-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">暗号ライブラリ</a></li></ul>
+        <a href="/ja/early-access/functions/crypto-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">暗号ライブラリ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">関数ダッシュボード</a></li></ul>
       </li></ul></li></ul>
 </nav>
 </div>
@@ -244,7 +244,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Databricks (AWS S3) コネクタ構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Databricks コネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -252,13 +252,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Databricks (AWS S3) コネクタの構成方法について説明します。
+      この記事では、Databricks コネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="アクション">アクション</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタは、左ナビゲーションの <strong>Connectors</strong> をクリックして利用可能な<a href="/ja/early-access/connectors/about/">新しいコネクタインターフェース</a>を使用してのみ利用可能です。</p>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -269,45 +270,66 @@
 </thead>
 <tbody>
 <tr>
-<td>全イベントデータを送信</td>
+<td>全イベントデータ送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>カスタムイベントデータを送信</td>
+<td>カスタムイベントデータ送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>全訪問データを送信</td>
+<td>全訪問データ送信</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>カスタム訪問データを送信</td>
+<td>カスタム訪問データ送信</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="動作方法">動作方法</h2>
-<p>Databricks (AWS S3) コネクタは、Tealium から AWS S3 への接続と、Databricks から AWS S3 への接続の2つの接続セットが必要です。</p>
-<h3 id="tealium-から-aws-s3-への接続">Tealium から AWS S3 への接続</h3>
-<p>Tealium は、バケットをリストアップし、イベントデータとオーディエンスデータを S3 オブジェクトにアップロードするために、AWS S3 インスタンスへの接続が必要です。Databricks (AWS S3) コネクタの認証には2つのオプションがあります：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Databricks コネクタは、2つの接続セットを必要とします：</p>
+<ul>
+<li>Tealium から互換性のあるクラウド保存ソリューション（AWS S3、Azure Blob Storage、または Google Cloud Storage）への接続。</li>
+<li>Databricks からその同じクラウド保存ソリューションへの接続。</li>
+</ul>
+<h3 id="tealium-からクラウド保存への接続">Tealium からクラウド保存への接続</h3>
+<p>Tealium は、イベントデータとオーディエンスデータをクラウド保存のオブジェクトやファイルにアップロードするために、AWS S3、Azure Blob Storage、または Google Cloud Storage インスタンスへの接続を必要とします。Databricks コネクタの認証には以下のオプションがあります：</p>
+<ul>
+<li><a href="#aws-s3-settings">AWS S3</a>
 <ul>
 <li>アクセスキーとアクセスシークレットを提供します。</li>
-<li>STS（Security Token Service）の資格情報を提供します。</li>
+<li>STS（セキュリティトークンサービス）の認証情報を提供します。</li>
 </ul>
-<h4 id="アクセスキーとシークレット資格情報">アクセスキーとシークレット資格情報</h4>
+</li>
+<li><a href="#azure-blob-storage-settings">Azure Blob Storage</a>
+<ul>
+<li>クライアント認証情報。</li>
+<li>認証コードフロー（SSO）。</li>
+<li>共有アクセス署名（SAS）。</li>
+</ul>
+</li>
+<li><a href="#google-cloud-storage-settings">Google Cloud Storage</a>
+<ul>
+<li>Google でサインイン（SSO）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-s3-構成">AWS S3 構成</h4>
+<h5 id="アクセスキーとシークレット認証情報">アクセスキーとシークレット認証情報</h5>
 <p>AWS アクセスキーとシークレットを見つけるには：</p>
 <ol>
 <li>AWS 管理コンソールにログインし、IAM（Identity and Access Management）サービスに移動します。</li>
-<li><strong>ユーザー</strong>をクリックし、次に<strong>ユーザーを追加</strong>をクリックします。</li>
+<li><strong>ユーザー</strong> をクリックし、次に <strong>ユーザーを追加</strong> をクリックします。</li>
 <li>ユーザー名を入力します。例えば、<code>TealiumS3User</code>。</li>
-<li>作成したユーザーにポリシーを添付します。
+<li>作成したユーザーにポリシーをアタッチします。
 <ol>
-<li><strong>権限</strong>タブで、<strong>既存のポリシーを直接添付</strong>をクリックします。</li>
-<li><code>AmazonS3FullAccess</code>ポリシーを検索し、フルアクセスのために添付します。特定のバケットへのアクセスを制限したい場合は、以下の例に似たポリシーを作成できます。この例では、<code>YOUR_BUCKET_NAME</code>は Tealium がイベントデータとオーディエンスデータを S3 オブジェクトにアップロードするために使用するバケットです。
+<li><strong>権限</strong> タブで <strong>既存のポリシーを直接アタッチ</strong> をクリックします。</li>
+<li><code>AmazonS3FullAccess</code> ポリシーを検索してアタッチします。特定のバケットへのアクセスを制限したい場合は、以下の例のようにポリシーを記述できます。この例では、<code>YOUR_BUCKET_NAME</code> は Tealium が S3 オブジェクトにイベントデータとオーディエンスデータをアップロードするために使用するバケットです。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Statement&#34;</span>: [
@@ -332,23 +354,23 @@
 </li>
 <li>キーを作成します。
 <ol>
-<li><strong>セキュリティ認証情報</strong>タブに移動し、<strong>アクセスキーを作成</strong>をクリックします。</li>
-<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存します。</li>
+<li><strong>セキュリティ認証情報</strong> タブに移動し、<strong>アクセスキーの作成</strong> をクリックします。</li>
+<li><strong>アクセスキー ID</strong> と <strong>シークレットアクセスキー</strong> をコピーして安全に保存します。</li>
 </ol>
 </li>
 </ol>
-<h4 id="sts-資格情報">STS 資格情報</h4>
+<h5 id="sts-認証情報構成">STS 認証情報構成</h5>
 <ol>
 <li>AWS 管理コンソールにログインし、IAM（Identity and Access Management）サービスに移動します。</li>
-<li><strong>ロール</strong>をクリックし、次に<strong>ロールを作成</strong>をクリックします。</li>
-<li><strong>信頼されたエンティティ</strong>タイプで、AWS アカウントを選択します。</li>
-<li><strong>別の AWS アカウント</strong>を選択し、Tealium アカウント ID を指定します：<code>757913464184</code>。</li>
-<li>オプション。<strong>外部 ID を必要とする</strong>チェックボックスをチェックし、使用したい外部 ID を指定します。外部 ID は最大 256 文字までで、英数字（<code>A-Z</code>、<code>a-z</code>、<code>0-9</code>）とハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含めることができます。</li>
-<li>ロールに名前を入力します。ロール名は <code>tealium-databricks</code>で始まる必要があります。例えば、<code>tealium-databricks-s3-test</code>。</li>
-<li>ロールにポリシーを添付します。
+<li><strong>ロール</strong> をクリックし、次に <strong>ロールの作成</strong> をクリックします。</li>
+<li><strong>信頼されたエンティティのタイプ</strong> で、AWS アカウントを選択します。</li>
+<li><strong>別の AWS アカウント</strong> を選択し、Tealium アカウント ID <code>757913464184</code> を指定します。</li>
+<li>オプション。<strong>外部 ID の要求</strong> チェックボックスをオンにし、使用したい外部 ID を指定します。外部 ID は 256 文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）やハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
+<li>ロールに名前を付けます。ロール名は <code>tealium-databricks</code> で始まる必要があります。例えば、<code>tealium-databricks-s3-test</code>。</li>
+<li>ロールにポリシーをアタッチします。
 <ol>
-<li><strong>権限</strong>タブで、<strong>既存のポリシーを直接添付</strong>をクリックします。</li>
-<li><code>AmazonS3FullAccess</code>ポリシーを検索し、フルアクセスのために添付します。特定のバケットへのアクセスを制限したい場合は、以下の例に似たポリシーを作成できます。この例では、<code>YOUR_BUCKET_NAME</code>は Tealium がイベントデータとオーディエンスデータを S3 オブジェクトにアップロードするために使用するバケットです。
+<li><strong>権限</strong> タブで <strong>既存のポリシーを直接アタッチ</strong> をクリックします。</li>
+<li><code>AmazonS3FullAccess</code> ポリシーを検索してアタッチします。特定のバケットへのアクセスを制限したい場合は、以下の例のようにポリシーを記述できます。この例では、<code>YOUR_BUCKET_NAME</code> は Tealium が S3 オブジェクトにイベントデータとオーディエンスデータをアップロードするために使用するバケットです。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Statement&#34;</span>: [
@@ -373,9 +395,9 @@
 </li>
 <li>信頼ポリシーを作成します。
 <ol>
-<li><strong>信頼関係</strong>タブに移動し、<strong>信頼関係を編集</strong>をクリックします。</li>
-<li>作成したロールに特定の外部 ID を許可する信頼ポリシーがあり、Tealium のプロダクションアカウント ID が <code>757913464184</code>であることを確認します。以下の例を参照してください。</li>
-<li>Tealium への接続のための <code>EXTERNAL_ID</code> 値を構成します。ID は最大 256 文字までで、英数字（<code>A-Z</code>、<code>a-z</code>、<code>0-9</code>）とハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含めることができます。</li>
+<li><strong>信頼関係</strong> タブに移動し、<strong>信頼関係の編集</strong> をクリックします。</li>
+<li>信頼ポリシーが作成したロールに特定の外部 ID を許可し、Tealium の本番アカウント ID が <code>757913464184</code> であることを確認します。</li>
+<li>Tealium への接続のための <code>EXTERNAL_ID</code> 値を構成します。ID は 256 文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）やハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
 </ol>
 </li>
 </ol>
@@ -396,117 +418,277 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="databricks-から-aws-s3-への接続">Databricks から AWS S3 への接続</h3>
-<p>Databricks を AWS S3 インスタンスに接続するには、まず AWS インスタンスに IAM ロールを作成し、そのロールを使用して Databricks インスタンスで保存資格情報を作成する必要があります。AWS IAM ロールの作成についての詳細は、<a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html">Databricks: AWS S3 に接続するための保存資格情報を作成する</a>を参照してください。</p>
-<p>保存資格情報が作成されたら、AWS S3 インスタンスの外部ロケーションを定義します。このロケーションからデータを取得します。詳細については、<a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/external-locations.html">Databricks: クラウド保存を Databricks に接続するための外部ロケーションを作成する</a>を参照してください。</p>
-<h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするために、バッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+</span></span></code></pre></div><h4 id="azure-blob-storage-構成">Azure Blob Storage 構成</h4>
+<h5 id="クライアント認証情報">クライアント認証情報</h5>
+<p>Azure でアプリケーションのテナント ID、クライアント ID、クライアントシークレットを取得するには、次の手順を使用します：</p>
+<p><strong>ステップ 1: Azure ポータルにアクセス</strong></p>
+<ol>
+<li>Azure ポータルに移動します。</li>
+<li>Azure アカウントでサインインします。</li>
+</ol>
+<p><strong>ステップ 2: アプリ登録に移動</strong></p>
+<ol>
+<li>上部の検索バーに <code>Azure Active Directory</code> を入力して選択します。</li>
+<li>左メニューで <strong>アプリ登録</strong> をクリックします。</li>
+<li>登録済みのアプリケーションを探します。</li>
+</ol>
+<p><strong>ステップ 3: テナント ID とクライアント ID を見つける</strong></p>
+<ol>
+<li>アプリケーションをクリックします。</li>
+<li><strong>概要</strong> セクションで、次の情報を探します：
 <ul>
-<li>リクエストの最大数：100,000</li>
-<li>最古のリクエストからの最大時間：10分</li>
-<li>リクエストの最大サイズ：10MB</li>
+<li><strong>テナント ID</strong>（<strong>ディレクトリ ID</strong> とも呼ばれます）は <strong>テナント ID</strong> の下にリストされています。</li>
+<li><strong>クライアント ID</strong>（<strong>アプリケーション ID</strong> とも呼ばれます）は <strong>アプリケーション (クライアント) ID</strong> として表示されます。</li>
+</ul>
+</li>
+</ol>
+<p><strong>ステップ 4: クライアントシークレットを生成</strong></p>
+<ol>
+<li>左メニューで <strong>証明書とシークレット</strong> に移動します。</li>
+<li><strong>クライアントシークレット</strong> の下で <strong>新しいクライアントシークレット</strong> をクリックします。</li>
+<li>説明を入力し、有効期限を選択します。</li>
+<li><strong>追加</strong> をクリックします。</li>
+<li>生成されたら、ページを離れると再表示できなくなるため、すぐにクライアントシークレットをコピーします。</li>
+</ol>
+<h5 id="共有アクセス署名sas">共有アクセス署名（SAS）</h5>
+<p>Azureで共有アクセス署名（SAS）トークンを生成するには、以下の手順を使用します：</p>
+<p><strong>ステップ1：Azureポータルにアクセス</strong></p>
+<ol>
+<li>Azureポータルに移動します。</li>
+<li>Azureアカウントでサインインします。</li>
+</ol>
+<p><strong>ステップ2：保存アカウントに移動</strong></p>
+<ol>
+<li>検索バーに「Storage accounts」と入力して選択します。</li>
+<li>SASトークンを生成したい保存アカウントを選択します。</li>
+</ol>
+<p><strong>ステップ3：SASトークンを生成</strong></p>
+<p>オプション1：Azureポータルを使用</p>
+<ol>
+<li><strong>保存アカウント</strong>で、<strong>セキュリティ + ネットワーキング</strong>セクションの下にある<strong>共有アクセス署名</strong>に移動します。</li>
+<li>必要な権限（<code>読み取り</code>、<code>書き込み</code>、<code>削除</code>、<code>リスト</code>など）を構成します。</li>
+<li>トークンの有効期限を構成して、トークンが有効である期間を定義します。</li>
+<li>許可されるサービス（<code>Blob</code>、<code>File</code>、<code>Queue</code>、<code>Table</code>）を選択します。</li>
+<li><strong>SASと接続文字列を生成</strong>をクリックします。</li>
+<li>SASトークンまたはSASトークンが含まれる接続文字列をコピーします。</li>
+</ol>
+<p>オプション2：Azure Storage Explorerを使用</p>
+<ol>
+<li>Azure Storage Explorerを開いて、Azureアカウントでサインインします。</li>
+<li>保存アカウントを探して、<em>Blob Container</em>またはファイル共有を右クリックします。</li>
+<li><strong>共有アクセス署名の取得</strong>を選択します。</li>
+<li>権限と有効期限の構成を構成します。</li>
+<li><strong>作成</strong>をクリックして生成されたSAS URLまたはトークンをコピーします。</li>
+</ol>
+<p>オプション3：Azure CLIを使用</p>
+<ol>
+<li>Azure CLIで以下のコマンドを実行してSASトークンを生成します：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>    az storage blob generate-sas <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --account-name &lt;your-storage-account&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --container-name &lt;your-container&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --name &lt;your-blob&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --permissions r <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --expiry 2026-04-25T12:00:00Z <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --output tsv
+</span></span></code></pre></div><p>これにより、制御されたアクセスを提供するために保存URLに追加できるSASトークンが出力されます。</p>
+<h5 id="認証コードフローsso">認証コードフロー（SSO）</h5>
+<p><strong>接続の確立</strong>をクリックすると、認証コードフローとして知られる安全な認証プロセスが開始されます。これにより、手動で資格情報を入力することなく、アプリケーションがAzure Blob Storageへのアクセスを許可され、シームレスで安全な体験が保証されます。</p>
+<p>次のように表示されます：</p>
+<ol>
+<li><strong>サインインにリダイレクト</strong>：一時的に組織のIdentity Provider（IdP）、例えばAzure Active Directoryにリダイレクトされ、既存の資格情報を使用してログインします。</li>
+<li><strong>同意の付与</strong>：認証後、Tealiumのアプリがリクエストしている権限—具体的にはBlob Storageへのアクセス—を説明する同意画面が表示されます。</li>
+<li><strong>Blob Storageへの安全なアクセス</strong>：Tealiumのアプリケーションは、Azureのセキュリティポリシーを維持しながら保存とのやり取りを行う権限を持っています。</li>
+</ol>
+<h4 id="google-cloud-storageの構成">Google Cloud Storageの構成</h4>
+<h5 id="googleでサインイン">Googleでサインイン</h5>
+<p><strong>Googleでサインイン</strong>をクリックすると、アプリケーションがGoogleアカウントを使用してGoogle Cloud Storageにアクセスするための安全な認証プロセスが開始されます。このプロセスは、データのセキュリティと制御を維持しながらシームレスな体験を保証します。</p>
+<p>次のように表示されます：</p>
+<ol>
+<li><strong>Googleサインインにリダイレクト</strong>：一時的にGoogleの認証ページにリダイレクトされ、Googleアカウントの資格情報を使用してログインします。</li>
+<li><strong>同意の付与</strong>：サインイン後、Tealiumのアプリがリクエストしている権限—例えばCloud Storageへのアクセス—を詳細に説明する同意画面が表示されます。</li>
+<li><strong>認証コードの受領</strong>：承認後、Googleは一度限りの認証コードを生成してアプリケーションに送り返します。</li>
+<li><strong>Cloud Storageへの安全なアクセス</strong>：Tealiumのアプリケーションは、Googleのセキュリティポリシーを遵守しながら保存とのやり取りを行う権限を持っています。</li>
+</ol>
+<h3 id="databricksからaws-s3への接続">DatabricksからAWS S3への接続</h3>
+<p>DatabricksをAWS S3インスタンスに接続するには、まずAWSインスタンスで使用するIAMロールを作成し、その後Databricksインスタンスで保存資格情報を作成する必要があります。AWS IAMロールの作成についての詳細は、<a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html">Databricks: AWS S3に接続するための保存資格情報を作成する</a>を参照してください。</p>
+<p>保存資格情報が作成された後、AWS S3インスタンスからデータを取得する外部ロケーションを定義します。詳細については、<a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/external-locations.html">Databricks: クラウド保存をDatabricksに接続するための外部ロケーションを作成する</a>を参照してください。</p>
+<h3 id="databricksからazure-blob-storageへの接続">DatabricksからAzure Blob Storageへの接続</h3>
+<p>DatabricksをAzure Blob Storageインスタンスに接続するには、Azureサービスプリンシパルまたは管理されたIDを使用して保存資格情報を作成する必要があります。これにより、DatabricksはBlob Storageに安全に認証してアクセスできます。詳細については、<a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Azure Blob Storageに接続するための保存資格情報を作成する</a>を参照してください。</p>
+<p>保存資格情報が構成された後、Databricksがデータの読み書きに使用するAzure Blob Storageの外部ロケーションを定義します。詳細については、<a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations">Databricks: クラウド保存をDatabricksに接続するための外部ロケーションを作成する</a>を参照してください。</p>
+<h3 id="databricksからgoogle-cloud-storageへの接続">DatabricksからGoogle Cloud Storageへの接続</h3>
+<p>Google Cloud StorageをDatabricksと統合するには、まずGoogle Cloudで必要な権限を持つサービスアカウントを構成します。その後、このサービスアカウントを使用してDatabricksで保存資格情報を作成します。詳細については、<a href="https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Google Cloud Storageに接続するための保存資格情報を作成する</a>を参照してください。</p>
+<p>保存資格情報を構成した後、Databricksがデータとやり取りするために必要なバケットと権限を指定してGoogle Cloud Storageの外部ロケーションを定義する必要があります。詳細については、<a href="https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/external-locations">Databricks: クラウド保存をDatabricksに接続するための外部ロケーションを作成する</a>を参照してください。</p>
+<h2 id="バッチ制限">バッチ制限</h2>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかのしきい値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<ul>
+<li>最大リクエスト数：100,000</li>
+<li>最古のリクエストからの最大時間：1分から60分の間でカスタムTTLを構成できます。デフォルト値は10分です。</li>
+<li>リクエストの最大サイズ：10 MB</li>
 </ul>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加したら、次の構成を行います：</p>
+<p>コネクタマーケットプレースに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
-<li><strong>認証タイプ</strong>
+<li><strong>クラウドソリューション</strong>：使用しているクラウドソリューションを選択します。利用可能なオプションは<code>AWS S3</code>、<code>Azure Blob Storage</code>、<code>Google Cloud Storage</code>です。</li>
+<li><strong>DatabricksホストURL</strong>：DatabricksアカウントのURLを提供します。例：<code>https://{ACCOUNT_NAME}.cloud.databricks.com</code>。</li>
+<li><strong>Databricksトークン</strong>：Databricksでアクセストークンを作成するには、Databricksでユーザーアバターをクリックし、<strong>構成 &gt; 開発者 &gt; アクセストークン &gt; 管理 &gt; 新しいトークンを生成</strong>に進みます。</li>
+</ul>
+<p>認証構成は、使用するクラウドソリューションによって異なります：</p>
+<h3 id="amazon-aws-s3">Amazon AWS S3</h3>
 <ul>
-<li>（必須）認証タイプを選択します。利用可能なオプションは：<strong>STS</strong>と<strong>アクセスキー</strong>です。</li>
-<li>STS：次のフィールドが必要です <strong>Assume Role: ARN</strong>と<strong>Assume Role: Session Name</strong>。</li>
-<li>アクセスキー：次のフィールドが必要です <strong>AWS Access Key</strong>と<strong>AWS Secret Access Key</strong>。</li>
+<li><strong>リージョン</strong>: 必須。リージョンを選択してください。</li>
+<li><strong>認証タイプ</strong>: 必須。プラットフォームの認証タイプを選択してください:
+<ul>
+<li>アクセスキーとアクセスシークレットを提供してください。
+<ul>
+<li><strong>アクセスキー - AWSアクセスキー</strong>: アクセスキー認証に必要です。AWSアクセスキーを提供してください。</li>
+<li><strong>アクセスキー - AWSシークレットアクセスキー</strong>: アクセスキー認証に必要です。AWSシークレットアクセスキーを提供してください。</li>
 </ul>
 </li>
-<li><strong>リージョン</strong>
+<li>STS（セキュリティトークンサービス）の認証情報を提供してください。
 <ul>
-<li>（必須）リージョンを選択します。</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: ARN</strong>
-<ul>
-<li>STS 認証に必要です。引き受けるロールの Amazon Resource Name (ARN) を提供します。例：<code>arn:aws:iam:222222222222:role/myrole</code>。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: IAM ロールの切り替え (AWS API)</a>を参照してください。</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: Session Name</strong>
-<ul>
-<li>STS 認証に必要です。引き受けるロールのセッション名を提供します。最小長さは2、最大長さは64です。</li>
-</ul>
-</li>
-<li><strong>STS - Assume Role: External ID</strong>
-<ul>
-<li>STS 認証に必要です。第三者の外部識別子を提供します。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: 第三者所有の AWS アカウントへのアクセス</a>を参照してください。</li>
-</ul>
-</li>
-<li><strong>Access Key - AWS Access Key</strong>
-<ul>
-<li>アクセスキー認証に必要です。AWS アクセスキーを提供します。</li>
-</ul>
-</li>
-<li><strong>Access Key - AWS Secret Access Key</strong></li>
-<li>アクセスキー認証に必要です。AWSのシークレットアクセスキーを提供してください。</li>
-<li><strong>DatabricksホストURL</strong>
-<ul>
-<li>DatabricksアカウントのURLを提供してください。</li>
-<li>例：<code>https://{ACCOUNT_NAME}.cloud.databricks.com</code>。</li>
-</ul>
-</li>
-<li><strong>Databricksトークン</strong>
-<ul>
-<li>Databricksのアクセストークンを提供してください。Databricksでアクセストークンを作成するには、Databricksのユーザーアバターをクリックし、<strong>構成 &gt; 開発者 &gt; アクセストークン &gt; 管理 &gt; 新しいトークンを生成</strong>に移動します。</li>
+<li><strong>STS - Assume Role: ARN</strong>: STS認証に必要です。引き受ける役割のAmazonリソースネーム（ARN）を提供してください。例: <code>arn:aws:iam:222222222222:role/myrole</code>。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: Switch to an IAM role (AWS API)</a>を参照してください。</li>
+<li><strong>STS - Assume Role: Session Name</strong>: STS認証に必要です。引き受ける役割のセッション名を提供してください。最小長2、最大長64。</li>
+<li><strong>STS - Assume Role: External ID</strong>: STS認証に必要です。第三者の外部識別子を提供してください。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: Access to AWS accounts owned by third parties</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
-<h2 id="ノートブックを作成する">ノートブックを作成する</h2>
-<p>Databricksのノートブックは、実行可能なコード、視覚化、およびナラティブテキストを含むドキュメントです。これらはデータの探索、視覚化、および共同作業に使用されます。コネクタの構成では、新しいコネクタを作成する際に新しいノートブックを作成するオプションがあります。構成手順で<strong>ノートブックを作成</strong>をクリックします。</p>
+</li>
+</ul>
+<h3 id="azure-blob-storage">Azure Blob Storage</h3>
+<ul>
+<li><strong>テナントID</strong>: あなたの組織を代表するAzure Active Directoryインスタンスの一意の識別子。</li>
+<li><strong>認証タイプ</strong>: 認証タイプを選択してください。利用可能なオプションは、クライアント認証情報、認証コードフロー（SSO）、共有アクセス署名（SAS）です。</li>
+<li><strong>クライアントID</strong>: Azure Active Directoryに登録されたアプリケーションに割り当てられた一意の識別子。</li>
+<li><strong>クライアントシークレット</strong>: アプリケーションがAzure Active Directoryで認証するために使用するパスワードのような文字列。</li>
+<li><strong>共有アクセス署名</strong>: Tealiumによるリソースアクセス方法を示す特別なクエリパラメーターを提供してください。</li>
+<li><strong>保存アカウント名</strong>: Blob、File、Queue、Table保存などの保存サービスにアクセスするために使用されるAzure Storageアカウントの一意の名前。</li>
+<li><strong>APIバージョン</strong>: あなたのAzure Storageインスタンスと互換性のあるAPIバージョン。デフォルトバージョンは <code>2025-01-05</code>です。</li>
+</ul>
+<h3 id="google-cloud-storage">Google Cloud Storage</h3>
+<p><strong>Googleでサインイン</strong>をクリックし、画面の指示に従ってください。</p>
+<h2 id="ノートブックの作成">ノートブックの作成</h2>
+<p>Databricksのノートブックは、実行可能なコード、ビジュアル化、およびナラティブテキストを含むドキュメントです。データの探索、可視化、および協力に使用されます。コネクタ構成では、新しいコネクタを作成する際に、構成ステップで<strong>ノートブックの作成</strong>をクリックすることで新しいノートブックを作成するオプションがあります。</p>
 <ol>
-<li>コネクタの構成画面で、<strong>ノートブックを作成</strong>をクリックします。</li>
+<li>コネクタ構成画面で<strong>ノートブックの作成</strong>をクリックします。</li>
 <li>テーブル名を入力します。スキーマはジョブ作成時に指定されるため、このフィールドには追加しないでください。
 <ul>
-<li>名前には英数字（<code>A-Z</code>、<code>a-z</code>、<code>0-9</code>）とアンダースコア（<code>_</code>）を含めることができます。</li>
-<li>スペースや特殊文字は許可されていません。例えば、<code>!</code>、<code>@</code>、<code>#</code>、<code>-</code>、<code>.</code>は許可されていません。</li>
-<li>名前は大文字と小文字を区別します。例えば、<code>tableName</code>と<code>tablename</code>は異なる名前とみなされます。</li>
-<li>名前は数字で始めることはできません。例えば、<code>1table</code>は無効です。</li>
+<li>名前には英数字 (<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>) とアンダースコア (<code>_</code>) を含めることができます。</li>
+<li>スペースや特殊文字（<code>!</code>, <code>@</code>, <code>#</code>, <code>-</code>, <code>.</code> など）は使用できません。</li>
+<li>名前は大文字と小文字が区別されます。たとえば、<code>tableName</code> と <code>tablename</code> は異なる名前とみなされます。</li>
+<li>名前は数字で始めることはできません。たとえば、<code>1table</code> は無効です。</li>
 </ul>
 </li>
-<li><strong>ノートブックパス</strong>には、ノートブックの絶対パスを入力します。例：<code>/Users/user@example.com/project/NOTEBOOK_NAME</code>。
+<li><strong>ノートブックパス</strong>には、ノートブックの絶対パスを入力してください。例: <code>/Users/user@example.com/project/NOTEBOOK_NAME</code>。
 <ol>
-<li>Databricksでノートブックの絶対パスを見つけるには、Databricksのワークスペースに移動し、<strong>ユーザー</strong>セクションを展開します。</li>
+<li>Databricksのノートブックの絶対パスを確認するには、Databricksのワークスペースにアクセスし、<strong>ユーザー</strong>セクションを展開します。</li>
 <li>ユーザーをクリックし、オプションメニューを展開します。</li>
-<li><strong>URL/パスをコピー &gt; フルパス</strong>をクリックします。パス名は次の形式になります：<code>/Workspace/Users/myemail@company.com</code>。スラッシュ<code>/</code>で区切って、仮想フォルダとノートブック名を追加します。例：<code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>。</li>
+<li><strong>URL/パスのコピー &gt; 完全なパス</strong>をクリックします。パス名は次の形式になります: <code>/Workspace/Users/myemail@company.com</code>。仮想フォルダーとノートブック名をスラッシュ <code>/</code> で区切って追加します。例: <code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>。</li>
 </ol>
 </li>
-<li><strong>S3バケット</strong>で、Databricksに接続するS3バケットを選択します。</li>
-<li><strong>上書き</strong>オプションは、指定したワークスペースに既に存在するノートブックを上書きするかどうかを示します。</li>
+<li><strong>クラウドバケット</strong>で、Databricksに接続するクラウド保存バケットを選択します。</li>
+<li><strong>上書き</strong>オプションは、指定されたワークスペースに既に存在するノートブックを上書きするかどうかを示します。</li>
 </ol>
-<h2 id="ジョブを作成する">ジョブを作成する</h2>
-<p>Databricksのジョブは、スケジュールまたは特定のトリガーに基づいてノートブックを自動的に実行します。ジョブを使用すると、定期的な間隔や特定のイベントがトリガーされたときに、データ処理、分析、レポート作成などのタスクを実行できます。</p>
+<h2 id="ジョブの作成">ジョブの作成</h2>
+<p>Databricksのジョブは、特定のトリガーに基づいて、または定期的にノートブックを実行することを自動化します。ジョブを使用すると、定期的な間隔または特定のイベントがトリガーされたときに、データ処理、分析、レポート作成などのタスクを実行できます。</p>
 <ol>
-<li>コネクタの構成画面で、<strong>ジョブを作成</strong>をクリックします。</li>
+<li>コネクタ構成画面で<strong>ジョブの作成</strong>をクリックします。</li>
 <li>処理ジョブの名前を入力します。</li>
-<li><strong>カタログ</strong>で、Unityカタログからパイプラインデータを公開するためのカタログを指定します。</li>
-<li><strong>ターゲット</strong>で、上記のカタログでテーブルを公開/更新するスキーマを指定します。ここではターゲットテーブルを指定しないでください。使用されるテーブルはノートブックで指定したものです。</li>
-<li><strong>ノートブックパス</strong>には、ノートブックの絶対パスを入力します。例：<code>/Users/user@example.com/project/NOTEBOOK_NAME</code>。
+<li><strong>カタログ</strong>で、パイプラインデータを公開するために使用するUnityカタログからカタログを指定します。</li>
+<li><strong>ターゲット</strong>で、上記のカタログでテーブルを公開/更新するスキーマを指定します。ここではターゲットテーブルを指定しないでください。ノートブックで指定されたテーブルが使用されます。</li>
+<li><strong>ノートブックパス</strong>には、ノートブックの絶対パスを入力してください。例: <code>/Users/user@example.com/project/NOTEBOOK_NAME</code>。
 <ol>
-<li>Databricksでノートブックの絶対パスを見つけるには、Databricksのワークスペースに移動し、<strong>ユーザー</strong>セクションを展開します。</li>
+<li>Databricksのノートブックの絶対パスを確認するには、Databricksのワークスペースにアクセスし、<strong>ユーザー</strong>セクションを展開します。</li>
 <li>ユーザーをクリックし、オプションメニューを展開します。</li>
-<li><strong>URL/パスをコピー &gt; フルパス</strong>をクリックします。パス名は次の形式になります：<code>/Workspace/Users/myemail@company.com</code>。スラッシュ<code>/</code>で区切って、仮想フォルダとノートブック名を追加します。例：<code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>。</li>
+<li><strong>URL/パスのコピー &gt; 完全なパス</strong>をクリックします。パス名は次の形式になります: <code>/Workspace/Users/myemail@company.com</code>。仮想フォルダーとノートブック名をスラッシュ <code>/</code> で区切って追加します。例: <code>/Workspace/Users/myemail@company.com/virtualfolder/virtualsubfolder/MyNotebook</code>。</li>
 </ol>
 </li>
-<li><strong>S3バケット</strong>で、Databricksに接続するS3バケットを選択します。</li>
-<li><strong>トリガータイプ</strong>で、データを処理するタイミングを選択します。利用可能なオプションは以下の通りです：
+<li><strong>クラウドバケット</strong>で、Databricksに接続するクラウド保存バケットを選択します。</li>
+<li><strong>トリガータイプ</strong>で、データを処理するタイミングを選択します。利用可能なオプションは次のとおりです:
 <ul>
-<li><strong>ファイル到着</strong>：新しいファイルが到着するたびにデータを処理します。</li>
-<li><strong>スケジュール</strong>：指定したリピートスケジュールに基づいてデータを処理します。</li>
-<li><strong>Cron</strong>：Cronフィールドで定義したリピートスケジュールに基づいてデータを処理します。</li>
+<li><strong>ファイル到着</strong>: 新しいファイルが到着するたびにデータを処理します。</li>
+<li><strong>スケジュール</strong>: 指定したスケジュールでデータを定期的に処理します。</li>
+<li><strong>Cron</strong>: Cronフィールドで定義したスケジュールでデータを定期的に処理します。</li>
 </ul>
 </li>
-<li><strong>開始時間</strong>で、<code>hh:mm</code>形式でジョブ処理の開始時間を指定します。開始時間のデフォルト値は<code>00:00</code>です。</li>
-<li><strong>タイムゾーン</strong>で、<code>country/city</code>形式でタイムゾーンを指定します。例：<code>Europe/London</code>。開始時間を提供する場合、このフィールドは必須です。</li>
-<li><strong>Cron</strong>には、スケジュールされた処理に使用するクォーツcron式を入力します。例えば、<code>20 30 * * * ?</code>は、毎時、毎日、週の日、年の30分20秒にファイルを処理します。詳細については、<a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz: Cron Trigger Tutorial</a>を参照してください。</li>
+<li><strong>開始時間</strong>で、ジョブ処理の開始時間を <code>hh:mm</code> 形式で指定します。開始時間のデフォルト値は <code>00:00</code>です。</li>
+<li><strong>タイムゾーン</strong>で、<code>country/city</code> 形式でタイムゾーンを指定します。例: <code>Europe/London</code>。開始時間を提供する場合、このフィールドは必須です。</li>
+<li><strong>Cron</strong>で、スケジュール処理に使用するクォーツcron式を入力します。例えば <code>20 30 * * * ?</code> は、毎時、毎日、週の日、年の30分20秒にファイルを処理します。詳細については、<a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz: Cron Trigger Tutorial</a>を参照してください。</li>
 </ol>
 <h2 id="アクション-1">アクション</h2>
-<p>以下のセクションでは、各アクションでサポートされているパラメータをリストアップします。</p>
-<h3 id="全イベントデータを送信">全イベントデータを送信</h3>
+<p>次のセクションでは、各アクションのサポートされているパラメーターをリストします。</p>
+<h3 id="イベントデータ全体の送信">イベントデータ全体の送信</h3>
+<h4 id="パラメーター">パラメーター</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>クラウドバケット</td>
+<td>クラウドバケットを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksカタログ</td>
+<td>Databricksカタログを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksスキーマ</td>
+<td>Databricksスキーマを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksテーブル</td>
+<td>Databricksテーブルを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>ペイロードを記録する列</td>
+<td>ペイロードを記録するための <code>VARIANT</code> 列を選択してください。</td>
+</tr>
+<tr>
+<td>タイムスタンプを記録する列</td>
+<td>タイムスタンプを記録する列を選択してください。</td>
+</tr>
+<tr>
+<td>タイムスタンプ属性</td>
+<td>デフォルトでは現在のタイムスタンプがアクションのために送信されます。異なる形式のタイムスタンプを送信したい場合は、属性を選択してください。属性が割り当てられて空の値を生成した場合、現在のタイムスタンプを送信します。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="カスタムイベントデータの送信">カスタムイベントデータの送信</h3>
+<h4 id="パラメーター-1">パラメーター</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>クラウドバケット</td>
+<td>クラウドバケットを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksカタログ</td>
+<td>Databricksカタログを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksスキーマ</td>
+<td>Databricksスキーマを選択するか、カスタム値を提供してください。</td>
+</tr>
+<tr>
+<td>Databricksテーブル</td>
+<td>Databricksテーブルを選択するか、カスタム値を提供してください。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="イベントパラメーター">イベントパラメーター</h4>
+<p>Databricksテーブルの列にパラメーターをマッピングします。少なくとも1つのパラメーターをマッピングする必要があります。</p>
+<h3 id="訪問データ全体の送信">訪問データ全体の送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -517,36 +699,40 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
+<td>クラウドバケット</td>
+<td>クラウドバケットを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksカタログ</td>
-<td>Databricksカタログを選択するか、カスタム値を提供します。</td>
+<td>Databricks カタログ</td>
+<td>Databricks カタログを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksスキーマ</td>
-<td>Databricksスキーマを選択するか、カスタム値を提供します。</td>
+<td>Databricks スキーマ</td>
+<td>Databricks スキーマを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksテーブル</td>
-<td>Databricksテーブルを選択するか、カスタム値を提供します。</td>
+<td>Databricks テーブル</td>
+<td>Databricks テーブルを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>ペイロードを記録する列</td>
-<td>ペイロードを記録する<code>VARIANT</code>列を選択します。</td>
+<td>訪問データを記録する列</td>
+<td>訪問データを記録するための <code>VARIANT</code> 列を選択してください。</td>
 </tr>
 <tr>
 <td>タイムスタンプを記録する列</td>
-<td>タイムスタンプを記録する列を選択します。</td>
+<td>タイムスタンプを記録する列を選択してください。</td>
 </tr>
 <tr>
 <td>タイムスタンプ属性</td>
-<td>デフォルトでは、アクションの現在のタイムスタンプを送信します。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
+<td>デフォルトではアクションの現在のタイムスタンプが送信されます。異なる形式で送信したい場合は、タイムスタンプとして割り当てる属性を選択してください。属性が割り当てられ、空の値が生成された場合は、現在のタイムスタンプを送信します。</td>
+</tr>
+<tr>
+<td>訪問データに現在の訪問データを含める</td>
+<td>訪問データに現在の訪問データを含めるか選択してください。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
+<h3 id="カスタム訪問データの送信">カスタム訪問データの送信</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -557,99 +743,25 @@
 </thead>
 <tbody>
 <tr>
-<td>Amazon S3バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
+<td>クラウドバケット</td>
+<td>クラウドバケットを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksカタログ</td>
-<td>Databricksカタログを選択するか、カスタム値を提供します。</td>
+<td>Databricks カタログ</td>
+<td>Databricks カタログを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksスキーマ</td>
-<td>Databricksスキーマを選択するか、カスタム値を提供します。</td>
+<td>Databricks スキーマ</td>
+<td>Databricks スキーマを選択するか、カスタム値を入力してください。</td>
 </tr>
 <tr>
-<td>Databricksテーブル</td>
-<td>Databricksテーブルを選択するか、カスタム値を提供します。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="イベントパラメータ">イベントパラメータ</h4>
-<p>Databricksテーブルの列にパラメータをマッピングします。少なくとも1つのパラメータをマッピングする必要があります。</p>
-<h3 id="全訪問データを送信">全訪問データを送信</h3>
-<h4 id="パラメータ-2">パラメータ</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon S3バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksカタログ</td>
-<td>Databricksカタログを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksスキーマ</td>
-<td>Databricksスキーマを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksテーブル</td>
-<td>Databricksテーブルを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>訪問データを記録する列</td>
-<td>訪問データを記録する<code>VARIANT</code>列を選択します。</td>
-</tr>
-<tr>
-<td>タイムスタンプを記録する列</td>
-<td>タイムスタンプを記録する列を選択します。</td>
-</tr>
-<tr>
-<td>タイムスタンプ属性</td>
-<td>デフォルトでは、アクションの現在のタイムスタンプを送信します。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
-</tr>
-<tr>
-<td>訪問データに現在の訪問データを含める</td>
-<td>現在の訪問データを訪問データに含めるかどうかを選択します。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="カスタム訪問データを送信">カスタム訪問データを送信</h3>
-<h4 id="パラメータ-3">パラメータ</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon S3バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksカタログ</td>
-<td>Databricksカタログを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksスキーマ</td>
-<td>Databricksスキーマを選択するか、カスタム値を提供します。</td>
-</tr>
-<tr>
-<td>Databricksテーブル</td>
-<td>Databricksテーブルを選択するか、カスタム値を提供します。</td>
+<td>Databricks テーブル</td>
+<td>Databricks テーブルを選択するか、カスタム値を入力してください。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="訪問パラメータ">訪問パラメータ</h4>
-<p>Databricksテーブルの列にパラメータをマッピングします。少なくとも1つのパラメータをマッピングする必要があります。</p>
+<p>Databricks テーブルの列にパラメータをマッピングしてください。少なくとも1つのパラメータをマッピングする必要があります。</p>
 
 </div>
 
@@ -695,7 +807,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2025年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -710,18 +822,23 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-%E3%81%8B%E3%82%89-aws-s3-%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">Tealium から AWS S3 への接続</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks-%E3%81%8B%E3%82%89-aws-s3-%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">Databricks から AWS S3 への接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-%E3%81%8B%E3%82%89%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E4%BF%9D%E5%AD%98%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">Tealium からクラウド保存への接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks%E3%81%8B%E3%82%89aws-s3%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">DatabricksからAWS S3への接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks%E3%81%8B%E3%82%89azure-blob-storage%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">DatabricksからAzure Blob Storageへの接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks%E3%81%8B%E3%82%89google-cloud-storage%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">DatabricksからGoogle Cloud Storageへの接続</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%8E%E3%83%BC%E3%83%88%E3%83%96%E3%83%83%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ノートブックを作成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B8%E3%83%A7%E3%83%96%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ジョブを作成する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-aws-s3" href="javascript:void(0)">Amazon AWS S3</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#azure-blob-storage" href="javascript:void(0)">Azure Blob Storage</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#google-cloud-storage" href="javascript:void(0)">Google Cloud Storage</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%8E%E3%83%BC%E3%83%88%E3%83%96%E3%83%83%E3%82%AF%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ノートブックの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B8%E3%83%A7%E3%83%96%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ジョブの作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">全イベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">全訪問データを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データを送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E5%85%A8%E4%BD%93%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">イベントデータ全体の送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E5%85%A8%E4%BD%93%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">訪問データ全体の送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データの送信</a></li>
               </nav>
   </aside></nav>
 

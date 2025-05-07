@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -341,8 +341,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".linking-to-github">Linking to GitHub</a>
         <ul class="pl2 bl b--primary bw1 linking-to-github desktopmenu animated fadeIn list "><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/linking-to-github/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-linking-to-github">About linking to GitHub</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/linking-to-github/faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linking-to-github-faq">Linking to GitHub FAQ</a></li></ul>
+        <a href="/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-linking-to-github">Manage linking to GitHub</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/client-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-bot-filtering">Client-side bot filtering</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -465,10 +464,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not use GitHub or encounter permissions issues with the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript extension</a> because you do not have a public GitHub repository, we recommend that you use the <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript Extension API</a> instead of linking to GitHub.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not use GitHub or do not have a public GitHub repository, we recommend that you use the <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript Extension API</a> instead of linking to GitHub.</p>
 <h2 id="link-a-github-account">Link a GitHub account</h2>
-<p>To link your GitHub account, you need your GitHub username and a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. Linking your GItHub account creates a secure connection to your iQ Tag Management account that allows repository files to be referenced in your iQ Tag Management configuration.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>For the link to succeed your GitHub account must have at least one public repository.</p>
+<p>To link a GitHub account hosted at <code>github.com</code>, you need your GitHub username and a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. Linking your GItHub account creates a secure connection to your iQ Tag Management account that allows repository files to be referenced in your iQ Tag Management configuration.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>For the link to succeed, your GitHub account must be hosted at <code>github.com</code> and have at least one public repository. GitHub Enterprise Server accounts are not supported.</p>
 <h4 id="personal-access-tokens-and-repo-scope">Personal access tokens and repo scope</h4>
 <p>You must have a personal access token to link your GitHub account. This token is used instead of a password to create a more secure connection. When you create a personal access token in GitHub you define the scope of access for the token. If you want to reference files from a private repository you must select the <strong>repo</strong> scope when you create your access token.</p>
 <figure><a class="slb" href="/images/iq-tag-management/new-personal-access-token-2021-06-08-13-13-33.png"><img src="/images/iq-tag-management/new-personal-access-token-2021-06-08-13-13-33.png"
@@ -491,7 +490,7 @@ This is the username or email address you use to sign in to GitHub.</p>
 <li>
 <p>Enter your <strong>Access Token</strong>.<br>
 This is the token used to authenticate your account with third-party applications.<br>
-<p class="tip"><i class="fa fa-info-circle"></i>Locate your access token in GitHub by going to <strong>User &gt; Settings &gt; Developer Settings &gt; Personal Access Tokens</strong>.</p></p>
+<p class="tip"><i class="fa fa-info-circle"></i>Locate your access token in GitHub by going to <strong>User &gt; Settings &gt; Developer Settings &gt; Personal Access Tokens</strong>. Ensure that you store the token securely and do not share it with others to maintain account security.</p></p>
 </li>
 <li>
 <p>Click <strong>Link Account</strong>.<br>
@@ -505,33 +504,31 @@ This is the token used to authenticate your account with third-party application
 <p>Click <strong>Save Changes</strong>.</p>
 </li>
 </ol>
+<h3 id="troubleshoot-invalid-authorization-messages">Troubleshoot invalid authorization messages</h3>
+<p>If you receive an invalid authorization message when attempting to link your GitHub account, check the following:</p>
+<ul>
+<li>Check the <a href="https://www.githubstatus.com/">github.com status page</a> to confirm that the service is up. There is nothing you can do until the service is up again. You can keep using the extension as normal but will not be able to get the latest code from GitHub. If this is the case, a message with a timestamp will display that the system is unable to connect until GitHub is back up.</li>
+<li>The URL being used to retrieve the file no longer is valid. For example, the file was renamed or deleted on GitHub. You can delete the snippet if it is no longer needed and replace it with a new snippet containing the new URL.</li>
+<li>There are too many snippets trying to be synced (more than 10). Delete any unnecessary snippets.</li>
+<li>The personal access token was revoked or the GitHub account was deleted. Contact your GitHub account manager or contact GitHub support. In some cases, support may need to unlink your account and relink it with a new access token.</li>
+<li>You are using an account hosted at <code>github.com</code>. Self-hosted GitHub Enterprise accounts are not supported.</li>
+<li>Ensure that your GitHub account has at least one public repository.</li>
+</ul>
+<p>If the issue persists, consider using <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript Extension API</a> instead of linking to GitHub.</p>
 <h2 id="unlink-a-github-account">Unlink a GitHub account</h2>
-<p>Remove access to the GitHub account by unlinking it. When you unlink the GitHub account, any files referenced in your configuration will remain, but they can no longer be synchronized.</p>
-<p>To unlink to your GitHub account:</p>
+<p>Remove access to the GitHub account by removing the link. When you remove the link to the GitHub account, any files referenced in your configuration remain unchanged, but they are no longer synchronized. If the account is relinked later, the referenced files reconnect to the repository and synchronization resumes.</p>
+<p>To unlink your GitHub account:</p>
 <ol>
 <li>Log in to your Tealium iQ Tag Management account.</li>
 <li>In the admin menu, click <strong>Manage GitHub Account</strong>.</li>
 <li>Click <strong>Unlink Account</strong>.</li>
 </ol>
+<p>If you unlink your GitHub account, the referenced files remain unchanged in your configuration, but are now disconnected from the GitHub repository and can no longer be synchronized.</p>
+<p>If the account is unlinked and then linked again, the referenced files reconnect to the repository and can be synchronized again.</p>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
-
-  
-  <a href="/iq-tag-management/administration/linking-to-github/faq/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
-    <section class="tl pr3">
-      <div>Linking to GitHub FAQ</div>
-    </section>
-    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Linking to GitHub FAQ"</title>
-      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-    </svg>
-  </a>
-  
-  
-</div><div class="di mr3">
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
   
   
   <a href="/iq-tag-management/administration/linking-to-github/about/"
@@ -573,7 +570,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 18, 2024 
+          <p>This page was last updated:  May 2, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -588,7 +585,8 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#link-a-github-account" href="javascript:void(0)">Link a GitHub account</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#unlink-a-github-account" href="javascript:void(0)">Unlink a GitHub account</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#troubleshoot-invalid-authorization-messages" href="javascript:void(0)">Troubleshoot invalid authorization messages</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#unlink-a-github-account" href="javascript:void(0)">Unlink a GitHub account</a></li>
               </nav>
   </aside></nav>
 

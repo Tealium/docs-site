@@ -182,14 +182,29 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="track-views">Track Views</h2>
-<p>To track a screen view, create a <code>TealiumView</code> object and pass it to the <a href="/platforms/flutter/api/tealium/#track"><code>track()</code></a> method:</p>
-<pre tabindex="0"><code>var view = TealiumView(&#39;VIEW_NAME&#39;, {&#39;KEY&#39;: &#39;VALUE&#39;});
-Tealium.track(view);
-</code></pre><h2 id="track-events">Track Events</h2>
-<p>To track a non-view event, create a <code>TealiumEvent</code> object and pass it to the <a href="/platforms/flutter/api/tealium/#track"><code>track()</code></a> method:</p>
-<pre tabindex="0"><code>var event = TealiumEvent(&#39;EVENT_NAME&#39;, {&#39;KEY&#39;: &#39;VALUE&#39;});
-Tealium.track(event);
-</code></pre>
+<p>To track a screen view, create a <code>TealiumView</code> object and pass it to the <a href="/platforms/flutter/api/tealium/#track"><code>track()</code></a> method. <code>TealiumView</code> consists of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional object of event data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">screenView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumView</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;purchase&#39;</span>, 
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;customer_id&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abc123&#39;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;order_total&#39;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10.00</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;product_id&#39;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;order_id&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">screenView</span>);
+</span></span></code></pre></div><h2 id="track-events">Track Events</h2>
+<p>To track a non-view event, create a <code>TealiumEvent</code> object and pass it to the <a href="/platforms/flutter/api/tealium/#track"><code>track()</code></a> method. <code>TealiumEvent</code> consists of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional object of event data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumEvent</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;cart_add&#39;</span>, 
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;customer_id&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abc123&#39;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;product_id&#39;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;product_price&#39;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>);
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
@@ -249,7 +264,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 15, 2024 
+          <p>This page was last updated:  April 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

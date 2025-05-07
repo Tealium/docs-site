@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -478,11 +478,13 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-save-publish">Save and publish</a>
         <ul class="pl2  ss-save-publish desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/about-save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-about-save-publish">Save and publish changes</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-save-publish">About</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-and-publish">Save and publish</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".concurrent-user-management">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li></ul>
+        <a href="/server-side/save-publish/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-publish-best-practices">Concurrency best practices</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-labels">Labels</a>
         <ul class="pl2  ss-labels desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -563,13 +565,30 @@
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>Each account can contain several profiles. The profile switcher lets you quickly switch accounts, profiles, and profile versions.</p>
-<p>The profile switcher displays the latest version of the current profile, your most recently visited profiles, and the last profile you visited.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/ea-server-side-profile-switcher.png"><img src="/images/server-side/save-publish/ea-server-side-profile-switcher.png"
+         alt="Server-side profile switcher example"
+         title="Server-side profile switcher example"/>
+    </a>
+</figure>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you switch to the server-side platform from a client-side profile, the most recently saved version of the profile is loaded. It might not be the same version you had been working on previously.</p>
+<h3 id="version-status-messages">Version status messages</h3>
+<p>When you select a version in the profile switcher, it displays one of the following messages that compares your version&rsquo;s changes to the currently published version:</p>
+<ul>
+<li><strong>You are ahead of the published version</strong><br>
+Your current version includes changes that are not in the currently published version.</li>
+<li><strong>You are up to date</strong><br>
+Your current version and the currently published version match.</li>
+<li><strong>You are behind the published version</strong><br>
+The currently published version includes changes that are not in your current version. To view those changes, click <strong>View latest published changes</strong>.</li>
+</ul>
+<p>For more about these status messages and how to use them, see <a href="/server-side/save-publish/about/">About Server-Side Saving and Publishing</a>.</p>
 <h2 id="switch-profiles-and-versions">Switch profiles and versions</h2>
 <p>Use the following steps to switch to another profile:</p>
 <ol>
 <li>Click the profile drop-down menu.</li>
 <li>From the <strong>Profile</strong> drop-down menu, select the profile you want to switch to.</li>
 <li>From the <strong>Version</strong> drop-down menu, select the version of the profile to switch to.</li>
+<li>When you select a version, the profile switcher compares the currently selected version, including any changes you have made to it, to the currently published version.</li>
 <li>Click <strong>Load Version</strong>.</li>
 </ol>
 <p>You can also use the <strong>Load this Version</strong> option in <a href="/server-side/save-publish/version-history/">Version History</a> to switch versions.</p>
@@ -633,7 +652,8 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#switch-profiles-and-versions" href="javascript:void(0)">Switch profiles and versions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#version-status-messages" href="javascript:void(0)">Version status messages</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#switch-profiles-and-versions" href="javascript:void(0)">Switch profiles and versions</a></li>
               </nav>
   </aside></nav>
 

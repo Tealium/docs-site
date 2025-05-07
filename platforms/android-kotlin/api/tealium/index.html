@@ -511,62 +511,36 @@ Additional listeners available at <code>com.tealium.core.messaging</code>.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">})</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="track"><code>track()</code></h3>
-<p>Tracks a screen view or event with optional associated data using the <code>TealiumView</code> or <code>TealiumEvent</code> type.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;VIEW_NAME&#34;</span><span style="color:#f92672">,</span> mapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span> to <span style="color:#e6db74">&#34;context value&#34;</span><span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumlView<span style="color:#f92672">)</span>
+<p>Tracks a screen view or event with optional event data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumlEvent<span style="color:#f92672">)</span>
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th style="text-align:left">Parameters</th>
 <th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>viewName</code></td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">The name of the screen to be tracked</td>
-<td style="text-align:left"><code>&quot;Buy Now View&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>dataLayer</code></td>
-<td style="text-align:left"><code>Map</code></td>
-<td style="text-align:left">(Optional) An object of key-value pair data to be tracked in the data layer</td>
-<td style="text-align:left"><code>mapOf(&quot;product_id&quot; to &quot;widget123&quot;)</code></td>
+<td style="text-align:left"><code>tealiumlEvent</code></td>
+<td style="text-align:left"><code>TealiumView</code> or <code>TealiumEvent</code></td>
+<td style="text-align:left">A dispatch object with the event name and optional event data.</td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The value passed to <code>viewName</code> appears in the data layer as the variable <code>tealium_event</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;EVENT_NAME&#34;</span><span style="color:#f92672">,</span> mapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span> to <span style="color:#e6db74">&#34;context value&#34;</span><span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumEvent<span style="color:#f92672">)</span>
-</span></span></code></pre></div><table>
-<thead>
-<tr>
-<th style="text-align:left">Parameters</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>eventName</code></td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">The name of the event to be tracked</td>
-<td style="text-align:left"><code>&quot;Buy Now Event&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>dataLayer</code></td>
-<td style="text-align:left"><code>Map</code></td>
-<td style="text-align:left">(Optional) An object of key-value pair data to be tracked in the data layer</td>
-<td style="text-align:left"><code>mapOf(&quot;product_id&quot; to &quot;widget123&quot;)</code></td>
-</tr>
-</tbody>
-</table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The value passed to <code>eventName</code> appears in the data layer as the variable <code>tealium_event</code>.</p>
-<h3 id="visitor"><code>visitor</code></h3>
+<p>To track events, pass a <a href="#class-tealiumview"><code>TealiumView</code></a> or <a href="#class-tealiumevent"><code>TealiumEvent</code></a> object to the <code>track()</code> method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumlEvent <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;purchase&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>  mutableMapOf<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span> to <span style="color:#e6db74">&#34;abc123&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_total&#34;</span> to <span style="color:#ae81ff">10.00</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PROD123&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROD456&#34;</span><span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_id&#34;</span> to <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumlEvent<span style="color:#f92672">);</span>
+</span></span></code></pre></div><h3 id="visitor"><code>visitor</code></h3>
 <p>Returns the full AdobeVisitor instance.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>var tealium<span style="color:#f92672">:</span> Tealium<span style="color:#f92672">?</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//...
@@ -580,6 +554,79 @@ Additional listeners available at <code>com.tealium.core.messaging</code>.</p>
 </span></span></code></pre></div><h3 id="visitorid"><code>visitorId</code></h3>
 <p>The current String for the Visitor ID. It is stored within the data layer, and may be overridden if required.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val visitorId <span style="color:#f92672">=</span> tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">visitorId</span>
+</span></span></code></pre></div><h2 id="interface-tealiumdispatch">Interface: <code>TealiumDispatch</code></h2>
+<p>An interface that defines the type of dispatch to be tracked. The following classes implement <code>TealiumDispatch</code>:</p>
+<h3 id="class-tealiumevent">Class: <code>TealiumEvent</code></h3>
+<p>To track a user&rsquo;s interaction with a screen, pass an instance of <code>TealiumEvent(tealiumEvent, eventData)</code> to the <a href="#track"><code>Track()</code></a> method. <code>TealiumEvent</code> consists of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional mutable map.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span>tealiumEvent<span style="color:#f92672">,</span> eventData<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumEvent<span style="color:#f92672">);</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Parameters</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>tealiumEvent</code></td>
+<td style="text-align:left"><code>string</code></td>
+<td style="text-align:left">The event name, passed as the <code>tealium_event</code> attribute.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>eventData</code></td>
+<td style="text-align:left"><code>MutableMap&lt;String, Any&gt;</code></td>
+<td style="text-align:left">(Optional) Data to be sent with the event in key-value format.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;cart_add&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>  mutableMapOf<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span> to <span style="color:#e6db74">&#34;abc123&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PROD123&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROD456&#34;</span><span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_price&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">4.00</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">6.00</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumEvent<span style="color:#f92672">);</span>
+</span></span></code></pre></div><h3 id="class-tealiumview">Class: <code>TealiumView</code></h3>
+<p>To track screen views, pass an instance of <code>TealiumView(tealiumEvent, eventData)</code> to the <a href="#track"><code>Track()</code></a> method. <code>TealiumView</code> consists of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional mutable map.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span>tealiumEvent<span style="color:#f92672">,</span> eventData<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumView<span style="color:#f92672">);</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Parameters</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>tealiumEvent</code></td>
+<td style="text-align:left"><code>string</code></td>
+<td style="text-align:left"><code>tealium_event</code> name of view event or screen.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>eventData</code></td>
+<td style="text-align:left"><code>MutableMap&lt;String, Any&gt;</code></td>
+<td style="text-align:left">(Optional) Data to be sent with the event in key-value format.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealiumView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;purchase&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>  mutableMapOf<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span> to <span style="color:#e6db74">&#34;abc123&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_total&#34;</span> to <span style="color:#ae81ff">10.00</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PROD123&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROD456&#34;</span><span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_id&#34;</span> to <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumView<span style="color:#f92672">);</span>
 </span></span></code></pre></div>
 </div>
 
@@ -640,7 +687,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 10, 2025 
+          <p>This page was last updated:  April 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -674,6 +721,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track" href="javascript:void(0)">track()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor" href="javascript:void(0)">visitor</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitorid" href="javascript:void(0)">visitorId</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#interface-tealiumdispatch" href="javascript:void(0)">Interface: TealiumDispatch</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#class-tealiumevent" href="javascript:void(0)">Class: TealiumEvent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#class-tealiumview" href="javascript:void(0)">Class: TealiumView</a></li>
               </nav>
   </aside></nav>
 

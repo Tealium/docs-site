@@ -514,14 +514,14 @@
 <ul>
 <li>Set <strong>Scope</strong> to <strong>After Load Rules (default)</strong></li>
 <li>Set <strong>Occurrence</strong> to <strong>Run Always</strong></li>
-<li>Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing <code>CUSTOM_LOGIC</code> with the logic for your vendor.</li>
+<li>Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing <code>CUSTOM_LOGIC</code> with the logic for your vendor:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
-</span></span></code></pre></div><p>For example, the following code is for OneTrust.</p>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>For example, the following code is for OneTrust:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
 </span></span></code></pre></div><p>If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the <code>ad_storage</code> parameter to attributes for your specific case.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
@@ -531,25 +531,30 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Universal Pixel ID (pixel_id)</td>
-<td>[String]</td>
+<td><code>pixel_id</code></td>
+<td>String</td>
+<td>Universal pixel ID.</td>
 </tr>
 <tr>
-<td>Toggle Automatic PageView Tracking (auto_pageview_tracking)</td>
-<td>[Boolean,String]</td>
+<td><code>auto_pageview_tracking</code></td>
+<td>Boolean, String</td>
+<td>Toggle automatic pageview tracking.</td>
 </tr>
 <tr>
-<td>Toggle Automatic Purchase Tracking (auto_purchase_tracking)</td>
-<td>[Boolean,String]</td>
+<td><code>auto_purchase_tracking</code></td>
+<td>Boolean, String</td>
+<td>Toggle automatic purchase tracking.</td>
 </tr>
 <tr>
-<td>Base URL (base_url)</td>
-<td>[String]</td>
+<td><code>base_url</code></td>
+<td>String</td>
+<td>Base URL.</td>
 </tr>
 </tbody>
 </table>
@@ -558,21 +563,25 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>List of Item Categories (item_type) (Overrides _ccat)</td>
-<td>[Array]</td>
+<td><code>item_type</code></td>
+<td>Array</td>
+<td>List of item categories. (Overrides <code>_ccat</code>).</td>
 </tr>
 <tr>
-<td>List of Item IDs (item_id) (Overrides _cprod)</td>
-<td>[Array]</td>
+<td><code>item_id</code></td>
+<td>Array</td>
+<td>List of item IDs. (Overrides <code>_cprod</code>).</td>
 </tr>
 <tr>
-<td>List of Item Names (item_name) (Overrides _cprodname)</td>
-<td>[Array]</td>
+<td><code>item_name</code></td>
+<td>Array</td>
+<td>List of item names. (Overrides <code>_cprodname</code>).</td>
 </tr>
 </tbody>
 </table>
@@ -586,40 +595,40 @@
 </thead>
 <tbody>
 <tr>
-<td>AddPaymentInfo</td>
-<td>AddPaymentInfo</td>
+<td><code>AddPaymentInfo</code></td>
+<td>Add payment info.</td>
 </tr>
 <tr>
-<td>AddToCart</td>
-<td>AddToCart</td>
+<td><code>AddToCart</code></td>
+<td>Add to cart.</td>
 </tr>
 <tr>
-<td>InitiateCheckout</td>
-<td>InitiateCheckout</td>
+<td><code>InitiateCheckout</code></td>
+<td>Initiate checkout.</td>
 </tr>
 <tr>
-<td>ItemView</td>
-<td>ItemView</td>
+<td><code>ItemView</code></td>
+<td>Item view.</td>
 </tr>
 <tr>
-<td>LandingPage</td>
-<td>LandingPage</td>
+<td><code>LandingPage</code></td>
+<td>Landing page.</td>
 </tr>
 <tr>
-<td>Lead</td>
-<td>Lead</td>
+<td><code>Lead</code></td>
+<td>Lead.</td>
 </tr>
 <tr>
-<td>PageView</td>
-<td>PageView</td>
+<td><code>PageView</code></td>
+<td>Page view.</td>
 </tr>
 <tr>
-<td>Purchase</td>
-<td>Purchase</td>
+<td><code>Purchase</code></td>
+<td>Purchase.</td>
 </tr>
 <tr>
-<td>Custom</td>
-<td>Custom</td>
+<td><code>Custom</code></td>
+<td>Custom event.</td>
 </tr>
 </tbody>
 </table>
@@ -633,52 +642,52 @@
 </thead>
 <tbody>
 <tr>
-<td>Item Type (item_type)</td>
-<td>item_type</td>
+<td><code>item_type</code></td>
+<td>Item type.</td>
 </tr>
 <tr>
-<td>Item ID (item_id)</td>
-<td>item_id</td>
+<td><code>item_id</code></td>
+<td>Item ID.</td>
 </tr>
 <tr>
-<td>Item Name (item_name)</td>
-<td>item_name</td>
+<td><code>item_name</code></td>
+<td>Item name.</td>
 </tr>
 <tr>
-<td>Custom Parameter</td>
-<td>Custom_Parameter</td>
+<td><code>Custom_Parameter</code></td>
+<td>Custom parameter.</td>
 </tr>
 <tr>
-<td>AddPaymentInfo</td>
-<td>AddPaymentInfo</td>
+<td><code>AddPaymentInfo</code></td>
+<td>Add payment info.</td>
 </tr>
 <tr>
-<td>AddToCart</td>
-<td>AddToCart</td>
+<td><code>AddToCart</code></td>
+<td>Add to cart.</td>
 </tr>
 <tr>
-<td>InitiateCheckout</td>
-<td>InitiateCheckout</td>
+<td><code>InitiateCheckout</code></td>
+<td>Initiate checkout.</td>
 </tr>
 <tr>
-<td>ItemView</td>
-<td>ItemView</td>
+<td><code>ItemView</code></td>
+<td>Item view.</td>
 </tr>
 <tr>
-<td>LandingPage</td>
-<td>LandingPage</td>
+<td><code>LandingPage</code></td>
+<td>Landing page.</td>
 </tr>
 <tr>
-<td>Lead</td>
-<td>Lead</td>
+<td><code>Lead</code></td>
+<td>Lead.</td>
 </tr>
 <tr>
-<td>Purchase</td>
-<td>Purchase</td>
+<td><code>Purchase</code></td>
+<td>Purchase.</td>
 </tr>
 <tr>
-<td>Custom Event</td>
-<td>Custom_Event</td>
+<td><code>Custom_Event</code></td>
+<td>Custom event.</td>
 </tr>
 </tbody>
 </table>
@@ -742,7 +751,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 9, 2020 
+          <p>This page was last updated:  May 1, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

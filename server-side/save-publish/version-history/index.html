@@ -478,11 +478,13 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ss-save-publish">Save and publish</a>
         <ul class="pl2 bl b--primary bw1 ss-save-publish desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/about-save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-about-save-publish">Save and publish changes</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-save-publish">About</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-and-publish">Save and publish</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".concurrent-user-management">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-publish-best-practices">Concurrency best practices</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Version history</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".concurrent-user-management">Concurrent users</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Version history</a></li></ul>
+        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-labels">Labels</a>
         <ul class="pl2  ss-labels desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -562,7 +564,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>In the sidebar, click <strong>Version History</strong> to view the version history.</p>
+<p>In the sidebar, click <strong>Server-Side Versions</strong> to view the version history.</p>
 <figure><a class="slb" href="/images/server-side/versions/server-side-versions-table.png"><img src="/images/server-side/versions/server-side-versions-table.png"
          alt="Versions interface"
          title="Versions interface"/>
@@ -572,20 +574,20 @@
 <h2 id="versions-table">Versions table</h2>
 <p>The versions table lists the following information about each action:</p>
 <ul>
-<li><strong>Version</strong>: The name of the version, who performed the action, and the date of the action.</li>
-<li><strong>Status</strong>: Whether the version was saved or published.</li>
+<li><strong>Version</strong>: The name of the version or revision, who performed the action, and the date of the action. A revision is an incremental <strong>Save</strong> of a version.</li>
+<li><strong>Status</strong>: Whether the version or revision was saved or published.</li>
 <li><strong>Notes</strong>: The user notes at the time of the action.</li>
 <li><strong>Details</strong>: View the details about the action in the <a href="#revision-details"><strong>Revision Details</strong></a> window.</li>
 </ul>
 <p>Additional actions include:</p>
 <ul>
 <li><strong>Load this version</strong>: Switch to the selected revision.</li>
-<li><strong>Revert to this Revision</strong>: Duplicates the selected revision and publish it. The table will refresh with the new information. If the revision was published within the past three months and you have publishing permissions, you can revert to the selected revision.</li>
+<li><strong>Revert to this Revision</strong>: Duplicates the selected revision and publishes it. The table will refresh with the new information. If the revision was published within the past three months and you have publishing permissions, you can revert to the selected revision.</li>
 </ul>
 <p>The table also displays the branching relationship between the revision that you select and the other revisions in the table.</p>
 <ul>
-<li><strong>Save</strong> creates a new revision of a version.</li>
-<li><strong>Save As</strong> creates a new branch from a version.</li>
+<li><strong>Save</strong>: Creates a revision of the profile version.</li>
+<li><strong>Save As</strong>: Creates a new version of the profile.</li>
 </ul>
 <p>Darker lines represent activity that appears in the selected version, while lighter lines represent progress since the selected version.</p>
 <h3 id="dashboard-filters">Dashboard filters</h3>
@@ -641,17 +643,32 @@
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/server-side/save-publish/test/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>About testing</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"About testing"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
   
   
-  <a href="/server-side/save-publish/concurrent-users/"
+</div><div class="di mr3">
+  
+  
+  <a href="/server-side/save-publish/best-practices/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Concurrent users "</title>
+      <title>"Concurrency best practices "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Concurrent users</div>
+      <div>Concurrency best practices</div>
     </section>
   </a>
   
@@ -683,7 +700,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 21, 2025 
+          <p>This page was last updated:  May 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

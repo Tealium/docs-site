@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -478,11 +478,13 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ss-save-publish">Save and publish</a>
         <ul class="pl2 bl b--primary bw1 ss-save-publish desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/about-save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-about-save-publish">Save and publish changes</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-save-publish">About</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-and-publish">Save and publish</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/save-publish/concurrent-users/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".concurrent-user-management">Concurrent users</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li></ul>
+        <a href="/server-side/save-publish/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-publish-best-practices">Concurrency best practices</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/version-history/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Version history</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">About testing</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Integrate with Tealium iQ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-labels">Labels</a>
         <ul class="pl2  ss-labels desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -555,50 +557,118 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article explains how the Customer Data Hub manages changes from concurrent users.
+      This article explains how the platform manages changes from concurrent users.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The Customer Data Hub offers basic concurrent user support for users that are logged into Customer Data Hub at the same time. The options available to you are dependent on whether you have unsaved changes of your own.</p>
-<p>To begin, all active users should be working on the latest published version of a profile. Users are informed when changes are introduced by other active members, regardless of whether or not the change has been saved and published.</p>
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li><a href="/administration/about-permissions/">Platform permissions</a> enabled on the account.</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>The server-side platform offers support for managing changes from concurrent users who are logged into the server-side platform at the same time.</p>
+<p>The following functionality is supported:</p>
+<ul>
+<li>Users see active collaborators displayed in the UI.</li>
+<li>Logged-in users receive in-app notifications about save and publish actions from other users.</li>
+<li>Saved changes from other users are made available to integrate into your unsaved changes.</li>
+</ul>
+<p>To understand the possible concurrency scenarios, the following terms are helpful:</p>
+<ul>
+<li><strong>Currently published version</strong>: The configuration set that is currently in production.</li>
+<li><strong>Current version</strong>: The configuration set that you are working on.</li>
+<li><strong>Your changes</strong>: The unsaved changes you have made to the current version.</li>
+</ul>
+<h2 id="enable-concurrency">Enable concurrency</h2>
+<p>To enable concurrency on a profile, use the following steps:</p>
+<ol>
+<li>In the admin menu, click <strong>Manage Concurrency</strong>. The <strong>Manage Concurrency for this Profile</strong> screen appears.</li>
+<li>Toggle <strong>Enable Concurrency</strong> to <strong>On</strong>.</li>
+</ol>
+<h2 id="how-it-works">How it works</h2>
+<p>When you are logged in and anticipate changes from concurrent users, it&rsquo;s important to know which version you are working in. The current version is displayed in the heading, below the account and profile:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/server-side-concurrency-heading.png"><img src="/images/server-side/save-publish/server-side-concurrency-heading.png"
+         alt="Which version am I using?"
+         title="Which version am I using?"/>
+    </a>
+</figure>
+<p>When you want to start a new long-term project, load the currently published version using the profile switcher and perform a <strong>Save As</strong> to create a new version for your planned changes. Make all configuration changes to the new version. When the changes are completed and tested, publish the new version to production.</p>
+<p>When you make changes to a version, logged-in users who have that version loaded are notified, even if you haven’t saved or published the changes. After you save the changes, those other users are notified that they can integrate those changes into their versions to ensure they have the latest updates. If you do not immediately update your version to include those changes, you can include the changes the next time you save or publish.</p>
 <h2 id="viewing-other-active-users">Viewing other active users</h2>
-<p>When you log in to the Customer Data Hub, the product component that you are working in is highlighted in blue in the left navigation bar. If another user is also logged into Customer Data Hub and active, that user&rsquo;s initials appear as a circle with a unique background color at the top of the screen. The same unique color is used to highlight which area of the product the other user is currently working in, as shown in the following example:</p>
+<p>When you log in, the product area that you are working in is highlighted in blue in the left navigation bar. If another user is also logged in and active on your version, that user&rsquo;s initials appear as a circle with a unique background color at the top of the screen. The same unique color is used to highlight which area of the product the other user is currently working in, as shown in the following example:</p>
 <figure><a class="slb" href="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"
          alt="3 Users logged in"
          title="3 Users logged in"/>
     </a>
 </figure>
-<h2 id="acknowledging-that-another-user-has-initiated-a-change">Acknowledging that another user has initiated a change</h2>
-<figure><a class="slb" href="/images/server-side/whiteui-udh-concurrent-user-management-udh-acknowledge-change-message.png"><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-acknowledge-change-message.png"
+<h2 id="another-user-starts-a-change">Another user starts a change</h2>
+<p>If another user starts making changes to the version you are using, a message notifies you of unsaved changes in progress:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/another-user-is-making-changes.png"><img src="/images/server-side/save-publish/another-user-is-making-changes.png"
          alt="Acknowledge Change Message"
          title="Acknowledge Change Message"/>
     </a>
 </figure>
-<p>If another active user has started a change, whether or not they have saved and published the change, a message appears to let you know that a change is in progress that has not been saved and published. Click <strong>Got it</strong> to acknowledge the message.</p>
-<p>Before you save, contact that user to ensure that your changes do not overwrite each other.</p>
-<h2 id="when-an-update-from-another-user-is-detected">When an update from another user is detected</h2>
-<p>When another active user saves and publishes an update, a message appears to inform you that your profile is now out of date. The message contains the email of the user that made the change and the version name. Select one of the following options:</p>
+<p>Click <strong>Got it</strong> to acknowledge the message.</p>
+<h2 id="another-user-saves-their-changes">Another user saves their changes</h2>
+<p>When another user saves changes to a version you are working on, you will receive a notification message. The notification message depends on whether you have made changes to the version.</p>
+<h3 id="you-have-not-made-changes">You have not made changes</h3>
+<p>If you have not made any changes, the following notification appears:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/concurrency-notification-nochangesmade.png"><img src="/images/server-side/save-publish/concurrency-notification-nochangesmade.png"
+         alt="Concurrency notification when you have not made any changes"
+         title="Concurrency notification when you have not made any changes"/>
+    </a>
+</figure>
+<p>Click <strong>Update</strong> to refresh the screen and load the other user&rsquo;s saved changes.</p>
+<h3 id="you-have-made-changes">You have made changes</h3>
+<p>If you have made changes, the following notification appears:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/concurrency-notification-changesmade.png"><img src="/images/server-side/save-publish/concurrency-notification-changesmade.png"
+         alt="Concurrency notification when you have made changes"
+         title="Concurrency notification when you have made changes"/>
+    </a>
+</figure>
+<p>Click <strong>Save</strong> to integrate the other user’s changes into your work. A new dialog opens that contains information about the save:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/review-changes.png"><img src="/images/server-side/save-publish/review-changes.png"
+         alt="Review changes"
+         title="Review changes"/>
+    </a>
+</figure>
+<p>The <strong>Changes to be saved</strong> or <strong>Changes to be published</strong> table contains the following information:</p>
 <ul>
-<li><strong>Get the Latest</strong><br>
-Click this option if you have not made changes that you want to save. If unsaved changes are pending, your changes will be lost.</li>
-<li><strong>Keep Working</strong><br>
-If you select this option, you can continue with your own work, and then save and publish. Once you save and publish, the previous changes by other users are overwritten.</li>
+<li>The type of change.</li>
+<li>The name of the item that changed.</li>
+<li>The action on that object (Updated, Created, or Deleted).</li>
+<li>The user who made the change.</li>
 </ul>
+<p>If both your changes and those in the latest published version have altered the same item and the system cannot reconcile the changes, an <strong>Overwrite</strong> badge will appear next to it.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/concurrent-user-publish-conflict.png"><img src="/images/server-side/save-publish/concurrent-user-publish-conflict.png"
+         alt="Concurrent users have a conflict"
+         title="Concurrent users have a conflict"/>
+    </a>
+</figure>
+<p>Publishing your version replaces the existing items in the published version with yours.</p>
+<h2 id="another-user-publishes">Another user publishes</h2>
+<p>When another user publishes a version, regardless of the version you are on, a message appears to inform you of that publish:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/another-user-published.png"><img src="/images/server-side/save-publish/another-user-published.png"
+         alt="Another user published"
+         title="Another user published"/>
+    </a>
+</figure>
+<p>We recommend that you save and include those changes to keep your version up to date. For more information, see <a href="/server-side/save-publish/save-publish/#save-or-publish-changes">Save and Publish</a>.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side/save-publish/version-history/"
+  <a href="/server-side/save-publish/best-practices/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Version history</div>
+      <div>Concurrency best practices</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Version history"</title>
+      <title>"Concurrency best practices"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -607,14 +677,14 @@ If you select this option, you can continue with your own work, and then save an
 </div><div class="di mr3">
   
   
-  <a href="/server-side/save-publish/with-tealium-iq/"
+  <a href="/server-side/save-publish/save-publish/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Integrate with Tealium iQ "</title>
+      <title>"Save and publish "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Integrate with Tealium iQ</div>
+      <div>Save and publish</div>
     </section>
   </a>
   
@@ -646,7 +716,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 30, 2024 
+          <p>This page was last updated:  May 7, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -660,9 +730,16 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#viewing-other-active-users" href="javascript:void(0)">Viewing other active users</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#acknowledging-that-another-user-has-initiated-a-change" href="javascript:void(0)">Acknowledging that another user has initiated a change</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#when-an-update-from-another-user-is-detected" href="javascript:void(0)">When an update from another user is detected</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#overview" href="javascript:void(0)">Overview</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-concurrency" href="javascript:void(0)">Enable concurrency</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#viewing-other-active-users" href="javascript:void(0)">Viewing other active users</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#another-user-starts-a-change" href="javascript:void(0)">Another user starts a change</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#another-user-saves-their-changes" href="javascript:void(0)">Another user saves their changes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#you-have-not-made-changes" href="javascript:void(0)">You have not made changes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#you-have-made-changes" href="javascript:void(0)">You have made changes</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#another-user-publishes" href="javascript:void(0)">Another user publishes</a></li>
               </nav>
   </aside></nav>
 
