@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>トラック | Cordova用Tealium | Tealiumドキュメント</title>
+    <title>トラッキング | Cordova用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -124,8 +124,8 @@
   <ul class="list pa0" data-nav-section="cordova"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Cordova 2.x</span>
         <ul data-level="1" class="cordova desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/cordova/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-install">インストール</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cordova-track">トラック</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/cordova/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cordova-track">トラッキング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/cordova/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -158,7 +158,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">トラック</h1>
+<h1 class="lh-title mt30 mb3">トラッキング</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -166,51 +166,77 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ビューの追跡">ビューの追跡</h2>
-<p>画面ビューを追跡するには、ビュー <a href="/ja/platforms/cordova/api/#dispatch"><code>Dispatch</code></a> オブジェクトを <a href="/ja/platforms/cordova/api/#track"><code>track()</code></a> メソッドに渡します：</p>
+  <h2 id="画面ビューのトラッキング">画面ビューのトラッキング</h2>
+<p>画面ビューをトラッキングするには、<code>TealiumView(tealiumEvent, dataLayer:)</code> のインスタンスを <a href="/ja/platforms/cordova/api/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumView</code> はビュー名を含み、トラッキングコールでは <code>tealium_event</code> として表示され、オプションのデータ辞書があります。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Cordova" title="Cordova">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Dispatch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">Dispatch</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">view</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Dispatch</span>.<span style="color:#a6e22e">view</span>(<span style="color:#e6db74">&#39;VIEW_NAME&#39;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>});
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">view</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">screenView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Dispatch</span>.<span style="color:#a6e22e">view</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;purchase&#39;</span>, 
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_total&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10.00</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">screenView</span>);
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Ionic" title="Ionic">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">view</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumView</span>(<span style="color:#e6db74">&#34;VIEW_NAME&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>([
-</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;KEY&#34;</span>, <span style="color:#e6db74">&#34;VALUE&#34;</span>]
-</span></span><span style="display:flex;"><span>]));
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">view</span>);
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">screenView</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumView</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;purchase&#34;</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>([
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>], 
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;order_total&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10.00</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>]], 
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0123456789&#34;</span>]
+</span></span><span style="display:flex;"><span>  ])
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">screenView</span>);
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<h2 id="イベントの追跡">イベントの追跡</h2>
-<p>ビュー以外のイベントを追跡するには、イベント <a href="/ja/platforms/cordova/api/#dispatch"><code>Dispatch</code></a> オブジェクトを <a href="/ja/platforms/cordova/api/#track"><code>track()</code></a> メソッドに渡します：</p>
+<h2 id="イベントのトラッキング">イベントのトラッキング</h2>
+<p>ビュー以外のイベントをトラッキングするには、<code>TealiumEvent(tealiumEvent:dataLayer:)</code> のインスタンスを <a href="/ja/platforms/cordova/api/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumEvent</code> はイベント名を含み、トラッキングコールでは <code>tealium_event</code> として表示され、オプションのデータ辞書があります。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Cordova" title="Cordova">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Dispatch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">Dispatch</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Dispatch</span>.<span style="color:#a6e22e">event</span>(<span style="color:#e6db74">&#39;EVENT_NAME&#39;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>});
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Dispatch</span>.<span style="color:#a6e22e">event</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;cart_add&#39;</span>, 
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_price&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>);
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Ionic" title="Ionic">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumEvent</span>(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>([
-</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;KEY&#34;</span>, <span style="color:#e6db74">&#34;VALUE&#34;</span>]
-</span></span><span style="display:flex;"><span>]));
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event</span>);
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TealiumEvent</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;cart_add&#34;</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>([
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>], 
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>]], 
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">&#34;product_price&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]]
+</span></span><span style="display:flex;"><span>  ])
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">tealEvent</span>);
 </span></span></code></pre></div>
 </div>
 </div>
@@ -225,10 +251,10 @@
   <a href="/ja/platforms/cordova/api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>APIリファレンス</div>
+      <div>API リファレンス</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"APIリファレンス"</title>
+      <title>"API リファレンス"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -276,7 +302,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年May月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -290,8 +316,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">ビューの追跡</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%94%BB%E9%9D%A2%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">画面ビューのトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
               </nav>
   </aside></nav>
 

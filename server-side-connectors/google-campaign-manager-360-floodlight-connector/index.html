@@ -177,6 +177,7 @@
         <a href="/server-side-connectors/centro-dsp-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".centro-dsp-connector-setup-guide-deprecated">Centro DSP (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">Cheetah Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/cj-tracking-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cj-tracking-api-connector">CJ Tracking API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/clevertap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clevertap-connector">CleverTap</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/clicksend-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clicksend-connector">ClickSend</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/clinch-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clinch-connector">Clinch</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/confluent-kafka-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".confluent-kafka-connect-connector">Confluent Kafka Connect</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -421,7 +422,7 @@
 
 <div class="prose nested-links" id="prose">
   <p>This article describes how to configure DCM Floodlight in your Customer Data Hub account.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Floodlight is the conversion tracking system for the DoubleClick Digital Marketing (DDM) platform. All properties within the DDM platform—Campaign Manager (DCM), Bid Manager, and DoubleClick Search (DS)—can use Floodlight.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Floodlight is the conversion tracking system for the DoubleClick Digital Marketing (DDM) platform. All properties within the DDM platform—Campaign Manager (DCM), Bid Manager, and DoubleClick Search (DS)—can use Floodlight. For more information, see <a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">Google: About Floodlight conversion tracking</a>.</p>
 <h2 id="ds-vs-dcm">DS vs DCM</h2>
 <p>Use DoubleClick Search (DS) if you do not run paid search reports in Report Builder or do not need to see search-driven offline conversions in your DDM platform—Campaign Manager (DCM) reports.</p>
 <p>Use DCM if you run Paid Search reports in Report Builder and can identify conversions by encrypted user ID, mobile device ID, or Google click ID.</p>
@@ -434,7 +435,7 @@
 <li>You must have a user profile with access to this account.</li>
 <li>Grant access to conversion data within your DCM account by enabling the <code>https://www.googleapis.com/auth/ddmconversions</code> scope for your DCM account.</li>
 <li>Add user <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> to your account and grant it access to your DCM account with the <strong>Insert offline conversions</strong> permission.</li>
-<li>Once user <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> is added to your DCM account, use the generated profile ID in the connector, either on the configuration page or on an action page. If defined in both locations, the profile ID defined on an action page takes precedence.</li>
+<li>After user <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> is added to your DCM account, use the generated profile ID in the connector, either on the configuration page or on an action page. If defined in both locations, the profile ID defined on an action page takes precedence.</li>
 </ul>
 <h3 id="api-information">API Information</h3>
 <p>This connector uses the following vendor API:</p>
@@ -442,7 +443,7 @@
 <li>API Name: Google Campaign Manager 360 API</li>
 <li>API Version: v4</li>
 <li>API Endpoint: <code>https://www.googleapis.com/dfareporting/</code></li>
-<li>Documentation: <a href="https://developers.google.com/doubleclick-advertisers/rest/v3.5">Campaign Manager 360 API</a></li>
+<li>Documentation: <a href="https://developers.google.com/doubleclick-advertisers/rest/">Google: Campaign Manager 360 API</a></li>
 </ul>
 <h3 id="batch-limits">Batch Limits</h3>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
@@ -452,7 +453,7 @@
 <li>Max size of requests: 1 MB</li>
 </ul>
 <h3 id="delayed-actions">Delayed Actions</h3>
-<p>Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see Google&rsquo;s <a href="https://support.google.com/searchads/answer/6074338?hl=en">Best practices for uploading offline conversions</a> documentation.</p>
+<p>Actions are delayed for 30 minutes to accommodate uploading offline conversions, as per Google’s best practices. For more information about delayed actions using the Google Campaign Manager 360 Floodlight connector, see <a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">Google: Best practices for uploading offline conversions</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Actions are not delayed when using <a href="/server-side/trace/about/">trace</a> in EventSream or AudienceStream.</p>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
@@ -473,7 +474,7 @@
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you will be prompted to accept the vendor&rsquo;s data platform policy.</p>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
@@ -489,15 +490,15 @@
 <tbody>
 <tr>
 <td>Profile ID</td>
-<td><ul><li>The Floodlight Profile ID that is given to you by DCM, after adding the <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> user to your DCM account.</li><li>If configured here, the value will overwrite the value defined in the Configuration.</li></ul></td>
+<td><ul><li>The Floodlight Profile ID that is given to you by DCM, after adding the <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> user to your DCM account.</li><li>If configured here, the value overwrites the value defined in the Configuration.</li></ul></td>
 </tr>
 <tr>
 <td>Floodlight Configuration ID</td>
-<td><ul><li>Required</li><li>The Floodlight configuration ID of this conversion.</li></ul></td>
+<td><ul><li>Required.</li><li>The Floodlight configuration ID of this conversion.</li></ul></td>
 </tr>
 <tr>
 <td>Floodlight Activity ID</td>
-<td><ul><li>Required</li><li>The Floodlight activity ID of this conversion.</li></ul></td>
+<td><ul><li>Required.</li><li>The Floodlight activity ID of this conversion.</li></ul></td>
 </tr>
 <tr>
 <td>Encrypted User ID</td>
@@ -537,7 +538,7 @@
 </tr>
 <tr>
 <td>Ordinal</td>
-<td><ul><li>Required</li><li>The ordinal of the conversion.</li><li>Used to de-duplicate conversions of the same user and day.</li></ul></td>
+<td><ul><li>Required.</li><li>The ordinal of the conversion.</li><li>Used to de-duplicate conversions of the same user and day.</li></ul></td>
 </tr>
 <tr>
 <td>Child Directed Treatment</td>
@@ -567,10 +568,9 @@
 </table>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
-<li><a href="https://developers.google.com/doubleclick-advertisers/getting_started">Campaign Manager 360 API: Get Started</a></li>
-<li><a href="https://developers.google.com/doubleclick-advertisers/v3.0/conversions/batchinsert">Campaign Manager 360 API (Method: conversions.batchinsert)</a></li>
-<li><a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">About Floodlight conversion tracking</a></li>
-<li><a href="https://support.google.com/ds/answer/7384231?hl=en&amp;ref_topic=4413935">Choosing between DS and DCM API to upload offline conversions</a></li>
+<li><a href="https://developers.google.com/doubleclick-advertisers/getting_started">Google: Campaign Manager 360 API: Get Started</a></li>
+<li><a href="https://developers.google.com/doubleclick-advertisers/rest/#rest-resource:-v4.conversions">Google: Campaign Manager 360 API (Method: conversions.batchinsert)</a></li>
+<li><a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">Google: About Floodlight conversion tracking</a></li>
 </ul>
 
 </div>
@@ -632,7 +632,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 24, 2022 
+          <p>This page was last updated:  May 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -952,6 +952,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

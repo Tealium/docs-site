@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>トラッキング | Android（Kotlin）用Tealium | Tealiumドキュメント</title>
+    <title>トラック | Android（Kotlin）用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -124,7 +124,7 @@
   <ul class="list pa0" data-nav-section="android-kotlin"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Android (Kotlin)</span>
         <ul data-level="1" class="android-kotlin desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/android-kotlin/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-install">インストール</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/android-kotlin/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".android-kotlin-track">トラッキング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/android-kotlin/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".android-kotlin-track">トラック</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/android-kotlin/data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-data-layer">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/android-kotlin/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-consent-management">同意管理</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".android-kotlin-module-list">モジュールリスト</a>
@@ -193,7 +193,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">トラッキング</h1>
+<h1 class="lh-title mt30 mb3">トラック</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -201,61 +201,66 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ビューのトラッキング">ビューのトラッキング</h2>
-<p>画面ビューを追跡するには、<code>TealiumView(viewName:dataLayer:)</code>のインスタンスを<a href="/ja/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a>メソッドに渡します。<code>TealiumView</code>はビュー名とオプションのデータ辞書で構成され、追跡呼び出しでは<code>tealium_event</code>として表示されます。</p>
-<p>以下に例を示します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;VIEW_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;KEY&#34;</span> to <span style="color:#e6db74">&#34;VALUE&#34;</span><span style="color:#f92672">))</span>
-</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealView<span style="color:#f92672">);</span>
-</span></span></code></pre></div><p>以下を置き換えてください：</p>
-<ul>
-<li><code>VIEW_NAME</code>を追跡したい画面ビューの名前に置き換えます。</li>
-<li><code>KEY:VALUE</code>：追跡したいイベントに関連するデータのキーと値のペアのオブジェクト。</li>
-</ul>
-<h2 id="イベントのトラッキング">イベントのトラッキング</h2>
-<p>非ビューイベントを追跡するには、<code>TealiumEvent(eventName:dataLayer:)</code>のインスタンスを<a href="/ja/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a>メソッドに渡します。<code>TealiumEvent</code>はイベント名とオプションのデータ辞書で構成され、追跡呼び出しでは<code>tealium_event</code>として表示されます。</p>
-<p>以下に例を示します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;EVENT_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;KEY&#34;</span> to <span style="color:#e6db74">&#34;VALUE&#34;</span><span style="color:#f92672">))</span>
+  <h2 id="画面ビューの追跡">画面ビューの追跡</h2>
+<p>画面ビューを追跡するには、<code>TealiumView(viewName:mutableMapOf)</code> のインスタンスを <a href="/ja/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumView</code> はビュー名とオプションのデータ辞書で構成されており、追跡呼び出しでは <code>tealium_event</code> として表示されます。</p>
+<p>以下は例です：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val screenView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;purchase&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>  mutableMapOf<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span> to <span style="color:#e6db74">&#34;abc123&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_total&#34;</span> to <span style="color:#ae81ff">10.00</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PROD123&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROD456&#34;</span><span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;order_id&#34;</span> to <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>screenView<span style="color:#f92672">);</span>
+</span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
+<p>ビュー以外のイベントを追跡するには、<code>TealiumEvent(eventName:mutableMapOf)</code> のインスタンスを <a href="/ja/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumEvent</code> はイベント名とオプションのデータ辞書で構成されており、追跡呼び出しでは <code>tealium_event</code> として表示されます。</p>
+<p>以下は例です：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;cart_add&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>  mutableMapOf<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;customer_id&#34;</span> to <span style="color:#e6db74">&#34;abc123&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PROD123&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROD456&#34;</span><span style="color:#f92672">),</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_price&#34;</span> to <span style="color:#a6e22e">listOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">4.00</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">6.00</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealEvent<span style="color:#f92672">);</span>
-</span></span></code></pre></div><p>以下を置き換えてください：</p>
-<ul>
-<li><code>EVENT_NAME</code>を追跡したい非ビューイベントの名前に置き換えます。</li>
-<li><code>KEY:VALUE</code>：追跡したいイベントに関連するデータのキーと値のペアのオブジェクト。</li>
-</ul>
-<h2 id="タイムドイベント">タイムドイベント</h2>
-<p><a href="/ja/platforms/getting-started-mobile/timed-events/">タイムドイベント</a>は、イベントの持続時間または2つのイベント間の持続時間を測定します。タイムドイベントは自動的にまたは手動でトリガーされます。</p>
+</span></span></code></pre></div><h2 id="タイムドイベント">タイムドイベント</h2>
+<p><a href="/ja/platforms/getting-started-mobile/timed-events/">タイムドイベント</a>は、イベントの持続時間または二つのイベント間の持続時間を測定します。タイムドイベントは自動的または手動でトリガーされます。</p>
 <h3 id="自動トリガー">自動トリガー</h3>
-<p><a href="/ja/platforms/android-kotlin/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a>を<code>EventTrigger</code>オブジェクトのリストに設定することで、イベント間の持続時間を自動的に追跡します。開始イベントと停止イベントの名前を指定します。</p>
-<p>以下は、自動トリガーでタイムドイベントを追跡する例です：</p>
+<p>イベント間の持続時間を自動的に追跡するには、<a href="/ja/platforms/android-kotlin/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> を <code>EventTrigger</code> オブジェクトのリストに構成し、開始と停止のイベント名を指定します。</p>
+<p>以下は自動トリガーでタイムドイベントを追跡する例です：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>timedEventTriggers <span style="color:#f92672">=</span> mutableListOf<span style="color:#f92672">(</span>EventTrigger<span style="color:#f92672">.</span><span style="color:#a6e22e">forEventName</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cart_add&#34;</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;purchase&#34;</span><span style="color:#f92672">))</span>
 </span></span></code></pre></div><h3 id="手動トリガー">手動トリガー</h3>
-<p>カスタムロジックに基づいてタイムドイベントを開始および停止することで、イベントの持続時間を手動で追跡します。</p>
-<p><a href="/ja/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a>を使用してイベントの持続時間の追跡を開始します。</p>
+<p>イベントの持続時間を手動で追跡するには、カスタムロジックに基づいてタイムドイベントの開始と停止を行います。</p>
+<p>イベントの持続時間の追跡を開始するには <a href="/ja/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a> を使用します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">startTimedEvent</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span><span style="color:#f92672">)</span>
-</span></span></code></pre></div><p><a href="/ja/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a>でタイムドイベントを停止します：</p>
+</span></span></code></pre></div><p>タイムドイベントを停止するには <a href="/ja/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a> を使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">stopTimedEvent</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span><span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>以前に開始したタイムドイベントを<a href="/ja/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a>でキャンセルします：</p>
+</span></span></code></pre></div><p>以前に開始したタイムドイベントをキャンセルするには <a href="/ja/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a> を使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">cancelTimedEvent</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><h2 id="トレース">トレース</h2>
-<h3 id="トレースの参加">トレースの参加</h3>
-<p>指定したIDのトレースに参加するには、<a href="/ja/platforms/android-kotlin/api/tealium/#jointrace"><code>joinTrace()</code></a>を呼び出します。Tealium Customer Data Hubの<a href="/ja/server-side/trace/manage/">Trace</a>機能について詳しくはこちらをご覧ください。</p>
+<h3 id="トレースへの参加">トレースへの参加</h3>
+<p>指定されたIDでトレースに参加するには、<a href="/ja/platforms/android-kotlin/api/tealium/#jointrace"><code>joinTrace()</code></a> を呼び出します。Tealium Customer Data Hubの <a href="/ja/server-side/trace/manage/">トレース</a> 機能についてもっと学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">joinTrace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;TRACE_ID&#34;</span><span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>以下を置き換えてください：</p>
+</span></span></code></pre></div><p>以下を置き換えます：</p>
 <ul>
-<li><code>INSTANCE_NAME</code>：Tealium Kotlinライブラリを初期化する際に使用したインスタンス名。</li>
-<li><code>TRACE_ID</code>：参加したいトレースのID。</li>
+<li><code>INSTANCE_NAME</code>: Tealium Kotlinライブラリを初期化する際に使用したインスタンス名。</li>
+<li><code>TRACE_ID</code>: 参加したいトレースのID。</li>
 </ul>
-<h3 id="トレースの離脱">トレースの離脱</h3>
-<p>トレースはアプリセッションの期間中有効で、以前に参加したトレースを離脱し、訪問者セッションを終了する<a href="/ja/platforms/android-kotlin/api/tealium/#leavetrace"><code>leaveTrace()</code></a>を呼び出すまで続きます。</p>
+<h3 id="トレースからの離脱">トレースからの離脱</h3>
+<p>アプリセッションの間、トレースはアクティブな状態が続きますが、<a href="/ja/platforms/android-kotlin/api/tealium/#leavetrace"><code>leaveTrace()</code></a> を呼び出すことで以前に参加したトレースを離れ、訪問セッションを終了します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">leaveTrace</span><span style="color:#f92672">()</span>
-</span></span></code></pre></div><p>訪問者セッションをリモートで終了するには、<a href="/ja/platforms/android-kotlin/api/tealium/#endtracevisitorsession"><code>endTraceVisitorSession()</code></a>を使用します。これにより、SDKセッションは終了せず、セッションIDもリセットされません。</p>
+</span></span></code></pre></div><p>訪問セッションをリモートで終了するには <a href="/ja/platforms/android-kotlin/api/tealium/#endtracevisitorsession"><code>endTraceVisitorSession()</code></a> を使用しますが、SDKセッションを終了させたり、セッションIDをリセットしたりすることはありません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">endTraceVisitorSession</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div>
 </div>
@@ -317,7 +322,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年May月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -331,14 +336,14 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビューのトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%94%BB%E9%9D%A2%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">画面ビューの追跡</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%89%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">タイムドイベント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">自動トリガー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">手動トリガー</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9" href="javascript:void(0)">トレース</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%8F%82%E5%8A%A0" href="javascript:void(0)">トレースの参加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%9B%A2%E8%84%B1" href="javascript:void(0)">トレースの離脱</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%AE%E5%8F%82%E5%8A%A0" href="javascript:void(0)">トレースへの参加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%81%AE%E9%9B%A2%E8%84%B1" href="javascript:void(0)">トレースからの離脱</a></li>
               </nav>
   </aside></nav>
 

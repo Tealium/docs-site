@@ -220,19 +220,22 @@
 <li>Enter a <strong>Title</strong> to identify the extension.</li>
 <li>Under <strong>Scope</strong>, select <strong>Pre Loader</strong> or <strong>DOM Ready Extensions</strong>.</li>
 <li>Under <strong>Configuration</strong>, paste the OneTrust CMP script:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">addCmp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">domainId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;018dd272-a3f7-79cb-bf7a-b78b47dacb46-test&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Define a function to load the Vendor CMP script
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">addCmp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">domainId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12345678-1234-1234-1234-1234567890ab-test&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;head&#39;</span>)[<span style="color:#ae81ff">0</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/javascript&#39;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://cdn.cookielaw.org/scripttemplates/otSDKStub.js&#39;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#34;data-domain-script&#34;</span>, <span style="color:#a6e22e">domainId</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//script.setAttribute(&#34;data-domain-script&#34;, b[&#39;OTDomainGUID&#39;]);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">script</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">script</span>);    
-</span></span><span style="display:flex;"><span>})();  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;head&#39;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/javascript&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://cdn.cookielaw.org/scripttemplates/otSDKStub.js&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#34;data-domain-script&#34;</span>, <span style="color:#a6e22e">domainId</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// script.setAttribute(&#34;data-domain-script&#34;, b[&#39;OTDomainGUID&#39;]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">script</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">script</span>);    
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Immediately call the &#39;addCmp&#39; function to load the script
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">addCmp</span>();
 </span></span></code></pre></div></li>
 </ol>
 <p>Next, we’ll configure the integration to ensure tags fire only based on the consent users provide.</p>
@@ -446,7 +449,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 10, 2024 
+          <p>This page was last updated:  May 9, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

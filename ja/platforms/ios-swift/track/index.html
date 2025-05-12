@@ -203,53 +203,57 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ビューのトラッキング">ビューのトラッキング</h2>
-<p>画面ビューを追跡するには、<code>TealiumView(viewName:dataLayer:)</code>のインスタンスを<a href="/ja/platforms/ios-swift/api/tealium/#track"><code>track()</code></a>メソッドに渡します。<code>TealiumView</code>はビュー名とオプションのデータ辞書で構成され、トラッキングコールでは<code>tealium_event</code>として表示されます。</p>
-<p>以下に例を示します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> tealView = TealiumView(<span style="color:#e6db74">&#34;VIEW_NAME&#34;</span>, dataLayer: [<span style="color:#e6db74">&#34;KEY&#34;</span>: <span style="color:#e6db74">&#34;VALUE&#34;</span>])
-</span></span><span style="display:flex;"><span>tealium?.track(tealView)
-</span></span></code></pre></div><p>以下を置き換えてください：</p>
-<ul>
-<li><code>VIEW_NAME</code>：追跡したい画面ビューの名前。</li>
-<li><code>KEY:VALUE</code>：追跡したいイベントに関連するデータのキーと値のペアのオブジェクト。</li>
-</ul>
-<h2 id="イベントのトラッキング">イベントのトラッキング</h2>
-<p>非ビューイベントを追跡するには、<code>TealiumEvent(eventName:dataLayer:)</code>のインスタンスを<a href="/ja/platforms/ios-swift/api/tealium/#track"><code>track()</code></a>メソッドに渡します。<code>TealiumEvent</code>はイベント名とオプションのデータ辞書で構成され、トラッキングコールでは<code>tealium_event</code>として表示されます。</p>
-<p>以下に例を示します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> tealEvent = TealiumEvent(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, dataLayer: [<span style="color:#e6db74">&#34;KEY&#34;</span>: <span style="color:#e6db74">&#34;VALUE&#34;</span>])
+  <h2 id="画面ビューの追跡">画面ビューの追跡</h2>
+<p>画面ビューを追跡するには、<code>TealiumView(tealiumEvent:dataLayer:)</code> のインスタンスを <a href="/ja/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumView</code> はビュー名を含み、追跡呼び出しで <code>tealium_event</code> として表示され、オプションのデータ辞書があります。</p>
+<h4 id="例">例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> screenView = TealiumView(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;purchase&#34;</span>,
+</span></span><span style="display:flex;"><span>	dataLayer: [
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;customer_id&#34;</span>, <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;order_total&#34;</span>: <span style="color:#ae81ff">10.00</span>, 
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;product_id&#34;</span>: [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;order_id&#34;</span>: <span style="color:#e6db74">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>	]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>tealium?.track(screenView)
+</span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
+<p>ビュー以外のイベントを追跡するには、<code>TealiumEvent(tealiumEvent:dataLayer:)</code> のインスタンスを <a href="/ja/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> メソッドに渡します。<code>TealiumEvent</code> はイベント名を含み、追跡呼び出しで <code>tealium_event</code> として表示され、オプションのデータ辞書があります。</p>
+<h4 id="例-1">例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> tealEvent = TealiumEvent(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;cart_add&#34;</span>, 
+</span></span><span style="display:flex;"><span>	dataLayer: [
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;abc123&#34;</span>, 
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;product_id&#34;</span>: [<span style="color:#e6db74">&#34;PROD123&#34;</span>, <span style="color:#e6db74">&#34;PROD456&#34;</span>], 
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;product_price&#34;</span>: [<span style="color:#ae81ff">4.00</span>, <span style="color:#ae81ff">6.00</span>]
+</span></span><span style="display:flex;"><span>	]
+</span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>tealium?.track(tealEvent)
-</span></span></code></pre></div><p>以下を置き換えてください：</p>
-<ul>
-<li><code>EVENT_NAME</code>：追跡したい非ビューイベントの名前。</li>
-<li><code>KEY:VALUE</code>：追跡したいイベントに関連するデータのキーと値のペアのオブジェクト。</li>
-</ul>
-<h2 id="タイムドイベント">タイムドイベント</h2>
-<p><a href="/ja/platforms/getting-started-mobile/timed-events/">タイムドイベント</a>は、イベントの持続時間または2つのイベント間の持続時間を測定します。タイムドイベントは自動的にまたは手動でトリガーされます。</p>
+</span></span></code></pre></div><h2 id="タイムドイベント">タイムドイベント</h2>
+<p><a href="/ja/platforms/getting-started-mobile/timed-events/">タイムドイベント</a>は、単一のイベントの持続時間または二つのイベント間の時間を測定します。タイムドイベントは自動的または手動でトリガーされます。</p>
 <h3 id="自動トリガー">自動トリガー</h3>
-<p><a href="/ja/platforms/ios-swift/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a>を<code>TimedEventTrigger</code>オブジェクトのリストに設定することで、イベント間の持続時間を自動的に追跡します。開始イベントと停止イベントの名前を指定します。</p>
-<p>以下は自動トリガーでタイムドイベントを追跡する例です：</p>
+<p>イベント間の持続時間を自動的に追跡するには、<a href="/ja/platforms/ios-swift/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> を <code>TimedEventTrigger</code> オブジェクトのリストに構成し、開始と停止のイベント名を指定します。</p>
+<p>自動トリガーでタイムドイベントを追跡する例は以下の通りです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.timedEventTriggers = [TimedEventTrigger(
 </span></span><span style="display:flex;"><span>    start: <span style="color:#e6db74">&#34;cart_add&#34;</span>,
 </span></span><span style="display:flex;"><span>    stop: <span style="color:#e6db74">&#34;purchase&#34;</span>)]
 </span></span></code></pre></div><h3 id="手動トリガー">手動トリガー</h3>
-<p>カスタムロジックに基づいてタイムドイベントの開始と停止を手動で追跡し、イベントの持続時間を追跡します。</p>
-<p><a href="/ja/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a>を使用してイベントの持続時間の追跡を開始します：</p>
+<p>カスタムロジックに基づいてイベントの持続時間を手動で追跡するには、イベントの持続時間の追跡を <a href="/ja/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a> で開始します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium.startTimedEvent(name: <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span>)
-</span></span></code></pre></div><p><a href="/ja/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a>でタイムドイベントを停止します：</p>
+</span></span></code></pre></div><p>タイムドイベントを <a href="/ja/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a> で停止します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium.stopTimedEvent(name: <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span>)
-</span></span></code></pre></div><p>以前に開始したタイムドイベントを<a href="/ja/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a>でキャンセルします：</p>
+</span></span></code></pre></div><p>以前に開始したタイムドイベントを <a href="/ja/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a> でキャンセルします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium.cancelTimedEvent(name: <span style="color:#e6db74">&#34;TimeSpentViewingProduct&#34;</span>)
-</span></span></code></pre></div><p>以前に開始したすべてのタイムドイベントを<a href="/ja/platforms/ios-swift/api/tealium/#clearalltimedevents"><code>clearAllTimedEvents()</code></a>でクリアします：</p>
+</span></span></code></pre></div><p>以前に開始したすべてのタイムドイベントを <a href="/ja/platforms/ios-swift/api/tealium/#clearalltimedevents"><code>clearAllTimedEvents()</code></a> でクリアします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.clearAllTimedEvents()
 </span></span></code></pre></div><h2 id="トレース">トレース</h2>
-<h3 id="トレースの参加">トレースの参加</h3>
-<p><a href="/ja/platforms/ios-swift/api/tealium/#jointrace"><code>joinTrace()</code></a>メソッドは、指定されたIDでトレースに参加します。Tealium Customer Data Hubの<a href="/ja/server-side/trace/manage/">トレース</a>機能について詳しく学びましょう。</p>
+<h3 id="トレースに参加">トレースに参加</h3>
+<p><a href="/ja/platforms/ios-swift/api/tealium/#jointrace"><code>joinTrace()</code></a> メソッドは指定されたIDでトレースに参加します。Tealium Customer Data Hubの<a href="/ja/server-side/trace/manage/">トレース</a>機能についてもっと学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
@@ -259,9 +263,9 @@
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>TRACE_ID</code>を参加したいトレースのIDに置き換えてください。</p>
-<h3 id="トレースの離脱">トレースの離脱</h3>
-<p>トレースは、<a href="/ja/platforms/ios-swift/api/tealium/#leavetrace"><code>leaveTrace()</code></a>メソッドが呼び出され、以前に参加したトレースを離れて訪問者セッションが終了するまで、アプリセッションの期間中にアクティブになります。</p>
+</span></span></code></pre></div><p><code>TRACE_ID</code> を参加したいトレースのIDに置き換えてください。</p>
+<h3 id="トレースを離れる">トレースを離れる</h3>
+<p>トレースはアプリセッションの間有効であり、<a href="/ja/platforms/ios-swift/api/tealium/#leavetrace"><code>leaveTrace()</code></a> メソッドが呼ばれると、以前に参加したトレースを離れ、訪問セッションが終了します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
@@ -271,8 +275,8 @@
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>コネクタアクションが<code>&quot;End of Visit&quot;</code>で設定されている場合、セッションが期限切れになるまで実行されません。</p>
-<p>トレースを離れるときにトレース訪問者セッションを保持するには、次の例に示すようにオプションの引数<code>false</code>を渡します：</p>
+</span></span></code></pre></div><p>セッションが終了するまで、&ldquo;訪問の終了時&quot;に構成されたコネクタアクションは実行されません。</p>
+<p>トレースを離れる際に訪問セッションを保持するには、次の例に示すようにオプションの引数 <code>false</code> を渡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.leaveTrace(killVisitorSession: <span style="color:#66d9ef">false</span>)
 </span></span></code></pre></div>
 </div>
@@ -334,7 +338,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年May月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -348,14 +352,14 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビューのトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%94%BB%E9%9D%A2%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">画面ビューの追跡</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%89%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">タイムドイベント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">自動トリガー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">手動トリガー</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9" href="javascript:void(0)">トレース</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%8F%82%E5%8A%A0" href="javascript:void(0)">トレースの参加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%9B%A2%E8%84%B1" href="javascript:void(0)">トレースの離脱</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AB%E5%8F%82%E5%8A%A0" href="javascript:void(0)">トレースに参加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%9B%A2%E3%82%8C%E3%82%8B" href="javascript:void(0)">トレースを離れる</a></li>
               </nav>
   </aside></nav>
 

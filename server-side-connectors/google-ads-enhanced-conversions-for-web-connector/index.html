@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -177,6 +177,7 @@
         <a href="/server-side-connectors/centro-dsp-connector-setup-guide-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".centro-dsp-connector-setup-guide-deprecated">Centro DSP (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">Cheetah Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/cj-tracking-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cj-tracking-api-connector">CJ Tracking API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/clevertap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clevertap-connector">CleverTap</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/clicksend-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clicksend-connector">ClickSend</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/clinch-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".clinch-connector">Clinch</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/confluent-kafka-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".confluent-kafka-connect-connector">Confluent Kafka Connect</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -420,10 +421,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="requirements">Requirements</h2>
+  <p>Use the Google Ads Enhanced Conversions for Web connector to improve the accuracy of your web conversion measurements by uploading conversion adjustments that contain transaction IDs and hashed user identifiers.</p>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>Google Ads account with Enhanced Conversions-enabled conversion.</li>
 <li>Read and write permissions for the Enhanced Conversions-enabled conversion account.</li>
+<li><a href="/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion Tracking and Remarketing (gtag.js) tag</a></li>
 <li>The Customer ID for the Google Ads account. For more information, see <a href="https://support.google.com/google-ads/answer/1704344?hl=en">Google: Find your Google Ads customer ID</a>.
 <ul>
 <li>If you are accessing the account on behalf of a client, the Manager Customer ID (MCC ID) must be set. You can find your Customer ID by logging into Google Ads and going to <strong>Preferences &gt; Access &amp; Security &gt; Manager</strong>.</li>
@@ -473,6 +476,10 @@ Optional. If you are accessing the account on behalf of a client, the Manager Cu
 </ul>
 <p>You must establish the connection with the Google Account with at least read and write permissions to the account the conversion is set up in.</p>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+<h2 id="deduplication">Deduplication</h2>
+<p>Google uses the transaction ID to deduplicate between client-side and server-side conversions. This ID should be unique to each conversion event and match the server-side event and client-side event. We recommend using <code>order_id</code> for purchases and <code>tealium_random</code> for other events.</p>
+<p>The mapping in the connector is not required if <strong>Enable Event Matching for Server-Side Enhanced Conversions</strong> is turned on in the tag and <strong>Automatic Transaction ID</strong> is set up in the connector.</p>
+<p>To set up <strong>Automatic Transaction ID</strong>, in the connector action configuration map the client-side tag UID of your Google Ads Conversion Tracking and Remarketing tag to <code>Tealium iQ Tag ID</code>. When <code>Tealium iQ Tag ID</code> is provided, we automatically look for the transaction ID value sent from Tealium iQ. The tag template must be a version after April 2023 and <code>transaction_id</code> or <code>order_id</code> must be mapped to take advantage of this feature.</p>
 <h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -656,7 +663,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2025 
+          <p>This page was last updated:  May 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -675,6 +682,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion" href="javascript:void(0)">Action — Send Conversion</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-troubleshooting" href="javascript:void(0)">Error troubleshooting</a></li>
@@ -974,6 +982,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

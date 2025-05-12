@@ -294,7 +294,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".moments-iq">モーメンツiQ</a>
         <ul class="pl2  moments-iq desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/moments-iq/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Moments iQについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/moments-iq/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Moments iQの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/moments-iq/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Moments iQ の管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/moments-iq/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">専門知識の例</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/moments-iq/audiencestream-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">AudienceStreamの例</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -343,7 +343,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".linking-to-github">GitHubへのリンク</a>
         <ul class="pl2 bl b--primary bw1 linking-to-github desktopmenu animated fadeIn list "><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/linking-to-github/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-linking-to-github">GitHubへのリンクについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">GitHubへのリンクを管理する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/administration/linking-to-github/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-linking-to-github">GitHubへのリンクの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/linking-to-github/faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linking-to-github-faq">GitHubへのリンクに関するFAQ</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/client-side-bot-filtering/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-bot-filtering">クライアントサイドのボットフィルタリング</a></li></ul>
@@ -462,29 +462,39 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、アクセストークンを使用してGitHubアカウントとiQタグ管理アカウント間の安全なリンクを作成する方法について説明します。リンクが作成されると、Advanced JavaScript Code拡張機能を使用してGitHubリポジトリからファイルを参照し、同期することができます。コードはGitHubに安全に保存されていますが、iQ構成で公開することができます。
+      この記事では、アクセストークンを使用してGitHubアカウントとiQタグ管理アカウントとの間に安全なリンクを作成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="前提条件">前提条件</h2>
+  <p>リンクが完了すると、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code extension</a>を使用してGitHubリポジトリからファイルを参照し、同期することができます。コードはGitHubに安全に保管されていますが、iQタグ管理の構成で公開することができます。</p>
+<h2 id="要件">要件</h2>
+<h4 id="githubの要件">GitHubの要件</h4>
 <ul>
-<li>最低でも1つの公開リポジトリを持つGitHubアカウント。リポジトリは空でも構いません。</li>
-<li><a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHubの個人アクセストークン</a>。</li>
-<li>GitHubの操作方法についての知識と、GitHubリポジトリの操作経験。</li>
+<li>GitHubアカウント:
+<ul>
+<li>少なくとも1つの公開リポジトリを持っていること（空でも構いません）。</li>
+<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub個人アクセストークン</a>を持っていること。</li>
+<li><code>github.com</code>でホストされていること。自己ホスト型のGitHub Enterprise Serverアカウントはサポートされていません。</li>
+</ul>
+</li>
+<li>GitHubおよびGitHubリポジトリの操作に関する知識と経験。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>GitHubを使用していない場合や公開GitHubリポジトリを持っていない場合は、GitHubへのリンクの代わりに<a href="/ja/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript 拡張 API</a>を使用することをお勧めします。</p>
+<h4 id="tealiumの要件">Tealiumの要件</h4>
+<ul>
 <li>Tealiumアカウントでのアカウント管理権限。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>GitHubを使用していない場合や、公開GitHubリポジトリがないために<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript拡張機能</a>で権限問題が発生した場合は、GitHubへのリンクの代わりに<a href="/ja/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript拡張API</a>を使用することをお勧めします。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>GitHubの統合は、GitHubでのコード管理プロセスとiQタグ管理での公開との間でシームレスなワークフローを作成します。GitHubのユーザー名と<a href="https://github.com/settings/tokens">個人アクセストークン</a>を使用してGitHubアカウントへのリンクを作成します。Tealiumアカウント内のすべてのプロファイルに対して1つのリンクだけが必要です。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>リンクが成功するためには、GitHubアカウントには少なくとも1つの公開リポジトリが必要です。</p>
-<p>アカウントがリンクされると、リポジトリ内のJavaScriptファイルはiQタグ管理構成で参照可能になります。GitHubリポジトリからファイルが参照されると、そのファイルはGitHubリポジトリに安全に保管されたままですが、そのコードはiQタグ管理構成の一部として公開することができるようになります。</p>
-<p>GitHubリポジトリの参照ファイルに変更をコミットすると、iQタグ管理でそれらのファイルを同期する必要があります。参照ファイルを同期すると、保存して公開する必要がある未保存の変更が発生します。</p>
-<h2 id="サポートされている機能">サポートされている機能</h2>
-<p>以下の機能がGitHubの統合をサポートしています：</p>
+<p>GitHubとの統合は、GitHubでのコード管理プロセスとiQタグ管理での公開との間でシームレスなワークフローを作り出します。GitHubユーザー名と<a href="https://github.com/settings/tokens">個人アクセストークン</a>を使用してGitHubアカウントへのリンクを作成します。Tealiumアカウント内のすべてのプロファイルに対して1つのリンクが必要です。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>リンクを成功させるためには、GitHubアカウントに少なくとも1つの公開リポジトリが必要です。</p>
+<p>アカウントがリンクされると、リポジトリ内のJavaScriptファイルをiQタグ管理の構成で参照できるようになります。GitHubリポジトリからファイルが参照されると、そのコードはGitHubリポジトリに安全に保管されたままですが、iQタグ管理の構成の一部として公開することができます。</p>
+<p>GitHubリポジトリ内の参照されたファイルに変更をコミットするたびに、iQタグ管理でそれらのファイルを同期して最新バージョンを取得する必要があります。参照されたファイルを同期すると、保存して公開する必要がある未保存の変更が発生します。</p>
+<h2 id="サポートされる機能">サポートされる機能</h2>
+<p>GitHub統合をサポートする機能は以下の通りです：</p>
 <ul>
-<li><a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code拡張機能</a></li>
+<li><a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code extension</a></li>
 </ul>
 
 </div>
@@ -495,10 +505,10 @@
   <a href="/ja/iq-tag-management/administration/linking-to-github/manage/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>GitHubへのリンクを管理する</div>
+      <div>GitHubへのリンクの管理</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"GitHubへのリンクを管理する"</title>
+      <title>"GitHubへのリンクの管理"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -531,7 +541,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年May月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -545,9 +555,9 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E6%A9%9F%E8%83%BD" href="javascript:void(0)">サポートされている機能</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%82%8B%E6%A9%9F%E8%83%BD" href="javascript:void(0)">サポートされる機能</a></li>
               </nav>
   </aside></nav>
 
