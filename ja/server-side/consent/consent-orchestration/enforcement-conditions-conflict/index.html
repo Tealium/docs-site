@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>実施条件の競合の取り扱い | 同意オーケストレーション（イベントレベル） | Tealiumドキュメント</title>
+    <title>施行条件の競合の取り扱い | 同意オーケストレーション（イベントレベル） | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -481,7 +481,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".consent-orchestration">同意オーケストレーション（イベントレベル）</a>
         <ul class="pl2 bl b--primary bw1 consent-orchestration desktopmenu animated fadeIn list "><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/consent/consent-orchestration/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-orchestration">同意オーケストレーションについて</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/consent/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">実施条件の競合の取り扱い</a></li></ul>
+        <a href="/ja/server-side/consent/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">施行条件の競合の取り扱い</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-save-publish">保存して公開</a>
@@ -565,7 +565,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">実施条件の競合の取り扱い</h1>
+<h1 class="lh-title mt30 mb3">施行条件の競合の取り扱い</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -573,27 +573,34 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Consent Orchestration機能が、プライバシーバイデザインとプライバシーバイデフォルトの原則を遵守しながら、目的グループと免除の条件付き実施の競合をどのように取り扱うかについて説明します。
+      この記事では、プライバシーバイデザインおよびプライバシーバイデフォルトの原則を遵守しながら、目的グループと免除の条件付き施行で発生する競合をコンセントオーケストレーション機能がどのように扱うかについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="プライバシー原則">プライバシー原則</h2>
-<p>Consent Orchestrationは、明確な同意が得られた場合や明確な条件が満たされた場合にのみデータを処理し、活性化します。これにより、関連するポリシーと規制に準拠し、ユーザーの誤操作や構成ミスによるデータ漏洩を防ぎます。</p>
-<h2 id="consent-orchestrationが実施条件の競合をどのように取り扱うか">Consent Orchestrationが実施条件の競合をどのように取り扱うか</h2>
-<p>Consent Orchestrationにおける競合は、複数の実施ルールが重複したり、相互に矛盾したりするときに発生します。これらの競合は、複数の同意ポリシーがある場合や、実施ルールが複雑な場合によく見られます。以下に、Consent Orchestrationがこれらの競合をどのように管理し、データ保護を確保するかを説明します：</p>
+<p>コンセントオーケストレーションは、明示的な同意が与えられた場合、または明確な条件が満たされた場合にのみデータを処理し、活性化します。これにより、関連するポリシーや規制への準拠を保証し、ユーザーエラーや構成ミスによるデータ漏洩を防ぎます。</p>
+<h2 id="コンセントオーケストレーションが施行条件の競合をどのように扱うか">コンセントオーケストレーションが施行条件の競合をどのように扱うか</h2>
+<p>コンセントオーケストレーションでの競合は、目的グループや免除などのコンポーネントに対する複数の施行ルールが重複または矛盾する場合に発生します。複数の同意ポリシーや複雑な施行ルールがある場合、これらの競合はより一般的です。ここでは、データ保護を確保するためにコンセントオーケストレーションがこれらの競合をどのように管理するかを説明します。</p>
+<p>次の条件を満たすイベントが発生した場合：</p>
 <ul>
-<li><strong>少なくとも1つの目的グループまたは免除がアクティブな場合</strong>：これは、免除が同意制御なしでデータ処理を許可する一方で、目的グループがデータ処理の厳格なルールを実施するため、競合を生じさせる可能性があります。この競合を解決するために、目的グループが実施され、免除は無視されます。同意信号なしでのデータ処理は許可されません。</li>
-<li><strong>2つ以上の実施ルールが目的グループで重複する場合</strong>：どれを実施すべきか不明なため、データ処理は行われません。</li>
-<li><strong>免除が重複することが許可される場合</strong>：単一の目的グループが任意の数の免除と重複する場合、目的グループが実施され、免除は無視されます。</li>
+<li>
+<p><strong>目的グループと1つ以上の免除に施行ルールが <code>true</code> と評価される</strong>：これは、免除が同意制御なしでデータ処理を許可する一方で、目的グループがデータ処理に厳格なルールを適用するため、競合を生じます。この競合を解決するために、目的グループが施行され、免除は無視されます。同意信号なしにはデータ処理は許可されません。</p>
+</li>
+<li>
+<p><strong>複数の目的グループに対する施行ルールが <code>true</code> と評価される</strong>：2つ以上の目的グループに適用される施行ルールがある場合、どれを施行すべきか不明です。偶発的なデータ漏洩を防ぐために、すべてのデータ処理がブロックされます。</p>
+</li>
+<li>
+<p><strong>複数の免除に対する施行ルールが <code>true</code> と評価される</strong>：重複する免除は互いに競合しません。免除のみに施行ルールが適用される場合、処理が許可されます。ただし、たとえ1つの目的グループに対する施行ルールが適用された場合でも、それが優先され、すべての免除は無視されます。</p>
+</li>
 </ul>
-<p>2つの目的グループが存在し、その実施ルールが両方とも<code>true</code>に評価されるなどの曖昧なシナリオでは、Consent Orchestrationは潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。これにより、ブロックされた活性化からのデータの損失が発生する可能性がありますが、データ漏洩のリスクを軽減するための予防措置です。</p>
-<h3 id="実施条件の競合の例">実施条件の競合の例</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この例は、説明のためのものです。</p>
-<p>競合は、ドメインの競合などの複雑なシナリオで発生することがあります。例えば、ある目的グループはドメインが<code>A</code>を含むイベントに適用され、別の目的グループはドメインが<code>B</code>を含むイベントに適用されるかもしれません。ドメインが<code>A</code>と<code>B</code>の両方を含むイベント（例えば、ドメイン<code>AB</code>）が入ってくると、両方の実施ルールが真と評価され、競合が生じます。このような場合、Consent Orchestrationはどのポリシーを実施すべきかを判断できず、潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。</p>
-<p>以下の表は、アクティブな免除と目的グループの数に応じて、Consent Orchestrationが競合をどのように取り扱うかを示しています：</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この表は、Consent Orchestrationがアクティブな場合（少なくとも1つの免除または目的グループがアクティブで、たとえ実施条件が適用されなくても）にのみ適用されます。免除または目的グループがアクティブでない場合、Consent Orchestrationは非アクティブのままで、どの活性化もブロックしません。</p>
+<p>目的グループが2つ存在し、その施行ルールが両方とも <code>true</code> と評価されるなど、あいまいなシナリオでは、コンセントオーケストレーションは潜在的なデータ漏洩に対する保護のためにデータ処理と活性化を保留します。これにより、ブロックされた活性化からのデータの損失が発生する可能性がありますが、データ漏洩のリスクを軽減するための予防措置です。</p>
+<h3 id="競合する施行条件の例">競合する施行条件の例</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この例は説明目的のみのものです。</p>
+<p>複雑なシナリオ、たとえばドメインの競合などで競合が発生することがあります。例えば、ある目的グループがドメインに <code>A</code> を含むイベントに適用され、別の目的グループがドメインに <code>B</code> を含むイベントに適用される場合、ドメインが <code>A</code> と <code>B</code> の両方を含む（例えばドメイン <code>AB</code>）イベントが入ってくると、両方の施行ルールが true と評価され、競合が生じます。このような場合、コンセントオーケストレーションはどのポリシーを施行すべきかを判断できず、潜在的なデータ漏洩を防ぐためにデータ処理と活性化を保留します。</p>
+<p>次の表は、コンセントオーケストレーションが免除と目的グループの数に応じて競合をどのように扱うかを示しています：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この表は、コンセントオーケストレーションがアクティブな場合（少なくとも1つの免除または目的グループがアクティブである場合、たとえ施行条件が適用されない場合でも）のみ適用されます。免除または目的グループがアクティブでない場合、コンセントオーケストレーションは非アクティブのままであり、いかなる活性化もブロックしません。</p>
 <table>
 <thead>
 <tr>
@@ -616,7 +623,7 @@
 <tr>
 <td>任意</td>
 <td>1</td>
-<td>目的特定のブロックを適用</td>
+<td>目的固有のブロックを適用</td>
 </tr>
 <tr>
 <td>任意</td>
@@ -670,7 +677,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月13日
+          <p>最終更新日 ::  2025年May月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -685,8 +692,8 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E5%8E%9F%E5%89%87" href="javascript:void(0)">プライバシー原則</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-orchestration%E3%81%8C%E5%AE%9F%E6%96%BD%E6%9D%A1%E4%BB%B6%E3%81%AE%E7%AB%B6%E5%90%88%E3%82%92%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E5%8F%96%E3%82%8A%E6%89%B1%E3%81%86%E3%81%8B" href="javascript:void(0)">Consent Orchestrationが実施条件の競合をどのように取り扱うか</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E6%96%BD%E6%9D%A1%E4%BB%B6%E3%81%AE%E7%AB%B6%E5%90%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">実施条件の競合の例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E6%96%BD%E8%A1%8C%E6%9D%A1%E4%BB%B6%E3%81%AE%E7%AB%B6%E5%90%88%E3%82%92%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E6%89%B1%E3%81%86%E3%81%8B" href="javascript:void(0)">コンセントオーケストレーションが施行条件の競合をどのように扱うか</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%AB%B6%E5%90%88%E3%81%99%E3%82%8B%E6%96%BD%E8%A1%8C%E6%9D%A1%E4%BB%B6%E3%81%AE%E4%BE%8B" href="javascript:void(0)">競合する施行条件の例</a></li>
               </nav>
   </aside></nav>
 

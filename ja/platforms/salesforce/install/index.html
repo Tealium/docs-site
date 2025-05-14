@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>インストール | Salesforce Commerce CloudのためのTealium | Tealiumドキュメント</title>
+    <title>インストール | Salesforce用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -15,6 +15,8 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/salesforce/install/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -90,6 +92,16 @@
       <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
       </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/salesforce/install/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
             
     </ul>
   </div>
@@ -109,9 +121,9 @@
     <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
   
   </ul>
-  <ul class="list pa0" data-nav-section="salesforce"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">salesforce</span>
-        <ul data-level="1" class=" desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/salesforce/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".salesforce-install">インストール</a></li></ul></li></ul>
+  <ul class="list pa0" data-nav-section="salesforce"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Salesforce</span>
+        <ul data-level="1" class="salesforce desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/salesforce/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".tealium-for-salesforce">インストール</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -135,7 +147,7 @@
 
   
   
-  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/salesforce/">Salesforce Commerce CloudのためのTealium</a></li>
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/salesforce/">Salesforce用Tealium</a></li>
   
 
   
@@ -152,308 +164,213 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Salesforce Commerce CloudにTealiumカートリッジをインストールする方法を説明します。
+      この記事では、Apexクラスとトリガーを使用してSalesforceでTealiumをインストールおよび構成し、Tealium Collectでリードとコンタクトの更新を追跡する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
-<p>Tealiumカートリッジを使用すると、マーケターは1行のコードと直感的なWebインターフェースを介してタグ要件を自分自身で管理できます。ITリソースは必要ありません。コード中心のアプローチを好む他のソリューションとは異なり、TealiumはJavaScriptの知識を必要としない使いやすいテンプレートを提供します。これにより、デジタルマーケティングベンダータグを簡単に追加、編集、または削除することができます。Tealiumは、マーケターがより迅速かつ効率的になるために設計されています。</p>
-<p>Tealiumカートリッジの基本的なインストールでは、Tealiumは追加のカスタマイズなしで、コンテンツナビゲーション、検索トラッキング、製品表示、チェックアウト、注文トラッキングなど、豊富な訪問イベントデータを自動的に収集します。</p>
-<p>Tealiumカートリッジは、サーバーサイドのCommerce Cloud実装からシンプルなTealiumクライアントサイドコンソールに多くの作業を移行することで、マーケターのベンダータグスイートのフルポテンシャルを引き出します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>TealiumカートリッジにはTealiumのサブスクリプションが必要です。</p>
-<h2 id="ユースケース">ユースケース</h2>
-<p>Tealiumカートリッジの基本的なインストールでは、追加のカスタマイズなしで、コンテンツナビゲーション、検索トラッキング、製品表示、チェックアウト、注文トラッキングなど、豊富な訪問イベントデータを自動的に収集します。</p>
-<p>その後、Tealium iQは、ITリソースやCommerce Cloudストアフロントの変更を必要とせずに、シームレスで完全なベンダータグの統合を提供します。</p>
-<h2 id="セットアップ">セットアップ</h2>
-<p>次の手順に従って、TealiumカートリッジをCommerce Cloudストアフロントに統合します。これらの手順は、標準のSite Genesisストアフロントを基にしています。</p>
+  <h2 id="要件">要件</h2>
+<ul>
+<li>Salesforce管理者アクセス</li>
+<li>AudienceStreamまたはEventStream用に有効化されたTealiumアカウント</li>
+</ul>
+<h2 id="ソリューションのインストール">ソリューションのインストール</h2>
+<p>Tealium for Salesforceソリューションは、Tealium Collectサービス用のApexクラスとオブジェクト更新をトリガーする1つ以上のクラスとしてインストールされます。また、Customer Data HubからのレコードをSalesforceにリンクし、SalesforceからTealiumへのHTTPリクエストの送信を許可するために、Salesforce構成の更新が必要です。</p>
+<h3 id="customer-data-hubからsalesforceへのレコードリンク">Customer Data HubからSalesforceへのレコードリンク</h3>
+<p>Tealium for Salesforceソリューションは、共有識別子属性を指定することで、Customer Data HubからSalesforceにレコードをリンクできます。Customer Data Hubでは、この属性は摂取同期から来るレコードを一意に識別する任意の訪問ID属性にすることができます。Salesforceでは、そのCustomer Data Hub属性をキャプチャするためにオブジェクトに<strong>Tealium ID</strong>というカスタムフィールドを作成する必要があります。</p>
+<p>詳細については、<a href="/ja/server-side-connectors/salesforce-connector/">Salesforce Connector Setup Guide for AudienceStream</a>を参照してください。</p>
+<p>リードオブジェクトにこのカスタムフィールドを追加するには：</p>
 <ol>
-<li>Tealiumカートリッジを<strong>Commerce Cloud Studioワークスペース</strong>にインポートします：
-<ul>
-<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
-<li><strong>ファイル &gt; インポート &gt; 一般 &gt; 既存のプロジェクトをワークスペースにインポート</strong>に移動します。</li>
-<li><code>int_tealium</code>ディレクトリに移動します。</li>
-<li><strong>完了</strong>をクリックします。</li>
-<li>カートリッジをサンドボックスにリンクするように求められた場合は、<strong>OK</strong>をクリックします。</li>
-</ul>
-</li>
-<li><strong>カスタムサイト構成</strong>をCommerce Cloud Business Managerにインポートします。
-<ul>
-<li><strong>Commerce Cloud Business Manager</strong>にログインします。</li>
-<li><strong>管理 &gt; サイト開発 &gt; インポートとエクスポート</strong>に移動します。</li>
-<li><strong>アップロード</strong>をクリックします。</li>
-<li><code>./int_tealium/metadata/Tealium_Meta.xml</code>ファイルを参照します。</li>
-<li>ページの下部にある**&laquo;戻る**をクリックします。</li>
-<li><strong>インポート</strong>をクリックします。</li>
-<li><code>Tealium_Meta.xml</code>ファイルを選択します。</li>
-<li><strong>次へ</strong>をクリックします。</li>
-<li><strong>インポート</strong>をクリックします。</li>
-</ul>
-</li>
-<li>Commerce Cloud Business Managerを使用して、Tealiumカスタム構成を構成します。
-<ul>
-<li>Tealiumを構成する各サイトにログインします：</li>
-<li>ページの上部にあるタブから正しいサイトを選択します。</li>
-<li><strong>Merchant Tools &gt; サイト構成 &gt; カスタム構成 &gt; Tealium</strong>に移動します。</li>
-<li>実装中に、Tealiumから入力する値が提供されます。</li>
-<li><strong>Tealium Environment</strong>フィールドには、<code>dev</code>、<code>qa</code>、または<code>prod</code>を入力します（たとえば、サンドボックス/開発インスタンスには<code>dev</code>を使用します）。</li>
-<li>この統合を有効にするためにチェックボックスをオンにし、ページの下部近くにある<strong>適用</strong>をクリックします。
-<figure><a class="slb" href="/images/platforms/salesforce/commerce-cloud-instance-tealium-settings.png"><img src="/images/platforms/salesforce/commerce-cloud-instance-tealium-settings.png"
-         alt="Commerce Cloud Instance - Tealium settings"
-         title="Commerce Cloud Instance - Tealium settings"/>
+<li>
+<p><strong>構成</strong>から<strong>リード &gt; フィールド</strong>に進みます。<br>
+<figure><a class="slb" href="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"><img src="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"
+         alt="Salesforce UI Edit Leas Custom Field"
+         title="Salesforce UI Edit Leas Custom Field"/>
     </a>
-</figure></li>
-</ul>
+</figure></p>
 </li>
-<li>TealiumカートリッジをEffective Cartridge Pathに追加します。
+<li>
+<p>次の構成でテキストタイプの新しいカスタムフィールドを追加します：</p>
 <ul>
-<li>ステージングサーバーの<strong>Commerce Cloud Business Manager</strong>にログインします。</li>
-<li>各リストされたサイトとBusiness Managerサイトに対して<strong>管理 &gt; サイト &gt; サイトの管理</strong>に移動します：
-<ul>
-<li>リストからサイトを選択します。</li>
-<li><strong>構成</strong>タブをクリックします。</li>
-<li>**Cartridges:**フィールドに<code>:int_tealium</code>を追加します。</li>
-<li><strong>適用</strong>をクリックします。</li>
+<li><strong>フィールドラベル</strong>: Tealium ID.</li>
+<li><strong>長さ</strong>: 100.</li>
+<li><strong>フィールド名</strong>: <code>tealium_id_teal</code>.</li>
 </ul>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i><code>_teal</code>接尾辞はこれらの変数をTealiumに名前空間を付けるのに役立ちます。</p>
 </li>
-</ul>
-</li>
-<li><code>footer.isml</code>にTealiumフッターコードを追加します。
-<ul>
-<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
-<li><code>/cartridge/templates/default/components/footer/pageFooter.isml</code>ストアフロントフッターファイルを開き、次のテキストをファイルに追加します：</li>
-</ul>
+<li>
+<p><strong>保存</strong>をクリックします。</p>
 </li>
 </ol>
-<pre tabindex="0"><code>  &lt;isinclude url=&#34;${URLUtils.url(&#39;Tealium_utag-RenderTealium&#39;,
-&#39;title&#39;, request.pageMetaData.title,
-&#39;pagecontexttype&#39;, (&#39;pageContext&#39; in this &amp;&amp; !empty(pageContext)) ? &#39;&#39;+pageContext.type : null,
-&#39;pagecontexttitle&#39;, (&#39;pageContext&#39; in this &amp;&amp; !empty(pageContext)) ? &#39;&#39;+pageContext.title : null,
-&#39;searchterm&#39;, request.httpParameterMap.q.stringValue,
-&#39;searchresultscount&#39;, (!empty(pdict.productSearch) ? &#39;&#39;+pdict.productSearch.count : null),
-&#39;productid&#39;, (!empty(pdict.product) &amp;&amp; !empty(pdict.product.id) ? &#39;&#39;+pdict.product.id : null),
-&#39;pagecgid&#39;, request.httpParameterMap.cgid.stringValue,
-&#39;orderno&#39;, (!empty(pdict.order) ? pdict.order.orderNumber : null)
-)}&#34;/&gt;
-</code></pre><ol start="6">
-<li>以下のCommerce Cloudテンプレート（<code>.isml</code>ファイル）を更新して、<code>pageContext</code>オブジェクトを含めます：
-<ul>
-<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
-<li><code>/cartridge/templates/default/cart/cart.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
-</ul>
-<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;Cart&#39;, type:&#39;cart&#39;, ns:&#39;cart&#39;};&lt;/isscript&gt;
-</code></pre><ul>
-<li><code>/cartridge/templates/default/checkout/checkout.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
-</ul>
-<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;Checkout&#39;,type:&#39;checkout&#39;,ns:&#39;checkout&#39;};&lt;/isscript&gt;
-</code></pre><ul>
-<li><code>/cartridge/templates/default/account/order/history.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
-</ul>
-<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;OrderHistory&#39;,type:&#39;orderhistory&#39;,ns:&#39;orderhistory&#39;};&lt;/isscript&gt;
-</code></pre></li>
+<h3 id="tealiumcollect-apexクラスの作成"><code>TealiumCollect</code> Apexクラスの作成</h3>
+<p>この<code>TealiumCollect</code> ApexクラスはTealium CollectサービスへのHTTPリクエストを生成します。これはTealium構成とデータレイヤー値を取り、必要なURL形式にフォーマットします。</p>
+<p>詳細については、<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro.htm">Apex Developer Guide: Introducing Apex</a>を参照してください。</p>
+<p><code>TealiumCollect</code> Apexクラスを追加するには：</p>
+<ol>
+<li><strong>開発者コンソール</strong>で<code>TealiumCollect</code>という名前の<strong>クラス</strong>を作成します。</li>
+<li>次のコードをコピーして貼り付け、アカウント、プロファイル、データソースキーを指定してください：</li>
 </ol>
-<h3 id="構成">構成</h3>
-<p>Tealiumの構成で適切なTealiumアカウントとTealiumプロファイルを構成してください。セットアップセクションのステップ3で構成したものと一致する必要があります。</p>
-<p>その他のCommerce Cloudの構成は必要ありません。</p>
-<p>Tealium iQを使用してマーケティングタグをカスタマイズする方法については、Tealiumアカウントマネージャーと相談してください。</p>
-<h3 id="カスタムコード">カスタムコード</h3>
-<p>基本的な統合では、上記のセットアップ手順以外にカスタムコードは必要ありません。</p>
-<h3 id="互換性">互換性</h3>
-<p>最新のSFRAの更新前の旧バージョンのインストールについては、<a href="https://github.com/Tealium/integration-demandware/releases">TealiumのGitHubのDemandwareリリース</a>を参照してください。</p>
-<h3 id="外部インターフェース">外部インターフェース</h3>
-<p>Tealium iQコンソールを使用してマーケティングタグを管理できるようになりました。詳細については、Tealiumアカウントマネージャーにお問い合わせください。</p>
-<h3 id="プライバシー支払い">プライバシー、支払い</h3>
-<p>Tealiumカートリッジは、従来のWebアナリティクスベンダーと同じレベルのユーザーの行動を収集するように設計されています。Tealiumカートリッジは、Commerce Cloudクライアントのプライバシーポリシーを完全に尊重するために、収集するデータのレベルを増減させることができます。</p>
-<h3 id="サポート">サポート</h3>
-<p>必要なサポートについては、Tealiumアカウントマネージャーにお問い合わせください。</p>
-<h2 id="テスト">テスト</h2>
-<p>カートリッジをデプロイした後、正しいデプロイメントを確認するために、ブラウザ内でストアフロントのページソースを表示するのが最も効果的なテストです。フッターには、<code>utag_data</code>という変数に構成されたJSON構造が含まれているはずです。確認するために、この変数を検索してください。この下に<code>utag.js</code>ファイルを含めるための追加のスクリプトもあります。</p>
-<p>すべてのページのスクリプトブロックは、次の例のようになります。Tealiumの<code>ACCOUNT</code>、<code>PROFILE</code>、および<code>ENVIRONMENT</code>の値は、セットアップのステップ3で構成したものと一致する必要があります。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">d</span>){
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span><span style="color:#f92672">=</span>document;<span style="color:#a6e22e">c</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;script&#39;</span>;<span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">createElement</span>(<span style="color:#a6e22e">c</span>);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">a</span>;<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;text/java&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">c</span>;<span style="color:#a6e22e">d</span>.<span style="color:#66d9ef">async</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#a6e22e">c</span>)[<span style="color:#ae81ff">0</span>];<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">insertBefore</span>(<span style="color:#a6e22e">d</span>,<span style="color:#a6e22e">a</span>);
-</span></span><span style="display:flex;"><span>})();
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><h3 id="ホームページ">ホームページ</h3>
-<p>ホームページでは、データレイヤーは最小限です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SiteGenesis Online Store&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;content&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;storefront&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;storefront&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><h3 id="検索結果ページ">検索結果ページ</h3>
-<p>このページでは、<code>search_results</code>（<code>count</code>）と<code>search_term</code>（<code>keyword</code>）の新しいデータポイントが追加されます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;search&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;search&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product search results&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;search_results&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;search_term&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;suit&#34;</span>
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><h3 id="製品詳細ページ">製品詳細ページ</h3>
-<p>このページでは、<code>page_type</code>変数は<code>product</code>に等しいです。<code>product_XX</code>配列の値はすべて単一の文字列値です。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>空の文字列値は、Commerce Cloudの製品カタログデータベースが不完全であることを示す場合があります。以下の値はサンプル値です。お使いのサイトでは、&lsquo;page_type&rsquo;と&rsquo;page_context_type&rsquo;がおそらく同じになるでしょう。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;platinum blue stripes easy care fitted shirt&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;008884303989&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;womens-clothing-tops&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;75.00&#34;</span>
-</span></span><span style="display:flex;"><span>  ]
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><h3 id="カート表示ページ">カート表示ページ</h3>
-<p>このページでは、複数の製品固有のクーポンがカート内のすべてのアイテムに適用されます。割引は、同じ製品IDのすべてのアイテムの合計割引額を表します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;checkout&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;coupon_codes&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;FIVEOFF&#34;</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;750518894553&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sanyo-dp50747&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Charcoal Single Pleat Wool Suit&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sanyo 50\&#34; LCD High Definition Television&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sanyo&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mens-clothing-suits&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;electronics-televisions-flat-screen&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;299.99&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;2996.25&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_quantity&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_discount&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-5&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-25&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_promo&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;FIVEOFF&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;FIVEOFF&#34;</span>
-</span></span><span style="display:flex;"><span>  ]
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h3 id="注文ありがとうございますページ">注文「ありがとうございます」ページ</h3>
-<p>このページでは、注文に関する詳細が表示され、<code>order_</code>で始まるすべての値が追加されます。このデータレイヤーには、購入されたすべてのアイテムも含まれます。<code>product_</code>配列は、各配列内のアイテム数が同じであり、各アイテムが他の配列内の同じ位置のアイテムに対応している必要があります。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;confirmation&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;checkout&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;orderconfirmation&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;order confirmation&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;00000451&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_discount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.00&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_subtotal&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;75.00&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_tax&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;4.05&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_shipping&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5.99&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_payment_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BML&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_total&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;85.04&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_currency&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USD&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_postal_code&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;92868&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;75&#34;</span> ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;008884304023&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;womens-clothing-tops&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_quantity&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1&#34;</span> ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_discount&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;0&#34;</span>
-</span></span><span style="display:flex;"><span>  ],
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_promo&#34;</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>  ]
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div><h3 id="注文履歴ページ">注文履歴ページ</h3>
-<p>注文履歴では、以前の注文や未処理の注文に関する詳細が表示されます。このデータレイヤーには、以前に購入したすべてのアイテムが含まれていないはずです。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;content&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;orderhistory&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;order history&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;adtkksWZjpbo9fdawQex7njjMb&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxx@yahoo.com&#34;</span>
-</span></span><span style="display:flex;"><span>}; <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumCollect</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Boolean debug <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* TEALIUM CONFIGURATION */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String tealiumAccount       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YOUR_ACCOUNT&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String tealiumProfile       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YOUR_PROFILE&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String tealiumDataSourceKey <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YOUR_DATASOURCE_KEY&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String tealiumEventType     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;derived&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String tealiumEndpoint      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://collect.tealiumiq.com/event&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@future</span><span style="color:#f92672">(</span>callout<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> tealiumData<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> tealiumParams <span style="color:#f92672">=</span> New List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_account&#34;</span>    <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> tealiumAccount<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_profile&#34;</span>    <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> tealiumProfile<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_datasource&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> tealiumDataSourceKey<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event_type&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> tealiumEventType<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span>      <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>            EncodingUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">urlEncode</span><span style="color:#f92672">(</span>tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        String tealiumVid <span style="color:#f92672">=</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>tealiumVid <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> tealiumVid <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>            tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>String key <span style="color:#f92672">:</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">keySet</span><span style="color:#f92672">()){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                String value <span style="color:#f92672">=</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                Boolean valueTest <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>key <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>valueTest <span style="color:#f92672">?</span> EncodingUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">urlEncode</span><span style="color:#f92672">(</span>value<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span><span style="color:#f92672">(</span>Exception e<span style="color:#f92672">){}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        HttpRequest req <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HttpRequest<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        String tealCollect <span style="color:#f92672">=</span> tealiumEndpoint <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;?&#34;</span> <span style="color:#f92672">+</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span>tealiumParams<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&amp;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        req<span style="color:#f92672">.</span><span style="color:#a6e22e">setEndpoint</span><span style="color:#f92672">(</span>tealCollect<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>debug<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span>tealCollect<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        req<span style="color:#f92672">.</span><span style="color:#a6e22e">setMethod</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;GET&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Http http <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Http<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        HTTPResponse res <span style="color:#f92672">=</span> http<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>req<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="リードまたはコンタクト更新のためのapexトリガーの作成">リードまたはコンタクト更新のためのApexトリガーの作成</h3>
+<p>このトリガーは、Salesforceオブジェクトの更新に基づいてアクティブ化されます。トリガーは他の多くのオブジェクトステージでアクティブ化するように変更でき、特定のシナリオに合わせてカスタマイズおよびフィルタリングが可能です。</p>
+<p>詳細については、<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm">Apex Developer Guide: Triggers</a>を参照してください。</p>
+<p>Tealiumトリガーを作成するための次の手順を使用します：</p>
+<ol>
+<li><strong>開発者コンソール</strong>内で、<code>TealiumLeadUpdate</code>（またはオブジェクトに基づいて<code>TealiumContactUpdate</code>）という名前の<strong>トリガー</strong>を作成します。</li>
+<li>以下のコンタクトオブジェクトトリガーコードまたはリードオブジェクトトリガーコードをコピーして貼り付けます。</li>
+<li>トラッキングしているオブジェクト（<code>Contact</code>または<code>Lead</code>）に合わせてコードを変更します。</li>
+</ol>
+<h4 id="コンタクトオブジェクトトリガー">コンタクトオブジェクトトリガー</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>trigger tealiumContactUpdate on <span style="color:#a6e22e">Contact</span> <span style="color:#f92672">(</span>after insert<span style="color:#f92672">,</span> after update<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    String tealiumEvent <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;crm_contact_update&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* POPULATE TEALIUM DATA LAYER */</span>
+</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">,</span>string<span style="color:#f92672">&gt;</span> tealiumData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Map<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">,</span>string<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Contact sfdcObj <span style="color:#f92672">:</span> Trigger<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* REQUIRED TEALIUM DATA */</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">,</span> tealiumEvent<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* SFDC DATA */</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">,</span>      sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Email</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_source&#34;</span><span style="color:#f92672">,</span>     sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">LeadSource</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;has_opted_out_email&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">HasOptedOutOfEmail</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;has_opted_out_phone&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">DoNotCall</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile_phone_number&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">MobilePhone</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;home_phone_number&#34;</span><span style="color:#f92672">,</span>   String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Phone</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_first_name&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">FirstName</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_last_name&#34;</span><span style="color:#f92672">,</span>  sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">LastName</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_title&#34;</span><span style="color:#f92672">,</span>      sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Title</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_account&#34;</span><span style="color:#f92672">,</span>         String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Account</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* Addition Custom Fields */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* tealiumData.put(&#34;custom_field&#34;, sfdcObj.customField); */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        TealiumCollect<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumData<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="リードオブジェクトトリガー">リードオブジェクトトリガー</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>trigger tealiumLeadUpdate on <span style="color:#a6e22e">Lead</span> <span style="color:#f92672">(</span>after insert<span style="color:#f92672">,</span> after update<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    String tealiumEvent <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;crm_lead_update&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* POPULATE TEALIUM DATA LAYER */</span>
+</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">,</span>string<span style="color:#f92672">&gt;</span> tealiumData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Map<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">,</span>string<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Lead sfdcObj <span style="color:#f92672">:</span> Trigger<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* REQUIRED TEALIUM DATA */</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">,</span> tealiumEvent<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* SFDC DATA */</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">,</span>      sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Email</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_status&#34;</span><span style="color:#f92672">,</span>     sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Status</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_source&#34;</span><span style="color:#f92672">,</span>     sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">LeadSource</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_rating&#34;</span><span style="color:#f92672">,</span>     sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Rating</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_industry&#34;</span><span style="color:#f92672">,</span>   sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Industry</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;crm_lead_company&#34;</span><span style="color:#f92672">,</span>    sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Company</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;has_opted_out_email&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">HasOptedOutOfEmail</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;has_opted_out_phone&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">DoNotCall</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile_phone_number&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">MobilePhone</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;home_phone_number&#34;</span><span style="color:#f92672">,</span>   String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Phone</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_first_name&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">FirstName</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_last_name&#34;</span><span style="color:#f92672">,</span>  sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">LastName</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* Addition Custom Fields */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* tealiumData.put(&#34;custom_field&#34;, sfdcObj.customField); */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        TealiumCollect<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumData<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="リード変換マッピング">リード変換マッピング</h3>
+<p>リードをコンタクトに変換する際にカスタムフィールド <strong>Tealium ID</strong> を保持するには、<strong>Lead.Tealium ID</strong> を <strong>Contact.Tealium ID</strong> にマッピングする必要があります。</p>
+<p>詳細については、<a href="https://help.salesforce.com/s/articleView?id=sales.customize_mapleads.htm&amp;type=5">Salesforce Sales Cloud Basics: Map Custom Lead Fields for Lead Conversion</a>を参照してください。</p>
+<p>カスタムフィールドマッピングを作成するには、以下の手順に従ってください：</p>
+<ol>
+<li>
+<p><strong>Lead &gt; Fields</strong> に移動します。</p>
+</li>
+<li>
+<p><strong>Map Fields</strong> をクリックします。</p>
+</li>
+<li>
+<p><strong>Contact</strong> をクリックします。</p>
+</li>
+<li>
+<p>Lead列の <code>tealium_id</code> をContact列の <strong>Tealium ID</strong> にマッピングします。</p>
+<figure><a class="slb" href="/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png"><img src="/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png"
+             alt="Mapping"
+             title="Mapping"/>
+        </a>
+    </figure>
+</li>
+<li>
+<p><strong>Save</strong> をクリックします。</p>
+</li>
+</ol>
+<h3 id="リモートサイト構成の有効化">リモートサイト構成の有効化</h3>
+<p>Tealium Collectエンドポイントは、HTTPリクエストを送信するためにSalesforceのリモートサイト構成に登録する必要があります。</p>
+<p>詳細については、<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_callouts_remote_site_settings.htm">Apex Developer Guide: Adding Remote Site Settings</a>を参照してください。</p>
+<p>以下の構成でリモートサイトを作成します：</p>
+<ul>
+<li><strong>リモートサイト名</strong>: TealiumCollect</li>
+<li><strong>リモートサイトURL</strong>: <code>https://collect.tealiumiq.com</code></li>
+<li><strong>プロトコルセキュリティの無効化</strong>: 有効</li>
+</ul>
+<h4 id="リモートサイトの例">リモートサイトの例</h4>
+<figure><a class="slb" href="/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png"><img src="/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png"
+         alt="Remote site example"
+         title="Remote site example" width="538" height="342"/>
+    </a>
+</figure>
+<h3 id="salesforceイベント属性の追加">Salesforceイベント属性の追加</h3>
+<p>Apexトリガーコードで使用されるSalesforce変数は、Tealiumでイベント属性として定義する必要があります。Salesforceからどのようなデータが来ているかを確認するには、トリガーコードを調べるか、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を使用してリアルタイムでデータを確認します。</p>
+<p>イベント属性を追加するには、以下の手順に従ってください：</p>
+<ol>
+<li><strong>Enrich &gt; Attributes</strong> に移動します。</li>
+<li><strong>+ Add Attribute</strong> をクリックします。</li>
+<li>スコープを選択します：<strong>Event</strong>。</li>
+<li>タイプを選択します：<strong>Universal Data Object</strong>。</li>
+<li>データタイプを選択します：<strong>String</strong>。</li>
+<li>トリガーコードで使用されている変数名と同じ <strong>Name</strong> を構成します。例えば <code>crm_lead_status</code>。</li>
+<li>Save/Publish を行います。</li>
+</ol>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"></div>
@@ -483,7 +400,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年May月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -497,22 +414,14 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">セットアップ</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">カスタムコード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%92%E6%8F%9B%E6%80%A7" href="javascript:void(0)">互換性</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" href="javascript:void(0)">外部インターフェース</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E6%94%AF%E6%89%95%E3%81%84" href="javascript:void(0)">プライバシー、支払い</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">サポート</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88" href="javascript:void(0)">テスト</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">ホームページ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E7%B4%A2%E7%B5%90%E6%9E%9C%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">検索結果ページ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">製品詳細ページ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%BC%E3%83%88%E8%A1%A8%E7%A4%BA%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">カート表示ページ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B3%A8%E6%96%87%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">注文「ありがとうございます」ページ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B3%A8%E6%96%87%E5%B1%A5%E6%AD%B4%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">注文履歴ページ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">ソリューションのインストール</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#customer-data-hub%E3%81%8B%E3%82%89salesforce%E3%81%B8%E3%81%AE%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%B3%E3%82%AF" href="javascript:void(0)">Customer Data HubからSalesforceへのレコードリンク</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealiumcollect-apex%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">TealiumCollect Apexクラスの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%BC%E3%83%89%E3%81%BE%E3%81%9F%E3%81%AF%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E6%9B%B4%E6%96%B0%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEapex%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">リードまたはコンタクト更新のためのApexトリガーの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%BC%E3%83%89%E5%A4%89%E6%8F%9B%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">リード変換マッピング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%B5%E3%82%A4%E3%83%88%E6%A7%8B%E6%88%90%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">リモートサイト構成の有効化</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#salesforce%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%B1%9E%E6%80%A7%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">Salesforceイベント属性の追加</a></li>
               </nav>
   </aside></nav>
 
@@ -809,6 +718,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
