@@ -563,21 +563,21 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article lists the IP addresses that customers need to allowlist to allow the Customer Data Hub (CDH) to communicate with external systems.
+      This article provides a list of IP addresses to include in your allowlist to enable the Tealium platform to communicate with external systems.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The CDH communicates with external systems during the following operations:</p>
+<p>The Tealium platform communicates with external systems during the following operations:</p>
 <ul>
-<li>Sending data to external systems with connector actions.</li>
-<li>Performing custom actions in functions.</li>
-<li>Retrieving files from File Import data sources, except AWS S3.</li>
+<li>Sending data with connector actions.</li>
+<li>Making requests to external services in <a href="/server-side/functions/about/">functions</a>.</li>
+<li>Processing <a href="/server-side/data-sources/file-import/about/">file import data sources</a> (other than AWS S3).</li>
 </ul>
-<p>If an external system restricts access to only an approved list of IP addresses, then add all of the following IP addresses to your allowlist:</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth calls, test connections, the <a href="/server-side-connectors/snowflake-streaming-connector/">Snowflake Streaming connector</a>, and File Import data source test connections (except AWS S3) use the US-West-1 region. The Snowflake connector also requires that you add the server-side profile region&rsquo;s addresses to your profile. Only login information passes through OAuth calls and test connections, not client data.</p>
+<p>If an external system restricts access to only an approved list of IP addresses, then you must add all of the following IP addresses to your allowlist:</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>For OAuth calls, test connections initiated from the server-side interface, the Snowflake Streaming connector, and file import data source test connections (excluding AWS S3), data is transmitted from IP addresses in the <code>us-west-1</code> region. To enable these features, ensure that the IP addresses for the <code>us-west-1</code> region are included in your allowlist.<br><br>Additionally, include the IP addresses for the region associated with your specific server-side profile, which can be found under <strong>Server-Side Settings</strong> &gt; <strong>Region</strong>.<br><br>Note that only login information is transmitted during OAuth calls and test connections. No customer data is sent during these operations.</p>
 <table>
 <thead>
 <tr>
@@ -603,7 +603,7 @@
 <td>Ashburn, Virginia</td>
 </tr>
 <tr>
-<td>34.251.234.107<br>52.30.45.164<br>52.31.156.52<br>52.48.83.213<br>52.209.154.50<br>54.76.122.246<br>54.195.193.79<br>54.229.215.104 *<br>108.128.75.88</td>
+<td>34.251.234.107<br>52.30.45.164<br>52.31.156.52<br>52.48.83.213<br>52.209.154.50<br>54.76.122.246<br>54.195.193.79<br>54.229.215.104<br>108.128.75.88</td>
 <td><code>eu-west-1</code></td>
 <td>Dublin, Ireland</td>
 </tr>
@@ -641,7 +641,7 @@
 <table>
 <thead>
 <tr>
-<th><strong>VPC Endpoints ID</strong></th>
+<th><strong>VPC Endpoint ID</strong></th>
 <th><strong>Region</strong></th>
 </tr>
 </thead>
@@ -740,7 +740,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 14, 2024 
+          <p>This page was last updated:  May 14, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

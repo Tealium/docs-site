@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "10",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -568,19 +568,21 @@
   
 
   
+    <p class="f4 fw3 lh-copy">
+      Trimou is an open-source templating engine that allows the rendering of documents based on JSON input and a template definition. This guide explains common syntax, as well as extensions which are custom to Tealium.
+    </p>
+  
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="prerequisites">Prerequisites</h2>
+  <p>For more information, see: <a href="http://trimou.org/doc/2.3.0.Final/trimou-doc.html">Trimou 2.3.0 Documentation</a></p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li><a href="/server-side/connectors/webhook-connectors/action-parameters/">Webhook - Action Parameters</a></li>
 <li><a href="/server-side/connectors/webhook-connectors/template-variables/">Webhook - Template Variables Guide</a></li>
 </ul>
-<h2 id="overview">Overview</h2>
-<p>Trimou is an open-source templating engine that allows the rendering of documents based on JSON input and a template definition. This guide explains common syntax, as well as extensions which are custom to Tealium AudienceStream.</p>
-<p>For more, see: <a href="http://trimou.org/doc/2.3.0.Final/trimou-doc.html">Trimou 2.3.0 Documentation</a></p>
 <h2 id="webhooks">Webhooks</h2>
-<p>When setting up a webhook in AudienceStream, a vistor profile has visitor and visit attributes that need to be mapped to the required output. A visitor profile example that shows all data types available for mapping:</p>
+<p>When setting up a webhook, a visitor profile has visitor and visit attributes that need to be mapped to the required output. A visitor profile example that shows all data types available for mapping:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;badges&#34;</span>: [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Test Badge&#34;</span>
@@ -621,8 +623,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metric_lists&#34;</span>: { <span style="color:#960050;background-color:#1e0010">--arrays</span> <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">numbers</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Test Array Numbers [arrn]&#34;</span>: [
 </span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">1.0</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">1.0</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">2.0</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">2.0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">3.0</span>
 </span></span><span style="display:flex;"><span>        ]
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flag_lists&#34;</span>: { <span style="color:#960050;background-color:#1e0010">--arrays</span> <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">booleans</span>
@@ -643,8 +645,8 @@
 <h2 id="syntax">Syntax</h2>
 <p>The syntax examples in the sections below reference the visitor profile.</p>
 <h3 id="variable-substitution">Variable Substitution</h3>
-<p>The name of a variable is a placeholder for its data value. Variable substitution references this value with double curly braces, such as <code>{{var}}</code> .</p>
-<p>In the following example, the String variable <code>{{str}}</code> is substituted with it&rsquo;s value <code>Hello</code> .</p>
+<p>The name of a variable is a placeholder for its data value. Variable substitution references this value with double curly braces, such as <code>{{var}}</code>.</p>
+<p>In the following example, the string variable <code>{{str}}</code> is substituted with it&rsquo;s value <code>Hello</code>.</p>
 <table>
 <thead>
 <tr>
@@ -654,16 +656,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{{str}}</code></td>
-<td>Hello</td>
-</tr>
-<tr>
-<td><code>{{str}}</code>world</td>
-<td>Hello world</td>
+<td><code>{{str}} world</code></td>
+<td><code>Hello world</code></td>
 </tr>
 </tbody>
 </table>
-<p>The following example gets the first value in the array of numbers <code>{{arrn}}</code>, referenced by specifying the index  .</p>
+<p>The following example gets the first value in the array of numbers <code>{{arrn}}</code>, referenced by specifying the index.</p>
 <table>
 <thead>
 <tr>
@@ -673,16 +671,16 @@
 </thead>
 <tbody>
 <tr>
-<td>The value is <code>{{arrn.0}}</code></td>
-<td>The value is 1.0</td>
+<td><code>The first value is {{arrn.0}}</code></td>
+<td><code>The first value is 1.0</code></td>
 </tr>
 <tr>
-<td>The value is <code>{{arrn.1}}</code></td>
-<td>The value is 1.0</td>
+<td><code>The second value is {{arrn.1}}</code></td>
+<td><code>The second value is 2.0</code></td>
 </tr>
 <tr>
-<td>The value is <code>{{arrn.2}}</code></td>
-<td>The value is 2.0</td>
+<td><code>The third value is {{arrn.2}}</code></td>
+<td><code>The third value is 3.0</code></td>
 </tr>
 </tbody>
 </table>
@@ -698,12 +696,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{{#bln}}</code>Section of content<code>{{/bln}}</code></td>
-<td>Section of content</td>
+<td><code>{{#bln}}Section of content{{/bln}}</code></td>
+<td><code>Section of content</code></td>
 </tr>
 </tbody>
 </table>
-<p>In the following example, since the array of Strings arrs is not empty, the content is rendered 3 times, once for each array element. The content does not render if the variable was <code>false</code>.</p>
+<p>In the following example, since the array of Strings <code>arrs</code> is not empty, the content is rendered three times, once for each array element. The content does not render if the variable was <code>false</code>.</p>
 <table>
 <thead>
 <tr>
@@ -713,14 +711,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{{#arrs}}</code>Section of content <code>{{/arrs}}</code></td>
-<td>Section of content Section of content Section of content</td>
+<td><code>{{#arrs}}Section of content {{/arrs}}</code></td>
+<td><code>Section of content Section of content Section of content </code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="inverted-sections">Inverted Sections</h3>
-<p>A section of content, surrounded by opening <code>{{#var}}</code> and closing <code>{{/var}}</code> tags, is rendered if there is no object found in the context. This includes a <code>Boolean</code> of value <code>false</code>, an <code>Iterable</code> with no elements, or an empty array.</p>
-<p>In the following example, since <code>bln</code> is <code>true</code> , the content is not rendered. The content renders if the variable was <code>false</code>.</p>
+<p>A section of content, surrounded by opening <code>{{^var}}</code> and closing <code>{{/var}}</code> tags, is rendered if there is no object found in the context. This includes a <code>Boolean</code> of value <code>false</code>, an <code>Iterable</code> with no elements, or an empty array.</p>
+<p>In the following example, since <code>bln</code> is <code>true</code>, the content is not rendered. The content renders if the variable was <code>false</code>.</p>
 <table>
 <thead>
 <tr>
@@ -730,8 +728,8 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{{^bln}}</code>Section of content<code>{{/bln}}</code></td>
-<td></td>
+<td><code>Section of {{^bln}}content{{/bln}}</code></td>
+<td><code>Section of </code></td>
 </tr>
 </tbody>
 </table>
@@ -745,100 +743,69 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{{^missing}}</code>Section of content<code>{{/missing}}</code></td>
-<td>Section of content</td>
+<td><code>{{^missing}}Section of content{{/missing}}</code></td>
+<td><code>Section of content</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="iteration">Iteration</h3>
 <p>Trimou provides several helper functions to iterate an array. Nested attributes within an iteration are referenced by name. Trimou determines the context and parent (iteration element) they belong to.</p>
-<p>In the above example, we mapped a Set of Strings to the variable &ldquo;object.ss&rdquo;, an Array of strings to the variable &ldquo;object.arrs&rdquo;, an Array of Numbers to the variable &ldquo;object.arrn&rdquo; and finally an Array of Booleans to the variable &ldquo;object.arrb&rdquo;. This means we can use Trimou to iterate over these attributes treating them as aligned arrays collectively, by iterating over the variable &ldquo;object&rdquo;. The example below shows this.</p>
 <p>The following are the Trimou built-in iteration helpers:</p>
 <ul>
-<li>
-<p><code>iter.index</code> (the first element is at index 1)</p>
-</li>
-<li>
-<p><code>iter.isFirst</code></p>
-</li>
-<li>
-<p><code>iter.isLast</code></p>
-</li>
-<li>
-<p><code>iter.hasNext</code></p>
-</li>
-<li>
-<p><code>{{#object}}</code> and<code>{{/object}}</code> mean that we are iterating over the 4 variables that we have prefixed &ldquo;object.&rdquo;</p>
-</li>
-<li>
-<p><code>{{iter.index}} </code> is the current iteration index, starting at 1.</p>
-</li>
-<li>
-<p><code>{{#iter.isFirst}}&quot;first&quot;:&quot;true&quot;,{{/iter.isFirst}}</code> renders the text inside if it is the first iteration</p>
-</li>
-<li>
-<p><code>{{#iter.isLast}}&quot;last&quot;:&quot;true&quot;,{{/iter.isLast}}</code> renders the text inside if it is the last iteration</p>
-</li>
-<li>
-<p><code>{{ss}}</code>inside the<code>{{#object}}</code> mean that we are referring to the item in the Set of Strings at this position, since we mapped the Set of Strings to &ldquo;object.ss&rdquo;.</p>
-</li>
-<li>
-<p>The same goes for <code>{{arrs}}</code>,<code>{{arrn}}</code> and<code>{{arrb}}</code>respectively to refer to the Array of Strings, the Array of Numbers and the Array of Booleans</p>
-</li>
-<li>
-<p><code>{{#iter.hasNext}}, {{/iter.hasNext}} </code> renders a comma if the iteration has more elements (iterHasNext is <code>true</code> )</p>
-</li>
+<li><code>iter.index</code> (the first element is at index <code>1</code>)</li>
+<li><code>iter.isFirst</code></li>
+<li><code>iter.isLast</code></li>
+<li><code>iter.hasNext</code></li>
 </ul>
+<p>The following example uses the mapping of an array of booleans to the variable <code>object.arrb</code> and shows how to iterate over the array:</p>
 <p><strong>Template</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;MyData&#34;</span><span style="color:#960050;background-color:#1e0010">:</span>[
-</span></span><span style="display:flex;"><span>{<span style="color:#960050;background-color:#1e0010">{#object</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;idx&#34;</span>:{<span style="color:#960050;background-color:#1e0010">{iter.index</span>}},
-</span></span><span style="display:flex;"><span>    {<span style="color:#960050;background-color:#1e0010">{#iter.isFirst</span>}<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#e6db74">&#34;first&#34;</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#e6db74">&#34;true&#34;</span>,{<span style="color:#960050;background-color:#1e0010">{/iter.isFirst</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>    {<span style="color:#960050;background-color:#1e0010">{#iter.isLast</span>}<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#e6db74">&#34;last&#34;</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#e6db74">&#34;true&#34;</span>,{<span style="color:#960050;background-color:#1e0010">{/iter.isLast</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ss&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{ss}}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;arrs&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{arrs}}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;arrn&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{arrn}}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;arrb&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{arrb}}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">}</span>{<span style="color:#960050;background-color:#1e0010">{#iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>, {<span style="color:#960050;background-color:#1e0010">{/iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#960050;background-color:#1e0010">{/object</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p><strong>Rendered Value</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;MyData&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;first&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ss&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrs&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrn&#34;</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrb&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>}, {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">2</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ss&#34;</span>: <span style="color:#e6db74">&#34;B&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrs&#34;</span>: <span style="color:#e6db74">&#34;A&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrn&#34;</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrb&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>}, {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">3</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;last&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ss&#34;</span>: <span style="color:#e6db74">&#34;C&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrs&#34;</span>: <span style="color:#e6db74">&#34;B&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrn&#34;</span>: <span style="color:#e6db74">&#34;2.0&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arrb&#34;</span>: <span style="color:#e6db74">&#34;false&#34;</span>,
-</span></span><span style="display:flex;"><span>}]
-</span></span></code></pre></div><p>For iterating over a tally (we mapped the tally to &ldquo;tly&rdquo; in the example above), you can use a special iterator, called the <code>entrySet</code>. Inside this, you can refer to the key and the value, as in the example below</p>
-<table>
-<thead>
-<tr>
-<th><strong>Template</strong></th>
-<th><strong>Rendered Value</strong></th>
-</tr>
-</thead>
-</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;MyData&#34;</span>: [
+</span></span><span style="display:flex;"><span>  {<span style="color:#960050;background-color:#1e0010">{#object.arrb</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;idx&#34;</span>: {<span style="color:#960050;background-color:#1e0010">{iter.index</span>}},
+</span></span><span style="display:flex;"><span>    {<span style="color:#960050;background-color:#1e0010">{#iter.isFirst</span>}<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#e6db74">&#34;first&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span>,{<span style="color:#960050;background-color:#1e0010">{/iter.isFirst</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>    {<span style="color:#960050;background-color:#1e0010">{#iter.isLast</span>}<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#e6db74">&#34;last&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span>,{<span style="color:#960050;background-color:#1e0010">{/iter.isLast</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;val&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#960050;background-color:#1e0010">{.</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>{<span style="color:#960050;background-color:#1e0010">{#iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>,{<span style="color:#960050;background-color:#1e0010">{/iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#960050;background-color:#1e0010">{/object.arrb</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><code>{{#object.arrb}}</code> and<code>{{/object.arrb}}</code> iterates over the array.</li>
+<li><code>{{iter.index}}</code> is the current iteration index, starting at 1.</li>
+<li><code>{{#iter.isFirst}}&quot;first&quot;: true,{{/iter.isFirst}}</code> renders the text inside if it is the first iteration.</li>
+<li><code>{{#iter.isLast}}&quot;last&quot;: true,{{/iter.isLast}}</code> renders the text inside if it is the last iteration.</li>
+<li><code>{{#iter.hasNext}}, {{/iter.hasNext}}</code> renders a comma if the iteration has more elements (<code>iterHasNext</code> is <code>true</code> )</li>
+<li><code>{{.}}</code> references the array value when iterating an array.</li>
+</ul>
+<p><strong>Rendered Value</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;MyData&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;first&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;val&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;val&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;idx&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;last&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;val&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To iterate over a tally, use the iterator <code>entrySet</code> then refer to <code>key</code> and <code>value</code>:</p>
 <p><strong>Template</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;MyTally&#34;</span><span style="color:#960050;background-color:#1e0010">:</span>{
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{{#each</span> <span style="color:#960050;background-color:#1e0010">tly.entrySet</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;{{key}}&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{value.toInteger}}&#34;</span>{<span style="color:#960050;background-color:#1e0010">{#iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">},</span>{<span style="color:#960050;background-color:#1e0010">{/iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>
-</span></span><span style="display:flex;"><span>{<span style="color:#960050;background-color:#1e0010">{/each</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;MyTally&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">{{#each</span> <span style="color:#960050;background-color:#1e0010">tly.entrySet</span>}}
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;{{key}}&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{value.toInteger}}&#34;</span>{<span style="color:#960050;background-color:#1e0010">{#iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">},</span>{<span style="color:#960050;background-color:#1e0010">{/iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>    {<span style="color:#960050;background-color:#1e0010">{/each</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
 </span></span></code></pre></div><p><strong>Rendered Value</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;MyTally&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
@@ -849,7 +816,7 @@
 </span></span></code></pre></div><h2 id="helper-functions">Helper Functions</h2>
 <p>Templates provide additional and custom functionality through Tealium provided helper functions. They allow for transforming data and make it easier to generate the desired document format.</p>
 <h3 id="castintegers">castIntegers</h3>
-<p>Customer Data Hub uses decimals to store various numbers. This helper forces the output in collections to be integer values. Can be used with <code>toJson</code>.</p>
+<p>This helper forces the output in collections to be integer values. Can be used with <code>toJson</code>.</p>
 <table>
 <thead>
 <tr>
@@ -860,7 +827,7 @@
 <tbody>
 <tr>
 <td><code>tally</code></td>
-<td><code>{A=1.0, B=2.0, C=3.0</code>}</td>
+<td><code>{A=1.0, B=2.0, C=3.0}</code></td>
 </tr>
 <tr>
 <td><code>tally.castIntegers</code></td>
@@ -884,7 +851,7 @@
 <tbody>
 <tr>
 <td><code>{{#encodeBase64}}</code><br> <code>{{str}}</code> world<br> <code>{{/encodeBase64}}</code></td>
-<td>wqDCoEhlbGxvIHdvcmxkCg==</td>
+<td><code>wqDCoEhlbGxvIHdvcmxkCg==</code></td>
 </tr>
 </tbody>
 </table>
@@ -953,7 +920,7 @@
 </tbody>
 </table>
 <h3 id="formatdate">formatDate</h3>
-<p>Formats date variable according to specified pattern. Pattern syntax corresponds to Java’s Simple Date formatting. For full table listing, see the <a href="http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">Java Simple Date Format documentation</a>.</p>
+<p>Format a date variable according to specified pattern. Pattern syntax corresponds to Java’s Simple Date formatting. For full table listing, see the <a href="http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">Java Simple Date Format documentation</a>.</p>
 <table>
 <thead>
 <tr>
@@ -964,11 +931,11 @@
 <tbody>
 <tr>
 <td><code>{{dat}}</code></td>
-<td>2020-09-15T00:00:00.000Z</td>
+<td><code>2020-09-15T00:00:00.000Z</code></td>
 </tr>
 <tr>
 <td><code>{{formatDate dat pattern=&quot;yyyy-MM-dd HH:mm a&quot;}}</code></td>
-<td>2020-09-15 00:00 AM</td>
+<td><code>2020-09-15 00:00 AM</code></td>
 </tr>
 </tbody>
 </table>
@@ -987,8 +954,8 @@
 <tbody>
 <tr>
 <td><code>{{hash algorithm=&quot;HmacSHA256&quot; encodingCharset=&quot;UTF-8&quot; binaryEncoding=&quot;hex&quot; joinOn=&quot;&quot; useSecretKey=&quot;true&quot; testKey timestamp ip lang}}</code></td>
-<td>Template Variables: <br> <code>testKey</code>, <code>timestamp</code>, <code>ip</code>, <code>timestamp</code> and since <code>useSecretKey=&quot;true&quot;</code> the first variable provided. For example, <code>testKey</code> will be used as the Secret Key for HMAC calculation</td>
-<td>For example, if the concatenation of the timestamp, ip and lang are: <br> 2020-08-20T08:45:33.412127.0.0.1en-US <br> and the testKey is w8sZzy8EaPaxFKfaoTqUi6 <br> The result is: a0afb572e3fc174c2dea112e1a9922fb9903caa65e6aa9e50e47758b8a611542</td>
+<td>Template Variables: <br> <code>testKey</code>, <code>timestamp</code>, <code>ip</code>, <code>timestamp</code> and since <code>useSecretKey=&quot;true&quot;</code> the first variable provided. For example, <code>testKey</code> will be used as the Secret Key for HMAC calculation.</td>
+<td>For example, if the concatenation of the <code>timestamp</code>, <code>ip</code>, and <code>lang</code> are: <br> 2020-08-20T08:45:33.412127.0.0.1en-US <br> and the testKey is w8sZzy8EaPaxFKfaoTqUi6 <br> The result is: a0afb572e3fc174c2dea112e1a9922fb9903caa65e6aa9e50e47758b8a611542</td>
 </tr>
 </tbody>
 </table>
@@ -1005,8 +972,8 @@
 <tr>
 <td>algorithm</td>
 <td>Yes</td>
-<td>example: <code>HmacSHA256</code></td>
-<td>available options are:<br> - when <code>secretKey=&quot;true&quot;</code> refer to <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#Mac">Java Mac Algorithms</a><br> - when <code>secretKey=&quot;false&quot;</code> refer to <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest">Java MessageDigest Algorithms</a></td>
+<td>Example: <code>HmacSHA256</code></td>
+<td>Available options are:<br> - when <code>secretKey=&quot;true&quot;</code> refer to <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#Mac">Java Mac Algorithms</a><br> - when <code>secretKey=&quot;false&quot;</code> refer to <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest">Java MessageDigest Algorithms</a></td>
 </tr>
 <tr>
 <td>encodingCharset</td>
@@ -1064,15 +1031,15 @@
 <tbody>
 <tr>
 <td><code>{{#if str}} {{str}} world! {{/if}}</code></td>
-<td>Hello world!</td>
+<td><code>Hello world!</code></td>
 </tr>
 <tr>
 <td><code>{{#if arrn}} {{arrn.toJson}} {{/if}}</code></td>
-<td>[1.0,1.0,2.0]</td>
+<td><code>[1.0,2.0,3.0]</code></td>
 </tr>
 <tr>
 <td><code>{{#if ss}} {{ss.toJson}} {{/if}}</code></td>
-<td>[&ldquo;A&rdquo;,&ldquo;B&rdquo;,&ldquo;C&rdquo;]</td>
+<td><code>[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]</code></td>
 </tr>
 </tbody>
 </table>
@@ -1088,7 +1055,7 @@
 <tbody>
 <tr>
 <td><code>{{#isEq bln true}}Boolean is true{{/isEq}}</code></td>
-<td>Boolean is true</td>
+<td><code>Boolean is true</code></td>
 </tr>
 <tr>
 <td><code>{{#isEq bln false}}Boolean is false{{/isEq}}</code></td>
@@ -1096,7 +1063,7 @@
 </tr>
 <tr>
 <td><code>{{#isEq str &quot;Hello&quot;}}String is Hello{{/isEq}}</code></td>
-<td>String is Hello</td>
+<td><code>String is Hello</code></td>
 </tr>
 <tr>
 <td><code>{{#isEq str &quot;Test&quot;}}String is Test{{/isEq}}</code></td>
@@ -1105,7 +1072,7 @@
 </tbody>
 </table>
 <h3 id="isnoteq">isNotEq</h3>
-<p>Print the content if the values are equal.</p>
+<p>Print the content if the values are not equal.</p>
 <table>
 <thead>
 <tr>
@@ -1120,7 +1087,7 @@
 </tr>
 <tr>
 <td><code>{{#isNotEq bln false}}Boolean is true{{/isNotEq}}</code></td>
-<td>Boolean is true</td>
+<td><code>Boolean is true</code></td>
 </tr>
 <tr>
 <td><code>{{#isNotEq str &quot;Hello&quot;}}Hello world!{{/isNotEq}}</code></td>
@@ -1128,7 +1095,7 @@
 </tr>
 <tr>
 <td><code>{{#isNotEq str &quot;Some string&quot;}}Hello there!{{/isNotEq}}</code></td>
-<td>Hello there!</td>
+<td><code>Hello there!</code></td>
 </tr>
 </tbody>
 </table>
@@ -1144,15 +1111,15 @@
 <tbody>
 <tr>
 <td><code>{{join ss}}</code></td>
-<td>A,B,C</td>
+<td><code>A,B,C</code></td>
 </tr>
 <tr>
 <td><code>{{join ss on=&quot; and &quot;}}</code></td>
-<td>A and B and C</td>
+<td><code>A and B and C</code></td>
 </tr>
 <tr>
 <td><code>{{join ss on=&quot;&quot;}}</code></td>
-<td>A B C</td>
+<td><code>A B C</code></td>
 </tr>
 <tr>
 <td><code>{{join empty_list on=&quot; and &quot;}}</code></td>
@@ -1188,7 +1155,7 @@
 <tbody>
 <tr>
 <td><code>{{#md5}}Hello World!{{/md5}}</code></td>
-<td>ed076287532e86365e841e92bfc50d8c</td>
+<td><code>ed076287532e86365e841e92bfc50d8c</code></td>
 </tr>
 </tbody>
 </table>
@@ -1204,7 +1171,7 @@
 <tbody>
 <tr>
 <td><code>{{#sha1}}Hello world!{{/sha1}}</code></td>
-<td>d3486ae9136e7856bc42212385ea797094475802</td>
+<td><code>d3486ae9136e7856bc42212385ea797094475802</code></td>
 </tr>
 </tbody>
 </table>
@@ -1219,8 +1186,8 @@
 </thead>
 <tbody>
 <tr>
-<td><code>{#sha256}}Hello World!{{/sha256}}</code></td>
-<td>7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</td>
+<td><code>{{#sha256}}Hello World!{{/sha256}}</code></td>
+<td><code>7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</code></td>
 </tr>
 </tbody>
 </table>
@@ -1356,11 +1323,11 @@
 <tbody>
 <tr>
 <td><code>{{tly.sum}}</code></td>
-<td>6.0</td>
+<td><code>6.0</code></td>
 </tr>
 <tr>
 <td><code>{{arrn.sum}}</code></td>
-<td>4.0</td>
+<td><code>6.0</code></td>
 </tr>
 </tbody>
 </table>
@@ -1376,11 +1343,11 @@
 <tbody>
 <tr>
 <td><code>{{num}}</code></td>
-<td>1.0</td>
+<td><code>1.0</code></td>
 </tr>
 <tr>
 <td><code>{{num.toInteger}}</code></td>
-<td>1</td>
+<td><code>1</code></td>
 </tr>
 </tbody>
 </table>
@@ -1396,11 +1363,11 @@
 <tbody>
 <tr>
 <td><code>{{tly}}</code></td>
-<td>{A=1.0, B=2.0, C=3.0}</td>
+<td><code> {A=1.0, B=2.0, C=3.0}</code></td>
 </tr>
 <tr>
 <td><code>{{tly.toJson}}</code></td>
-<td>{&ldquo;A&rdquo;:1.0,&ldquo;B&rdquo;:2.0,&ldquo;C&rdquo;:3.0}</td>
+<td><code>{&quot;A&quot;:1.0,&quot;B&quot;:2.0,&quot;C&quot;:3.0}</code></td>
 </tr>
 </tbody>
 </table>
@@ -1417,7 +1384,7 @@
 <tbody>
 <tr>
 <td><code>{{arrn.toList.sum}}</code></td>
-<td>4.0</td>
+<td><code>6.0</code></td>
 </tr>
 </tbody>
 </table>
@@ -1433,11 +1400,11 @@
 <tbody>
 <tr>
 <td><code>{{dat}}</code></td>
-<td>2020-09-15T00:00:00.000Z</td>
+<td><code>2020-09-15T00:00:00.000Z</code></td>
 </tr>
 <tr>
 <td><code>{{dat.toTimestamp}}</code></td>
-<td>1600128000</td>
+<td><code>1600128000</code></td>
 </tr>
 </tbody>
 </table>
@@ -1453,11 +1420,11 @@
 <tbody>
 <tr>
 <td><code>{{dat}}</code></td>
-<td>2020-09-15T00:00:00.000Z</td>
+<td><code>2020-09-15T00:00:00.000Z</code></td>
 </tr>
 <tr>
 <td><code>{{dat.toTimestampMs}}</code></td>
-<td>1600128000000</td>
+<td><code>1600128000000</code></td>
 </tr>
 </tbody>
 </table>
@@ -1473,11 +1440,11 @@
 <tbody>
 <tr>
 <td><code>{{unixTimestamp}}</code></td>
-<td>1599859440</td>
+<td><code>1599859440</code></td>
 </tr>
 <tr>
 <td><code>{{unixTimestamp format=&quot;yyyy-MM-dd HH:mm a&quot;}}</code></td>
-<td>2020-09-11 21:24 PM</td>
+<td><code>2020-09-11 21:24 PM</code></td>
 </tr>
 </tbody>
 </table>
@@ -1493,16 +1460,16 @@
 <tbody>
 <tr>
 <td><code>{{unixTimestampMs}}</code></td>
-<td>1599859605838</td>
+<td><code>1599859605838</code></td>
 </tr>
 <tr>
 <td><code>{{unixTimestampMs format=&quot;yyyy-MM-dd HH:mm a&quot;}}</code></td>
-<td>2020-09-11 21:26 PM</td>
+<td><code>2020-09-11 21:26 PM</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="unless">unless</h3>
-<p>Print the content if the parameter does not exist or has no content.</p>
+<p>Print the content if the parameter does not exist or has no content. This is the inverse of <code>if</code>.</p>
 <table>
 <thead>
 <tr>
@@ -1517,12 +1484,12 @@
 </tr>
 <tr>
 <td><code>{{#unless str2}}str2 doesn't exist or no content{{/unless}}</code></td>
-<td>str2 doesn&rsquo;t exist or no content</td>
+<td><code>str2 doesn't exist or no content</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="uuid">uuid</h3>
-<p>Print a randomly generated UUID. Useful for creating nonces.</p>
+<p>Print a randomly generated UUID, which is a universally unique identifier commonly used for identifying resources or ensuring uniqueness in distributed systems.</p>
 <table>
 <thead>
 <tr>
@@ -1533,7 +1500,7 @@
 <tbody>
 <tr>
 <td><code>{{uuid}}</code></td>
-<td>4d61f298-2a8d-461d-a3bf-b153892a7b49</td>
+<td><code>4d61f298-2a8d-461d-a3bf-b153892a7b49</code></td>
 </tr>
 </tbody>
 </table>
@@ -1582,7 +1549,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 26, 2024 
+          <p>This page was last updated:  May 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1597,7 +1564,6 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#overview" href="javascript:void(0)">Overview</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhooks" href="javascript:void(0)">Webhooks</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#syntax" href="javascript:void(0)">Syntax</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#variable-substitution" href="javascript:void(0)">Variable Substitution</a></li>

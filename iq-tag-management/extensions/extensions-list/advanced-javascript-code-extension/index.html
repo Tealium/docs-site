@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "11",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -263,7 +263,7 @@
         <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".e-commerce-extension">E-commerce</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/extensions/extensions-list/flatten-json-objects-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flatten-json-objects-extension">Flatten JSON Objects</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/extensions/extensions-list/hosted-data-layer-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hosted-data-layer-extension">Hosted Data Layer</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/extensions/extensions-list/javascript-code-basic-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-code-extension-basic">JavaScript Code (Basic)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/extensions/extensions-list/javascript-code-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-code-extension-basic">JavaScript Code</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/extensions/extensions-list/join-data-values-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".join-data-values-extension">Join Data Values</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/extensions/extensions-list/jquery-clickhandler-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".jquery-clickhandler-extension">jQuery clickHandler (jQuery v1.6 and below)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".jquery-onhandler-extension">jQuery onHandler (jQuery 1.7 and up)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -469,68 +469,102 @@
 <li>utag v4.38 or later. For more information about updating the <code>utag.js</code> template, see our knowledge base article <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>.</li>
 <li>To publish this extension, you need the <a href="/iq-tag-management/administration/user-permissions/about/">JavaScript Draft Promotion</a> profile-level permission.</li>
 </ul>
+<p>This is the advanced version of the JavaScript Code extension. For basic needs, see the <a href="/iq-tag-management/extensions/extensions-list/javascript-code-extension/">JavaScript Code Extension</a>.</p>
+<h3 id="javascript-code-extension-comparison">JavaScript code extension comparison</h3>
+<p>The following table highlights the key differences between the JavaScript Code extension and the Advanced JavaScript Code extension to help you choose the one that best suits your needs.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>JavaScript Code extension</th>
+<th>Advanced JavaScript Code extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Editor</td>
+<td>Basic text editor</td>
+<td>Advanced code editor with syntax checking and code diffs</td>
+</tr>
+<tr>
+<td>Publish workflow</td>
+<td><a href="/iq-tag-management/extensions/manage/">Publish locations</a></td>
+<td><a href="#publish-workflow">Promote drafts to be approved for publishing</a></td>
+</tr>
+<tr>
+<td>Remote code integration</td>
+<td><a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/">Tealium API v3</a></td>
+<td><a href="#working-with-github">Link to GitHub repository</a></td>
+</tr>
+<tr>
+<td>Permission</td>
+<td>Account-level</td>
+<td>Profile-level</td>
+</tr>
+</tbody>
+</table>
 <h2 id="how-it-works">How it works</h2>
-<p>The JavaScript Code extension has its own publish workflow that uses drafts and a publish queue. Drafts are in-progress versions of the code that are preserved when you save the profile, but are not included in the published files by default. The publish queue allows you to mark a draft to be published, which causes it to become read-only and includes it in the next publish to the corresponding environment.</p>
-<p>The Advanced JavaScript Code Extension&rsquo;s publish workflow ensures that your code doesn&rsquo;t get published until it&rsquo;s ready. It also allows you to see what code has been published to each environment and easily compare code between drafts and environments.</p>
-<p>For information about using the JavaScript Code extension with GitHub, see <a href="/iq-tag-management/administration/linking-to-github/about/">Syncing with GitHub</a>.</p>
+<p>The JavaScript Code extension has its own publish workflow that uses drafts and a publish queue. Drafts are in-progress versions of the code that are preserved when you save the profile, but are not included in the published files by default. The publish queue lets you mark a draft to be published, which causes it to become read-only and includes it in the next publish to the corresponding environment.</p>
+<p>The Advanced JavaScript Code extension publish workflow ensures that your code doesn’t get published until it is ready. It also lets you see what code has been published to each environment and compare code between drafts and environments.</p>
+<p>For information about using the JavaScript Code extension with GitHub, see <a href="/iq-tag-management/administration/linking-to-github/about/">About Linking to GitHub</a>.</p>
 <h3 id="drafts">Drafts</h3>
 <p>Use drafts to maintain different versions of the code without affecting your published profile. Drafts are only published when you specify an environment using the <strong>Approve for Publish</strong> workflow.</p>
-<p>Drafts are named versions of the JavaScript code. Each instance of the extension holds up to 20 drafts. Drafts are are saved each time the profile is saved, but are only published when they are explicitly added to the publish queue for specific environments. This allows you to edit code and save your progress (even if it is incomplete), without affecting your publish environments.</p>
+<p>Drafts are named versions of the JavaScript code. Each instance of the extension holds up to 20 drafts. Drafts are saved each time the profile is saved, but are only published when they are explicitly added to the publish queue for specific environments. This lets you edit code and save your progress (even if it is incomplete), without affecting your publish environments.</p>
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-draft-examples.jpg"><img src="/images/iq-tag-management/js-code-extension-draft-examples.jpg"
-         alt="JSCode Extension draft examples"
-         title="JSCode Extension draft examples"/>
+         alt="JavaScript Code extension draft examples"
+         title="JavaScript Code extension draft examples"/>
     </a>
 </figure>
 <h3 id="publish-workflow">Publish workflow</h3>
-<p>The JavaScript Code extension has its own publish workflow to provide safer and more granular control over what code gets published. Drafts are not published by default. To publish a draft, you add it to the publish queue for it to be included in the next publish.</p>
+<p>The advanced JavaScript Code extension has its own publish workflow to provide safer and more granular control over what code gets published. Drafts are not published by default.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must have the <a href="/iq-tag-management/administration/user-permissions/about/">JavaScript Draft Promotion permission</a> to add a draft to the publish queue.</p>
 <figure><a class="slb" href="/images/iq-tag-management/js-code-publish-queue2.jpg"><img src="/images/iq-tag-management/js-code-publish-queue2.jpg"
          alt="JSCode Pubish Queue"
          title="JSCode Pubish Queue" width="516" height="200"/>
     </a>
 </figure>
-<p>Follow this workflow:</p>
+<p>Use the following workflow:</p>
 <ol>
-<li>Add a new draft and write your custom JavaScript code. Save the profile and the code in the draft is saved but not published. Continue working on your code in this way until it&rsquo;s ready to be published.</li>
-<li>When you are ready to publish, approve the draft to be published for one or more publish environments. The draft enters read-only mode (indicated by the lock icon) until the next publish to the selected environments, at which point it becomes editable again, except in libraries. The color of the lock next the draft matches the icon next to the corresponding environment.
+<li>Add a new draft and write your custom JavaScript code. Save the profile and the code in the draft is saved but not published. Continue working on your code in this way until it’s ready to be published.</li>
+<li>When you are ready to publish, approve the draft to be published for one or more publish environments. The draft enters read-only mode (indicated by the lock icon) until the next publish to the selected environments, at which point it becomes editable again, except in libraries. The color of the lock next to the draft matches the icon next to the corresponding environment.
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-queued-for-publish.jpg"><img src="/images/iq-tag-management/js-code-extension-queued-for-publish.jpg"
-             alt="JSCode Extension Queued for Publish"
-             title="JSCode Extension Queued for Publish" width="668" height="218"/>
+             alt="JavaScript Code extension Queued for Publish"
+             title="JavaScript Code extension Queued for Publish" width="668" height="218"/>
         </a>
     </figure></li>
 <li>Once a draft has been published, the live code is only reviewable (read-only mode) in the corresponding publish environments. You cannot edit the code in a publish environment directly. To make changes, edit a draft and repeat the publish workflow process.
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-prod-publish.jpg"><img src="/images/iq-tag-management/js-code-extension-prod-publish.jpg"
-             alt="JSCode Extension Prod Publish"
-             title="JSCode Extension Prod Publish" width="526" height="238"/>
+             alt="JavaScript Code extension Prod Publish"
+             title="JavaScript Code extension Prod Publish" width="526" height="238"/>
         </a>
     </figure></li>
 </ol>
 <h3 id="code-editor-features">Code editor features</h3>
-<p>The JavaScript Code extension employs the Ace Editor built into the interface that offers the following convenience features:</p>
+<p>The advanced JavaScript Code extension employs the Ace Editor built into the interface that offers the following convenience features:</p>
 <ul>
 <li><strong>Syntax Checking</strong><br>
-See syntax errors and warnings as you type. The margin displays helpful icons to indicate that your attention is needed on the affected line.<br>
+See syntax errors and warnings as you type. The margin displays helpful icons to indicate that your attention is needed on the affected line.
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-syntax-checking-error.jpg"><img src="/images/iq-tag-management/js-code-extension-syntax-checking-error.jpg"
-             alt="JSCode Extension Syntax Checking Error"
-             title="JSCode Extension Syntax Checking Error" width="342" height="116"/>
+             alt="JavaScript Code extension Syntax Checking Error"
+             title="JavaScript Code extension Syntax Checking Error" width="342" height="116"/>
         </a>
     </figure></li>
 <li><strong>Syntax Highlighting</strong><br>
-Language aware syntax highlighting for JavaScript.</li>
+Syntax highlighting for JavaScript.</li>
 <li><strong>Auto Indent and Outdent</strong><br>
 Automatic indenting as you type. Supports the <code>tab</code> key and <code>shift+tab</code> key bindings.</li>
 <li><strong>Code Folding</strong><br>
 Collapse blocks of code to eliminate distractions and focus on your changes.<br>
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-code-folding.jpg"><img src="/images/iq-tag-management/js-code-extension-code-folding.jpg"
-             alt="JSCode Extension Code Folding"
-             title="JSCode Extension Code Folding" width="443" height="75"/>
+             alt="JavaScript Code extension Code Folding"
+             title="JavaScript Code extension Code Folding" width="443" height="75"/>
         </a>
     </figure></li>
 <li><strong>Full Screen Mode</strong><br>
 Expand the <strong>Code Editor</strong> window to full screen mode to work on larger code projects.</li>
 </ul>
 <h3 id="code-execution">Code execution</h3>
-<p>Once a draft is published, the code is added to one of the utag files (depending on the scope). It&rsquo;s important to note that the code runs just as it appears in the code editor, but is wrapped in the following anonymous function:</p>
+<p>After a draft is published, the code is added to one of the <code>utag</code> files (depending on the scope). The code runs just as it appears in the code editor, but is wrapped in the following anonymous function to isolate the code and prevent conflicts with global variables:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) 
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// content of JavaScript Code extension runs here
@@ -541,13 +575,6 @@ Expand the <strong>Code Editor</strong> window to full screen mode to work on la
 <li><code>b</code> - a reference to <code>utag_data</code> allowing you to set UDO values as <code>b.VARIABLE_NAME=&quot;somevalue&quot;</code>.</li>
 </ul>
 <p>Be sure to scope all of your variable references accordingly to avoid overwriting global variables.</p>
-<h3 id="compare-code">Compare code</h3>
-<p>Compare a draft or a publish environment to any other draft or publish environment. The comparison window displays the versions of the code side by side with highlights for each line that differs. For example, compare Prod vs QA, Draft 1 vs Draft 2, or Draft 1 vs Prod.</p>
-<figure><a class="slb" href="/images/iq-tag-management/jscode-diff.jpg"><img src="/images/iq-tag-management/jscode-diff.jpg"
-         alt="JSCode diff"
-         title="JSCode diff"/>
-    </a>
-</figure>
 <h2 id="using-the-extension">Using the extension</h2>
 <p>Before you begin, familiarize yourself with <a href="/iq-tag-management/extensions/about/">how extensions work</a>.</p>
 <p>Once the extension is added, create a draft as described below.</p>
@@ -561,8 +588,8 @@ Expand the <strong>Code Editor</strong> window to full screen mode to work on la
 </ol>
 <p>The following functions are available when working with a draft:</p>
 <figure><a class="slb" href="/images/iq-tag-management/js-code-extension-draft-buttons.jpg"><img src="/images/iq-tag-management/js-code-extension-draft-buttons.jpg"
-         alt="JSCode Extension Draft buttons"
-         title="JSCode Extension Draft buttons"/>
+         alt="JavaScript Code extension Draft buttons"
+         title="JavaScript Code extension Draft buttons"/>
     </a>
 </figure>
 <ul>
@@ -572,8 +599,50 @@ Expand the <strong>Code Editor</strong> window to full screen mode to work on la
 <li><strong>Compare Diff</strong>: Compare the draft with another draft or with a publish environment.</li>
 <li><strong>Queue for publish</strong>: Mark the draft to be published in one or more publish environments.</li>
 </ul>
-<h3 id="copy-the-file-to-draft-mode">Copy the file to draft mode</h3>
-<p>Files added through GitHub are read-only and cannot be edited. To edit these files, edit directly in GitHub or copy the file to Draft mode and edit the draft copy.</p>
+<h3 id="publish-a-draft">Publish a draft</h3>
+<p>Publishing a draft is a two-step process. First, in the extension the draft must be added to the publish queue for the targeted publish environment. Second, the profile must be published to the target environment.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Remember, by default, drafts are not included in a publish unless they have been explicitly queued for publish.</p>
+<p>To publish a draft:</p>
+<ol>
+<li>Select the draft to publish in the sidebar.</li>
+<li>Click <strong>Queue for publish&hellip;</strong>.</li>
+<li>Check the box next to the desired publish locations.</li>
+<li>Click <strong>Continue</strong>.<br>
+The draft is now in read-only mode (indicated by the padlock icon) and the queued publish environment is indicated in the sidebar and in the draft details.<br>
+<figure><a class="slb" href="/images/iq-tag-management/js-code-extension-queued-for-prod.jpg"><img src="/images/iq-tag-management/js-code-extension-queued-for-prod.jpg"
+             alt="JavaScript Code extension Queued for prod"
+             title="JavaScript Code extension Queued for prod"/>
+        </a>
+    </figure></li>
+<li>Perform a save and publish on the profile, selecting the publish target matching the publish queue.<br>
+The published draft now appears as the active code in the corresponding publish environment in the sidebar.<br>
+<figure><a class="slb" href="/images/iq-tag-management/js-code-extension-prod-publish.jpg"><img src="/images/iq-tag-management/js-code-extension-prod-publish.jpg"
+             alt="JavaScript Code extension prod Publish"
+             title="JavaScript Code extension prod Publish" width="526" height="238"/>
+        </a>
+    </figure></li>
+</ol>
+<h3 id="compare-code">Compare code</h3>
+<p>Compare a draft or a publish environment to any other draft or publish environment. The comparison window displays the versions of the code side by side with highlights for each line that differs. For example, compare Prod vs QA, Draft 1 vs Draft 2, or Draft 1 vs Prod.</p>
+<figure><a class="slb" href="/images/iq-tag-management/jscode-diff.jpg"><img src="/images/iq-tag-management/jscode-diff.jpg"
+         alt="JSCode diff"
+         title="JSCode diff"/>
+    </a>
+</figure>
+<h3 id="working-with-github">Working with GitHub</h3>
+<p>The following sections describe how to reference files in a GitHub repository. Use this feature instead of writing code directly in the extension.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To work with GitHub files you must link your GitHub account to your iQ Tag Management account. For more information, see <a href="/iq-tag-management/administration/linking-to-github/about/">Linking to GitHub</a>.</p>
+<h4 id="add-a-github-file">Add a GitHub file</h4>
+<p>To reference a file from a GitHub repository:</p>
+<ol>
+<li>In the left panel of the JavaScript Code extension, next to GitHub Files, click <strong>+ Add</strong>.<br>
+You are prompted to enter the URL for the file you want to add.</li>
+<li>Enter the URL, for example:<code>https://github.com/your_account/your_repository/blob/master/Tealium.js</code></li>
+<li>Click <strong>Add File</strong>, and the code is now referenced in the extension.</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To access files in a private repository, you must link your GitHub account with a personal access token that has the repo scope selected.</p>
+<h4 id="copy-the-file-to-draft-mode">Copy the file to draft mode</h4>
+<p>Files added through GitHub are read-only and cannot be edited. To edit these files, edit them directly in GitHub or copy the file to Draft mode and edit the draft copy.</p>
 <p>Use the following steps to copy the file to draft mode, edit, and save prior to publishing:</p>
 <ol>
 <li>
@@ -594,42 +663,6 @@ Enter a new name or keep the same name.</p>
 <p>Click <strong>Save</strong>.</p>
 </li>
 </ol>
-<h3 id="publish-a-draft">Publish a draft</h3>
-<p>Publishing a draft is a two-step process. First, in the extension the draft must be added to the publish queue for the desired publish environment. Second, the profile must be published to the corresponding target.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Remember, by default, drafts are not included in a publish unless they have been explicitly queued for publish.</p>
-<p>To publish a draft:</p>
-<ol>
-<li>Select the desired draft in the sidebar.</li>
-<li>Click <strong>Queue for publish&hellip;</strong>.</li>
-<li>Check the box next to the desired publish locations.</li>
-<li>Click <strong>Continue</strong>.<br>
-The draft is now in read-only mode (indicated by the padlock icon) and the queued publish environment is indicated in the sidebar and in the draft details.<br>
-<figure><a class="slb" href="/images/iq-tag-management/js-code-extension-queued-for-prod.jpg"><img src="/images/iq-tag-management/js-code-extension-queued-for-prod.jpg"
-             alt="JSCode Extension Queued for prod"
-             title="JSCode Extension Queued for prod"/>
-        </a>
-    </figure></li>
-<li>Perform a save and publish on the profile, selecting the publish target matching the publish queue.<br>
-The published draft now appears as the active code in the corresponding publish environment in the sidebar.<br>
-<figure><a class="slb" href="/images/iq-tag-management/js-code-extension-prod-publish.jpg"><img src="/images/iq-tag-management/js-code-extension-prod-publish.jpg"
-             alt="JSCode Extension prod Publish"
-             title="JSCode Extension prod Publish" width="526" height="238"/>
-        </a>
-    </figure></li>
-</ol>
-<h3 id="working-with-github">Working with GitHub</h3>
-<p>The following sections describe how to reference files in a GitHub respository. Use this feature instead of writing code directly in the extension.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To work with GitHub files you must link your GitHub account to your iQ Tag Management account.
-Learn more about <a href="/iq-tag-management/administration/linking-to-github/about/">Linking to GitHub</a>.</p>
-<h4 id="add-a-github-file">Add a GitHub file</h4>
-<p>To reference a file from a GitHub repository:</p>
-<ol>
-<li>In the left panel of the JavaScript Code extension, next to GitHub Files, click <strong>+ Add</strong>.<br>
-You are prompted to enter the URL for the file you want to add.</li>
-<li>Enter the URL, for example:<code>https://github.com/your_account/your_repository/blob/master/Tealium.js</code></li>
-<li>Click <strong>Add File</strong>, and the code is now referenced in the extension.</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To access files in a private repository, you must link your GitHub account with a personal access token that has the repo scope selected.</p>
 <h4 id="synchronize-the-file">Synchronize the file</h4>
 <p>When there is a newer version of a referenced file, you must synchronize the file. Synchronize a referenced file by expanding the view of the JavaScript Code extension.</p>
 <p>All GitHub files attempt to sync when you open the extension unless the file is approved for publish.</p>
@@ -648,46 +681,38 @@ The updated file appears with the time and date and a green check mark to indica
 <li>Click <strong>Approve for Publish</strong>, then the file status displays a new line with the timestamp and username showing the environments the file published to.</li>
 </ol>
 <h2 id="best-practices">Best practices</h2>
-<h3 id="tips">Tips</h3>
 <p>Use the following tips to make the best use of this extension and avoid common mistakes:</p>
 <ul>
-<li><strong>Omit <code>&lt;script&gt;</code> Tags</strong>: Do not surround the code with <code>&lt;script&gt;</code> tags. The content of the text box is included in a JavaScript file exactly as you enter it.</li>
-<li><strong>Reference the UDO</strong>: If you are referencing a variable from the <code>utag_data</code> object, such as <code>page_name</code> , use the <code>b</code> object like this: <code>b['page_name']</code>. For more information, see <a href="/platforms/javascript/the-b-object/">the b object</a>.</li>
-<li><strong>Reference Tag Template Variables</strong>: If you are referencing a variable defined in the tag template of the scoped tag, such as <code>account_id</code> , use <code>u['account_id']</code>.</li>
-<li><strong>Create Useful Draft Names</strong>: Your TiQ profile is a shared working environment so use meaningful names for drafts to make them easily identifiable to you and others.</li>
-<li><strong>Comment Your Code</strong>: Write useful comments to make it easier for your future self and other users to understand your code and how to maintain it.</li>
+<li><strong>Omit <code>&lt;script&gt;</code> tags</strong><br>
+Do not surround the code with <code>&lt;script&gt;</code> tags. The contents of the editor is included in the published files exactly as you enter it, so adding extra HTML tags will result in broken syntax in your published files.</li>
+<li><strong>Reference the UDO</strong><br>
+If you are referencing a variable from the <code>utag_data</code> object, such as <code>page_name</code> , use the <code>b</code> object like this: <code>b['page_name']</code>. For more information, see <a href="/platforms/javascript/the-b-object/">the b object</a>.</li>
+<li><strong>Reference tag template variables</strong><br>
+If you are referencing a variable defined in the tag template of the scoped tag, such as <code>account_id</code> , use <code>u['account_id']</code>.</li>
+<li><strong>Create useful draft names</strong><br>
+Your tag management profile is a shared working environment, so use meaningful names for drafts to make them identifiable to you and others.</li>
+<li><strong>Comment your code</strong><br>
+Write useful comments to make it easier for your future self and other users to understand your code and how to maintain it.</li>
 </ul>
-<h3 id="understanding-the-pros-and-cons">Understanding the pros and cons</h3>
-<p>While the JavaScript Code extension is very flexible and may be used for virtually anything you want to accomplish within your tag management solution, it&rsquo;s important to understand the impact it may have on the long-term success of your account. We strongly recommend that you try to use the other built-in extensions to accomplish a task before resorting to the JavaScript Code extension.</p>
-<p>Consider your environment and the following pros and cons prior to using this extension:</p>
-<p><strong>Pros</strong></p>
-<ul>
-<li>Fully customizable code accomplishes virtually anything done in JavaScript.</li>
-<li>Faster for developers that are more familiar to writing front-end JavaScript.</li>
-</ul>
-<p><strong>Cons</strong></p>
-<ul>
-<li>Difficult for non-developers to understand and edit.</li>
-<li>More difficult to maintain over time.</li>
-<li>Prone to typos and logic errors.</li>
-<li>Variable names are hard-coded and therefore are not updated if you change the name of a variable in the data layer. For example, if you change the name of a variable you must also change all occurrences of that variable within JavaScript Code extensions.</li>
-</ul>
-<h2 id="faq">FAQ</h2>
-<h4 id="can-i-continue-using-the-deprecated-javascript-code-extension">Can I continue using the deprecated JavaScript Code extension?</h4>
-<p>Yes, the <a href="/iq-tag-management/extensions/extensions-list/javascript-code-basic-extension/">older versions of the JavaScript Code extension</a> continues to operate normally.</p>
-<h4 id="why-am-i-unable-to-add-or-edit-the-javascript-code-extension">Why am I unable to add or edit the JavaScript Code extension?</h4>
-<p>The following reasons may explain why you are unable to edit the JavaScript Code extension:</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h4 id="why-cant-i-edit-the-code-in-the-editor">Why can&rsquo;t I edit the code in the editor?</h4>
+<p>The following reasons may explain why you are unable to edit the code in the editor:</p>
 <ol>
-<li>A draft becomes in read-only mode if it has been queued for publish and the publish has yet to occur. Remove the draft from the publish queue or publish the profile to make the draft editable again.</li>
-<li>The code displayed in publish environments cannot be edited directly. This is a read-only view of the published code.</li>
+<li>A draft becomes read-only if it has been queued for publish and the publish has yet to occur. Remove the draft from the publish queue or publish the profile to make the draft editable again.</li>
+<li>The code displayed in publish environments cannot be edited directly because it is a read-only view of the published code.</li>
 </ol>
-<h4 id="why-cant-i-select-a-publish-environment-in-the-queue-for-publish-dialog">Why can&rsquo;t I select a publish environment in the Queue for Publish dialog?</h4>
-<p>While you might have permission to add the JavaScript Code extension and create drafts, there is a separate permission needed to promote a draft to a publish environment. If you do not have this permission, the environments in the <strong>Queue for Publish</strong> dialog is not selectable.</p>
+<h4 id="why-cant-i-select-a-publish-environment-in-the-queue-for-publish-dialog">Why can&rsquo;t I select a publish environment in the <strong>Queue for Publish</strong> dialog?</h4>
+<p>While you might have permission to add the JavaScript Code extension and create drafts, there is a separate permission needed to promote a draft to a publish environment. If you do not have this permission, the environments in the <strong>Queue for Publish</strong> dialog are not selectable.</p>
 <p>Check with your account administrator to see if you have the <a href="/iq-tag-management/administration/user-permissions/about/">JavaScript Draft Promotion permission</a>.</p>
-<h4 id="why-cant-i-set-the-scope-to-pre-loader">Why can&rsquo;t I set the scope to Pre Loader?</h4>
-<p>If you have a condition defined, the Pre Loader option is no longer available. In Pre Loader scope, the data layer is not yet populated so there is no data object with which to evaluate the conditional logic. Likewise, the <strong>Add Condition</strong> option is disabled when the scope is set to Pre Loader.</p>
-<h4 id="whats-the-difference-between-pre-loader-and-run-once-before-load-rules">What&rsquo;s the difference between Pre Loader and Run Once before Load Rules?</h4>
-<p>Both Pre Loader and Run Once Before Load Rules cause the extension to run once before the data layer is populated and before load rules are evaluated. The difference is that conditions are not supported in the Pre Loader scope.</p>
+<h4 id="why-cant-i-set-the-scope-to-pre-loader">Why can&rsquo;t I set the scope to <strong>Pre Loader</strong>?</h4>
+<p>If you have a condition defined, the <strong>Pre Loader</strong> option is no longer available. In <strong>Pre Loader</strong> scope, the data layer is not yet populated so there is no data object with which to evaluate the conditional logic. Likewise, the <strong>Add Condition</strong> option is disabled when the scope is set to <strong>Pre Loader</strong>.</p>
+<h4 id="whats-the-difference-between-an-extension-run-in-the-pre-loader-scope-and-one-run-in-before-load-rules-scope-with-occurrence-set-to-run-once">What&rsquo;s the difference between an extension run in the <strong>Pre Loader</strong> scope and one run in <strong>Before Load Rules</strong> scope with occurrence set to <strong>Run Once</strong>?</h4>
+<p>In both cases, the extension to runs once before load rules are evaluated. The differences between the scopes are:</p>
+<ul>
+<li>The <strong>Pre Loader</strong> scope does not support conditions.</li>
+<li>Extensions in the <strong>Pre Loader</strong> scope execute before the data layer is processed and cannot access the data layer <code>b</code> object (it doesn&rsquo;t exist yet).</li>
+<li>The code in an extension scoped to <strong>Pre Loader</strong> is not wrapped in the anonymizing function and is executed exactly as it appears in the editor. For more information, see <a href="#code-execution">Code Execution</a>.</li>
+</ul>
 
 </div>
 
@@ -748,7 +773,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 28, 2023 
+          <p>This page was last updated:  May 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -763,21 +788,19 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension-comparison" href="javascript:void(0)">JavaScript code extension comparison</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#drafts" href="javascript:void(0)">Drafts</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#publish-workflow" href="javascript:void(0)">Publish workflow</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#code-editor-features" href="javascript:void(0)">Code editor features</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#code-execution" href="javascript:void(0)">Code execution</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#compare-code" href="javascript:void(0)">Compare code</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-extension" href="javascript:void(0)">Using the extension</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-drafts" href="javascript:void(0)">Working with drafts</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#copy-the-file-to-draft-mode" href="javascript:void(0)">Copy the file to draft mode</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#publish-a-draft" href="javascript:void(0)">Publish a draft</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#compare-code" href="javascript:void(0)">Compare code</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-github" href="javascript:void(0)">Working with GitHub</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tips" href="javascript:void(0)">Tips</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#understanding-the-pros-and-cons" href="javascript:void(0)">Understanding the pros and cons</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faq" href="javascript:void(0)">FAQ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#troubleshooting" href="javascript:void(0)">Troubleshooting</a></li>
               </nav>
   </aside></nav>
 
