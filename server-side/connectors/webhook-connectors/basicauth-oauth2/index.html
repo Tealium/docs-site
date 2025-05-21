@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -569,7 +569,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to configure a Webhook connector with BasicAuth, OAuth2 (2-legged), or OAuth2 (3-legged) authentication.
+      This article describes how to configure a Webhook connector with BasicAuth, OAuth2 (2-legged), OAuth2 (3-legged) authentication, or JWT.
     </p>
   
 </div>
@@ -587,7 +587,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Title</td>
+<td>Name</td>
 <td>Required. Enter a descriptive title for the webhook.</td>
 </tr>
 <tr>
@@ -614,6 +614,10 @@
 </thead>
 <tbody>
 <tr>
+<td>Name</td>
+<td>Required. Enter a descriptive title for the webhook.</td>
+</tr>
+<tr>
 <td>Client ID</td>
 <td>Required. Enter the client identifier assigned to your application from the OAuth service.</td>
 </tr>
@@ -637,10 +641,18 @@
 <td>Access Token URL</td>
 <td>Required. Enter the token URL to get the refresh token.</td>
 </tr>
+<tr>
+<td>Authorization Token Location</td>
+<td>Specify where to place the authorization token.</td>
+</tr>
+<tr>
+<td>Authorization Header Prefix</td>
+<td>Default value is <code>Bearer</code>. Specify a new value to override (only required for some OAuth2 services).</td>
+</tr>
 </tbody>
 </table>
 <h2 id="oauth2-2-legged-configuration">OAuth2 (2-legged) configuration</h2>
-<p>Tealium&rsquo;s Webhook OAuth2 connector allows you to send fully customized data as an HTTP request to an API of your choice that requires OAuth2 Two-Legged authorization and supports client credentials and resource owner password credentials grants.</p>
+<p>Tealium&rsquo;s Webhook OAuth2 connector lets you send fully customized data as an HTTP request to an API of your choice that requires OAuth2 Two-Legged authorization and supports client credentials and resource owner password credentials grants.</p>
 <p>After adding the connector, use the following configuration settings for the OAuth2 2-Legged Webhook configuration:</p>
 <table>
 <thead>
@@ -650,6 +662,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Name</td>
+<td>Required. Enter a descriptive title for the webhook.</td>
+</tr>
 <tr>
 <td>Access token URL</td>
 <td>Required. Enter the API endpoint URL to request an access token.</td>
@@ -671,6 +687,14 @@
 <td>Enter your password. Password is required if using Password grant type.</td>
 </tr>
 <tr>
+<td>Client Authentication ID</td>
+<td>The client ID to send as part of the authorization header.</td>
+</tr>
+<tr>
+<td>Client Authentication Secret</td>
+<td>The client secret to send as part of the authorization header.</td>
+</tr>
+<tr>
 <td>Scope</td>
 <td>Select the scope of permissions to request (only required for some OAuth2 services).</td>
 </tr>
@@ -679,12 +703,37 @@
 <td>Add extra authorization parameters (only required for some OAuth2 services). Separate multiple parameters with <code>&amp;</code>.</td>
 </tr>
 <tr>
+<td>Authorization URL</td>
+<td>Required. An API endpoint URL to request an authorization code from.</td>
+</tr>
+<tr>
 <td>Authorization Token Location</td>
 <td>Specify where to place the authorization token.</td>
 </tr>
 <tr>
 <td>Authorization Header Prefix</td>
-<td>Defaults value is <code>Bearer</code>. Specify a new value to override (only required for some OAuth2 services).</td>
+<td>Default value is <code>Bearer</code>. Specify a new value to override (only required for some OAuth2 services).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jwt-configuration">JWT configuration</h2>
+<p>This webhook supports authentication using the JSON web token (JWT).</p>
+<p>Use the following configuration settings for the Webhook (JWT) configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Required. Enter a descriptive title for the webhook.</td>
+</tr>
+<tr>
+<td>JWT Token</td>
+<td>Enter the JSON web token.</td>
 </tr>
 </tbody>
 </table>
@@ -715,11 +764,11 @@
 <tbody>
 <tr>
 <td>Method</td>
-<td><strong>Required</strong>. Supports the following methods: <br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
+<td>Required* Supports the following methods: <br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
 </tr>
 <tr>
 <td>URL*</td>
-<td><strong>Required</strong>. Provide the URL to submit request to.</td>
+<td>Required. Provide the URL to submit request to.</td>
 </tr>
 <tr>
 <td>URL Parameters*</td>
@@ -727,7 +776,7 @@
 </tr>
 <tr>
 <td>Headers*</td>
-<td><strong>Optional for Webhook (BasicAuth) Required for <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a></strong>. From the <strong>Map</strong> drop-down list, select the attribute whose value you wish to send. In the <strong>To</strong> field, enter the header name for the header to receive the value.</td>
+<td>Optional for Webhook (BasicAuth) Required for <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a>. From the <strong>Map</strong> drop-down list, select the attribute whose value you wish to send. In the <strong>To</strong> field, enter the header name for the header to receive the value.</td>
 </tr>
 <tr>
 <td>Cookies*</td>
@@ -820,7 +869,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 23, 2022 
+          <p>This page was last updated:  May 20, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -837,6 +886,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basicauth-configuration" href="javascript:void(0)">BasicAuth configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#oauth2-3-legged-configuration" href="javascript:void(0)">OAuth2 (3-legged) configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#oauth2-2-legged-configuration" href="javascript:void(0)">OAuth2 (2-legged) configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#jwt-configuration" href="javascript:void(0)">JWT configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#access-tokens-for-oauth2" href="javascript:void(0)">Access tokens for OAuth2</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-parameters-for-all-webhook-actions" href="javascript:void(0)">Action parameters for all webhook actions</a></li>
               </nav>

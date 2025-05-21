@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "1",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -484,9 +484,50 @@
 <td><code>div#feedback-form:not(.main) input[name='email']</code></td>
 <td>A form field named email in a <code>div</code> with ID <code>feedback-form</code>, but not within a <code>div</code> with class <code>main</code>.</td>
 </tr>
+<tr>
+<td>Multiple elements</td>
+<td><code>.btn-cart, .btn-cart span</code></td>
+<td>Tracks clicks on the main element and any clickable nested elements.</td>
+</tr>
 </tbody>
 </table>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The event system uses the <code>Element.matches()</code> method for the selector. For more information about this method, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Element.matches() at Mozilla Developer Network</a>.</p>
+<h2 id="when-to-use-multiple-element-selectors">When to use multiple-element selectors</h2>
+<p>Sometimes, an event doesn’t trigger even when the selector is valid. This often happens when the clicked element is nested inside the intended target element.</p>
+<p>Tealium events attach cursor-based event listeners (such as <code>click</code>, <code>mousedown</code>, or <code>mouseup</code>) to the page’s <code>&lt;body&gt;</code>. When a user interacts with the page, the event handler checks whether the clicked element (<code>event.target</code>) matches the selector you provided. This behavior differs from the jQuery <code>onHandler</code> extension, which binds events directly to the elements that match the selector.</p>
+<p>Here’s an example of how a click event listener works in Tealium:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">matches</span>(<span style="color:#e6db74">&#34;SELECTOR&#34;</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Element clicked:&#34;</span>, <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">textContent</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Track event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>If your selector only targets the outer element (such as a button), and a user clicks a nested element (such as a <code>&lt;span&gt;</code> inside the button), the event listener won&rsquo;t trigger. In this case, use a multiple-element selector that includes both the main element and its nested clickable content.</p>
+<p>### Example - Add to Cart button</p>
+<p>Suppose you want to track clicks on an &ldquo;Add to Cart&rdquo; button with the following HTML:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn-cart&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">span</span>&gt;Add to Cart&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span></code></pre></div><p>Using the selector <code>.btn-cart</code> alone won’t always work. If the user clicks on the <code>&lt;span&gt;</code>, <code>event.target</code> is the <code>&lt;span&gt;</code>, not the <code>&lt;button&gt;</code>. To reliably track clicks on both the button and its nested elements, use a multiple-element selector:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">btn-cart</span><span style="color:#f92672">,</span> .<span style="color:#a6e22e">btn-cart</span> <span style="color:#f92672">span</span>
+</span></span></code></pre></div><p>This ensures that clicks on either the <code>&lt;button&gt;</code> or the <code>&lt;span&gt;</code> inside it are captured.</p>
+<h3 id="tips-for-finding-the-right-selector">Tips for finding the right selector</h3>
+<p>To find a working selector:</p>
+<ol>
+<li>Open the page and right-click the element you want to track.</li>
+<li>Select <strong>Inspect</strong> to open the browser&rsquo;s developer tools.</li>
+<li>Identify the outermost element that should trigger the event.</li>
+<li>Check for nested elements like <code>&lt;span&gt;</code>, <code>&lt;svg&gt;</code>, or <code>&lt;img&gt;</code> that users might click.</li>
+<li>Build a selector that includes all possible clickable targets.</li>
+</ol>
+<p>You can also use tools like <a href="https://selectorgadget.com/">SelectorGadget</a> bookmarklet or browser extension to help build a selector. Here&rsquo;s how:</p>
+<ol>
+<li>Load the page and open the SelectorGadget bookmarklet or browser extension.</li>
+<li>Click the element text (for example, &ldquo;Add to Cart&rdquo;).</li>
+<li>If the initial selector is too generic (like <code>&lt;span&gt;</code>), click other parts of the button to refine it.</li>
+<li>Stop when all intended clickable parts are correctly highlighted.</li>
+<li>Copy the final selector and use it in your event configuration.</li>
+</ol>
 <p>For more information about how to determine an element&rsquo;s selector, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">How to Determine the CSS Selector of an Element</a>.</p>
 
 </div>
@@ -548,7 +589,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 30, 2023 
+          <p>This page was last updated:  May 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -560,7 +601,12 @@ No</button>
 
 
 
-  </nav>
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#when-to-use-multiple-element-selectors" href="javascript:void(0)">When to use multiple-element selectors</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tips-for-finding-the-right-selector" href="javascript:void(0)">Tips for finding the right selector</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

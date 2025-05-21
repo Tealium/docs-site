@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "18",
+        reading_time  : "19",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -425,9 +425,9 @@
 <p>There are four Webhook connectors to choose from based on the authorization requirements of your vendor, as follows:</p>
 <ul>
 <li><strong>Webhook</strong> (BasicAuth): For services that do not require authentication or only require basic authentication with a username and password.</li>
-<li><strong>Webhook OAuth2</strong> (3-Legged): Requires the user to login to the service to obtain an access token.</li>
-<li><strong>Webhook OAuth2</strong> (2-Legged): Does not require the user to login to the service. The webhook is configured with the information required to authenticate.</li>
-<li><strong>Webhook JWT</strong>: Uses JSON web token authentication. Does not require the user to login to the service. The webhook is configured with the information required to authenticate.</li>
+<li><strong>Webhook OAuth2</strong> (3-Legged): Requires the user to log in to the service to obtain an access token.</li>
+<li><strong>Webhook OAuth2</strong> (2-Legged): Does not require the user to log in to the service. The webhook is configured with the information required to authenticate.</li>
+<li><strong>Webhook JWT</strong>: Uses JSON web token authentication. Does not require the user to log in to the service. The webhook is configured with the information required to authenticate.</li>
 </ul>
 <p>Webhook OAuth2 is used for services that explicitly require OAuth 2.0 authentication.</p>
 <p>To get started, go to the connector marketplace and add the Webhook instance you want to use. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</p>
@@ -436,7 +436,7 @@
 <p>This webhook supports basic HTTP authentication using the HTTP header field <strong>Authorization</strong>. The credentials are passed as a Base64-encoded string of <code>{username}:{password}</code>.</p>
 <p>Use the following configuration settings for the BasicAuth Webhook configuration:</p>
 <ul>
-<li><strong>Title</strong>
+<li><strong>Name</strong>
 <ul>
 <li>Required</li>
 <li>Enter a descriptive title for the webhook.</li>
@@ -452,11 +452,6 @@
 <li>Enter the password of your webhook&rsquo;s authentication.</li>
 </ul>
 </li>
-<li><strong>JWT</strong> Authentication
-<ul>
-<li>Enter the JSON web token.</li>
-</ul>
-</li>
 </ul>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
 <ul>
@@ -467,6 +462,12 @@
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to register your web application with an OAuth 2.0 service. Your application must be configured to allow the redirect URL: <code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
 <p>Use the following configuration settings for the OAuth2 (3-legged) Webhook configuration:</p>
 <ul>
+<li><strong>Name</strong>
+<ul>
+<li>Required</li>
+<li>Enter a descriptive title for the webhook.</li>
+</ul>
+</li>
 <li><strong>Client ID</strong>
 <ul>
 <li>Required.</li>
@@ -508,12 +509,29 @@
 <li>Enter the token URL to get the refresh token.</li>
 </ul>
 </li>
+<li><strong>Authorization Token Location</strong>
+<ul>
+<li>Specify where to place the authorization token.</li>
+</ul>
+</li>
+<li><strong>Authorization Header Prefix</strong>
+<ul>
+<li>Default value is <code>Bearer</code>.</li>
+<li>Specify a new value to override (only required for some OAuth2 services).</li>
+</ul>
+</li>
 </ul>
 <p>Click <strong>Establish Connection</strong> to test the connection.</p>
 <h3 id="webhook-oauth2-2-legged-configuration">Webhook OAuth2 (2-Legged) Configuration</h3>
 <p>Tealium&rsquo;s Webhook OAuth2 connector lets you send fully customized data as an HTTP request to an API of your choice that requires OAuth2 Two-Legged authorization and supports client credentials and resource owner password credentials grants.</p>
 <p>After adding the connector, use the following configuration settings for the OAuth2 2-Legged Webhook configuration:</p>
 <ul>
+<li><strong>Name</strong>
+<ul>
+<li>Required</li>
+<li>Enter a descriptive title for the webhook.</li>
+</ul>
+</li>
 <li><strong>Access Token URL</strong>
 <ul>
 <li>Required.</li>
@@ -522,29 +540,27 @@
 </li>
 <li><strong>Client ID</strong>
 <ul>
-<li>Required.</li>
 <li>Enter your web application client ID.</li>
-<li>The client ID is set in the request body for the Client Credentials grant type.</li>
+<li>The client ID is required if using the Client Credentials grant type.</li>
 </ul>
 </li>
 <li><strong>Client Secret</strong>
 <ul>
-<li>Required.</li>
 <li>Enter your web application client secret.</li>
-<li>The client secret is set in the request body for the Client Credentials grant type.</li>
+<li>Client secret is required if using the  Client Credentials grant type.</li>
 </ul>
 </li>
 <li><strong>Username</strong>
 <ul>
 <li>Enter your username.</li>
-<li>Username is required if using Password grant type.</li>
+<li>Username is required if using the Password grant type.</li>
 <li>Optionally, if the token endpoint also requires a basic authorization header, enter the client authentication ID and client authentication secret.</li>
 </ul>
 </li>
 <li><strong>Password</strong>
 <ul>
 <li>Enter your password.</li>
-<li>Password is required if using Password grant type.</li>
+<li>Password is required if using the Password grant type.</li>
 </ul>
 </li>
 <li><strong>Client Authentication ID</strong>
@@ -565,7 +581,13 @@
 <li><strong>Extra Authorization Parameters</strong>
 <ul>
 <li>Add extra authorization parameters (only required for some OAuth2 services).</li>
-<li>Separate multiple parameters with <code>&amp;amp;</code>.</li>
+<li>Separate multiple parameters with <code>&amp;</code>.</li>
+</ul>
+</li>
+<li><strong>Authorization URL</strong>
+<ul>
+<li>Required</li>
+<li>An API endpoint URL to request an authorization code from.</li>
 </ul>
 </li>
 <li><strong>Authorization Token Location</strong>
@@ -580,13 +602,33 @@
 </ul>
 </li>
 </ul>
+<h3 id="webhook-jwt-configuration">Webhook (JWT) Configuration</h3>
+<p>This webhook supports authentication using the JSON web token (JWT).</p>
+<p>Use the following configuration settings for the Webhook (JWT) configuration:</p>
+<ul>
+<li><strong>Name</strong>
+<ul>
+<li>Required</li>
+<li>Enter a descriptive title for the webhook.</li>
+</ul>
+</li>
+<li><strong>JWT Token</strong>
+<ul>
+<li>Enter the JSON web token.</li>
+</ul>
+</li>
+</ul>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
+<ul>
+<li>Use the <strong>Actions</strong> tab to configure the HTTP request to trigger.</li>
+</ul>
 <h2 id="action-parameters-for-all-webhook-actions">Action Parameters for all Webhook Actions</h2>
 <p>The following parameters are available to all Webhook Actions.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Input Field</th>
-<th style="text-align:left">Required/ Optional</th>
+<th style="text-align:left">Required/Optional</th>
 <th style="text-align:left">Template Support</th>
 <th style="text-align:left">Notes</th>
 </tr>
@@ -595,8 +637,8 @@
 <tr>
 <td style="text-align:left">Method</td>
 <td style="text-align:left">Required</td>
-<td style="text-align:left"></td>
 <td style="text-align:left">Supports the following methods: <ul><li>GET</li><li>POST</li><li>PUT</li><li>DELETE</li><li>PATCH</li></ul></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
@@ -1313,7 +1355,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 12, 2025 
+          <p>This page was last updated:  May 20, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1331,6 +1373,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-basicauth-configuration" href="javascript:void(0)">Webhook (BasicAuth) Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-3-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (3-Legged) Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-2-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (2-Legged) Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-jwt-configuration" href="javascript:void(0)">Webhook (JWT) Configuration</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-parameters-for-all-webhook-actions" href="javascript:void(0)">Action Parameters for all Webhook Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>

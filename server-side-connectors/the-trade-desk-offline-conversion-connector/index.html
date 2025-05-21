@@ -414,13 +414,23 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the The Trade Desk (TheTradeDesk) Offline Conversion connector in your Customer Data Hub account.
+      This article describes how to set up the The Trade Desk (TheTradeDesk) Offline Conversion connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Agency Secret Key</strong>
+<ul>
+<li>The secret key provided to you by The Trade Desk.</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -437,28 +447,16 @@
 </tr>
 </tbody>
 </table>
-<h3 id="batch-limits">Batch Limits</h3>
+<h3 id="send-offline-conversion">Send Offline Conversion</h3>
+<h4 id="batch-limits">Batch Limits</h4>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 1000</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Agency Secret Key</strong>
-<ul>
-<li>The Secret Key provided to you by The Trade Desk</li>
-</ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-offline-conversion">Action - Send Offline Conversion</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="data-provider-id">Data Provider ID</h4>
+<p>The ID for the data provider in the TTD System.</p>
 <table>
 <thead>
 <tr>
@@ -469,99 +467,142 @@
 <tbody>
 <tr>
 <td>Data Provider ID</td>
-<td><ul><li>The ID for the data provider in the TTD System.</li><li>The Trade Desk Data partnerships and your Technical Account Manager will provide this value.</li></ul></td>
+<td>The ID for the data provider in the TTD system. Your Technical Account Manager from The Trade Desk can provide this value.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-id">Data ID</h4>
+<ul>
+<li>Map a Trade Desk ID, a device advertising ID, a Unified ID, or an IdentityLink.</li>
+<li>If more than one is mapped, then the first non-empty ID is be chosen in the priority of: Trade Desk ID, Device Advertising ID, Unified ID, IdentityLink.</li>
+<li>A Device Advertising ID is represented with either iOS IDFA or Android Advertising ID (AAID).</li>
+<li>Only raw (not hashed) IDFA and raw AAID IDs with a GUID that is 36 characters (including dashes) are accepted.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TDID</code></td>
+<td>The Trade Desk 36-character GUID (including dashes) for this user.</td>
 </tr>
 <tr>
-<td>TDID</td>
-<td><ul><li>Required: You must use either the <code>TDID</code>, <code>DAID</code>, or <code>UID</code> parameter.<li>The Trade Desk ID for the user.</li><li>Required if DAID is blank.</li></ul></td>
+<td><code>DAID</code></td>
+<td>The raw device ID for this user, sent in 36-character GUID format (including dashes). Use iOS IDFA or Android&rsquo;s AAID.</td>
 </tr>
 <tr>
-<td>DAID</td>
-<td><ul><li>Required: You must use either the <code>TDID</code>, <code>DAID</code>, or <code>UID</code> parameter.</li><li>The Device Advertising ID for the user.</li><li>Required if TDID is blank.</li><li>iOS Advertising Identifier (IDFA) or Android Advertising ID (AAID).</li><li>Only raw (not hashed) IDFA and raw AAIDs with a GUID that is 36 characters (including dashes) are accepted.</li></ul></td>
+<td><code>UID2</code></td>
+<td>The raw UID2 value, also known as UID2. This value is case-sensitive. Raw UID2s are generated and managed using UID2 APIs.</td>
 </tr>
 <tr>
-<td>UID2</td>
-<td><ul><li>Required: You must use either the <code>TDID</code>, <code>DAID</code>, or <code>UID</code> parameter.</li><li>Unified ID (UID2) is an open source ID.</li></ul></td>
+<td><code>IDL</code></td>
+<td>The 49-character or 70-character RampID (previously known as IdentityLink). This must be a RampID from LiveRamp that is mapped specifically for The Trade Desk.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="item-data">Item Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Tracking Tag ID</td>
-<td><ul><li>Required</li><li>The Tracking tag ID created using the Tracking tag APIs.</li><li>For example, <code>xy4s8ef</code></li></ul></td>
+<td>(Required) The Tracking tag ID created using the Tracking tag APIs. Example: <code>abc1234</code></td>
 </tr>
 <tr>
 <td>Conversion Timestamp</td>
-<td><ul><li>Required</li><li>Conversion Date TIme in UTC.</li><li>The time the offline conversion happened, in UTC.</li><li>For example, <code>2019-02-07T13:25:00Z</code></li></ul></td>
+<td>(Required) Conversion date time in UTC. The time the offline conversion happened, in UTC. Example: <code>2019-02-07T13:25:00Z</code></td>
 </tr>
 <tr>
 <td>ImpressionId</td>
-<td><ul><li>Valid 36 characters.</li><li>Globally Unique Identifier (GUID) for the impression this item is for.</li></ul></td>
+<td>The raw (not hashed) GUID that is 36 characters long, including dashes.</td>
 </tr>
 <tr>
-<td>Value</td>
-<td><ul><li>Monetary value.</li><li>Example: <code>0.02</code></li></ul></td>
+<td>Monetary value</td>
+<td>Monetary value. Example: <code>0.02</code></td>
 </tr>
 <tr>
-<td>ValueCurrency</td>
-<td><ul><li>Monetary value currency.</li><li>Example: <code>USD</code></li></ul></td>
+<td>Monetary currency</td>
+<td>Monetary value currency. Example: <code>USD</code></td>
 </tr>
 <tr>
 <td>Country</td>
-<td><ul><li>Country</li><li>Example: <code>United States</code></li></ul></td>
+<td>Country Example: <code>United States</code></td>
 </tr>
 <tr>
 <td>Region</td>
-<td><ul><li>Region</li><li>Example: <code>New York</code></li></ul></td>
+<td>Region Example: <code>New York</code></td>
 </tr>
 <tr>
 <td>Metro</td>
-<td><ul><li>Metro Area</li><li>Example: <code>501</code></li></ul></td>
+<td>Metro Area Example: <code>501</code></td>
 </tr>
 <tr>
 <td>City</td>
-<td><ul><li>City</li><li>Example: <code>Brooklyn</code></li></ul></td>
+<td>City Example: <code>Brooklyn</code></td>
 </tr>
 <tr>
-<td>PostalCode</td>
-<td><ul><li>Postal Code</li><li>Example: <code>11223</code></li></ul></td>
+<td>Event Name</td>
+<td>The type of event defined by the partner platform. For more information, see <a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-providerapi-offlineconversion#event-mapping">The Trade Desk: Event Mapping</a>.</td>
 </tr>
 <tr>
-<td>TD1</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
+<td>Order ID</td>
+<td>The unique identifier for a transaction or conversion event, with a maximum length of 64 characters.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="additional-data">Additional Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TD1 - TD10</code></td>
+<td>Optional reporting fields used for category or other organization, with a maximum length of 64 characters.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="line-items">Line items</h4>
+<p>The properties that contain merchant product catalog line item information. These mappings accept array attributes.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item Code</td>
+<td>The item identifier (such as SKU).</td>
 </tr>
 <tr>
-<td>TD2</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
+<td>Item Name</td>
+<td>The name associated with the item code, with a maximum length of 150 characters.</td>
 </tr>
 <tr>
-<td>TD3</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
+<td>Item Quantity</td>
+<td>The number of items in the order for the item code.</td>
 </tr>
 <tr>
-<td>TD4</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
+<td>Item Price</td>
+<td>The unit price of the item.</td>
 </tr>
 <tr>
-<td>TD5</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
-</tr>
-<tr>
-<td>TD6</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
-</tr>
-<tr>
-<td>TD7</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
-</tr>
-<tr>
-<td>TD8</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
-</tr>
-<tr>
-<td>TD9</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
-</tr>
-<tr>
-<td>TD10</td>
-<td><ul><li>Optional reporting field.</li><li>Can be used for user category or flags.</li></ul></td>
+<td>Item Category</td>
+<td>The item category ID.</td>
 </tr>
 </tbody>
 </table>
@@ -625,7 +666,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 30, 2024 
+          <p>This page was last updated:  May 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -639,11 +680,9 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-offline-conversion" href="javascript:void(0)">Action - Send Offline Conversion</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-offline-conversion" href="javascript:void(0)">Send Offline Conversion</a></li>
               </nav>
   </aside></nav>
 

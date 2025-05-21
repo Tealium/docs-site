@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -414,7 +414,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the The Trade Desk Third Party Data connector.
+      This article describes how to set up The Trade Desk Third Party Data connector.
     </p>
   
 </div>
@@ -426,7 +426,12 @@
 <ul>
 <li>API Name: The Trade Desk API</li>
 <li>API Version: v3.0</li>
-<li>API Endpoint: <code>https://bulk-data.adsrvr.org</code></li>
+<li>API Endpoint: <code>https://bulk-data.adsrvr.org</code>
+<ul>
+<li>Data Rate Endpoint: <code>POST /datarate/batch</code></li>
+<li>Third-Party Endpoint <code>POST /data/thirdparty</code></li>
+</ul>
+</li>
 <li>Documentation: <a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-data-thirdparty">The Trade Desk API</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
@@ -453,15 +458,111 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
+<h2 id="configuration">Configuration</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Secret Key</strong><br>
-Required. The secret key.</li>
-<li><strong>API Base URL</strong><br>
-Required. Select your API base URL.</li>
+<li><strong>Secret Key</strong>: Required. The secret key.</li>
+<li><strong>API Base URL</strong>: Required. Select your API base URL.</li>
 </ul>
+<h2 id="admin-configuration">Admin configuration</h2>
+<h3 id="generate-authentication-token">Generate authentication token</h3>
+<p>You must generate an authentication token with a valid username and password before the admin tasks can be performed. Authentication only applies to the admin tasks and is not required for the connector to work.</p>
+<ul>
+<li><strong>Login</strong>: Required. Enter your login.</li>
+<li><strong>Password</strong>: Required. Enter your password.</li>
+</ul>
+<h3 id="create-taxonomy-segment">Create taxonomy segment</h3>
+<p>For more information, see <a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataTaxonomyDesign#top">The Trade Desk Partner Portal: Third-Party Data Taxonomy Design</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider ID</td>
+<td>Required. The unique ID for your provider account, which your Account Manager provided to you.</td>
+</tr>
+<tr>
+<td>Provider Element ID</td>
+<td>Required. The unique ID assigned to the segment when the taxonomy was designed. The ID must be 512 characters long or less. This value cannot be changed after you create it.</td>
+</tr>
+<tr>
+<td>Parent Element ID</td>
+<td>Required. The Provider Element ID value from the parent segment in the taxonomy. This parameter establishes the hierarchical structure of your taxonomy. This value cannot be changed after you create it. All data providers use the <code>ROOT</code> base element of the taxonomy.</td>
+</tr>
+<tr>
+<td>Display Name</td>
+<td>Required. The name for the segment that buyers see in the DMP user interface. The display name must be 256 characters long or less, but we recommend 50 characters or less for readability, especially for lower-level child elements with longer full paths. Do not include tabs or special characters such as <code>'</code>, <code>&quot;</code>, or <code>^</code>.</td>
+</tr>
+<tr>
+<td>Buyable</td>
+<td>Required. Set to <code>true</code> to make the segment visible and available for buyers in the DMP. For container elements, set this property value to <code>false</code>, since they are used only for organizing child elements and assigning rates. If you change the property value to <code>false</code> for a buyable segment, any customers that currently have the segment in their audience will be able to use it until their campaign ends.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Optional. A description of the data segment, displayed to customers in the DMP. The description must be 4,000 characters long or less, but we recommend 256 characters or less for readability.</td>
+</tr>
+<tr>
+<td>Is Direct IP Targeting</td>
+<td>Optional. If <code>true</code>, the <code>TargetingData</code> used or created will be of type <code>16</code> (<code>DirectIpTargeting</code>) instead of the default <code>7</code> (<code>ThirdPartyData</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="assign-rate-to-segment">Assign rate to segment</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider ID</td>
+<td>Required. The unique ID for your provider account, which your Account Manager provided to you.</td>
+</tr>
+<tr>
+<td>Provider Element ID</td>
+<td>Required. A unique ID that identifies this data element in the system.</td>
+</tr>
+<tr>
+<td>Brand ID</td>
+<td>Required. The unique ID that identifies a provider-managed brand.</td>
+</tr>
+<tr>
+<td>Rate Level</td>
+<td>Required. The rate level for the third-party data. To request access, contact your Technical Account Manager.<br><code>Partner</code>: For specific partners and their advertisers.<br><code>Advertiser</code>: For specific advertisers. Note that this rate level requires additional permissions.</td>
+</tr>
+<tr>
+<td>Partner ID</td>
+<td>Required. The platform ID of the partner that is eligible to access data segments at this rate in a custom taxonomy.</td>
+</tr>
+<tr>
+<td>Advertiser ID</td>
+<td>Required. The platform ID of the advertiser that is eligible to access data segments at this rate in a custom taxonomy.</td>
+</tr>
+<tr>
+<td>Rate Type</td>
+<td>Required. The data rate type for the segment. All system-level data rates for syndicated taxonomies must be assigned as hybrid rates, which use a percentage of media cost with a maximum CPM (cost per thousand) cap. This means that you must set this property to <code>Hybrid</code> and provide values for both <code>CPMRate</code> and <code>PercentOfMediaCostRate</code> properties. While custom taxonomies can use any data rate type, hybrid rates are strongly recommended.</td>
+</tr>
+<tr>
+<td>CPM Rate Amount</td>
+<td>Required. The CPM rate amount.</td>
+</tr>
+<tr>
+<td>CPM Rate Currency Code</td>
+<td>Required. The CPM rate currency code.</td>
+</tr>
+<tr>
+<td>Percent of Media Cost Rate</td>
+<td>Optional. A percentage of media cost to be used in conjunction with the <code>CPMRate</code> cap for the hybrid data rate (selected in <strong>Rate Type</strong>). Enter the percentage as a decimal.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -493,7 +594,7 @@ Required. Select your API base URL.</li>
 </tr>
 <tr>
 <td>UID2Token (apply SHA256 hash)</td>
-<td>The user&rsquo;s Unified ID 2.0, to which a SHA256 hash will be applied.</td>
+<td>The user&rsquo;s Unified ID 2.0, to which a SHA256 hash is applied.</td>
 </tr>
 <tr>
 <td>UID2</td>
@@ -505,7 +606,7 @@ Required. Select your API base URL.</li>
 </tr>
 <tr>
 <td>EUIDToken (apply SHA256 hash)</td>
-<td>The user&rsquo;s European Unified ID, to which a SHA256 hash will be applied</td>
+<td>The user&rsquo;s European Unified ID, to which a SHA256 hash is applied</td>
 </tr>
 <tr>
 <td>EUID</td>
@@ -525,7 +626,7 @@ Required. Select your API base URL.</li>
 </tr>
 <tr>
 <td>Timestamp</td>
-<td>The timestamp of when a user is eligible for a segment. If not specified, the timestamp will be assigned based on the time when the data is processed. This timestamp is used to determine a user&rsquo;s recency for targeting and bid adjustments.</td>
+<td>The timestamp of when a user is eligible for a segment. If not specified, the timestamp is assigned based on the time when the data is processed. This timestamp is used to determine a user&rsquo;s recency for targeting and bid adjustments.</td>
 </tr>
 </tbody>
 </table>
@@ -589,7 +690,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 7, 2025 
+          <p>This page was last updated:  May 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -606,8 +707,12 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#admin-configuration" href="javascript:void(0)">Admin configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-authentication-token" href="javascript:void(0)">Generate authentication token</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-taxonomy-segment" href="javascript:void(0)">Create taxonomy segment</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-rate-to-segment" href="javascript:void(0)">Assign rate to segment</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upload-3rd-party-data" href="javascript:void(0)">Upload 3rd Party Data</a></li>
               </nav>
   </aside></nav>
