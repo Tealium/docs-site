@@ -336,8 +336,8 @@
         <a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookアクションの検証</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-usage-examples">使用例</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/changelog/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-changelog">変更履歴</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - Trimouテンプレートエンジンガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - テンプレート変数ガイド</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/ja/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - テンプレート変数ガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエスト送信 - Trimouテンプレートエンジンガイド</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".vendor-examples">ベンダーの例</a>
         <ul class="pl2  vendor-examples desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-keenio-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-keenio-api">Webhook - Keen.io API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -438,7 +438,7 @@
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-audience-store">AudienceStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-eventstore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-event-store">EventStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-files-audiencestore-and-eventstore">ファイルを表示する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-data-guide">AudienceStoreデータガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-data-guide">AudienceStore データガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstore-data-guide">EventStoreデータガイド</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiencedb-eventdb">AudienceDBとEventDB</a>
@@ -579,22 +579,23 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="必要条件">必要条件</h2>
+  <h2 id="要件">要件</h2>
 <ul>
-<li>EventStream用に有効化されたTealiumアカウント（イベントデータ用）</li>
-<li>AudienceStream用に有効化されたTealiumアカウント（訪問データ用）</li>
+<li>イベントデータ用にEventStreamが有効になっているTealiumアカウント</li>
+<li>訪問データ用にAudienceStreamが有効になっているTealiumアカウント</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Webhookコネクタは、URL、URLパラメータ、ヘッダー、クッキー、ボディコンテンツタイプ、ボディデータを含むHTTPリクエストの全ての側面を使用して、カスタマイズされたデータをベンダーに送信します。Webhookはまた、バッチ処理と複雑で動的なデータ形式を処理するために設計された強力なテンプレート機能をサポートしています。</p>
-<p>ベンダーの認証要件に基づいて選択できるWebhookコネクタは3つあります：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Webhookコネクタは、URL、URLパラメータ、ヘッダー、クッキー、ボディコンテンツタイプ、ボディデータを含むHTTPリクエストのすべての側面を使用して、カスタマイズされたデータをベンダーに送信します。Webhookはバッチ処理もサポートしています。さらに、複雑で動的なデータ形式を扱うために設計された強力なテンプレート機能を含んでいます。</p>
+<p>ベンダーの認証要件に基づいて選択できるWebhookコネクタは3種類あります：</p>
 <ul>
-<li><strong>Webhook</strong> (BasicAuth) – 認証が必要ないサービス、またはユーザー名とパスワードのみで基本認証が必要なサービス向け。</li>
-<li><strong>Webhook OAuth2</strong> (3-Legged) – ユーザーがサービスにログインしてアクセストークンを取得する必要があります。</li>
-<li><strong>Webhook OAuth2</strong> (2-Legged) – ユーザーがサービスにログインする必要はありません。Webhookは認証に必要な情報で構成されます。</li>
+<li><strong>Webhook (BasicAuth)</strong> – 認証が不要、またはユーザー名とパスワードの基本認証のみが必要なサービス用。</li>
+<li><strong>Webhook (OAuth2 - 3-Legged)</strong> – アクセストークンを取得するためにサービスへのログインが必要です。</li>
+<li><strong>Webhook (OAuth2 - 2-Legged)</strong> – サービスへのログインが不要です。Webhookは認証に必要な情報で構成されます。</li>
+<li><strong>Webhook (JWT)</strong> – JSON Webトークン認証を使用します。サービスへのログインは不要です。Webhookは認証に必要な情報で構成されます。</li>
 </ul>
-<p>Webhook OAuth2は、明示的にOAuth 2.0認証を必要とするサービスに使用されます。</p>
-<p>始めるには、コネクタマーケットプレイスに移動し、使用したいWebhookインスタンスを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">Connector Overview</a>を参照してください。</p>
-<h2 id="コネクタのアクション">コネクタのアクション</h2>
+<p>OAuth 2.0認証を明示的に要求するサービスにはWebhook OAuth2が使用されます。</p>
+<p>始めるには、コネクタマーケットプレイスにアクセスして、使用したいWebhookインスタンスを追加してください。コネクタの追加方法についての一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>を参照してください。</p>
+<h2 id="コネクタアクション">コネクタアクション</h2>
 <table>
 <thead>
 <tr>
@@ -606,33 +607,33 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-event-data-via-http-request">HTTPリクエスト経由でイベントデータを送信</a></td>
-<td>URLエンコードされたJSON文字列またはJSONペイロードとして、イベントオブジェクト全体を送信します。</td>
+<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-event-data-via-http-request">HTTPリクエストを介してイベントデータを送信</a></td>
+<td>イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-visitor-data-via-http-request">HTTPリクエスト経由で訪問データを送信</a></td>
-<td>URLエンコードされたJSON文字列またはJSONペイロードとして、訪問プロファイルオブジェクト全体を送信します。</td>
+<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-visitor-data-via-http-request">HTTPリクエストを介して訪問データを送信</a></td>
+<td>訪問プロファイルオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-customized-data-via-http-request-advanced">HTTPリクエスト経由でカスタマイズデータを送信（高度）</a></td>
-<td>マッピングを通じて指定された個々のイベント/訪問属性を送信します。</td>
+<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-customized-data-via-http-request-advanced">HTTPリクエストを介してカスタマイズされたデータを送信（高度）</a></td>
+<td>マッピングを介して指定された個々のイベント/訪問属性を送信します。</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-batched-customized-data-via-http-request-advanced">HTTPリクエスト経由でバッチ化されたカスタマイズデータを送信（高度）</a></td>
-<td>マッピングを通じて指定されたバッチ化されたイベント/訪問属性を送信します。</td>
+<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-batched-customized-data-via-http-request-advanced">HTTPリクエストを介してバッチ処理されたカスタマイズデータを送信（高度）</a></td>
+<td>マッピングを介して指定されたバッチ処理されたイベント/訪問属性を送信します。</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="httpレスポンスクッキー">HTTPレスポンスクッキー</h2>
-<p>クッキーベースのセッション管理はウェブブラウザで一般的ですが、ステートレスAPIと通信するサーバー間の環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
+<p>クッキーベースのセッション管理はWebブラウザで一般的ですが、ステートレスAPIと通信するサーバー間環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
 
 </div>
 
@@ -678,7 +679,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年June月23日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -692,9 +693,9 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">HTTPレスポンスクッキー</a></li>
               </nav>
   </aside></nav>

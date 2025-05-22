@@ -176,14 +176,14 @@
 <li>AudienceStreamまたはEventStream用に有効化されたTealiumアカウント</li>
 </ul>
 <h2 id="ソリューションのインストール">ソリューションのインストール</h2>
-<p>Tealium for Salesforceソリューションは、Tealium Collectサービス用のApexクラスとオブジェクト更新をトリガーする1つ以上のクラスとしてインストールされます。また、Customer Data HubからのレコードをSalesforceにリンクし、SalesforceからTealiumへのHTTPリクエストの送信を許可するために、Salesforce構成の更新が必要です。</p>
+<p>Tealium for Salesforceソリューションは、Tealium Collectサービス用のApexクラスとオブジェクト更新をトリガーするための1つ以上のクラスとしてインストールされます。また、Customer Data HubからのレコードをSalesforceにリンクし、SalesforceからTealiumへのHTTPリクエストの送信を許可するために、Salesforce構成の更新が必要です。</p>
 <h3 id="customer-data-hubからsalesforceへのレコードリンク">Customer Data HubからSalesforceへのレコードリンク</h3>
 <p>Tealium for Salesforceソリューションは、共有識別子属性を指定することで、Customer Data HubからSalesforceにレコードをリンクできます。Customer Data Hubでは、この属性は摂取同期から来るレコードを一意に識別する任意の訪問ID属性にすることができます。Salesforceでは、そのCustomer Data Hub属性をキャプチャするためにオブジェクトに<strong>Tealium ID</strong>というカスタムフィールドを作成する必要があります。</p>
 <p>詳細については、<a href="/ja/server-side-connectors/salesforce-connector/">Salesforce Connector Setup Guide for AudienceStream</a>を参照してください。</p>
 <p>リードオブジェクトにこのカスタムフィールドを追加するには：</p>
 <ol>
 <li>
-<p><strong>構成</strong>から<strong>リード &gt; フィールド</strong>に進みます。<br>
+<p><strong>構成</strong>から<strong>リード &gt; フィールド</strong>へ進みます。<br>
 <figure><a class="slb" href="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"><img src="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"
          alt="Salesforce UI Edit Leas Custom Field"
          title="Salesforce UI Edit Leas Custom Field"/>
@@ -197,14 +197,14 @@
 <li><strong>長さ</strong>: 100.</li>
 <li><strong>フィールド名</strong>: <code>tealium_id_teal</code>.</li>
 </ul>
- <p class="note"><i class="fa fa-exclamation-triangle"></i><code>_teal</code>接尾辞はこれらの変数をTealiumに名前空間を付けるのに役立ちます。</p>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i><code>_teal</code>接尾辞は、これらの変数がTealiumに特有であることを示します。</p>
 </li>
 <li>
 <p><strong>保存</strong>をクリックします。</p>
 </li>
 </ol>
 <h3 id="tealiumcollect-apexクラスの作成"><code>TealiumCollect</code> Apexクラスの作成</h3>
-<p>この<code>TealiumCollect</code> ApexクラスはTealium CollectサービスへのHTTPリクエストを生成します。これはTealium構成とデータレイヤー値を取り、必要なURL形式にフォーマットします。</p>
+<p>この<code>TealiumCollect</code> Apexクラスは、Tealium CollectサービスへのHTTPリクエストを生成します。それはTealium構成とデータレイヤー値を取り、必要なURL形式にフォーマットします。</p>
 <p>詳細については、<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro.htm">Apex Developer Guide: Introducing Apex</a>を参照してください。</p>
 <p><code>TealiumCollect</code> Apexクラスを追加するには：</p>
 <ol>
@@ -228,9 +228,9 @@
 </span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event_type&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> tealiumEventType<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>        tealiumParams<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span>      <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span>
 </span></span><span style="display:flex;"><span>            EncodingUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">urlEncode</span><span style="color:#f92672">(</span>tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>        String tealiumVid <span style="color:#f92672">=</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        String tealiumVid <span style="color:#f92672">=</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_visitor_id&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>tealiumVid <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> tealiumVid <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">){</span>
-</span></span><span style="display:flex;"><span>            tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_visitor_id&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>String key <span style="color:#f92672">:</span> tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">keySet</span><span style="color:#f92672">()){</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
@@ -251,9 +251,9 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="リードまたはコンタクト更新のためのapexトリガーの作成">リードまたはコンタクト更新のためのApexトリガーの作成</h3>
-<p>このトリガーは、Salesforceオブジェクトの更新に基づいてアクティブ化されます。トリガーは他の多くのオブジェクトステージでアクティブ化するように変更でき、特定のシナリオに合わせてカスタマイズおよびフィルタリングが可能です。</p>
+<p>このトリガーは、Salesforceオブジェクトの更新に基づいてアクティブ化されます。トリガーは多くの他のオブジェクトステージでアクティブ化するように変更でき、特定のシナリオにフィルタリングしてカスタマイズすることができます。</p>
 <p>詳細については、<a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm">Apex Developer Guide: Triggers</a>を参照してください。</p>
-<p>Tealiumトリガーを作成するための次の手順を使用します：</p>
+<p>Tealiumトリガーを作成するための手順は次のとおりです：</p>
 <ol>
 <li><strong>開発者コンソール</strong>内で、<code>TealiumLeadUpdate</code>（またはオブジェクトに基づいて<code>TealiumContactUpdate</code>）という名前の<strong>トリガー</strong>を作成します。</li>
 <li>以下のコンタクトオブジェクトトリガーコードまたはリードオブジェクトトリガーコードをコピーして貼り付けます。</li>
@@ -268,7 +268,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Contact sfdcObj <span style="color:#f92672">:</span> Trigger<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#f92672">){</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* REQUIRED TEALIUM DATA */</span>
 </span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">,</span> tealiumEvent<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_visitor_id&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* SFDC DATA */</span>
 </span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">,</span>      sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Email</span><span style="color:#f92672">);</span>
@@ -296,7 +296,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Lead sfdcObj <span style="color:#f92672">:</span> Trigger<span style="color:#f92672">.</span><span style="color:#a6e22e">new</span> <span style="color:#f92672">){</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* REQUIRED TEALIUM DATA */</span>
 </span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">,</span> tealiumEvent<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_vid&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;tealium_visitor_id&#34;</span><span style="color:#f92672">,</span> sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">tealium_id_teal__c</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* SFDC DATA */</span>
 </span></span><span style="display:flex;"><span>        tealiumData<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">,</span>      sfdcObj<span style="color:#f92672">.</span><span style="color:#a6e22e">Email</span><span style="color:#f92672">);</span>
@@ -318,7 +318,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="リード変換マッピング">リード変換マッピング</h3>
-<p>リードをコンタクトに変換する際にカスタムフィールド <strong>Tealium ID</strong> を保持するには、<strong>Lead.Tealium ID</strong> を <strong>Contact.Tealium ID</strong> にマッピングする必要があります。</p>
+<p>カスタムフィールド <strong>Tealium ID</strong> をリードからコンタクトへの変換時に保持するためには、<strong>Lead.Tealium ID</strong> を <strong>Contact.Tealium ID</strong> にマッピングする必要があります。</p>
 <p>詳細については、<a href="https://help.salesforce.com/s/articleView?id=sales.customize_mapleads.htm&amp;type=5">Salesforce Sales Cloud Basics: Map Custom Lead Fields for Lead Conversion</a>を参照してください。</p>
 <p>カスタムフィールドマッピングを作成するには、以下の手順に従ってください：</p>
 <ol>
@@ -359,16 +359,16 @@
     </a>
 </figure>
 <h3 id="salesforceイベント属性の追加">Salesforceイベント属性の追加</h3>
-<p>Apexトリガーコードで使用されるSalesforce変数は、Tealiumでイベント属性として定義する必要があります。Salesforceからどのようなデータが来ているかを確認するには、トリガーコードを調べるか、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を使用してリアルタイムでデータを確認します。</p>
+<p>Apexトリガーコードで使用されるSalesforce変数は、Tealiumのイベント属性として定義する必要があります。Salesforceからどのようなデータが来ているかを確認するには、トリガーコードを調べるか、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を使用してリアルタイムでデータを確認してください。</p>
 <p>イベント属性を追加するには、以下の手順に従ってください：</p>
 <ol>
 <li><strong>Enrich &gt; Attributes</strong> に移動します。</li>
 <li><strong>+ Add Attribute</strong> をクリックします。</li>
-<li>スコープを選択します：<strong>Event</strong>。</li>
-<li>タイプを選択します：<strong>Universal Data Object</strong>。</li>
-<li>データタイプを選択します：<strong>String</strong>。</li>
-<li>トリガーコードで使用されている変数名と同じ <strong>Name</strong> を構成します。例えば <code>crm_lead_status</code>。</li>
-<li>Save/Publish を行います。</li>
+<li>スコープを選択：<strong>Event</strong>。</li>
+<li>タイプを選択：<strong>Universal Data Object</strong>。</li>
+<li>データタイプを選択：<strong>String</strong>。</li>
+<li>トリガーコードで使用されている変数名と同じ <strong>Name</strong> を構成します。例えば <code>crm_lead_status</code> など。</li>
+<li>保存して公開します。</li>
 </ol>
 
 </div>
@@ -400,7 +400,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月14日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

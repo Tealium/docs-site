@@ -461,33 +461,33 @@
 <ul>
 <li>API名：Awin API</li>
 <li>APIエンドポイント：<code>https://www.awin1.com</code></li>
-<li>ドキュメント：<a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guides">Awin: Awin API</a></li>
+<li>ドキュメント：<a href="https://developer.awin.com/apidocs/conversion-api">Awin: Awin API</a></li>
 <li>認証タイプ：OAuth2.0</li>
 <li>タグドキュメント：<a href="/ja/client-side-tags/awin-tag/">Awinタグ</a></li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
-<p>タグとコネクタを使用したハイブリッド構成を推奨します。この構成により、データの耐久性が最大化され、サーバーサイドデータとのイベントマッチングが改善され、リアルタイムのクライアントサイドデータを保持しながらデータフローの連続性が維持されます。コネクタは、トラフィックのソースを識別するために<code>awc</code>クエリ文字列パラメータを含む紹介リンクから生じるコンバージョンを帰属するためにAwinタグを使用します。Tealiumの拡張機能を使用するか、<code>awc</code>パラメータを保持してサーバーサイドコネクタから送信することで、購入が正しいコミッショングループにクレジットされることを保証します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ブラウザの更新により、Awinはピクセルのみの実装をサポートしなくなったため、このコネクタでは<a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/Conversion_Pixel_Only_Tracking#Server_To_Server_.28S2S.29">Awin S2S API</a>実装をフォールバックとして使用できます。</p>
+<p>タグとコネクタを使用したハイブリッド構成を推奨します。この構成により、データの耐久性が最大化され、サーバーサイドデータとのイベントマッチングが改善され、リアルタイムのクライアントサイドデータを保持しながらデータフローの連続性が維持されます。コネクタは、トラフィックのソースを識別するために<code>awc</code>クエリ文字列パラメータを含む紹介リンクからのコンバージョンを帰属するためにAwinタグを使用します。Tealiumの拡張機能を使用するか、<code>awc</code>パラメータを保持してサーバーサイドコネクタから送信することで、購入が正しいコミッショングループにクレジットされることを保証します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ブラウザの更新により、Awinはピクセルのみの実装をサポートしなくなったため、このコネクタでは<a href="https://developer.awin.com/docs/direct-s2s">Awin S2S API</a>実装をフォールバックとして使用できます。</p>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタの追加方法についての一般的な説明については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>トークン</strong><br>
-必須。このトークンは個人のユーザーアカウントにリンクされています。トークンの作成についての詳細は、<a href="https://developer.awin.com/apidocs/api-authentication">AWIN: AWAuthentication and Authorization</a>を参照してください。</li>
+必須。このトークンは個人のユーザーアカウントにリンクされています。トークンの作成についての詳細は、<a href="https://developer.awin.com/apidocs/api-authentication">AWIN: AW認証と承認</a>を参照してください。</li>
 <li><strong>マーチャント（広告主ID）</strong><br>
 適用されるAwin広告主ID。サポートについては、Awinアカウントマネージャーに連絡してください。</li>
 </ul>
 <p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
 <h3 id="重複排除">重複排除</h3>
-<p>複数のマーケティングチャネルやネットワークを使用している場合、同じコンバージョンに対して複数のトラフィックソースにコミッションが支払われないように重複排除を行う必要があります。詳細については、以下のチャネルパラメータと<a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/De-duplication">Awin: 重複排除</a>を参照してください。</p>
+<p>複数のマーケティングチャネルやネットワークを使用している場合、同じコンバージョンに対して複数のトラフィックソースにコミッションが支払われないように重複排除を行う必要があります。詳細については、以下のチャネルパラメータと<a href="https://advertiser-success.awin.com/s/article/What-is-De-Duplication">Awin: 重複排除</a>を参照してください。</p>
 <h3 id="チャネルパラメータ">チャネルパラメータ</h3>
-<p>Awinは、すべてのクライアントに<strong>チャネルパラメータ</strong>の使用を強く推奨しています。このパラメータは、トラフィックのソースに基づいて各コンバージョンを処理する方法をシステムに指示します。</p>
+<p>Awinは、すべてのクライアントに<strong>チャネルパラメータ</strong>の使用を強く推奨しています。このパラメータを使用することで、トラフィックのソースに基づいて各コンバージョンをどのように処理するかをシステムに指示します。</p>
 <p>そのパラメータに勝利チャネルコードを入力することで、Tealiumは以下の4つの方法でリクエストを処理できます：</p>
 <ul>
 <li>処理しない。</li>
-<li>Awinのクッキーが存在する場合に処理する。</li>
-<li>Awinのクリッククッキーが存在する場合のみ処理する。</li>
-<li>Awinのポストビュークッキーが存在する場合のみ処理する。</li>
+<li>任意のAwinクッキーが存在する場合に処理する。</li>
+<li>Awinクリッククッキーが存在する場合のみ処理する。</li>
+<li>Awinポストビュークッキーが存在する場合のみ処理する。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -500,7 +500,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">コンバージョンの送信</td>
+<td style="text-align:left">コンバージョン送信</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
@@ -511,10 +511,10 @@
 </tr>
 </tbody>
 </table>
-<p>コネクタアクションを構成するには、<strong>続行</strong>をクリックします。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="コンバージョンの送信">コンバージョンの送信</h3>
-<p>サーバーからサーバーへのトラッキングは、トラッキングの必須要素です。要件は、コンバージョンデータが（Tealiumコネクタを介してHTTPSリクエストを通じて）TealiumカスタマーデータハブからAwinのサーバーに直接送信されることです。</p>
+<h3 id="コンバージョン送信">コンバージョン送信</h3>
+<p>サーバーからサーバーへのトラッキングは、トラッキングの必須要素です。要件は、コンバージョンデータがTealium Customer Data HubからAwinのサーバーへ直接HTTPSリクエストを介して送信されることです。</p>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -538,15 +538,15 @@
 </tr>
 <tr>
 <td style="text-align:left">コミッショングループコード</td>
-<td style="text-align:left">推奨。取引を帰属させたいコミッショングループのコードまたはコード。このパラメータは、単一のグループの場合は文字列、複数のグループの場合は配列であることができます。許可される文字は大文字の英数字、アンダースコア、ハイフンです。このパラメータが入力されていない場合、Awinはデフォルトのコミッショングループを使用します。</td>
+<td style="text-align:left">推奨。取引を帰属させたいコミッショングループのコードまたはコード。このパラメータは単一グループの文字列または複数グループの配列であることができます。受け入れられる文字は大文字の英数字、アンダースコア、およびハイフンです。このパラメータが入力されていない場合、Awinはデフォルトのコミッショングループを使用します。</td>
 </tr>
 <tr>
 <td style="text-align:left">コミッショングループ金額</td>
-<td style="text-align:left">各コミッショングループに割り当てたいコミッション金額。このパラメータは、単一のグループの場合は文字列、複数のグループの場合は配列であることができます。配列値はコミッショングループ配列と同じ順序で表示されなければなりません。マッピングされていない場合、デフォルト値はマッピングされた合計金額です。</td>
+<td style="text-align:left">各コミッショングループに割り当てたいコミッション金額。このパラメータは単一グループの文字列または複数グループの配列であることができます。配列値はコミッショングループ配列と同じ順序で表示されなければなりません。マッピングされていない場合、デフォルト値はマッピングされた合計金額です。</td>
 </tr>
 <tr>
 <td style="text-align:left">チャネル</td>
-<td style="text-align:left">最後のクリックリファラーのチャネル名。常に<strong>aw</strong>を使用してください。これがAwinのデフォルト値です。この値は20文字以内の英数字でなければなりません。このパラメータを含めることを強くお勧めします。そうすることで、Awinシステムがトラフィックのソースに基づいて各コンバージョンをどのように処理するかを知ることができます。例としては、<code>aw</code>（Awin用に常に使用されるべきです）、<code>display</code>、または<code>ppc</code>があります。詳細については、<a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/De-duplication#Channel_Parameter">Awin: チャネルパラメータ</a>を参照してください。</td>
+<td style="text-align:left">最後のクリックリファラーのチャネル名。常に<strong>aw</strong>をAwin用に使用してください。これがデフォルト値です。この値は20文字以内の英数字でなければなりません。このパラメータを含めることを強くお勧めします。これにより、Awinシステムはトラフィックのソースに基づいて各コンバージョンをどのように処理するかを知ることができます。例としては、<code>aw</code>（Awin用に常に使用する必要があります）、<code>display</code>、または<code>ppc</code>があります。詳細については、<a href="https://developer.awin.com/docs/channel-parameter">Awin: チャネルパラメータ</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align:left">AWCパラメータ</td>
@@ -571,7 +571,7 @@
 </tbody>
 </table>
 <h3 id="商品レベルのコンバージョン">商品レベルのコンバージョン</h3>
-<p>商品レベルのトラッキングにより、広告主は個々の製品のパフォーマンスを測定できるようになり、より詳細なレポートを作成できます。</p>
+<p>商品レベルのトラッキングにより、広告主は個々の製品のパフォーマンスを測定できるより詳細なレポートを作成できます。</p>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -595,19 +595,19 @@
 </tr>
 <tr>
 <td style="text-align:left">コミッショングループコード</td>
-<td style="text-align:left">推奨。取引を帰属させたいコミッショングループのコードまたはコードです。このパラメータは、単一のグループの場合は文字列、複数のグループの場合は配列であることができます。許可される文字は大文字の英数字、アンダースコア、ハイフンです。このパラメータが入力されていない場合、Awinはデフォルトのコミッショングループを使用します。コミッショングループコードまたはコードはパーツパラメータにマッピングされ、製品レベルでもマッピングされます。</td>
+<td style="text-align:left">推奨。取引に帰属させたいコミッショングループのコードまたはコードです。このパラメータは単一グループの場合は文字列、複数グループの場合は配列であることができます。許可される文字は大文字の英数字、アンダースコア、ハイフンです。このパラメータが入力されていない場合、Awinはデフォルトのコミッショングループを使用します。コミッショングループコードまたはコードはpartsパラメータにマッピングされ、製品レベルでもマッピングされます。</td>
 </tr>
 <tr>
 <td style="text-align:left">コミッショングループ金額</td>
-<td style="text-align:left">各コミッショングループに割り当てたいコミッション金額です。このパラメータは、単一のグループの場合は文字列、複数のグループの場合は配列であることができます。配列値はコミッショングループ配列と同じ順序で表示されなければなりません。マッピングされていない場合、デフォルト値はマッピングされた合計金額です。</td>
+<td style="text-align:left">各コミッショングループに割り当てたいコミッション金額です。このパラメータは単一グループの場合は文字列、複数グループの場合は配列であることができます。配列値はコミッショングループ配列と同じ順序で表示されなければなりません。マッピングされていない場合、デフォルト値はマッピングされた合計金額です。</td>
 </tr>
 <tr>
 <td style="text-align:left">チャネル</td>
-<td style="text-align:left">最後のクリックリファラーのチャネル名です。Awinの場合は常にデフォルト値<code>aw</code>を使用してください。この値は20文字以下の英数字でなければなりません。このパラメータを含めることを強くお勧めします。これにより、Awinシステムはトラフィックのソースに基づいて各変換をどのように処理するかを知ることができます。例としては、<code>aw</code>（Awin用に常に使用されるべき）、<code>display</code>、<code>ppc</code>などがあります。</td>
+<td style="text-align:left">最後のクリックリファラーのチャネル名です。Awinの場合は常にデフォルト値<code>aw</code>を使用してください。この値は20文字以下の英数字でなければなりません。このパラメータを含めることを強くお勧めします。これにより、Awinシステムはトラフィックの出所に基づいて各変換をどのように処理するかを知ることができます。例としては、<code>aw</code>（Awin用に常に使用されるべきです）、<code>display</code>、または<code>ppc</code>があります。</td>
 </tr>
 <tr>
 <td style="text-align:left">AWCパラメータ</td>
-<td style="text-align:left">Awinによってクリックのソースを識別するためにランディングページURLに追加される値です。<strong>AWCパラメータ</strong>または<strong>バウチャーコード</strong>のいずれかの値を提供する必要があります。awc値をクッキーでキャプチャする場合は、以下のガイドラインに従ってください：<ul><li>クッキーはHTTPレスポンスヘッダーで構成され、クライアントサイドのスクリプトでは構成されてはいけません。たとえば、PHPで構成されたクッキーは問題ありません。クッキーはHTTP Onlyフラグで構成する必要があります。</li><li>クッキーはセキュアフラグで構成する必要があります。</li></ul></td>
+<td style="text-align:left">Awinによってクリックの出所を識別するためにランディングページURLに追加される値です。<strong>AWCパラメータ</strong>または<strong>バウチャーコード</strong>のいずれかの値を提供する必要があります。awc値をクッキーでキャプチャする場合は、以下のガイドラインに従ってください：<ul><li>クッキーはHTTPレスポンスヘッダーで構成され、クライアントサイドのスクリプトではなく、例えばPHPで構成されたクッキーは問題ありません。クッキーはHTTP Onlyフラグで構成する必要があります。</li><li>クッキーはセキュアフラグで構成されるべきです。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">バウチャーコード</td>
@@ -615,11 +615,11 @@
 </tr>
 <tr>
 <td style="text-align:left">通貨コード</td>
-<td style="text-align:left">推奨。取引に使用された通貨のISO通貨コードです。例えば、<code>GBP</code>や<code>USD</code>などです。</td>
+<td style="text-align:left">推奨。トランザクションで使用された通貨のISO通貨コードです。例えば、<code>GBP</code>や<code>USD</code>です。</td>
 </tr>
 <tr>
 <td style="text-align:left">商品名</td>
-<td style="text-align:left">必須。取引に含まれる商品名の配列です。</td>
+<td style="text-align:left">必須。トランザクション内の商品名の配列です。</td>
 </tr>
 <tr>
 <td style="text-align:left">カスタムパラメータ</td>
@@ -642,23 +642,23 @@
 <tbody>
 <tr>
 <td>商品ID</td>
-<td>必須。取引に含まれるユニークな商品IDの配列です。</td>
+<td>必須。トランザクション内のユニークな商品IDの配列です。</td>
 </tr>
 <tr>
 <td>商品数量</td>
-<td>必須。取引に含まれる各商品の数量の配列です。</td>
+<td>必須。トランザクション内の各商品の数量の配列です。</td>
 </tr>
 <tr>
 <td>商品SKU</td>
-<td>必須。取引に含まれる各商品のSKUの配列です。</td>
+<td>必須。トランザクション内の各商品のSKUの配列です。</td>
 </tr>
 <tr>
 <td>商品単価</td>
-<td>必須。取引に含まれる各商品の単価の配列です。この単価は、適用される割引後の価格を反映する必要がありますが、税金や追加料金は適用される前の価格です。値は浮動小数点で、千の区切りは許可されず、小数点は標準のドット文字でなければなりません。</td>
+<td>必須。トランザクション内の各商品の単価の配列です。この単価は、適用される割引後の価格を反映する必要がありますが、税金や追加料金は適用される前のものです。値は浮動小数点で、千の区切りは許可されず、小数点は標準のドット文字でなければなりません。</td>
 </tr>
 <tr>
 <td>商品カテゴリ</td>
-<td>必須。取引に含まれる各商品のカテゴリの配列です。</td>
+<td>必須。トランザクション内の各商品のカテゴリの配列です。</td>
 </tr>
 </tbody>
 </table>
@@ -722,7 +722,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月29日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -742,7 +742,7 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">重複排除</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">チャネルパラメータ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョンの送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョン送信</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%95%86%E5%93%81%E3%83%AC%E3%83%99%E3%83%AB%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">商品レベルのコンバージョン</a></li>
               </nav>
   </aside></nav>

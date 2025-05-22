@@ -189,12 +189,11 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォーム権限は、新規顧客に対してGA（一般提供開始）として、選ばれた顧客に対してEEA（拡張アーリーアクセス）として提供されています。</p>
-<h2 id="動作原理">動作原理</h2>
+  <h2 id="仕組み">仕組み</h2>
 <p>Tealiumアカウントへのアクセスが必要な各人は、ログインするためにメールユーザー名とパスワードが必要です。ログインする前に、ユーザーをアカウントに招待し、アカウントをアクティブにするためのメールを受け取ります。</p>
 <p>ユーザーは、権限グループ、管理者ロール、およびユーザーレベルの権限を通じてアカウントに対する権限を受け取ります。</p>
 <ul>
-<li><a href="/ja/administration/permission-groups/">権限グループ</a>は、プロファイル、製品機能、および公開権を付与します。複数の権限グループにユーザーを追加して、複数のプロファイルとそれらのプロファイルへの権限レベルへのアクセスを提供します。</li>
+<li><a href="/ja/administration/permission-groups/">権限グループ</a>は、プロファイル、製品機能、および公開権限へのアクセスを付与します。複数の権限グループにユーザーを追加して、複数のプロファイルとそれらのプロファイルへの権限レベルへのアクセスを提供します。</li>
 <li><a href="/ja/administration/admin-roles/">管理者ロール</a>は、ユーザーや権限グループの管理など、信頼できるチームメンバーに特別または非常に機密性の高い責任を委任します。</li>
 <li>ユーザーレベルの権限は、<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証（MFA）</a>トークン、<a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>、および個人識別情報（PII）アクセスレベルを構成します。</li>
 </ul>
@@ -217,7 +216,7 @@
 <li>管理メニューで<strong>権限の管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。<strong>ユーザー</strong>表が表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
 </ul>
 <p>CSVファイルは、権限値を<code>TRUE</code>または<code>FALSE</code>としてリストします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ファイルに完全な権限リストが表示されるようにするために、この機能はアカウントのレガシー「アカウントの管理」権限と各プロファイルの「ユーザーの管理」権限が必要です。<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限の強制</a>がアクティブな場合、このボタンはもはや表示されません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファイルに完全な権限リストが表示されるようにするために、この機能はアカウントにレガシーのアカウント管理権限と各プロファイルのユーザー管理権限が必要です。<a href="/ja/administration/permissions-system-migration-guide/permissions-enforcement/">権限の強制</a>がアクティブな場合、このボタンはもう表示されません。</p>
 <h3 id="新しいユーザーの追加">新しいユーザーの追加</h3>
 <p>新しいユーザーを追加するには：</p>
 <ol>
@@ -227,30 +226,30 @@
 <li><strong>新しいユーザーのメール</strong>ボックスに最大25のメールアドレスを入力します。カンマ、タブ、セミコロンで区切るか、カンマ区切り値（CSV）ファイルの内容を貼り付けることができます。</li>
 <li><strong>招待状を送信</strong>をクリックします。<strong>権限の管理</strong>画面が表示され、新しいユーザーメールアドレスが<strong>登録待ち</strong>のメモとともに表に表示されます。</li>
 </ol>
-<p>Tealiumは、Tealiumプラットフォームへのアクセスがまだないユーザーにメール招待状を送ります。それらの新しいユーザーは招待を受け入れてパスワードを構成する必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーを追加して招待するとき、ユーザーは自動的にアカウントのプロファイルにアクセスすることはありません。そのユーザーを<a href="#edit-a-user">編集する</a>必要があります。プロファイルへのアクセスを許可するために権限グループに追加し、アカウントの側面を管理する必要がある場合は管理者ロールを付与し、MFA、APIキー、およびPIIアクセスのユーザーレベルの権限を構成します。そうしないと、彼らが招待を受け入れてログインを試みたときにエラーが表示されます。</p>
+<p>Tealiumは、Tealiumプラットフォームへのアクセスがまだないユーザーにメール招待状を送ります。それらの新しいユーザーは招待を受け入れ、パスワードを構成する必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーを追加して招待するとき、そのユーザーは自動的にアカウントのプロファイルにアクセスする権限を受けません。そのユーザーを権限グループに追加してプロファイルへのアクセスを許可し、アカウントの側面を管理する必要がある場合は管理者ロールを付与し、MFA、APIキー、およびPIIアクセスのユーザーレベルの権限を構成する必要があります。そうしないと、彼らが招待を受け入れてログインを試みたときにエラーが表示されます。</p>
 <p>ユーザーへの招待を取り消すには：</p>
 <ol>
-<li><strong>ユーザー</strong>タブで、ユーザーの詳細アクションボタンを選択します。</li>
+<li><strong>ユーザー</strong>タブで、そのユーザーの詳細アクションボタンを選択します。</li>
 <li><strong>招待を取り消す</strong>をクリックします。</li>
 <li>確認のために<strong>取り消す</strong>をクリックします。</li>
 </ol>
 <h3 id="ユーザーの詳細を表示">ユーザーの詳細を表示</h3>
 <p>ユーザーの詳細を表示するには、そのユーザーをクリックします。スライドアウトが表示され、次の3つのタブがあります：</p>
 <ul>
-<li><strong>概要</strong>：ユーザーの名前、メールアドレス、主要アカウント、およびプラットフォーム機能の権限。このタブには、ユーザーの多要素認証（MFA）トークンをリセットし、APIキー認証権限を管理する機能が含まれています。</li>
+<li><strong>概要</strong>：ユーザーの名前、メールアドレス、主アカウント、およびプラットフォーム機能の権限。このタブには、ユーザーの多要素認証（MFA）トークンをリセットし、APIキー認証権限を管理する機能が含まれています。</li>
 <li><strong>アカウント権限</strong>：ユーザーの管理者ロール、Data Connect権限、およびアクセス可能なプロファイルの個人識別情報（PII）アクセスレベル。</li>
 <li><strong>グループ</strong>：ユーザーの権限グループ。</li>
 </ul>
 <h3 id="piiアクセスレベル">PIIアクセスレベル</h3>
-<p>ユーザーは次のPIIアクセスレベルのいずれかに構成できます：</p>
+<p>ユーザーは次のいずれかのPIIアクセスレベルに構成できます：</p>
 <ul>
 <li><strong>No PII</strong>：ユーザーはインターフェース全体でPII制限データを管理および表示できます。</li>
 <li><strong>View</strong>：ユーザーはインターフェース全体でPII制限データを表示できます。</li>
 <li><strong>Manage &amp; View</strong>：ユーザーはアカウント全体のすべてのPIIデータフィールドを表示、編集、および管理できます。</li>
 </ul>
 <h3 id="プロファイル権限">プロファイル権限</h3>
-<p>ユーザーの権限グループと管理者ロールの間で権限は累積されます。たとえば、ユーザーが閲覧アクセスを持つ権限グループに1つ、閲覧および編集アクセスを持つ別の権限グループに1つ、およびプロファイル管理者ロールを持っている場合、表には<strong>閲覧、編集、および削除</strong>列にチェックマークが表示されます。</p>
+<p>ユーザーの権限グループと管理者ロールの間で権限は累積されます。たとえば、ユーザーが閲覧アクセスを持つ権限グループに1つ、閲覧および編集アクセスを持つ別の権限グループに1つ、およびプロファイル管理者ロールにある場合、表には<strong>閲覧、編集、および削除</strong>列にチェックマークが表示されます。</p>
 <p>ユーザーのプロファイルへのアクセスを確認するには、<strong>概要</strong>タブの<strong>プロファイル</strong>ドロップダウンメニューからそのプロファイルを選択します。そのプロファイルに対するユーザーの権限が表示されます。この情報は、ユーザーがプロファイルにアクセスする際の問題を診断するのに役立つか、ユーザーが必要な機能のみにアクセスできるようにするのに役立ちます。</p>
 <h2 id="ユーザーの編集">ユーザーの編集</h2>
 <p>ユーザーを編集するには：</p>
@@ -260,15 +259,15 @@
 <li>編集したいユーザーをクリックします。<strong>ユーザー詳細</strong>スライドアウトが表示され、<strong>概要</strong>タブが開きます。
 <ul>
 <li>ユーザーのシングルサインオン（SSO）構成、<a href="/ja/iq-tag-management/administration/security/mfa/">MFAトークン</a>、および<a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>認証権限を管理します。</li>
-<li><a href="/ja/administration/single-sign-on/sso/#federation-id">連合ID</a>がアカウントで有効になっている場合、<strong>連合ID</strong>フィールドが表示されます。ユーザーのメールアドレスと異なる場合を除いて、<strong>連合ID</strong>フィールドを空白のままにします。</li>
+<li><a href="/ja/administration/single-sign-on/sso/#federation-id">連合ID</a>がアカウントで有効になっている場合、<strong>連合ID</strong>フィールドが表示されます。ユーザーのメールアドレスと異なる場合を除き、<strong>連合ID</strong>フィールドを空白のままにします。</li>
 </ul>
 </li>
 <li>ユーザーの管理者ロールとPIIアクセスレベルに変更を加えるには、<strong>アカウント権限</strong>をクリックします。
 <ul>
-<li>ユーザーに付与する管理者ロールを選択します。</li>
+<li>ユーザーに付与したい管理者ロールを選択します。</li>
 <li>ユーザーのPIIアクセスレベルを選択します。</li>
 <li>ユーザーのData Connectアクセスレベルを選択します。</li>
-<li>そのロールに必要な追加の管理者ロールまたはPII権限が自動的に選択されます。</li>
+<li>そのロールに必要な追加の管理者ロールやPII権限が自動的に選択されます。</li>
 <li>詳細については、<a href="/ja/administration/admin-roles/">管理者ロール</a>を参照してください。</li>
 </ul>
 </li>
@@ -281,18 +280,18 @@
 </li>
 <li><strong>保存</strong>をクリックします。<strong>権限の管理</strong>画面が表示されます。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者ロールを持たず、権限グループにも属していないユーザーは、どのプロファイルにもアクセスできません。</p>
-<h2 id="一括アクションユーザー管理">一括アクションユーザー管理</h2>
-<p>ユーザーテーブルのチェックボックスと<strong>一括操作</strong>を使用して、複数のユーザーに対して一度に変更を加えることができます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>管理者ロールがなく、権限グループにも属していないユーザーは、どのプロファイルにもアクセスできません。</p>
+<h2 id="ユーザー管理の一括操作">ユーザー管理の一括操作</h2>
+<p>ユーザーテーブルのチェックボックスと<strong>一括操作</strong>を使用して、複数のユーザーに対して同時に変更を行うことができます。</p>
 <p>複数のユーザーの管理者ロールを同時に編集するには：</p>
 <ol>
 <li>管理メニューで<strong>権限管理</strong>をクリックします。<strong>権限管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
-<li><strong>ユーザー</strong>テーブルのユーザーに対してチェックボックスを選択します。</li>
+<li><strong>ユーザー</strong>テーブルでユーザーのチェックボックスを選択します。</li>
 <li><strong>一括操作</strong>をクリックします。
 <ul>
 <li>複数のユーザーの管理者ロールを編集するには、<strong>管理者ロールの割り当て</strong>をクリックし、ユーザーに割り当てたいロールを選択します。</li>
-<li>複数のユーザーの権限グループを編集するには、<strong>グループへ追加</strong>をクリックし、ユーザーを追加するグループを選択し、<strong>保存</strong>をクリックします。</li>
+<li>複数のユーザーの権限グループを編集するには、<strong>グループへの追加</strong>をクリックし、ユーザーを追加するグループを選択して<strong>保存</strong>をクリックします。</li>
 <li>複数のユーザーのPIIアクセスを編集するには、<strong>PII権限</strong>をクリックし、ユーザーに割り当てたいPII権限を選択します。</li>
 </ul>
 </li>
@@ -305,8 +304,8 @@
 <li>管理メニューで<strong>権限管理</strong>をクリックします。<strong>権限管理</strong>画面が表示されます。</li>
 <li><strong>ユーザー</strong>タブをクリックします。</li>
 <li>削除するユーザーまたはユーザーの適切なチェックボックスを選択します。</li>
-<li><strong>一括操作</strong>をクリックし、次に<strong>アクセス削除</strong>をクリックします。</li>
-<li>確認メッセージが表示されます。続行するには<strong>アクセス削除</strong>をクリックします。</li>
+<li><strong>一括操作</strong>をクリックし、次に<strong>アクセス解除</strong>をクリックします。</li>
+<li>確認メッセージが表示されます。続行するには<strong>アクセス解除</strong>をクリックします。</li>
 </ol>
 
 </div>
@@ -368,7 +367,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -382,7 +381,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E7%9A%84%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" href="javascript:void(0)">動的ユーザーインターフェース</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">ユーザーの管理</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">ユーザーのエクスポート</a></li>
@@ -391,7 +390,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pii%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AC%E3%83%99%E3%83%AB" href="javascript:void(0)">PIIアクセスレベル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A8%A9%E9%99%90" href="javascript:void(0)">プロファイル権限</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">ユーザーの編集</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%80%E6%8B%AC%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86" href="javascript:void(0)">一括アクションユーザー管理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86%E3%81%AE%E4%B8%80%E6%8B%AC%E6%93%8D%E4%BD%9C" href="javascript:void(0)">ユーザー管理の一括操作</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">ユーザーの削除</a></li>
               </nav>
   </aside></nav>

@@ -462,11 +462,16 @@
 <ul>
 <li>API名：The Trade Desk API</li>
 <li>APIバージョン：v3.0</li>
-<li>APIエンドポイント：<code>https://bulk-data.adsrvr.org</code></li>
+<li>APIエンドポイント：<code>https://bulk-data.adsrvr.org</code>
+<ul>
+<li>データレートエンドポイント：<code>POST /datarate/batch</code></li>
+<li>サードパーティエンドポイント：<code>POST /data/thirdparty</code></li>
+</ul>
+</li>
 <li>ドキュメント：<a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-data-thirdparty">The Trade Desk API</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：10000</li>
 <li>最古のリクエストからの最大時間：30分</li>
@@ -489,18 +494,114 @@
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法についての一般的な説明については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
+<p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
-<li><strong>シークレットキー</strong><br>
-必須。シークレットキー。</li>
-<li><strong>APIベースURL</strong><br>
-必須。APIベースURLを選択します。</li>
+<li><strong>シークレットキー</strong>：必須。シークレットキー。</li>
+<li><strong>APIベースURL</strong>：必須。APIベースURLを選択します。</li>
 </ul>
+<h2 id="管理者構成">管理者構成</h2>
+<h3 id="認証トークンの生成">認証トークンの生成</h3>
+<p>管理タスクを実行する前に、有効なユーザー名とパスワードで認証トークンを生成する必要があります。認証は管理タスクにのみ適用され、コネクタの動作には必要ありません。</p>
+<ul>
+<li><strong>ログイン</strong>：必須。ログインを入力します。</li>
+<li><strong>パスワード</strong>：必須。パスワードを入力します。</li>
+</ul>
+<h3 id="タクソノミーセグメントの作成">タクソノミーセグメントの作成</h3>
+<p>詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataTaxonomyDesign#top">The Trade Desk Partner Portal: Third-Party Data Taxonomy Design</a>を参照してください。</p>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>プロバイダーID</td>
+<td>必須。アカウントマネージャーが提供したプロバイダーアカウントの一意のID。</td>
+</tr>
+<tr>
+<td>プロバイダーエレメントID</td>
+<td>必須。タクソノミーが設計されたときにセグメントに割り当てられた一意のID。このIDは512文字以下でなければなりません。これを作成した後に変更することはできません。</td>
+</tr>
+<tr>
+<td>親エレメントID</td>
+<td>必須。タクソノミー内の親セグメントからのプロバイダーエレメントID値。このパラメーターはタクソノミーの階層構造を確立します。これを作成した後に変更することはできません。すべてのデータプロバイダーはタクソノミーの<code>ROOT</code>基本エレメントを使用します。</td>
+</tr>
+<tr>
+<td>表示名</td>
+<td>必須。DMPユーザーインターフェースでバイヤーが見るセグメントの名前。表示名は256文字以下でなければなりませんが、特に下位の子エレメントの完全なパスが長い場合は、読みやすさのために50文字以下を推奨します。タブや特殊文字（<code>'</code>, <code>&quot;</code>, <code>^</code>など）は含めないでください。</td>
+</tr>
+<tr>
+<td>購入可能</td>
+<td>必須。セグメントをDMPで見えるようにし、バイヤーが利用できるように構成します。<code>true</code>に構成します。コンテナエレメントの場合、このプロパティ値は<code>false</code>に構成します。これらは子エレメントを整理し、料金を割り当てるためにのみ使用されます。購入可能なセグメントのプロパティ値を<code>false</code>に変更した場合、そのセグメントをオーディエンスに含めている顧客はキャンペーンが終了するまでそれを使用できます。</td>
+</tr>
+<tr>
+<td>説明</td>
+<td>オプション。DMPで顧客に表示されるデータセグメントの説明。説明は4,000文字以下でなければなりませんが、読みやすさのために256文字以下を推奨します。</td>
+</tr>
+<tr>
+<td>直接IPターゲティング</td>
+<td>オプション。<code>true</code>の場合、使用または作成される<code>TargetingData</code>はデフォルトの<code>7</code>（<code>ThirdPartyData</code>）ではなく、<code>16</code>（<code>DirectIpTargeting</code>）のタイプになります。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="セグメントに料金を割り当てる">セグメントに料金を割り当てる</h3>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>プロバイダーID</td>
+<td>必須。アカウントマネージャーが提供したプロバイダーアカウントの一意のID。</td>
+</tr>
+<tr>
+<td>プロバイダーエレメントID</td>
+<td>必須。このデータエレメントをシステムで識別する一意のID。</td>
+</tr>
+<tr>
+<td>ブランドID</td>
+<td>必須。プロバイダーが管理するブランドの一意のID。</td>
+</tr>
+<tr>
+<td>料金レベル</td>
+<td>必須。サードパーティデータの料金レベル。アクセスをリクエストするには、技術アカウントマネージャーに連絡してください。<br><code>Partner</code>: 特定のパートナーとその広告主のためのものです。<br><code>Advertiser</code>: 特定の広告主のためのものです。この料金レベルには追加の許可が必要です。</td>
+</tr>
+<tr>
+<td>パートナーID</td>
+<td>必須。カスタムタクソノミーでこの料金でデータセグメントにアクセスできるパートナーのプラットフォームID。</td>
+</tr>
+<tr>
+<td>広告主ID</td>
+<td>必須。カスタムタクソノミーでこの料金でデータセグメントにアクセスできる広告主のプラットフォームID。</td>
+</tr>
+<tr>
+<td>料金タイプ</td>
+<td>必須。セグメントのデータ料金タイプ。シンジケートタクソノミーのすべてのシステムレベルのデータ料金は、メディアコストの割合と最大CPM（千回表示あたりのコスト）キャップを使用するハイブリッド料金として割り当てられる必要があります。これは、このプロパティを<code>Hybrid</code>に構成し、<code>CPMRate</code>および<code>PercentOfMediaCostRate</code>の両方の値を提供する必要があることを意味します。カスタムタクソノミーでは任意のデータ料金タイプを使用できますが、ハイブリッド料金が強く推奨されます。</td>
+</tr>
+<tr>
+<td>CPM料金額</td>
+<td>必須。CPM料金額。</td>
+</tr>
+<tr>
+<td>CPM料金通貨コード</td>
+<td>必須。CPM料金の通貨コード。</td>
+</tr>
+<tr>
+<td>メディアコストの割合</td>
+<td>オプション。ハイブリッドデータ料金（<strong>料金タイプ</strong>で選択）の<code>CPMRate</code>キャップと併用するメディアコストの割合。パーセンテージを小数で入力します。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="アクション">アクション</h2>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<p>次のセクションでは、各アクションのパラメーターとオプションの構成方法について説明します。</p>
 <h3 id="サードパーティデータのアップロード">サードパーティデータのアップロード</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
@@ -517,51 +618,51 @@
 </tr>
 <tr>
 <td>TDID</td>
-<td>このユーザーのThe Trade Desk 36文字のGUID（ダッシュを含む）。</td>
+<td>このユーザーのTrade Desk 36文字のGUID（ダッシュ含む）。</td>
 </tr>
 <tr>
 <td>DAID</td>
-<td>このユーザーの生デバイスIDを36文字のGUID形式（ダッシュを含む）で送信します。iOSのIDFAまたはAndroidのAAIDを使用します。</td>
+<td>このユーザーの生のデバイスIDを36文字のGUID形式（ダッシュ含む）で送信。iOSのIDFAまたはAndroidのAAIDを使用。</td>
 </tr>
 <tr>
-<td>UID2Token (既にSHA256ハッシュ化済み)</td>
+<td>UID2Token（既にSHA256ハッシュ化済み）</td>
 <td>ユーザーのUnified ID 2.0、既にSHA256ハッシュ化済み。</td>
 </tr>
 <tr>
-<td>UID2Token (SHA256ハッシュを適用)</td>
-<td>ユーザーのUnified ID 2.0にSHA256ハッシュを適用します。</td>
+<td>UID2Token（SHA256ハッシュを適用）</td>
+<td>ユーザーのUnified ID 2.0にSHA256ハッシュを適用。</td>
 </tr>
 <tr>
 <td>UID2</td>
-<td>ユーザーのUnified ID 2.0を44文字のbase64エンコードされたSHA-256文字列として。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Deskパートナーポータル：PII正規化とハッシュエンコーディング</a>および<a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">Unified IDs</a>を参照してください。</td>
+<td>ユーザーのUnified ID 2.0を44文字のbase64エンコードされたSHA-256文字列として。詳細は<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Desk Partner Portal: PII Normalization and Hash Encoding</a>および<a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">Unified IDs</a>を参照。</td>
 </tr>
 <tr>
-<td>EUIDToken (既にSHA256ハッシュ化済み)</td>
-<td>ユーザーのヨーロッパ統一ID、既にSHA256ハッシュ化済み。</td>
+<td>EUIDToken（既にSHA256ハッシュ化済み）</td>
+<td>ユーザーのEuropean Unified ID、既にSHA256ハッシュ化済み。</td>
 </tr>
 <tr>
-<td>EUIDToken (SHA256ハッシュを適用)</td>
-<td>ユーザーのヨーロッパ統一IDにSHA256ハッシュを適用します。</td>
+<td>EUIDToken（SHA256ハッシュを適用）</td>
+<td>ユーザーのEuropean Unified IDにSHA256ハッシュを適用。</td>
 </tr>
 <tr>
 <td>EUID</td>
-<td>ユーザーのヨーロッパ統一IDを44文字のbase64エンコードされたSHA-256文字列として。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Deskパートナーポータル：PII正規化とハッシュエンコーディング</a>を参照してください。EUIDは、ヨーロッパおよび英国の市場要件に対応するために設計されたユーザーの透明性とプライバシー制御を提供し、UID2と同様のメールアドレスの正規化とエンコーディングが必要です。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">The Trade Deskパートナーポータル：Unified IDs</a>を参照してください。</td>
+<td>ユーザーのEuropean Unified IDを44文字のbase64エンコードされたSHA-256文字列として。詳細は<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Desk Partner Portal: PII Normalization and Hash Encoding</a>を参照。EUIDはユーザーの透明性とプライバシーの制御を提供し、ヨーロッパおよび英国の市場要件を満たすよう設計されており、UID2と同様のメールアドレスの正規化とエンコーディングが必要です。詳細は<a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">The Trade Desk Partner Portal: Unified IDs</a>を参照。</td>
 </tr>
 <tr>
 <td>IDL</td>
-<td>49文字または70文字のRampID（以前はIdentityLinkとして知られていました）。この値は、The Trade Desk用に特別にマッピングされたLiveRampのRampIDでなければなりません。RampIDのマッピングについての詳細は、<a href="https://sidecar.readme.io/docs/getting-started">LiveRamp：LiveRamp&rsquo;s Sidecar</a>を参照してください。</td>
+<td>49文字または70文字のRampID（以前はIdentityLinkとして知られていた）。この値はThe Trade Deskのために特別にマッピングされたLiveRampのRampIDでなければならない。RampIDのマッピングについての詳細は<a href="https://sidecar.readme.io/docs/getting-started">LiveRamp: LiveRamp&rsquo;s Sidecar</a>を参照。</td>
 </tr>
 <tr>
 <td>名前</td>
 <td>必須。セグメント名。最大128文字。</td>
 </tr>
 <tr>
-<td>TTL（分単位）</td>
-<td>必須。Time to live (TTL) は、このユーザーが <code>TimeStampUtc</code> 値に関連してアクティブであるべき時間（分単位）です。TTLが経過すると、このユーザーはターゲティングには使用されなくなります。最大TTLは259200分（180日）。</td>
+<td>分単位のTTL</td>
+<td>必須。Time to live（TTL）は、このユーザーが<code>TimeStampUtc</code>値に対してアクティブである時間（分単位）です。TTLが満了すると、このユーザーはターゲティングには使用されなくなります。最大TTLは259200分（180日）。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ユーザーがセグメントに適格であるときのタイムスタンプ。指定されていない場合、データが処理されるときの時間に基づいてタイムスタンプが割り当てられます。このタイムスタンプは、ターゲティングと入札調整のためのユーザーの最新性を決定するために使用されます。</td>
+<td>ユーザーがセグメントに適格であるときのタイムスタンプ。指定されていない場合、タイムスタンプはデータが処理される時点で割り当てられます。このタイムスタンプは、ターゲティングおよび入札調整のためのユーザーの最新性を決定するために使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -625,7 +726,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月22日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -642,8 +743,12 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%AE%A1%E7%90%86%E8%80%85%E6%A7%8B%E6%88%90" href="javascript:void(0)">管理者構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90" href="javascript:void(0)">認証トークンの生成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%AF%E3%82%BD%E3%83%8E%E3%83%9F%E3%83%BC%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">タクソノミーセグメントの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AB%E6%96%99%E9%87%91%E3%82%92%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%8B" href="javascript:void(0)">セグメントに料金を割り当てる</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89" href="javascript:void(0)">サードパーティデータのアップロード</a></li>
               </nav>
   </aside></nav>

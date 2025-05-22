@@ -336,8 +336,8 @@
         <a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookアクションの検証</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-usage-examples">使用例</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/changelog/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-changelog">変更履歴</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - Trimouテンプレートエンジンガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - テンプレート変数ガイド</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/ja/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - テンプレート変数ガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエスト送信 - Trimouテンプレートエンジンガイド</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".vendor-examples">ベンダーの例</a>
         <ul class="pl2  vendor-examples desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-keenio-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-keenio-api">Webhook - Keen.io API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -438,7 +438,7 @@
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-audience-store">AudienceStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-eventstore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-event-store">EventStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-files-audiencestore-and-eventstore">ファイルを表示する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-data-guide">AudienceStoreデータガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-data-guide">AudienceStore データガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstore-data-guide">EventStoreデータガイド</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiencedb-eventdb">AudienceDBとEventDB</a>
@@ -573,15 +573,15 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、BasicAuth、OAuth2（2-legged）、またはOAuth2（3-legged）認証を使用してWebhookコネクタを構成する方法について説明します。
+      この記事では、BasicAuth、OAuth2（2-legged）、OAuth2（3-legged）認証、またはJWTを使用してWebhookコネクタを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="basicauthの構成">BasicAuthの構成</h2>
-<p>このWebhookは、HTTPヘッダーフィールドの<strong>Authorization</strong>を使用して基本的なHTTP認証をサポートしています。資格情報は、<code>{username}:{password}</code>のBase64エンコードされた文字列として渡されます。</p>
-<p>BasicAuth Webhookの構成には、以下の構成を使用します：</p>
+<p>このWebhookは、HTTPヘッダーフィールド<strong>Authorization</strong>を使用して基本的なHTTP認証をサポートしています。認証情報は<code>{username}:{password}</code>のBase64エンコードされた文字列として渡されます。</p>
+<p>BasicAuth Webhook構成のための以下の構成を使用してください：</p>
 <table>
 <thead>
 <tr>
@@ -591,24 +591,24 @@
 </thead>
 <tbody>
 <tr>
-<td>タイトル</td>
-<td>必須。Webhookの説明的なタイトルを入力します。</td>
+<td>名前</td>
+<td>必須。Webhookの説明的なタイトルを入力してください。</td>
 </tr>
 <tr>
 <td>BasicAuth ユーザー名</td>
-<td>Webhookの認証のユーザー名を入力します。</td>
+<td>Webhookの認証用ユーザー名を入力してください。</td>
 </tr>
 <tr>
 <td>BasicAuth パスワード</td>
-<td>Webhookの認証のパスワードを入力します。</td>
+<td>Webhookの認証用パスワードを入力してください。</td>
 </tr>
 </tbody>
 </table>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。アクションタブを使用して、トリガーするHTTPリクエストを構成します。</p>
+<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに進んでください。アクションタブを使用してHTTPリクエストのトリガーを構成します。</p>
 <h2 id="oauth23-leggedの構成">OAuth2（3-legged）の構成</h2>
-<p>WebhookのOAuth実装は、サーバーサイドのアプリケーションのみをサポートしています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth 2.0サービスでWebアプリケーションを登録することを忘れないでください。アプリケーションは、次のリダイレクトURLを許可するように構成する必要があります：<code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
-<p>OAuth2（3-legged）Webhookの構成には、以下の構成を使用します：</p>
+<p>WebhookのOAuth実装はサーバーサイドアプリケーションのみをサポートしています。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth 2.0サービスにWebアプリケーションを登録することが必要です。アプリケーションはリダイレクトURLを許可するように構成されている必要があります：<code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
+<p>OAuth2（3-legged）Webhook構成のための以下の構成を使用してください：</p>
 <table>
 <thead>
 <tr>
@@ -618,34 +618,46 @@
 </thead>
 <tbody>
 <tr>
+<td>名前</td>
+<td>必須。Webhookの説明的なタイトルを入力してください。</td>
+</tr>
+<tr>
 <td>クライアントID</td>
-<td>必須。OAuthサービスからアプリケーションに割り当てられたクライアント識別子を入力します。</td>
+<td>必須。OAuthサービスから割り当てられたアプリケーションのクライアント識別子を入力してください。</td>
 </tr>
 <tr>
 <td>クライアントシークレット</td>
-<td>必須。OAuthサービスからアプリケーションに割り当てられたクライアントシークレットを入力します。</td>
+<td>必須。OAuthサービスから割り当てられたアプリケーションのクライアントシークレットを入力してください。</td>
 </tr>
 <tr>
 <td>スコープ</td>
-<td>アプリケーションへのアクセスを要求する許可の種類を選択します。</td>
+<td>アプリケーションへのアクセス許可のタイプを選択してください。</td>
 </tr>
 <tr>
 <td>認証URL</td>
-<td>必須。認証後にユーザーをリダイレクトしたいURLを入力します。</td>
+<td>必須。ユーザーを認証後にリダイレクトするURLを入力してください。</td>
 </tr>
 <tr>
-<td>認証URLのクエリパラメータ</td>
-<td>認証URLの1つ以上の名前-値ペアを選択します。複数のペアはアンパサンド(<code>&amp;</code>)で区切ります。最初にアンパサンド(<code>&amp;</code>)を使用しないでください。 <br/>正しい：<code>access_type=offline&amp;prompt=consent</code>  <br/>       不正：<code>&amp;access_type=offline&amp;prompt=consent</code></td>
+<td>認証URLクエリパラメータ</td>
+<td>認証URLのための1つ以上の名前-値ペアを選択してください。複数のペアをアンパサンド(<code>&amp;</code>)で区切ってください。アンパサンド(<code>&amp;</code>)を先頭に使用しないでください。<br/>正しい例: <code>access_type=offline&amp;prompt=consent</code>  <br/>       誤った例: <code>&amp;access_type=offline&amp;prompt=consent</code></td>
 </tr>
 <tr>
 <td>アクセストークンURL</td>
-<td>必須。リフレッシュトークンを取得するためのトークンURLを入力します。</td>
+<td>必須。リフレッシュトークンを取得するためのトークンURLを入力してください。</td>
+</tr>
+<tr>
+<td>認証トークンの位置</td>
+<td>認証トークンを配置する場所を指定してください。</td>
+</tr>
+<tr>
+<td>認証ヘッダープレフィックス</td>
+<td>デフォルト値は<code>Bearer</code>です。新しい値を指定して上書きする（一部のOAuth2サービスで必要）。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="oauth22-leggedの構成">OAuth2（2-legged）の構成</h2>
-<p>TealiumのWebhook OAuth2コネクタを使用すると、OAuth2 Two-Legged認証が必要で、クライアント資格情報とリソース所有者のパスワード資格情報の付与をサポートするAPIに対して、完全にカスタマイズされたデータをHTTPリクエストとして送信できます。</p>
-<p>コネクタを追加した後、OAuth2 2-Legged Webhookの構成には、以下の構成を使用します：</p>
+<p>TealiumのWebhook OAuth2コネクタは、OAuth2 Two-Legged認証を必要とするAPIに完全にカスタマイズされたデータをHTTPリクエストとして送信することを可能にします。これはクライアント資格情報とリソースオーナーパスワード資格情報の付与をサポートしています。</p>
+<p>コネクタを追加した後、OAuth2 2-Legged Webhook構成のための以下の構成を使用してください：</p>
 <table>
 <thead>
 <tr>
@@ -655,60 +667,97 @@
 </thead>
 <tbody>
 <tr>
+<td>名前</td>
+<td>必須。Webhookの説明的なタイトルを入力してください。</td>
+</tr>
+<tr>
 <td>アクセストークンURL</td>
-<td>必須。アクセストークンをリクエストするためのAPIエンドポイントURLを入力します。</td>
+<td>必須。アクセストークンを要求するAPIエンドポイントURLを入力してください。</td>
 </tr>
 <tr>
 <td>クライアントID</td>
-<td>必須。WebアプリケーションのクライアントIDを入力します。</td>
+<td>必須。WebアプリケーションのクライアントIDを入力してください。</td>
 </tr>
 <tr>
 <td>クライアントシークレット</td>
-<td>必須。Webアプリケーションのクライアントシークレットを入力します。</td>
+<td>必須。Webアプリケーションのクライアントシークレットを入力してください。</td>
 </tr>
 <tr>
 <td>ユーザー名</td>
-<td>ユーザー名を入力します。パスワード付与タイプを使用する場合は、ユーザー名が必要です。</td>
+<td>ユーザー名を入力してください。パスワードグラントタイプを使用する場合は必須です。</td>
 </tr>
 <tr>
 <td>パスワード</td>
-<td>パスワードを入力します。パスワード付与タイプを使用する場合は、パスワードが必要です。</td>
+<td>パスワードを入力してください。パスワードグラントタイプを使用する場合は必須です。</td>
+</tr>
+<tr>
+<td>クライアント認証ID</td>
+<td>認証ヘッダーとして送信するクライアントID。</td>
+</tr>
+<tr>
+<td>クライアント認証シークレット</td>
+<td>認証ヘッダーとして送信するクライアントシークレット。</td>
 </tr>
 <tr>
 <td>スコープ</td>
-<td>要求する権限の範囲を選択します（一部のOAuth2サービスのみが必要）。</td>
+<td>要求する権限の範囲を選択してください（一部のOAuth2サービスで必要）。</td>
 </tr>
 <tr>
 <td>追加の認証パラメータ</td>
-<td>追加の認証パラメータを追加します（一部のOAuth2サービスのみが必要）。複数のパラメータは<code>&amp;</code>で区切ります。</td>
+<td>追加の認証パラメータを追加してください（一部のOAuth2サービスで必要）。複数のパラメータを<code>&amp;</code>で区切ってください。</td>
+</tr>
+<tr>
+<td>認証URL</td>
+<td>必須。認証コードを要求するAPIエンドポイントURLを入力してください。</td>
 </tr>
 <tr>
 <td>認証トークンの位置</td>
-<td>認証トークンを配置する場所を指定します。</td>
+<td>認証トークンを配置する場所を指定してください。</td>
 </tr>
 <tr>
 <td>認証ヘッダープレフィックス</td>
-<td>デフォルト値は<code>Bearer</code>です。新しい値を指定して上書きします（一部のOAuth2サービスのみが必要）。</td>
+<td>デフォルト値は<code>Bearer</code>です。新しい値を指定して上書きする（一部のOAuth2サービスで必要）。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jwtの構成">JWTの構成</h2>
+<p>このWebhookはJSON Web Token（JWT）を使用した認証をサポートしています。</p>
+<p>Webhook（JWT）構成のための以下の構成を使用してください：</p>
+<table>
+<thead>
+<tr>
+<th>構成</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名前</td>
+<td>必須。Webhookの説明的なタイトルを入力してください。</td>
+</tr>
+<tr>
+<td>JWTトークン</td>
+<td>JSON Web Tokenを入力してください。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="oauth2のアクセストークン">OAuth2のアクセストークン</h2>
-<p>Webhook OAuth2を使用するリクエストは、リクエストにアクセストークンを提供する必要があります。OAuth2接続によって生成されたトークンは、コネクタによって<code>{{webhook_access_token}}</code>という名前のテンプレート変数で提供され、それぞれのAPIに異なる方法で渡されます。次の例では、<code>Authorization: Bearer TOKEN_HERE</code> &ldquo;Authorization&quot;ヘッダーで期待されています。</p>
-<p>このヘッダーを生成し、マップするには、次の手順を使用します：</p>
+<p>Webhook OAuth2を使用するリクエストは、リクエストにアクセストークンを含める必要があります。OAuth2接続によって生成されたトークンは、<code>{{webhook_access_token}}</code>というテンプレート変数によって提供され、各API間で異なる方法で渡されます。次の例では、<code>Authorization: Bearer TOKEN_HERE</code> &ldquo;Authorization&quot;ヘッダーで期待されます。</p>
+<p>このヘッダーを生成してマッピングするための以下の手順を使用してください：</p>
 <ol>
-<li>次の例を使用して<code>auth_template</code>という名前のテンプレートを作成します：<br>
+<li>次の例を使用して<code>auth_template</code>というテンプレートを作成します：<br>
 <code>Bearer {{webhook_access_token}}</code></li>
-<li>ヘッダーセクションで、このテンプレートを<strong>Authorization</strong>にマップします。<br>
+<li>ヘッダーセクションで、このテンプレートを<strong>Authorization</strong>にマッピングします。<br>
 <figure><a class="slb" href="/images/server-side/webhook-custom-and-batched.jpg"><img src="/images/server-side/webhook-custom-and-batched.jpg"
          alt="Webhook Custom and Batched.jpg"
          title="Webhook Custom and Batched.jpg"/>
     </a>
 </figure></li>
 <li><strong>保存</strong>をクリックします。</li>
-<li>変更を保存し、公開します。</li>
+<li>変更を保存して公開します。</li>
 </ol>
 <h2 id="すべてのwebhookアクションのアクションパラメータ">すべてのWebhookアクションのアクションパラメータ</h2>
-<p>以下のパラメータは、すべてのWebhookアクションで利用可能です。</p>
+<p>すべてのWebhookアクションに利用可能な以下のパラメータがあります。</p>
 <table>
 <thead>
 <tr>
@@ -718,36 +767,36 @@
 </thead>
 <tbody>
 <tr>
-<td>メソッド</td>
-<td><strong>必須</strong>。以下のメソッドをサポートします：<br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
+<td>方法</td>
+<td>必須* 次の方法をサポートします：<br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
 </tr>
 <tr>
 <td>URL*</td>
-<td><strong>必須</strong>。リクエストを送信するURLを提供します。</td>
+<td>必須。リクエストを送信するURLを提供してください。</td>
 </tr>
 <tr>
 <td>URLパラメータ*</td>
-<td><strong>マップ</strong>ドロップダウンリストから、送信したい値の属性を選択します。<strong>To</strong>フィールドに、構成するURLパラメータの名前を入力します。</td>
+<td><strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。<strong>To</strong>フィールドに構成するURLパラメータの名前を入力します。</td>
 </tr>
 <tr>
 <td>ヘッダー*</td>
-<td><strong>Webhook（BasicAuth）の場合はオプション、<a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a>の場合は必須</strong>。<strong>マップ</strong>ドロップダウンリストから、送信したい値の属性を選択します。<strong>To</strong>フィールドに、値を受け取るヘッダーのヘッダー名を入力します。</td>
+<td>オプションでWebhook (BasicAuth) <a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a>に必要です。<strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。<strong>To</strong>フィールドに値を受け取るヘッダー名を入力します。</td>
 </tr>
 <tr>
 <td>クッキー*</td>
-<td><strong>マップ</strong>ドロップダウンリストから、送信したい値の属性を選択します。<strong>To</strong>フィールドに、値を受け取るクッキーのクッキー名を入力します。</td>
+<td><strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。<strong>To</strong>フィールドに値を受け取るクッキー名を入力します。</td>
 </tr>
 <tr>
 <td>ボディコンテンツタイプ</td>
-<td><code>Content-Type</code>ヘッダーを指定します。すべてのタイプはUTF-8文字セットを使用します。GETメソッドの場合は、この構成を無視します。</td>
+<td><code>Content-Type</code>ヘッダーを指定します。すべてのタイプはUTF-8文字セットを使用します。GET方法の場合はこの構成を無視します。</td>
 </tr>
 <tr>
 <td>ボディデータ*</td>
-<td><strong>HTTPリクエストを介してカスタマイズされたデータを送信</strong>アクションのみがサポートされます。GETメソッドの場合は、この構成を無視します。ボディコンテンツタイプが<code>application/x-www-form-urlencoded</code>の場合は、名前/値のペアを提供します。より複雑なペイロードの場合は、テンプレート名を提供します。</td>
+<td><strong>HTTPリクエストを介してカスタマイズされたデータを送信</strong>アクションのみサポートします。GET方法の場合はこの構成を無視します。ボディコンテンツタイプが<code>application/x-www-form-urlencoded</code>の場合は名前/値ペアを提供します。より複雑なペイロードの場合はテンプレート名を提供します。</td>
 </tr>
 <tr>
 <td>バッチングオプション*</td>
-<td>レコード数の最大値は、10から10,000の間です。生存時間は、5から60分の間です。</td>
+<td>記録数の最大値は10から10,000の間です。有効期間は5分から60分の間です。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
@@ -755,15 +804,15 @@
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimou Templates Guide</a>を参照してください。各テンプレートには一意の名前が必要です。その名前を二重中括弧で囲んで参照することで、テンプレートを任意のサポートフィールドに注入できます。テンプレートはURL、URLパラメータ、ヘッダー、クッキー、またはボディデータフィールドに注入できます。</td>
+<td>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimou Templates Guide</a>を参照してください。各テンプレートには一意の名前が必要です。サポートされている任意のフィールドにテンプレートを注入するには、その名前を二重中括弧で囲んで参照します。テンプレートはURL、URLパラメータ、ヘッダー、クッキー、またはボディデータフィールドに注入できます。</td>
 </tr>
 <tr>
 <td>バッチングオプション</td>
-<td>レコード数の最大値は、10から10,000の間です。生存時間は、5から60分の間です。</td>
+<td>記録数の最大値は10から10,000の間です。有効期間は5分から60分の間です。</td>
 </tr>
 </tbody>
 </table>
-<p>* カスタムテンプレートのフィールド値を入力することができます。その名前を二重中括弧で囲んで参照します。例えば、テンプレートが<code>some-template</code>という名前の場合、レンダリングされたコンテンツは<code>{{some-template}}</code>を参照することでフィールドに注入できます。</p>
+<p>* ダブルカーリーブレースで囲まれたカスタムテンプレートの名前を入力することでフィールド値を入力できます。たとえば、テンプレートが<code>some-template</code>という名前の場合、レンダリングされたコンテンツはその名前を参照することでフィールドに注入できます。</p>
 
 </div>
 
@@ -824,7 +873,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年June月23日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -841,6 +890,7 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basicauth%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">BasicAuthの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#oauth23-legged%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">OAuth2（3-legged）の構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#oauth22-legged%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">OAuth2（2-legged）の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#jwt%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">JWTの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#oauth2%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3" href="javascript:void(0)">OAuth2のアクセストークン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AEwebhook%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">すべてのWebhookアクションのアクションパラメータ</a></li>
               </nav>

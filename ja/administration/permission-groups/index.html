@@ -189,140 +189,133 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>プラットフォームの権限は、新規のお客様に対してGA、一部のお客様に対してはEEA（Expanded Early Access）として提供されています。</p>
-<h2 id="仕組み">仕組み</h2>
-<p>権限グループは以下の要素で構成されます：</p>
+  <h2 id="仕組み">仕組み</h2>
+<p>権限グループは以下のコンポーネントで構成されます：</p>
 <ul>
 <li>ユーザーのリスト。</li>
-<li>プロファイルとそれらのプロファイルに対するアクセスレベルのリスト。</li>
-<li>製品機能とそれらの製品機能に対する権限のリスト。これには、クライアントサイドのプロファイルに対する公開権限が含まれます。</li>
-<li>サーバーサイドのプロファイルに対する公開権限。</li>
+<li>プロファイルとそれらのプロファイルにおけるアクセスレベルのリスト。</li>
+<li>製品機能とそれらの製品機能に対する権限のリスト。これにはクライアントサイドプロファイルの公開権限が含まれます。</li>
+<li>サーバーサイドプロファイルの公開権限。</li>
 </ul>
-<p>権限グループには以下の機能権限を付与することができます：</p>
+<p>権限グループには以下の機能権限が付与されることがあります：</p>
 <ul>
 <li><strong>アクセスなし</strong>：権限グループは機能にアクセスできず、ナビゲーションに表示されません。</li>
-<li><strong>表示</strong>：権限グループは機能とそのデータを表示できますが、編集はできません。</li>
-<li><strong>表示＆編集</strong>：権限グループは機能とそのデータを表示し、データを編集することができます。</li>
-<li><strong>表示、編集、＆削除</strong>：権限グループは機能とそのデータを表示し、データを編集または削除することができます。</li>
+<li><strong>閲覧</strong>：権限グループは機能とそのデータを閲覧できますが、編集はできません。</li>
+<li><strong>閲覧＆編集</strong>：権限グループは機能とそのデータを閲覧し、データを編集できます。</li>
+<li><strong>閲覧、編集、＆削除</strong>：権限グループは機能とそのデータを閲覧し、データを編集または削除できます。</li>
 </ul>
 <figure><a class="slb" href="/images/administration/permission-groups-products-features-example.png"><img src="/images/administration/permission-groups-products-features-example.png"
          alt="製品と機能の例"
          title="製品と機能の例"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>表示＆編集</strong>または<strong>表示、編集＆削除</strong>の権限を持つユーザーは、プロファイルへの変更を<strong>保存</strong>する権限も持っています。</p>
-<p>インターフェースはユーザーの権限に基づいて変更されます：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>閲覧＆編集</strong>または<strong>閲覧、編集、＆削除</strong>の権限を持つユーザーは、プロファイルへの変更を保存する権限も持っています。</p>
+<p>ユーザーの権限に基づいてインターフェースが変更されます：</p>
 <ul>
 <li>ユーザーが製品にアクセス権を持っていない場合、その製品はナビゲーションに表示されません。</li>
-<li>ユーザーが一部の機能にはアクセス権を持っているが、他の機能にはアクセス権を持っていない場合、ナビゲーションにはアクセス可能な機能のみが表示されます。</li>
-<li>ユーザーが機能の編集権限を持っていない場合、その機能のページに<strong>編集</strong>ボタンは表示されません。</li>
+<li>ユーザーがいくつかの機能にはアクセス権を持っているが、他の機能には持っていない場合、彼らはアクセスできる機能のみをナビゲーションで見ることができます。</li>
+<li>ユーザーが機能の編集権限を持っていない場合、その機能のページに<strong>編集</strong>ボタンが表示されません。</li>
 </ul>
-<p>権限グループには、サーバーサイドのプロファイルに対する公開権限も付与することができます。サーバーサイドの公開権限を持つ権限グループのユーザーは、すべてのサーバーサイドの製品と機能に対して完全なアクセス権を自動的に受け取ります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>グループに公開権限を付与すると、意図した以上に製品や機能に対する権限がユーザーに付与される可能性があります。例えば、公開権限を付与したAudienceStream専用の開発者は、プロファイルに対して完全な権限を受け取ります。これには、EventStream、DataAccess、その他すべてのサーバーサイドの製品と機能が含まれます。<br><br>必要以上にユーザーに権限を付与するのを避けるために、サーバーサイドのプロファイルごとに公開権限を持つ別の権限グループを作成することをお勧めします。</p>
-<p>詳細については、<a href="/ja/administration/about-permissions/">プラットフォームの権限について</a>を参照してください。</p>
-<h3 id="製品の機能">製品の機能</h3>
-<p>製品へのアクセスは、機能の権限に分けられます。</p>
-<p>例えば、AudienceStreamへのアクセスは以下の機能権限に分けられます：</p>
+<p>権限グループにはサーバーサイドプロファイルの公開権限も付与されることがあります。サーバーサイド公開権限を持つ権限グループのユーザーは、すべてのサーバーサイド製品と機能に対して完全なアクセス権を自動的に受け取ります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>グループに公開権限を付与すると、意図したよりも多くの権限を製品や機能に対してユーザーに与えることがあります。たとえば、AudienceStream専用の開発者に公開権限を付与すると、EventStream、DataAccess、およびその他すべてのサーバーサイド製品と機能に対して完全な権限を持つプロファイルを受け取ることになります。<br><br>必要以上の権限をユーザーに付与しないようにするために、サーバーサイドプロファイルごとに公開権限を持つ別の権限グループを作成することをお勧めします。</p>
+<p>詳細については、<a href="/ja/administration/about-permissions/">プラットフォーム権限について</a>を参照してください。</p>
+<h3 id="製品機能">製品機能</h3>
+<p>製品アクセスは機能権限に分けられます。</p>
+<p>たとえば、AudienceStreamへのアクセスは次の機能権限に分けられます：</p>
 <ul>
 <li>ダッシュボード</li>
-<li>ディスカバリー/サイジング</li>
+<li>Discovery/Sizing</li>
 <li>オーディエンス</li>
 <li>オーディエンスコネクタ</li>
-<li>ビジター/ビジット属性</li>
+<li>訪問/訪問属性</li>
 </ul>
-<h4 id="複数の製品の機能への権限">複数の製品の機能への権限</h4>
-<p>機能や製品に対してユーザーを<strong>アクセスなし</strong>に構成する際には注意が必要です。ユーザーの機能アクセスを無効にすると、そのユーザーはその機能やそれに依存する他の機能にアクセスできなくなります。例えば：</p>
+<h4 id="複数の製品における機能への権限">複数の製品における機能への権限</h4>
+<p>機能または製品に対してユーザーを<strong>アクセスなし</strong>に構成する場合は慎重に考慮してください。ユーザーが機能へのアクセスを無効にすると、その機能やそれに依存する他の機能にアクセスすることができません。たとえば：</p>
 <ul>
-<li>AudienceStreamに対してユーザーを<strong>アクセスなし</strong>に構成すると、そのユーザーはAudienceStreamコネクタでアクションを実行するためのオーディエンスを選択することができません。</li>
-<li>サーバーサイドのラベルに対してユーザーを<strong>アクセスなし</strong>に構成すると、ユーザーはサーバーサイドでラベルを見ることができません。彼らはまだラベルが付いているコネクタや他の機能にアクセスすることができますが、ラベル自体を見たり編集したりすることはできません。</li>
-<li>AudienceStreamとEventStreamはいくつかの機能を共有しています。例えば、AudienceStreamとEventStreamの間で共有されているルールをAudienceStreamで編集すると、EventStreamのルールも変更されます。</li>
+<li>ユーザーをAudienceStreamの<strong>アクセスなし</strong>に構成すると、そのユーザーはAudienceStreamコネクタでアクションを実行するオーディエンスを選択することができません。</li>
+<li>ユーザーをサーバーサイドのラベルの<strong>アクセスなし</strong>に構成すると、そのユーザーはサーバーサイドのラベルを見ることができず、ラベルが付いたコネクターや他の機能にアクセスすることはできますが、ラベルを見たり編集したりすることはできません。</li>
+<li>AudienceStreamとEventStreamはいくつかの機能、たとえばルールやラベルを共有しています。たとえば、ユーザーがAudienceStreamのみの権限を持っていて、AudienceStreamで共有されているルールを編集すると、そのルールはEventStreamでも変更されます。</li>
 </ul>
 <h4 id="tealium-insightsの権限">Tealium Insightsの権限</h4>
-<p>Insightsのユーザーロールは<strong>Insights &gt; ユーザー管理</strong>ページで管理されます。ただし、Insightsのユーザーは、Insightsの機能に対する表示アクセスを持つ権限グループのメンバーである必要があります。</p>
+<p>Insightsのユーザーロールは<strong>Insights &gt; ユーザー管理</strong>ページを通じて管理されます。しかし、Insightsの機能に対する閲覧アクセスを持つ権限グループのメンバーである必要があります。</p>
 <p>詳細については、<a href="/ja/server-side/insights/about/#author-and-reader-roles">Tealium Insightsについて</a>を参照してください。</p>
 <h3 id="公開権限">公開権限</h3>
-<p>権限グループは、クライアントサイドとサーバーサイドの公開権限も管理します。</p>
+<p>権限グループはクライアントサイドとサーバーサイドの公開権限も管理します。</p>
 <ul>
-<li>クライアントサイドでは、<strong>Dev/Customに公開</strong>、<strong>QAに公開</strong>、<strong>Prodに公開</strong>の機能権限で公開権限を構成します。</li>
-<li>サーバーサイドでは、権限グループの<strong>グループ権限</strong>タブで公開権限を構成します。</li>
+<li>クライアントサイドでは、<strong>開発/カスタムへの公開</strong>、<strong>QAへの公開</strong>、<strong>本番への公開</strong>の機能権限で公開権を構成します。</li>
+<li>サーバーサイドでは、権限グループの<strong>グループ権限</strong>タブで公開権を構成します。</li>
 </ul>
-<p>権限グループは、アクセスを許可したプロファイルに対する公開権限を持っています。</p>
-<p>覚えておいてください、権限グループには、サーバーサイドのプロファイルに対する公開権限も付与することができます。サーバーサイドの公開権限を持つ権限グループのメンバーは、すべてのサーバーサイドの製品と機能に対して完全なアクセス権を持っています。</p>
-<!-- #### 複数の製品の機能に対する公開変更
-
-ユーザーに対して製品を無効にした場合でも、ユーザーがサーバーサイドの公開権限と最初の製品と共有機能を持つ別の製品へのアクセス権を持っている場合、ユーザーはそれらの共有機能への変更を公開することができます。例えば、EventStreamとAudienceStreamはいくつかの機能を共有しています。
-
-ユーザーが公開権限を持ち、EventStreamのみにアクセス権を持っている場合、EventStreamのルールとラベルに対する変更を公開することができ、それらの変更はAudienceStreamにも影響します。同様に、ユーザーが公開権限を持ち、AudienceStreamのみにアクセス権を持っている場合、ルールとラベルに対する公開変更はEventStreamにも影響します。 -->
-<h3 id="複数の権限グループに所属するユーザー">複数の権限グループに所属するユーザー</h3>
-<p>プロファイルへのアクセス権は累積的です。ユーザーは、権限グループが付与する最高レベルのアクセス権を常に受け取ります。たとえ権限グループが矛盾する権限を持っていたとしてもです。</p>
-<p>例えば、グループAはプロファイルに対して<strong>表示</strong>の権限を持っている一方、グループBはそのプロファイルに対して<strong>表示＆編集</strong>の権限を持っています。グループAとグループBの両方に所属するユーザーは、そのプロファイルに対して<strong>表示＆編集</strong>の権限を持っています。</p>
+<p>権限グループは、アクセスを与えたプロファイルに対する公開権を持っています。</p>
+<p>覚えておいてください、権限グループはサーバーサイドプロファイルの公開権も付与されることがあります。サーバーサイド公開権を持つ権限グループのメンバーは、すべてのサーバーサイド製品と機能に対して完全なアクセス権を持ちます。</p>
+<h3 id="複数の権限グループに属するユーザー">複数の権限グループに属するユーザー</h3>
+<p>プロファイルへのアクセス権は累積的です。ユーザーは常に、その権限グループによって付与された最高レベルのアクセス権を受け取ります。たとえば、グループAがプロファイルに対して<strong>閲覧</strong>権限を持ち、グループBがそのプロファイルに対して<strong>閲覧＆編集</strong>権限を持っている場合、グループAとグループBの両方に属するユーザーはそのプロファイルに対して<strong>閲覧＆編集</strong>権限を持ちます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイル管理者の役割を持つユーザーは、アカウント内のすべてのプロファイルに対して完全な権限を持っています。</p>
 <h2 id="権限グループの管理">権限グループの管理</h2>
-<p>権限グループを管理するには、管理メニューで<strong>権限の管理</strong>をクリックします。<strong>権限の管理</strong>画面が表示され、<strong>グループ</strong>テーブルが表示されます。</p>
-<h3 id="権限グループの表示">権限グループの表示</h3>
-<p>権限グループをクリックすると、その権限グループの詳細が表示されます。以下のタブのいずれかをクリックして、その権限グループに関する詳細を表示します：</p>
+<p>権限グループを管理するには、管理メニューで<strong>権限管理</strong>をクリックします。<strong>権限管理</strong>画面が表示され、<strong>グループ</strong>テーブルが表示されます。</p>
+<h3 id="権限グループを表示">権限グループを表示</h3>
+<p>権限グループをクリックすると、その権限グループの詳細が表示されます。次のタブのいずれかをクリックして、その権限グループの詳細をさらに表示します：</p>
 <ul>
-<li><strong>ユーザー</strong>：権限グループのメンバーであるユーザーのリスト。</li>
-<li><strong>グループの権限</strong>：製品と機能に対するグループメンバーの権限のリスト。</li>
-<li><strong>プロファイル</strong>：プロファイルとそれらのプロファイルに対するグループメンバーの権限のリスト。</li>
+<li><strong>ユーザー</strong>：権限グループのメンバーであるユーザーのリストを表示します。</li>
+<li><strong>グループ権限</strong>：製品と機能に対するグループメンバーの権限をリストします。</li>
+<li><strong>プロファイル</strong>：プロファイルとそれらのプロファイルに対するグループメンバーの権限をリストします。</li>
 </ul>
-<h3 id="権限グループの作成">権限グループの作成</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>権限グループを作成または編集するには、アカウント管理者またはユーザー管理者の役割が必要です。プロファイルに権限グループを追加するには、アカウント管理者またはプロファイル管理者の役割が必要です。</p>
-<p>権限グループを作成し、各製品機能のアクセスレベルを構成し、ユーザーをアカウントと権限グループに招待するには：</p>
+<h3 id="パーミッショングループの作成">パーミッショングループの作成</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>パーミッショングループを作成または編集するには、アカウント管理者またはユーザー管理者の役割が必要です。プロファイルにパーミッショングループを追加するには、アカウント管理者またはプロファイル管理者の役割が必要です。</p>
+<p>パーミッショングループを作成するには、各製品機能のアクセスレベルを構成し、次にユーザーを招待してアカウントとパーミッショングループに参加させます：</p>
 <ol>
-<li>管理メニューから<strong>権限の管理</strong>をクリックします。<strong>権限の管理</strong>画面が表示されます。</li>
-<li><strong>+ 新規グループ</strong>をクリックします。<strong>新規権限グループ</strong>のスライドアウトが表示されます。</li>
-<li><strong>名前</strong>ボックスに、権限グループの名前を入力します。</li>
-<li>権限グループが最初に何を含むかを選択します：
+<li>管理メニューから <strong>権限管理</strong> をクリックします。<strong>権限管理</strong> 画面が表示されます。</li>
+<li><strong>+ 新しいグループ</strong> をクリックします。<strong>新しいパーミッショングループ</strong> スライドアウトが表示されます。</li>
+<li><strong>名前</strong> ボックスにパーミッショングループの名前を入力します。</li>
+<li>パーミッショングループが初めに含む内容を選択します：
 <ul>
-<li><strong>空のグループ</strong> - 既存の構成がない状態から権限グループを開始します。</li>
-<li><strong>既存のグループを複製</strong> - 選択した権限グループと同じ権限、プロファイル、ユーザーを持つ新しい権限グループを開始します。</li>
+<li><strong>空のグループ</strong> - 既存の構成なしでパーミッショングループを開始します。</li>
+<li><strong>既存のグループを複製</strong> - 選択したパーミッショングループと同じ権限、プロファイル、ユーザーで新しいパーミッショングループを開始します。</li>
 </ul>
 </li>
-<li><strong>次へ</strong>をクリックします。<strong>アカウント権限の構成</strong>のスライドアウトが表示されます。</li>
-<li>グループにプロファイルの変更を公開する権限を与えたい場合は、<strong>Server-Side</strong>の下で<strong>Publish</strong>を選択します。サーバーサイドの公開権限には、すべてのサーバーサイド製品と機能へのフルアクセスが含まれます。</li>
-<li>権限グループがアクセスする製品を選択します。</li>
-<li><strong>Next</strong>をクリックします。<strong>Feature Permissions</strong>スライドアウトが表示されます。</li>
-<li><strong>Feature Permissions</strong>の下で、各製品機能のアクセスレベルを選択します。
+<li><strong>次へ</strong> をクリックします。<strong>アカウント権限の構成</strong> スライドアウトが表示されます。</li>
+<li>グループにプロファイル変更の公開権限を与えたい場合、<strong>サーバーサイド</strong> の下で <strong>公開</strong> を選択します。サーバーサイドの公開権限には、すべてのサーバーサイド製品と機能への完全なアクセスが含まれることに注意してください。</li>
+<li>パーミッショングループがアクセスする製品を選択します。</li>
+<li><strong>次へ</strong> をクリックします。<strong>機能権限</strong> スライドアウトが表示されます。</li>
+<li><strong>機能権限</strong> の下で、各製品機能のアクセスレベルを選択します。
 <ul>
-<li>一部の機能は複数の製品に表示されます。たとえば、コネクタへのアクセスなどです。機能のアクセスレベルは、それがどの製品に表示されているかに関係なく、その機能に適用されます。</li>
-<li>製品機能の<strong>Edit</strong>アクセスには、プロファイルへの変更を保存する能力が含まれます。</li>
+<li>一部の機能は複数の製品に現れることがあります。例えば、コネクタへのアクセスなどです。機能アクセスレベルは、それがどの製品に現れるかに関わらず、機能に適用されます。</li>
+<li>製品機能の <strong>編集</strong> アクセスには、プロファイルへの変更を保存する能力が含まれます。</li>
 </ul>
 </li>
-<li><strong>Next</strong>をクリックします。<strong>Profiles</strong>スライドアウトが表示されます。</li>
-<li>権限グループがアクセスできるプロファイルを選択します。</li>
-<li><strong>Next</strong>をクリックします。<strong>Add Users</strong>スライドアウトが表示されます。</li>
-<li>権限グループに追加する最大25人のユーザーを選択します。
+<li><strong>次へ</strong> をクリックします。<strong>プロファイル</strong> スライドアウトが表示されます。</li>
+<li>パーミッショングループがアクセスを許可するプロファイルを選択します。</li>
+<li><strong>次へ</strong> をクリックします。<strong>ユーザー追加</strong> スライドアウトが表示されます。</li>
+<li>パーミッショングループに追加する最大25人のユーザーを選択します。
 <ul>
-<li>まだアカウントにいないユーザーを追加するには、まずそのユーザーをアカウントに追加する必要があります。詳細については、<a href="/ja/administration/users/">Users</a>を参照してください。</li>
+<li>アカウントにまだいないユーザーを追加する場合は、まずそのユーザーをアカウントに追加する必要があります。詳細については、<a href="/ja/administration/users/">ユーザー</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>Add</strong>をクリックします。</li>
+<li><strong>追加</strong> をクリックします。</li>
 </ol>
-<p><strong>Manage Permissions</strong>画面が表示され、新しい権限グループがリストに表示されます。</p>
-<h3 id="権限グループの編集">権限グループの編集</h3>
-<p>権限グループを編集するには：</p>
+<p><strong>権限管理</strong> 画面が表示され、新しいパーミッショングループがリストに表示されます。</p>
+<h3 id="パーミッショングループの編集">パーミッショングループの編集</h3>
+<p>パーミッショングループを編集するには：</p>
 <ol>
-<li>管理メニューから、<strong>Manage Permissions</strong>をクリックします。<strong>Manage Permissions</strong>画面が表示されます。</li>
-<li><strong>Permission Group</strong>タブをクリックします。</li>
-<li>編集したい権限グループをクリックします。権限グループの詳細が表示されます。</li>
+<li>管理メニューから <strong>権限管理</strong> をクリックします。<strong>権限管理</strong> 画面が表示されます。</li>
+<li><strong>パーミッショングループ</strong> タブをクリックします。</li>
+<li>編集したいパーミッショングループをクリックします。パーミッショングループの詳細が表示されます。</li>
 <li>編集したい情報を選択します：
 <ul>
-<li><strong>Group Permissions</strong>：製品機能の権限グループアクセスレベルを構成します。</li>
-<li><strong>Users</strong>：権限グループからユーザーを追加または削除します。</li>
-<li><strong>Profiles</strong>：権限グループからプロファイルを追加または削除し、そのプロファイルの権限グループアクセスレベルを構成します。</li>
+<li><strong>グループ権限</strong>：製品機能に対するパーミッショングループのアクセスレベルを構成します。</li>
+<li><strong>ユーザー</strong>：パーミッショングループからユーザーを追加または削除します。</li>
+<li><strong>プロファイル</strong>：パーミッショングループからプロファイルを追加または削除し、そのプロファイルに対するパーミッショングループのアクセスレベルを構成します。</li>
 </ul>
 </li>
 </ol>
-<h3 id="ユーザーの権限グループを管理する">ユーザーの権限グループを管理する</h3>
-<p>ユーザーのプロファイルから権限グループのメンバーシップを管理するには：</p>
+<h3 id="ユーザーのパーミッショングループの管理">ユーザーのパーミッショングループの管理</h3>
+<p>ユーザーのプロファイルからパーミッショングループのメンバーシップを管理するには：</p>
 <ol>
-<li>管理メニューから、<strong>Manage Permissions</strong>をクリックします。<strong>Manage Permissions</strong>画面が表示されます。</li>
-<li><strong>User</strong>タブをクリックします。</li>
-<li>編集したいユーザーをクリックします。<strong>User Details</strong>スライドアウトが表示されます。</li>
-<li><strong>Group</strong>タブをクリックし、次に<strong>Edit</strong>をクリックします。</li>
-<li>ユーザーを追加または削除したい権限グループを選択します。</li>
-<li><strong>Finish</strong>をクリックします。</li>
+<li>管理メニューから <strong>権限管理</strong> をクリックします。<strong>権限管理</strong> 画面が表示されます。</li>
+<li><strong>ユーザー</strong> タブをクリックします。</li>
+<li>編集したいユーザーをクリックします。<strong>ユーザー詳細</strong> スライドアウトが表示されます。</li>
+<li><strong>グループ</strong> タブをクリックし、次に <strong>編集</strong> をクリックします。</li>
+<li>ユーザーを追加または削除するパーミッショングループを選択します。</li>
+<li><strong>完了</strong> をクリックします。</li>
 </ol>
 
 </div>
@@ -384,7 +377,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -399,14 +392,14 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%81%AE%E6%A9%9F%E8%83%BD" href="javascript:void(0)">製品の機能</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E6%A9%9F%E8%83%BD" href="javascript:void(0)">製品機能</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E6%A8%A9%E9%99%90" href="javascript:void(0)">公開権限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E3%81%AE%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AB%E6%89%80%E5%B1%9E%E3%81%99%E3%82%8B%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC" href="javascript:void(0)">複数の権限グループに所属するユーザー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E3%81%AE%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AB%E5%B1%9E%E3%81%99%E3%82%8B%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC" href="javascript:void(0)">複数の権限グループに属するユーザー</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">権限グループの管理</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">権限グループの表示</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">権限グループの作成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">権限グループの編集</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">ユーザーの権限グループを管理する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">権限グループを表示</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">パーミッショングループの作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">パーミッショングループの編集</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">ユーザーのパーミッショングループの管理</a></li>
               </nav>
   </aside></nav>
 

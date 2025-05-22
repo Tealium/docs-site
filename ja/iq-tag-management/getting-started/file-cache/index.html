@@ -208,7 +208,7 @@
         <a href="/ja/iq-tag-management/events/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-events">イベントの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-scope/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-scope">スコープ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/events-publish-locations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-publish-location">パブリッシュロケーション</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/events/selectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-element-selectors">要素のセレクター</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/selectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-element-selectors">要素セレクター</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/triggers-and-frequency/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-trigger">トリガーと頻度</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-variables">イベント変数</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-rules">イベントルール</a></li><li class="relative w-100 fw8 f5 ">
@@ -458,7 +458,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealiumから提供されるファイルは、<code>Cache-Control</code> ヘッダーを構成して、ブラウザが新しいバージョンをチェックする前にファイルをどれくらいの期間キャッシュするかを指示します。キャッシュ時間（TTLと呼ばれることもあります）が経過すると、ブラウザはTealiumのサーバーにヘッダーリクエストを送信してファイルが変更されたかどうかを確認します。変更されていれば、ブラウザは最新のファイルを取得し、そうでなければキャッシュされたファイルを引き続き使用します。</p>
+  <p>Tealiumから提供されるファイルは、<code>Cache-Control</code> ヘッダーを構成して、ブラウザが新しいバージョンをチェックする前にファイルをどれくらいの期間キャッシュするかを指示します。キャッシュ時間（TTLとも呼ばれる「生存時間」）が経過すると、ブラウザはTealiumのサーバーにヘッダーリクエストを送信してファイルが変更されたかどうかを確認します。変更されていれば、ブラウザは最新のファイルを取得し、そうでなければキャッシュされたファイルを引き続き使用します。</p>
 <p>ユニバーサルタグ（<code>utag.js</code>）は、Tealium iQタグ管理で公開すると、ウェブサイトの訪問ができるだけ早く<code>utag.js</code>ファイルの最新バージョンを受け取れるように、短いTTLが構成されています。</p>
 <h2 id="ブラウザのキャッシュ時間">ブラウザのキャッシュ時間</h2>
 <p>iQタグ管理から公開されたファイルのブラウザキャッシュの有効期限は以下の通りです：</p>
@@ -471,7 +471,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code>utag.js</code>, <code>utag.#.js</code>,<code>utag.sync.js</code></td>
+<td><code>utag.js</code></td>
+<td>5分</td>
+</tr>
+<tr>
+<td><code>utag.#.js</code></td>
+<td>5分</td>
+</tr>
+<tr>
+<td><code>utag.sync.js</code></td>
 <td>5分</td>
 </tr>
 <tr>
@@ -481,11 +489,11 @@
 </tbody>
 </table>
 <h2 id="ユニバーサルタグのキャッシュ">ユニバーサルタグのキャッシュ</h2>
-<p>バージョン4.26以前のユニバーサルタグでは、公開後にすべての<code>utag.js</code>ファイルが更新され、キャッシュが無効になり、ブラウザが変更されていないファイルを取得するために不要なネットワークコールを行うことがあり、ページの読み込み性能に影響を与えました。</p>
-<p><a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01">バージョン4.26以降</a>では、ネットワークコールが減少し、ページの読み込み性能が向上しました。</p>
+<p>バージョン4.26以前のユニバーサルタグでは、公開後にすべての<code>utag.js</code>ファイルが更新されていました。公開のたびに、<code>utag.js</code>ファイルはキャッシュを無効にし、ブラウザが変更されていないファイルを取得するために不必要なネットワーク呼び出しを行っていましたが、これがページの読み込み性能に影響を与えていました。</p>
+<p><a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01">バージョン4.26以降</a>では、ブラウザがネットワーク呼び出しを減らし、ページの読み込み性能が向上しました。</p>
 <p class="tip"><i class="fa fa-info-circle"></i><code>utag.js</code>テンプレートを更新する方法についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>をご覧ください。</p>
 <h2 id="動作原理">動作原理</h2>
-<p>キャッシュ動作は、公開されたファイルのURLに追加される<code>utv</code>という名前のタイムスタンプパラメーター（「キャッシュバスティング」パラメーターと呼ばれます）によって制御されます。キャッシュバスティングパラメーターはファイルのURLを変更し、ブラウザにファイルのキャッシュされたバージョンを更新させます。ユニバーサルタグのバージョン4.39+では、<code>utv</code>パラメーターの値にタイムスタンプとバージョン番号が含まれています。</p>
+<p>キャッシュ動作は、公開されたファイルのURLに追加される<code>utv</code>という名前のタイムスタンプパラメーター（「キャッシュバスティング」パラメーターと呼ばれる）によって制御されます。キャッシュバスティングパラメーターはファイルのURLを変更し、ブラウザにファイルのキャッシュバージョンを更新させます。ユニバーサルタグのバージョン4.39以降では、<code>utv</code>パラメーターの値にタイムスタンプとバージョン番号が含まれています。</p>
 <p>キャッシュバスティングパラメーターの値とユニバーサルタグのバージョン：</p>
 <table>
 <thead>
@@ -517,10 +525,10 @@
          title="example tags"/>
     </a>
 </figure>
-<p>ウェブコンソールの公開URLビューでは、<code>utag.4.js</code>が新規または変更されたファイルとしてサーバーから取得されました。<code>utag.2.js</code>と<code>utag.3.js</code>は変更されていないためキャッシュから取得されました。<code>utag.1.js</code>は非アクティブ化されたため、ページにはロードされませんでした。</p>
+<p>ウェブコンソールの公開URLビューでは、新規または変更されたファイルである<code>utag.4.js</code>がサーバーから取得されました。変更されていない<code>utag.2.js</code>と<code>utag.3.js</code>はキャッシュから取得されました。非アクティブ化されたため、<code>utag.1.js</code>はページ上にロードされませんでした。</p>
 <figure><a class="slb" href="/images/iq-tag-management/timestamps-on-qa.png"><img src="/images/iq-tag-management/timestamps-on-qa.png"
-         alt="Timestamps on QA"
-         title="Timestamps on QA"/>
+         alt="QA上のタイムスタンプ"
+         title="QA上のタイムスタンプ"/>
     </a>
 </figure>
 
@@ -583,7 +591,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月14日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

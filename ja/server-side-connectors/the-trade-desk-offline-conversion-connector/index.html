@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Trade Desk オフラインコンバージョンコネクタ設定ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
+    <title>The Trade Desk オフラインコンバージョンコネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -442,7 +442,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">The Trade Desk オフラインコンバージョンコネクタ設定ガイド</h1>
+<h1 class="lh-title mt30 mb3">The Trade Desk オフラインコンバージョンコネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -450,13 +450,23 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、お客様のCustomer Data HubアカウントでThe Trade Desk（TheTradeDesk）オフラインコンバージョンコネクタを設定する方法について説明します。
+      この記事では、The Trade Desk（TheTradeDesk）オフラインコンバージョンコネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="コネクタのアクション">コネクタのアクション</h2>
+  <h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>エージェンシーシークレットキー</strong>
+<ul>
+<li>The Trade Deskから提供されたシークレットキー。</li>
+</ul>
+</li>
+</ul>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -473,28 +483,16 @@
 </tr>
 </tbody>
 </table>
-<h3 id="バッチ制限">バッチ制限</h3>
-<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<h3 id="オフラインコンバージョンを送信">オフラインコンバージョンを送信</h3>
+<h4 id="バッチ制限">バッチ制限</h4>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：1000</li>
-<li>最も古いリクエストからの最大時間：10分</li>
+<li>最古のリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
-<h2 id="設定の構成">設定の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
-<p>コネクタを追加した後、以下の設定を構成します：</p>
-<ul>
-<li><strong>エージェンシーシークレットキー</strong>
-<ul>
-<li>The Trade Deskから提供されたシークレットキー</li>
-</ul>
-</li>
-</ul>
-<h2 id="アクション設定---パラメータとオプション">アクション設定 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタアクションを構成します。</p>
-<p>このセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
-<h3 id="アクション---オフラインコンバージョンを送信">アクション - オフラインコンバージョンを送信</h3>
-<h4 id="パラメータ">パラメータ</h4>
+<h4 id="データプロバイダーid">データプロバイダーID</h4>
+<p>TTDシステム内のデータプロバイダーのID。</p>
 <table>
 <thead>
 <tr>
@@ -505,99 +503,142 @@
 <tbody>
 <tr>
 <td>データプロバイダーID</td>
-<td><ul><li>TTDシステム内のデータプロバイダーのID。</li><li>The Trade Deskデータパートナーシップとあなたのテクニカルアカウントマネージャーがこの値を提供します。</li></ul></td>
+<td>TTDシステム内のデータプロバイダーのID。この値はThe Trade Deskのテクニカルアカウントマネージャーが提供します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="データid">データID</h4>
+<ul>
+<li>Trade Desk ID、デバイス広告ID、Unified ID、またはIdentityLinkをマッピングします。</li>
+<li>複数のIDがマッピングされている場合、最初の空でないIDが次の優先順位で選択されます：Trade Desk ID、デバイス広告ID、Unified ID、IdentityLink。</li>
+<li>デバイス広告IDは、iOS IDFAまたはAndroid Advertising ID (AAID)で表されます。</li>
+<li>ハッシュされていないIDFAおよびAAIDのIDのみが、ダッシュを含む36文字のGUIDで受け入れられます。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TDID</code></td>
+<td>このユーザーのTrade Desk 36文字のGUID（ダッシュを含む）。</td>
 </tr>
 <tr>
-<td>TDID</td>
-<td><ul><li>必須：<code>TDID</code>、<code>DAID</code>、または<code>UID</code>パラメータのいずれかを使用する必要があります。<li>ユーザーのThe Trade Desk ID。</li><li>DAIDが空白の場合は必須。</li></ul></td>
+<td><code>DAID</code></td>
+<td>このユーザーの生のデバイスIDで、36文字のGUID形式（ダッシュを含む）で送信します。iOS IDFAまたはAndroidのAAIDを使用します。</td>
 </tr>
 <tr>
-<td>DAID</td>
-<td><ul><li>必須：<code>TDID</code>、<code>DAID</code>、または<code>UID</code>パラメータのいずれかを使用する必要があります。</li><li>ユーザーのデバイス広告ID。</li><li>TDIDが空白の場合は必須。</li><li>iOS広告識別子（IDFA）またはAndroid広告ID（AAID）。</li><li>ハッシュ化されていない（生の）IDFAと、ダッシュを含む36文字のGUIDを持つ生のAAIDのみが受け入れられます。</li></ul></td>
+<td><code>UID2</code></td>
+<td>生のUID2値、別名UID2。この値は大文字と小文字が区別されます。生のUID2はUID2 APIを使用して生成および管理されます。</td>
 </tr>
 <tr>
-<td>UID2</td>
-<td><ul><li>必須：<code>TDID</code>、<code>DAID</code>、または<code>UID</code>パラメータのいずれかを使用する必要があります。</li><li>Unified ID（UID2）はオープンソースIDです。</li></ul></td>
+<td><code>IDL</code></td>
+<td>49文字または70文字のRampID（以前はIdentityLinkとして知られていました）。これはLiveRampからThe Trade Desk用にマッピングされたRampIDでなければなりません。</td>
 </tr>
+</tbody>
+</table>
+<h4 id="アイテムデータ">アイテムデータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>トラッキングタグID</td>
-<td><ul><li>必須</li><li>トラッキングタグAPIを使用して作成したトラッキングタグID。</li><li>例：<code>xy4s8ef</code></li></ul></td>
+<td>(必須) トラッキングタグAPIを使用して作成されたトラッキングタグID。例：<code>abc1234</code></td>
 </tr>
 <tr>
 <td>コンバージョンタイムスタンプ</td>
-<td><ul><li>必須</li><li>UTCでのコンバージョン日時。</li><li>オフラインコンバージョンが発生した時間、UTC。</li><li>例：<code>2019-02-07T13:25:00Z</code></li></ul></td>
+<td>(必須) UTCでのコンバージョン日時。オフラインコンバージョンが発生したUTCの時間。例：<code>2019-02-07T13:25:00Z</code></td>
 </tr>
 <tr>
-<td>ImpressionId</td>
-<td><ul><li>有効な36文字。</li><li>このアイテムが対象となるインプレッションのグローバル一意識別子（GUID）。</li></ul></td>
+<td>インプレッションID</td>
+<td>ダッシュを含む36文字の生の（ハッシュされていない）GUID。</td>
 </tr>
 <tr>
-<td>Value</td>
-<td><ul><li>金額。</li><li>例：<code>0.02</code></li></ul></td>
+<td>金銭的価値</td>
+<td>金銭的価値。例：<code>0.02</code></td>
 </tr>
 <tr>
-<td>ValueCurrency</td>
-<td><ul><li>金額の通貨。</li><li>例：<code>USD</code></li></ul></td>
+<td>通貨</td>
+<td>金銭的価値の通貨。例：<code>USD</code></td>
 </tr>
 <tr>
-<td>Country</td>
-<td><ul><li>国</li><li>例：<code>United States</code></li></ul></td>
+<td>国</td>
+<td>国 例：<code>United States</code></td>
 </tr>
 <tr>
-<td>Region</td>
-<td><ul><li>地域</li><li>例：<code>New York</code></li></ul></td>
+<td>地域</td>
+<td>地域 例：<code>New York</code></td>
 </tr>
 <tr>
-<td>Metro</td>
-<td><ul><li>都市圏</li><li>例：<code>501</code></li></ul></td>
+<td>メトロ</td>
+<td>メトロエリア 例：<code>501</code></td>
 </tr>
 <tr>
-<td>City</td>
-<td><ul><li>市</li><li>例：<code>Brooklyn</code></li></ul></td>
+<td>市</td>
+<td>市 例：<code>Brooklyn</code></td>
 </tr>
 <tr>
-<td>PostalCode</td>
-<td><ul><li>郵便番号</li><li>例：<code>11223</code></li></ul></td>
+<td>イベント名</td>
+<td>パートナープラットフォームによって定義されたイベントのタイプ。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-providerapi-offlineconversion#event-mapping">The Trade Desk: イベントマッピング</a>を参照してください。</td>
 </tr>
 <tr>
-<td>TD1</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
+<td>オーダーID</td>
+<td>トランザクションまたはコンバージョンイベントの一意の識別子で、最大64文字です。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="追加データ">追加データ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TD1 - TD10</code></td>
+<td>カテゴリーやその他の組織用のオプション報告フィールドで、最大長は64文字です。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ラインアイテム">ラインアイテム</h4>
+<p>マーチャントの製品カタログラインアイテム情報を含むプロパティ。これらのマッピングは配列属性を受け入れます。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アイテムコード</td>
+<td>アイテム識別子（例：SKU）。</td>
 </tr>
 <tr>
-<td>TD2</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
+<td>アイテム名</td>
+<td>アイテムコードに関連付けられた名前で、最大長は150文字です。</td>
 </tr>
 <tr>
-<td>TD3</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
+<td>アイテム数量</td>
+<td>アイテムコードの注文内のアイテム数。</td>
 </tr>
 <tr>
-<td>TD4</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
+<td>アイテム価格</td>
+<td>アイテムの単価。</td>
 </tr>
 <tr>
-<td>TD5</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
-</tr>
-<tr>
-<td>TD6</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
-</tr>
-<tr>
-<td>TD7</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
-</tr>
-<tr>
-<td>TD8</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
-</tr>
-<tr>
-<td>TD9</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
-</tr>
-<tr>
-<td>TD10</td>
-<td><ul><li>オプションのレポートフィールド。</li><li>ユーザーカテゴリやフラグに使用できます。</li></ul></td>
+<td>アイテムカテゴリ</td>
+<td>アイテムカテゴリID。</td>
 </tr>
 </tbody>
 </table>
@@ -661,7 +702,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月30日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -675,11 +716,9 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">設定の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E8%A8%AD%E5%AE%9A---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション設定 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - オフラインコンバージョンを送信</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">オフラインコンバージョンを送信</a></li>
               </nav>
   </aside></nav>
 

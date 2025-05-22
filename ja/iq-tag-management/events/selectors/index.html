@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>イベント要素のセレクター | イベント | Tealiumドキュメント</title>
+    <title>イベント要素セレクター | イベント | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -208,7 +208,7 @@
         <a href="/ja/iq-tag-management/events/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-events">イベントの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-scope/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-scope">スコープ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/events-publish-locations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-publish-location">パブリッシュロケーション</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/events/selectors/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".event-element-selectors">要素のセレクター</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/selectors/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".event-element-selectors">要素セレクター</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/triggers-and-frequency/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-trigger">トリガーと頻度</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-variables">イベント変数</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-rules">イベントルール</a></li><li class="relative w-100 fw8 f5 ">
@@ -448,7 +448,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">イベント要素のセレクター</h1>
+<h1 class="lh-title mt30 mb3">イベント要素セレクター</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -462,8 +462,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ほとんどのイベントリスナーでは、ページ上のどの要素がイベントリスナーをトリガーするかを指定する必要があります。例えば、特定の広告バナーやボタンがクリックされたとき、または特定の埋め込みビデオが再生されたときを追跡するためのクリックイベントを構成します。</p>
-<p>要素ID、クラス、または複雑なセレクターを使用して追跡する要素を指定します。</p>
+  <p>ほとんどのイベントリスナーでは、ページ上のどの要素がイベントリスナーをトリガーするかを指定する必要があります。たとえば、特定の広告バナーやボタンをクリックしたとき、または特定の埋め込みビデオを再生したときにクリックイベントを構成する場合などです。</p>
+<p>要素ID、クラス、または複雑なセレクターで追跡する要素を指定します。</p>
 <table>
 <thead>
 <tr>
@@ -474,9 +474,9 @@
 </thead>
 <tbody>
 <tr>
-<td>要素ID</td>
+<td>要素 ID</td>
 <td><code>#email-address</code></td>
-<td>メールアドレスを収集するためのフォームフィールド</td>
+<td>メールアドレスを収集するフォームフィールド</td>
 </tr>
 <tr>
 <td>クラス</td>
@@ -486,12 +486,53 @@
 <tr>
 <td>複雑なセレクター</td>
 <td><code>div#feedback-form:not(.main) input[name='email']</code></td>
-<td>IDが <code>feedback-form</code> の <code>div</code> 内の、名前が email のフォームフィールド。ただし、クラスが <code>main</code> の <code>div</code> 内ではない。</td>
+<td>IDが<code>feedback-form</code>の<code>div</code>内のメールという名前のフォームフィールドで、クラスが<code>main</code>の<code>div</code>内にはない。</td>
+</tr>
+<tr>
+<td>複数の要素</td>
+<td><code>.btn-cart, .btn-cart span</code></td>
+<td>メイン要素とその中のクリック可能なネストされた要素のクリックを追跡します。</td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントシステムはセレクターに <code>Element.matches()</code> メソッドを使用します。このメソッドについての詳細は、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Mozilla Developer Network の Element.matches()</a>を参照してください。</p>
-<p>要素のセレクターを決定する方法についての詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">要素のCSSセレクターの決定方法</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントシステムはセレクターに<code>Element.matches()</code>メソッドを使用します。このメソッドの詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Mozilla Developer NetworkのElement.matches()</a>を参照してください。</p>
+<h2 id="複数要素セレクターを使用するタイミング">複数要素セレクターを使用するタイミング</h2>
+<p>時には、セレクターが有効であってもイベントがトリガーされないことがあります。これは、クリックされた要素が意図したターゲット要素の内部にネストされている場合によく発生します。</p>
+<p>Tealiumのイベントは、ページの<code>&lt;body&gt;</code>にカーソルベースのイベントリスナー（<code>click</code>、<code>mousedown</code>、<code>mouseup</code>など）をアタッチします。ユーザーがページと対話すると、イベントハンドラーはクリックされた要素（<code>event.target</code>）が提供したセレクターと一致するかどうかを確認します。この動作は、セレクターに一致する要素に直接イベントをバインドするjQueryの<code>onHandler</code>拡張とは異なります。</p>
+<p>Tealiumでクリックイベントリスナーがどのように機能するかの例を以下に示します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">matches</span>(<span style="color:#e6db74">&#34;SELECTOR&#34;</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Element clicked:&#34;</span>, <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">textContent</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Track event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>セレクターが外側の要素（ボタンなど）のみをターゲットにしていて、ユーザーがネストされた要素（ボタン内の<code>&lt;span&gt;</code>など）をクリックした場合、イベントリスナーはトリガーされません。この場合、メイン要素とそのクリック可能なネストされたコンテンツの両方を含む複数要素セレクターを使用します。</p>
+<h3 id="例---カートに追加ボタン">例 - カートに追加ボタン</h3>
+<p>「カートに追加」ボタンのクリックを追跡したいとします。そのHTMLは次のようになります：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn-cart&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">span</span>&gt;Add to Cart&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span></code></pre></div><p>セレクター<code>.btn-cart</code>だけを使用すると常に機能するわけではありません。ユーザーが<code>&lt;span&gt;</code>をクリックした場合、<code>event.target</code>は<code>&lt;span&gt;</code>であり、<code>&lt;button&gt;</code>ではありません。ボタンとそのネストされた要素の両方のクリックを確実に追跡するには、複数要素セレクターを使用します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">btn-cart</span><span style="color:#f92672">,</span> .<span style="color:#a6e22e">btn-cart</span> <span style="color:#f92672">span</span>
+</span></span></code></pre></div><p>これにより、<code>&lt;button&gt;</code>またはその内部の<code>&lt;span&gt;</code>のいずれかがクリックされた場合にキャプチャされます。</p>
+<h3 id="正しいセレクターを見つけるためのヒント">正しいセレクターを見つけるためのヒント</h3>
+<p>動作するセレクターを見つけるには：</p>
+<ol>
+<li>ページを開いて、追跡したい要素を右クリックします。</li>
+<li><strong>Inspect</strong>を選択してブラウザの開発者ツールを開きます。</li>
+<li>イベントをトリガーするべき最も外側の要素を特定します。</li>
+<li>ユーザーがクリックする可能性のある<code>&lt;span&gt;</code>、<code>&lt;svg&gt;</code>、<code>&lt;img&gt;</code>などのネストされた要素を確認します。</li>
+<li>すべての可能なクリック可能なターゲットを含むセレクターを構築します。</li>
+</ol>
+<p>セレクターを構築するのに役立つツールとして、<a href="https://selectorgadget.com/">SelectorGadget</a>のブックマークレットやブラウザ拡張機能を使用することもできます。その方法は次のとおりです：</p>
+<ol>
+<li>ページを読み込み、SelectorGadgetのブックマークレットまたはブラウザ拡張機能を開きます。</li>
+<li>要素のテキスト（例えば、「Add to Cart」）をクリックします。</li>
+<li>最初のセレクターが一般的すぎる場合（<code>&lt;span&gt;</code>など）、ボタンの他の部分をクリックしてそれを洗練させます。</li>
+<li>意図したクリック可能な部分が正しくハイライトされるまで続けます。</li>
+<li>最終的なセレクターをコピーして、イベント構成で使用します。</li>
+</ol>
+<p>要素のセレクターを決定する方法についての詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">How to Determine the CSS Selector of an Element</a>を参照してください。</p>
 
 </div>
 
@@ -552,7 +593,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -564,7 +605,13 @@
 
 
 
-  </nav>
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E8%A6%81%E7%B4%A0%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0" href="javascript:void(0)">複数要素セレクターを使用するタイミング</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B---%E3%82%AB%E3%83%BC%E3%83%88%E3%81%AB%E8%BF%BD%E5%8A%A0%E3%83%9C%E3%82%BF%E3%83%B3" href="javascript:void(0)">例 - カートに追加ボタン</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%AD%A3%E3%81%97%E3%81%84%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">正しいセレクターを見つけるためのヒント</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>
