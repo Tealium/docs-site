@@ -577,34 +577,21 @@
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>The timeline attribute records a list of events over a specified time period. A captured event generates an entry in the timeline that contains captured attribute values and a timestamp. The timestamp can be the time of the event or a date/time provided by another attribute. Timestamps are recorded in Unix/Epoch format.</p>
+<p>The timeline attribute is available in the visit and visitor scopes.</p>
+<figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"/>
+    </a>
+</figure>
 <h3 id="size-limits">Size limits</h3>
 <p>Timeline attributes are limited to a maximum of 100 entries. If a timeline reaches this limit, the earliest entries are discarded (First-In, First-Out). For example, if a timeline contains 100 entries, and a new entry is added, the first entry is deleted.</p>
+<p>The maximum time period of a timeline is 365 days.</p>
 <p>Timeline attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).</p>
 <h2 id="capture-attribute-data">Capture attribute data</h2>
 <p>In addition to the timestamp of the event, you can also capture the value of one or more attributes when the event occurs. Captured attribute values provide more information about the event when it occurred. Numbers and tallies are the only useful attribute types to capture because only those attribute types can be aggregated using enrichments.</p>
-<p>For example, to track the order total for each purchase you would capture the attribute <code>order_total</code> in a purchase timeline.</p>
+<p>For example, to track the order total for each purchase, capture the attribute <code>order_total</code> in a purchase timeline.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Verify timelines by viewing the latest visitor profile in <a href="/server-side/trace/about/">Trace</a>.</p>
 <h2 id="expiration-of-entries">Expiration of entries</h2>
 <p>Entries in a timeline can be set to expire after a set number of days. This expiration only applies to entries within the timeline and not the timeline attribute itself. The expiration period is evaluated at the start of each visit. If an entry is older than the expiration time, it is removed from the timeline.</p>
 <p>Timelines work well with numbers because numeric entries are easily used to create a rolling sum or a rolling average value based on the timeline entries.</p>
-<h2 id="scope">Scope</h2>
-<p>The timeline attribute is available in the visit and visitor scopes.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Event</strong></th>
-<th><strong>Visit</strong></th>
-<th><strong>Visitor</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>✗</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="best-practices">Best practices</h2>
 <p>Timelines are limited to 100 entries. Like any attributes, they contribute to the maximum visitor profile size of <a href="/server-side/attributes/about/#storage-capacity-limits">400KB compressed</a>.</p>
 <p>To use timeline attributes efficiently, we recommend the following:</p>
@@ -613,7 +600,7 @@
 <p>Do not store information in the timeline longer than required. Set an expiration date for timeline entries.</p>
 </li>
 <li>
-<p>Do not store other attributes in a timeline unless you have a specialized use case, such as sending the timeline entries to AudienceStore or another connector. You can store most attribute types in a timeline, but only numbers and tallies can be enriched onto other AudienceStream attributes from a timeline. For example, you can get the sum of a number from entries in the timeline, or aggregate a tally from entries in a timeline.  Although you can store other attribute types, there are no enrichments to aggregate the values you store. <p class="note"><i class="fa fa-exclamation-triangle"></i>Storing other attributes in a timeline entry increases the visitor profile size.</p></p>
+<p>Do not store other attributes in a timeline unless you have a specialized use case, such as sending the timeline entries to AudienceStore or another connector. You can store most attribute types in a timeline, but only numbers and tallies can be enriched onto other AudienceStream attributes from a timeline. For example, you can get the sum of a number from entries in the timeline, or aggregate a tally from entries in a timeline. Although you can store other attribute types, there are no enrichments to aggregate the values you store. <p class="note"><i class="fa fa-exclamation-triangle"></i>Storing other attributes in a timeline entry increases the visitor profile size.</p></p>
 </li>
 <li>
 <p>You can minimize the number of entries in a timeline, and the number of timelines in total, by using them strategically.</p>
@@ -710,7 +697,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 12, 2024 
+          <p>This page was last updated:  May 27, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -728,7 +715,6 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size limits</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#capture-attribute-data" href="javascript:void(0)">Capture attribute data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#expiration-of-entries" href="javascript:void(0)">Expiration of entries</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scope" href="javascript:void(0)">Scope</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-timeline" href="javascript:void(0)">Update timeline</a></li>

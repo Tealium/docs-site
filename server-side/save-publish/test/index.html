@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -569,39 +569,127 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The server-side configuration does not have a <strong>Dev</strong> or <strong>QA</strong> environment, so testing your changes before releasing to production requires an extra step. With the power of badges and rules you can easily restrict new functionality to a <strong>Test User</strong> which can be identified any number of ways.</p>
-<h2 id="configure-a-badge-for-testing">Configure a badge for testing</h2>
-<p>For this example, we will use a badge attribute called &ldquo;Test User&rdquo;. This badge uses a rule that evaluates on &ldquo;Any Event&rdquo; when a query string parameter contains <code>tealium_test=true</code>. This badge uses a second rule to indicate that it should be unassigned from a visitor when the query string parameter contains <code>tealium_test=false</code>.</p>
-<figure><a class="slb" href="/images/server-side/image-1---test-user-badge-rules.png"><img src="/images/server-side/image-1---test-user-badge-rules.png"
+  <p>The server-side configuration does not have a <strong>Dev</strong> or <strong>QA</strong> environment, so testing your changes before releasing to the live environment requires an extra step. With the power of test flags, badges, and rules, you can easily restrict new functionality to a test user which can be configured in several ways.</p>
+<h2 id="test-events">Test events</h2>
+<p>There are a number of ways that you can separate live events from your test events. The goal is to include this test identifier with all relevant test data events.</p>
+<h3 id="event-attribute-enrichment">Event attribute enrichment</h3>
+<p>You can set up an event boolean attribute <code>test_data</code> with enrichments based on an existing event attribute.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-data-event-boolean.png"><img src="/images/server-side/save-publish/test-data-event-boolean.png"
+         alt="Test data event boolean"
+         title="Test data event boolean"/>
+    </a>
+</figure>
+<h3 id="extension">Extension</h3>
+<p>You can use an extension to set a test flag before the data is passed to the server-side.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-data-iq-extension.png"><img src="/images/server-side/save-publish/test-data-iq-extension.png"
+         alt="Test data Tealium iQ extension"
+         title="Test data Tealium iQ extension"/>
+    </a>
+</figure>
+<p>Use this value to leverage existing data or a cookie value you’ve set through a query string.</p>
+<h3 id="website-test-flag">Website test flag</h3>
+<p>You can set a test flag within the code of your <strong>QA</strong> or <strong>Dev</strong> site as part of the data layer:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag_data</span>.<span style="color:#a6e22e">test_data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;true&#39;</span>;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><h3 id="file-import">File import</h3>
+<p>To test with file import, add a column for <code>test_data</code> where test rows have the value <code>true</code>. Map the <code>test_data</code> column to the <code>test_data</code> event attribute you created.</p>
+<p>For live file import files, if you omit the column from the file, it still processes and nothing is flagged as test data.</p>
+<h3 id="api-call">API call</h3>
+<p>If you are submitting events through the API, append <code>test_data=true</code> to your call and no additional enrichments are needed.</p>
+<pre tabindex="0"><code>curl -i &#34;https://collect.tealiumiq.com/event?tealium_account=YOURACCOUNT&amp;tealium_profile-YOURPROFILE&amp;tealium_datasource-ABCDEF&amp;tealium_event=user_login&amp;customer_email=user@example.com&amp;test_data=true&#34;
+</code></pre><p>If you use the Collect API and the <code>POST</code> method, include a <code>test_data</code> attribute in the JSON payload with a value of <code>true</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;test_data&#34;</span> : <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="test-event-feed">Test event feed</h3>
+<p>After you have a test attribute that identifies test events, create a duplicate of each event feed and the <code>test_data</code> flag:</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-data-event-feed.png"><img src="/images/server-side/save-publish/test-data-event-feed.png"
+         alt="Test data event feed"
+         title="Test data event feed"/>
+    </a>
+</figure>
+<figure><a class="slb" href="/images/server-side/save-publish/test-data-event-feed-details.png"><img src="/images/server-side/save-publish/test-data-event-feed-details.png"
+         alt="Test data event feed details"
+         title="Test data event feed details"/>
+    </a>
+</figure>
+<h3 id="test-connectors">Test connectors</h3>
+<p>We recommend that you create separate connectors for test feeds.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-data-separate-connectors.png"><img src="/images/server-side/save-publish/test-data-separate-connectors.png"
+         alt="Test data separate connectors"
+         title="Test data separate connectors"/>
+    </a>
+</figure>
+<p>We also recommend that you set the title of a test connector with the following:</p>
+<ul>
+<li>Event type: The event feed used as the source of the action.</li>
+<li>Version: Use <code>Test</code> or <code>Live</code> to indicate the test status.</li>
+</ul>
+<p>Example: <code>Test Cart Add Events</code></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you use this method, ensure that all connector actions are updated when you are looking to do make changes.</p>
+<h3 id="update-connector-and-actions">Update connector and actions</h3>
+<p>If you want to update a connector and its actions, use the following steps:</p>
+<ol>
+<li>Duplicate the live connector you want to make changes to.</li>
+<li>Edit the title from <code>Live</code> to <code>Test</code>.</li>
+<li>For each of the connector actions, update the source to point to the matching <code>Test Data</code> event feed.</li>
+<li>Save and publish.</li>
+</ol>
+<p>From here, make your changes in this new test connector until it&rsquo;s working as expected.</p>
+<h3 id="publish-updates">Publish updates</h3>
+<p>After testing is complete and you are ready to deploy your changes, follow these steps to promote your test connector to the live environment:</p>
+<ol>
+<li>Delete the connector that&rsquo;s in the live environment.</li>
+<li>Update the test connector:
+<ul>
+<li>Rename it to the `Live version.</li>
+<li>Remove the test flag.</li>
+<li>Switch all connector action sources to use the non-test event feeds.</li>
+</ul>
+</li>
+<li>Save and publish.</li>
+</ol>
+<h3 id="use-notes">Use notes</h3>
+<p>We highly recommend using the <strong>Notes</strong> field for each connector to provide additional information, such as:</p>
+<ul>
+<li>Who’s making the changes.</li>
+<li>What is the purpose and reason for the change.</li>
+<li>What is being added or removed.</li>
+</ul>
+<h2 id="test-visitors-and-audiences">Test visitors and audiences</h2>
+<h3 id="configure-a-badge-for-testing">Configure a badge for testing</h3>
+<p>For this example, we use a badge attribute called <code>Test User</code>. This badge uses a rule that evaluates on any event when a query string parameter contains <code>tealiumtest=true</code>. This badge uses a second rule to unassign it from a visitor when the query string parameter contains <code>tealiumtest=false</code>.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-user-badge-rules.png"><img src="/images/server-side/save-publish/test-user-badge-rules.png"
          alt="image 1 - test user badge rules.png"
          title="image 1 - test user badge rules.png"/>
     </a>
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The badge and rule condition can be customized, but they should be unique so that regular site visitors do not get this badge applied to them.</p>
-<h2 id="configure-an-audience-for-testing">Configure an audience for testing</h2>
-<p>If you are looking to test a specific Audience, you can simply add a condition that the <strong>Test User</strong> badge has to be assigned. This will prevent all other users from joining that audience and will allow you to test any connector actions that are tied to that specific audience.</p>
-<figure><a class="slb" href="/images/server-side/image-2---test-with--aud.png"><img src="/images/server-side/image-2---test-with--aud.png"
-         alt="test with aud"
-         title="test with aud"/>
-    </a>
-</figure>
-<h2 id="configure-an-attribute-for-testing">Configure an attribute for testing</h2>
-<p>To test a specific attribute, for example a String, you can include a specific rule that the <strong>Test User</strong> badge is assigned.</p>
-<figure><a class="slb" href="/images/server-side/image-4---added-to-trait,-independant.png"><img src="/images/server-side/image-4---added-to-trait,-independant.png"
+<h3 id="configure-an-attribute-for-testing">Configure an attribute for testing</h3>
+<p>To test a specific attribute, for example a string, include a specific rule that the <code>Test User</code> badge is assigned.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/attribute-for-testing.png"><img src="/images/server-side/save-publish/attribute-for-testing.png"
          alt="added to trait, independent"
          title="added to trait, independent"/>
     </a>
 </figure>
-<h2 id="test">Test</h2>
-<p>When starting your trace session, you must satisfy the test condition used in your test configuration. In this example, you would navigate to your site and append the query string parameter and value used in the rule.</p>
+<h3 id="configure-an-audience-for-testing">Configure an audience for testing</h3>
+<p>If you are testing a specific audience, add a condition that the <code>Test User</code> badge has to be assigned. This prevents all other users from joining that audience and lets you test any connector actions dependent on that specific audience.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/audience-for-testing.png"><img src="/images/server-side/save-publish/audience-for-testing.png"
+         alt="test with aud"
+         title="test with aud"/>
+    </a>
+</figure>
+<h3 id="test">Test</h3>
+<p>When starting your trace session, you must satisfy the test condition used in your test configuration. In this example, navigate to your site and append the query string parameter and value used in the rule.</p>
 <p>For example: <code>http://www.example.com/?tealium_test=true</code></p>
-<p>Once your trace starts, you should then see your <strong>Test User</strong> badge assigned.</p>
-<figure><a class="slb" href="/images/server-side/image-6---test-user-badge-is-assigned.png"><img src="/images/server-side/image-6---test-user-badge-is-assigned.png"
+<p>After your trace starts, you will see the <strong>Test User</strong> badge assigned.</p>
+<figure><a class="slb" href="/images/server-side/save-publish/test-badge-trace-example.png"><img src="/images/server-side/save-publish/test-badge-trace-example.png"
          alt="test user badge is assigned"
          title="test user badge is assigned"/>
     </a>
 </figure>
-<p>Testing this way before publishing to production will allow you to do be confident in your configuration logic, help reduce errors, and increase the accuracy of your strategy.</p>
+<p>Testing this way before publishing to the live environment helps you validate your configuration, reduces errors, and increases the accuracy of your strategy.</p>
 
 </div>
 
@@ -662,7 +750,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 6, 2025 
+          <p>This page was last updated:  June 4, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -676,9 +764,21 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-a-badge-for-testing" href="javascript:void(0)">Configure a badge for testing</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-audience-for-testing" href="javascript:void(0)">Configure an audience for testing</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-events" href="javascript:void(0)">Test events</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-attribute-enrichment" href="javascript:void(0)">Event attribute enrichment</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#extension" href="javascript:void(0)">Extension</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#website-test-flag" href="javascript:void(0)">Website test flag</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#file-import" href="javascript:void(0)">File import</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-call" href="javascript:void(0)">API call</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-event-feed" href="javascript:void(0)">Test event feed</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-connectors" href="javascript:void(0)">Test connectors</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-connector-and-actions" href="javascript:void(0)">Update connector and actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#publish-updates" href="javascript:void(0)">Publish updates</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-notes" href="javascript:void(0)">Use notes</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-visitors-and-audiences" href="javascript:void(0)">Test visitors and audiences</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-a-badge-for-testing" href="javascript:void(0)">Configure a badge for testing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-attribute-for-testing" href="javascript:void(0)">Configure an attribute for testing</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-audience-for-testing" href="javascript:void(0)">Configure an audience for testing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test" href="javascript:void(0)">Test</a></li>
               </nav>
   </aside></nav>

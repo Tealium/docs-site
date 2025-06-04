@@ -597,7 +597,7 @@
 <tr>
 <td>Visit</td>
 <td>Attributes about a particular visit (or session). Data persists for the length of the visit. Examples: Visit Duration, Browser Used, Referring URL, and Carted Products.</td>
-<td>These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. See <a href="/server-side/attributes/session-length/">Session Length</a> for more detail.</td>
+<td>These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. For more information, see <a href="#session-length">Session length</a>.</td>
 </tr>
 <tr>
 <td>Visitor</td>
@@ -612,22 +612,8 @@
 </tbody>
 </table>
 <h3 id="session-length">Session length</h3>
-<p>Session length determines when AudienceStream ends a visit. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.</p>
-<p>In AudienceStream, the default session length is set based on the platform that sends the events:</p>
-<ul>
-<li><strong>Web</strong>: 30 min (10 min if one event and no follow-up events)</li>
-<li><strong>Mobile App</strong>: 2 min</li>
-<li><strong>Omnichannel</strong>: 1 min</li>
-<li><strong>File Import</strong>: 1 min</li>
-<li><strong>Collect API</strong>: 30 min</li>
-</ul>
-<p>The platform is based on the reserved attribute named <code>platform</code> according to the following values:</p>
-<ul>
-<li><strong>Web</strong> - <code>platform</code> is set to <code>web</code> or not set.</li>
-<li><strong>Mobile</strong> - <code>platform</code> is set to one of <code>android</code>,<code>ios</code>,<code>win</code>,<code>bb10</code>,<code>native_mobile</code>.</li>
-</ul>
-<p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. For example, to set the session length to five minutes, add the following to the event: <code>&quot;_dc_ttl_&quot;: 300000</code>. The session length cannot be changed after it has been set.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom length, you must omit the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
+<p>Session length determines when a visit ends after it becomes inactive. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.</p>
+<p>For more information, see <a href="/server-side/attributes/session-length/">Server-side session length</a>.</p>
 <h2 id="data-types">Data types</h2>
 <p>Attributes come in a variety of types, from a basic number to the more powerful tally and badge. The data type determines the format in which the attribute value is stored.</p>
 <p>The following data types are supported:</p>
@@ -982,7 +968,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 24, 2025 
+          <p>This page was last updated:  May 27, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

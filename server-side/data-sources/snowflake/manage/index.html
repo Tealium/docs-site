@@ -643,17 +643,13 @@ SET RSA_PUBLIC_KEY=&#39;your_public_key&#39;;
 <p>When you are done, click <strong>Continue</strong>.</p>
 <h2 id="step-3-configure-the-query">Step 3: Configure the query</h2>
 <p>In the <strong>Query Mode and Configuration</strong> screen, select the appropriate query mode for your Snowflake table or view and optionally include a SQL <code>WHERE</code> clause to process only those records that match your custom condition.</p>
-<ol>
-<li>Select a query mode.<br>
-The query modes determine which column(s) in your Snowflake table or view will be used to detect new and/or modified rows.
+<p>The query mode determines which column(s) in your Snowflake table or view are used to detect new rows, modified rows, or both.</p>
 <ul>
 <li>If you select <strong>Timestamp + Incrementing</strong> (recommended) you must select two columns, a timestamp column and a strictly incrementing column, to detect new and modified rows.</li>
-<li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must select a column to use to detect either new and modified rows or new rows only.
-For more information, see <a href="/server-side/data-sources/snowflake/about/#query-modes">About Snowflake data source &gt; Query modes</a>.<br>
-For the <strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> modes, the selected timestamp column must be one of the following Snowflake data types: <code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, or <code>TIMESTAMP_NTZ</code>. For more information, see the <a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: Date &amp; time data types</a>.</li>
+<li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must select a column to detect either new and modified rows or new rows only.</li>
 </ul>
-</li>
-<li>Configure the query.
+<p>For more information about the requirements for the columns used in the query modes, see <a href="/server-side/data-sources/snowflake/about/#query-modes">About Snowflake query modes</a>.</p>
+<p>Configure the query:</p>
 <ol>
 <li>
 <p>In the <strong>Query &gt; Select Columns</strong> section, select the table or view columns to import to Tealium. To change the Snowflake table or view, click <strong>Previous</strong> and return to <a href="#step-1-establish-a-snowflake-connection">Step 1: Establish a Snowflake connection</a>.</p>
@@ -664,9 +660,9 @@ For the <strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong>
 <li>
 <p>Click <strong>Test Query</strong> to validate your SQL query and preview the results.</p>
 </li>
-</ol>
+<li>
+<p>Click <strong>Continue</strong>.</p>
 </li>
-<li>Click <strong>Continue</strong>.</li>
 </ol>
 <h2 id="step-4-map-columns">Step 4: Map columns</h2>
 <p>Use the column mapping table to map pre-configured column labels to event attributes or manually enter the column labels for mapping. Each row from Snowflake is processed as an event. Columns not mapped to an event attribute are ignored.</p>
@@ -744,7 +740,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 12, 2025 
+          <p>This page was last updated:  May 28, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

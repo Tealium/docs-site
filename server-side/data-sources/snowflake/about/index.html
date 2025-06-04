@@ -594,7 +594,7 @@ For more information, see <a href="#authentication">Authentication</a>.</li>
 <p>After the key is generated, download the public key file and assign the key to a Snowflake user. The key fingerprint is also provided if you need to verify that the user&rsquo;s public key was assigned correctly.</p>
 <p>For details, see <a href="/server-side/data-sources/snowflake/manage/#step-1-establish-a-snowflake-connection">Step 1: Establish a Snowflake connection</a>.</p>
 <h2 id="rate-limits">Rate limits</h2>
-<p>Imports from Snowflake are typically limited to 500 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a></p>
+<p>Imports from Snowflake are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a></p>
 <h2 id="batch-size">Batch size</h2>
 <p>The Snowflake data source imports data in batches, with a maximum of 1,000 rows per batch. This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
 <h2 id="snowflake-tables">Snowflake tables</h2>
@@ -651,16 +651,15 @@ For more information, see <a href="#authentication">Authentication</a>.</li>
 <p>The Snowflake data source supports three query modes to control how data is imported from your Snowflake table or view. Each mode uses a timestamp column, an increment column, or both to determine which rows to import.</p>
 <h3 id="requirements-for-columns">Requirements for columns</h3>
 <p>To use query modes effectively, you must have one or both of the following:</p>
-<ul>
-<li><strong>Timestamp column</strong><br>
-A timestamp column set to the current time when a row is added or modified. This column must be one of the following Snowflake data types: <code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, or <code>TIMESTAMP_NTZ</code>.<br>
-For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: Date &amp; time</a>.</li>
-<li><strong>Increment column</strong><br>
-A numeric column that increments in value for every row added. A recommended definition for an auto-increment column is:
+<h4 id="timestamp-column">Timestamp column</h4>
+<p>A timestamp column set to the current time when a row is added or modified. This column must be one of the following Snowflake data types: <code>TIMESTAMP_LTZ</code>, <code>TIMESTAMP_TZ</code>, or <code>TIMESTAMP_NTZ</code>.</p>
+<p>For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: Date &amp; time</a>.</p>
+<h4 id="increment-column">Increment column</h4>
+<p>A numeric column that increments in value for every row added. This column must be a NUMBER type or any of the synonymous types such as DECIMAL, NUMERIC, INT, INTEGER, or BIGINT.</p>
+<p>For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-numeric">Snowflake: Numeric data types</a>.</p>
+<p>A recommended definition for an auto-increment column is:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
-</span></span></code></pre></div>For more information, see <a href="https://docs.snowflake.com/en/sql-reference/data-types-numeric">Snowflake: Numeric data types</a>.</li>
-</ul>
-<h3 id="available-query-modes">Available Query Modes</h3>
+</span></span></code></pre></div><h3 id="available-query-modes">Available Query Modes</h3>
 <p>Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see <a href="#query-mode-example">Query mode example</a>.</p>
 <h4 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h4>
 <p>This mode uses both a timestamp column and an incrementing column to import new or modified rows. Rows are imported if they have:</p>
@@ -786,7 +785,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 12, 2025 
+          <p>This page was last updated:  June 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

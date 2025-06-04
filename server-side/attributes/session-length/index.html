@@ -574,20 +574,21 @@
 <h2 id="session-lengths">Session lengths</h2>
 <p>In AudienceStream, the default session length is set based on the platform that sends the events:</p>
 <ul>
-<li><strong>Web</strong>: 30 minutes (10 minutes if one event and no follow-up events).</li>
+<li><strong>Web</strong>: 30 minutes for multiple events, 10 minutes for a single event without a follow-up event.</li>
 <li><strong>Mobile App</strong>: 2 minutes.</li>
 <li><strong>Omnichannel</strong>: 1 minute.</li>
 <li><strong>File Import</strong>: 1 minute.</li>
 <li><strong>Collect API</strong>: 30 minutes.</li>
+<li><strong>All Others</strong>: 30 minutes.</li>
 </ul>
 <p>The platform is based on the reserved attribute named <code>platform</code> according to the following values:</p>
 <ul>
-<li><strong>Web</strong>: <code>platform</code> is set to <code>web</code> or not set.</li>
 <li><strong>Mobile</strong>: <code>platform</code> is set to one of the following: <code>android</code>,<code>ios</code>,<code>win</code>,<code>bb10</code>, or <code>native_mobile</code>.</li>
+<li><strong>Web</strong>: <code>platform</code> is set to <code>web</code> or not set.</li>
 </ul>
 <h2 id="customize-session-length">Customize session length</h2>
-<p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. For example, to set the session length to five minutes, add the following to the event: <code>&quot;_dc_ttl_&quot;: 300000</code>. The session length cannot be changed after it has been set.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom session length, omit the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
+<p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. The minimum value of <code>_dc_ttl_</code> is <code>5000</code> (5 seconds) and the maximum value of is <code>1800000</code> (30 minutes). For example, to set the session length to five minutes, add the following to the event: <code>&quot;_dc_ttl_&quot;: 300000</code>. The session length cannot be changed after it has been set.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom session length, do not set the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
 
 </div>
 
@@ -648,7 +649,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 18, 2025 
+          <p>This page was last updated:  May 23, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
