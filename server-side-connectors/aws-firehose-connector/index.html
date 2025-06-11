@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -483,11 +483,28 @@
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="action-send-event-data-to-delivery-stream">Action: Send Event Data to Delivery Stream</h3>
 <h4 id="parameters">Parameters</h4>
-<ul>
-<li><strong>Delivery Stream</strong>: Required. Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
-<li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
-<li><strong>Print Attribute Names</strong>: Checking this box will display names for each event data attribute in the message payload.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Required. Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>Select this option to display names for each event data attribute in the message payload.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="options-record-suffix">Options: Record Suffix</h4>
 <table>
 <thead>
@@ -509,12 +526,36 @@
 </table>
 <h3 id="action-send-visitor-data-to-delivery-stream">Action: Send Visitor Data to Delivery Stream</h3>
 <h4 id="parameters-1">Parameters</h4>
-<ul>
-<li><strong>Delivery Stream</strong>: Required. Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
-<li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
-<li><strong>Include Current Visit Data</strong>: Checking this box will include current visit data in the message payload.</li>
-<li><strong>Print Attribute Names</strong>: Checking this box will display names for each visitor data Attribute in the message payload.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Required. Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data</td>
+<td>Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn&rsquo;t selected.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Exclude event data from the current visit data.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>Select this option to display names for each visitor data Attribute in the message payload.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="options-record-suffix-1">Options: Record Suffix</h4>
 <table>
 <thead>
@@ -536,13 +577,36 @@
 </table>
 <h3 id="action-send-customized-data-to-delivery-stream-advanced">Action: Send Customized Data to Delivery Stream (Advanced)</h3>
 <h4 id="parameters-2">Parameters</h4>
-<ul>
-<li><strong>Delivery Stream</strong>: Required. Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
-<li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
-<li><strong>Message Data</strong>: Required. Construct a custom message body. Map attribute(s) to names for simple one level JSON format, or reference a template name (surrounded in double curly braces) and select the <strong>Custom Message Definition</strong> option.</li>
-<li><strong>Message Template Variables</strong>: Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details.</li>
-<li><strong>Message Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct a message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Required. Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+</tr>
+<tr>
+<td>Message Data</td>
+<td>Required. Construct a custom message body. Map attributes to names in a simple one-level JSON format, or reference a template name enclosed in double curly braces and select the <strong>Custom Message Definition</strong> option.</td>
+</tr>
+<tr>
+<td>Message Template Variables</td>
+<td>Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a> for details.</td>
+</tr>
+<tr>
+<td>Message Templates</td>
+<td>Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information about syntax and extensions, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="options-record-suffix-2">Options: Record Suffix</h4>
 <table>
 <thead>
@@ -590,10 +654,24 @@
 </tbody>
 </table>
 <h5 id="custom-message-definition">Custom Message Definition</h5>
-<ul>
-<li><strong>Message Template Variables</strong>: Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li>
-<li><strong>Message Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information about syntax and extensions, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message Template Variables</td>
+<td>Map attributes to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</td>
+</tr>
+<tr>
+<td>Message Templates</td>
+<td>Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information about syntax and extensions, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action-send-event-data-to-delivery-stream-batched">Action: Send Event Data to Delivery Stream (Batched)</h3>
 <h4 id="batch-limits-1">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
@@ -693,7 +771,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 10, 2024 
+          <p>This page was last updated:  June 11, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

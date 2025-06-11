@@ -467,7 +467,7 @@
     }
   ]
 }
-</code></pre><ol start="6">
+</code></pre><ol>
 <li>Click <strong>Next Step</strong>.</li>
 <li>Under <strong>Policy Name</strong>, enter <strong>TealiumKinesis</strong>.</li>
 <li>Click <strong>Create Policy</strong>.</li>
@@ -481,7 +481,7 @@
 <li>For the Name, enter <strong>TealiumUser</strong>.</li>
 <li>Click <strong>Create Role</strong>.</li>
 </ol>
-<p>Kinesis will generate an ARN for the role similar to the following:</p>
+<p>Kinesis generates an ARN for the role similar to the following:</p>
 <pre tabindex="0"><code>arn:aws:kinesis:us-east-1:123456789:role/example
 </code></pre><p>For more information, see <a href="https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Controlling Access to Amazon Kinesis Data Streams Resources Using IAM</a> and <a href="https://docs.aws.amazon.com/streams/latest/dev/tutorial-stock-data-kplkcl-iam.html">Create an IAM Policy and User</a>.</p>
 <h2 id="configure-settings">Configure Settings</h2>
@@ -495,7 +495,7 @@ Optional: Provide Amazon Resource Name (ARN) of role to assume. For example: <co
 <li><strong>Assume Role: Session Name</strong><br>
 Required: Provide identifier for assumed role session. Length Constraints: Minimum length of 2, Maximum length of 64.</li>
 <li><strong>Assume Role: External ID</strong><br>
-Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
+Optional: Provide external identifier. See: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
 </ul>
 <p>After you configure the connector, click <strong>Test Connection</strong> to confirm that the connector can connect to Amazon.</p>
 <h2 id="actions">Actions</h2>
@@ -513,11 +513,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Sequence Number For Ordering</td>
@@ -529,7 +529,7 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
@@ -545,11 +545,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Sequence Number For Ordering</td>
@@ -560,12 +560,16 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <td>The key used to hash the Partition Key.</td>
 </tr>
 <tr>
-<td>Include Current Visit Data</td>
-<td>A <code>true</code>/<code>false</code> value that indicates whether to include the current visit data in the payload.</td>
+<td>Include Current Visit Data With Visitor Data</td>
+<td>Add the current visit data to the payload. This includes event visit data if Exclude Current Visit Event Data isn&rsquo;t selected.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Exclude event data from the current visit data.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
@@ -581,11 +585,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Sequence Number For Ordering</td>
@@ -601,11 +605,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Optional.<ul><li>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+<td>Optional.<ul><li>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Optional.<ul><li>Provide templates to be referenced in message data (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td>Optional.<ul><li>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -628,11 +632,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Explicit Hash Key</td>
@@ -640,7 +644,7 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
@@ -663,11 +667,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Explicit Hash Key</td>
@@ -679,7 +683,7 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
@@ -702,11 +706,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 <tbody>
 <tr>
 <td>Stream Name</td>
-<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+<td>Select the stream to send data to. If your IAM policy doesn&rsquo;t grant <code>kinesis:ListStreams</code> permission, manually enter a custom value.</td>
 </tr>
 <tr>
 <td>Partition Key</td>
-<td>(Required) A partition key groups data by shard within a stream.</td>
+<td>(Required) A partition key groups data into shards within a stream.</td>
 </tr>
 <tr>
 <td>Explicit Hash Key</td>
@@ -718,11 +722,11 @@ Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Optional.<ul><li>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+<td>Optional.<ul><li>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Optional.<ul><li>Provide templates to be referenced in message data (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td>Optional.<ul><li>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -786,7 +790,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 20, 2023 
+          <p>This page was last updated:  June 11, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
