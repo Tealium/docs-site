@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Facebook Pixelタグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
+    <title>Facebook Pixel タグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -466,7 +466,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Facebook Pixelタグ構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Facebook Pixel タグ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -474,154 +474,150 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium iQタグ管理アカウントでFacebook Pixelタグを構成する方法について説明します。
+      この記事では、Tealium iQ タグ管理アカウントで Facebook Pixel タグを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>レガシーFacebook Pixelについての情報は、<a href="/ja/client-side-tags/facebook-pixel-legacy/">Facebook Pixel構成ガイド（レガシー）</a>を参照してください。</p>
-<h2 id="仕組み">仕組み</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>従来の Facebook Pixel についての情報は、<a href="/ja/client-side-tags/facebook-pixel-legacy/">Facebook Pixel 構成ガイド（レガシー）</a>をご覧ください。</p>
+<h2 id="動作方法">動作方法</h2>
 <ul>
 <li>
-<p>注文IDが入力されると自動的に購入の追跡が行われます。</p>
+<p>注文 ID が入力されると、購入追跡が自動的に行われます。</p>
 </li>
 <li>
-<p>Pixel IDフィールドにカンマで区切ったPixel IDのリストを入力することができます。</p>
+<p>Pixel ID フィールドには、カンマ区切りの Pixel ID リストを入力できます。</p>
 </li>
 <li>
-<p><strong>イベントIDの生成</strong>: <code>true</code>に構成すると、Facebook Pixelで<code>event_id</code>パラメータを生成し、これらのイベントIDをサーバーサイドの属性として利用可能にします。</p>
+<p><strong>イベント ID の生成</strong>: <code>true</code>に構成すると、Facebook Pixel で <code>event_id</code> パラメータが生成され、これらのイベント ID がサーバーサイド属性として利用可能になります。</p>
 <ul>
-<li>Tealium Collectタグの最新バージョンが必要です。</li>
-<li>カスタム変数を<code>event_id</code>にマッピングする予定の場合は、<code>true</code>に構成する必要があります。</li>
-<li><a href="#conversions-api-for-web">Web用Conversions API</a>を参照してください。</li>
+<li>最新バージョンの Tealium Collect タグが必要です。</li>
+<li><code>event_id</code> にカスタム変数をマッピングする場合は、<code>true</code> に構成する必要があります。</li>
+<li>詳細については、<a href="#conversions-api-for-web">Web 用コンバージョン API</a> を参照してください。</li>
 </ul>
 </li>
 <li>
-<p>テンプレートは自動的に商品の数量の配列が存在する場合に<code>num_items</code>の値を計算しようとします。</p>
+<p>テンプレートは自動的に <code>num_items</code> 値を計算しようとします。製品数量配列が存在する場合です。</p>
 </li>
 <li>
-<p>マッピングを使用して：</p>
+<p>マッピングを使用して以下を行います：</p>
 <ul>
-<li><code>trackSingle</code>を切り替える（デフォルトではtrue）</li>
-<li><code>disablePushState</code>を切り替える（デフォルトではfalse）</li>
-<li>タグの構成を動的に構成する</li>
-<li>E-Commerce拡張の値を上書きする</li>
+<li><code>trackSingle</code> の切り替え（デフォルトでは <code>true</code>）</li>
+<li><code>disablePushState</code> の切り替え（デフォルトでは <code>false</code>）</li>
+<li>タグ構成を動的に構成</li>
+<li>E-Commerce 拡張の値を上書き</li>
 </ul>
 </li>
 <li>
-<p>以下のE-Commerce拡張パラメータをサポートしています：</p>
+<p>次の E-Commerce 拡張パラメータをサポートします：</p>
 <ul>
-<li>注文ID</li>
+<li>注文 ID</li>
 <li>小計</li>
 <li>通貨</li>
-<li>商品IDのリスト</li>
-<li>商品カテゴリのリスト</li>
-<li>商品価格のリスト</li>
-<li>商品数量のリスト</li>
-<li>商品名のリスト</li>
+<li>製品 ID のリスト</li>
+<li>製品カテゴリのリスト</li>
+<li>製品価格のリスト</li>
+<li>製品数量のリスト</li>
+<li>製品名のリスト</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Pixelタグは自動的にユーザーデータをハッシュ化します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Pixel タグは自動的にユーザーデータをハッシュ化します。</p>
 </li>
 </ul>
-<h3 id="web用conversions-api">Web用Conversions API</h3>
-<p>（この機能は、アクティブなTealium Collectタグが必要です。）</p>
-<p>Facebook Conversions API for Webをサポートするためには、<strong>イベントIDの生成</strong>を<code>true</code>に構成します。<strong>イベントIDの生成</strong>が有効になっていると、このタグは追跡される各イベントに対して一意のイベントIDを生成し、それを属性としてTealium EventStreamに送信し、Facebook Conversionsコネクタで使用し、<code>event_id</code>パラメータでFacebook Pixelに渡します。このイベントID属性は、コネクタでマッピングすることができ、ウェブベースのタグとサーバーサイドの統合を同期させます。</p>
-<p>タグは、以下の命名規則を使用して生成されたイベント属性を使用してイベントIDを送信します：</p>
+<h3 id="web-用コンバージョン-api">Web 用コンバージョン API</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能にはアクティブな <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a> が必要です。</p>
+<p>Web 用 Facebook コンバージョン API をサポートするには、<strong>イベント ID の生成</strong> を <code>true</code> に構成します。<strong>イベント ID の生成</strong> が有効になると、このタグは各イベントを追跡するための一意のイベント ID を生成し、それを Tealium EventStream に属性として送信し、Facebook コンバージョンコネクタで使用し、Facebook Pixel に <code>event_id</code> パラメータとして渡します。このイベント ID 属性は、コネクタでマッピングされ、Web ベースのタグをサーバーサイド統合と同期させることができます。</p>
+<p>タグは次の命名規則を使用してイベント ID を送信します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}
-</code></pre><p>例えば、タグ＃32からの購入イベントは、以下の属性と値を送信します：</p>
+</code></pre><p>例えば、タグ #32 からの購入イベントは次の属性と値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;fb_event_id_Purchase_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同じタグからのページビューイベントは、以下の属性と値を送信します：</p>
+</span></span></code></pre></div><p>同じタグからのページビューイベントは次の属性と値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;fb_event_id_PageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>これらのイベントID属性の使用方法については、<a href="/ja/server-side-connectors/facebook-conversions-connector/#deduplication-for-web-events">Facebook Conversionsコネクタ：ウェブイベントの重複排除</a>を参照してください。</p>
-<h4 id="レガシーイベントid">レガシーイベントID</h4>
-<p>Facebook Pixelタグの古いバージョンでは、イベントID属性は<code>fb_event_id_{FACEBOOK_EVENT}</code>の形式で生成されていました。例えば<code>fb_event_id_Purchase</code>などです。これらの古い属性名はタグによって引き続き生成されますが、同じページ上の複数のFacebookタグをサポートしていないため、レガシーと見なされます。</p>
-<p>Facebook Pixelタグの最新バージョンは、生成された属性名にタグUIDを含むことで、ページ上で複数のFacebookタグが発火することをサポートしています。まだイベントID属性のレガシーフォーマットを使用している場合は、タグの最新バージョンに更新し、新しいイベントID属性を参照することをお勧めします。</p>
-<h2 id="タグの構成">タグの構成</h2>
-<p>まず、Tealiumタグマーケットプレイスにアクセスし、Facebook Pixelタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しくはこちら）。</p>
-<p>タグを追加したら、以下の構成を行います：</p>
+</span></span></code></pre></div><h4 id="重複排除">重複排除</h4>
+<p>適切なイベントの重複排除を確保するために、Facebook Pixel タグからのイベント ID を Tealium Collect タグによって送信されるペイロードに含める必要があります。これを行うには、次の手順を実行します：</p>
+<ul>
+<li><strong>タグタイミング</strong> ドロップダウンから <strong>優先</strong> を選択します。</li>
+<li><strong>バンドルフラグ</strong> トグルを <code>オン</code> に構成します。</li>
+<li><a href="/ja/iq-tag-management/extensions/load-order-manager/">ロードオーダーマネージャー画面</a>を使用して、Tealium Collect タグの前に Facebook Pixel タグを発火させます。Tealium Collect タグは最後に発火させることをお勧めします。</li>
+</ul>
+<p>これらのイベント ID 属性の使用に関する情報は、<a href="/ja/server-side-connectors/facebook-conversions-connector/#deduplication-for-web-events">Facebook コンバージョンコネクタ：Web イベントの重複排除</a>を参照してください。</p>
+<h4 id="レガシーイベント-id">レガシーイベント ID</h4>
+<p>Facebook Pixel タグの古いバージョンでは、イベント ID 属性は <code>fb_event_id_{FACEBOOK_EVENT}</code> の形式で生成されていました。例えば <code>fb_event_id_Purchase</code> です。これらの古い属性名はタグによって引き続き生成されますが、同じページ上で複数の Facebook タグをサポートしないため、レガシーと見なされます。</p>
+<p>Facebook Pixel タグの最新バージョンは、生成された属性名にタグ UID を含めることで、ページ上で複数の Facebook タグの発火をサポートします。もしまだレガシー形式のイベント ID 属性を使用している場合は、タグの最新バージョンに更新し、新しいイベント ID 属性を参照することをお勧めします。</p>
+<h2 id="タグ構成">タグ構成</h2>
+<p>まず、Tealium タグマーケットプレースにアクセスして Facebook Pixel タグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しくはこちら）。</p>
+<p>タグを追加した後、次の構成を構成します：</p>
 <ul>
 <li><strong>Pixel ID</strong>
 <ul>
-<li>あなたのFacebook Pixel ID。</li>
-<li>Pixel IDはコードスニペットに長い数字の列として表示されます。</li>
-<li>スペースなしのカンマ区切りのリストを使用して複数のPixel IDを入力することができます。</li>
+<li>あなたの Facebook Pixel ID。</li>
+<li>Pixel ID はコードスニペット内で長い数字のシリーズとして表示されます。</li>
+<li>複数の Pixel ID をカンマ区切りリストで入力できます。スペースは入れません。</li>
 <li>例：<code>fbq(&quot;init&quot;, &quot;12345678901234&quot;);</code></li>
 </ul>
 </li>
-<li><strong>Advanced Matching</strong>
+<li><strong>高度なマッチング</strong>
 <ul>
-<li>Facebook Advanced Matchingサービスにデータを有効にして渡します。</li>
+<li>Facebook Advanced Matching サービスにデータを渡して有効にします。</li>
 <li>例：<code>fbq(&quot;init&quot;, &quot;12345678901234&quot;, {em:&quot;6dd8b7d7...&quot;});</code></li>
-<li><strong>Advanced Matching</strong>を有効にし、個人を特定可能な情報（PII）を含むパラメータをマッピングした場合、<strong>Meta Events Manager</strong>の<strong>Automatic Advanced Matching</strong>を無効にし、パラメータを手動でのみマッピングすることを強く推奨します。<strong>Automatic Advanced Matching</strong>は、あなたのニーズと範囲を超えた追加のPIIパラメータをマッピングする可能性があり、セキュリティとプライバシーの問題を引き起こす可能性があります。詳細については、Facebookの<a href="https://www.facebook.com/business/help/1993001664341800?id=1205376682832142">ウェブサイトやモバイルアプリの自動高度なマッチングの構成</a>を参照してください。</li>
+<li><strong>高度なマッチング</strong> を有効にして個人識別情報（PII）を含むパラメータをマッピングする場合は、<strong>自動高度なマッチング</strong> を <strong>Meta Events Manager</strong> で無効にし、パラメータを手動でのみマッピングすることを強くお勧めします。<strong>自動高度なマッチング</strong> は、必要とされる範囲外の追加の PII パラメータをマッピングする可能性があり、セキュリティおよびプライバシーの問題を引き起こす可能性があります。詳細については、Facebook の <a href="https://www.facebook.com/business/help/1993001664341800?id=1205376682832142">ウェブサイトまたはモバイルアプリの自動高度なマッチングの構成</a> を参照してください。</li>
 </ul>
 </li>
-<li><strong>イベントIDの生成</strong>
+<li><strong>イベント ID の生成</strong>
 <ul>
-<li>サーバーサイドでイベントIDを送信するためにTealium Collectタグが必要です。</li>
-<li>すべてのFacebook追跡イベントに対して自動的にイベントIDを生成します。</li>
-<li>イベントID属性は次の命名規則に従います：<code>fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}</code></li>
+<li>サーバーサイドでイベント ID を送信するために Tealium Collect タグが必要です。</li>
+<li>すべての Facebook トラッキングイベントに対して自動的にイベント ID を生成します。</li>
+<li>イベント ID 属性は次の命名規則に従います：<code>fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}</code></li>
 <li>例：<code>&quot;fb_event_id_Purchase_32&quot; : &quot;028b2ade7478...&quot;</code></li>
 </ul>
 </li>
 </ul>
 <h2 id="イベントマッピング">イベントマッピング</h2>
-<p>Facebook Pixelのイベントは、特定の値に等しい変数を選択してイベントにマッピングし、トリガーを入力することでデータマッピングを通じて構成されます。トリガーは、変数が特定の値に等しいときにイベントを開始します。以下のユースケースでこれを示します。</p>
+<p>Facebook Pixel イベントは、イベントにマップする変数を選択し、トリガーを入力することによってデータマッピングを通じて構成されます。トリガーは、変数が特定の値に等しい場合にイベントを開始します。次のユースケースで示されています。</p>
 <h3 id="ユースケース購入イベント">ユースケース：購入イベント</h3>
 <p>購入イベントを構成するには：</p>
 <ol>
-<li>変数のドロップダウンリストから<code>tealium_event</code>を選択し、<strong>Select a Destination</strong>をクリックします。</li>
-<li><strong>Category</strong>セクションで<strong>Events</strong>を選択します。</li>
-<li><strong>When mapped variable equals</strong>フィールドを<code>Purchase</code>に構成します。これは、<code>tealium_event</code>が購入に等しくなければならない値です。</li>
-<li><strong>Trigger event</strong>ドロップダウンリストで<code>Purchase</code>を選択します。これは、<code>tealium_event</code>が購入に等しいときにトリガーされるイベントです。<figure><a class="slb" href="/images/client-side-tags/a.png"><img src="/images/client-side-tags/a.png"
+<li>変数ドロップダウンリストから <code>tealium_event</code> を選択し、<strong>宛先を選択</strong> をクリックします。</li>
+<li><strong>カテゴリ</strong> セクションで <strong>イベント</strong> を選択します。</li>
+<li><strong>マップされた変数が等しい場合</strong> フィールドに <code>Purchase</code> を構成します。これは <code>tealium_event</code> が購入をトリガーするために等しくなければならない値です。</li>
+<li><strong>トリガーイベント</strong> ドロップダウンリストで <code>Purchase</code> を選択します。これは <code>tealium_event</code> が購入に等しい場合にトリガーされるイベントです。<figure><a class="slb" href="/images/client-side-tags/a.png"><img src="/images/client-side-tags/a.png"
          alt="Use Case: Purchase Event"
          title="Use Case: Purchase Event"/>
     </a>
-</figure>購入イベントに追加のデータを送信する必要があり、既に組み込まれているE-Commerce拡張のマッピングでカバーされていない場合は、<strong>Custom Parameters</strong>を使用して追加の購入データをマッピングします。</li>
+</figure>購入イベントに送信する追加データが必要な場合は、<strong>カスタムパラメータ</strong> を使用して追加の購入データをマッピングします。</li>
 </ol>
-<p>以下の例では、商品のブランドを購入イベントと一緒に送信します：</p>
+<p>次の例では、購入イベントに製品ブランドを渡します：</p>
 <ol>
-<li>
-<p>変数のドロップダウンリストから<code>product_brand</code>を選択し、<strong>Select a Destination</strong>をクリックします。</p>
-</li>
-<li>
-<p><strong>Category</strong>セクションで<strong>Event specific Parameters</strong>を選択します。</p>
-</li>
-<li>
-<p><strong>Destination</strong>フィールドをカスタムパラメータの名前<code>brand</code>に構成します。</p>
-</li>
-<li>
-<p><strong>For event</strong>ドロップダウンリストで、カスタムパラメータが収集するイベント<code>Purchase</code>を選択します。<br>
+<li>変数ドロップダウンリストから <code>product_brand</code> を選択し、<strong>宛先を選択</strong> をクリックします。</li>
+<li><strong>カテゴリ</strong> セクションで <strong>イベント固有のパラメータ</strong> を選択します。</li>
+<li><strong>宛先</strong> フィールドにカスタムパラメータの名前 <code>brand</code> を構成します。</li>
+<li><strong>イベントのために</strong> ドロップダウンリストで <code>Purchase</code> イベントを選択します。このカスタムパラメータはそのイベントで収集されます。<br>
 <figure><a class="slb" href="/images/client-side-tags/c.png"><img src="/images/client-side-tags/c.png"
          alt="Event: Purchase"
          title="Event: Purchase"/>
     </a>
-</figure>マッピングをテストするには、<a href="https://developers.facebook.com/docs/facebook-pixel/support/pixel-helper/">Facebook Pixel Helper</a>またはお使いのブラウザが提供する開発者ツールを使用します。</p>
-</li>
-<li>
-<p><strong>Network Panel</strong>を使用し、Facebookをフィルタリングして、Facebookをキーワードに含むすべてのネットワークリクエストを表示します。</p>
-</li>
-<li>
-<p>リクエストの名前を見て、購入イベントが成功したことを確認します。</p>
-</li>
-<li>
-<p>リクエストを開き、<strong>Query String Parameters</strong>までスクロールして、構成したデータマッピングの値を確認します：<code>purchase</code> , <code>product_id</code> , <code>product_brand</code>。<br>
+</figure></li>
+</ol>
+<p><a href="https://developers.facebook.com/docs/facebook-pixel/support/pixel-helper/">Facebook Pixel Helper</a> またはブラウザの開発者ツールを使用してマッピングをテストします。</p>
+<ol>
+<li><strong>ネットワークパネル</strong> を使用し、Facebook をキーワードとして含むすべてのネットワークリクエストを表示するために Facebook でフィルタリングします。</li>
+<li>リクエストの名前を見て、購入イベントが成功したことを確認します。</li>
+<li>リクエストを開き、<strong>クエリ文字列パラメータ</strong> までスクロールダウンして、構成されたデータマッピングの値を確認します：<code>purchase</code> , <code>product_id</code> , <code>product_brand</code>。<br>
 <figure><a class="slb" href="/images/client-side-tags/d.png"><img src="/images/client-side-tags/d.png"
          alt="Facebook Pixel Helper"
          title="Facebook Pixel Helper"/>
     </a>
-</figure></p>
-</li>
+</figure></li>
 </ol>
 <h2 id="データマッピング">データマッピング</h2>
-<p>データマッピングは階層構造を持ち、特定のマッピング（例えば、Event-Specific Parameters）が一般的なマッピングよりも優先されます。例えば、<strong>Standard Tracking Parameters</strong>タブの<strong>Currency</strong>宛先に変数をマッピングし、<strong>ViewContent</strong>イベントの<strong>Currency</strong>宛先にマッピングした場合、<strong>ViewContent</strong>マッピングは一般的なマッピングよりも優先されますが、これは<strong>ViewContent</strong>イベントに対してのみです。他のすべてのイベントでは、Standard Trackingマッピングが使用されます。</p>
-<p>マッピングとは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">Data Mappings</a>を参照してください。</p>
-<p>利用可能なカテゴリは以下の通りです：</p>
-<h3 id="タグ構成">タグ構成</h3>
+<p>データマッピングは階層構造を持ち、特定のマッピング（例えばイベント固有のパラメーター）は一般的なマッピングよりも優先されます。例えば、<strong>標準トラッキングパラメーター</strong> タブで変数を <strong>Currency</strong> 宛先にマッピングし、<strong>ViewContent</strong> イベントのためにも <strong>Currency</strong> 宛先にマッピングした場合、<strong>ViewContent</strong> のマッピングが一般的なマッピングよりも優先されますが、これは <strong>ViewContent</strong> イベントにのみ適用されます。他のすべてのイベントには、標準トラッキングマッピングが使用されます。</p>
+<p>マッピングとは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数へデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>利用可能なカテゴリーは以下の通りです：</p>
+<h3 id="タグ構成-1">タグ構成</h3>
 <table>
 <thead>
 <tr>
@@ -636,49 +632,49 @@
 <td><code>pixel_id</code></td>
 <td>ピクセルID</td>
 <td>文字列</td>
-<td><ul><li>あなたのFacebookピクセルID。</li><li>ピクセルIDは、コードスニペット内で長い一連の数字として表示されます。</li><li>カンマ区切りのリストを使用して、複数のピクセルIDを入力することができます。スペースは不要です。</li><li>例：<code>fbq(&quot;init&quot;, &quot;12345678901234&quot;);</code></li></ul></td>
+<td><ul><li>あなたのFacebookピクセルID。</li><li>ピクセルIDはコードスニペット内で長い数字のシリーズとして表示されます。</li><li>カンマ区切りのリストを使用して複数のピクセルIDを入力できます（スペースなし）。</li><li>例：<code>fbq(&quot;init&quot;, &quot;12345678901234&quot;);</code></li></ul></td>
 </tr>
 <tr>
 <td><code>autoConfig</code></td>
 <td>自動構成の切り替え</td>
 <td>ブール値</td>
-<td></ul><li>自動構成の切り替え。</li></ul></td>
+<td><ul><li>自動構成を切り替えます。</li></ul></td>
 </tr>
 <tr>
 <td><code>auto_page_view</code></td>
 <td>自動ページビューの切り替え</td>
 <td>ブール値</td>
-<td><ul><li>ページのロード時にPageViewイベントをトリガーする自動PageViewトラッキングを有効または無効にする切り替え。</li><li>デフォルト値は<code>true</code>です。</li></ul></td>
+<td><ul><li>ページロード時にページビューイベントをトリガーする自動ページビュートラッキングを有効または無効にします。</li><li>デフォルト値は <code>true</code> です。</li></ul></td>
 </tr>
 <tr>
 <td><code>advanced_matching</code></td>
-<td>アドバンスドマッチングの切り替え</td>
+<td>高度なマッチングの切り替え</td>
 <td>ブール値</td>
-<td><ul><li>アドバンスドマッチングデータの収集を有効または無効にする切り替え。</li><li>デフォルト値は<code>true</code>です。</li></ul></td>
+<td><ul><li>高度なマッチングデータの収集を有効または無効にします。</li><li>デフォルト値は <code>true</code> です。</li></ul></td>
 </tr>
 <tr>
 <td><code>generate_event_id</code></td>
 <td>イベントIDの生成</td>
 <td>ブール値</td>
-<td><ul><li>各Facebookトラッキングイベントに対して一意のイベントIDを生成するかどうかを有効または無効にする切り替え。</li><li><code>event_id</code>の生成を有効にするには、タグ構成ページで<strong>イベントIDの生成</strong>を有効にする必要があります。</li><li>IDを生成するためには、<code>utag.js</code>ファイルの最新バージョンが必要です。</li><li>デフォルト値は<code>false</code>です。</li></ul></td>
+<td><ul><li>各Facebookトラッキングイベントに対して一意のイベントIDの生成を有効または無効にします。</li><li>イベントIDを生成するためには、タグ構成ページで <strong>イベントIDの生成</strong> を有効にする必要があります。</li><li>IDを生成するためには、最新バージョンの <code>utag.js</code> ファイルが必要です。</li><li>デフォルト値は <code>false</code> です。</li></ul></td>
 </tr>
 <tr>
 <td><code>calc_items</code></td>
 <td>アイテム数の自動計算</td>
 <td>ブール値</td>
-<td><ul><li>イベントのアイテム数を自動的に決定するかどうかを制御する切り替え。</li><li>商品数量にマッピングされたデータを使用して数量を決定します。</li><li>デフォルト値は<code>true</code>です。</li></ul></td>
+<td><ul><li>イベントのアイテム数を自動的に決定するかどうかを制御する切り替えです。</li><li>製品数量にマッピングされたデータを使用して数を決定します。</li><li>デフォルト値は <code>true</code> です。</li></ul></td>
 </tr>
 <tr>
 <td><code>track_single</code></td>
-<td>trackSingle使用の切り替え</td>
+<td>trackSingleの使用の切り替え</td>
 <td>ブール値</td>
-<td><ul><li>Facebookトラッキングイベントの<code>trackSingle</code>の使用を有効または無効にする。</li><li>デフォルト値は<code>true</code>です。</li><li><code>false</code>に構成すると、すべてのFacebookトラッキング呼び出しに<code>track</code>の値が使用されます。</li></ul></td>
+<td><ul><li>Facebookトラッキングイベントのための <code>trackSingle</code> の使用を有効または無効にします。</li><li>デフォルト値は <code>true</code> です。</li><li><code>false</code> に構成されている場合、すべてのFacebookトラッキングコールに <code>track</code> の値が使用されます。</li></ul></td>
 </tr>
 <tr>
 <td><code>disablePushState</code></td>
-<td>disablePushState使用の切り替え</td>
+<td>disablePushStateの使用の切り替え</td>
 <td>ブール値</td>
-<td><ul><li><code>disablePushState</code>構成の切り替え。これは、同じページ上で複数のPageViewsをトリガーするのを防ぐかどうかを制御します（シングルページアプリケーション用）。</li><li>デフォルト値は<code>false</code>です。</li></ul></td>
+<td><ul><li><code>disablePushState</code> 構成の切り替えで、同じページで複数のページビューがトリガーされるのを防ぐかどうかを制御します（シングルページアプリの場合）。</li><li>デフォルト値は <code>false</code> です。</li></ul></td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
@@ -688,7 +684,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="アドバンスドマッチング">アドバンスドマッチング</h4>
+<h4 id="高度なマッチング">高度なマッチング</h4>
 <table>
 <thead>
 <tr>
@@ -703,13 +699,13 @@
 <td><code>am.em</code></td>
 <td>メール</td>
 <td>文字列</td>
-<td><ul><li>メールアドレス。</li><li>タグはこの値を自動的に小文字に変換します。</li><li>この値はプレーンテキストであるか、正規化されてSHA-256でハッシュ化されていることができます。</li></ul></td>
+<td><ul><li>メールアドレス。</li><li>タグはこの値を自動的に小文字に変換します。</li><li>この値はプレーンテキスト、または正規化されてSHA-256ハッシュ化されたものにすることができます。</li></ul></td>
 </tr>
 <tr>
 <td><code>am.fn</code></td>
-<td>名前</td>
+<td>名</td>
 <td>文字列</td>
-<td>名前。</td>
+<td>名。</td>
 </tr>
 <tr>
 <td><code>am.ln</code></td>
@@ -727,7 +723,7 @@
 <td><code>am.ge</code></td>
 <td>性別</td>
 <td>文字列</td>
-<td><ul><li>性別。</li><li>タグはこの値を自動的に小文字に変換します。</li><li>この値は<code>m</code>または<code>f</code>でなければなりません。</li></ul></td>
+<td><ul><li>性別。</li><li>タグはこの値を自動的に小文字に変換します。</li><li>この値は <code>m</code> または <code>f</code> でなければなりません。</li></ul></td>
 </tr>
 <tr>
 <td><code>am.db</code></td>
@@ -761,15 +757,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="e-コマース">E-コマース</h3>
-<p>Facebook Pixelタグはeコマース対応しているため、デフォルトで<a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a>のマッピングを自動的に使用します。このカテゴリで手動でマッピングする必要は、拡張マッピングを上書きしたい場合や、希望するeコマース変数が拡張に含まれていない場合に限られます。</p>
+<h3 id="eコマース">Eコマース</h3>
+<p>Facebook PixelタグはEコマース対応であり、デフォルトで<a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">Eコマース拡張</a>のマッピングを使用します。拡張マッピングを上書きするか、拡張で提供されていないEコマース変数を使用したい場合を除き、このカテゴリでの手動マッピングは必要ありません。</p>
 <table>
 <thead>
 <tr>
 <th>変数</th>
 <th>宛先</th>
 <th>説明</th>
-<th>E-コマース拡張変数の上書き</th>
+<th>Eコマース拡張変数の上書き</th>
 </tr>
 </thead>
 <tbody>
@@ -799,32 +795,32 @@
 </tr>
 <tr>
 <td><code>product_id</code></td>
-<td>商品IDのリスト</td>
-<td>商品配列内の各商品の一意の識別子。</td>
+<td>製品IDのリスト</td>
+<td>製品配列内の各製品の一意の識別子。</td>
 <td><code>_cprod</code></td>
 </tr>
 <tr>
 <td><code>product_name</code></td>
-<td>商品名のリスト</td>
-<td>商品配列内の各商品の名前。</td>
+<td>製品名のリスト</td>
+<td>製品配列内の各製品の名前。</td>
 <td><code>_cprodname</code></td>
 </tr>
 <tr>
 <td><code>product_quantity</code></td>
-<td>商品数量のリスト</td>
-<td>商品配列内の商品の数量。</td>
+<td>製品数量のリスト</td>
+<td>製品配列内の製品の数量。</td>
 <td><code>_cquan</code></td>
 </tr>
 <tr>
 <td><code>product_category</code></td>
 <td>カテゴリのリスト</td>
-<td>商品配列内の各商品のカテゴリ。</td>
+<td>製品配列内の各製品のカテゴリ。</td>
 <td><code>_ccat</code></td>
 </tr>
 <tr>
 <td><code>product_unit_price</code></td>
 <td>価格のリスト</td>
-<td>商品配列内の各商品の単価。</td>
+<td>製品配列内の各製品の単価。</td>
 <td><code>_cprice</code></td>
 </tr>
 </tbody>
@@ -844,73 +840,73 @@
 <td><code>currency</code></td>
 <td>通貨</td>
 <td>文字列</td>
-<td>イベントの価値の通貨。</td>
+<td>イベントの値の通貨。</td>
 </tr>
 <tr>
 <td><code>content_category</code></td>
 <td>コンテンツカテゴリ</td>
 <td>配列または文字列</td>
-<td>ページまたは商品のカテゴリ。</td>
+<td>ページまたは製品のカテゴリ。</td>
 </tr>
 <tr>
 <td><code>content_name</code></td>
 <td>コンテンツ名</td>
 <td>配列または文字列</td>
-<td>ページまたは商品の名前。</td>
+<td>ページまたは製品の名前。</td>
 </tr>
 <tr>
 <td><code>content_ids</code></td>
 <td>コンテンツID</td>
 <td>整数または文字列の配列</td>
-<td>イベントに関連する商品IDまたはSKU。</td>
+<td>イベントに関連する製品IDまたはSKU。</td>
 </tr>
 <tr>
 <td><code>content_type</code></td>
 <td>コンテンツタイプ</td>
 <td>文字列</td>
-<td><ul><li>コンテンツIDに関連付けられた商品タイプ。これは、Facebookの商品フィードに記載されているタイプと一致します。</li><li>ほとんどの場合、この値は<code>product</code>または<code>product_group</code>です。</li><li>ダイナミック広告では、各ビジネス領域に対して他の正当な値があります。</li></ul></td>
+<td><ul><li>コンテンツIDに関連する製品タイプで、Facebook製品フィードに記載されているタイプと一致します。</li><li>ほとんどの場合、この値は<code>product</code>または<code>product_group</code>です。</li><li>ダイナミック広告では、各ビジネス縦断で他の正当な値があります。</li></ul></td>
 </tr>
 <tr>
 <td><code>contents</code></td>
 <td>コンテンツ</td>
 <td>JSONオブジェクトの配列</td>
-<td>量とコンテンツIDを含むJSONオブジェクトの配列。</td>
+<td>数量とコンテンツIDを含むJSONオブジェクトの配列。</td>
 </tr>
 <tr>
 <td><code>predicted_ltv</code></td>
 <td>予測生涯価値</td>
 <td>数値</td>
-<td>広告主が定義する購読者の予測生涯価値、正確な値で表現されます。</td>
+<td>広告主によって定義された購読者の予測生涯価値で、正確な値として表現されます。</td>
 </tr>
 <tr>
 <td><code>search_string</code></td>
 <td>検索文字列</td>
 <td>文字列</td>
-<td><code>Search</code>イベントの訪問が入力した文字列。</td>
+<td>訪問が<code>Search</code>イベントのために入力した文字列。</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td>ステータス</td>
 <td>文字列</td>
-<td><code>completeRegistration</code>イベントの登録ステータス。</td>
+<td><code>completeRegistration</code>イベントの登録状況。</td>
 </tr>
 <tr>
 <td><code>num_items</code></td>
 <td>アイテム数</td>
 <td>整数</td>
-<td><ul><li>イベントのアイテム数。</li><li>アイテム数は、数量のデータマッピングでの値に基づいて自動的に計算されます。</li><li>データマッピングまたは拡張機能で<code>calc_items</code> (<code>u.data.calc_items</code> )を<code>false</code>に構成することで自動計算を無効にします。</li></ul></td>
+<td><ul><li>イベントのアイテム数。</li><li>アイテム数は、数量にマッピングされた値に基づいて自動的に計算されます。</li><li>データマッピングまたは拡張機能で<code>calc_items</code> (<code>u.data.calc_items</code>)を<code>false</code>に構成することで自動計算を無効にします。</li></ul></td>
 </tr>
 <tr>
 <td><code>value</code></td>
-<td>値</td>
+<td>価値</td>
 <td>数値</td>
-<td>ユーザーがこのイベントをビジネスに対して実行する価値</td>
+<td>このイベントを実行するユーザーのビジネスへの価値</td>
 </tr>
 </tbody>
 </table>
 <h4 id="コンテンツタイプ">コンテンツタイプ</h4>
-<p><strong>標準トラッキングパラメータ</strong>タブまたは<strong>イベント固有パラメータ</strong>マッピングのいずれかで直接マッピングして<code>content_type</code>パラメータを構成します。</p>
-<p><strong>コンテンツタイプ</strong>タブでは、<code>content_type</code>パラメータを以下のサポートされている値のいずれかに条件付きで構成できます：</p>
+<p><strong>標準トラッキングパラメータ</strong>タブまたは<strong>イベント固有パラメータ</strong>マッピングで直接<code>content_type</code>パラメータにマッピングして構成します。</p>
+<p><strong>コンテンツタイプ</strong>タブでは、以下のサポートされている値のいずれかに<code>content_type</code>パラメータを条件付きで構成できます：</p>
 <ul>
 <li><code>destination</code></li>
 <li><code>flight</code></li>
@@ -920,7 +916,7 @@
 <li><code>product_group</code></li>
 <li><code>vehicle</code></li>
 </ul>
-<p>マッピングされた変数がフィールドに入力した値と等しい場合、その値はドロップダウンリストから選択したタイプに構成されます。ほとんどの場合、<code>product</code>または<code>product_group</code>の値が使用され、その値はFacebookにアップロードした商品フィードの商品に指定した<code>content_type</code>と一致する必要があります。他の値は主にダイナミック広告で使用されます。</p>
+<p>マッピングされた変数がフィールドに入力した値と等しい場合、ドロップダウンリストから選択したタイプに値が構成されます。ほとんどの場合、<code>product</code>または<code>product_group</code>が使用され、その値はFacebookにアップロードされた製品フィードの<code>content_type</code>と一致する必要があります。他の値は主にダイナミック広告で使用されます。</p>
 <table>
 <thead>
 <tr>
@@ -953,12 +949,12 @@
 <tr>
 <td><code>product</code></td>
 <td>文字列</td>
-<td>商品。</td>
+<td>製品。</td>
 </tr>
 <tr>
 <td><code>product_group</code></td>
 <td>文字列</td>
-<td>商品グループ。</td>
+<td>製品グループ。</td>
 </tr>
 <tr>
 <td><code>vehicle</code></td>
@@ -978,7 +974,7 @@
 <tbody>
 <tr>
 <td><code>AddPaymentInfo</code></td>
-<td>支払い情報の追加。</td>
+<td>支払情報を追加。</td>
 </tr>
 <tr>
 <td><code>AddToCart</code></td>
@@ -998,7 +994,7 @@
 </tr>
 <tr>
 <td><code>CustomizeProduct</code></td>
-<td>商品のカスタマイズ。</td>
+<td>製品のカスタマイズ。</td>
 </tr>
 <tr>
 <td><code>Donate</code></td>
@@ -1006,11 +1002,11 @@
 </tr>
 <tr>
 <td><code>FindLocation</code></td>
-<td>場所の検索。</td>
+<td>位置を検索。</td>
 </tr>
 <tr>
 <td><code>InitiateCheckout</code></td>
-<td>チェックアウトの開始。</td>
+<td>チェックアウトを開始。</td>
 </tr>
 <tr>
 <td><code>Lead</code></td>
@@ -1038,24 +1034,24 @@
 </tr>
 <tr>
 <td><code>SubmitApplication</code></td>
-<td>申し込みの提出。</td>
+<td>申請を提出。</td>
 </tr>
 <tr>
 <td><code>Subscribe</code></td>
-<td>購読。</td>
+<td>登録。</td>
 </tr>
 <tr>
 <td><code>ViewContent</code></td>
-<td>コンテンツの表示。</td>
+<td>コンテンツを表示。</td>
 </tr>
 <tr>
 <td><code>Custom</code></td>
-<td>提供されたフィールドにカスタムイベントの名前を入力します。</td>
+<td>カスタムイベント名を指定したフィールドに入力します。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="イベント固有のパラメータ">イベント固有のパラメータ</h3>
-<p>特定のイベントのみにパラメータをマッピングするには：</p>
+<h3 id="イベント固有パラメータ">イベント固有パラメータ</h3>
+<p>特定のイベント専用のパラメータをマッピングするには：</p>
 <ol>
 <li>ドロップダウンリストからパラメータの名前を選択します。</li>
 <li>構成したいパラメータの名前を入力します。</li>
@@ -1063,8 +1059,8 @@
 </ol>
 <ul>
 <li>カスタムイベントのパラメータをマッピングする場合、表示されるフィールドにカスタムイベントの名前を入力する必要があります。</li>
-<li>カスタムパラメータ名を入力したい場合は、パラメータのドロップダウンリストから<strong>カスタム</strong>オプションを選択し、表示されるフィールドにカスタムパラメータの名前を入力します。</li>
-<li>イベント固有のマッピングが発生するカスタムイベントを指定したい場合は、イベントのドロップダウンリストから<strong>カスタム</strong>オプションを選択し、表示されるフィールドにカスタムイベントの名前を入力します。</li>
+<li>カスタムパラメータ名を入力したい場合は、パラメータドロップダウンリストから<strong>カスタム</strong>オプションを選択し、表示されるフィールドにカスタムパラメータの名前を入力します。</li>
+<li>イベント固有のマッピングを行うカスタムイベントを指定したい場合は、イベントドロップダウンリストから<strong>カスタム</strong>オプションを選択し、表示されるフィールドにカスタムイベントの名前を入力します。</li>
 </ul>
 <table>
 <thead>
@@ -1076,7 +1072,7 @@
 <tbody>
 <tr>
 <td><code>AddPaymentInfo</code></td>
-<td>支払い情報の追加。</td>
+<td>支払情報を追加。</td>
 </tr>
 <tr>
 <td><code>AddToCart</code></td>
@@ -1100,7 +1096,7 @@
 </tr>
 <tr>
 <td><code>CustomizeProduct</code></td>
-<td>商品のカスタマイズ。</td>
+<td>製品のカスタマイズ。</td>
 </tr>
 <tr>
 <td><code>Donate</code></td>
@@ -1108,11 +1104,11 @@
 </tr>
 <tr>
 <td><code>FindLocation</code></td>
-<td>場所の検索。</td>
+<td>位置を検索。</td>
 </tr>
 <tr>
 <td><code>InitiateCheckout</code></td>
-<td>チェックアウトの開始。</td>
+<td>チェックアウトを開始。</td>
 </tr>
 <tr>
 <td><code>Lead</code></td>
@@ -1140,15 +1136,15 @@
 </tr>
 <tr>
 <td><code>SubmitApplication</code></td>
-<td>申し込みの提出。</td>
+<td>申請を提出。</td>
 </tr>
 <tr>
 <td><code>Subscribe</code></td>
-<td>購読。</td>
+<td>登録。</td>
 </tr>
 <tr>
 <td><code>ViewContent</code></td>
-<td>コンテンツの表示。</td>
+<td>コンテンツを表示。</td>
 </tr>
 <tr>
 <td><code>Custom</code></td>
@@ -1161,7 +1157,7 @@
 <thead>
 <tr>
 <th>変数</th>
-<th>目的地</th>
+<th>宛先</th>
 <th>タイプ</th>
 <th>説明</th>
 </tr>
@@ -1171,131 +1167,131 @@
 <td><code>body_style</code></td>
 <td>ボディスタイル</td>
 <td>文字列</td>
-<td>ボディスタイル。</td>
+<td>ボディスタイル</td>
 </tr>
 <tr>
 <td><code>condition_of_vehicle</code></td>
 <td>車両の状態</td>
 <td>文字列</td>
-<td>車両の状態。</td>
+<td>車両の状態</td>
 </tr>
 <tr>
 <td><code>country</code></td>
 <td>国</td>
 <td>文字列</td>
-<td>国。</td>
+<td>国</td>
 </tr>
 <tr>
 <td><code>drivetrain</code></td>
 <td>駆動方式</td>
 <td>文字列</td>
-<td>駆動方式。</td>
+<td>駆動方式</td>
 </tr>
 <tr>
 <td><code>exterior_color</code></td>
 <td>外装色</td>
 <td>文字列</td>
-<td>外装色。</td>
+<td>外装色</td>
 </tr>
 <tr>
 <td><code>fuel_type</code></td>
 <td>燃料タイプ</td>
 <td>文字列</td>
-<td>燃料タイプ。</td>
+<td>燃料タイプ</td>
 </tr>
 <tr>
 <td><code>interior_color</code></td>
 <td>内装色</td>
 <td>文字列</td>
-<td>内装色。</td>
+<td>内装色</td>
 </tr>
 <tr>
 <td><code>lead_type</code></td>
 <td>リードタイプ</td>
 <td>文字列</td>
-<td>リードタイプ。</td>
+<td>リードタイプ</td>
 </tr>
 <tr>
 <td><code>make</code></td>
 <td>メーカー</td>
 <td>文字列</td>
-<td>メーカー。</td>
+<td>メーカー</td>
 </tr>
 <tr>
 <td><code>model</code></td>
 <td>モデル</td>
 <td>文字列</td>
-<td>モデル。</td>
+<td>モデル</td>
 </tr>
 <tr>
 <td><code>postal_code</code></td>
 <td>郵便番号</td>
 <td>文字列</td>
-<td>郵便番号。</td>
+<td>郵便番号</td>
 </tr>
 <tr>
 <td><code>preferred_price_range</code></td>
 <td>希望価格範囲</td>
 <td>配列</td>
-<td>最小と最大の希望価格の配列。</td>
+<td>最小および最大の希望価格の配列</td>
 </tr>
 <tr>
 <td><code>price</code></td>
 <td>価格</td>
 <td>数値</td>
-<td>価格。</td>
+<td>価格</td>
 </tr>
 <tr>
 <td><code>registration_type</code></td>
 <td>登録タイプ</td>
 <td>文字列</td>
-<td>登録タイプ。</td>
+<td>登録タイプ</td>
 </tr>
 <tr>
 <td><code>search_type</code></td>
 <td>検索タイプ</td>
 <td>文字列</td>
-<td>検索タイプ。</td>
+<td>検索タイプ</td>
 </tr>
 <tr>
 <td><code>state_of_vehicle</code></td>
 <td>車両の状態</td>
 <td>文字列</td>
-<td>車両の状態。</td>
+<td>車両の状態</td>
 </tr>
 <tr>
 <td><code>transmission</code></td>
 <td>トランスミッション</td>
 <td>文字列</td>
-<td>トランスミッション。</td>
+<td>トランスミッション</td>
 </tr>
 <tr>
 <td><code>trim</code></td>
 <td>トリム</td>
 <td>文字列</td>
-<td>トリム。</td>
+<td>トリム</td>
 </tr>
 <tr>
 <td><code>viewcontent_type</code></td>
-<td>ViewContentタイプ</td>
+<td>コンテンツタイプを見る</td>
 <td>文字列</td>
-<td>ViewContentタイプ。</td>
+<td>コンテンツタイプ</td>
 </tr>
 <tr>
 <td><code>vin</code></td>
 <td>VIN</td>
 <td>文字列</td>
-<td>車両識別番号。</td>
+<td>車両識別番号</td>
 </tr>
 <tr>
 <td><code>year</code></td>
 <td>年</td>
 <td>数値</td>
-<td>車両の年式。</td>
+<td>車両の年</td>
 </tr>
 </tbody>
 </table>
-<h3 id="目的地パラメータ">目的地パラメータ</h3>
+<h3 id="宛先パラメータ">宛先パラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -1308,42 +1304,42 @@
 <tr>
 <td><code>city</code></td>
 <td>文字列</td>
-<td>都市。</td>
+<td>市</td>
 </tr>
 <tr>
 <td><code>country</code></td>
 <td>文字列</td>
-<td>国。</td>
+<td>国</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
 <td>数値</td>
-<td>大人の数。</td>
+<td>大人の数</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
 <td>数値</td>
-<td>子供の数。</td>
+<td>子供の数</td>
 </tr>
 <tr>
 <td><code>region</code></td>
 <td>文字列</td>
-<td>地域。</td>
+<td>地域</td>
 </tr>
 <tr>
 <td><code>suggested_destinations</code></td>
 <td>配列</td>
-<td>提案された目的地の配列。</td>
+<td>提案された目的地の配列</td>
 </tr>
 <tr>
 <td><code>travel_start</code></td>
 <td>日付</td>
-<td>旅行開始日。</td>
+<td>旅行開始日</td>
 </tr>
 <tr>
 <td><code>travel_end</code></td>
 <td>日付</td>
-<td>旅行終了日。</td>
+<td>旅行終了日</td>
 </tr>
 </tbody>
 </table>
@@ -1360,66 +1356,66 @@
 <tr>
 <td><code>departing_arrival_date</code></td>
 <td>文字列</td>
-<td>出発フライトの到着日。</td>
+<td>出発フライト到着日</td>
 </tr>
 <tr>
 <td><code>departing_departure_date</code></td>
-<td>String</td>
-<td>出発フライトの出発日</td>
+<td>文字列</td>
+<td>出発フライト出発日</td>
 </tr>
 <tr>
 <td><code>destination_ids</code></td>
-<td>Array</td>
+<td>配列</td>
 <td>目的地ID</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>大人の数</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>子供の数</td>
 </tr>
 <tr>
 <td><code>num_infants</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>幼児の数</td>
 </tr>
 <tr>
 <td><code>preferred_num_stops</code></td>
-<td>Number</td>
-<td>優先する停止数</td>
+<td>数値</td>
+<td>希望の停留所数</td>
 </tr>
 <tr>
 <td><code>price</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>価格</td>
 </tr>
 <tr>
 <td><code>returning_arrival_date</code></td>
-<td>Date</td>
-<td>帰りのフライトの到着日</td>
+<td>日付</td>
+<td>帰りのフライト到着日</td>
 </tr>
 <tr>
 <td><code>returning_departure_date</code></td>
-<td>Date</td>
-<td>帰りのフライトの出発日</td>
+<td>日付</td>
+<td>帰りのフライト出発日</td>
 </tr>
 <tr>
 <td><code>travel_class</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>旅行クラス</td>
 </tr>
 <tr>
 <td><code>user_score</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>ユーザースコア</td>
 </tr>
 </tbody>
 </table>
-<h3 id="ホテルのパラメータ">ホテルのパラメータ</h3>
+<h3 id="ホテルパラメータ">ホテルパラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -1431,72 +1427,72 @@
 <tbody>
 <tr>
 <td><code>checkin_date</code></td>
-<td>Date</td>
+<td>日付</td>
 <td>チェックイン日</td>
 </tr>
 <tr>
 <td><code>checkout_date</code></td>
-<td>Date</td>
+<td>日付</td>
 <td>チェックアウト日</td>
 </tr>
 <tr>
 <td><code>city</code></td>
-<td>String</td>
-<td>都市</td>
+<td>文字列</td>
+<td>市</td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>国</td>
 </tr>
 <tr>
 <td><code>destination_ids</code></td>
-<td>Array</td>
+<td>配列</td>
 <td>目的地ID</td>
 </tr>
 <tr>
 <td><code>hotel_score</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>ホテルスコア</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>大人の数</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>子供の数</td>
 </tr>
 <tr>
 <td><code>preferred_neighborhoods</code></td>
-<td>Array</td>
-<td>優先する地区の配列</td>
+<td>配列</td>
+<td>希望の近隣地域の配列</td>
 </tr>
 <tr>
 <td><code>preferred_price_range</code></td>
-<td>Array</td>
-<td>最小価格と最大価格の範囲の配列</td>
+<td>配列</td>
+<td>最小および最大の価格範囲の配列</td>
 </tr>
 <tr>
 <td><code>preferred_star_ratings</code></td>
-<td>String</td>
-<td>優先する星評価</td>
+<td>文字列</td>
+<td>希望の星評価</td>
 </tr>
 <tr>
 <td><code>region</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>地域</td>
 </tr>
 <tr>
 <td><code>user_score</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>ユーザースコア</td>
 </tr>
 </tbody>
 </table>
-<h3 id="映画のパラメータ">映画のパラメータ</h3>
+<h3 id="映画パラメータ">映画パラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -1508,12 +1504,12 @@
 <tbody>
 <tr>
 <td><code>movieref</code></td>
-<td>String</td>
-<td>映画の参照</td>
+<td>文字列</td>
+<td>映画リファラー</td>
 </tr>
 </tbody>
 </table>
-<h3 id="不動産のパラメータ">不動産のパラメータ</h3>
+<h3 id="不動産パラメータ">不動産パラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -1525,67 +1521,67 @@
 <tbody>
 <tr>
 <td><code>availability</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>利用可能性</td>
 </tr>
 <tr>
 <td><code>city</code></td>
-<td>String</td>
-<td>都市</td>
+<td>文字列</td>
+<td>市</td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>国</td>
 </tr>
 <tr>
 <td><code>lease_start_date</code></td>
-<td>Date</td>
+<td>日付</td>
 <td>リース開始日</td>
 </tr>
 <tr>
 <td><code>lease_end_date</code></td>
-<td>Date</td>
+<td>日付</td>
 <td>リース終了日</td>
 </tr>
 <tr>
 <td><code>listing_type</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>リスティングタイプ</td>
 </tr>
 <tr>
 <td><code>neighborhood</code></td>
-<td>String</td>
-<td>地区</td>
+<td>文字列</td>
+<td>近隣地域</td>
 </tr>
 <tr>
 <td><code>preferred_baths_range</code></td>
-<td>Array</td>
-<td>最小および最大バスルーム範囲の配列</td>
+<td>配列</td>
+<td>最小および最大のバスルーム範囲の配列</td>
 </tr>
 <tr>
 <td><code>preferred_beds_range</code></td>
-<td>Array</td>
-<td>最小および最大ベッドルーム範囲の配列</td>
+<td>配列</td>
+<td>最小および最大のベッドルーム範囲の配列</td>
 </tr>
 <tr>
 <td><code>preferred_price_range</code></td>
-<td>Array</td>
-<td>最小および最大の優先価格の配列</td>
+<td>配列</td>
+<td>最小および最大の希望価格の配列</td>
 </tr>
 <tr>
 <td><code>property_type</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>物件タイプ</td>
 </tr>
 <tr>
 <td><code>region</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>地域</td>
 </tr>
 </tbody>
 </table>
-<h3 id="クッキーの同意">クッキーの同意</h3>
+<h3 id="クッキー同意">クッキー同意</h3>
 <table>
 <thead>
 <tr>
@@ -1596,11 +1592,11 @@
 <tbody>
 <tr>
 <td><code>grant</code></td>
-<td>クッキーの同意を与える</td>
+<td>クッキー同意を付与</td>
 </tr>
 <tr>
 <td><code>revoke</code></td>
-<td>クッキーの同意を取り消す</td>
+<td>クッキー同意を取り消し</td>
 </tr>
 </tbody>
 </table>
@@ -1615,31 +1611,31 @@
 </thead>
 <tbody>
 <tr>
-<td><code>lmt_data.use_ldu</code> (LDUを使用)</td>
-<td>Boolean</td>
-<td><ul><li><code>true</code>の場合、Facebookの限定データ使用オプションを使用します。</li><li><code>false</code>の場合、Facebookの限定データ使用オプションを使用しません。</li></ul></td>
+<td><code>lmt_data.use_ldu</code> (LDU使用)</td>
+<td>ブール値</td>
+<td><ul><li><code>true</code>の場合、Facebookの限定データ使用オプションを使用。</li><li><code>false</code>の場合、Facebookの限定データ使用オプションを使用しない。</li></ul></td>
 </tr>
 <tr>
-<td><code>lmt_data.ldu_types.geolocate</code> (LDUはジオロケートする必要がある)</td>
-<td>Boolean</td>
-<td><ul><li><code>true</code>の場合、LDUはユーザーをジオロケートします。</li><li><code>false</code>の場合、LDUはユーザーをジオロケートしません。<strong>LDUを使用</strong>が有効になっている場合、<strong>LDUはジオロケートする必要がある</strong>もデフォルトで有効になります。</li></ul></td>
+<td><code>lmt_data.ldu_types.geolocate</code> (LDUはジオロケートするべき)</td>
+<td>ブール値</td>
+<td><ul><li><code>true</code>の場合、LDUはユーザーの位置を特定する。</li><li><code>false</code>の場合、LDUはユーザーの位置を特定しない。<strong>LDU使用</strong>が有効な場合、<strong>LDUはジオロケートするべき</strong>もデフォルトで有効。</li></ul></td>
 </tr>
 <tr>
 <td><code>lmt_data.ldu_types.california</code> (LDUはカリフォルニア)</td>
-<td>Boolean</td>
-<td><ul><li><code>true</code>の場合、テンプレート内の州と国をカリフォルニア特有の値に構成します。ユーザーがカリフォルニアに位置しており、限定データ使用で処理する必要がある場合のみ、このオプションを有効にします。</li><li><code>false</code>の場合、ユーザーの州と国をカリフォルニア特有の値に構成しません。</li></ul></td>
+<td>ブール値</td>
+<td><ul><li><code>true</code>の場合、テンプレート内で州および国のカリフォルニア固有の値を構成する。ユーザーがカリフォルニアに位置しており、限定データ使用で処理する必要がある場合のみこのオプションを有効にする。</li><li><code>false</code>の場合、テンプレート内でユーザーの州および国のカリフォルニア固有の値を構成しない。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h2 id="ベンダーのドキュメンテーション">ベンダーのドキュメンテーション</h2>
-<p>詳細については、以下のベンダーのドキュメンテーションを参照してください：</p>
+<h2 id="ベンダー文書">ベンダー文書</h2>
+<p>詳細については、以下のベンダー文書を参照してください：</p>
 <ul>
-<li><a href="https://developers.facebook.com/docs/facebook-pixel/using-the-pixel">Facebook Pixel Developer Documentation</a>.</li>
-<li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-migration">Migrating from Deprecated Pixels</a></li>
-<li><a href="https://developers.facebook.com/docs/meta-pixel/reference#events">Reference: Standard and Custom Events</a></li>
-<li><a href="https://www.facebook.com/business/help/651294705016616">The Facebook Pixel FAQ</a></li>
-<li><a href="https://www.facebook.com/business/help/978910435507261">Advertiser Help Center: Using Facebook Pixel with Tealium</a></li>
-<li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match">Conversion Tracking with the Pixel</a></li>
+<li><a href="https://developers.facebook.com/docs/facebook-pixel/using-the-pixel">Facebook Pixel 開発者ドキュメント</a></li>
+<li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-migration">非推奨ピクセルからの移行</a></li>
+<li><a href="https://developers.facebook.com/docs/meta-pixel/reference#events">参照：標準およびカスタムイベント</a></li>
+<li><a href="https://www.facebook.com/business/help/651294705016616">Facebook Pixel FAQ</a></li>
+<li><a href="https://www.facebook.com/business/help/978910435507261">広告主ヘルプセンター：TealiumとFacebook Pixelの使用</a></li>
+<li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match">ピクセルを使用したコンバージョン追跡</a></li>
 </ul>
 
 </div>
@@ -1647,13 +1643,13 @@
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/client-side-tags/facebook-app-analytics-tag/"
+  <a href="/ja/client-side-tags/facebook-pixel-legacy/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Facebookアプリ分析</div>
+      <div>Facebook Pixelセットアップガイド（レガシー）</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Facebookアプリ分析"</title>
+      <title>"Facebook Pixelセットアップガイド（レガシー）"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1662,14 +1658,14 @@
 </div><div class="di mr3">
   
   
-  <a href="/ja/client-side-tags/facebook-pixel-legacy/"
+  <a href="/ja/client-side-tags/extole-tag/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Facebook Pixelセットアップガイド（レガシー） "</title>
+      <title>"Extoleタグ構成ガイド "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Facebook Pixelセットアップガイド（レガシー）</div>
+      <div>Extoleタグ構成ガイド</div>
     </section>
   </a>
   
@@ -1701,7 +1697,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月13日
+          <p>最終更新日 ::  2025年June月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1715,26 +1711,26 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web%E7%94%A8conversions-api" href="javascript:void(0)">Web用Conversions API</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web-%E7%94%A8%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3-api" href="javascript:void(0)">Web 用コンバージョン API</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E8%B3%BC%E5%85%A5%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">ユースケース：購入イベント</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">E-コマース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">標準トラッキングパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有パラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E8%BB%8A%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">自動車パラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%9B%AE%E7%9A%84%E5%9C%B0%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">目的地パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9B%E5%85%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">宛先パラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%83%A9%E3%82%A4%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">フライトパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9B%E3%83%86%E3%83%AB%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">ホテルのパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%98%A0%E7%94%BB%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">映画のパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%8D%E5%8B%95%E7%94%A3%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">不動産のパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%81%AE%E5%90%8C%E6%84%8F" href="javascript:void(0)">クッキーの同意</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9B%E3%83%86%E3%83%AB%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">ホテルパラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%98%A0%E7%94%BB%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">映画パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%8D%E5%8B%95%E7%94%A3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">不動産パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E5%90%8C%E6%84%8F" href="javascript:void(0)">クッキー同意</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%99%90%E5%AE%9A%E3%83%87%E3%83%BC%E3%82%BF%E4%BD%BF%E7%94%A8" href="javascript:void(0)">限定データ使用</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ベンダーのドキュメンテーション</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>
 
