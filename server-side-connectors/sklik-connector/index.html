@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -472,10 +473,40 @@
 <tbody>
 <tr>
 <td>Retargeting List Id</td>
-<td>The ID of the email retargeting list where emails will be added.</td>
+<td>The ID of the email retargeting list to which the emails will be added.</td>
+</tr>
+<tr>
+<td>Emails</td>
+<td>The emails to add to the selected email retargeting list.</td>
 </tr>
 </tbody>
 </table>
+<h4 id="optional-parameters">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Emails (Already Hashed)</td>
+<td>Select this checkbox if the emails are already hashed.</td>
+</tr>
+<tr>
+<td>User Email (Apply SHA256 Hash)</td>
+<td>Select this checkbox if you want Tealium to sha256 hash the emails before sending them.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-email-to-list-batch">Add email to list (batch)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Maximum number of requests: 10,000</li>
+<li>Maximum time since oldest request: 15 minutes</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -486,18 +517,35 @@
 </thead>
 <tbody>
 <tr>
+<td>Retargeting List Id</td>
+<td>The ID of the email retargeting list to which the emails will be added.</td>
+</tr>
+<tr>
 <td>Emails</td>
-<td>The emails to append to the email retargeting list.</td>
+<td>The emails to add to the selected email retargeting list.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="add-email-to-list-batch">Add email to list (batch)</h3>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Maximum number of requests: 10,000</li>
-<li>Maximum time since oldest request: 15 minutes</li>
-</ul>
+<h4 id="optional-parameters-1">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Emails (Already Hashed)</td>
+<td>Select this checkbox if the emails are already hashed.</td>
+</tr>
+<tr>
+<td>User Email (Apply SHA256 Hash)</td>
+<td>Select this checkbox if you want Tealium to sha256 hash the emails before sending them.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remove-email-from-list">Remove email from list</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -509,53 +557,30 @@
 <tbody>
 <tr>
 <td>Retargeting List Id</td>
-<td>The ID of the email retargeting list where the emails will be added.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="parameters-3">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Emails</td>
-<td>The emails to add to the selected email retargeting list.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="remove-email-from-list">Remove email from list</h3>
-<h4 id="parameters-4">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Retargeting List Id</td>
 <td>The ID of the email retargeting list from which the emails will be removed.</td>
 </tr>
-</tbody>
-</table>
-<h4 id="parameters-5">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>Emails</td>
 <td>The emails to remove from the selected email retargeting list.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameters-2">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Emails (Already Hashed)</td>
+<td>Select this checkbox if the emails are already hashed.</td>
+</tr>
+<tr>
+<td>User Email (Apply SHA256 Hash)</td>
+<td>Select this checkbox if you want Tealium to sha256 hash the emails before sending them.</td>
 </tr>
 </tbody>
 </table>
@@ -566,7 +591,7 @@
 <li>Max number of requests: 10,000</li>
 <li>Max time since oldest request: 15 minutes</li>
 </ul>
-<h4 id="parameters-6">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -579,9 +604,13 @@
 <td>Retargeting List Id</td>
 <td>The ID of the email retargeting list from which the emails will be removed.</td>
 </tr>
+<tr>
+<td>Emails</td>
+<td>The emails to remove from the selected email retargeting list.</td>
+</tr>
 </tbody>
 </table>
-<h4 id="parameters-7">Parameters</h4>
+<h4 id="optional-parameters-3">Optional parameters</h4>
 <table>
 <thead>
 <tr>
@@ -591,8 +620,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Emails</td>
-<td>The emails to remove from the selected email retargeting list.</td>
+<td>User Emails (Already Hashed)</td>
+<td>Select this checkbox if the emails are already hashed.</td>
+</tr>
+<tr>
+<td>User Email (Apply SHA256 Hash)</td>
+<td>Select this checkbox if you want Tealium to sha256 hash the emails before sending them.</td>
 </tr>
 </tbody>
 </table>
@@ -656,7 +689,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 25, 2025 
+          <p>This page was last updated:  June 9, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -973,6 +1006,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

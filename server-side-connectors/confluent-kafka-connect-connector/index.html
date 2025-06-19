@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -414,14 +415,34 @@
 </thead>
 <tbody>
 <tr>
-<td>Post Data to Topic</td>
+<td>Send Entire Event Data</td>
+<td>✗</td>
 <td>✓</td>
+</tr>
+<tr>
+<td>Send Custom Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>API Key</strong><br>
@@ -429,14 +450,21 @@ Required. The Confluent API Key.</li>
 <li><strong>API Secret</strong><br>
 Required. The Confluent API Secret.</li>
 <li><strong>Bootstrap Server</strong><br>
-Required. The Confluent Bootstrap Server. Do not include the protocol and/or a path. For example, <code>https://confluent.bootstrap.server:443</code> should be <code>confluent.bootstrap.server</code>.</li>
+Required. The Confluent Bootstrap Server. Do not include the protocol or a path or both. For example, <code>https://confluent.bootstrap.server:443</code> should be <code>confluent.bootstrap.server</code>.</li>
 <li><strong>Cluster ID</strong><br>
 Required. The Kafka Cluster ID.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="post-data-to-topic">Post Data to Topic</h3>
+<h3 id="send-entire-event-data">Send Entire Event Data</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -448,43 +476,262 @@ Required. The Kafka Cluster ID.</li>
 <tbody>
 <tr>
 <td>Topic ID</td>
-<td>Select the topic or type the Topic ID.</td>
+<td>Select the topic or enter the Topic ID.</td>
 </tr>
 <tr>
 <td>Partition ID</td>
-<td>The partition ID.</td>
+<td>Select the Partition ID.</td>
 </tr>
 <tr>
-<td>Key (BINARY)</td>
-<td>The value for the <strong>Key</strong> parameter with a binary type.</td>
-</tr>
-<tr>
-<td>Key (JSON)</td>
-<td>The value for the <strong>Key</strong> parameter with a JSON type.</td>
-</tr>
-<tr>
-<td>Value (BINARY)</td>
-<td>The value for the <strong>Value</strong> parameter with a binary type.</td>
-</tr>
-<tr>
-<td>Value (JSON)</td>
-<td>The vale for the <strong>Value</strong> parameter with a JSON type.</td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>The topic timestamp in ISO 8601 UTC format &lsquo;YYYY-MM-DDThh:mm:ssZ&rsquo;. If no Timestamp is provided, the current timestamp will be used.</td>
+<td>Data format</td>
+<td>Specify the format for data delivery: <code>JSON</code>, <code>STRING</code>, or <code>BINARY</code>.</td>
 </tr>
 <tr>
 <td>Headers</td>
-<td>Optional Parameters: A set of key-value pairs listing the header properties and values.</td>
+<td>Optional parameters. A set of key-value pairs listing the header properties and values.</td>
 </tr>
 <tr>
+<td>Message key</td>
+<td>Specify the raw message key. If you chose <code>BINARY</code> as the data format, Tealium  encodes this value before sending it.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The topic timestamp in ISO 8601 UTC format. For example, <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time to live should be between 1 and 60 minutes. The default value is 60 minutes.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>By default, the attribute IDs are used as key names. If you want to use the attribute names as key names instead, enable this checkbox. If the attribute names are updated, the key names in the payload will be updated.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-event-data">Send Custom Event Data</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic ID</td>
+<td>Select the topic or enter the Topic ID.</td>
+</tr>
+<tr>
+<td>Partition ID</td>
+<td>Select the Partition ID.</td>
+</tr>
+<tr>
+<td>Data format</td>
+<td>Specify the format for data delivery: <code>JSON</code>, <code>STRING</code>, or <code>BINARY</code>.</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>Optional parameters. A set of key-value pairs listing the header properties and values.</td>
+</tr>
+<tr>
+<td>Message key</td>
+<td>Specify the raw message key. If you chose <code>BINARY</code> as the data format, Tealium encodes this value before sending it.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The topic timestamp in ISO 8601 UTC format. For example, <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data">Message data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for <strong>Templates</strong>. See the <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a> documentation for usage examples. <br>Name nested template variables with the dot notation. Example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+<td>Provide template variables as data input for templates.<br>For more information and usage examples, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.<br>Name nested template variables with the dot notation. For example: <code>items.name.</code><br>Nested template variables are typically built from data layer list attributes.</td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Provide templates to be referenced in Body Parameters. See the  <a href="/server-side/connectors/templates/about/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time to live should be between 1 and 60 minutes. The default value is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic ID</td>
+<td>Select the topic or enter the Topic ID.</td>
+</tr>
+<tr>
+<td>Partition ID</td>
+<td>Select the Partition ID.</td>
+</tr>
+<tr>
+<td>Data format</td>
+<td>Specify the format for data delivery: <code>JSON</code>, <code>STRING</code>, or <code>BINARY</code>.</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>Optional parameters. A set of key-value pairs listing the header properties and values.</td>
+</tr>
+<tr>
+<td>Message key</td>
+<td>Specify the raw message key. If you chose <code>BINARY</code> as the data format, Tealium encodes this value before sending it.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The topic timestamp in ISO 8601 UTC format. For example, <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>By default, the attribute IDs are used as key names. If you want to use the attribute names as key names instead, enable this checkbox. If the attribute names are updated, the key names in the payload will be updated.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data With Visitor Data</td>
+<td>Add the current visit data to the payload. This includes event visit data, unless Exclude Current Visit Event Data is checked.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Exclude event data from the current visit data.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time to live should be between 1 and 60 minutes. The default value is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic ID</td>
+<td>Select the topic or enter the Topic ID.</td>
+</tr>
+<tr>
+<td>Partition ID</td>
+<td>Select the Partition ID.</td>
+</tr>
+<tr>
+<td>Data format</td>
+<td>Specify the format for data delivery: <code>JSON</code>, <code>STRING</code>, or <code>BINARY</code>.</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>Optional parameters. A set of key-value pairs listing the header properties and values.</td>
+</tr>
+<tr>
+<td>Message key</td>
+<td>Specify the raw message key. If you chose <code>BINARY</code> as the data format, Tealium  encodes this value before sending it.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The topic timestamp in ISO 8601 UTC format. For example, <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data-1">Message data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates.<br>For more information and usage examples, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.<br>Name nested template variables with the dot notation. For example: <code>items.name.</code><br>Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time to live should be between 1 and 60 minutes. The default value is 60 minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic ID</td>
+<td>Select the topic or enter the Topic ID.</td>
+</tr>
+<tr>
+<td>Partition ID</td>
+<td>Select the Partition ID.</td>
+</tr>
+<tr>
+<td>Data format</td>
+<td>Specify the format for data delivery: <code>JSON</code>, <code>STRING</code>, or <code>BINARY</code>.</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>Optional parameters. A set of key-value pairs listing the header properties and values.</td>
+</tr>
+<tr>
+<td>Message key</td>
+<td>Specify the raw message key. If you chose <code>BINARY</code> as the data format, Tealium encodes this value before sending it.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The topic timestamp in ISO 8601 UTC format. For example, <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
 </tr>
 </tbody>
 </table>
@@ -548,7 +795,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  June 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -565,7 +812,11 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#post-data-to-topic" href="javascript:void(0)">Post Data to Topic</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               </nav>
   </aside></nav>
 
@@ -862,6 +1113,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

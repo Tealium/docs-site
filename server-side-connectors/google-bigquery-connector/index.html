@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -421,19 +422,25 @@
 </ul>
 <h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
+<p>After adding the connector, use the following steps to authenticate to Google:</p>
+<ol>
+<li>Select the <strong>Authentication type</strong>:
 <ul>
-<li><strong>Project ID</strong>
-<ul>
-<li>Select the Project ID to connect to.</li>
-</ul>
+<li><strong>Sign in with Google</strong>
+<ol>
+<li>Select your Google account and allow Tealium to access your Google Account.</li>
+<li>Click <strong>Reload</strong> below the <strong>Project ID</strong> field.</li>
+</ol>
+</li>
+<li><strong>Private key JSON file</strong>: (This option is not available in the legacy connectors interface.)
+<ol>
+<li>Navigate to <strong>IAM &amp; Admin &gt; Service Accounts &gt; Create Service Account (optional)</strong>.</li>
+<li>Click the action menu (three dots) on the service account <strong>Manage Keys &gt; Add Key &gt; Create New Key &gt; JSON &gt; Create</strong>.</li>
+<li>Paste the content of the JSON key generated for your Service Account. For more information, see <a href="https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount">Google: Using OAuth 2.0 for Server to Server Applications</a>.</li>
+</ol>
 </li>
 </ul>
-<p>To retrieve the list of your projects, use the following steps:</p>
-<ol>
-<li>Click <strong>Sign in with Google</strong>.</li>
-<li>Select your Google account and allow Tealium to access your Google Account.</li>
-<li>Click <strong>Reload</strong> below the <strong>Project ID</strong> field</li>
+</li>
 <li>Select the <strong>Project ID</strong> to connect to.</li>
 <li>Click <strong>Done</strong>.</li>
 </ol>
@@ -532,7 +539,7 @@
 <tbody>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between 5 and 60 minutes. The default value is 60 minutes.</td>
+<td>Time to live should be between 5 and 60 minutes. The default value is 60 minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -567,19 +574,19 @@
 </tr>
 <tr>
 <td>Column to record the Payload</td>
-<td>Choose the <code>JSON</code> column to record the payload.</td>
+<td>Choose the column to record the payload.</td>
 </tr>
 <tr>
 <td>Timestamp Attribute</td>
-<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflects the update if the attribute names are updated.</td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>5</code> and <code>60</code> minutes. Default is 60 minutes.</td>
+<td>Time to live should be between 5 and 60 minutes. The default value is 60 minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -614,11 +621,11 @@
 </tr>
 <tr>
 <td>Column to record the Payload</td>
-<td>Choose the <code>JSON</code> column to record the payload.</td>
+<td>Choose the column to record the payload.</td>
 </tr>
 <tr>
 <td>Timestamp Attribute</td>
-<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send it in a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
 </tr>
 <tr>
 <td>Include Current Visit Data with Visitor Data</td>
@@ -626,11 +633,11 @@
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect the update if the attribute names are updated.</td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>5</code> and <code>60</code> minutes. Default is 60 minutes.</td>
+<td>Time to live should be between 5 and 60 minutes. The default value is 60 minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +701,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2025 
+          <p>This page was last updated:  June 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1012,6 +1019,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

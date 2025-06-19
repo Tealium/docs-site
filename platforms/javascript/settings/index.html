@@ -372,9 +372,16 @@ Only set this option if a visitor has explicitly opted out of all cookies. (Defa
 </span></span></code></pre></div><h2 id="nonblocking_tags"><code>nonblocking_tags</code></h2>
 <p><strong>Load tags asynchronously</strong><br>
 (New in <a href="/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>)<br>
-Enable non-blocking behavior for all tags, which can improve INP scores and overall page performance. Use this setting for pages with resource-intensive tags that slow down user interactions and reduce INP scores, but ensure you test exit link tracking thoroughly. (Default: <code>false</code>)</p>
+This option enables non-blocking behavior for all tags, which can improve INP scores and overall page performance. Use this setting for pages with resource-intensive tags that slow down user interactions and reduce INP scores, but ensure you test exit link tracking thoroughly. (Default: <code>false</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nonblocking_tags</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span></code></pre></div><h2 id="path"><code>path</code></h2>
+</span></span></code></pre></div><h4 id="best-practices">Best practices</h4>
+<p>Use the following best practices with the <code>nonblocking_tags</code> setting:</p>
+<ul>
+<li>Measure and monitor your pages, and make your tag implementation lighter before you consider using the <code>nonblocking_tags</code> setting.</li>
+<li>Only use <code>nonblocking_tags</code> for pages with resource-intensive tags that exceed INP scores above 200 ms and don’t need to block DOM rendering.</li>
+<li>Consider navigation delays on critical navigation and exit events, since non-blocking tags load without holding the page for tracking (which is why they improve the INP score).</li>
+</ul>
+<h2 id="path"><code>path</code></h2>
 <p><strong>Publish URL path</strong><br>
 Sets the publishing URL path for your tag templates, overriding the Publish URLs fields in the <a href="/iq-tag-management/save-publish/publish-configuration/">Publish Configuration dialog</a>, if specified. Setting the publishing URL path can be useful for self-hosting and <a href="/iq-tag-management/administration/first-party-domains/about/">First Party Domains</a> customers.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;//tags.example.com/main/prod&#39;</span>;
@@ -478,7 +485,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 18, 2024 
+          <p>This page was last updated:  June 13, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "10",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -412,25 +413,48 @@
 <h2 id="connect-using-the-oauth2-authentication-scheme">Connect Using the OAuth2 Authentication Scheme</h2>
 <p>Use the following steps to connect Tealium to ExactTarget using OAuth2 authentication scheme:</p>
 <ol>
-<li>Log into your ExactTarget account and from the top right menu, select <strong>Setup</strong>.</li>
-<li>Navigate to <strong>Platform Tools &gt; Apps &gt; Installed Packages</strong>.</li>
-<li>At the top right of the <strong>Installed Packages</strong> panel, click <strong>New</strong> to create a new package.</li>
-<li>In the opened dialog box, name your package and click <strong>Save</strong>.</li>
-<li>In the newly created package, click <strong>Add Component</strong>.</li>
-<li>Select <strong>API Integration</strong> as the component type and <strong>Server-to-Server</strong> as the integration type.</li>
-<li>Set appropriate Server-to-Server properties.<br>
-If correct permissions are not provided, the integration may fail. Changing permissions after the package has been created may require some wait time for the permissions to apply.</li>
-<li>Save your component.<br>
-In the package window, the component named <strong>API Integration</strong> displays the authentication information.</li>
-<li>Copy the following values to use later in the connector configuration:</li>
+<li>
+<p>Log into your ExactTarget account and from the top right menu, select <strong>Setup</strong>.</p>
+</li>
+<li>
+<p>Navigate to <strong>Platform Tools &gt; Apps &gt; Installed Packages</strong>.</p>
+</li>
+<li>
+<p>At the top right of the <strong>Installed Packages</strong> panel, click <strong>New</strong> to create a new package.</p>
+</li>
+<li>
+<p>In the opened dialog box, name your package and click <strong>Save</strong>.</p>
+</li>
+<li>
+<p>In the newly created package, click <strong>Add Component</strong>.</p>
+</li>
+<li>
+<p>Select <strong>API Integration</strong> as the component type and <strong>Server-to-Server</strong> as the integration type.</p>
+</li>
+<li>
+<p>Set appropriate Server-to-Server properties.
+When you create an installed package, it is enabled only for the Business Unit where it was created. To make the package available in additional Business Units:</p>
+<ol>
+<li>Go to the installed package’s configuration page.</li>
+<li>Under <strong>Access</strong>, select <strong>Add Business Units</strong>.</li>
+<li>Select the checkboxes next to each MID (Business Unit) that require access to the package. <p class="note"><i class="fa fa-exclamation-triangle"></i>If correct permissions are not provided, the integration may fail. Changing permissions after the package has been created may require some wait time for the permissions to apply.</p></li>
 </ol>
+</li>
+<li>
+<p>Save your component.
+In the package window, the component named <strong>API Integration</strong> displays the authentication information.</p>
+</li>
+<li>
+<p>Copy the following values to use later in the connector configuration:</p>
 <ul>
 <li><strong>Client ID</strong></li>
 <li><strong>Client Secret</strong></li>
 <li><strong>SOAP Base URI</strong></li>
 </ul>
-<ol>
-<li>Also copy your account&rsquo;s <strong>MID</strong> value, found in the top menu bar.</li>
+</li>
+<li>
+<p>Also copy your account&rsquo;s <strong>MID</strong> value, found in the top menu bar.</p>
+</li>
 </ol>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
@@ -496,34 +520,48 @@ In the package window, the component named <strong>API Integration</strong> disp
 <ul>
 <li>
 <p><strong>Market Cloud App Client ID</strong></p>
-<ul>
-<li>Required.</li>
-<li>Provide your app client ID.</li>
-<li>See: <a href="https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-apis.meta/mc-apis/getting_started_developers_and_the_exacttarget_api.htm">Get OAuth Client Credentials</a></li>
-</ul>
+</li>
+<li>
+<p>Required.</p>
+</li>
+<li>
+<p>Provide your app client ID.</p>
+</li>
+<li>
+<p>See: <a href="https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-apis.meta/mc-apis/getting_started_developers_and_the_exacttarget_api.htm">Get OAuth Client Credentials</a></p>
 </li>
 <li>
 <p><strong>Client Secret</strong>:</p>
-<ul>
-<li>Required.</li>
-<li>Provide your app client secret.</li>
-</ul>
+</li>
+<li>
+<p>Required.</p>
+</li>
+<li>
+<p>Provide your app client secret.</p>
 </li>
 <li>
 <p><strong>Account ID</strong></p>
-<ul>
-<li>Required.</li>
-<li>Provide account identifier (MID) of the target business unit.</li>
-</ul>
+</li>
+<li>
+<p>Required.</p>
+</li>
+<li>
+<p>Provide account identifier (MID) of the target business unit.</p>
 </li>
 <li>
 <p><strong>Tenant-specific subdomain</strong></p>
-<ul>
-<li>Required:</li>
-<li>Provide tenant-specific subdomain for your application.</li>
-<li>If your SOAP Base URL looks something like this: <code>https://mctg-xxxxxx.soap.marketingcloudapis.com/</code>, then provide the portion of this URL between two slashes and the first period, in this example it would be <code>mctg-xxxxxx</code>.</li>
-<li>The connector will automatically augment this subdomain name with correct suffixes for authentication and for SOAP messaging.</li>
-</ul>
+</li>
+<li>
+<p>Required:</p>
+</li>
+<li>
+<p>Provide tenant-specific subdomain for your application.</p>
+</li>
+<li>
+<p>If your SOAP Base URL looks something like this: <code>https://mctg-xxxxxx.soap.marketingcloudapis.com/</code>, then provide the portion of this URL between two slashes and the first period, in this example it would be <code>mctg-xxxxxx</code>.</p>
+</li>
+<li>
+<p>The connector will automatically augment this subdomain name with correct suffixes for authentication and for SOAP messaging.</p>
 </li>
 <li>
 <p><strong>ExactTarget Account ID (MID)</strong></p>
@@ -545,19 +583,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Triggered Send Email Interaction</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select triggered send email interaction.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select triggered send email interaction.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscriber Lookup By Key</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Lookup existing subscriber by key to send them an email.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Lookup existing subscriber by key to send them an email.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Disable Subscriber Lookup</td>
-<td style="text-align:left"><ul><li>To disable lookup, check <strong>Disable Subscriber Lookup</strong> and configure the <strong>&ldquo;ubscriber Email</strong> section.</li></ul></td>
+<td style="text-align:left"><ul><li>To disable lookup, check <strong>Disable Subscriber Lookup</strong> and configure the <strong>&ldquo;Subscriber Email</strong> section.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscriber Email</td>
@@ -589,19 +627,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Email List</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select email list.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select email list.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscriber Lookup By Key</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Provide subscriber key to find existing subscriber.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Provide subscriber key to find existing subscriber.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -617,19 +655,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Email List</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select email list.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select email list.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscriber Lookup By Key</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Provide subscriber key to find existing subscriber.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Provide subscriber key to find existing subscriber.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -645,7 +683,7 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscriber Key</td>
@@ -657,15 +695,15 @@ In the package window, the component named <strong>API Integration</strong> disp
 </tr>
 <tr>
 <td style="text-align:left">Add Subscriber to Email List(s)</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Select one or more email lists to add subscriber to.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Select one or more email lists to add subscriber to.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">User Status</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Select value to update user&rsquo;s status to.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Select value to update user&rsquo;s status to.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -688,19 +726,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Extension</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li><ul></td>
+<td style="text-align:left"><ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li><ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Fields</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map values to fields to add new record to data extension.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Map values to fields to add new record to data extension.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -723,19 +761,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Extension</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Fields</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map array type attributes to add multiple data extension records.</li><li>Array type attributes must be of equal length.</li><li>Single value attributes can be used and will apply to each record.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Map array type attributes to add multiple data extension records.</li><li>Array type attributes must be of equal length.</li><li>Single value attributes can be used and will apply to each record.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -758,19 +796,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Extension</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Lookup</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map values to record files by which to find existing record to delete.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Map values to record files by which to find existing record to delete.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -793,19 +831,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Extension</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Lookup</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map values to record fields by which to find existing record to update.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Map values to record fields by which to find existing record to update.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -828,19 +866,19 @@ In the package window, the component named <strong>API Integration</strong> disp
 <tbody>
 <tr>
 <td style="text-align:left">Business Unit</td>
-<td style="text-align:left"><ul><li>Recommended.</li><li>Select appropriate business unit.</li><li>If not specified then DEFAULT option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
+<td style="text-align:left"><ul><li>(Recommended) Select appropriate business unit.</li><li>If not specified then default option will be used, which corresponds to default business unit of configured Marketing Cloud user.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Extension</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Select data extension.</li><li>The dropdown list of Data Extensions is listed from newest to oldest and shows a maximum of 2000 entries.</li><li>If a Data Extension is not shown in the dropdown list, paste the Data Extension External Key from the Data Extension details page in Salesforce, then press Enter to use that Data Extension.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Lookup</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map values to record fields by which to find existing record to update.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Map values to record fields by which to find existing record to update.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Asynchronous Processing</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Check option to enable asynchronous processing.</li><li>API calls will be queued before being processed, rather than directly at the time the API call is received.</li><li>Async API calls are generally faster to complete and always return successful responses, even if underlying queued operation fails at a later point.</li><li>For more information, see: <a href="https://architect.salesforce.com/decision-guides/async-processing">Asynchronous Processing</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -910,7 +948,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 25, 2024 
+          <p>This page was last updated:  June 13, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1235,6 +1273,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

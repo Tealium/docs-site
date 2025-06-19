@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -416,6 +417,13 @@
 <li>API Endpoint: <code>https://api.line.me/v2</code></li>
 <li>Documentation: <a href="https://developers.line.biz/en/docs/messaging-api/">LINE: Audience API</a></li>
 </ul>
+<h2 id="batch-limits">Batch Limits</h2>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 10,000</li>
+<li>Max time since oldest request: 30 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h2 id="supported-actions">Supported Actions</h2>
 <table>
 <thead>
@@ -515,7 +523,7 @@
 <tbody>
 <tr>
 <td>Audience Group ID</td>
-<td>Select the audience group from the drop-down list or enter it manually.</td>
+<td>Select the audience group from the list or enter it as a custom text.</td>
 </tr>
 <tr>
 <td>User ID</td>
@@ -527,8 +535,32 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---push-message---text">Action - Push Message - Text</h3>
+<h3 id="add-users-to-audiences-batched">Add Users to Audiences (Batched)</h3>
 <h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audience Group ID</td>
+<td>Select the audience group from the list or enter it as a custom text.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>A user ID or IFA. To send multiple user IDs, map an array to this parameter.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>A description for this update action.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---push-message---text">Action - Push Message - Text</h3>
+<h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -543,16 +575,16 @@
 </tr>
 <tr>
 <td>Message Data</td>
-<td>Required. The content of the message to send to the user. This field is limited to 2,000 characters, supports Unicode emoticons, and supports the <a href="/server-side/connectors/templates/about/">Tealium template engine</a>.</td>
+<td>Required. The content of the message to send to the user. This field is limited to 2,000 characters, supports Unicode emoticons, and supports the Tealium template engine. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</td>
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>. For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</td>
+<td>These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>.  For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="action---push-message---image">Action - Push Message - Image</h3>
-<h4 id="parameters-1">Parameters</h4>
+<h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -576,7 +608,7 @@
 </tbody>
 </table>
 <h3 id="action---push-message---video">Action - Push Message - Video</h3>
-<h4 id="parameters-2">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -600,7 +632,7 @@
 </tbody>
 </table>
 <h3 id="action---push-message---audio">Action - Push Message - Audio</h3>
-<h4 id="parameters-3">Parameters</h4>
+<h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -624,7 +656,7 @@
 </tbody>
 </table>
 <h3 id="action---push-message---location">Action - Push Message - Location</h3>
-<h4 id="parameters-4">Parameters</h4>
+<h4 id="parameters-5">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -656,7 +688,7 @@
 </tbody>
 </table>
 <h3 id="action---push-message---sticker">Action - Push Message - Sticker</h3>
-<h4 id="parameters-5">Parameters</h4>
+<h4 id="parameters-6">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -680,7 +712,7 @@
 </tbody>
 </table>
 <h3 id="push-message---imagemap">Push Message - Imagemap</h3>
-<h4 id="parameters-6">Parameters</h4>
+<h4 id="parameters-7">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -815,7 +847,7 @@
 </tbody>
 </table>
 <h3 id="push-message---template-message-buttons-template">Push Message - Template message (Buttons template)</h3>
-<h4 id="parameters-7">Parameters</h4>
+<h4 id="parameters-8">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1002,7 +1034,7 @@
 </tbody>
 </table>
 <h3 id="push-message---template-message-confirm-template">Push Message - Template message (Confirm template)</h3>
-<h4 id="parameters-8">Parameters</h4>
+<h4 id="parameters-9">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1098,7 +1130,7 @@
 </tbody>
 </table>
 <h3 id="push-message---template-message-carousel-template">Push Message - Template message (Carousel template)</h3>
-<h4 id="parameters-9">Parameters</h4>
+<h4 id="parameters-10">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1157,7 +1189,7 @@
 </tr>
 <tr>
 <td>Templates</td>
-<td><ul><li>Required. Provide templates to be referenced in the <strong>Actions</strong> parameter of the Template - Columns section. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>).</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td><ul><li>Required. Provide templates to be referenced in the <strong>Actions</strong> parameter of the Template - Columns section. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>).</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1233,12 +1265,12 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td><ul><li>Required. Provide template variables as data. These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>.</li><li>For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</li></ul></td>
+<td><ul><li>Required. Provide template variables as data. These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>.</li><li>For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="push-message---template-message-image-carousel-template">Push Message - Template message (Image carousel template)</h3>
-<h4 id="parameters-10">Parameters</h4>
+<h4 id="parameters-11">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1334,7 +1366,7 @@
 </tbody>
 </table>
 <h3 id="push-message---flex">Push Message - Flex</h3>
-<h4 id="parameters-11">Parameters</h4>
+<h4 id="parameters-12">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1357,11 +1389,11 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>. For more information, see <a href="/server-side/connectors/templates/template-variables/">Template Variables Guide</a>.</td>
+<td>These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
 <tr>
 <td>Templates</td>
-<td><ul><li>Required. Provide templates to be referenced in the Message Data section. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>).</li><li>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td><ul><li>Required. Provide templates to be referenced in the Message Data section. For more information, see <a href="/server-side/connectors/templates/about/">Templates Guide</a>).</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1374,7 +1406,7 @@
 </ul>
 <h5 id="additional-references">Additional References</h5>
 <ul>
-<li><a href="/server-side/connectors/templates/template-variables/">Tealium Webhook - Template Variables Guide</a></li>
+<li><a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li>
 </ul>
 
 </div>
@@ -1436,7 +1468,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  June 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1452,10 +1484,12 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-actions" href="javascript:void(0)">Supported Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-users-to-audiences" href="javascript:void(0)">Action - Add Users to Audiences</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-users-to-audiences-batched" href="javascript:void(0)">Add Users to Audiences (Batched)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---push-message---text" href="javascript:void(0)">Action - Push Message - Text</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---push-message---image" href="javascript:void(0)">Action - Push Message - Image</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---push-message---video" href="javascript:void(0)">Action - Push Message - Video</a></li>
@@ -1765,6 +1799,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

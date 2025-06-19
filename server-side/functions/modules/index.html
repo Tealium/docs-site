@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -205,11 +205,12 @@
         <a href="/server-side/data-sources/file-import/file-transfer-service/view-import-status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-view-import-status">View import status</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".snowflake-data-source">Snowflake</a>
-        <ul class="pl2  snowflake-data-source desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-sources/snowflake/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-sources/snowflake/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Manage</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-sources/snowflake/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Error logs</a></li></ul>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".cloud-data">Cloud data sources</a>
+        <ul class="pl2  cloud-data desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Manage</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Error logs</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".webhooks">Incoming Webhooks</a>
         <ul class="pl2  webhooks desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -413,6 +414,7 @@
         <a href="/server-side/functions/environment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-execution-env-rate-limits">Environment and limits</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">Functions code editor</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/modules/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".functions-use-apis-libraries">APIs and libraries</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/functions/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-dashboard">Functions dashboard</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-best-practices">Best practices</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".manage-functions">Manage functions</a>
         <ul class="pl2  manage-functions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -582,12 +584,199 @@
 <div class="prose nested-links" id="prose">
   <p>Functions can use the following APIs and libraries:</p>
 <ul>
+<li>Crypto</li>
 <li>Crypto-ES.js</li>
 <li>TweetNaCl.js</li>
 <li>JavaScript Console API</li>
 </ul>
-<h2 id="crypto-esjs">Crypto-ES.js</h2>
-<p>Crypto-ES.js is a library of encryption algorithms available that provides hashing, encoding, and cipher algorithms. For more information, see <a href="https://www.npmjs.com/package/crypto-es/v/1.2.7">Crypto-ES</a>.</p>
+<h2 id="crypto">Crypto</h2>
+<p>This feature introduces a high-performance crypto and hashing library for Tealium Functions, implemented in Java. It offers a direct replacement for the existing JavaScript-based Crypto-ES library and provides the same interface.</p>
+<p>For more information, see <a href="https://www.npmjs.com/package/crypto-es/v/1.2.7">NPM: Crypto-ES</a>.</p>
+<h3 id="import-library">Import library</h3>
+<p>To import the Tealium crypto library, add the following line to your code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
+</span></span></code></pre></div><h3 id="import-modules">Import modules</h3>
+<p>The Tealium Crypto library is organized into modules, each providing a separate class with specific cryptographic functionalities. This lets you optimize your function performance by only importing the modules you need.</p>
+<p>The list of available modules:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA384Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha384.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA512Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha512.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA3Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha3.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RIPEMD160Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/ripemd160.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PBKDF2Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pbkdf2.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EvpKDFAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/evpkdf.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AESAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/aes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DESAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/tripledes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">TripleDESAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/tripledes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RabbitAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rabbit.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RabbitLegacyAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rabbit-legacy.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RC4Algo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rc4.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RC4DropAlgo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rc4.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CBC</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-cbc.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CFB</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-cfb.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CTR</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-ctr.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ECB</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-ecb.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">OFB</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-ofb.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">GCM</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/mode-gcm.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AnsiX923</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-ansix923.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Iso10126</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-iso10126.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Iso97971</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-iso97971.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NoPadding</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-nopadding.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ZeroPadding</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-zeropadding.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Pkcs7</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pad-pkcs7.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">OpenSSLFormatter</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto/lib/cipher/OpenSSLFormatter.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HexFormatter</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/format-hex.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">OpenSSLKdf</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto/lib/cipher/OpenSSLKdf.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">MD5</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/md5.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacMD5</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/md5.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA1</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha1.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA1</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha1.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA224</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha224.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA224</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha224.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA256</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha256.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA256</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha256.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA384</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha384.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA384</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha384.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA512</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha512.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA512</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha512.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SHA3</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha3.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacSHA3</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/sha3.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RIPEMD160</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/ripemd160.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HmacRIPEMD160</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/ripemd160.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PBKDF2</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/pbkdf2.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">EvpKDF</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/evpkdf.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AES</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/aes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DES</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/tripledes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">TripleDES</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/tripledes.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Rabbit</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rabbit.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RabbitLegacy</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rabbit-legacy.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RC4</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rc4.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RC4Drop</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/rc4.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CRC32</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium/crypto/lib/crc32.js&#39;</span>;
+</span></span></code></pre></div><h3 id="examples">Examples</h3>
+<h4 id="hashing-and-modes">Hashing and modes</h4>
+<p>Galois/Counter mode is provided in place of CTRGladman mode. Use <code>C.mode.GCM</code> with the AES cipher:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;message&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;0102030405060708090A0B0C&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">encrypted</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span> });
+</span></span></code></pre></div><p>Additional authentication data and tag length can be passed as parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;message&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;0102030405060708090A0B0C&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aad</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Utf8</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;additional authentication data&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tagLength</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>; <span style="color:#75715e">// bits
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>, <span style="color:#a6e22e">aad</span>, <span style="color:#a6e22e">tagLength</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">encrypted</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>, <span style="color:#a6e22e">aad</span>, <span style="color:#a6e22e">tagLength</span> });
+</span></span></code></pre></div><p>The <code>GCM.mac</code> method is not provided, but the encrypted output also contains the tag concatenated with the hash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;message&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;0102030405060708090A0B0C&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tagLength</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>; <span style="color:#75715e">// bits
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>, <span style="color:#a6e22e">tagLength</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sEncrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encrypted</span>.<span style="color:#a6e22e">ciphertext</span>.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sEncrypted</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#a6e22e">sEncrypted</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">tagLength</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">sEncrypted</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sEncrypted</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">sEncrypted</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">tag</span>.<span style="color:#a6e22e">length</span>);
+</span></span></code></pre></div><p>To decrypt the message, the hash and tag must be concatenated:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;crypto-es&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;message&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;0123456789ABCDEF11113333555577770123456789ABCDEF1111333355557777&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;0102030405060708090A0B0C&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aad</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Utf8</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#34;additional authentication data&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tagLength</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">120</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// encrypt with third-party
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>.<span style="color:#a6e22e">mac</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">algo</span>.<span style="color:#a6e22e">AES</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">encrypted</span>.<span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">aad</span>, <span style="color:#a6e22e">encrypted</span>.<span style="color:#a6e22e">ciphertext</span>, <span style="color:#a6e22e">tagLength</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// decrypt with tealium/crypto
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">lib</span>.<span style="color:#a6e22e">CipherParams</span>.<span style="color:#a6e22e">create</span>({ <span style="color:#a6e22e">ciphertext</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">encrypted</span>.<span style="color:#a6e22e">ciphertext</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">tag</span>) }), <span style="color:#a6e22e">key</span>, { <span style="color:#a6e22e">iv</span>, <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">C</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>, <span style="color:#a6e22e">aad</span>, <span style="color:#a6e22e">tagLength</span> });
+</span></span></code></pre></div><h4 id="crc32">CRC32</h4>
+<p>CRC32 is added as an extension to <code>crypto-es</code> and is available under <code>index.js</code> or as a named import:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>; <span style="color:#75715e">// C.CRC32
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CRC32</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto/lib/crc32.js&#34;</span>;
+</span></span></code></pre></div><p>In both cases, the function takes an argument representing data:</p>
+<ul>
+<li><code>CRC32.buf(byte array)</code>: Expects a sequence of 8-bit unsigned integers (Uint8Array or array of bytes).</li>
+<li><code>CRC32.bstr(binary string)</code>: Expects a binary string where byte i is the low byte of the UCS-2 char: <code>str.charCodeAt(i) &amp; 0xFF</code></li>
+<li><code>CRC32.str(string)</code>: Expects a standard JavaScript string and calculates the hash of the UTF-8 encoding.</li>
+<li><code>CRC32.reset()</code>: The instance is stateful and requires manual reset after a hash calculation.</li>
+<li><code>CRC32.valueOf()</code>: Returns a 32-bit signed integer representation of the state.</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CRC32</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto/lib/crc32.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// single iteration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hash1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CRC32</span>.<span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;input&#34;</span>).<span style="color:#a6e22e">valueOf</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CRC32</span>.<span style="color:#a6e22e">reset</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// multiple
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hash2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CRC32</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">buf</span>([<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">111</span>, <span style="color:#ae81ff">88</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">str</span>(<span style="color:#e6db74">&#34;try&#34;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">bstr</span>(<span style="color:#e6db74">&#34;more&#34;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">valueOf</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CRC32</span>.<span style="color:#a6e22e">reset</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// convert to unsigned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uHash1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hash1</span> <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// convert to hex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hHash1</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">hash1</span> <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>);
+</span></span></code></pre></div><h3 id="error-messages">Error messages</h3>
+<p>The Tealium crypto library is stricter about input data than <code>crypto-es</code>, so you might experience the following errors in cases of invalid usage:</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Invalid AES key length</code></td>
+<td>The key size for AES cipher must be 32 bytes.</td>
+</tr>
+<tr>
+<td><code>Wrong key size</code></td>
+<td>The key size for DES cipher must be 8 bytes, and for TripleDES it must be 16 bytes.</td>
+</tr>
+<tr>
+<td><code>Wrong IV length</code></td>
+<td>The IV size for some ciphers and modes is strict (DES, TripleDES, OFB) and must be specified correctly.</td>
+</tr>
+<tr>
+<td><code>Input length not multiple of 16 bytes</code></td>
+<td><code>NoPadding</code> pad is used and the input must be correctly padded.</td>
+</tr>
+<tr>
+<td><code>Parameters missing</code></td>
+<td>That configuration object is not valid. For example, the <code>iv</code> parameter is missing for modes with mandatory IV (OFB, CFB).</td>
+</tr>
+<tr>
+<td><code>No IV set when one expected</code></td>
+<td>The <code>iv</code> parameter is missing in the configuration object for BouncyCastle implemented modes with mandatory IV (CTR).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="migrating-from-crypto-es-to-tealium-crypto-library">Migrating from Crypto-ES to Tealium crypto library</h3>
+<p>The <code>tealium/crypto</code> library provides the same interface as <code>crypto-es</code> and can be used as a direct replacement. To minimize the risk of unexpected behavior in production when migrating, test the migration using one of the following approaches:</p>
+<ul>
+<li>
+<p><strong>Use a sandbox environment with the <code>tealium/crypto</code> library (recommended)</strong><br>
+Duplicate the function in a sandbox environment and update the imports to use <code>tealium/crypto</code>. Limit invocations to test audiences or feeds to verify that the function behaves as expected without affecting live traffic.</p>
+</li>
+<li>
+<p><strong>Run a <code>tealium/crypto</code> version in parallel with the existing function</strong><br>
+Create a copy of the function and update the imports to use <code>tealium/crypto</code>. Route a portion of traffic to it for direct comparison under real-world conditions. This approach enables 1:1 output and performance validation but may increase resource usage and cost. Turn off the duplicate after testing to avoid unnecessary system load.</p>
+</li>
+</ul>
+<p>Avoid using the <strong>Test</strong> tab with test payloads, as it doesn&rsquo;t simulate production load or provide reliable performance insights.</p>
+<p>After validation, you can migrate fully and turn off or delete the previous version using <code>crypto-es</code>.</p>
+<h2 id="crypto-esjs-legacy">Crypto-ES.js (legacy)</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This is a legacy version of the crypto library. For new use cases, see the <a href="#crypto">Tealium crypto library</a> library, which offers the same interface with improved performance and modular imports.</p>
+<p>Crypto-ES.js is a library of encryption algorithms available that provides hashing, encoding, and cipher algorithms. For more information, see <a href="https://www.npmjs.com/package/crypto-es/v/1.2.7">NPM: Crypto-ES</a>.</p>
 <p>The following example shows how to encrypt and decrypt text:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>;
 </span></span><span style="display:flex;"><span>
@@ -697,13 +886,13 @@ Current count: : 2
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side/functions/best-practices/"
+  <a href="/server-side/functions/dashboard/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Best practices</div>
+      <div>Functions dashboard</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Best practices"</title>
+      <title>"Functions dashboard"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -751,7 +940,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 24, 2024 
+          <p>This page was last updated:  June 18, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -765,7 +954,13 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#crypto-esjs" href="javascript:void(0)">Crypto-ES.js</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#crypto" href="javascript:void(0)">Crypto</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#import-library" href="javascript:void(0)">Import library</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#import-modules" href="javascript:void(0)">Import modules</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-messages" href="javascript:void(0)">Error messages</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrating-from-crypto-es-to-tealium-crypto-library" href="javascript:void(0)">Migrating from Crypto-ES to Tealium crypto library</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#crypto-esjs-legacy" href="javascript:void(0)">Crypto-ES.js (legacy)</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#gcm-mode-for-aes-encryption" href="javascript:void(0)">GCM mode for AES encryption</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sha3-algorithm" href="javascript:void(0)">SHA3 algorithm</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#crc32-algorithm" href="javascript:void(0)">CRC32 algorithm</a></li>

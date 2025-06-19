@@ -304,6 +304,7 @@
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/roku-events-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-events-api-connector">Roku Events API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rtb-house-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-connector">RTB House</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-audience-studio-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-audience-studio-connector">Salesforce Audience Studio</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/salesforce-dmp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-dmp-connector">Salesforce DMP</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -397,14 +398,13 @@
 
   
     <p class="f4 fw3 lh-copy">
-      The Google Campaign Manager 360 Floodlight connector inserts offline conversions into the Floodlight Conversion Tracking and Attribution system through the DoubleClick Campaign Manager API.
+      The Google Campaign Manager 360 Floodlight connector inserts offline conversions into the Floodlight Conversion Tracking and Attribution system through the Google Campaign Manager 360 API.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This article describes how to configure DCM Floodlight in your Customer Data Hub account.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Floodlight is the conversion tracking system for the DoubleClick Digital Marketing (DDM) platform. All properties within the DDM platform—Campaign Manager (DCM), Bid Manager, and DoubleClick Search (DS)—can use Floodlight. For more information, see <a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">Google: About Floodlight conversion tracking</a>.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Floodlight is the conversion tracking system for the DoubleClick Digital Marketing (DDM) platform. All properties within the DDM platform—Campaign Manager (DCM), Bid Manager, and DoubleClick Search (DS)—can use Floodlight. For more information, see <a href="https://support.google.com/campaignmanager/answer/2823388?hl=en">Google: About Floodlight conversion tracking</a>.</p>
 <h2 id="ds-vs-dcm">DS vs DCM</h2>
 <p>Use DoubleClick Search (DS) if you do not run paid search reports in Report Builder or do not need to see search-driven offline conversions in your DDM platform—Campaign Manager (DCM) reports.</p>
 <p>Use DCM if you run Paid Search reports in Report Builder and can identify conversions by encrypted user ID, mobile device ID, or Google click ID.</p>
@@ -416,8 +416,8 @@
 <li>Your DCM account must be enabled for API access.</li>
 <li>You must have a user profile with access to this account.</li>
 <li>Grant access to conversion data within your DCM account by enabling the <code>https://www.googleapis.com/auth/ddmconversions</code> scope for your DCM account.</li>
-<li>Add user <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> to your account and grant it access to your DCM account with the <strong>Insert offline conversions</strong> permission.</li>
-<li>After user <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> is added to your DCM account, use the generated profile ID in the connector, either on the configuration page or on an action page. If defined in both locations, the profile ID defined on an action page takes precedence.</li>
+<li>Add user <code>api@tealium.com</code> to your account and grant it access to your DCM account with the <strong>Insert offline conversions</strong> permission.</li>
+<li>After user <code>api@tealium.com</code> is added to your DCM account, use the generated profile ID in the connector, either on the configuration page or on an action page. If defined in both locations, the profile ID defined on an action page takes precedence.</li>
 </ul>
 <h3 id="api-information">API Information</h3>
 <p>This connector uses the following vendor API:</p>
@@ -456,12 +456,20 @@
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Floodlight Profile ID</strong>
+<ul>
+<li>The Floodlight Profile ID that is given to you by Campaign Manager 360, after adding the <code>api@tealium.com</code> user to your Campaign Manager 360 account.</li>
+</ul>
+</li>
+</ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you will be prompted to accept the vendor&rsquo;s data platform policy.</p>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="action---track-floodlight-conversion">Action - Track Floodlight Conversion</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="configuration-id-parameters">Configuration ID Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -471,10 +479,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Profile ID</td>
-<td><ul><li>The Floodlight Profile ID that is given to you by DCM, after adding the <strong><a href="mailto:api@tealium.com">api@tealium.com</a></strong> user to your DCM account.</li><li>If configured here, the value overwrites the value defined in the Configuration.</li></ul></td>
-</tr>
-<tr>
 <td>Floodlight Configuration ID</td>
 <td><ul><li>Required.</li><li>The Floodlight configuration ID of this conversion.</li></ul></td>
 </tr>
@@ -483,17 +487,59 @@
 <td><ul><li>Required.</li><li>The Floodlight activity ID of this conversion.</li></ul></td>
 </tr>
 <tr>
+<td>Profile ID</td>
+<td><ul><li>The Floodlight Profile ID that is given to you by DCM, after adding the <code>api@tealium.com</code> user to your DCM account.</li><li>If configured here, the value overwrites the value defined in the Configuration.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="userdevice-id">User/Device ID</h4>
+<ul>
+<li>If multiple attributes are mapped, the first non-empty value will be sent.</li>
+<li>All the conversions are sent after a 30 minute delay.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>Encrypted User ID</td>
 <td><ul><li>If one or more Encrypted User IDs are specified, then Encryption Entity Type, ID and Source sections are required.</li></ul></td>
+</tr>
+<tr>
+<td>Mobile Device ID</td>
+<td><ul><li>Specify either a single device ID, a single click ID, a single user ID, or multiple user candidate IDs.</li><li>It is acceptable to use a list with candidate IDs for a single user candidate ID parameter.</li></ul></td>
 </tr>
 <tr>
 <td>Google Click ID</td>
 <td><ul><li>Specify either a single device ID, a single click ID, a single user ID, or multiple user candidate IDs.</li><li>It is acceptable to use a list with candidate IDs for a single user candidate ID parameter.</li></ul></td>
 </tr>
 <tr>
-<td>Mobile Device ID</td>
-<td><ul><li>Specify either a single device ID, a single click ID, a single user ID, or multiple user candidate IDs.</li><li>It is acceptable to use a list with candidate IDs for a single user candidate ID parameter.</li></ul></td>
+<td>Display Click ID</td>
+<td><ul><li>The unique identifier for ad clicks. </li></ul></td>
 </tr>
+<tr>
+<td>Match ID</td>
+<td><ul><li> A unique advertiser-created identifier assigned to each conversion event.</li></ul></td>
+</tr>
+<tr>
+<td>Impression ID</td>
+<td><ul><li>A unique identifier assigned to each impression.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="encryption-source">Encryption Source</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Encryption Entity Type</td>
 <td><ul><li>Required if Encrypted User ID is specified.</li><li>Must match the encryption configuration for ad serving or data transfer.</li></ul></td>
@@ -506,45 +552,64 @@
 <td>Encryption Source</td>
 <td><ul><li>Required if Encrypted User ID is specified.</li><li>Describes whether the encrypted cookie was received from ad serving or from data transfer.</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="quantity-and-value">Quantity and Value</h4>
+<table>
+<thead>
 <tr>
-<td>Timestamp in micros</td>
-<td><ul><li>The timestamp of conversion, in Unix epoch microseconds.</li><li>If not provided, it will be auto-generated.</li></ul></td>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
-<tr>
-<td>Treatment For Underage</td>
-<td><ul><li>Set to true if the request may come from an underage user (see GDPR).</li></ul></td>
-</tr>
-<tr>
-<td>Limit Ad Tracking</td>
-<td><ul><li>Set to true to use the conversion for reporting only, not for targeting.</li></ul></td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td>Ordinal</td>
 <td><ul><li>Required.</li><li>The ordinal of the conversion.</li><li>Used to de-duplicate conversions of the same user and day.</li></ul></td>
 </tr>
 <tr>
+<td>Limit Ad Tracking</td>
+<td><ul><li>Set to <code>true</code> to use the conversion for reporting only, not for targeting.</li></ul></td>
+</tr>
+<tr>
+<td>Timestamp in micros</td>
+<td><ul><li>The timestamp of conversion, in Unix epoch microseconds.</li><li>If not provided, it will be auto-generated.</li></ul></td>
+</tr>
+<tr>
 <td>Child Directed Treatment</td>
-<td><ul><li>Set as true for conversions directed toward children.</li></ul></td>
+<td><ul><li>Set as <code>true</code> for conversions directed toward children.</li></ul></td>
 </tr>
 <tr>
 <td>Non-Personalized Ad</td>
-<td><ul><li>Set as true if the conversion was for a non-personalized ad.</li></ul></td>
+<td><ul><li>Set as <code>true</code> if the conversion was for a non-personalized ad.</li></ul></td>
 </tr>
 <tr>
-<td>Conversion Quantity</td>
-<td><ul><li>The quantity of the conversion.</li></ul></td>
+<td>Treatment For Underage</td>
+<td><ul><li>Set to <code>true</code> if the request may come from an underage user (see GDPR).</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="custom-data">Custom Data</h4>
+<ul>
+<li>Map attributes to <code>U</code> custom variables as needed. Only populated values are sent.
+Use of the mapping destinations in this section supersede any mappings in the <strong>Custom Data Arrays - Legacy</strong> section.</li>
+</ul>
+<h4 id="custom-data-arrays---legacy">Custom Data Arrays - Legacy</h4>
+<table>
+<thead>
 <tr>
-<td>Conversion Value</td>
-<td><ul><li>The value of the conversion.</li></ul></td>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>Custom Variable Values</td>
-<td><ul><li>A collection of custom values.</li><li>Each value must not exceed 50 characters.</li></ul></td>
+<td><ul><li>An array of custom values.</li><li>Each value must not exceed 50 characters.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable Types</td>
-<td><ul><li>A collection of strings, each having a form of <code>Uxxx</code> where <code>xxx</code> is a number from <code>1</code> to <code>100</code>.</li></ul></td>
+<td><ul><li>An array of strings matching the pattern “U1” through “U100”. Any string that does not match this pattern will be excluded.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -614,7 +679,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 8, 2025 
+          <p>This page was last updated:  May 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -934,6 +999,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
