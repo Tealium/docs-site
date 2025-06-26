@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "11",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -217,21 +217,25 @@
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following <code>Strings.xml</code> keys are required for Android. Replace <code>[APP_ID]</code> with  your Facebook App ID:</p>
+  <p>Add the following keys to your <code>app/src/main/res/values/strings.xml</code> file. Replace <code>[APP_ID]</code> with your Facebook App ID and <code>[CLIENT_TOKEN]</code> with your Facebook Client Token:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;string</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;facebook_app_id&#34;</span><span style="color:#f92672">&gt;</span>[APP_ID]<span style="color:#f92672">&lt;/string&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;string</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;fb_login_protocol_scheme&#34;</span><span style="color:#f92672">&gt;</span>fb[APP_ID]<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;string</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;facebook_client_token&#34;</span><span style="color:#f92672">&gt;</span>[CLIENT_TOKEN]<span style="color:#f92672">&lt;/string&gt;</span>
 </span></span></code></pre></div><p>The following <code>meta-data</code> element is required in the <code>AndroidManifest.xml</code> file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:label=</span><span style="color:#e6db74">&#34;@string/app_name&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;meta-data</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.facebook.sdk.ApplicationId&#34;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;@string/facebook_app_id&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;meta-data</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.facebook.sdk.ClientToken&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;@string/facebook_client_token&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/application&gt;</span>
 </span></span></code></pre></div><p>Learn more: <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-android">Facebook Android Getting Started - Integrate the Facebook SDK in Your Android App</a>.</p>
 </div>
 <div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>The following keys are required in the <code>.plist</code> file for iOS:</p>
+  <p>Add the following keys to your <code>Info.plist</code> file. Replace <code>[APP_ID]</code> with your Facebook App ID, <code>[APP_NAME]</code> with your app name, and <code>[CLIENT_TOKEN]</code> with your Facebook Client Token:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;key&gt;</span>CFBundleURLTypes<span style="color:#f92672">&lt;/key&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;array&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dict&gt;</span>
@@ -245,13 +249,15 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;string&gt;</span>[APP_ID]<span style="color:#f92672">&lt;/string&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;key&gt;</span>FacebookDisplayName<span style="color:#f92672">&lt;/key&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;string&gt;</span>[APP_NAME]<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;key&gt;</span>FacebookClientToken<span style="color:#f92672">&lt;/key&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;string&gt;</span>[CLIENT_TOKEN]<span style="color:#f92672">&lt;/string&gt;</span>
 </span></span></code></pre></div><p>Learn more: <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#plist-config">Facebook iOS Getting Started - Configure Your Property List</a>.</p>
 <p>Update the <code>AppDelegate</code> code as follows:</p>
 <ol>
 <li>Import <code>FBSDKCoreKit</code>.</li>
 <li>In the <code>didFinishLaunchingWithOptions</code> method add the following:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>FBSDKApplicationDelegate.sharedInstance().application(
-</span></span><span style="display:flex;"><span>      application,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>ApplicationDelegate.shared.application(
+</span></span><span style="display:flex;"><span>      application, 
 </span></span><span style="display:flex;"><span>      didFinishLaunchingWithOptions: launchOptions)
 </span></span></code></pre></div></li>
 <li>Add the following function in your <code>AppDelegate.swift</code> (or Objective-C equivalent):
@@ -259,10 +265,11 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">_</span> app: UIApplication,
 </span></span><span style="display:flex;"><span>      open url: URL,
 </span></span><span style="display:flex;"><span>      options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -&gt; Bool {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> handled = FBSDKApplicationDelegate.sharedInstance().application(
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> handled = ApplicationDelegate.shared.application(
 </span></span><span style="display:flex;"><span>      app,
 </span></span><span style="display:flex;"><span>      open: url,
 </span></span><span style="display:flex;"><span>      options: options)
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ol>
 <p>Learn more: <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#dev-env-setup">Facebook iOS Getting Started - Set Up Your Development Environment</a>.</p>
@@ -310,9 +317,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumFacebook&#34;</span>
 </span></span></code></pre></div><p>The <code>TealiumFacebook</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumDelegate&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Import the modules <code>TealiumSwift</code> and <code>TealiumFacebook</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Facebook Remote Command.</p>
@@ -333,12 +339,12 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-facebook-remote-command&#34;</span>
 </span></span></code></pre></div></li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK (version 2.12+) is required for the latest Facebook Remote Command integration.</p>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
   <ol>
 <li>
-<p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
+<p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
@@ -351,7 +357,7 @@
 <li>
 <p>Import both the Facebook SDK and Tealium-Facebook remote command by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:facebook:2.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:facebook:3.0.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ol>
@@ -430,13 +436,13 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> facebook = FacebookRemoteCommand() 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> facebook = FacebookRemoteCommand(launchOptions: launchOptions) 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let facebook = FacebookRemoteCommand(type: .local(file: &#34;facebook&#34;)) </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let facebook = FacebookRemoteCommand(type: .local(file: &#34;facebook&#34;), launchOptions: launchOptions) </span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let facebook = FacebookRemoteCommand(type: .remote(url: &#34;https://some.domain.com/facebook.json&#34;)) </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let facebook = FacebookRemoteCommand(type: .remote(url: &#34;https://some.domain.com/facebook.json&#34;), launchOptions: launchOptions) </span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    remoteCommands.add(facebook)
 </span></span><span style="display:flex;"><span>}
@@ -452,7 +458,6 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> facebook = FacebookRemoteCommand(application);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(facebook); 
 </span></span><span style="display:flex;"><span>
@@ -485,11 +490,14 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;applicationid&#34;</span>: <span style="color:#e6db74">&#34;YOUR_APP_ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;clienttoken&#34;</span>: <span style="color:#e6db74">&#34;YOUR_CLIENT_TOKEN&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;accesstoken&#34;</span>: <span style="color:#e6db74">&#34;YOUR_ACCESS_TOKEN&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;userid&#34;</span>: <span style="color:#e6db74">&#34;YOUR_USER_ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;auto_log&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;auto_log_events_enabled&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;auto_init_enabled&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;auto_initialized&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;advertiser_id_collection_enabled&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;advertiser_collection&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;debug&#34;</span>: <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mappings&#34;</span>: {
@@ -497,7 +505,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ad_type&#34;</span>: <span style="color:#e6db74">&#34;event.ad_type&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;content&#34;</span>: <span style="color:#e6db74">&#34;event.fb_content&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;content_type&#34;</span>: <span style="color:#e6db74">&#34;event.fb_content_type&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency_cod&#34;</span>: <span style="color:#e6db74">&#34;event.fb_currency&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency_code&#34;</span>: <span style="color:#e6db74">&#34;event.fb_currency&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;event.fb_description&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;current_level&#34;</span>: <span style="color:#e6db74">&#34;event.fb_level&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;pet_count&#34;</span>: <span style="color:#e6db74">&#34;event.fb_max_rating_value&#34;</span>,
@@ -547,18 +555,19 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_signup&#34;</span>: <span style="color:#e6db74">&#34;updateuservalue&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;level_up&#34;</span>: <span style="color:#e6db74">&#34;achievedlevel&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_register&#34;</span>: <span style="color:#e6db74">&#34;completedregistration&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;unlock_achievement&#34;</span>: <span style="color:#e6db74">&#34;unlockedachievment&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;unlock_achievement&#34;</span>: <span style="color:#e6db74">&#34;unlockedachievement&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cart_add&#34;</span>: <span style="color:#e6db74">&#34;addedtocart&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;custom_attribute&#34;</span>: <span style="color:#e6db74">&#34;rated&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;wishlist_add&#34;</span>: <span style="color:#e6db74">&#34;addedtowishlist&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;payment&#34;</span>: <span style="color:#e6db74">&#34;initiatedcheckout&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;product&#34;</span>: <span style="color:#e6db74">&#34;logproductitem&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;order&#34;</span>: <span style="color:#e6db74">&#34;logpurchase&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flush&#34;</span>: <span style="color:#e6db74">&#34;flush&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flush&#34;</span>: <span style="color:#e6db74">&#34;flush&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customfbevent&#34;</span>: <span style="color:#e6db74">&#34;customfbevent&#34;</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="push-message-tracking-ios">Push Message Tracking (iOS)</h2>
-<p>The Tealium Swift library includes a <code>TealiumRegistration</code> protocol for handling push message tracking via Tealium and the Facebook Remote Command. We conform to this protocol in the wrapper class <code>FacebookInstance</code> which is used to send push message authorization events, push message open events, and to uninstall tracking. We recommend taking advantage of the push message tracking capability.</p>
+<p>The Tealium Swift library includes a <code>TealiumRegistration</code> protocol for handling push message tracking through Tealium and the Facebook Remote Command. We conform to this protocol in the wrapper class <code>FacebookInstance</code>, which is used to send push message authorization events, push message open events, and to uninstall tracking. We recommend taking advantage of the push message tracking capability.</p>
 <p>The following steps integrate push message tracking for your iOS project:</p>
 <ol>
 <li>In the <code>TealiumHelper.swift</code> file, initialize an empty array of objects that conform to the <code>TealiumRegistration</code> protocol. For example:
@@ -579,7 +588,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> facebookInstance = FacebookInstance()
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> facebookRemoteCommand = FacebookRemoteCommand(facebookInstance: facebookInstance)
 </span></span><span style="display:flex;"><span>      remoteCommands.add(facebookRemoteCommand)
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">self</span>. pushMessagingHelpers.append(facebookInstance)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">self</span>.pushMessagingHelpers.append(facebookInstance)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-facebook-remote-command/tree/master/Examples">Facebook Remote Command sample apps</a>. To send an event to Facebook once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <code>AppDelegate.swift</code>.</p>
 <h2 id="supported-methods">Supported Methods</h2>
@@ -589,48 +598,82 @@
 <tr>
 <th>Remote Command</th>
 <th>Facebook Method</th>
+<th>Supported Platforms</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>setUser</code></td>
-<td><code>setUser()</code></td>
+<td><code>clearuser</code>(ios)/<code>clearuserdata</code>(android)</td>
+<td><code>clearUserData()</code></td>
+<td>iOS, Android</td>
 </tr>
 <tr>
-<td><code>updateUserValue</code></td>
-<td><code>updateUserValue()</code></td>
+<td><code>clearuserid</code></td>
+<td><code>clearUserId()</code></td>
+<td>iOS, Android</td>
 </tr>
 <tr>
-<td>Any of the below event names</td>
-<td><code>trackEvent()</code></td>
-</tr>
-<tr>
-<td>logProductItem</td>
-<td><code>logProductItem()</code></td>
-</tr>
-<tr>
-<td><code>logPurchase</code></td>
-<td><code>logPurchase()</code></td>
+<td><code>enableadvertiseridcollection</code></td>
+<td><code>setAdvertiserIDCollectionEnabled()</code></td>
+<td>iOS, Android</td>
 </tr>
 <tr>
 <td><code>flush</code></td>
 <td><code>flush()</code></td>
+<td>iOS, Android</td>
 </tr>
 <tr>
-<td>Manually called in <code>AppDelegate</code> within <code>didReceiveRemoteNotification</code></td>
-<td><code>setPushNotificationsDeviceToken()</code></td>
+<td><code>initialize</code></td>
+<td><code>initialize()</code></td>
+<td>iOS, Android</td>
 </tr>
 <tr>
-<td>Manually called in <code>AppDelegate</code> within <code>didRegisterForRemoteNotificationsWithDeviceToken</code></td>
-<td><code>registerPushToken()</code></td>
+<td><code>logproductitem</code></td>
+<td><code>logProductItem()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td><code>logpurchase</code></td>
+<td><code>logPurchase()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td><code>setautoinitenabled</code></td>
+<td><code>setAutoInitEnabled()</code></td>
+<td>Android</td>
+</tr>
+<tr>
+<td><code>setautologappeventsenabled</code></td>
+<td><code>setAutoLogAppEventsEnabled()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td><code>setflushbehavior</code></td>
+<td><code>setFlushBehavior()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td><code>setpushregistrationid</code></td>
+<td><code>setPushNotificationsRegistrationId()</code></td>
+<td>Android only</td>
+</tr>
+<tr>
+<td><code>setuser</code>(ios, android)/<code>updateUserValue</code>(ios)</td>
+<td><code>setUserData()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td><code>setuserid</code></td>
+<td><code>setUserId()</code></td>
+<td>iOS, Android</td>
+</tr>
+<tr>
+<td>Any of the below event names</td>
+<td><code>logEvent()</code></td>
+<td>iOS, Android</td>
 </tr>
 </tbody>
 </table>
-<p>Push notifications are currently supported only for the iOS remote command.</p>
-<ul>
-<li><a href="https://developers.facebook.com/docs/app-events/uninstalls">iOS setPushNotificationsDeviceToken</a> - used for uninstall tracking</li>
-<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L627">iOS logPushNotificationOpen</a></li>
-</ul>
 <h3 id="standard-event-names">Standard Event Names</h3>
 <p>The following is a list of standard event names supported with the <code>logEvent</code> method. If any of the below command names are sent, they are automatically triggered in the Facebook SDK. This is assuming all the required variables are also mapped and defined for that particular event. Learn about <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios/#manually-log-events">recording in-app events</a>.</p>
 <table>
@@ -642,110 +685,146 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>achievedLevel</code></td>
+<td style="text-align:left"><code>activatedapp</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameActivatedApp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>achievedlevel</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameAchievedLevel</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>addPaymentInfo</code></td>
+<td style="text-align:left"><code>adclick</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameAdClick</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>adimpression</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameAdImpression</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>addedpaymentinfo</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameAddedPaymentInfo</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>addToCart</code></td>
+<td style="text-align:left"><code>addedtocart</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameAddedToCart</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>addToWishlist</code></td>
+<td style="text-align:left"><code>addedtowishlist</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameAddedToWishlist</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>completeRegistration</code></td>
+<td style="text-align:left"><code>completedregistration</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameCompletedRegistration</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>completeTutorial</code></td>
+<td style="text-align:left"><code>completedtutorial</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameCompletedTutorial</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>initiateCheckout</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameInitiatedCheckout</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>purchase</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNamePurchased</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>subscribe</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameSubscribe</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>startTrial</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameStartTrial</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>rated</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameRated</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>searched</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameSearched</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>spentCredits</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameSpentCredits</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>unlockAchievement</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameUnlockedAchievement</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>contentView</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameViewedContent</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>logContact</code></td>
+<td style="text-align:left"><code>contact</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameContact</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>initiateCheckout</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameInitiatedCheckout</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>spentCredits</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameSpentCredits</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>customizeProduct</code></td>
+<td style="text-align:left"><code>customizeproduct</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameCustomizeProduct</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>deactivatedapp</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameDeactivatedApp</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>donate</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameDonate</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>findLocation</code></td>
+<td style="text-align:left"><code>findlocation</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameFindLocation</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initiatedcheckout</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameInitiatedCheckout</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingstart</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingStart</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingstop</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingStop</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingpause</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingPause</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingresume</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingResume</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingerror</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingError</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>livestreamingupdatestatus</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameLiveStreamingUpdateStatus</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>productcatalogupdate</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameProductCatalogUpdate</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pushtokenobtained</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNamePushTokenObtained</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>rated</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameRated</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>schedule</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameSchedule</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>submitApplication</code></td>
+<td style="text-align:left"><code>searched</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameSearched</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sessioninterruptions</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameSessionInterruptions</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>spentcredits</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameSpentCredits</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>starttrial</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameStartTrial</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>submitapplication</code></td>
 <td style="text-align:left"><code>FBSDKAppEventNameSubmitApplication</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>adImpression</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameAdImpression</code></td>
+<td style="text-align:left"><code>subscribe</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameSubscribe</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>adClick</code></td>
-<td style="text-align:left"><code>FBSDKAppEventNameAdClick</code></td>
+<td style="text-align:left"><code>timebetweensessions</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameTimeBetweenSessions</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unlockedachievement</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameUnlockedAchievement</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>viewedcontent</code></td>
+<td style="text-align:left"><code>FBSDKAppEventNameViewedContent</code></td>
 </tr>
 </tbody>
 </table>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Since the Facebook SDK is installed alongside the Tealium SDK, you are able to trigger any native Facebook functionality given the corresponding tag configuration.</p>
-<h3 id="set-user">Set User</h3>
-<p>Sets custom user data to associate with all app events. All user data is hashed and used to match Facebook users from this instance of an application. The user data is persisted between application instances.</p>
+<h3 id="clear-user">Clear User</h3>
+<p>Clears the current user data.</p>
 <table>
 <thead>
 <tr>
@@ -757,65 +836,19 @@
 </thead>
 <tbody>
 <tr>
-<td><code>setUser</code></td>
-<td><code>user</code></td>
+<td><code>clearuser</code></td>
 <td></td>
-<td><code>[String: Any]</code></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>User Dictionary Properties</th>
-<th>Optional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>em</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>fn</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>ln</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>dob</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>ge</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>ct</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>st</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>zp</code></td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td><code>String</code></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L764">Facebook iOS SDK setUser</a></li>
-<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L674">Facebook Android SDK Integration - setUserData</a></li>
+<li><a href="https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L800">Facebook iOS SDK Integration - clearUserData</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L708">Facebook Android SDK Integration - clearUserData</a></li>
 </ul>
-<h3 id="update-user-value">Update User Value</h3>
-<p>Updates a user value for a type/key. All user data is hashed and used to match Facebook users from this instance of an application. The user data is persisted between application instances.</p>
+<h3 id="clear-user-id">Clear User ID</h3>
+<p>Clears the currently set user ID.</p>
 <table>
 <thead>
 <tr>
@@ -827,23 +860,103 @@
 </thead>
 <tbody>
 <tr>
-<td><code>updateUserValue</code></td>
-<td><code>fb_user_value</code></td>
+<td><code>clearuserid</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-ios-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L761">Facebook iOS SDK Integration - clearUserId</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L629">Facebook Android SDK Integration - clearUserId</a></li>
+</ul>
+<h3 id="set-advertiser-id-collection">Set Advertiser ID Collection</h3>
+<p>Sets the advertiserID collection flag for the application.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enableadvertiseridcollection</code></td>
+<td><code>advertiser_collection</code>(android)</td>
+<td></td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>advertiser_id_collection_enabled</code>(ios)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L155">Facebook iOS SDK Integration - setAdvertiserIDCollectionEnabled</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L1011">Facebook Android SDK Integration - setAdvertiserIDCollectionEnabled</a></li>
+</ul>
+<h3 id="flush">Flush</h3>
+<p>Explicitly kick off flushing of events to Facebook. This is an asynchronous method, but it does initiate an immediate kick off. Server failures are reported through the NotificationCenter with notification ID <code>FBSDKAppEventsLoggingResultNotification</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flush</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L730">Facebook iOS SDK Integration - flush</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L560">Facebook Android SDK Integration - flush</a></li>
+</ul>
+<h3 id="initialize-1">Initialize</h3>
+<p>Initializes the Facebook SDK with application credentials.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialize</code></td>
+<td><code>applicationid</code></td>
 <td></td>
 <td><code>String</code></td>
 </tr>
 <tr>
 <td></td>
-<td><code>fb_user_key</code></td>
 <td></td>
+<td><code>clienttoken</code></td>
 <td><code>String</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>debug</code></td>
+<td><code>Boolean</code></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L803">Facebook iOS SDK Integration - setUserData</a></li>
-<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L712">Facebook Android SDK Integration - updateUserProperties</a></li>
-</ul>
 <h3 id="log-product-item">Log Product Item</h3>
 <p>Uploads product catalog product item as an app event.</p>
 <table>
@@ -1033,8 +1146,8 @@ are provided in <a href="https://developers.facebook.com/docs/app-events/getting
 <li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L547">Facebook iOS SDK Integration - logPurchase</a></li>
 <li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L440">Facebook Android SDK Integration - logPurchase</a></li>
 </ul>
-<h3 id="flush">Flush</h3>
-<p>Explicitly kick off flushing of events to Facebook. This is an asynchronous method, but it does initiate an immediate kick off. Server failures are reported through the NotificationCenter with notification ID <code>FBSDKAppEventsLoggingResultNotification</code>.</p>
+<h3 id="set-auto-init-enabled">Set Auto Init Enabled</h3>
+<p>Sets the auto init SDK flag for the application.</p>
 <table>
 <thead>
 <tr>
@@ -1046,44 +1159,253 @@ are provided in <a href="https://developers.facebook.com/docs/app-events/getting
 </thead>
 <tbody>
 <tr>
-<td><code>flush</code></td>
+<td><code>setautoinitenabled</code></td>
+<td><code>auto_initialized</code></td>
 <td></td>
-<td></td>
-<td></td>
+<td><code>Boolean</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L730">Facebook iOS SDK Integration - flush</a></li>
-<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L560">Facebook Android SDK Integration - flush</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L957">Facebook Android SDK Integration - setAutoInitEnabled</a></li>
+</ul>
+<h3 id="set-auto-log-app-events-enabled">Set Auto Log App Events Enabled</h3>
+<p>Sets the auto logging events flag for the application.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setautologappeventsenabled</code></td>
+<td><code>auto_log</code>(android)</td>
+<td></td>
+<td><code>Boolean</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/Settings.swift#L83">Facebook iOS SDK Integration - setAutoLogAppEventsEnabled</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/FacebookSdk.kt#L981">Facebook Android SDK Integration - setAutoLogAppEventsEnabled</a></li>
+</ul>
+<h3 id="set-flush-behavior">Set Flush Behavior</h3>
+<p>Sets when Facebook SDK should flush app events to the server.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setFlushBehavior</code></td>
+<td><code>flush_behavior</code></td>
+<td></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-ios-sdk/blob/ae94c9c7489fd8b080a965d9551758eadf419a06/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.m#L1752">Facebook iOS SDK Integration - setFlushBehavior</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L348">Facebook Android SDK Integration - setFlushBehavior</a></li>
+</ul>
+<h3 id="set-push-notifications-registration-id-android">Set Push Notifications Registration Id (Android)</h3>
+<p>Additional push notification methods available on Android platform.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setPushRegistrationId</code></td>
+<td><code>registration_id</code></td>
+<td></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<p>Available flush behavior values:</p>
+<ul>
+<li>
+<p><code>auto</code> - Events are flushed automatically (default)</p>
+</li>
+<li>
+<p><code>explicit_only</code> - Events are only flushed when explicitly called</p>
+</li>
+<li>
+<p><a href="https://github.com/facebook/facebook-android-sdk/blob/ade6cec4c97be018302f1ba3da5a8ccae1118c3c/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.kt#L453">Facebook Android SDK Integration - setPushNotificationsRegistrationId</a></p>
+</li>
+</ul>
+<h3 id="set-user">Set User</h3>
+<p>Sets custom user data to associate with all app events. All user data is hashed and used to match Facebook users from this instance of an application. The user data is persisted between application instances.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setUser</code></td>
+<td><code>user</code></td>
+<td></td>
+<td><code>[String: Any]</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>User Dictionary Properties</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>em</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>fn</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>ln</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>dob</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>ge</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>ct</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>st</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>zp</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L764">Facebook iOS SDK setUser</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L674">Facebook Android SDK Integration - setUserData</a></li>
+</ul>
+<h3 id="set-user-id">Set User ID</h3>
+<p>Sets the user ID to associate with all app events. This ID will be used to measure cross-device conversions and for setting up Custom Audiences.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setUserId</code></td>
+<td><code>fb_user_id</code></td>
+<td></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-user-value">Update User Value</h3>
+<p>Updates a user value for a type/key. All user data is hashed and used to match Facebook users from this instance of an application. The user data is persisted between application instances.</p>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Required</th>
+<th>Optional</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>updateUserValue</code></td>
+<td><code>fb_user_value</code></td>
+<td></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>fb_user_key</code></td>
+<td></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L803">Facebook iOS SDK Integration - setUserData</a></li>
+<li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L712">Facebook Android SDK Integration - updateUserProperties</a></li>
 </ul>
 <h3 id="log-event">Log Event</h3>
 <p>The following are <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L118">Facebook Standard Events</a> and accept a number of optional <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909ff8215c2ca41b2b1985563a4edd057111017/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L195">parameters</a> in the payload.</p>
 <ul>
-<li><code>achieveLevel</code></li>
-<li><code>adClick</code></li>
-<li><code>adImpression</code></li>
-<li><code>addPaymentInfo</code></li>
-<li><code>addToCart</code></li>
-<li><code>addToWishlist</code></li>
-<li><code>completeRegistration</code></li>
-<li><code>completeTutorial</code></li>
-<li><code>logContact</code></li>
-<li><code>viewedContent</code></li>
-<li><code>search</code></li>
-<li><code>rate</code></li>
-<li><code>customizeProduct</code></li>
+<li><code>activatedapp</code></li>
+<li><code>achievedlevel</code></li>
+<li><code>adclick</code></li>
+<li><code>adimpression</code></li>
+<li><code>addedpaymentinfo</code></li>
+<li><code>addedtocart</code></li>
+<li><code>addedtowishlist</code></li>
+<li><code>completedregistration</code></li>
+<li><code>completedtutorial</code></li>
+<li><code>contact</code></li>
+<li><code>customizeproduct</code></li>
+<li><code>deactivatedapp</code></li>
 <li><code>donate</code></li>
-<li><code>findLocation</code></li>
+<li><code>findlocation</code></li>
+<li><code>initiatedcheckout</code></li>
+<li><code>livestreamingstart</code></li>
+<li><code>livestreamingstop</code></li>
+<li><code>livestreamingpause</code></li>
+<li><code>livestreamingresume</code></li>
+<li><code>livestreamingerror</code></li>
+<li><code>livestreamingupdatestatus</code></li>
+<li><code>productcatalogupdate</code></li>
+<li><code>pushtokenobtained</code></li>
+<li><code>rated</code></li>
 <li><code>schedule</code></li>
-<li><code>startTrial</code></li>
-<li><code>submitApplication</code></li>
+<li><code>searched</code></li>
+<li><code>sessioninterruptions</code></li>
+<li><code>spentcredits</code></li>
+<li><code>starttrial</code></li>
+<li><code>submitapplication</code></li>
 <li><code>subscribe</code></li>
-<li><code>subscriptionHeartbeat</code></li>
-<li><code>initiateCheckout</code></li>
-<li><code>purchase</code></li>
-<li><code>unlockAchievement</code></li>
-<li><code>spentCredits</code></li>
+<li><code>timebetweensessions</code></li>
+<li><code>unlockedachievement</code></li>
+<li><code>viewedcontent</code></li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Because the Facebook SDK is installed alongside the Tealium SDK, all native Facebook functionality is available.</p>
 <p>Arbitrary parameter dictionary of characteristics. The keys to this dictionary must
@@ -1124,54 +1446,6 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
 <li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L456">Facebook iOS SDK Integration - logEvent</a></li>
 <li><a href="https://github.com/facebook/facebook-android-sdk/blob/8cc5dbb133d49f736845f999a30bfb30cf39e282/facebook-core/src/main/java/com/facebook/appevents/AppEventsLogger.java#L362">Facebook Android SDK Integration - logEvent</a></li>
 </ul>
-<h3 id="handle-push">Handle Push</h3>
-<p>Used to measure app uninstalls.</p>
-<table>
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Required</th>
-<th>Optional</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>setPushNotificationsDeviceToken</code></td>
-<td><code>deviceToken</code></td>
-<td></td>
-<td><code>Data</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><a href="https://developers.facebook.com/docs/app-events/uninstalls">Facebook iOS SDK Integration - setPushNotificationsDeviceToken</a></li>
-</ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If using the Tealium Swift library, see <a href="/platforms/remote-commands/integrations/facebook/#push-message-tracking">push message tracking</a> to see how to have this handled for you. You also have the option to call this method yourself. This feature is support in the iOS remote command only.</p>
-<h3 id="opened-app-from-push">Opened App From Push</h3>
-<p>Tracks an event when the user has opened the app from a push notification.</p>
-<table>
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Required</th>
-<th>Optional</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>logPushNotificationOpen</code></td>
-<td><code>payload</code> (userInfo)</td>
-<td></td>
-<td><code>[String: Any]</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><a href="https://github.com/facebook/facebook-objc-sdk/blob/1a223fd53b96c6a9078dacb1005e03035db3a0ff/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h#L627">Facebook iOS SDK Integration - logPushNotificationOpen</a></li>
-</ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If using the Tealium Swift library, see <a href="/platforms/remote-commands/integrations/facebook/#push-message-tracking">push message tracking</a> to see how to have this handled for you. You also have the option to call this method yourself. This feature is support in the iOS remote command only.</p>
 
 </div>
 
@@ -1232,7 +1506,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 8, 2024 
+          <p>This page was last updated:  June 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1256,14 +1530,21 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#push-message-tracking-ios" href="javascript:void(0)">Push Message Tracking (iOS)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-methods" href="javascript:void(0)">Supported Methods</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard-event-names" href="javascript:void(0)">Standard Event Names</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-user" href="javascript:void(0)">Set User</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-user-value" href="javascript:void(0)">Update User Value</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#clear-user" href="javascript:void(0)">Clear User</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#clear-user-id" href="javascript:void(0)">Clear User ID</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-advertiser-id-collection" href="javascript:void(0)">Set Advertiser ID Collection</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#flush" href="javascript:void(0)">Flush</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#initialize" href="javascript:void(0)">Initialize</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#log-product-item" href="javascript:void(0)">Log Product Item</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#log-purchase" href="javascript:void(0)">Log Purchase</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#flush" href="javascript:void(0)">Flush</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-auto-init-enabled" href="javascript:void(0)">Set Auto Init Enabled</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-auto-log-app-events-enabled" href="javascript:void(0)">Set Auto Log App Events Enabled</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-flush-behavior" href="javascript:void(0)">Set Flush Behavior</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-push-notifications-registration-id-android" href="javascript:void(0)">Set Push Notifications Registration Id (Android)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-user" href="javascript:void(0)">Set User</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-user-id" href="javascript:void(0)">Set User ID</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-user-value" href="javascript:void(0)">Update User Value</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#log-event" href="javascript:void(0)">Log Event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#handle-push" href="javascript:void(0)">Handle Push</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opened-app-from-push" href="javascript:void(0)">Opened App From Push</a></li>
               </nav>
   </aside></nav>
 

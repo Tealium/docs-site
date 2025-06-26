@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -207,7 +207,7 @@
 </li>
 <li>One of these remote command integrations:
 <ul>
-<li><a href="/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
+<li><a href="/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.12.0+)</li>
 <li>Contentsquare Remote Command tag in Tealium iQ Tag Management</li>
 </ul>
 </li>
@@ -245,16 +245,14 @@
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
   <ol>
 <li>
-<p>Remove <code>tealium-swift</code> and <code>pod &quot;CS_iOS_SDK&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumContentsquare</code> framework.</p>
+<p>Remove <code>tealium-swift</code> and <code>pod &quot;CS_iOS_SDK&quot;</code> if they already exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumContentsquare</code> framework.</p>
 </li>
 <li>
 <p>Add the following dependency to your Podfile:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumContentsquare&#34;</span>
 </span></span></code></pre></div><p>The <code>TealiumContentsquare</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumDelegate&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Import the modules <code>TealiumSwift</code> and <code>TealiumContentsquare</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Contentsquare Remote Command.</p>
@@ -293,7 +291,7 @@
 <li>
 <p>Import both the Contentquare SDK and Tealium-Contentsquare remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:contentsquare:2.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:contentsquare:2.3.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ol>
@@ -369,13 +367,13 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contentsquare = ContentSquareRemoteCommand() 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contentsquare = ContentsquareRemoteCommand()   
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentSquareRemoteCommand(type: .local(file: &#34;contentsquare&#34;)) </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentsquareRemoteCommand(type: .local(file: &#34;contentsquare&#34;)) </span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentSquareRemoteCommand(type: .remote(url: &#34;https://some.domain.com/contentsquare.json&#34;)) </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentsquareRemoteCommand(type: .remote(url: &#34;https://some.domain.com/contentsquare.json&#34;)) </span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    remoteCommands.add(contentsquare)
 </span></span><span style="display:flex;"><span>}
@@ -435,6 +433,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screen&#34;</span>: <span style="color:#e6db74">&#34;screen_name&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dynamic_var&#34;</span>: <span style="color:#e6db74">&#34;dynamic_var&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#e6db74">&#34;user_identifier&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;custom_vars&#34;</span>: <span style="color:#e6db74">&#34;custom_vars&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;purchase.price&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency&#34;</span>: <span style="color:#e6db74">&#34;purchase.currency&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;transaction_id&#34;</span>: <span style="color:#e6db74">&#34;purchase.transaction_id&#34;</span>
@@ -442,6 +442,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screen_title&#34;</span>: <span style="color:#e6db74">&#34;sendscreenview&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dynamic_var&#34;</span>: <span style="color:#e6db74">&#34;senddynamicvar&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_identifier&#34;</span>: <span style="color:#e6db74">&#34;senduseridentifier&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;transaction&#34;</span>: <span style="color:#e6db74">&#34;sendtransaction&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;stop_tracking&#34;</span>: <span style="color:#e6db74">&#34;stoptracking&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;resume_tracking&#34;</span>: <span style="color:#e6db74">&#34;resumetracking&#34;</span>,
@@ -473,11 +474,15 @@
 <td><code>send()</code></td>
 </tr>
 <tr>
+<td><code>senduseridentifier</code></td>
+<td><code>sendUserIdentifier()</code></td>
+</tr>
+<tr>
 <td><code>stoptracking</code></td>
 <td><code>stopTracking()</code></td>
 </tr>
 <tr>
-<td><code>resumeTracking</code></td>
+<td><code>resumetracking</code></td>
 <td><code>resumeTracking()</code></td>
 </tr>
 <tr>
@@ -530,8 +535,19 @@
 <td><code>screen_name</code> (required)</td>
 <td><code>String</code></td>
 </tr>
+<tr>
+<td><code>custom_vars</code> (optional)</td>
+<td><code>Array</code></td>
+</tr>
 </tbody>
 </table>
+<p><strong>Custom Variables Format:</strong>
+Each custom variable object should contain:</p>
+<ul>
+<li><code>index</code> (required): <code>Int</code> - The custom variable index</li>
+<li><code>name</code> (required): <code>String</code> - The custom variable name</li>
+<li><code>value</code> (required): <code>String</code> - The custom variable value</li>
+</ul>
 <p>Contentsquare Developer Guide: Analytics User IDs</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#track-screens">Android</a></li>
@@ -566,7 +582,7 @@
 </tr>
 <tr>
 <td><code>currency</code> (required)</td>
-<td><code>Int</code></td>
+<td><code>String</code></td>
 </tr>
 <tr>
 <td><code>transaction_id</code> (optional)</td>
@@ -589,7 +605,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>senddynamicvar </code></td>
+<td><code>senddynamicvar</code></td>
 <td><code>send</code></td>
 </tr>
 </tbody>
@@ -613,6 +629,40 @@
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#track-dynamic-variables">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#track-dynamic-variables">iOS</a></li>
+</ul>
+<h3 id="track-user-identifier">Track User Identifier</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>senduseridentifier</code></td>
+<td><code>sendUserIdentifier</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_identifier</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<p>Contentsquare Developer Guide: Track User Identifier</p>
+<ul>
+<li><a href="https://docs.contentsquare.com/en/android/session-replay/">Android</a></li>
+<li><a href="https://docs.contentsquare.com/en/ios/session-replay/">iOS</a></li>
 </ul>
 <h3 id="consent-options">Consent Options</h3>
 <h4 id="stop--resume-tracking">Stop / Resume Tracking</h4>
@@ -759,7 +809,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 8, 2024 
+          <p>This page was last updated:  June 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -785,6 +835,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-screens" href="javascript:void(0)">Track Screens</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-transactions" href="javascript:void(0)">Track Transactions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-dynamic-variables" href="javascript:void(0)">Track Dynamic Variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-user-identifier" href="javascript:void(0)">Track User Identifier</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-options" href="javascript:void(0)">Consent Options</a></li>
               </nav>
   </aside></nav>

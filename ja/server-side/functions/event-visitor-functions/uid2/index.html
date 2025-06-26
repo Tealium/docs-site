@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>関数を使用してUID2を生成する | イベントとビジター関数 | Tealiumドキュメント</title>
+    <title>UID2を生成するための関数の使用 | イベントとビジター関数 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -578,7 +578,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">関数を使用してUID2を生成する</h1>
+<h1 class="lh-title mt30 mb3">UID2を生成するための関数の使用</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -592,32 +592,32 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Unified ID 2.0（UID2）は、<a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>が作成したオープンソースのIDフレームワークで、サードパーティのクッキーの代わりに使用できます。UID2は、ユーザーの個人識別情報（PII）を基にした確定的なユーザー識別子で、メールアドレスなどが該当します。UIDはハッシュ化され暗号化され、UID2リクエストのレスポンスで返されるUID2を作成します。詳細については、<a href="https://unifiedid.com/docs/intro">The Trade Desk UID2 documentation</a>を参照してください。</p>
-<p>UID2は、<a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk connector</a>や他のサポートされているアウトバウンドコネクタで使用できます。</p>
-<h2 id="訪問プロファイルのuid2を生成する">訪問プロファイルのUID2を生成する</h2>
-<p>UID2の生成には訪問関数の使用を推奨します。訪問がPIIを持っているがUID2が割り当てられていない場合に関数をトリガーします。訪問関数についての詳細は、<a href="/ja/server-side/functions/event-visitor-functions/about/">About event and visitor functions</a>を参照してください。</p>
-<p>訪問関数は以下の操作を行います：</p>
+  <p>Unified ID 2.0（UID2）は、<a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>によって作成されたオープンソースのIDフレームワークで、サードパーティクッキーの代わりに使用できます。UID2は、ユーザーの個人識別情報（PII）（例えば、メールアドレス）に基づいて決定的なユーザー識別子であり、UIDはハッシュ化および暗号化されてUID2が生成され、UID2リクエストへの応答で返されます。詳細については、<a href="https://unifiedid.com/docs/intro">The Trade Desk UID2ドキュメント</a>を参照してください。</p>
+<p>UID2は、<a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Deskコネクタ</a>およびその他のサポートされているアウトバウンドコネクタで使用できます。</p>
+<h2 id="訪問プロファイルのためのuid2の生成">訪問プロファイルのためのUID2の生成</h2>
+<p>訪問関数を使用してUID2を生成することをお勧めします。訪問がPIIを持っているがUID2が割り当てられていない場合に関数をトリガーします。訪問関数についての詳細は、<a href="/ja/server-side/functions/event-visitor-functions/about/">イベントおよび訪問関数について</a>を参照してください。</p>
+<p>訪問関数は以下を行います：</p>
 <ul>
-<li>訪問にUID2が割り当てられていない場合は、UID2を生成します。</li>
+<li>訪問にUID2が割り当てられていない場合、UID2を生成します。</li>
 <li>UID2と<code>tealium_visitor_id</code>を含むイベントをTealium Collectに送信します。</li>
 </ul>
-<p>関数から送信されたイベントによって、AudienceStream属性と訪問属性が豊かになります。</p>
+<p>AudienceStream属性と訪問属性は、関数から送信されたイベントによって豊かにされます。</p>
 <h3 id="前提条件">前提条件</h3>
-<p>UID2を生成する訪問関数を作成する前に、以下の操作を行ってください：</p>
+<p>UID2を生成するための訪問関数を作成する前に、以下を行ってください：</p>
 <ul>
 <li>
-<p>The Trade Deskから受け取ったデータの属性（<code>uid_identifier</code>、<code>uid2</code>、<code>uid_timestamp</code>）を持つUID2イベント仕様を作成します。関数はこのイベント仕様を使用してTealium Collectにイベントを送信します。例えば：<br>
+<p>The Trade Deskから受け取ったデータの属性（<code>uid_identifier</code>、<code>uid2</code>、<code>uid_timestamp</code>）を持つUID2イベント仕様を作成します。このイベント仕様を使用して、関数はTealium Collectにイベントを送信します。例えば：<br>
 <figure><a class="slb" href="/images/server-side/functions-uid2_event_spec.png"><img src="/images/server-side/functions-uid2_event_spec.png"
-         alt="Example event specification"
-         title="Example event specification"/>
+         alt="イベント仕様の例"
+         title="イベント仕様の例"/>
     </a>
 </figure></p>
 </li>
 <li>
-<p>ユーザーを識別するために使用するPII属性を選択します。現在、UID2は電話番号またはメールアドレス識別子をサポートしています。</p>
+<p>ユーザーの識別子として使用するPII属性を選択します。UID2は現在、電話番号またはメールアドレス識別子をサポートしています。</p>
 </li>
 <li>
-<p>UID2を保存するための訪問属性を作成します。イベントのUID2属性の値でこの訪問属性をエンリッチするためのエンリッチメントを追加します。詳細については、<a href="/ja/server-side/attributes/about/">Using Attributes</a>と<a href="/ja/server-side/attributes/enrichments/">About enrichments</a>を参照してください。</p>
+<p>UID2を保存するための訪問属性を作成します。この訪問属性をイベントUID2属性の値でエンリッチするためにエンリッチメントを追加します。詳細については、<a href="/ja/server-side/attributes/about/">属性の使用</a>および<a href="/ja/server-side/attributes/enrichments/">エンリッチメントについて</a>を参照してください。</p>
 </li>
 <li>
 <p>UID2が割り当てられていない識別された訪問（メールアドレス、電話番号、または他の識別子が割り当てられている訪問）のためのオーディエンスを作成します。例えば：<br>
@@ -626,21 +626,19 @@
          title="uid2-function-trigger-example.png"/>
     </a>
 </figure><br>
-詳細については、<a href="/ja/server-side/audiences/manage/#create-an-audience">Create an audience</a>を参照してください。</p>
+詳細については、<a href="/ja/server-side/audiences/manage/#create-an-audience">オーディエンスの作成</a>を参照してください。</p>
 </li>
 </ul>
-<h2 id="uid2生成関数">UID2生成関数</h2>
-<p>関数を作成する際には、以下の操作を行ってください：</p>
+<h2 id="uid2ジェネレーター関数">UID2ジェネレーター関数</h2>
+<p>関数を作成する際には、以下を行ってください：</p>
 <ol>
-<li>トリガーとして<strong>Processed Visitor</strong>を選択します。</li>
-<li><strong>Audience</strong>では、UID2が割り当てられていない識別された訪問のために作成したオーディエンスを選択します。<strong>Trigger On</strong>はデフォルト値の<code>Joined Audience</code>のままにしておきます。<br>
-処理済み訪問関数のデフォルトコードを削除し、<a href="#example-code">Example code</a>で示されているUID2を生成する例のコードをコピーして貼り付けます。必要に応じて例のコードを修正します。</li>
-<li><strong>Advanced</strong>タブをクリックし、<strong>Assign Authentications</strong>をクリックして、関数にUID2認証を追加します。<br>
-詳細については、<a href="/ja/server-side/functions/event-visitor-functions/authentication/#add-uid-20-authentication">Add UID2 Authentication</a>を参照してください。</li>
+<li>トリガーには<strong>Processed Visitor</strong>を選択します。</li>
+<li><strong>Audience</strong>には、UID2が割り当てられていない識別された訪問のために作成したオーディエンスを選択します。<strong>Trigger On</strong>はデフォルト値の<code>Joined Audience</code>に構成したままにします。
+デフォルトの処理済み訪問関数のコードを削除し、<a href="#example-code">例のコード</a>に示されているUID2を生成するための例のコードをコピーして貼り付け、必要に応じて例のコードを変更します。</li>
 </ol>
-<h3 id="例のコード">例のコード</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この例のコードは、訪問にUID2を割り当てるための関数を構成するためのガイドであり、<strong>修正せずには使用できません</strong>。コード内の<code>TODO</code>と記述されたコメントを探し、あなたの構成に合わせて修正する必要がある行を探してください。</p>
-<p>この例では、ユーザー識別子としてメールアドレスを使用していますが、他のユーザー識別子を使用するように適応することができます。属性IDは、メール属性の値を取得するために使用されます。属性IDを、使用している属性の正しい値に更新します。</p>
+<h3 id="例示コード">例示コード</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この例示コードは、訪問にUID2を割り当てる関数を構成するためのガイドであり、<strong>変更なしには使用できません</strong>。コード内の<code>TODO</code>と記載されたコメントを探し、あなたの構成に必要な行を変更してください。</p>
+<p>この例では、ユーザー識別子としてメールアドレスを使用していますが、他のユーザー識別子に適応させることも可能です。属性IDを使用してメール属性の値を取得します。使用している属性の正しい値に属性IDを更新してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {  
@@ -659,8 +657,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealium_config</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>, 
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DATA_SOURCE_KEY&#39;</span>, <span style="color:#75715e">// TODO: DATA_SOURCE_KEYをあなたのTealium Data Sourceキーに変更します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">email_hashed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">// TODO: メールがすでにハッシュ化されている場合は、これをtrueに構成します。
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DATA_SOURCE_KEY&#39;</span>, <span style="color:#75715e">// TODO: DATA_SOURCE_KEYをあなたのTealiumデータソースキーに変更してください。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">email_hashed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">// TODO: メールが既にハッシュ化されている場合は、これをtrueに構成してください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_account</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>) {
@@ -670,12 +668,12 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_profile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">profile</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: attribute_numberを訪問のメールが格納されている属性を指すように変更します
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: attribute_numberを訪問のメールに関連付けられた属性に指定してください
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#e6db74">&#39;ATTRIBUTE_ID&#39;</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">email</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  console.log(email)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">email_hashed</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">validateEmail</span>(<span style="color:#a6e22e">email</span>)) {
@@ -686,11 +684,11 @@
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hashed_email</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: 以下の変数をあなたのTTD UID2の認証情報に更新します
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">api_key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TTD_API_KEY&#39;</span> <span style="color:#75715e">// TODO: TTD_API_KEYをあなたのTTD APIキーに変更します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UID2_SECRET&#39;</span> <span style="color:#75715e">// TODO: UID2_SECRETをあなたのTTD UID2の秘密に変更します。
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  console.log(hashed_email)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: 以下の変数をあなたのTTD UID2の認証情報で更新してください
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">api_key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TTD_API_KEY&#39;</span> <span style="color:#75715e">// TODO: TTD_API_KEYをあなたのTTD APIキーに変更してください。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UID2_SECRET&#39;</span> <span style="color:#75715e">// TODO: UID2_SECRETをあなたのTTD UID2シークレットに変更してください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://prod.uidapi.com/v2/identity/map&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">secret</span>)
@@ -743,19 +741,19 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">24</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ciphertext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">24</span>, <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">tag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encryptedBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">lib</span>.<span style="color:#a6e22e">CipherParams</span>({ <span style="color:#a6e22e">ciphertext</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ciphertext</span> })
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">encryptedBody</span>,<span style="color:#a6e22e">key</span>, 
 </span></span><span style="display:flex;"><span>      {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">iv</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">iv</span>, 
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, 
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    ).<span style="color:#a6e22e">toString</span>()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">16</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">developed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">developed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">32</span>)
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">timestamp</span>, <span style="color:#ae81ff">16</span>),
@@ -765,15 +763,15 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email_hash</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">genHash</span>(<span style="color:#a6e22e">email</span>)]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email_hash</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">hashed_email</span>]
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">timestamp</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">enveloped</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">payload</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** 暗号化 **********&#39;</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;timestamp:&#39;</span>, <span style="color:#a6e22e">timestamp</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;nonce:&#39;</span>, <span style="color:#a6e22e">nonce</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;enveloped:&#39;</span>, <span style="color:#a6e22e">enveloped</span>)
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;\n********** encypted **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;timestamp:&#39;, timestamp)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;nonce:&#39;, nonce)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;enveloped:&#39;, enveloped)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">enveloped</span>,
@@ -784,16 +782,16 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** レスポンス **********&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** 復号化 **********&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;timeStamp:&#39;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;nonce:&#39;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">nonce</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;response:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// TODO: このイベント仕様は、関数の最後でTealiumに送信されます。作成したイベント仕様の属性がevent_dataの属性と一致していることを確認してください。
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** response **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(body)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** decrypted **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;timeStamp:&#39;, data.timestamp)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;nonce:&#39;, data.nonce)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;response:&#39;, JSON.stringify(data.developed))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;\n&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// TODO: このイベント仕様は、関数の最後にTealiumに送信されます。作成したイベント仕様の属性がevent_dataの属性と一致していることを確認してください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">event_data</span> <span style="color:#f92672">=</span>{
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UID2_event_data&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_visitor_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tealium_vid</span>,
@@ -801,25 +799,25 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">uid_timestamp</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>)
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// これは、event_dataオブジェクトをTealiumに送信するステップです。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event_data</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">uid</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// このステップは、イベントデータオブジェクトをTealiumに送信して処理します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// console.log(JSON.stringify(event_data))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">uid</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event_data</span>, <span style="color:#a6e22e">tealium_config</span>)
 </span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
 </span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`ネットワークのレスポンスが正常ではありません。ステータスコード: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
 </span></span><span style="display:flex;"><span>              }
-</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;ステータスコード:&#39;</span>, <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e">// console.log(&#39;Status code:&#39;, response.status);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
 </span></span><span style="display:flex;"><span>          })
-</span></span><span style="display:flex;"><span>          .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;エラー:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>          .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
 </span></span><span style="display:flex;"><span>    } 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;広告IDを生成できませんでした&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Couldn&#39;t generate advertising ID&#34;</span>)
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>  } 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\nxxxxx  失敗  xxxxx\n&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\nxxxxx  failed  xxxxx\n&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">response</span>))
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  })
@@ -883,7 +881,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年June月25日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -897,10 +895,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEuid2%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">訪問プロファイルのUID2を生成する</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEuid2%E3%81%AE%E7%94%9F%E6%88%90" href="javascript:void(0)">訪問プロファイルのためのUID2の生成</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid2%E7%94%9F%E6%88%90%E9%96%A2%E6%95%B0" href="javascript:void(0)">UID2生成関数</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">例のコード</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid2%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%E9%96%A2%E6%95%B0" href="javascript:void(0)">UID2ジェネレーター関数</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E7%A4%BA%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">例示コード</a></li>
               </nav>
   </aside></nav>
 

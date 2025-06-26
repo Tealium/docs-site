@@ -582,7 +582,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>There are a few restrictions to the automatic enforcement of server-side consent management. This article describes the current per-product behaviors and restrictions, and how to effectively disable automatic enforcement.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Server-side Consent Management for event-level activations has been replaced by Consent Orchestration. For more details, see <a href="/server-side/consent/consent-orchestration/about/">About Consent Orchestration</a>.<br><br>Automatic enforcement of Consent Management is optional for all profiles and disabled by default for new profiles. For more information, see <a href="#Disabling-automatic-enforcement">Disabling automatic enforcement</a>.</p>
+<p>There are a few restrictions to the automatic enforcement of server-side consent management. This article describes the current per-product behaviors and restrictions, and how to effectively disable automatic enforcement.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>The consent preferences manager groups tags in categories based on their function and purpose. These categories are presented to the visitor and displayed as toggle buttons to allow or disallow that tracking to occur.</p>
 <p>The following consent categories are currently available:</p>
@@ -639,7 +640,7 @@ To allow visitor profiles to be stored in AudienceStore and AudienceDB, the visi
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>For all DataAccess products (EventStore, AudienceStore, EventDB, and AudienceDB), <a href="/server-side/consent/event-specs/#consent-change-events">Consent change events</a> are sent/stored regardless of the contents of the <code>consent_categories</code> array to support consent logging.</p>
 <h2 id="disabling-automatic-enforcement">Disabling automatic enforcement</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Automatic enforcement is disabled for new profiles. Enabling Consent Orchestration disables and replaces legacy event-level server-side enforcement. To disable automatic enforcement on existing profiles, see <a href="/server-side/administration/account-settings/#consent-enforcement">Server-side account settings</a>. For more details, see <a href="/server-side/consent/consent-orchestration/about/">About Consent Orchestration</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Disabled by default for new profiles. Enabling Consent Orchestration disables and replaces legacy event-level server-side enforcement. To disable automatic enforcement on existing profiles, see <a href="/server-side/administration/account-settings/#consent-enforcement">Server-side account settings</a>. For more details, see <a href="/server-side/consent/consent-orchestration/about/">About Consent Orchestration</a>.</p>
 <p>The built-in enforcement based on <code>consent_categories</code> can sometimes cause unwanted blocking of consented data. To override that logic, follow these steps:</p>
 <ol>
 <li>Use a JavaScript Code extension scoped to the Tealium Collect tag to copy the opt-in categories to a new array, such as <code>consent_categories_granted</code>:
@@ -693,15 +694,15 @@ To allow visitor profiles to be stored in AudienceStore and AudienceDB, the visi
 <li>
 <p>Include the appropriate visitor-level <code>consent attributes</code> in each audience, to ensure only consented data is activated.
 <figure><a class="slb" href="/images/server-side/image5.png"><img src="/images/server-side/image5.png"
-             alt="Incluse consent attributes"
-             title="Incluse consent attributes"/>
+             alt="Include consent attributes"
+             title="Include consent attributes"/>
         </a>
     </figure></p>
 </li>
 </ol>
 <h3 id="step-3-audiencestream-profiling-and-audiencedb">Step 3: AudienceStream profiling and AudienceDB</h3>
 <p>Audience rules won&rsquo;t prevent visitor profiles from being built or written to AudienceDB.</p>
-<p>If your policies require the profile itself to be blocked in some cases, you can set a separate string attribute for use in the AudienceStream Event Filter. For instance, you could set a new event string attribute called <code>has_audiencestream_consent</code> that defaults to <code>false</code> and is enriched to <code>true</code> when the visitor has consented appropriately (based on your event-level <code>consent attributes</code> ).</p>
+<p>If your policies require blocking the profile under specific conditions, set a separate string attribute for use in the AudienceStream Event Filter. For example, create a new event string attribute called <code>has_audiencestream_consent</code> that defaults to <code>false</code> and is enriched to <code>true</code> when the visitor has provided appropriate consent (based on your event-level <code>consent attributes</code>).</p>
 <figure><a class="slb" href="/images/server-side/image2.png"><img src="/images/server-side/image2.png"
          alt="Add event attribute"
          title="Add event attribute"/>
@@ -752,7 +753,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 6, 2025 
+          <p>This page was last updated:  June 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

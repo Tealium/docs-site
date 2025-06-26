@@ -594,7 +594,7 @@
 <div class="prose nested-links" id="prose">
   <p>クラウドデータソースの構成に関する一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
 <h2 id="ユーザーロール">ユーザーロール</h2>
-<p>Tealiumが選択したSnowflakeのテーブルまたはビューからのみデータをポーリングできるようにするには、データベース、スキーマ、ウェアハウス、および接続したいテーブルまたはビューに対する<code>USAGE</code>権限を持つカスタムユーザーロールを作成します。</p>
+<p>Tealiumが選択したSnowflakeのテーブルまたはビューからのみデータをポーリングできるようにするために、データベース、スキーマ、ウェアハウス、および接続したいテーブルまたはビューに対して<code>USAGE</code>権限を持つカスタムユーザーロールを作成します。</p>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: カスタムロール</a>および<a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: アクセス制御権限</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
 <p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeデータタイプをマッピングしてください：</p>
@@ -634,7 +634,7 @@
 </table>
 <p>Snowflakeデータタイプについての詳細は、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Snowflakeへの接続を作成するには、以下のアカウント情報が必要です：</p>
+<p>Snowflakeに接続するためには、以下のアカウント情報が必要です：</p>
 <ul>
 <li>ホスト名</li>
 <li>接続ウェアハウス</li>
@@ -644,10 +644,10 @@
 <li>Snowflakeユーザー名</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>接続情報は、Snowflakeデータアカウントの構成によっては大文字と小文字を区別する場合があることに注意してください。</p>
-<p>新しい接続を構成するには、次の接続詳細を入力します。</p>
+<p>新しい接続を構成するには、以下の接続詳細を入力します。</p>
 <ul>
 <li><strong>Snowflake接続構成名</strong>：再利用可能な接続構成の名前を提供します。</li>
-<li><strong>アカウント識別子</strong>：<code>http://</code>プレフィックスなしのSnowflakeアカウント識別子を次の形式で入力します：
+<li><strong>アカウント識別子</strong>：次の形式で<code>http://</code>プレフィックスなしのSnowflakeアカウント識別子：
 <ul>
 <li>Snowflakeアカウント名を使用する場合：<code>ACCOUNT_NAME.snowflakecomputing.com</code>。</li>
 <li>リージョン内のSnowflakeアカウントロケータを使用する場合：<code>ACCOUNT_LOCATOR.CLOUD_REGION_ID.CLOUD.snowflakecomputing.com</code>。</li>
@@ -660,14 +660,14 @@
 </ul>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: カスタムロール</a>および<a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: アクセス制御権限</a>を参照してください。</p>
 <h3 id="認証">認証</h3>
-<p>RSAキーペアを使用して接続を認証する場合、Tealiumは暗号化されていないキーペアを生成できます。生成された公開キーを指定されたテーブルまたはビューへのアクセスが必要なSnowflakeユーザーアカウントに割り当てます。</p>
-<p>セキュリティ要件に基づいて、次のキーアルゴリズムから選択します：RSA-2048、RSA-3072、RSA-4096。</p>
+<p>RSAキーペアを使用して接続を認証する場合、Tealiumは暗号化されていないキーペアを生成することができます。生成された公開キーを指定されたテーブルまたはビューへのアクセスが必要なSnowflakeユーザーアカウントに割り当てます。</p>
+<p>セキュリティ要件に基づいて、次のキーアルゴリズムから選択します：RSA-2048、RSA-3072、またはRSA-4096。</p>
 <p>キーが生成された後、公開キーファイルをダウンロードし、クラウドデータベースのユーザーにキーを割り当てます。キーの指紋も提供されているので、ユーザーの公開キーが正しく割り当てられたかを確認する必要がある場合に使用できます。</p>
 <ol>
 <li>Snowflakeデータベース、スキーマ、ウェアハウス、およびテーブルまたはビューにアクセスするユーザーのユーザー名を入力します。</li>
 <li>次の暗号化アルゴリズムのいずれかを使用してキーペアを生成します：RSA-2048、RSA-3072、RSA-4096。</li>
 <li>公開キーファイルをダウンロードします。キーは<code>-----BEGIN PUBLIC KEY-----</code>と<code>-----END PUBLIC KEY-----</code>の間のテキストのみです。</li>
-<li>次のコマンドを使用して、公開キーをSnowflakeのユーザーに割り当てます：
+<li>次のコマンドを使用して、Snowflakeでユーザーに公開キーを割り当てます：
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> your_username
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> RSA_PUBLIC_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your_public_key&#39;</span>;
 </span></span></code></pre></div>詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Snowflakeユーザーに公開キーを割り当てる</a>を参照してください。</li>
@@ -676,9 +676,9 @@
 <p>Snowflakeに接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</p>
 <h2 id="クエリモード">クエリモード</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は次のいずれかのSnowflakeデータタイプでなければなりません：<code>TIMESTAMP_LTZ</code>、<code>TIMESTAMP_TZ</code>、または<code>TIMESTAMP_NTZ</code>。</p>
+<p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は次のいずれかのSnowflakeデータタイプである必要があります：<code>TIMESTAMP_LTZ</code>、<code>TIMESTAMP_TZ</code>、または<code>TIMESTAMP_NTZ</code>。</p>
 <p>詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: 日付および時間データタイプ</a>を参照してください。</p>
-<p><strong>インクリメント</strong>モードの場合、選択された数値列は、追加される各行に対して値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</p>
+<p><strong>インクリメント</strong>モードの場合、選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><h2 id="where句">WHERE句</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
@@ -728,7 +728,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月17日
+          <p>最終更新日 ::  2025年June月25日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

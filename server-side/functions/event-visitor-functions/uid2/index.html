@@ -588,7 +588,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Unified ID 2.0 (UID2) is an open source ID framework created by <a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>, which can be used instead of of third-party cookies. UID2 is a deterministic user identifier based on a user&rsquo;s Personally Identifiable Information (PII), such as an email address. The UID is hashed and encrypted to create a UID2 that is returned in the response to a UID2 request. For more information, see <a href="https://unifiedid.com/docs/intro">The Trade Desk UID2 documentation</a>.</p>
+  <p>Unified ID 2.0 (UID2) is an open source ID framework created by <a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>, which can be used instead of third-party cookies. UID2 is a deterministic user identifier based on a user&rsquo;s Personally Identifiable Information (PII), such as an email address, and the UID is hashed and encrypted to create a UID2 that is returned in the response to a UID2 request. For more information, see <a href="https://unifiedid.com/docs/intro">The Trade Desk UID2 documentation</a>.</p>
 <p>A UID2 can be used in <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk connector</a> and other supported outbound connectors.</p>
 <h2 id="generate-uid2-for-a-visitor-profile">Generate UID2 for a visitor profile</h2>
 <p>We recommend using a visitor function to generate the UID2. Trigger the function when the visitor has PII but does not have a UID2 assigned. For more information about visitor functions, see <a href="/server-side/functions/event-visitor-functions/about/">About event and visitor functions</a>.</p>
@@ -668,8 +668,8 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#e6db74">&#39;ATTRIBUTE_ID&#39;</span>)
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">email</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  console.log(email)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">email_hashed</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">validateEmail</span>(<span style="color:#a6e22e">email</span>)) {
@@ -680,8 +680,8 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hashed_email</span>)
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  console.log(hashed_email)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: Update the following variables with your TTD UID2 credentials
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">api_key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TTD_API_KEY&#39;</span> <span style="color:#75715e">// TODO: Change TTD_API_KEY to your TTD API Key.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UID2_SECRET&#39;</span> <span style="color:#75715e">// TODO: Change UID2_SECRET to your TTD UID2 secret.
@@ -759,15 +759,15 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email_hash</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">genHash</span>(<span style="color:#a6e22e">email</span>)]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email_hash</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">hashed_email</span>]
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">timestamp</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">enveloped</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">payload</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** encypted **********&#39;</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;timestamp:&#39;</span>, <span style="color:#a6e22e">timestamp</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;nonce:&#39;</span>, <span style="color:#a6e22e">nonce</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;enveloped:&#39;</span>, <span style="color:#a6e22e">enveloped</span>)
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;\n********** encypted **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;timestamp:&#39;, timestamp)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;nonce:&#39;, nonce)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(&#39;enveloped:&#39;, enveloped)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">enveloped</span>,
@@ -778,15 +778,15 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** response **********&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n********** decrypted **********&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;timeStamp:&#39;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;nonce:&#39;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">nonce</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;response:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;\n&#39;</span>)
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** response **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(body)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** decrypted **********&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;timeStamp:&#39;, data.timestamp)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;nonce:&#39;, data.nonce)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;response:&#39;, JSON.stringify(data.developed))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;\n&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// TODO: This event spec is sent to Tealium at the end of the Function. Make sure that the attributes in the event spec you created match the attributes in event_data.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">event_data</span> <span style="color:#f92672">=</span>{
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UID2_event_data&#34;</span>,
@@ -796,15 +796,15 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// This is the step that sends the event_data object to Tealium for processing.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event_data</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">uid</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// console.log(JSON.stringify(event_data))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">uid</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event_data</span>, <span style="color:#a6e22e">tealium_config</span>)
 </span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
 </span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
 </span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
 </span></span><span style="display:flex;"><span>              }
-</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Status code:&#39;</span>, <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e">// console.log(&#39;Status code:&#39;, response.status);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>              <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
 </span></span><span style="display:flex;"><span>          })
 </span></span><span style="display:flex;"><span>          .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
 </span></span><span style="display:flex;"><span>    } 
@@ -877,7 +877,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2025 
+          <p>This page was last updated:  June 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

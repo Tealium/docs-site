@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -190,7 +190,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      AndroidおよびSwift/iOSにおけるContentsquareのTealiumリモートコマンド統合です。
+      AndroidおよびSwift/iOS用ContentsquareのTealiumリモートコマンド統合。
     </p>
   
 </div>
@@ -198,78 +198,87 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li>これらのモバイル ライブラリのうちのいずれか:
+<li>以下のいずれかのモバイルライブラリ：
 <ul>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0 以降)</li>
-<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (5.9.0 以降 (Contentsquare 1.0.0 以降用) または 5.9.0 以前 (旧バージョン用))</li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (Contentsquare 1.0.0+の場合は5.9.0+、それ以前のバージョンの場合は&lt;5.9.0)</li>
 <li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul>
 </li>
-<li>これらのリモート コマンド統合のいずれか:
+<li>以下のいずれかのリモートコマンド統合：
 <ul>
-<li><a href="/ja/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare Remote Command JSON File</a> (Android-Kotlin 1.0.0 以降または iOS-Swift 2.1.0 以降が必要)</li>
-<li>Contentsquareリモートコマンドタグ（Tealium iQ Tag Management）</li>
+<li><a href="/ja/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare Remote Command JSON File</a> (Android-Kotlin 1.0.0+またはiOS-Swift 2.12.0+が必要)</li>
+<li>Tealium iQ Tag ManagementのContentsquare Remote Commandタグ</li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Contentsquare 統合は、これらのアイテムを使用します:</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Contentsquare統合は3つのアイテムを使用します：</p>
 <ol>
-<li>Contentsquare ネイティブ SDK</li>
-<li>Contentsquare メソッドをラップするリモート コマンド モジュール</li>
-<li>イベント トラッキングをネイティブ Contentsquare コールに翻訳する、JSON 構成ファイルまたは Remote Command タグのいずれか</li>
+<li>ContentsquareネイティブSDK</li>
+<li>Contentsquareメソッドをラップするリモートコマンドモジュール</li>
+<li>イベントトラッキングをネイティブのContentsquareコールに変換するJSON構成ファイルまたはRemote Commandタグ</li>
 </ol>
-<p>Contentsquareリモートコマンドモジュールをアプリに追加すると、必要なContentsquareライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャのインストールを使用している場合、Contentsquare SDKを個別にインストールする必要はありません。</p>
-<p>リモート コマンド オプションは、次の 2 つがあります: A JSON 構成ファイル、または、マッピングを構成するための iQ タグ管理の使用。A JSON 構成ファイルは、リモートでホスティングするか、またはアプリ内でローカルでホスティングするかのいずれでも、ベンダー統合の推奨オプションです。iQ タグ管理を使用する場合は、ベンダー統合用のリモート コマンド タグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>の詳細は、こちらから参照してください。</p>
+<p>Contentsquareリモートコマンドモジュールをアプリに追加すると、必要なContentsquareライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャーのインストールを使用している場合、Contentsquare SDKを別途インストールする必要はありません。</p>
+<p>リモートコマンドには2つのオプションがあります：JSON構成ファイル、またはiQ Tag Managementを使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合に推奨されるオプションで、アプリ内またはリモートでホストされます。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合についての詳細はこちら</a>。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="依存関係マネージャ">依存関係マネージャ</h3>
-<p>次の依存関係マネージャのいずれかをインストールに使用することをお勧めします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iOS（Objective-C）ライブラリを使用している場合は、手動インストール方法を使用してください。CocoaPodsおよびCarthageオプションは、Tealium iOS（Swift）ライブラリを使用している場合にのみ使用可能です。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>CocoaPodsを使用してiOSのContentsquareリモートコマンドをインストールするには：</p>
-<ol>
-<li>
-<p><code>tealium-swift</code>と<code>pod &quot;CS_iOS_SDK&quot;</code>がPodfileに既に存在する場合は削除します。<code>tealium-swift</code>の依存関係は<code>TealiumContentsquare</code>フレームワークに既に含まれています。</p>
-</li>
-<li>
-<p>次の依存関係をPodfileに追加します。</p>
-</li>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
+  <ol>
+<li>Xcodeプロジェクトで、<strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>を選択します。</li>
+<li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-ios-contentsquare-remote-command</code>。</li>
+<li>バージョンルールを構成します。通常は<code>Up to next major</code>が推奨されます。現在の<code>TealiumContentSquare</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールする<code>TealiumContentSquare</code>モジュールを選択し、そのモジュールをインストールしたいアプリターゲットを選択します。</li>
 </ol>
+<p>プロジェクトに複数のアプリターゲットがあり、<code>TealiumContentSquare</code>モジュールを複数のアプリターゲットに追加する必要がある場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
+<p>追加のアプリターゲットに<code>TealiumContentSquare</code>をインストールするには：</p>
+<ol>
+<li><strong>Project Navigator</strong>でXcodeプロジェクトを選択します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションのアプリターゲットを選択します。</li>
+<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、<code>TealiumContentSquare</code>モジュールをアプリターゲットに追加します。</li>
+</ol>
+<p>Tealium Swiftライブラリから追加のモジュールを追加するには、<a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a>の指示に従ってください。</p>
+</div>
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <ol>
+<li>
+<p><code>tealium-swift</code>と<code>pod &quot;CS_iOS_SDK&quot;</code>がPodfileに既に存在する場合は削除します。<code>tealium-swift</code>の依存関係は<code>TealiumContentsquare</code>フレームワークにすでに含まれています。</p>
+</li>
+<li>
+<p>Podfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumContentsquare&#34;</span>
-</span></span></code></pre></div><p><code>TealiumContentsquare</code>ポッドには以下の<code>TealiumSwift</code>依存関係が含まれています。</p>
+</span></span></code></pre></div><p><code>TealiumContentsquare</code>ポッドには次の<code>TealiumSwift</code>依存関係が含まれています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumDelegate&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
-</span></span></code></pre></div><ol start="3">
-<li>モジュール<code>TealiumSwift</code>および<code>TealiumContentsquare</code>を、<code>TealiumHelper</code>ファイル、<code>Tealium</code>クラスにアクセスするその他のファイル、またはContentsquareリモートコマンドにインポートします。</li>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>TealiumHelper</code>ファイルおよび<code>Tealium</code>クラスまたはContentsquare Remote Commandにアクセスする他のファイルで<code>TealiumSwift</code>および<code>TealiumContentsquare</code>モジュールをインポートします。</p>
+</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>Carthageを使用してiOSのContentsquareリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><code>tealium-swift</code>をCartfileから削除します。<code>tealium-swift</code>の依存関係は<code>TealiumContentsquare</code>フレームワークに既に含まれています。</p>
+<p>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係は<code>TealiumContentsquare</code>フレームワークにすでに含まれています。</p>
 </li>
 <li>
-<p>以下の行がCartfileに存在する場合は、その行を削除します。</p>
-</li>
-</ol>
+<p>Cartfileに存在する場合は次の行を削除します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;ContentSquare/CS_iOS_SDK&#34;</span>
-</span></span></code></pre></div><ol start="3">
-<li>次の依存関係をCartfileに追加します。</li>
-</ol>
+</span></span></code></pre></div></li>
+<li>
+<p>Cartfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-contentsquare-remote-command&#34;</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK（バージョン1.6.5以降）では、<code>TealiumDelegate</code>モジュールがインストールに含まれている必要があります。</p>
+</span></span></code></pre></div></li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK (バージョン1.6.5+)は、インストール時に<code>TealiumDelegate</code>モジュールを含める必要があります。</p>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>Mavenを使用してAndroidのContentsquareリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> または <a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a> をインストールして、Tealium Maven URL を、プロジェクトのトップレベル <code>build.gradle</code> ファイルに追加します (まだ済んでいない場合)。</p>
+<p>まだ行っていない場合は、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、プロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
@@ -280,164 +289,152 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>アプリプロジェクトの<code>build.gradle</code>ファイルに次の依存関係を追加して、Contentsquare SDKとTealium-Contentsquareの両方のリモートコマンドをインポートします。</p>
-</li>
-</ol>
+<p>アプリプロジェクトの<code>build.gradle</code>ファイルにContentquare SDKとTealium-Contentsquareリモートコマンドの依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:contentsquare:2.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:contentsquare:2.3.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 </div>
 </div>
 
-<h3 id="手動による手順ios">手動による手順（iOS）</h3>
-<p>Contentsquare リモート コマンドを手動でインストールするには、 <a href="/ja/platforms/ios-swift/">Tealium for Swift</a> ライブラリがインストールされている必要があります。iOSプロジェクトのContentsquareリモートコマンドをインストールするには：</p>
+<h3 id="手動インストール">手動インストール</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Contentsquareリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリがインストールされている必要があります。iOSプロジェクトのContentsquareリモートコマンドをインストールするには：</p>
 <ol>
 <li>
-<p><a href="https://docs.contentsquare.com/ios/#how-to-include-it">Contentsquare SDK</a>をまだインストールしていない場合はインストールします。</p>
+<p>まだ行っていない場合は、<a href="https://docs.contentsquare.com/ios/#how-to-include-it">Contentsquare SDK</a>をインストールします。</p>
 </li>
 <li>
-<p><a href="https://github.com/tealium/tealium-ios-contentsquare-remote-command">Tealium iOS Contentsquareリモートコマンド</a>レポジトリをクローンして、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
+<p><a href="https://github.com/tealium/tealium-ios-contentsquare-remote-command">Tealium iOS Contentsquareリモートコマンド</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
 </li>
 <li>
-<p>ディスパッチャーとして <code>Dispatchers.RemoteCommands</code> を追加します</p>
-</li>
-<li>
-<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> 構成フラッグを <code>true</code>に構成します</p>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します。</p>
 </li>
 </ol>
+</div>
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Contentsquareリモートコマンドの手動インストールには、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>がインストールされている必要があります。</p>
+<p>AndroidプロジェクトのContentsquareリモートコマンドをインストールするには：</p>
+<ol>
+<li>
+<p>プロジェクトルートの<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        flatDir <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            dirs <span style="color:#e6db74">&#39;libs&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に<code>tealium-contentsquare.aar</code>を追加します。</p>
+</li>
+<li>
+<p><code>build.gradle</code>ファイルにTealiumライブラリの依存関係を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      implementation<span style="color:#f92672">(</span>name:<span style="color:#e6db74">&#39;tealium-contentsquare&#39;</span><span style="color:#f92672">,</span> ext:<span style="color:#e6db74">&#39;aar&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div>
+
 <h2 id="初期化">初期化</h2>
-<p>すべてのTealiumライブラリについて、初期化時にContentsquareリモートコマンドを登録します。</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>Tealium の Android (Java) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
+<p>すべてのTealiumライブラリについて、初期化時にContentsquareのリモートコマンドを登録します。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>TealiumのiOS（Swift）ライブラリ用のJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドを使用するために必要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> contentsquare = ContentsquareRemoteCommand()   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentsquareRemoteCommand(type: .local(file: &#34;contentsquare&#34;)) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let contentsquare = ContentsquareRemoteCommand(type: .remote(url: &#34;https://some.domain.com/contentsquare.json&#34;)) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(contentsquare)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>TealiumのAndroid（Kotlin）ライブラリ用のJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands, <span style="color:#a6e22e">Dispatchers</span>.TagManagement));
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize with `Application` in order to take advantage of consent management and other
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// advanced features
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// `Application`を使用して初期化することで、同意管理やその他の
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 高度な機能を活用できます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> contentsquare = ContentsquareRemoteCommand(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Or for simple tracking, you can initialize without `Application`
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// シンプルなトラッキングの場合、`Application`なしで初期化することもできます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> contentsquare = ContentsquareRemoteCommand();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(contentsquare, filename = <span style="color:#e6db74">&#34;contentsquare.json&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize with `Application` in order to take advantage of consent management and other
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// advanced features
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> contentsquare = ContentsquareRemoteCommand(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// コマンドを登録
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(contentsquare); 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Or for simple tracking, you can initialize without `Application`
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> contentsquare = ContentsquareRemoteCommand();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(contentsquare);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(contentsquare, filename = &#34;contentsquare.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(contentsquare, remoteUrl = &#34;https://some.domain.com/contentsquare.json&#34;); 
+</span></span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="android-java">Android (Java)</h3>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>Android 向けの JSON Remote Command ファイル機能は、Kotlin SDK でのみ利用できます。</p>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
+<div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
+  <p>TealiumのAndroid（Java）ライブラリ用のリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.tealium.remotecommands.contentsquare.ContentsquareRemoteCommand<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initialize with `Application` in order to take advantage of consent management and other
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// advanced features
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// `Application`を使用して初期化することで、同意管理やその他の
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 高度な機能を活用できます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ContentsquareRemoteCommand contentsquare <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ContentsquareRemoteCommand<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Or for simple tracking, you can initialize without `Application`
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// シンプルなトラッキングの場合、`Application`なしで初期化することもできます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ContentsquareRemoteCommand contentsquare <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ContentsquareRemoteCommand<span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// register the command
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// コマンドを登録
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>contentsquare<span style="color:#f92672">);</span>
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>Tealium の iOS (Swift) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> contentsquare = ContentsquareRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;contentsquare&#34;</span>))
-</span></span><span style="display:flex;"><span>  	remoteCommands.add(contentsquare)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,<span style="color:#960050;background-color:#1e0010">˜˜</span>
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> contentsquare = ContentsquareRemoteCommand()
-</span></span><span style="display:flex;"><span>  	remoteCommands.add(contentsquare)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-</div>
-</div>
-
-<h2 id="json-テンプレート">JSON テンプレート</h2>
-<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON 構成ファイル</a>を使用してリモート コマンドを構成しようとする場合は、まず、以下のテンプレートを参照します。テンプレートには、標準的な E コマースのインストールに用いられる共通マッピングが含まれます。必要に応じて、マッピングを編集します。</p>
+<h2 id="jsonテンプレート">JSONテンプレート</h2>
+<p>リモートコマンドを<a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用して構成している場合、以下のテンプレートを参照して開始してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {},
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screen&#34;</span>: <span style="color:#e6db74">&#34;screen_name&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dynamic_var&#34;</span>: <span style="color:#e6db74">&#34;dynamic_var&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#e6db74">&#34;user_identifier&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;custom_vars&#34;</span>: <span style="color:#e6db74">&#34;custom_vars&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;purchase.price&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency&#34;</span>: <span style="color:#e6db74">&#34;purchase.currency&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;transaction_id&#34;</span>: <span style="color:#e6db74">&#34;purchase.transaction_id&#34;</span>
@@ -445,6 +442,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screen_title&#34;</span>: <span style="color:#e6db74">&#34;sendscreenview&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dynamic_var&#34;</span>: <span style="color:#e6db74">&#34;senddynamicvar&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_identifier&#34;</span>: <span style="color:#e6db74">&#34;senduseridentifier&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;transaction&#34;</span>: <span style="color:#e6db74">&#34;sendtransaction&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;stop_tracking&#34;</span>: <span style="color:#e6db74">&#34;stoptracking&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;resume_tracking&#34;</span>: <span style="color:#e6db74">&#34;resumetracking&#34;</span>,
@@ -454,7 +452,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="サポートされているメソッド">サポートされているメソッド</h2>
-<p>以下のContentsquareメソッドは、以下のTealiumコマンドを使用し、Contentsquareリモートコマンドタグのデータマッピングを使用してトリガーされます。</p>
+<p>Contentsquareメソッドに対応するコマンドをマッピングします。Contentsquareメソッドをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
 <table>
 <thead>
 <tr>
@@ -476,11 +474,15 @@
 <td><code>send()</code></td>
 </tr>
 <tr>
+<td><code>senduseridentifier</code></td>
+<td><code>sendUserIdentifier()</code></td>
+</tr>
+<tr>
 <td><code>stoptracking</code></td>
 <td><code>stopTracking()</code></td>
 </tr>
 <tr>
-<td><code>resumeTracking</code></td>
+<td><code>resumetracking</code></td>
 <td><code>resumeTracking()</code></td>
 </tr>
 <tr>
@@ -497,16 +499,16 @@
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Contentsquare SDKはTealium SDKとともにインストールされるので、対応するタグ構成があれば任意のネイティブContentsquare機能をトリガーできます。</p>
-<h3 id="sdkのセットアップ">SDKのセットアップ</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Contentsquare SDKはTealium SDKと並行してインストールされているため、対応するタグ構成を与えることで、任意のネイティブContentsquare機能をトリガーできます。</p>
+<h3 id="sdkセットアップ">SDKセットアップ</h3>
 <h4 id="初期化-1">初期化</h4>
 <p>Contentsquare SDKは起動時に自動的に初期化されます。</p>
-<p>Contentsquare開発者ガイド：SDKの初期セットアップ</p>
+<p>Contentsquare開発者ガイド：初期SDKセットアップ</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#add-contentsquare-to-your-app">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#get-started">iOS</a></li>
 </ul>
-<h3 id="スクリーンのトラッキング">スクリーンのトラッキング</h3>
+<h3 id="画面のトラッキング">画面のトラッキング</h3>
 <table>
 <thead>
 <tr>
@@ -524,18 +526,29 @@
 <table>
 <thead>
 <tr>
-<th>パラメータ</th>
-<th>型</th>
+<th>パラメーター</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>screen_name</code> (required)</td>
+<td><code>screen_name</code> (必須)</td>
 <td><code>String</code></td>
+</tr>
+<tr>
+<td><code>custom_vars</code> (オプション)</td>
+<td><code>Array</code></td>
 </tr>
 </tbody>
 </table>
-<p>Contentsquare開発者ガイド：アナリティクス：ユーザーID</p>
+<p><strong>カスタム変数の形式：</strong>
+各カスタム変数オブジェクトには以下が含まれる必要があります：</p>
+<ul>
+<li><code>index</code> (必須): <code>Int</code> - カスタム変数のインデックス</li>
+<li><code>name</code> (必須): <code>String</code> - カスタム変数の名前</li>
+<li><code>value</code> (必須): <code>String</code> - カスタム変数の値</li>
+</ul>
+<p>Contentsquare開発者ガイド：アナリティクスユーザーID</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#track-screens">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#track-screens">iOS</a></li>
@@ -558,21 +571,21 @@
 <table>
 <thead>
 <tr>
-<th>パラメータ</th>
-<th>型</th>
+<th>パラメーター</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>price</code> (required)</td>
+<td><code>price</code> (必須)</td>
 <td><code>Double or Float</code></td>
 </tr>
 <tr>
-<td><code>currency</code> (required)</td>
-<td><code>Int</code></td>
+<td><code>currency</code> (必須)</td>
+<td><code>String</code></td>
 </tr>
 <tr>
-<td><code>transaction_id</code> (optional)</td>
+<td><code>transaction_id</code> (オプション)</td>
 <td><code>String</code></td>
 </tr>
 </tbody>
@@ -592,7 +605,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>senddynamicvar </code></td>
+<td><code>senddynamicvar</code></td>
 <td><code>send</code></td>
 </tr>
 </tbody>
@@ -600,29 +613,64 @@
 <table>
 <thead>
 <tr>
-<th>パラメータ</th>
-<th>型</th>
+<th>パラメーター</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>dynamic_var</code> (required)</td>
+<td><code>dynamic_var</code> (必須)</td>
 <td><code>Object</code></td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>dynamic_var</code> パラメータは、キーと値のペアから成る JSON オブジェクトの形式となります。キーは <code>strings</code> で、値は <code>UInt32</code> または <code>strings</code>のいずれかになります。例: <code>{&quot;my_dynamic_string_var_name&quot;: &quot;some string value&quot;}</code>、 <code>{&quot;my_dynamic_int_var_name&quot;: 123}</code>、 <code>{&quot;my_dynamic_string_var_name&quot;: &quot;some string value&quot;, &quot;my_dynamic_int_var_name&quot;: 123}</code>。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>dynamic_var</code>パラメーターは、キーが<code>strings</code>で値が<code>UInt32</code>または<code>strings</code>のキーバリューペアのJSONオブジェクトを取ります。例：<code>{&quot;my_dynamic_string_var_name&quot;: &quot;some string value&quot;}</code>, <code>{&quot;my_dynamic_int_var_name&quot;: 123}</code>, <code>{&quot;my_dynamic_string_var_name&quot;: &quot;some string value,&quot; &quot;my_dynamic_int_var_name&quot;: 123}</code>。</p>
 <p>Contentsquare開発者ガイド：動的変数のトラッキング</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#track-dynamic-variables">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#track-dynamic-variables">iOS</a></li>
 </ul>
-<h3 id="トラッキングの停止再開">トラッキングの停止/再開</h3>
+<h3 id="ユーザー識別子のトラッキング">ユーザー識別子のトラッキング</h3>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
 <th>Contentsquareメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>senduseridentifier</code></td>
+<td><code>sendUserIdentifier</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_identifier</code> (必須)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<p>Contentsquare開発者ガイド：ユーザー識別子のトラッキング</p>
+<ul>
+<li><a href="https://docs.contentsquare.com/en/android/session-replay/">Android</a></li>
+<li><a href="https://docs.contentsquare.com/en/ios/session-replay/">iOS</a></li>
+</ul>
+<h3 id="同意オプション">同意オプション</h3>
+<h4 id="トラッキングの停止再開">トラッキングの停止/再開</h4>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>Contentsquare メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -636,17 +684,17 @@
 </tr>
 </tbody>
 </table>
-<p>Contentsquare開発者ガイド：トラッキングの停止/再開</p>
+<p>Contentsquare 開発者ガイド: トラッキングの停止/再開</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#stop-resume-tracking">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#stop-resume-tracking">iOS</a></li>
 </ul>
-<h3 id="オプトイン">オプトイン</h3>
+<h4 id="オプトイン">オプトイン</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Contentsquareメソッド</th>
+<th>Contentsquare メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -656,17 +704,17 @@
 </tr>
 </tbody>
 </table>
-<p>Contentsquare開発者ガイド：オプトイン</p>
+<p>Contentsquare 開発者ガイド: オプトイン</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#opt-in">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#opt-in">iOS</a></li>
 </ul>
-<h3 id="オプトアウト">オプトアウト</h3>
+<h4 id="オプトアウト">オプトアウト</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Contentsquareメソッド</th>
+<th>Contentsquare メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -676,17 +724,17 @@
 </tr>
 </tbody>
 </table>
-<p>Contentsquare開発者ガイド：オプトアウト</p>
+<p>Contentsquare 開発者ガイド: オプトアウト</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#opt-out">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#opt-out">iOS</a></li>
 </ul>
-<h3 id="ユーザー情報の削除">ユーザー情報の削除</h3>
+<h4 id="私を忘れてください">私を忘れてください</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Contentsquareメソッド</th>
+<th>Contentsquare メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -696,7 +744,7 @@
 </tr>
 </tbody>
 </table>
-<p>Contentsquare開発者ガイド：ユーザー情報の削除</p>
+<p>Contentsquare 開発者ガイド: 私を忘れてください</p>
 <ul>
 <li><a href="https://docs.contentsquare.com/android/#forget-me">Android</a></li>
 <li><a href="https://docs.contentsquare.com/ios/#forget-me">iOS</a></li>
@@ -761,7 +809,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年June月25日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -776,24 +824,19 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">依存関係マネージャ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E6%89%8B%E9%A0%86ios" href="javascript:void(0)">手動による手順（iOS）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">手動インストール</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-kotlin" href="javascript:void(0)">Android (Kotlin)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-java" href="javascript:void(0)">Android (Java)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ios-swift" href="javascript:void(0)">iOS (Swift)</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json-%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSON テンプレート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">スクリーンのトラッキング</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKセットアップ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">画面のトラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">トランザクションのトラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E7%9A%84%E5%A4%89%E6%95%B0%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">動的変数のトラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%AE%E5%81%9C%E6%AD%A2%E5%86%8D%E9%96%8B" href="javascript:void(0)">トラッキングの停止/再開</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3" href="javascript:void(0)">オプトイン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%83%88%E3%82%A2%E3%82%A6%E3%83%88" href="javascript:void(0)">オプトアウト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%83%85%E5%A0%B1%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">ユーザー情報の削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ユーザー識別子のトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">同意オプション</a></li>
               </nav>
   </aside></nav>
 
