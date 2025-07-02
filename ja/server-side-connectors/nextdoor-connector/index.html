@@ -397,7 +397,7 @@
         <a href="/ja/server-side-connectors/x-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".x-conversions-connector">X変換</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN 広告API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/yahoo-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-conversions-connector">Yahooコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/yelp-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yelp-conversions-connector">Yelp Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -463,10 +463,10 @@
   <h2 id="api-情報">API 情報</h2>
 <p>このコネクタは以下のベンダー API を使用します：</p>
 <ul>
-<li>API 名: Nextdoor API</li>
-<li>API バージョン: v2</li>
-<li>API エンドポイント: <code>https://ads.nextdoor.com/v2/api</code></li>
-<li>ドキュメント: <a href="https://documenter.getpostman.com/view/27150393/2s93z6d3yj">Nextdoor API</a></li>
+<li>API 名：Nextdoor API</li>
+<li>API バージョン：v2</li>
+<li>API エンドポイント：<code>https://ads.nextdoor.com/v2/api</code></li>
+<li>ドキュメント：<a href="https://documenter.getpostman.com/view/27150393/2s93z6d3yj">Nextdoor API</a></li>
 </ul>
 <h2 id="コネクタのアクション">コネクタのアクション</h2>
 <table>
@@ -490,10 +490,10 @@
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>API トークン</strong><br>
-必須：Nextdoor Ads Manager アカウントページでログインしているユーザーとその関連アカウントに固有の認証トークンを取得します。</li>
+(必須) ログインしているユーザーとその関連アカウントに固有の認証トークンを Nextdoor Ads Manager アカウントページで取得します。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
-<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="コンバージョン送信">コンバージョン送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
@@ -513,117 +513,140 @@
 <td>アクションソース</td>
 <td>コンバージョンが発生したチャネル。ドロップダウンリストから値を選択します。</td>
 </tr>
+</tbody>
+</table>
+<h4 id="コンバージョンイベントパラメータ">コンバージョンイベントパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>クライアントID</td>
-<td>(必須) Nextdoor Ads Manager 広告主ID。</td>
+<td>Nextdoor Ads Manager 広告主ID。<strong>データソースID</strong>または<strong>クライアントID</strong>が必要です。</td>
+</tr>
+<tr>
+<td>データソースID</td>
+<td>Nextdoor Ads Manager データソースID。<strong>データソースID</strong>または<strong>クライアントID</strong>が必要です。</td>
 </tr>
 <tr>
 <td>パートナーID</td>
-<td>Nextdoor が生成した単一パートナーに関連付けられたID。この値はすべての Conversion API 呼び出しで必要です。</td>
+<td>Nextdoor が生成した単一のパートナーに関連付けられたID。この値はすべてのコンバージョンAPIコールで必要です。</td>
 </tr>
 <tr>
 <td>アクションソースURL</td>
 <td>イベントが発生したブラウザのURL。URLは <code>http://</code> または <code>https://</code> で始まり、検証済みドメインと一致する必要があります。この値はウェブサイトイベントに必要です。</td>
 </tr>
 <tr>
-<td>イベントID</td>
-<td>一意のイベントを識別できる任意の文字列またはハッシュ化されたID。この値は、CAPI とピクセル追跡からのイベントの重複を排除するために必要です。</td>
-</tr>
-<tr>
 <td>イベント時間</td>
-<td>イベントのタイムスタンプを <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> 形式で。</td>
+<td><a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> 形式のイベントのタイムスタンプ。</td>
 </tr>
 <tr>
-<td>イベントタイムゾーン</td>
-<td>コンバージョンイベントが発生したタイムゾーンを示します。</td>
+<td>イベント時間エポック</td>
+<td><code>1970-01-01</code> からの秒数。ミリ秒は含まれません。<strong>イベント時間エポック</strong>または<strong>イベント時間</strong>が必要です。</td>
 </tr>
 <tr>
 <td>テストイベント</td>
-<td>この値は、このイベントがテストイベントであるかどうかを示します。デフォルト値は <code>False</code> です。</td>
+<td>この値は、このイベントがテストイベントであることを示します。デフォルト値は <code>False</code> です。</td>
 </tr>
 <tr>
-<td>メールアドレス (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みのメールアドレスを提供します。</td>
+<td>イベントタイムゾーン</td>
+<td>コンバージョンイベントが発生した場所のタイムゾーンを示します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="顧客データ">顧客データ</h4>
+<p>統合には、次のパラメータのうち少なくとも1つまたは組み合わせが必要です：メールアドレス、電話番号、またはクリックID。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メールアドレス（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みのメールアドレスを提供します。</td>
 </tr>
 <tr>
-<td>メールアドレス (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>メールアドレス（SHA256ハッシュを適用）</td>
+<td>平文のメールアドレスを提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>電話番号 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの電話番号を提供します。</td>
+<td>電話番号（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの電話番号を提供します。</td>
 </tr>
 <tr>
-<td>電話番号 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはこの値を空白トリムし、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>電話番号（SHA256ハッシュを適用）</td>
+<td>平文の電話番号を提供し、コネクタはこの値を空白トリムし、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>名 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの名前を提供します。</td>
+<td>名（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの名を提供します。</td>
 </tr>
 <tr>
-<td>名 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの名前を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>名（SHA256ハッシュを適用）</td>
+<td>平文の名を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>姓 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの姓を提供します。</td>
+<td>姓（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの姓を提供します。</td>
 </tr>
 <tr>
-<td>姓 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの姓を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>姓（SHA256ハッシュを適用）</td>
+<td>平文の姓を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>生年月日 (既に SHA256 ハッシュ化済み)</td>
-<td><code>YYYYMMDD</code> 形式で SHA256 ハッシュ化済みの生年月日を提供します。</td>
+<td>生年月日（既にSHA256ハッシュ化済み）</td>
+<td><code>YYYYMMDD</code> 形式でSHA256ハッシュ化済みの生年月日を提供します。</td>
 </tr>
 <tr>
-<td>生年月日 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの生年月日を提供し、コネクタはこの値を空白トリムし、SHA256 ハッシュを使用して <code>YYYYMMDD</code> 形式でハッシュ化します。</td>
+<td>生年月日（SHA256ハッシュを適用）</td>
+<td>平文の生年月日を提供し、コネクタはこの値を空白トリムし、SHA256ハッシュを使用して <code>YYYYMMDD</code> 形式でハッシュ化します。</td>
 </tr>
 <tr>
-<td>住所 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの住所を提供します。</td>
+<td>住所（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの住所を提供します。</td>
 </tr>
 <tr>
-<td>住所 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの住所を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>住所（SHA256ハッシュを適用）</td>
+<td>平文の住所を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>市区町村 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの市区町村を提供します。</td>
+<td>市区町村（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの市区町村を提供します。</td>
 </tr>
 <tr>
-<td>市区町村 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの市区町村を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>市区町村（SHA256ハッシュを適用）</td>
+<td>平文の市区町村を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>州 (既に SHA256 ハッシュ化済み)</td>
-<td>2文字の <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI 略語コード</a> で小文字化された州の略語を提供します。</td>
+<td>州（既にSHA256ハッシュ化済み）</td>
+<td>2文字の <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI省略コード</a> で小文字化された州の省略形を提供します。</td>
 </tr>
 <tr>
-<td>州 (SHA256 ハッシュを適用)</td>
-<td>州の略語を提供し、コネクタはこの値を空白トリムし、小文字に変換し、2文字の <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI 略語コード</a> を使用して SHA256 ハッシュを適用します。</td>
+<td>州（SHA256ハッシュを適用）</td>
+<td>州の省略形を提供し、コネクタはこの値を空白トリムし、小文字に変換し、2文字の <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI省略コード</a> でSHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>郵便番号 (既に SHA256 ハッシュ化済み)</td>
-<td>SHA256 ハッシュ化済みの郵便番号を提供します。</td>
+<td>郵便番号（既にSHA256ハッシュ化済み）</td>
+<td>SHA256ハッシュ化済みの郵便番号を提供します。</td>
 </tr>
 <tr>
-<td>郵便番号 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの郵便番号を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>郵便番号（SHA256ハッシュを適用）</td>
+<td>平文の郵便番号を提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>国 (既に SHA256 ハッシュ化済み)</td>
-<td><a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> を使用して空白トリムされ、SHA256 ハッシュ化された 2文字の国コードを提供します。</td>
+<td>国（既にSHA256ハッシュ化済み）</td>
+<td><a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> で空白トリムされ、SHA256ハッシュ化された2文字の国コードを提供します。</td>
 </tr>
 <tr>
-<td>国 (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの国コードを提供し、コネクタはこの値を空白トリムし、小文字に変換し、<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> を使用して SHA256 ハッシュを適用します。</td>
-</tr>
-<tr>
-<td>ピクセルID</td>
-<td>広告アカウントに関連付けられたピクセルID。</td>
+<td>国（SHA256ハッシュを適用）</td>
+<td>平文の国コードを提供し、コネクタはこの値を空白トリムし、小文字に変換し、<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> を使用してSHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>クリックID</td>
@@ -631,15 +654,30 @@
 </tr>
 <tr>
 <td>クライアントIPアドレス</td>
-<td>有効な IPv4 または IPv6 アドレスを提供します。</td>
+<td>有効なIPv4またはIPv6アドレスを提供します。</td>
+</tr>
+<tr>
+<td>クライアントユーザーエージェント</td>
+<td>イベントに対応する未ハッシュ化のブラウザユーザーエージェント。このパラメータはウェブサイトイベントで共有される <a href="https://developers.facebook.com/docs/marketing-api/conversions-api">Conversions API</a> を使用する場合に必要です。すべてのイベントにクライアントIPアドレスとユーザーエージェントのパラメータを送信することで、イベントマッチングとキャンペーンの広告配信が向上する可能性があります。この情報はブラウザを通じて送信されるイベントに自動的に追加されますが、サーバーを通じて送信されるイベントの場合は手動で構成する必要があります。</td>
 </tr>
 <tr>
 <td>配信最適化</td>
-<td><ul><li><code>True</code> - データを最適化に使用できることを示します。</li><li><code>False</code> - データは帰属のみに使用されることを示します。</li></ul></td>
+<td><ul><li><code>True</code> - データを最適化に使用できることを示します。</li><li><code>False</code> - データは帰属にのみ使用されます。</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="カスタムおよびアプリイベント">カスタムおよびアプリイベント</h4>
+<table>
+<thead>
 <tr>
-<td>注文値</td>
-<td>(必須) 購入イベントに必要です。<a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> 形式の通貨コードに続いて、イベントに関連付けられた合計数値値 (小数点以下2桁まで)。</td>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注文価値</td>
+<td>(必須) 購入イベントに必要です。<a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> 形式の通貨コードに続いて、イベントに関連付けられた合計数値値（小数点以下2桁まで）を指定します。</td>
 </tr>
 <tr>
 <td>注文ID</td>
@@ -647,7 +685,7 @@
 </tr>
 <tr>
 <td>アプリID</td>
-<td>広告主のための一意のIDに対応します。App Store と Google Play Store からのモバイルアプリIDを使用します。</td>
+<td>広告主に固有のIDに対応します。App StoreおよびGoogle Play StoreからのモバイルアプリIDを使用します。</td>
 </tr>
 <tr>
 <td>プラットフォーム</td>
@@ -658,28 +696,39 @@
 <td>モバイルアプリバージョン。</td>
 </tr>
 <tr>
-<td>配送カテゴリ</td>
-<td><ul><li><b>店内</b> - 顧客は購入した商品を受け取るために店内に入る必要があります。</li><li><b>カーブサイド</b> - 顧客は店に車で行き、車内で待って注文を受け取ります。</li><li><b>宅配</b> - 購入した商品が顧客の自宅に配送されます。</li></ul></td>
+<td>配信カテゴリ</td>
+<td><ul><li><b>店内</b> - 顧客は購入した商品を受け取るために店内に入る必要があります。</li><li><b>カーブサイド</b> - 顧客は店に車で行き、車内で待機して注文を受け取ります。</li><li><b>ホームデリバリー</b> - 購入した商品が顧客の自宅に配送されます。</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="製品コンテキスト">製品コンテキスト</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>ID</td>
-<td>(必須) 商品ID。</td>
+<td>(必須) 製品ID。</td>
 </tr>
 <tr>
 <td>コンテンツ名</td>
-<td>商品名。</td>
+<td>製品名。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>商品数量。</td>
+<td>製品数量。</td>
 </tr>
 <tr>
 <td>アイテム価格</td>
-<td>商品の単価。</td>
+<td>製品のアイテム価格。</td>
 </tr>
 <tr>
 <td>アプリ追跡有効</td>
-<td>ATTのオプトアウト構成。</td>
+<td>ユーザーがApp Tracking Transparency (ATT) のオプトアウトを選択したかどうかを示します。</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +743,7 @@
 <tbody>
 <tr>
 <td>自動重複排除</td>
-<td>Tealium iQ タグIDを提供すると、コネクタは Tealium iQ が送信する <strong>イベントID</strong> 値を自動的に検索します。</td>
+<td>Tealium iQ タグ ID を提供すると、コネクタは Tealium iQ が送信する <strong>イベント ID</strong> の値を自動的に検索します。</td>
 </tr>
 </tbody>
 </table>
@@ -758,7 +807,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2023年November月14日
+          <p>最終更新日 ::  2025年July月2日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

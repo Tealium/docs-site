@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -439,9 +439,21 @@
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Access Token</strong><br>
-<strong>Required</strong>. Access Token of the Facebook System User.</li>
+(Required) Access Token of the Facebook System User. <p class="tip"><i class="fa fa-info-circle"></i>When authenticating the connector using an Access Token, we recommend that you use a Business System User access token. Unlike User access tokens, which expire frequently and require regeneration every few hours, Business System User tokens offer extended validity (typically up to 60 days) providing a more stable and reliable authentication method. To obtain a Business System User access token, you must create a System User in your Facebook Business Manager, assign the necessary assets and permissions, and then generate a token in the Facebook App dashboard. For detailed instructions, see <a href="https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#system-user-access-token">WhatsApp: Get System User Access Tokens for the WhatsApp Business Platform</a>.</p></li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+<h2 id="message-types">Message types</h2>
+<p>For WhatsApp Business API, there are two primary message types:</p>
+<ul>
+<li>
+<p><strong>Template Messages</strong> are pre-approved by WhatsApp and are designed for business-initiated conversations, such as sending alerts, updates, or re-engagement messages. These messages can include variables and are required when messaging users who haven’t contacted your business in the past 24 hours.</p>
+</li>
+<li>
+<p><strong>Text-Based Messages</strong> are session-based and can only be used in response to a user-initiated message within a 24-hour window. They offer greater flexibility for dynamic, conversational content, but are not allowed for unsolicited outreach.</p>
+</li>
+</ul>
+<p>Use Template Messages when initiating a conversation or sending notifications outside of the 24-hour window, and use Text-Based Messages to maintain real-time interactions during an active session with the user.</p>
+<p>Before sending a template message, you need to create a template. For more information, see <a href="https://www.facebook.com/business/help/2055875911147364">WhatsApp: Create Message Templates for Your WhatsApp Business Account</a>.</p>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -461,15 +473,15 @@
 </tr>
 <tr>
 <td>Send To</td>
-<td>WhatsApp ID or phone number you want to send a message to. See <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/phone-numbers#formatting">Phone Numbers, Formatting</a> for more information.</td>
+<td>WhatsApp ID or phone number you want to send a message to. For more information, see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/phone-numbers#formatting">WhatsApp: Phone Numbers, Formatting</a>.</td>
 </tr>
 <tr>
 <td>Message</td>
-<td>The text of the message, which can contain URLs and formatting. See the WhatsApp Business Platform Cloud API <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-messages#text-messages">Send Text Messages</a> documentation for usage examples.</td>
+<td>The text of the message, which can contain URLs and formatting. For usage examples, see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-messages#text-messages">WhatsApp: Send Text Messages</a>.</td>
 </tr>
 <tr>
 <td>Preview URL</td>
-<td>Allow URL previews in text messages. See the <a href="https://developers.facebook.com/docs/whatsapp/api/messages/text#urls">Sending URLs in Text Messages</a> for more details.</td>
+<td>Boolean value (<code>true</code> or <code>false</code>) to allow or disable URL previews in text messages. For more information, see <a href="https://developers.facebook.com/docs/whatsapp/api/messages/text#urls">WhatsApp: Sending URLs in Text Messages</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -489,15 +501,15 @@
 </tr>
 <tr>
 <td>Send To</td>
-<td>WhatsApp ID or phone number you want to send a message to. See <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/phone-numbers#formatting">Phone Numbers, Formatting</a> for more information.</td>
+<td>WhatsApp ID or phone number you want to send a message to. For more information, see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/phone-numbers#formatting">WhatsApp: Phone Numbers, Formatting</a>.</td>
 </tr>
 <tr>
 <td>Message Template</td>
-<td>Provide the message template. See the WhatsApp Business Platform Cloud API <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates">Send Message Templates</a> documentation for usage examples.<br> The template expects a valid JSON object format.<br> You can use template variables specified in the <strong>Message Template Variables</strong> section. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</td>
+<td>Provide the message template. For usage examples, see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates">WhatsApp: Send Message Templates</a>.<br> The template expects a valid JSON object format.<br> You can use template variables specified in the <strong>Message Template Variables</strong> section. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</td>
 </tr>
 <tr>
 <td>Message Template Variables</td>
-<td>Provide template variables as data input for the <strong>Message Template</strong> .For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.<br> Name nested template variables with the dot notation (Example: <code>items.name</code>).<br> Nested template variables are typically built from data layer list attributes.</td>
+<td>Provide template variables as data input for the <strong>Message Template</strong>. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.<br> Name nested template variables with the dot notation (Example: <code>items.name</code>).<br> Nested template variables are typically built from data layer list attributes.</td>
 </tr>
 </tbody>
 </table>
@@ -561,7 +573,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 3, 2022 
+          <p>This page was last updated:  July 1, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -578,6 +590,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#message-types" href="javascript:void(0)">Message types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-text-message" href="javascript:void(0)">Action — Send Text Message</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-message-template" href="javascript:void(0)">Action — Send Message Template</a></li>

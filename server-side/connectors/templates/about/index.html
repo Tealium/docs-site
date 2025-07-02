@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -655,7 +655,7 @@
 <p>These examples show the syntax to reference template variables and build control structures in your templates.</p>
 <h3 id="variables">Variables</h3>
 <p>A variable represents a value that can be substituted into a template. To reference a variable&rsquo;s value, use double curly braces around the variable name, for example: <code>{{var}}</code>.</p>
-<p>In the following example, the template variable <code>{{str}}</code> is substituted with it&rsquo;s value <code>Hello</code>.</p>
+<p>In the following example, the template variable <code>{{str}}</code> is substituted with its value <code>Hello</code>.</p>
 <table>
 <thead>
 <tr>
@@ -767,6 +767,7 @@
 <li><code>iter.isLast</code></li>
 <li><code>iter.hasNext</code></li>
 </ul>
+<h4 id="single-array-example">Single array example</h4>
 <p>The following example uses the mapping of an array of booleans to the variable <code>arrb</code> and shows how to iterate over the array:</p>
 <p><strong>Template</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -849,7 +850,54 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;B&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="helper-functions">Helper functions</h2>
+</span></span></code></pre></div><h4 id="aligned-arrays-example">Aligned arrays example</h4>
+<p>Aligned arrays are groups of arrays that share the same length. You can use them to reference corresponding elements from each array at the same index position during each iteration.</p>
+<p>Map your aligned arrays to names that begin with the same prefix, then a dot, then the name of your particular array. For example, the following screenshot shows all product arrays that map to <code>prods.(name)</code>:</p>
+<figure><a class="slb" href="/images/server-side/connectors/iteration-template-variables.png"><img src="/images/server-side/connectors/iteration-template-variables.png"
+         alt="Iteration template variables"
+         title="Iteration template variables"/>
+    </a>
+</figure>
+<p>You can then iterate over the <code>prods</code> object as if it were also an array, and reference arrays inside of it using their names:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#960050;background-color:#1e0010">{#prods</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: {<span style="color:#960050;background-color:#1e0010">{prices</span>}}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;currency&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{{currency}}&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;quantity&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#960050;background-color:#1e0010">{quantities</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>{<span style="color:#960050;background-color:#1e0010">{#iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">},</span>{<span style="color:#960050;background-color:#1e0010">{/iter.hasNext</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>{<span style="color:#960050;background-color:#1e0010">{/prods</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>If the input values for the attributes are:</p>
+<ul>
+<li>Most Recent Cart Product Prices: <code>[83, 23.49]</code></li>
+<li>Most Recent Cart Product Quantities: <code>[1, 2]</code></li>
+<li>Most Recent Cart Product Currency: <code>[&quot;GBP&quot;, &quot;GBP&quot;]</code></li>
+</ul>
+<p>The output is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;products&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">83</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency&#34;</span>: <span style="color:#e6db74">&#34;GBP&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;quantity&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#ae81ff">23.49</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;currency&#34;</span>: <span style="color:#e6db74">&#34;GBP&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;quantity&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>You can also map an attribute more than once, as shown by the <code>product_quantities</code> example above. This is so that you can use the array independently outside of the <code>prods</code> object:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;total_quantity&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#960050;background-color:#1e0010">{product_quantities.sum</span>}<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>Which results in the following output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;total_quantity&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>Finally, note that the aligned array iteration method only works with CDH array types. It does not work with the &ldquo;Any&rdquo; data type imported from Tealium iQ available in EventStream. If you want to use those, you need to convert them to CDH array types.</p>
+<p>If you know that the incoming data will always be an array, you can delete the existing Tealium iQ attribute from server-side CDH and re-add it as an array CDH attribute.</p>
+<p>If you&rsquo;re unsure whether the data will always be an array, or there are too many CDH dependencies on the Tealium iQ attribute, you can use EventStream enrichments to make an array copy of the Tealium iQ attribute when the incoming data is an array, as follows:</p>
+<figure><a class="slb" href="/images/server-side/connectors/iteration-array-copy.png"><img src="/images/server-side/connectors/iteration-array-copy.png"
+         alt="Iteration array copy"
+         title="Iteration array copy"/>
+    </a>
+</figure>
+<h2 id="helper-functions">Helper functions</h2>
 <p>Several helper functions are supported to provide additional functionality in your templates.</p>
 <p>For more information, see <a href="/server-side/connectors/templates/help-functions/">Template helper functions</a>.</p>
 <h2 id="reference">Reference</h2>
@@ -902,7 +950,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  July 1, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

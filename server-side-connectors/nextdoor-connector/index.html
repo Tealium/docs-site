@@ -430,11 +430,11 @@
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>API Token</strong><br>
-Required: Obtain an authentication token specific to a logged-in user and their associated account on the Nextdoor Ads Manager account page.</li>
+(Required) Obtain an authentication token specific to a logged-in user and their associated account on the Nextdoor Ads Manager account page.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
@@ -457,9 +457,24 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 <td>Action Source</td>
 <td>The channel through which conversion happened. Select a value from the drop-down list.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="conversion-event-parameters">Conversion Event Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Client ID</td>
-<td>(Required)  Nextdoor Ads Manager Advertiser ID.</td>
+<td>Nextdoor Ads Manager Advertiser ID.  <strong>Data Source ID</strong> or <strong>Client ID</strong> is required.</td>
+</tr>
+<tr>
+<td>Data Source ID</td>
+<td>Nextdoor Ads Manager Data Source ID. <strong>Data Source ID</strong> or <strong>Client ID</strong> is required.</td>
 </tr>
 <tr>
 <td>Partner ID</td>
@@ -467,24 +482,36 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 </tr>
 <tr>
 <td>Action Source URL</td>
-<td>The browser URL where the event happened. The URL must begin with <code>http://</code> or <code>https://</code>, and it must should match the verified domain. This value is required for website events.</td>
-</tr>
-<tr>
-<td>Event ID</td>
-<td>Any string or hashed ID that can identify a unique event. This value is required to deduplicate events from CAPI and pixel tracking.</td>
+<td>The browser URL where the event happened. The URL must begin with <code>http://</code> or <code>https://</code>, and match the verified domain. This value is required for website events.</td>
 </tr>
 <tr>
 <td>Event Time</td>
 <td>Timestamp of the event in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format.</td>
 </tr>
 <tr>
-<td>Event Timezone</td>
-<td>Time zone indicating where the conversion event took place.</td>
+<td>Event Time Epoch</td>
+<td>Number of seconds since <code>1970-01-01</code>. No milliseconds. <strong>Event Time Epoch</strong> or <strong>Event Time</strong> is required.</td>
 </tr>
 <tr>
 <td>Test Event</td>
 <td>This value indicates if this event is a test event. The default value is <code>False</code>.</td>
 </tr>
+<tr>
+<td>Event Timezone</td>
+<td>Time zone indicating where the conversion event took place.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="customer-data">Customer Data</h4>
+<p>The integration requires at least one or a combination of the following parameters: Email Address, Phone Number, or Click ID.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
 <td>Provide an email address which has already been SHA256 hashed.</td>
@@ -566,10 +593,6 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 <td>Provide a plain text country code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash using <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</td>
 </tr>
 <tr>
-<td>Pixel ID</td>
-<td>The Pixel ID associated with your Ad Account.</td>
-</tr>
-<tr>
 <td>Click ID</td>
 <td>This is the same as the <code>ndclid</code> parameter attached to the clickthrough URL.</td>
 </tr>
@@ -578,9 +601,24 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 <td>Provide a valid IPv4 or IPv6 address.</td>
 </tr>
 <tr>
+<td>Client User Agent</td>
+<td>The unhashed browser user agent corresponding to the event. This parameter is required for website events shared using the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api">Conversions API</a>. Sending both the client IP address and user agent parameters for all of the events may help improve event matching and ad delivery for campaigns. Note that this information is automatically added to events sent through the browser, but must be manually configured for events sent through the server.</td>
+</tr>
+<tr>
 <td>Delivery Optimization</td>
 <td><ul><li><code>True</code> - Indicates data can be used for optimization.</li><li><code>False</code> - Indicates the data will only be used for attribution.</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="custom-and-app-events">Custom and App Events</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Order Value</td>
 <td>(Required) Required for purchase events. The currency code in <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> format followed by the total numeric value (up to two decimal places) associated with the event.</td>
@@ -605,6 +643,17 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 <td>Delivery Category</td>
 <td><ul><li><b>In Store</b> - Customer needs to enter the store to get the purchased product.</li><li><b>Curbside</b> - Customer picks up their order by driving to a store and waiting inside their vehicle.</li><li><b>Home Delivery</b> - Purchase is delivered to the customer&rsquo;s home.</li></ul></td>
 </tr>
+</tbody>
+</table>
+<h4 id="product-context">Product Context</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>ID</td>
 <td>(Required) Product ID.</td>
@@ -623,7 +672,7 @@ Required: Obtain an authentication token specific to a logged-in user and their 
 </tr>
 <tr>
 <td>App Tracking Enabled</td>
-<td>Users opt-out settings for ATT.</td>
+<td>Indicates whether the user has opted out of App Tracking Transparency (ATT).</td>
 </tr>
 </tbody>
 </table>
@@ -702,7 +751,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 14, 2023 
+          <p>This page was last updated:  July 1, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

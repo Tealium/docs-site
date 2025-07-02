@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -618,7 +618,8 @@
 </table>
 <p>Both services write a new file to S3 whenever the file reaches 100MB (before compression) or 1 hour elapses, whichever happens first. In most cases, files are written significantly more often than that.</p>
 <h3 id="data-retention">Data retention</h3>
-<p>The semi-structured data stored in EventStore and AudienceStore remains available in Amazon S3 for the length of time specified in your contract.</p>
+<p>The semi-structured data stored in EventStore and AudienceStore remains available in Amazon S3 for the length of time specified in your contract. When an event, visit, or visitor record reaches its expiration date, that record is automatically purged. Even if a visitor record is updated, the expiration date remains the same, and the record will still be purged.</p>
+<p>For more information, see <a href="/server-side/administration/account-settings/">Server-Side Account Settings</a>.</p>
 <h3 id="activate-eventstore">Activate EventStore</h3>
 <p>To save event data to EventStore, activate EventStore for one or more event feeds. For more information, see <a href="/server-side/data-storage/audiencestore-eventstore/configure-eventstore/">Configure EventStore</a>.</p>
 <p>When EventStore is enabled for an event feed, EventDB uses EventStore as a data source, importing the data from the EventStore S3 bucket into the Amazon Redshift database provided by Tealium.</p>
@@ -692,7 +693,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  June 20, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
