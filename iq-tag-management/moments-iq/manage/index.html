@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "12",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -193,7 +193,8 @@
         <a href="/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium Generic Tag</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a></li></ul>
+        <a href="/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/tags/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-persistent-cookie-matching">Persistent cookie matching</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".templates">Templates</a>
         <ul class="pl2  templates desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -468,8 +469,39 @@
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>To create a Moments iQ experience, navigate to the Tag Marketplace, search for <strong>Moments iQ</strong> and click <strong>+ Add</strong>. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
-<h2 id="position-and-placement">Position and placement</h2>
-<p>Configure the following settings to control where the experience appears on a page and how the experience behaves:</p>
+<h2 id="configuration">Configuration</h2>
+<h3 id="properties">Properties</h3>
+<p>Configure the following settings:</p>
+<ol>
+<li>Enter a <strong>Title</strong> for the Moments iQ Experience tag. If you have multiple instances of the same tag, use a descriptive title to distinguish it from the other instances.</li>
+<li>Enter any <strong>Notes</strong> for the tag.</li>
+</ol>
+<h3 id="experience-type-and-placement">Experience type and placement</h3>
+<p>Configure the following settings to control where the experience appears on a page:</p>
+<ul>
+<li><strong>Code Version</strong>: The version of the Moments iQ experience generation code to use. If you change the code version, you must also update the template.</li>
+<li><strong>Experience Type</strong>: The type of experience to create.
+<ul>
+<li><strong>Modal</strong>: The experience will appear as a popup window.</li>
+<li><strong>Embedded</strong>: The experience will appear embedded in the page.</li>
+</ul>
+</li>
+<li><strong>Experience Placement</strong>: The location of a modal window. This is only used with the <strong>Modal</strong> placement option.</li>
+<li><strong>Modal Background Opacity</strong>: Select the strength of opacity to apply to the rest of the page. This makes the content stand out more.</li>
+<li><strong>Placement Selector</strong>: A CSS selector to identify the page element to place the experience. This is used only with the <strong>Embedded</strong> placement option. For more information about how to determine an element’s selector, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">How to Determine the CSS Selector of an Element</a>.</li>
+<li><strong>Experience Position</strong>: The position of the inserted element relative to the element in <strong>Placement Selector</strong>.
+<ul>
+<li><strong>Before Begin</strong>: Before the page element.</li>
+<li><strong>After Begin</strong>: Inside the page element, before its first child.</li>
+<li><strong>Before End</strong>: Inside the page element, after its last child.</li>
+<li><strong>After End:</strong> After the page element.</li>
+<li><strong>Replace:</strong> Replace the page element.</li>
+</ul>
+</li>
+<li><strong>Z-index</strong>: This value overrides the z-order positioning of the experience on the page. Higher values stack on top of lower values (for example, &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;-1&rdquo;, or &ldquo;auto&rdquo;).</li>
+</ul>
+<h3 id="experience-tracking">Experience tracking</h3>
+<p>Configure the following settings to control how the experience behaves:</p>
 <ul>
 <li>
 <p><strong>Suppress Experience</strong>: Experiences can be automatically suppressed for returning visitors under the following conditions:</p>
@@ -477,9 +509,9 @@
 <li><strong>Never</strong></li>
 <li><strong>After close button selected</strong></li>
 <li><strong>After answer submitted</strong></li>
-<li><strong>After answer submitted or close button selected</strong></li>
+<li><strong>After answer submitted or close button selected</strong><br>
+The browser stores this information in local storage as the <code>momentsiq_suppress</code> key.</li>
 </ul>
-<p>The browser stores this information in local storage as the <code>momentsiq_suppress</code> key.</p>
 </li>
 <li>
 <p><strong>Track Load</strong>: Select <code>True</code> to send a tracking call when the experience loads on the page for the first time.</p>
@@ -491,50 +523,16 @@
 <li><strong>Link</strong></li>
 </ul>
 </li>
-<li>
-<p><strong>Experience Type</strong>: The type of experience to create.</p>
-<ul>
-<li><strong>Modal</strong>: The experience appears as a popup window.</li>
-<li><strong>Embedded</strong>: The experience appears embedded in the page.</li>
 </ul>
-</li>
-<li>
-<p><strong>Experience Placement</strong>: The location of a modal window. This setting is only used with the <strong>Modal</strong> placement option.</p>
-</li>
-<li>
-<p><strong>Placement Selector</strong>: A CSS selector to identify the page element to place the experience. This is used only with the <strong>Embedded</strong> placement option. For more information about how to determine an element’s selector, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">How to Determine the CSS Selector of an Element</a>.</p>
-</li>
-<li>
-<p><strong>Experience Position</strong>: The position of the inserted element relative to the element in <strong>Placement Selector</strong>.</p>
-<ul>
-<li><strong>Before Begin</strong>: Before the page element.</li>
-<li><strong>After Begin</strong>: Inside the page element, before its first child.</li>
-<li><strong>Before End</strong>: Inside the page element, after its last child.</li>
-<li><strong>After End:</strong> After the page element.</li>
-<li><strong>Replace:</strong> Replace the page element.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redirect URL</strong>: A pipe (|) delimited list of URLs to redirect the visitor to when the primary button is clicked. Each URL corresponds to an answer in the answer list, matched by position (first URL for the first answer, second for the second, etc.). The number of URLs must match the number of answers. Leave this field empty if you do not want to redirect. For example, this can redirect to a thank you page that offers a special offer or a page that contains another experience to ask a follow-up question. Because the pipe character is a delimiter, you cannot use a pipe character in a redirection URL.</p>
-</li>
-<li>
-<p><strong>Redirect Opens Tab</strong>: Select <code>True</code> to open a new tab when the visitor is redirected. This option is available only if you enter a value for <strong>Redirect URL</strong>.</p>
-</li>
-</ul>
-<h2 id="experience-background-image">Experience background image</h2>
-<p>Complete the following steps to add a background image to the experience:</p>
-<ol>
-<li>Under <strong>Image Position</strong>, select whether the image aligns with the left or the right of the experience window.</li>
-<li>Under <strong>Image URL</strong>, enter a link to an https-secured, externally hosted image. Suggested image size: 500px by 400px. The file must have a <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, or <code>.svg</code> file extension.</li>
-</ol>
-<h2 id="experience-text">Experience text</h2>
+<h2 id="form">Form</h2>
+<h3 id="header">Header</h3>
 <p>Configure the text that appears on the experience with the following settings:</p>
 <ul>
 <li><strong>Header Text</strong>: The text that appears at the top of the experience.</li>
 <li><strong>Main Text</strong>: The text that appears under the header text.</li>
 <li><strong>Question Text</strong>: The question to ask your visitors.</li>
 </ul>
-<h2 id="answers">Answers</h2>
+<h3 id="answers">Answers</h3>
 <p>Moments iQ provides multiple question formats that allow you to customize the questions that guides the visitor to the right experience on your site.</p>
 <p>Configure the question and answers with the following settings:</p>
 <ul>
@@ -548,20 +546,31 @@
 </li>
 <li><strong>Answers</strong>: The answers to the question:
 <ul>
-<li><strong>Radio</strong>: A pipe (|) delimited list of answers to display next to each radio button. Because the pipe character is a delimiter, you cannot use a pipe character in a radio button label.
-Example: <code>Red|Green|Blue|Teal</code></li>
-<li><strong>Text</strong>: The placeholder text for the field.<br>
-Example: <code>[&quot;What is your favorite color?&quot;]</code></li>
-<li><strong>Checkbox</strong>: A pipe (|) delimited list of answers to display next to each checkbox. Because the pipe character is a delimiter, you cannot use a pipe character in a checkbox label.
+<li><strong>Radio</strong>: A pipe (|) delimited list of answers to display next to each radio button. Because the pipe character is a delimiter, you cannot use a pipe character in a button label.
+For example: <code>Red|Green|Blue|Teal</code></li>
+<li><strong>Text</strong>: The placeholder text for the text box.<br>
+For example: <code>[&quot;What is your favorite color?&quot;]</code></li>
+<li><strong>Checkbox</strong>: A pipe (|) delimited list of answers to display next to each checkbox. Because the pipe character is a delimiter, you cannot use a pipe character in a button label.
 Example: <code>Red|Green|Blue|Teal</code></li>
 <li><strong>Button</strong>: A pipe (|) delimited list of answers to override the primary and secondary button text. Moments iQ uses only the first two values. Because the pipe character is a delimiter, you cannot use a pipe character in a button label.
-Example: <code>Red|Green</code></li>
+For example: <code>Red|Green</code></li>
 </ul>
 </li>
+<li><strong>Redirect URL</strong>: The URL to redirect the visitor to when a specific answer is selected and the primary button is clicked. Leave this field empty if you do not want to redirect the URL. For example, this can redirect to a thank you page that offers a special offer or a page that contains another experience to ask a follow-up question.</li>
+<li><strong>Redirect Opens Tab</strong>: Select <code>True</code> to open a new tab when the visitor is redirected. This option is available only if you enter a value for <strong>Redirect URL</strong>.</li>
 <li><strong>Primary Button Text</strong>: The text label for the primary button. The default value is <code>Submit</code>.</li>
 </ul>
-<h2 id="experience-appearance">Experience appearance</h2>
-<p>Configure the experience to match the appearance of your site by entering values from your site&rsquo;s style sheet for the following appearance properties:</p>
+<h4 id="dynamic-text">Dynamic text</h4>
+<p>You can use variables to create dynamic text for <strong>Header Text</strong>, <strong>Main Text</strong>, <strong>Question Text</strong>, and <strong>Answers</strong> parameters. Variables appear between two sets of curly braces. For example, <code>{{VARIABLENAME}}</code>.</p>
+<p>The variables can use the following data:</p>
+<ul>
+<li><code>utag.data</code> (for example, <code>{{utag.data.customer_name}}</code>)</li>
+<li>B object (for example, <code>{{b.customer_alias}}</code>)</li>
+<li>AudienceStream attributes, through the B object (for example, <code>{{b.variable_name}}</code>)</li>
+</ul>
+<p>You can set a fallback value that appears when no data is available to insert. Fallback values appear after a pair of pipe characters (for example, <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
+<h2 id="style">Style</h2>
+<p>Configure the experience to match the appearance of your site. Enter or select the style settings for each element in the experience:</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/moments-components.png"><img src="/images/early-access/moments-iq/moments-components.png"
          alt="Components of a Moments iQ experience"
          title="Components of a Moments iQ experience"/>
@@ -578,160 +587,41 @@ Example: <code>Red|Green</code></li>
 </thead>
 <tbody>
 <tr>
-<td><strong>Header Text Color</strong></td>
-<td>The color of the header text, as a hex code or standard color name. The default value is <code>#0A1B36</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Main Text Color</strong></td>
-<td>The color of the main text, as a hex code or standard color name. The default value is <code>#0A1B36</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Question Text Color</strong></td>
-<td>The color or the question text, as a hex code or standard color name.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Answer Text Color</strong></td>
-<td>The color of the answer text, as a hex code or standard color name.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Primary Button Text Color</strong></td>
-<td>The color of the primary button text, as a hex code or standard color name. The default value is <code>#FFFFFF</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Text Color</strong></td>
-<td>The color of the secondary button text, as a hex code or standard color name. The default value is <code>#FFFFFF</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Header Text Font Family</strong></td>
-<td>The font family of the header text. The default value is <code>Arial</code>.</td>
+<td><strong>Font Family</strong></td>
+<td>The font family of the text.</td>
 <td><code>Arial</code></td>
 </tr>
 <tr>
-<td><strong>Main Text Font Family</strong></td>
-<td>The font family of the main text. The default value is <code>Arial</code>.</td>
-<td><code>Arial</code></td>
-</tr>
-<tr>
-<td><strong>Question Text Font Family</strong></td>
-<td>The font family of the question text.</td>
-<td><code>Arial</code></td>
-</tr>
-<tr>
-<td><strong>Answer Text Font Family</strong></td>
-<td>The font family of the question text.</td>
-<td><code>Arial</code></td>
-</tr>
-<tr>
-<td><strong>Primary Button Font Family</strong></td>
-<td>The font family of the primary button. The default value is <code>Arial</code>.</td>
-<td><code>Arial</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Font Family</strong></td>
-<td>The font family of the secondary button. The default value is <code>Arial</code>.</td>
-<td><code>Arial</code></td>
-</tr>
-<tr>
-<td><strong>Header Text Font Size</strong></td>
-<td>The font size of the header text. The default value is <code>16px</code>.</td>
+<td><strong>Font Size</strong></td>
+<td>The font size of the text, as a <code>px</code> or <code>em</code> measurement.</td>
 <td><code>14px</code></td>
 </tr>
 <tr>
-<td><strong>Main Text Font Size</strong></td>
-<td>The font size of the main text. The default value is <code>14px</code>.</td>
-<td><code>14px</code></td>
-</tr>
-<tr>
-<td><strong>Question Text Font Size</strong></td>
-<td>The font size of the question text.</td>
-<td><code>14px</code></td>
-</tr>
-<tr>
-<td><strong>Answer Text Font Size</strong></td>
-<td>The font size of the answer text.</td>
-<td><code>14px</code></td>
-</tr>
-<tr>
-<td><strong>Primary Button Text Font Size</strong></td>
-<td>The primary button text size. The default value is <code>16px</code>.</td>
-<td><code>16px</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Text Font Size</strong></td>
-<td>The secondary button text size. The default value is <code>16px</code>.</td>
-<td><code>16px</code></td>
-</tr>
-<tr>
-<td><strong>Header Text Font Style</strong></td>
-<td>The font style of the header text. The default value is <code>normal</code>.</td>
+<td><strong>Font Style</strong></td>
+<td>The font style of the text.</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>Main Text Font Style</strong></td>
-<td>The font style of the main text. The default value is <code>normal</code>.</td>
+<td><strong>Font Weight</strong></td>
+<td>The font weight of the text.</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
-<td><strong>Question Text Font Style</strong></td>
-<td>The font style of the question text.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Answer Text Font Style</strong></td>
-<td>The font style of the answer text.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Primary Button Font Style</strong></td>
-<td>The font style of the primary button. The default value is <code>normal</code>.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Font Style</strong></td>
-<td>The font style of the secondary button. The default value is <code>normal</code>.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Header Text Font Weight</strong></td>
-<td>The font weight of the header. The default value is <code>700</code>.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Main Text Font Weight</strong></td>
-<td>The font weight of the main text. The default value is <code>400</code>.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Question Font Weight</strong></td>
-<td>The font weight of the question text.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Answer Font Weight</strong></td>
-<td>The font weight of the answer text.</td>
-<td><code>normal</code></td>
-</tr>
-<tr>
-<td><strong>Primary Button Font Weight</strong></td>
-<td>The font weight of the primary button text. The default value is <code>400</code>.</td>
-<td><code>400</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Font Weight</strong></td>
-<td>The font weight of the secondary button text. The default value is <code>400</code>.</td>
-<td><code>400</code></td>
-</tr>
-<tr>
-<td><strong>Outer Container Background Color</strong></td>
-<td>The background color of the experience, as a hex code or standard color name. The default value is <code>#FCFCFC</code>.</td>
+<td><strong>Text Color</strong></td>
+<td>The color of the text, as a hex code or standard color name.</td>
 <td><code>#1B1B1B</code></td>
 </tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><strong>Primary Button Background Color</strong></td>
 <td>The background color of the primary button. The default value is <code>#1B1B1B</code>.</td>
@@ -739,7 +629,32 @@ Example: <code>Red|Green</code></li>
 </tr>
 <tr>
 <td><strong>Secondary Button Background Color</strong></td>
-<td>The background color of the secondary button. The default value is <code>#1B1B1B</code>.</td>
+<td>The background color of the secondary button, as a hex code or standard color name. The default value is <code>#1B1B1B</code>.</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="experience-background-image">Experience background image</h3>
+<p>Complete the following steps to add a background image to the experience:</p>
+<ol>
+<li>Under <strong>Image Placement</strong>, select whether the image will background fill the left or right half of the modal.</li>
+<li>Under <strong>Image Position</strong>, select whether the image will align with the left or the right of the experience window.</li>
+<li>Under <strong>Image URL</strong>, enter a link to an https-secured, externally hosted image. Suggested image size: 500px by 400px. The file must have a <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, or <code>.svg</code> file extension.</li>
+</ol>
+<h3 id="container-styles">Container styles</h3>
+<h4 id="outer-container">Outer container</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Outer Container Background Color</strong></td>
+<td>The background color of the experience, as a hex code or standard color name. The default value is <code>#FCFCFC</code>.</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
@@ -748,12 +663,34 @@ Example: <code>Red|Green</code></li>
 <td><code>1px</code></td>
 </tr>
 <tr>
-<td><strong>Question Container Margin</strong></td>
-<td>The margin size of the question&rsquo;s container. The default value is <code>0</code>.</td>
-<td><code>0</code></td>
+<td><strong>Outer Container Border Style</strong></td>
+<td>The border style of the outermost container of the experience. The default value is <code>none</code>.</td>
+<td><code>none</code></td>
 </tr>
 <tr>
-<td><strong>Answer Container Margin</strong></td>
+<td><strong>Outer Container Border Color</strong></td>
+<td>The color of the border around the outermost container of the experience, as a hex code or standard color name. You must set a border style to a value other than <code>none</code> for the border color to appear. The radius is <code>8px</code>.</td>
+<td>Black</td>
+</tr>
+<tr>
+<td><strong>Outer Container Width</strong></td>
+<td>The width of the outermost container. The default value is <code>500px</code>.</td>
+<td><code>500px</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="question-container">Question container</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Question Container Margin</strong></td>
 <td>The margin size of the question&rsquo;s container. The default value is <code>0</code>.</td>
 <td><code>0</code></td>
 </tr>
@@ -761,6 +698,23 @@ Example: <code>Red|Green</code></li>
 <td><strong>Question Container Text Align</strong></td>
 <td>The alignment direction of the question text in its container. The default value is <code>start</code>.</td>
 <td><code>start</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="answer-container">Answer container</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Answer Container Margin</strong></td>
+<td>The margin size of the question&rsquo;s container. The default value is <code>0</code>.</td>
+<td><code>0</code></td>
 </tr>
 <tr>
 <td><strong>Answer Container Text Align</strong></td>
@@ -777,44 +731,15 @@ Example: <code>Red|Green</code></li>
 <td>The alignment direction of the answers within the container (for example: <code>start</code>, <code>flex-start</code>, or <code>self-start</code>). The default value is <code>flex-start</code>.</td>
 <td><code>flex-start</code></td>
 </tr>
-<tr>
-<td><strong>Outer Container Border Style</strong></td>
-<td>The border style of the outermost container of the experience. The default value is <code>none</code>.</td>
-<td><code>none</code></td>
-</tr>
-<tr>
-<td><strong>Outer Container Border Color</strong></td>
-<td>The color of the border around the outermost container of the experience, as a hex code or standard color name. You must set a border style to a value other than <code>none</code> for the border color to appear. The radius is <code>8px</code>.</td>
-<td><code>8px</code></td>
-</tr>
-<tr>
-<td><strong>Outer Container Width</strong></td>
-<td>The width of the outermost container. The default value is <code>500px</code>.</td>
-<td><code>500px</code></td>
-</tr>
-<tr>
-<td><strong>Z-Index</strong></td>
-<td>Use to override the z-order positioning of the experience on the page. Higher values stack on top of lower values.</td>
-<td><code>auto</code></td>
-</tr>
 </tbody>
 </table>
-<h2 id="dynamic-text">Dynamic text</h2>
-<p>You can use variables to create dynamic text for <strong>Header Text</strong>, <strong>Main Text</strong>, <strong>Question Text</strong>, and <strong>Answers</strong> parameters. Variables appear between two sets of curly braces. For example, <code>{{VARIABLENAME}}</code>.</p>
-<p>The variables can use the following data:</p>
-<ul>
-<li><code>utag.data</code> (for example, <code>{{utag.data.customer_name}}</code>)</li>
-<li>B object (for example, <code>{{b.customer_alias}}</code>)</li>
-<li>AudienceStream attributes, through the B object (for example, <code>{{b.variable_name}}</code>)</li>
-</ul>
-<p>You can set a fallback value that appears when no data is available to insert. Fallback values appear after a pair of pipe characters (for example, <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
-<h2 id="load-rules">Load rules</h2>
+<h2 id="rules-and-events">Rules and events</h2>
 <p>Load the experience on all pages or set conditions for when your experience appears. For more information about load rules and events, see <a href="/iq-tag-management/load-rules/about/">Load Rules</a> and <a href="/iq-tag-management/events/about/">Events</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To avoid data collisions, only one Moments iQ experience can appear on a page at a time. If you have multiple experiences, configure the load rules to ensure that only one experience loads at any time.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Use the following mappings with extensions to get dynamic values in the configurations or keep styling consistent from experience to experience:</p>
 <!-- For more information, see [Advanced data mappings](LINK TO ADVANCED DATA MAPPINGS WHEN IT'S WRITTEN). -->
-<h3 id="basic-parameters">Basic Parameters</h3>
+<h3 id="basic-parameters">Basic parameters</h3>
 <table>
 <thead>
 <tr>
@@ -910,18 +835,13 @@ Example: <code>Red|Green</code></li>
 <td style="text-align:left">Tealium track type</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>primaryText</code></td>
-<td style="text-align:left">String</td>
-<td style="text-align:left">Primary button text</td>
-</tr>
-<tr>
 <td style="text-align:left"><code>trackOnLoad</code></td>
 <td style="text-align:left">String</td>
 <td style="text-align:left">Track load</td>
 </tr>
 </tbody>
 </table>
-<h3 id="text-formatting-parameters">Text Formatting Parameters</h3>
+<h3 id="text-formatting-parameters">Text formatting parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1083,7 +1003,7 @@ Example: <code>Red|Green</code></li>
 </tr>
 </tbody>
 </table>
-<h3 id="container-formatting-parameters">Container Formatting Parameters</h3>
+<h3 id="container-formatting-parameters">Container formatting parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1178,7 +1098,7 @@ Example: <code>Red|Green</code></li>
 </tr>
 </tbody>
 </table>
-<h3 id="container-and-text-objects">Container and Text Objects</h3>
+<h3 id="container-and-text-objects">Container and text objects</h3>
 <table>
 <thead>
 <tr>
@@ -1340,7 +1260,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 2, 2025 
+          <p>This page was last updated:  July 1, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1356,18 +1276,22 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#position-and-placement" href="javascript:void(0)">Position and placement</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-background-image" href="javascript:void(0)">Experience background image</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-text" href="javascript:void(0)">Experience text</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#properties" href="javascript:void(0)">Properties</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-type-and-placement" href="javascript:void(0)">Experience type and placement</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-tracking" href="javascript:void(0)">Experience tracking</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#form" href="javascript:void(0)">Form</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#header" href="javascript:void(0)">Header</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#answers" href="javascript:void(0)">Answers</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-appearance" href="javascript:void(0)">Experience appearance</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dynamic-text" href="javascript:void(0)">Dynamic text</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#style" href="javascript:void(0)">Style</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-background-image" href="javascript:void(0)">Experience background image</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-styles" href="javascript:void(0)">Container styles</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rules-and-events" href="javascript:void(0)">Rules and events</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-parameters" href="javascript:void(0)">Basic Parameters</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#text-formatting-parameters" href="javascript:void(0)">Text Formatting Parameters</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-formatting-parameters" href="javascript:void(0)">Container Formatting Parameters</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-and-text-objects" href="javascript:void(0)">Container and Text Objects</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-parameters" href="javascript:void(0)">Basic parameters</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#text-formatting-parameters" href="javascript:void(0)">Text formatting parameters</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-formatting-parameters" href="javascript:void(0)">Container formatting parameters</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-and-text-objects" href="javascript:void(0)">Container and text objects</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-variables" href="javascript:void(0)">Data layer variables</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-data-persistence" href="javascript:void(0)">Client-side data persistence</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-integration" href="javascript:void(0)">Server-side integration</a></li>

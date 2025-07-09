@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -320,6 +320,7 @@
         <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor Conversion Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nielsen-digital-content-ratings-dcr-page-measurement-tag">Nielsen Digital Content Ratings (DCR) - Page Measurement</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/observepoint-data-layer-validator-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".observepoint-data-layer-validator-tag">ObservePoint Data Layer Validator</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/optimise-media-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimise-media-conversion-tag">Optimise Media Conversion</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/optimizely-series/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-series">Optimizely (Series)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/optimizely-asynchronous-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-asynchronous-tag">Optimizely Asynchronous</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/optimizely-sync-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-sync-tag">Optimizely Sync (Deprecated)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -462,14 +463,13 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Pinterest Tag tag in your Tealium iQ Tag Management account.
+      This article describes how to set up the Pinterest Tag in your Tealium iQ Tag Management account.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The Pinterest tag allows advertisers to track specific actions, or events, on any pages on their websites. With the Pinterest tag, the advertisers can also attach customized event data on those events to gather detailed information on visitors’ behaviors on the websites. Then the advertisers can later use the information to refine their audiences for ad campaigns on Pinterest.</p>
-<h2 id="requirements">Requirements</h2>
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li>Pinterest Business Account</li>
 <li>Pinterest Tag and Tag identifier</li>
@@ -494,7 +494,7 @@
 </li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
+<p>Go to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Pinterest Tag ID</strong>
@@ -514,9 +514,15 @@
 </ul>
 </li>
 </ul>
+<h3 id="conversions-api-for-web">Conversions API for Web</h3>
+<p>To support the Pinterest Conversions API for Web, the tag generates a unique event ID for each event tracked and sends it to Tealium EventStream for use in the Pinterest Conversions connector. The event ID may be mapped in the connector to synchronize the web-based on server-based integrations. This feature requires an active <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</p>
+<p>The tag emits new event attributes using the following naming convention:</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">pinterest_event_id_{PINTEREST_EVENT}_{TAG_UID}
+</code></pre><p>For example: <code>pinterest_event_id_Checkout_32 = &quot;11563522&quot;</code></p>
+<p>For more information, see <a href="/server-side-connectors/pinterest-conversions-connector/">Pinterest Conversions Connector Setup Guide</a>.</p>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
-<p>Recommended Rule: Create a custom Rule to load it on the page(s) where you want to track specific actions, events, and conversions.</p>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
+<p>Recommended Rule: Create a custom rule to load it on the page(s) where you want to track specific actions, events, and conversions.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The available categories are:</p>
@@ -532,6 +538,10 @@
 <tr>
 <td><code>tag_id</code></td>
 <td><ul><li>Tag ID.</li><li>Unique identifier of your Pinterest tag (not the old Conversion tag).</li></ul></td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td><ul><li>Event ID.</li><li>Unique identifier of the event.</li><li>This value overrides the value generated by the <strong>Generate Event ID</strong> configuration option.</ul></td>
 </tr>
 <tr>
 <td><code>email_address</code></td>
@@ -580,8 +590,8 @@
 </tbody>
 </table>
 <h3 id="e-commerce">E-Commerce</h3>
-<p>Since the Pinterest Tag is e-commerce enabled, it will automatically use the default <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a> mappings. Manually mapping in this category is generally not needed unless you want to override any Extension mappings or your desired e-commerce variable is not offered in the extension.</p>
-<h3 id="e-commerce-1">E-Commerce</h3>
+<p>Since the Pinterest Tag is e-commerce enabled, it automatically uses the default <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a> mappings. Manually mapping in this category is generally not needed unless you want to override any Extension mappings or your desired e-commerce variable is not offered in the extension.</p>
+<h3 id="e-commerce-variables">E-Commerce Variables</h3>
 <table>
 <thead>
 <tr>
@@ -620,7 +630,7 @@
 </tr>
 <tr>
 <td><code>product_category</code></td>
-<td><ul><li>Array.</li><li>Name of each product in the product array.</li><li>Overrides <code>_ccat</code>.</li></ul></td>
+<td>Array. Category of each product in the product array. Overrides <code>_ccat</code>.</td>
 </tr>
 <tr>
 <td><code>product_quantity</code></td>
@@ -653,31 +663,31 @@
 </tr>
 <tr>
 <td>Search</td>
-<td>Search</td>
+<td>Search.</td>
 </tr>
 <tr>
 <td>AddToCart</td>
-<td>Added to cart</td>
+<td>Added to cart.</td>
 </tr>
 <tr>
 <td>Checkout</td>
-<td>Check out</td>
+<td>Check out.</td>
 </tr>
 <tr>
 <td>WatchVideo</td>
-<td>Video watched</td>
+<td>Video watched.</td>
 </tr>
 <tr>
 <td>Signup</td>
-<td>Signed up</td>
+<td>Signed up.</td>
 </tr>
 <tr>
 <td>Lead</td>
-<td>Lead source</td>
+<td>Lead source.</td>
 </tr>
 <tr>
 <td>Custom</td>
-<td>Create custom event</td>
+<td>Create custom event.</td>
 </tr>
 </tbody>
 </table>
@@ -705,24 +715,24 @@ When the value is found, the event triggers on the page.</li>
 <tr>
 <td style="text-align:left"><code>opt_out_type</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Opt out type</td>
+<td style="text-align:left">Opt out type.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>st</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Opt out state</td>
+<td style="text-align:left">Opt out state.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>country</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Opt out country</td>
+<td style="text-align:left">Opt out country.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
-<li><a href="https://help.pinterest.com/en/articles/website-conversion-tracking">About Pinterest Tag</a></li>
-<li><a href="https://business.pinterest.com/sites/business/files/pinterest-ads-manager-guide.pdf">Pinterest Ads Manager Guide</a></li>
+<li><a href="https://help.pinterest.com/en/articles/website-conversion-tracking">Pinterest: About Pinterest Tag</a></li>
+<li><a href="https://business.pinterest.com/sites/business/files/pinterest-ads-manager-guide.pdf">Pinterest: Ads Manager Guide</a></li>
 </ul>
 
 </div>
@@ -784,7 +794,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 30, 2019 
+          <p>This page was last updated:  July 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -801,11 +811,12 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversions-api-for-web" href="javascript:void(0)">Conversions API for Web</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce-variables" href="javascript:void(0)">E-Commerce Variables</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#limited-data-processing-ldp" href="javascript:void(0)">Limited Data Processing (LDP)</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
@@ -1105,6 +1116,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
