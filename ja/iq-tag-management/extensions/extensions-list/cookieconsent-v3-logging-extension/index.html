@@ -194,7 +194,8 @@
         <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">ティーリアムジェネリックタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">タグレポート</a></li></ul>
+        <a href="/ja/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">タグレポート</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tags/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-persistent-cookie-matching">永続的なクッキーマッチング</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".templates">テンプレート</a>
         <ul class="pl2  templates desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -359,7 +360,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".explicit-consent-prompt">明示的な同意プロンプト</a>
         <ul class="pl2  explicit-consent-prompt desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的な同意プロンプトマネージャーについて</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
+        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的同意プロンプトの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
         <ul class="pl2  consent-preferences-dialog desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -471,18 +472,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>この拡張機能を使用して、CookieConsent v3 インターフェースを通じて収集されたユーザーの同意決定をログに記録します。同意ID、承認されたカテゴリ、および同意モデルなどの関連情報をキャプチャし、そのデータをJSONペイロードとして <code>fetch()</code> APIを使用してエンドポイントに送信します。Tealium Collectエンドポイントに送信する場合でもカスタムの宛先に送信する場合でも、ペイロードをシステムの要件に合わせて構成できます。</p>
+  <p>この拡張機能を使用して、CookieConsent v3 インターフェースを通じて収集されたユーザーの同意決定をログに記録します。同意ID、承認されたカテゴリ、同意モデルなどの関連情報をキャプチャし、<code>fetch()</code> APIを使用してこのデータをJSONペイロードとしてエンドポイントに送信します。Tealium Collectエンドポイントに送信する場合でもカスタムの宛先に送信する場合でも、ペイロードをシステムの要件に合わせて構成できます。</p>
 <h2 id="要件">要件</h2>
-<ul>
-<li><a href="/ja/iq-tag-management/extensions/extensions-list/cookieconsent-v3-loader-extension/">CookieConsent v3 ローダー拡張機能</a></li>
-<li><a href="/ja/iq-tag-management/consent/cookieconsent-consent-integration/#step-3-create-a-cookieconsent-v3-integration-and-enforcement-rule">CookieConsent v3 同意統合</a></li>
-</ul>
+<p>CookieConsent v3 ロギング拡張機能は、JavaScriptコード拡張機能の管理権限が必要です。</p>
 <h2 id="動作方法">動作方法</h2>
 <p>この拡張機能は、CookieConsentインターフェースからの <code>consent_updated</code> イベントをリッスンします。ユーザーが同意決定を行うか更新すると、拡張機能は同意状態を取得し、<code>fetch()</code> メソッドを使用して指定されたエンドポイントに情報をJSONペイロードとして送信します。</p>
 <p>ペイロードには通常、以下が含まれます：</p>
 <ul>
 <li><code>tealium_event</code>: イベントタイプ、例えば <code>consent_decision</code>。</li>
-<li><code>consent_id</code>: ユーザーの同意決定の一意識別子。</li>
+<li><code>consent_id</code>: ユーザーの同意決定のユニークな識別子。</li>
 <li><code>decision_type</code>: ユーザーがカテゴリを承認したか拒否したか。</li>
 <li><code>accepted_purposes</code> と <code>rejected_purposes</code>: ユーザーが選択したカテゴリ。</li>
 <li><code>consent_model</code>: <code>opt-in</code> または <code>opt-out</code>。</li>
@@ -491,18 +489,18 @@
 <li><code>expiration_time</code>: 同意が有効である期間。</li>
 <li><code>revision</code>: 同意構成の現在のバージョン。</li>
 <li><code>tealium_account</code> と <code>tealium_profile</code>: イベントを送信する場所。</li>
-<li><code>tealium_visitor_id</code>: (オプション) <code>utag_main</code> クッキーに既に利用可能な場合に含まれます。</li>
+<li><code>tealium_visitor_id</code>: （オプション）<code>utag_main</code> クッキーで既に利用可能な場合に含まれます。</li>
 </ul>
 <p>このペイロードは、エンドポイントまたはデータモデルに合わせて調整できます。</p>
 <h2 id="構成方法">構成方法</h2>
 <ol>
-<li>Tealium iQで、<strong>拡張機能</strong>に移動し、<strong>拡張機能を追加</strong>をクリックします。</li>
-<li><strong>プライバシー</strong>タブをクリックします。</li>
-<li><strong>CookieConsent v3 ロギング</strong>拡張機能の隣にある <strong>+ 追加</strong> をクリックします。</li>
-<li>拡張機能の <strong>タイトル</strong> を入力します。</li>
-<li><strong>スコープ</strong>の下で、デフォルトオプション <strong>DOM Ready</strong> を使用します。これはロード条件をサポートしており、拡張機能が実行されるタイミングを制御できます。<strong>Preloader</strong> スコープもサポートされていますが、ロード条件は許可されていません。</li>
-<li>(オプショナル) この拡張機能にロード条件を適用するには、<strong>条件を追加</strong>をクリックします。条件が同意統合の執行規則と一致することを確認してください。</li>
-<li><strong>構成</strong>コードで次のいずれかを行います：
+<li>Tealium iQで、<strong>Extensions</strong> に移動し、<strong>Add Extension</strong> をクリックします。</li>
+<li><strong>Privacy</strong> タブをクリックします。</li>
+<li><strong>CookieConsent v3 Logging</strong> 拡張機能の隣にある <strong>+ Add</strong> をクリックします。</li>
+<li>拡張機能の <strong>Title</strong> を入力します。</li>
+<li><strong>Scope</strong> の下で、デフォルトオプション <strong>DOM Ready</strong> を使用します。これはロード条件をサポートしており、拡張機能が実行されるタイミングを制御できます。<strong>Preloader</strong> スコープもサポートされていますが、ロード条件は許可されません。</li>
+<li>（オプション）この拡張機能にロード条件を適用するには <strong>Add Condition</strong> をクリックします。問題を避けるために、同意統合の施行ルールと条件が一致していることを確認してください。</li>
+<li><strong>Configuration</strong> コードで以下のいずれかを行います：
 <ul>
 <li>Tealium Collectにログを送信する場合は、<code>tealium_account</code> と <code>tealium_profile</code> のプレースホルダー値を実際の値に置き換えます。</li>
 <li>別のエンドポイントにログを送信する場合は、<code>fetch()</code> URLを同意ログを送信したい宛先に更新します。</li>
@@ -569,7 +567,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月23日
+          <p>最終更新日 ::  2025年July月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

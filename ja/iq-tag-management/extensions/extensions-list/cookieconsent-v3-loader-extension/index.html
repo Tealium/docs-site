@@ -194,7 +194,8 @@
         <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">ティーリアムジェネリックタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">タグレポート</a></li></ul>
+        <a href="/ja/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">タグレポート</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tags/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-persistent-cookie-matching">永続的なクッキーマッチング</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".templates">テンプレート</a>
         <ul class="pl2  templates desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -359,7 +360,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".explicit-consent-prompt">明示的な同意プロンプト</a>
         <ul class="pl2  explicit-consent-prompt desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的な同意プロンプトマネージャーについて</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
+        <a href="/ja/iq-tag-management/consent/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的同意プロンプトの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
         <ul class="pl2  consent-preferences-dialog desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -473,24 +474,20 @@
 <div class="prose nested-links" id="prose">
   <p>CookieConsent v3 ローダー拡張機能を使用すると、サイト上で直接行う代わりにTealium iQを通じて <a href="https://cookieconsent.orestbida.com/">CookieConsent: CookieConsent v3</a> を実装でき、より良い制御とバージョニングが可能になります。必要なJavaScriptおよびCSSファイルをロードし、カスタム構成を実行して、同意バナーとモーダルを表示します。</p>
 <h2 id="要件">要件</h2>
-<p>CookieConsent v3 ローダー拡張機能には以下が必要です：</p>
-<ul>
-<li><a href="/ja/iq-tag-management/extensions/extensions-list/cookieconsent-v3-logging-extension/">CookieConsent v3 ロギング拡張機能</a></li>
-<li><a href="/ja/iq-tag-management/consent/cookieconsent-consent-integration/#step-3-create-a-cookieconsent-v3-integration-and-enforcement-rule">CookieConsent v3 同意統合</a></li>
-</ul>
+<p>CookieConsent v3 ローダー拡張機能は、JavaScriptコード拡張機能の管理権限が必要です。</p>
 <h2 id="動作方法">動作方法</h2>
-<p>この拡張機能は、CookieConsentライブラリをロードし、<code>ccConfig</code>構成オブジェクトを使用して初期化します。拡張機能のJSON構成を通じて、カテゴリ、サービス、スタイル、言語構成、および動作を定義できます。</p>
+<p>この拡張機能はCookieConsentライブラリをロードし、<code>ccConfig</code>構成オブジェクトを使用して初期化します。拡張機能のJSON構成を通じてカテゴリ、サービス、スタイル、言語構成、および動作を定義できます。</p>
 <p>このツールは、オプトインまたはオプトアウトモードで動作し、ページのインタラクションを無効にする、モーダルレイアウトをカスタマイズする、リンクされたカテゴリとクッキーテーブルの構成などの高度な機能をサポートしています。</p>
 <p>ページがロードされると、拡張機能は以下を行います：</p>
 <ul>
 <li>CookieConsentライブラリをロードします。</li>
 <li>カスタマイズされた<code>ccConfig</code>構成を適用します。</li>
-<li>あなたの好みに基づいてユーザーに同意モーダルを表示します。</li>
+<li>ユーザーの構成に基づいて同意モーダルを表示します。</li>
 </ul>
 <h2 id="構成方法">構成方法</h2>
 <ol>
 <li>
-<p>Tealium iQで、<strong>拡張機能</strong>に移動し、<strong>拡張機能を追加</strong>をクリックします。</p>
+<p>Tealium iQで<strong>拡張機能</strong>に移動し、<strong>拡張機能を追加</strong>をクリックします。</p>
 </li>
 <li>
 <p><strong>プライバシー</strong>タブをクリックします。</p>
@@ -502,10 +499,10 @@
 <p>拡張機能の<strong>タイトル</strong>を入力します。</p>
 </li>
 <li>
-<p><strong>スコープ</strong>の下で、デフォルトオプション<strong>DOM Ready</strong>を使用します。これはロード条件をサポートしており、拡張機能が実行されるタイミングを制御できます。<strong>プリローダー</strong>スコープもサポートされていますが、ロード条件は許可されません。</p>
+<p><strong>スコープ</strong>の下で、デフォルトオプション<strong>DOM Ready</strong>を使用します。これはロード条件をサポートしており、拡張機能の実行タイミングを制御できます。<strong>プリローダー</strong>スコープもサポートされていますが、ロード条件は許可されていません。</p>
 </li>
 <li>
-<p>（オプション）この拡張機能にロード条件を適用するために<strong>条件を追加</strong>をクリックします。これは、特定のシナリオでのみバナーを実行するのに役立ちます（例えば、地域固有のロードルールが真の場合）。条件が同意統合の執行ルールと一致することを確認して、執行の問題を避けてください。</p>
+<p>（オプション）この拡張機能にロード条件を適用するために<strong>条件を追加</strong>をクリックします。これは、特定のシナリオでのみバナーを実行する場合に便利です（例えば、地域固有のロードルールが真の場合）。条件が同意統合の施行ルールと一致することを確認して、施行の問題を避けてください。</p>
 </li>
 <li>
 <p><strong>構成</strong>コードで、<code>ccConfig</code> JSONオブジェクトを更新して構成を定義します。これには以下が含まれます：</p>
@@ -517,7 +514,7 @@
 <li>構成モーダルのセクションとクッキーテーブル。</li>
 <li>ラベル、タイトル、ボタンテキストなどのアクセシビリティ関連のコンテンツ。</li>
 </ul>
-<p>構成オプションの完全なリストについては、<a href="https://cookieconsent.orestbida.com/reference/configuration-reference.html">CookieConsent: 構成リファレンス</a>を参照してください。</p>
+<p>構成オプションの完全なリストについては、<a href="https://cookieconsent.orestbida.com/reference/configuration-reference.html">CookieConsent: Configuration Reference</a>を参照してください。</p>
 </li>
 </ol>
 
@@ -580,7 +577,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月23日
+          <p>最終更新日 ::  2025年July月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
