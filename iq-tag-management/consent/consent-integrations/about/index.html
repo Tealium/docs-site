@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -468,24 +468,34 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The new Consent Enforcement Framework is a core feature of Tealium iQ Consent Integrations that enables robust and reliable enforcement of consent signals captured outside of Tealium iQ Tag Management. This feature blocks tracking when customer consent is not given or is ambiguous.</p>
-<p>Tealium iQ Consent Integrations provides the option for both opt-in (GDPR-style) and opt-out (CCPA-style) enforcement patterns for the supported consent management platforms (CMPs). Integrations can be written in the form of templates to support most CMPs or custom solutions.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iQ Consent Integrations has a dependency on the latest utag version 4.49. To enable support in previous versions, edit the <strong>uTag Loader</strong> template and add <code>##UTCM##</code> under the <code>##UTGEN##</code>publish engine flag.</p>
-<p>The following terms are related to the consent integrations framework:</p>
+  <p>The Consent Enforcement Framework is a core feature of Tealium iQ Consent Integrations that enforces consent signals captured outside Tealium iQ Tag Management. This feature blocks tracking when customer consent is not given or is ambiguous.</p>
+<p>Consent Integrations supports both opt-in (GDPR-style) and opt-out (CCPA-style) enforcement patterns for supported consent management platforms (CMPs). Integrations can use templates to support most CMPs or custom solutions.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Consent Integrations requires <code>utag.js</code> version 4.49 or later.</p>
+<h2 id="support-for-earlier-versions">Support for earlier versions</h2>
+<p>To enable support in earlier versions of <code>utag.js</code>, edit the <strong>uTag Loader</strong> template and add <code>##UTCM##</code> under the <code>##UTGEN##</code> publish engine flag.</p>
+<figure><a class="slb" href="/images/iq-tag-management/utcm-utag-loader-template.png"><img src="/images/iq-tag-management/utcm-utag-loader-template.png"
+         alt="uTag Loader template"
+         title="uTag Loader template"/>
+    </a>
+</figure>
+<p>For more information about how to update the <strong>uTag Loader</strong> template, see <a href="/iq-tag-management/templates/manage/#update-a-template">Update a template</a>.</p>
+<h2 id="consent-concepts">Consent concepts</h2>
+<p>The following terms describe concepts used in the Consent Integrations framework:</p>
 <ul>
-<li><strong>Purpose</strong> - A specific data use purpose to which your website users can consent (or withhold consent).</li>
-<li><strong>Purpose group</strong> - A list of purposes. A representation of an enforcement policy in the form of a group of consent purposes to which tags are assigned.</li>
-<li><strong>Exemption</strong> - A case where no enforcement is necessary and no tags need to be blocked based on consent decisions. Enforcement exemptions differ from the behavior when no consent integration enforcement rules apply. Unless there&rsquo;s an explicit exemption, or matching consent integration and the appropriate consent decision, no tags are allowed to fire.</li>
-<li><strong>Enforcement rule</strong> - Rules that determine when to enforce a consent integration or exemption.</li>
-<li><strong>Consent decision</strong> - An array of purposes that have been consented to. Consent decision is determined with a <code>type</code> attribute and is either <code>explicit</code> or <code>implicit</code>, depending on whether the user has made an active decision (<code>explicit</code>) or not (<code>implicit</code>).</li>
-<li><strong>Implicit decision</strong> - A decision inferred from a user&rsquo;s behavior. By visiting a site, a user consents to the necessary tags as described in the site’s privacy policy. A user can object to the sale of their data, but by default this is enabled (there is an implicit &lsquo;it&rsquo;s OK, to share/sell my data&rsquo; decision).</li>
-<li><strong>Explicit decision</strong> - A clear and precise consent decision by a user about what tracking they consent to.</li>
-<li><strong>Integration</strong> A set of features and configurations (pre-loaded or custom) that capture a consent decision from a specified CMP. An integration is associated with a purpose group.</li>
+<li><strong>Purpose</strong>: A specific data use purpose to which your website users can consent or decline.</li>
+<li><strong>Purpose group</strong>: A group of purposes representing an enforcement policy to which tags are assigned.</li>
+<li><strong>Exemption</strong>: A scenario where no enforcement is necessary and no tags need to be blocked based on consent decisions. Enforcement exemptions differ from the behavior when no consent integration enforcement rules apply. Unless there&rsquo;s an explicit exemption, or matching consent integration and the appropriate consent decision, no tags are allowed to fire.</li>
+<li><strong>Enforcement rule</strong>: Rules that determine when to enforce a consent integration or exemption.</li>
+<li><strong>Consent decision</strong>: An array of purposes the user has consented to, with a <code>type</code> attribute indicating whether the user has made an active decision (<code>explicit</code>) or not (<code>implicit</code>).</li>
+<li><strong>Implicit decision</strong>: A decision inferred from a user&rsquo;s behavior. By visiting a site, a user consents to the necessary tags as described in the site’s privacy policy. A user can object to the sale of their data, but by default this is enabled (there is an implicit &lsquo;it&rsquo;s OK, to share/sell my data&rsquo; decision).</li>
+<li><strong>Explicit decision</strong>: A clear and precise consent decision by a user about what tracking they consent to.</li>
+<li><strong>Integration</strong>: A set of features and configurations (pre-loaded or custom) that capture a consent decision from a CMP.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>Tealium iQ Consent Integrations enables you to integrate with supported non-Tealium consent management platforms. Your CMP prompts end-users for purpose-based consent as needed, and then captures and stores those user consent decisions. When an integration is active, tags must be assigned to purposes within a purpose group before they can be triggered. A purpose must be consented to before tags assigned to that purpose can be triggered.</p>
-<p>Each consent integration instructs the underlying framework how to communicate with a single CMP. Only one integration may be active simultaneously. However, you can use <strong>Enforcement Rules</strong> to conditionally apply multiple active integrations without conflict, if needed.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tags that inject CMPs into the page are not compatible with Tealium iQ Consent Integration. Integrations require a signal from the CMP before tags are loaded. To integrate your CMP with Consent Integrations, use a Pre Loader or DOM Ready extension, or add the CMP to the page outside of Tealium iQ.</p>
+<p>Consent Integrations enforces consent decisions from your CMP by blocking tags that do not have consent. When an integration is active, you must assign tags to purposes within a purpose group before they can be triggered. A user must consent to a purpose before tags assigned to that purpose can fire.</p>
+<p>Each consent integration instructs the underlying framework how to communicate with a single CMP. Only one integration can be active at a time. However, you can use <strong>Enforcement Rules</strong> to conditionally apply multiple active integrations without conflict, if needed.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tags that inject CMPs into the page are incompatible with Consent Integration. Integrations require a signal from the CMP before tags load. To integrate your CMP with Consent Integrations, use a Pre Loader or DOM Ready extension, or add the CMP to the page outside Tealium iQ.</p>
 <p>You can set up an integration with a supported CMP in the Tealium iQ dashboard, or create a custom integration by editing the <strong>Custom template</strong>.</p>
 <h2 id="supported-integrations">Supported integrations</h2>
 <p>See <a href="/iq-tag-management/consent/consent-integrations/supported-vendors/">Supported Vendor Integrations</a> for a full list of currently supported integrations.</p>
@@ -496,34 +506,105 @@
          title="map_tags.png" width="790" height="417"/>
     </a>
 </figure>
-<p>If you enable this option, the tag can be triggered up to twice for each user action (once with the implicit decision and once with the explicit decision). Tags are not triggered if the mapped purposes are not consented to.</p>
-<p>Most tags don&rsquo;t need to be triggered again if they have consent in each of these cases. Triggering tags a second time might result in double tracking, which should be avoided.</p>
-<p>Accounts with server-side connectors (especially event connectors) can benefit from refiring the Tealium Collect tag and using the <code>tci.purposes_with_consent_unprocessed</code> attribute to ensure that server-side connectors are not refired for the same event. Using the <code>tci.purposes_with_consent_unprocessed</code> attribute allows server-side connectors to trigger as quickly as possible without duplication.</p>
-<h2 id="server-side-attributes---using-collect-with-consent-integrations">Server-side attributes - using Collect with Consent Integrations</h2>
-<p>Tealium Collect, like all other tags, must be mapped to a consented purpose. However, the <code>refiringAllowed</code> option allows tags to be refired on new decisions. This process indicates that the tag is being used for a variety of server-side purposes, and available server-side filters and logic are used to ensure that the signal is only processed appropriately while allowing it to refire.</p>
-<p>Depending on which server-side tools you use, Tealium Collect is triggered with the following event-level attributes for each event:</p>
-<ul>
-<li><code>tci.purposes_with_consent_unprocessed</code> (with refiring)</li>
-<li><code>tci.purposes_with_consent_all</code> (without refiring)</li>
-</ul>
-<h2 id="accessing-the-consent-decision-within-tealium-iq">Accessing the consent decision within Tealium iQ</h2>
-<p>Consent decisions are added to the data layer for each event. These variables can be used in tags and are automatically sent by the Tealium Collect tag, but are not directly available in extensions.</p>
-<ul>
-<li><code>tci.consent_type</code> - The consent decision type (<code>implicit</code> or <code>explicit</code>).</li>
-<li><code>tci.purposes_with_consent_all</code> - The full array of both processed and unprocessed consented purposes.</li>
-<li><code>tci.purposes_with_consent_processed</code> - The array of processed consented purposes.</li>
-<li><code>tci.purposes_with_consent_unprocessed</code> - The array of unprocessed consented purposes.</li>
-</ul>
-<h3 id="accessing-the-consent-decision-from-extensions">Accessing the consent decision from extensions</h3>
-<p>To access the current consent decision object in an extension, use the method <code>tealiumCmpIntegration.GetCurrentConsentDecision()</code>.</p>
+<p>If you enable this option, the tag can fire twice for each user action; once for an implicit decision and again for an explicit decision. Tags are not triggered if the mapped purposes are not consented to.</p>
+<p>Most tags don&rsquo;t require refiring. Enabling this option can result in duplicate events or double tracking. Use caution when enabling this feature.</p>
+<p>For information about server-side refiring, see <a href="#server-side-event-refiring">Server-side event refiring</a>.</p>
+<h2 id="consent-decision-data">Consent decision data</h2>
+<p>Consent Integrations adds consent decision data to the data layer for each event. This data includes both client-side variables and server-side attributes.</p>
+<p>These variables are automatically sent by the Tealium Collect tag. They are not directly available in extensions unless accessed using the <code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> method.</p>
+<h3 id="client-side-variables">Client-side variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tci.consent_type</code></td>
+<td>The consent type: <code>implicit</code> or <code>explicit</code>.</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_all</code></td>
+<td>Array of all processed and unprocessed consented purposes.</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_processed</code></td>
+<td>Array of processed consented purposes.</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_unprocessed</code></td>
+<td>Array of unprocessed consented purposes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example client-side data:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.consent_type&#34;</span>: <span style="color:#e6db74">&#34;implicit&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_processed&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="accessing-the-consent-decision-in-extensions">Accessing the consent decision in extensions</h3>
+<p>To access the current consent decision object in an extension, use the <code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> method.</p>
 <p>The following command adds the current consent decision to the <code>b</code> object:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">current_consent_decision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">getCurrentConsentDecision</span>()
-</span></span></code></pre></div><h2 id="using-the-javascript-console">Using the JavaScript console</h2>
-<p>When active, you can interact with a consent integration in the JavaScript console on pages where utag.js (Tealium iQ) is implemented. Using the JavaScript console allows you to get the current consent decision that is retrieved from the CMP on every event. The consent decision is never cached, which ensures that it is always up to date.</p>
-<p>For more information, see <a href="/iq-tag-management/consent/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>.</p>
+</span></span></code></pre></div><h3 id="server-side-attributes">Server-side attributes</h3>
+<p>Tealium Collect sends consent attributes as part of each event payload. These attributes are sent regardless of which server-side tools you use.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tci.purposes_with_consent_unprocessed</code></td>
+<td>Array of purposes not yet processed after a consent update. Use when <strong>Tag Refire</strong> is enabled to avoid duplicates.</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_all</code></td>
+<td>Array of all consented purposes, even if already processed. Use when <strong>Tag Refire</strong> is disabled.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example server-side payload:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="server-side-event-refiring">Server-side event refiring</h3>
+<p>For accounts using server-side connectors, enabling <strong>Tag Refire</strong> for the Tealium Collect tag ensures that changes in consent (from <code>implicit</code> to <code>explicit</code>) trigger server-side processing again.</p>
+<p>To enable server-side refiring:</p>
+<ol>
+<li>Enable <strong>Tag Refire</strong> for the Tealium Collect tag in the <strong>Map Tags</strong> screen. This automatically sets the <code>refiringAllowed</code> option, which allows the tag to fire again when the consent decision changes.</li>
+<li>In your connector action, add a condition to check the <code>tci.purposes_with_consent_unprocessed</code> attribute. This ensures that only unprocessed purposes are handled and prevents duplicate events.</li>
+</ol>
+<h3 id="full-consent-event-example">Full consent event example</h3>
+<p>This is an example of a complete event object with consent decision variables:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.consent_type&#34;</span>: <span style="color:#e6db74">&#34;implicit&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_processed&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this example:</p>
+<ul>
+<li>The consent type is <code>implicit</code>.</li>
+<li>Three purposes were consented.</li>
+<li>Two purposes have already been processed.</li>
+<li>One remains unprocessed and is eligible for server-side handling.</li>
+</ul>
+<h2 id="using-the-javascript-console">Using the JavaScript console</h2>
+<p>When active, you can interact with a consent integration in the browser console on pages where <code>utag.js</code> is loaded. This lets you view the latest consent decision retrieved from the CMP for each event. The consent decision is never cached, which ensures that it is always up to date.</p>
+<p>For more information, see <a href="/iq-tag-management/consent/consent-integrations/validate-and-debug/">Validate and debug Consent Integrations</a>.</p>
 <h2 id="consent-register">Consent register</h2>
-<p>Consent integrations can use the Tealium consent register to emit events when consent settings are loaded or updated. These changes are available globally on the page, making it easier for you to manage consent decisions across your website. For more information, see <a href="/iq-tag-management/consent/consent-register/">Tealium consent register</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Consent register requires the consent integrations framework template version 1.2.0 or later. To update this template, see <a href="/iq-tag-management/templates/manage/#update-a-template">Update a template</a>.</p>
+<p>Consent Integrations can use the Tealium consent register to emit events when consent settings are loaded or updated. These changes are available globally on the page, making it easier for you to manage consent decisions across your website. For more information, see <a href="/iq-tag-management/consent/consent-register/">Tealium consent register</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The consent register requires the Consent Integrations framework template version 1.2.0 or later. To update this template, see <a href="/iq-tag-management/templates/manage/#update-a-template">Update a template</a>.</p>
 
 </div>
 
@@ -569,7 +650,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 9, 2024 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -583,12 +664,18 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#support-for-earlier-versions" href="javascript:void(0)">Support for earlier versions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-concepts" href="javascript:void(0)">Consent concepts</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-integrations" href="javascript:void(0)">Supported integrations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-refire" href="javascript:void(0)">Tag refire</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-attributes---using-collect-with-consent-integrations" href="javascript:void(0)">Server-side attributes - using Collect with Consent Integrations</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#accessing-the-consent-decision-within-tealium-iq" href="javascript:void(0)">Accessing the consent decision within Tealium iQ</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#accessing-the-consent-decision-from-extensions" href="javascript:void(0)">Accessing the consent decision from extensions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-decision-data" href="javascript:void(0)">Consent decision data</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-variables" href="javascript:void(0)">Client-side variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#accessing-the-consent-decision-in-extensions" href="javascript:void(0)">Accessing the consent decision in extensions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-attributes" href="javascript:void(0)">Server-side attributes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-event-refiring" href="javascript:void(0)">Server-side event refiring</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#full-consent-event-example" href="javascript:void(0)">Full consent event example</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-javascript-console" href="javascript:void(0)">Using the JavaScript console</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-register" href="javascript:void(0)">Consent register</a></li>
               </nav>

@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -192,6 +192,7 @@
         <a href="/server-side-connectors/coveo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-connector">Coveo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-customer-provided-storage-connector">Databricks Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/datadog-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datadog-connector">Datadog</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/dmd-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">DMD</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/doceree-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Doceree</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -438,10 +439,28 @@
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>API Base URL</strong>:<br>
-Required. Select your API Base URL.</li>
+(Required) Select your API Base URL.</li>
 <li><strong>Amazon Advertiser ID</strong>:<br>
-Required. Enter your Amazon Advertising account ID.</li>
+(Required) Enter your Amazon Advertising account ID.</li>
 </ul>
+<h3 id="create-a-conversion-definition">Create a conversion definition</h3>
+<p>You must create a conversion definition to use this connector. Click <strong>Create Conversion Definition</strong> and provide the following information:</p>
+<ul>
+<li><strong>Advertising Profile</strong>:<br>
+(Required) Select an advertising profile for this conversion.</li>
+<li><strong>Conversion Definition Name</strong>:<br>
+(Required) The name of the conversion definition.</li>
+<li><strong>Source Type</strong>:<br>
+(Required) Select the source type of the conversion. The following types are available: <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</li>
+<li><strong>Conversion Type</strong>:
+(Required) Select the type of conversion. The following types are available: <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, and <code>WEBSITE</code>.</li>
+<li><strong>Counting Method</strong>:<br>
+(Required) Select the method used to determine whether to use all or only the first conversion event per user ingested within a 24 hour window for a conversion definition. The following methods are available: <code>EVERY</code> and <code>FIRST</code>.</li>
+<li><strong>Conversion Value</strong>:<br>
+(Optional) The value of the conversion. The default value is <code>1</code> and can be overridden through mapping in the <strong>Send Conversion</strong> action.</li>
+</ul>
+<p>Click <strong>Done</strong> to save the conversion definition.</p>
+<p>Be sure to accept the terms and conditions, either in the Ads data manager console on the conversions page or by using the Terms API (<code>POST /adm/terms</code>).</p>
 <h2 id="deduplication-for-web-events">Deduplication for web events</h2>
 <p>To configure this connector to deduplicate events from the Amazon Ads Server tag, use the event IDs sent as event attributes with the following naming convention:</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">amazon_event_id_{EVENT_NAME}_{TAG_UID}
@@ -565,7 +584,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td>When a plain text email address is provided, the connector whitespace trim, lowercase, and hashes this value using an SHA256 hash.</td>
+<td>Provide a plain text email and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Phone (already SHA256 hashed)</td>
@@ -573,7 +592,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Phone (apply SHA256 hash)</td>
-<td>Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>First Name (already SHA256 hashed)</td>
@@ -581,7 +600,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>First Name (apply SHA256 hash)</td>
-<td>Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text first name and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Last Name (already SHA256 hashed)</td>
@@ -589,7 +608,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Last Name (apply SHA256 hash)</td>
-<td>Provide a plain text Last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text last name and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Address (already SHA256 hashed)</td>
@@ -597,7 +616,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Address (apply SHA256 hash)</td>
-<td>Provide a plain text address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text address and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>City (already SHA256 hashed)</td>
@@ -605,7 +624,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>City (apply SHA256 hash)</td>
-<td>Provide a plain text city and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text city and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>State (already SHA256 hashed)</td>
@@ -613,7 +632,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>State (apply SHA256 hash)</td>
-<td>Provide a plain text state and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text state and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Postal Code (already SHA256 hashed)</td>
@@ -621,7 +640,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Postal Code (apply SHA256 hash)</td>
-<td>Provide a plain text postal code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text postal code and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>MAID</td>
@@ -644,7 +663,7 @@ Required. Enter your Amazon Advertising account ID.</li>
 </tr>
 <tr>
 <td>Tag Conversion Type</td>
-<td>When enabling Automatic Deduplication, select one of the following conversion type that was sent with the tag data:<ul><li>ADD_TO_SHOPPING_CART</li><li>APPLICATION</li><li>CHECKOUT</li><li>CONTACT</li><li>LEAD</li><li>OFF_AMAZON_PURCHASES</li><li>PAGE_VIEW</li><li>SEARCH</li><li>SIGN_UP</li><li>SUBSCRIBE</li><li>OTHER</li></ul></td>
+<td>When enabling Automatic Deduplication, select one of the following conversion types sent with the tag data: ADD_TO_SHOPPING_CART, APPLICATION, CHECKOUT, CONTACT, LEAD, OFF_AMAZON_PURCHASES, PAGE_VIEW, SEARCH, SIGN_UP, SUBSCRIBE, OTHER.</td>
 </tr>
 </tbody>
 </table>
@@ -709,7 +728,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2025 
+          <p>This page was last updated:  July 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -727,7 +746,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-tips" href="javascript:void(0)">Connector tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-conversion-definition" href="javascript:void(0)">Create a conversion definition</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion" href="javascript:void(0)">Action — Send Conversion</a></li>
@@ -1027,6 +1047,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

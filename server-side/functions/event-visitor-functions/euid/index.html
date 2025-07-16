@@ -593,8 +593,8 @@
 <p>We recommend using a visitor function to generate the EUID. Trigger the function when the visitor has PII but does not have an EUID assigned. For more information about visitor functions, see <a href="/server-side/functions/event-visitor-functions/about/">About event and visitor functions</a>.</p>
 <p>The visitor function does the following:</p>
 <ul>
-<li>Capture the visitor’s email address and hashes it.</li>
-<li>Uses the <a href="https://euid.eu/docs/endpoints/post-identity-map">EUID endpoint</a> to generates an EUID if the visitor does not have one assigned.</li>
+<li>Capture the visitor’s email address and hash it.</li>
+<li>Uses the <a href="https://euid.eu/docs/endpoints/post-identity-map">EUID endpoint</a> to generate an EUID if the visitor does not have one assigned.</li>
 <li>Sends an event containing the EUID and <code>tealium_visitor_id</code> to Tealium Collect.</li>
 </ul>
 <p>The visitor attribute is enriched by the event sent from the function.</p>
@@ -779,11 +779,11 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">euid_bucket_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">mapped</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">bucket_id</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">euid_raw</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">mapped</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">advertising_id</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">euid_timestamp</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>),
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">euid_nonce</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">nonce</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">euid_nonce</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">nonce</span>)
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event_data</span>))
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">euid_token</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">euid_raw</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event_data</span>, <span style="color:#a6e22e">tealium_config</span>)
 </span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
 </span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
@@ -848,7 +848,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2025 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

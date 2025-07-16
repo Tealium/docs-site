@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "17",
+        reading_time  : "14",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -192,6 +192,7 @@
         <a href="/server-side-connectors/coveo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-connector">Coveo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-customer-provided-storage-connector">Databricks Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/datadog-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datadog-connector">Datadog</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/dmd-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">DMD</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/doceree-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Doceree</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -406,7 +407,60 @@
 
 <div class="prose nested-links" id="prose">
   <p>The Google Analytics 4 Measurement Protocol is intended to augment existing events collected using gtag, GTM, or Firebase. Some event and parameter names are reserved for automatic collection and cannot be sent by the Measurement Protocol. The Google Analytics 4 Measurement Protocol connector can be used to send events to Google Analytics without using gtag, GTM, or Firebase, but only partial reporting may be available.</p>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>API Secret (Required)</strong><br>
+An API Secret generated in the Google Analytics UI. To create a secret, navigate to: <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement Protocol &gt; Create</strong>.</li>
+<li><strong>Measurement ID (Optional)</strong><br>
+The measurement ID associated with a stream. Found in the Google Analytics UI under: <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID</strong>.</li>
+<li><strong>Firebase App ID (Optional)</strong><br>
+The Firebase App ID. The identifier for a Firebase app. Found in the Firebase console under: <strong>Project Settings &gt; General &gt; Your Apps &gt; App ID</strong>.</li>
+</ul>
+<h3 id="mapping-client-id">Mapping client ID</h3>
+<p>Client ID is a required parameter for web-based events that uniquely identifies a user instance of a web client.</p>
+<p>Google Analytics stores the client ID in a cookie named <code>_ga</code>. The format of this cookie is <code>GA1.2.12349876.1500644855</code> where the client ID is <code>12349876.150064485</code>. You should get the <code>clientId</code> value directly from the Google Analytics tracker.</p>
+<h3 id="consent">Consent</h3>
+<p>The connector will not send any consent signals by default. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for <code>ad_user_data</code> and <code>ad_personalization</code>.</p>
+<h3 id="event-names">Event names</h3>
+<p>Select an event name. Other mappings are dependent on the selected event name, so choose an event first, then apply the related mappings.</p>
+<p>For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Events</a>.</p>
+<ul>
+<li><code>add_payment_info</code></li>
+<li><code>add_shipping_info</code></li>
+<li><code>add_to_cart</code></li>
+<li><code>add_to_wishlist</code></li>
+<li><code>begin_checkout</code></li>
+<li><code>custom_event</code></li>
+<li><code>campaign_details</code></li>
+<li><code>earn_virtual_currency</code></li>
+<li><code>generate_lead</code></li>
+<li><code>join_group</code></li>
+<li><code>level_up</code></li>
+<li><code>login</code></li>
+<li><code>post_score</code></li>
+<li><code>purchase</code></li>
+<li><code>refund</code></li>
+<li><code>remove_from_cart</code></li>
+<li><code>search</code></li>
+<li><code>select_content</code></li>
+<li><code>select_item</code></li>
+<li><code>select_promotion</code></li>
+<li><code>share</code></li>
+<li><code>sign_up</code></li>
+<li><code>spend_virtual_currency</code></li>
+<li><code>tutorial_begin</code></li>
+<li><code>tutorial_complete</code></li>
+<li><code>unlock_achievement</code></li>
+<li><code>view_cart</code></li>
+<li><code>view_item</code></li>
+<li><code>view_item_list</code></li>
+<li><code>view_promotion</code></li>
+<li><code>view_search_results</code></li>
+<li><code>page_view</code></li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -417,11 +471,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Send PageView Event (gtag.js) Deprecated</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
 <td>Send Event (gtag.js)</td>
 <td>✓</td>
 <td>✓</td>
@@ -431,33 +480,18 @@
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Send PageView Event (gtag.js) Deprecated</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The Send PageView Event action is now deprecated. Use the Send Event action to send a <code>page_view</code> event.</p>
-<p>The Google Analytics 4 Measurement Protocol supplies the following endpoint for validating events: <code>https://google-analytics.com/debug/mp/collect?</code>. The Tealium Google Analytics 4 Measurement Protocol connector uses this endpoint during <a href="/server-side/trace/about/">Trace</a>, giving you insights into the validation of the event data. You can view Google Analytics 4 Measurement Protocol validation messages in the HTTP Response Content of the API call within Trace.</p>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>API Secret (Required)</strong><br>
-An API Secret generated in the Google Analytics UI. To create a new secret, navigate to: <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement Protocol &gt; Create</strong>.</li>
-<li><strong>Measurement ID (Optional)</strong><br>
-The measurement ID associated with a stream. Found in the Google Analytics UI under: Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID.</li>
-<li><strong>Firebase App ID (Optional)</strong><br>
-The Firebase App ID. The identifier for a Firebase app. Found in the Firebase console under: <strong>Project Settings &gt; General &gt; Your Apps &gt; App ID</strong>.</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - parameters and options</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Send PageView Event action is deprecated. Use the Send Event action to send a <code>page_view</code> event.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <p>For more information, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag">Google: Send Measurement Protocol events to Google Analytics</a>.</p>
-<h3 id="mapping-client-id">Mapping client ID</h3>
-<p>Client ID is a required parameter for web-based events that uniquely identifies a user instance of a web client.</p>
-<p>Google Analytics stores the client ID in a cookie named <code>_ga</code>. The format of this cookie is <code>GA1.2.12349876.1500644855</code> where the client ID is <code>12349876.150064485</code>. You should get the <code>clientId</code> value directly from the Google Analytics tracker.</p>
-<h3 id="consent">Consent</h3>
-<p>The connector will not send any consent signals by default. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for <code>ad_user_data</code> and <code>ad_personalization</code>.</p>
-<h3 id="action---send-pageview-event-gtagjs">Action - Send PageView Event (gtag.js)</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The Send PageView Event action is now deprecated. Use the Send Event action to send a <code>page_view</code> event.</p>
-<h4 id="parameters">Parameters</h4>
+<h3 id="send-event-gtagjs">Send Event (gtag.js)</h3>
+<h4 id="body-parameters">Body parameters</h4>
 <table>
 <thead>
 <tr>
@@ -468,274 +502,15 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <tbody>
 <tr>
 <td>Client ID</td>
-<td>Required. A unique identifier for a client.</td>
+<td>(Required) A unique identifier for a client.</td>
 </tr>
 <tr>
 <td>Measurement ID Override</td>
-<td>Required. The identifier for a Data Stream. This setting overrides Measurement ID used in the <strong>Configuration</strong> section.</td>
+<td>The identifier for a Google Analytics data stream. Found in the Google Analytics UI under <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID</strong>. This setting overrides <strong>Measurement ID</strong>  in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>API Secret Override</td>
-<td>The Measurement Protocol API Secret for the data stream. This setting overrides the API Secret used in the <strong>Configuration</strong> section.</td>
-</tr>
-<tr>
-<td>User ID</td>
-<td>A unique identifier for a user.</td>
-</tr>
-<tr>
-<td>Timestamp Micros</td>
-<td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
-</tr>
-<tr>
-<td>Non Personalized Ads</td>
-<td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="event-parameters">Event Parameters</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Page Title</td>
-<td>The title of the page.</td>
-</tr>
-<tr>
-<td>Page Location</td>
-<td>Required. The full URL to the page.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="user-provided-data">User-Provided Data</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address that has already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
-</tr>
-<tr>
-<td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address and the connector will remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>Phone Number (already SHA256 hashed)</td>
-<td>Provide a phone number in E164 format that has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
-</tr>
-<tr>
-<td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (+), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>Address Info: First Name (already SHA256 hashed)</td>
-<td>Provide first name that has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
-</tr>
-<tr>
-<td>Address Info: First Name (apply SHA256 hash)</td>
-<td>Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>Address Info: Last Name (already SHA256 hashed)</td>
-<td>Provide last name that has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
-</tr>
-<tr>
-<td>Address Info: Last Name (apply SHA256 hash)</td>
-<td>Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>Address Info: Street Address (already SHA256 hashed)</td>
-<td>Provide street address that has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
-</tr>
-<tr>
-<td>Address Info: Street Address (apply SHA256 hash)</td>
-<td>Provide a plain text street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>Address Info: City</td>
-<td>City of the user&rsquo;s address.</td>
-</tr>
-<tr>
-<td>Address Info: State</td>
-<td>State code of the user&rsquo;s address.</td>
-</tr>
-<tr>
-<td>Address Info: Postal Code</td>
-<td>Postal code of the user&rsquo;s address.</td>
-</tr>
-<tr>
-<td>Address Info: Country</td>
-<td>Two-letter country code in ISO 3166-1 alpha-2 format of the user&rsquo;s address.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="user-properties">User Properties</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>User Properties</td>
-<td>User properties describe segments of user base, such as language preference or geographic location.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="items-data">Items Data</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Item ID</td>
-<td>The ID of the item.</td>
-</tr>
-<tr>
-<td>Item Name</td>
-<td>The name of the item.</td>
-</tr>
-<tr>
-<td>Affiliation</td>
-<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
-</tr>
-<tr>
-<td>Coupon</td>
-<td>The coupon name/code associated with the item.</td>
-</tr>
-<tr>
-<td>Currency</td>
-<td>The currency, in 3-letter ISO 4217 format.</td>
-</tr>
-<tr>
-<td>Discount</td>
-<td>The monetary discount value associated with the item.</td>
-</tr>
-<tr>
-<td>Index</td>
-<td>The index/position of the item in a list.</td>
-</tr>
-<tr>
-<td>Item Brand</td>
-<td>The brand of the item.</td>
-</tr>
-<tr>
-<td>Item Category</td>
-<td>The category of the item. If used as part of a category hierarchy or taxonomy then this will be the first category.</td>
-</tr>
-<tr>
-<td>Item Category 2</td>
-<td>The second category hierarchy or additional taxonomy for the item.</td>
-</tr>
-<tr>
-<td>Item Category 3</td>
-<td>The third category hierarchy or additional taxonomy for the item.</td>
-</tr>
-<tr>
-<td>Item Category 4</td>
-<td>The fourth category hierarchy or additional taxonomy for the item.</td>
-</tr>
-<tr>
-<td>Item Category 5</td>
-<td>The fifth category hierarchy or additional taxonomy for the item.</td>
-</tr>
-<tr>
-<td>Item List ID</td>
-<td>The ID of the list in which the item was presented to the user.</td>
-</tr>
-<tr>
-<td>Item List Name</td>
-<td>The name of the list in which the item was presented to the user.</td>
-</tr>
-<tr>
-<td>Item Variant</td>
-<td>The item variant or unique code or description for additional item details/options.</td>
-</tr>
-<tr>
-<td>Location ID</td>
-<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
-</tr>
-<tr>
-<td>Price</td>
-<td>The monetary price of the item, in units of the specified currency parameter.</td>
-</tr>
-<tr>
-<td>Quantity</td>
-<td>Item quantity.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="additional-parameters">Additional Parameters</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Debug</td>
-<td>This connector uses the GA4 debug endpoint by default when using Trace. Map a boolean value to override this behavior.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="consent-1">Consent</h5>
-<p>Consent states are either <code>granted</code> or <code>denied</code>. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ad User Data</td>
-<td>Sets consent for sending user data to Google for advertising purposes.</td>
-</tr>
-<tr>
-<td>Ad Personalization</td>
-<td>Sets consent for personalized advertising.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---send-event-gtagjs">Action - Send Event (gtag.js)</h3>
-<h4 id="parameters-1">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Client ID</td>
-<td>Required. A unique identifier for a client.</td>
-</tr>
-<tr>
-<td>Measurement ID Override</td>
-<td>Required. The identifier for a Data Stream. This setting overrides Measurement ID used in the <strong>Configuration</strong> section.</td>
-</tr>
-<tr>
-<td>API Secret Override</td>
-<td>The Measurement Protocol API Secret for the data stream. This setting overrides the API Secret used in the <strong>Configuration</strong> section.</td>
+<td>The Measurement Protocol API Secret for the data stream. This setting overrides the <strong>API Secret</strong> in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>User ID</td>
@@ -750,12 +525,16 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
 <tr>
-<td>Event Type</td>
-<td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google: Events</a>.</td>
+<td>User Agent</td>
+<td>The device user agent for Google Analytics to use to derive device information for the request.</td>
+</tr>
+<tr>
+<td>IP Override</td>
+<td>IP address of the visitor. Use this mapping if you don&rsquo;t use the geographic mappings. For more information, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics Measurement Protocol: Geographic information</a>.</td>
 </tr>
 </tbody>
 </table>
-<h5 id="event-parameters-1">Event Parameters</h5>
+<h4 id="event-parameters">Event parameters</h4>
 <table>
 <thead>
 <tr>
@@ -900,9 +679,18 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Virtual Currency Name</td>
 <td>The name of the virtual currency.</td>
 </tr>
+<tr>
+<td>Session ID</td>
+<td>The timestamp of when a session began.</td>
+</tr>
+<tr>
+<td>Engagement Time</td>
+<td>Amount of time someone spends with your web page in focus or app screen in the foreground.</td>
+</tr>
 </tbody>
 </table>
-<h5 id="user-provided-data-1">User-Provided Data</h5>
+<h4 id="user-provided-data">User-provided data</h4>
+<p>The <code>User ID</code> parameter must be set whenever user-provided data is set.</p>
 <table>
 <thead>
 <tr>
@@ -969,7 +757,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="user-properties-1">User Properties</h5>
+<h4 id="user-properties">User properties</h4>
 <table>
 <thead>
 <tr>
@@ -984,7 +772,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="items-data-1">Items Data</h5>
+<h4 id="items-data">Items data</h4>
 <table>
 <thead>
 <tr>
@@ -1071,7 +859,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="additional-parameters-1">Additional Parameters</h5>
+<h4 id="additional-parameters">Additional parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1086,7 +874,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="consent-2">Consent</h5>
+<h4 id="consent-1">Consent</h4>
 <table>
 <thead>
 <tr>
@@ -1105,8 +893,93 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-firebase-event">Action - Send Firebase Event</h3>
-<h4 id="parameters-2">Parameters</h4>
+<h4 id="device-information">Device information</h4>
+<p>To provide device information for events in a request, use the user agent, or device-level attributes.
+If you map device attributes then the user agent is ignored.</p>
+<p>If a request specifies neither device nor user agent, Google Analytics derives device information from tagging events using client ID.</p>
+<p>Google recommends providing as many device attributes as possible, with category as the minimum requirement.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category</td>
+<td>The category of the device. For example, <code>desktop</code>, <code>tablet</code>, <code>mobile</code>, <code>smart TV</code>.</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>The language in ISO 639-1 format. For example, <code>en</code> or <code>en-US</code>.</td>
+</tr>
+<tr>
+<td>Screen Resolution</td>
+<td>The resolution of the device, formatted as <code>WIDTHxHEIGHT</code>. For example, <code>1280x2856</code>.</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>The operating system or platform. For example, <code>MacOS</code>.</td>
+</tr>
+<tr>
+<td>Operating System Version</td>
+<td>The version of the operating system or platform. For example, <code>13.5</code>.</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>The model of the device. For example, <code>Pixel 9 Pro</code> or <code>Samsung Galaxy S24</code>.</td>
+</tr>
+<tr>
+<td>Brand</td>
+<td>The brand of the device. For example, <code>Google</code> or <code>Samsung</code>.</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>The brand or type of browser. For example, <code>Chrome</code> or <code>Firefox</code>.</td>
+</tr>
+<tr>
+<td>Browser Version</td>
+<td>The version of the browser. For example, <code>136.0.7103.60</code> or <code>5.0</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="geographic-information">Geographic information</h4>
+<p>If you map location attributes, the IP override mapping is ignored.</p>
+<p>Google recommends providing as many attributes as possible, with country ID and region ID as a minimum requirement.</p>
+<p>For more information, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics Measurement Protocol: Geographic information</a>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>City</td>
+<td>The city name of the visitor.</td>
+</tr>
+<tr>
+<td>Region ID</td>
+<td>The ISO 3166 country and subdivision of the visitor. For example, <code>US-CA</code>, <code>US-AR</code>, <code>CA-BC</code>, <code>GB-LND</code>, or <code>CN-HK</code>.</td>
+</tr>
+<tr>
+<td>Country ID</td>
+<td>The country of the visitor in ISO 3166-1 alpha-2 format. For example, <code>US</code>, <code>AU</code>, <code>ES</code>, or <code>FR</code>.</td>
+</tr>
+<tr>
+<td>Subcontinent ID</td>
+<td>The subcontinent of the visitor in UN M49 format. For example, <code>011</code>, <code>021</code>, <code>030</code>, <code>039</code>.</td>
+</tr>
+<tr>
+<td>Continent ID</td>
+<td>The continent of the visitor in UN M49 format. For example, <code>002</code>, <code>019</code>, <code>142</code>, <code>150</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-firebase-event">Send Firebase Event</h3>
+<h4 id="body-parameters-1">Body parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1117,15 +990,15 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <tbody>
 <tr>
 <td>App Instance ID</td>
-<td>Required.</td>
+<td>(Required) Uniquely identifies a specific installation of a Firebase app. This value needs to be retrieved through the Firebase SDK.</td>
 </tr>
 <tr>
 <td>Firebase App ID Override</td>
-<td>Required. The identifier for a Firebase app. This setting overrides Firebase App ID used in the <strong>Configuration</strong> section.</td>
+<td>The identifier for a Firebase app. This setting overrides <strong>Firebase App ID</strong> in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>API Secret Override</td>
-<td>The Measurement Protocol API Secret for the data stream. This setting overrides the API Secret used in the <strong>Configuration</strong> section.</td>
+<td>The Measurement Protocol API Secret for the data stream. This setting overrides the <strong>API Secret</strong> in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>User ID</td>
@@ -1140,12 +1013,19 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
 <tr>
-<td>Event Type</td>
-<td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google: Events</a>.</td>
+<td>User Agent</td>
+<td>The device user agent for Google Analytics to use to derive device information for the request.</td>
+</tr>
+<tr>
+<td>IP Override</td>
+<td>IP address of the visitor. Use this mapping if you don&rsquo;t use the geographic mappings. For more information, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics Measurement Protocol: Geographic information</a>.</td>
 </tr>
 </tbody>
 </table>
-<h5 id="event-parameters-2">Event Parameters</h5>
+<p>For other parameters, see <a href="#send-event-gtagjs">Send Event (gtag.js)</a>.</p>
+<h3 id="send-pageview-event-gtagjs">Send PageView Event (gtag.js)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <strong>Send PageView Event</strong> action is deprecated. Use the <a href="#send-event-gtagjs">Send Event (gtag.js) action</a> to send a <code>page_view</code> event.</p>
+<h4 id="body-parameters-2">Body parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1155,144 +1035,52 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </thead>
 <tbody>
 <tr>
-<td>Achievement ID</td>
-<td>The id of the achievement that was unlocked.</td>
+<td>Client ID</td>
+<td>(Required) A unique identifier for a client.</td>
 </tr>
 <tr>
-<td>Affiliation</td>
-<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
+<td>Measurement ID Override</td>
+<td>The identifier for a Google Analytics data stream. Found in the Google Analytics UI under <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID</strong>. This setting overrides <strong>Measurement ID</strong> in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
-<td>Campaign ID</td>
-<td>The campaign ID.</td>
+<td>API Secret Override</td>
+<td>The Measurement Protocol API Secret for the data stream. This setting overrides the <strong>API Secret</strong> in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
-<td>Campaign</td>
-<td>The name used to identify a specific promotion or strategic campaign.</td>
+<td>User ID</td>
+<td>A unique identifier for a user. See <a href="https://support.google.com/analytics/answer/9213390">GA4 Help: User-ID for cross-platform analysis</a> for more information on this identifier. Can include only utf-8 characters.</td>
 </tr>
 <tr>
-<td>Character</td>
-<td>The character that achieved the score.</td>
+<td>Timestamp Micros</td>
+<td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
 </tr>
 <tr>
-<td>Content</td>
-<td>The campaign content used for A/B testing and content-targeted ads to differentiate ads or links that point to the same URL.</td>
-</tr>
-<tr>
-<td>Content Type</td>
-<td>The type of selected content.</td>
-</tr>
-<tr>
-<td>Coupon</td>
-<td>The coupon name/code associated with the event.</td>
-</tr>
-<tr>
-<td>Creative Name</td>
-<td>The name of the promotional creative.</td>
-</tr>
-<tr>
-<td>Creative Slot</td>
-<td>The name of the promotional creative slot associated with the event.</td>
-</tr>
-<tr>
-<td>Currency</td>
-<td>Currency of the items associated with the event, in 3-letter ISO 4217 format.</td>
-</tr>
-<tr>
-<td>Custom Event Name</td>
-<td>The custom event name.</td>
-</tr>
-<tr>
-<td>Group ID</td>
-<td>The ID of the group.</td>
-</tr>
-<tr>
-<td>Item ID</td>
-<td>The identifier for the item that was selected or shared.</td>
-</tr>
-<tr>
-<td>Item List ID</td>
-<td>The ID of the list in which the item was presented to the user.</td>
-</tr>
-<tr>
-<td>Item List Name</td>
-<td>The name of the list in which the item was presented to the user.</td>
-</tr>
-<tr>
-<td>Item Name</td>
-<td>The name of the item the virtual currency is being used for.</td>
-</tr>
-<tr>
-<td>Level (number)</td>
-<td>The level of the character.</td>
-</tr>
-<tr>
-<td>Location ID</td>
-<td>The ID of the location.</td>
-</tr>
-<tr>
-<td>Medium</td>
-<td>The campaign medium.</td>
-</tr>
-<tr>
-<td>Method</td>
-<td>The method used to login/sign up/share.</td>
-</tr>
-<tr>
-<td>Payment Type</td>
-<td>The chosen method of payment.</td>
-</tr>
-<tr>
-<td>Promotion ID</td>
-<td>The ID of the promotion associated with the event.</td>
-</tr>
-<tr>
-<td>Promotion Name</td>
-<td>The name of the promotion associated with the event.</td>
-</tr>
-<tr>
-<td>Score (number)</td>
-<td>The score to post.</td>
-</tr>
-<tr>
-<td>Search Term</td>
-<td>The term that was searched for.</td>
-</tr>
-<tr>
-<td>Shipping (number)</td>
-<td>Shipping cost associated with a transaction.</td>
-</tr>
-<tr>
-<td>Shipping Tier</td>
-<td>The shipping tier (for example, Ground, Air, Next-day) selected for delivery of the purchased item.</td>
-</tr>
-<tr>
-<td>Source</td>
-<td>The campaign traffic source.</td>
-</tr>
-<tr>
-<td>Tax (number)</td>
-<td>Tax cost associated with a transaction.</td>
-</tr>
-<tr>
-<td>Term</td>
-<td>The campaign term used with paid search to supply the keywords for ads.</td>
-</tr>
-<tr>
-<td>Transaction ID</td>
-<td>The unique identifier of a transaction.</td>
-</tr>
-<tr>
-<td>Value (number)</td>
-<td>The monetary value of the event.</td>
-</tr>
-<tr>
-<td>Virtual Currency Name</td>
-<td>The name of the virtual currency.</td>
+<td>Non Personalized Ads</td>
+<td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
 </tbody>
 </table>
-<h5 id="user-provided-data-2">User-Provided Data</h5>
+<h4 id="event-parameters-1">Event parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page Title</td>
+<td>The title of the page.</td>
+</tr>
+<tr>
+<td>Page Location</td>
+<td>(Required) The full URL to the page.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-provided-data-1">User-provided data</h4>
+<p>The <code>User ID</code> parameter must be set whenever user-provided data is set.</p>
 <table>
 <thead>
 <tr>
@@ -1303,7 +1091,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <tbody>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address that has already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
+<td>Provide an email address that has already been whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
@@ -1315,11 +1103,11 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (<code>+</code>), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (+), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Address Info: First Name (already SHA256 hashed)</td>
-<td>Provide first name that has already been  whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide first name that has already been whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Address Info: First Name (apply SHA256 hash)</td>
@@ -1359,7 +1147,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="user-properties-2">User Properties</h5>
+<h4 id="user-properties-1">User properties</h4>
 <table>
 <thead>
 <tr>
@@ -1374,7 +1162,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="items-data-2">Items Data</h5>
+<h4 id="items-data-1">Items data</h4>
 <table>
 <thead>
 <tr>
@@ -1449,7 +1237,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 <tr>
 <td>Location ID</td>
-<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
+<td>The location associated with the item. We recommend that you use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
 </tr>
 <tr>
 <td>Price</td>
@@ -1461,7 +1249,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="additional-parameters-2">Additional Parameters</h5>
+<h4 id="additional-parameters-1">Additional parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1476,7 +1264,8 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
-<h5 id="consent-3">Consent</h5>
+<h4 id="consent-2">Consent</h4>
+<p>Consent states are either <code>granted</code> or <code>denied</code>. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance.</p>
 <table>
 <thead>
 <tr>
@@ -1495,6 +1284,10 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 </tbody>
 </table>
+<h2 id="debug">Debug</h2>
+<p>The Google Analytics 4 Measurement Protocol supplies the following endpoint for validating events:</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">https://google-analytics.com/debug/mp/collect?
+</code></pre><p>The Tealium Google Analytics 4 Measurement Protocol connector uses this endpoint during <a href="/server-side/trace/about/">Trace</a>, giving you insights into the validation of the event data. You can view Google Analytics 4 Measurement Protocol validation messages in the HTTP response content of the API call within Trace.</p>
 
 </div>
 
@@ -1555,7 +1348,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 9, 2025 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1569,14 +1362,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - parameters and options</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#mapping-client-id" href="javascript:void(0)">Mapping client ID</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent" href="javascript:void(0)">Consent</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-pageview-event-gtagjs" href="javascript:void(0)">Action - Send PageView Event (gtag.js)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-event-gtagjs" href="javascript:void(0)">Action - Send Event (gtag.js)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-firebase-event" href="javascript:void(0)">Action - Send Firebase Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-names" href="javascript:void(0)">Event names</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-gtagjs" href="javascript:void(0)">Send Event (gtag.js)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-firebase-event" href="javascript:void(0)">Send Firebase Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-pageview-event-gtagjs" href="javascript:void(0)">Send PageView Event (gtag.js)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#debug" href="javascript:void(0)">Debug</a></li>
               </nav>
   </aside></nav>
 
@@ -1873,6 +1667,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

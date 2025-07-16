@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -192,6 +192,7 @@
         <a href="/server-side-connectors/coveo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-connector">Coveo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-customer-provided-storage-connector">Databricks Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/datadog-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datadog-connector">Datadog</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/dmd-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">DMD</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/doceree-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Doceree</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -466,6 +467,11 @@
 <td>✓</td>
 </tr>
 <tr>
+<td>Execute Custom Statement</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
 <td>Send Entire Event Data batch</td>
 <td>✗</td>
 <td>✓</td>
@@ -491,7 +497,7 @@
 <tbody>
 <tr>
 <td>Dataset</td>
-<td>Select the ID of the collection of tables that to connect to.</td>
+<td>Select the ID of the collection of tables to connect to.</td>
 </tr>
 <tr>
 <td>Table</td>
@@ -544,15 +550,69 @@
 </tr>
 </tbody>
 </table>
+<h4 id="batch-limits-2">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Maximum number of requests: 500</li>
+<li>Maximum time since oldest request: 10 minutes</li>
+<li>Maximum size of requests: 1 MB</li>
+</ul>
+<h3 id="execute-custom-statement">Execute custom statement</h3>
+<p>Use this action to run custom SQL statements against your BigQuery tables.</p>
+<p>To use this feature, map your attributes to named placeholders, which you will reference in your SQL using the <code>@MY_PLACEHOLDER</code> format. Then map data types for each mapped placeholder. For example, if you mapped an integer attribute to a placeholder named <code>MY_NUM_PARAM</code>, then map <code>INT64</code> → <code>MY_NUM_PARAM</code>.</p>
+<p>Finally, write your SQL statement using the placeholders to dynamically substitute your mapped values at runtime.</p>
+<p>Here&rsquo;s an example that shows how to execute an <code>INSERT</code> statement to add a row with a string value and a boolean value.</p>
+<p>First, map attributes to placeholders:</p>
+<figure><a class="slb" href="/images/server-side-connectors/bigquery-custom-sql-map-values.png"><img src="/images/server-side-connectors/bigquery-custom-sql-map-values.png"/>
+    </a>
+</figure>
+<p>Next, map data types to the placeholders:</p>
+<figure><a class="slb" href="/images/server-side-connectors/bigquery-custom-sql-map-types.png"><img src="/images/server-side-connectors/bigquery-custom-sql-map-types.png"/>
+    </a>
+</figure>
+<p>Then write a SQL statement that references those placeholders:</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">INSERT INTO bigquery_table (my_string_col, my_bool_col)
+VALUES (&#39;@MY_STRING_PARAM&#39;, @MY_BOOLEAN_PARAM);
+</code></pre><h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset</td>
+<td>(Required) Select the ID of the collection of tables that you want to connect to.</td>
+</tr>
+<tr>
+<td>Query parameters</td>
+<td>(Required) Map attributes to placeholder names used in the SQL query. You must map at least one parameter.</td>
+</tr>
+<tr>
+<td>Query parameter type</td>
+<td>(Required) Specify the type for each mapped parameter. Valid values are: <code>STRING</code>, <code>INT64</code>, <code>FLOAT64</code>, <code>BOOL</code>, <code>TIMESTAMP</code>, <code>DATE</code>, <code>TIME</code>, <code>DATETIME</code>, <code>ARRAY</code>, <code>STRUCT</code>. For example, if you mapped a an integer attribute to a placeholder named <code>MY_PARAM</code>, then map <code>INT64</code> to <code>MY_PARAM</code>.</td>
+</tr>
+<tr>
+<td>Query</td>
+<td>(Required) Enter the SQL statement to execute. Only a single <code>INSERT</code>, <code>UPDATE</code> or <code>MERGE</code> statement is allowed. Reference mapped parameters with the <code>@</code> symbol. For example, if you mapped a boolean attribute to <code>MY_BOOLEAN_PARAM</code>, then use <code>@MY_BOOLEAN_PARAM</code> in the SQL where that value should appear.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) with a value between 1 and 60 minutes. The default value is 10 minutes.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="send-entire-event-data-batch">Send Entire Event Data batch</h3>
-<h4 id="batch-limits-2">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 100,000</li>
 <li>Maximum time since oldest request: 60 minutes</li>
 <li>Maximum size of requests: 90 MB</li>
 </ul>
-<h4 id="parameters-2">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -583,23 +643,23 @@
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflects the update if the attribute names are updated.</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect the update if the attribute names are updated.</td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time to live should be between 5 and 60 minutes. The default value is 60 minutes.</td>
+<td>Set the time to live (TTL) with a value between 5 and 60 minutes. The default value is 60 minutes.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data batch</h3>
-<h4 id="batch-limits-3">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h4 id="batch-limits-4">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 100,000</li>
 <li>Maximum time since oldest request: 60 minutes</li>
 <li>Maximum size of requests: 90 MB</li>
 </ul>
-<h4 id="parameters-3">Parameters</h4>
+<h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -702,7 +762,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 17, 2025 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -722,6 +782,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#append-record" href="javascript:void(0)">Append record</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#append-record-batch" href="javascript:void(0)">Append record batch</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execute-custom-statement" href="javascript:void(0)">Execute custom statement</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-batch" href="javascript:void(0)">Send Entire Event Data batch</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data batch</a></li>
               </nav>
@@ -1020,6 +1081,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

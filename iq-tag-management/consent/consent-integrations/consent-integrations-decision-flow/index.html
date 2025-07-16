@@ -469,35 +469,52 @@
 
 <div class="prose nested-links" id="prose">
   <p>Tealium iQ Consent Integrations provides the option for both opt-in (GDPR-style) and opt-out (CCPA-style) enforcement patterns for the supported consent management platforms (CMPs). The Consent Integrations decision flow in the diagram below shows how user consent decisions are handled in these enforcement patterns.</p>
-<h3 id="consent-integrations-consent-flow">Consent Integrations consent flow</h3>
+<h2 id="opt-in-model">Opt-in model</h2>
+<p>The Tealium Universal Tag (<code>utag.js</code>) does not fire tags or set cookies until a consent decision is received from the CMP. If the CMP is not active on the page or no consent decision has been made, Tealium does not run and no tags are fired.</p>
+<p>If no consent decision is found when Tealium loads, Consent Integrations polls the CMP until a decision is found. During this time, all events are queued to be processed once a decision is received. If no decision is received, events remain unprocessed.</p>
+<h3 id="order-of-operations">Order of operations</h3>
+<p>When a consent decision (<code>implicit</code> or <code>explicit</code>) is available, Consent Integrations performs the following actions:</p>
+<ol>
+<li>Check if Tealium is allowed to run.</li>
+<li>If allowed, check if each tag can run.</li>
+<li>If allowed, trigger the tags for all queued events based on the consent decision.</li>
+</ol>
+<h3 id="implicit-consent">Implicit consent</h3>
+<p>If the consent decision is implicit:</p>
+<ul>
+<li>Events are initially queued.</li>
+<li>Tags that allow implicit consent are triggered.</li>
+<li>Consent Integrations continues polling the CMP for an explicit decision.</li>
+<li>If an explicit decision is later provided, queued events are reprocessed to include any newly consented tags.</li>
+</ul>
+<h3 id="explicit-consent">Explicit consent</h3>
+<p>If the consent decision is explicit:</p>
+<ul>
+<li>All queued events are processed according to the consent decision and then removed from the queue.</li>
+<li>Polling stops.</li>
+<li>Tags already triggered under implicit consent are not refired unless tag refire is enabled and new consent purposes are available.</li>
+</ul>
+<h3 id="updating-consent-after-page-load">Updating consent after page load</h3>
+<p>When a user reopens the interactive CMP and makes a new explicit consent decision:</p>
+<ul>
+<li>Previously processed events are not reprocessed based on the new consent decision.</li>
+<li>For new events after the page has loaded, the current consent decision is retrieved from the CMP for each event. This ensures the CMP is treated as the universal source of truth for consent.</li>
+</ul>
+<h2 id="consent-integrations-consent-flow">Consent Integrations consent flow</h2>
 <figure><a class="slb" href="/images/iq-tag-management/consent-integrations-consent-flow.png"><img src="/images/iq-tag-management/consent-integrations-consent-flow.png"
          alt="Consent Integrations decision flow"
          title="Consent Integrations decision flow" width="1500" height="2000"/>
     </a>
 </figure>
-<h3 id="11---fire-tags-detail">1.1 - Fire tags detail</h3>
-<p><strong>For each tag and event:</strong></p>
+<p>When the flow reaches the step to determine if a tag can run, the following process applies for each tag and event:</p>
+<h3 id="fire-tags-detail">Fire tags detail</h3>
 <figure><a class="slb" href="/images/iq-tag-management/consent-integrations-fire-tags.png"><img src="/images/iq-tag-management/consent-integrations-fire-tags.png"
          alt="Consent Integrations fire tags detail "
          title="Consent Integrations fire tags detail"/>
     </a>
 </figure>
-<h2 id="opt-in-model">Opt-in model</h2>
-<p>Tealium iQ will not fire tags or set cookies until a consent decision is received from the CMP. If the expected CMP is not active on the page or Tealium iQ has not been consented, Tealium iQ will not run and no tags will be fired.</p>
-<p>If no consent decision is found when Tealium iQ loads, Tealium iQ consent integration polls until one is found.</p>
-<p>Until a consent decision is received from the CMP, all events are queued to be processed once a decision is found. If no consent decision is received, no events are processed.</p>
-<p>If a consent decision (<code>implicit</code> or <code>explicit</code>) is available from the CMP, the following actions are initiated by Tealium iQ Consent Integration:</p>
-<ul>
-<li>It first checks if Tealium iQ is allowed to run.</li>
-<li>If Tealium iQ is allowed to run, it checks if each tag can run.</li>
-<li>If the tags can run, it then triggers the tags according to consent for all queued events.</li>
-</ul>
-<p>If the consent decision is implicit, events are initially queued and tags with implicit consent are triggered. If the user subsequently makes an explicit consent decision, these queued events are then reprocessed to account for any newly consented tags. Tealium iQ Consent Integration searches for an explicit decision until one is found.</p>
-<p>If the consent decision is explicit, all queues are emptied and polling stops. Tags fired on an implicit consent are not re-fired when the explicit consent decision is processed unless tag refire is enabled and there are new consent purposes to process.</p>
-<p>When a user reopens the interactive CMP layer and makes a new explicit consent decision, previous events are not reprocessed with the new consent decision.</p>
-<p>For new events processed after Tealium iQ is first loaded, the new consent decision is retrieved from the CMP as each event is processed by Tealium iQ to ensure that the CMP is treated as a universal source of truth.</p>
 <h2 id="opt-out-model">Opt-out model</h2>
-<p>The opt-out model is similar to the opt-in model, but explicit decision is not polled as it is more restrictive than the default setting (CCPA/CPRA style) in the opt-out model.</p>
+<p>The opt-out model is similar to the opt-in model, but explicit decisions are not polled. This is because the default state is assumed to allow tags to run unless the user explicitly opts out, which aligns with CCPA/CPRA-style enforcement.</p>
 
 </div>
 
@@ -558,7 +575,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2024 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -572,10 +589,14 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-integrations-consent-flow" href="javascript:void(0)">Consent Integrations consent flow</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#11---fire-tags-detail" href="javascript:void(0)">1.1 - Fire tags detail</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-in-model" href="javascript:void(0)">Opt-in model</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-out-model" href="javascript:void(0)">Opt-out model</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-in-model" href="javascript:void(0)">Opt-in model</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#order-of-operations" href="javascript:void(0)">Order of operations</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#implicit-consent" href="javascript:void(0)">Implicit consent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#explicit-consent" href="javascript:void(0)">Explicit consent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#updating-consent-after-page-load" href="javascript:void(0)">Updating consent after page load</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-integrations-consent-flow" href="javascript:void(0)">Consent Integrations consent flow</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fire-tags-detail" href="javascript:void(0)">Fire tags detail</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-out-model" href="javascript:void(0)">Opt-out model</a></li>
               </nav>
   </aside></nav>
 
