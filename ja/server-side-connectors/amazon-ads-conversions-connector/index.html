@@ -320,7 +320,7 @@
         <a href="/ja/server-side-connectors/pushcrew-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XMディレクトリ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcastオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Redditカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsysマーケティングクラウド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -483,41 +483,59 @@
 </thead>
 <tbody>
 <tr>
-<td>コンバージョン送信</td>
+<td>Send Conversion</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="コネクタのヒント">コネクタのヒント</h2>
-<p>タグとコネクタを使用したハイブリッド構成を推奨します。この構成により、データの耐久性が最大化され、サーバーサイドのシグナルとのイベントマッチングが向上し、リアルタイムのクライアントサイドシグナルを保持しながらデータフローの連続性が維持されます。</p>
+<p>タグとコネクタを使用したハイブリッド構成を推奨します。この構成により、データの耐久性が最大限に保たれ、サーバーサイドのシグナルとのイベントマッチングが向上し、リアルタイムのクライアントサイドシグナルを保持しながらデータフローの連続性が維持されます。</p>
 <h2 id="構成の構成">構成の構成</h2>
 <p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>API Base URL</strong>：<br>
-必須。API Base URL を選択します。</li>
+(必須) API Base URL を選択します。</li>
 <li><strong>Amazon Advertiser ID</strong>：<br>
-必須。Amazon Advertising アカウント ID を入力します。</li>
+(必須) Amazon Advertising アカウント ID を入力します。</li>
 </ul>
-<h2 id="web-イベントの重複排除">Web イベントの重複排除</h2>
-<p>Amazon Ads Server タグからのイベントを重複排除するために、次の命名規則でイベント ID をイベント属性として送信してこのコネクタを構成します：</p>
+<h3 id="コンバージョン定義の作成">コンバージョン定義の作成</h3>
+<p>このコネクタを使用するには、コンバージョン定義を作成する必要があります。<strong>Create Conversion Definition</strong> をクリックし、以下の情報を提供します：</p>
+<ul>
+<li><strong>Advertising Profile</strong>：<br>
+(必須) このコンバージョンの広告プロファイルを選択します。</li>
+<li><strong>Conversion Definition Name</strong>：<br>
+(必須) コンバージョン定義の名前。</li>
+<li><strong>Source Type</strong>：<br>
+(必須) コンバージョンのソースタイプを選択します。利用可能なタイプには、<code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, <code>OTHER</code> があります。</li>
+<li><strong>Conversion Type</strong>：
+(必須) コンバージョンのタイプを選択します。利用可能なタイプには、<code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, <code>WEBSITE</code> があります。</li>
+<li><strong>Counting Method</strong>：<br>
+(必須) コンバージョン定義において、24時間のウィンドウ内でユーザーによって取り込まれた最初のコンバージョンイベントのみ、またはすべてを使用するかを決定する方法を選択します。利用可能な方法には、<code>EVERY</code> と <code>FIRST</code> があります。</li>
+<li><strong>Conversion Value</strong>：<br>
+(オプション) コンバージョンの値。デフォルト値は <code>1</code> で、<strong>Send Conversion</strong> アクションでのマッピングを通じて上書きすることができます。</li>
+</ul>
+<p><strong>Done</strong> をクリックしてコンバージョン定義を保存します。</p>
+<p>広告データマネージャーコンソールのコンバージョンページまたは Terms API (<code>POST /adm/terms</code>) を使用して、利用規約を必ず受け入れてください。</p>
+<h2 id="ウェブイベントの重複排除">ウェブイベントの重複排除</h2>
+<p>このコネクタを構成して、Amazon Ads Server タグからのイベントの重複を排除するには、次の命名規則でイベント属性として送信されるイベント ID を使用します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">amazon_event_id_{EVENT_NAME}_{TAG_UID}
-</code></pre><p>タグの UID は、Tealium iQ の <strong>Tags</strong> テーブルまたはタグの詳細画面で見つけることができます：</p>
+</code></pre><p>Tealium iQ の <strong>Tags</strong> テーブルまたはタグの詳細画面でタグの UID を確認できます：</p>
 <figure><a class="slb" href="/images/server-side-connectors/amazon-ad-server-tag-uid.png"><img src="/images/server-side-connectors/amazon-ad-server-tag-uid.png"
          alt="Amazon Ad Server Tag UID"
          title="Amazon Ad Server Tag UID"/>
     </a>
 </figure>
-<p>例えば、UID が <code>170</code> のタグからのチェックアウトイベントは、次の属性値を送信します：</p>
+<p>たとえば、UID <code>170</code> のタグからのチェックアウトイベントは、次の属性値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_checkout_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同じタグからのページビューイベントは、次の属性と値を送信します：</p>
+</span></span></code></pre></div><p>同じタグからのページビューイベントは、次の属性値と値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_pageView_170&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>各タイプのイベントに対して別々のアクションを使用します。イベント固有のイベント ID 属性を <code>Event ID</code> にマッピングし、対応するイベント名を <code>Event Name</code> にマッピングします。例えば：</p>
+</span></span></code></pre></div><p>各タイプのイベントに対して別のアクションを使用します。イベント固有のイベント ID 属性を <code>Event ID</code> にマッピングし、一致するイベント名を <code>Event Name</code> にマッピングします。たとえば：</p>
 <table>
 <thead>
 <tr>
@@ -537,18 +555,18 @@
 </tbody>
 </table>
 <h3 id="自動重複排除">自動重複排除</h3>
-<p><strong>Automatic Deduplication</strong> の値が入力されている場合、コネクタは対応するイベント ID 属性を探します。このセクションが入力されていて Tealium iQ を使用している場合、<code>Event ID</code> を追加する必要はありません。ただし、Tealium iQ を使用せずに EventStream を使用している場合は、以下のアプローチが依然として必要になる場合があります。</p>
+<p><strong>Automatic Deduplication</strong> の値が入力されている場合、コネクタは対応するイベント ID 属性を探します。このセクションが入力されていて Tealium iQ を使用している場合、<code>Event ID</code> を追加する必要はありません。ただし、Tealium iQ を使用せずに EventStream を使用している場合は、次のアプローチが必要になる場合があります。</p>
 <p>コネクタは次の操作順序に従います：</p>
 <ul>
-<li><strong>Automatic Deduplication</strong> が入力され、値がデータレイヤーで見つかった場合（例：<code>amazon_event_id_checkout_32</code>）、この値は <code>Event ID</code> にマッピングされたものより優先されます。</li>
-<li><strong>Automatic Deduplication</strong> が入力されているが値が見つからない場合、入力されている <code>Event ID</code> が使用されます。</li>
+<li><strong>Automatic Deduplication</strong> が入力され、値がデータレイヤーで見つかった場合（例：<code>amazon_event_id_checkout_32</code>）、この値は <code>Event ID</code> でマッピングされたものより優先されます。</li>
+<li><strong>Automatic Deduplication</strong> が入力されているが値が見つからない場合、<code>Event ID</code> が入力されている場合はそれが使用されます。</li>
 </ul>
 <h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション--コンバージョン送信">アクション — コンバージョン送信</h3>
+<h3 id="アクション--send-conversion">アクション — Send Conversion</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：100</li>
 <li>最古のリクエストからの最大時間：10分</li>
@@ -564,11 +582,11 @@
 </thead>
 <tbody>
 <tr>
-<td>広告プロファイル</td>
-<td>このコンバージョンのための広告プロファイルを選択します。</td>
+<td>Advertising Profile</td>
+<td>このコンバージョンの広告プロファイルを選択します。</td>
 </tr>
 <tr>
-<td>コンバージョン定義</td>
+<td>Conversion Definition</td>
 <td>コンバージョン定義を選択するか、<strong>Create Definition</strong> をクリックして新しい定義を作成します。</td>
 </tr>
 </tbody>
@@ -583,23 +601,23 @@
 </thead>
 <tbody>
 <tr>
-<td>国コード</td>
+<td>Country Code</td>
 <td>必須。イベントを実行するユーザーが位置する国の ISO 3166-1 alpha-2 形式のコード。</td>
 </tr>
 <tr>
-<td>コンバージョン時間</td>
-<td>コンバージョンのタイムスタンプを ISO 形式 (<code>YYYY-MM-DDThh:mm:ssTZD</code>) で指定します。マッピングされていない場合、コネクタはイベント時間を使用します。</td>
+<td>Conversion Time</td>
+<td>コンバージョンのタイムスタンプ（ISO 形式：<code>YYYY-MM-DDThh:mm:ssTZD</code>）。マッピングされていない場合、コネクタはイベント時間を使用します。</td>
 </tr>
 <tr>
-<td>コンバージョン値</td>
+<td>Conversion Value</td>
 <td>コンバージョンの値。</td>
 </tr>
 <tr>
-<td>通貨</td>
+<td>Currency</td>
 <td>ISO 4217 形式の通貨。<code>OFF_AMAZON_PURCHASES</code> コンバージョンタイプにのみ適用されます。</td>
 </tr>
 <tr>
-<td>販売単位</td>
+<td>Units Sold</td>
 <td>購入されたアイテムの数。<code>OFF_AMAZON_PURCHASES</code> コンバージョンタイプにのみ適用されます。</td>
 </tr>
 <tr>
@@ -618,68 +636,68 @@
 </thead>
 <tbody>
 <tr>
-<td>Email (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化されたメールアドレスを提供します。</td>
+<td>Email（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化されたメールアドレスを提供してください。</td>
 </tr>
 <tr>
-<td>Email (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストのメールアドレスを提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>Email（SHA256ハッシュを適用）</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>Phone (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された電話番号を提供します。</td>
+<td>Phone（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された電話番号を提供してください。</td>
 </tr>
 <tr>
-<td>Phone (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの電話番号を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>Phone（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの電話番号を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>First Name (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された名前を提供します。</td>
+<td>First Name（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された名前を提供してください。</td>
 </tr>
 <tr>
-<td>First Name (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの名前を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>First Name（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの名前を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>Last Name (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された姓を提供します。</td>
+<td>Last Name（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された姓を提供してください。</td>
 </tr>
 <tr>
-<td>Last Name (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの姓を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>Last Name（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの姓を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>Address (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された住所を提供します。</td>
+<td>Address（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された住所を提供してください。</td>
 </tr>
 <tr>
-<td>Address (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの住所を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>Address（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの住所を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>City (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された市を提供します。</td>
+<td>City（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された市区町村を提供してください。</td>
 </tr>
 <tr>
-<td>City (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの市を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>City（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの市区町村を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>State (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された州を提供します。</td>
+<td>State（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された州を提供してください。</td>
 </tr>
 <tr>
-<td>State (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの州を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>State（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの州を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>Postal Code (既に SHA256 ハッシュ化されている)</td>
-<td>すでに空白トリム、小文字化、SHA256 ハッシュ化された郵便番号を提供します。</td>
+<td>Postal Code（既にSHA256ハッシュ化済み）</td>
+<td>既に空白を削除し、小文字に変換し、SHA256でハッシュ化された郵便番号を提供してください。</td>
 </tr>
 <tr>
-<td>Postal Code (SHA256 ハッシュを適用)</td>
-<td>プレーンテキストの郵便番号を提供すると、コネクタはこの値を空白トリム、小文字化し、SHA256 ハッシュを使用してハッシュ化します。</td>
+<td>Postal Code（SHA256ハッシュを適用）</td>
+<td>プレーンテキストの郵便番号を提供し、コネクタが空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
 <td>MAID</td>
@@ -698,15 +716,15 @@
 <tbody>
 <tr>
 <td>自動重複排除</td>
-<td><strong>Tealium iQ タグ ID</strong> を入力すると、Tealium は Tealium iQ から送信されたこのイベント ID を自動的に検索します。</td>
+<td><strong>Tealium iQ タグ ID</strong> を入力し、Tealium は Tealium iQ から送信されたこのイベント ID を自動的に検索します。</td>
 </tr>
 <tr>
 <td>タグ変換タイプ</td>
-<td>自動重複排除を有効にする場合、タグデータと共に送信された以下の変換タイプのうち一つを選択します：<ul><li>ADD_TO_SHOPPING_CART</li><li>APPLICATION</li><li>CHECKOUT</li><li>CONTACT</li><li>LEAD</li><li>OFF_AMAZON_PURCHASES</li><li>PAGE_VIEW</li><li>SEARCH</li><li>SIGN_UP</li><li>SUBSCRIBE</li><li>OTHER</li></ul></td>
+<td>自動重複排除を有効にする場合、タグデータと共に送信される以下の変換タイプのいずれかを選択します: ADD_TO_SHOPPING_CART, APPLICATION, CHECKOUT, CONTACT, LEAD, OFF_AMAZON_PURCHASES, PAGE_VIEW, SEARCH, SIGN_UP, SUBSCRIBE, OTHER。</td>
 </tr>
 </tbody>
 </table>
-<p>書式構成と正規化の要件についての詳細は、<a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">ハッシュ用のオーディエンスファイルの形式を整える</a>を参照してください。</p>
+<p>ハッシングのためのフォーマットと正規化要件についての詳細は、<a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">フォーマットオーディエンスファイルのハッシング</a>を参照してください。</p>
 
 </div>
 
@@ -767,7 +785,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月27日
+          <p>最終更新日 ::  2025年July月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -785,10 +803,11 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">コネクタのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web-%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">Web イベントの重複排除</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E5%AE%9A%E7%BE%A9%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">コンバージョン定義の作成</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">ウェブイベントの重複排除</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">自動重複排除</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — コンバージョン送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--send-conversion" href="javascript:void(0)">アクション — Send Conversion</a></li>
               </nav>
   </aside></nav>
 

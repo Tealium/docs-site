@@ -483,11 +483,11 @@
 <div class="prose nested-links" id="prose">
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>標準の構成値を上書きし、イベントをトリガーするためにマッピングを使用します。</li>
-<li><strong>Order ID</strong> が構成されているときに購入イベントが発火します。</li>
+<li>マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。</li>
+<li><strong>Order ID</strong> が構成されていると購入イベントが発火します。</li>
 <li>Reddit Pixel イベント ID をサーバーサイド属性として利用可能にするには、<strong>Generate Event ID</strong> を <code>true</code> に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>の最新バージョンを使用してください。</li>
-<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>の Conversion ID 構成を使用することをお勧めします。Conversion ID 構成を使用すると、同じコンバージョンイベントが両方のソースに送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
-<li>最も正確なコンバージョン追跡とレポートのために、Reddit の Advanced Matching を使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシュを適用します。</li>
+<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>の変換 ID 構成を使用することをお勧めします。変換 ID 構成を使用すると、同じ変換イベントが両方のソースから送信された場合に二重にカウントされるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
+<li>最も正確な変換トラッキングとレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシングを適用します。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
 <p>タグマーケットプレイスに移動して新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
@@ -607,7 +607,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">ウィッシュリストに追加。</td>
+<td style="text-align:left">ほしい物リストに追加。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
@@ -628,7 +628,7 @@
 </tbody>
 </table>
 <h3 id="イベント固有のパラメータ">イベント固有のパラメータ</h3>
-<p>イベントのマッピングを参照するには、<a href="/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping">イベントマッピングの作成</a>を参照してください。</p>
+<p>イベントをマップするには、<a href="/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping">イベントマッピングの作成</a>を参照してください。</p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">ウィッシュリストに追加。</td>
+<td style="text-align:left">ほしい物リストに追加。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
@@ -707,7 +707,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アドバンスドマッチング">アドバンスドマッチング</h3>
+<h3 id="高度なマッチング">高度なマッチング</h3>
 <table>
 <thead>
 <tr>
@@ -745,7 +745,7 @@
 </tbody>
 </table>
 <h3 id="ldu">LDU</h3>
-<p>Reddit Pixel がデータ処理モードで初期化されると、ページから発火されるすべてのコンバージョンイベントには自動的に以下のパラメータが含まれます：</p>
+<p>Reddit Pixel がデータ処理モードで初期化されると、ページから発火されるすべての変換イベントには自動的に以下のパラメータが含まれます：</p>
 <table>
 <thead>
 <tr>
@@ -763,12 +763,12 @@
 <tr>
 <td style="text-align:left"><code>dpcc</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">データ処理国コード。ISO 3166-1 アルファ-2 国コード形式。</td>
+<td style="text-align:left">データ処理国コードは ISO 3166-1 アルファ-2 国コード形式です。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dprc</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">データ処理地域コード。ISO 3166-2 地域コード形式で、国のプレフィックスの有無にかかわらず。</td>
+<td style="text-align:left">データ処理地域コードは、国のプレフィックスの有無にかかわらず ISO 3166-2 地域コード形式です。</td>
 </tr>
 </tbody>
 </table>
@@ -832,7 +832,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月29日
+          <p>最終更新日 ::  2025年July月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -854,7 +854,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%83%89%E3%83%90%E3%83%B3%E3%82%B9%E3%83%89%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0" href="javascript:void(0)">アドバンスドマッチング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%AB%98%E5%BA%A6%E3%81%AA%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0" href="javascript:void(0)">高度なマッチング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ldu" href="javascript:void(0)">LDU</a></li>
               </nav>
   </aside></nav>

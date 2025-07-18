@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -320,7 +320,7 @@
         <a href="/ja/server-side-connectors/pushcrew-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XMディレクトリ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcastオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Redditカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsysマーケティングクラウド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -463,8 +463,61 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Google Analytics 4 測定プロトコルは、gtag、GTM、または Firebase を使用して収集された既存のイベントを補完することを目的としています。一部のイベント名とパラメータ名は自動収集用に予約されており、測定プロトコルでは送信できません。Google Analytics 4 測定プロトコルコネクタを使用して、gtag、GTM、または Firebase を使用せずにイベントを Google Analytics に送信することができますが、部分的なレポートのみが利用可能になる場合があります。</p>
-<h2 id="コネクタアクション">コネクタアクション</h2>
+  <p>Google Analytics 4 測定プロトコルは、gtag、GTM、または Firebase を使用して収集された既存のイベントを補完することを目的としています。一部のイベント名とパラメータ名は自動収集用に予約されており、測定プロトコルでは送信できません。Google Analytics 4 測定プロトコルコネクタを使用すると、gtag、GTM、または Firebase を使用せずにイベントを Google Analytics に送信できますが、部分的なレポートのみが利用可能になる場合があります。</p>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>API シークレット（必須）</strong><br>
+Google Analytics UIで生成されたAPIシークレット。シークレットを作成するには、<strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定プロトコル &gt; 作成</strong>に移動します。</li>
+<li><strong>測定 ID（オプション）</strong><br>
+ストリームに関連付けられた測定 ID。Google Analytics UIの<strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定 ID</strong>の下で見つかります。</li>
+<li><strong>Firebase アプリ ID（オプション）</strong><br>
+Firebase アプリ ID。Firebase アプリの識別子。Firebase コンソールの<strong>プロジェクト構成 &gt; 一般 &gt; アプリ &gt; アプリ ID</strong>の下で見つかります。</li>
+</ul>
+<h3 id="クライアント-id-のマッピング">クライアント ID のマッピング</h3>
+<p>クライアント ID は、Webベースのイベントにおいてユーザーインスタンスを一意に識別するために必要なパラメータです。</p>
+<p>Google Analyticsは、クライアント ID を <code>_ga</code> という名前のクッキーに保存します。このクッキーの形式は <code>GA1.2.12349876.1500644855</code> で、クライアント ID は <code>12349876.150064485</code> です。Google Analytics トラッカーから直接 <code>clientId</code> 値を取得する必要があります。</p>
+<h3 id="同意">同意</h3>
+<p>コネクタはデフォルトで同意信号を送信しません。同意を指定しない場合、Google Analyticsはクライアントインスタンスの対応するオンラインインタラクションからの同意構成を使用します。<code>ad_user_data</code> および <code>ad_personalization</code> の同意構成は、構成時に付与または拒否されます。</p>
+<h3 id="イベント名">イベント名</h3>
+<p>イベント名を選択します。他のマッピングは選択したイベント名に依存するため、まずイベントを選択し、関連するマッピングを適用します。</p>
+<p>利用可能なイベントの詳細とリストについては、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">イベント</a>を参照してください。</p>
+<ul>
+<li><code>add_payment_info</code></li>
+<li><code>add_shipping_info</code></li>
+<li><code>add_to_cart</code></li>
+<li><code>add_to_wishlist</code></li>
+<li><code>begin_checkout</code></li>
+<li><code>custom_event</code></li>
+<li><code>campaign_details</code></li>
+<li><code>earn_virtual_currency</code></li>
+<li><code>generate_lead</code></li>
+<li><code>join_group</code></li>
+<li><code>level_up</code></li>
+<li><code>login</code></li>
+<li><code>post_score</code></li>
+<li><code>purchase</code></li>
+<li><code>refund</code></li>
+<li><code>remove_from_cart</code></li>
+<li><code>search</code></li>
+<li><code>select_content</code></li>
+<li><code>select_item</code></li>
+<li><code>select_promotion</code></li>
+<li><code>share</code></li>
+<li><code>sign_up</code></li>
+<li><code>spend_virtual_currency</code></li>
+<li><code>tutorial_begin</code></li>
+<li><code>tutorial_complete</code></li>
+<li><code>unlock_achievement</code></li>
+<li><code>view_cart</code></li>
+<li><code>view_item</code></li>
+<li><code>view_item_list</code></li>
+<li><code>view_promotion</code></li>
+<li><code>view_search_results</code></li>
+<li><code>page_view</code></li>
+</ul>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -475,11 +528,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Send PageView Event (gtag.js) Deprecated</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
 <td>Send Event (gtag.js)</td>
 <td>✓</td>
 <td>✓</td>
@@ -489,33 +537,552 @@
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Send PageView Event (gtag.js) Deprecated</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Send PageView Event アクションは現在非推奨です。<code>page_view</code> イベントを送信するには Send Event アクションを使用してください。</p>
-<p>Google Analytics 4 測定プロトコルは、イベントの検証に使用する次のエンドポイントを提供しています：<code>https://google-analytics.com/debug/mp/collect?</code>。Tealium Google Analytics 4 測定プロトコルコネクタは、<a href="/ja/server-side/trace/about/">Trace</a>中にこのエンドポイントを使用し、イベントデータの検証に関する洞察を提供します。Google Analytics 4 測定プロトコルの検証メッセージは、Trace内のAPIコールのHTTPレスポンスコンテンツで確認できます。</p>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
-<p>コネクタを追加した後、次の構成を構成します：</p>
-<ul>
-<li><strong>API Secret (必須)</strong><br>
-Google Analytics UIで生成されたAPIシークレット。新しいシークレットを作成するには、<strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定プロトコル &gt; 作成</strong>に移動します。</li>
-<li><strong>Measurement ID (オプション)</strong><br>
-ストリームに関連付けられた測定ID。Google Analytics UIの<strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定ID</strong>の下で見つけることができます。</li>
-<li><strong>Firebase App ID (オプション)</strong><br>
-Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<strong>プロジェクト構成 &gt; 一般 &gt; アプリ &gt; アプリID</strong>の下で見つけることができます。</li>
-</ul>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Send PageView Event アクションは非推奨です。<code>page_view</code> イベントを送信するには、Send Event アクションを使用してください。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <p>詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag">Google: Send Measurement Protocol events to Google Analytics</a>を参照してください。</p>
-<h3 id="クライアントidのマッピング">クライアントIDのマッピング</h3>
-<p>クライアントIDは、Webベースのイベントに固有のユーザーインスタンスを一意に識別するために必要なパラメータです。</p>
-<p>Google Analyticsは、クライアントIDを <code>_ga</code> という名前のクッキーに保存します。このクッキーの形式は <code>GA1.2.12349876.1500644855</code> で、クライアントIDは <code>12349876.150064485</code> です。Google Analyticsトラッカーから直接 <code>clientId</code> 値を取得する必要があります。</p>
-<h3 id="同意">同意</h3>
-<p>コネクタはデフォルトで同意信号を送信しません。同意を指定しない場合、Google Analyticsはクライアントインスタンスの対応するオンラインインタラクションからの同意構成を使用します。<code>ad_user_data</code> および <code>ad_personalization</code> の同意構成は、構成時に許可または拒否されます。</p>
-<h3 id="アクション---send-pageview-event-gtagjs">アクション - Send PageView Event (gtag.js)</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Send PageView Event アクションは現在非推奨です。<code>page_view</code> イベントを送信するには Send Event アクションを使用してください。</p>
-<h4 id="パラメータ">パラメータ</h4>
+<h3 id="send-event-gtagjs">Send Event (gtag.js)</h3>
+<h4 id="本文パラメータ">本文パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>クライアント ID</td>
+<td>(必須) クライアントの一意の識別子。</td>
+</tr>
+<tr>
+<td>測定 ID オーバーライド</td>
+<td>Google Analytics データストリームの識別子。Google Analytics UI の <strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定 ID</strong> の下で見つかります。この構成は <strong>構成</strong> セクションの <strong>測定 ID</strong> を上書きします。</td>
+</tr>
+<tr>
+<td>API シークレット オーバーライド</td>
+<td>データストリームの測定プロトコル API シークレット。この構成は <strong>構成</strong> セクションの <strong>API シークレット</strong> を上書きします。</td>
+</tr>
+<tr>
+<td>ユーザー ID</td>
+<td>ユーザーの一意の識別子。</td>
+</tr>
+<tr>
+<td>タイムスタンプ マイクロ秒</td>
+<td>イベントに関連付ける時間の Unix タイムスタンプ（マイクロ秒単位）。</td>
+</tr>
+<tr>
+<td>非パーソナライズ広告</td>
+<td>これらのイベントをパーソナライズされた広告に使用しないことを示すために <code>true</code> に構成します。</td>
+</tr>
+<tr>
+<td>ユーザーエージェント</td>
+<td>リクエストのデバイス情報を導出するために Google Analytics が使用するデバイスのユーザーエージェント。</td>
+</tr>
+<tr>
+<td>IP オーバーライド</td>
+<td>訪問の IP アドレス。地理的マッピングを使用しない場合は、このマッピングを使用します。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics 測定プロトコル: 地理情報</a>を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="イベントパラメータ">イベントパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>実績 ID</td>
+<td>アンロックされた実績の ID。</td>
+</tr>
+<tr>
+<td>所属</td>
+<td>供給会社または実店舗の場所を指定する製品の所属。</td>
+</tr>
+<tr>
+<td>キャンペーン ID</td>
+<td>キャンペーン ID。</td>
+</tr>
+<tr>
+<td>キャンペーン</td>
+<td>特定のプロモーションや戦略的キャンペーンを識別するために使用される名前。</td>
+</tr>
+<tr>
+<td>キャラクター</td>
+<td>スコアを達成したキャラクター。</td>
+</tr>
+<tr>
+<td>コンテンツ</td>
+<td>A/B テストおよびコンテンツターゲティング広告用のキャンペーンコンテンツ。同じ URL を指す広告やリンクを区別するために使用します。</td>
+</tr>
+<tr>
+<td>コンテンツタイプ</td>
+<td>選択されたコンテンツのタイプ。</td>
+</tr>
+<tr>
+<td>クーポン</td>
+<td>イベントに関連付けられたクーポン名/コード。</td>
+</tr>
+<tr>
+<td>クリエイティブ名</td>
+<td>プロモーションクリエイティブの名前。</td>
+</tr>
+<tr>
+<td>クリエイティブスロット</td>
+<td>イベントに関連付けられたプロモーションクリエイティブスロットの名前。</td>
+</tr>
+<tr>
+<td>通貨</td>
+<td>イベントに関連付けられたアイテムの通貨、3文字の ISO 4217 形式。</td>
+</tr>
+<tr>
+<td>カスタムイベント名</td>
+<td>カスタムイベント名。</td>
+</tr>
+<tr>
+<td>グループ ID</td>
+<td>グループの ID。</td>
+</tr>
+<tr>
+<td>アイテム ID</td>
+<td>選択または共有されたアイテムの識別子。</td>
+</tr>
+<tr>
+<td>アイテムリスト ID</td>
+<td>ユーザーにアイテムが提示されたリストの ID。</td>
+</tr>
+<tr>
+<td>アイテムリスト名</td>
+<td>ユーザーにアイテムが提示されたリストの名前。</td>
+</tr>
+<tr>
+<td>アイテム名</td>
+<td>仮想通貨が使用されるアイテムの名前。</td>
+</tr>
+<tr>
+<td>レベル（数値）</td>
+<td>キャラクターのレベル。</td>
+</tr>
+<tr>
+<td>場所 ID</td>
+<td>場所の ID。</td>
+</tr>
+<tr>
+<td>ミディアム</td>
+<td>キャンペーンの媒体。</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>ログイン/サインアップ/共有に使用される方法。</td>
+</tr>
+<tr>
+<td>支払いタイプ</td>
+<td>選択された支払い方法。</td>
+</tr>
+<tr>
+<td>プロモーション ID</td>
+<td>イベントに関連付けられたプロモーションの ID。</td>
+</tr>
+<tr>
+<td>プロモーション名</td>
+<td>イベントに関連付けられたプロモーションの名前。</td>
+</tr>
+<tr>
+<td>スコア（数値）</td>
+<td>投稿するスコア。</td>
+</tr>
+<tr>
+<td>検索語</td>
+<td>検索された用語。</td>
+</tr>
+<tr>
+<td>配送料（数値）</td>
+<td>取引に関連付けられた配送料。</td>
+</tr>
+<tr>
+<td>配送層</td>
+<td>配送された商品の配送層（例：地上、空中、翌日）。</td>
+</tr>
+<tr>
+<td>ソース</td>
+<td>キャンペーンのトラフィックソース。</td>
+</tr>
+<tr>
+<td>税金（数値）</td>
+<td>取引に関連付けられた税金。</td>
+</tr>
+<tr>
+<td>用語</td>
+<td>広告のキーワードを提供するために有料検索で使用されるキャンペーン用語。</td>
+</tr>
+<tr>
+<td>取引 ID</td>
+<td>取引の一意の識別子。</td>
+</tr>
+<tr>
+<td>価値（数値）</td>
+<td>イベントの金銭的価値。</td>
+</tr>
+<tr>
+<td>仮想通貨名</td>
+<td>仮想通貨の名前。</td>
+</tr>
+<tr>
+<td>セッション ID</td>
+<td>セッションが開始されたタイムスタンプ。</td>
+</tr>
+<tr>
+<td>エンゲージメント時間</td>
+<td>ページがフォーカスされている間、またはアプリ画面が前面にある間にユーザーが過ごす時間。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ユーザー提供データ">ユーザー提供データ</h4>
+<p>ユーザー提供データを構成する際には、<code>User ID</code> パラメーターを構成する必要があります。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたメールアドレスを提供してください。<code>gmail.com</code> および <code>googlemail.com</code> のメールアドレスでドメイン名の前にあるすべてのピリオド (.) をハッシュ化する前に削除してください。</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクターが <code>gmail.com</code> および <code>googlemail.com</code> のメールアドレスでドメイン名の前にあるピリオド (<code>.</code>) を削除し、空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたE164形式の電話番号を提供してください。</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>プレーンテキストの電話番号を提供し、コネクターがすべての非数字記号を削除し、番号にプラス記号 (<code>+</code>) を付け、空白を削除し、小文字に変換し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+</tr>
+<tr>
+<td>Address Info: First Name (already SHA256 hashed)</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化された名前を提供してください。</td>
+</tr>
+<tr>
+<td>Address Info: First Name (apply SHA256 hash)</td>
+<td>プレーンテキストの名前を提供し、コネクターが空白を削除し、小文字に変換し、この値をSHA256ハッシュでハッシュ化します。</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (already SHA256 hashed)</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化された姓を提供してください。</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (apply SHA256 hash)</td>
+<td>プレーンテキストの姓を提供し、コネクターが空白を削除し、小文字に変換し、この値をSHA256ハッシュでハッシュ化します。</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (already SHA256 hashed)</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化された通りの住所を提供してください。</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (apply SHA256 hash)</td>
+<td>プレーンテキストの通りの住所を提供し、コネクターが空白を削除し、小文字に変換し、この値をSHA256ハッシュでハッシュ化します。</td>
+</tr>
+<tr>
+<td>Address Info: City</td>
+<td>ユーザーの住所の市区町村。</td>
+</tr>
+<tr>
+<td>Address Info: State</td>
+<td>ユーザーの住所の州コード。</td>
+</tr>
+<tr>
+<td>Address Info: Postal Code</td>
+<td>ユーザーの住所の郵便番号。</td>
+</tr>
+<tr>
+<td>Address Info: Country</td>
+<td>ユーザーの住所の国の2文字の国コード（ISO 3166-1 alpha-2形式）。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ユーザー属性">ユーザー属性</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Properties</td>
+<td>ユーザー属性は、言語の好みや地理的な位置など、ユーザーベースのセグメントを記述します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="アイテムデータ">アイテムデータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item ID</td>
+<td>アイテムのID。</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>アイテムの名前。</td>
+</tr>
+<tr>
+<td>Affiliation</td>
+<td>供給会社や実店舗の位置を指定するための製品の所属。</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>アイテムに関連付けられたクーポンの名前/コード。</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>3文字のISO 4217形式の通貨。</td>
+</tr>
+<tr>
+<td>Discount</td>
+<td>アイテムに関連付けられた金額の割引値。</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>リスト内のアイテムのインデックス/位置。</td>
+</tr>
+<tr>
+<td>Item Brand</td>
+<td>アイテムのブランド。</td>
+</tr>
+<tr>
+<td>Item Category</td>
+<td>アイテムのカテゴリ。カテゴリ階層または分類を使用する場合、これが最初のカテゴリになります。</td>
+</tr>
+<tr>
+<td>Item Category 2</td>
+<td>アイテムの第二のカテゴリ階層または追加の分類。</td>
+</tr>
+<tr>
+<td>Item Category 3</td>
+<td>アイテムの第三のカテゴリ階層または追加の分類。</td>
+</tr>
+<tr>
+<td>Item Category 4</td>
+<td>アイテムの第四のカテゴリ階層または追加の分類。</td>
+</tr>
+<tr>
+<td>Item Category 5</td>
+<td>アイテムの第五のカテゴリ階層または追加の分類。</td>
+</tr>
+<tr>
+<td>Item List ID</td>
+<td>アイテムがユーザーに提示されたリストのID。</td>
+</tr>
+<tr>
+<td>Item List Name</td>
+<td>アイテムがユーザーに提示されたリストの名前。</td>
+</tr>
+<tr>
+<td>Item Variant</td>
+<td>アイテムのバリアントまたは追加のアイテム詳細/オプションのための一意のコードまたは説明。</td>
+</tr>
+<tr>
+<td>Location ID</td>
+<td>アイテムに関連する場所。関連するアイテムに対応するGoogle Place IDの使用を推奨します。カスタムのロケーションIDも使用できます。</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>指定された通貨単位のアイテムの金額価格。</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>アイテムの数量。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="追加パラメーター">追加パラメーター</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debug</td>
+<td>このコネクターは、Traceを使用する際にデフォルトでGA4のデバッグエンドポイントを使用します。この動作をオーバーライドするためにブール値をマッピングします。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="同意-1">同意</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data</td>
+<td>Googleに広告目的でユーザーデータを送信するための同意を構成します。</td>
+</tr>
+<tr>
+<td>Ad Personalization</td>
+<td>パーソナライズされた広告のための同意を構成します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="デバイス情報">デバイス情報</h4>
+<p>イベントのリクエストにデバイス情報を提供するには、ユーザーエージェントまたはデバイスレベルの属性を使用します。
+デバイス属性をマッピングする場合、ユーザーエージェントは無視されます。</p>
+<p>デバイスまたはユーザーエージェントのいずれも指定されていない場合、Google AnalyticsはクライアントIDを使用してイベントのタグ付けからデバイス情報を導出します。</p>
+<p>Googleは、最小限の要件としてカテゴリを含むできるだけ多くのデバイス属性を提供することを推奨します。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category</td>
+<td>デバイスのカテゴリ。例：<code>desktop</code>, <code>tablet</code>, <code>mobile</code>, <code>smart TV</code>。</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>ISO 639-1形式の言語。例：<code>en</code> または <code>en-US</code>。</td>
+</tr>
+<tr>
+<td>Screen Resolution</td>
+<td>デバイスの解像度、<code>WIDTHxHEIGHT</code> 形式で表記。例：<code>1280x2856</code>。</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>オペレーティングシステムまたはプラットフォーム。例：<code>MacOS</code>。</td>
+</tr>
+<tr>
+<td>Operating System Version</td>
+<td>オペレーティングシステムまたはプラットフォームのバージョン。例：<code>13.5</code>。</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>デバイスのモデル。例：<code>Pixel 9 Pro</code> または <code>Samsung Galaxy S24</code>。</td>
+</tr>
+<tr>
+<td>Brand</td>
+<td>デバイスのブランド。例：<code>Google</code> または <code>Samsung</code>。</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>ブラウザのブランドまたはタイプ。例：<code>Chrome</code> または <code>Firefox</code>。</td>
+</tr>
+<tr>
+<td>Browser Version</td>
+<td>ブラウザのバージョン。例：<code>136.0.7103.60</code> または <code>5.0</code>。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="地理情報">地理情報</h4>
+<p>位置属性をマッピングする場合、IPオーバーライドマッピングは無視されます。</p>
+<p>Googleは、最小限の要件として国IDと地域IDを含むできるだけ多くの属性を提供することを推奨します。</p>
+<p>詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics Measurement Protocol: Geographic information</a> を参照してください。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>City</td>
+<td>訪問の市名。</td>
+</tr>
+<tr>
+<td>Region ID</td>
+<td>訪問のISO 3166国および地域。例：<code>US-CA</code>, <code>US-AR</code>, <code>CA-BC</code>, <code>GB-LND</code>, <code>CN-HK</code>。</td>
+</tr>
+<tr>
+<td>Country ID</td>
+<td>訪問の国のISO 3166-1 alpha-2形式。例：<code>US</code>, <code>AU</code>, <code>ES</code>, <code>FR</code>。</td>
+</tr>
+<tr>
+<td>Subcontinent ID</td>
+<td>訪問のサブ大陸のUN M49形式。例：<code>011</code>, <code>021</code>, <code>030</code>, <code>039</code>。</td>
+</tr>
+<tr>
+<td>Continent ID</td>
+<td>訪問の大陸のUN M49形式。例：<code>002</code>, <code>019</code>, <code>142</code>, <code>150</code>。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="firebaseイベントの送信">Firebaseイベントの送信</h3>
+<h4 id="本文パラメーター">本文パラメーター</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメーター</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Instance ID</td>
+<td>(必須) Firebaseアプリの特定のインストールを一意に識別する値。この値はFirebase SDKを通じて取得する必要があります。</td>
+</tr>
+<tr>
+<td>Firebase App ID Override</td>
+<td>Firebaseアプリの識別子。この構成は<strong>Configuration</strong>セクションの<strong>Firebase App ID</strong>をオーバーライドします。</td>
+</tr>
+<tr>
+<td>API Secret Override</td>
+<td>データストリームのMeasurement Protocol APIシークレット。この構成は<strong>Configuration</strong>セクションの<strong>API Secret</strong>をオーバーライドします。</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>ユーザーの一意の識別子。</td>
+</tr>
+<tr>
+<td>Timestamp Micros</td>
+<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）。</td>
+</tr>
+<tr>
+<td>Non Personalized Ads</td>
+<td>これらのイベントをパーソナライズされた広告に使用しないことを示すために <code>true</code> に構成します。</td>
+</tr>
+<tr>
+<td>User Agent</td>
+<td>リクエストのデバイス情報を導出するためにGoogle Analyticsが使用するデバイスのユーザーエージェント。</td>
+</tr>
+<tr>
+<td>IP Override</td>
+<td>訪問のIPアドレス。地理的なマッピングを使用しない場合、このマッピングを使用します。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload_geo_info">Google Analytics Measurement Protocol: Geographic information</a> を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<p>その他のパラメーターについては、<a href="#send-event-gtagjs">Send Event (gtag.js)</a> を参照してください。</p>
+<h3 id="send-pageview-イベントの送信-gtagjs">Send PageView イベントの送信 (gtag.js)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Send PageView イベントの送信</strong> アクションは非推奨です。<code>page_view</code> イベントを送信するには、<a href="#send-event-gtagjs">Send Event (gtag.js) アクション</a>を使用してください。</p>
+<h4 id="ボディパラメータ">ボディパラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -526,19 +1093,19 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 <tbody>
 <tr>
 <td>クライアントID</td>
-<td>必須。クライアントの一意の識別子です。</td>
+<td>(必須) クライアントの一意の識別子です。</td>
 </tr>
 <tr>
 <td>測定IDオーバーライド</td>
-<td>必須。データストリームの識別子です。この構成は<strong>構成</strong>セクションで使用される測定IDを上書きします。</td>
+<td>Google Analyticsのデータストリームの識別子です。Google Analytics UIの <strong>管理 &gt; データストリーム &gt; ストリームを選択 &gt; 測定ID</strong> で見つけることができます。この構成は <strong>構成</strong> セクションの <strong>測定ID</strong> を上書きします。</td>
 </tr>
 <tr>
 <td>APIシークレットオーバーライド</td>
-<td>データストリームの測定プロトコルAPIシークレットです。この構成は<strong>構成</strong>セクションで使用されるAPIシークレットを上書きします。</td>
+<td>データストリームの測定プロトコルAPIシークレットです。この構成は <strong>構成</strong> セクションの <strong>APIシークレット</strong> を上書きします。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>ユーザーの一意の識別子です。</td>
+<td>ユーザーの一意の識別子です。詳細については <a href="https://support.google.com/analytics/answer/9213390">GA4ヘルプ: ユーザーIDによるクロスプラットフォーム分析</a> を参照してください。utf-8文字のみを含むことができます。</td>
 </tr>
 <tr>
 <td>タイムスタンプマイクロ秒</td>
@@ -550,7 +1117,7 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 </tbody>
 </table>
-<h5 id="イベントパラメータ">イベントパラメータ</h5>
+<h4 id="イベントパラメータ-1">イベントパラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -565,11 +1132,12 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 <tr>
 <td>ページロケーション</td>
-<td>必須。ページの完全なURLです。</td>
+<td>(必須) ページへの完全なURLです。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="ユーザー提供データ">ユーザー提供データ</h5>
+<h4 id="ユーザー提供データ-1">ユーザー提供データ</h4>
+<p><code>ユーザーID</code> パラメータは、ユーザー提供データが構成されるときに構成する必要があります。</p>
 <table>
 <thead>
 <tr>
@@ -579,64 +1147,64 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </thead>
 <tbody>
 <tr>
-<td>メールアドレス（既にSHA256ハッシュ化されています）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供します。<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）をハッシュ化する前に削除します。</td>
+<td>メールアドレス (既にSHA256ハッシュ化されている)</td>
+<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供します。<code>gmail.com</code> および <code>googlemail.com</code> のメールアドレスでドメイン名の前にあるすべてのピリオド (<code>.</code>) をハッシュ化する前に削除します。</td>
 </tr>
 <tr>
-<td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタは<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）を削除し、空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>メールアドレス (SHA256ハッシュを適用)</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクタは <code>gmail.com</code> および <code>googlemail.com</code> のメールアドレスでドメイン名の前にあるすべてのピリオドを削除し、空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>電話番号（既にSHA256ハッシュ化されています）</td>
-<td>E164形式で、すでに空白トリム、小文字化、SHA256ハッシュ化された電話番号を提供します。</td>
+<td>電話番号 (既にSHA256ハッシュ化されている)</td>
+<td>E164形式の電話番号を提供し、すでに空白トリム、小文字化、SHA256ハッシュ化されています。</td>
 </tr>
 <tr>
-<td>電話番号（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字記号を削除し、プラス記号（+）で番号の先頭に付け、空白トリム、小文字化し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>電話番号 (SHA256ハッシュを適用)</td>
+<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字記号を削除し、プラス記号 (+) を番号の前に付け、空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>住所情報：名（既にSHA256ハッシュ化されています）</td>
+<td>住所情報: 名 (既にSHA256ハッシュ化されている)</td>
 <td>すでに空白トリム、小文字化、SHA256ハッシュ化された名前を提供します。</td>
 </tr>
 <tr>
-<td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの名前を提供し、コネクタは空白トリム、小文字化し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>住所情報: 名 (SHA256ハッシュを適用)</td>
+<td>プレーンテキストの名前を提供し、コネクタは空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>住所情報：姓（既にSHA256ハッシュ化されています）</td>
+<td>住所情報: 姓 (既にSHA256ハッシュ化されている)</td>
 <td>すでに空白トリム、小文字化、SHA256ハッシュ化された姓を提供します。</td>
 </tr>
 <tr>
-<td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの姓を提供し、コネクタは空白トリム、小文字化し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>住所情報: 姓 (SHA256ハッシュを適用)</td>
+<td>プレーンテキストの姓を提供し、コネクタは空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>住所情報：住所（既にSHA256ハッシュ化されています）</td>
+<td>住所情報: 住所 (既にSHA256ハッシュ化されている)</td>
 <td>すでに空白トリム、小文字化、SHA256ハッシュ化された住所を提供します。</td>
 </tr>
 <tr>
-<td>住所情報：住所（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの住所を提供し、コネクタは空白トリム、小文字化し、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>住所情報: 住所 (SHA256ハッシュを適用)</td>
+<td>プレーンテキストの住所を提供し、コネクタは空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
 </tr>
 <tr>
-<td>住所情報：市区町村</td>
+<td>住所情報: 市区町村</td>
 <td>ユーザーの住所の市区町村です。</td>
 </tr>
 <tr>
-<td>住所情報：州</td>
+<td>住所情報: 州</td>
 <td>ユーザーの住所の州コードです。</td>
 </tr>
 <tr>
-<td>住所情報：郵便番号</td>
+<td>住所情報: 郵便番号</td>
 <td>ユーザーの住所の郵便番号です。</td>
 </tr>
 <tr>
-<td>住所情報：国</td>
+<td>住所情報: 国</td>
 <td>ユーザーの住所の国の2文字の国コード（ISO 3166-1 alpha-2形式）。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="ユーザープロパティ">ユーザープロパティ</h5>
+<h4 id="ユーザープロパティ">ユーザープロパティ</h4>
 <table>
 <thead>
 <tr>
@@ -647,11 +1215,11 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 <tbody>
 <tr>
 <td>ユーザープロパティ</td>
-<td>ユーザーベースのセグメントを説明するユーザープロパティです。例えば、言語の好みや地理的な位置などです。</td>
+<td>ユーザーベースのセグメントを説明するユーザープロパティです。たとえば、言語の好みや地理的な位置などです。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="アイテムデータ">アイテムデータ</h5>
+<h4 id="アイテムデータ-1">アイテムデータ</h4>
 <table>
 <thead>
 <tr>
@@ -669,8 +1237,8 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 <td>アイテムの名前です。</td>
 </tr>
 <tr>
-<td>所属</td>
-<td>供給会社または実店舗の所在地を指定するための商品所属です。</td>
+<td>提携</td>
+<td>供給会社や実店舗の場所を指定するための製品提携です。</td>
 </tr>
 <tr>
 <td>クーポン</td>
@@ -686,7 +1254,7 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 <tr>
 <td>インデックス</td>
-<td>リスト内のアイテムの位置/インデックスです。</td>
+<td>リスト内のアイテムのインデックス/位置です。</td>
 </tr>
 <tr>
 <td>アイテムブランド</td>
@@ -694,43 +1262,43 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 <tr>
 <td>アイテムカテゴリ</td>
-<td>アイテムのカテゴリです。カテゴリ階層または分類法の一部として使用される場合、これが最初のカテゴリになります。</td>
+<td>アイテムのカテゴリです。カテゴリ階層または分類法の一部として使用される場合、これは最初のカテゴリになります。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ2</td>
-<td>アイテムの第二カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第二のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ3</td>
-<td>アイテムの第三カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第三のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ4</td>
-<td>アイテムの第四カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第四のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ5</td>
-<td>アイテムの第五カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第五のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムリストID</td>
-<td>ユーザーに提示されたリストのIDです。</td>
+<td>アイテムがユーザーに提示されたリストのIDです。</td>
 </tr>
 <tr>
 <td>アイテムリスト名</td>
-<td>ユーザーに提示されたリストの名前です。</td>
+<td>アイテムがユーザーに提示されたリストの名前です。</td>
 </tr>
 <tr>
 <td>アイテムバリアント</td>
-<td>アイテムのバリアントまたは追加のアイテム詳細/オプションのためのユニークなコードまたは説明です。</td>
+<td>アイテムのバリアントまたは追加のアイテム詳細/オプションのための一意のコードまたは説明です。</td>
 </tr>
 <tr>
 <td>ロケーションID</td>
-<td>アイテムに関連付けられた場所です。関連するアイテムに対応するGoogle Place IDを使用することをお勧めします。カスタムロケーションIDも使用できます。</td>
+<td>アイテムに関連する場所です。関連するアイテムに対応するGoogle Place IDを使用することをお勧めします。カスタムロケーションIDも使用できます。</td>
 </tr>
 <tr>
 <td>価格</td>
-<td>指定された通貨単位のアイテムの金額です。</td>
+<td>指定された通貨パラメータの単位でのアイテムの金額価格です。</td>
 </tr>
 <tr>
 <td>数量</td>
@@ -738,7 +1306,7 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 </tbody>
 </table>
-<h5 id="追加パラメータ">追加パラメータ</h5>
+<h4 id="追加パラメータ">追加パラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -749,402 +1317,12 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 <tbody>
 <tr>
 <td>デバッグ</td>
-<td>このコネクタはデフォルトでTraceを使用する際にGA4デバッグエンドポイントを使用します。この動作をオーバーライドするためにブール値をマッピングします。</td>
+<td>このコネクタはデフォルトでTraceを使用する際にGA4デバッグエンドポイントを使用します。この動作を上書きするためにブール値をマッピングします。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="同意-1">同意</h5>
+<h4 id="同意-2">同意</h4>
 <p>同意状態は <code>granted</code>（許可）または <code>denied</code>（拒否）です。同意を指定しない場合、Google Analyticsはクライアントインスタンスの対応するオンラインインタラクションの同意構成を使用します。</p>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>広告ユーザーデータ</td>
-<td>広告目的でGoogleにユーザーデータを送信するための同意を構成します。</td>
-</tr>
-<tr>
-<td>広告のパーソナライズ</td>
-<td>パーソナライズされた広告のための同意を構成します。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="アクション---イベント送信-gtagjs">アクション - イベント送信 (gtag.js)</h3>
-<h4 id="パラメータ-1">パラメータ</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>クライアントID</td>
-<td>クライアントのユニークな識別子が必要です。</td>
-</tr>
-<tr>
-<td>測定IDオーバーライド</td>
-<td>データストリームの識別子が必要です。この構成は<strong>構成</strong>セクションで使用される測定IDをオーバーライドします。</td>
-</tr>
-<tr>
-<td>APIシークレットオーバーライド</td>
-<td>データストリームの測定プロトコルAPIシークレットです。この構成は<strong>構成</strong>セクションで使用されるAPIシークレットをオーバーライドします。</td>
-</tr>
-<tr>
-<td>ユーザーID</td>
-<td>ユーザーのユニークな識別子です。</td>
-</tr>
-<tr>
-<td>タイムスタンプマイクロ秒</td>
-<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。</td>
-</tr>
-<tr>
-<td>非パーソナライズ広告</td>
-<td>これらのイベントがパーソナライズされた広告に使用されないことを示すために <code>true</code> に構成します。</td>
-</tr>
-<tr>
-<td>イベントタイプ</td>
-<td>イベントタイプを選択します。利用可能なイベントのリストと詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google: Events</a>を参照してください。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="イベントパラメータ-1">イベントパラメータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>実績ID</td>
-<td>解除された実績のIDです。</td>
-</tr>
-<tr>
-<td>所属</td>
-<td>供給会社または実店舗の所在地を指定するための商品所属です。</td>
-</tr>
-<tr>
-<td>キャンペーンID</td>
-<td>キャンペーンのIDです。</td>
-</tr>
-<tr>
-<td>キャンペーン</td>
-<td>特定のプロモーションや戦略的キャンペーンを識別するために使用される名前です。</td>
-</tr>
-<tr>
-<td>キャラクター</td>
-<td>スコアを達成したキャラクターです。</td>
-</tr>
-<tr>
-<td>コンテンツ</td>
-<td>A/Bテストやコンテンツターゲティング広告のためのキャンペーンコンテンツです。同じURLを指す広告やリンクを区別するために使用されます。</td>
-</tr>
-<tr>
-<td>コンテンツタイプ</td>
-<td>選択されたコンテンツのタイプです。</td>
-</tr>
-<tr>
-<td>クーポン</td>
-<td>イベントに関連付けられたクーポン名/コードです。</td>
-</tr>
-<tr>
-<td>クリエイティブ名</td>
-<td>プロモーションクリエイティブの名前です。</td>
-</tr>
-<tr>
-<td>クリエイティブスロット</td>
-<td>イベントに関連付けられたプロモーションクリエイティブスロットの名前です。</td>
-</tr>
-<tr>
-<td>通貨</td>
-<td>イベントに関連するアイテムの通貨で、3文字のISO 4217形式です。</td>
-</tr>
-<tr>
-<td>カスタムイベント名</td>
-<td>カスタムイベントの名前です。</td>
-</tr>
-<tr>
-<td>グループID</td>
-<td>グループのIDです。</td>
-</tr>
-<tr>
-<td>アイテムID</td>
-<td>選択または共有されたアイテムの識別子です。</td>
-</tr>
-<tr>
-<td>アイテムリストID</td>
-<td>ユーザーに提示されたリストのIDです。</td>
-</tr>
-<tr>
-<td>アイテムリスト名</td>
-<td>ユーザーに提示されたリストの名前です。</td>
-</tr>
-<tr>
-<td>アイテム名</td>
-<td>仮想通貨が使用されるアイテムの名前です。</td>
-</tr>
-<tr>
-<td>レベル（数値）</td>
-<td>キャラクターのレベルです。</td>
-</tr>
-<tr>
-<td>ロケーションID</td>
-<td>場所のIDです。</td>
-</tr>
-<tr>
-<td>ミディアム</td>
-<td>キャンペーンの媒体です。</td>
-</tr>
-<tr>
-<td>方法</td>
-<td>ログイン/サインアップ/共有に使用された方法です。</td>
-</tr>
-<tr>
-<td>支払いタイプ</td>
-<td>選択された支払い方法です。</td>
-</tr>
-<tr>
-<td>プロモーションID</td>
-<td>イベントに関連付けられたプロモーションのIDです。</td>
-</tr>
-<tr>
-<td>プロモーション名</td>
-<td>イベントに関連付けられたプロモーションの名前です。</td>
-</tr>
-<tr>
-<td>スコア（数値）</td>
-<td>投稿するスコアです。</td>
-</tr>
-<tr>
-<td>検索語</td>
-<td>検索された用語です。</td>
-</tr>
-<tr>
-<td>配送料（数値）</td>
-<td>取引に関連する配送料です。</td>
-</tr>
-<tr>
-<td>配送層</td>
-<td>購入されたアイテムの配送に選択された配送層です（例：地上、空中、翌日）。</td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>キャンペーンのトラフィックソースです。</td>
-</tr>
-<tr>
-<td>税金（数値）</td>
-<td>取引に関連する税金のコストです。</td>
-</tr>
-<tr>
-<td>用語</td>
-<td>支払い検索で使用されるキャンペーン用語で、広告のキーワードを提供します。</td>
-</tr>
-<tr>
-<td>トランザクションID</td>
-<td>トランザクションのユニークな識別子です。</td>
-</tr>
-<tr>
-<td>価値（数値）</td>
-<td>イベントの金銭的価値です。</td>
-</tr>
-<tr>
-<td>仮想通貨名</td>
-<td>仮想通貨の名前です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="ユーザー提供データ-1">ユーザー提供データ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>メールアドレス（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供します。ハッシュ化する前に、<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（.）を削除します。</td>
-</tr>
-<tr>
-<td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタは<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（.）を削除し、空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>電話番号（既にSHA256ハッシュ化）</td>
-<td>E164形式で既に空白トリム、小文字化、SHA256ハッシュ化された電話番号を提供します。</td>
-</tr>
-<tr>
-<td>電話番号（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字記号を削除し、プラス記号（+）で番号をプレフィックスし、空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：名（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された名を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの名を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：姓（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された姓を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの姓を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：住所（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された住所を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：住所（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの住所を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：市区町村</td>
-<td>ユーザーの住所の市区町村です。</td>
-</tr>
-<tr>
-<td>住所情報：州</td>
-<td>ユーザーの住所の州コードです。</td>
-</tr>
-<tr>
-<td>住所情報：郵便番号</td>
-<td>ユーザーの住所の郵便番号です。</td>
-</tr>
-<tr>
-<td>住所情報：国</td>
-<td>ユーザーの住所の国の2文字の国コード（ISO 3166-1 alpha-2形式）です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="ユーザープロパティ-1">ユーザープロパティ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ユーザープロパティ</td>
-<td>ユーザーベースのセグメントを記述するユーザープロパティです。例えば、言語の好みや地理的な位置などです。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="アイテムデータ-1">アイテムデータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>アイテムID</td>
-<td>アイテムのIDです。</td>
-</tr>
-<tr>
-<td>アイテム名</td>
-<td>アイテムの名前です。</td>
-</tr>
-<tr>
-<td>所属</td>
-<td>供給会社または実店舗の所在地を指定するための商品所属です。</td>
-</tr>
-<tr>
-<td>クーポン</td>
-<td>アイテムに関連付けられたクーポン名/コードです。</td>
-</tr>
-<tr>
-<td>通貨</td>
-<td>3文字のISO 4217形式の通貨です。</td>
-</tr>
-<tr>
-<td>割引</td>
-<td>アイテムに関連付けられた金額の割引値です。</td>
-</tr>
-<tr>
-<td>インデックス</td>
-<td>リスト内のアイテムの位置/インデックスです。</td>
-</tr>
-<tr>
-<td>アイテムブランド</td>
-<td>アイテムのブランドです。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ</td>
-<td>アイテムのカテゴリです。カテゴリ階層または分類法の一部として使用される場合、これが最初のカテゴリになります。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ2</td>
-<td>アイテムの第二カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ3</td>
-<td>アイテムの第三カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ4</td>
-<td>アイテムの第四カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ5</td>
-<td>アイテムの第五カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムリストID</td>
-<td>ユーザーに提示されたリストのIDです。</td>
-</tr>
-<tr>
-<td>アイテムリスト名</td>
-<td>ユーザーに提示されたリストの名前です。</td>
-</tr>
-<tr>
-<td>アイテムバリアント</td>
-<td>アイテムのバリアントまたはユニークコード、追加のアイテム詳細/オプションの説明です。</td>
-</tr>
-<tr>
-<td>ロケーションID</td>
-<td>アイテムに関連付けられた場所です。関連するアイテムに対応するGoogle Place IDの使用を推奨します。カスタムロケーションIDも使用できます。</td>
-</tr>
-<tr>
-<td>価格</td>
-<td>指定された通貨単位のアイテムの金額です。</td>
-</tr>
-<tr>
-<td>数量</td>
-<td>アイテムの数量です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="追加パラメータ-1">追加パラメータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>デバッグ</td>
-<td>このコネクタはデフォルトでTraceを使用する際にGA4デバッグエンドポイントを使用します。この動作をオーバーライドするためにブール値をマッピングします。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="同意-2">同意</h5>
 <table>
 <thead>
 <tr>
@@ -1163,396 +1341,10 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---firebaseイベントの送信">アクション - Firebaseイベントの送信</h3>
-<h4 id="パラメータ-2">パラメータ</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>アプリインスタンスID</td>
-<td>必須です。</td>
-</tr>
-<tr>
-<td>FirebaseアプリIDオーバーライド</td>
-<td>必須です。Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDをオーバーライドします。</td>
-</tr>
-<tr>
-<td>APIシークレットオーバーライド</td>
-<td>データストリームの測定プロトコルAPIシークレットです。この構成は<strong>構成</strong>セクションで使用されるAPIシークレットをオーバーライドします。</td>
-</tr>
-<tr>
-<td>ユーザーID</td>
-<td>ユーザーの一意の識別子です。</td>
-</tr>
-<tr>
-<td>タイムスタンプマイクロ秒</td>
-<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。</td>
-</tr>
-<tr>
-<td>非パーソナライズ広告</td>
-<td>これらのイベントがパーソナライズされた広告に使用されないことを示すために<code>true</code>に構成します。</td>
-</tr>
-<tr>
-<td>イベントタイプ</td>
-<td>イベントタイプを選択します。利用可能なイベントのリストと詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google: Events</a>を参照してください。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="イベントパラメータ-2">イベントパラメータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>実績ID</td>
-<td>解除された実績のIDです。</td>
-</tr>
-<tr>
-<td>所属</td>
-<td>供給会社または実店舗の所在地を指定するための商品所属です。</td>
-</tr>
-<tr>
-<td>キャンペーンID</td>
-<td>キャンペーンのIDです。</td>
-</tr>
-<tr>
-<td>キャンペーン</td>
-<td>特定のプロモーションや戦略的キャンペーンを識別するために使用される名前です。</td>
-</tr>
-<tr>
-<td>キャラクター</td>
-<td>スコアを達成したキャラクターです。</td>
-</tr>
-<tr>
-<td>コンテンツ</td>
-<td>A/Bテストとコンテンツターゲティング広告のためのキャンペーンコンテンツです。同じURLを指す広告やリンクを区別するために使用されます。</td>
-</tr>
-<tr>
-<td>コンテンツタイプ</td>
-<td>選択されたコンテンツのタイプです。</td>
-</tr>
-<tr>
-<td>クーポン</td>
-<td>イベントに関連付けられたクーポン名/コードです。</td>
-</tr>
-<tr>
-<td>クリエイティブ名</td>
-<td>プロモーションクリエイティブの名前です。</td>
-</tr>
-<tr>
-<td>クリエイティブスロット</td>
-<td>イベントに関連付けられたプロモーションクリエイティブスロットの名前です。</td>
-</tr>
-<tr>
-<td>通貨</td>
-<td>イベントに関連するアイテムの通貨で、3文字のISO 4217形式です。</td>
-</tr>
-<tr>
-<td>カスタムイベント名</td>
-<td>カスタムイベントの名前です。</td>
-</tr>
-<tr>
-<td>グループID</td>
-<td>グループのIDです。</td>
-</tr>
-<tr>
-<td>アイテムID</td>
-<td>選択または共有されたアイテムの識別子です。</td>
-</tr>
-<tr>
-<td>アイテムリストID</td>
-<td>ユーザーに提示されたリストのIDです。</td>
-</tr>
-<tr>
-<td>アイテムリスト名</td>
-<td>ユーザーに提示されたリストの名前です。</td>
-</tr>
-<tr>
-<td>アイテム名</td>
-<td>仮想通貨が使用されるアイテムの名前です。</td>
-</tr>
-<tr>
-<td>レベル（数値）</td>
-<td>キャラクターのレベルです。</td>
-</tr>
-<tr>
-<td>ロケーションID</td>
-<td>場所のIDです。</td>
-</tr>
-<tr>
-<td>ミディアム</td>
-<td>キャンペーンの媒体です。</td>
-</tr>
-<tr>
-<td>方法</td>
-<td>ログイン/サインアップ/共有に使用された方法です。</td>
-</tr>
-<tr>
-<td>支払いタイプ</td>
-<td>選択された支払い方法です。</td>
-</tr>
-<tr>
-<td>プロモーションID</td>
-<td>イベントに関連付けられたプロモーションのIDです。</td>
-</tr>
-<tr>
-<td>プロモーション名</td>
-<td>イベントに関連付けられたプロモーションの名前です。</td>
-</tr>
-<tr>
-<td>スコア（数値）</td>
-<td>投稿するスコアです。</td>
-</tr>
-<tr>
-<td>検索語</td>
-<td>検索された用語です。</td>
-</tr>
-<tr>
-<td>配送料（数値）</td>
-<td>トランザクションに関連する配送料です。</td>
-</tr>
-<tr>
-<td>配送層</td>
-<td>購入されたアイテムの配送に選択された配送層です（例：地上、空中、翌日）。</td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>キャンペーンのトラフィックソースです。</td>
-</tr>
-<tr>
-<td>税金（数値）</td>
-<td>トランザクションに関連する税金のコストです。</td>
-</tr>
-<tr>
-<td>用語</td>
-<td>支払い検索で使用されるキャンペーン用語で、広告のキーワードを提供します。</td>
-</tr>
-<tr>
-<td>トランザクションID</td>
-<td>トランザクションの一意の識別子です。</td>
-</tr>
-<tr>
-<td>価値（数値）</td>
-<td>イベントの金鍵値です。</td>
-</tr>
-<tr>
-<td>仮想通貨名</td>
-<td>仮想通貨の名前です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="ユーザー提供データ-2">ユーザー提供データ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>メールアドレス（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供します。ハッシュ化する前に、<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスのドメイン名の前にあるすべてのピリオド（.）を削除します。</td>
-</tr>
-<tr>
-<td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクタは<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスのドメイン名の前にあるすべてのピリオド（.）を削除し、空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>電話番号（既にSHA256ハッシュ化）</td>
-<td>E164形式で、すでに空白トリム、小文字化、SHA256ハッシュ化された電話番号を提供します。</td>
-</tr>
-<tr>
-<td>電話番号（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの電話番号を提供し、コネクタはすべての非数字シンボルを削除し、プラス記号（+）を番号の前に付け、空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：名（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された名を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの名を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：姓（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された姓を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの姓を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：住所（既にSHA256ハッシュ化）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された住所を提供します。</td>
-</tr>
-<tr>
-<td>住所情報：住所（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの住所を提供し、コネクタは空白トリム、小文字化し、この値をSHA256ハッシュでハッシュ化します。</td>
-</tr>
-<tr>
-<td>住所情報：市区町村</td>
-<td>ユーザーの住所の市区町村です。</td>
-</tr>
-<tr>
-<td>住所情報：州</td>
-<td>ユーザーの住所の州コードです。</td>
-</tr>
-<tr>
-<td>住所情報：郵便番号</td>
-<td>ユーザーの住所の郵便番号です。</td>
-</tr>
-<tr>
-<td>住所情報：国</td>
-<td>ユーザーの住所の国の2文字の国コード（ISO 3166-1 alpha-2形式）です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="ユーザープロパティ-2">ユーザープロパティ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ユーザープロパティ</td>
-<td>ユーザーベースのセグメントを記述するユーザープロパティです。例えば、言語の好みや地理的な位置などです。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="アイテムデータ-2">アイテムデータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>アイテムID</td>
-<td>アイテムのIDです。</td>
-</tr>
-<tr>
-<td>アイテム名</td>
-<td>アイテムの名前です。</td>
-</tr>
-<tr>
-<td>所属</td>
-<td>供給会社または実店舗の所在地を指定するための製品所属です。</td>
-</tr>
-<tr>
-<td>クーポン</td>
-<td>アイテムに関連付けられたクーポン名/コードです。</td>
-</tr>
-<tr>
-<td>通貨</td>
-<td>3文字のISO 4217形式の通貨です。</td>
-</tr>
-<tr>
-<td>割引</td>
-<td>アイテムに関連付けられた金額の割引値です。</td>
-</tr>
-<tr>
-<td>インデックス</td>
-<td>リスト内のアイテムの位置/インデックスです。</td>
-</tr>
-<tr>
-<td>アイテムブランド</td>
-<td>アイテムのブランドです。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ</td>
-<td>アイテムのカテゴリです。カテゴリ階層または分類法の一部として使用される場合、これが最初のカテゴリになります。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ2</td>
-<td>アイテムの第二カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ3</td>
-<td>アイテムの第三カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ4</td>
-<td>アイテムの第四カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムカテゴリ5</td>
-<td>アイテムの第五カテゴリ階層または追加の分類法です。</td>
-</tr>
-<tr>
-<td>アイテムリストID</td>
-<td>ユーザーに提示されたリストのIDです。</td>
-</tr>
-<tr>
-<td>アイテムリスト名</td>
-<td>ユーザーに提示されたリストの名前です。</td>
-</tr>
-<tr>
-<td>アイテムバリアント</td>
-<td>アイテムのバリアントまたは追加のアイテム詳細/オプションのためのユニークコードまたは説明です。</td>
-</tr>
-<tr>
-<td>ロケーションID</td>
-<td>アイテムに関連付けられた場所です。関連するアイテムに対応するGoogle Place IDの使用が推奨されます。カスタムロケーションIDも使用できます。</td>
-</tr>
-<tr>
-<td>価格</td>
-<td>指定された通貨単位のアイテムの金額です。</td>
-</tr>
-<tr>
-<td>数量</td>
-<td>アイテムの数量です。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="追加パラメータ-2">追加パラメータ</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>デバッグ</td>
-<td>このコネクタはデフォルトでTraceを使用する際にGA4デバッグエンドポイントを使用します。この動作をオーバーライドするためにブール値をマッピングします。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="同意-3">同意</h5>
-<table>
-<thead>
-<tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>広告ユーザーデータ</td>
-<td>広告目的でGoogleにユーザーデータを送信するための同意を構成します。</td>
-</tr>
-<tr>
-<td>広告のパーソナライゼーション</td>
-<td>パーソナライズされた広告のための同意を構成します。</td>
-</tr>
-</tbody>
-</table>
+<h2 id="デバッグ">デバッグ</h2>
+<p>Google Analytics 4 測定プロトコルは、イベントの検証に以下のエンドポイントを提供します：</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">https://google-analytics.com/debug/mp/collect?
+</code></pre><p>Tealium Google Analytics 4 測定プロトコルコネクタは、<a href="/ja/server-side/trace/about/">Trace</a>中にこのエンドポイントを使用し、イベントデータの検証に関する洞察を提供します。APIコールのHTTPレスポンスコンテンツ内でGoogle Analytics 4 測定プロトコルの検証メッセージを表示できます。</p>
 
 </div>
 
@@ -1613,7 +1405,7 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月22日
+          <p>最終更新日 ::  2025年July月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1627,14 +1419,15 @@ Firebase App ID。Firebaseアプリの識別子。Firebaseコンソールの<str
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88id%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">クライアントIDのマッピング</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88-id-%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">クライアント ID のマッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F" href="javascript:void(0)">同意</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---send-pageview-event-gtagjs" href="javascript:void(0)">アクション - Send PageView Event (gtag.js)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%80%81%E4%BF%A1-gtagjs" href="javascript:void(0)">アクション - イベント送信 (gtag.js)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---firebase%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - Firebaseイベントの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%90%8D" href="javascript:void(0)">イベント名</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-gtagjs" href="javascript:void(0)">Send Event (gtag.js)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#firebase%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">Firebaseイベントの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-pageview-%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1-gtagjs" href="javascript:void(0)">Send PageView イベントの送信 (gtag.js)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0" href="javascript:void(0)">デバッグ</a></li>
               </nav>
   </aside></nav>
 

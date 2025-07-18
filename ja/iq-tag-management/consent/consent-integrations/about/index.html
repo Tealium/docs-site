@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>同意統合について | 同意統合 | Tealiumドキュメント</title>
+    <title>コンセント統合について | 同意統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -383,8 +383,8 @@
         <a href="/ja/iq-tag-management/consent/consent-register/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-register">Tealium同意登録</a></li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".consent-integrations">同意統合</a>
         <ul class="pl2 bl b--primary bw1 consent-integrations desktopmenu animated fadeIn list "><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-integrations/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-consent-integrations">同意統合について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">同意統合の決定フロー</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/consent/consent-integrations/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-consent-integrations">コンセント統合について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">同意統合の意思決定フロー</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-consent-integrations">同意統合と目的グループの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダー統合</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">検証とデバッグ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -458,7 +458,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">同意統合について</h1>
+<h1 class="lh-title mt30 mb3">コンセント統合について</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -466,68 +466,149 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium iQ Consent Integrationsの概要を提供します。
+      この記事では、Tealium iQ コンセント統合の概要を説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>新しいConsent Enforcement Frameworkは、Tealium iQ Consent Integrationsの主要な機能であり、Tealium iQ Tag Managementの外部でキャプチャされた同意信号の強力で信頼性の高い強制を可能にします。この機能は、顧客の同意が得られないか曖昧な場合にトラッキングをブロックします。</p>
-<p>Tealium iQ Consent Integrationsは、サポートされている同意管理プラットフォーム（CMP）に対して、オプトイン（GDPRスタイル）とオプトアウト（CCPAスタイル）の強制パターンの両方を提供します。統合は、ほとんどのCMPまたはカスタムソリューションをサポートするテンプレートの形式で記述することができます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iQ Consent Integrationsは、最新のutagバージョン4.49に依存しています。以前のバージョンでサポートを有効にするには、<strong>uTag Loader</strong>テンプレートを編集し、<code>##UTGEN##</code>publish engine flagの下に<code>##UTCM##</code>を追加します。</p>
-<p>以下の用語は、同意統合フレームワークに関連しています：</p>
+  <p>コンセント強制フレームワークは、Tealium iQ コンセント統合の核となる機能であり、Tealium iQ タグ管理の外部でキャプチャされたコンセント信号を強制します。この機能は、顧客の同意が得られないか曖昧な場合にトラッキングをブロックします。</p>
+<p>コンセント統合は、サポートされているコンセント管理プラットフォーム（CMP）のためのオプトイン（GDPRスタイル）とオプトアウト（CCPAスタイル）の強制パターンの両方をサポートします。統合は、ほとんどのCMPまたはカスタムソリューションをサポートするためのテンプレートを使用できます。</p>
+<h2 id="要件">要件</h2>
+<p>コンセント統合には <code>utag.js</code> バージョン 4.49 以降が必要です。</p>
+<h2 id="以前のバージョンのサポート">以前のバージョンのサポート</h2>
+<p>以前のバージョンの <code>utag.js</code> でサポートを有効にするには、<strong>uTag Loader</strong> テンプレートを編集し、<code>##UTGEN##</code> パブリッシュエンジンフラグの下に <code>##UTCM##</code> を追加します。</p>
+<figure><a class="slb" href="/images/iq-tag-management/utcm-utag-loader-template.png"><img src="/images/iq-tag-management/utcm-utag-loader-template.png"
+         alt="uTag Loader template"
+         title="uTag Loader template"/>
+    </a>
+</figure>
+<p><strong>uTag Loader</strong> テンプレートを更新する方法については、<a href="/ja/iq-tag-management/templates/manage/#update-a-template">テンプレートの更新</a>を参照してください。</p>
+<h2 id="コンセントの概念">コンセントの概念</h2>
+<p>以下の用語は、コンセント統合フレームワークで使用される概念を説明します：</p>
 <ul>
-<li><strong>目的</strong> - あなたのウェブサイトのユーザーが同意（または同意を拒否）できる特定のデータ使用目的。</li>
-<li><strong>目的グループ</strong> - 目的のリスト。タグが割り当てられる同意目的のグループの形での強制ポリシーの表現。</li>
-<li><strong>免除</strong> - 強制が必要ない場合と、同意の決定に基づいてタグをブロックする必要がない場合。強制免除は、同意統合強制ルールが適用されない場合の動作とは異なります。明示的な免除がない限り、または一致する同意統合と適切な同意決定がない限り、タグは発火することは許可されません。</li>
-<li><strong>強制ルール</strong> - 同意統合または免除を強制するタイミングを決定するルール。</li>
-<li><strong>同意決定</strong> - 同意された目的の配列。同意決定は<code>type</code>属性で決定され、ユーザーがアクティブな決定を下したか（<code>explicit</code>）、下さなかったか（<code>implicit</code>）により、<code>explicit</code>または<code>implicit</code>のいずれかになります。</li>
-<li><strong>暗黙の決定</strong> - ユーザーの行動から推測される決定。サイトを訪問することで、ユーザーはサイトのプライバシーポリシーで説明されている必要なタグに同意します。ユーザーは自分のデータの販売に反対することができますが、デフォルトではこれが有効になっています（暗黙の&rsquo;それはOK、私のデータを共有/販売する&rsquo;決定があります）。</li>
-<li><strong>明示的な決定</strong> - ユーザーによる明確で正確なトラッキングへの同意決定。</li>
-<li><strong>統合</strong> 特定のCMPから同意決定をキャプチャする機能と構成（事前ロードまたはカスタム）のセット。統合は目的グループに関連付けられています。</li>
+<li><strong>目的</strong>：ウェブサイトのユーザーが同意または拒否できる特定のデータ使用目的。</li>
+<li><strong>目的グループ</strong>：タグが割り当てられる強制ポリシーを表す目的のグループ。</li>
+<li><strong>免除</strong>：強制が必要ないシナリオで、同意の決定に基づいてタグをブロックする必要はありません。強制免除は、コンセント統合強制ルールが適用されない場合の動作とは異なります。明示的な免除がある場合、または適切なコンセント統合と適切な同意決定が一致している場合を除き、タグは発火することは許可されません。</li>
+<li><strong>強制ルール</strong>：コンセント統合または免除をいつ強制するかを決定するルール。</li>
+<li><strong>同意決定</strong>：ユーザーが同意した目的の配列で、ユーザーがアクティブな決定を行ったかどうかを示す <code>type</code> 属性（<code>explicit</code>または<code>implicit</code>）が含まれます。</li>
+<li><strong>暗黙の決定</strong>：ユーザーの行動から推測される決定。サイトを訪問することにより、ユーザーはサイトのプライバシーポリシーに記載されている必要なタグに同意します。ユーザーは自分のデータの販売に反対することができますが、デフォルトではこれが有効になっています（データの共有/販売がOKであるという暗黙の決定があります）。</li>
+<li><strong>明示的な決定</strong>：ユーザーによるトラッキングに同意するかどうかについての明確で正確な同意決定。</li>
+<li><strong>統合</strong>：CMPから同意決定をキャプチャするための機能と構成のセット（プリロードまたはカスタム）。</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>Tealium iQ Consent Integrationsを使用すると、サポートされている非Tealiumの同意管理プラットフォームと統合できます。あなたのCMPは、必要に応じてエンドユーザーに目的ベースの同意を求め、そのユーザーの同意決定をキャプチャして保存します。統合がアクティブな場合、タグは目的グループ内の目的に割り当てられる必要があります。目的に同意されると、その目的に割り当てられたタグがトリガーされます。</p>
-<p>各同意統合は、基礎となるフレームワークに、単一のCMPとどのように通信するかを指示します。一度にアクティブにできる統合は1つだけです。ただし、必要に応じて<strong>強制ルール</strong>を使用して、複数のアクティブな統合を条件付きで適用し、競合を避けることができます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ページにCMPを注入するタグは、Tealium iQ Consent Integrationと互換性がありません。統合は、タグがロードされる前にCMPからの信号を必要とします。Consent IntegrationsとあなたのCMPを統合するには、Pre LoaderまたはDOM Ready拡張機能を使用するか、CMPをTealium iQの外部のページに追加します。</p>
+<p>コンセント統合は、CMPからの同意決定を強制し、同意がないタグのブロックを行います。統合がアクティブな場合、タグを発火させる前に、目的グループ内の目的にタグを割り当てる必要があります。ユーザーが目的に同意すると、その目的に割り当てられたタグが発火できます。</p>
+<p>各コンセント統合は、単一のCMPと通信する方法を基盤フレームワークに指示します。一度にアクティブにできる統合は1つだけです。ただし、必要に応じて複数のアクティブな統合を条件付きで適用するために<strong>強制ルール</strong>を使用することができます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ページにCMPを挿入するタグは、コンセント統合と互換性がありません。統合は、タグがロードされる前にCMPからの信号を必要とします。CMPをコンセント統合に統合するには、プリローダーまたはDOM Ready拡張を使用するか、CMPをTealium iQの外でページに追加してください。</p>
 <p>Tealium iQダッシュボードでサポートされているCMPとの統合を構成するか、<strong>カスタムテンプレート</strong>を編集してカスタム統合を作成することができます。</p>
 <h2 id="サポートされている統合">サポートされている統合</h2>
-<p>現在サポートされている統合の完全なリストについては、<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">Supported Vendor Integrations</a>を参照してください。</p>
+<p>現在サポートされている統合の完全なリストについては、<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">サポートされているベンダー統合</a>を参照してください。</p>
 <h2 id="タグの再発火">タグの再発火</h2>
-<p>各タグには、<strong>Map Tags</strong>画面で<strong>Tag Refire</strong>スイッチがあります：</p>
+<p>各タグには、<strong>Map Tags</strong> 画面に<strong>Tag Refire</strong> スイッチがあります：</p>
 <figure><a class="slb" href="/images/early-access/map-tags.png"><img src="/images/early-access/map-tags.png"
          alt="map_tags.png"
          title="map_tags.png" width="790" height="417"/>
     </a>
 </figure>
-<p>このオプションを有効にすると、タグは各ユーザーアクションごとに最大2回トリガーされます（一度は暗黙の決定で、一度は明示的な決定で）。マップされた目的が同意されていない場合、タグはトリガーされません。</p>
-<p>ほとんどのタグは、これらのケースのそれぞれで同意がある場合、再度トリガーする必要はありません。タグを2回トリガーすると、ダブルトラッキングが発生する可能性があり、これは避けるべきです。</p>
-<p>サーバーサイドコネクタ（特にイベントコネクタ）を持つアカウントは、Tealium Collectタグを再発火させて、<code>tci.purposes_with_consent_unprocessed</code>属性を使用することで利益を得ることができます。これにより、同じイベントに対してサーバーサイドコネクタが再発火されないことを確認します。<code>tci.purposes_with_consent_unprocessed</code>属性を使用すると、サーバーサイドコネクタが重複せずに可能な限り迅速にトリガーできます。</p>
-<h2 id="サーバーサイド属性---consent-integrationsとcollectの使用">サーバーサイド属性 - Consent IntegrationsとCollectの使用</h2>
-<p>Tealium Collectは、他のすべてのタグと同様に、同意された目的にマップする必要があります。ただし、<code>refiringAllowed</code>オプションにより、新しい決定でタグを再発火することができます。このプロセスは、タグがさまざまなサーバーサイド目的に使用されており、利用可能なサーバーサイドフィルタとロジックが使用されて、信号が適切に処理されるだけであり、再発火を許可することを示しています。</p>
-<p>使用するサーバーサイドツールによりますが、Tealium Collectは、各イベントに対して以下のイベントレベル属性でトリガーされます：</p>
-<ul>
-<li><code>tci.purposes_with_consent_unprocessed</code>（再発火あり）</li>
-<li><code>tci.purposes_with_consent_all</code>（再発火なし）</li>
-</ul>
-<h2 id="tealium-iq内での同意決定のアクセス">Tealium iQ内での同意決定のアクセス</h2>
-<p>同意決定は、各イベントのデータレイヤーに追加されます。これらの変数はタグで使用でき、Tealium Collectタグによって自動的に送信されますが、拡張機能では直接利用できません。</p>
-<ul>
-<li><code>tci.consent_type</code> - 同意決定のタイプ（<code>implicit</code>または<code>explicit</code>）。</li>
-<li><code>tci.purposes_with_consent_all</code> - 処理済みと未処理の両方の同意された目的の完全な配列。</li>
-<li><code>tci.purposes_with_consent_processed</code> - 処理済みの同意された目的の配列。</li>
-<li><code>tci.purposes_with_consent_unprocessed</code> - 未処理の同意された目的の配列。</li>
-</ul>
-<h3 id="拡張機能からの同意決定へのアクセス">拡張機能からの同意決定へのアクセス</h3>
-<p>拡張機能で現在の同意決定オブジェクトにアクセスするには、<code>tealiumCmpIntegration.GetCurrentConsentDecision()</code>メソッドを使用します。</p>
-<p>次のコマンドは、現在の同意決定を<code>b</code>オブジェクトに追加します：</p>
+<p>このオプションを有効にすると、タグは各ユーザーアクションについて2回発火することができます。一度は暗黙の決定のため、もう一度は明示的な決定のためです。マップされた目的に同意がない場合、タグはトリガーされません。</p>
+<p>ほとんどのタグは再発火を必要としません。このオプションを有効にすると、重複イベントやダブルトラッキングが発生する可能性があります。この機能を有効にする際は注意してください。</p>
+<p>サーバーサイドの再発火についての情報は、<a href="#server-side-event-refiring">サーバーサイドイベントの再発火</a>を参照してください。</p>
+<h2 id="同意決定データ">同意決定データ</h2>
+<p>コンセント統合は、各イベントに同意決定データをデータレイヤーに追加します。このデータには、クライアントサイドの変数とサーバーサイドの属性が含まれます。</p>
+<p>これらの変数は、Tealium Collectタグによって自動的に送信されます。拡張機能では直接アクセスできませんが、<code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> メソッドを使用してアクセスすることができます。</p>
+<h3 id="クライアントサイドの変数">クライアントサイドの変数</h3>
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tci.consent_type</code></td>
+<td>同意のタイプ：<code>implicit</code> または <code>explicit</code>。</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_all</code></td>
+<td>処理済みおよび未処理の同意された目的の配列。</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_processed</code></td>
+<td>処理済みの同意された目的の配列。</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_unprocessed</code></td>
+<td>未処理の同意された目的の配列。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>クライアントサイドデータの例：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.consent_type&#34;</span>: <span style="color:#e6db74">&#34;implicit&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_processed&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="拡張機能での同意決定のアクセス">拡張機能での同意決定のアクセス</h3>
+<p>拡張機能で現在の同意決定オブジェクトにアクセスするには、<code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> メソッドを使用します。</p>
+<p>次のコマンドは、現在の同意決定を <code>b</code> オブジェクトに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">current_consent_decision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">getCurrentConsentDecision</span>()
-</span></span></code></pre></div><h2 id="javascriptコンソールの使用">JavaScriptコンソールの使用</h2>
-<p>アクティブな場合、utag.js（Tealium iQ）が実装されているページのJavaScriptコンソールで同意統合と対話できます。JavaScriptコンソールを使用すると、CMPから取得される現在の同意決定を取得できます。同意決定はキャッシュされず、常に最新の状態を保証します。</p>
-<p>詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>を参照してください。</p>
+</span></span></code></pre></div><h3 id="サーバーサイドの属性">サーバーサイドの属性</h3>
+<p>Tealium Collectは、各イベントペイロードの一部として同意属性を送信します。これらの属性は、使用するサーバーサイドツールに関係なく送信されます。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tci.purposes_with_consent_unprocessed</code></td>
+<td>同意更新後にまだ処理されていない目的の配列。<strong>Tag Refire</strong> が有効な場合に使用します。重複を避けるためです。</td>
+</tr>
+<tr>
+<td><code>tci.purposes_with_consent_all</code></td>
+<td>すでに処理されたものを含む、すべての同意された目的の配列。<strong>Tag Refire</strong> が無効な場合に使用します。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>サーバーサイドペイロードの例：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="サーバーサイドイベントの再発火">サーバーサイドイベントの再発火</h3>
+<p>サーバーサイドコネクタを使用するアカウントの場合、Tealium Collectタグの<strong>Tag Refire</strong> を有効にすると、同意が（<code>implicit</code> から <code>explicit</code> に）変更されたときにサーバーサイド処理が再度トリガーされます。</p>
+<p>サーバーサイドの再発火を有効にするには：</p>
+<ol>
+<li><strong>Map Tags</strong> 画面でTealium Collectタグの<strong>Tag Refire</strong> を有効にします。これにより、同意決定が変更されたときにタグが再度発火することを許可する <code>refiringAllowed</code> オプションが自動的に構成されます。</li>
+<li>コネクタアクションで、<code>tci.purposes_with_consent_unprocessed</code> 属性をチェックする条件を追加します。これにより、未処理の目的のみが処理され、重複イベントが防止されます。</li>
+</ol>
+<h3 id="完全な同意イベントの例">完全な同意イベントの例</h3>
+<p>これは、同意決定変数を含む完全なイベントオブジェクトの例です：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.consent_type&#34;</span>: <span style="color:#e6db74">&#34;implicit&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_all&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>, <span style="color:#e6db74">&#34;C0003&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_processed&#34;</span>: [<span style="color:#e6db74">&#34;C0001&#34;</span>, <span style="color:#e6db74">&#34;C0002&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tci.purposes_with_consent_unprocessed&#34;</span>: [<span style="color:#e6db74">&#34;C0003&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>この例では：</p>
+<ul>
+<li>同意の種類は <code>implicit</code> です。</li>
+<li>3つの目的が同意されました。</li>
+<li>2つの目的はすでに処理されています。</li>
+<li>1つは未処理のままで、サーバーサイドでの処理が可能です。</li>
+</ul>
+<h2 id="javascriptコンソールの使用">JavaScriptコンソールの使用</h2>
+<p>アクティブな場合、<code>utag.js</code> がロードされているページでブラウザコンソールを使用して同意統合と対話することができます。これにより、CMPから取得された各イベントの最新の同意決定を表示できます。同意決定はキャッシュされないため、常に最新の状態を保証します。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">同意統合の検証とデバッグ</a>を参照してください。</p>
 <h2 id="同意登録">同意登録</h2>
-<p>同意統合は、Tealiumの同意登録を使用して、同意構成がロードまたは更新されたときにイベントを発行できます。これらの変更はページ全体で利用可能であり、ウェブサイト全体で同意決定を管理するのがより簡単になります。詳細については、<a href="/ja/iq-tag-management/consent/consent-register/">Tealium consent register</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>同意登録は、同意統合フレームワークテンプレートのバージョン1.2.0以降が必要です。このテンプレートを更新するには、<a href="/ja/iq-tag-management/templates/manage/#update-a-template">テンプレートを更新する</a>を参照してください。</p>
+<p>同意統合はTealiumの同意登録を使用して、同意構成がロードまたは更新されたときにイベントを発行することができます。これらの変更はページ全体で利用可能であり、ウェブサイト全体で同意決定を管理するのが容易になります。詳細については、<a href="/ja/iq-tag-management/consent/consent-register/">Tealium同意登録</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>同意登録には、同意統合フレームワークテンプレートバージョン1.2.0以降が必要です。このテンプレートを更新するには、<a href="/ja/iq-tag-management/templates/manage/#update-a-template">テンプレートの更新</a>を参照してください。</p>
 
 </div>
 
@@ -537,10 +618,10 @@
   <a href="/ja/iq-tag-management/consent/consent-integrations/consent-integrations-decision-flow/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>同意統合の決定フロー</div>
+      <div>同意統合の意思決定フロー</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"同意統合の決定フロー"</title>
+      <title>"同意統合の意思決定フロー"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -573,7 +654,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月11日
+          <p>最終更新日 ::  2025年July月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -587,12 +668,18 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%A5%E5%89%8D%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">以前のバージョンのサポート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%B3%E3%83%88%E3%81%AE%E6%A6%82%E5%BF%B5" href="javascript:void(0)">コンセントの概念</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E7%B5%B1%E5%90%88" href="javascript:void(0)">サポートされている統合</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E5%86%8D%E7%99%BA%E7%81%AB" href="javascript:void(0)">タグの再発火</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E5%B1%9E%E6%80%A7---consent-integrations%E3%81%A8collect%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">サーバーサイド属性 - Consent IntegrationsとCollectの使用</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E5%86%85%E3%81%A7%E3%81%AE%E5%90%8C%E6%84%8F%E6%B1%BA%E5%AE%9A%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9" href="javascript:void(0)">Tealium iQ内での同意決定のアクセス</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%8B%E3%82%89%E3%81%AE%E5%90%8C%E6%84%8F%E6%B1%BA%E5%AE%9A%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9" href="javascript:void(0)">拡張機能からの同意決定へのアクセス</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E6%B1%BA%E5%AE%9A%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">同意決定データ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E5%A4%89%E6%95%B0" href="javascript:void(0)">クライアントサイドの変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%A7%E3%81%AE%E5%90%8C%E6%84%8F%E6%B1%BA%E5%AE%9A%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9" href="javascript:void(0)">拡張機能での同意決定のアクセス</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E5%B1%9E%E6%80%A7" href="javascript:void(0)">サーバーサイドの属性</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E5%86%8D%E7%99%BA%E7%81%AB" href="javascript:void(0)">サーバーサイドイベントの再発火</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%8C%E5%85%A8%E3%81%AA%E5%90%8C%E6%84%8F%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">完全な同意イベントの例</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">JavaScriptコンソールの使用</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E7%99%BB%E9%8C%B2" href="javascript:void(0)">同意登録</a></li>
               </nav>

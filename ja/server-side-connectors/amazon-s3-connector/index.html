@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Amazon S3 コネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
+    <title>Amazon S3コネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -320,7 +320,7 @@
         <a href="/ja/server-side-connectors/pushcrew-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XMディレクトリ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcastオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Redditカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsysマーケティングクラウド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -449,7 +449,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Amazon S3 コネクタ構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Amazon S3コネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -457,7 +457,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Amazon S3 コネクタの構成方法について説明します。
+      この記事では、Amazon S3コネクタの構成方法について説明します。
     </p>
   
 </div>
@@ -476,10 +476,10 @@
 <ul>
 <li><strong>認証タイプ</strong>
 <ul>
-<li>認証タイプを選択します。利用可能なオプションは、<strong>STS</strong> と <strong>アクセスキー</strong> です。
+<li>認証タイプを選択します。利用可能なオプションは：<strong>STS</strong>および<strong>アクセスキー</strong>です。
 <ul>
-<li><strong>STS</strong>：<strong>Assume Role: ARN</strong> および <strong>Assume Role: セッション名</strong> フィールドが必要です。</li>
-<li><strong>アクセスキー</strong>：<strong>AWS アクセスキー</strong> および AWS シークレットアクセスキー フィールドが必要です。</li>
+<li><strong>STS</strong>：<strong>Assume Role: ARN</strong>および<strong>Assume Role: Session Name</strong>フィールドが必要です。</li>
+<li><strong>アクセスキー</strong>：<strong>AWSアクセスキー</strong>およびAWSシークレットアクセスキーフィールドが必要です。</li>
 </ul>
 </li>
 </ul>
@@ -491,50 +491,51 @@
 </li>
 <li><strong>STS - Assume Role: ARN</strong>
 <ul>
-<li>STS 認証に必要です。アサムロールを行うロールの Amazon リソース名 (ARN) を提供します。</li>
+<li>STS認証に必要です。アサインするロールのAmazonリソースネーム（ARN）を提供します。</li>
 <li>例：<code>arn:aws:iam:222222222222:role/myrole</code>。</li>
-<li>詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: IAM ロールへの切り替え (AWS API)</a>を参照してください。</li>
+<li>詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWSアイデンティティおよびアクセス管理：IAMロールへの切り替え（AWS API）</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>STS - Assume Role: セッション名</strong>
+<li><strong>STS - Assume Role: Session Name</strong>
 <ul>
-<li>ロールをアサムするセッションの名前。</li>
-<li>2文字から64文字の間である必要があります。</li>
+<li>アサインするロールのセッション名。</li>
+<li>2文字から64文字の間でなければなりません。</li>
 </ul>
 </li>
-<li><strong>STS - Assume Role: 外部ID</strong>
+<li><strong>STS - Assume Role: External ID</strong>
 <ul>
 <li>第三者の外部識別子を提供します。</li>
-<li>詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: 第三者が所有する AWS アカウントへのアクセス</a>を参照してください。</li>
+<li>詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWSアイデンティティおよびアクセス管理：第三者が所有するAWSアカウントへのアクセス</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>アクセスキー - AWS アクセスキー</strong>
+<li><strong>アクセスキー - AWSアクセスキー</strong>
 <ul>
-<li><strong>アクセスキー</strong> 認証に必要です。AWS アクセスキーを提供します。</li>
+<li><strong>アクセスキー</strong>認証に必要です。AWSアクセスキーを提供します。</li>
 </ul>
 </li>
-<li><strong>アクセスキー - AWS シークレットアクセスキー</strong>
+<li><strong>アクセスキー - AWSシークレットアクセスキー</strong>
 <ul>
-<li><strong>アクセスキー</strong> 認証に必要です。AWS シークレットアクセスキーを提供します。</li>
+<li><strong>アクセスキー</strong>認証に必要です。AWSシークレットアクセスキーを提供します。</li>
 </ul>
 </li>
 </ul>
-<h3 id="aws-s3-への接続を作成する">AWS S3 への接続を作成する</h3>
+<h3 id="aws-s3への接続を作成する">AWS S3への接続を作成する</h3>
 <p>Tealiumは、バケットのリストを表示し、S3オブジェクトにイベントデータとオーディエンスデータをアップロードするために、AWS S3インスタンスへの接続を必要とします。認証には2つのオプションがあります：</p>
 <ul>
-<li>アクセスキーとアクセスシークレットを提供する。</li>
-<li>STS（セキュリティトークンサービス）の資格情報を提供する。</li>
+<li>アクセスキーとアクセスシークレットを提供します。</li>
+<li>STS（セキュリティトークンサービス）の認証情報を提供します。</li>
 </ul>
-<h4 id="アクセスキーとシークレットの資格情報">アクセスキーとシークレットの資格情報</h4>
-<p>AWS アクセスキーとシークレットを見つけるには：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>S3オブジェクトが暗号化されている場合、IAMユーザーとKMSキーポリシーに復号化権限を追加する必要があります。</p>
+<h4 id="アクセスキーとシークレットの認証情報">アクセスキーとシークレットの認証情報</h4>
+<p>AWSアクセスキーとシークレットを見つけるには：</p>
 <ol>
-<li>AWS 管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
-<li><strong>ユーザー</strong> をクリックし、次に <strong>ユーザーを追加</strong> をクリックします。</li>
-<li>ユーザー名を入力します。例：<code>TealiumS3User</code>。</li>
+<li>AWS管理コンソールにログインし、<strong>IAM</strong>（アイデンティティおよびアクセス管理）サービスに移動します。</li>
+<li><strong>ユーザー</strong>をクリックし、次に<strong>ユーザーを追加</strong>をクリックします。</li>
+<li>ユーザー名を入力します。例えば、<code>TealiumS3User</code>。</li>
 <li>作成したユーザーにポリシーをアタッチします。
 <ol>
-<li><strong>権限</strong> タブで <strong>既存のポリシーを直接アタッチ</strong> をクリックします。</li>
-<li><code>AmazonS3FullAccess</code> ポリシーを検索してアタッチし、完全アクセスを許可します。特定のバケットへのアクセスを制限する場合は、次の例のようなポリシーを作成します。例では、<code>YOUR_BUCKET_NAME</code> は Tealium が S3 オブジェクトにイベントデータとオーディエンスデータをアップロードするために使用するバケットです：</li>
+<li><strong>権限</strong>タブで<strong>既存のポリシーを直接アタッチ</strong>をクリックします。</li>
+<li><code>AmazonS3FullAccess</code>ポリシーを検索してアタッチします。特定のバケットへのアクセスを制限する場合は、以下の例のようなポリシーを作成します。例では、<code>YOUR_BUCKET_NAME</code>はTealiumがS3オブジェクトにイベントデータとオーディエンスデータをアップロードするために使用するバケットです：</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -552,30 +553,57 @@
 </span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;</span>,
 </span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;</span>
 </span></span><span style="display:flex;"><span>            ]
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// プライベートクラウドで実行している場合、復号化が必要な場合は次のセクションを追加します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;kms:Decrypt&#34;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#34;kms:GenerateDataKey&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:kms:YOUR_REGION:111879511226:key/YOUR_KEY_ID&#34;</span>
+</span></span><span style="display:flex;"><span>       }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 <li>キーを作成します。
 <ol>
-<li><strong>セキュリティ認証情報</strong> タブに移動し、<strong>アクセスキーを作成</strong> をクリックします。</li>
-<li><strong>アクセスキーID</strong> と <strong>シークレットアクセスキー</strong> をコピーし、安全に保存します。</li>
+<li><strong>セキュリティ認証情報</strong>タブに移動し、<strong>アクセスキーを作成</strong>をクリックします。</li>
+<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存します。</li>
+<li>プライベートクラウド環境を使用している場合は、キーポリシーに次のようなステートメントを追加します：</li>
 </ol>
-</li>
+<pre tabindex="0"><code>{
+    &#34;Sid&#34;: &#34;AllowDecryptFromIAMUser&#34;,
+    &#34;Effect&#34;: &#34;Allow&#34;,
+    &#34;Principal&#34;: {
+        &#34;AWS&#34;: &#34;arn:aws:iam::&lt;&lt;account-id&gt;&gt;:user/&lt;&lt;user-name&gt;&gt;&#34;
+    },
+    &#34;Action&#34;: [
+        &#34;kms:Decrypt&#34;,
+        &#34;kms:GenerateDataKey&#34;
+    ],
+    &#34;Resource&#34;: &#34;*&#34;
+}
+</code></pre></li>
 </ol>
-<h4 id="sts-資格情報">STS 資格情報</h4>
-<p>STS 資格情報を見つけるには：</p>
+<h4 id="sts認証情報">STS認証情報</h4>
+<p>STS認証情報を見つけるには：</p>
 <ol>
-<li><strong>AWS 管理コンソール</strong> にログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
-<li><strong>ロール</strong> をクリックし、次に <strong>ロールを作成</strong> をクリックします。</li>
-<li><strong>信頼されたエンティティのタイプ</strong> で、AWS アカウントを選択します。</li>
-<li><strong>他の AWS アカウント</strong> を選択し、Tealium アカウント ID <code>757913464184</code> を入力します。</li>
-<li>オプション。<strong>外部 ID が必要</strong> チェックボックスを選択し、使用する外部 ID を指定します。外部 ID は 256 文字までの長さであり、英数字 (<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>) およびハイフン (<code>-</code>)、アンダースコア (<code>_</code>)、ピリオド (<code>.</code>) などの記号を含むことができます。</li>
-<li>ロールの名前を入力します。ロール名は TealiumS3 で始まる必要があります。例：<code>TealiumS3-test</code>。</li>
+<li><strong>AWS管理コンソール</strong>にログインし、<strong>IAM</strong>（Identity and Access Management）サービスにアクセスします。</li>
+<li><strong>ロール</strong>をクリックし、<strong>ロールの作成</strong>をクリックします。</li>
+<li><strong>信頼されたエンティティ</strong>のタイプで、AWSアカウントを選択します。</li>
+<li><strong>他のAWSアカウント</strong>を選択し、TealiumアカウントIDを入力します：
+<ul>
+<li>プライベートクラウドの顧客の場合、IDは<code>111879511226</code>です。</li>
+<li>その他の顧客の場合、IDは<code>757913464184</code>です。</li>
+</ul>
+</li>
+<li>オプション。<strong>外部IDが必要</strong>のチェックボックスを選択し、使用する外部IDを指定します。外部IDは256文字までで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）やハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
+<li>ロールに名前を付けます。ロール名はTealiumS3で始まる必要があります。例：<code>TealiumS3-test.</code></li>
 <li>ロールにポリシーをアタッチします。
 <ol>
-<li><strong>権限</strong> タブで <strong>既存のポリシーを直接アタッチ</strong> をクリックします。</li>
-<li><code>AmazonS3FullAccess</code> ポリシーを検索してアタッチし、完全アクセスを許可します。特定のバケットへのアクセスを制限する場合は、次の例のようなポリシーを作成します。例では、<code>YOUR_BUCKET_NAME</code> は Tealium が S3 オブジェクトにイベントデータとオーディエンスデータをアップロードするために使用するバケットです：</li>
+<li><strong>権限</strong>タブで、<strong>既存のポリシーを直接アタッチ</strong>をクリックします。</li>
+<li><code>AmazonS3FullAccess</code>ポリシーを検索してアタッチし、完全なアクセスを許可します。特定のバケットへのアクセスを制限するには、次の例のようなポリシーを作成します。例では、<code>YOUR_BUCKET_NAME</code>はTealiumがイベントデータとオーディエンスデータをS3オブジェクトにアップロードするために使用するバケットです：</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -593,15 +621,24 @@
 </span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::YOUR_BUCKET_NAME&#34;</span>,
 </span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;</span>
 </span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// プライベートクラウドで実行していて復号化が必要な場合は、次のセクションを追加してください
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;AWS&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::111879511226:user/YOUR_USER_NAME&#34;</span>
+</span></span><span style="display:flex;"><span>         },
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::YOUR_BUCKET_NAME/*&#34;</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 <li>信頼ポリシーを作成します。
 <ol>
-<li><strong>信頼関係</strong> タブに移動し、<strong>信頼関係を編集</strong> をクリックします。</li>
-<li>信頼ポリシーが作成したロールを使用する特定の外部 ID を許可し、Tealium の本番アカウント ID が <code>757913464184</code> であることを確認します。</li>
-<li>Tealium への接続のための <code>EXTERNAL_ID</code> 値を構成します。ID は 256 文字までの長さであり、英数字 (<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>) およびハイフン (<code>-</code>)、アンダースコア (<code>_</code>)、ピリオド (<code>.</code>) などの記号を含むことができます。</li>
+<li><strong>信頼関係</strong>タブに移動し、<strong>信頼関係の編集</strong>をクリックします。</li>
+<li>信頼ポリシーが作成したロールを使用するための特定の外部IDを許可していることを確認し、プライベートクラウドの顧客の場合はIDが<code>111879511226</code>で、その他の顧客の場合はIDが<code>757913464184</code>であることを確認します。</li>
+<li>Tealiumへの接続のための<code>EXTERNAL_ID</code>値を構成します。IDは256文字までで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）やハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -615,19 +652,19 @@
 </span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;Condition&#34;</span>: {
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
 </span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;sts:ExternalId&#34;</span>: <span style="color:#e6db74">&#34;EXTERNAL_ID&#34;</span>
+</span></span><span style="display:flex;"><span>                    }
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div></li>
 </ol>
-<h3 id="バケットを作成する">バケットを作成する</h3>
-<p>S3 バケットは AWS S3 内の保存コンテナであり、データを保存および整理するために使用されます。コネクタ構成ウィンドウで、構成ステップで <strong>バケットを作成</strong> をクリックすることで新しいバケットを作成できます。</p>
+<h3 id="バケットの作成">バケットの作成</h3>
+<p>S3バケットはAWS S3内の保存コンテナで、データを保存して整理するために使用されます。コネクタ構成ウィンドウで、<strong>バケットの作成</strong>をクリックして新しいバケットを作成できます。</p>
 <ol>
-<li>コネクタ構成画面で <strong>バケットを作成</strong> をクリックします。</li>
+<li>コネクタ構成画面で<strong>バケットの作成</strong>をクリックします。</li>
 <li>バケット名を入力します。</li>
-<li><strong>作成</strong> をクリックします。</li>
+<li><strong>作成</strong>をクリックします。</li>
 </ol>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -680,35 +717,35 @@
 <tbody>
 <tr>
 <td>バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を入力してください。</td>
+<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
 </tr>
 <tr>
 <td>ファイルパス</td>
-<td>データを追加したいS3オブジェクトのパスを指定してください。</td>
+<td>データを追加するS3オブジェクトのパスを指定します。</td>
 </tr>
 <tr>
-<td>ファイルパスサフィックス</td>
-<td>現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。複数のサフィックス値を入力すると、アンダースコア文字で区切られます。</td>
+<td>ファイルパスのサフィックス</td>
+<td>現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択します。複数のサフィックス値を入力すると、アンダースコア文字で区切られます。</td>
 </tr>
 <tr>
-<td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+<td>レコードのサフィックス</td>
+<td><ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは<code>Newline</code>です。</li><li>利用可能なオプションは<code>Newline</code>と<code>No Delimiter</code>です。</li></ul></td>
 </tr>
 <tr>
 <td>既存のファイルを上書き</td>
-<td>このチェックボックスを選択すると、現在のデータで既存のS3オブジェクトを置き換えます。選択されていない場合、コネクタはデータを追加します。許可されている最大ファイルサイズは200MBです。その限界に達すると、これ以上データは追加されません。</td>
+<td>このチェックボックスを選択すると、現在のデータで既存のS3オブジェクトを置き換えます。選択されていない場合、コネクタはデータを追加します。許可される最大ファイルサイズは200MBです。その限界に達すると、これ以上のデータは追加されません。</td>
 </tr>
 <tr>
 <td>属性名を印刷</td>
-<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。</td>
+<td>デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード名も更新されることに注意してください。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限（TTL）は分単位です。<code>1</code>から<code>60</code>の間でなければなりません。デフォルトは<code>10</code>分です。</td>
+<td>分単位の有効期限（TTL）。<code>1</code>から<code>60</code>の間でなければなりません。デフォルトは<code>10</code>分です。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタムイベントデータの送信">カスタムイベントデータの送信</h3>
+<h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -720,11 +757,11 @@
 <tbody>
 <tr>
 <td>バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を入力してください。</td>
+<td>Amazon S3バケットを選択するか、カスタム値を提供します。</td>
 </tr>
 <tr>
 <td>ファイルパス</td>
-<td>データを追加したいS3オブジェクトのパスを指定してください。</td>
+<td>データを追加するS3オブジェクトのパスを指定します。</td>
 </tr>
 </tbody>
 </table>
@@ -738,12 +775,12 @@
 </thead>
 <tbody>
 <tr>
-<td>ファイルパスサフィックス</td>
-<td>現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択してください。複数のサフィックス値を入力すると、アンダースコア文字で区切られます。</td>
+<td>ファイルパスのサフィックス</td>
+<td>現在のタイムスタンプなどの属性をファイルパスに動的に追加したい場合は、ここで選択します。複数のサフィックス値を入力すると、アンダースコア文字で区切られます。</td>
 </tr>
 <tr>
-<td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+<td>レコードのサフィックス</td>
+<td><ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは<code>Newline</code>です。</li><li>利用可能なオプションは<code>Newline</code>と<code>No Delimiter</code>です。</li></ul></td>
 </tr>
 <tr>
 <td>既存のファイルを上書き</td>
@@ -751,19 +788,19 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限（TTL）は分単位です。<code>1</code>から<code>60</code>の間でなければなりません。デフォルトは<code>10</code>分です。</td>
+<td>分単位の有効期限（TTL）。<code>1</code>から<code>60</code>の間でなければなりません。デフォルトは<code>10</code>分です。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。使用例や詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li><strong>テンプレート</strong>用のデータ入力としてテンプレート変数を提供します。使用例や詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName}}</code> のように、サポートされているフィールドに名前でダブルカーリーブレースで注入されます。</li></ul></td>
+<td><ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば<code>{{SomeTemplateName}}</code>のように、サポートされるフィールドに二重波括弧で名前を注入して使用されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="全訪問データの送信">全訪問データの送信</h3>
+<h3 id="すべての訪問データを送信">すべての訪問データを送信</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -775,7 +812,7 @@
 <tbody>
 <tr>
 <td>バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を入力してください。</td>
+<td>Amazon S3バケットを選択するか、カスタム値を提供してください。</td>
 </tr>
 <tr>
 <td>ファイルパス</td>
@@ -802,12 +839,12 @@
 <td>有効期限（TTL）は分単位です。<code>1</code>から<code>60</code>の間でなければなりません。デフォルトは<code>10</code>分です。</td>
 </tr>
 <tr>
-<td>全訪問イベントを含む</td>
-<td>現在の訪問データを訪問データに含めるために選択します。</td>
+<td>すべての訪問イベントを含む</td>
+<td>現在の訪問データを訪問データに含めるために選択してください。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタム訪問データの送信">カスタム訪問データの送信</h3>
+<h3 id="カスタム訪問データを送信">カスタム訪問データを送信</h3>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
@@ -819,7 +856,7 @@
 <tbody>
 <tr>
 <td>バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を入力してください。</td>
+<td>Amazon S3バケットを選択するか、カスタム値を提供してください。</td>
 </tr>
 <tr>
 <td>ファイルパス</td>
@@ -854,15 +891,15 @@
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。使用例や詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。使用例や詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName}}</code> のように、サポートされているフィールドに名前でダブルカーリーブレースで注入されます。</li></ul></td>
+<td><ul><li>イベントパラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName}}</code> のように、サポートされるフィールドに名前で注入されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="ログイベントの送信">ログイベントの送信</h3>
+<h3 id="ログイベントを送信">ログイベントを送信</h3>
 <h4 id="パラメータ-4">パラメータ</h4>
 <table>
 <thead>
@@ -874,7 +911,7 @@
 <tbody>
 <tr>
 <td>バケット</td>
-<td>Amazon S3バケットを選択するか、カスタム値を入力してください。</td>
+<td>Amazon S3バケットを選択するか、カスタム値を提供してください。</td>
 </tr>
 <tr>
 <td>ファイルパス</td>
@@ -950,7 +987,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月10日
+          <p>最終更新日 ::  2025年July月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -966,14 +1003,14 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3-%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">AWS S3 への接続を作成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">バケットを作成する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">AWS S3への接続を作成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%82%B1%E3%83%83%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">バケットの作成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべてのイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータの送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">全訪問データの送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データの送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">ログイベントの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべての訪問データを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">ログイベントを送信</a></li>
               </nav>
   </aside></nav>
 
