@@ -229,7 +229,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="get-revisions">GET revisions</h2>
-<p>GET Revisions returns an array of revision IDs.  The revision ID is the timestamp of the revision in the form of <code>YYYYMMDDHHMM</code>. This ID is used to fetch the revision details.</p>
+<p>GET Revisions returns an array of revision IDs. The revision ID is the timestamp of the revision in the form of <code>YYYYMMDDHHMM</code>. This ID is used to fetch the revision details.</p>
 <p>Use the following GET command to list revisions:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v2/manifest/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/revisions
 </span></span></code></pre></div><h3 id="example-curl-request">Example cURL request</h3>
@@ -252,16 +252,16 @@
 <tbody>
 <tr>
 <td>404 Not Found</td>
-<td><code>{   &quot;returnCode&quot; : 1240,   &quot;message&quot; : &quot;Account was not found&quot; }</code></td>
+<td><code>{&quot;returnCode&quot; : 1240, &quot;message&quot; : &quot;Account was not found&quot;}</code></td>
 </tr>
 <tr>
 <td>404 Not Found</td>
-<td><code>{   &quot;returnCode&quot; : 1250,   &quot;message&quot; : &quot;Profile was not found&quot; }</code></td>
+<td><code>{&quot;returnCode&quot; : 1250, &quot;message&quot; : &quot;Profile was not found&quot;}</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="get-revision-details">Get revision details</h2>
-<p>GET Revision Details returns the details for the revision specified.</p>
+<p>GET Revision Details returns the details for the specified revision.</p>
 <p>Use the following GET command to return details about a revision:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v2/manifest/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/revisions/<span style="color:#f92672">{</span>revision_id<span style="color:#f92672">}</span>/details
 </span></span></code></pre></div><h3 id="example-curl-request-1">Example cURL request</h3>
@@ -312,11 +312,13 @@
 </tbody>
 </table>
 <h2 id="get-revision-bundle">GET revision bundle</h2>
-<p>A <em>revision bundle</em> is the deployable combination of published JavaScript files for the target environment in the form of a <code>.zip</code> file. If a revision was published, the value from <code>targets_published</code> is used in this endpoint to retrieve the desired files, such as <code>prod</code>.</p>
+<p>A <em>revision bundle</em> is the deployable combination of published JavaScript files for the target environment in the form of a <code>.zip</code> file. If a revision was published, the value from <code>targets_published</code> is used in this endpoint to retrieve the files you want, such as <code>prod</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /v2/manifest/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/revisions/<span style="color:#f92672">{</span>revision_id<span style="color:#f92672">}</span>/environments/<span style="color:#f92672">{</span>environment<span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="example-curl-request-2">Example cURL request</h3>
+</span></span></code></pre></div><p>This endpoint only works for the latest published revision, not previous revisions.</p>
+<h3 id="example-curl-request-2">Example cURL request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>http://api.tealiumiq.com/v2/manifest/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/revisions/<span style="color:#f92672">{</span>revision_id<span style="color:#f92672">}</span>/environments/<span style="color:#f92672">{</span>environment<span style="color:#f92672">}</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://api.tealiumiq.com/v2/manifest/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/revisions/<span style="color:#f92672">{</span>revision_id<span style="color:#f92672">}</span>/environments/<span style="color:#f92672">{</span>environment<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>--output distro.zip
 </span></span></code></pre></div><h3 id="example-response-2">Example response</h3>
 <p>The response for the cURL command is the return of a <code>.zip</code> file containing the following individual files:</p>
 <table>
@@ -360,7 +362,7 @@
 </thead>
 <tbody>
 <tr>
-<td>400 Not Found</td>
+<td>404 Not Found</td>
 <td><code>{&quot;returnCode&quot; : 1270, &quot;message&quot; : &quot;The revision bundle requested is not the latest&quot;}</code></td>
 </tr>
 </tbody>
@@ -410,7 +412,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 21, 2024 
+          <p>This page was last updated:  July 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -625,6 +627,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   

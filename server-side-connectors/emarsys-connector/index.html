@@ -410,9 +410,22 @@
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Username</strong>: Username with permissions to access Emarsys APID. For more information about the Emarsys APID username, see <a href="https://help.emarsys.com/hc/en-us/categories/201711705">Emarsys: Getting started</a>.</li>
-<li><strong>Password</strong>: Password for provided username.</li>
-<li><strong>Environment</strong>: Environment to make API calls against.</li>
+<li><strong>Authentication type</strong>:
+<ul>
+<li><strong>OAuth</strong>: Uses client credentials to authenticate with Emarsys v3 API. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-core-api-guides/b3c3a1eba8515-authentication-in-v3-api">Emarsys: Authentication in v3 API</a>.</li>
+<li><strong>WSSE</strong>: Uses username and password to authenticate with Emarsys v2 API. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-core-api-guides/branches/main/b3c3a1eba8515-authentication">Emarsys: v2 WSSE Authentication</a>.</li>
+</ul>
+</li>
+<li><strong>Client ID</strong>:<br>
+Required for OAuth authentication type. The client ID for authenticating with the Emarsys v3 API.</li>
+<li><strong>Client Secret</strong>:<br>
+Required for OAuth authentication type. The client secret for authenticating with the Emarsys v3 API.</li>
+<li><strong>Username</strong>:<br>
+Required for WSSE authentication type. Username with permissions to access Emarsys APID. For more information about the Emarsys APID username, see <a href="https://dev.emarsys.com/docs/core-api-reference/branches/main/a12e08c686f0f-2-set-up-your-account">Emarsys: Set Up Your Account</a>.</li>
+<li><strong>Password</strong>:<br>
+Required for WSSE authentication type. Password for provided username.</li>
+<li><strong>Environment</strong>:<br>
+Environment to make API calls against.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -522,11 +535,11 @@
 <tbody>
 <tr>
 <td>Target Contact List</td>
-<td><ul><li>Required</li><li>The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -542,11 +555,11 @@
 <tbody>
 <tr>
 <td>Target Contact List</td>
-<td><ul><li>Required</li><li>The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -566,11 +579,11 @@
 </tr>
 <tr>
 <td>Contact Identifier Data</td>
-<td><ul><li>Required</li><li>This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is <code>YYYY-MM-DD</code>.</li><li>Some contact fields have limited acceptable values. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: Core API Reference</a>.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is <code>YYYY-MM-DD</code>.</li><li>Some contact fields have limited acceptable values. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: Core API Reference</a>.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -605,11 +618,11 @@
 </tr>
 <tr>
 <td>Contact Identifier Data</td>
-<td><ul><li>Required</li><li>This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) This is the field used to identify a contact.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is <code>YYYY-MM-DD</code>.</li><li>Some contact fields have limited acceptable values. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: Core API Reference</a>.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>At least one field is required to identify the contact.</li><li>The only date format supported by the contact fields is <code>YYYY-MM-DD</code>.</li><li>Some contact fields have limited acceptable values. For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: Core API Reference</a>.</li><li>If you know the ID of the target contact field and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -640,11 +653,11 @@
 <tbody>
 <tr>
 <td>Target Contact List</td>
-<td><ul><li>Required</li><li>The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li>If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li>If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -660,11 +673,11 @@
 <tbody>
 <tr>
 <td>Target Contact List</td>
-<td><ul><li>Required</li><li>The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The contact list to add the contact to.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -680,11 +693,11 @@
 <tbody>
 <tr>
 <td>External Event</td>
-<td><ul><li>Required</li><li>Select the event set to trigger email.</li></ul></td>
+<td><ul><li>(Required) Select the event set to trigger email.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -699,7 +712,7 @@
 <tbody>
 <tr>
 <td>Content Personalization Data</td>
-<td><ul><li>Optional</li><li>Placeholder in email and the value to replace it with.</li></ul></td>
+<td><ul><li>(Optional) Placeholder in email and the value to replace it with.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -715,11 +728,11 @@
 <tbody>
 <tr>
 <td>External Event</td>
-<td><ul><li>Required</li><li>Select the event set to trigger email.</li></ul></td>
+<td><ul><li>(Required) Select the event set to trigger email.</li></ul></td>
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -734,7 +747,7 @@
 <tbody>
 <tr>
 <td>Content Personalization Data</td>
-<td><ul><li>Optional</li><li>Placeholder in email and the value to replace it with.</li></ul></td>
+<td><ul><li>(Optional) Placeholder in email and the value to replace it with.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -778,7 +791,7 @@
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -821,7 +834,7 @@
 </tr>
 <tr>
 <td>Contact Data</td>
-<td><ul><li>Required</li><li>The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
+<td><ul><li>(Required) The field and corresponding field data to identify the contact.</li><li> If you know the ID of the target contact list and want to configure it manually, use a custom value.</li><li>For more information, see <a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1004,7 +1017,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  July 23, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1224,6 +1237,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   

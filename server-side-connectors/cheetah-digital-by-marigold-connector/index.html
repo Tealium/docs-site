@@ -464,11 +464,11 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>email</code></td>
-<td style="text-align:left"><ul><li>Required</li><li>Target email address.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Target email address.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>eid</code></td>
-<td style="text-align:left"><ul><li>Required</li><li>Event ID tied to target mailing template.</li></ul></td>
+<td style="text-align:left"><ul><li>(Required) Event ID tied to target mailing template.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>aid</code></td>
@@ -508,19 +508,19 @@
 </tr>
 <tr>
 <td style="text-align:left">Preferred Content Type</td>
-<td style="text-align:left"><ul><li>Optional</li><li><code>HTML=Optional</code> - A specialized instance of a PARAM value that indicates the preferred content type:  <ul><li>– Text only</li><li><code>1</code> – HTML/Text multipart</li><li><code>2</code> – Rich Text/Text multipart</li></ul> </li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) <code>HTML=Optional</code> - A specialized instance of a PARAM value that indicates the preferred content type:  <ul><li>– Text only</li><li><code>1</code> – HTML/Text multipart</li><li><code>2</code> – Rich Text/Text multipart</li></ul> </li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Email CB Data Fields to Set</td>
-<td style="text-align:left"><ul><li>Optional</li><li>Add one line item per field (line items provided are pipe delimited).</li><li><code>cb=Optional</code> - A list of client-defined suppression bit indexes for the Global Suppression Tool (GST) to change, ranging from 1 to 25.</li><li>If the <code>cb</code> parameter is passed, the <code>b</code> parameter must also be specified with a value of 0 or 1.</li><li>Indicates whether the standard stoplist should be included when evaluating suppression for an address.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Add one line item per field (line items provided are pipe delimited).</li><li><code>cb=Optional</code> - A list of client-defined suppression bit indexes for the Global Suppression Tool (GST) to change, ranging from 1 to 25.</li><li>If the <code>cb</code> parameter is passed, the <code>b</code> parameter must also be specified with a value of 0 or 1.</li><li>Indicates whether the standard stoplist should be included when evaluating suppression for an address.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Email REQ Data Fields to Set</td>
-<td style="text-align:left"><ul><li>Optional</li><li>Add one line item per field (line items provided are pipe delimited).</li><li><code>req=Optional</code> - Specify required personalization fields that must be non-empty for success.</li><li>Looping dynamic content fields may only be required explicitly, replacing <code>*</code> with appropriate values (<code>ITEMS.*</code>).</li><li>Alternatively, setting <code>req</code> to a value of <code>1</code> specifies that all personalization fields present must be non-empty.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Add one line item per field (line items provided are pipe delimited).</li><li><code>req=Optional</code> - Specify required personalization fields that must be non-empty for success.</li><li>Looping dynamic content fields may only be required explicitly, replacing <code>*</code> with appropriate values (<code>ITEMS.*</code>).</li><li>Alternatively, setting <code>req</code> to a value of <code>1</code> specifies that all personalization fields present must be non-empty.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Set Dynamic Content Tags/Parameters</td>
-<td style="text-align:left"><ul><li>Optional</li><li>Add one line item per field (line items provided are pipe delimited).</li><li><code>PARAM=</code> - The value of any upper case parameter is made available for substitution into the email in place of a tag consisting of two percentage signs, the parameter name, and two percentage signs.  <ul><li>For example: For PARAM, the tag would be &ldquo;<code>%%PARAM%%</code>.</li></ul> </li><li>Uppercase parameters start with <code>A</code> - <code>Z</code> or <code>_</code>, followed by any number of characters <code>A</code>- <code>Z</code>, - <code>9</code>, or underscore ( <code>_</code>).</li><li>Values are URL-decoded before substitution.</li><li>Tags referring to parameters not supplied in the API call are replaced with an empty string.</li><li>There is no size limit to values (entire order tables can be supplied).</li><li>There is no versioning of the parameters for the three different types of email creative (text, html, rich text/aol).</li><li>If variable content needs to be formatted differently depending on creative, the API call should supply the different versions with different parameter names.</li><li>Mailing should be set up to use version-appropriate tags.</li><li>The parameters <code>T</code>, <code>TRACK</code>, and <code>EMAIL</code> are reserved for internal use.</li><li>The API is error-tolerant for PARAM names.</li><li>If a PARAM is supplied that does not exist in the template, it will be silently ignored.</li><li>Ensure that you proofread all names so that they are not lost due to a spelling error.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Add one line item per field (line items provided are pipe delimited).</li><li><code>PARAM=</code> - The value of any upper case parameter is made available for substitution into the email in place of a tag consisting of two percentage signs, the parameter name, and two percentage signs.  <ul><li>For example: For PARAM, the tag would be &ldquo;<code>%%PARAM%%</code>.</li></ul> </li><li>Uppercase parameters start with <code>A</code> - <code>Z</code> or <code>_</code>, followed by any number of characters <code>A</code>- <code>Z</code>, - <code>9</code>, or underscore ( <code>_</code>).</li><li>Values are URL-decoded before substitution.</li><li>Tags referring to parameters not supplied in the API call are replaced with an empty string.</li><li>There is no size limit to values (entire order tables can be supplied).</li><li>There is no versioning of the parameters for the three different types of email creative (text, html, rich text/aol).</li><li>If variable content needs to be formatted differently depending on creative, the API call should supply the different versions with different parameter names.</li><li>Mailing should be set up to use version-appropriate tags.</li><li>The parameters <code>T</code>, <code>TRACK</code>, and <code>EMAIL</code> are reserved for internal use.</li><li>The API is error-tolerant for PARAM names.</li><li>If a PARAM is supplied that does not exist in the template, it will be silently ignored.</li><li>Ensure that you proofread all names so that they are not lost due to a spelling error.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Enable Subscriber Lookup via <code>getuser1</code> API Call</td>
@@ -536,7 +536,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Target Subscriber List ID to match against Subscriber Lookup (<code>getuser1</code> API Call)</td>
-<td style="text-align:left"><ul><li>This option is only used when &ldquo;Subscriber Lookup&rdquo; is also enabled.</li><li>email</li><li>See the &ldquo;Email General Data Fields to Set&rdquo; row in this table.  <ul><li>Required</li><li>The email address provided in &ldquo;Email General Data Fields to Set&rdquo; section will be used to look up the subscriber.</li></ul> </li><li>Target Subscriber List ID  <ul><li>Required</li><li>The subscriber list ID that is used to match against <code>getuser1</code> API call response.</li></ul> </li></ul></td>
+<td style="text-align:left"><ul><li>This option is only used when &ldquo;Subscriber Lookup&rdquo; is also enabled.</li><li>email</li><li>See the &ldquo;Email General Data Fields to Set&rdquo; row in this table.  <ul><li>(Required) The email address provided in &ldquo;Email General Data Fields to Set&rdquo; section will be used to look up the subscriber.</li></ul> </li><li>Target Subscriber List ID  <ul><li>(Required) The subscriber list ID that is used to match against <code>getuser1</code> API call response.</li></ul> </li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -600,7 +600,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 28, 2024 
+          <p>This page was last updated:  June 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -807,6 +807,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   

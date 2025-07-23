@@ -216,22 +216,26 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>When defining a model, each attribute in your Tealium AudienceStream CDP profile is reviewed to automatically determine the top attributes that have a predictive relationship for the action you want to predict.</p>
+  <p>When defining a model, each attribute in your Tealium AudienceStream CDP profile is reviewed. This process automatically determines the top attributes that have a predictive relationship for the action you want to predict.</p>
 <h2 id="target-attributes">Target attributes</h2>
-<p>A target attribute is a AudienceStream attribute that represents the visitor behavior that you want to predict with any Tealium Predict model. For example, for the boolean visit attribute &ldquo;Has Purchased&rdquo;, a value of <strong>true</strong> indicates that a purchase event has occurred during a visit while a value of <strong>false</strong> means a purchase event did not occur during a visit.</p>
-<p>The target attribute must be either a boolean/flag or a badge type attribute, and be visit or visitor-scoped.</p>
-<p>We recommend that you use a visit-scoped boolean attribute as the target. Enrich this attribute to <strong>false</strong> at the beginning of each visit, and then enrich it to <strong>true</strong> when the target event occurs during the visit (for example, the purchase event occurs).</p>
+<p>A target attribute is a AudienceStream attribute that represents the visitor behavior that you want to predict with any Tealium Predict model. For example, for the boolean visit attribute <code>Has Purchased</code>, a value of <code>true</code> indicates that a purchase event has occurred during a visit while a value of <code>false</code> means a purchase event did not occur during a visit.</p>
+<p>The target attribute must be either a boolean or a badge attribute, and be visit or visitor-scoped.</p>
+<p>We recommend that you use a visit-scoped boolean attribute as the target. Enrich this attribute to <code>false</code> at the beginning of each visit, and then enrich it to <code>true</code> when the target event occurs during the visit (for example, the purchase event occurs).</p>
 <p>We also recommend adding a visitor number attribute, incremented by one with the same rule that sets the target boolean attribute mentioned above, if you do not already have such an attribute.</p>
 <h2 id="exclusion-attributes">Exclusion attributes</h2>
-<p>You can exclude attributes that are not relevant for your model. When deciding which attribute types to exclude, we recommend that you first train the model for initial insights with no attributes excluded.</p>
-<p>Training without including exclusion attributes provides insight into which attributes the model finds the most relevant and can lead you to consider introducing new AudienceStream attributes to help future model trainings.</p>
-<p>For example, after the initial training, you can exclude attributes with values that occur outside of the training period. After excluding these types of attributes, your training F1 score results may be lower when you retrain; however, your model produces better results when deployed.</p>
+<p>You can exclude attributes that are not relevant for your model.</p>
+<p>For your first round of model training, we recommend including all attributes except for output attributes from other Predict models, or attributes based on them.</p>
+<p>Note that this model’s output visit attribute is automatically excluded, so you don’t need to manually exclude it again.</p>
+<p>By including all other attributes during your initial training, you’ll gain insight into which ones are most relevant. This can also highlight new visit or visitor attributes you might want to add for future training.</p>
+<p>After you complete the initial training, you might choose to exclude attributes with values that only appear outside your training period. After making these changes, you may notice that your F1 score drops a bit in retraining, but your model’s performance in deployment will be more consistent and reliable.</p>
+<p>Examples of attributes to consider excluding are:</p>
 <ul>
 <li>Attributes based on dates of visit or dates of purchase. These attributes do not repeat their values outside of the training period.</li>
-<li>Attributes based on unique user information, such as a User ID or Analytics ID. These attributes do not apply to other users outside of the training period.</li>
+<li>Attributes based on other information that will not repeat outside of the training period, such as one-off campaign landing parameters.</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The target attribute is automatically excluded. Do not manually add the target attribute as an excluded attribute.</p>
 <h2 id="output-attributes">Output attributes</h2>
-<p>The Output Attribute is created by default when a new model is created. It is a numeric Visit-scoped data-layer attribute that stores the Prediction value generated by a corresponding Deployed Model.</p>
+<p>The output attribute is created by default when a new model is created. It is a numeric visit-scoped attribute that stores the prediction value generated by a corresponding deployed model.</p>
 
 </div>
 
@@ -277,7 +281,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 2, 2024 
+          <p>This page was last updated:  July 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -483,6 +487,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   

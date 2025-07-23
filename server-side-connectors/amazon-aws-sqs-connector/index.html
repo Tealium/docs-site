@@ -410,8 +410,8 @@
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li>AWS Account</li>
-<li>Required: <code>sqs:SendMessage</code> permission</li>
-<li>Optional: <code>sqs:ListQueues</code> permission</li>
+<li>(Required) <code>sqs:SendMessage</code> permission</li>
+<li>(Optional) <code>sqs:ListQueues</code> permission</li>
 <li>Queue to send data to</li>
 </ul>
 <h2 id="connector-actions">Connector actions</h2>
@@ -463,26 +463,26 @@
 <li>
 <p><strong>Access Key</strong></p>
 <ul>
-<li>Required. Provide your IAM User&rsquo;s access key. Associated IAM policy (for either IAM User or Assumed Role) must grant <code>sqs:SendMessage</code> permission.</li>
+<li>(Required) Provide your IAM User&rsquo;s access key. Associated IAM policy (for either IAM User or Assumed Role) must grant <code>sqs:SendMessage</code> permission.</li>
 <li>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.htm">Access Control for Amazon SQS</a>.</li>
 </ul>
 </li>
 <li>
 <p><strong>Secret Key</strong></p>
 <ul>
-<li>Required. Provide your IAM User&rsquo;s secret key</li>
+<li>(Required) Provide your IAM User&rsquo;s secret key</li>
 </ul>
 </li>
 <li>
 <p><strong>Region</strong></p>
 <ul>
-<li>Required. Select the region.</li>
+<li>(Required) Select the region.</li>
 </ul>
 </li>
 <li>
 <p><strong>Assume Role: ARN</strong></p>
 <ul>
-<li>Optional: Provide Amazon Resource Name (ARN) of role to assume.<br>
+<li>(Optional) Provide Amazon Resource Name (ARN) of role to assume.<br>
 For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <li>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a>.</li>
 </ul>
@@ -490,13 +490,13 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <li>
 <p><strong>Assume Role: Session Name</strong></p>
 <ul>
-<li>Optional: Provide identifier for assumed role session.</li>
+<li>(Optional) Provide identifier for assumed role session.</li>
 </ul>
 </li>
 <li>
 <p><strong>Assume Role: External ID</strong></p>
 <ul>
-<li>Optional: Provide external identifier.</li>
+<li>(Optional) Provide external identifier.</li>
 <li>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
 </ul>
 </li>
@@ -523,7 +523,7 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value.</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
+<td><ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value.</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
@@ -559,7 +559,7 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
+<td><ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
@@ -602,7 +602,7 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value. The custom values should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
+<td><ul><li>(Required) Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value. The custom values should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
@@ -618,19 +618,19 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 </tr>
 <tr>
 <td>Message Template Variables</td>
-<td><ul><li>Optional: Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Message Templates</td>
-<td><ul><li>Optional: Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Message Template Variables</td>
-<td><ul><li>Optional: Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Message Templates</td>
-<td><ul><li>Optional: Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -703,7 +703,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  June 13, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -914,6 +914,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   

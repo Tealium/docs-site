@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Funnel Attribute | Data types | Tealium Docs</title>
+    <title>Funnel attribute | Data types | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -287,7 +287,7 @@
         <a href="/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">Badge Attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">Boolean Attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">Date Attribute</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".server-side-funnel-attribute">Funnel Attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".server-side-funnel-attribute">Funnel attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">Number Attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">Popular Badges</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">Set of Strings Attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -475,7 +475,7 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-consent">Consent</a>
         <ul class="pl2  ss-consent desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/consent/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-server-side-consent-management">Consent management</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/consent/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-server-side-consent-management">Server-side consent management</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/consent/event-specs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">Consent change event specifications</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/consent/sample-privacy-policy-excerpts/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-sample-privacy-policy-excerpts">Sample privacy policy excerpts</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/consent/server-side-support-gpc/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">Server-side Global Privacy Control</a></li><li class="relative w-100 fw8 f5 ">
@@ -573,7 +573,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Funnel Attribute</h1>
+<h1 class="lh-title mt30 mb3">Funnel attribute</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -593,10 +593,14 @@
          title="Screenshot 2019-11-11 at 1.26.28 PM.png"/>
     </a>
 </figure>
+<p>In most use cases, we recommend that you set up the funnel attribute as a visit-scoped attribute. This means the funnel resets at the end of each site visit and evaluates customer actions as new for every session.</p>
+<p>This approach is beneficial because it tracks customer
+behavior on a visit-by-visit basis, which can then be used to dynamically inform audience segmentation.</p>
+<p>For example, on a customer&rsquo;s first visit, they complete up to step two, placing them in an audience segment for users who reached that stage. On a subsequent visit, the same customer progresses to step four of the funnel. As a result, they are removed from the step two audience and added to a new audience representing users who reached step four.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>The funnel attribute tracks a sequence of steps, measuring the visitor&rsquo;s progress from start to finish. A step is recorded when the configured rule occurs. When a step is recorded, attribute values can also be captured as a snapshot of information about the step. Funnel steps can be required or optional, except for the last step which is always required.</p>
-<p>Example funnels include: Checkout Funnel, Purchase Funnel, or a Lead-Generator Funnel.</p>
-<h3 id="size-limits">Size Limits</h3>
+<p>The funnel attribute tracks a sequence of actions taken by the user as steps. These steps measure the visitor&rsquo;s progress from start to finish. A step is recorded when the configured rule occurs. When a step is recorded, attribute values can also be captured as a snapshot of information about the step. Funnel steps can be required or optional, except for the last step, which is always required.</p>
+<p>Example funnels include: <code>Checkout Funnel</code>, <code>Purchase Funnel</code>, or a <code>Lead-Generator Funnel</code>.</p>
+<h3 id="size-limits">Size limits</h3>
 <p>There are no storage capacity limits for funnel attributes, but these attributes are still limited by the maximum size of the profile after encryption and compression (400 KB).</p>
 <h3 id="required-and-optional-steps">Required and optional steps</h3>
 <p>When setting up a funnel, you define all the steps (both required and optional) in the expected sequence.</p>
@@ -631,7 +635,7 @@
 </table>
 <h4 id="optional-steps">Optional steps</h4>
 <p>Steps not marked as required are considered optional. Optional steps are only recorded if they occur in the exact sequence that is defined in the funnel. Optional steps can be skipped by the visitor and the funnel continues recording subsequent steps. However, when an optional step is skipped, and then performed later, it is not recorded or back-filled in the funnel. In other words, if an optional step is performed out of sequence, it is not recorded in the funnel.</p>
-<p>Example funnel behavior with one optional step: Step #1, Step #2 (optional), Step #3, and Step #4:</p>
+<p>Example funnel behavior with one optional step: Step #1, Step #2 (Optional), Step #3, and Step #4:</p>
 <table>
 <thead>
 <tr>
@@ -658,12 +662,40 @@
 </tr>
 </tbody>
 </table>
+<p>In funnel tracking, especially when using visit-level attributes to determine a user&rsquo;s progression, itʼs important to account for real-world behaviors, such as users leaving and re-entering the funnel at different stages.</p>
+<p>For example:</p>
+<ol>
+<li>Step #1: User visits the homepage <code>example.com</code>.</li>
+<li>Step #2: User navigates to <code>example.com/subpage</code>.<br>
+At this point, the user&rsquo;s funnel attribute is marked as &ldquo;Step #2&rdquo;, reflecting their last completed step.</li>
+<li>The user leaves the site (exits the funnel).</li>
+<li>On a later visit, the user lands directly on <code>example.com/subpage</code>, skipping the homepage.</li>
+</ol>
+<p>In a funnel where step #1 is required, the system expects the user to re-complete it before advancing. Since they didn&rsquo;t re-enter through the homepage, the funnel logic halts and prevents them from being recognized as progressing through step #2 or beyond.</p>
+<p><strong>Why marking Step #1 as optional helps</strong><br>
+By marking step #1 as optional, the funnel logic does not require it to be re-triggered. This means the user can:</p>
+<ul>
+<li>Start their session directly on step #2 (the subpage).</li>
+<li>Be properly attributed with funnel progression.</li>
+<li>Continue to be tracked through subsequent steps.</li>
+</ul>
+<p>This configuration is particularly useful for the following scenarios:</p>
+<ul>
+<li>Users may enter the funnel at various points (not always at the beginning).</li>
+<li>Multiple sessions or devices are involved.</li>
+<li>You want to reduce friction in funnel tracking and improve attribution accuracy.</li>
+</ul>
 <h3 id="capture-attribute-data">Capture attribute data</h3>
-<p>In addition to recording each step of a funnel, you can also capture the value of one or more attributes when a step occurs. Captured data provide more information about the state of the visitor when the step occurred.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Funnel attributes are accessible in AudienceStore, but not in AudienceDB or via Data Layer Enrichment.</p>
+<p>In addition to recording each step of a funnel, you can also capture the value of one or more attributes when a step occurs. Captured data provides more information about the state of the visitor when the step occurred.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Funnel attributes are accessible in AudienceStore, but not in AudienceDB or in data layer enrichment.</p>
+<figure><a class="slb" href="/images/server-side/attributes/capture_values_of_funnel_attribute.png"><img src="/images/server-side/attributes/capture_values_of_funnel_attribute.png"
+         alt="Capture value of funnel attribute"
+         title="Capture value of funnel attribute"/>
+    </a>
+</figure>
 <h2 id="enrichments">Enrichments</h2>
 <h3 id="create-a-step">Create a step</h3>
-<p>Use this enrichment to create a step in the funnel. As you add funnel steps, the step listed at the top of the list is the first step in the funnel and the step listed at the bottom is the last (required) step. New steps are added to the top of the list.</p>
+<p>Use this enrichment to create a step in the funnel. As you add funnel steps, the step listed at the top of the list is the first step in the funnel and the step listed at the bottom is the last required step. New steps are added to the top of the list.</p>
 <p>To create a funnel step:</p>
 <ol>
 <li>Click <strong>Create a Step</strong>.</li>
@@ -674,161 +706,189 @@
 </ol>
 <p>Repeat these steps for each step in the funnel.</p>
 <p>After entering all the steps, drag them into the proper sequence.</p>
-<h4 id="example">Example</h4>
-<p>A basic purchase funnel: the path from a product page through the cart page and checkout page to the purchase page.</p>
-<p><strong>Step 1: View Product</strong>
-Capture Data: <code>product_name</code><br>
-Rule: <code>tealium_event equals &quot;product_view&quot;</code></p>
-<p><strong>Step 2: View Cart</strong><br>
-Capture Data: none<br>
-Rule: <code>tealium_event equals &quot;cart_view&quot;</code></p>
-<p><strong>Step 3: Checkout</strong><br>
-Capture Data: none<br>
-Rule: <code>tealium_event equals &quot;checkout&quot;</code></p>
-<p><strong>Step 4: Purchase Complete</strong><br>
-Capture Data: <code>order_id</code> and <code>order_total</code><br>
-Rule: <code>tealium_event equals &quot;purchase&quot;</code></p>
-<h2 id="usage-example">Usage example</h2>
-<h3 id="free-trial-registration-funnel">Free trial registration funnel</h3>
-<p>Let&rsquo;s assume you allow your visitors to try a premium product for free before buying it. The trial product, however, is only available to visitors who complete a simple, three-step registration process. You define all the steps in your Funnel and arrange them in the order the visitor must complete them. There are two ways to do this:</p>
-<ul>
-<li>Add them in the reverse chronological order.</li>
-<li>Or add them in a random order, then drag each step to the appropriate position.</li>
-</ul>
-<p>For this example, you will follow the reverse chronological method. Be certain to mark each step as &lsquo;Required&rsquo;. It&rsquo;s how you will know who successfully registered and who dropped off before the end.</p>
-<ol>
-<li>Add the Funnel Attribute. Give it a title and set the scope.</li>
-</ol>
-<pre tabindex="0"><code>Funnel Title: Free Trial Registration
-Funnel Scope: Visitor
-</code></pre><ol start="2">
-<li>Create the final step of the registration, one that brings the visitor to the &lsquo;Thank you&rsquo; page. Being the only step at this point, it is automatically set to Required. No Attribute data is captured here.</li>
-</ol>
-<pre tabindex="0"><code>Title: Step 3-Trial Complete
-WHEN: ANY EVENT
-Rule: Free Trial - Thanks
-  Current URL contains (ignore case) &#34;freetrialthanks.html&#34;
-</code></pre><ol start="3">
-<li>Create the intermediate step that requires the visitor to click the &lsquo;Register&rsquo; button. This step is &lsquo;Required&rsquo; but no Attribute data is captured here.</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Prior to this step, you have to track the button with a jQuery listener and capture the category and action data when it is clicked by a visitor. In Tealium iQ, <a href="/iq-tag-management/data-layer/data-layer-variables/">add two UDO variables</a>, <code>ga_category</code> and <code>ga_action</code>, then configure the <a href="/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery Extension</a>. Only then will the data sources be available to the rule condition.</p>
-<pre tabindex="0"><code>Title: Step 2-Trial Engaged
-WHEN: ANY EVENT
-Rule:
-  ga_category contains (ignore case) &#34;free trial&#34;
-  AND
-  ga_action contains &#34;engaged&#34;
-</code></pre><ol start="4">
-<li>Create the first step that brings the visitor to the free trial registration page. This step is &lsquo;Required&rsquo; but no Attribute data is captured here.</li>
-</ol>
-<pre tabindex="0"><code>Title: Step 1- Trial Landed
-WHEN: ANY EVENT
-Rule: Free Trial Landing
-  Current URL contains (ignore case)&#34;freetrial.html&#34;
-</code></pre><h4 id="result">Result</h4>
-<p>When a required step is completed, it is immediately funneled out while the visitor advances in the registration. This pattern of tracking and funneling continues until the visitor has successfully registered for the product. On the other hand, the registration is deemed incomplete should the visitor fail to complete any step in the Funnel.</p>
-<h3 id="conversion-funnel">Conversion funnel</h3>
-<p>Create a funnel attribute name <code>Conversion Funnel</code>. Then click <strong>Create a Step</strong> for each step of the funnel.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="example---purchase">Example - Purchase</h3>
+<p>The following example demonstrates a basic purchase funnel with a path from a product page through the cart page and checkout page to the purchase page.</p>
+<h4 id="step-1---view-product">Step 1 - View Product</h4>
+<p>Capture data: <code>product_name</code></p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">product_view</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-2---view-cart">Step 2 - View Cart</h4>
+<p>Capture Data: none</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">cart_view</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-3---checkout">Step 3 - Checkout</h4>
+<p>Capture Data: none</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">checkout</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-4---purchase-complete">Step 4 - Purchase Complete</h4>
+<p>Capture Data: <code>order_id</code> and <code>order_total</code></p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div>
+<p>Each of the steps are required, and when a step is complete, it is immediately funneled out while the visitor advances in the purchase funnel. This pattern of tracking and funneling continues until the visitor has successfully purchased the product. On the other hand, the purchase is considered incomplete if the visitor fails to complete any step in the funnel.</p>
+<h3 id="example---conversion-funnel">Example - Conversion funnel</h3>
+<p>Create a funnel attribute named <strong>Conversion Funnel</strong>. Then, click <strong>Create a Step</strong> for each step of the funnel.</p>
+<figure><a class="slb" href="/images/server-side/attributes/add_funnel_attribute.png"><img src="/images/server-side/attributes/add_funnel_attribute.png"
+         alt="Add funnel attribute"
+         title="Add funnel attribute"/>
+    </a>
+</figure>
 <h4 id="step-1---viewed-a-product">Step 1 - Viewed a Product</h4>
-<figure><a class="slb" href="/images/server-side/funnel-3.png"><img src="/images/server-side/funnel-3.png"
-         alt="Funnel - Viewed a product"
-         title="Funnel - Viewed a product"/>
+<figure><a class="slb" href="/images/server-side/attributes/funnel_step_1_viewed_a_product.png"><img src="/images/server-side/attributes/funnel_step_1_viewed_a_product.png"
+         alt="Funnel Step 1"
+         title="Funnel Step 1"/>
     </a>
 </figure>
 <h4 id="step-2---viewed-cart-page">Step 2 - Viewed Cart Page</h4>
-<figure><a class="slb" href="/images/server-side/funnel-4.png"><img src="/images/server-side/funnel-4.png"
-         alt="Funnel - Viewed cart"
-         title="Funnel - Viewed cart"/>
+<p class="tip"><i class="fa fa-info-circle"></i>You must reorder this step and drag the UI container below the previous step. The attribute will follow the steps in order as they appear in the UI.</p>
+<figure><a class="slb" href="/images/server-side/attributes/funnel_step_2_viewed_cart_page.png"><img src="/images/server-side/attributes/funnel_step_2_viewed_cart_page.png"
+         alt="Funnel Step 2"
+         title="Funnel Step 2"/>
     </a>
 </figure>
-<h4 id="step-3---viewed-checkout-page-optional-as-the-user-may-already-be-logged-in">Step 3 - Viewed Checkout Page (optional as the user may already be logged in)</h4>
-<figure><a class="slb" href="/images/server-side/funnel-5.png"><img src="/images/server-side/funnel-5.png"
-         alt="Funnel - Viewed checkout page"
-         title="Funnel - Viewed checkout page"/>
+<h4 id="step-3---viewed-checkout-page">Step 3 - Viewed Checkout Page</h4>
+<p>This step is optional because the user may already be logged in.</p>
+<figure><a class="slb" href="/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png"><img src="/images/server-side/attributes/funnel_step_3_viewed_checkout_page.png"
+         alt="Funnel Step 3"
+         title="Funnel Step 3"/>
     </a>
 </figure>
-<p>The following steps are all required and mirror Step 2.</p>
+<p>The following steps are all required and use the same logic as step 2.</p>
 <h4 id="step-4---viewed-billing-page">Step 4 - Viewed Billing Page</h4>
-<pre tabindex="0"><code>page_name EQUALS billing
-</code></pre><h4 id="step-5---viewed-shipping-page">Step 5 - Viewed Shipping Page</h4>
-<pre tabindex="0"><code>page_name EQUALS shipping_method
-</code></pre><h4 id="step-6---viewed-payment-page">Step 6 - Viewed Payment Page</h4>
-<pre tabindex="0"><code>page_name EQUALS payment
-</code></pre><h4 id="step-7---viewed-order-review-page">Step 7 - Viewed Order Review Page</h4>
-<pre tabindex="0"><code>page_name EQUALS review
- AND
- page_type EQUALS checkout
-</code></pre><h4 id="step-8---viewed-order-success-page">Step 8 - Viewed Order Success Page</h4>
-<pre tabindex="0"><code>page_name EQUALS cart success
- AND
- order_id IS ASSIGNED
-</code></pre><h4 id="funnel-fallout">Funnel fallout</h4>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_name</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">billing</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-5---viewed-shipping-page">Step 5 - Viewed Shipping Page</h4>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_name</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">shipping_method</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-6---viewed-payment-page">Step 6 - Viewed Payment Page</h4>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_name</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">payment</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-7---viewed-order-review-page">Step 7 - Viewed Order Review Page</h4>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_name</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">review</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">page_type</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">checkout</span>
+      </div>
+  </div>
+</div>
+<h4 id="step-8---viewed-order-success-page">Step 8 - Viewed Order Success Page</h4>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">page_name</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">cart success</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">order_id</span>
+        <span class="operator">IS ASSIGNED</span>
+        
+      </div>
+  </div>
+</div>
+<h4 id="funnel-fallout">Funnel fallout</h4>
 <p>Knowing where a user dropped from the funnel is an important piece to many marketing campaigns, and AudienceStream can tell you the last step completed.</p>
-<p>First, several rules must be created for each step of the funnel. For example the rule <code>Conversion Funnel - Step 1 Complete</code> checks if <code>Step 1 - Product</code> has been completed.</p>
-<figure><a class="slb" href="/images/server-side/no-title-1138i54b80adb945590ff.png"><img src="/images/server-side/no-title-1138i54b80adb945590ff.png"
-         alt="Check Step 1"
-         title="Check Step 1"/>
+<p>First, several rules must be created for each step of the funnel. For example the rule <strong>Conversion Funnel - Step 1 Complete</strong> checks if <strong>Step 1 - Product</strong> has been completed.</p>
+<figure><a class="slb" href="/images/server-side/attributes/conversion_funnel_step_1_complete.png"><img src="/images/server-side/attributes/conversion_funnel_step_1_complete.png"
+         alt="Conversion Funnel - Step 1 Complete"
+         title="Conversion Funnel - Step 1 Complete"/>
     </a>
 </figure>
-<p>Then, create a string attribute named <code>Conversion Funnel - Last Step Completed</code>. This string attribute will have an enrichment for each step of the funnel and will check for each step of the funnel being completed using the rules above.</p>
-<figure><a class="slb" href="/images/server-side/funnel-7.png"><img src="/images/server-side/funnel-7.png"
-         alt="String attribute created"
-         title="String attribute created"/>
+<p>Then, create a string attribute named <strong>Conversion Funnel - Last Step Completed</strong>. This string attribute will have an enrichment for each step of the funnel and will check for each step of the funnel being completed using the rules above.</p>
+<figure><a class="slb" href="/images/server-side/attributes/conversion_funnel_last_step_completed.png"><img src="/images/server-side/attributes/conversion_funnel_last_step_completed.png"
+         alt="Conversion Funnel - Last Step Completed"
+         title="Conversion Funnel - Last Step Completed"/>
     </a>
 </figure>
 <h4 id="abandonment">Abandonment</h4>
-<p>Abandonment must be determined at the end of the session to ensure that all page views have been accounted for. This can be done by creating a badge titled <code>Cart Abandoner</code> that looks at the conversion funnel at the end of the visit and checks to see if the funnel was started but not completed.</p>
-<figure><a class="slb" href="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"><img src="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"
-         alt="Cart abandoned?"
-         title="Cart abandoned?"/>
+<p>Abandonment must be determined at the end of the session to ensure that all page views have been accounted for. This can be done by creating a badge titled <strong>Cart Abandoner</strong> that looks at the conversion funnel at the end of the visit and checks to see if the funnel was started but not completed.</p>
+<figure><a class="slb" href="/images/server-side/attributes/assign_cart_abandoner_badge.png"><img src="/images/server-side/attributes/assign_cart_abandoner_badge.png"
+         alt="Assign cart abandoner badge"
+         title="Assign cart abandoner badge"/>
     </a>
 </figure>
-<p>We also want to remove the badge upon the <code>Page View</code> event when the conversion funnel is completed.</p>
-<figure><a class="slb" href="/images/server-side/funnel-8-remove-badge.png"><img src="/images/server-side/funnel-8-remove-badge.png"
-         alt="Remove badge"
-         title="Remove badge"/>
+<p>We also want to remove the badge upon the <strong>Page View</strong> event when the conversion funnel is completed.</p>
+<figure><a class="slb" href="/images/server-side/attributes/remove_cart_abandoner_badge.png"><img src="/images/server-side/attributes/remove_cart_abandoner_badge.png"
+         alt="Remove cart abandoner badge"
+         title="Remove cart abandoner badge"/>
     </a>
 </figure>
 <h4 id="audience">Audience</h4>
-<p>We can then add an audience that makes use of the newly created badge. The audience should also verify we have some sort of identified about the customer, such as the email address, so that they are able to be targeted.</p>
-<figure><a class="slb" href="/images/server-side/funnel-9-audience.png"><img src="/images/server-side/funnel-9-audience.png"
-         alt="Create audience"
-         title="Create audience"/>
+<p>We can then add an audience that makes use of the newly created badge. The audience should also verify we have an identifier about the customer, such as the email address, so that they are able to be targeted.</p>
+<figure><a class="slb" href="/images/server-side/attributes/audience_using_cart_abandoner_badge.png"><img src="/images/server-side/attributes/audience_using_cart_abandoner_badge.png"
+         alt="Audience that uses cart abadoner badge"
+         title="Audience that uses cart abadoner badge"/>
     </a>
 </figure>
 <h4 id="action">Action</h4>
-<p>This audience can now be used to trigger any connector (for example, to an ESP) to help get the customer back to the website and convert.</p>
-<p>The who: in our example this customer email address is used to tell the vendor who is the user.</p>
-<p>The what: we are telling the vendor the visitor abandoned the cart and at which step.</p>
-<figure><a class="slb" href="/images/server-side/funnel-10-action2.png"><img src="/images/server-side/funnel-10-action2.png"
-         alt="Funnel action 2"
-         title="Funnel action 2"/>
+<p>This audience can now be used to trigger any connector to help get the customer back to the website and convert.</p>
+<p><strong>The who</strong>: In our example, this customer email address is used to tell the vendor who is the user.</p>
+<p><strong>The what</strong>: We are telling the vendor the visitor abandoned the cart and at which step.</p>
+<figure><a class="slb" href="/images/server-side/attributes/funnel_audience_conversion_action.png"><img src="/images/server-side/attributes/funnel_audience_conversion_action.png"
+         alt="Audience conversion action"
+         title="Audience conversion action"/>
     </a>
 </figure>
 <h4 id="trace">Trace</h4>
 <p>To see how this works, perform a trace and navigate through each step of the conversion funnel.</p>
-<figure><a class="slb" href="/images/server-side/trace-2.png"><img src="/images/server-side/trace-2.png"
-         alt="Trace 3"
-         title="Trace 3" width="262" height="263"/>
-    </a>
-</figure>
-<p>Notice how the trait is updated to show the last step completed, and the funnel is updated to show all steps completed.</p>
-<p>Upon session end, the <code>Cart Abandoner</code> badge is assigned, the <code>Cart Abandoners</code> audience is joined, and related connectors are triggered.</p>
-<figure><a class="slb" href="/images/server-side/trace-part-1-enriched.png"><img src="/images/server-side/trace-part-1-enriched.png"
-         alt="Cart abandoner enriched"
-         title="Cart abandoner enriched"/>
-    </a>
-</figure>
-<figure><a class="slb" href="/images/server-side/trace-part-2-enriched.png"><img src="/images/server-side/trace-part-2-enriched.png"
-         alt="Cart abandoner enriched 2"
-         title="Cart abandoner enriched 2"/>
-    </a>
-</figure>
-<figure><a class="slb" href="/images/server-side/trace-audience.png"><img src="/images/server-side/trace-audience.png"
-         alt="Trace audience"
-         title="Trace audience"/>
-    </a>
-</figure>
 
 </div>
 
@@ -889,7 +949,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 12, 2024 
+          <p>This page was last updated:  July 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -904,14 +964,14 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#required-and-optional-steps" href="javascript:void(0)">Required and optional steps</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#capture-attribute-data" href="javascript:void(0)">Capture attribute data</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-step" href="javascript:void(0)">Create a step</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usage-example" href="javascript:void(0)">Usage example</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#free-trial-registration-funnel" href="javascript:void(0)">Free trial registration funnel</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversion-funnel" href="javascript:void(0)">Conversion funnel</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example---purchase" href="javascript:void(0)">Example - Purchase</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example---conversion-funnel" href="javascript:void(0)">Example - Conversion funnel</a></li>
               </nav>
   </aside></nav>
 
@@ -1101,6 +1161,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tools/tealium-consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
         </a>
     </li>
   
