@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>何を予測するかを決定する | 戦略を定義する | Tealiumドキュメント</title>
+    <title>予測対象を決定する | 戦略を定義する | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -133,7 +133,7 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".predict-strat">戦略を定義する</a>
         <ul class="pl2 bl b--primary bw1 predict-strat desktopmenu animated fadeIn list "><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/predict/strategy/decide-what-to-predict/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".predict-decide-what-to-predict">何を予測するかを決定する</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/predict/strategy/decide-what-to-predict/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".predict-decide-what-to-predict">予測対象を決定する</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/attribute-readiness/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-attribute-readiness">属性の準備状況</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/prepare-your-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-prepare-your-data">データの準備</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/start-training/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-review-and-start-training">トレーニングを開始する</a></li></ul>
@@ -203,7 +203,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">何を予測するかを決定する</h1>
+<h1 class="lh-title mt30 mb3">予測対象を決定する</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -211,28 +211,32 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium Predict MLでターゲットとする属性、除外する属性、出力する属性について説明します。
+      この記事では、Tealium Predict MLでターゲットとする属性、除外する属性、および出力する属性について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>モデルを定義する際、Tealium AudienceStream CDPプロファイルの各属性が自動的にレビューされ、予測したいアクションに対する予測関係を持つトップの属性が決定されます。</p>
+  <p>モデルを定義する際には、Tealium AudienceStream CDPプロファイルの各属性が検討されます。このプロセスでは、予測したいアクションに対して予測関係があるトップの属性が自動的に決定されます。</p>
 <h2 id="ターゲット属性">ターゲット属性</h2>
-<p>ターゲット属性は、Tealium Predictモデルで予測したい訪問の行動を表すAudienceStream属性です。例えば、ブール型の訪問属性「Has Purchased」では、<strong>true</strong>の値は訪問中に購入イベントが発生したことを示し、<strong>false</strong>の値は訪問中に購入イベントが発生しなかったことを意味します。</p>
-<p>ターゲット属性は、ブール型/フラグまたはバッジタイプの属性であり、訪問または訪問のスコープでなければなりません。</p>
-<p>訪問スコープのブール属性をターゲットとして使用することをお勧めします。訪問の開始時にこの属性を<strong>false</strong>に構成し、訪問中にターゲットイベント（例えば、購入イベント）が発生したときに<strong>true</strong>に構成します。</p>
-<p>また、既にそのような属性を持っていない場合、上記で述べたターゲットブール属性を構成する同じルールで1つ増やした訪問数属性を追加することをお勧めします。</p>
+<p>ターゲット属性は、Tealium Predictモデルで予測したい訪問の行動を表すAudienceStream属性です。例えば、ブール型の訪問属性<code>Has Purchased</code>について、<code>true</code>は訪問中に購入イベントが発生したことを示し、<code>false</code>は購入イベントが発生しなかったことを意味します。</p>
+<p>ターゲット属性は、ブール型またはバッジ属性であり、訪問または訪問スコープでなければなりません。</p>
+<p>訪問スコープのブール属性をターゲットとして使用することをお勧めします。訪問の開始時にこの属性を<code>false</code>に構成し、訪問中にターゲットイベント（例えば、購入イベントが発生する）が発生したときに<code>true</code>に変更します。</p>
+<p>また、上記のターゲットブール属性を構成する同じルールで1ずつ増加する訪問番号属性を追加することもお勧めします（まだそのような属性を持っていない場合）。</p>
 <h2 id="除外属性">除外属性</h2>
-<p>モデルに関連性のない属性を除外することができます。どの属性タイプを除外するかを決定する際には、まず属性を除外せずにモデルを初期の洞察のために訓練することをお勧めします。</p>
-<p>除外属性を含まずに訓練することで、モデルが最も関連性が高いと判断した属性についての洞察を得ることができ、将来のモデル訓練を助けるために新しいAudienceStream属性を導入することを検討するきっかけになります。</p>
-<p>例えば、初期の訓練の後、訓練期間外に発生する値を持つ属性を除外することができます。このような属性を除外した後、再訓練時のF1スコアの結果は低くなるかもしれませんが、デプロイされたモデルはより良い結果を出します。</p>
+<p>モデルに関連しない属性は除外できます。</p>
+<p>最初のモデルトレーニングラウンドでは、他のPredictモデルの出力属性やそれに基づく属性を除いて、すべての属性を含めることをお勧めします。</p>
+<p>このモデルの出力訪問属性は自動的に除外されるため、再度手動で除外する必要はありません。</p>
+<p>初期トレーニング中にすべての他の属性を含めることで、最も関連性の高い属性がどれかを把握できます。これにより、将来のトレーニングのために追加したい新しい訪問または訪問属性が明らかになることもあります。</p>
+<p>初期トレーニングを完了した後、トレーニング期間外にのみ現れる値を持つ属性を除外することを選択するかもしれません。これらの変更を行った後、再トレーニングでF1スコアが少し下がるかもしれませんが、モデルのデプロイメントでのパフォーマンスはより一貫性があり信頼性が高くなります。</p>
+<p>除外を検討する属性の例は以下の通りです：</p>
 <ul>
-<li>訪問日や購入日に基づく属性。これらの属性は訓練期間外では値を繰り返しません。</li>
-<li>ユーザーIDやアナリティクスIDなどのユニークなユーザー情報に基づく属性。これらの属性は訓練期間外の他のユーザーには適用されません。</li>
+<li>訪問日または購入日に基づく属性。これらの属性はトレーニング期間外で値が繰り返されません。</li>
+<li>トレーニング期間外で繰り返されないその他の情報に基づく属性、例えば一度きりのキャンペーンランディングパラメーター。</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ターゲット属性は自動的に除外されます。ターゲット属性を手動で除外属性として追加しないでください。</p>
 <h2 id="出力属性">出力属性</h2>
-<p>出力属性は、新しいモデルが作成されるときにデフォルトで作成されます。これは、対応するデプロイモデルによって生成された予測値を格納する数値の訪問スコープのデータレイヤー属性です。</p>
+<p>新しいモデルが作成されると、出力属性はデフォルトで作成されます。これは、対応するデプロイされたモデルによって生成された予測値を格納する数値の訪問スコープ属性です。</p>
 
 </div>
 
@@ -278,7 +282,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -640,7 +644,7 @@
   
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/ja/predict/strategy/decide-what-to-predict/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          何を予測するかを決定する
+          予測対象を決定する
       </a>
       </li>
       

@@ -467,9 +467,22 @@
 <p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>ユーザー名</strong>: Emarsys APIにアクセスする権限を持つユーザー名。Emarsys APIのユーザー名についての詳細は、<a href="https://help.emarsys.com/hc/en-us/categories/201711705">Emarsys: 入門</a>を参照してください。</li>
-<li><strong>パスワード</strong>: 提供されたユーザー名のパスワード。</li>
-<li><strong>環境</strong>: API呼び出しを行う環境。</li>
+<li><strong>認証タイプ</strong>：
+<ul>
+<li><strong>OAuth</strong>：クライアント資格情報を使用して Emarsys v3 API で認証します。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-core-api-guides/b3c3a1eba8515-authentication-in-v3-api">Emarsys: v3 API での認証</a>を参照してください。</li>
+<li><strong>WSSE</strong>：ユーザー名とパスワードを使用して Emarsys v2 API で認証します。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-core-api-guides/branches/main/b3c3a1eba8515-authentication">Emarsys: v2 WSSE 認証</a>を参照してください。</li>
+</ul>
+</li>
+<li><strong>クライアント ID</strong>：<br>
+OAuth 認証タイプに必要です。Emarsys v3 API で認証するためのクライアント ID。</li>
+<li><strong>クライアントシークレット</strong>：<br>
+OAuth 認証タイプに必要です。Emarsys v3 API で認証するためのクライアントシークレット。</li>
+<li><strong>ユーザー名</strong>：<br>
+WSSE 認証タイプに必要です。Emarsys APID へのアクセス権を持つユーザー名。Emarsys APID ユーザー名についての詳細は、<a href="https://dev.emarsys.com/docs/core-api-reference/branches/main/a12e08c686f0f-2-set-up-your-account">Emarsys: アカウントの構成</a>を参照してください。</li>
+<li><strong>パスワード</strong>：<br>
+WSSE 認証タイプに必要です。提供されたユーザー名のパスワード。</li>
+<li><strong>環境</strong>：<br>
+API コールを行う環境。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -537,22 +550,22 @@
 <td>✓</td>
 </tr>
 <tr>
-<td>RDSテーブルへのレコードのアップサート（リアルタイム）</td>
+<td>RDS テーブルへのレコードのアップサート（リアルタイム）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>RDSテーブルへのレコードのアップサート（バッチ処理）</td>
+<td>RDS テーブルへのレコードのアップサート（バッチ処理）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>RDSテーブルのレコードの削除（リアルタイム）</td>
+<td>RDS テーブルのレコードの削除（リアルタイム）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>RDSテーブルのレコードの削除（バッチ処理）</td>
+<td>RDS テーブルのレコードの削除（バッチ処理）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -579,11 +592,11 @@
 <tbody>
 <tr>
 <td>ターゲットコンタクトリスト</td>
-<td><ul><li>必須</li><li>コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コアAPIリファレンス</a>を参照してください。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コア API リファレンス</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -599,11 +612,11 @@
 <tbody>
 <tr>
 <td>ターゲットコンタクトリスト</td>
-<td><ul><li>必須</li><li>コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コアAPIリファレンス</a>を参照してください。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コア API リファレンス</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -623,11 +636,11 @@
 </tr>
 <tr>
 <td>コンタクト識別データ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するために使用されるフィールド。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するために使用されるフィールド。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>コンタクトを識別するために少なくとも1つのフィールドが必要です。</li><li>コンタクトフィールドでサポートされている唯一の日付形式は <code>YYYY-MM-DD</code> です。</li><li>一部のコンタクトフィールドには受け入れ可能な値が限られています。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: コアAPIリファレンス</a>を参照してください。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>コンタクトを識別するために少なくとも1つのフィールドが必要です。</li><li>コンタクトフィールドでサポートされている唯一の日付形式は <code>YYYY-MM-DD</code> です。</li><li>一部のコンタクトフィールドは受け入れ可能な値が限られています。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: コア API リファレンス</a>を参照してください。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -641,7 +654,7 @@
 </thead>
 <tbody>
 <tr>
-<td>ソースID</td>
+<td>ソース ID</td>
 <td><ul><li>顧客の外部アプリケーションに割り当てられたIDで、外部アプリケーションによって作成または変更されたコンタクトを識別するために使用されます。</li></ul></td>
 </tr>
 </tbody>
@@ -662,11 +675,11 @@
 </tr>
 <tr>
 <td>コンタクト識別データ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するために使用されるフィールド。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するために使用されるフィールド。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>コンタクトを識別するために少なくとも1つのフィールドが必要です。</li><li>コンタクトフィールドでサポートされている唯一の日付形式は <code>YYYY-MM-DD</code> です。</li><li>一部のコンタクトフィールドには受け入れ可能な値が限られています。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: コアAPIリファレンス</a>を参照してください。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>コンタクトを識別するために少なくとも1つのフィールドが必要です。</li><li>コンタクトフィールドでサポートされている唯一の日付形式は <code>YYYY-MM-DD</code> です。</li><li>一部のコンタクトフィールドは受け入れ可能な値が限られています。詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/1a17c3d6fcebc-list-available-choices-of-a-single-choice-field">Emarsys: コア API リファレンス</a>を参照してください。</li><li>ターゲットコンタクトフィールドのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -680,7 +693,7 @@
 </thead>
 <tbody>
 <tr>
-<td>ソースID</td>
+<td>ソース ID</td>
 <td><ul><li>顧客の外部アプリケーションに割り当てられたIDで、外部アプリケーションによって作成または変更されたコンタクトを識別するために使用されます。</li></ul></td>
 </tr>
 </tbody>
@@ -697,11 +710,11 @@
 <tbody>
 <tr>
 <td>ターゲットコンタクトリスト</td>
-<td><ul><li>必須</li><li>コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コアAPIリファレンス</a>を参照してください。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コア API リファレンス</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -717,11 +730,11 @@
 <tbody>
 <tr>
 <td>ターゲットコンタクトリスト</td>
-<td><ul><li>必須</li><li>コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを追加するコンタクトリスト。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コアAPIリファレンス</a>を参照してください。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: コア API リファレンス</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -737,11 +750,11 @@
 <tbody>
 <tr>
 <td>外部イベント</td>
-<td><ul><li>必須</li><li>メールをトリガーするイベントセットを選択します。</li></ul></td>
+<td><ul><li>(必須) メールをトリガーするイベントセットを選択します。</li></ul></td>
 </tr>
 <tr>
 <td>コンタクトデータ</td>
-<td><ul><li>必須</li><li>コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲットコンタクトリストのIDを知っている場合は、カスタム値を使用して手動で構成できます。</li></ul></td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li> 対象のコンタクトリストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -756,7 +769,7 @@
 <tbody>
 <tr>
 <td>コンテンツパーソナライゼーションデータ</td>
-<td><ul><li>オプション</li><li>メール内のプレースホルダーとそれに置き換える値。</li></ul></td>
+<td><ul><li>(オプション) メール内のプレースホルダーとそれに置き換える値。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -772,11 +785,11 @@
 <tbody>
 <tr>
 <td>外部イベント</td>
-<td><ul><li>必須</li><li>メールをトリガーするイベントセットを選択します。</li></ul></td>
+<td><ul><li>(必須) メールをトリガーするイベントセットを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>連絡先データ</td>
-<td><ul><li>必須</li><li>連絡先を識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲット連絡先リストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li></ul></td>
+<td>コンタクトデータ</td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li> 対象のコンタクトリストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -791,11 +804,11 @@
 <tbody>
 <tr>
 <td>コンテンツパーソナライゼーションデータ</td>
-<td><ul><li>オプション</li><li>メールのプレースホルダーとそれに置き換える値。</li></ul></td>
+<td><ul><li>(オプション) メール内のプレースホルダーとそれに置き換える値。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="メールキャンペーンから連絡先を退会させる">メールキャンペーンから連絡先を退会させる</h3>
+<h3 id="メールキャンペーンからコンタクトを退会させる">メールキャンペーンからコンタクトを退会させる</h3>
 <h4 id="パラメータ-8">パラメータ</h4>
 <table>
 <thead>
@@ -807,19 +820,19 @@
 <tbody>
 <tr>
 <td>起動リストID</td>
-<td>(必須) メールの退会リンクから起動リストIDを提供します。</td>
+<td>(必須) メール内の退会リンクから起動リストIDを提供します。</td>
 </tr>
 <tr>
 <td>メールキャンペーンID</td>
-<td>(必須) メールの退会リンクからメールキャンペーンIDを提供します。</td>
+<td>(必須) メール内の退会リンクからメールキャンペーンIDを提供します。</td>
 </tr>
 <tr>
-<td>連絡先ID</td>
-<td>(必須) ランダムに生成された文字列を連絡先IDにマッピングします。メールの退会リンクによって提供されます。</td>
+<td>コンタクトID</td>
+<td>(必須) メール内の退会リンクから提供されるランダムに生成された文字列をコンタクトIDにマッピングします。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="外部イベントをトリガーするリアルタイム">外部イベントをトリガーする（リアルタイム）</h3>
+<h3 id="外部イベントのトリガーリアルタイム">外部イベントのトリガー（リアルタイム）</h3>
 <h4 id="パラメータ-9">パラメータ</h4>
 <table>
 <thead>
@@ -834,8 +847,8 @@
 <td>イベントをトリガーするために選択します。</td>
 </tr>
 <tr>
-<td>連絡先データ</td>
-<td><ul><li>必須</li><li>連絡先を識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲット連絡先リストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>を参照してください。</li></ul></td>
+<td>コンタクトデータ</td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li> 対象のコンタクトリストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -858,11 +871,11 @@
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>外部イベントデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例えば、<code>{{SomeTemplateName}}</code>。</td>
+<td>外部イベントデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="外部イベントをトリガーするバッチ処理">外部イベントをトリガーする（バッチ処理）</h3>
+<h3 id="外部イベントのトリガーバッチ処理">外部イベントのトリガー（バッチ処理）</h3>
 <h4 id="パラメータ-10">パラメータ</h4>
 <table>
 <thead>
@@ -877,8 +890,8 @@
 <td>イベントをトリガーするために選択します。</td>
 </tr>
 <tr>
-<td>連絡先データ</td>
-<td><ul><li>必須</li><li>連絡先を識別するためのフィールドと対応するフィールドデータ。</li><li>ターゲット連絡先リストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>を参照してください。</li></ul></td>
+<td>コンタクトデータ</td>
+<td><ul><li>(必須) コンタクトを識別するためのフィールドと対応するフィールドデータ。</li><li> 対象のコンタクトリストのIDを知っていて、手動で構成したい場合はカスタム値を使用します。</li><li>詳細については、<a href="https://dev.emarsys.com/docs/emarsys-api/365efd9f5e931-remove-contacts-from-a-contact-list">Emarsys: Core API Reference</a>を参照してください。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -901,11 +914,11 @@
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>外部イベントデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例えば、<code>{{SomeTemplateName}}</code>。</td>
+<td>外部イベントデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="rdsテーブルにレコードをアップサートするリアルタイム">RDSテーブルにレコードをアップサートする（リアルタイム）</h3>
+<h3 id="rdsテーブルにレコードをアップサートリアルタイム">RDSテーブルにレコードをアップサート（リアルタイム）</h3>
 <h4 id="パラメータ-11">パラメータ</h4>
 <table>
 <thead>
@@ -929,7 +942,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="rdsテーブルにレコードをアップサートするバッチ処理">RDSテーブルにレコードをアップサートする（バッチ処理）</h3>
+<h3 id="rdsテーブルにレコードをアップサートバッチ処理">RDSテーブルにレコードをアップサート（バッチ処理）</h3>
 <h4 id="パラメータ-12">パラメータ</h4>
 <table>
 <thead>
@@ -953,7 +966,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="rdsテーブルのレコードを削除するリアルタイム">RDSテーブルのレコードを削除する（リアルタイム）</h3>
+<h3 id="rdsテーブルのレコードを削除リアルタイム">RDSテーブルのレコードを削除（リアルタイム）</h3>
 <h4 id="パラメータ-13">パラメータ</h4>
 <table>
 <thead>
@@ -977,7 +990,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="rdsテーブルのレコードを削除するバッチ処理">RDSテーブルのレコードを削除する（バッチ処理）</h3>
+<h3 id="rdsテーブルのレコードを削除バッチ処理">RDSテーブルのレコードを削除（バッチ処理）</h3>
 <h4 id="パラメータ-14">パラメータ</h4>
 <table>
 <thead>
@@ -1061,7 +1074,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1085,13 +1098,13 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E5%89%8A%E9%99%A4%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">コンタクトリストからのコンタクト削除（バッチ処理）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">トランザクショナルメールのトリガー（リアルタイム）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">トランザクショナルメールのトリガー（バッチ処理）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E9%80%A3%E7%B5%A1%E5%85%88%E3%82%92%E9%80%80%E4%BC%9A%E3%81%95%E3%81%9B%E3%82%8B" href="javascript:void(0)">メールキャンペーンから連絡先を退会させる</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%99%E3%82%8B%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">外部イベントをトリガーする（リアルタイム）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%99%E3%82%8B%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">外部イベントをトリガーする（バッチ処理）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">RDSテーブルにレコードをアップサートする（リアルタイム）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">RDSテーブルにレコードをアップサートする（バッチ処理）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">RDSテーブルのレコードを削除する（リアルタイム）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">RDSテーブルのレコードを削除する（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%82%92%E9%80%80%E4%BC%9A%E3%81%95%E3%81%9B%E3%82%8B" href="javascript:void(0)">メールキャンペーンからコンタクトを退会させる</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">外部イベントのトリガー（リアルタイム）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">外部イベントのトリガー（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">RDSテーブルにレコードをアップサート（リアルタイム）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">RDSテーブルにレコードをアップサート（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%89%8A%E9%99%A4%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">RDSテーブルのレコードを削除（リアルタイム）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rds%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%89%8A%E9%99%A4%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">RDSテーブルのレコードを削除（バッチ処理）</a></li>
               </nav>
   </aside></nav>
 

@@ -133,7 +133,7 @@
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".predict-strat">戦略を定義する</a>
         <ul class="pl2  predict-strat desktopmenu animated fadeIn list  dn"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/predict/strategy/decide-what-to-predict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-decide-what-to-predict">何を予測するかを決定する</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/predict/strategy/decide-what-to-predict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-decide-what-to-predict">予測対象を決定する</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/attribute-readiness/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-attribute-readiness">属性の準備状況</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/prepare-your-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-prepare-your-data">データの準備</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/predict/strategy/start-training/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".predict-review-and-start-training">トレーニングを開始する</a></li></ul>
@@ -217,14 +217,14 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="tip"><i class="fa fa-info-circle"></i>ターゲット、出力、除外属性の違いについて詳しく知るには、<a href="/ja/predict/strategy/decide-what-to-predict/">予測する内容を決定する</a>を参照してください。</p>
-<p>以下の手順でモデルを追加し、ターゲット属性を選択します：</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>ターゲット属性、出力属性、除外属性の違いについて詳しくは、<a href="/ja/predict/strategy/decide-what-to-predict/">何を予測するかを決める</a>をご覧ください。</p>
+<p>モデルを追加し、ターゲット属性を選択するには、以下の手順に従ってください：</p>
 <ol>
 <li>
-<p>左側のサイドバーで、<strong>Predict</strong>をクリックします。</p>
+<p>左サイドバーで <strong>Predict</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Model Dashboard</strong>から、<strong>+ Add Model</strong>をクリックします。<br>
+<p><strong>モデルダッシュボード</strong> から <strong>+ モデルを追加</strong> をクリックします。<br>
 <figure><a class="slb" href="/images/predict/predict-v2-new-model.jpg"><img src="/images/predict/predict-v2-new-model.jpg"
                alt="predict_v2_new_model.jpg"
                title="predict_v2_new_model.jpg"/>
@@ -232,50 +232,52 @@
       </figure></p>
 </li>
 <li>
-<p><strong>Add Model</strong>画面で、<strong>Target Attribute</strong>ドロップダウンリストに表示される訪問または訪問レベルのブール属性からターゲット属性を選択します。
-各属性の右側に表示されるヘルスステータスインジケータを使用して、どの属性がトレーニングの準備ができているかを判断できます。</p>
-   <p class="tip"><i class="fa fa-info-circle"></i>モデルは、選択したTarget Attributeが「Training Ready」である場合にのみ作成できます。属性をトレーニングの準備ができるようにする方法については、<a href="/ja/predict/strategy/prepare-your-data/">データの準備</a>を参照してください。</p>
+<p><strong>モデルを追加</strong> 画面で、<strong>ターゲット属性</strong> ドロップダウンリストに表示される訪問または訪問レベルのブール属性からターゲット属性を選択します。
+トレーニングの準備ができている属性を決定するために、各属性の横に表示される健康状態インジケーターを使用できます。</p>
+   <p class="tip"><i class="fa fa-info-circle"></i>選択されたターゲット属性が「トレーニングの準備ができている」場合にのみモデルを作成できます。属性をトレーニングの準備ができるようにする方法については、<a href="/ja/predict/strategy/prepare-your-data/">データの準備</a>を参照してください。</p>
 </li>
 <li>
-<p><strong>Prediction Timeframe</strong>フィールドに、予測したい日数を入力します。</p>
-   <p class="tip"><i class="fa fa-info-circle"></i>このフィールドは、活動（ターゲット属性）の時間枠を反映しています。例えば、次の&quot;x&quot;日間での&quot;戻る可能性&quot;などです。</p>
+<p><strong>予測期間</strong> フィールドに、予測したい日数を入力します。</p>
+   <p class="tip"><i class="fa fa-info-circle"></i>このフィールドは、次の「x」日間での「戻りやすさ」など、活動（ターゲット属性）の時間枠を反映します。</p>
 </li>
 <li>
-<p><strong>Model Name</strong>フィールドに、このモデルの説明的な名前を入力します。<br>
-意味のある名前を使用します。例えば、<em>次の1日間での購入可能性</em> など。</p>
+<p><strong>モデル名</strong> フィールドに、このモデルの説明的な名前を入力します。<br>
+例えば、<em>次の1日間での購入可能性</em> などの意味のある名前を使用します。</p>
 </li>
 <li>
-<p><strong>Output Attribute Name</strong>フィールドでは、モデル名に基づいたデフォルトの名前を受け入れるか、この出力属性の説明的な名前を自分で入力します。</p>
+<p><strong>出力属性名</strong> フィールドでは、モデル名に基づいてデフォルトの名前を受け入れるか、この出力属性の独自の説明的な名前を入力します。</p>
 </li>
 <li>
-<p>オプションの<strong>Notes</strong>フィールドに、このモデルが何を予測することを意図しているかを理解するのに役立つ説明的なメモを入力します。</p>
+<p>オプションの <strong>メモ</strong> フィールドに、このモデルが何を予測することを意図しているかを理解するのに役立つ説明的なメモを入力します。</p>
 </li>
 <li>
-<p><strong>Next</strong>をクリックします。</p>
+<p><strong>次へ</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Edit Data Configuration</strong>画面の<strong>Training Date Range</strong>の下で、**Most recent 91 days (recommended)<strong>または</strong>Custom range (91 days maximum)<strong>を選択します。デフォルトのオプションは</strong>Most recent 91 days (recommended)**です。</p>
-   <p class="tip"><i class="fa fa-info-circle"></i>この日付範囲は、モデルが使用するデータを指します。例えば、利用可能なすべてのデータの代わりに、特定の休日のショッピング時間枠を選択することができます。</p>
+<p><strong>データ構成の編集</strong> 画面の <strong>トレーニング日付範囲</strong> で、<strong>最近の91日間（推奨）</strong> または <strong>カスタム範囲（最大91日間）</strong> を選択します。デフォルトオプションは <strong>最近の91日間（推奨）</strong> です。</p>
+   <p class="tip"><i class="fa fa-info-circle"></i>この日付範囲は、モデルが使用するデータを指します。例えば、利用可能なすべてのデータの代わりに、特定の休日のショッピング期間を選択することができます。</p>
 </li>
 <li>
-<p><strong>Custom range</strong>を選択した場合は、カレンダーのドロップダウンメニューを使用して日付範囲を選択します。<br>
-予測時間枠を選択すると、トレーニングに使用したいデータの日付範囲が決まります。2つ目の日付範囲のデフォルト値は今日の日付です。</p>
+<p><strong>カスタム範囲</strong> を選択する場合は、カレンダーのドロップダウンメニューを使用して日付範囲を選択します。<br>
+選択した予測時間枠は、トレーニングデータの日付範囲を決定します。第二の日付範囲のデフォルト値は今日の日付です。</p>
 <ul>
-<li>ビジネスニーズに合わせた日付範囲のモデルをトレーニングするには、最新の13ヶ月（395日）または全データ収集期間（どちらか大きい方）から91日以内のカスタム範囲を選択します。</li>
-<li>選択した日付範囲は過去のものでなければならず、今日の日付を超えることはできません。</li>
+<li>ビジネスニーズに合わせてモデルをトレーニングするために、最新の13ヶ月（395日）またはデータ収集の合計のうち、より大きい方から91日以内のカスタム範囲を選択します。</li>
+<li>選択した日付範囲は過去のものでなければならず、今日の日付を超えてはいけません。</li>
 </ul>
 </li>
 <li>
-<p><strong>Exclude Attributes</strong>ドロップダウンリストで除外する属性を選択することで、1つ以上の属性を手動で除外し、モデルの精度を向上させることができます。</p>
+<p><strong>属性を除外</strong> ドロップダウンリストで、モデルの精度を向上させるために1つ以上の属性を手動で除外する属性を選択します。</p>
 <ul>
-<li>一括で属性を除外するには、ドロップダウンリスト内の<strong>Open All Attributes</strong>ボタンを選択します</li>
+<li>属性を一括で選択するには、ドロップダウンリスト内の <strong>すべての属性を開く</strong> ボタンを選択します</li>
+<li>このモデルのターゲット属性は自動的に除外され、再度除外するべきではありません</li>
 </ul>
 </li>
 <li>
-<p><strong>Finish</strong>をクリックします。新しいモデルは_Version 1_として表示され、ステータスは_Requires Publish_となります。モデルのバージョンは、作成された順に自動的に連番で付けられます。</p>
+<p><strong>完了</strong> をクリックします。新しいモデルは <code>バージョン1</code> として表示され、状態は <code>公開が必要</code> です。モデルバージョンは作成された順に自動的に連番で番号が付けられます。</p>
 </li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>モデルを初めて追加するときは、利用規約を受け入れて進むように求められます。契約を読み、同意する場合は、<strong>I accept the terms of use</strong>をクリックします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>モデルを追加する際に初めて、利用規約を受け入れるよう求められます。契約を読み、同意する場合は <strong>利用規約に同意する</strong> をクリックします。</p>
+<p>属性を除外する方法についての詳細は、<a href="/ja/predict/strategy/decide-what-to-predict/">何を予測するかを決める</a>を参照してください。</p>
 
 </div>
 
@@ -321,7 +323,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -677,7 +679,7 @@
   
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/ja/predict/strategy/decide-what-to-predict/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          何を予測するかを決定する
+          予測対象を決定する
       </a>
       </li>
       
