@@ -160,7 +160,7 @@
         <a href="/ja/platforms/android-kotlin/api/visitor-profile/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-api-visitor-profile">VisitorProfile</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/android-kotlin/api/visitor-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-api-visitor-service">VisitorService</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/android-kotlin/charles-proxy-android/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".charles-proxy-android">Androidデバイスをプロキシとする</a></li></ul></li></ul>
+        <a href="/ja/platforms/android-kotlin/charles-proxy-android/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".charles-proxy-android">Androidデバイスのプロキシ構成</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -207,14 +207,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Tealiumクラスとメソッドに関する参照ガイド（Android Kotlin用）
+      Tealiumクラスとメソッドに関する参照ガイド（Android用Kotlin）
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="クラス-tealium">クラス: <code>Tealium</code></h2>
-<p><code>Tealium</code> クラスは、画面表示とイベントの追跡用のメソッドを提供します。以下のドキュメントは、Kotlin用の <code>Tealium</code> クラスの一般的に使用されるメソッドとプロパティをまとめたものです。個々のモジュールも、有効になっている場合は <code>Tealium</code> クラスの独自の拡張を提供することがあります。</p>
+<p><code>Tealium</code> クラスは、画面表示とイベントの追跡用のメソッドを提供します。以下のドキュメントでは、Kotlin用の <code>Tealium</code> クラスの一般的に使用されるメソッドとプロパティをまとめています。個々のモジュールも、有効になっている場合は <code>Tealium</code> クラスの独自の拡張を提供することがあります。</p>
 <table>
 <thead>
 <tr>
@@ -229,11 +229,11 @@
 </tr>
 <tr>
 <td style="text-align:left"><a href="#consentmanager"><code>consentManager</code></a></td>
-<td style="text-align:left">ユーザーの同意構成を構成するための同意マネージャーにアクセスします。</td>
+<td style="text-align:left">ユーザーの同意構成を管理するConsent Managerにアクセスします。</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="#datalayer"><code>dataLayer</code></a></td>
-<td style="text-align:left">デバイス上の永続的な保存にアクセスします - データレイヤー内のアイテムは各イベントに追加されます。</td>
+<td style="text-align:left">デバイス上の永続的な保存へのアクセス - データレイヤー内のアイテムは各イベントに追加されます。</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="#endtracevisitorsession"><code>endTraceVisitorSession()</code></a></td>
@@ -241,7 +241,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><a href="#events"><code>events</code></a></td>
-<td style="text-align:left">Tealium SDK全体で多くのイベントに対するリスナークラスを提供します。</td>
+<td style="text-align:left">Tealium SDK全体で多くのイベントに対してリスナークラスを提供します。</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="#gathertrackdata"><code>gatherTrackData()</code></a></td>
@@ -265,11 +265,11 @@
 </tr>
 <tr>
 <td style="text-align:left"><a href="#resetvisitor"><code>resetVisitor()</code></a></td>
-<td style="text-align:left">次のトラッキングコールで新しいものを取得することにより、訪問ECIDをリセットします。</td>
+<td style="text-align:left">次のトラッキングコールで新しいものを取得することにより、訪問のECIDをリセットします。</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="#sendqueueddispatches"><code>sendQueuedDispatches()</code></a></td>
-<td style="text-align:left">すべてのDispatchValidatorsが再評価されるように要求します。</td>
+<td style="text-align:left">すべてのDispatchValidatorsを再評価するように要求します。</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="#session"><code>session</code></a></td>
@@ -321,18 +321,18 @@
 </tbody>
 </table>
 <h3 id="consentmanager"><code>consentManager</code></h3>
-<p>現在の同意ステータスとカテゴリを構成し、現在のポリシーを確認することができます。詳細は<a href="/ja/platforms/android-kotlin/consent-management/">同意管理</a>ガイドを参照してください。</p>
+<p>現在の同意ステータスとカテゴリを構成し、現在施行されているポリシーを確認することができます。<a href="/ja/platforms/android-kotlin/consent-management/">同意管理</a>ガイドで詳細を学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentStatus</span> <span style="color:#f92672">=</span> ConsentStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">CONSENTED</span>
 </span></span></code></pre></div><h3 id="datalayer"><code>dataLayer</code></h3>
-<p>デバイス上でキーバリューペアの永続的な保存を提供し、有効期限を構成することもできます。各エントリは、<a href="#track"><code>track()</code></a> メソッドを通じて送信するすべてのディスパッチにも追加されます。詳細は<a href="/ja/platforms/android-kotlin/data-layer/">データ管理</a>ガイドを参照してください。</p>
+<p>キーバリューペアのためのデバイス上の永続的な保存を提供し、有効期限の構成も可能です。各エントリは、<a href="#track"><code>track()</code></a> メソッドを通じて送信するすべてのディスパッチにも追加されます。<a href="/ja/platforms/android-kotlin/data-layer/">データ管理</a>ガイドで詳細を学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">dataLayer</span><span style="color:#f92672">.</span><span style="color:#a6e22e">putString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">,</span> Expiry<span style="color:#f92672">.</span><span style="color:#a6e22e">FOREVER</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="endtracevisitorsession"><code>endTraceVisitorSession()</code></h3>
-<p>リモートで訪問セッションを終了します。SDKセッションを終了したり、セッションIDをリセットしたりすることはありません。</p>
+<p>リモートで訪問セッションを終了します。SDKセッションを終了させたり、セッションIDをリセットしたりすることはありません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">endTraceVisitorSession</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="events"><code>events</code></h3>
-<p>SDKからの有用な情報を受け取るために、<code>Tealium</code> インスタンスにリスナークラスを提供します。</p>
-<p>以下の例では、任意の同意構成変更に対するリスナーを登録します。このリスナーは、新しい同意構成と現在のポリシーを提供されます。
-追加のリスナーは <code>com.tealium.core.messaging</code> で利用可能です。</p>
+<p><code>Tealium</code>インスタンスにリスナークラスを提供して、SDKからの有用な情報を受け取ります。</p>
+<p>以下の例では、任意の同意構成変更に対するリスナーを登録します。このリスナーは、新しい同意構成と現在施行されているポリシーを提供されます。
+<code>com.tealium.core.messaging</code>で利用可能な追加のリスナーがあります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">events</span><span style="color:#f92672">.</span><span style="color:#a6e22e">subscribe</span><span style="color:#f92672">(</span>object<span style="color:#f92672">:</span> UserConsentPreferencesUpdatedListener <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    override fun <span style="color:#a6e22e">onUserConsentPreferencesUpdated</span><span style="color:#f92672">(</span>userConsentPreferences<span style="color:#f92672">:</span> UserConsentPreferences<span style="color:#f92672">,</span> policy<span style="color:#f92672">:</span> ConsentManagementPolicy<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 同意変更に対するアクションを取る
@@ -364,7 +364,7 @@
 <p>トレースIDを削除してトレースを離脱します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">leaveTrace</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="linkecidtoknownidentifier"><code>linkEcidToKnownIdentifier()</code></h3>
-<p>現在のECIDを既知のセカンダリ識別子、たとえばメールアドレスや他の内部IDにリンクします。</p>
+<p>現在のECIDを既知のセカンダリ識別子（例えば、メールアドレスや他の内部IDなど）にリンクします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>linkEcidToKnownIdentifier<span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>  knownId<span style="color:#f92672">:</span> String<span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>  adobeDataProviderId<span style="color:#f92672">:</span> String<span style="color:#f92672">,</span>
@@ -416,20 +416,20 @@
 <p>SDKのモジュールマネージャーにアクセスを提供し、特定のモジュールへのアクセスを提供するために使用されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">modules</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getModule</span><span style="color:#f92672">(</span>VisitorService<span style="color:#f92672">::</span>class<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)?.</span><span style="color:#a6e22e">delegate</span> <span style="color:#f92672">=</span> myDelegate
 </span></span></code></pre></div><h3 id="resetvisitor"><code>resetVisitor()</code></h3>
-<p>次のトラッキングコールで新しいものを取得することにより、訪問ECIDをリセットします。</p>
+<p>次のトラッキングコールで新しいものを取得することにより、訪問のECIDをリセットします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>resetVisitor<span style="color:#f92672">()</span>
 </span></span></code></pre></div><p>例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>var tealium<span style="color:#f92672">:</span> Tealium<span style="color:#f92672">?</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tealium<span style="color:#f92672">?.</span><span style="color:#a6e22e">adobeVisitorApi</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">resetVisitor</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="sendqueueddispatches"><code>sendQueuedDispatches()</code></h3>
-<p>ディスパッチがDispatchValidatorによって様々な理由でキューに入れられます。このメソッドを使用して再評価を要求することができますが、イベントバッチングの制限は無視され、他のDispatchValidatorsは遵守されます。例えば、接続がなく、依然として接続がない場合、キューに入れられたディスパッチはキューに残ります。</p>
+<p>DispatchValidatorによってさまざまな理由でキューに入れられたディスパッチを、イベントバッチ処理の制限を無視して再評価するためにこのメソッドを使用できますが、他のDispatchValidatorには従います。例えば、接続がなく、依然として接続がない場合、キューに入れられたディスパッチはキューに残ります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">sendQueuedDispatches</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="session"><code>session</code></h3>
 <p>現在のセッションに関連するすべてのデータを含みます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val sessionId <span style="color:#f92672">=</span> tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">session</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span>
 </span></span></code></pre></div><h3 id="starttimedevent"><code>startTimedEvent()</code></h3>
-<p>指定された名前でタイムドイベントを開始します。同じイベント名でこのメソッドが再び呼び出された場合、イベントが終了またはキャンセルされていない限り無視されます。イベント開始時間は保存されません。</p>
+<p>指定された名前でタイムドイベントを開始します。同じイベント名でこのメソッドが再び呼び出された場合、イベントが終了またはキャンセルされていない限り無視されます。イベントの開始時間は保存されません。</p>
 <p>イベント名とともにオプショナルデータが渡された場合、タイマーが<a href="#stoptimedevent"><code>stopTimedEvent()</code></a>呼び出しで停止されたときにトラックコールに追加されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">startTimedEvent</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;TIMED_EVENT_NAME&#34;</span><span style="color:#f92672">,</span> mapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;custom_value&#34;</span> to <span style="color:#e6db74">&#34;custom_key&#34;</span><span style="color:#f92672">))</span>
 </span></span></code></pre></div><table>
@@ -502,7 +502,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Assuming execution is within Application.onCreate()
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>val config <span style="color:#f92672">=</span> TealiumConfig<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT_NAME&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE_NAME&#34;</span><span style="color:#f92672">,</span> Environment<span style="color:#f92672">.</span><span style="color:#a6e22e">PROD</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>val tealium <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">,</span> config<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>モジュールはバックグラウンドスレッドで初期化されるため、Tealiumオブジェクトの作成直後には準備が整っていない場合があります。インスタンスが準備でき次第、必要な構成を追加するために完了ブロックを追加します：</p>
+</span></span></code></pre></div><p>モジュールはバックグラウンドスレッドで初期化されるため、Tealiumオブジェクトの作成直後には準備が整っていない場合があります。インスタンスが準備でき次第、必要な追加構成を追加するために完了ブロックを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealium <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">,</span> config<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    events<span style="color:#f92672">.</span><span style="color:#a6e22e">subscribe</span><span style="color:#f92672">(</span>object <span style="color:#f92672">:</span> VisitorUpdatedListener <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        override fun <span style="color:#a6e22e">onVisitorUpdated</span><span style="color:#f92672">(</span>visitorProfile<span style="color:#f92672">:</span> VisitorProfile<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -511,7 +511,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">})</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="track"><code>track()</code></h3>
-<p>オプショナルイベントデータを含むスクリーンビューまたはイベントをトラックします。</p>
+<p>オプショナルイベントデータを含む画面表示またはイベントをトラックします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumlEvent<span style="color:#f92672">)</span>
 </span></span></code></pre></div><table>
 <thead>
@@ -540,6 +540,16 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealiumlEvent<span style="color:#f92672">);</span>
+</span></span></code></pre></div><h3 id="visitor"><code>visitor</code></h3>
+<p>完全なAdobeVisitorインスタンスを返します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>var tealium<span style="color:#f92672">:</span> Tealium<span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>val visitor <span style="color:#f92672">=</span> tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">adobeVisitorApi</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">visitor</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">let</span> <span style="color:#f92672">{</span> visitor <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>    val ecid <span style="color:#f92672">=</span> visitor<span style="color:#f92672">.</span><span style="color:#a6e22e">experienceCloudId</span>
+</span></span><span style="display:flex;"><span>    val nextRefresh <span style="color:#f92672">=</span> visitor<span style="color:#f92672">.</span><span style="color:#a6e22e">nextRefresh</span>
+</span></span><span style="display:flex;"><span>    val blob <span style="color:#f92672">=</span> visitor<span style="color:#f92672">.</span><span style="color:#a6e22e">blob</span>
+</span></span><span style="display:flex;"><span>    val region <span style="color:#f92672">=</span> visitor<span style="color:#f92672">.</span><span style="color:#a6e22e">region</span>
+</span></span><span style="display:flex;"><span>   
 </span></span></code></pre></div>
 </div>
 
@@ -600,7 +610,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月12日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -632,6 +642,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#stoptimedevent" href="javascript:void(0)">stopTimedEvent()</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium" href="javascript:void(0)">Tealium</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track" href="javascript:void(0)">track()</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor" href="javascript:void(0)">visitor</a></li>
               </nav>
   </aside></nav>
 
@@ -844,7 +855,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

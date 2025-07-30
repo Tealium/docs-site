@@ -32,7 +32,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -183,20 +183,20 @@
 
   
     <p class="f4 fw3 lh-copy">
-      既存の5.x実装のTealium for iOSにアプリのライフサイクル追跡イベントを提供します。
+      TealiumのiOS向け5.x実装にアプリライフサイクル追跡イベントを提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="インストール">インストール</h2>
-<p>ライフサイクル追跡モジュールはあなたのアプリに追加する必要があります。Tealium for iOSライブラリと同様に、CocoaPodsまたは手動でモジュールをインストールします。</p>
-<p>任意の抽象クラス（<code>TealiumHelper.h</code>のような）で、<code>@import TealiumIOS</code>を<code>@import TealiumIOSLifecycle</code>に置き換えます。</p>
+<p>ライフサイクル追跡モジュールはアプリに追加する必要があります。CocoaPodsまたは手動でTealium for iOSライブラリと同様にモジュールをインストールしてください。</p>
+<p>任意の抽象クラス（<code>TealiumHelper.h</code>など）で、<code>@import TealiumIOS</code>を<code>@import TealiumIOSLifecycle</code>に置き換えてください。</p>
 <h3 id="cocoapods">CocoaPods</h3>
-<p>CocoaPodsでライフサイクル追跡モジュールをインストールするには、Podfileに以下を追加します：</p>
+<p>CocoaPodsでライフサイクル追跡モジュールをインストールするには、Podfileに以下を追加してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;TealiumIOSLifecycle&#39;</span>
 </span></span></code></pre></div><h3 id="手動">手動</h3>
-<p>ライフサイクル追跡モジュールを手動でインストールするには、以下の手順を実行します：</p>
+<p>ライフサイクル追跡モジュールを手動でインストールするには、以下の手順に従ってください：</p>
 <ol>
 <li>
 <p><a href="https://github.com/Tealium/tealium-ios/tree/master/TealiumIOSLifecycle.framework">ライフサイクル追跡モジュール</a>をダウンロードします。</p>
@@ -205,8 +205,8 @@
 <p><code>TealiumIOSLifecycle.framework</code>ファイルをプロジェクトに追加します（Embedded Binariesセクションに）。</p>
 </li>
 </ol>
-<h2 id="トラッキング">トラッキング</h2>
-<p>モジュールは以下のライフサイクルイベントを追跡します：</p>
+<h2 id="トラック">トラック</h2>
+<p>このモジュールは以下のライフサイクルイベントを追跡します：</p>
 <table>
 <thead>
 <tr>
@@ -229,22 +229,22 @@
 </tr>
 <tr>
 <td><code>none</code></td>
-<td>イベントに追加されたデータがライフサイクルイベントに関連付けられていない場合</td>
+<td>ライフサイクルイベントに関連付けられていないイベントに追加されたデータ</td>
 </tr>
 </tbody>
 </table>
 <p>これらの値は<code>lifecycle_type</code>変数で示されます。</p>
-<h3 id="自動トラッキング">自動トラッキング</h3>
+<h3 id="自動追跡">自動追跡</h3>
 <p>ライフサイクル追跡モジュールを構成して、標準の<code>UIApplication</code>通知を自動的にリッスンし、<code>launch</code>、<code>wake</code>、<code>sleep</code>イベントを自動的にトリガーします。</p>
-<p>ライフサイクル追跡を削除するには、<code>TealiumIOSLifecycle.framework</code>をプロジェクトからアンリンクまたは削除します。</p>
+<p>プロジェクトから<code>TealiumIOSLifecycle.framework</code>をリンク解除または削除して、ライフサイクル追跡を削除します。</p>
 <p><strong>起動イベント</strong><br>
 <code>UIApplicationDidFinishLaunchingNotification</code>の検出時に生成されます。</p>
 <p><strong>スリープイベント</strong><br>
 <code>UIApplicationWillResignActiveNotification</code>の検出時に生成されます。</p>
 <p><strong>ウェイクイベント</strong><br>
 <code>UIApplicationWillEnterForegroundNotification</code>の検出時に生成されます。</p>
-<h3 id="手動トラッキング">手動トラッキング</h3>
-<p>特定のライフサイクルパラダイムや非標準的なライフサイクル追跡に利用可能です。手動でライフサイクルイベントを追跡するには、<code>setLifecycleAutotrackingIsEnabled</code>を<code>NO</code>に構成してライフサイクルの自動追跡を無効にします。</p>
+<h3 id="手動追跡">手動追跡</h3>
+<p>特定のライフサイクルパラダイムや非標準的なライフサイクル追跡のために利用可能です。手動でライフサイクルイベントを追跡するには、<code>setLifecycleAutotrackingIsEnabled</code>を<code>NO</code>に構成して、ライフサイクル自動追跡を無効にします。</p>
 <p><strong>起動イベント</strong><br>
 <code>launch</code>イベントを手動で追跡するには、以下を呼び出します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>[[Tealium instanceForKey:<span style="color:#e6db74">@&#34;(uniqueInstanceId)&#34;</span>] launch];
@@ -254,190 +254,7 @@
 </span></span></code></pre></div><p><strong>ウェイクイベント</strong><br>
 <code>wake</code>イベントを手動で追跡するには、以下を呼び出します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>[[Tealium instanceForKey:<span style="color:#e6db74">@&#34;(uniqueInstanceId)&#34;</span>] wake];
-</span></span></code></pre></div><h2 id="データレイヤー">データレイヤー</h2>
-<p>ライフサイクル追跡モジュールは以下のデータレイヤー変数を追加します：</p>
-<table>
-<thead>
-<tr>
-<th>変数</th>
-<th>タイプ</th>
-<th>説明</th>
-<th>例</th>
-<th>イベント</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>lifecycle_ dayofweek_local</code></td>
-<td><code>Number</code></td>
-<td>コールが行われたローカルの曜日、例えば1=日曜日、2=月曜日</td>
-<td><code>2</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ dayssincelaunch</code></td>
-<td><code>Number</code></td>
-<td>最初の起動からの日数（整数で増加）</td>
-<td><code>23</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ dayssinceupdate</code></td>
-<td><code>Number</code></td>
-<td>最後に検出されたアプリバージョンの更新からの日数（整数で増加）</td>
-<td><code>46</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ dayssincelastwake</code></td>
-<td><code>Number</code></td>
-<td>最後に検出されたウェイクからの日数（整数で増加）</td>
-<td><code>1</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ diddetectcrash</code></td>
-<td><code>Boolean</code></td>
-<td>前回のスリープイベントが欠落しているため、クラッシュが推測されます（ウェイクイベントの後に起動イベントがある場合のみ存在します）</td>
-<td>[<code>true</code>, <code>false</code>]</td>
-<td>起動</td>
-</tr>
-<tr>
-<td><code>lifecycle_ firstlaunchdate</code></td>
-<td><code>String</code></td>
-<td>最初に検出された起動/ウェイクのGMTタイムスタンプ。UTC時間からのISO 8601形式</td>
-<td><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ firstlaunchdate_ MMDDYYYY </code></td>
-<td><code>String</code></td>
-<td>MM/DD/YYYY形式でフォーマットされたGMTタイムスタンプ</td>
-<td><code>&quot;01/17/2012&quot;</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ hourofday_local</code></td>
-<td><code>String</code></td>
-<td>コールが行われたローカルの時間（24時間形式）</td>
-<td><code>&quot;12&quot;</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ isfirstlaunch</code></td>
-<td><code>Boolean</code></td>
-<td>コールが最初の起動コールである場合のみ存在します</td>
-<td>[<code>true</code>, <code>false</code>]</td>
-<td>起動</td>
-</tr>
-<tr>
-<td><code>lifecycle_ isfirstlaunchupdate</code></td>
-<td><code>Boolean</code></td>
-<td>検出された更新後の最初の起動である場合のみ存在します</td>
-<td>[<code>true</code>, <code>false</code>]</td>
-<td>起動</td>
-</tr>
-<tr>
-<td><code>lifecycle_ isfirstwakemonth</code></td>
-<td><code>Boolean</code></td>
-<td>コールが月の最初の起動/ウェイクである場合のみ存在します</td>
-<td>[<code>true</code>, <code>false</code>]</td>
-<td>起動, ウェイク</td>
-</tr>
-<tr>
-<td><code>lifecycle_ isfirstwaketoday</code></td>
-<td><code>Boolean</code></td>
-<td>コールが日の最初の起動/ウェイクである場合のみ存在します</td>
-<td>[<code>true</code>, <code>false</code>]</td>
-<td>起動, ウェイク</td>
-</tr>
-<tr>
-<td><code>lifecycle_ launchcount</code></td>
-<td><code>Number</code></td>
-<td>あなたのアプリのこのバージョンの起動の総数（最後の更新以降）</td>
-<td><code>3</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ secondsawake</code></td>
-<td><code>Number</code></td>
-<td>アプリが最後のウェイク/起動以降にアクティブな状態にあった全秒数（<code>lifecycle_type:sleep</code>または<code>lifecycle_type:terminate</code>コールでのみ送信）</td>
-<td><code>30</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ priorsecondsawake </code></td>
-<td><code>Number</code></td>
-<td>最後の起動以降にアプリがアクティブな状態にあった全秒数 - すべての前のウェイクからの合計（<code>lifecycle_type:launch</code>コールでのみ送信）</td>
-<td><code>126</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ sleepcount</code></td>
-<td><code>Number</code></td>
-<td>あなたのアプリがスリープに入った回数の総数（更新されるとリセット）</td>
-<td><code>5</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ totalcrashcount</code></td>
-<td><code>Number</code></td>
-<td>インストール以降にカウントされたクラッシュの総数（アプリが削除されるとのみリセット）</td>
-<td><code>21 </code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ totallaunchcount</code></td>
-<td><code>Number</code></td>
-<td>インストール以降の起動の総数（アプリが削除されるとのみリセット）</td>
-<td><code>3</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ totalsecondsawake</code></td>
-<td><code>Number</code></td>
-<td>アプリがインストール以降にウェイク/アクティブ状態にあった秒数の総数（アプリが削除されるとのみリセット）</td>
-<td><code>36</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ totalsleepcount</code></td>
-<td><code>Number</code></td>
-<td>アプリがインストール以降にバックグラウンドに入った回数の総数（アプリが削除されるとのみリセット）</td>
-<td><code>&quot;400&quot;</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ totalwakecount</code></td>
-<td><code>Number</code></td>
-<td>インストール以降の起動 + ウェイクの総数（アプリが削除されるとのみリセット）</td>
-<td><code>563</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_type</code></td>
-<td><code>String</code></td>
-<td>ライフサイクルコールのタイプ</td>
-<td>[<code>&quot;launch&quot;</code>, <code>&quot;wake&quot;</code>, <code>&quot;sleep&quot;</code>]</td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ updatelaunchdate</code></td>
-<td><code>String</code></td>
-<td>バージョン更新が検出された後の最初のウェイク/起動のGMTタイムスタンプ</td>
-<td><code>&quot;2014-09-08T18:10:01Z&quot;</code></td>
-<td>全て</td>
-</tr>
-<tr>
-<td><code>lifecycle_ wakecount</code></td>
-<td><code>Number</code></td>
-<td>あなたのアプリのこのバージョンの起動 + ウェイクの総数（更新されるとリセット）</td>
-<td><code> 29</code></td>
-<td>全て</td>
-</tr>
-</tbody>
-</table>
-
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
@@ -499,10 +316,9 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cocoapods" href="javascript:void(0)">CocoaPods</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95" href="javascript:void(0)">手動</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラッキング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">自動トラッキング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">手動トラッキング</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC" href="javascript:void(0)">データレイヤー</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">トラック</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">自動追跡</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">手動追跡</a></li>
               </nav>
   </aside></nav>
 
@@ -715,7 +531,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

@@ -407,7 +407,7 @@
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/nav-timing-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-enable-navigation-timing-data">ナビゲーションタイミングデータ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/charles-proxy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enhanced-browser-console-debugging-with-charles-proxy">Charles Proxyでデバッグ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -467,83 +467,83 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Tealium Usercentrics拡張機能は、サードパーティのCMPサポートを有効にするために使用されます。この拡張機能は、データ処理サービスを特定のタグにマッピングすることで、タグ管理と同意管理の統合を簡素化します。
+      TealiumのUsercentrics拡張機能は、サードパーティのCMPサポートを有効にするために使用されます。この拡張機能は、タグ管理とコンセント管理の間の統合を簡素化し、特定のタグにデータ処理サービスをマッピングすることを可能にします。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p>Tealium iQタグ管理のUsercentrics拡張機能は、ユーザーの同意構成に基づいてタグのブロックまたは発火を制御するために使用されます。</p>
-<p>シンプルなブックマークレット機能を使用して、データ処理サービスのJSONオブジェクトテキストをブラウザのブックマークにインポートし、それを使用してマッピングテーブルを作成します。</p>
-<p>使用するには、拡張機能を追加し、必要な情報を入力し、マッピングテーブルを使用して同意構成をタグにマッピングします。この方法を使用すると、実装時間が大幅に短縮され、タグがCMPサービスにマッピングされるまでタグの発火が防止されるため、追加の保護層が提供されます。</p>
-<p>Usercentricsデータ処理サービスにマッピングされていないタグが追加された場合にプライバシーリスクが発生しないようにするため、拡張機能がアクティブになった後は、マッピングされたタグのみが発火します。</p>
-<h2 id="必要条件">必要条件</h2>
+<p>Tealium iQタグ管理のUsercentrics拡張機能は、CMPポリシーがソースレベルで強制されるように使用され、ユーザーの同意構成に応じてタグのブロックまたは発火を行います。</p>
+<p>データ処理サービスのJSONオブジェクトテキストをブラウザのブックマークにインポートするためのシンプルなブックマークレット機能が使用され、これを使用してマッピングテーブルを作成します。</p>
+<p>使用するには、拡張機能を追加し、必要な情報を入力してから、マッピングテーブルを使用してタグに同意構成をマッピングします。この方法を使用すると、実装時間が大幅に短縮され、CMPサービスにマッピングされるまでタグの発火を防ぐことで追加の保護層が提供されます。</p>
+<p>Usercentricsのデータ処理サービスにマッピングされていないタグが追加された場合のプライバシーリスクの露出を防ぐために、拡張機能がアクティブになるとマッピングされたタグのみが発火します。</p>
+<h2 id="前提条件">前提条件</h2>
 <ul>
 <li><strong>Usercentricsの実装に関する知識</strong><br>
-現在のまたは計画中のUsercentricsの実装の知識が必要です。Consent Management Platform（CMP）でのすべてのデータ処理サービスを取得するには、<a href="https://docs.usercentrics.com/#/direct-implementation-guide">Usercentrics Direct Implementation Guide</a>に記載されている手順に従ってください。</li>
+現在または計画中のUsercentricsの実装についての知識が必要です。コンセント管理プラットフォーム（CMP）のすべてのデータ処理サービスを取得するには、<a href="https://docs.usercentrics.com/#/direct-implementation-guide">Usercentrics直接実装ガイド</a>の指示に従ってください。</li>
 <li><strong>最初の実装にはテスト環境を使用する</strong><br>
-最初の実装では、開発環境に拡張機能を適用する前に、CMPに完全にアクセスできるテスト環境を使用することをお勧めします。テスト環境を使用することで、拡張機能を適用する前にエンドユーザーデータが処理されないことが保証されます。<br>
-すべてのデータ処理サービスを対応するタグにマッピングした後、本番環境にリリースし、Tealium iQタグ管理がエンドユーザーのプライバシー構成（同意）の強制を処理します。</li>
+最初の実装にはテスト環境を使用し、拡張機能内でマッピングテーブルを作成するためにCMPに完全にアクセスすることをお勧めします。テスト環境を使用することで、開発環境に拡張機能を適用する前にエンドユーザーデータが処理されることはありません。<br>
+すべてのデータ処理サービスを対応するタグにマッピング完了後、製品環境にリリースすることができ、Tealium iQタグ管理がエンドユーザーのプライバシー構成（同意）の強制を行います。</li>
 </ul>
-<h2 id="必要条件-1">必要条件</h2>
+<h2 id="要件">要件</h2>
 <ul>
 <li>
-<p>Tealium Universal Tag（<code>utag.js</code>）、バージョン4.48。<code>utag.js</code>テンプレートの更新に関する詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>を参照してください。</p>
+<p>Tealium Universal Tag (<code>utag.js</code>)、バージョン4.48。<code>utag.js</code>テンプレートの更新に関する詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</p>
 </li>
 <li>
-<p>Usercentrics CMPは、Tealium iQタグ管理よりも前に読み込まれる必要があります。そのため、次のいずれかの方法を実行する必要があります。</p>
+<p>Usercentrics CMPはTealium iQタグ管理の前にロードする必要があります。そのため、以下のいずれかを行う必要があります：</p>
 <ul>
-<li>Usercentricsスクリプト（タグ）をウェブサイトのHTMLコードに直接実装します。<br>
+<li>Usercentricsスクリプト（タグ）をウェブサイトのHTMLコード内に直接実装します。<br>
 <strong>- または -</strong></li>
-<li>Tealium iQタグ管理内でタグを実装するための手順については、「Usercentricsタグの実装」セクションに移動し、指示に従ってください。</li>
+<li>下記のUsercentricsタグの実装セクションに進み、Tealium iQタグ管理内でタグを実装する手順に従います。</li>
 </ul>
 </li>
 <li>
-<p>Usercentrics CMPでTealium iQタグ管理のデータ処理サービスを作成します。<br>
-詳細については、Usercentricsのドキュメント<a href="https://docs.usercentrics.com/#/direct-implementation-guide?id=assign-a-data-attribute">データ属性の割り当て</a>を参照してください。構成手順では、データ処理サービスの名前を事前に把握しておく必要があります。</p>
+<p>Tealium iQタグ管理のためのデータ処理サービスをUsercentrics CMP構成で作成します。<br>
+詳細については、Usercentricsのドキュメント、<a href="https://docs.usercentrics.com/#/direct-implementation-guide?id=assign-a-data-attribute">データ属性の割り当て</a>を参照してください。構成手順を始める前に、データ処理サービスの名前を知っておく必要があります。</p>
 </li>
 </ul>
 <h2 id="usercentricsタグの実装">Usercentricsタグの実装</h2>
-<p>次の手順を使用して、JavaScriptコード拡張機能を使用してTealium iQタグ管理にUsercentricsタグを実装します。</p>
+<p>以下の手順を使用して、JavaScript Code拡張機能を使用してTealium iQタグ管理内でUsercentricsタグを実装します：</p>
 <ol>
 <li>
-<p><strong>Tealium iQタグ管理 &gt; 拡張機能 &gt; 拡張機能の追加</strong>に移動し、<strong>JavaScriptコード</strong>拡張機能を選択して、Usercentrics V1またはUsercentrics V2のスクリプトを追加します。</p>
+<p><strong>Tealium iQタグ管理 &gt; 拡張機能 &gt; 拡張機能を追加</strong>に進み、<strong>JavaScript Code</strong>拡張機能を選択してUsercentrics V1またはUsercentrics V2のスクリプトを追加します。</p>
 </li>
 <li>
-<p><strong>JavaScriptコード</strong>拡張機能を追加します。</p>
- <p class="tip"><i class="fa fa-info-circle"></i>JavaScriptコード拡張機能を以前使用したことがなく、使用方法を学びたい場合は、JavaScriptコード拡張機能を参照してください。</p>
+<p><strong>JavaScript Code</strong>拡張機能を追加します。</p>
+ <p class="tip"><i class="fa fa-info-circle"></i>もしJavaScript Code拡張機能を以前に使用したことがなく、使用方法を学ぶ必要がある場合は、JavaScript Code拡張機能を参照してください。</p>
 </li>
 <li>
-<p>拡張機能の名前を<strong>Usercentricsタグ</strong>とし、スコープを<strong>Pre Loader</strong>に構成します。</p>
+<p>拡張機能の名前を<strong>Usercentricsタグ</strong>とし、スコープを<strong>プリローダー</strong>に構成します。</p>
 </li>
 <li>
-<p>次の例のスクリプトを使用して、拡張機能を作成します。</p>
+<p>次のいずれかの例のスクリプトを使用して拡張機能を作成します：</p>
 <ul>
 <li><strong>Usercentrics V1スクリプト</strong>：Usercentrics CMP v1をサポートします。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">d</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> document;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;script&#39;</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">createElement</span>(<span style="color:#a6e22e">c</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>; <span style="color:#75715e">// Usercentrics CMP Version 1 ScriptのURL。
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>; <span style="color:#75715e">// Usercentrics CMPバージョン1スクリプトのURL。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/java&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">c</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXX&#39;</span>; <span style="color:#75715e">// Usercentrics Settings-ID
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;XXXXXXXXX&#39;</span>; <span style="color:#75715e">// Usercentrics構成ID
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#a6e22e">c</span>)[<span style="color:#ae81ff">0</span>];
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">insertBefore</span>(<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">a</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        )();
 </span></span></code></pre></div></li>
-<li><strong>Usercentrics V2スクリプト</strong>：Usercentrics CMP V2 Browser SDKをサポートします。
+<li><strong>Usercentrics V2スクリプト</strong>：Usercentrics CMP V2ブラウザSDKをサポートします。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">d</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> document;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;script&#39;</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">createElement</span>(<span style="color:#a6e22e">c</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>; <span style="color:#75715e">// Usercentrics CMP Version 2 ScriptのURL。
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>; <span style="color:#75715e">// Usercentrics CMPバージョン2スクリプトのURL。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/java&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">c</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;usercentrics-cmp&#39;</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;data-settings-id&#39;</span>, <span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>); <span style="color:#75715e">// Usercentrics Settings-ID
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;data-settings-id&#39;</span>, <span style="color:#e6db74">&#34;XXXXXXXXXXX&#34;</span>); <span style="color:#75715e">// Usercentrics構成ID
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#a6e22e">c</span>)[<span style="color:#ae81ff">0</span>];
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">insertBefore</span>(<span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">a</span>);
 </span></span><span style="display:flex;"><span>        }
@@ -552,108 +552,108 @@
 </ul>
 </li>
 <li>
-<p>JavaScriptコード拡張機能を保存して公開します。</p>
+<p>JavaScript Code拡張機能を環境に保存して公開します。</p>
 </li>
 </ol>
-<h2 id="usercentrics-cmpでtealiumデータ処理サービスを作成する">Usercentrics CMPでTealiumデータ処理サービスを作成する</h2>
-<p>ユーザーの同意構成が強制され、サードパーティが許可された場合にのみデータを処理できるようにするために、UsercentricsアカウントでTealiumデータ処理サービスを作成する必要があります。</p>
-<p>次の手順を使用して、Usercentrics CMPアカウントでTealium iQタグ管理のデータ処理サービスを作成します。</p>
+<h2 id="tealiumのusercentrics-cmpでデータ処理サービスを作成する">TealiumのUsercentrics CMPでデータ処理サービスを作成する</h2>
+<p>ユーザーの同意構成が強制され、第三者が許可された場合にのみデータを処理できるようにするために、UsercentricsアカウントでTealiumデータ処理サービスを作成する必要があります。</p>
+<p>Tealium iQタグ管理のためのデータ処理サービスをUsercentrics CMPアカウントで作成するための以下の手順を使用します：</p>
 <ol>
-<li><strong>Usercentrics</strong>アカウントに移動します。</li>
-<li><strong>Tealium iQタグ管理</strong>の最新のデータ処理テンプレートを選択します。</li>
-<li>テンプレートを<strong>必須</strong>としてマークして、オプトアウトできないようにします。<br>
-Tealium iQタグ管理サービス名をカスタマイズした場合、CMP拡張機能では自動的に検出されません。</li>
+<li><strong>Usercentrics</strong>アカウントに進みます。</li>
+<li><strong>Tealium iQタグ管理</strong>のための最新のデータ処理テンプレートを選択します。</li>
+<li>テンプレートを<strong>必須</strong>としてマークして、オプトアウトができないようにします。<br>
+Tealium iQタグ管理のサービス名をカスタマイズした場合、CMP拡張機能によって自動的に検出されません。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このドキュメントの「構成」セクションでは、サービス名の入力フィールドを使用してカスタムサービス名を手動で追加します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このドキュメントの構成セクションで、サービス名入力フィールドを使用してカスタムサービス名を手動で追加します。</p>
 <h2 id="拡張機能の構成">拡張機能の構成</h2>
-<p>このセクションでは、拡張機能の追加、ブックマークレットのインストール、データ処理サービスのコピー、データ処理サービスのインポート、およびタグへのマッピングの手順について説明します。</p>
+<p>このセクションの手順では、拡張機能を追加し、ブックマークレットをインストールし、データ処理サービスをコピーし、データ処理サービスをインポートし、タグをデータ処理サービスにマッピングする方法を説明します。</p>
 <h3 id="拡張機能の追加">拡張機能の追加</h3>
-<p>次の手順を使用して、Usercentrics拡張機能を追加します。</p>
+<p>Usercentrics拡張機能を追加するための以下の手順を使用します：</p>
 <ol>
-<li><strong>iQタグ管理 &gt; 拡張機能 &gt; 拡張機能の追加</strong>に移動し、<strong>プライバシー</strong>タブをクリックします。</li>
-<li>Usercentrics拡張機能（Usercentrics V1またはUsercentrics V2）のいずれかを選択します。<br>
+<li><strong>iQタグ管理 &gt; 拡張機能 &gt; 拡張機能を追加</strong>に進み、<strong>プライバシー</strong>タブをクリックします。</li>
+<li>Usercentrics拡張機能のいずれかを選択します：<strong>Usercentrics V1</strong>または<strong>Usercentrics V2</strong>。<br>
 組織で現在使用しているバージョンに対応するバージョンを選択します。</li>
 <li><strong>タイトル</strong>フィールドに、この拡張機能に使用する意味のあるタイトルを入力します。<br>
-なお、<strong>スコープ</strong>フィールドは変更できません。</li>
-<li><strong>Settings-ID</strong>（オプション）を入力します。<br>
-<strong>Usercentrics</strong>の<strong>Settings ID</strong>の下にある<strong>Settings ID</strong>フィールドに、Usercentricsの<code>Settings_ID</code>を手動で追加できます。</li>
+<strong>スコープ</strong>フィールドは変更できません。</li>
+<li><strong>構成ID</strong>（オプショナル）<br>
+<strong>Usercentrics</strong> <strong>構成ID</strong>の下で、<strong>構成ID</strong>フィールドに手動でUsercentricsの<code>Settings_ID</code>を追加できます。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Usercentrics Settings-IDは、データ処理サービスのインポート時に拡張機能に自動的に追加される場合があるため、この手順は必要ない場合があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このステップは必要ない場合があります。データ処理サービスをインポートする際にUsercentrics構成IDが拡張機能に自動的に追加されます。</p>
 <ol>
-<li><strong>Tealium iQサービス名</strong>の下にある<strong>サービス名</strong>フィールドに、Usercentrics内のTealiumデータ処理サービスに与えられた正確な名前を入力します。<br>
+<li><strong>Tealium iQサービス名</strong>の下で、<strong>サービス名</strong>フィールドにUsercentrics内で与えられたTealiumデータ処理サービスの正確な名前を入力します。<br>
 <figure><a class="slb" href="/images/iq-tag-management/usercentrics-extension-rollback-domain-conditions.png"><img src="/images/iq-tag-management/usercentrics-extension-rollback-domain-conditions.png"
-             alt="Usercentrics Extension Rollback Domain Conditions"
-             title="Usercentrics Extension Rollback Domain Conditions"/>
+             alt="Usercentrics拡張機能のロールバックドメイン条件"
+             title="Usercentrics拡張機能のロールバックドメイン条件"/>
         </a>
     </figure></li>
-<li>次のセクションに進んで、<strong>Service Mapper</strong>ブックマークレットをインストールして使用します。</li>
+<li><strong>サービスマッパー</strong>ブックマークレットをインストールして使用する次のセクションに進みます。</li>
 </ol>
-<h3 id="service-mapperブックマークレットのインストール">Service Mapperブックマークレットのインストール</h3>
-<p>次の手順を使用して、ブックマークレットをインストールします。</p>
+<h3 id="service-mapper-ブックマークレットのインストール">Service Mapper ブックマークレットのインストール</h3>
+<p>ブックマークレットをインストールするには、以下の手順に従ってください：</p>
 <ol>
-<li><strong>ブックマークレット</strong>ボタンをクリックします。<br>
-<strong>Usercentrics Service Mapperブックマークレット</strong>ダイアログが表示されます。</li>
-<li><strong>Usercentrics Service Mapper</strong>リンクをクリックし、ブックマークレットをブラウザのブックマークバーにドラッグアンドドロップします。<br>
+<li><strong>Bookmarklet</strong> ボタンをクリックします。<br>
+<strong>Usercentrics Service Mapper Bookmarklet</strong> ダイアログが表示されます。</li>
+<li><strong>Usercentrics Service Mapper</strong> リンクをクリックし、ブックマークレットをブラウザのブックマークバーにドラッグアンドドロップします。<br>
 <figure><a class="slb" href="/images/iq-tag-management/usercentrics-bookmarklet-modal.png"><img src="/images/iq-tag-management/usercentrics-bookmarklet-modal.png"
              alt="Usercentrics Bookmarklet Modal.png"
              title="Usercentrics Bookmarklet Modal.png" width="644" height="285"/>
         </a>
     </figure><br>
-ブックマークレットがブラウザのバーに表示されます。</li>
-<li><strong>閉じる</strong>をクリックして、Usercentrics Service Mapperブックマークレットウィンドウを閉じます。</li>
+ブックマークレットがブラウザバーに表示されます。</li>
+<li><strong>閉じる</strong> をクリックして、Usercentrics Service Mapper Bookmarklet ウィンドウを閉じます。</li>
 </ol>
 <h3 id="マッピングテーブルの作成">マッピングテーブルの作成</h3>
-<p>次の手順を使用して、データ処理サービスをコピーしてインポートし、マッピングテーブルを作成します。</p>
+<p>データ処理サービスをコピーしてインポートし、マッピングテーブルを作成するには、以下の手順に従ってください：</p>
 <ol>
-<li>別のブラウザタブを開き、CMPが実装されているUsercentricsテスト環境に移動し、<strong>Usercentrics Service Mapper</strong>ブックマークレットをクリックして起動します。<br>
-ポップアップウィンドウには、データ処理サービスのJSONオブジェクトのテキストが表示されます。</li>
-<li>このウィンドウからテキスト全体をコピーします。</li>
-<li><strong>iQタグ管理</strong>のUsercentrics構成ダイアログに戻り、<strong>インポート</strong>ボタンをクリックします。<br>
-<strong>サービスのインポート</strong>ダイアログが表示されます。</li>
-<li>コピーしたJSONテキストを次の例に示すようにウィンドウに貼り付けます。<br>
+<li>別のブラウザタブを開き、CMPが実装されている Usercentrics テスト環境に移動し、<strong>Usercentrics Service Mapper</strong> ブックマークレットを起動します。<br>
+データ処理サービスの JSON オブジェクトのテキストが表示されるポップアップウィンドウが表示されます。</li>
+<li>このウィンドウから全てのテキストをコピーします。</li>
+<li><strong>iQ Tag Management</strong> の Usercentrics 構成ダイアログに戻り、<strong>インポート</strong> ボタンをクリックします。<br>
+<strong>インポートサービス</strong> ダイアログが表示されます。</li>
+<li>次の例に示すように、コピーした JSON テキストをウィンドウに貼り付けます。<br>
 <figure><a class="slb" href="/images/iq-tag-management/code-usercentrics-import-sample-pasted.png"><img src="/images/iq-tag-management/code-usercentrics-import-sample-pasted.png"
              alt="Code Usercentrics Import Sample Pasted"
              title="Code Usercentrics Import Sample Pasted"/>
         </a>
     </figure></li>
-<li><strong>マッピングテーブルの作成</strong>をクリックします。<br>
-Usercentrics Settings IDとTealium iQサービス名が自動的に入力され、データ処理サービスへのマッピングがマッピングテーブルに表示されます。</li>
+<li><strong>マッピングテーブルを作成</strong> をクリックします。<br>
+あなたの Usercentrics 構成 ID と Tealium iQ サービス名が自動的に入力され、データ処理サービスへのサービスマッピングがマッピングテーブルに表示されます。</li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>マッピングテーブルは、新しいタグが導入されるたびに、またはUsercentricsの構成が変更されるたびに更新する必要があります。詳細については、このドキュメントの「マッピングテーブルの更新」セクションを参照してください。</p>
-<h3 id="データ処理サービスをタグにマッピングする">データ処理サービスをタグにマッピングする</h3>
-<p>次の手順を使用して、データ処理サービスをタグにマッピングします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>マッピングテーブルは、新しいタグが導入された場合や Usercentrics 構成のデータ処理サービスが変更された場合に、このドキュメントのマッピングテーブル更新セクションに記載されているように更新する必要があります。</p>
+<h3 id="データ処理サービスをタグにマッピング">データ処理サービスをタグにマッピング</h3>
+<p>データ処理サービスをタグにマッピングするには、以下の手順に従ってください：</p>
 <ol>
-<li>マッピングテーブルの各項目に対して、<strong>To UID</strong>フィールドをクリックし、事前に入力されたリストから適切なタグUIDを選択します。<br>
-データ処理サービスを複数のタグにマッピングすることができます。<br>
+<li>マッピングテーブルの各項目で、<strong>To UID</strong> フィールドをクリックし、事前に用意されたリストから適切なタグ UID を選択します。<br>
+データ処理サービスに複数のタグをマッピングすることができます。<br>
 <figure><a class="slb" href="/images/iq-tag-management/usercentrics-extensions-service-mappings-dropdown.png"><img src="/images/iq-tag-management/usercentrics-extensions-service-mappings-dropdown.png"
              alt="Usercentrics Extensions Service Mappings Dropdown"
              title="Usercentrics Extensions Service Mappings Dropdown"/>
         </a>
     </figure></li>
-<li>ブックマークレットは、マッピングテーブルに<strong>Tealium iQタグ管理</strong>と<strong>Usercentrics</strong>のリスト項目を自動的に追加します。</li>
-<li>同意の強制には使用されないため、<strong>Tealium iQタグ管理</strong>と<strong>Usercentrics</strong>のサービスを削除するためにゴミ箱アイコンを使用します。</li>
-<li>(オプション) <strong>サービスの追加</strong>をクリックして、追加のサービスを手動で追加し、それに応じてマッピングします。<br>
-完了したら、データ処理が行われる前にエンドユーザーのプライバシー構成が強制されるため、ページの再読み込みは必要ありません。</li>
-<li>変更内容を保存して公開します。</li>
+<li>ブックマークレットは自動的に <strong>Tealium iQ Tag Management</strong> と <strong>Usercentrics</strong> のリスト項目をマッピングテーブルに追加します。</li>
+<li>同意強制に使用されない <strong>Tealium iQ Tag Management</strong> と <strong>Usercentrics</strong> サービスを削除するためにゴミ箱アイコンを使用します。</li>
+<li>（オプション）<strong>サービスを追加</strong> をクリックして手動で追加のサービスを追加し、それに応じてマッピングします。<br>
+完了すると、ページの再読み込みなしですぐに同意が強制され、エンドユーザーのプライバシー構成がデータ処理が行われる前に強制されることが保証されます。</li>
+<li>変更を保存して公開します。</li>
 </ol>
 <h3 id="マッピングテーブルの更新">マッピングテーブルの更新</h3>
-<p>マッピングテーブルは、新しいタグが導入される場合や、Usercentricsの構成が変更された場合に更新する必要があります。構成手順で説明されているように、ブックマークレットの機能を使用して更新するため、手順を繰り返します。</p>
-<p>インポート機能は、次のように既に存在するデータ処理サービスを識別します。</p>
+<p>新しいタグが導入された場合や Usercentrics 構成内のデータ処理サービスが変更された場合には、マッピングテーブルを更新する必要があります。構成手順で説明されているブックマークレット機能を使用し、プロセスを繰り返して更新します。</p>
+<p>インポート機能は、次のように既存のデータ処理サービスを識別します：</p>
 <ul>
 <li>データ処理サービスが既に存在する場合、マッピングには影響しません。</li>
 <li>データ処理サービスが削除された場合、マッピングエントリも削除されます。</li>
-<li>データ処理サービスが新しく導入された場合、マッピングテーブルに新しい行が追加され、少なくとも1つの対応するタグにマッピングする必要があります。</li>
+<li>データ処理サービスが新しく導入された場合、マッピングテーブルに新しい行項目が追加され、少なくとも1つの対応するタグをマッピングする必要があります。</li>
 </ul>
 <h2 id="トラブルシューティング">トラブルシューティング</h2>
-<p>注意が必要な一般的なイベント、ログメッセージ、エラーメッセージを表示するには、コンソールログを有効にします。</p>
-<p>次の手順を使用して、コンソールログを有効にします。</p>
+<p>典型的なイベント、ログメッセージ、注意が必要なエラーメッセージを表示するには、コンソールログを有効にします。</p>
+<p>コンソールログを有効にするには、以下の手順に従ってください：</p>
 <ol>
-<li><a href="/ja/platforms/javascript/debugging/">JavaScript（Web）デバッグ</a>に移動し、デバッグ用のクッキーを追加する手順に従います。</li>
-<li>デバッグ用のクッキーが構成されたら、<code>&quot;/SENDING|\*\*\*\*/&quot;</code>フィルタを使用して関連するエントリのみを表示します。</li>
+<li><a href="/ja/platforms/javascript/debugging/">JavaScript (Web) デバッグ</a> に移動し、デバッグクッキーを追加する手順に従います。</li>
+<li>デバッグクッキーが構成された後、<code>&quot;/SENDING|\*\*\*\*/&quot;</code> フィルターを使用して関連するエントリのみを表示します。</li>
 </ol>
 <h2 id="faq">FAQ</h2>
 <h4 id="この拡張機能はモバイルインストールで使用できますか">この拡張機能はモバイルインストールで使用できますか？</h4>
-<p>いいえ。iOSやAndroidなどのモバイルインストールでは、Tealium iQタグ管理のUsercentrics拡張機能はサポートされていません。</p>
+<p>いいえ。iOSやAndroidなどのモバイルインストールでは、Tealium iQ Tag Management Usercentrics 拡張機能はサポートされていません。</p>
 
 </div>
 
@@ -714,7 +714,7 @@ Usercentrics Settings IDとTealium iQサービス名が自動的に入力され�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -729,15 +729,15 @@ Usercentrics Settings IDとTealium iQサービス名が自動的に入力され�
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usercentrics%E3%82%BF%E3%82%B0%E3%81%AE%E5%AE%9F%E8%A3%85" href="javascript:void(0)">Usercentricsタグの実装</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usercentrics-cmp%E3%81%A7tealium%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Usercentrics CMPでTealiumデータ処理サービスを作成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%81%AEusercentrics-cmp%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">TealiumのUsercentrics CMPでデータ処理サービスを作成する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">拡張機能の構成</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">拡張機能の追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#service-mapper%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">Service Mapperブックマークレットのインストール</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#service-mapper-%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">Service Mapper ブックマークレットのインストール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">マッピングテーブルの作成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E3%82%BF%E3%82%B0%E3%81%AB%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">データ処理サービスをタグにマッピングする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E3%82%BF%E3%82%B0%E3%81%AB%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データ処理サービスをタグにマッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">マッピングテーブルの更新</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラブルシューティング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faq" href="javascript:void(0)">FAQ</a></li>
@@ -953,7 +953,7 @@ Usercentrics Settings IDとTealium iQサービス名が自動的に入力され�
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

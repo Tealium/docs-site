@@ -407,7 +407,7 @@
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/nav-timing-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-enable-navigation-timing-data">ナビゲーションタイミングデータ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/charles-proxy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enhanced-browser-console-debugging-with-charles-proxy">Charles Proxyでデバッグ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -467,7 +467,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、ルックアップテーブル拡張機能とその構成方法について説明します。ルックアップテーブル拡張機能は、一つのデータレイヤー変数の値をマッピングして、別の変数の値を構成するために使用されます。
+      この記事では、ルックアップテーブル拡張機能とその構成方法について説明します。ルックアップテーブル拡張機能は、あるデータレイヤー変数からの値を別の変数に構成するために使用されます。
     </p>
   
 </div>
@@ -475,19 +475,19 @@
 <div class="prose nested-links" id="prose">
   <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>ユニバーサルタグ (<code>utag.js</code>) 4.38 以降。<code>utag.js</code> テンプレートの更新についての詳細は、当社のナレッジベース記事 <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a> を参照してください。</li>
+<li>ユニバーサルタグ (<code>utag.js</code>) 4.38 以降。<code>utag.js</code> テンプレートを更新する方法については、当社のナレッジベース記事 <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.js の最新バージョンへの更新のベストプラクティス</a> を参照してください。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>ルックアップテーブル拡張機能は、ルックアップ値のリストを使用して、一つのデータレイヤー変数の値に基づいて別の変数の値を構成する方法を提供します。例えば、カテゴリ名を構成する必要があるが、データレイヤーがカテゴリIDの値しか提供しない場合、ルックアップテーブル拡張機能はカテゴリIDからカテゴリ名へのマッピングを提供します。サンプルマッピングは、カテゴリID <code>35</code> がカテゴリ名 <code>iQ Tag Management</code> に、カテゴリID <code>38</code> がカテゴリ名 <code>Mobile</code> にマッピングされる場合です。</p>
-<p>ルックアップテーブル拡張機能を構成する際には、<strong>Lookup Value In</strong> フィールドにルックアップ変数（データレイヤーからのソース変数）を構成します。次に、<strong>Destination</strong> フィールドにルックアップエントリに基づいて構成したい変数を構成します。</p>
-<p><strong>Variable Type</strong> フィールドは、ルックアップ変数のデータタイプ（<code>String</code> または <code>Array</code>）を指定します。ルックアップ変数は、<strong>Match Type</strong> に基づいてルックアップマッチ値と比較されます。マッチタイプは、正確な、大文字小文字を区別する比較を使用するために <strong>Exact</strong> に構成するか、部分文字列 [文字列内の連続した文字列] の比較を使用するために <strong>Contains</strong> に構成するか、<a href="http://w3schools.com/js/js_regexp.asp">正規表現</a> パターンに構成することができます（上級者向け）。</p>
-<p>ルックアップテーブルは、<strong>Lookup Match</strong> フィールドと <strong>Output</strong> フィールドにルックアップ値と出力値のエントリを追加することで構成されます。上記の例から、ルックアップ値 <code>35</code> は <strong>Lookup Match</strong> フィールドに表示され、出力値 <code>iQ Tag Management</code> は <strong>Output</strong> フィールドに表示されます。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>ルックアップテーブル拡張機能は、ルックアップ値のリストを使用して、ある変数の値を別の変数の値に基づいて構成する方法を提供します。例えば、カテゴリ名を構成する必要があるが、データレイヤーがカテゴリIDの値のみを提供する場合、ルックアップテーブル拡張機能はカテゴリIDからカテゴリ名へのマッピングを提供します。サンプルマッピングでは、カテゴリID <code>35</code> がカテゴリ名 <code>iQ Tag Management</code> に、カテゴリID <code>38</code> がカテゴリ名 <code>Mobile</code> にマッピングされています。</p>
+<p>ルックアップテーブル拡張機能を構成する際には、<strong>Lookup Value In</strong> フィールドにルックアップ変数（ソース変数）を構成し、次に <strong>Destination</strong> フィールドにルックアップエントリに基づいて構成したい変数を構成します。</p>
+<p><strong>Variable Type</strong> フィールドはルックアップ変数のデータタイプ（<code>String</code> または <code>Array</code>）を指定します。ルックアップ変数は <strong>Match Type</strong> に基づいてルックアップマッチ値と比較されます。マッチタイプは、正確なケースセンシティブな比較を使用するために <strong>Exact</strong> に構成されるか、文字列内の部分文字列 [文字列内の連続する文字のシーケンス] の比較を使用するために <strong>Contains</strong> に構成されるか、または（上級ユーザー向けに）<a href="http://w3schools.com/js/js_regexp.asp">正規表現</a> パターンに構成されます。</p>
+<p>ルックアップテーブルは、<strong>Lookup Match</strong> フィールドと <strong>Output</strong> フィールドにルックアップ値と出力値のエントリを追加することによって構成されます。上記の例から、ルックアップ値 <code>35</code> は <strong>Lookup Match</strong> フィールドに表示され、出力値 <code>iQ Tag Management</code> は <strong>Output</strong> フィールドに表示されます。</p>
 <p>ルックアップ変数の値がエントリと一致する場合、<strong>Destination</strong> 変数は <strong>Output</strong> 値に構成されます。</p>
-<p>ルックアップ変数の値がエントリと一致しない場合、出力値は <strong>Default Output</strong> フィールドで指定されたデフォルト値によって構成されます。例えば、これが <code>Unknown</code> に構成されている場合、ルックアップ変数のマッチが見つからないときには、出力変数はデータレイヤーで <code>Unknown</code> に構成されます。</p>
-<p>追加の条件は、<strong>Conditions</strong> 構成を変更することで拡張機能に適用することができます。</p>
-<h2 id="拡張機能の使用">拡張機能の使用</h2>
-<p>始める前に、<a href="/ja/iq-tag-management/extensions/about/">拡張機能の動作方法</a>について理解しておいてください。</p>
-<p>ルックアップテーブル拡張機能を使用するには、以下の構成を行います：</p>
+<p>ルックアップ変数の値がエントリと一致しない場合、出力値は <strong>Default Output</strong> フィールドによって指定されたデフォルト値に構成されます。たとえば、これが <code>Unknown</code> に構成されている場合、ルックアップ変数の一致が見つからないときに、出力変数はデータレイヤーで <code>Unknown</code> に構成されます。</p>
+<p>拡張機能に追加の条件を適用することができます。これは <strong>Conditions</strong> 構成を変更することによって行われます。</p>
+<h2 id="拡張機能の使用方法">拡張機能の使用方法</h2>
+<p>始める前に、<a href="/ja/iq-tag-management/extensions/about/">拡張機能の動作方法</a>について熟知してください。</p>
+<p>ルックアップテーブル拡張機能を使用するには、次の構成を行います：</p>
 <ul>
 <li>
 <p><strong>Lookup Value in</strong>: ルックアップしたい値を含むデータレイヤーからソースルックアップ変数を選択します。</p>
@@ -496,31 +496,31 @@
 <p><strong>Destination</strong>: 関連する出力値に構成する変数を選択します。新しい変数を作成するには、<strong>+</strong> ボタンをクリックします。</p>
 </li>
 <li>
-<p><strong>Variable Type</strong>: ルックアップ変数の値のデータタイプ（文字列または配列）を選択します。配列を選択した場合、任意の出力は対応するルックアップマッチと同じ配列インデックスに入ります。</p>
+<p><strong>Variable Type</strong>: ルックアップ変数の値のデータタイプ（文字列または配列）を選択します。配列を選択した場合、出力は対応するルックアップマッチの同じ配列インデックスに入ります。</p>
 </li>
 <li>
-<p><strong>Match Type</strong>: すべてのルックアップは選択したマッチタイプを使用して行われます。</p>
+<p><strong>Match Type</strong>: 選択したマッチタイプを使用してすべてのルックアップが行われます。</p>
 <ul>
-<li><strong>Exact</strong>: ルックアップ変数の値と完全に一致します（大文字小文字を区別します）。</li>
-<li><strong>Contains</strong>: ルックアップ変数の値の部分文字列（文字列内の連続した文字列）と一致します。</li>
-<li><strong>RegExp</strong>: ルックアップ変数の値と正規表現を一致させます。エスケープ文字は二つのバックスラッシュ <code>\\</code> でエスケープされます。無視するケースフラグ、<code>i</code>、は自動的に適用されます。</li>
+<li><strong>Exact</strong>: ルックアップ変数の値と正確に一致します（大文字と小文字を区別します）。</li>
+<li><strong>Contains</strong>: ルックアップ変数の値の部分文字列（文字列内の連続する文字のシーケンス）と一致します。</li>
+<li><strong>RegExp</strong>: ルックアップ変数の値に正規表現をマッチさせます。エスケープ文字は二重バックスラッシュ <code>\\</code> でエスケープされます。大文字小文字を区別しないフラグ <code>i</code> が自動的に適用されます。</li>
 </ul>
 </li>
 <li>
 <p><strong>Lookup Match</strong>: ルックアップ変数の値を入力します。値に引用符を使用しないでください。</p>
 </li>
 <li>
-<p><strong>Output</strong>: ルックアップマッチが見つかったときに構成する変数の値を入力します。値に引用符を使用しないでください。</p>
+<p><strong>Output</strong>: ルックアップマッチが見つかった場合に目的の変数に構成される値を入力します。値に引用符を入力しないでください。</p>
 </li>
 <li>
-<p><strong>Note</strong>: （オプション）各ルックアップマッチと出力値に関連するメモを追加します。メモの内容は宛先には渡されません。</p>
+<p><strong>Note</strong>: (オプション) 各ルックアップマッチと出力値に関連するメモを追加します。メモの内容は目的地には渡されません。</p>
 </li>
 <li>
-<p><strong>Default Output</strong>: ルックアップマッチが見つからない場合の宛先変数のデフォルト値を入力します。デフォルト値を無効にするには、<strong>Disable Default</strong> チェックボックスを選択します。</p>
+<p><strong>Default Output</strong>: ルックアップマッチが見つからない場合の目的の変数のデフォルト値を入力します。デフォルト値を無効にするには、<strong>Disable Default</strong> チェックボックスを選択します。</p>
 </li>
 </ul>
 <h3 id="csvからのインポート">CSVからのインポート</h3>
-<p>ルックアップ変数の値と出力値の間のマッピングデータを手動で入力するのは、ルックアップ値が多い場合には時間がかかります。別のオプションは、<strong>Import from CVS</strong> 機能で、これにより、カンマで区切られた値（CSV）としてフォーマットされたデータをテキストエリアボックスに貼り付けたり入力したりすることができます。データは次の形式で入力されます。各値はカンマで区切られます：</p>
+<p>ルックアップ変数の値と出力値の間のマッピングデータを手動で入力するのは、多くのルックアップ値がある場合には時間がかかります。別のオプションは、<strong>Import from CVS</strong> 機能です。これにより、コンマ区切り値 (CSV) としてフォーマットされたデータをテキストエリアボックスに貼り付けたり入力したりすることができます。データは次の形式で入力されます。各値はコンマで区切られます：</p>
 <pre tabindex="0"><code>Lookup Value, Output Value, Note
 </code></pre><p><code>Note</code> 値はオプションで、空白のままにすることができます。</p>
 <p>次の例では、5つのルックアップ/出力値のペアをマッピングに追加します：</p>
@@ -529,31 +529,31 @@
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums
-</code></pre><p>ルックアップテーブルのマッピングをすべて入力したら、<strong>Replace</strong> ボタンをクリックして、<strong>CVS</strong> テキストエリアからの新しいもので既存のマッピングをすべて置き換えるか、または <strong>Append</strong> をクリックして、これらの新しいマッピングを追加し、ルックアップテーブルのすべての元のマッピングを保持します。</p>
+</code></pre><p>ルックアップテーブルのマッピングの入力が完了したら、<strong>Replace</strong> ボタンをクリックして、<strong>CVS</strong> テキストエリアからの新しいマッピングですべての既存のマッピングを置き換えるか、<strong>Append</strong> をクリックしてこれらの新しいマッピングを追加し、ルックアップテーブルのすべての元のマッピングを保持します。</p>
 <h3 id="csvへのエクスポート">CSVへのエクスポート</h3>
-<p><strong>Export to CVS</strong> ボタンは、ルックアップテーブルマッピングデータを <code>lookup.csv</code> という名前のファイルにエクスポートします。ファイルは自動的にコンピュータにダウンロードされ、Excelまたは任意のテキストエディタソフトウェアで開くことができます。</p>
-<p>ルックアップテーブルマッピングデータは、カンマで区切られた値（CSV）としてエクスポートされ、各行が1つのエントリで、次の形式で表示されます：</p>
+<p><strong>Export to CVS</strong> ボタンは、<code>lookup.csv</code> というファイル名でルックアップテーブルのマッピングデータをエクスポートします。ファイルは自動的にコンピュータにダウンロードされ、Excelまたは任意のテキストエディタソフトウェアで開くことができます。</p>
+<p>ルックアップテーブルのマッピングデータはコンマ区切り値 (CSV) としてエクスポートされ、各行は次の形式で1つのエントリです：</p>
 <pre tabindex="0"><code>Lookup Value, Output Value, Note
-</code></pre><p>成功したエクスポートを行うためには、少なくとも1つのマッピング行が存在していなければなりません。オプションの <strong>Note</strong> フィールドが空白の場合、その行には <strong>Lookup Value</strong> と <strong>Output Value</strong> のみが表示されます。すべてのフィールドが空白の場合、データはエクスポートされません。次の例は、上記のCSVへのインポートの例からマッピングをエクスポートしたときの <code>lookup.csv</code> ファイルの内容を示しています：</p>
+</code></pre><p>少なくとも1つのマッピング行が存在している必要があります。成功したエクスポートを実行するためには、オプションの <strong>Note</strong> フィールドが空白の場合、その行には <strong>Lookup Value</strong> と <strong>Output Value</strong> のみが表示されます。すべてのフィールドが空白の場合、データはエクスポートされません。次の例は、上記の Import to CVS の例からマッピングをエクスポートする際の <code>lookup.csv</code> ファイルの内容を示しています：</p>
 <pre tabindex="0"><code>38, Mobile, forums
 35, iQ Tag Management, forums
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums
 </code></pre><h2 id="例カテゴリidを名前にマッピングする">例：カテゴリIDを名前にマッピングする</h2>
-<p>ルックアップテーブル拡張機能を使用すると、<code>category_id</code> のようなデータレイヤー変数を <code>category_name</code> のような別の変数にマッチさせることができます。以下の例を参照してください：</p>
+<p>ルックアップテーブル拡張機能を使用すると、次の例に示すように、<code>category_id</code> などのデータレイヤー変数を <code>category_name</code> などの別の変数にマッチさせることができます：</p>
 <ol>
 <li><strong>Lookup Value in</strong> ドロップダウンメニューからルックアップ変数 <code>category_id</code> を選択します。</li>
-<li><strong>Destination</strong> ドロップダウンメニューから読みやすい値変数 <code>category_name</code> を選択します。変数がドロップダウンメニューに見つからない場合は、<strong>+</strong> をクリックして変数を追加します。</li>
-<li><strong>Default Output</strong> フィールドに <code>none</code> を入力します。<code>category_id</code> の値がルックアップテーブルマッピングで見つからない場合、<code>category_name</code> の値は <code>none</code> に構成されます。</li>
-<li><strong>Variable Type</strong> に <strong>String</strong> を選択します。変数 <code>category_id</code> はカテゴリごとに1つのIDしか含まないからです。</li>
-<li><strong>Match Type</strong> に <strong>Exact</strong> を選択します。これは、正確なカテゴリIDを知っている場合に適しています。</li>
-<li>以下の手順を繰り返して、各ルックアップ変数に対してルックアップ/出力値のマッピングを作成します。各カテゴリIDを読みやすいカテゴリ名の値にマッピングします：
+<li><strong>Destination</strong> ドロップダウンメニューから読み取り可能な値変数 <code>category_name</code> を選択します。ドロップダウンメニューに変数が見つからない場合は、<strong>+</strong> をクリックして変数を追加します。</li>
+<li><strong>Default Output</strong> フィールドに <code>none</code> を入力します。ルックアップテーブルマッピングで <code>category_id</code> の値が見つからない場合、<code>category_name</code> の値は <code>none</code> に構成されます。</li>
+<li><strong>Variable Type</strong> で <strong>String</strong> を選択します。変数 <code>category_id</code> はカテゴリごとに1つのIDのみを含むためです。</li>
+<li>正確なカテゴリIDを知っている場合は、<strong>Match Type</strong> で <strong>Exact</strong> を選択します。</li>
+<li>次の手順を繰り返して、各ルックアップ変数のルックアップ/出力値マッピングを作成し、各カテゴリIDを読み取り可能なカテゴリ名値にマッピングします：
 <ol>
-<li><strong>Lookup Match</strong> フィールドにカテゴリIDを入力します。例えば <code>38</code> など。</li>
-<li><strong>Output</strong> フィールドにカテゴリ名を入力します。例えば <code>Mobile</code> など。</li>
-<li>（オプション）<strong>Note</strong> フィールドに関連するメモを追加します。</li>
-<li>別のルックアップ/出力値を追加するには、<strong>+</strong> ボタンをクリックします。</li>
+<li><strong>Lookup Match</strong> フィールドにカテゴリIDを入力します。たとえば <code>38</code>。</li>
+<li><strong>Output</strong> フィールドにカテゴリ名を入力します。たとえば <code>Mobile</code>。</li>
+<li>(オプション) <strong>Note</strong> フィールドに関連するメモを追加します。</li>
+<li><strong>+</strong> ボタンをクリックして別のルックアップ/出力値を追加します。</li>
 </ol>
 </li>
 </ol>
@@ -562,12 +562,12 @@
          title="Extension page"/>
     </a>
 </figure>
-<p>ルックアップテーブル拡張機能が実行されると、ルックアップが <code>category_id</code> 変数の出力値と一致すると、<code>category_name</code> 変数はOutputで構成された値になります。例えば、<code>category_id</code> が <code>46</code> の場合、<code>category_name</code> は <code>AudienceStream</code> に構成されます。</p>
+<p>ルックアップテーブル拡張機能が実行されると、ルックアップが出力値と一致する場合、<code>category_id</code> 変数の出力値が構成された値で <code>category_name</code> 変数が構成されます。たとえば、<code>category_id</code> が <code>46</code> の場合、<code>category_name</code> は <code>AudienceStream</code> に構成されます。</p>
 <h2 id="faq">FAQ</h2>
-<h4 id="ルックアップ変数がテーブル内の複数の値と一致する場合はどうなりますか">ルックアップ変数がテーブル内の複数の値と一致する場合はどうなりますか？</h4>
-<p>A: ルックアップは拡張機能内で表示される順序で行われ、最初のマッチが勝ちます。</p>
-<h4 id="マッチタイプ-exact-は大文字小文字を区別しますか">マッチタイプ &ldquo;Exact&rdquo; は大文字小文字を区別しますか？</h4>
-<p>A: はい。<code>Exact</code> マッチオプションは大文字小文字を区別します。</p>
+<h4 id="ルックアップ変数がテーブル内の複数の値と一致した場合はどうなりますか">ルックアップ変数がテーブル内の複数の値と一致した場合はどうなりますか？</h4>
+<p>A: ルックアップは拡張子に表示される順番で実行され、最初に一致したものが採用されます。</p>
+<h4 id="exactマッチタイプは大文字と小文字を区別しますか">&ldquo;Exact&quot;マッチタイプは大文字と小文字を区別しますか？</h4>
+<p>A: はい。<code>Exact</code> マッチオプションは大文字と小文字を区別します。</p>
 
 </div>
 
@@ -628,7 +628,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -643,8 +643,8 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">拡張機能の使用</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">拡張機能の使用方法</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#csv%E3%81%8B%E3%82%89%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">CSVからのインポート</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#csv%E3%81%B8%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">CSVへのエクスポート</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AAid%E3%82%92%E5%90%8D%E5%89%8D%E3%81%AB%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">例：カテゴリIDを名前にマッピングする</a></li>
@@ -861,7 +861,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

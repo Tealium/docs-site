@@ -183,112 +183,113 @@
 
   
     <p class="f4 fw3 lh-copy">
-      デバッグにトレースを使用する方法を学びます。
+      トレースを使用してデバッグする方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><a href="/ja/server-side/trace/manage/">Trace</a>は、Tealium EventStreamおよびTealium AudienceStreamの設定をテストおよび検査するツールです。トレースを使用して、訪問者のワークフローをキャプチャし、イベントと顧客データがリアルタイムでどのように処理されるかを観察します。</p>
+  <p><a href="/ja/server-side/trace/manage/">Trace</a>は、Tealium EventStreamおよびTealium AudienceStreamの構成をテストおよび検査するためのツールです。訪問のワークフローをキャプチャし、イベントと顧客データがリアルタイムでどのように処理されるかを確認するためにTraceを使用します。</p>
 <h2 id="モバイルトレースツール">モバイルトレースツール</h2>
-<h3 id="サポートされているプラットフォーム">サポートされているプラットフォーム</h3>
+<h3 id="対応プラットフォーム">対応プラットフォーム</h3>
 <p>以下のプラットフォームがモバイルトレースツールをサポートしています：</p>
 <ul>
 <li><a href="/ja/platforms/android-kotlin/">Android (Kotlin)</a></li>
 <li><a href="/ja/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>トレースを一括イベントに追加しないでください。<br>製品データを監視するためにトレースを永続的なパラメータとして追加しないでください。</p>
-<h3 id="使い方">使い方</h3>
-<p>モバイルトレースツールは、デバイスでスキャン可能なQRコードを提供することでトレース機能を強化し、Tealium Mobile SDKからのイベントをすばやく表示できます。</p>
-<p>ツールで<strong>トレースを開始</strong>をクリックすると、Customer Data Hubセッションごとに一度、新しいトレースを開始するたびにQRコードが自動的にメインのブラウザウィンドウに挿入されます。</p>
-<p>QRコードは各プラットフォーム（<a href="/ja/platforms/android-kotlin/">Android</a>または<a href="/ja/platforms/ios-swift/">iOS</a>）ごとに生成されます。適切なQRコードを適切なモバイルデバイスのカメラでスキャンした後、QRコードからのリンクをクリックしてアプリを起動し、トレースパラメータをTealium SDKに渡します。Tealium SDKはトレースID（および他のパラメータ）を受け取り、現在のセッションのデータレイヤーにトレースIDを挿入します。</p>
-<p>その後のすべてのイベントは、セッションを終了するか、トレースを離れるまでトレースセッションに記録されます。</p>
-<p>次の図は、その動作を示しています：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>大量のイベントにトレースを追加しないでください。<br>本番データを監視するためにトレースを永続的なパラメータとして追加しないでください。</p>
+<h3 id="仕組み">仕組み</h3>
+<p>モバイルトレースツールは、デバイスでスキャン可能なQRコードを提供することでトレース機能をエンリッチメントします。ツール内で<strong>Start Trace</strong>をクリックすると、Customer Data Hubセッションごとに一度、新しいトレースを開始するたびにメインブラウザウィンドウに自動的にQRコードが挿入されます。</p>
+<p>QRコードは各プラットフォーム（<a href="/ja/platforms/android-kotlin/">Android</a>または<a href="/ja/platforms/ios-swift/">iOS</a>）ごとに生成されます。適切なQRコードを適切なモバイルデバイスのカメラでスキャンした後、QRコードからのリンクをクリックしてアプリを起動し、トレースパラメータをTealium SDKに渡します。Tealium SDKはトレースID（その他のパラメータと共に）を受け取り、現在のセッションのデータレイヤーにトレースIDを挿入します。</p>
+<p>その後のすべてのイベントは、セッションを終了するかトレースを離れるまでトレースセッションに記録されます。</p>
+<p>次の図はその仕組みを示しています：</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-overview.png"><img src="/images/platforms/getting-started-mobile/trace-tool-overview.png" width="850" height="750"/>
     </a><figcaption><p>トレースツールの概要</p>
         </figcaption>
 </figure>
 <h3 id="インストール">インストール</h3>
-<p>このツールを使用するには、ブラウザに<a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealium Toolsブラウザ拡張機能</a>をインストールします。</p>
-<p><strong>URLで追加</strong>テキストフィールドに、URL：<a href="https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json">https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json</a>を入力します。</p>
-<p>インストールが完了したら、Tealium Tools拡張機能からモバイルトレースツールのアイコンを起動します。</p>
+<p>このツールを使用するには、ブラウザ用の<a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealium Toolsブラウザ拡張機能</a>をインストールします。</p>
+<p><strong>Add by URL</strong>テキストフィールドにURLを入力します：<a href="https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json">https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json</a></p>
+<p>インストールが完了したら、Tealium Tools拡張機能からモバイルトレースツールアイコンを起動します。</p>
 <h3 id="urlスキーム">URLスキーム</h3>
-<p>モバイルトレースツールを使用するには、モバイルアプリがどのURLを処理するかを決定し、URLスキームを設定します。</p>
-<p>QRコードトレース機能は、URLからアプリを起動し、特定のクエリパラメータをリッスンします。URLから直接アプリを起動するには、アプリが特定のドメインを処理するように自身を登録している必要があります。</p>
-<p>通常、ほとんどのアプリはすでに特定のURLを処理しています。たとえば、ウェブサイトのドメインが<a href="https://mycompany.com">https://mycompany.com</a>である場合、アプリはこのドメインのハンドラとして自身を登録し、アプリがユーザーのデバイスにインストールされている場合、ユーザーはブラウザ内ではなくアプリでリンクを起動するように求められます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>一部のアプリは、<code>http</code>または<code>https</code>の代わりにカスタムURLスキームを登録します。たとえば<code>mycompanyapp://</code>。これらもモバイルトレースツールで動作します。</p>
-<p>アプリを起動するURLスキームを確立したら、それらをモバイルトレースツールの入力フィールドに入力します。ツールは必要に応じてAndroidとiOSで異なるスキームをサポートしますが、通常は両方のプラットフォームで同じです。</p>
+<p>モバイルトレースツールを使用するには、モバイルアプリが処理するURLを特定してURLスキームを構成します。</p>
+<p>QRコードトレース機能は、URLからアプリを起動し、特定のクエリパラメータをリスニングします。URLから直接アプリを起動するには、アプリが特定のドメインを処理するように登録されている必要があります。</p>
+<p>通常、ほとんどのアプリは特定のURLを既に処理しています。たとえば、ウェブサイトのドメインが<a href="https://mycompany.com">https://mycompany.com</a>の場合、アプリはこのドメインのハンドラとして自身を登録し、ユーザーのデバイスにアプリがインストールされている場合、ユーザーはブラウザではなくアプリでリンクを起動するように促されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>一部のアプリは<code>http</code>や<code>https</code>の代わりにカスタムURLスキームを登録します。たとえば<code>mycompanyapp://</code>などです。これらもモバイルトレースツールで機能します。</p>
+<p>アプリを起動するURLスキームを確立したら、それらをモバイルトレースツールの入力フィールドに入力します。ツールは必要に応じてAndroidとiOSで異なるスキームをサポートしますが、通常は両プラットフォームで同じです。</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool.png"><img src="/images/platforms/getting-started-mobile/trace-tool.png" width="350" height="400"/>
     </a><figcaption><p>トレースツール</p>
         </figcaption>
 </figure>
-<p>各URLスキームの隣にある<strong>保存</strong>をクリックして、設定をブラウザの<code>localStorage</code>に保存します。青い鉛筆アイコンをクリックして、必要に応じてURLスキームを編集します。</p>
+<p>各URLスキームの横にある<strong>Save</strong>をクリックして、構成をブラウザの<code>localStorage</code>に保存します。URLスキームを必要に応じて編集するには、青い鉛筆アイコンをクリックします。</p>
 <h3 id="トレースの開始">トレースの開始</h3>
-<p>トレースを開始する前に、サーバーサイドのTealium Customer Data Hubにいることを確認します。モバイルトレースツールで<strong>トレースを開始</strong>をクリックして新しいトレースを開始し、モバイルトレースQRコードをトレースウィンドウに追加します。</p>
+<p>トレースを開始する前に、サーバーサイドのTealium Customer Data Hubにいることを確認します。モバイルトレースツールで<strong>Start Trace</strong>をクリックして新しいトレースを開始し、トレースウィンドウにモバイルトレースQRコードを追加します。</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-start.png"><img src="/images/platforms/getting-started-mobile/trace-tool-start.png" width="350" height="400"/>
     </a><figcaption><p>トレースツールの開始</p>
         </figcaption>
 </figure>
-<p>トレースを開始した後、Tealium Tools UIを閉じます。これは残りのセッションで必要ありません。</p>
-<p>次のトレースはCustomer Data Hubから直接開始され、新しいトレースが開始するたびにQRコードが自動的に更新されます。デバイスのカメラでQRコードをスキャンし、リンクをクリックしてアプリを起動し、自動的にトレースを開始します。トレースに参加した後にアプリから生成されたTealiumイベントはすべて、トレースセッションに記録されます。</p>
+<p>トレースを開始した後、Tealium ToolsのUIを閉じます。それ以降のセッションには必要ありません。</p>
+<p>次のトレースは直接Customer Data Hubから開始され、新しいトレースが開始されるたびにQRコードが自動的に更新されます。デバイスのカメラでQRコードをスキャンし、リンクをクリックしてアプリを起動し、自動的にトレースを開始します。トレースに参加した後にアプリが生成するTealiumイベントは、トレースセッションに記録されます。</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-qr-code.png"><img src="/images/platforms/getting-started-mobile/trace-qr-code.png" width="750" height="400"/>
     </a><figcaption><p>トレースQRコード</p>
         </figcaption>
 </figure>
-<h3 id="トレースを離れる">トレースを離れる</h3>
-<p>トレースセッションを終了せずに離れると、そのトレースセッションの履歴を失うことなく、別のデバイスから同じトレースに再参加することができます。</p>
+<h3 id="トレースの離脱">トレースの離脱</h3>
+<p>トレースセッションを終了せずに離れる場合、別のデバイスから同じトレースに再参加することができ、そのトレースセッションの履歴を失うことはありません。</p>
 <p>トレースを離れるには：</p>
 <ol>
-<li>トレースUIの<strong>トレースを離れる</strong>チェックボックスを選択します。</li>
-<li>デバイスのカメラで再度QRコードをスキャンします。</li>
-<li>デバイスがトレースセッションに参加しないように、リンクをクリックします。</li>
+<li>トレースUIで<strong>Leave Trace</strong>チェックボックスを選択します。</li>
+<li>デバイスのカメラでQRコードを再度スキャンします。</li>
+<li>リンクをクリックしてデバイスがトレースセッションに参加しないようにします。</li>
 </ol>
 <h3 id="訪問の終了audiencestream">訪問の終了（AudienceStream）</h3>
-<p>Tealium AudienceStreamで「訪問の終了」アクションをテストするには、訪問者のセッションを即座に終了する信号が必要です。それ以外の場合は、セッションが通常通りに期限切れになるのを待つ必要があります。</p>
-<p>モバイルトレースツールでは、<strong>訪問者セッションの終了</strong>チェックボックスを選択することで、セッションを即座に終了します。これにより、QRコードにパラメータが追加され、SDKが<code>kill_visitor_session</code>イベントを送信します。</p>
+<p>Tealium AudienceStreamで「訪問の終了」アクションをテストするには、訪問のセッションを即座に終了するシグナルが必要です。そうでなければ、通常はセッションが自然に期限切れになるのを待つ必要があります。</p>
+<p>モバイルトレースツールで、<strong>End Visitor Session</strong>チェックボックスを選択してセッションを即座に終了し、SDKが<code>kill_visitor_session</code>イベントを送信するようにQRコードにパラメータを追加します。</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-end-visit.png"><img src="/images/platforms/getting-started-mobile/trace-end-visit.png" width="775" height="400"/>
-    </a><figcaption><p>訪問の終了トレース</p>
+    </a><figcaption><p>トレース訪問の終了</p>
         </figcaption>
 </figure>
 <h2 id="charles-proxy">Charles Proxy</h2>
-<p>Charles Web Debugging Proxyを使用して、Mobile SDKとTealium Collectタグを使用したアプリケーションからトレースを開始します。</p>
+<p>Charles Webデバッグプロキシを使用して、モバイルSDKとTealium Collectタグを使用するアプリケーションからトレースを開始します。</p>
 <h3 id="必要条件">必要条件</h3>
 <ul>
 <li>Charles Proxy</li>
 <li><a href="/ja/server-side/getting-started/intro-cdh/">Tealium Customer Data Hubアカウント</a></li>
 </ul>
-<h3 id="セットアップ">セットアップ</h3>
-<p>Charlesをコンピュータ上でプロキシとして使用し、ネットワークトラフィックを<code>teal</code>でフィルタリングします。リクエストを右クリックし、<strong>URLをコピー</strong>を選択します。</p>
-<p>Charlesメニューから<strong>ツール &gt; 書き換え</strong>を選択して、<strong>書き換え設定</strong>ダイアログを開きます。</p>
-<p>場所を追加するには：</p>
+<h3 id="構成">構成</h3>
+<p>コンピュータ上のCharlesにトラフィックをプロキシするために、モバイルデバイスを構成する手順に従ってください。<a href="/ja/platforms/android-kotlin/charles-proxy-android">Android</a>または<a href="/ja/platforms/ios-swift/charles-proxy-iosdevice">iOS</a>デバイス用の指示に従います。</p>
+<h3 id="リライトの使用">リライトの使用</h3>
+<p>Charlesをプロキシとして使用してアプリケーションを実行し、<code>teal</code>のネットワークトラフィックをフィルタリングします。リクエストを右クリックして<strong>Copy URL</strong>を選択します。</p>
+<p>Charlesメニューから<strong>Tools &gt; Rewrite</strong>を選択して<strong>Rewrite Settings</strong>ダイアログを開きます。</p>
+<p>ロケーションを追加するには：</p>
 <ol>
 <li>
-<p><strong>書き換えを有効にする</strong>チェックボックスを選択し、場所リストの下の<strong>追加</strong>ボタンをクリックします。</p>
+<p><strong>Enable Rewrite</strong>チェックボックスを選択し、ロケーションリストの下にある<strong>Add</strong>ボタンをクリックします。</p>
 </li>
 <li>
-<p><strong>名前</strong>フィールドに<code>トレースIDを追加</code>と入力し、場所を追加するために<strong>追加</strong>をクリックします。</p>
+<p><strong>Name</strong>フィールドに<code>Add Trace ID</code>と入力し、<strong>Add</strong>をクリックしてロケーションを追加します。</p>
 </li>
 <li>
-<p>場所フィールドを入力し、<strong>ホスト</strong>フィールドをCollectタグURLに設定します。</p>
-   <p class="tip"><i class="fa fa-info-circle"></i><strong>場所の編集</strong>ダイアログボックスの外をクリックすると、Charlesが自動的に追加のURLコンポーネントを決定します。</p>
+<p>ロケーションフィールドを入力し、<strong>Host</strong>フィールドにCollectタグのURLを構成します。</p>
+  <p class="tip"><i class="fa fa-info-circle"></i><strong>Edit Location</strong>ダイアログボックスの外をクリックすると、Charlesは追加のURLコンポーネントを自動的に決定します。</p>
 </li>
 <li>
-<p><strong>クエリ</strong>フィールドは空のままにし、<strong>OK</strong>をクリックします。</p>
+<p><strong>Query</strong>フィールドを空のままにして<strong>OK</strong>をクリックします。</p>
 </li>
 </ol>
 <p>アクションを追加するには：</p>
 <ol>
-<li>アクションリストの下の<strong>追加</strong>ボタンをクリックし、<strong>タイプ</strong>をドロップダウンメニューから<code>Body</code>に設定します。</li>
-<li><strong>Where</strong>セクションで、<strong>Request</strong>チェックボックスを選択します。</li>
-<li><strong>Match</strong>セクションで、<strong>Value</strong>を<code>&quot;data&quot;:{</code>に設定し、<strong>Match whole value</strong>チェックボックスを選択します。</li>
-<li><strong>Replace</strong>セクションで、<strong>Value</strong>を<code>&quot;data&quot;:{&quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;,</code>に設定し、<strong>Replace first</strong>チェックボックスを選択します。</li>
-<li><strong>OK</strong>をクリックし、変更を<strong>適用</strong>します。</li>
+<li>アクションリストの下にある<strong>Add</strong>ボタンをクリックし、ドロップダウンメニューから<strong>Type</strong>を<code>Body</code>に構成します。</li>
+<li><strong>Where</strong>セクションで<strong>Request</strong>チェックボックスを選択します。</li>
+<li><strong>Match</strong>セクションで<strong>Value</strong>に<code>&quot;data&quot;:{</code>を構成し、<strong>Match whole value</strong>チェックボックスを選択します。</li>
+<li><strong>Replace</strong>セクションで<strong>Value</strong>に<code>&quot;data&quot;:{&quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;,</code>を構成し、<strong>Replace first</strong>チェックボックスを選択します。</li>
+<li><strong>OK</strong>をクリックして変更を<strong>Apply</strong>します。</li>
 </ol>
-<p>これらの手順を完了した後、アプリケーションをブラウズし、AudienceStreamまたはEventStreamのトレースセッションでリクエストを表示します。別のトレースを実行するには、Charlesを起動し、既存の書き換えルールを編集して<code>12345</code>のトレースID値を変更します。</p>
+<p>手順を完了した後、アプリケーションを参照し、AudienceStreamまたはEventStreamのトレースセッションでリクエストを表示します。別のトレースを実行するには、Charlesを起動して既存のリライトルールを編集し、<code>12345</code>のトレースID値を変更します。</p>
 <h2 id="マニュアル">マニュアル</h2>
-<p>エミュレーターを使用して開発モードにある場合、またはCharlesを使用したくない場合、別のオプションは、ネイティブコードを通じてトレースを手動で追加し、離れることです。</p>
-<h3 id="トレースの開始マニュアル">トレースの開始（マニュアル）</h3>
-<p>トレースを手動で開始し、実行するには、トレースIDをネイティブコード内の揮発性データに追加します。</p>
+<p>エミュレータを使用して開発モードである場合、またはCharlesを使用したくない場合は、ネイティブコードを通じて手動でトレースを追加および離脱することが別のオプションです。</p>
+<h3 id="トレースの開始手動">トレースの開始（手動）</h3>
+<p>トレースIDをネイティブコード内の揮発性データに追加して、手動でトレースを開始して実行します。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -307,8 +308,8 @@
 </div>
 </div>
 
-<h3 id="トレースの終了マニュアル">トレースの終了（マニュアル）</h3>
-<p>トレースを手動で終了し、任意の「訪問の終了」の濃縮をシミュレートするには、アプリ内の任意の場所に以下のトラックを追加します：</p>
+<h3 id="トレースの終了手動">トレースの終了（手動）</h3>
+<p>手動でトレースを終了し、「訪問終了」のエンリッチメントをシミュレートするには、アプリ内の任意の場所に以下のトラックを追加します：</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -400,19 +401,20 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%83%84%E3%83%BC%E3%83%AB" href="javascript:void(0)">モバイルトレースツール</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" href="javascript:void(0)">サポートされているプラットフォーム</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E3%81%84%E6%96%B9" href="javascript:void(0)">使い方</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AF%BE%E5%BF%9C%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" href="javascript:void(0)">対応プラットフォーム</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#url%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%A0" href="javascript:void(0)">URLスキーム</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%96%8B%E5%A7%8B" href="javascript:void(0)">トレースの開始</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%9B%A2%E3%82%8C%E3%82%8B" href="javascript:void(0)">トレースを離れる</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%9B%A2%E8%84%B1" href="javascript:void(0)">トレースの離脱</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%81%AE%E7%B5%82%E4%BA%86audiencestream" href="javascript:void(0)">訪問の終了（AudienceStream）</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#charles-proxy" href="javascript:void(0)">Charles Proxy</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">セットアップ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">リライトの使用</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB" href="javascript:void(0)">マニュアル</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%96%8B%E5%A7%8B%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB" href="javascript:void(0)">トレースの開始（マニュアル）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E7%B5%82%E4%BA%86%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB" href="javascript:void(0)">トレースの終了（マニュアル）</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E9%96%8B%E5%A7%8B%E6%89%8B%E5%8B%95" href="javascript:void(0)">トレースの開始（手動）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E7%B5%82%E4%BA%86%E6%89%8B%E5%8B%95" href="javascript:void(0)">トレースの終了（手動）</a></li>
               </nav>
   </aside></nav>
 
@@ -625,7 +627,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

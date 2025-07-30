@@ -407,7 +407,7 @@
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/nav-timing-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-enable-navigation-timing-data">ナビゲーションタイミングデータ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/charles-proxy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enhanced-browser-console-debugging-with-charles-proxy">Charles Proxyでデバッグ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -467,18 +467,18 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Tealiumのユニバーサルタグ（<code>utag.js</code>）とベンダーライブラリファイルがページにどのようにロードされるかを学びます。
+      Tealiumのユニバーサルタグ（<code>utag.js</code>）とベンダーライブラリファイルがページにロードされる方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="ホストされたファイル">ホストされたファイル</h2>
-<p>アカウントに保存されたすべてのタグ構成とビジネスロジックはJavaScriptコードに変換され、<code>utag.js</code>という名前のファイルに公開されます。このファイルはアカウント固有のもので、Tealiumのサーバーにホストされています。</p>
+<p>アカウントに保存されたすべてのタグ構成とビジネスロジックはJavaScriptコードに変換され、<code>utag.js</code>という名前のファイルに公開されます。このファイルはアカウント専用で、Tealiumのサーバーにホストされています。</p>
 <p>Tealiumのサーバーインフラストラクチャは、これらのファイルをできるだけ早くウェブサイトに配信するように設計されています。ウェブページによってユニバーサルタグのコードスニペットが実行されると、Tealiumのサーバーにリクエストが送信され、ファイルがページにダウンロードされ、コードが実行されます。<code>utag.js</code>がページにロードされるとすぐに、タグを発火する準備のためのコードの実行が始まります。</p>
 <p>ユニバーサルタグ<code>utag.js</code>のロード方法についての詳細は、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">操作の順序</a>を参照してください。</p>
 <h2 id="ページデータ">ページデータ</h2>
-<p><code>utag_data</code>にサイトが入力する動的データに加えて、<code>utag.js</code>ライブラリは自動的にページからさまざまなデータ値を収集し、それらを一つの中央データオブジェクトに組み合わせて、タグとロードルールに利用可能にします。以下のページ要素がキャプチャされます：</p>
+<p><code>utag_data</code>にサイトが動的に入力するデータに加えて、<code>utag.js</code>ライブラリは自動的にページからさまざまなデータ値を収集し、それらを一つの中央データオブジェクトに組み合わせて、タグとロードルールに利用可能にします。以下のページ要素がキャプチャされます：</p>
 <ul>
 <li>クエリ文字列パラメータ</li>
 <li>ファーストパーティクッキー</li>
@@ -487,11 +487,11 @@
 </ul>
 <p>最終的なデータオブジェクトは、ロードルールとタグの動力源として使用されます。</p>
 <h2 id="ロードルール">ロードルール</h2>
-<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、タグをロードするタイミングを決定する正確な条件です。一つ以上の条件で構成されることが一般的で、ロードルールが満たされると、それに適用されるタグがロードされます。データオブジェクトからの変数の完全なリストを使用してロードルールを評価し、どのタグがページにロードされるかを決定します。ロードルールはクライアントサイドでブラウザ内で評価されるJavaScriptコードです。</p>
+<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、タグをロードするタイミングを決定する正確な条件です。一つ以上の条件で構成されることが一般的で、ロードルールが満たされると、それに適用されるタグがロードされます。データオブジェクトからの変数の完全なリストを使用してロードルールを評価し、ページ上でどのタグがロードされるかを決定します。ロードルールはクライアントサイドでブラウザ内で評価されるJavaScriptコードです。</p>
 <h2 id="イベント">イベント</h2>
 <p><a href="/ja/iq-tag-management/events/about/">イベント</a>はデータ収集を助けるトリガーです。ページ上で閲覧者がアクションを実行するのを待ち、その情報をデータレイヤーに送信します。たとえば、特定の製品が何回閲覧されたかを確認したい場合、製品ページが閲覧されるたびに発火するイベントを使用できます。また、特定の要素が表示されたときなど、ウェブサイト要素とのユーザーインタラクションを記録するためにも使用できます。イベントトリガーは、ページ上でロードされるかどうかを決定するためにロードルールを使用します。イベントはクライアントサイドでブラウザ内で評価されるJavaScriptコードです。</p>
 <h2 id="タグのロード">タグのロード</h2>
-<p>ベンダータグをロードして実行するために必要なコードもTealiumに公開され、タグのUIDに応じて番号が付けられたタグ構成ファイル（例：<code>utag.1.js</code>）に保存されます。訪問のブラウザは、ウェブページにアクセスするときに、各タグ構成ファイルを取得するためにTealiumサーバーにHTTPリクエストを送信します。</p>
+<p>ベンダータグをロードして実行するために必要なコードもTealiumに公開され、タグのUIDに応じて番号付けされたタグ構成ファイル（例：<code>utag.1.js</code>）に保存されます。訪問のブラウザは、ウェブページにアクセスするときに各タグ構成ファイルを取得するためにTealiumサーバーにHTTPリクエストを送信します。</p>
 <p>このファイルにはベンダーの構成と構成が含まれていますが、ベンダーのJavaScriptファイルが含まれていない場合があります。その場合、ベンダーのコードをフェッチするために追加のHTTPリクエストが行われます。これらのリクエストは、ページのレンダリング時間に影響を与えないように非同期で行われます。</p>
 <p>ここに、Google Analyticsがページにロードされる方法を示す簡単な例を示します：</p>
 <figure><a class="slb" href="/images/platforms/javascript/utag-network-files.png"><img src="/images/platforms/javascript/utag-network-files.png"
@@ -501,12 +501,12 @@
 </figure>
 <ul>
 <li><strong><code>utag.js</code></strong> (<code>tags.tiqcdn.com</code>) - Tealium iQタグ管理JavaScriptライブラリ</li>
-<li><strong><code>utag.1.js</code></strong> (<code>tags.tiqcdn.com</code>) - Google Analytics用のTealiumタグ構成ファイル</li>
-<li><strong><code>analytics.js</code></strong> (<code>www.google-analytics.com</code>) - Google Analytics JavaScriptライブラリ</li>
+<li><strong><code>utag.1.js</code></strong> (<code>tags.tiqcdn.com</code>) - Google AnalyticsのTealiumタグ構成ファイル</li>
+<li><strong><code>analytics.js</code></strong> (<code>www.google-analytics.com</code>) - Google AnalyticsのJavaScriptライブラリ</li>
 </ul>
 <p class="tip"><i class="fa fa-info-circle"></i>ページのパフォーマンスを向上させるために、<a href="/ja/iq-tag-management/tags/advanced-settings/">タグをバンドルする</a>ことで、ページからのHTTPリクエストの数を減らします。</p>
 <h2 id="タグの実行">タグの実行</h2>
-<p>すべてのタグファイルがロードされ、DOM Readyイベントが到達すると、トラッキングビーコンがトリガーされます。ベンダーコードはTealiumの外で実行された場合と同じように実行されるため、結果として生じるHTTPリクエストは簡単に識別できます。</p>
+<p>すべてのタグファイルがロードされ、DOM Readyイベントが到達すると、トラッキングビーコンがトリガーされます。ベンダーコードはTealiumの外で実行されるのと同じように実行されるため、結果として生じるHTTPリクエストは簡単に識別できます。</p>
 <p>たとえば、Google Analyticsは、次の2つの項目によってネットワークリクエストで識別されます：<code>analytics.js</code>スクリプトとcollectイメージピクセル。これらの同じネットワークリクエストは、iQタグ管理を介してGoogle Analyticsがロードされた場合でも発生します。ここに示されています：</p>
 <figure><a class="slb" href="/images/platforms/javascript/utag-vendor-pixel.png"><img src="/images/platforms/javascript/utag-vendor-pixel.png"
          alt="UTAG Vendor Pixel"
@@ -558,7 +558,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -790,7 +790,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

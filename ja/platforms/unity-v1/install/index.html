@@ -166,32 +166,32 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Tealium 1.xプラグインをUnityアプリケーションにインストールします。
+      UnityアプリケーションにTealium 1.xプラグインをインストールします。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium for Unityを使用すると、UnityアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for Unityの前のバージョン（1.x）です。現在のバージョンについては、<a href="/ja/platforms/unity/">Tealium for Unity 2.x</a>を参照してください。</p>
+  <p>Tealium for Unityでは、UnityアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for Unityの以前のバージョン（1.x）です。現在のバージョンについては、<a href="/ja/platforms/unity/">Tealium for Unity 2.x</a>を参照してください。</p>
 <h2 id="要件">要件</h2>
 <ul>
-<li><a href="https://unity.com/">Unity</a> 4.5+</li>
+<li><a href="https://unity.com/">Unity</a> 4.5以上</li>
 <li>iOSまたはAndroidターゲット</li>
 </ul>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p><a href="https://github.com/Tealium/unity-plugin/tree/master/Sample">サンプルアプリ</a>を探索して、Tealiumライブラリ、トラッキング方法、ベストプラクティスの実装に慣れてください。</p>
+<p><a href="https://github.com/Tealium/unity-plugin/tree/master/Sample">サンプルアプリ</a>を探索して、Tealiumライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れることができます。</p>
 <h2 id="インストール">インストール</h2>
-<p>Tealiumのモバイルライブラリ（iOS/Android）をUnityアプリケーションに統合するには、Unityの<a href="https://github.com/Tealium/unity-plugin">プラグインコード</a>のすべての内容をUnityプロジェクト内の<code>Assets/Plugins/</code>ディレクトリにコピーします。</p>
-<p>UnityプラグインがAndroidまたはiOSデバイスにデプロイされると、Tealiumのイベントがそれぞれのデバイスログに記録されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>TealiumはUnity内のAndroidとiOSプラットフォームのみをサポートしています。</p>
+<p>UnityアプリケーションにTealiumモバイルライブラリ（iOS/Android）を統合するには、Unityプロジェクト内の<code>Assets/Plugins/</code>ディレクトリにUnity<a href="https://github.com/Tealium/unity-plugin">プラグインコード</a>のすべての内容をコピーします。</p>
+<p>UnityプラグインがAndroidまたはiOSデバイスにデプロイされると、Tealiumイベントはそれぞれのデバイスログに記録されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>TealiumはUnity内でAndroidおよびiOSプラットフォームのみをサポートしています。</p>
 <h2 id="初期化">初期化</h2>
 <p>Tealiumインスタンスを初期化するには、以下のパラメータを構成します：</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <p>Androidマニフェストファイル<code>~/Assets/Plugins/Android/AndroidManifest.xml</code>の以下の<a href="https://developer.android.com/guide/topics/manifest/meta-data-element">meta-data</a>キーを更新して、Tealiumインスタンスを指すようにします。</p>
+  <p>Androidマニフェストファイル<code>~/Assets/Plugins/Android/AndroidManifest.xml</code>の以下の<a href="https://developer.android.com/guide/topics/manifest/meta-data-element">メタデータ</a>キーを更新して、Tealiumインスタンスを指定します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.ACCOUNT&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.PROFILE&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;PROFILE&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.ENVIRONMENT&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span> <span style="color:#f92672">/&gt;</span>
@@ -201,7 +201,7 @@
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>ブリッジコードファイル<code>Assets/Plugins/iOS/TealiumBridge.mm</code>のTealiumアカウント情報を更新して、Tealiumインスタンスを指すようにします。</p>
+  <p>ブリッジングコードファイル<code>Assets/Plugins/iOS/TealiumBridge.mm</code>でTealiumアカウント情報を更新して、Tealiumインスタンスを指定します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>#define TEALIUM_INSTANCE_NAME    @<span style="color:#e6db74">&#34;TEALIUM_INSTANCE&#34;</span>
 </span></span><span style="display:flex;"><span>#define TEALIUM_ACCOUNT_NAME     @<span style="color:#e6db74">&#34;ACCOUNT&#34;</span>
 </span></span><span style="display:flex;"><span>#define TEALIUM_PROFILE_NAME     @<span style="color:#e6db74">&#34;PROFILE&#34;</span>
@@ -222,17 +222,17 @@
 <p>Unityの<strong>Project</strong>ウィンドウから<code>TealiumInitializer.cs</code>を選択し、<strong>Inspector</strong>ウィンドウにドラッグアンドドロップします。</p>
 </li>
 <li>
-<p>メニューから<strong>Edit &gt; Project Settings &gt; Script Execution Order</strong>を選択し、<code>TealiumInitializer</code>スクリプトを追加するために**+**記号をクリックします。</p>
+<p>メニューから<strong>Edit &gt; Project Settings &gt; Script Execution Order</strong>を選択し、**+**記号をクリックして<code>TealiumInitializer</code>スクリプトを追加します。</p>
 </li>
 <li>
-<p>プラグインを初期化するために、<code>TealiumInitializer</code>スクリプトを既存のスクリプトのリストの一番上にドラッグし、変更を適用します。</p>
+<p><code>TealiumInitializer</code>スクリプトを既存のスクリプトのリストの一番上にドラッグしてプラグインを初期化し、変更を適用します。</p>
 </li>
 <li>
-<p><strong>Play</strong>ボタン（または<strong>Edit &gt; Play</strong>）をクリックしてUnityエディターを起動し、Unityコンソールに以下のような初期化メッセージがログに記録されていることを確認します：
+<p><strong>Play</strong>ボタン（または<strong>Edit &gt; Play</strong>）をクリックしてUnityエディタを起動し、Unityコンソールに以下のような初期化メッセージがログされていることを確認します：
 <code>view: { custom_alpha : alpha custom_beta : beta screen_title : SCREEN_NAME }</code></p>
 </li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>Unityのメインメニューからコンソールを開くには、<strong>Window &gt; General &gt; Console</strong>を選択します。詳細を見るには、スピーチバルーンアイコンをクリックします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>コンソールを開くには、Unityのメインメニューから<strong>Window &gt; General &gt; Console</strong>を選択します。スピーチバルーンアイコンをクリックして詳細を表示します。</p>
 
 </div>
 
@@ -278,7 +278,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -509,7 +509,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

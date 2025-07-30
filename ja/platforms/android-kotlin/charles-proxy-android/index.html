@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AndroidデバイスをプロキシとしてCharlesを構成する | Android（Kotlin）用Tealium | Tealiumドキュメント</title>
+    <title>AndroidデバイスにCharlesをプロキシ構成する方法 | Android（Kotlin）用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -160,7 +160,7 @@
         <a href="/ja/platforms/android-kotlin/api/visitor-profile/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-api-visitor-profile">VisitorProfile</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/android-kotlin/api/visitor-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".android-kotlin-api-visitor-service">VisitorService</a></li></ul>
       </li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/android-kotlin/charles-proxy-android/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".charles-proxy-android">Androidデバイスをプロキシとする</a></li></ul></li></ul>
+        <a href="/ja/platforms/android-kotlin/charles-proxy-android/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".charles-proxy-android">Androidデバイスのプロキシ構成</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -193,7 +193,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">AndroidデバイスをプロキシとしてCharlesを構成する</h1>
+<h1 class="lh-title mt30 mb3">AndroidデバイスにCharlesをプロキシ構成する方法</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -201,39 +201,39 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、ネットワークリクエストをCharlesを通じてプロキシするためのAndroidデバイスの構成方法について説明します。Charlesは、Tealium for Androidの実装をトラブルシューティングおよびデバッグするのに役立ちます。
+      この記事では、AndroidデバイスでネットワークリクエストをCharlesを通じてプロキシする構成方法について説明します。Charlesは、Android用Tealiumの実装をトラブルシューティングおよびデバッグする際に役立ちます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="charlesプロキシの構成">Charlesプロキシの構成</h2>
-<p>Charlesプロキシを構成するには、以下の手順を使用します：</p>
+<p>以下の手順に従ってCharlesプロキシを構成してください：</p>
 <ol>
 <li><strong>Proxy &gt; Proxy Settings</strong>に移動します。</li>
 <li><strong>Proxies</strong>タブをクリックし、HTTP Proxy Portフィールドに<code>8888</code>を入力します。</li>
-<li><strong>Proxy &gt; SSL Proxying Settings</strong>に移動します。
+<li><strong>Proxy &gt; SSL Proxying Settings</strong>に移動します
 <figure><a class="slb" href="/images/platforms/android/charles-proxy/android-charles-proxy1.jpeg"><img src="/images/platforms/android/charles-proxy/android-charles-proxy1.jpeg"
          alt="Proxying settings"
          title="Proxying settings"/>
     </a>
 </figure></li>
-<li><strong>SSL Proxying</strong>タブをクリックし、<strong>Enable SSL Proxying</strong>チェックボックスを選択して、ロケーションを構成します。
+<li><strong>SSL Proxying</strong>タブをクリックし、<strong>Enable SSL Proxying</strong>チェックボックスを選択して場所を構成します。
 <figure><a class="slb" href="/images/platforms/android/charles-proxy/android-charles-proxy2.jpeg"><img src="/images/platforms/android/charles-proxy/android-charles-proxy2.jpeg"
          alt="SSL Proxying domain list"
          title="SSL Proxying domain list"/>
     </a>
 </figure>
 <ul>
-<li>デフォルトでは、Charlesはリストに含まれる特定のドメインのみでSSLプロキシングを実行します。</li>
-<li><strong>Add</strong>をクリックし、上記のロケーションリストに<code>*.*</code>を入力します。</li>
-<li>アプリが正常に動作しなくなった場合、アプリがCharlesプロキシからの自己署名証明書を拒否している可能性があります。このような場合は、ワイルドカードマッチを無効にし、Tealiumドメインの<code>*.tealiumiq.com</code>と<code>*.tiqcdn.com</code>のみをリストに記載します。</li>
+<li>デフォルトでは、リストに含まれる特定のドメインに対してのみSSLプロキシングを行います。</li>
+<li><strong>Add</strong>をクリックし、上記の場所リストに<code>*.*</code>を入力します。</li>
+<li>アプリが正常に機能しなくなった場合、アプリがCharlesプロキシの自己署名証明書を拒否している可能性があります。この場合、ワイルドカードマッチを無効にし、<code>*.tealiumiq.com</code>および<code>*.tiqcdn.com</code>のTealiumドメインのみをリストに追加してください。</li>
 </ul>
 </li>
-<li>ポートのデフォルト値は<code>443</code>です。Charlesが自動的に構成するため、このフィールドは空白のままにしておいてください。</li>
+<li>ポートのデフォルト値は<code>443</code>です。このフィールドは空白のままにしておくことができます。Charlesが自動的に構成します。</li>
 </ol>
-<h3 id="ipアドレスの確認">IPアドレスの確認</h3>
-<p>コンピュータのIPアドレスを確認するには：</p>
+<h3 id="ipアドレスの特定">IPアドレスの特定</h3>
+<p>コンピュータのIPアドレスを特定するには：</p>
 <ol>
 <li><strong>System Preferences &gt; Network &gt; Wifi &gt; Advanced &gt; TCP/IP</strong>に移動します。
 <figure><a class="slb" href="/images/platforms/android/charles-proxy/android-charles-proxy3.jpeg"><img src="/images/platforms/android/charles-proxy/android-charles-proxy3.jpeg"
@@ -242,30 +242,30 @@
     </a>
 </figure></li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>Macでは、システムトレイのネットワークアイコンをクリックしながら<strong>Option</strong>キーを押し続けることで確認できます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Macでは、システムトレイのネットワークアイコンをクリックする際に<strong>Option</strong>キーを押し続けることができます。</p>
 <ol start="2">
-<li>IPV4アドレスをメモしておきます。後の手順で必要になります。</li>
+<li>IPV4アドレスをメモしておき、後の手順で使用します。</li>
 </ol>
-<h3 id="androidデバイスをcharlesプロキシを使用するように構成する">AndroidデバイスをCharlesプロキシを使用するように構成する</h3>
-<p>AndroidデバイスをCharlesプロキシを使用するように構成するには、以下の手順を使用します：</p>
+<h3 id="androidデバイスをcharlesプロキシで使用するように構成">AndroidデバイスをCharlesプロキシで使用するように構成</h3>
+<p>以下の手順に従って、AndroidデバイスをCharlesプロキシで使用するように構成してください：</p>
 <ol>
 <li><strong>Settings &gt; Wifi</strong>に移動します。</li>
-<li>現在接続しているWifiネットワークデバイスの電源キーを押し続けます。</li>
+<li>現在接続しているWifiネットワークデバイスの電源キーを長押しします。</li>
 <li>モーダルが表示されたら、<strong>Modify Network</strong>を選択します。</li>
-<li><strong>Show Advanced Options</strong>を選択して、プロキシオプションを表示します。</li>
-<li><strong>Proxy</strong>の下で、<strong>Manual</strong>を選択します。</li>
+<li><strong>Show Advanced Options</strong>を選択してプロキシオプションを表示します。</li>
+<li><strong>Proxy</strong>の下で<strong>Manual</strong>を選択します。</li>
 <li><strong>Proxy Host Name</strong>フィールドに、以前に開発マシンから保存したIPV4アドレスを入力します。</li>
-<li><strong>Proxy Port</strong>フィールドに、Charlesの構成時に使用した同じポート<code>8888</code>を入力します。
+<li><strong>Proxy Port</strong>フィールドに、Charlesの構成時に使用した<code>8888</code>を入力します。
 <figure><a class="slb" href="/images/platforms/android/charles-proxy/android-charles-proxy4.jpeg"><img src="/images/platforms/android/charles-proxy/android-charles-proxy4.jpeg"
          alt="Proxy port"
          title="Proxy port"/>
     </a>
 </figure></li>
 <li><strong>Save</strong>をクリックして構成を保存し、終了します。</li>
-<li>デバイス上のブラウザを開いてテストします。CharlesはSSLプロキシングを許可するか拒否するかを求めるダイアログを表示します。</li>
-<li><strong>Allow</strong>をクリックします。SSLプロキシングを許可するように求められない場合は、Charlesを再起動して再試行します。</li>
-<li>デバイスから<a href="http://charlesproxy.com/getssl">http://charlesproxy.com/getssl</a>に移動し、Charles SSL証明書をダウンロードします。<br>
-新しいバージョンのAndroidでは、<code>download unsuccessful</code>などのエラーが表示されることがあります。このような場合は、以下の手順を使用します：
+<li>デバイス上のブラウザを開いてテストします。CharlesはSSLプロキシングを許可するか拒否するかを尋ねるダイアログを表示します。</li>
+<li><strong>Allow</strong>をクリックします。SSLプロキシングを許可するように求められない場合は、Charlesを再起動して再試行してください。</li>
+<li>デバイスから<a href="http://charlesproxy.com/getssl">http://charlesproxy.com/getssl</a>にアクセスし、Charles SSL証明書をダウンロードします。<br>
+新しいバージョンのAndroidでは、<code>download unsuccessful</code>のようなエラーが発生する場合があります。その場合は、以下の指示に従ってください：
 <ul>
 <li><strong>Help &gt; SSL Proxying &gt; Save Charles Root Certificate</strong>に移動します。
 <figure><a class="slb" href="/images/platforms/android/charles-proxy/android-charles-proxy5.jpeg"><img src="/images/platforms/android/charles-proxy/android-charles-proxy5.jpeg"
@@ -273,22 +273,22 @@
            title="SSL Proxying"/>
       </a>
   </figure></li>
-<li>ファイルタイプをデフォルトの<code>.pem</code>から<code>.cer</code>に変更し、後で覚えておく場所に保存します。</li>
-<li>SDカード、USBケーブル、またはGoogle Driveなどのリモート転送を使用して、<code>.cer</code>ファイルをデバイスに転送します。</li>
-<li>Android File ManagerやFile Commanderなどのファイルマネージャからファイルを開きます。</li>
-<li>証明書を保存するように求められます。残りの手順を続行します。</li>
+<li>ファイルタイプをデフォルトの<code>.pem</code>から<code>.cer</code>に変更し、後で覚えている場所に保存します。</li>
+<li>SDカード、USBケーブル、またはGoogle Driveのようなリモート転送を使用して、<code>.cer</code>ファイルをデバイスに転送します。</li>
+<li>AndroidファイルマネージャーやFile Commanderのようなサードパーティのファイルマネージャーを使用してファイルを開きます。</li>
+<li>証明書を保存するように求められます。残りの手順を続けてください。</li>
 </ul>
 </li>
-<li>証明書に名前を付け、信頼される証明書として確認します。完了したら無効にするか削除してください。</li>
-<li>証明書がインストールされたら、PINを構成します。</li>
+<li>証明書に名前を付け、信頼された証明書として確認します。完了したら無効にするか削除してください。</li>
+<li>証明書がインストールされた後、PINを構成します。</li>
 </ol>
-<h3 id="android-n以上の追加構成手順">Android N以上の追加構成手順</h3>
-<p>Android N以降では、Charles SSLプロキシングによって生成されたSSL証明書を信頼するようにアプリケーションに構成を追加する必要があります。これは、自分が制御するアプリケーションでのみSSLプロキシングを使用できることを意味します。</p>
-<p>Charlesを信頼するようにアプリを構成するためには、まず<a href="https://developer.android.com/training/articles/security-config.html">Network Security Configuration File</a>をアプリに追加する必要があります。このファイルはシステムデフォルトを上書きし、アプリがユーザーがインストールしたCA証明書（Charles Root Certificateなど）を信頼するようにします。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>構成ファイルでは、これがデバッグビルドのアプリケーションでのみ適用され、プロダクションビルドではデフォルトの信頼プロファイルが使用されるように指定することもできます。</p>
-<p>以下の手順を使用して、Network Security Configuration Fileを追加し、そのファイルをアプリのマニフェストに参照させます：</p>
+<h3 id="android-n以降の追加構成手順">Android N以降の追加構成手順</h3>
+<p>Android N以降では、アプリケーションがCharles SSLプロキシングによって生成されたSSL証明書を信頼するように構成を追加する必要があります。これは、制御するアプリケーションでのみSSLプロキシングを使用できることを意味します。</p>
+<p>アプリをCharlesを信頼するように構成するには、まず<a href="https://developer.android.com/training/articles/security-config.html">Network Security Configuration File</a>をアプリに追加する必要があります。このファイルはシステムのデフォルトをオーバーライドし、アプリがユーザーがインストールしたCA証明書、例えばCharles Root Certificateを信頼するようにします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>構成ファイルで、これがデバッグビルドのアプリケーションでのみ適用されるように指定することもできます。これにより、本番ビルドはデフォルトの信頼プロファイルを使用します。</p>
+<p>Network Security Configuration Fileを追加し、アプリのマニフェストにファイルへの参照を追加する手順は次のとおりです：</p>
 <ol>
-<li>以下の例を使用して、Security Network Configurationファイルを作成します。
+<li>次の例を使用してSecurity Network Configurationファイルを作成します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;network-security-config&gt;</span> 
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;debug-overrides&gt;</span> 
 </span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;trust-anchors&gt;</span> 
@@ -298,9 +298,9 @@
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/debug-overrides&gt;</span> 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/network-security-config&gt;</span>
 </span></span></code></pre></div></li>
-<li>ファイル名を<code>network_security_config.xml</code>とします。</li>
+<li>ファイルに<code>network_security_config.xml</code>という名前を付けます。</li>
 <li>ファイルを<code>res/xml/network_security_config.xml</code>にコピーします。</li>
-<li>以下の例を使用して、<code>network_security_config.xml</code>ファイルへの参照をアプリのマニフェストに追加します：
+<li>次の例を使用して、アプリのマニフェストに<code>network_security_config.xml</code>ファイルへの参照を追加します：
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;manifest</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;application</span> <span style="color:#a6e22e">android:networkSecurityConfig=</span><span style="color:#e6db74">&#34;@xml/network_security_config&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">&gt;</span>
@@ -309,9 +309,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/manifest&gt;</span>
 </span></span></code></pre></div></li>
 </ol>
-<p>詳細情報については、<a href="https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/">Charles proxy SSL Certificates</a>のドキュメンテーションの<strong>Android</strong>セクションを参照してください。</p>
-<h2 id="ネットワークトラフィックの表示をフィルタリングするためのヒント">ネットワークトラフィックの表示をフィルタリングするためのヒント</h2>
-<p>以下の表は、ネットワークトラフィックの表示をフィルタリングするためのヒントを提供します：</p>
+<p>詳細については、<a href="https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/">Charles proxy SSL Certificates</a>のドキュメントの<strong>Android</strong>セクションを参照してください。</p>
+<h2 id="ネットワークトラフィックのビューをフィルタリングするためのヒント">ネットワークトラフィックのビューをフィルタリングするためのヒント</h2>
+<p>次の表は、ネットワークトラフィックのビューをフィルタリングするために使用されるヒントを提供します：</p>
 <table>
 <thead>
 <tr>
@@ -321,26 +321,26 @@
 </thead>
 <tbody>
 <tr>
-<td>デバイスによるフィルタ</td>
-<td><ul><li>ローカルマシンではなく、Androidデバイスからのトラフィックのみを表示するようにするには、<strong>Proxy</strong>メニューに移動し、<strong>macOS/Windows proxy</strong>のチェックを外します。</li><li>この手順により、マシンからのローカルトラフィックのCharlesプロキシが無効になり、Charlesはリモート接続されたデバイスからのトラフィックのみを表示します。</li></ul></td>
+<td>デバイス別フィルタ</td>
+<td><ul><li>ローカルマシンではなく、Androidデバイスからのトラフィックのみを表示するようにするには、<strong>Proxy</strong>メニューに移動し、<strong>macOS/Windows proxy</strong>のチェックを外します。</li><li>この手順により、マシンからのローカルトラフィックに対するCharlesプロキシが無効になり、Charlesはリモート接続されたデバイスからのトラフィックのみを表示します。</li></ul></td>
 </tr>
 <tr>
-<td>ドメインによるフィルタ</td>
-<td><ul><li>興味のあるものだけを表示するために、Charlesの<strong>Sequence</strong>タブをクリックし、フィルタフィールドを使用してドメイン（<code>collect.tealiumiq.com</code>など）でフィルタリングします。</li><li>検索構成で有効にすると、Regexもオプションとして使用できます。Regexを有効にすると、<code>*.tealiumiq.com</code>フィルタを使用してTealiumサーバーへのすべてのヒットを表示できます。</li></ul></td>
+<td>ドメイン別フィルタ</td>
+<td><ul><li>興味のあるトラフィックのみを表示するために、Charlesの<strong>Sequence</strong>タブに移動し、ドメイン別にフィルタフィールドを使用します。例えば、<code>collect.tealiumiq.com</code>。</li><li>検索構成でRegexを有効にすると、Regexもオプションとして使用できます。Regexを有効にすると、Tealiumサーバーに向かうすべてのヒットを表示するために<code>*.tealiumiq.com</code>フィルタを使用できます。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h2 id="デバイスから証明書をクリアしpinを削除する">デバイスから証明書をクリアし、PINを削除する</h2>
-<p>Androidデバイスから証明書をクリアし、PINを削除することは任意です。</p>
-<p>証明書をクリアし、PINを削除する、または両方を行うには、以下の手順を使用します：</p>
+<h2 id="証明書をクリアしデバイスからpinを削除する">証明書をクリアし、デバイスからPINを削除する</h2>
+<p>Androidデバイスから証明書をクリアし、PINを削除することはオプションです。</p>
+<p>証明書をクリアし、PINを削除する、またはその両方を行うための手順は次のとおりです：</p>
 <ol>
 <li>Androidデバイス上の<strong>Settings</strong>アプリケーションを開きます。</li>
-<li><strong>Security &gt; Clear Credentials</strong>に移動し、オプションのリストの最下部にあります。</li>
+<li>オプションのリストの最後にある<strong>Security &gt; Clear Credentials</strong>に移動します。</li>
 <li><strong>Clear Credentials</strong>をクリックします。</li>
 <li>資格情報をクリアすることを確認します。</li>
 <li>PINを削除するには、<strong>Settings &gt; Lock Screen &gt; Screen Lock</strong>に移動し、PINを削除します。</li>
 </ol>
-<p>詳細情報については、<a href="http://www.charlesproxy.com/documentation/proxying/ssl-proxying/">Charles SSL Proxying</a>と<a href="/ja/platforms/ios-swift/charles-proxy-iosdevice">iOSデバイスをプロキシとしてCharlesを構成する</a>を参照してください。</p>
+<p>詳細については、<a href="http://www.charlesproxy.com/documentation/proxying/ssl-proxying/">Charles SSL Proxying</a>および<a href="/ja/platforms/ios-swift/charles-proxy-iosdevice">iOSデバイスのCharlesプロキシ構成</a>を参照してください。</p>
 
 </div>
 
@@ -386,7 +386,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -401,11 +401,11 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#charles%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Charlesプロキシの構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">IPアドレスの確認</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92charles%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">AndroidデバイスをCharlesプロキシを使用するように構成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-n%E4%BB%A5%E4%B8%8A%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%A7%8B%E6%88%90%E6%89%8B%E9%A0%86" href="javascript:void(0)">Android N以上の追加構成手順</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%82%92%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">ネットワークトラフィックの表示をフィルタリングするためのヒント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%8B%E3%82%89%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E3%82%AF%E3%83%AA%E3%82%A2%E3%81%97pin%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B" href="javascript:void(0)">デバイスから証明書をクリアし、PINを削除する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E7%89%B9%E5%AE%9A" href="javascript:void(0)">IPアドレスの特定</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92charles%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%81%A7%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E6%A7%8B%E6%88%90" href="javascript:void(0)">AndroidデバイスをCharlesプロキシで使用するように構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-n%E4%BB%A5%E9%99%8D%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%A7%8B%E6%88%90%E6%89%8B%E9%A0%86" href="javascript:void(0)">Android N以降の追加構成手順</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%81%AE%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">ネットワークトラフィックのビューをフィルタリングするためのヒント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E3%82%AF%E3%83%AA%E3%82%A2%E3%81%97%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%8B%E3%82%89pin%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B" href="javascript:void(0)">証明書をクリアし、デバイスからPINを削除する</a></li>
               </nav>
   </aside></nav>
 
@@ -618,7 +618,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

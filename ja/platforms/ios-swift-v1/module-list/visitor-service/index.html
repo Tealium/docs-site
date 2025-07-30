@@ -128,7 +128,7 @@
         <a href="/ja/platforms/ios-swift-v1/data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-data-layer">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/data-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-data-management">データ管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/identity-resolution/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-identity-resolution">アイデンティティ解決</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/app-extensions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-app-extensions">アプリ拡張</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift-v1/app-extensions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-app-extensions">アプリ拡張機能</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-consent-management">同意管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-modules">モジュール</a></li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".ios-swift-v1-module-list">モジュールリスト</a>
@@ -213,15 +213,15 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ビジターサービスから更新されたビジタープロファイルを取得します。
+      訪問サービスから更新された訪問プロファイルを取得します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用法">使用法</h2>
-<p>VisitorServiceモジュールは、Tealium Customer Data Hubの<a href="/ja/server-side/attributes/data-layer-enrichment/enable/">データレイヤーのエンリッチメント</a>機能を実装しています。</p>
-<p>このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、モバイルアプリケーションでユーザーエクスペリエンスを向上させるためにビジタープロファイルを使用したい場合に推奨されます。AudienceStreamのライセンスを持っていない場合、このモジュールの使用は推奨されません。</p>
+  <h2 id="使用方法">使用方法</h2>
+<p>VisitorServiceモジュールは、Tealium Customer Data Hubの<a href="/ja/server-side/attributes/data-layer-enrichment/enable/">Data Layer Enrichment</a>機能を実装しています。</p>
+<p>このモジュールの使用は、Tealium AudienceStreamのライセンスを持っており、モバイルアプリケーションで訪問プロファイルを使用してユーザーエクスペリエンスを向上させたい場合に推奨されます。AudienceStreamのライセンスを持っていない場合は、訪問プロファイルが返されないため、このモジュールの使用は推奨されません。</p>
 <p>以下のプラットフォームがサポートされています：</p>
 <ul>
 <li>iOS</li>
@@ -230,34 +230,34 @@
 <li>macOS</li>
 </ul>
 <h2 id="インストール">インストール</h2>
-<p>CocoaPodsまたはCarthageを使用してVisitorServiceモジュールをインストールします。</p>
+<p>VisitorServiceモジュールは、CocoaPodsまたはCarthageでインストールできます。</p>
 <h3 id="cocoapods">CocoaPods</h3>
-<p>CocoaPodsを使用してVisitorServiceモジュールをインストールするには、Podfileに次のポッドを追加します：</p>
+<p>CocoaPodsでVisitorServiceモジュールをインストールするには、Podfileに以下のpodsを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TealiumCore&#39;</span>
-</span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TealiumCollect&#39;</span> <span style="color:#e6db74">//</span><span style="color:#960050;background-color:#1e0010">または</span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
+</span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TealiumCollect&#39;</span> <span style="color:#e6db74">//o</span>r <span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
 </span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TealiumVisitorService&#39;</span>
-</span></span></code></pre></div><p>フレームワークは自動的にインスタンス化されます。<code>TealiumCore</code>ポッドとディスパッチサービスのいずれか（<code>TealiumCollect</code>または<code>TealiumTagManagement</code>）に依存しています。iOSのCocoaPodsのインストールについては、<a href="/ja/platforms/ios-swift-v1/install/#cocoapods">詳細を確認してください</a>。</p>
+</span></span></code></pre></div><p>フレームワークは自動的にインスタンス化されます。<code>TealiumCore</code> podに依存しており、ディスパッチサービスpods（<code>TealiumCollect</code>または<code>TealiumTagManagement</code>のいずれか）のいずれかが必要です。iOSのCocoaPodsインストールについて<a href="/ja/platforms/ios-swift-v1/install/#cocoapods">詳しくはこちら</a>。</p>
 <h3 id="carthage">Carthage</h3>
-<p>Carthageを使用してVisitorServiceモジュールをインストールするには、次の手順に従ってください：</p>
+<p>CarthageでVisitorServiceモジュールをインストールするには、以下の手順に従います：</p>
 <ol>
 <li>
-<p>Xcodeのアプリのターゲットの一般構成ページに移動します。</p>
+<p>XcodeでアプリターゲットのGeneral構成ページに移動します。</p>
 </li>
 <li>
-<p><strong>埋め込みバイナリ</strong>セクションに次のフレームワークを追加します：</p>
+<p><strong>Embedded Binaries</strong>セクションに以下のフレームワークを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">TealiumVisitorService</span><span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 <li>
-<p>VisitorServiceモジュールをセットアップするには、プロジェクトに次の必須のインポートステートメントを追加します：</p>
+<p>VisitorServiceモジュールを構成するために、プロジェクトに以下の必要なインポート文を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCore</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCollect</span> <span style="color:#75715e">//またはimport TealiumTagManagement</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCollect</span> <span style="color:#75715e">//or import TealiumTagManagement</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">import</span> <span style="color:#a6e22e">TealiumVisitorService</span>
 </span></span></code></pre></div></li>
 </ol>
-<p>フレームワークは自動的にインスタンス化されます。<code>TealiumCore</code>に依存しており、少なくとも1つのディスパッチサービス（<code>TealiumCore</code>または<code>TealiumTagManagement</code>）に依存しています。追加のインポートステートメントは必要ありません。</p>
-<p>iOSのCarthageのインストールについては、<a href="/ja/platforms/ios-swift-v1/install/#carthage">詳細を確認してください</a>。</p>
-<h2 id="ビジターデータオブジェクト">ビジターデータオブジェクト</h2>
-<p>ビジタープロファイルは、各属性タイプに対してネイティブな構造体を含むオブジェクトです。ビジタープロファイルオブジェクト内では、<code>currentVisit</code>プロパティがあり、ビジター/ビジット属性タイプを区別することができます。オーディエンスを除く各属性値は、サブスクリプトを使用してIDでアクセスできます。<code>audiences</code>属性は、サブスクリプトを使用してクエリされたオーディエンスのメンバーである場合に単に<code>true</code>/<code>false</code>を返します。以下のリストを参照してください。</p>
+<p>フレームワークは自動的にインスタンス化されます。<code>TealiumCore</code>に依存しており、少なくとも1つのディスパッチサービス（<code>TealiumCore</code>または<code>TealiumTagManagement</code>）が必要です。追加のインポート文は必要ありません。</p>
+<p>iOSのCarthageインストールについて<a href="/ja/platforms/ios-swift-v1/install/#carthage">詳しくはこちら</a>。</p>
+<h2 id="訪問データオブジェクト">訪問データオブジェクト</h2>
+<p>訪問プロファイルは、各属性タイプのネイティブ構造体を含むオブジェクトです。訪問プロファイルオブジェクト内には、訪問/訪問属性タイプを区別するための<code>currentVisit</code>プロパティがあります。オーディエンスを除き、各属性値はIDを使用してサブスクリプトでアクセス可能です。<code>audiences</code>属性は、サブスクリプトを介してクエリされたオーディエンスのメンバーであるかどうかを<code>true</code>/<code>false</code>で単純に返します。以下のリストで例を参照してください。</p>
 <p><strong>属性タイプ</strong></p>
 <table>
 <thead>
@@ -300,7 +300,7 @@
 </tr>
 <tr>
 <td><code>currentVisit</code></td>
-<td>現在のビジットプロファイルのすべての属性。現在のビジットプロファイルにはオーディエンスまたはバッジは含まれません。</td>
+<td>現在の訪問プロファイルのすべての属性。現在の訪問プロファイルにはオーディエンスやバッジは含まれません。</td>
 <td><code>TealiumCurrentVisitProfile(dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
 </tr>
 <tr>
@@ -336,7 +336,7 @@
 </tbody>
 </table>
 <h4 id="arraysofbooleans"><code>arraysOfBooleans</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで配列のブール値をクエリできます。</p>
+<p>カスタムサブスクリプションにより、idによるブール値の配列のクエリが可能です。</p>
 <table>
 <thead>
 <tr>
@@ -349,13 +349,13 @@
 <tbody>
 <tr>
 <td><code>profile.arraysOfBooleans</code></td>
-<td>ビジタープロファイル内のすべてのブール配列を返します。</td>
+<td>訪問プロファイル内のすべてのブール値の配列を返します。</td>
 <td><code>[BooleanArray]</code></td>
 <td><code>[BooleanArray(id: &quot;2333&quot;, value: [true,false]), BooleanArray(id: &quot;1123&quot;, value: [true,true])]</code></td>
 </tr>
 <tr>
 <td><code>profile.arraysOfBooleans[&quot;2815&quot;]</code></td>
-<td>IDでブール配列を返します。</td>
+<td>idによるブール値の配列を返します。</td>
 <td><code>[Bool]</code></td>
 <td><code>true</code></td>
 </tr>
@@ -365,14 +365,14 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ブール配列の値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ブール値の配列を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> arraysOfBooleans = profile.arraysOfBooleans?[<span style="color:#e6db74">&#34;5279&#34;</span>] {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> numberOfPositiveBools = arraysOfBooleans.map { $0 == <span style="color:#66d9ef">true</span> }.count
 </span></span><span style="display:flex;"><span>            print(numberOfPositiveBools)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="arraysofnumbers"><code>arraysOfNumbers</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで数値の配列をクエリできます。</p>
+<p>カスタムサブスクリプションにより、idによる数値の配列のクエリが可能です。</p>
 <table>
 <thead>
 <tr>
@@ -385,13 +385,13 @@
 <tbody>
 <tr>
 <td><code>profile.arraysOfNumbers</code></td>
-<td>ビジタープロファイル内のすべての数値の配列を返します。</td>
+<td>訪問プロファイル内のすべての数値の配列を返します。</td>
 <td><code>[NumberArray]</code></td>
 <td><code>[NumberArray(id: &quot;2333&quot;, value: [2.0, 1.0]), NumberArray(id: &quot;1123&quot;, value: [4.82125, 3.0])]</code></td>
 </tr>
 <tr>
 <td><code>profile.arraysOfNumbers[&quot;2815&quot;]</code></td>
-<td>IDで数値の配列を返します。</td>
+<td>idによる数値の配列を返します。</td>
 <td><code>[Double]</code></td>
 <td><code>[4.82125, 3.0]</code></td>
 </tr>
@@ -399,19 +399,19 @@
 </table>
 <p>使用例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile <span style="color:#66d9ef">is</span> profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 数値の配列の値を返す</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> arraysOfNumbers = profile. arraysOfNumbers?[<span style="color:#e6db74">&#34;5279&#34;</span>] {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 数値の配列を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> arraysOfNumbers = profile.arraysOfNumbers?[<span style="color:#e6db74">&#34;5279&#34;</span>] {
 </span></span><span style="display:flex;"><span>            arraysOfNumbers.forEach { number <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>        		<span style="color:#66d9ef">if</span> number <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3.0</span> {
-</span></span><span style="display:flex;"><span>        			<span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>        			<span style="color:#75715e">// ... take action</span>
 </span></span><span style="display:flex;"><span>        		}
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="arraysofstrings"><code>arraysOfStrings</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで文字列の配列をクエリできます。</p>
+<p>カスタムサブスクリプションにより、idによる文字列の配列のクエリが可能です。</p>
 <table>
 <thead>
 <tr>
@@ -424,13 +424,13 @@
 <tbody>
 <tr>
 <td><code>profile.arraysOfStrings</code></td>
-<td>ビジタープロファイル内のすべての文字列の配列を返します。</td>
+<td>訪問プロファイル内のすべての文字列の配列を返します。</td>
 <td><code>[StringArray]</code></td>
 <td><code>[StringArray(id: &quot;1033&quot;, value: [&quot;Foundation&quot;, &quot;Perfume&quot;), StringArray(id: &quot;3390&quot;, value: [&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;])]</code></td>
 </tr>
 <tr>
 <td><code>profile.arraysOfStrings[&quot;3390&quot;]</code></td>
-<td>IDで文字列の配列を返します。</td>
+<td>idによる文字列の配列を返します。</td>
 <td><code>[String]</code></td>
 <td><code>[&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;]</code></td>
 </tr>
@@ -440,17 +440,17 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列の配列の値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列の配列を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> arraysOfStrings = profile.arraysOfStrings?[<span style="color:#e6db74">&#34;3390&#34;</span>] {
 </span></span><span style="display:flex;"><span>            arraysOfStrings.forEach { string <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>        		<span style="color:#66d9ef">if</span> string.lowercased().contains(<span style="color:#e6db74">&#34;Jeans&#34;</span>) {
-</span></span><span style="display:flex;"><span>        			<span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>        			<span style="color:#75715e">// ... take action</span>
 </span></span><span style="display:flex;"><span>        		}
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="audiences"><code>audiences</code></h4>
-<p>カスタムサブスクリプトを使用すると、オーディエンスIDとオーディエンス名によるビジターオーディエンスメンバーシップのチェックができます。</p>
+<p>カスタムサブスクリプションを使用して、訪問のオーディエンスIDと名前によるメンバーシップをチェックできます。</p>
 <table>
 <thead>
 <tr>
@@ -463,47 +463,47 @@
 <tbody>
 <tr>
 <td><code>profile.audiences</code></td>
-<td>ビジターがメンバーであるすべてのオーディエンスを返します。</td>
+<td>訪問がメンバーである全てのオーディエンスを返します。</td>
 <td><code>[Audience]</code></td>
 <td><code>[Audience(id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;), Audience(id: &quot;tealiummobile\_demo\_110&quot;, name: &quot;Visitors - Known&quot;)]</code></td>
 </tr>
 <tr>
 <td><code>profile.audiences[id: &quot;103&quot;]</code></td>
-<td>IDに基づいてビジターがオーディエンスのメンバーであるかどうかに応じてtrue/falseを返します。</td>
+<td>IDに基づいて訪問がオーディエンスのメンバーかどうかをtrue/falseで返します。</td>
 <td><code>Bool</code></td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>profile.audiences[name: &quot;ios users&quot;]</code></td>
-<td>名前に基づいてビジターがオーディエンスのメンバーであるかどうかに応じてtrue/falseを返します。名前は大文字小文字を区別しません。</td>
+<td>名前に基づいて訪問がオーディエンスのメンバーかどうかをtrue/falseで返します。名前は大文字小文字を区別しません。</td>
 <td><code>Bool</code></td>
 <td><code>false</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ユーザーが割り当てられている現在のオーディエンスを返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 現在割り当てられているオーディエンスを返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> currentVisitorAudiences = profile.audiences {
 </span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Visitor audiences: </span><span style="color:#e6db74">\(</span>currentVisitorAudiences<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// IDでユーザーがオーディエンスに割り当てられているかどうかを確認する</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// IDによってユーザーに割り当てられたオーディエンスをチェック</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> currentVisitorAudiences[id: <span style="color:#e6db74">&#34;106&#34;</span>] {
 </span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Visitor is a member of audience id 106&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... このオーディエンスのメンバーである場合、適切なアクションを実行</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... このオーディエンスのメンバーであれば、適切なアクションを取る</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 名前でユーザーがオーディエンスに割り当てられているかどうかを確認する</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 名前によってユーザーに割り当てられたオーディエンスをチェック</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> currentVisitorAudiences[name: <span style="color:#e6db74">&#34;ios users&#34;</span>] {
 </span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Visitor is a member of audience iOS Users&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... このオーディエンスのメンバーである場合、適切なアクションを実行</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... このオーディエンスのメンバーであれば、適切なアクションを取る</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="badges"><code>badges</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDでバッジの値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによるバッジ値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -516,29 +516,29 @@
 <tbody>
 <tr>
 <td><code>profile.badges</code></td>
-<td>ビジタープロファイル内のすべてのバッジを返します。</td>
+<td>訪問プロファイルの全てのバッジを返します。</td>
 <td><code>[Badge]</code></td>
 <td><code>[Badge(id: &quot;2815&quot;, value: true), Badge(id: &quot;2813&quot;, value: false)]</code></td>
 </tr>
 <tr>
 <td><code>profile.badges[&quot;2815&quot;]</code></td>
-<td>ビジターがバッジを割り当てられているかどうかに応じてtrue/falseを返します。</td>
+<td>訪問にバッジが割り当てられているかどうかをtrue/falseで返します。</td>
 <td><code>Bool</code></td>
 <td><code>true</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// バッジの値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// バッジ値を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> badgeAssigned = profile.badges?[<span style="color:#e6db74">&#34;5279&#34;</span>] {
 </span></span><span style="display:flex;"><span>            print(badgeAssigned ? <span style="color:#e6db74">&#34;Badge id 5279 is assigned&#34;</span> : <span style="color:#e6db74">&#34;Badge id 5945 is not assigned&#34;</span>)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="booleans"><code>booleans</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDでブール値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによるブール値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -551,31 +551,31 @@
 <tbody>
 <tr>
 <td><code>profile.booleans</code></td>
-<td>ビジタープロファイル内のすべてのブール値を返します。</td>
+<td>訪問プロファイルの全てのブール値を返します。</td>
 <td><code>[Boolean]</code></td>
 <td><code>[Boolean(id: &quot;5784&quot;, value: true), Boolean(id: &quot;1453&quot;, value: false)]</code></td>
 </tr>
 <tr>
 <td><code>profile.booleans[&quot;4692&quot;]</code></td>
-<td>IDでブール値を返します。</td>
+<td>IDによるブール値を返します。</td>
 <td><code>Bool</code></td>
 <td><code>true</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile <span style="color:#66d9ef">is</span> profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ブール値を返す</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> booleanValue = profile. booleans?[<span style="color:#e6db74">&#34;4479&#34;</span>] {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> booleanValue = profile.booleans?[<span style="color:#e6db74">&#34;4479&#34;</span>] {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> booleanValue {
-</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... 何かをする</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="currentvisit"><code>currentVisit</code></h4>
-<p>ビジットのライフタイム属性ではなく、現在のビジットの属性にアクセスできます。</p>
+<p>訪問のライフタイム属性ではなく、現在の訪問の属性にアクセスします。</p>
 <table>
 <thead>
 <tr>
@@ -587,32 +587,32 @@
 </thead>
 <tbody>
 <tr>
-<td><code>profile. currentVisit</code></td>
-<td>現在のビジットのスコープ属性を返します。</td>
+<td><code>profile.currentVisit</code></td>
+<td>現在の訪問のスコープ属性を返します。</td>
 <td><code>TealiumCurrentVisitProfile</code></td>
-<td><code>TealiumCurrentVisitProfile (dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
+<td><code>TealiumCurrentVisitProfile (dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true)], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
 </tr>
 <tr>
-<td><code>profile. currentVisit. ###</code></td>
-<td>###に応じて、必要な属性を返します。AudiencesとBadges以外のすべてのメソッドは適用されます。これらは専らビジター属性であり、ビジットには適用されません。</td>
-<td>異なる</td>
-<td>異なる</td>
+<td><code>profile.currentVisit.###</code></td>
+<td>###に応じて望ましい属性を返します。上記のメソッドはすべて適用されますが、オーディエンスとバッジは訪問属性のみであり、訪問には適用されません。</td>
+<td>変動</td>
+<td>変動</td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 現在のビジットの文字列属性を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 現在の訪問の文字列属性を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> currentVisit = profile.currentVisit,
 </span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">let</span> string = currentVisit.strings?[<span style="color:#e6db74">&#34;34&#34;</span>] {
 </span></span><span style="display:flex;"><span>            print(string)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ... アクションを取る</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="dates"><code>dates</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで日付の値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによる日付値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -625,30 +625,30 @@
 <tbody>
 <tr>
 <td><code>profile.dates</code></td>
-<td>ビジタープロファイル内のすべての日付を返します。</td>
+<td>訪問プロファイルの全ての日付を返します。</td>
 <td><code>[DateTime]</code></td>
 <td><code>[DateTime(id: &quot;22&quot;, value: 1567120112000), DateTime(id: &quot;13&quot;, value: 1567120113245)]</code></td>
 </tr>
 <tr>
 <td><code>profile.dates[&quot;4692&quot;]</code></td>
-<td>IDで日付を返します。</td>
+<td>IDによる日付を返します。</td>
 <td><code>Int</code></td>
 <td><code>1567120112000</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 日付の値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 日付値を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> date = profile.dates?[<span style="color:#e6db74">&#34;33&#34;</span>] {
 </span></span><span style="display:flex;"><span>            print(date)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// .. アクションを実行</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// .. アクションを取る</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="numbers"><code>numbers</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで数値の値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによる数値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -661,31 +661,31 @@
 <tbody>
 <tr>
 <td><code>profile.numbers</code></td>
-<td>ビジタープロファイル内のすべての数値を返します。</td>
+<td>訪問プロファイルの全ての数値を返します。</td>
 <td><code>[Number]</code></td>
 <td><code>[Number(id: &quot;83&quot;, value: 0.5714285714285714), Number(id: &quot;1399&quot;, value: 2.0)]</code></td>
 </tr>
 <tr>
 <td><code>profile.numbers[&quot;1399&quot;]</code></td>
-<td>IDで数値を返します。</td>
+<td>IDによる数値を返します。</td>
 <td><code>Double</code></td>
 <td><code>4.82125</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 数値の値を返す</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> number = profile. numbers?[<span style="color:#e6db74">&#34;1399&#34;</span>] {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 数値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> number = profile.numbers?[<span style="color:#e6db74">&#34;1399&#34;</span>] {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> number <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3.0</span> {
-</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... アクションを取る</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="setsofstrings"><code>setsOfStrings</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで文字列のセットの値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによる文字列セットの値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -698,31 +698,31 @@
 <tbody>
 <tr>
 <td><code>profile.setsOfStrings</code></td>
-<td>ビジタープロファイル内のすべての文字列のセットを返します。</td>
+<td>訪問プロファイルの全ての文字列セットを返します。</td>
 <td><code>[SetOfStrings]</code></td>
 <td><code>[SetOfStrings(id: &quot;9938&quot;, value: [&quot;shirts&quot;]), SetOfStrings(id: &quot;2300&quot;, value: [&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;])]</code></td>
 </tr>
 <tr>
 <td><code>profile.setsOfStrings[&quot;2300&quot;]</code></td>
-<td>IDで文字列のセットを返します。</td>
+<td>IDによる文字列セットを返します。</td>
 <td><code>Set&lt;String&gt;</code></td>
 <td><code>[&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;]</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile <span style="color:#66d9ef">is</span> profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列のセットの値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列セットの値を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> setOfStrings = profile.setsOfStrings?[<span style="color:#e6db74">&#34;5279&#34;</span>] {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> setOfStrings.contains(<span style="color:#e6db74">&#34;toys&#34;</span>) {
-</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>            	<span style="color:#75715e">// ... アクションを取る</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="strings"><code>strings</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで文字列の値をクエリできます。</p>
+<p>カスタムサブスクリプションを使用して、IDによる文字列値を照会できます。</p>
 <table>
 <thead>
 <tr>
@@ -735,30 +735,30 @@
 <tbody>
 <tr>
 <td><code>profile.strings</code></td>
-<td>ビジタープロファイル内のすべての文字列を返します。</td>
+<td>訪問プロファイルの全ての文字列を返します。</td>
 <td><code>[VisitorString]</code></td>
 <td><code>[Number(id: &quot;83&quot;, value: &quot;Toy Truck&quot;), Number(id: &quot;5699&quot;, value: &quot;Toy Tea Set&quot;)]</code></td>
 </tr>
 <tr>
 <td><code>profile.strings[&quot;5699&quot;]</code></td>
-<td>IDで文字列を返します。</td>
+<td>IDによる文字列を返します。</td>
 <td><code>String</code></td>
 <td><code>&quot;Toy Tea Set&quot;</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列の値を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 文字列値を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> string = profile.strings?[<span style="color:#e6db74">&#34;5699&#34;</span>] {
 </span></span><span style="display:flex;"><span>            print(string)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ... アクションを実行</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ... アクションを取る</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h4 id="talliesおよびtallyvalue"><code>tallies</code>および<code>tallyValue</code></h4>
-<p>カスタムサブスクリプトを使用すると、IDで集計をクエリし、IDで集計値をクエリできます。</p>
+</span></span></code></pre></div><h4 id="tallies-と-tallyvalue"><code>tallies</code> と <code>tallyValue</code></h4>
+<p>カスタム添字を使用して、IDによる集計のクエリと、IDによる集計値のクエリが可能です。</p>
 <table>
 <thead>
 <tr>
@@ -771,29 +771,29 @@
 <tbody>
 <tr>
 <td><code>profile.tallies</code></td>
-<td>ビジタープロファイル内のすべての集計を返します。</td>
+<td>訪問プロファイルのすべての集計を返します。</td>
 <td><code>[Tally]</code></td>
 <td><code>[Tally(id: &quot;2983&quot;, value: [TallyValue(key: &quot;red shirts category&quot;, count: 4.0), TallyValue(key: &quot;green shirts category&quot;, count: 2.0)]), Tally(id: &quot;5643&quot;, value: [TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code>]</td>
 </tr>
 <tr>
 <td><code>profile.tallies[tally: &quot;1399&quot;]</code></td>
-<td>IDで集計を返します。</td>
+<td>IDによる集計を返します。</td>
 <td><code>[TallyValue]</code></td>
 <td><code>[TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code></td>
 </tr>
 <tr>
 <td><code>profile.tallies[tally: &quot;1399&quot;, key: &quot;womens&quot;]</code></td>
-<td>IDで集計を返します。</td>
+<td>IDによる集計を返します。</td>
 <td><code>Double</code></td>
 <td><code>3.0</code></td>
 </tr>
 </tbody>
 </table>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 集計全体を返す</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 全体の集計を返す</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> tally = profile.tallies?[<span style="color:#e6db74">&#34;1399&#34;</span>] {
 </span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Tally id 5377: </span><span style="color:#e6db74">\(</span>tally<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>        }
@@ -803,11 +803,11 @@
 </span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Tally value for id 5381 and key &#39;red shirts&#39;: </span><span style="color:#e6db74">\(</span>tallyValue<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="apiリファレンス">APIリファレンス</h2>
+</span></span></code></pre></div><h2 id="api-リファレンス">API リファレンス</h2>
 <h3 id="クラス-tealium">クラス <code>Tealium</code></h3>
-<p>更新されたビジタープロファイルに対して操作を行うための次のAPIメソッドが利用可能です。</p>
+<p>以下のAPIメソッドが、更新された訪問プロファイルに対して利用可能です。</p>
 <h4 id="visitorservice"><code>visitorService()</code></h4>
-<p>使用例：</p>
+<p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHelperClass</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
@@ -820,19 +820,19 @@
 </span></span><span style="display:flex;"><span>        config.addVisitorServiceDelegate(<span style="color:#66d9ef">self</span>)                           
 </span></span><span style="display:flex;"><span>	     config.setVisitorServiceRefresh(interval: <span style="color:#ae81ff">10</span>)		
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium = Tealium(config) {
-</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// 注意：これは初期化後の完了ブロック内です</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// 注意: これは初期化後の完了ブロック内です</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// self.tealiumは初期化後の完了ブロック内で保証されています</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// self.tealiumは完了ブロック内で初期化されていることが保証されています</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">self</span>.tealium?.visitorService()?.#### <span style="color:#75715e">// ####はvisitorProfileオブジェクトの任意の公開APIメソッドです - 他のメソッドの例については、他のメソッドを参照してください</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">self</span>.tealium?.visitorService()?.#### <span style="color:#75715e">// ここで #### は visitorProfile オブジェクトの公開APIメソッドのいずれかです - 他のメソッドの例を参照してください</span>
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="requestvisitorprofile"><code>requestVisitorProfile()</code></h4>
-<p>このメソッドは、ビジターサービスに即座にリクエストを送信して現在のプロファイルを取得します。プロファイルが前回の取得以降に更新されている場合、<code>profileDidUpdate</code>デリゲートメソッドが呼び出されます。</p>
-<p>このメソッドは、トラッキングリクエストが送信されるたびに自動的に呼び出されます（ビジタープロファイルの更新間隔が<code>0</code>に構成されている場合）。更新間隔の値がより高い場合は、次のスケジュールされた更新を待たずにプロファイルを即座に取得するためにこのメソッドを呼び出すことができます。</p>
+<p>このメソッドは、VisitorServiceに現在のプロファイルを即座に要求します。プロファイルが最後のフェッチ以降に更新されている場合、<code>profileDidUpdate</code> デリゲートメソッドが呼び出されます。</p>
+<p>このメソッドは、トラックリクエストが送信されるたびに自動的に呼び出されますが、訪問プロファイルの更新間隔が <code>0</code> に構成されている場合です。更新間隔に高い値が構成されている場合は、次のスケジュールされた更新を待たずに、このメソッドを呼び出してプロファイルを即座に取得することができます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium?.visitorService()?.requestVisitorProfile()
-</span></span></code></pre></div><p>使用例：</p>
+</span></span></code></pre></div><p>使用例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">track</span>(title: String, data: [String: Any]?) {
 </span></span><span style="display:flex;"><span>        tealium?.track(title: title, data: data, completion: { success, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> error <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
@@ -846,11 +846,11 @@
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><h4 id="getcachedprofile"><code>getCachedProfile()</code></h4>
-<p>新しいリクエストをトリガーせずに、永続保存から最後に取得したビジタープロファイルを返します。インターネット接続がないが、以前に成功したリクエストがある場合に便利です。</p>
-<p>使用例：</p>
+<p>最近取得した訪問プロファイルを永続保存から返しますが、新しいリクエストはトリガーされません。インターネット接続がない状況や、以前に成功したリクエストが行われている場合に便利です。</p>
+<p>例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium?.visitorService()?.getCachedProfile(completion: { profile <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> json = <span style="color:#66d9ef">try</span>? JSONEncoder().encode(profile), <span style="color:#66d9ef">let</span> string = String(data: 					json, encoding: .utf8) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile <span style="color:#66d9ef">is</span> profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> json = <span style="color:#66d9ef">try</span>? JSONEncoder().encode(profile), <span style="color:#66d9ef">let</span> string = String(data: json, encoding: .utf8) {
 </span></span><span style="display:flex;"><span>                    print(string)
 </span></span><span style="display:flex;"><span>   		}
 </span></span><span style="display:flex;"><span>})
@@ -859,7 +859,7 @@
 <tr>
 <th>パラメータ</th>
 <th>説明</th>
-<th>例</th>
+<th>例の値</th>
 </tr>
 </thead>
 <tbody>
@@ -871,7 +871,7 @@
 </tbody>
 </table>
 <h4 id="removeallvisitorservicedelegates"><code>removeAllVisitorServiceDelegates()</code></h4>
-<p>ビジタープロファイルのデリゲートをすべて削除します。</p>
+<p>すべての訪問プロファイルデリゲートを削除します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium?.visitorService()?.removeAllVisitorServiceDelegates()
 </span></span></code></pre></div><h4 id="addvisitorservicedelegate"><code>addVisitorServiceDelegate()</code></h4>
 <p><code>VisitorServiceDelegate</code>に準拠する新しいクラスを追加します。</p>
@@ -893,15 +893,15 @@
 </tbody>
 </table>
 <h4 id="removesingledelegate"><code>removeSingleDelegate()</code></h4>
-<p>特定のビジタープロファイルデリゲートを削除します。</p>
-<p>使用例：</p>
+<p>特定の訪問プロファイルデリゲートを削除します。</p>
+<p>例:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium?.visitorService()?.removeSingleDelegate(<span style="color:#66d9ef">self</span>)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
 <th>説明</th>
-<th>例</th>
+<th>例の値</th>
 </tr>
 </thead>
 <tbody>
@@ -914,18 +914,18 @@
 </table>
 <h3 id="クラス-tealiumvisitorservicedelegate">クラス: <code>TealiumVisitorServiceDelegate</code></h3>
 <h4 id="profiledidupdate"><code>profileDidUpdate()</code></h4>
-<p>このメソッドは、ビジタープロファイルが更新されたときに呼び出されます。これは、<code>requestVisitorProfile()</code>メソッドを使用するたびにほぼ毎回呼び出されるでしょう。</p>
+<p>訪問プロファイルが更新されたときにこのメソッドが呼び出されます。これは、<code>requestVisitorProfile()</code> メソッドが使用されるたびにほとんどの場合呼び出されるでしょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> profile = profile <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// プロファイル属性に対して操作を行う</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// プロファイル属性に対応する</span>
 </span></span><span style="display:flex;"><span>        print(profile.audiences)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        ...
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="クラス-tealiumconfig">クラス: <code>TealiumConfig</code></h3>
 <h4 id="setvisitorservicerefresh"><code>setVisitorServiceRefresh()</code></h4>
-<p>ビジタープロファイルの取得頻度を構成できます。この構成のデフォルト値は5分です。頻度を調整するためにこのメソッドを使用します。すべてのトラッキングコールに<code>requestVisitorProfile</code>メソッドを追加しても、この値を<code>0</code>に構成しない限り、プロファイルは毎回取得されません。</p>
+<p>訪問プロファイルの取得頻度を構成することができます。この構成のデフォルト値は5分です。このメソッドを使用して頻度を調整してください。<code>requestVisitorProfile</code> メソッドをすべてのトラッキングコールに追加しても、この値を <code>0</code> に構成しない限り、プロファイルは毎回取得されません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(...)
 </span></span><span style="display:flex;"><span>config.setVisitorServiceRefresh(<span style="color:#ae81ff">3</span>)
 </span></span></code></pre></div><table>
@@ -939,14 +939,14 @@
 <tbody>
 <tr>
 <td>interval</td>
-<td>ビジタープロファイルを取得する頻度。整数、分単位（デフォルト：<code>5</code>）</td>
+<td>訪問プロファイルを取得する頻度。整数、分。(デフォルト: <code>5</code>)</td>
 <td><code>3</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="addvisitorservicedelegate-1"><code>addVisitorServiceDelegate()</code></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.addVisitorServiceDelegate(<span style="color:#66d9ef">self</span>)
-</span></span></code></pre></div><p>デリゲートをVisitorServiceデリゲートの配列に追加して、<code>profileDidUpdate</code>デリゲートメソッドを使用できるようにします。デリゲートは複数のオブジェクトに割り当てることができます。</p>
+</span></span></code></pre></div><p><code>profileDidUpdate</code> デリゲートメソッドを使用するために、VisitorServiceデリゲートの配列にデリゲートを追加します。複数のオブジェクトがデリゲートとして割り当てられることがあります。</p>
 <table>
 <thead>
 <tr>
@@ -957,7 +957,7 @@
 </thead>
 <tbody>
 <tr>
-<td>プロファイルの更新を担当するクラス（デリゲート）</td>
+<td>プロファイル更新を担当するクラス (delegate)</td>
 <td></td>
 <td><code>ViewController, TealiumHelper</code></td>
 </tr>
@@ -967,11 +967,11 @@
 <p>VisitorServiceモジュールに割り当てられたデリゲートのリストを返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.getVisitorServiceDelegates()
 </span></span></code></pre></div><h4 id="setvisitorserviceoverrideprofile"><code>setVisitorServiceOverrideProfile()</code></h4>
-<p>ビジタープロファイルの取得元となるプロファイルをオーバーライドします。Collectモジュールで使用されるプロファイルと一致する必要があります。</p>
+<p>訪問プロファイルを取得するプロファイルを上書きします。Collectモジュールでのデータ収集に使用されるプロファイルと一致する必要があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config. setVisitorServiceOverrideProfile(<span style="color:#e6db74">&#34;PROFILE&#34;</span>)
 </span></span></code></pre></div><h4 id="setvisitorserviceoverrideurl"><code>setVisitorServiceOverrideURL()</code></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config. setVisitorServiceOverrideURL(<span style="color:#e6db74">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span>)
-</span></span></code></pre></div><p>ビジタープロファイルの取得元となるベースURLをオーバーライドします。ACCOUNT、PROFILE、およびビジターIDが自動的にURLに追加されます。</p>
+</span></span></code></pre></div><p>訪問プロファイルが取得される基本URLを上書きします。ACCOUNT、PROFILE、および訪問IDは自動的にURLに追加されます。</p>
 <h2 id="リリースノート">リリースノート</h2>
 <p>1.8.0</p>
 <ul>
@@ -1037,7 +1037,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1051,12 +1051,12 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cocoapods" href="javascript:void(0)">CocoaPods</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#carthage" href="javascript:void(0)">Carthage</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BC%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">ビジターデータオブジェクト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9" href="javascript:void(0)">APIリファレンス</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">訪問データオブジェクト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9" href="javascript:void(0)">API リファレンス</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%B9-tealium" href="javascript:void(0)">クラス Tealium</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%B9-tealiumvisitorservicedelegate" href="javascript:void(0)">クラス: TealiumVisitorServiceDelegate</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%B9-tealiumconfig" href="javascript:void(0)">クラス: TealiumConfig</a></li>
@@ -1273,7 +1273,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ページのパフォーマンス | トラブルシューティング | Tealiumドキュメント</title>
+    <title>ページパフォーマンス | トラブルシューティング | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -407,7 +407,7 @@
         <ul class="pl2 bl b--primary bw1 troubleshooting desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".page-performance">ページパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/nav-timing-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-enable-navigation-timing-data">ナビゲーションタイミングデータ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/charles-proxy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enhanced-browser-console-debugging-with-charles-proxy">Charles Proxyでデバッグ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -453,7 +453,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">ページのパフォーマンス</h1>
+<h1 class="lh-title mt30 mb3">ページパフォーマンス</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -461,115 +461,115 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ページのパフォーマンスは、ウェブページの読み込みとブラウザでの表示速度を測定します。ページのパフォーマンスの主な目的は、ユーザーエクスペリエンスを最適化することです。
+      ページパフォーマンスは、Webページがブラウザでどれだけ速くロードされ、レンダリングされるかを測定します。ページパフォーマンスの主な目的は、ユーザーエクスペリエンスを最適化することです。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><a href="https://www.nngroup.com/articles/website-response-times/">ここ</a>で明らかになっているように、ページの読み込みが遅いと、サイトから訪問を失う可能性がありますので、ページのパフォーマンスを最大化することは一般的に価値があります。</p>
-<p>ページのパフォーマンスを評価し始めると、明らかになることがあります。読み込み速度に影響を与えるさまざまな要素が存在するということです。</p>
+  <p>遅いページのロードは訪問を失う原因となるため、ページパフォーマンスを最大化することは一般的に価値ある取り組みとされています。</p>
+<p>ページパフォーマンスを評価し始めると、ロード速度に影響を与えるさまざまな要因があることが明らかになります：</p>
 <ul>
-<li>ネットワークの遅延</li>
-<li>ファイルの圧縮</li>
-<li>ブラウザのキャッシュ</li>
+<li>ネットワーク遅延</li>
+<li>ファイル圧縮</li>
+<li>ブラウザキャッシング</li>
 <li>CSS</li>
 <li>フォント</li>
-<li>インラインのJavaScript</li>
+<li>インラインJavaScript</li>
 </ul>
-<p>タグ（JavaScriptファイルの読み込み）は、この複雑なプロセスの要素の1つであり、この記事の焦点となります。具体的には、iQ Tag Managementコンソール内で使用できる制御方法と、パフォーマンスに寄与する要素について調査します。特に、タグとパフォーマンスに最も関連する2つの概念に焦点を当てます。</p>
+<p>タグ付け（JavaScriptファイルのロード）は、この複雑なプロセスの要因の一つであり、この記事の焦点となります。より具体的には、認識されるページパフォーマンスに寄与する要因と、iQタグ管理コンソール内で使用できるコントロールについて探求します。特に、タグ付けとパフォーマンスに最も関連する二つの概念に焦点を当てます：</p>
 <ul>
 <li>非同期JavaScript</li>
 <li>DOM-Readyイベント</li>
 </ul>
-<h2 id="認識される読み込み時間と実際の読み込み時間">認識される読み込み時間と実際の読み込み時間</h2>
-<p>始める前に、認識される読み込み時間と実際の読み込み時間の違いについて言及する価値があります。実際の読み込み時間は、通常、ウェブページのすべてのアセットが処理されたことを示すブラウザからの測定値です。認識される読み込み時間は、その2つのうちより重要と言えるもので、ウェブページが視覚的にレンダリングされ、ユーザーに利用可能になった時点での測定値です。</p>
-<p>この測定対象については、<a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index">WebPagetest</a>、Googleの<a href="https://developers.google.com/speed/pagespeed/">PageSpeed Tools</a>、Yahooの<a href="http://yslow.org/">YSlow</a>などの業界の専門ホームによって研究されています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>iQ Tag ManagementのJavaScriptライブラリ（<code>utag.js</code>）は、ページの認識される読み込み時間にほとんどまたは全く影響を与えないように設計されています。</p>
-<h2 id="tealiumのファイルとサードパーティのファイル">Tealiumのファイルとサードパーティのファイル</h2>
-<p>Tealiumソリューションの基盤となるのは、ファイル配信フレームワークです。このグローバルかつリアルタイムなソリューションにより、Tealiumのファイルが訪問のブラウザに最速で配信されます。JavaScriptローダー（またはラッパー）ファイルには、iQ Tag Managementアカウントのロジックと構成が含まれており、ブラウザのネットワークコンソールで<code>utag.js</code>と<code>utag.#.js</code>という名前で識別できます。これらは、Tealiumが<code>tags.tiqcdn.com</code>ドメインから提供するファイルです。</p>
+<h2 id="認識されるロード時間と実際のロード時間">認識されるロード時間と実際のロード時間</h2>
+<p>始める前に、認識されるロード時間と実際のロード時間の違いについて触れておく価値があります。実際のロード時間は、Webページのすべてのアセットが処理されたときを示すブラウザからの伝統的な測定です。認識されるロード時間は、Webページが視覚的にレンダリングされ、ユーザーが利用可能になるときの測定であり、二つのうちより重要なものとされています。</p>
+<p>この測定については、<a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index">WebPagetest</a>、Googleの<a href="https://developers.google.com/speed/pagespeed/">PageSpeed Tools</a>、Yahooの<a href="http://yslow.org/">YSlow</a>などの業界専門ホームによって研究されています。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>iQタグ管理JavaScriptライブラリ（<code>utag.js</code>）は、ページの認識されるロード時間にほとんどまたは全く影響を与えないように設計されています。</p>
+<h2 id="tealiumファイルとサードパーティファイル">Tealiumファイルとサードパーティファイル</h2>
+<p>Tealiumソリューションの基盤には、ファイル提供フレームワークがあります。このグローバルかつリアルタイムのソリューションは、Tealiumのファイルが訪問のブラウザに最速で配信されることを保証します。JavaScriptローダー（またはラッパー）ファイルには、iQタグ管理アカウントからのロジックと構成が含まれており、ブラウザのネットワークコンソールで<code>utag.js</code>および<code>utag.#.js</code>という名前で識別できます。これらは<code>tags.tiqcdn.com</code>ドメインからTealiumによって提供されるファイルです。</p>
 <p>Tealiumファイルのブラウザネットワークログの例：</p>
 <figure><a class="slb" href="/images/iq-tag-management/tealium-network-utag-files.jpg"><img src="/images/iq-tag-management/tealium-network-utag-files.jpg"
-         alt="ブラウザのネットワークログ"
-         title="ブラウザのネットワークログ"/>
+         alt="browser network log"
+         title="browser network log"/>
     </a>
 </figure>
-<p>ブラウザがこれらのTealiumファイルを読み込む際に、タグベンダーが必要とする追加のファイルのリクエストが発生する場合があります。これらのファイルは、<code>tags.tiqcdn.com</code>ドメイン以外からのリクエストとして識別でき、<code>utag</code>以外の名前を持つことがあります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealiumは、サードパーティのファイルのホストやパフォーマンスを管理または制御していません。</p>
-<h2 id="ブラウザのファイルキャッシュ">ブラウザのファイルキャッシュ</h2>
-<p>ブラウザには、ページのパフォーマンスを最適化するための独自の方法がありますが、最もよく知られているのはファイルキャッシュです。ブラウザはファイルのコピーを保存し、同じコンテンツをネットワークを介して繰り返し要求しないようにします。これにより、初期のアセットがブラウザのキャッシュに保存されると、サイトのページがより速く読み込まれるようになり、ネットワークトラフィックが減少します。</p>
-<p><a href="/ja/iq-tag-management/getting-started/file-cache/">Universal Tagファイルがブラウザでキャッシュされる方法について詳しく学ぶ</a></p>
+<p>ブラウザがこれらのTealiumファイルをロードする際、タグベンダーに必要な追加のファイルリクエストが発生する場合があります。これらのファイルは、<code>tags.tiqcdn.com</code>以外のドメインから来ており、<code>utag</code>以外の名前で識別されることがあります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealiumはサードパーティファイルのホスティングやパフォーマンスを管理していません。</p>
+<h2 id="ブラウザファイルキャッシュ">ブラウザファイルキャッシュ</h2>
+<p>ブラウザにはページパフォーマンスを最適化するための独自の方法があり、最も広く知られているのはファイルキャッシングです。ブラウザはファイルのコピーを保存して、同じコンテンツを何度もネットワーク経由でリクエストする必要がないようにします。これにより、ネットワークトラフィックが減少し、ブラウザに初期アセットがキャッシュされている場合、サイトページのロードが速くなります。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/getting-started/file-cache/">Tealiumファイルのキャッシュ方法</a>を参照してください。</p>
 <h2 id="非同期javascript">非同期JavaScript</h2>
-<p>非同期JavaScriptは、非必須の要素の読み込みを遅延させ、ページのレンダリングをユーザーに優先させるための方法です。ページ内の非同期リクエストは、ブラウザの「To Do」リストのようなものです。ブラウザに他の優先度の高い要素がない場合、非同期の「To Do」リストのアイテムを処理します。対照的に、同期JavaScriptを使用すると、ブラウザはページのレンダリングをブロックする必要があります。同期の「Must Do」リストのアイテムを処理するためです。</p>
-<p>すべてのモダンなタグベンダーは、非同期メソッドに切り替えています。これは、ページの読み込み速度を向上させる最も一般的な方法の1つです。</p>
-<p>iQ Tag Managementでは、<code>utag.js</code>ローダーファイルとその後に読み込まれるすべてのタグファイルが非同期メソッドを使用しています。</p>
-<p>詳細については、次を参照してください：</p>
+<p>非同期JavaScriptは、非必須要素のロードを遅らせてページのレンダリングを優先する方法です。ページ内の非同期リクエストをブラウザの「To Do」リストと考えることができます。ブラウザが他の優先度の高い要素をレンダリングする必要がない場合、非同期「To Do」リストの項目を処理します。同期JavaScriptを使用すると、反対の効果が得られます。これはブラウザの「Must Do」リストのように振る舞い、ブラウザはページのレンダリングをブロックして同期「Must Do」リストの項目を処理する必要があります。</p>
+<p>すべての現代のタグベンダーは非同期方法に切り替えており、これはページロード速度を向上させる最も一般的な方法の一つです。</p>
+<p>iQタグ管理では、<code>utag.js</code>ローダーファイルおよびその後にロードされるすべてのタグファイルが非同期方法を使用しています。</p>
+<p>詳細については、以下を読んでください：</p>
 <ul>
-<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363409-synchronous-vs-asynchronous-javascript-sync-vs-async-">同期JavaScriptと非同期JavaScript</a></li>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363409-synchronous-vs-asynchronous-javascript-sync-vs-async-">同期対非同期JavaScript</a></li>
 <li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/page-speed-rules-and-recommendations#optimize_javascript_use">JavaScriptの最適化</a></li>
 </ul>
-<h2 id="dom-readyイベント">DOM-Readyイベント</h2>
-<p>DOM-Readyイベント（または<code>DOMContentLoaded</code>）は、ブラウザがページのメインコンテンツの読み込みを完了したことを示す方法です。このイベントは、ページの非必須要素の読み込みのトリガーとして一般的に使用され、ページのレンダリングをできるだけ早く行うことで、認識される読み込み時間を改善します。</p>
-<p>iQ Tag Managementでは、ベンダートラッキングはDOM-Readyイベントまで遅延させ、ページのレンダリングに与える影響を最小限に抑えています。</p>
-<p>詳細については、次を参照してください：</p>
+<h2 id="dom-readyイベント">DOM-readyイベント</h2>
+<p>DOM-readyイベント（<code>DOMContentLoaded</code>とも呼ばれる）は、ブラウザがページの主要コンテンツのロードを完了したことを示す方法です。このイベントは、ページができるだけ早くレンダリングされるように、非必須要素のロードのトリガーとして一般的に使用されます。これにより、認識されるロード時間が改善されます。</p>
+<p>iQタグ管理では、ページのレンダリングへの影響を最小限に抑えるために、DOM-Readyイベントまでベンダートラッキングが遅延されます。</p>
+<p>詳細については、以下を参照してください：</p>
 <ul>
 <li><a href="/ja/iq-tag-management/getting-started/order-of-operations/">操作の順序の理解</a></li>
 <li><a href="/ja/iq-tag-management/getting-started/order-of-operations/">DOMContentLoaded - イベントリファレンス | Mozilla Developer Network</a></li>
 </ul>
-<h2 id="iq-tag-managementの構成とベストプラクティス">iQ Tag Managementの構成とベストプラクティス</h2>
-<p>iQ Tag Managementには、JavaScriptの読み込み方法を制御するためのいくつかのオプションがあります。すべてのウェブサイトは異なるため、一つの最適な解決策はありません。iQのデフォルト構成は、認識される読み込み時間にほとんど影響を与えず、最大限の互換性を提供するようにバランスが取られています。</p>
-<h3 id="コードの配置">コードの配置</h3>
-<p>コードの配置は、HTMLドキュメント内で<code>utag.js</code>コードスニペットが表示される場所を指します。HTML内でJavaScriptを読み込む場所は、主に<code>&lt;head&gt;</code>タグ内または<code>&lt;body&gt;</code>タグ内の2つの場所です。Tealiumの<code>utag.js</code>ファイルは<code>&lt;body&gt;</code>タグ内に読み込まれる必要があります。</p>
-<p>基本的なHTMLの構造：</p>
+<h2 id="iqタグ管理の構成とベストプラクティス">iQタグ管理の構成とベストプラクティス</h2>
+<p>iQタグ管理では、ページ上でJavaScriptがロードされる方法を制御するためのいくつかのオプションがあります。すべてのウェブサイトが異なるため、すべての人にとって最適な単一のソリューションはありません。iQのデフォルト構成は、認識されるロード時間に最小限の影響を与え、最大数のベンダータグとの互換性を提供するようにバランスが取られています。</p>
+<h3 id="コード配置">コード配置</h3>
+<p>コード配置は、HTMLドキュメント内で<code>utag.js</code>コードスニペットが表示される場所を指します。HTML内でJavaScriptをロードする主な場所は二つあります：<code>&lt;head&gt;</code>タグ内と<code>&lt;body&gt;</code>タグ内です。Tealiumの<code>utag.js</code>ファイルは<code>&lt;body&gt;</code>タグ内にロードする必要があります。</p>
+<p>基本的なHTML構造：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- ここにスクリプトファイルがあります --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- ここにスクリプトファイル --&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- ここにTealium utag.js非同期スクリプトがあります --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- ここにTealium utag.js非同期スクリプト --&gt;</span>
 </span></span><span style="display:flex;"><span>    ....
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
-</span></span></code></pre></div><p>ベストプラクティスは、<code>utag.js</code>コードスニペットを<code>&lt;body&gt;</code>の先頭に配置することです。この位置では、ページがレンダリングを続けながらタグ管理の構成が非同期で読み込まれるため、タグはDOM-Readyイベントで発火する準備が整います。必要に応じて、<code>utag.js</code>ファイルを<code>&lt;body&gt;</code>の下部に配置することもできます。一般的には、これによりタグの読み込みが遅延し、またはわずかに速い認識される読み込み時間が得られます。</p>
-<p><a href="/ja/platforms/javascript/install">utag.jsのコード配置について詳しく読む</a>。</p>
+</span></span></code></pre></div><p>ベストプラクティスは、<code>utag.js</code>コードスニペットを<code>&lt;body&gt;</code>の先頭に配置することです。この位置では、タグ管理構成が非同期でロードされるため、ページがレンダリングを続ける間にタグがDOM-Readyイベントで発火する準備が整います。<code>utag.js</code>ファイルは必要に応じて<code>&lt;body&gt;</code>の下部に配置することもできます。一般的に、これによりタグのロードが遅れたり、認識されるロード時間がわずかに速くなったりします。</p>
+<p>詳細については、<a href="/ja/platforms/javascript/install">utag.jsコード配置</a>を参照してください。</p>
 <h3 id="ready-waitフラグ">Ready Waitフラグ</h3>
-<p>Ready Waitフラグは、<a href="/ja/iq-tag-management/save-publish/publish-configuration/"><strong>公開構成</strong>エリア</a>で見つけることができます。これは、<code>utag.js</code>が実行を開始するタイミングを制御します。デフォルトでは、このフラグは<strong>オフ</strong>に構成されており、<code>utag.js</code>は読み込まれるとすぐに実行を開始します。このフラグを<strong>オン</strong>に構成すると、<code>utag.js</code>はDOM-Readyイベントが発生するまで実行を待ちます。このフラグをオンにすることで、ページの読み込み時間の向上を優先し、タグの読み込みを優先度を下げることができます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Ready Wait Flag</strong>を<strong>On</strong>に構成すると、タグの読み込みが完了する前に訪問がページを離れる可能性があるため、新しい構成をライブサイトにリリースする前に十分なテストを行ってください。</p>
+<p>Ready Waitフラグは<a href="/ja/iq-tag-management/save-publish/publish-configuration/"><strong>公開構成</strong>エリア</a>で見つけることができます。これは<code>utag.js</code>が実行を開始するタイミングを制御します。デフォルトでは、このフラグは<strong>オフ</strong>に構成されており、<code>utag.js</code>はページにロードされるとすぐに実行を開始します。このフラグを<strong>オン</strong>に構成すると、<code>utag.js</code>はDOM-Readyイベントまで実行を待ちます。このフラグをオンにすることで、ページロード時間の可能な改善を優先してタグを後回しにすることができます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Ready Waitフラグ</strong>を<strong>オン</strong>に構成すると、タグがロードされる前に訪問がページから離れるため、トラッキングが失われる可能性があります。新しい構成をライブサイトにリリースする前に、常に徹底的なテストを行ってください。</p>
 <h3 id="ファイルの圧縮と最小化">ファイルの圧縮と最小化</h3>
-<p>Tealiumのサーバーから配信されるファイルは、GZip業界標準を使用して圧縮されています。これにより、JavaScriptファイル（テキストファイル）がブラウザに配信される際にできるだけ小さくなります。この動作は変更できません。これらのJavaScriptファイル内のコードもデフォルトで最小化されています。最小化は、コメント行や空白を削除することで、コードファイルを必要なテキストのみに圧縮する追加のステップを追加します。デバッグ目的で必要な場合は、この構成をオフにすることができます。</p>
-<p><a href="/ja/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates構成について詳しく読む</a>。</p>
-<h3 id="バンドル">バンドル</h3>
-<p>バンドルにより、ベンダータグコードをメインの<code>utag.js</code>ファイルに含めることで、ページからの追加のHTTPリクエストを排除することができます。デフォルトでは、iQ Tag Managementで構成されたベンダータグは、別々のファイル（たとえば、<code>utag.4.js</code>）としてページに読み込まれます。これは、メインの<code>utag.js</code>ファイルにコードエラーを導入するリスクを最小限に抑えるためです（たとえば、1つのファイルのエラーが他のファイルに影響を与えないようにします）。ただし、別々のファイルを使用すると、ページがタグを読み込むために行うHTTPリクエストの数が増えます。これらのファイルの配信は、Tealiumのサーバーとブラウザのキャッシュを介して最適化されていますが、さらなる最適化が必要な場合は、バンドルを検討することができます。</p>
-<p>以下は、バンドルされたタグによってTealiumからのファイルの読み込み時間が80%改善されたシンプルな例です。</p>
+<p>Tealiumのサーバーから送信されるファイルは、ほとんどのブラウザで業界標準のBrotliを使用して圧縮されます。（Brotliを扱えない古いブラウザでは、代わりにGzip圧縮が使用されます。）これにより、JavaScriptファイル（テキストファイル）がブラウザに配信される際に可能な限り小さくなります。この動作は変更できません。これらのJavaScriptファイル内のコードもデフォルトで最小化されています。最小化は、コメント行と空白を削除することで、コードファイルを必要なテキストのみに圧縮する別のステップを追加します。デバッグが必要な場合は、この構成をオフにすることができます。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates setting</a>を参照してください。</p>
+<h3 id="バンドリング">バンドリング</h3>
+<p>バンドリングにより、ベンダータグのコードをメインの<code>utag.js</code>ファイルに含めることができ、ページからの追加のHTTPリクエストを排除します。デフォルトでは、iQタグ管理で構成されたベンダータグは別のファイル（例えば、<code>utag.4.js</code>）としてページにロードされます。これは、メインの<code>utag.js</code>ファイルにコードエラーを導入するリスクを最小限に抑えるためです（例えば、あるファイルのエラーが他のファイルに影響を与えない）。しかし、別のファイルを使用すると、タグのロードに必要なページのHTTPリクエストの数が増えます。これらのファイルの配信はTealiumのサーバーとブラウザキャッシュを通じて最適化されていますが、さらに最適化が必要な場合はバンドリングが検討すべきオプションです。</p>
+<p>ここに、Tealiumからのファイルのロード時間が80％改善されたバンドリングタグの簡単な例を示します。</p>
 <h4 id="バンドルされていない2つのベンダータグ">バンドルされていない2つのベンダータグ</h4>
 <ul>
-<li><strong>ファイルの数:</strong> 3 (utag.js、utag.1.js、utag.21.js)</li>
+<li><strong>ファイル数:</strong> 3 (utag.js, utag.1.js, utag.21.js)</li>
 <li><strong>合計サイズ:</strong> 18.2 KB (9.1 + 5.0 + 4.1)</li>
 <li><strong>合計時間:</strong> 100 ms (54 + 23 + 23)</li>
 </ul>
 <figure><a class="slb" href="/images/iq-tag-management/tlc-network-utag.jpg"><img src="/images/iq-tag-management/tlc-network-utag.jpg"
-         alt="ネットワークuTag"
-         title="ネットワークuTag" width="763" height="166"/>
+         alt="Network uTag"
+         title="Network uTag" width="763" height="166"/>
     </a>
 </figure>
 <h4 id="バンドルされた2つのベンダータグ">バンドルされた2つのベンダータグ</h4>
 <ul>
-<li><strong>ファイルの数:</strong> 1 (utag.js)</li>
+<li><strong>ファイル数:</strong> 1 (utag.js)</li>
 <li><strong>合計サイズ:</strong> 17 KB</li>
 <li><strong>合計時間:</strong> 19 ms</li>
 </ul>
 <figure><a class="slb" href="/images/iq-tag-management/tlc-network-utag-bundle.jpg"><img src="/images/iq-tag-management/tlc-network-utag-bundle.jpg"
-         alt="ネットワークuTagバンドル"
-         title="ネットワークuTagバンドル" width="769" height="121"/>
+         alt="Network uTag Bundle"
+         title="Network uTag Bundle" width="769" height="121"/>
     </a>
 </figure>
-<p>個々のタグをバンドルする方法について詳しく読む](/ja/iq-tag-management/tags/advanced-settings/#bundle-flag)または<a href="/ja/iq-tag-management/save-publish/publish-configuration/#performance-optimization"><strong>すべてのページ</strong>ロードルールを使用して任意のタグをバンドルする方法</a>について詳しく読む。</p>
-<h3 id="タグのタイミング">タグのタイミング</h3>
-<p>前述のように、<code>utag.js</code>のデフォルトの動作は、DOM-Readyイベントが発生するまでベンダータグの発火を待機することです。<strong>タグのタイミング</strong>構成は、個々のタグに対してこのロジックを制御するタグレベルの構成です。デフォルトの構成は<strong>DOM Ready（デフォルト）<strong>で、DOM-Readyを待機することを意味します。このフラグを</strong>優先度付け</strong>に構成すると、個々のタグはできるだけ早く実行されます（通常はDOM-Readyよりも前）。</p>
-<p><a href="/ja/iq-tag-management/tags/advanced-settings/#tag-timing">タグのタイミングについて詳しく読む</a>。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/tags/advanced-settings/#bundle-flag">Bundling individual tags</a>または<a href="/ja/iq-tag-management/save-publish/publish-configuration/#performance-optimization">Bundling any tag using the <strong>All Pages</strong> load rule</a>を参照してください。</p>
+<h3 id="タグのタイミング-tags">タグのタイミング (tags)</h3>
+<p>前述の通り、<code>utag.js</code>のデフォルトの動作は、DOM-Readyイベントを待ってからベンダータグを発火させることです。<strong>Tag Timing</strong>構成は、個々のタグのこのロジックを制御するタグレベルの構成です。デフォルト構成は<strong>DOM Ready (default)<strong>で、これは「DOM-Readyを待つ」という意味です。このフラグが</strong>Prioritized</strong>に構成されている場合、個々のタグは可能な限り早く（通常はDOM-Ready前に）実行されます。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/tags/advanced-settings/#tag-timing">Tag timing for tags</a>を参照してください。</p>
 <h3 id="タグの順序">タグの順序</h3>
-<p>構成したタグは、iQ Tag Managementコンソールに表示される順序でページに読み込まれます。タグの読み込み順序を希望の順序にドラッグアンドドロップできます。Tealiumのベストプラクティスは、分析タグや他の高優先度のタグをリストの先頭に配置し、最初に読み込まれるようにすることです。</p>
-<p><a href="/ja/iq-tag-management/tags/manage/#load-order">タグの順序について詳しく読む</a></p>
+<p>構成されたタグは、iQタグ管理コンソールに表示される順序でページにロードされます。タグをロードする希望の順序にドラッグアンドドロップすることができます。Tealiumのベストプラクティスは、分析タグや他の優先度の高いタグをリストの先頭に置き、それらが最初にロードされるようにすることです。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/tags/manage/#load-order">Tag ordering</a>を参照してください。</p>
 
 </div>
 
@@ -630,7 +630,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -644,17 +644,17 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E6%99%82%E9%96%93%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E6%99%82%E9%96%93" href="javascript:void(0)">認識される読み込み時間と実際の読み込み時間</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">Tealiumのファイルとサードパーティのファイル</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5" href="javascript:void(0)">ブラウザのファイルキャッシュ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%83%AD%E3%83%BC%E3%83%89%E6%99%82%E9%96%93%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E6%99%82%E9%96%93" href="javascript:void(0)">認識されるロード時間と実際のロード時間</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">Tealiumファイルとサードパーティファイル</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5" href="javascript:void(0)">ブラウザファイルキャッシュ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%9D%9E%E5%90%8C%E6%9C%9Fjavascript" href="javascript:void(0)">非同期JavaScript</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom-ready%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">DOM-Readyイベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq-tag-management%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A8%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9" href="javascript:void(0)">iQ Tag Managementの構成とベストプラクティス</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E9%85%8D%E7%BD%AE" href="javascript:void(0)">コードの配置</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom-ready%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">DOM-readyイベント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A8%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9" href="javascript:void(0)">iQタグ管理の構成とベストプラクティス</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%89%E9%85%8D%E7%BD%AE" href="javascript:void(0)">コード配置</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ready-wait%E3%83%95%E3%83%A9%E3%82%B0" href="javascript:void(0)">Ready Waitフラグ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%9C%A7%E7%B8%AE%E3%81%A8%E6%9C%80%E5%B0%8F%E5%8C%96" href="javascript:void(0)">ファイルの圧縮と最小化</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%B3%E3%83%89%E3%83%AB" href="javascript:void(0)">バンドル</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0" href="javascript:void(0)">タグのタイミング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3%E3%82%B0" href="javascript:void(0)">バンドリング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0-tags" href="javascript:void(0)">タグのタイミング (tags)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E9%A0%86%E5%BA%8F" href="javascript:void(0)">タグの順序</a></li>
               </nav>
   </aside></nav>
@@ -868,7 +868,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

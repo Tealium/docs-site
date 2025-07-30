@@ -407,7 +407,7 @@
         <ul class="pl2  troubleshooting desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/validate-tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-validate-and-troubleshoot-tags">タグの検証とトラブルシューティング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/switch-environoment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".methods-to-switch-publish-environment">公開環境の切り替え</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページのパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/troubleshooting/page-performance/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-performance">ページパフォーマンス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/nav-timing-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".how-to-enable-navigation-timing-data">ナビゲーションタイミングデータ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/troubleshooting/charles-proxy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enhanced-browser-console-debugging-with-charles-proxy">Charles Proxyでデバッグ</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -467,77 +467,77 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、プライバシーマネージャー拡張機能を追加し、構成する方法について説明します。プライバシーマネージャー拡張機能は、お客様にプライバシーオプションを表示するために使用されます。
+      この記事では、プライバシーマネージャー拡張機能を追加して構成する方法について説明します。プライバシーマネージャー拡張機能は、お客様にプライバシーオプションを表示するために使用されます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="tip"><i class="fa fa-info-circle"></i>このレガシー拡張機能の代わりに、<a href="/ja/iq-tag-management/consent/consent-management/about/">Consent Management features</a>の使用を推奨します。</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>このレガシー拡張機能の代わりに<a href="/ja/iq-tag-management/consent/consent-management/about/">同意管理機能</a>の使用をお勧めします。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>を参照してください。</li>
+<li>utag v4.38以降。<code>utag.js</code>テンプレートを更新する方法については、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>プライバシーマネージャー拡張機能を使用すると、ユーザーにプライバシーオプションをどのように提示するかを制御し、この機能をウェブサイトに追加する手順を簡素化できます。プライバシーダイアログでは、各タグカテゴリのオン/オフ状態が表示され、ユーザーの構成がクッキーに保存されます。これにより、ページ上でどのタグをロードするかが制御されます。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>プライバシーマネージャー拡張機能を使用すると、ユーザーに提示されるプライバシーオプションを制御し、この機能をウェブサイトに追加する手順を簡素化できます。プライバシーダイアログは各タグカテゴリのオン/オフ状態を表示し、ユーザーの構成をクッキーに保存します。これにより、ページ上でロードできるタグが制御されます。</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-preferences-prompt.png"><img src="/images/iq-tag-management/consent-preferences-prompt.png"
-         alt="Consent Preferences Prompt"
-         title="Consent Preferences Prompt" width="451" height="322"/>
+         alt="同意構成プロンプト"
+         title="同意構成プロンプト" width="451" height="322"/>
     </a>
 </figure>
 <h2 id="拡張機能の使用">拡張機能の使用</h2>
-<p>開始する前に、<a href="/ja/iq-tag-management/extensions/about/">how extensions work</a>について理解しておいてください。</p>
-<p>拡張機能が追加されると、以下の構成オプションが利用可能になります：</p>
+<p>開始する前に、<a href="/ja/iq-tag-management/extensions/about/">拡張機能の動作について</a>に慣れておくことが重要です。</p>
+<p>拡張機能を追加した後、以下の構成オプションが利用可能です：</p>
 <ul>
 <li><strong>ウィジェットタイプ</strong>：（デフォルト：空白）</li>
 <li><strong>ウィジェット識別子</strong>：（デフォルト：空白）</li>
 <li><strong>ウィジェット位置</strong>：（デフォルト：空白）</li>
-<li><strong>Opt Method</strong>：（デフォルト：<strong>デフォルトでオプトイン</strong>）</li>
+<li><strong>オプト方式</strong>：（デフォルト：<strong>デフォルトでオプトイン</strong>）</li>
 <li><strong>訪問選択タイプ</strong>：（デフォルト：<strong>タグによる選択</strong>）</li>
 <li><strong>シングルクッキー制限</strong>：（デフォルト：<strong>Tealiumクッキーを保持</strong>）</li>
 </ul>
-<p>すべてのタグはデフォルトでオプトアウトが可能です。個々のタグのオプトアウトを禁止するには、左側の<strong>ワークフローを編集</strong>ボタンをクリックし、<strong>省略するタグ</strong>タブに移動します。</p>
+<p>デフォルトでは、すべてのタグがオプトアウト可能です。個々のタグのオプトアウトを禁止するには、左側の<strong>ワークフローの編集</strong>ボタンをクリックし、<strong>省略するタグ</strong>タブに進みます。</p>
 <h3 id="プライバシーマネージャーボタン">プライバシーマネージャーボタン</h3>
 <p><strong>プライバシーマネージャー</strong>ボタンをページに配置するには、まず参照点となる要素を選択する必要があります。</p>
 <ol>
 <li>
-<p>左側の<strong>ワークフローを編集</strong>ボタンをクリックして、<strong>プライバシーマネージャーの編集</strong>ダイアログを表示します。</p>
+<p>左側の<strong>ワークフローの編集</strong>ボタンをクリックして、<strong>プライバシーマネージャーの編集</strong>ダイアログを表示します。</p>
 </li>
 <li>
 <p><strong>ウィジェット構成</strong>タブをクリックして、新しい<strong>プライバシーマネージャー</strong>ボタンを訪問の画面に表示する位置を選択します。</p>
 <ul>
-<li><strong>要素タイプ</strong>：<strong>DOM ID</strong>または<strong>XPath</strong>を選択します。これは要素の識別方法によります。</li>
+<li><strong>要素タイプ</strong>：<strong>DOM ID</strong>または<strong>XPath</strong>を選択します（要素の識別方法による）。</li>
 <li><strong>識別子</strong>：参照される要素のID</li>
 <li><strong>位置</strong>：参照要素の位置
 <ul>
-<li><strong>ノードの前</strong>：ボタンを参照要素の前に配置します。</li>
-<li><strong>ノードの後</strong>：ボタンを参照要素の後に配置します。</li>
-<li><strong>ノードの始まり</strong>：ボタンを参照要素内の始まりに配置します。</li>
-<li><strong>ノードの終わり</strong>：ボタンを参照要素内の終わりに配置します。</li>
-<li><strong>ノードの内容を置換</strong>：参照要素の内容をボタンで置換します。</li>
-<li><strong>ノードを置換</strong>：参照要素全体をボタンで置換します。</li>
+<li><strong>ノードの前</strong>：参照される要素の前にボタンを配置します。</li>
+<li><strong>ノードの後</strong>：参照される要素の後にボタンを配置します。</li>
+<li><strong>ノードの始まり</strong>：参照される要素内にボタンを配置し、最初にします。</li>
+<li><strong>ノードの終わり</strong>：参照される要素内にボタンを配置し、最後にします。</li>
+<li><strong>ノードコンテンツの置換</strong>：参照される要素のコンテンツをボタンで置き換えます。</li>
+<li><strong>ノードの置換</strong>：参照される要素全体をボタンで置き換えます。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>条件を追加</strong>ボタンをクリックして、プライバシーマネージャーに条件を追加します。
+<p><strong>条件を追加</strong>ボタンをクリックして、ここに示されるようにプライバシーマネージャーの条件を追加します：
 <figure><a class="slb" href="/images/iq-tag-management/privacy-manager-extension-add-condition.jpg"><img src="/images/iq-tag-management/privacy-manager-extension-add-condition.jpg"
-             alt="Add Condition"
-             title="Add Condition"/>
+             alt="条件を追加"
+             title="条件を追加"/>
         </a>
     </figure></p>
 </li>
 <li>
-<p><strong>訪問オプション</strong>タブをクリックして、訪問がタグのトラッキングをオプトインまたはオプトアウトする方法を決定するオプションを選択します。
+<p><strong>訪問オプション</strong>タブをクリックして、訪問がタグ追跡のオプトインまたはオプトアウトを選択するオプションを選択します。
 <figure><a class="slb" href="/images/iq-tag-management/privacy-manager-extension-edit-visitor-options-tab.jpg"><img src="/images/iq-tag-management/privacy-manager-extension-edit-visitor-options-tab.jpg"
-             alt="Edit Visitor Options Tab"
-             title="Edit Visitor Options Tab"/>
+             alt="訪問オプションタブの編集"
+             title="訪問オプションタブの編集"/>
         </a>
     </figure></p>
 <ul>
 <li>
-<p><strong>Opt Method</strong>：訪問がデフォルトでタグのトラッキングをオプトインまたはオプトアウトするかを決定するための以下のいずれかを選択します。</p>
+<p><strong>オプト方式</strong>：訪問がデフォルトでタグ追跡のオプトインまたはオプトアウトになるかを決定するための以下のいずれかを選択します。</p>
 <ul>
 <li><strong>デフォルトでオプトイン</strong></li>
 <li><strong>デフォルトでオプトアウト</strong></li>
@@ -559,59 +559,59 @@
 </ul>
 </li>
 </ul>
- <p class="tip"><i class="fa fa-info-circle"></i>デフォルトでは、Tealiumのクッキーは訪問、セッション、タイムスタンプ情報に使用されます。Tealiumのクッキーは、Persist拡張機能と一緒に使用して、永続的なクッキー情報を保存します。</p>
+ <p class="tip"><i class="fa fa-info-circle"></i>デフォルトでは、Tealiumクッキーは訪問、セッション、タイムスタンプ情報に使用されます。Tealiumクッキーは、永続的なクッキー情報を保存するPersist拡張機能とも連携して使用されます。</p>
 </li>
 <li>
-<p><strong>省略するタグ</strong>タブをクリックし、オプトアウトのオプションから除外したいタグを選択します。<br>
-選択した除外タグは緑色でハイライト表示されます。これらのタグは、訪問がオプトインまたはオプトアウトするかどうかに関係なくロードされます。
+<p><strong>省略するタグ</strong>タブをクリックし、オプトアウトのオプションから免除したいタグを選択します。
+選択したタグは緑色で強調表示されます。これらのタグは、訪問がオプトインまたはオプトアウトに関わらずロードされます。
 <figure><a class="slb" href="/images/iq-tag-management/privacy-manager-extension-edit-tags-to-omit.jpg"><img src="/images/iq-tag-management/privacy-manager-extension-edit-tags-to-omit.jpg"
-             alt="Edit Tags to Omit"
-             title="Edit Tags to Omit"/>
+             alt="省略するタグの編集"
+             title="省略するタグの編集"/>
         </a>
     </figure></p>
 </li>
 <li>
-<p><strong>適用</strong>をクリックし、その後<strong>保存/公開</strong>して変更を保存します。</p>
+<p><strong>適用</strong>をクリックし、その後<strong>保存/公開</strong>して変更を反映させます。</p>
 </li>
 </ol>
 <h3 id="カテゴリによる訪問タイプの選択">カテゴリによる訪問タイプの選択</h3>
-<p>このセクションでは、プライバシーコントロールに使用するカテゴリを定義する場所について説明します。</p>
+<p>このセクションでは、プライバシー制御に使用するカテゴリを定義する場所について説明します。</p>
 <ol>
-<li>左側の<strong>ワークフローを編集</strong>ボタンをクリックして、<strong>プライバシーマネージャーの編集</strong>ダイアログを表示します。</li>
-<li><strong>訪問オプション</strong>タブをクリックし、<strong>訪問選択タイプ</strong>セクションの下で、ラジオボタン<strong>カテゴリによる</strong>を選択します。</li>
-<li><strong>新規カテゴリ</strong>フィールドが表示されます。<strong>新規カテゴリ</strong>の下に新しいカテゴリの名前を入力し、<strong>追加</strong>をクリックします。</li>
-<li>新しいカテゴリが表示されます。提供されたスペースに新しいカテゴリの説明を追加します。これは、ウィジェットで訪問に表示される説明です。
+<li>左側の<strong>ワークフローの編集</strong>ボタンをクリックして、<strong>プライバシーマネージャーの編集</strong>ダイアログを表示します。</li>
+<li><strong>訪問オプション</strong>タブをクリックし、その後<strong>訪問選択タイプ</strong>セクションの<strong>カテゴリによる</strong>ラジオボタンを選択します。</li>
+<li><strong>新しいカテゴリ</strong>フィールドが表示されます。<strong>新しいカテゴリ</strong>の下に新しいカテゴリの名前を入力し、<strong>追加</strong>をクリックします。</li>
+<li>新しいカテゴリが表示されます。提供されたスペースに新しいカテゴリの説明を追加します。この説明はウィジェットで訪問に表示されます。
 <figure><a class="slb" href="/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-add-new-category-desciption.jpg"><img src="/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-add-new-category-desciption.jpg"
-             alt="Privacy Manager Extension_Visitor Options Tab_Add New Category Desciption"
-             title="Privacy Manager Extension_Visitor Options Tab_Add New Category Desciption"/>
+             alt="プライバシーマネージャー拡張機能_訪問オプションタブ_新しいカテゴリの説明を追加"
+             title="プライバシーマネージャー拡張機能_訪問オプションタブ_新しいカテゴリの説明を追加"/>
         </a>
     </figure></li>
-<li>構成中の任意のタグをクリックし、タグをドラッグアンドドロップして適切なカテゴリに配置します。
+<li>構成内の任意のタグをクリックし、適切なカテゴリにタグをドラッグアンドドロップして配置します。
 <figure><a class="slb" href="/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-drag-and-drop-tags-into-categories.jpg"><img src="/images/iq-tag-management/privacy-manager-extension-visitor-options-tab-drag-and-drop-tags-into-categories.jpg"
-             alt="Privacy Manager Extension_Visitor Options Tab_Drag and Drop Tags into Categories"
-             title="Privacy Manager Extension_Visitor Options Tab_Drag and Drop Tags into Categories"/>
+             alt="プライバシーマネージャー拡張機能_訪問オプションタブ_カテゴリにタグをドラッグアンドドロップ"
+             title="プライバシーマネージャー拡張機能_訪問オプションタブ_カテゴリにタグをドラッグアンドドロップ"/>
         </a>
     </figure></li>
-<li><strong>適用</strong>をクリックし、その後<strong>保存して公開</strong>して変更を保存します。</li>
+<li><strong>適用</strong>をクリックし、その後<strong>保存して公開</strong>して変更を反映させます。</li>
 </ol>
 <h2 id="faq">FAQ</h2>
 <h4 id="ウィジェットのスタイルは変更可能ですか">ウィジェットのスタイルは変更可能ですか？</h4>
-<p>はい。プライバシーマネージャーのウィジェットにはデフォルトのスタイルがあり、これはあなたのサイトのスタイルと一致するかもしれませんし、一致しないかもしれません。ウィジェットのスタイルをCSSで調整するには、ウィジェットの以下のクラスを参照します：</p>
+<p>はい。プライバシーマネージャーのウィジェットにはデフォルトのスタイルがあり、それがサイトのスタイルに合っているかもしれませんし、合っていないかもしれません。ウィジェットのスタイルをCSSで調整することができます。ウィジェットのクラスは以下の通りです：</p>
 <p><code>tealiumMo2TriggerButton</code></p>
-<h4 id="カテゴリ名に非ascii文字は許可されていますか">カテゴリ名に非ASCII文字は許可されていますか？</h4>
-<p>はい。このセクションは、正しくエンコードできない非ASCII文字やアクセント文字にのみ関連します。<strong>カテゴリ名</strong>プロパティが正しくエンコードされている場合、このセクションは適用されません。</p>
-<p>2015年11月10日以降、非ASCII/アクセント文字を含むカテゴリ名が正しくエンコードされないというバグが解消されました。既存のプライバシーマネージャー拡張機能にバグ修正を適用するには、プロファイルでMulti-Opt-Outテンプレートを再生成する必要があります。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>テンプレートを再生成すると、適用されていたカスタマイズは保持されません。進行する前に、カスタムコードのバックアップを取っておくようにしてください。</p>
-<p>プロファイルでMulti-Opt-Outテンプレートを再生成するには、以下の手順を使用します：</p>
+<h4 id="カテゴリ名に非ascii文字は使用可能ですか">カテゴリ名に非ASCII文字は使用可能ですか？</h4>
+<p>はい。このセクションは、正しくエンコードされなかった非ASCIIまたはアクセント文字にのみ関連します。<strong>カテゴリ名</strong>プロパティが正しくエンコードされている場合、この問題は適用されません。</p>
+<p>2015年11月10日に、非ASCII/アクセント文字を含むカテゴリ名が正しくエンコードされなかったバグが解決されました。既存のプライバシーマネージャー拡張機能にバグ修正を適用するには、プロファイルでMulti-Opt-Outテンプレートを再生成する必要があります。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>テンプレートを再生成すると、適用されていたカスタマイズは保持されません。処理を進める前に、カスタムコードのバックアップを取ってください。</p>
+<p>プロファイルでMulti-Opt-Outテンプレートを再生成するための手順は以下の通りです：</p>
 <ol>
-<li>管理メニューで、<strong>テンプレートを管理</strong>をクリックします。</li>
+<li>管理メニューで<strong>テンプレートの管理</strong>をクリックします。</li>
 <li><strong>Multi-Opt Out (Profile) UID: multioptout</strong>テンプレートを開きます。</li>
-<li>このテンプレートを削除します。ウィンドウの右上隅にあるゴミ箱アイコンをクリックします。</li>
-<li>確認のため、<strong>はい</strong>をクリックします。</li>
-<li>プロファイルを<strong>保存して公開</strong>します。<br>
-この操作で、マルチオプトアウトテンプレートが更新されます。</li>
+<li>ウィンドウの右上にあるゴミ箱アイコンをクリックしてこのテンプレートを削除します。</li>
+<li>確認のために<strong>はい</strong>をクリックします。</li>
+<li>プロファイルを<strong>保存して公開</strong>します。
+この操作でmulti-opt-outテンプレートがリフレッシュされます。</li>
 <li>手順1と2を繰り返して新しいテンプレートを開きます。</li>
-<li>以前に行ったカスタマイズを再適用します。</li>
+<li>以前に行われたカスタマイズを再適用します。</li>
 <li>テンプレートの変更を保存して公開します。</li>
 </ol>
 
@@ -674,7 +674,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -689,7 +689,7 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">拡張機能の使用</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%9C%E3%82%BF%E3%83%B3" href="javascript:void(0)">プライバシーマネージャーボタン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%81%AB%E3%82%88%E3%82%8B%E8%A8%AA%E5%95%8F%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E9%81%B8%E6%8A%9E" href="javascript:void(0)">カテゴリによる訪問タイプの選択</a></li>
@@ -906,7 +906,7 @@
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   

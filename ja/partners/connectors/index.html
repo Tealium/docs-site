@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>コネクタ | パートナー統合 | Tealiumドキュメント</title>
+    <title>コネクター | パートナー統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -127,7 +127,7 @@
         <a href="/ja/partners/cms-plugins/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".partner-cms-plugins">CMSプラグイン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/partners/tags/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".partner-tags">タグ</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/partners/mobile/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".partner-mobile">モバイル</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/partners/connectors/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".partner-connectors">コネクタ</a></li></ul>
+        <a href="/ja/partners/connectors/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".partner-connectors">コネクター</a></li></ul>
 </nav>
 </div>
     
@@ -154,7 +154,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">コネクタ</h1>
+<h1 class="lh-title mt30 mb3">コネクター</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -162,7 +162,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Tealiumで、イベントおよびカスタマーデータのリアルタイムアクティベーションを行うサーバー側APIを統合する方法について説明します。
+      Tealiumでイベントデータと顧客データをリアルタイムで活性化するためのサーバーサイドAPIを統合する方法を学びます。
     </p>
   
 </div>
@@ -175,94 +175,94 @@
 
 <div class="flex justify-center bg-primary-color ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-data-chain-integrate.png" alt="" width="100"  height="70" ></div>
 
-<p>データの収集やアクティベーションを行うAPIを提供している場合や、クライアント側のJavaScriptタグと同等のサーバー側を備えている場合は、Tealium Customer Data Hubでのアウトバウンド用API統合の機能をこのガイドでご確認ください。</p>
-<h2 id="コネクタの仕組み">コネクタの仕組み</h2>
-<p>_コネクタ_とは、データを送信するために使用する、Tealiumとベンダーの間の統合機能です。コネクタは、ベンダーのAPIに含まれるメソッドを表す_アクション_を提供します。Tealiumユーザーは、コネクタを使用すると、簡単なワークフローによりデータをリアルタイムでアクティベートし、ベンダーに直接送ることができます。</p>
-<h3 id="イベントおよびカスタマーデータ">イベントおよびカスタマーデータ</h3>
-<p>Web解析などの_イベントデータ_を送信するコネクタは、<a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-EventStream/ta-p/20387">Tealium EventStream</a>で使用されます。</p>
-<p>メールサブスクリプションステータスなどの_カスタマーデータ_を送信するコネクタは、<a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-AudienceStream/ta-p/16087">Tealium AudienceStream</a>で使用されます。</p>
+<p>データ収集または活性化のためのAPIを提供していますか？クライアントサイドのJavaScriptタグに相当するサーバーサイドがありますか？もしそうなら、このガイドではTealium Customer Data HubでのアウトバウンドデータのAPI統合の仕組みを説明します。</p>
+<h2 id="コネクターの仕組み">コネクターの仕組み</h2>
+<p><em>コネクター</em> は、データを送信するためのTealiumとベンダー間の統合です。コネクターはベンダーのAPIからのメソッドを表す <em>アクション</em> を提供します。コネクターはTealiumユーザーにデータをリアルタイムで活性化し、直接ベンダーに送信するための簡素化されたワークフローを提供します。</p>
+<h3 id="イベントと顧客データ">イベントと顧客データ</h3>
+<p><em>イベントデータ</em> を送信するコネクターは、<a href="/ja/server-side/getting-started/eventstream-api-hub/introduction/">Tealium EventStream</a>で使用されます。</p>
+<p><em>顧客データ</em> を送信するコネクターは、<a href="/ja/server-side/getting-started/audiencestream-cdp/introduction/">Tealium AudienceStream</a>で使用されます。</p>
 <h3 id="構成">構成</h3>
-<p>コネクタは、以下のパーツで管理されます。</p>
+<p>コネクターは以下の部分で管理されます：</p>
 <ul>
-<li><strong>コネクタ</strong>
-コネクタは、ベンダーへの接続を確立します。これには通常、APIキーまたはアカウントIDが使用されます。<a href="#authentication">認証資格情報</a>が使用されることもあります。</li>
-<li><strong>アクション</strong>
-アクションは、特定のベンダーAPIメソッドを実装します。各アクションには、データのソース（イベントまたはカスタマー）、データマッピングのほか、必要なベンダー構成の指定が求められます。単一のコネクタに、複数のアクションが関連付けられます。</li>
-<li><strong>データマッピング</strong>
-データマッピングでは、イベントまたはカスタマーからのどの動的値をベンダーに送信するかを決定します。</li>
+<li><strong>コネクター</strong><br>
+コネクターは、通常APIキーやアカウントID、または<a href="#authentication">認証資格情報</a>を使用してベンダーに接続を確立します。</li>
+<li><strong>アクション</strong><br>
+アクションは特定のベンダーAPIメソッドを実装します。各アクションにはデータのソース（イベントまたは顧客）、データマッピング、および必要なベンダー構成が必要です。複数のアクションが単一のコネクターに関連付けられています。</li>
+<li><strong>データマッピング</strong><br>
+データマッピングは、イベントまたは顧客からの動的値がベンダーに送信されるかを決定します。</li>
 </ul>
 <h3 id="アクションの例">アクションの例</h3>
-<p>以下の例は、さまざまなベンダーカテゴリの一般的なコネクタアクションを示します。</p>
+<p>以下の例は、さまざまなベンダーカテゴリーからの一般的なコネクターアクションを示しています：</p>
 <ul>
-<li><strong>アナリティクス</strong>
-ページビュー、注文購入、ユーザー登録などのアナリティクスイベントを送信します。</li>
-<li><strong>ディスプレイ広告</strong>
-広告セグメントに対して、追加または削除を行います。</li>
-<li><strong>メール</strong>
-リストに対する追加または削除、メールのトリガー、サブスクリプション顧客の関連データの追加を行います。</li>
-<li><strong>CRM</strong>
-リードまたは連絡先の作成、リードの変換、レコードのupsert（挿入または更新）を行います。</li>
-<li><strong>モバイル</strong>
-SMS通知またはプッシュ通知の送信、アプリインストールのトラッキング、アプリ内イベントの送信を行います。</li>
+<li><strong>アナリティクス</strong><br>
+ページビュー、注文購入、またはユーザー登録などのアナリティクスイベントを送信します。</li>
+<li><strong>ディスプレイ広告</strong><br>
+広告セグメントの追加または削除。</li>
+<li><strong>メール</strong><br>
+リストへの追加または削除、トリガーメール、または購読者の関連データの追加。</li>
+<li><strong>CRM</strong><br>
+リードやコンタクトの作成、リードの変換、またはレコードのアップサート（挿入または更新）。</li>
+<li><strong>モバイル</strong><br>
+SMSやプッシュ通知の送信、アプリのインストールの追跡、またはアプリ内イベントの送信。</li>
 </ul>
-<p><a href="https://community.tealiumiq.com/t5/Getting-Started-with/Connectors/ta-p/25795">コネクタの詳細については、こちらを参照してください</a>。</p>
-<h2 id="例-facebook-audiencesコネクタ">例: Facebook Audiencesコネクタ</h2>
-<p>Facebook 広告ユーザー向けの <a href="https://community.tealiumiq.com/t5/Server-Side-Connectors/Facebook-Audiences-Connector-Setup-Guide/ta-p/587">Facebook Audiences コネクタ</a> を使用すると、Tealium ユーザーは、1 つ以上のデータソースから収集されたユーザー行動に基づき、カスタムオーディエンスをリアルタイムで管理できます。</p>
-<p>このコネクタは、以下のアクションを提供します。</p>
+<p><a href="/ja/server-side/getting-started/audiencestream-cdp/connectors/">コネクターについてもっと学ぶ</a>.</p>
+<h2 id="例facebook-audiences-connector">例：Facebook Audiences Connector</h2>
+<p><a href="/ja/server-side-connectors/facebook-audiences-connector/">Facebook Audiences Connector</a>を使用すると、Facebook広告ユーザーは、一つ以上のデータソースから収集されたユーザー行動に基づいてリアルタイムでカスタムオーディエンスを管理できます。</p>
+<p>このコネクターは以下のアクションを提供します：</p>
 <ul>
-<li>ユーザーをカスタムオーディエンスに追加する</li>
-<li>ユーザーをカスタムオーディエンスから削除する</li>
-<li>ユーザーを全てのカスタムオーディエンスからオプトアウトする</li>
+<li>ユーザーをカスタムオーディエンスに追加</li>
+<li>ユーザーをカスタムオーディエンスから削除</li>
+<li>ユーザーをすべてのカスタムオーディエンスからオプトアウト</li>
 </ul>
-<p>各アクションについて、Facebook Custom Audiences用のフィールド（必須またはオプション）のリストがあり、データマッピングに使用できます。</p>
+<p>各アクションには、Facebookカスタムオーディエンスのデータマッピングに必要なフィールドのリストが用意されています。</p>
 <h2 id="認証">認証</h2>
-<p>ベンダーAPIが認証を必要とする場合に備え、Tealiumでは2つのソリューションを用意しています。</p>
+<p>ベンダーAPIが認証を必要とする場合、Tealiumは次の2つのソリューションを提供します：</p>
 <ul>
-<li><strong>Tealiumが提供する認証情報</strong>
-ユーザーに代わって動作するサーバー側アプリをTealiumが作成および管理します。Tealiumが、ベンダーとの認証関係を維持します。</li>
-<li><strong>顧客が提供する認証情報</strong>
-Tealiumユーザーが、接続の認証に必要なAPIアクセス権をベンダーから獲得します。</li>
+<li><strong>Tealium提供の資格情報</strong><br>
+Tealiumは、ユーザーを代表して行動するサーバーサイドアプリを作成および管理します。Tealiumはベンダーとの認証関係を維持します。</li>
+<li><strong>顧客提供の資格情報</strong><br>
+Tealiumユーザーは、接続を認証するために必要なAPIアクセスをベンダーから取得します。</li>
 </ul>
-<p>いずれのソリューションについても、Tealiumは以下の認証タイプをサポートします。</p>
+<p>両方のソリューションにおいて、Tealiumは次の認証タイプをサポートします：</p>
 <ul>
-<li>基本認証（ユーザー名とパスワード）</li>
+<li>Basic Auth（ユーザー名とパスワード）</li>
 <li>OAuth 2.0</li>
-<li>JSON Web Token（JWT）</li>
+<li>JSON Web Tokens (JWT)</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealiumは常に全世界のサーバー数十台に分散しているため、APIに同時トークン数の制限がある場合は問題が発生する可能性があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>APIが同時に発行できるトークン数に制限がある場合、Tealiumユーザーは、私たちが世界中の数十のサーバーに分散しているため、問題に直面する可能性があります。</p>
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
-<h3 id="アセットの作成">アセットの作成</h3>
-<p>アセットの作成は、TealiumユーザーがTealium Customer Data Hub（CDH）から離れずに、コネクタと共に使用するリソースを作成できる機能です。たとえば、Facebook Audiencesコネクタでは、ユーザーがFacebookの新しいカスタムオーディエンスを作成し、そのオーディエンスを新しいコネクタアクションのターゲットとして選択できます。</p>
-<p>このオプション機能は、コネクタアクションに関連したリソースを作成するためのAPI メソッドをサポートするすべてのベンダーに提供されます。作成メソッドの例を以下に示します。</p>
+<h3 id="アセット作成">アセット作成</h3>
+<p>アセット作成は、TealiumユーザーがTealium Customer Data Hub (CDH)を離れることなくコネクターで使用するリソースを作成する能力です。たとえば、Facebook Audiencesコネクターでは、ユーザーは新しいFacebookカスタムオーディエンスを作成し、そのオーディエンスを新しいコネクターアクションのターゲットとして選択することができます。</p>
+<p>このオプション機能は、APIメソッドをサポートするすべてのベンダーに提供されます。リソース作成メソッドの一般的な例には次のものがあります：</p>
 <ul>
-<li><strong>ディスプレイ広告</strong>
+<li><strong>ディスプレイ広告</strong><br>
 広告主セグメントまたはオーディエンスを作成します。</li>
-<li><strong>メール</strong>
-サブスクリプション顧客リストまたは連絡先リストを作成します。</li>
+<li><strong>メール</strong><br>
+購読者リストまたは連絡先リストを作成します。</li>
 </ul>
 <h3 id="動的ベンダーオプション">動的ベンダーオプション</h3>
-<p>ユーザーによるコネクタアクションの構成は、Tealiumによって支援されます。ベンダーのプラットフォームから直接取得したデータを使用して、コネクタオプションが動的に構成されます。</p>
-<p>たとえば、Facebook Audiencesコネクタの構成画面では、TealiumがAPI呼び出しを行い、ユーザーのFacebook広告アカウントから、カスタムオーディエンスのリストを取得します。これによりユーザーは、見慣れた名前と便利なメタデータを使って、外部リソースを参照できるため、正しいリソースを確実に選択できます。</p>
-<p>これらの動的構成オプションは、場合によっては順次呼び出しとして実行する必要があります。CRMコネクタでは、たとえばCRMオブジェクトのプライマリキーフィールドを取得するには、まずCRMオブジェクトのリストを取得する必要があります。</p>
-<h3 id="デフォルトのupsert">デフォルトのUpsert</h3>
-<p>ベンダープラットフォームでレコードを作成または更新するAPIメソッドについて、Tealiumでは、単一リクエスト内の<code>upsert</code>に対するネイティブサポートを使用するようお勧めしています。これにより、Tealiumから発信するAPI呼び出しの数を最小限に抑えることができます。たとえば、レコードの作成または更新前に、APIユーザーはまず、レコードが存在するかどうかを確認する必要があります。レコードが存在しない場合は、次のAPI呼び出しでレコードが作成されます。レコードが存在する場合は、次のAPI呼び出しで、既存のレコードが更新されます。</p>
-<h3 id="バッチとレートの制限">バッチとレートの制限</h3>
-<p>Tealiumの目標は、リアルタイムのパフォーマンスを提供することですが、ベンダーによっては、リソースコストの管理目的でデータを小さなバッチで受信する方が望ましいとされる場合もあります。大量のデータを処理する場合は特に、このことが当てはまります。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>Tealiumでは、ベンダーのレートで個々のアカウントでのAPIの使用を制限するようにお勧めしています。これにより、ボリュームの高い小さなグループによってシステム全体が影響を受ける状況を回避できます。</p>
-<p>Tealiumのコネクタは、使用されているAPIエンドポイントに求められるしきい値に適合します。以下はレート制限の例です。</p>
+<p>Tealiumは、ベンダープラットフォームから直接取得したデータを使用してコネクターアクションのオプションを動的に構成することで、ユーザーを支援します。</p>
+<p>たとえば、Facebook Audiencesコネクターの構成画面では、TealiumはユーザーのFacebook広告アカウントからカスタムオーディエンスのリストを取得するAPIコールを行います。これにより、ユーザーは外部リソースを熟知した名前と役立つメタデータで閲覧でき、正しいリソースを選択していることを確認できます。</p>
+<p>これらの動的構成オプションは、時には連続したコールとして実行する必要がある場合があります。たとえば、CRMコネクターでは、CRMオブジェクトの主キーフィールドを取得するために、まずCRMオブジェクトのリストを取得する必要があります。</p>
+<h3 id="デフォルトでアップサート">デフォルトでアップサート</h3>
+<p>ベンダープラットフォームでレコードを作成または更新するAPIメソッドについては、Tealiumは単一のリクエストで<code>upsert</code>をネイティブでサポートすることを好みます。これにより、Tealiumからの発信APIコールの数が最小限に抑えられます。たとえば、レコードを作成または更新する前に、APIユーザーはまずレコードが存在するかどうかを確認する必要があります。レコードが存在しない場合、次のAPIコールでレコードが作成されます。レコードが存在する場合、次のAPIコールで既存のレコードが更新されます。</p>
+<h3 id="バッチ処理とレート制限">バッチ処理とレート制限</h3>
+<p>Tealiumの目標はリアルタイムパフォーマンスを提供することですが、一部のベンダーはデータを小さなバッチで送信することを好むことがあります。これは、大量のデータを扱う場合に特に当てはまります。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>APIを使用する個々のアカウントに対してベンダーがレート制限を構成することをお勧めします。これにより、高ボリュームの少数のアカウントがシステム全体に影響を与えるのを防ぎます。</p>
+<p>Tealiumコネクターは、使用するAPIエンドポイントの望ましいしきい値に準拠します。レート制限の例は次のとおりです：</p>
 <ul>
-<li>リクエストあたり50イベント、1秒あたり最大10リクエスト（500リクエスト/秒）</li>
-<li>1分あたり10,000イベント、リクエストあたり最大10KB（最大167リクエスト/秒）</li>
+<li>1秒あたりのリクエスト数が最大10で、リクエストごとに50イベント = 秒あたり500リクエスト</li>
+<li>分あたり10,000イベントで、リクエストごとに最大10KB = 秒あたり約167リクエスト</li>
 </ul>
 <h2 id="制限事項">制限事項</h2>
-<p>現在、Tealiumのコネクタでは以下がサポートされていません。</p>
+<p>Tealiumコネクターは現在、以下をサポートしていません：</p>
 <ul>
 <li>ファイル転送</li>
-<li>5000ミリ秒以内に接続しないベンダーAPI</li>
-<li>リクエストに対して5000ミリ秒（バッチリクエストの場合は10秒）以内に応答しないベンダーAPI</li>
+<li>5000ms以内に接続しないベンダーAPI</li>
+<li>5000ms以内にリクエストに応答しないベンダーAPI（バッチリクエストの場合は10秒）</li>
 </ul>
 <h2 id="パートナーになる">パートナーになる</h2>
-<p>貴社のテクノロジーを統合する方法については、<a href="https://community.tealiumiq.com/t5/Become-a-Technology-Partner/bd-p/become-a-technology-partner">お問い合わせください</a> 。</p>
+<p><a href="https://tealium.com/tealium-partner-network/">お問い合わせください</a> して、技術を統合しましょう。</p>
 
 </div>
 
@@ -308,7 +308,7 @@ Tealiumユーザーが、接続の認証に必要なAPIアクセス権をベン�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年July月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -322,17 +322,17 @@ Tealiumユーザーが、接続の認証に必要なAPIアクセス権をベン�
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">コネクタの仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%8A%E3%82%88%E3%81%B3%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%83%BC%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントおよびカスタマーデータ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">コネクターの仕組み</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E9%A1%A7%E5%AE%A2%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントと顧客データ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BE%8B" href="javascript:void(0)">アクションの例</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-facebook-audiences%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF" href="javascript:void(0)">例: Facebook Audiencesコネクタ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8Bfacebook-audiences-connector" href="javascript:void(0)">例：Facebook Audiences Connector</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9" href="javascript:void(0)">ベストプラクティス</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">アセットの作成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90" href="javascript:void(0)">アセット作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E7%9A%84%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">動的ベンダーオプション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AEupsert" href="javascript:void(0)">デフォルトのUpsert</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E3%81%A8%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチとレートの制限</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%A7%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88" href="javascript:void(0)">デフォルトでアップサート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86%E3%81%A8%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ処理とレート制限</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%B6%E9%99%90%E4%BA%8B%E9%A0%85" href="javascript:void(0)">制限事項</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC%E3%81%AB%E3%81%AA%E3%82%8B" href="javascript:void(0)">パートナーになる</a></li>
               </nav>
@@ -547,7 +547,7 @@ Tealiumユーザーが、接続の認証に必要なAPIアクセス権をベン�
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
-          ファーマ向けティーリアム
+          ファーマ業界のためのTealium
         </a>
     </li>
   
