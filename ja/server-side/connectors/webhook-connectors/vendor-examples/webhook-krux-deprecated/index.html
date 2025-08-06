@@ -7,6 +7,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Webhook Krux（非推奨）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-krux-deprecated/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="Krux Webhookは非推奨の機能であり、Salesforce Audience Studio Connectorに置き換えられました。
+前提条件:
+Webhook Send Custom Action この記事では、AudienceStream Webhook Connectorを使用して、KruxのMobile HTTP APIを介してオーディエンスデータをKruxに送信する方法について説明します。
+概要 このソリューションは、iQおよびCustomer Data Hubの以下のコンポーネントを組み合わせています:
+iQ内のKruxタグ iQ内のPersist Data Value拡張機能 Customer Data Hub内のVisitor Attribute Customer Data Hub内のWebhook iQタグ管理 Kruxコントロールタグを追加 iQタグ管理のTag MarketplaceからKruxコントロールタグを追加します。Kruxから提供されたKrux Configuration IDでタグを構成します。
+KruxユーザーIDでCookieを構成 Webhookコネクターを介して送信するユーザーをKruxユーザーと照合するために、Kruxコントロールタグによって生成されたKruxオブジェクトからKruxユーザーIDを抽出する必要があります。Kruxオブジェクトの命名規則はクライアントごとに異なります。ユーザーIDを抽出するコードは Krux.ns.CLIENT(&#39;get&#39;, &#39;user&#39;) のようになります。ここで、CLIENTはあなたの特定のKruxクライアント名です。このオブジェクトの命名規則についてはKruxの担当者に尋ねるか、Chrome DevTools Consoleで Krux.ns と入力して結果のオブジェクトを調べることができます。
+Kruxクライアント名を取得したら、以下の手順でKruxユーザーIDをCookieに保存します:
+Tealium iQタグ管理のData Layerに2つの変数を追加します。
+krux_id を UDO Variableのタイプで utag_main_krux_id を First Party Cookieのタイプで Set Data Values Extensionを追加して、上記の拡張機能からkrux_idにKruxオブジェクトユーザーIDを抽出します。この拡張機能の実行を「タグの後」に構成します。これにより、KruxコントロールタグがKruxオブジェクトを作成する機会を与えます。
+この拡張機能の条件を、utag_main_krux_idクッキーがまだ構成されていない場合にのみ変数を構成するように構成します。
+Persist Data Value Extensionを追加して、上記の拡張機能からkrux_idをクッキーに保存します。
+この条件を、krux_id変数が入力され、最初に構成された値を保持する場合にのみこのクッキーを保存するように構成します。
+Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID&quot;という名前のVisitorスコープのString Attributeを作成します。この属性はutag_main_krux_idクッキーから取得します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Webhook Krux（非推奨） | ベンダーの例 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +120,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

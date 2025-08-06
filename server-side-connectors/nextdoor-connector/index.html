@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Nextdoor Connector Setup Guide" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/server-side-connectors/nextdoor-connector/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="This article describes how to set up the Nextdoor connector." />
+<meta property="og:site_name" content="Tealium Docs" />
     <title>Nextdoor Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -32,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -253,6 +259,7 @@
         <a href="/server-side-connectors/launchdarkly-metric-import-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".launchdarkly-metric-import-api-connector">LaunchDarkly Metric Import API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/leanplum-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".leanplum-connector">Leanplum</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/line-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-connector">LINE</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/line-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-ads-connector">LINE Ads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/listrak-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -453,7 +460,7 @@
 <tbody>
 <tr>
 <td>Event Name</td>
-<td>The type of the conversion tracking event. Select a value from the drop-down list or enter a custom string value.</td>
+<td>The type of the conversion tracking event. Select a value from the drop-down list or enter a custom string value. The following values are available: <code>Add to Cart</code>, <code>Initiate Checkout</code>, <code>Search</code>, <code>Add to Wishlist</code>, <code>Subscribe</code>, and <code>View Content</code>.</td>
 </tr>
 <tr>
 <td>Action Source</td>
@@ -472,7 +479,7 @@
 <tbody>
 <tr>
 <td>Client ID</td>
-<td>Nextdoor Ads Manager Advertiser ID.  <strong>Data Source ID</strong> or <strong>Client ID</strong> is required.</td>
+<td>Nextdoor Ads Manager Advertiser ID. <strong>Data Source ID</strong> or <strong>Client ID</strong> is required.</td>
 </tr>
 <tr>
 <td>Data Source ID</td>
@@ -485,6 +492,10 @@
 <tr>
 <td>Action Source URL</td>
 <td>The browser URL where the event happened. The URL must begin with <code>http://</code> or <code>https://</code>, and match the verified domain. This value is required for website events.</td>
+</tr>
+<tr>
+<td>Event ID</td>
+<td>Any string or hashed ID that can identify a unique event. This is required to deduplicate events from CAPI and pixel tracking. Event ID or Automatic Deduplication is required.</td>
 </tr>
 <tr>
 <td>Event Time</td>
@@ -521,6 +532,10 @@
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
 <td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs. You can send one or more external IDs for a given event. If an External ID is being sent via other channels, it should be in the same format as when sent via the Conversions API.</td>
 </tr>
 <tr>
 <td>Phone Number (already SHA256 hashed)</td>
@@ -600,7 +615,7 @@
 </tr>
 <tr>
 <td>Client IP Address</td>
-<td>Provide a valid IPv4 or IPv6 address.</td>
+<td><ul><Li>The IP address of the browser corresponding to the event must be a valid IPV4 or IPV6 address. IPV6 is preferable over IPV4 for IPV6-enabled users.</li><li> Always provide the real IP address to ensure accurate event reporting.</li><li>Do not hash this value</li><li>Sending both the Client IP Address and User Agent parameters for all of the events may help improve event matching and ad delivery for campaigns.</li><li>This information is automatically added to events sent through the browser, but it must be manually configured for events sent through the server.</li><ul></td>
 </tr>
 <tr>
 <td>Client User Agent</td>
@@ -674,7 +689,7 @@
 </tr>
 <tr>
 <td>App Tracking Enabled</td>
-<td>Indicates whether the user has opted out of App Tracking Transparency (ATT).</td>
+<td>User opt-out settings for ATT. Specify whether you want to track app events and send them to Nextdoor through the Conversions API.<ul><li><strong>False</strong>: Disables app event tracking. No app events are sent to Nextdoor.</li><li><strong>True</strong>: Enables app event tracking. App events are sent to Nextdoor for attribution and measurement.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -753,7 +768,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 1, 2025 
+          <p>This page was last updated:  July 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1076,6 +1091,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

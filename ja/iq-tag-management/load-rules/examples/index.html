@@ -7,6 +7,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="ロードルールの例" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/iq-tag-management/load-rules/examples/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="以下は、一般的なロードルールの例です。
+ANDロジック 以下の例は、靴を購入している顧客のサイトのチェックアウトページを識別するためのロードルールを示しています。この例ではAND条件を使用しているため、以下の2つの条件を満たす必要があります：
+pathname contains checkout.html product_category contains (ignore case) shoes 両方の条件が真であれば、ロードルールはtrueと評価されます。 ANDステートメントの条件のいずれかが偽であれば、ロードルールはfalseと評価されます。
+ORロジック 以下の例はOR条件を使用しています。このルールは、pathnameがcheckout.htmlを含む場合、またはproduct_categoryがshoesを含む場合に、ページ上のタグをロードします。ステートメントのいずれかが真であれば、ルールは真と評価されます。ORステートメントのすべてのステートメントが偽であれば、ロードルールは偽と評価されます。
+ルールに複数のOR条件が含まれている場合、真のステートメントが見つかった時点でルールの評価が停止します。真のステートメントがあるということは、ルールが真であることを意味するため、残りのステートメントは評価されません。
+URLコンポーネントの使用 URLのコンポーネントは、ロードルール条件を作成する際に役立ちます。URLは通常、以下のコンポーネントで構成されています：
+プロトコル – URLを処理するための方法。例えば、HTTPまたはHTTPS。 ドメイン – ドメイン名。例えば、www.tealium.com. パス – サイト上のセクションとページ。 ハッシュ – ハッシュマーク（#）で始まり、ページ内のセクションを識別します。 クエリストリング – クエスチョンマーク（?）で始まり、ページに渡される動的データを含むキー値パラメータを指定します。 URLの例：
+http://www.tealium.com/app/solutions/?example=test&amp;example2=test2#section3
+データレイヤー変数 データレイヤーでは、ページURLのコンポーネントは以下のようにDOM変数に格納されます：
+dom.domain : &#34;www.tealium.com&#34; dom.pathname : &#34;/app/solutions/&#34; dom.query_string : &#34;example=test&amp;example2=test2&#34; dom.hash : &#34;section3&#34; dom.url : &#34;http://www.tealium.com/app/solutions/?example=test&amp;example2=test2#section3&#34; ドメイン名の使用 サイトが複数のドメインで構成されている場合、特定のドメインのページにタグをロードするロードルールを作成する必要があるかもしれません。以下の例は、domain1.comのページのロードルールを示しています：
+ドメインとパス名の使用 domain1.comのホームページにタグをロードするには、以下のルールを使用します：
+パス名を使用してドメインのセクションを指定 domain1のsupportセクションのページにタグをロードするには、以下のルールを使用します：
+パス名とハッシュ、またはクエリストリングの使用 section2というセクションを含むsupportページ、またはクエリストリングがsupport=trueを含む場合にタグをロードするには、以下のルールを使用します：
+時間ベースの条件の使用 ロードルールには、日付と時間の範囲を指定する時間ベースの条件を使用できます。日付と時間の範囲は、ルールがアクティブである時間期間を指定します。
+ロードルールで使用される時間/タイムゾーンは、サーバーや訪問の時間/タイムゾーンではなく、訪問のブラウザによって決定されます。
+ロードルールに日付範囲条件を追加するには、以下の手順を使用します。
+日付範囲条件を追加をクリックします。
+日付と時間の範囲ダイアログが表示されます。
+開始日フィールドをクリックして、カレンダーから開始日を選択します。 デフォルトの時間をクリックして、異なる開始時間を選択します。 終了日フィールドをクリックして、カレンダーから終了日を選択します。 デフォルトの時間をクリックして、異なる終了時間を選択します。 適用をクリックします。 特別な注意事項 以下の特別な注意事項が適用される場合があります：" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ロードルールの例 | ロードルール | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +126,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="オーディエンスの管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/early-access/audiences/manage/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="この記事では、オーディエンスの作成、編集、削除、アクティベーション、セグメントの作成についての情報を提供します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>オーディエンスの管理 | オーディエンス | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -149,7 +155,7 @@
         <ul class="pl2 bl b--primary bw1 ea-audiences desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">オーディエンスについて</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/audiences/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-audiences-early-access">オーディエンスの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/audiences/potential-audience-sizing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">ポテンシャルオーディエンスサイズの見積もり</a></li></ul>
+        <a href="/ja/early-access/audiences/potential-size/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">ポテンシャルオーディエンスサイズの見積もり</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-new-ui">コネクター</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".server-side-concurrency">サーバーサイドの並行性</a>
@@ -237,7 +243,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>新しい属性インターフェースはEarly Accessで提供されており、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>新しい属性インターフェースはEarly Accessであり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
 <p>オーディエンスは、1つ以上の属性条件の組み合わせです。フィルターを追加するほど、オーディエンスは具体的になります。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>オーディエンスを作成または編集するとき、<strong>オーディエンスサイズ</strong>の値は前日までの訪問数を反映します。</p>
 <h2 id="オーディエンスの作成">オーディエンスの作成</h2>
@@ -271,21 +277,36 @@
 <p>セグメントを追加するには、<strong>+ Add Segment</strong>をクリックし、セグメントの条件を追加します。</p>
 </li>
 <li>
-<p>保存済みのセグメントを追加するには、<strong>+ Add Segment</strong>の隣の下矢印をクリックしてセグメントを選択します。
+<p>保存されたセグメントを追加するには、<strong>+ Add Segment</strong>の隣の下矢印をクリックしてセグメントを選択します。
 セグメントにカーソルを合わせると、そのセグメントの条件が表示されます。</p>
+</li>
+<li>
+<p>セグメントを除外するには、<strong>+ Add Segment to Exclude</strong>をクリックし、セグメントの条件を追加します。</p>
+</li>
+<li>
+<p>保存されたセグメントを除外するには、<strong>+ Add Segment to Exclude</strong>の隣の下矢印をクリックしてセグメントを選択します。</p>
+</li>
+<li>
+<p>オーディエンス条件を現在満たしている訪問でオーディエンスを埋めるには、<strong>Fill Audience</strong>を選択します。</p>
+<ul>
+<li>公開後、オーディエンスには過去に条件を満たした訪問が含まれます。<a href="/ja/early-access/audiences/potential-size/"><strong>Potential Size</strong></a>の数値は、既存のデータからオーディエンスを埋めるための資格を持つ訪問の推定数です。</li>
+<li>リアルタイム評価が同時に行われます。</li>
+<li>オーディエンスは一度だけ埋めることができます。</li>
+<li>プロファイルを公開し、埋めるプロセスを開始する前に、少なくとも1つのコネクタアクションにオーディエンスを接続してください。これにより、オーディエンスが埋められると同時に、一致する訪問が指定されたコネクタに自動的に送信されます。</li>
+</ul>
 </li>
 <li>
 <p>ラベルやメモを追加するか、保持時間を変更するには、<strong>More Options</strong>をクリックします。</p>
 <ol>
-<li>ラベルを追加するには、<strong>Add Label</strong>をクリックしてラベルを選択します。</li>
+<li>ラベルを追加するには、<strong>Add Label</strong>をクリックし、ラベルを選択します。</li>
 <li>必要に応じてメモを入力します。</li>
 <li>オーディエンスの保持時間を変更するには、リストから値を選択します。
 訪問の最後の訪問時間がその訪問の保持時間の開始を決定します。</li>
 </ol>
 </li>
 <li>
-<p>オーディエンスを即座にアクティブ化するには、<strong>Connect &amp; Activate</strong>をクリックし、コネクタを選択して構成します。
-選択したコネクタの構成ガイドについては、詳細を参照してください。</p>
+<p>オーディエンスをすぐにアクティブ化するには、<strong>Connect &amp; Activate</strong>をクリックし、コネクタを選択して構成します。
+詳細については、選択したコネクタの構成ガイドを参照してください。</p>
 </li>
 <li>
 <p>オーディエンスをアクティブ化せずに保存するには、<strong>Done</strong>をクリックします。</p>
@@ -295,22 +316,22 @@
 </li>
 </ol>
 <h2 id="既存のオーディエンスからオーディエンスを作成する">既存のオーディエンスからオーディエンスを作成する</h2>
-<p>オーディエンスリストから、またはオーディエンスの詳細ビューからオーディエンスを複製し、複製を変更して新しいオーディエンスを作成することができます。</p>
+<p>オーディエンスリストまたはオーディエンス詳細ビューからオーディエンスを複製し、複製を変更して新しいオーディエンスを作成することができます。</p>
 <p>オーディエンスリストからオーディエンスを複製するには、次の手順に従います：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>オーディエンスメニューで<strong>Duplicate</strong>を選択します。
-オーディエンスのコピーが表示されます。</li>
-<li>新しいオーディエンスに必要な<strong>名前</strong>と条件を変更するために<strong>Edit</strong>をクリックします。</li>
+複製されたオーディエンスが表示されます。</li>
+<li><strong>Edit</strong>をクリックして、新しいオーディエンスのために<strong>名前</strong>と条件を必要に応じて変更します。</li>
 <li><strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>オーディエンスの詳細からオーディエンスを複製するには、次の手順に従います：</p>
+<p>オーディエンス詳細からオーディエンスを複製するには、次の手順に従います：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>リストからオーディエンスをクリックし、<strong>Duplicate</strong>をクリックします。
-オーディエンスのコピーが表示されます。</li>
-<li>新しいオーディエンスに必要な<strong>名前</strong>と条件を変更するために<strong>Edit</strong>をクリックします。</li>
+複製されたオーディエンスが表示されます。</li>
+<li><strong>Edit</strong>をクリックして、新しいオーディエンスのために<strong>名前</strong>と条件を必要に応じて変更します。</li>
 <li><strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
@@ -320,26 +341,37 @@
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>リストからオーディエンスをクリックし、<strong>Edit</strong>をクリックします。</li>
 <li>必要に応じてオーディエンスを変更します。</li>
+</ol>
+<ul>
+<li>公開後、オーディエンスには過去に条件を満たした訪問が含まれます。<a href="/ja/early-access/audiences/potential-size/"><strong>Potential Size</strong></a>の数値は、既存のデータからオーディエンスを埋めるための資格を持つ訪問の推定数です。
+<ul>
+<li>リアルタイム評価が同時に行われます。</li>
+<li>オーディエンスは一度だけ埋めることができます。</li>
+<li>プロファイルを公開し、埋めるプロセスを開始する前に、少なくとも1つのコネクタアクションにオーディエンスを接続してください。これにより、オーディエンスが埋められると同時に、一致する訪問が指定されたコネクタに自動的に送信されます。</li>
+</ul>
+</li>
+</ul>
+<ol>
 <li>このオーディエンスのアクティベーションを追加するか、アクティベーションを表示するには、<strong>Activations</strong>をクリックします。
 アクティベーションの追加については、<a href="#activate-an-audience">オーディエンスのアクティベーション</a>を参照してください。</li>
-<li>このオーディエンスの訪問や活動に関する情報を表示するには、<strong>Insights</strong>をクリックします。</li>
-<li>このオーディエンスによってトリガーされる機能を表示するには、<strong>Functions</strong>をクリックします。</li>
+<li>このオーディエンスの訪問情報や活動情報を表示するには、<strong>Insights</strong>をクリックします。</li>
+<li>このオーディエンスによってトリガーされる関数を表示するには、<strong>Functions</strong>をクリックします。</li>
 <li>オーディエンスの編集が完了したら、<strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="オーディエンスのアクティベーション">オーディエンスのアクティベーション</h2>
-<p>オーディエンスをアクティブ化するには、コネクタを選択して構成します：</p>
+<p>オーディエンスをアクティベートするには、コネクタを選択して構成します：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>リストからオーディエンスをクリックし、<strong>Edit</strong>をクリックします。</li>
 <li><strong>Activations</strong>タブをクリックし、<strong>+ Add Activation</strong>をクリックします。</li>
 <li>コネクタを選択して構成します。
-選択したコネクタの構成ガイドについては、詳細を参照してください。</li>
+詳細については、選択したコネクタの構成ガイドを参照してください。</li>
 <li>オーディエンスを閉じるために<strong>X</strong>をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="オーディエンスの非アクティベーション">オーディエンスの非アクティベーション</h2>
-<p>オーディエンスを非アクティブ化するには、次の手順に従います：</p>
+<p>オーディエンスを非アクティブにするには、次の手順に従います：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>リストからオーディエンスをクリックし、<strong>Activations</strong>をクリックします。</li>
@@ -347,7 +379,7 @@
 <li>保存して公開します。</li>
 </ol>
 <h2 id="オーディエンスの削除">オーディエンスの削除</h2>
-<p>オーディエンスリストまたはオーディエンスの詳細ビューからオーディエンスを削除することができます。</p>
+<p>オーディエンスリストまたはオーディエンス詳細ビューからオーディエンスを削除することができます。</p>
 <p>オーディエンスリストからオーディエンスを削除するには、次の手順に従います：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
@@ -355,7 +387,7 @@
 <li>確認ダイアログで<strong>Delete</strong>をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>オーディエンスの詳細からオーディエンスを削除するには、次の手順に従います：</p>
+<p>オーディエンス詳細からオーディエンスを削除するには、次の手順に従います：</p>
 <ol>
 <li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
 <li>オーディエンスリストでオーディエンスをクリックします。</li>
@@ -369,7 +401,7 @@
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/early-access/audiences/potential-audience-sizing/"
+  <a href="/ja/early-access/audiences/potential-size/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>ポテンシャルオーディエンスサイズの見積もり</div>
@@ -423,7 +455,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月27日
+          <p>最終更新日 ::  2025年August月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

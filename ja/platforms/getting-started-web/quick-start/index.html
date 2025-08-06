@@ -7,6 +7,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="ウェブサイト用クイックスタートガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/platforms/getting-started-web/quick-start/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="このガイドでは、ウェブサイト用のTealiumタグ管理ソリューションのインストールについて説明します。このインストールには2つのコンポーネントが必要です：ユニバーサルタグ（utag.js）とユニバーサルデータオブジェクト（utag_data）。これらのコンポーネントをサイトのすべてのページにインストールしてください。
+インストール ユニバーサルタグ ユニバーサルタグは、utag.jsと呼ばれるJavaScriptファイルで、サイトのタグ管理構成をロードするために必要なコードが生成されています。
+&lt;!-- Tealium Universal Tag --&gt; &lt;script type=&#34;text/javascript&#34;&gt; (function(a,b,c,d) { a=&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;; b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a; d.type=&#39;text/java&#39;&#43;c;d.async=true; a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})(); &lt;/script&gt; utag.jsのファイルパスはアカウントによって異なります。このガイドを通じて、プレースホルダー値ACCOUNT、PROFILE、ENVIRONMENTをあなたのアカウント、プロファイル、環境に置き換えてください。
+例えば、あなたのアカウント名がyour-companyで、デフォルトのプロファイルmainを使用している場合、QAインスタンスへのファイルパスは以下のようになります：
+//tags.tiqcdn.com/utag/your-company/main/qa/utag.js ユニバーサルタグ（utag.js）のインストールについてもっと学ぶ。
+コードの取得 アカウント名やプロファイル名がわからない場合は、Tealium管理者に尋ねるか、アカウントの権限システムに応じてプラットフォームからコードスニペットを取得できます：
+プラットフォーム権限 プラットフォーム権限を使用しているアカウントの場合、iQタグ管理 &gt; 環境管理にアクセスしてコードスニペットを取得します：
+クライアントサイドの管理メニューで環境管理をクリックします。環境管理ダイアログが表示されます。 使用しているウェブサイトの環境の編集アイコンをクリックします。環境の編集画面が表示されます。 コードスニペットセクションでクリップボードにコピーをクリックしてコードスニペットを選択します。 スクリプトコードのa=行の場所を置き換えます。 詳細については、環境の管理を参照してください。
+レガシー権限 レガシー権限を使用しているアカウントの場合、iQタグ管理 &gt; コードセンターにアクセスしてコードスニペットを取得します：
+管理メニューでコードセンターをクリックします。
+コードセンターダイアログが表示されます。 サイドパネルで環境を選択します。 テキストボックスに表示されたコードを以下のいずれかの方法で選択します： クリックしてドラッグしてすべてのコードを選択します。 コードの上にマウスを置くと表示されるすべて選択ボタンをクリックします。
+コードをコピーします。 サイトのオーサリングツールやバックエンドシステムにコードを貼り付けます。 詳細については、コードセンターを参照してください。
+環境 適切なリリースサイクルをサポートするために、Dev、QA、Prodの3つの環境があります。この構成により、QAインスタンスのutag.jsを非本番環境にインストールし、Prodインスタンスをライブ本番サイトにインストールできます。これにより、Prodにリリースする前にQAで変更をテストできます。
+環境パスは、ロードするユニバーサルタグのインスタンスを決定します。
+QA
+//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/qa/utag.js Prod
+//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/prod/utag.js 詳細については、環境の管理を参照してください。
+コードの配置 ユニバーサルタグのコードをサイトのすべてのページの開始&lt;body&gt;タグの直後に貼り付けます。この位置は最も多くのベンダーとの互換性が高く、訪問が次のページに移動する前にサードパーティのトラッキングが完了することを可能にします。
+以下の例は、コードの配置を示しています：
+&lt;head&gt; ... &lt;/head&gt; &lt;body&gt; &lt;!-- Tealium Universal Tag --&gt; &lt;script type=&#34;text/javascript&#34;&gt; (function(a,b,c,d) { a=&#39;//tags." />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ウェブサイト用クイックスタートガイド | ウェブサイト向けの始め方 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +127,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

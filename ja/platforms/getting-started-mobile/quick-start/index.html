@@ -7,6 +7,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="モバイルのクイックスタートガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/platforms/getting-started-mobile/quick-start/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="インストール AndroidまたはiOSのTealiumのインストールを開始します。
+Mavenを使用してAndroid用のTealiumライブラリをインストールするには、次の手順を実行します。
+プロジェクトのトップレベルのbuild.gradleファイルにTealium Maven URLを追加します。
+allprojects { repositories { mavenCentral() maven { url &#34;https://maven.tealiumiq.com/android/releases/&#34; } } } プロジェクトモジュールのbuild.gradleファイルに、次のMaven依存関係を追加します。
+dependencies { implementation &#39;com.tealium:kotlin-core:1.X.X&#39; } 最新のリリースについては、Githubを確認し、1.X.Xを最新のリリース番号に置き換えてください。
+Swift Package Managerを使用してiOS用のTealiumライブラリをインストールするには、次の手順を実行します。
+Xcodeプロジェクトで、File &gt; Swift Packages &gt; Add Package Dependencyを選択します。 リポジトリのURL https://github.com/tealium/tealium-swift を入力します。 バージョンルールを構成します。通常はUp to next majorが推奨されます。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。 インストールするモジュールを選択し、Xcodeプロジェクトの各アプリターゲットにモジュールを追加します。追加する場所は、Frameworks &gt; Libraries &amp; Embedded Contentです。 初期化 AndroidまたはiOSのTealiumの初期化を開始します。
+Tealiumを初期化するには、TealiumConfigインスタンスを構成し、Tealiumインスタンスに渡します。Tealium Kotlinライブラリをアプリのグローバルアプリケーションクラス内のonCreate()メソッドで初期化することを推奨します。
+Tealium Kotlinライブラリの管理には、トラッキングヘルパークラスを使用します。これにより、Tealium Kotlinライブラリへの単一のエントリーポイントが提供され、将来のアップグレードが簡素化されます。
+object TealiumHelper { lateinit var tealium: Tealium fun init(application: Application) { val tealiumConfig = TealiumConfig( application, &#34;ACCOUNT&#34;, &#34;PROFILE&#34;, Environment." />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>モバイルのクイックスタートガイド | モバイル用の開始ガイド | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +117,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

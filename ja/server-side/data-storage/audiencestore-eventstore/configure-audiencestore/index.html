@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="AudienceStoreの構成" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="この記事では、AudienceStoreコネクタの構成についての情報を提供します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>AudienceStoreの構成 | AudienceStoreとEventstore | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -585,75 +591,128 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、AudienceStoreコネクタの構成について説明します。
+      この記事では、AudienceStoreコネクタの構成についての情報を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStoreをアカウントとプロフィールに有効にするには、アカウントマネージャーに連絡してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStoreをアカウントとプロファイルで有効にするには、アカウントマネージャーに連絡してください。</p>
 <h2 id="audiencestoreコネクタの構成">AudienceStoreコネクタの構成</h2>
-<p>AudienceStoreコネクタを構成するには、少なくとも1つのオーディエンスを作成している必要があります。</p>
-<p>以下の手順でAudienceStoreコネクタを構成します：</p>
-<ol>
-<li>
-<p><strong>AudienceStream &gt; Audience Connectors</strong>に移動し、<strong>Add Connector</strong>をクリックします。</p>
-</li>
-<li>
-<p><strong>AudienceStore</strong>コネクタを探して選択します。</p>
-</li>
-<li>
-<p><strong>Continue</strong>をクリックします。</p>
-</li>
-<li>
-<p>コネクタに送信する<strong>Audience</strong>を選択します。<p class="note"><i class="fa fa-exclamation-triangle"></i>オーディエンス名は128文字以下でなければなりません。それ以外の場合、DataAccessはオーディエンス名をトリムし、エラーが発生する可能性があります。</p></p>
-</li>
-<li>
-<p>データを送信する<strong>Trigger</strong>を選択します。</p>
-</li>
-<li>
-<p><strong>Continue</strong>をクリックします。</p>
-</li>
-<li>
-<p><strong>Add Connector</strong>をクリックします。</p>
-</li>
-<li>
-<p><strong>Name</strong>に、このコネクタのインスタンスについての説明的な名前を入力します。<br>
-必要に応じて<strong>Notes</strong>を追加します。</p>
-</li>
-<li>
-<p><strong>Done</strong>をクリックし、次に<strong>Continue</strong>をクリックします。</p>
-</li>
-<li>
-<p><strong>Action Name</strong>を入力します。</p>
-</li>
-<li>
-<p><strong>Action Type</strong>について、以下のいずれかを選択します：</p>
-<ul>
-<li><strong>Send Visitor Data to Bucket (All Attributes)</strong></li>
-<li><strong>Send Visitor Data to Bucket (Selected Attributes)</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>ActionType</strong>に**Send Visitor Data to Bucket (All Attributes)**を選択した場合、以下の追加手順があります：</p>
-<ol>
-<li>現在の訪問のすべてのイベントデータを含めるには、<strong>Include Current Visit Data</strong>を選択します。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/#data-sent-to-audiencestore">Data sent to AudienceStore</a>を参照してください。</li>
-<li>AudienceStreamの属性をJSONファイルのキーとして使用するには、<strong>Send by Attribute ID</strong>を選択します。デフォルトでは、属性名がキーとして使用されます。</li>
-<li>訪問の属性を列ヘッダー名にマッピングします。<br>
-データをデフォルトのJSONファイルではなくCSVファイルとしてフォーマットするには、**Format Data as CSV (JSON if unchecked)**を選択します。</li>
-</ol>
-</li>
-<li>
-<p><strong>Finish</strong>をクリックします。</p>
-</li>
-<li>
-<p>保存して公開します。</p>
-</li>
-</ol>
-<p>詳細については、<a href="/ja/server-side-connectors/audiencestore-connector/">AudienceStore Connector Setup Guide</a>を参照してください。</p>
-<p>AudienceStoreコネクタが構成されると、コネクタの詳細ページには、アクション、それらが何回トリガーされたか、およびそのステータスが一覧表示されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStoreが後で無効にされた場合、AudienceStoreコネクタも無効になります。AudienceStoreが再度有効になった場合、AudienceStoreコネクタは手動で有効にする必要があります。</p>
-<p>Audienceコネクタの構成後は、<strong>DataAccess &gt; AudienceStore</strong>に移動して、JSONまたはCSVファイルを表示およびダウンロードします。各ファイルには訪問プロファイルデータ（訪問と訪問属性）が含まれています。また、サードパーティのツールを使用してファイルを表示することもできます。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/">View files</a>を参照してください。</p>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>オーディエンス名は128文字未満でなければなりません。それ以上の場合、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。</p>
+<h2 id="アクション">アクション</h2>
+<table>
+<thead>
+<tr>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>バケットへの訪問データ送信（すべての属性）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>バケットへの訪問データ送信（選択した属性）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<h3 id="バケットへの訪問データ送信すべての属性">バケットへの訪問データ送信（すべての属性）</h3>
+<h4 id="パラメータ">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現在の訪問データを含む</td>
+<td>このチェックボックスを選択すると、現在の訪問のすべてのイベントデータが含まれます。</td>
+</tr>
+<tr>
+<td>属性IDによる送信</td>
+<td>デフォルトでは、訪問データのJSONプロパティキーはAudienceStreamの属性名に基づいています。このチェックボックスを選択すると、AudienceStreamの属性IDによってデータがキーされます。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="バッチ処理オプション">バッチ処理オプション</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>レコード数の最大値</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信する前に収集するレコードの量。1,000から100,000レコードの間で値を入力します。</td>
+</tr>
+<tr>
+<td>生存時間</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信するまで待つ時間。20分から180分の間で値を入力します。</td>
+</tr>
+<tr>
+<td>ペイロードサイズの最大値</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信する前に収集するペイロードのサイズ。1MBから100MBの間で値を入力します。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="バケットへの訪問データ送信選択した属性">バケットへの訪問データ送信（選択した属性）</h3>
+<h4 id="パラメータ-1">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保存する訪問属性</td>
+<td>訪問属性を列ヘッダ名にマッピングします。</td>
+</tr>
+<tr>
+<td>CSV形式でデータを整形（チェックを外すとJSON）</td>
+<td>このチェックボックスを選択すると、デフォルトのJSONファイルではなく、データをCSVファイルとして保存します。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="バッチ処理オプション-1">バッチ処理オプション</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>レコード数の最大値</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信する前に収集するレコードの量。1,000から100,000レコードの間で値を入力します。</td>
+</tr>
+<tr>
+<td>生存時間</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信するまで待つ時間。20分から180分の間で値を入力します。</td>
+</tr>
+<tr>
+<td>ペイロードサイズの最大値</td>
+<td>コネクタがバッチをオーディエンスフォルダに送信する前に収集するペイロードのサイズ。1MBから100MBの間で値を入力します。</td>
+</tr>
+</tbody>
+</table>
+<p>詳細については、<a href="/ja/server-side-connectors/audiencestore-connector/">AudienceStoreコネクタ構成ガイド</a>を参照してください。</p>
+<p>AudienceStoreコネクタが構成されると、コネクタの詳細ページにはアクション、トリガーされた回数、およびその状態が表示されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStoreが後で無効になった場合、AudienceStoreコネクタも無効になります。AudienceStoreが再び有効になった場合、AudienceStoreコネクタは手動で有効にする必要があります。</p>
+<p>Audienceコネクタを構成した後、<strong>DataAccess &gt; AudienceStore</strong>にアクセスして、JSONまたはCSVファイルを表示およびダウンロードします。各ファイルには訪問プロファイルデータ（訪問および訪問属性）が含まれています。また、サードパーティのツールを使用してファイルを表示することもできます。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/">ファイルの表示</a>を参照してください。</p>
 
 </div>
 
@@ -714,7 +773,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年August月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -729,6 +788,9 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestore%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">AudienceStoreコネクタの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%82%B1%E3%83%83%E3%83%88%E3%81%B8%E3%81%AE%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E5%B1%9E%E6%80%A7" href="javascript:void(0)">バケットへの訪問データ送信（すべての属性）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%82%B1%E3%83%83%E3%83%88%E3%81%B8%E3%81%AE%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1%E9%81%B8%E6%8A%9E%E3%81%97%E3%81%9F%E5%B1%9E%E6%80%A7" href="javascript:void(0)">バケットへの訪問データ送信（選択した属性）</a></li>
               </nav>
   </aside></nav>
 

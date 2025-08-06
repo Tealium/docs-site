@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Configure AudienceStore" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="This article provides information about configuring an AudienceStore connector." />
+<meta property="og:site_name" content="Tealium Docs" />
     <title>Configure AudienceStore | AudienceStore and Eventstore | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -32,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -589,67 +595,120 @@
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>To have AudienceStore enabled for your account and profile, contact your account manager.</p>
 <h2 id="configure-an-audiencestore-connector">Configure an AudienceStore connector</h2>
-<p>To configure an AudienceStore connector, you must have created at least one audience.</p>
-<p>Use the following steps to configure an AudienceStore connector:</p>
-<ol>
-<li>
-<p>Navigate to <strong>AudienceStream &gt; Audience Connectors</strong> and click <strong>Add Connector</strong>.</p>
-</li>
-<li>
-<p>Locate and select the <strong>AudienceStore</strong> connector.</p>
-</li>
-<li>
-<p>Click <strong>Continue</strong>.</p>
-</li>
-<li>
-<p>Select an <strong>Audience</strong> to send to the connector. <p class="note"><i class="fa fa-exclamation-triangle"></i>Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p></p>
-</li>
-<li>
-<p>Select the <strong>Trigger</strong> to send the data.</p>
-</li>
-<li>
-<p>Click <strong>Continue</strong>.</p>
-</li>
-<li>
-<p>Click <strong>Add Connector</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Name</strong>, enter a descriptive name for this instance of the connector.<br>
-Add <strong>Notes</strong>, if needed.</p>
-</li>
-<li>
-<p>Click <strong>Done</strong>, then click <strong>Continue</strong>.</p>
-</li>
-<li>
-<p>Enter an <strong>Action Name</strong>.</p>
-</li>
-<li>
-<p>Select one of the following for <strong>Action Type</strong>:</p>
-<ul>
-<li><strong>Send Visitor Data to Bucket (All Attributes)</strong></li>
-<li><strong>Send Visitor Data to Bucket (Selected Attributes)</strong></li>
-</ul>
-</li>
-<li>
-<p>If you select <strong>Send Visitor Data to Bucket (All Attributes)</strong> for <strong>ActionType</strong>, there are additional steps, as follows:</p>
-<ol>
-<li>To include all event data for the current visit, select <strong>Include Current Visit Data</strong>. For more information, see <a href="/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/#data-sent-to-audiencestore">Data sent to AudienceStore</a>.</li>
-<li>To use AudienceStream attributes as keys in the JSON file, select <strong>Send by Attribute ID</strong>. By default, attribute names are used as keys.</li>
-<li>Map visitor attributes to column header names.<br>
-To format the data as a CSV file instead of the default JSON file, select <strong>Format Data as CSV (JSON if unchecked)</strong>.</li>
-</ol>
-</li>
-<li>
-<p>Click <strong>Finish</strong>.</p>
-</li>
-<li>
-<p>Save and publish.</p>
-</li>
-</ol>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Visitor Data to Bucket (All Attributes)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Visitor Data to Bucket (Selected Attributes)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-visitor-data-to-bucket-all-attributes">Send Visitor Data to Bucket (All Attributes)</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Include Current Visit Data</td>
+<td>Select this checkbox to include all event data for the current visit.</td>
+</tr>
+<tr>
+<td>Send By Attribute ID</td>
+<td>By default, the visitor data JSON property keys are based on AudienceStream attribute names. Select this checkbox to send data keyed by AudienceStream attribute ID.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="batching-options">Batching Options</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record Count Maximum</td>
+<td>The amount of records for the connector to collect before sending a batch to the audiences folder. Enter a value between 1,000 and 100,000 records.</td>
+</tr>
+<tr>
+<td>Time To Live</td>
+<td>The amount of time for the connector to wait before sending a batch to the audiences folder. Enter a value between 20 and 180 minutes.</td>
+</tr>
+<tr>
+<td>Payload Size Maximum</td>
+<td>The size of the payload for the connector to collect before sending a batch to the audiences folder. Enter a value between 1MB and 100MB.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-visitor-data-to-bucket-selected-attributes">Send Visitor Data to Bucket (Selected Attributes)</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitor Attributes to Store</td>
+<td>Map visitor attributes to column header names.</td>
+</tr>
+<tr>
+<td>Format Data as CSV (JSON if unchecked)</td>
+<td>Select this checkbox to store the data as a CSV file instead of the default JSON file.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="batching-options-1">Batching Options</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record Count Maximum</td>
+<td>The amount of records for the connector to collect before sending a batch to the audiences folder. Enter a value between 1,000 and 100,000 records.</td>
+</tr>
+<tr>
+<td>Time To Live</td>
+<td>The amount of time for the connector to wait before sending a batch to the audiences folder. Enter a value between 20 and 180 minutes.</td>
+</tr>
+<tr>
+<td>Payload Size Maximum</td>
+<td>The size of the payload for the connector to collect before sending a batch to the audiences folder. Enter a value between 1MB and 100MB.</td>
+</tr>
+</tbody>
+</table>
 <p>For more information, see the <a href="/server-side-connectors/audiencestore-connector/">AudienceStore Connector Setup Guide</a>.</p>
 <p>After the AudienceStore connector is configured, the details page for the connector lists the actions, how many times they have been triggered, and their status.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If AudienceStore is later disabled, the AudienceStore connector will also be disabled. If AudienceStore is enabled again, the AudienceStore connector must be manually enabled.</p>
-<p>After configuring an Audience connector, navigate to <strong>DataAccess &gt; AudienceStore</strong> to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see <a href="/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/">View files</a>.</p>
+<p>After configuring an Audience connector, go to <strong>DataAccess &gt; AudienceStore</strong> to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see <a href="/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/">View files</a>.</p>
 
 </div>
 
@@ -710,7 +769,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 14, 2023 
+          <p>This page was last updated:  August 6, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -725,6 +784,9 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-audiencestore-connector" href="javascript:void(0)">Configure an AudienceStore connector</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-to-bucket-all-attributes" href="javascript:void(0)">Send Visitor Data to Bucket (All Attributes)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-to-bucket-selected-attributes" href="javascript:void(0)">Send Visitor Data to Bucket (Selected Attributes)</a></li>
               </nav>
   </aside></nav>
 

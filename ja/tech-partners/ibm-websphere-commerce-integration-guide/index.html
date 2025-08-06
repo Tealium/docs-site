@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="IBM WebSphere Commerce 統合ガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/tech-partners/ibm-websphere-commerce-integration-guide/" />
+<meta property="og:image" content="https://docs.tealium.com/images/integrations/ibm-websphere.png" />
+<meta property="og:description" content="IBM Websphere CommerceのTealium拡張機能は、IBM Websphereソリューション内でTealium iQタグ管理を統合するのに役立つように設計されています。この拡張機能を使用して、Tealiumのユニバーサルデータオブジェクト（UDO）をサイトのデータレイヤーに追加できます。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>IBM WebSphere Commerce 統合ガイド | テクノロジーパートナー | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -421,38 +427,38 @@
 
   
     <p class="f4 fw3 lh-copy">
-      IBM Websphere CommerceのTealium拡張機能は、IBM Websphereソリューション内でTealium iQタグ管理を統合するのを支援するように設計されています。この拡張機能を使用すると、TealiumのUniversal Data Object (UDO)をサイトのデータレイヤーに追加することができます。
+      IBM Websphere CommerceのTealium拡張機能は、IBM Websphereソリューション内でTealium iQタグ管理を統合するのに役立つように設計されています。この拡張機能を使用して、Tealiumのユニバーサルデータオブジェクト（UDO）をサイトのデータレイヤーに追加できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>このドキュメントは、IBM Websphereベースのeコマースサイト内でTealium iQタグ管理を統合する必要がある開発者向けのものです。IBM Websphere Commerce製品のコアとそのeコマース機能について熟知していることが必要です。</p>
+  <p>このドキュメントは、IBM Websphereベースのeコマースサイト内でTealium iQタグ管理を統合する必要がある開発者向けです。IBM Websphere Commerce製品のコアおよびそのeコマース機能に精通していることが前提です。</p>
 <h2 id="互換性に関する注意">互換性に関する注意</h2>
-<p>IBMはこのバージョンのTealium拡張機能を認証し、Tealiumを統合パートナーとして追加しました。B2B E-Commerce Engineのサポートはまだテストされていません。</p>
+<p>IBMはこのバージョンのTealium拡張機能を認定し、Tealiumを統合パートナーとして追加しました。B2B E-Commerce Engineのサポートはまだテストされていません。</p>
 <h2 id="統合">統合</h2>
 <h3 id="websphere拡張機能のインストール">Websphere拡張機能のインストール</h3>
-<p>Tealium拡張機能は、TGZ形式のパッケージファイルとして配布されています：<a href="/images/tech-partners/tealium-websphere-commerce.tgz">tealium-websphere-commerce.tgz</a>。</p>
-<p>拡張機能をインストールするには、圧縮ファイルの内容を以下に詳述する適切な場所に展開します。以下の指示では、ストアIDが<code>10152</code>の架空の<code>AuroraStorefrontAssetStore</code>プロジェクトを使用しています。これらの値を自分のものに置き換えてください。</p>
+<p>Tealium拡張機能は、TGZ形式のパッケージファイルとして配布されます：<a href="/images/tech-partners/tealium-websphere-commerce.tgz">tealium-websphere-commerce.tgz</a>。</p>
+<p>拡張機能をインストールするには、以下の詳細な場所に圧縮ファイルの内容を解凍します。以下の指示では、<code>AuroraStorefrontAssetStore</code>プロジェクトとストアID<code>10152</code>を使用しています。これらの値を自分のものに置き換えてください。</p>
 <p>Tealium拡張機能をインストールするには：</p>
 <ol>
-<li><code>TealiumUDO.jsp</code>ファイルと関連する<code>.jspf</code>ファイルを<code>/Stores/WebContent/ AuroraStorefrontAssetStore/Tealium</code>ディレクトリに配置します。</li>
+<li><code>TealiumUDO.jsp</code>ファイルと関連する<code>.jspf</code>ファイルを<code>/Stores/WebContent/AuroraStorefrontAssetStore/Tealium</code>ディレクトリに配置します。</li>
 <li><code>tealium_udo_helper_1_2_0a.jar</code>ファイル（またはそれ以降のバージョン）を<code>/Stores/WebContent/WEB-INF/lib/</code>ディレクトリに配置します。<figure><a class="slb" href="/images/tech-partners/ibmwebsphere1.png"><img src="/images/tech-partners/ibmwebsphere1.png"
          alt="Tealium UDO UI file"
          title="Tealium UDO UI file"/>
     </a>
 </figure></li>
-<li>拡張機能を有効にするには、以下のエントリをデータベースに挿入し、Websphere Commerceウェブサーバーを再起動します：</li>
+<li>拡張機能をアクティブにするには、以下のエントリをデータベースに挿入し、Websphere Commerceウェブサーバーを再起動します：</li>
 </ol>
 <pre tabindex="0"><code>  insert into storeconf (storeent_id, name, value, optcounter) values (10152, &#39;wc.pgl.jspInclude_Tealium_TealiumUDO&#39;, &#39;/AuroraStorefrontAssetStore/Tealium/TealiumUDO.jsp&#39;, 0);
   insert into storeconf (storeent_id, name, value, optcounter) values (10152, &#39;wc.tealium.account&#39;, &#39;myaccount&#39;, 0);
   insert into storeconf (storeent_id, name, value, optcounter) values (10152, &#39;wc.tealium.profile&#39;, &#39;myprofile&#39;, 0);
   insert into storeconf (storeent_id, name, value, optcounter) values (10152, &#39;wc.tealium.environment&#39;, &#39;prod&#39;, 0);
 </code></pre><ol start="4">
-<li><code>/Stores/WebContent/AuroraStoreFrontAssetStore/Common/EnvironmentSetup.jspf</code>ファイル内の<code>env_includeJSPFExtension</code>変数を<code>true</code>に構成します。</li>
+<li><code>/Stores/WebContent/AuroraStoreFrontAssetStore/Common/EnvironmentSetup.jspf</code>ファイルで<code>env_includeJSPFExtension</code>変数を<code>true</code>に構成します</li>
 </ol>
 <h3 id="iqタグ管理の構成">iQタグ管理の構成</h3>
-<p>Tealium Data Layerからアナリティクスタグにデータを渡すには、iQタグ管理のデータレイヤーでデータポイントを特定する必要があります：</p>
+<p>Tealiumデータレイヤーからアナリティクスタグにデータを渡すには、iQタグ管理でデータレイヤーのデータポイントを特定する必要があります：</p>
 <ol>
 <li>iQタグ管理にログインし、<strong>Data Layer</strong>タブに移動します。</li>
 <li><strong>Add Data Source</strong>の隣のドロップダウンをクリックし、<strong>Add Common Data Sources</strong>をクリックします。</li>
@@ -465,13 +471,13 @@
 <li>iQタグ管理プロファイルに変更を<strong>Save/Publish</strong>します。</li>
 </ol>
 <h3 id="検証">検証</h3>
-<p>実装を検証するには、サイトに移動し、ページソースを表示します。ページのソースで<code>utag_data</code>（TealiumのUDO）を探します。また、配布パッケージに含まれる<code>Validation.txt</code>ファイルを参照して、特定のコマースページでのサンプル値を確認することもできます。</p>
-<p>プロキシツールやChrome開発者ツールを使用して、ブラウザが<code>utag.js</code>ファイルをロードしていることを確認します。iQタグ管理でタグを有効にした後（例：IBM Digital Analytics）、Charles Proxy、HTTP Fox、またはChrome Developer Toolsを使用して、データがアナリティクスベンダーに渡されていることを確認できます。<figure><a class="slb" href="/images/tech-partners/ibmwebsphere3.png"><img src="/images/tech-partners/ibmwebsphere3.png"
+<p>実装を検証するには、サイトに移動してページソースを表示します。ページのソースで<code>utag_data</code>（TealiumのUDO）を探します。また、配布パッケージに含まれる<code>Validation.txt</code>ファイルを参照して、特定のコマースページに関するサンプル値を確認できます。</p>
+<p>プロキシツールまたはChrome開発者ツールを使用して、ブラウザが<code>utag.js</code>ファイルをロードしていることを確認します。iQタグ管理でタグをアクティブにした後、Charles Proxy、HTTP Fox、またはChrome開発者ツールを使用して、アナリティクスベンダーにデータが渡されていることを確認できます。<figure><a class="slb" href="/images/tech-partners/ibmwebsphere3.png"><img src="/images/tech-partners/ibmwebsphere3.png"
          alt="Validation with Chrome Developer Tools"
          title="Validation with Chrome Developer Tools"/>
     </a>
 </figure></p>
-<p><code>wc.tealium.account</code>と<code>wc.tealium.profile</code>の値は、それぞれサイトに関連付けられたTealiumアカウントとプロファイルです。</p>
+<p><code>wc.tealium.account</code>および<code>wc.tealium.profile</code>の値は、それぞれサイトに関連付けられたTealiumアカウントとプロファイルです。</p>
 
 </div>
 
@@ -532,7 +538,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年August月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

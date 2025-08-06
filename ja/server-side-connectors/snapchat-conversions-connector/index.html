@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Snapchat コンバージョンコネクタ構成ガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/server-side-connectors/snapchat-conversions-connector/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="この記事では、Snapchat コンバージョンコネクタの構成方法について説明します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Snapchat コンバージョンコネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -263,6 +269,7 @@
         <a href="/ja/server-side-connectors/leanplum-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".leanplum-connector">Leanplum</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/line-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-connector">LINE</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/line-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-audiences-connector">LINEオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/line-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-ads-connector">LINE広告</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/listrak-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -463,8 +470,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>Snapchat コンバージョンコネクタは、Snap Conversions APIを使用します。Snap Conversions APIは、構造化されたプライバシー重視のインターフェースで、サーバーからサーバーへの（S2S）統合を通じてWeb、アプリ、オフラインイベントをSnapに直接送信することができます。このAPIは、Snap Pixelによって提供されるトラッキングと同様のイベントトラッキングをサポートし、コンバージョンを行ったデバイスタイプを使用します。この機能により、モバイルコンバージョンにはSnap App IDを使用し、WebおよびオフラインのコンバージョンイベントにはPixel IDを使用できます。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>Snapchat コンバージョンコネクタは、Snap Conversions APIを使用します。Snap Conversions APIは、構造化されたプライバシー重視のインターフェースで、Web、アプリ、オフラインイベントをサーバーからサーバー（S2S）統合を通じて直接Snapに渡すことができます。このAPIは、Snap Pixelによって提供されるトラッキングと同様のイベントトラッキングをサポートし、コンバージョンを行ったデバイスの種類を使用します。この機能により、モバイルコンバージョンにはSnap App IDを、WebおよびオフラインのコンバージョンイベントにはPixel IDを使用できます。</p>
 <p>Snap Conversions APIは、クライアントサイドのSnap Pixelと連携して、または単独で展開できます。</p>
 <p>SnapのConversions APIについての詳細は、<a href="https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US">Snap: Conversion API</a>を参照してください。</p>
 <h2 id="api情報">API情報</h2>
@@ -488,37 +495,37 @@
 <li>リクエストの最大サイズ：2 MB</li>
 </ul>
 <h2 id="重複排除">重複排除</h2>
-<p>Snap Conversions APIは、他のSnapchatソリューションと並行して、または単独で使用できます。信号の損失を最小限に抑え、より効率的な結果を得るために、Snap Pixelで構成した同じイベントをSnap Conversion APIを通じて送信することをお勧めします。</p>
+<p>Snap Conversions APIは、他のSnapchatソリューションと一緒に、または単独で使用できます。信号の損失を最小限に抑え、より効率的な結果を得るために、Snap Pixelで構成した同じイベントをSnap Conversion APIを通じて渡すことをお勧めします。</p>
 <p>Snap Conversions APIは、以下の条件が満たされた場合にのみイベント重複排除を示します：</p>
 <ul>
 <li>Snap App ID、Pixel ID、またはその両方が複数のソース（API、SDKなど）を持っている場合</li>
 <li>イベントが同じコンバージョンタイプ（Web、アプリ、またはオフライン）の場合</li>
 <li>選択されたイベントが2つ以上のソースに追加されている場合</li>
 </ul>
-<p>Tealiumは、統合構成に基づいて重複排除の推奨事項を提供しています：</p>
+<p>Tealiumには、統合構成に基づいた重複排除の推奨事項があります：</p>
 <ul>
 <li><strong>単一ソースの冗長性</strong> - 同じ統合で送信されたイベントの重複。
-同じ統合ソースを通じて複数回コンバージョンを送信する場合、一貫した情報を送信することを強くお勧めします。</li>
+同じ統合ソースを通じて複数回コンバージョンを送信する場合、一貫した情報を渡すことを強くお勧めします。</li>
 <li><strong>クロスソースの冗長性</strong> - 複数の統合から送信されたイベントの重複。
 複数の統合からデータを送信する場合、最適な最適化、ターゲティング、および測定機能を確保するために冗長データを送信することをお勧めします。</li>
 </ul>
 <p>重複排除のユースケースに応じて、次のパラメータを使用します：</p>
 <ul>
 <li><strong>イベントID</strong> - Webおよびオフラインチャネルのユニークなイベントを重複排除します。48時間の重複排除ウィンドウが許可されます。</li>
-<li><strong>トランザクションID</strong> - すべてのチャネル（web、モバイル、オフライン）の購入イベントを重複排除するために適格です。30日の重複排除ウィンドウが許可されます。</li>
-<li><strong>モバイル広告ID</strong> - AAIDまたはハッシュ化されたIDFVのような共有デバイス識別子を使用してユニークなイベントの重複排除を行います。</li>
+<li><strong>トランザクションID</strong> - すべてのチャネル（Web、モバイル、オフライン）の購入イベントを重複排除するために適格です。30日の重複排除ウィンドウが許可されます。</li>
+<li><strong>モバイル広告ID</strong> - AAIDまたはハッシュ化されたIDFVのような共有デバイス識別子を使用して、ユニークなイベントの重複排除を行います。</li>
 </ul>
 <p>詳細については、<a href="https://developers.snap.com/api/marketing-api/Conversions-API/BestPractices#deduplication">Snap: Best Practices - Deduplication</a>を参照してください。</p>
 <h4 id="自動重複排除">自動重複排除</h4>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>バージョン3では、コネクタは<strong>クライアント重複排除ID</strong>の代わりに<strong>イベントID</strong>を使用して重複排除を行います。</p>
 <p><strong>自動重複排除</strong>の値がTealium iQタグUIDで入力されている場合、コネクタは対応するイベント属性を探します。このセクションが入力されており、Tealium iQを使用している場合、<strong>イベントID</strong>を追加する必要はありません。ただし、Tealium iQなしでEventStreamを使用する場合は、次のアプローチが必要になる場合があります。</p>
-<p>操作の順序は次のとおりです：</p>
+<p>コネクタの操作順序は次のとおりです：</p>
 <ul>
 <li><strong>自動重複排除</strong>が入力され、データレイヤーで値が見つかった場合（例：<code>6V5xX1T0n9pC42luElKD</code>）、この値は<strong>イベントID</strong>でマッピングされたものより優先されます。</li>
 <li><strong>自動重複排除</strong>が入力されているが、タグIDバージョンが見つからず、レガシーバージョン（IDなし）が見つかった場合、その値が使用されます（例：<code>6V5xX1T0n9pC42luElKD</code>）。</li>
 <li><strong>自動重複排除</strong>が入力されているが、値が見つからない場合は、<strong>イベントID</strong>が入力されている場合に使用されます。</li>
 </ul>
-<p>Tealium iQの<strong>タグ</strong>テーブルまたはタグの詳細画面でタグのUIDを見つけることができます：</p>
+<p>Tealium iQの<strong>タグ</strong>テーブルまたはタグ詳細画面でタグのUIDを見つけることができます：</p>
 <figure><a class="slb" href="/images/server-side-connectors/snap-pixel-uid.png"><img src="/images/server-side-connectors/snap-pixel-uid.png"
          alt="Snap Pixel UID"
          title="Snap Pixel UID"/>
@@ -542,7 +549,7 @@
 </tbody>
 </table>
 <h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレースにアクセスして、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">Connector Overview</a>を参照してください。</p>
+<p>コネクタマーケットプレースにアクセスして、新しいコネクタを追加します。コネクタを追加する方法については、<a href="/ja/server-side/connectors/about/">Connector Overview</a>を参照してください。</p>
 <p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
 <li><strong>Long Lived Token</strong>: この認証方法は3-legged OAuthフローを必要とせず、有効期限がありません。詳細については、<a href="https://marketingapi.snapchat.com/docs/conversion.html#static-long-lived-tokens">Snap: Static Long Lived Tokens</a>を参照してください。</li>
@@ -585,7 +592,7 @@
 </tr>
 <tr>
 <td>App ID</td>
-<td>各アプリケーションに割り当てられたユニークなID。iOS IDは数値で、Android IDはGoogle広告ID（<code>GAID</code>）です</td>
+<td>各アプリケーションに割り当てられたユニークなID。iOS IDは数値で、Android IDはGoogle広告ID（<code>GAID</code>）です。</td>
 </tr>
 <tr>
 <td>Snap App ID</td>
@@ -597,7 +604,7 @@
 </tr>
 <tr>
 <td>イベント時間</td>
-<td>このコンバージョンのエポックタイムスタンプ。このフィールドがマッピングされていない場合、現在のタイムスタンプで初期化されます。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマッピングするか、自動マッピングを無効にします。</td>
+<td>このコンバージョンのエポックタイムスタンプ。このフィールドがマッピングされていない場合、現在のタイムスタンプで初期化されます。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマップするか、自動マッピングを無効にします。</td>
 </tr>
 <tr>
 <td>イベントソースURL</td>
@@ -652,7 +659,7 @@
 </tr>
 <tr>
 <td>コンテンツタイプ</td>
-<td><code>content_type</code> フィールドは、<code>content_ids</code> または <code>contents</code> のキーが何を表すかを示します。個々のアイテムの場合は <code>product</code>、サイズ、色、その他のバリエーションが複数あるアイテムの場合は <code>product_group</code> を選択します。</td>
+<td><code>content_type</code> フィールドは、<code>content_ids</code> または <code>contents</code> のキーが何を表すかを示します。個々のアイテムには <code>product</code>、サイズ、色、その他のバリエーションが複数あるアイテムには <code>product_group</code> を選択します。</td>
 </tr>
 <tr>
 <td>通貨</td>
@@ -660,7 +667,7 @@
 </tr>
 <tr>
 <td>アイテム数</td>
-<td>アイテムの数（整数、単一の値）。このフィールドが配列にマッピングされている場合、配列要素の合計に変換されます。</td>
+<td>アイテムの数（整数、単一値）。このフィールドが配列にマッピングされている場合、配列要素の合計に変換されます。</td>
 </tr>
 <tr>
 <td>注文ID</td>
@@ -730,7 +737,7 @@
 <tbody>
 <tr>
 <td>メールアドレス（SHA256ハッシュ適用）</td>
-<td>小文字のプレーンテキストのメールアドレスを提供し、コネクタはSnapchatが期待する形式でこの値をハッシュ化します。空またはnullのハッシュ値は無視されます。</td>
+<td>小文字のプレーンテキストメールアドレスを提供し、コネクタはSnapchatが期待する形式でこの値をハッシュ化します。空またはnullのハッシュ値は無視されます。</td>
 </tr>
 <tr>
 <td>メールアドレス（既にSHA256ハッシュ化済み）</td>
@@ -738,7 +745,7 @@
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュ適用）</td>
-<td>小文字のプレーンテキストの電話番号を提供し、コネクタはSnapchatが期待する形式でこの値をハッシュ化します。空またはnullのハッシュ値は無視されます。</td>
+<td>小文字のプレーンテキスト電話番号を提供し、コネクタはSnapchatが期待する形式でこの値をハッシュ化します。空またはnullのハッシュ値は無視されます。</td>
 </tr>
 <tr>
 <td>電話番号（既にSHA256ハッシュ化済み）</td>
@@ -746,7 +753,7 @@
 </tr>
 <tr>
 <td>モバイル広告ID</td>
-<td>モバイル広告主ID。</td>
+<td>モバイル広告ID。</td>
 </tr>
 <tr>
 <td>IPアドレス</td>
@@ -802,15 +809,15 @@
 </tr>
 <tr>
 <td>ダウンロードID</td>
-<td>アプリダウンロードイベントに関連するID</td>
+<td>アプリダウンロードイベントに関連するID。</td>
 </tr>
 <tr>
 <td>クリックID</td>
-<td>ランディングページURLの <code>ScCid</code> クエリ文字列パラメータの値。このIDを使用すると広告測定のパフォーマンスが向上します。<strong>クリックID</strong> を使用する広告主は、<strong>イベントソースURL</strong> に完全な宛先URLを渡すことをお勧めします。詳細については、<a href="https://developers.snap.com/api/marketing-api/Conversions-API/UsingTheAPI#sending-click-id">Snap: クリックIDの送信</a>を参照してください。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマップするか自動マッピングを無効にします。</td>
+<td>ランディングページURLの <code>ScCid</code> クエリ文字列パラメータの値。このIDを使用すると広告測定のパフォーマンスが向上します。<strong>クリックID</strong> を使用する広告主には、<strong>イベントソースURL</strong> に完全な宛先URLを渡すことをお勧めします。詳細については、<a href="https://developers.snap.com/api/marketing-api/Conversions-API/UsingTheAPI#sending-click-id">Snap: クリックIDの送信</a>を参照してください。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマップするか自動マッピングを無効にします。</td>
 </tr>
 <tr>
 <td>Cookie1</td>
-<td>Pixel SDKを使用している場合、ドメインの下にある <code>_scid</code> 値を見ることで、ファーストパーティクッキーにアクセスできます。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマップするか自動マッピングを無効にします。</td>
+<td>Pixel SDKを使用している場合、ドメインの下の <code>_scid</code> 値を見ることで第一者クッキーにアクセスできます。このパラメータは自動マッピングされます。自動マッピングをオーバーライドするには、属性をマップするか自動マッピングを無効にします。</td>
 </tr>
 <tr>
 <td>クライアントユーザーエージェント</td>
@@ -860,8 +867,8 @@
 <td>ユーザーが興味を持っている州、地区、または地域。</td>
 </tr>
 <tr>
-<td>近隣地区</td>
-<td>ユーザーが興味を持っている近隣地区。</td>
+<td>近隣地域</td>
+<td>ユーザーが興味を持っている近隣地域。</td>
 </tr>
 <tr>
 <td>出発出発日</td>
@@ -869,10 +876,10 @@
 </tr>
 <tr>
 <td>出発到着日</td>
-<td>旅行の目的地での到着日時。</td>
+<td>旅行の目的地への到着日時。</td>
 </tr>
 <tr>
-<td>大人の数</td>
+<td>大人数</td>
 <td>宿泊する大人の数。</td>
 </tr>
 <tr>
@@ -897,19 +904,19 @@
 </tr>
 <tr>
 <td>郵便番号</td>
-<td>郵便またはZIPコード。</td>
+<td>郵便番号またはZIPコード。</td>
 </tr>
 <tr>
 <td>幼児の数</td>
 <td>宿泊する幼児の数。</td>
 </tr>
 <tr>
-<td>好ましい近隣地区</td>
-<td>宿泊に好ましい近隣地区。</td>
+<td>好ましい近隣地域</td>
+<td>宿泊に好ましい近隣地域。</td>
 </tr>
 <tr>
 <td>好ましい星評価</td>
-<td>最小および最大のホテル星評価をタプルとして提供します。例：<code>star1,star2</code> または <code>[&quot;star1&quot;, &quot;star2&quot;]</code>。</td>
+<td>最小および最大ホテル星評価をタプルとして提供します。例えば、<code>star1,star2</code> または <code>[&quot;star1&quot;, &quot;star2&quot;]</code>。</td>
 </tr>
 <tr>
 <td>提案されたホテル</td>
@@ -940,7 +947,7 @@
 </tr>
 <tr>
 <td>アプリパッケージ名</td>
-<td>アプリのパッケージ名。</td>
+<td>アプリパッケージ名。</td>
 </tr>
 <tr>
 <td>短いバージョン</td>
@@ -952,7 +959,7 @@
 </tr>
 <tr>
 <td>デバイスモデル名</td>
-<td>デバイスのモデル名。</td>
+<td>デバイスモデル名。</td>
 </tr>
 <tr>
 <td>ロケール</td>
@@ -960,7 +967,7 @@
 </tr>
 <tr>
 <td>タイムゾーン略称</td>
-<td>タイムゾーンの略称。</td>
+<td>タイムゾーン略称。</td>
 </tr>
 <tr>
 <td>キャリア</td>
@@ -1026,6 +1033,21 @@
 </tr>
 </tbody>
 </table>
+<h4 id="構成">構成</h4>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>長期トークン</td>
+<td>Snap Long Lived Token (<code>LLT</code>) をマッピングすると、構成で提供された <code>LLT</code> が上書きされます。</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1086,7 +1108,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月10日
+          <p>最終更新日 ::  2025年August月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1100,7 +1122,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%80%83%E6%85%AE%E4%BA%8B%E9%A0%85" href="javascript:void(0)">考慮事項</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
@@ -1414,6 +1436,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

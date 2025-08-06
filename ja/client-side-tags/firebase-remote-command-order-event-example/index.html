@@ -7,6 +7,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Firebaseリモートコマンド注文イベント例" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/client-side-tags/firebase-remote-command-order-event-example/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="インストール AndroidとSwift/iOSのFirebaseに対するTealiumリモートコマンド統合について詳しく学ぶ
+タグ構成 カスタムコマンドタグは、Tealiumモバイルライブラリに登録したカスタムネイティブコードブロックをトリガーするために必要なAPIの実装を含む特別なタグです。
+Tealium iQタグ管理(/client-side-tags/firebase-remote-command-tag/)アカウントでFirebase Mobile Remote Command Tagを構成する方法について詳しく学ぶ。
+アプリからのデータを更新するために拡張機能が必要な場合があります。例えば、&ldquo;Order Confirmation&quot;画面でTealium SDKを使用してスクリーンビューをトラッキングし、Firebase SDKでもログに記録したい場合などです。
+以下は、iOS（Swift）のTealiumでのトラッキング呼び出しの例です：
+`tealium?.trackView(&#34;order_confirmation&#34;, [&#34;order_id&#34;:&#34;A123456&#34;, &#34;user_id&#34;: &#34;john.doe@someprovider.com&#34;, &#34;user_loyalty_status&#34;:&#34;vip&#34;, &#34;travel_class&#34; : &#34;first&#34;]) ` Firebase SDKでは、logEvent API呼び出しを使用してイベントとしてログに記録し、user_idというユーザープロパティを構成することができます。Tealium iQでは、これをいくつかの異なる方法で行います。
+command_name変数の値は、実行するコマンドのカンマ区切りの文字列に構成されます。それが含む可能性のある5つの値は次のとおりです：
+config setUserId setScreenName setUserProperty logEvent. この例では、Tealium iQの操作の順序を理解することが重要です。同じ&quot;scope&quot;を持つ拡張機能は、上から下へと順番に実行されることが保証されています。したがって、ロジックは異なる拡張機能に簡単に分割できますが、以前の拡張機能で定義された変数に書き込みを続けます。
+Tealium iQプロファイルにfirebase_command_nameという新しいデータレイヤー変数を作成します。
+Set Data Values拡張機能を作成し、ドロップダウンリストから新しい変数firebase_command_nameを選択し、データ入力フィールドは空白にします。これにより、変数は空の文字列に初期化されます。
+以下のSet Data Values拡張機能のリストを作成し、以下の表に記載されている構成を行います：
+config この構成は、セッションごとに一度だけ実行します。以下にTealium iQの構成変数をリストアップします：
+TiQ変数名 タイプ 例 ノート command_name テキスト config 必須、大文字と小文字を区別 firebase_minimum_session_length テキスト 10 任意 firebase_session_timeout テキスト 3600 任意 firebase_analytics_enabled テキスト true 任意、大文字と小文字を区別、デフォルト = true firebase_log_level テキスト error 任意、大文字と小文字を区別 これにより、ネイティブのFirebase APIでは以下のような呼び出しが生成されます：" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Firebaseリモートコマンド注文イベント例 | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +120,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

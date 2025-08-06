@@ -7,6 +7,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="モバイル用Firebaseリモートコマンドタグ構成ガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/client-side-tags/firebase-remote-command-tag/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="概要 Tealium iQでFirebaseタグを実装するには、ネイティブコードとTealiumの両方に変更を加える3つのコンポーネントが必要です。まず、アプリにFirebase SDKを追加します。次に、Tealium SDKを使用してネイティブコードにリモートコマンドを統合します。最後に、Tealium iQにFirebaseタグを追加します。Firebaseがデータを受信するためには、これら3つのステップが必要です。
+タグのヒント initiateconversionmeasurement メソッド（iOSのみ）は以下の4つのパラメータをサポートしていますが、1つだけを渡すことができます： param_email_address param_phone_number param_hashed_email_address param_hashed_phone_number ハッシュ化されたパラメータは、Firebaseのドキュメントに記載されているように正規化します。 ネイティブコードの構成 ステップ1 – ネイティブアプリにFirebase SDKを追加します。 ステップ2 – ネイティブアプリにTealium SDKを追加します。 ステップ3 – ネイティブアプリにリモートコマンドクラスを含めます。 すべてのライブラリについて、ライブラリを使用する前にFirebase Analyticsリモートコマンドを登録する必要があります。これはライブラリを初期化するときに行うべきです。使用しているモバイルプラットフォームに基づいてリモートコマンドを実装するためのガイドに従ってください。
+Tealium iQの構成 ステップ1 – Firebaseタグを追加 Firebaseタグは、Tealiumモバイルライブラリに登録したカスタムネイティブコードブロックをトリガーするために必要なAPIの実装を含む特別なタグです。このタグはタグマーケットプレイスで利用可能であり、ネイティブアプリ構成の「ステップ3」と通信します。
+動作方法 Tealiumイベント（ビューまたはイベント）はネイティブコードによってトリガーされ、その後utag.jsファイルによってwebviewで取り込まれます。Firebaseタグと関連する拡張機能はイベントをレビューし、リモートコマンドにFirebaseイベントを送信します。リモートコマンドはタグからのリクエストを受け取り、イベントをフォーマットして送信し、Firebaseタグによって収集されるようにします。
+HowItWorks-FirebaseTag.jpg
+ステップ2 – タグ構成を構成 構成のオプションは、デバッグモードを有効にするかどうかのみです。開発者がこのオプションを有効にする必要があるかどうかを決定する必要があります。デフォルト構成は「False」です。
+ステップ3 – マッピングを追加 構成 このタグには以下のマッピングが必要です：
+セッションタイムアウト（秒） セッション最小（秒） Firebaseログレベル 画面名 コマンド名 Firebaseイベント これらは静的値として構成することも、拡張機能を使用して動的に構成することもできます。
+変数 説明 firebase_session_timeout_seconds 文字列としての整数 firebase_session_minimum_seconds 文字列としての整数 firebase_analytics_enabled 文字列としてのブール値 firebase_log_level 文字列 firebase_event_name 文字列 firebase_event_params JSON firebase_screen_name 文字列 firebase_screen_class 文字列 firebase_property_name 文字列 firebase_property_value 文字列 firebase_user_id 文字列 command_name 文字列 自動イベント Firebase SDKによって自動的に収集されるイベントの一部は、Tealium Firebaseタグを使用して構成する必要はありません。これらのイベントのリストについては、こちらをクリックしてください。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>モバイル用Firebaseリモートコマンドタグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +116,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>

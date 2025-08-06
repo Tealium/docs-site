@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Nextdoor コネクタ構成ガイド" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/server-side-connectors/nextdoor-connector/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="この記事では、Nextdoor コネクタの構成方法について説明します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Nextdoor コネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -102,7 +108,7 @@
         
       
       </li>
-            
+      
     </ul>
   </div>
 </nav>
@@ -263,6 +269,7 @@
         <a href="/ja/server-side-connectors/leanplum-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".leanplum-connector">Leanplum</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/line-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-connector">LINE</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/line-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-audiences-connector">LINEオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/line-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-ads-connector">LINE広告</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/listrak-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -496,7 +503,7 @@
 (必須) ログインしているユーザーとその関連アカウントに固有の認証トークンを Nextdoor Ads Manager アカウントページで取得します。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
-<p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="コンバージョン送信">コンバージョン送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
@@ -510,7 +517,7 @@
 <tbody>
 <tr>
 <td>イベント名</td>
-<td>コンバージョン追跡イベントのタイプ。ドロップダウンリストから値を選択するか、カスタム文字列値を入力します。</td>
+<td>コンバージョン追跡イベントのタイプ。ドロップダウンリストから値を選択するか、カスタム文字列値を入力します。利用可能な値には、<code>Add to Cart</code>、<code>Initiate Checkout</code>、<code>Search</code>、<code>Add to Wishlist</code>、<code>Subscribe</code>、<code>View Content</code> があります。</td>
 </tr>
 <tr>
 <td>アクションソース</td>
@@ -537,11 +544,15 @@
 </tr>
 <tr>
 <td>パートナーID</td>
-<td>Nextdoor が生成した単一のパートナーに関連付けられたID。この値はすべてのコンバージョンAPIコールで必要です。</td>
+<td>Nextdoor が生成した、単一のパートナーに関連付けられたID。この値はすべてのコンバージョンAPIコールで必要です。</td>
 </tr>
 <tr>
 <td>アクションソースURL</td>
-<td>イベントが発生したブラウザのURL。URLは <code>http://</code> または <code>https://</code> で始まり、検証済みドメインと一致する必要があります。この値はウェブサイトイベントに必要です。</td>
+<td>イベントが発生したブラウザのURL。URLは <code>http://</code> または <code>https://</code> で始まり、検証済みのドメインと一致する必要があります。この値はウェブサイトイベントに必要です。</td>
+</tr>
+<tr>
+<td>イベントID</td>
+<td>一意のイベントを識別できる任意の文字列またはハッシュ化されたID。イベントIDまたは自動重複排除が必要です。</td>
 </tr>
 <tr>
 <td>イベント時間</td>
@@ -553,11 +564,11 @@
 </tr>
 <tr>
 <td>テストイベント</td>
-<td>この値は、このイベントがテストイベントであることを示します。デフォルト値は <code>False</code> です。</td>
+<td>このイベントがテストイベントであるかどうかを示します。デフォルト値は <code>False</code> です。</td>
 </tr>
 <tr>
 <td>イベントタイムゾーン</td>
-<td>コンバージョンイベントが発生した場所のタイムゾーンを示します。</td>
+<td>コンバージョンイベントが発生した場所のタイムゾーン。</td>
 </tr>
 </tbody>
 </table>
@@ -578,6 +589,10 @@
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
 <td>平文のメールアドレスを提供し、コネクタはこの値を空白トリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
+</tr>
+<tr>
+<td>外部ID</td>
+<td>広告主からの任意の一意のID、例えばロイヤルティ会員ID、ユーザーID、外部クッキーIDなど。特定のイベントに対して1つ以上の外部IDを送信できます。他のチャネルを通じて外部IDが送信される場合、Conversions APIを通じて送信される場合と同じ形式である必要があります。</td>
 </tr>
 <tr>
 <td>電話番号（既にSHA256ハッシュ化済み）</td>
@@ -657,19 +672,19 @@
 </tr>
 <tr>
 <td>クライアントIPアドレス</td>
-<td>有効なIPv4またはIPv6アドレスを提供します。</td>
+<td><ul><li>イベントに対応するブラウザのIPアドレスは、有効なIPV4またはIPV6アドレスである必要があります。IPV6対応ユーザーの場合、IPV4よりもIPV6が望ましいです。</li><li>正確なイベントレポートを保証するために、常に実際のIPアドレスを提供してください。</li><li>この値をハッシュ化しないでください</li><li>すべてのイベントに対してクライアントIPアドレスとユーザーエージェントのパラメータを送信することで、イベントマッチングとキャンペーンの広告配信が向上する可能性があります。</li><li>この情報はブラウザを通じて送信されるイベントに自動的に追加されますが、サーバーを通じて送信されるイベントの場合は手動で構成する必要があります。</li><ul></td>
 </tr>
 <tr>
 <td>クライアントユーザーエージェント</td>
-<td>イベントに対応する未ハッシュ化のブラウザユーザーエージェント。このパラメータはウェブサイトイベントで共有される <a href="https://developers.facebook.com/docs/marketing-api/conversions-api">Conversions API</a> を使用する場合に必要です。すべてのイベントにクライアントIPアドレスとユーザーエージェントのパラメータを送信することで、イベントマッチングとキャンペーンの広告配信が向上する可能性があります。この情報はブラウザを通じて送信されるイベントに自動的に追加されますが、サーバーを通じて送信されるイベントの場合は手動で構成する必要があります。</td>
+<td>イベントに対応する未ハッシュ化のブラウザユーザーエージェント。このパラメータは、<a href="https://developers.facebook.com/docs/marketing-api/conversions-api">Conversions API</a> を使用して共有されるウェブサイトイベントに必要です。すべてのイベントに対してクライアントIPアドレスとユーザーエージェントのパラメータを送信することで、イベントマッチングとキャンペーンの広告配信が向上する可能性があります。この情報はブラウザを通じて送信されるイベントに自動的に追加されますが、サーバーを通じて送信されるイベントの場合は手動で構成する必要があります。</td>
 </tr>
 <tr>
 <td>配信最適化</td>
-<td><ul><li><code>True</code> - データを最適化に使用できることを示します。</li><li><code>False</code> - データは帰属にのみ使用されます。</li></ul></td>
+<td><ul><li><code>True</code> - データを最適化に使用できることを示します。</li><li><code>False</code> - データは帰属のみに使用されることを示します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h4 id="カスタムおよびアプリイベント">カスタムおよびアプリイベント</h4>
+<h4 id="カスタムイベントとアプリイベント">カスタムイベントとアプリイベント</h4>
 <table>
 <thead>
 <tr>
@@ -680,15 +695,15 @@
 <tbody>
 <tr>
 <td>注文価値</td>
-<td>(必須) 購入イベントに必要です。<a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> 形式の通貨コードに続いて、イベントに関連付けられた合計数値値（小数点以下2桁まで）を指定します。</td>
+<td>(必須) 購入イベントに必要です。<a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>形式の通貨コードに続いて、イベントに関連する合計数値値（小数点以下2桁まで）が続きます。</td>
 </tr>
 <tr>
 <td>注文ID</td>
-<td>トランザクションの注文ID。この値はオフラインイベントに必要です。</td>
+<td>トランザクションの注文IDです。この値はオフラインイベントに必要です。</td>
 </tr>
 <tr>
 <td>アプリID</td>
-<td>広告主に固有のIDに対応します。App StoreおよびGoogle Play StoreからのモバイルアプリIDを使用します。</td>
+<td>広告主のユニークIDに対応します。App StoreおよびGoogle Play StoreからモバイルアプリIDを使用します。</td>
 </tr>
 <tr>
 <td>プラットフォーム</td>
@@ -696,15 +711,15 @@
 </tr>
 <tr>
 <td>アプリバージョン</td>
-<td>モバイルアプリバージョン。</td>
+<td>モバイルアプリのバージョン。</td>
 </tr>
 <tr>
-<td>配信カテゴリ</td>
-<td><ul><li><b>店内</b> - 顧客は購入した商品を受け取るために店内に入る必要があります。</li><li><b>カーブサイド</b> - 顧客は店に車で行き、車内で待機して注文を受け取ります。</li><li><b>ホームデリバリー</b> - 購入した商品が顧客の自宅に配送されます。</li></ul></td>
+<td>配送カテゴリ</td>
+<td><ul><li><b>店内受け取り</b> - 顧客が店内に入って購入した商品を受け取る必要があります。</li><li><b>カーブサイド</b> - 顧客が店に車で行き、車内で待って注文を受け取ります。</li><li><b>宅配</b> - 購入した商品が顧客のホームに配送されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h4 id="製品コンテキスト">製品コンテキスト</h4>
+<h4 id="商品コンテキスト">商品コンテキスト</h4>
 <table>
 <thead>
 <tr>
@@ -715,23 +730,23 @@
 <tbody>
 <tr>
 <td>ID</td>
-<td>(必須) 製品ID。</td>
+<td>(必須) 商品ID。</td>
 </tr>
 <tr>
 <td>コンテンツ名</td>
-<td>製品名。</td>
+<td>商品名。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>製品数量。</td>
+<td>商品の数量。</td>
 </tr>
 <tr>
 <td>アイテム価格</td>
-<td>製品のアイテム価格。</td>
+<td>商品の価格。</td>
 </tr>
 <tr>
 <td>アプリ追跡有効</td>
-<td>ユーザーがApp Tracking Transparency (ATT) のオプトアウトを選択したかどうかを示します。</td>
+<td>ATTのユーザーオプトアウト構成。アプリイベントを追跡し、Conversions APIを通じてNextdoorに送信するかどうかを指定します。<ul><li><strong>False</strong>: アプリイベントの追跡を無効にします。アプリイベントはNextdoorに送信されません。</li><li><strong>True</strong>: アプリイベントの追跡を有効にします。アプリイベントはNextdoorに送信され、帰属と測定のために使用されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -746,7 +761,7 @@
 <tbody>
 <tr>
 <td>自動重複排除</td>
-<td>Tealium iQ タグ ID を提供すると、コネクタは Tealium iQ が送信する <strong>イベント ID</strong> の値を自動的に検索します。</td>
+<td>Tealium iQタグIDを提供すると、コネクタは自動的にTealium iQが送信する<strong>イベントID</strong>値を探します。</td>
 </tr>
 </tbody>
 </table>
@@ -810,7 +825,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月2日
+          <p>最終更新日 ::  2025年August月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1133,6 +1148,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
