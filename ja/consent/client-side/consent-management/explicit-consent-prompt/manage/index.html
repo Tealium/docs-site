@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="明示的な同意プロンプトの管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/ja/consent/client-side/consent-management/explicit-consent-prompt/manage/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="この記事では、明示的な同意プロンプトの構成を管理する方法について説明します。" />
+<meta property="og:site_name" content="Tealiumドキュメント" />
+    <title>明示的な同意プロンプトの管理 | 明示的な同意プロンプト | Tealiumドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/consent/client-side/consent-management/explicit-consent-prompt/manage/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "consent",
+        reading_time  : "2",
+        site_language : "ja",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns relative" style="height: 42px;">
+      <a href="/ja/"><svg width="100%" height="100%" viewBox="0 0 235 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="auto" vector-effect="non-scaling-stroke">
+<path d="M26.435 21.3888C26.3744 18.8337 24.2524 16.7896 21.6756 16.8197C19.0685 16.8798 17.0071 18.984 17.0677 21.5391C17.1283 24.0942 19.2504 26.1383 21.8272 26.1082C24.4039 26.0781 26.4654 23.9439 26.435 21.3888Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M12.341 25.2055C13.7961 24.3037 16.0091 25.2356 17.2824 27.2797C18.5556 29.3238 18.404 31.6985 16.9489 32.6003C15.4938 33.5021 13.2808 32.5702 12.0076 30.5262C10.7343 28.452 10.9162 26.0773 12.341 25.2055Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M7.8531 30.4068C9.09601 29.8958 10.7633 31.0982 11.5818 33.0521C12.4003 35.036 12.0669 37.05 10.824 37.5611C9.58105 38.0721 7.91373 36.8997 7.09522 34.9158C6.27672 32.9318 6.6405 30.9178 7.8531 30.4068Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M3.79094 34.4042C4.63976 34.0735 5.91299 35.336 6.64055 37.2298C7.33779 39.1236 7.21653 40.8971 6.36771 41.1977C5.51889 41.5284 4.21535 40.2659 3.5181 38.3721C2.79054 36.4783 2.9118 34.7048 3.79094 34.4042Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M15.8865 9.36448C17.5235 9.84544 18.3117 12.0999 17.6447 14.3845C16.9778 16.6991 15.068 18.1721 13.4309 17.6911C11.7939 17.2101 11.0058 14.9556 11.6727 12.641C12.3396 10.3565 14.2495 8.88352 15.8865 9.36448Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M9.91231 4.07384C11.2159 4.43455 11.7918 6.38845 11.2159 8.43253C10.6399 10.5067 9.15444 11.8894 7.85089 11.5287C6.54735 11.168 5.97137 9.24415 6.54735 7.13995C7.12333 5.09587 8.63908 3.71312 9.91231 4.07384Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M5.39674 0.0155042C6.30619 0.195864 6.70029 1.93934 6.27588 3.9233C5.85147 5.8772 4.79044 7.32008 3.88099 7.13972C3.00186 6.95936 2.57745 5.21588 3.00186 3.23192C3.45658 1.24796 4.51761 -0.164856 5.39674 0.0155042Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M9.25451 24.4531C10.6773 24.4269 11.8003 22.7776 11.7626 20.7692C11.725 18.7608 10.5411 17.1539 9.11825 17.1801C7.69542 17.2063 6.5725 18.8557 6.61012 20.8641C6.64775 22.8725 7.83168 24.4794 9.25451 24.4531Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M3.24388 26.8291C2.91042 24.9954 3.54703 23.3421 4.66869 23.1317C5.79034 22.9513 6.94231 24.274 7.27577 26.1377C7.60924 27.9713 6.97262 29.6246 5.85097 29.8351C4.72932 30.0154 3.54703 28.6627 3.24388 26.8291Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M3.45731 30.4669C2.97227 28.8136 1.94156 27.6714 1.15337 27.9118C0.36518 28.1523 0.0923451 29.6553 0.577385 31.3086C1.06242 32.9619 2.09313 34.1042 2.88132 33.8637C3.69983 33.6533 3.94235 32.1202 3.45731 30.4669Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M6.94457 14.7753C6.91425 12.9717 6.0048 11.4987 4.94378 11.5288C3.88276 11.5588 3.06425 13.0318 3.09457 14.8354C3.12488 16.639 4.00401 18.0818 5.06504 18.0818C6.15638 18.0518 7.0052 16.5789 6.94457 14.7753Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M3.1234 9.9351C3.09308 8.31186 2.36552 7.01928 1.5167 7.04934C0.667882 7.0794 -0.0293624 8.40204 0.000952617 9.99522C0.0312676 11.6185 0.758827 12.911 1.60765 12.881C2.48678 12.881 3.15371 11.5583 3.1234 9.9351Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M67.7478 41.7032C72.9206 41.7032 76.6579 38.5599 76.6579 33.4366C76.6579 28.3133 72.9206 25.1947 67.723 25.1947H60.793V41.7032H67.7478ZM67.723 37.9906H65.05V28.9073H67.7478C70.7673 28.9073 72.3019 30.8873 72.3019 33.4366C72.3019 35.8868 70.6188 37.9906 67.723 37.9906Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M84.3939 42.0002C88.5025 42.0002 90.928 39.0796 90.928 35.7136C90.928 32.3476 88.5025 29.4518 84.3939 29.4518C80.3349 29.4518 77.9093 32.3476 77.9093 35.7136C77.9093 39.0796 80.3349 42.0002 84.3939 42.0002ZM84.3939 38.6341C82.7604 38.6341 81.8199 37.3224 81.8199 35.7136C81.8199 34.1296 82.7604 32.8178 84.3939 32.8178C86.0769 32.8178 87.0174 34.1296 87.0174 35.7136C87.0174 37.3224 86.0769 38.6341 84.3939 38.6341Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M98.6791 42.0002C101.278 42.0002 102.862 40.8369 103.58 39.7974L101.105 37.4709C100.634 38.1391 99.8671 38.6341 98.8523 38.6341C97.2683 38.6341 96.0556 37.5204 96.0556 35.7136C96.0556 33.9068 97.2683 32.8178 98.8523 32.8178C99.8671 32.8178 100.634 33.2633 101.105 33.9563L103.58 31.6545C102.862 30.5903 101.278 29.4518 98.6791 29.4518C94.9418 29.4518 92.1698 31.9763 92.1698 35.7136C92.1698 39.4509 94.9418 42.0002 98.6791 42.0002Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M117.192 41.7032V29.7488H113.381V37.4709C112.935 38.0401 112.193 38.6341 111.104 38.6341C109.866 38.6341 109.124 38.1391 109.124 36.6789V29.7488H105.312V38.2629C105.312 40.4409 106.55 42.0002 109.247 42.0002C111.277 42.0002 112.638 41.1092 113.381 40.2676V41.7032H117.192Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M138.819 41.7032V33.0406C138.819 30.5903 137.433 29.4518 135.23 29.4518C133.349 29.4518 131.79 30.5408 131.097 31.5803C130.602 30.1695 129.439 29.4518 127.706 29.4518C125.825 29.4518 124.291 30.516 123.771 31.209V29.7488H119.959V41.7032H123.771V33.9811C124.167 33.4861 124.885 32.8178 125.924 32.8178C127.063 32.8178 127.483 33.5108 127.483 34.4266V41.7032H131.295V33.9811C131.666 33.4861 132.409 32.8178 133.448 32.8178C134.587 32.8178 135.032 33.5108 135.032 34.4266V41.7032H138.819Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M147.358 42.0002C149.189 42.0002 151.169 41.4804 152.357 40.4161L150.699 37.9164C150.006 38.5599 148.62 38.9311 147.779 38.9311C146.046 38.9311 145.056 38.0401 144.784 36.9759H153.298V36.1096C153.298 32.0506 150.724 29.4518 147.185 29.4518C143.447 29.4518 140.849 32.2486 140.849 35.7136C140.849 39.5994 143.67 42.0002 147.358 42.0002ZM149.66 34.3771H144.734C144.883 33.5108 145.526 32.5208 147.185 32.5208C148.942 32.5208 149.561 33.5356 149.66 34.3771Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M167.08 41.7032V33.2386C167.08 31.0358 165.843 29.4518 163.145 29.4518C161.115 29.4518 159.705 30.3675 158.987 31.209V29.7488H155.175V41.7032H158.987V33.9811C159.432 33.4366 160.175 32.8178 161.313 32.8178C162.501 32.8178 163.269 33.3376 163.269 34.7978V41.7032H167.08Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M174.376 42.0002C175.787 42.0002 176.727 41.6537 177.197 41.2082L176.455 38.3371C176.331 38.4856 175.91 38.6341 175.49 38.6341C174.846 38.6341 174.45 38.1144 174.45 37.4214V33.0406H176.876V29.7488H174.45V26.4817H170.639V29.7488H168.659V33.0406H170.639V38.4856C170.639 40.7874 171.95 42.0002 174.376 42.0002Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M189.631 41.7032V34.2286C189.631 30.516 186.933 29.4518 184.062 29.4518C182.23 29.4518 180.176 29.9963 178.642 31.308L180.052 33.9563C181.018 33.1396 182.206 32.6693 183.394 32.6693C184.928 32.6693 185.819 33.3871 185.819 34.4266V35.6146C185.101 34.7236 183.691 34.2038 182.107 34.2038C180.275 34.2038 177.998 35.1691 177.998 38.0649C177.998 40.7379 180.275 42.0002 182.107 42.0002C183.641 42.0002 185.077 41.4062 185.819 40.5152V41.7032H189.631ZM183.691 39.5004C182.701 39.5004 181.785 39.0549 181.785 38.1144C181.785 37.1739 182.701 36.7284 183.691 36.7284C184.532 36.7284 185.423 37.0006 185.819 37.5699V38.6341C185.423 39.2034 184.532 39.5004 183.691 39.5004Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M196.927 42.0002C198.337 42.0002 199.278 41.6537 199.748 41.2082L199.006 38.3371C198.882 38.4856 198.461 38.6341 198.04 38.6341C197.397 38.6341 197.001 38.1144 197.001 37.4214V33.0406H199.426V29.7488H197.001V26.4817H193.189V29.7488H191.209V33.0406H193.189V38.4856C193.189 40.7874 194.501 42.0002 196.927 42.0002Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M203.222 28.6845C204.435 28.6845 205.425 27.6945 205.425 26.4817C205.425 25.269 204.435 24.3037 203.222 24.3037C202.009 24.3037 201.044 25.269 201.044 26.4817C201.044 27.6945 202.009 28.6845 203.222 28.6845ZM205.128 41.7032V29.7488H201.316V41.7032H205.128Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M213.608 42.0002C217.716 42.0002 220.142 39.0796 220.142 35.7136C220.142 32.3476 217.716 29.4518 213.608 29.4518C209.549 29.4518 207.123 32.3476 207.123 35.7136C207.123 39.0796 209.549 42.0002 213.608 42.0002ZM213.608 38.6341C211.974 38.6341 211.034 37.3224 211.034 35.7136C211.034 34.1296 211.974 32.8178 213.608 32.8178C215.291 32.8178 216.231 34.1296 216.231 35.7136C216.231 37.3224 215.291 38.6341 213.608 38.6341Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M234.056 41.7032V33.2386C234.056 31.0358 232.818 29.4518 230.121 29.4518C228.091 29.4518 226.68 30.3675 225.962 31.209V29.7488H222.151V41.7032H225.962V33.9811C226.408 33.4366 227.15 32.8178 228.289 32.8178C229.477 32.8178 230.244 33.3376 230.244 34.7978V41.7032H234.056Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M67.3762 16.8258V2.1489H72.6233V0.317383H60.0996V2.1489H65.3219V16.8258H67.3762Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M77.8475 17.1228C79.778 17.1228 81.3868 16.4546 82.5996 15.2666L81.7085 14.0538C80.7433 15.0438 79.382 15.5883 77.996 15.5883C75.422 15.5883 73.8627 13.7073 73.7142 11.455H83.3668V10.9848C83.3668 7.39597 81.2383 4.57443 77.6247 4.57443C74.2092 4.57443 71.7342 7.37122 71.7342 10.8363C71.7342 14.5735 74.2835 17.1228 77.8475 17.1228ZM81.5353 10.069H73.6894C73.7885 8.26223 75.0507 6.10895 77.6 6.10895C80.3225 6.10895 81.5105 8.31173 81.5353 10.069Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M95.7042 16.8258V8.60873C95.7042 5.71295 93.6252 4.57443 91.0759 4.57443C89.1207 4.57443 87.5862 5.21794 86.2991 6.55446L87.1654 7.84147C88.2297 6.67821 89.3929 6.1832 90.8284 6.1832C92.561 6.1832 93.848 7.09896 93.848 8.68298V10.8363C92.8827 9.74724 91.5215 9.22749 89.8879 9.22749C87.8584 9.22749 85.7299 10.465 85.7299 13.1628C85.7299 15.7616 87.8832 17.1228 89.8879 17.1228C91.4967 17.1228 92.8827 16.5536 93.848 15.4646V16.8258H95.7042ZM90.5809 15.7863C88.8237 15.7863 87.6109 14.6973 87.6109 13.1628C87.6109 11.653 88.8237 10.564 90.5809 10.564C91.868 10.564 93.1302 11.059 93.848 12.0243V14.3013C93.1302 15.2913 91.868 15.7863 90.5809 15.7863Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M101.306 16.8258V0.317383H99.4495V16.8258H101.306Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M105.949 3.16367C106.642 3.16367 107.187 2.61916 107.187 1.92615C107.187 1.23314 106.642 0.663887 105.949 0.663887C105.256 0.663887 104.687 1.23314 104.687 1.92615C104.687 2.61916 105.256 3.16367 105.949 3.16367ZM106.865 16.8258V4.87144H105.009V16.8258H106.865Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M120.493 16.8258V4.87144H118.636V13.6578C117.943 14.6231 116.557 15.4646 115.122 15.4646C113.488 15.4646 112.424 14.8458 112.424 12.742V4.87144H110.568V13.3113C110.568 15.8853 111.88 17.1228 114.379 17.1228C116.161 17.1228 117.721 16.1823 118.636 15.1428V16.8258H120.493Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M140.485 16.8258V8.18798C140.485 5.7872 139.322 4.57443 137.144 4.57443C135.412 4.57443 133.803 5.71295 133.135 6.80196C132.788 5.56445 131.749 4.57443 129.942 4.57443C128.16 4.57443 126.576 5.8367 126.056 6.60396V4.87144H124.2V16.8258H126.056V8.08897C126.7 7.12371 127.987 6.2327 129.199 6.2327C130.783 6.2327 131.402 7.19796 131.402 8.70773V16.8258H133.258V8.06422C133.877 7.09896 135.189 6.2327 136.426 6.2327C137.986 6.2327 138.629 7.19796 138.629 8.70773V16.8258H140.485Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+<path d="M41.7764 0H42.4639V42H41.7764V0Z" stroke-linecap="round" stroke-linejoin="round" fill="#051838"/>
+</svg>
+</a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/consent/client-side/consent-management/explicit-consent-prompt/manage/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-auto dn sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow-left.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="consent">
+    <li data-level="1" class="relative w-100 fw8 f5 fw5 text-color-primary pv1 ind2">
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">Tealium Consent</span>
+        </li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/consent-overview/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-overview">概要</a></li>
+    <li data-level="1" class="relative w-100 fw8 f5 fw5 text-color-primary pv1 ind2">
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">クライアントサイドの同意</span>
+        </li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/cookieconsent-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cookieconsent-consent-integration">CookieConsent</a></li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".consent-integrations">同意統合</a>
+        <ul class="pl2  consent-integrations desktopmenu animated fadeIn list  dn">
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-integrations">コンセント統合について</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/consent-integrations-decision-flow/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">同意統合の意思決定フロー</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-consent-integrations">同意統合と目的グループの管理</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/supported-vendors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">サポートされているベンダー統合</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/validate-and-debug/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">検証とデバッグ</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/custom-cmp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">カスタムCMP統合</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-integrations/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enforcement-conditions-conflict">施行条件の競合の取り扱い</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".consent-management">クライアントサイドの同意管理</a>
+        <ul class="pl2  consent-management desktopmenu animated fadeIn list ">
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-management/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-management">同意管理について</a></li>
+    <li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".explicit-consent-prompt">明示的な同意プロンプト</a>
+        <ul class="pl2 bl b--primary bw1 explicit-consent-prompt desktopmenu animated fadeIn list ">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的同意プロンプトマネージャーについて</a></li>
+    <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
+        <ul class="pl2  consent-preferences-dialog desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/consent-preferences-dialog/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-preferences">同意構成マネージャーの仕組み</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/consent-preferences-dialog/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-consent-preferences">同意構成の管理</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".privacy-banner-and-popup">オプトアウトプライバシーバナーとポップアップ</a>
+        <ul class="pl2  privacy-banner-and-popup desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/privacy-banner-and-popup/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">オプトアウトプライバシーバナーとポップアップについて</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/privacy-banner-and-popup/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">オプトアウトプライバシーバナーとポップアップの管理</a></li></ul>
+      </li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-management/global-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".global-consent-parameters">グローバル同意パラメータ</a></li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".global-privacy-control">グローバルプライバシーコントロール</a>
+        <ul class="pl2  global-privacy-control desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/global-privacy-control/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-global-privacy-control">グローバルプライバシーコントロール（GPC）について</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-management/global-privacy-control/client-side-support-gpc/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".client-side-global-privacy-control">クライアント側のグローバルプライバシーコントロール（GPC）</a></li></ul>
+      </li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/client-side/consent-management/event-logging/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">イベントログ</a></li></ul>
+      </li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/consent-register/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-register">同意登録</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/client-side/google-consent-mode/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-consent-mode">Google同意モード</a></li>
+    <li data-level="1" class="relative w-100 fw8 f5 fw5 text-color-primary pv1 ind2">
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">サーバーサイドの同意</span>
+        </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".consent-orchestration">同意オーケストレーション（イベントレベル）</a>
+        <ul class="pl2  consent-orchestration desktopmenu animated fadeIn list  dn">
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/server-side/consent-orchestration/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-consent-orchestration">コンセントオーケストレーションについて</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/consent/server-side/consent-orchestration/enforcement-conditions-conflict/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".consent-orchestration-enforcement-conditions-conflict">施行条件の競合の取り扱い</a></li></ul>
+      </li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/server-side/manual-enforcement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manual-server-side-consent-enforcement">手動の強制</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/server-side/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-consent-management">サーバーサイドの同意管理</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/server-side/event-specs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">同意変更イベント仕様</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/consent/server-side/server-side-support-gpc/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">グローバルプライバシーコントロール</a></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/consent/">ティーリウム同意</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/consent/client-side/">クライアント側の同意</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl3"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/consent/client-side/consent-management/">クライアント側の同意管理</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl4"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/consent/client-side/consent-management/explicit-consent-prompt/">明示的な同意プロンプト</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">明示的な同意プロンプトの管理</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      この記事では、明示的な同意プロンプトの構成を管理する方法について説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="はじめに">はじめに</h2>
+<p>明示的な同意プロンプトの構成を開始するには、以下の手順に従ってください：</p>
+<ol>
+<li>左サイドバーで <strong>クライアントサイドツール &gt; 同意管理</strong> に移動します。</li>
+<li><strong>明示的な同意プロンプト</strong> セクションで、<strong>開始</strong> をクリックして構成を開始します。
+すでに <strong>明示的な同意プロンプト</strong> が構成されている場合は、この画面からオンまたはオフに切り替えることができます。</li>
+</ol>
+<h3 id="コンテンツ">コンテンツ</h3>
+<p><strong>コンテンツ</strong> 画面では、同意プロンプトに表示されるメッセージをカスタマイズし、翻訳されたコンテンツの言語を追加し、カスタムパラメータを定義し、作成したプロンプトのプレビューを表示します。</p>
+<figure><a class="slb" href="/images/guides/iq/consent-manager-explicit-consent-prompt.png"><img src="/images/guides/iq/consent-manager-explicit-consent-prompt.png"
+         alt="Explicit Consent Prompt"
+         title="Explicit Consent Prompt" width="850" height="700"/>
+    </a>
+</figure>
+<h4 id="コンテンツパラメータ">コンテンツパラメータ</h4>
+<p><strong>明示的な同意プロンプト</strong> は、サイトに表示される最終的なプロンプトを構築するためにパラメータを使用します。プロンプトはテンプレート化されており、パラメータの値が簡単に置き換えられます。パラメータは <code>{{parameter_name}}</code> の形式で参照されます。</p>
+<p>標準の組み込みコンテンツパラメータは以下の通りです：</p>
+<ul>
+<li>
+<p><strong>タイトル</strong> <code>{{title}}</code><br>
+同意プロンプトのメイン見出し。</p>
+</li>
+<li>
+<p><strong>メッセージ</strong> <code>{{message}}</code><br>
+お客様にトラッキングの意図を知らせ、プライバシーポリシーまたはお問い合わせフォームなどのリソースへのリンクを提供するメッセージ。</p>
+</li>
+<li>
+<p><strong>オプトイン/オプトアウト</strong> <code>{{opt_in}} / {{opt_out}}</code><br>
+利用可能な2つのオプション：</p>
+<ul>
+<li><code>opt-in - 同意を与える</code></li>
+<li><code>opt-out - 同意を拒否する</code></li>
+</ul>
+</li>
+<li>
+<p><strong>確認ボタン</strong> <code>{{confirmation_button}}</code><br>
+送信ボタンのラベル。</p>
+</li>
+</ul>
+<p>標準パラメータのコンテンツを編集するには、テキストフィールドを変更し、<strong>完了</strong> をクリックします。</p>
+<p>パラメータを使用したサンプルHTMLコード：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;example_body&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt_content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h1</span>&gt;{{title}}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">p</span>&gt;{{message}}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt_footer&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button right&#34;</span>&gt;{{confirmation_button}}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;close_btn_thick&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h4 id="カスタムパラメータ">カスタムパラメータ</h4>
+<p>カスタムパラメータを追加して、プロンプトをさらにカスタマイズすることができます。これらのパラメータは、標準パラメータ内やCSS/HTML/JavaScriptコード内で参照することができます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>ベストプラクティス：HTMLやJavaScriptに直接翻訳可能なテキストを入れないでください。代わりに <code>{{parameters}}</code> を使用してコードを構築し、カスタムパラメータを使用して値を定義します。</p>
+<p>カスタムパラメータを追加するには、以下の手順に従ってください：</p>
+<ol>
+<li><strong>カスタムパラメータ</strong> セクションまでスクロールダウンし、<strong>+ パラメータ追加</strong> をクリックします。
+カスタムパラメータダイアログが表示されます。</li>
+<li>パラメータの名前を入力します。</li>
+<li><strong>適用</strong> をクリックします。
+新しいカスタムパラメータがリストに表示されます。</li>
+<li>新しいパラメータの値を入力します。
+この値は、パラメータが参照される場所で置き換えられます。</li>
+<li><strong>完了</strong> をクリックします。</li>
+</ol>
+<h3 id="言語">言語</h3>
+<p>同意プロンプトは複数の言語で表示することができます。追加する各言語について、各コンテンツパラメータおよびカスタムパラメータの翻訳を提供する必要があります。</p>
+<p>同意プロンプトは訪問のブラウザの言語構成（2文字の言語コード）を検出し、対応するバージョンを表示します。検出された言語が構成されていない場合は、デフォルト言語が表示されます。</p>
+<h4 id="言語の追加">言語の追加</h4>
+<p>言語を追加するには：</p>
+<ol>
+<li>
+<p><strong>言語</strong> サイドパネルで、<strong>+ 追加</strong> をクリックします。
+<figure><a class="slb" href="/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg"><img src="/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg"
+             alt="Consent Manager_Consent Preferences Dialog_Add Language.jpg"
+             title="Consent Manager_Consent Preferences Dialog_Add Language.jpg"/>
+        </a>
+    </figure></p>
+</li>
+<li>
+<p>希望の言語を選択し、<strong>適用</strong> をクリックします。
+新しい言語がサイドパネルに表示されます。</p>
+</li>
+</ol>
+<p>新しい言語をクリックして、すべてのコンテンツパラメータおよびカスタムパラメータの翻訳されたテキストを入力します。</p>
+<h4 id="デフォルト言語の構成">デフォルト言語の構成</h4>
+<p>デフォルト言語は、ユーザーの検出されたブラウザ言語が構成されていない場合に同意プロンプトを表示するために使用されます。</p>
+<p>デフォルト言語を構成するには：</p>
+<ol>
+<li>言語タイトルバーにある <strong>デフォルト言語に構成</strong> ボックスをチェックします。
+<figure><a class="slb" href="/images/iq-tag-management/consent-prompt-content-make-default.png"><img src="/images/iq-tag-management/consent-prompt-content-make-default.png"
+             alt="Conent prompt content make default"
+             title="Conent prompt content make default"/>
+        </a>
+    </figure></li>
+<li><strong>プレビュー</strong> をクリックして、言語構成を確認します。</li>
+</ol>
+<h4 id="言語の上書き">言語の上書き</h4>
+<p><a href="/ja/platforms/javascript/settings/">Universal Tag settings override object</a> を使用して、データレイヤ変数で同意マネージャの言語構成を上書きすることができます。同意マネージャで使用する言語を格納するデータレイヤ変数の名前を指定します。</p>
+<p>たとえば、データレイヤに <code>site_language</code> という変数が含まれている場合：</p>
+<pre tabindex="0"><code>window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
+window.utag_cfg_ovrd.gdprDLRef = &#34;site_language&#34;;
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>2文字の言語コードを直接構成しないでください。この上書き構成は変数名を期待しており、言語コードの値ではありません。</p>
+<p><strong>カスタマイズ</strong> 画面では、同意プロンプトの背後にあるコード – CSS、HTML、およびプロンプトを実行するJavaScript – を編集して、プロンプトの外観とデザインをウェブサイトに合わせて調整することができます。</p>
+<p>JavaScriptコードは、utag.jsファイルに公開される前に最小化されます。何らかの理由（構文エラーなど）で最小化プロセスが失敗した場合、公開プロセスは停止し、iQで警告メッセージが返されます。公開が成功すると、utag.jsがページ上で実行される際に、同意プロンプトのJavaScriptコードがページの <code>&lt;head&gt;</code> に注入されます。</p>
+<h3 id="施行ルール">施行ルール</h3>
+<p><strong>施行ルール</strong> 画面では、顧客に同意プロンプトを表示するタイミングを決定するロードルールを選択します。ルールがfalseと評価された場合、Consent Managerは同意を強制せず、タグは通常どおり発火します。GDPRに準拠するためには、欧州連合（EU）に居住するデータ主体に同意プロンプトを提示する必要があります。その基準を満たすロードルールを選択するか、作成することができます。適切なロードルールの作成方法がわからない場合は、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
+<h2 id="オプション">オプション</h2>
+<p><strong>オプション</strong> 画面から、イベントログの有効化と省略するタグを構成することができます。</p>
+<h3 id="イベントログ">イベントログ</h3>
+<p>イベントログオプションは、DataAccess（EventStoreまたはEventDB）またはEventStreamが必要であり、訪問が同意プロンプトを使用して同意を与えたり取り消したりするたびに、そのアクションがログに記録されます。これらの同意アクションは、監査目的でEventStore、EventDB、またはEventStreamにログ記録することができます。</p>
+<p>このオプションは、監査目的で同意の証明が利用可能であることを要求するGDPRの規定42に準拠するために提供されます。さらに、イベントログオプションは、訪問が同意を与えたり拒否したりする割合や、あなたの取り組みの結果として各訪問がオプトインまたはオプトアウトするクッキーの種類に関するデータを提供し、分析を可能にします。</p>
+<p><a href="/ja/consent/client-side/consent-management/event-logging/">同意管理のためのイベントログについて</a>をもっと学びましょう。</p>
+<h3 id="省略するタグ">省略するタグ</h3>
+<p>iQタグ管理を通じて展開されるすべてのタグがトラッキングやデータ収集を目的としているわけではありません。タグや拡張機能は、ポップアップモーダル、製品フィードバック、サイトサポート、またはチャットクライアントなどのサイト機能を提供するためにも使用されます。<strong>省略するタグ</strong> 構成を使用して、トラッキング制限から除外するタグのリストを作成します。</p>
+<h3 id="同意クッキー">同意クッキー</h3>
+<p>同意プロンプトは <code>CONSENTMGR</code> という名前のクッキーを使用します。このクッキーの存在とその内容は、プロンプトの振る舞いを決定し、訪問の同意状態を反映します。キーと値のペアはパイプ (&quot;<code>|</code>&quot;) 文字で区切られます。</p>
+<p><code>CONSENTMGR</code> クッキーは、同意および構成プロンプトに関連する以下のキーと値のペアを保存します：</p>
+<ul>
+<li>
+<p><strong>c1..N</strong> – 整数値 <code>1</code> または <code>0</code> で、タグカテゴリの同意状態を示します。ここで <code>1..N</code> はカテゴリ番号です。<code>1</code>=許可、<code>0</code>=不許可（同意構成プロンプトで使用）</p>
+</li>
+<li>
+<p><strong>consent</strong> – 訪問の同意状態を反映するブール値：</p>
+<ul>
+<li><strong>true</strong> – オプトインオプションを使用して同意が与えられた</li>
+<li><strong>false</strong> – オプトアウトオプションを使用して同意が拒否された</li>
+</ul>
+</li>
+<li>
+<p><strong>ts</strong> – 最後の同意状態変更のタイムスタンプ</p>
+</li>
+</ul>
+<p><code>CONSENTMGR</code> クッキーの例：</p>
+<pre tabindex="0"><code>ts:1525369619|consent:true|c1:0|c2:0|c3:0|c4:0|c5:0|c6:0|c7:1|c8:0|c9:1|c10:0|c11:0|c12:1|c13:0|c14:0|c15:0
+</code></pre><p>ドメイン名を共有する複数のプロファイルがある場合は、各プロファイルに対して同意クッキーに固有の名前を付けることを強く推奨します。固有のクッキー名を使用することで、クッキー間の競合やセキュリティ問題を防ぎます。</p>
+<p>詳細については、<a href="/ja/platforms/javascript/settings/#cmcookiens">同意管理クッキー名</a>を参照してください。</p>
+<h3 id="デフォルトの同意カテゴリjavascriptコード拡張">デフォルトの同意カテゴリ（JavaScriptコード拡張）</h3>
+<p>このステップは、同意構成ダイアログが無効で、サーバーサイド製品（EventStream、AudienceStream、DataAccess）が有効になっている場合にのみ必要です。このステップでは、JavaScriptコード拡張を使用してデータレイヤーにデフォルトの同意カテゴリを追加し、サーバーサイドイベントの処理が続行されるようにします。</p>
+<p>デフォルトの同意カテゴリを追加するには：</p>
+<ol>
+<li><a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScriptコード拡張</a>を追加します。</li>
+<li>このコード行を追加して、デフォルトの同意カテゴリのリストを構成します：
+<pre tabindex="0"><code>b[&#34;consent_categories&#34;] = [&#34;analytics&#34;, &#34;affiliates&#34;, &#34;display_ads&#34;, &#34;search&#34;, &#34;email&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;big_data&#34;, &#34;misc&#34;, &#34;cookiematch&#34;, &#34;cdp&#34;, &#34;mobile&#34;, &#34;engagement&#34;, &#34;monitoring&#34;, &#34;crm&#34;];
+</code></pre></li>
+<li>拡張機能をTealium Collectタグに適用します。</li>
+</ol>
+<h2 id="javascriptヘルパー関数">JavaScriptヘルパー関数</h2>
+<p>有効化および公開後、同意プロンプトは <code>utag</code> 名前空間にJavaScriptユーティリティ関数を導入し、追加の機能を統合することができます。名前空間 <code>utag.gdpr</code> には、すべての同意管理ユーティリティ関数が含まれています。</p>
+<h3 id="utaggdprshowexplicitconsent">utag.gdpr.showExplicitConsent()</h3>
+<p>明示的な同意プロンプトを表示します。この関数をサイトに統合して、訪問が自分の同意構成を変更できるようにします。言語を動的に構成するには、関数を呼び出す際にパラメータとして言語を送信します。これは、上記で定義された <code>window.utag_cfg_ovrd.gdprDLRef</code> およびブラウザ検出ロジックの両方を上書きします。</p>
+<p>例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript:utag.gdpr.showExplicitConsent(&#39;EN&#39;)&#34;</span>&gt;同意を変更&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><h3 id="utaggdprgetcookievalues">utag.gdpr.getCookieValues()</h3>
+<p>上記で述べた <code>CONSENTMGR</code> クッキーからキーと値のペアのオブジェクトを返します。値は <code>utag.data['cp.CONSENTMGR']</code> から取得されます。</p>
+<p>同意が拒否された例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1525369619&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">consent</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>カテゴリ <code>7</code>, <code>9</code>, <code>12</code> に対して部分的な同意が与えられた例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1525369619&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">consent</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c2</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c3</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c4</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c5</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c6</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c8</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c9</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c10</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c11</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c12</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c13</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c14</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c15</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
+  
+  
+  <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/about/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"明示的同意プロンプトマネージャーについて "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>明示的同意プロンプトマネージャーについて</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2025年August月20日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB" href="javascript:void(0)">はじめに</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84" href="javascript:void(0)">コンテンツ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%80%E8%AA%9E" href="javascript:void(0)">言語</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%BD%E8%A1%8C%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">施行ルール</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">オプション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%AD%E3%82%B0" href="javascript:void(0)">イベントログ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E3%82%BF%E3%82%B0" href="javascript:void(0)">省略するタグ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">同意クッキー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AAjavascript%E3%82%B3%E3%83%BC%E3%83%89%E6%8B%A1%E5%BC%B5" href="javascript:void(0)">デフォルトの同意カテゴリ（JavaScriptコード拡張）</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E3%83%98%E3%83%AB%E3%83%91%E3%83%BC%E9%96%A2%E6%95%B0" href="javascript:void(0)">JavaScriptヘルパー関数</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utaggdprshowexplicitconsent" href="javascript:void(0)">utag.gdpr.showExplicitConsent()</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utaggdprgetcookievalues" href="javascript:void(0)">utag.gdpr.getCookieValues()</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          手引き
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/insights/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Insights
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/consent/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Consent
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tools/tealium-tools/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリウムツール
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ業界のためのTealium
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリウム・アイデンティティ・パートナーズ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          コンセント統合について
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/consent-integrations-decision-flow/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          同意統合の意思決定フロー
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/manage/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          同意統合と目的グループの管理
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/supported-vendors/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          サポートされているベンダー統合
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/validate-and-debug/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          検証とデバッグ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/custom-cmp/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          カスタムCMP統合
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-integrations/enforcement-conditions-conflict/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          施行条件の競合の取り扱い
+      </a>
+      </li>
+      
+      
+  
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          同意管理について
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/explicit-consent-prompt/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          明示的な同意プロンプト
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/consent-preferences-dialog/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          同意構成ダイアログ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/privacy-banner-and-popup/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          オプトアウトプライバシーバナーとポップアップ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/global-parameters/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          グローバル同意パラメータ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/global-privacy-control/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          グローバルプライバシーコントロール
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/client-side/consent-management/event-logging/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          イベントログ
+      </a>
+      </li>
+      
+      
+  
+  
+  
+  
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/server-side/consent-orchestration/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          コンセントオーケストレーションについて
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/consent/server-side/consent-orchestration/enforcement-conditions-conflict/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          施行条件の競合の取り扱い
+      </a>
+      </li>
+      
+      
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium_ja',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
