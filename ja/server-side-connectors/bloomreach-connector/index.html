@@ -777,26 +777,28 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="api情報">API情報</h2>
-<p>このコネクタは、以下のベンダーAPIを使用します：</p>
+<p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Bloomreach API</li>
 <li>APIバージョン：v2.0</li>
 <li>APIエンドポイント：<code>https://api-engagement.bloomreach.com</code></li>
-<li>ドキュメンテーション：<a href="https://documentation.bloomreach.com/engagement/reference/about">Bloomreach API</a></li>
+<li>ドキュメント：<a href="https://documentation.bloomreach.com/engagement/reference/about">Bloomreach API</a></li>
 </ul>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を行います：</p>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>APIキー</strong><br>
-APIキー</li>
+APIキー。</li>
 <li><strong>APIシークレット</strong><br>
-APIシークレット</li>
+APIシークレット。</li>
 <li><strong>プロジェクトトークン</strong><br>
-プロジェクトトークン。これは、Engagementウェブアプリの<strong>プロジェクト構成 &gt; アクセス管理 &gt; API</strong>で見つけることができます。</li>
+あなたのプロジェクトトークン。これは、エンゲージメントWebアプリの<strong>プロジェクト構成 &gt; アクセス管理 &gt; API</strong>で見つけることができます。</li>
+<li><strong>APIドメイン</strong><br>
+あなたのBloomreach APIドメイン。デフォルト値は <code>https://api-engagement.bloomreach.com</code> です。</li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このアクションは、ベンダーへの大量のデータ転送をサポートするために、バッチリクエストを使用します。詳細については、Batched Actionsを参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、バッチアクションを参照してください。リクエストは、次のいずれかのしきい値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：5分</li>
@@ -813,32 +815,32 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Update Customer Properties</td>
+<td>顧客プロパティの更新</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Update Customer Properties Batch</td>
+<td>顧客プロパティのバッチ更新</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Add Event</td>
+<td>イベントの追加</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>Add Event Batch</td>
+<td>イベントのバッチ追加</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>Trigger Transactional Email</td>
+<td>トランザクショナルメールのトリガー</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>Trigger Transactional SMS</td>
+<td>トランザクショナルSMSのトリガー</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -846,10 +848,7 @@ APIシークレット</li>
 </table>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタアクションを構成します。</p>
-<p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---update-customer-properties">アクション - Update Customer Properties</h3>
+<h3 id="顧客プロパティの更新">顧客プロパティの更新</h3>
 <h4 id="顧客id">顧客ID</h4>
 <table>
 <thead>
@@ -860,13 +859,13 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Registered</td>
-<td>1つ以上のハードIDまたはソフトIDが必要です。</td>
+<td>登録済み</td>
+<td>(必須) ハードまたはソフトID。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="プロパティ">プロパティ</h4>
-<p>更新したい顧客のプロパティを1つ以上指定する必要があります。</p>
+<p>(必須) 更新する顧客プロパティ。</p>
 <table>
 <thead>
 <tr>
@@ -876,20 +875,20 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Email</td>
+<td>メール</td>
 <td>顧客のメールアドレス。</td>
 </tr>
 <tr>
-<td>First Name</td>
+<td>名</td>
 <td>顧客の名前。</td>
 </tr>
 <tr>
-<td>Last Name</td>
+<td>姓</td>
 <td>顧客の姓。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="オプション">オプション</h4>
+<h4 id="オプショナル">オプショナル</h4>
 <table>
 <thead>
 <tr>
@@ -899,12 +898,12 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Update Timestamp</td>
-<td>Unixタイムスタンプ（秒）。更新時間が古いプロパティのみが更新されます。</td>
+<td>更新タイムスタンプ</td>
+<td>UNIXタイムスタンプ（秒）。更新時間が古いプロパティのみが更新されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---update-customer-properties-batch">アクション - Update Customer Properties Batch</h3>
+<h3 id="顧客プロパティのバッチ更新">顧客プロパティのバッチ更新</h3>
 <h4 id="顧客id-1">顧客ID</h4>
 <table>
 <thead>
@@ -915,13 +914,13 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Registered</td>
-<td>1つ以上のハードIDまたはソフトIDが必要です。</td>
+<td>登録済み</td>
+<td>(必須) ハードまたはソフトID。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="プロパティ-1">プロパティ</h4>
-<p>更新したい顧客のプロパティを1つ以上指定する必要があります。</p>
+<p>(必須) 更新する顧客プロパティ。</p>
 <table>
 <thead>
 <tr>
@@ -931,20 +930,20 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Email</td>
+<td>メール</td>
 <td>顧客のメールアドレス。</td>
 </tr>
 <tr>
-<td>First Name</td>
+<td>名</td>
 <td>顧客の名前。</td>
 </tr>
 <tr>
-<td>Last Name</td>
+<td>姓</td>
 <td>顧客の姓。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="オプション-1">オプション</h4>
+<h4 id="オプショナル-1">オプショナル</h4>
 <table>
 <thead>
 <tr>
@@ -954,12 +953,12 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Update Timestamp</td>
-<td>Unixタイムスタンプ（秒）。更新時間が古いプロパティのみが更新されます。</td>
+<td>更新タイムスタンプ</td>
+<td>UNIXタイムスタンプ（秒）。更新時間が古いプロパティのみが更新されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---add-event">アクション - Add Event</h3>
+<h3 id="イベントの追加">イベントの追加</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -970,8 +969,8 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Event Type</td>
-<td>イベントのタイプ。選択したプロパティに基づいてイベントタイプがトリガーされ、選択したプロパティカテゴリに基づいて必要な数のイベントがトリガーされます。<ul><li>Purchase</li><li>Purchase Item</li><li>Cart Update</li><li>Checkout</li><li>View Item</li><li>View Category</li><li>Consent</li><li>Banner</li><li>Recommendation</li></ul></td>
+<td>イベントタイプ</td>
+<td>イベントのタイプ。選択されたプロパティカテゴリに基づいて必要なだけ多くのイベントをトリガーするイベントタイプ。<ul><li>購入</li><li>購入アイテム</li><li>カート更新</li><li>チェックアウト</li><li>アイテム閲覧</li><li>カテゴリ閲覧</li><li>同意</li><li>バナー</li><li>推奨</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -985,8 +984,8 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Registered</td>
-<td>1つ以上のハードIDまたはソフトIDが必要です。</td>
+<td>登録済み</td>
+<td>(必須) ハードまたはソフトID。</td>
 </tr>
 </tbody>
 </table>
@@ -1000,12 +999,12 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Timestamp</td>
-<td>イベントが作成されたときのUNIXタイムスタンプ（秒）。提供されていない場合、現在の時間が使用されます。タイムスタンプはISO 8601形式の日時をサポートします。値は秒単位である必要があります。文字数に基づくミリ秒の自動認識はありません。</td>
+<td>タイムスタンプ</td>
+<td>イベントが作成されたときのUNIXタイムスタンプ（秒）。提供されていない場合、現在の時間が使用されます。タイムスタンプはISO 8601形式の日時をサポートします。値は秒単位である必要があります。文字数に基づいてミリ秒が自動的に認識されることはありません。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---add-event-batch">アクション - Add Event Batch</h3>
+<h3 id="イベントのバッチ追加">イベントのバッチ追加</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -1016,8 +1015,8 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Event Type</td>
-<td>イベントのタイプ。選択したプロパティに基づいてイベントタイプがトリガーされ、選択したプロパティカテゴリに基づいて必要な数のイベントがトリガーされます。<ul><li>Purchase</li><li>Purchase Item</li><li>Cart Update</li><li>Checkout</li><li>View Item</li><li>View Category</li><li>Consent</li><li>Banner</li><li>Recommendation</li></ul></td>
+<td>イベントタイプ</td>
+<td>イベントのタイプ。選択されたプロパティカテゴリに基づいて必要なだけ多くのイベントをトリガーするイベントタイプ。<ul><li>購入</li><li>購入アイテム</li><li>カート更新</li><li>チェックアウト</li><li>アイテム閲覧</li><li>カテゴリ閲覧</li><li>同意</li><li>バナー</li><li>推奨</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1031,8 +1030,8 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Registered</td>
-<td>1つ以上のハードIDまたはソフトIDが必要です。</td>
+<td>登録済み</td>
+<td>(必須) ハードまたはソフトID。</td>
 </tr>
 </tbody>
 </table>
@@ -1046,12 +1045,12 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Timestamp</td>
-<td>イベントが作成されたときのUNIXタイムスタンプ（秒）。提供されていない場合、現在の時間が使用されます。タイムスタンプはISO 8601形式の日時をサポートします。値は秒単位である必要があります。文字数に基づくミリ秒の自動認識はありません。</td>
+<td>タイムスタンプ</td>
+<td>イベントが作成されたときのUNIXタイムスタンプ（秒）。提供されていない場合、現在の時間が使用されます。タイムスタンプはISO 8601形式の日時をサポートします。値は秒単位である必要があります。文字数に基づいてミリ秒が自動的に認識されることはありません。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---trigger-transactional-email">アクション - Trigger Transactional Email</h3>
+<h3 id="トランザクショナルメールのトリガー">トランザクショナルメールのトリガー</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -1062,12 +1061,12 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Integration ID</td>
-<td>メールサービスプロバイダーの統合ID。これは、選択した統合のURLで見つけることができます。</td>
+<td>インテグレーションID</td>
+<td>メールサービスプロバイダーインテグレーションのID。これは選択されたインテグレーションのURLで見つけることができます。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="統合">統合</h4>
+<h4 id="インテグレーション">インテグレーション</h4>
 <table>
 <thead>
 <tr>
@@ -1078,15 +1077,15 @@ APIシークレット</li>
 <tbody>
 <tr>
 <td>ID</td>
-<td>(必須) メールサービスプロバイダーの統合ID。</td>
+<td>(必須) メールサービスプロバイダーインテグレーションのID。</td>
 </tr>
 <tr>
-<td>Sender Address</td>
-<td>必須。この統合のメールの送信者として使用されるメールアドレス。このパラメータの提供方法を上書きします。</td>
+<td>送信者アドレス</td>
+<td>このインテグレーションのメールの送信者として使用されるメールアドレス。他の方法でこのパラメータを提供することを上書きします。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="メールコンテンツ">メールコンテンツ</h4>
+<h4 id="メール内容">メール内容</h4>
 <table>
 <thead>
 <tr>
@@ -1096,43 +1095,43 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Template ID</td>
-<td>送信したいメールテンプレートのID。これは、選択した事前定義テンプレートのURLで見つけることができます。</td>
+<td>テンプレートID</td>
+<td>送信したいメールテンプレートのID。これは選択された事前定義されたテンプレートのURLで見つけることができます。</td>
 </tr>
 <tr>
-<td>Subject</td>
+<td>件名</td>
 <td>メールの件名を定義します。このフィールドではJinjaは評価されません。</td>
 </tr>
 <tr>
-<td>Sender Address</td>
+<td>送信者アドレス</td>
 <td>送信者のメールアドレス。</td>
 </tr>
 <tr>
-<td>Sender Name</td>
-<td>通常は送信者の名前です。</td>
+<td>送信者名</td>
+<td>通常、送信者の名前です。</td>
 </tr>
 <tr>
-<td>Attachments Filename</td>
+<td>添付ファイルのファイル名</td>
 <td>添付ファイルの名前。</td>
 </tr>
 <tr>
-<td>Attachments Content</td>
-<td>ファイルのBase64エンコードされたコンテンツ。</td>
+<td>添付ファイルの内容</td>
+<td>ファイルのBase64エンコードされた内容。</td>
 </tr>
 <tr>
-<td>Attachments Content Type</td>
+<td>添付ファイルのコンテンツタイプ</td>
 <td>添付ファイルの形式。</td>
 </tr>
 <tr>
 <td>Html</td>
-<td><code>&lt;html&gt;</code>と<code>&lt;/html&gt;</code>タグの間のメールの内容を定義します。CSSコンテンツも含めることができます。このフィールドではJinjaは評価されません。</td>
+<td><code>&lt;html&gt;</code> と <code>&lt;/html&gt;</code> タグの間のメールの内容を定義します。CSSコンテンツを含めることができます。このフィールドではJinjaは評価されません。</td>
 </tr>
 <tr>
-<td>Email Content Parameters</td>
+<td>メール内容パラメータ</td>
 <td>テンプレートで使用されるメールのパーソナライゼーションに必要なすべてのデータを提供します。形式：<code>param_name</code>:&ldquo;value&rdquo;。例：<code>first_name</code>:&ldquo;Marian&rdquo;</td>
 </tr>
 <tr>
-<td>Campaign Name</td>
+<td>キャンペーン名</td>
 <td>メールキャンペーンの名前。</td>
 </tr>
 </tbody>
@@ -1147,16 +1146,16 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Email</td>
-<td>顧客のメールを指定します。メールが提供されていない場合、顧客IDに基づいてBloomreach Engagementの顧客プロファイルから取得されます。</td>
+<td>メール</td>
+<td>顧客のメールを指定します。メールが提供されていない場合、顧客IDに基づいてBloomreachエンゲージメントの顧客プロファイルから取得されます。</td>
 </tr>
 <tr>
-<td>Language</td>
-<td>テンプレートの言語バージョン。テンプレートに複数の言語バージョンが作成されている場合、このメールで使用するものを選択できます。</td>
+<td>言語</td>
+<td>テンプレートの言語バージョン。テンプレートに複数の言語バージョンが作成されている場合、このメールに使用するバージョンを選択できます。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="受信者の顧客id">受信者の顧客ID</h4>
+<h4 id="受信者顧客id">受信者顧客ID</h4>
 <table>
 <thead>
 <tr>
@@ -1166,8 +1165,8 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Transfer Identity</td>
-<td>リンク転送機能を有効にするかどうか。可能な値：<ul><li><code>Enabled</code> - デフォルト値、すべてのクリックを識別する<code>iitt</code>パラメータを追加します。</li><li><code>Disabled</code> - リンクに何も追加せず、アイデンティティ転送はありません。</li><li><code>First Click</code> - 最初のクリックのみを識別する<code>xnpe_tifc</code>を追加します。</li></ul></td>
+<td>識別転送</td>
+<td>リンク転送機能を有効にするかどうか。可能な値：<ul><li><code>Enabled</code> - デフォルト値、すべてのクリックで識別する<code>iitt</code>パラメータを追加します。</li><li><code>Disabled</code> - リンクに何も追加せず、識別転送はありません。</li><li><code>First Click</code> - 最初のクリックのみを識別する<code>xnpe_tifc</code>を追加します。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1181,16 +1180,16 @@ APIシークレット</li>
 </thead>
 <tbody>
 <tr>
-<td>Transfer User Identity</td>
-<td>リンク転送機能を有効にするかどうか。可能な値：<ul><li><code>enabled</code> (デフォルト値)</li><li><code>disabled</code></li><li><code>iitt</code> - リンクにアイデンティティを転送しない。</li></ul> この構成は、リクエストの本文中の<code>transferidentity</code>パラメータと同じです。ただし、一つだけ指定できます。構成の一部としてアイデンティティ転送を指定するとともに単独で指定するとエラーになります。</td>
+<td>ユーザー識別の転送</td>
+<td>リンク転送機能を有効にするかどうか。可能な値：<ul><li><code>enabled</code> (デフォルト値)</li><li><code>disabled</code></li><li><code>iitt</code> - リンクに識別情報を転送しない。</li></ul> この構成は、リクエストの本文の<code>transferidentity</code>パラメータと同じです。どちらか一方のみを指定する必要があります。構成の一部として識別転送を指定し、単独で指定するとエラーが発生します。</td>
 </tr>
 <tr>
-<td>Consent Category</td>
-<td>Engagementプラットフォームの同意を尊重するため、顧客の同意カテゴリを指定します。</td>
+<td>同意カテゴリ</td>
+<td>エンゲージメントプラットフォームの同意を尊重するために、顧客の同意カテゴリを指定します。</td>
 </tr>
 <tr>
-<td>Consent Category Tracking</td>
-<td>トラッキング同意を尊重するため、顧客のトラッキング同意カテゴリを指定します。</td>
+<td>トラッキング同意カテゴリ</td>
+<td>エンゲージメントプラットフォームのトラッキング同意を尊重するために、顧客のトラッキング同意カテゴリを指定します。</td>
 </tr>
 <tr>
 <td>メールテンプレートカスタムイベントプロパティ</td>
@@ -1198,7 +1197,7 @@ APIシークレット</li>
 </tr>
 <tr>
 <td>メールテンプレートカスタムヘッダー</td>
-<td>メールプロバイダーに送信するリクエストヘッダー。</td>
+<td>メールプロバイダに送信するリクエストヘッダ。</td>
 </tr>
 <tr>
 <td>メールテンプレートURLパラメータ</td>
@@ -1206,7 +1205,7 @@ APIシークレット</li>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---トランザクションsmsのトリガー">アクション - トランザクションSMSのトリガー</h3>
+<h3 id="トランザクショナルsmsのトリガー">トランザクショナルSMSのトリガー</h3>
 <h4 id="smscontent">SmsContent</h4>
 <table>
 <thead>
@@ -1218,7 +1217,7 @@ APIシークレット</li>
 <tbody>
 <tr>
 <td>テンプレートID</td>
-<td>送信したいSMSテンプレートのID。これは選択した事前定義テンプレートのURLで見つけることができます。</td>
+<td>送信したいSMSテンプレートのID。選択した事前定義テンプレートのURLで見つけることができます。</td>
 </tr>
 <tr>
 <td>メッセージ</td>
@@ -1226,15 +1225,15 @@ APIシークレット</li>
 </tr>
 <tr>
 <td>最大メッセージ部分数</td>
-<td>メッセージ部分の最大許容数。これを超えると、SMSメッセージは送信されません。最小値：<code>1</code>、最大値：<code>8</code>、デフォルト値：<code>8</code>。</td>
+<td>許可されるメッセージ部分の最大数。これを超えると、SMSメッセージは送信されません。最小値: <code>1</code>、最大値: <code>8</code>、デフォルト値: <code>8</code>。</td>
 </tr>
 <tr>
 <td>送信者</td>
 <td>あなたの送信者電話番号。</td>
 </tr>
 <tr>
-<td>SMSコンテンツパラメータ</td>
-<td>テンプレートで使用されるSMSのパーソナライゼーションに必要なすべてのデータを提供します。形式：<code>param_name</code>:&ldquo;value&rdquo;。例：<code>first_name</code>:&ldquo;Marian&rdquo;。</td>
+<td>Smsコンテンツパラメータ</td>
+<td>テンプレートで使用されるSMSのパーソナライゼーションに必要なすべてのデータを提供します。形式: <code>param_name</code>:&ldquo;value&rdquo;。例: <code>first_name</code>:&ldquo;Marian&rdquo;。</td>
 </tr>
 <tr>
 <td>キャンペーン名</td>
@@ -1253,15 +1252,15 @@ APIシークレット</li>
 <tbody>
 <tr>
 <td>電話</td>
-<td>顧客の電話番号を指定します。電話番号が提供されていない場合、それはBloomreach Engagementの顧客プロファイルから顧客IDに基づいて取得されます。</td>
+<td>顧客の電話番号を指定します。電話番号が提供されていない場合、顧客IDに基づいてBloomreach Engagementの顧客プロファイルから取得されます。</td>
 </tr>
 <tr>
 <td>言語</td>
-<td>テンプレートの言語バージョン。テンプレートがいくつかの言語バージョンを作成している場合、このSMSに使用するものを選択できます。</td>
+<td>テンプレートの言語バージョン。テンプレートに複数の言語バージョンが作成されている場合、このSMSに使用する言語を選択できます。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="受信者の顧客id-1">受信者の顧客ID</h4>
+<h4 id="受信者顧客id-1">受信者顧客ID</h4>
 <table>
 <thead>
 <tr>
@@ -1281,14 +1280,14 @@ APIシークレット</li>
 <tbody>
 <tr>
 <td>ユーザーIDの転送</td>
-<td>リンク転送機能を有効にするかどうか。可能な値：<ul><li><code>enabled</code> (デフォルト値)</li><li><code>disabled</code></li><li><code>iitt</code> - リンクにIDを転送しない。</li></ul> この構成は、リクエストの本文直接の<code>transferidentity</code>パラメータと同じです。ただし、一つだけ指定できます。構成の一部としてのID転送と単独での指定を同時に行うとエラーになります。</td>
+<td>リンク転送機能を有効にするかどうか。可能な値:<ul><li><code>enabled</code> (デフォルト値)</li><li><code>disabled</code></li><li><code>iitt</code> - リンクにIDを転送しない。</li></ul> この構成は、リクエストの本文の <code>transferidentity</code> パラメータと同じです。どちらか一方のみを指定する必要があります。構成と単独での転送IDの両方を指定するとエラーになります。</td>
 </tr>
 <tr>
 <td>同意カテゴリ</td>
 <td>Engagementプラットフォームでの同意を尊重するため、顧客の同意カテゴリを指定します。</td>
 </tr>
 <tr>
-<td>同意カテゴリトラッキング</td>
+<td>トラッキング同意カテゴリ</td>
 <td>Engagementプラットフォームでのトラッキング同意を尊重するため、顧客のトラッキング同意カテゴリを指定します。</td>
 </tr>
 <tr>
@@ -1301,7 +1300,7 @@ APIシークレット</li>
 </tr>
 <tr>
 <td>SMSテンプレートURLパラメータ</td>
-<td>セッション開始イベントのトラッキングに使用されるURLパラメータ。</td>
+<td>セッション開始イベントでのトラッキングに使用されるURLパラメータ。</td>
 </tr>
 </tbody>
 </table>
@@ -1365,7 +1364,7 @@ APIシークレット</li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年August月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1383,13 +1382,12 @@ APIシークレット</li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---update-customer-properties" href="javascript:void(0)">アクション - Update Customer Properties</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---update-customer-properties-batch" href="javascript:void(0)">アクション - Update Customer Properties Batch</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---add-event" href="javascript:void(0)">アクション - Add Event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---add-event-batch" href="javascript:void(0)">アクション - Add Event Batch</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---trigger-transactional-email" href="javascript:void(0)">アクション - Trigger Transactional Email</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3sms%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">アクション - トランザクションSMSのトリガー</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A1%A7%E5%AE%A2%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">顧客プロパティの更新</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A1%A7%E5%AE%A2%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E6%9B%B4%E6%96%B0" href="javascript:void(0)">顧客プロパティのバッチ更新</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">イベントの追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">イベントのバッチ追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">トランザクショナルメールのトリガー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%ABsms%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">トランザクショナルSMSのトリガー</a></li>
               </nav>
   </aside></nav>
 

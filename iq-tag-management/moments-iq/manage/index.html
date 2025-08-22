@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "10",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -628,7 +628,7 @@
   <h2 id="requirements">Requirements</h2>
 <ul>
 <li>Moments iQ experiences can only be created on Tealium iQ profiles. They cannot be created on profile libraries.</li>
-<li>If you have enabled <strong>Tag Marketplace Policy</strong> on your account, you also need to add the Moments iQ Experience tag to the <strong>Show</strong> list, otherwise the tag will not appear in the Tag Marketplace.</li>
+<li>If you have enabled <strong>Tag Marketplace Policy</strong> on your account, you also need to add the Moments iQ Experience tag to the <strong>Show</strong> list, otherwise the tag does not appear in the Tag Marketplace.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>To create a Moments iQ experience, navigate to the Tag Marketplace, search for <strong>Moments iQ</strong> and click <strong>+ Add</strong>. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
@@ -642,7 +642,12 @@
 <h3 id="experience-type-and-placement">Experience type and placement</h3>
 <p>Configure the following settings:</p>
 <ul>
-<li><strong>Code Version</strong>: Select the version of the Moments iQ experience generation code to use. If you change the code version, you must also update the template. Only Version 1 is currently available.</li>
+<li><strong>Code Version</strong>: Select the version of the Moments iQ experience generation code to use. If you change the code version, you must also update the template.
+<ul>
+<li><strong>2.0</strong>: This version supports all of the features described in this document.</li>
+<li><strong>1.0</strong>: This version does not support the <strong>Style Sheet</strong> method of configuring the experience style.</li>
+</ul>
+</li>
 <li><strong>Experience Type</strong>: The type of experience to create.
 <ul>
 <li><strong>Modal</strong>: The experience will appear as a popup window.</li>
@@ -687,6 +692,13 @@ The browser stores this information in local storage as the <code>momentsiq_supp
 </ul>
 </li>
 </ul>
+<h3 id="experience-background-image">Experience background image</h3>
+<p>Complete the following steps to add a background image to the experience:</p>
+<ol>
+<li>Under <strong>Image Placement</strong>, select whether the image background fills the left or right half of the modal.</li>
+<li>Under <strong>Image Position</strong>, select whether the image aligns with the left or the right of the experience window.</li>
+<li>Under <strong>Image URL</strong>, enter a link to an https-secured, externally hosted image. Suggested image size: 500px by 400px. The file must have a <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, or <code>.svg</code> file extension.</li>
+</ol>
 <h2 id="form">Form</h2>
 <h3 id="header">Header</h3>
 <p>Configure the text that appears on the experience with the following settings:</p>
@@ -696,7 +708,7 @@ The browser stores this information in local storage as the <code>momentsiq_supp
 <li><strong>Question Text</strong>: The question to ask your visitors.</li>
 </ul>
 <h3 id="answers">Answers</h3>
-<p>Moments iQ provides multiple question formats that allow you to customize the questions that guides the visitor to the right experience on your site.</p>
+<p>Moments iQ provides multiple question formats that allow you to customize the questions that guide the visitor to the right experience on your site.</p>
 <p>Configure the question and answers with the following settings:</p>
 <ul>
 <li><strong>Answer Type</strong>: The input type for the answer.
@@ -733,13 +745,21 @@ For example: <code>Red|Green</code></li>
 </ul>
 <p>You can set a fallback value that appears when no data is available to insert. Fallback values appear after a pair of pipe characters (for example, <code>{{VARIABLENAME || FALLBACK}}</code>).</p>
 <h2 id="style">Style</h2>
-<p>Configure the experience to match the appearance of your site. Enter or select the style settings for each element in the experience:</p>
+<p>Moments iQ experiences have multiple customizable areas, each of which supports a specific set of style properties. The following image provides a visual reference for the configurable components and the associated CSS-style properties that can be applied to each one. Use this guide to understand which configuration fields control the appearance of text, buttons, layout, and container styling.</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/moments-components.png"><img src="/images/early-access/moments-iq/moments-components.png"
          alt="Components of a Moments iQ experience"
          title="Components of a Moments iQ experience"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The secondary button settings are used only when <strong>Answer Type</strong> is set to <code>Button</code>.</p>
+<p>Configure this experience to match the appearance of your site. Select one of the following methods to configure the style of your experience:</p>
+<ul>
+<li><strong>Config Field</strong>: Enter style settings in a form for each element in the experience.</li>
+<li><strong>Style Sheet</strong>: Use a cascading style sheet (CSS) to apply styles to the experience.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Changes made using the <strong>Config Fields</strong> method do not impact the <strong>Style Sheet</strong> method, and changes made using the <strong>Style Sheet</strong> method do not impact the <strong>Config Fields</strong> method.</p>
+<p>If you have more than one Moments iQ experience tag, you must configure the style settings for each experience tag separately.</p>
+<h3 id="manually-enter-settings">Manually enter settings</h3>
+<p>Click <strong>Config Fields</strong> to enter style settings in a form:</p>
 <table>
 <thead>
 <tr>
@@ -776,36 +796,8 @@ For example: <code>Red|Green</code></li>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Primary Button Background Color</strong></td>
-<td>The background color of the primary button. The default value is <code>#1B1B1B</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>Secondary Button Background Color</strong></td>
-<td>The background color of the secondary button, as a hex code or standard color name. The default value is <code>#1B1B1B</code>.</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="experience-background-image">Experience background image</h3>
-<p>Complete the following steps to add a background image to the experience:</p>
-<ol>
-<li>Under <strong>Image Placement</strong>, select whether the image will background fill the left or right half of the modal.</li>
-<li>Under <strong>Image Position</strong>, select whether the image will align with the left or the right of the experience window.</li>
-<li>Under <strong>Image URL</strong>, enter a link to an https-secured, externally hosted image. Suggested image size: 500px by 400px. The file must have a <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, or <code>.svg</code> file extension.</li>
-</ol>
-<h3 id="container-styles">Container styles</h3>
 <h4 id="outer-container">Outer container</h4>
+<p>Configure the following settings for the outer container of the experience:</p>
 <table>
 <thead>
 <tr>
@@ -832,8 +824,13 @@ For example: <code>Red|Green</code></li>
 </tr>
 <tr>
 <td><strong>Outer Container Border Color</strong></td>
-<td>The color of the border around the outermost container of the experience, as a hex code or standard color name. You must set a border style to a value other than <code>none</code> for the border color to appear. The radius is <code>8px</code>.</td>
-<td>Black</td>
+<td>The color of the border around the outermost container of the experience, as a hex code or standard color name. You must set a border style to a value other than <code>none</code> for the border color to appear.</td>
+<td><code>Black</code></td>
+</tr>
+<tr>
+<td><strong>Outer Container Border Radius</strong></td>
+<td>The radius of the border around the outermost container of the experience. The default value is <code>8px</code>.</td>
+<td><code>8px</code></td>
 </tr>
 <tr>
 <td><strong>Outer Container Width</strong></td>
@@ -843,6 +840,7 @@ For example: <code>Red|Green</code></li>
 </tbody>
 </table>
 <h4 id="question-container">Question container</h4>
+<p>Configure the following settings for the question container of the experience:</p>
 <table>
 <thead>
 <tr>
@@ -854,7 +852,7 @@ For example: <code>Red|Green</code></li>
 <tbody>
 <tr>
 <td><strong>Question Container Margin</strong></td>
-<td>The margin size of the question&rsquo;s container. The default value is <code>0</code>.</td>
+<td>The margin size of the question container. The default value is <code>0</code>.</td>
 <td><code>0</code></td>
 </tr>
 <tr>
@@ -865,6 +863,7 @@ For example: <code>Red|Green</code></li>
 </tbody>
 </table>
 <h4 id="answer-container">Answer container</h4>
+<p>Configure the following settings for the answer container of the experience:</p>
 <table>
 <thead>
 <tr>
@@ -876,7 +875,7 @@ For example: <code>Red|Green</code></li>
 <tbody>
 <tr>
 <td><strong>Answer Container Margin</strong></td>
-<td>The margin size of the question&rsquo;s container. The default value is <code>0</code>.</td>
+<td>The margin size of the answer container. The default value is <code>0</code>.</td>
 <td><code>0</code></td>
 </tr>
 <tr>
@@ -896,12 +895,93 @@ For example: <code>Red|Green</code></li>
 </tr>
 </tbody>
 </table>
-<h2 id="rules-and-events">Rules and events</h2>
+<h4 id="button-style">Button style</h4>
+<p>Configure the following settings for the primary and secondary buttons:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Button Background Color</strong></td>
+<td>The background color of the primary button. The default value is <code>#1B1B1B</code>.</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+<tr>
+<td><strong>Secondary Button Background Color</strong></td>
+<td>The background color of the secondary button, as a hex code or standard color name. The default value is <code>#1B1B1B</code>. The secondary button settings are used only when <strong>Answer Type</strong> is set to <code>Button</code>.</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="css">CSS</h3>
+<p>Click <strong>Style Sheet</strong> to enter style settings in CSS format. A sample CSS file that contains all the available parameters and their default values is provided.</p>
+<figure><a class="slb" href="/images/early-access/moments-iq/moments_iq_css.png"><img src="/images/early-access/moments-iq/moments_iq_css.png"
+         alt="Moments iQ CSS"
+         title="Moments iQ CSS"/>
+    </a>
+</figure>
+<p>Guidelines for editing the CSS:</p>
+<ul>
+<li>The <code>--uniqueSurveyId--</code> variable is replaced automatically with the experience ID when publishing.</li>
+<li>If you switch from the <strong>Style Sheets</strong> method to the <strong>Config Fields</strong> method without saving the tag, your <strong>Style Sheet</strong> changes will be discarded.</li>
+<li>Do not change any of the class names in the CSS file.</li>
+</ul>
+<h4 id="experience-settings-with-css-dependencies">Experience settings with CSS dependencies</h4>
+<p>CSS properties that appear between slashes and asterisks (for example, <code>/*width:800px;*/</code>) are commented out. They represent alternate values for those properties when you set a use particular <strong>Experience Type</strong>, <strong>Experience Background Image</strong>, or <strong>Answer Type</strong> settings.</p>
+<h5 id="background-image-css-settings">Background image CSS settings</h5>
+<p>CSS properties preceded by a comment that begins with <code>/*default for image</code> represent values that we recommend for tags that use a background image.</p>
+<p>For example, the default value for the outer container width is 500 pixels:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_outerContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image type*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*width: 800px;*/</span>
+</span></span></code></pre></div><p>But if you configure the <strong>Experience Background Image</strong> settings, we recommend changing the width to 800 pixels. Uncomment the line that sets an 800 pixel width and comment out the line with a standard width of 500 pixels:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_outerContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*width: 500px;*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image type*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">800</span><span style="color:#66d9ef">px</span>;
+</span></span></code></pre></div><p>Be sure to make adjustments to the CSS file for all instances of properties preceded by the <code>/*default for image</code> comment.</p>
+<p>Also, if you set <strong>Image Position</strong> to <code>Right</code>, you need to update the <code>border-radius</code> property to use the alternative values as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_imageNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*border-radius: 8px 0px 0px 8px;*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image right*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>;
+</span></span></code></pre></div><h5 id="experience-type-settings">Experience type settings</h5>
+<p>CSS properties preceded by comments that begin with <code>/*default for modal*/</code> represent values that we recommend for tags with an <strong>Experience Type</strong> of <code>Modal</code> tags and a particular <strong>Experience Placement</strong> setting.</p>
+<p>For example, the default value for the outer container transformation is <code>translate(-50%, -50%);</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">translate</span><span style="color:#f92672">(</span><span style="color:#f92672">-50</span><span style="color:#f92672">%,</span> <span style="color:#f92672">-50</span><span style="color:#f92672">%);</span>
+</span></span></code></pre></div><p>However, if you set the <strong>Experience Placement</strong> to <code>Top-center</code> or <code>Bottom-center</code>, you need to comment out the standard value and uncomment the value recommended for the <code>transform</code> property to handle the new placement correctly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*transform: translate(-50%, 0%);*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal top-center, bottom-center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">translate</span><span style="color:#f92672">(</span><span style="color:#f92672">-50</span><span style="color:#f92672">%,</span> <span style="color:#f92672">0</span><span style="color:#f92672">%);</span>
+</span></span></code></pre></div><p>Comment and uncomment the lines with values for <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>, and <code>transform</code> as needed for the <strong>Experience Placement</strong> you selected.</p>
+<h5 id="button-type-css-settings">Button type CSS settings</h5>
+<p>When you set an <strong>Answer Type</strong> of <code>Button</code> for a tag, uncomment the lines with the values for the <code>answerOptionContainer</code> section:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_answerOptionContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for button type*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for button type column*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for button type row*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-right</span>: <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="rules-and-events">Rules and events</h2>
 <p>Load the experience on all pages or set conditions for when your experience appears. For more information about load rules and events, see <a href="/iq-tag-management/load-rules/about/">Load Rules</a> and <a href="/iq-tag-management/events/about/">Events</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To avoid data collisions, only one Moments iQ experience can appear on a page at a time. If you have multiple experiences, configure the load rules to ensure that only one experience loads at any time.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Use the following mappings with extensions to get dynamic values in the configurations or keep styling consistent from experience to experience:</p>
-<!-- For more information, see [Advanced data mappings](LINK TO ADVANCED DATA MAPPINGS WHEN IT'S WRITTEN). -->
 <h3 id="basic-parameters">Basic parameters</h3>
 <table>
 <thead>
@@ -1251,14 +1331,6 @@ For example: <code>Red|Green</code></li>
 <td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
 </tr>
-<tr>
-<td style="text-align:left"><code>textFieldContainer.flexDirection</code></td>
-<td style="text-align:left">String</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
-<td style="text-align:left">String</td>
-</tr>
 </tbody>
 </table>
 <h3 id="container-and-text-objects">Container and text objects</h3>
@@ -1423,7 +1495,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 15, 2025 
+          <p>This page was last updated:  August 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1443,12 +1515,13 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#properties" href="javascript:void(0)">Properties</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-type-and-placement" href="javascript:void(0)">Experience type and placement</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-tracking" href="javascript:void(0)">Experience tracking</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-background-image" href="javascript:void(0)">Experience background image</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#form" href="javascript:void(0)">Form</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#header" href="javascript:void(0)">Header</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#answers" href="javascript:void(0)">Answers</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#style" href="javascript:void(0)">Style</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#experience-background-image" href="javascript:void(0)">Experience background image</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#container-styles" href="javascript:void(0)">Container styles</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manually-enter-settings" href="javascript:void(0)">Manually enter settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#css" href="javascript:void(0)">CSS</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rules-and-events" href="javascript:void(0)">Rules and events</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-parameters" href="javascript:void(0)">Basic parameters</a></li>

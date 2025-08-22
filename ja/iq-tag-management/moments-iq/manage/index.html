@@ -636,7 +636,7 @@
   <h2 id="要件">要件</h2>
 <ul>
 <li>Moments iQ エクスペリエンスは、Tealium iQ プロファイルでのみ作成できます。プロファイルライブラリでは作成できません。</li>
-<li>アカウントで <strong>Tag Marketplace Policy</strong> が有効になっている場合は、Moments iQ Experience タグを <strong>Show</strong> リストに追加する必要があります。そうしないと、タグは Tag Marketplace に表示されません。</li>
+<li>アカウントで <strong>Tag Marketplace Policy</strong> が有効になっている場合、Moments iQ Experience タグを <strong>Show</strong> リストに追加する必要があります。そうしないと、タグは Tag Marketplace に表示されません。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
 <p>Moments iQ エクスペリエンスを作成するには、Tag Marketplace に移動し、<strong>Moments iQ</strong> を検索して <strong>+ Add</strong> をクリックします。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
@@ -650,7 +650,12 @@
 <h3 id="エクスペリエンスの種類と配置">エクスペリエンスの種類と配置</h3>
 <p>以下の構成を構成します：</p>
 <ul>
-<li><strong>コードバージョン</strong>: 使用する Moments iQ エクスペリエンス生成コードのバージョンを選択します。コードバージョンを変更する場合は、テンプレートも更新する必要があります。現在利用可能なのはバージョン1のみです。</li>
+<li><strong>コードバージョン</strong>: 使用する Moments iQ エクスペリエンス生成コードのバージョンを選択します。コードバージョンを変更する場合は、テンプレートも更新する必要があります。
+<ul>
+<li><strong>2.0</strong>: このバージョンは、このドキュメントで説明されているすべての機能をサポートしています。</li>
+<li><strong>1.0</strong>: このバージョンは、エクスペリエンススタイルを構成する <strong>Style Sheet</strong> メソッドをサポートしていません。</li>
+</ul>
+</li>
 <li><strong>エクスペリエンスタイプ</strong>: 作成するエクスペリエンスのタイプ。
 <ul>
 <li><strong>モーダル</strong>: エクスペリエンスはポップアップウィンドウとして表示されます。</li>
@@ -658,96 +663,35 @@
 </ul>
 </li>
 <li><strong>エクスペリエンス配置</strong>: モーダルウィンドウの位置。これは <strong>モーダル</strong> 配置オプションでのみ使用されます。</li>
-<li><strong>モーダル背景の不透明度</strong>: ページの残りの部分に適用する不透明度の強さを選択します。これによりコンテンツがより際立ちます。</li>
-<li><strong>配置セレクタ</strong>: エクスペリエンスを配置するページ要素を識別する CSS セレクタを入力します。これは <strong>埋め込み</strong> 配置オプションでのみ使用されます。要素のセレクタを決定する方法についての詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">要素の CSS セレクタを決定する方法</a>を参照してください。</li>
-<li><strong>エクスペリエンス位置</strong>: <strong>配置セレクタ</strong> の要素に対して挿入された要素の位置。
+<li><strong>モーダル背景の不透明度</strong>: ページの残りの部分に適用する不透明度の強さを選択します。これにより、コンテンツがより際立ちます。</li>
+<li><strong>配置セレクター</strong>: エクスペリエンスを配置するページ要素を識別する CSS セレクター。これは <strong>埋め込み</strong> 配置オプションでのみ使用されます。要素のセレクターを決定する方法についての詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363465-how-to-determine-the-css-selector-of-an-element">要素の CSS セレクターの決定方法</a>を参照してください。</li>
+<li><strong>エクスペリエンス位置</strong>: <strong>配置セレクター</strong> の要素に対して挿入された要素の位置。
 <ul>
-<li><strong>開始前</strong>: ページ要素の前。</li>
-<li><strong>開始後</strong>: ページ要素内、最初の子の前。</li>
-<li><strong>終了前</strong>: ページ要素内、最後の子の後。</li>
-<li><strong>終了後</strong>: ページ要素の後。</li>
-<li><strong>置換</strong>: ページ要素を置換。</li>
+<li><strong>Before Begin</strong>: ページ要素の前。</li>
+<li><strong>After Begin</strong>: ページ要素の内部、最初の子の前。</li>
+<li><strong>Before End</strong>: ページ要素の内部、最後の子の後。</li>
+<li><strong>After End:</strong> ページ要素の後。</li>
+<li><strong>Replace:</strong> ページ要素を置き換えます。</li>
 </ul>
 </li>
 <li><strong>Z-index</strong>: ページ上でのエクスペリエンスのzオーダー位置を上書きする値。高い値は低い値の上に積み重なります（例: &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;-1&rdquo;, &ldquo;auto&rdquo;）。</li>
 </ul>
-<h3 id="エクスペリエンスの追跡">エクスペリエンスの追跡</h3>
-<p>エクスペリエンスの動作を制御するために、以下の構成を構成します：</p>
-<ul>
-<li>
-<p><strong>エクスペリエンスの抑制</strong>: 条件に応じて、エクスペリエンスはリターン訪問に対して自動的に抑制されることがあります：</p>
-<ul>
-<li><strong>決してない</strong></li>
-<li><strong>閉じるボタンが選択された後</strong></li>
-<li><strong>回答が送信された後</strong></li>
-<li><strong>回答が送信された後または閉じるボタンが選択された後</strong><br>
-ブラウザはこの情報を <code>momentsiq_suppress</code> キーとしてローカル保存に保存します。</li>
-</ul>
-</li>
-<li>
-<p><strong>ロードの追跡</strong>: ページ上でエクスペリエンスが初めてロードされたときに追跡コールを送信するには <code>True</code> を選択します。</p>
-</li>
-<li>
-<p><strong>Tealium トラックタイプ</strong>: モーダルの閉じると送信アクションを追跡する際にトリガーされる <code>utag.track</code> コールで使用されるイベントのタイプ。</p>
-<ul>
-<li><strong>ビュー</strong></li>
-<li><strong>リンク</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="フォーム">フォーム</h2>
-<h3 id="ヘッダー">ヘッダー</h3>
-<p>以下の構成でエクスペリエンスに表示されるテキストを構成します：</p>
-<ul>
-<li><strong>ヘッダーテキスト</strong>: エクスペリエンスの上部に表示されるテキスト。</li>
-<li><strong>メインテキスト</strong>: ヘッダーテキストの下に表示されるテキスト。</li>
-<li><strong>質問テキスト</strong>: 訪問に尋ねる質問。</li>
-</ul>
-<h3 id="回答">回答</h3>
-<p>Moments iQ は複数の質問形式を提供し、訪問をサイトの適切なエクスペリエンスに導く質問をカスタマイズすることができます。</p>
-<p>質問と回答を以下の構成で構成します：</p>
-<ul>
-<li><strong>回答タイプ</strong>: 回答の入力タイプ。
-<ul>
-<li><strong>ラジオ</strong>: 訪問は表示されたリストから単一の回答のみを選択できます。</li>
-<li><strong>テキスト</strong>: 訪問は単行フィールドに回答を入力できます。</li>
-<li><strong>チェックボックス</strong>: 訪問はラベル付きの1つ以上のチェックボックスを選択できます。</li>
-<li><strong>ボタン</strong>: 訪問は表示された2つの回答のうちの1つをボタンとして選択できます。</li>
-</ul>
-</li>
-<li><strong>回答</strong>: 質問への回答：
-<ul>
-<li><strong>ラジオ</strong>: ラジオボタンの横に表示する回答のパイプ (|) 区切りリスト。パイプ文字は区切り文字であるため、ボタンラベルにパイプ文字を使用することはできません。
-例：<code>Red|Green|Blue|Teal</code></li>
-<li><strong>テキスト</strong>: テキストボックスのプレースホルダーテキスト。<br>
-例：<code>[&quot;好きな色は何ですか？&quot;]</code></li>
-<li><strong>チェックボックス</strong>: 各チェックボックスの横に表示する回答のパイプ (|) 区切りリスト。パイプ文字は区切り文字であるため、ボタンラベルにパイプ文字を使用することはできません。
-例：<code>Red|Green|Blue|Teal</code></li>
-<li><strong>ボタン</strong>: 主要および副ボタンのテキストを上書きする回答のパイプ (|) 区切りリスト。Moments iQ は最初の2つの値のみを使用します。パイプ文字は区切り文字であるため、ボタンラベルにパイプ文字を使用することはできません。
-例：<code>Red|Green</code></li>
-</ul>
-</li>
-<li><strong>リダイレクト URL</strong>: 特定の回答が選択され、主要ボタンがクリックされたときに訪問をリダイレクトする URL。URLをリダイレクトしたくない場合は、このフィールドを空白のままにします。たとえば、これは特別オファーを提供する感謝のページや、フォローアップの質問を尋ねる別のエクスペリエンスを含むページにリダイレクトすることができます。</li>
-<li><strong>リダイレクトが新しいタブを開く</strong>: 訪問がリダイレクトされるときに新しいタブを開くかどうかを選択します。このオプションは、<strong>リダイレクト URL</strong> に値を入力した場合にのみ利用可能です。</li>
-<li><strong>主要ボタンのテキスト</strong>: 主要ボタンのテキストラベル。デフォルト値は <code>Submit</code> です。</li>
-</ul>
-<h4 id="動的テキスト">動的テキスト</h4>
-<p><strong>ヘッダーテキスト</strong>、<strong>メインテキスト</strong>、<strong>質問テキスト</strong>、および<strong>回答</strong>パラメーターに動的テキストを作成するために変数を使用することができます。変数は2つのカーリーブレースの間に表示されます。例えば、<code>{{VARIABLENAME}}</code>。</p>
-<p>変数は次のデータを使用できます：</p>
-<ul>
-<li><code>utag.data</code> (例：<code>{{utag.data.customer_name}}</code>)</li>
-<li>Bオブジェクト (例：<code>{{b.customer_alias}}</code>)</li>
-<li>AudienceStream属性、Bオブジェクトを通じて (例：<code>{{b.variable_name}}</code>)</li>
-</ul>
-<p>データが利用できない場合に表示されるフォールバック値を構成することができます。フォールバック値はパイプ文字のペアの後に表示されます (例：<code>{{VARIABLENAME || FALLBACK}}</code>)。</p>
 <h2 id="スタイル">スタイル</h2>
-<p>サイトの外観に合わせてエクスペリエンスを構成します。エクスペリエンスの各要素に対してスタイル構成を入力または選択します：</p>
+<p>Moments iQのエクスペリエンスには、カスタマイズ可能な複数のエリアがあり、それぞれに特定のスタイルプロパティを適用できます。以下の画像は、構成可能なコンポーネントと各コンポーネントに適用可能なCSSスタイルプロパティを視覚的に参照できます。このガイドを使用して、テキスト、ボタン、レイアウト、コンテナのスタイリングの外観を制御する構成フィールドを理解してください。</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/moments-components.png"><img src="/images/early-access/moments-iq/moments-components.png"
-         alt="Moments iQ experience のコンポーネント"
-         title="Moments iQ experience のコンポーネント"/>
+         alt="Moments iQ experienceのコンポーネント"
+         title="Moments iQ experienceのコンポーネント"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>二次ボタンの構成は、<strong>回答タイプ</strong>が <code>Button</code> に構成されている場合にのみ使用されます。</p>
+<p>このエクスペリエンスをあなたのサイトの外観に合わせて構成してください。エクスペリエンスのスタイルを構成するために、以下の方法のいずれかを選択してください：</p>
+<ul>
+<li><strong>構成フィールド</strong>：エクスペリエンスの各要素に対してスタイル構成をフォームで入力します。</li>
+<li><strong>スタイルシート</strong>：カスケーディングスタイルシート（CSS）を使用して、エクスペリエンスにスタイルを適用します。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>構成フィールド</strong>を使用した変更は<strong>スタイルシート</strong>方法に影響を与えず、<strong>スタイルシート</strong>を使用した変更は<strong>構成フィールド</strong>方法に影響を与えません。</p>
+<p>複数のMoments iQエクスペリエンスタグを持っている場合は、各エクスペリエンスタグのスタイル構成を個別に構成する必要があります。</p>
+<h3 id="手動で構成を入力する">手動で構成を入力する</h3>
+<p><strong>構成フィールド</strong>をクリックして、フォームにスタイル構成を入力します：</p>
 <table>
 <thead>
 <tr>
@@ -764,7 +708,7 @@
 </tr>
 <tr>
 <td><strong>フォントサイズ</strong></td>
-<td>テキストのフォントサイズ、<code>px</code>または<code>em</code>での測定。</td>
+<td>テキストのフォントサイズ（<code>px</code>または<code>em</code>単位）。</td>
 <td><code>14px</code></td>
 </tr>
 <tr>
@@ -779,41 +723,13 @@
 </tr>
 <tr>
 <td><strong>テキストカラー</strong></td>
-<td>テキストの色、16進コードまたは標準色名で。</td>
+<td>テキストの色（16進コードまたは標準色名）。</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>説明</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>主要ボタンの背景色</strong></td>
-<td>主要ボタンの背景色。デフォルト値は <code>#1B1B1B</code>。</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-<tr>
-<td><strong>二次ボタンの背景色</strong></td>
-<td>二次ボタンの背景色、16進コードまたは標準色名で。デフォルト値は <code>#1B1B1B</code>。</td>
-<td><code>#1B1B1B</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="経験の背景画像">経験の背景画像</h3>
-<p>以下の手順に従って、経験に背景画像を追加します：</p>
-<ol>
-<li><strong>画像配置</strong>の下で、画像がモーダルの左半分または右半分を背景で埋めるかを選択します。</li>
-<li><strong>画像位置</strong>の下で、画像が経験ウィンドウの左または右に合わせるかを選択します。</li>
-<li><strong>画像URL</strong>の下で、https-securedで外部ホストされた画像へのリンクを入力します。推奨画像サイズ：500px x 400px。ファイルは<code>.png</code>、<code>.jpg</code>、<code>.gif</code>、または<code>.svg</code>のファイル拡張子を持っている必要があります。</li>
-</ol>
-<h3 id="コンテナスタイル">コンテナスタイル</h3>
 <h4 id="外部コンテナ">外部コンテナ</h4>
+<p>エクスペリエンスの外部コンテナに対して以下の構成を行います：</p>
 <table>
 <thead>
 <tr>
@@ -825,32 +741,38 @@
 <tbody>
 <tr>
 <td><strong>外部コンテナの背景色</strong></td>
-<td>経験の背景色としての16進コードまたは標準色名。デフォルト値は <code>#FCFCFC</code> です。</td>
+<td>エクスペリエンスの背景色（16進コードまたは標準色名）。デフォルト値は <code>#FCFCFC</code>。</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
 <td><strong>外部コンテナのマージン</strong></td>
-<td>最も外側のコンテナのマージンサイズ。デフォルト値は <code>0</code> です。マージン構成の詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">MDN Web Docs: margin</a>を参照してください。</td>
+<td>最も外側のコンテナのマージンサイズ。デフォルト値は <code>0</code>。マージン構成の詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">MDN Web Docs: margin</a>を参照してください。</td>
 <td><code>1px</code></td>
 </tr>
 <tr>
 <td><strong>外部コンテナのボーダースタイル</strong></td>
-<td>経験の最も外側のコンテナのボーダースタイル。デフォルト値は <code>none</code> です。</td>
+<td>エクスペリエンスの最も外側のコンテナのボーダースタイル。デフォルト値は <code>none</code>。</td>
 <td><code>none</code></td>
 </tr>
 <tr>
 <td><strong>外部コンテナのボーダーカラー</strong></td>
-<td>経験の最も外側のコンテナの周りのボーダーの色としての16進コードまたは標準色名。ボーダースタイルを <code>none</code> 以外の値に構成する必要があります。半径は <code>8px</code> です。</td>
-<td>Black</td>
+<td>エクスペリエンスの最も外側のコンテナのボーダーの色（16進コードまたは標準色名）。ボーダースタイルを <code>none</code>以外の値に構成する必要があります。</td>
+<td><code>Black</code></td>
+</tr>
+<tr>
+<td><strong>外部コンテナのボーダーラディウス</strong></td>
+<td>エクスペリエンスの最も外側のコンテナのボーダーの半径。デフォルト値は <code>8px</code>。</td>
+<td><code>8px</code></td>
 </tr>
 <tr>
 <td><strong>外部コンテナの幅</strong></td>
-<td>最も外側のコンテナの幅。デフォルト値は <code>500px</code> です。</td>
+<td>最も外側のコンテナの幅。デフォルト値は <code>500px</code>。</td>
 <td><code>500px</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="質問コンテナ">質問コンテナ</h4>
+<p>エクスペリエンスの質問コンテナに対して以下の構成を行います：</p>
 <table>
 <thead>
 <tr>
@@ -862,17 +784,18 @@
 <tbody>
 <tr>
 <td><strong>質問コンテナのマージン</strong></td>
-<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code> です。</td>
+<td>質問コンテナのマージンサイズ。デフォルト値は <code>0</code>。</td>
 <td><code>0</code></td>
 </tr>
 <tr>
 <td><strong>質問コンテナのテキストアライン</strong></td>
-<td>コンテナ内の質問テキストのアラインメント方向。デフォルト値は <code>start</code> です。</td>
+<td>コンテナ内の質問テキストの配置方向。デフォルト値は <code>start</code>。</td>
 <td><code>start</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="回答コンテナ">回答コンテナ</h4>
+<p>エクスペリエンスの回答コンテナに対して以下の構成を行います：</p>
 <table>
 <thead>
 <tr>
@@ -884,32 +807,113 @@
 <tbody>
 <tr>
 <td><strong>回答コンテナのマージン</strong></td>
-<td>質問のコンテナのマージンサイズ。デフォルト値は <code>0</code> です。</td>
+<td>回答コンテナのマージンサイズ。デフォルト値は <code>0</code>。</td>
 <td><code>0</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのテキストアライン</strong></td>
-<td>コンテナ内の回答テキストのアラインメント方向。デフォルト値は <code>start</code> です。</td>
+<td>コンテナ内の回答テキストの配置方向。デフォルト値は <code>start</code>。</td>
 <td><code>start</code></td>
 </tr>
 <tr>
 <td><strong>回答コンテナのフレックス方向</strong></td>
-<td>回答のアラインメント方向、縦方向の列または横方向の行として。デフォルト値は <code>column</code> です。</td>
+<td>回答の配置方向、縦（column）または横（row）。デフォルト値は <code>column</code>。</td>
 <td><code>column</code></td>
 </tr>
 <tr>
-<td><strong>回答コンテナのアラインアイテムズ</strong></td>
-<td>コンテナ内の回答のアラインメント方向（例：<code>start</code>、<code>flex-start</code>、または <code>self-start</code>）。デフォルト値は <code>flex-start</code> です。</td>
+<td><strong>回答コンテナのアイテムアライン</strong></td>
+<td>コンテナ内の回答の配置方向（例：<code>start</code>、<code>flex-start</code>、<code>self-start</code>）。デフォルト値は <code>flex-start</code>。</td>
 <td><code>flex-start</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="ルールとイベント">ルールとイベント</h2>
-<p>すべてのページで経験をロードするか、経験が表示される条件を構成します。ロードルールとイベントの詳細については、<a href="/ja/iq-tag-management/load-rules/about/">Load Rules</a> および <a href="/ja/iq-tag-management/events/about/">Events</a> を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>データの衝突を避けるため、一度に1つのMoments iQ経験のみがページに表示されるようにしてください。複数の経験がある場合は、ロードルールを構成して、一度に1つの経験のみがロードされるようにします。</p>
+<h4 id="ボタンスタイル">ボタンスタイル</h4>
+<p>プライマリおよびセカンダリボタンに対して以下の構成を行います：</p>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>プライマリボタンの背景色</strong></td>
+<td>プライマリボタンの背景色。デフォルト値は <code>#1B1B1B</code>。</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+<tr>
+<td><strong>セカンダリボタンの背景色</strong></td>
+<td>セカンダリボタンの背景色（16進コードまたは標準色名）。デフォルト値は <code>#1B1B1B</code>。<strong>回答タイプ</strong>が<code>Button</code>に構成されている場合のみ、セカンダリボタンの構成が使用されます。</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="css">CSS</h3>
+<p><strong>スタイルシート</strong>をクリックして、CSS形式でスタイル構成を入力します。利用可能なすべてのパラメータとそのデフォルト値を含むサンプルCSSファイルが提供されています。</p>
+<figure><a class="slb" href="/images/early-access/moments-iq/moments_iq_css.png"><img src="/images/early-access/moments-iq/moments_iq_css.png"
+         alt="Moments iQ CSS"
+         title="Moments iQ CSS"/>
+    </a>
+</figure>
+<p>CSSの編集ガイドライン：</p>
+<ul>
+<li><code>--uniqueSurveyId--</code>変数は公開時に自動的にエクスペリエンスIDに置き換えられます。</li>
+<li><strong>スタイルシート</strong>方法から<strong>構成フィールド</strong>方法に切り替えてタグを保存せずに離れると、<strong>スタイルシート</strong>の変更は破棄されます。</li>
+<li>CSSファイル内のクラス名を変更しないでください。</li>
+</ul>
+<h4 id="css依存のエクスペリエンス構成">CSS依存のエクスペリエンス構成</h4>
+<p>スラッシュとアスタリスク（例：<code>/*width:800px;*/</code>）で囲まれたCSSプロパティはコメントアウトされています。これらは、特定の<strong>エクスペリエンスタイプ</strong>、<strong>エクスペリエンス背景画像</strong>、または<strong>回答タイプ</strong>構成を使用する場合のそれらのプロパティの代替値を表します。</p>
+<h5 id="背景画像css構成">背景画像CSS構成</h5>
+<p>コメントで始まるCSSプロパティ（<code>/*default for image</code>）は、背景画像を使用するタグに推奨される値を表します。</p>
+<p>例えば、外部コンテナの幅のデフォルト値は500ピクセルです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_outerContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image type*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*width: 800px;*/</span>
+</span></span></code></pre></div><p>しかし、<strong>エクスペリエンス背景画像</strong>構成を構成する場合は、幅を800ピクセルに変更することをお勧めします。800ピクセルの幅を構成する行のコメントを外し、標準の500ピクセルの幅の行をコメントアウトします：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_outerContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*width: 500px;*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image type*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">800</span><span style="color:#66d9ef">px</span>;
+</span></span></code></pre></div><p><code>/*default for image</code>コメントで先行するすべてのプロパティのインスタンスに対してCSSファイルを調整してください。</p>
+<p>また、<strong>画像位置</strong>を<code>Right</code>に構成する場合は、<code>border-radius</code>プロパティを代替値を使用するように更新する必要があります：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_imageNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*border-radius: 8px 0px 0px 8px;*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for image right*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span>;
+</span></span></code></pre></div><h5 id="エクスペリエンスタイプ構成">エクスペリエンスタイプ構成</h5>
+<p><code>/*default for modal*/</code>で始まるコメントで先行するCSSプロパティは、<code>Modal</code>タグの<strong>エクスペリエンスタイプ</strong>および特定の<strong>エクスペリエンス配置</strong>構成に推奨される値を表します。</p>
+<p>例えば、外部コンテナの変換のデフォルト値は<code>translate(-50%, -50%);</code>です：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">translate</span><span style="color:#f92672">(</span><span style="color:#f92672">-50</span><span style="color:#f92672">%,</span> <span style="color:#f92672">-50</span><span style="color:#f92672">%);</span>
+</span></span></code></pre></div><p>しかし、<strong>エクスペリエンス配置</strong>を<code>Top-center</code>または<code>Bottom-center</code>に構成する場合は、標準値をコメントアウトして、<code>transform</code>プロパティの推奨値のコメントを外す必要があります：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*transform: translate(-50%, 0%);*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*default for modal top-center, bottom-center*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">transform</span><span style="color:#f92672">:</span> <span style="color:#f92672">translate</span><span style="color:#f92672">(</span><span style="color:#f92672">-50</span><span style="color:#f92672">%,</span> <span style="color:#f92672">0</span><span style="color:#f92672">%);</span>
+</span></span></code></pre></div><p>選択した<strong>エクスペリエンス配置</strong>に応じて、<code>top</code>、<code>left</code>、<code>right</code>、<code>bottom</code>、<code>transform</code>の値の行をコメントアウトおよびコメント解除する必要があります。</p>
+<h5 id="ボタンタイプのcss構成">ボタンタイプのCSS構成</h5>
+<p>タグの<strong>回答タイプ</strong>を<code>Button</code>に構成する場合、<code>answerOptionContainer</code>セクションの値の行のコメントを解除します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">--uniqueSurveyId--_MIQ_answerOptionContainer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*ボタンタイプのデフォルト*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*ボタンタイプ列のデフォルト*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*ボタンタイプ行のデフォルト*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-right</span>: <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="ルールとイベント">ルールとイベント</h2>
+<p>すべてのページで体験をロードするか、体験が表示される条件を構成します。ロードルールとイベントについての詳細は、<a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>および<a href="/ja/iq-tag-management/events/about/">イベント</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データの衝突を避けるため、1ページに表示できるMoments iQ体験は1つだけです。複数の体験がある場合は、ロードルールを構成して、一度に1つの体験のみがロードされるようにします。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>拡張機能を使用して、構成で動的な値を取得するための以下のマッピングを使用するか、経験から経験へのスタイリングを一貫して保ちます：</p>
-<!-- 詳細については、[Advanced data mappings](LINK TO ADVANCED DATA MAPPINGS WHEN IT'S WRITTEN)を参照してください。 -->
+<p>拡張機能を使用して、構成で動的な値を取得するか、体験から体験へのスタイリングを一貫させるための以下のマッピングを使用します：</p>
 <h3 id="基本パラメータ">基本パラメータ</h3>
 <table>
 <thead>
@@ -923,12 +927,12 @@
 <tr>
 <td style="text-align:left"><code>type</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験のタイプ</td>
+<td style="text-align:left">体験のタイプ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>placement</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験の配置</td>
+<td style="text-align:left">体験の配置</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>selector</code></td>
@@ -938,7 +942,7 @@
 <tr>
 <td style="text-align:left"><code>position</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">経験の位置</td>
+<td style="text-align:left">体験の位置</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>imagePosition</code></td>
@@ -963,7 +967,7 @@
 <tr>
 <td style="text-align:left"><code>redirect_open_tab</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">タブでリダイレクトを開く</td>
+<td style="text-align:left">新しいタブでリダイレクトを開く</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>zindex</code></td>
@@ -1045,7 +1049,7 @@
 <tr>
 <td style="text-align:left"><code>headerTitle.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">ヘッダーフォントの重さ</td>
+<td style="text-align:left">ヘッダーフォントの太さ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.color</code></td>
@@ -1070,7 +1074,7 @@
 <tr>
 <td style="text-align:left"><code>mainBodyText.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">メインテキストのフォントの重さ</td>
+<td style="text-align:left">メインテキストのフォントの太さ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.color</code></td>
@@ -1095,7 +1099,7 @@
 <tr>
 <td style="text-align:left"><code>questionContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">質問フォントの重さ</td>
+<td style="text-align:left">質問フォントの太さ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.color</code></td>
@@ -1120,7 +1124,7 @@
 <tr>
 <td style="text-align:left"><code>answerContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">回答フォントの重さ</td>
+<td style="text-align:left">回答フォントの太さ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.color</code></td>
@@ -1145,7 +1149,7 @@
 <tr>
 <td style="text-align:left"><code>primaryButton.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">プライマリボタンのフォントの重さ</td>
+<td style="text-align:left">プライマリボタンのフォントの太さ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>secondaryButton.color</code></td>
@@ -1170,7 +1174,7 @@
 <tr>
 <td style="text-align:left"><code>secondaryButton.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">セカンダリボタンのフォントの重さ</td>
+<td style="text-align:left">セカンダリボタンのフォントの太さ</td>
 </tr>
 </tbody>
 </table>
@@ -1259,14 +1263,6 @@
 <td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
 </tr>
-<tr>
-<td style="text-align:left"><code>textFieldContainer.flexDirection</code></td>
-<td style="text-align:left">String</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
-<td style="text-align:left">String</td>
-</tr>
 </tbody>
 </table>
 <h3 id="コンテナとテキストオブジェクト">コンテナとテキストオブジェクト</h3>
@@ -1312,7 +1308,7 @@
 <tr>
 <td style="text-align:left"><code>outerContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">外部コンテナ</td>
+<td style="text-align:left">外側コンテナ</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>radioContainer</code></td>
@@ -1337,20 +1333,20 @@
 <tr>
 <td style="text-align:left"><code>imageNode</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">画像要素</td>
+<td style="text-align:left">画像エレメント</td>
 </tr>
 </tbody>
 </table>
 <h3 id="データレイヤー変数">データレイヤー変数</h3>
-<p>以下の変数が自動的にデータレイヤーに追加されます：</p>
+<p>体験は自動的に以下の変数をデータレイヤーに追加します：</p>
 <pre tabindex="0"><code>momentsiq_id, UDO Variable
 momentsiq_question1, UDO Variable
 momentsiq_question1_type, UDO Variable
 momentsiq_questions_answered, UDO Variable
 momentsiq_answer1, UDO Variable
 momentsiq_suppress, Local Storage Variable
-</code></pre><h2 id="クライアントサイドデータ永続化">クライアントサイドデータ永続化</h2>
-<p>Moments iQの体験に対する訪問の反応をクライアントサイドツールのみでパーソナライズしたい場合、訪問の反応をPersist data values拡張クッキーで保存する必要があります。</p>
+</code></pre><h2 id="クライアントサイドデータの永続化">クライアントサイドデータの永続化</h2>
+<p>訪問の回答を使用して訪問の体験をパーソナライズする場合、訪問の回答をPersist data values拡張機能のクッキーで保存する必要があります。</p>
 <p>以下の画像は、そのような拡張の例を示しています：</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/manage-moments-persist-data-value.png"><img src="/images/early-access/moments-iq/manage-moments-persist-data-value.png"
          alt="Persist Data Value"
@@ -1359,18 +1355,18 @@ momentsiq_suppress, Local Storage Variable
 </figure>
 <p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist data value extension</a>を参照してください。</p>
 <h2 id="サーバーサイド統合">サーバーサイド統合</h2>
-<p>Moments iQをAudienceStreamやEventStreamなどのサーバーサイド製品と統合する予定がある場合、Tealium Collectタグを通じてデータを収集し、Tealium iQをAudienceStreamプロファイルにリンクする必要があります。</p>
-<p>サーバーサイド属性をエンリッチするためには、<code>momentsiq_answer1</code>が回答を含み、<code>momentsiq_id</code>が作成した体験のUIDと一致することを確認するルールを作成します。</p>
+<p>Moments iQをAudienceStreamやEventStreamなどのサーバーサイド製品と統合する予定の場合、Tealium Collectタグを通じてデータを収集し、Tealium iQをAudienceStreamプロファイルにリンクする必要があります。</p>
+<p>サーバーサイド属性をエンリッチするために、<code>momentsiq_answer1</code>が回答を含み、<code>momentsiq_id</code>が作成した体験のUIDと一致することを確認するルールを作成します。</p>
 <p>例：</p>
 <figure><a class="slb" href="/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png"><img src="/images/early-access/moments-iq/manage-moments-audiencestream-attribute-setup.png"
          alt="Attribute and rules configuration"
          title="Attribute and rules configuration"/>
     </a>
 </figure>
-<p>また、Moments iQのルールでAudienceStream変数を活用する予定がある場合、データレイヤーのエンリッチされた化を有効にする必要があります。</p>
-<p>詳細については、<a href="/ja/server-side/attributes/data-layer-enrichment/about/">About data layer enrichment</a>および<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>を参照してください。</p>
-<h2 id="保存して公開">保存して公開</h2>
-<p>体験をテストしてリリースするには、他のタグと同じワークフローに従ってください。詳細については、<a href="/ja/iq-tag-management/tags/about/">About tags</a>を参照してください。</p>
+<p>また、Moments iQのルールでAudienceStream変数を活用する予定の場合、データレイヤーのエンリッチされた情報を有効にする必要があります。</p>
+<p>詳細については、<a href="/ja/server-side/attributes/data-layer-enrichment/about/">データレイヤーのエンリッチされた情報について</a>および<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>を参照してください。</p>
+<h2 id="保存と公開">保存と公開</h2>
+<p>体験をテストしてリリースするには、他のタグと同じワークフローに従います。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
 
 </div>
 
@@ -1431,7 +1427,7 @@ momentsiq_suppress, Local Storage Variable
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月18日
+          <p>最終更新日 ::  2025年August月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1450,13 +1446,9 @@ momentsiq_suppress, Local Storage Variable
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3" href="javascript:void(0)">プロパティ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E9%85%8D%E7%BD%AE" href="javascript:void(0)">エクスペリエンスの種類と配置</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">エクスペリエンスの追跡</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" href="javascript:void(0)">フォーム</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC" href="javascript:void(0)">ヘッダー</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%9B%9E%E7%AD%94" href="javascript:void(0)">回答</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB" href="javascript:void(0)">スタイル</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%8C%E9%A8%93%E3%81%AE%E8%83%8C%E6%99%AF%E7%94%BB%E5%83%8F" href="javascript:void(0)">経験の背景画像</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB" href="javascript:void(0)">コンテナスタイル</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%81%A7%E6%A7%8B%E6%88%90%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B" href="javascript:void(0)">手動で構成を入力する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#css" href="javascript:void(0)">CSS</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">ルールとイベント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%9F%BA%E6%9C%AC%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">基本パラメータ</a></li>
@@ -1464,9 +1456,9 @@ momentsiq_suppress, Local Storage Variable
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">コンテナフォーマットパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%A8%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">コンテナとテキストオブジェクト</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E5%A4%89%E6%95%B0" href="javascript:void(0)">データレイヤー変数</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E6%B0%B8%E7%B6%9A%E5%8C%96" href="javascript:void(0)">クライアントサイドデータ永続化</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%B0%B8%E7%B6%9A%E5%8C%96" href="javascript:void(0)">クライアントサイドデータの永続化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E7%B5%B1%E5%90%88" href="javascript:void(0)">サーバーサイド統合</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B" href="javascript:void(0)">保存して公開</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BF%9D%E5%AD%98%E3%81%A8%E5%85%AC%E9%96%8B" href="javascript:void(0)">保存と公開</a></li>
               </nav>
   </aside></nav>
 
