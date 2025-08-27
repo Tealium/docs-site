@@ -216,16 +216,21 @@
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>This is an older version of <a href="/api/v2/getting-started/auth/">the current Tealium API</a>.</p>
-<p>The API can only be used by users with a valid Tealium account. The API supports authentication using an email address and password to verify user identity. Prior to accessing any of the API endpoints, you must authenticate to start a session. All subsequent calls use a session cookie and <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF token</a> for security purposes.x</p>
+<p>The API can only be used by users with a valid Tealium account. The API supports authentication using an email address and password to verify user identity. Prior to accessing any of the API endpoints, you must authenticate to start a session. All subsequent calls use a session cookie and <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF token</a> for security purposes.</p>
 <h2 id="login">Login</h2>
-<p>Upon a successful login you are granted two (2) items: a cookie named <strong>JSESSIONID</strong> and a token named <strong>utk</strong>. These values are then used to authenticate all subsequent API calls.</p>
+<p>Upon a successful login you are granted two items:</p>
+<ul>
+<li>A cookie named <code>JSESSIONID</code>.</li>
+<li>A token named <code>utk</code>.</li>
+</ul>
+<p>These values are then used to authenticate all subsequent API calls.</p>
 <h3 id="resource-url">Resource URL</h3>
 <p><code>POST /v1/login</code></p>
-<p>cURL Request</p>
+<p>cURL request:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -d username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{email}&#39;</span> -d password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{password}&#39;</span> https://api.tealiumiq.com/v1/login
-</span></span></code></pre></div><p>Example Request</p>
+</span></span></code></pre></div><p>Example request:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -d username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user@example.com&#39;</span> -d password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;password123&#39;</span> https://api.tealiumiq.com/v1/login
-</span></span></code></pre></div><p>Example Response</p>
+</span></span></code></pre></div><p>Example response:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Cache-Control: no-cache,no-store,must-revalidate
@@ -244,20 +249,20 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;utk&#34;</span>: <span style="color:#e6db74">&#34;65489FMSTJGF549870KSH&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>From this response you would make note of the following values for all subsequent API calls:</p>
+</span></span></code></pre></div><p>From this response, you would make note of the following values for all subsequent API calls:</p>
 <p>(Sample Values)</p>
 <ul>
-<li>JSESSION = 3513642946826543477</li>
-<li>utk = 65489FMSTJGF549870KSH</li>
+<li>JSESSION = <code>3513642946826543477</code></li>
+<li>utk = <code>65489FMSTJGF549870KSH</code></li>
 </ul>
 <h3 id="error-messages">Error messages</h3>
-<p>If the call fails, the API returns a <strong>401 Authentication Failure</strong> error. Here are the error messages you can expect to see:</p>
+<p>If the call fails, the API returns a <code>401 Authentication Failure</code> error. Here are the error messages you can expect to see:</p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1401,&lt;br&gt;  &quot;message&quot; : &quot;Authentication Failed&quot;&lt;br&gt;}</code></p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1402,&lt;br&gt;  &quot;message&quot; : &quot;Too many unsuccessful login attempts. Please try again in 10 minutes&quot; &lt;br&gt;}</code></p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1469,&lt;br&gt;  &quot;message&quot; : &quot;Although the user is authenticated, the request is denied due of lack of proper permissions&quot; &lt;br&gt;}</code></p>
 <h2 id="logout">Logout</h2>
 <p>Terminates the current session for the logged-in user.</p>
-<p><strong>NOTE</strong>: Making this API call is optional because a user is automatically logged out after their session expires.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This API call is optional because a user is automatically logged out after their session expires.</p>
 <h3 id="resource-url-1">Resource URL</h3>
 <p>POST <a href="https://api.tealiumiq.com/v1/logout">https://api.tealiumiq.com/v1/logout</a></p>
 <h3 id="request-header">Request header</h3>
@@ -273,17 +278,17 @@
 <tr>
 <td><a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">Content-type</a></td>
 <td>Indicates the MIME type of the body of the GET request</td>
-<td>application/x-www-form-urlencoded</td>
+<td><code>application/x-www-form-urlencoded</code></td>
 </tr>
 <tr>
 <td>JSESSION cookie</td>
 <td>Cookie for sending jsession ID. For example, the unique session identifier.</td>
-<td>JSESSIONID=415072043799098022</td>
+<td><code>JSESSIONID=415072043799098022</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="example-response">Example response</h3>
-<p>The API returns <strong>status 200 OK</strong> upon successful logout.</p>
+<p>The API returns <code>status 200 OK</code> upon successful logout.</p>
 
 </div>
 
@@ -329,7 +334,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  August 26, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

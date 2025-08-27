@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="iQタグAPI" />
+    <meta property="og:title" content="iQ タグ API" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/api-v3/iq-profiles/iq-tags-api/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="iQタグAPIを使用すると、iQタグ管理プロファイルでタグ構成をプログラムで作成、更新、削除できます。" />
+<meta property="og:description" content="iQ タグ API を使用すると、iQ タグ管理プロファイルでタグ構成をプログラムで作成、更新、削除できます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>iQタグAPI | iQプロファイルAPI | Tealiumドキュメント</title>
+    <title>iQ タグ API | iQプロファイルAPI | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -159,7 +159,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ ロードルール API</a></li>
     <li data-level="5" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".early-access-iq-tags-api">iQタグAPI</a></li></ul>
+        <a href="/ja/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".early-access-iq-tags-api">iQ タグ API</a></li></ul>
       </li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li>
@@ -301,7 +301,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">iQタグAPI</h1>
+<h1 class="lh-title mt30 mb3">iQ タグ API</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -309,27 +309,27 @@
 
   
     <p class="f4 fw3 lh-copy">
-      iQタグAPIを使用すると、iQタグ管理プロファイルでタグ構成をプログラムで作成、更新、削除できます。
+      iQ タグ API を使用すると、iQ タグ管理プロファイルでタグ構成をプログラムで作成、更新、削除できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>このAPIと利用可能なオブジェクトフィールドについて詳しくは、<a href="/ja/early-access/api/api-v3/iq-profiles/about/">iQプロファイルAPI</a>および<a href="/ja/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/">iQプロファイルオブジェクト</a>を参照してください。</p>
-<h2 id="使い方">使い方</h2>
-<p><code>PATCH</code> メソッドを使用して、iQプロファイルオブジェクトのコンポーネントを作成、更新、削除します。</p>
+  <p>この API と利用可能なオブジェクトフィールドについて詳しくは、<a href="/ja/early-access/api/api-v3/iq-profiles/about/">iQ プロファイル API</a> および <a href="/ja/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/">iQ プロファイルオブジェクト</a> を参照してください。</p>
+<h2 id="動作原理">動作原理</h2>
+<p><code>PATCH</code> メソッドを使用して、iQ プロファイルオブジェクトのコンポーネントを作成、更新、削除します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>PATCHメソッドを使用すると、保存または名前を付けて保存を使用してプロファイルタグをプログラムで変更します。APIで変更を加えた後、アプリケーションにログインして公開する必要があります。</p>
-<h3 id="curlリクエストの例">cURLリクエストの例</h3>
+</span></span></code></pre></div><p>PATCH メソッドを使用すると、保存または名前を付けて保存を使用してプロファイルタグをプログラムで変更します。API を使用して変更した後でも、アプリケーションにログインして公開する必要があります。</p>
+<h3 id="curl-リクエストの例">cURL リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request PATCH <span style="color:#e6db74">&#39;https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9&#39;</span>  <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data <span style="color:#960050;background-color:#1e0010">&#39;</span>
 </span></span></code></pre></div><h2 id="認証">認証</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーではなく、すべてのAPI呼び出しにベアラートークンが使用されます。APIキーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証応答には、後続のサーバーサイドAPI呼び出しで使用する必要がある地域固有のホスト名が含まれています。</p>
-<p>APIキーからベアラートークンを生成する方法については、<a href="/ja/api/v3/getting-started/authentication/">認証</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>API キーではなく、すべての API 呼び出しにベアラートークンが使用されます。API キーは認証呼び出しでのみ使用されます。ベアラートークンに加えて、認証応答には後続のサーバーサイド API 呼び出しで使用する必要がある地域固有のホスト名が含まれています。</p>
+<p>API キーからベアラートークンを生成する方法については、<a href="/ja/api/v3/getting-started/authentication/">認証</a> を参照してください。</p>
 <h2 id="プロファイルフィールド">プロファイルフィールド</h2>
-<p>プロファイルタグは、以下の可能なフィールドを含むJSONオブジェクトです：</p>
+<p>プロファイルタグは、以下の可能なフィールドを含む JSON オブジェクトです：</p>
 <table>
 <thead>
 <tr>
@@ -344,13 +344,13 @@
 <td><code>versionTitle</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>結果として保存されるバージョンのタイトル。<br><code>saveType</code>が<code>saveAs</code>に構成されている場合のデフォルト：<code>API | {TIMESTAMP}</code><br><code>saveType</code>が<code>save</code>に構成されている場合のデフォルト：既存のバージョンタイトル</td>
+<td>結果として保存されるバージョンのタイトル。<br> <code>saveType</code> が <code>saveAs</code> に構成されている場合のデフォルト： <code>API | {TIMESTAMP}</code><br> <code>saveType</code> が <code>save</code> に構成されている場合のデフォルト：既存のバージョンタイトル</td>
 </tr>
 <tr>
 <td><code>saveType</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>PATCHリクエストで実行する保存のタイプ：<code>save</code>または<code>saveAs</code>。デフォルトは<code>saveAs</code>です。</td>
+<td>PATCH リクエストで実行する保存のタイプ： <code>save</code> または <code>saveAs</code>。デフォルトは <code>saveAs</code>。</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
@@ -368,31 +368,31 @@
 <td><code>op</code></td>
 <td>文字列</td>
 <td>必須</td>
-<td>実行する操作：<code>add</code>、<code>replace</code>、または<code>remove</code>。</td>
+<td>実行する操作： <code>add</code>, <code>replace</code>, <code>remove</code>。</td>
 </tr>
 <tr>
 <td><code>path</code></td>
 <td>文字列</td>
 <td>必須</td>
-<td>更新するコンポーネントタイプとIDの形式：<code>/{TYPE}/{ID}</code>。</td>
+<td>更新するコンポーネントタイプと ID の形式：<code>/{TYPE}/{ID}</code>。</td>
 </tr>
 <tr>
 <td><code>value.object</code></td>
 <td>文字列</td>
 <td>必須</td>
-<td>更新されるオブジェクトタイプ：<code>variable</code>、<code>extension</code>、<code>event</code>、または<code>tag</code>。</td>
+<td>更新されるオブジェクトタイプ： <code>variable</code>, <code>extension</code>, <code>event</code>, <code>tag</code>。</td>
 </tr>
 <tr>
 <td><code>value.tagID</code></td>
 <td>文字列</td>
 <td>必須</td>
-<td>ユニークなタグテンプレートID。タグIDを取得するにはGETリクエストを使用します。この値はタグUIDとは異なります。</td>
+<td>ユニークなタグテンプレート ID。GET リクエストを使用してタグ ID を取得します。この値はタグ UID とは異なります。</td>
 </tr>
 <tr>
 <td><code>value.status</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>オン/オフの状態：<code>active</code>または<code>inactive</code>。</td>
+<td>オン/オフの状態： <code>active</code> または <code>inactive</code>。</td>
 </tr>
 <tr>
 <td><code>value.notes</code></td>
@@ -403,18 +403,18 @@
 <tr>
 <td><code>value.name</code></td>
 <td>文字列</td>
-<td>必須（add/replaceの場合）</td>
+<td>追加/置換時に必須</td>
 <td>タグの名前。</td>
 </tr>
 <tr>
 <td><code>value.selectedTargets</code></td>
-<td>マップ&lt;string, Boolean&gt;</td>
+<td>マップ &lt;string, Boolean&gt;</td>
 <td>任意</td>
-<td>コンポーネントを公開する環境のオブジェクト。<code>{   &quot;prod&quot; : true|false,   &quot;qa&quot; : true|false,   &quot;dev&quot; : true|false }</code> <br>デフォルト：すべての環境が<code>true</code>に構成されています。</td>
+<td>コンポーネントを公開する環境のオブジェクト。 <code>{   &quot;prod&quot; : true|false,   &quot;qa&quot; : true|false,   &quot;dev&quot; : true|false }</code> <br>デフォルト：すべての環境が <code>true</code> に構成されています。</td>
 </tr>
 <tr>
 <td><code>value.configuration</code></td>
-<td>マップ&lt;String, Object&gt;</td>
+<td>マップ &lt;String, Object&gt;</td>
 <td>任意</td>
 <td>ベンダーによって提供されるタグ構成の文字列とオブジェクトのマップ。構成は各タグに固有です。詳細については、タグのドキュメントを参照してください。</td>
 </tr>
@@ -422,7 +422,7 @@
 <td><code>value.advancedConfiguration</code></td>
 <td>オブジェクト</td>
 <td>任意</td>
-<td>タグ構成構成に対応する高度な構成のセット。<br><code>advConfigBundle</code> — <strong>True</strong> または <strong>False</strong><br> <code>advConfigLoadType</code> — <strong>True</strong> または <strong>False</strong><br> <code>advConfigOptOut</code> — <strong>True</strong><br> <code>advConfigSend</code>— <strong>True</strong> または <strong>False</strong> <br> <code>advConfigSrc</code> — テキストフィールド<br> <code>tagTiming</code> — <strong>DOM Ready</strong> または <strong>Prioritized</strong></td>
+<td>タグ構成構成に対応する高度な構成のセット。 <br><code>advConfigBundle</code> — <strong>True</strong> または <strong>False</strong><br> <code>advConfigLoadType</code> — <strong>True</strong> または <strong>False</strong><br> <code>advConfigOptOut</code> — <strong>True</strong><br> <code>advConfigSend</code>— <strong>True</strong> または <strong>False</strong> <br> <code>advConfigSrc</code> — テキストフィールド<br> <code>tagTiming</code> — <strong>DOM Ready</strong> または <strong>Prioritized</strong></td>
 </tr>
 <tr>
 <td><code>value.rules</code></td>
@@ -432,9 +432,9 @@
 </tr>
 <tr>
 <td><code>value.dataMappings</code></td>
-<td>マップ&lt;String, String&gt;</td>
+<td>マップ &lt;String, String&gt;</td>
 <td>任意</td>
-<td>Tealium IQ変数とその対応するマップ先、変数名、データタイプを含むオブジェクト。マップされた変数トリガーの特定の形式は、タグ構成の<strong>Data Mappings</strong>画面で確認できます。</td>
+<td>Tealium IQ 変数とその対応するマップ先、変数名、データタイプを含むオブジェクト。マップされた変数トリガーの具体的な形式は、タグ構成の <strong>Data Mappings</strong> 画面で確認できます。</td>
 </tr>
 <tr>
 <td><code>value.dataMappings.variable</code></td>
@@ -446,7 +446,7 @@
 <td><code>value.dataMappings.type</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>マップされる変数のデータタイプ。このフィールドは次の変数タイプをサポートしています：<br><code>ls</code> - ローカル保存<br><code>ss</code> - セッション保存<br><code>udo</code> - ユニバーサルデータオブジェクト<br><code>qp</code> - クエリ文字列パラメータ<br><code>cp</code> - クッキー<br><code>js_page</code> - JavaScript変数<br><code>dom</code> - DOM変数<br><code>meta</code> - メタデータ要素<br><code>static.text</code> - 静的テキスト<br><code>static.js</code> - JavaScriptコード</td>
+<td>マップされる変数のデータタイプ。このフィールドは次の変数タイプをサポートしています：<br><code>ls</code> - ローカル保存<br><code>ss</code> - セッション保存<br><code>udo</code> - ユニバーサルデータオブジェクト<br><code>qp</code> - クエリ文字列パラメータ<br><code>cp</code> - クッキー<br><code>js_page</code> - JavaScript 変数<br><code>dom</code> - DOM 変数<br><code>meta</code> - メタデータ要素<br><code>static.text</code> - 静的テキスト<br><code>static.js</code> - JavaScript コード</td>
 </tr>
 <tr>
 <td><code>value.dataMappings.mappings</code></td>
@@ -458,8 +458,8 @@
 </table>
 <h3 id="リクエストの例">リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;バージョンタイトル&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;注記&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;version title&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;notes&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;add&#34;</span>,
@@ -468,8 +468,8 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;tag&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tagId&#34;</span>: <span style="color:#e6db74">&#34;7133&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;タグ追加&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;7133タグ Google Analytics&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;adding tag&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;7133 tag Google Analytics&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dataMappings&#34;</span>: [
 </span></span><span style="display:flex;"><span>          {
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;variable_name&#34;</span>,
@@ -501,27 +501,27 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="patch操作パラメータ">PATCH操作パラメータ</h2>
-<p><code>POST</code>、<code>PUT</code>、<code>DELETE</code>メソッドの代わりに、<code>PATCH</code>メソッドは<code>op</code>パラメータを使用して実行するアクションを指定します。</p>
-<p><code>op</code>パラメータは次の値をサポートしています：</p>
+</span></span></code></pre></div><h2 id="patch-操作パラメータ">PATCH 操作パラメータ</h2>
+<p><code>POST</code>、<code>PUT</code>、<code>DELETE</code> メソッドの代わりに、<code>PATCH</code> メソッドは <code>op</code> パラメータを使用して実行するアクションを指定します。</p>
+<p><code>op</code> パラメータは次の値をサポートしています：</p>
 <ul>
 <li><code>add</code> - コンポーネントを作成します。</li>
 <li><code>replace</code> - コンポーネントを更新します。</li>
 <li><code>remove</code> - コンポーネントを削除します。</li>
 </ul>
-<p>コンポーネントのタイプとIDを指定するには、<code>path</code>パラメータを使用します。<code>path</code>パラメータの形式は<code>/{TYPE}/{ID}</code>です。</p>
+<p>コンポーネントのタイプと ID を指定するには、<code>path</code> パラメータを使用します。<code>path</code> パラメータの形式は <code>/{TYPE}/{ID}</code> です。</p>
 <p>例えば、タグを追加するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;op&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;add&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;path&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;/tags&#34;</span>
-</span></span></code></pre></div><p>特定のタグを更新するには、パスにIDを追加します：</p>
+</span></span></code></pre></div><p>特定のタグを更新するには、パスに ID を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;op&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;replace&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;path&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;/tags/503&#34;</span>
 </span></span></code></pre></div><h2 id="タグの作成">タグの作成</h2>
-<p>このPATCHメソッドは、プロファイルオブジェクトと追加のタグフィールドを取ります。</p>
+<p>この PATCH メソッドは、プロファイルオブジェクトと追加のタグフィールドを取ります。</p>
 <h3 id="リクエストの例-1">リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;バージョンタイトル&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;注記&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;version title&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;notes&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;add&#34;</span>,
@@ -530,8 +530,8 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;tag&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tagId&#34;</span>: <span style="color:#e6db74">&#34;7133&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;タグ追加&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;7133タグ Google Analytics&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;adding tag&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;7133 tag Google Analytics&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dataMappings&#34;</span>: [
 </span></span><span style="display:flex;"><span>          {
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;variable_name&#34;</span>,
@@ -564,7 +564,7 @@
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="タグの更新">タグの更新</h2>
-<p>このPATCHメソッドは、プロファイルオブジェクトと追加のタグフィールドを取ります。</p>
+<p>この PATCH メソッドは、プロファイルオブジェクトと追加のタグフィールドを取ります。</p>
 <h3 id="例のリクエスト">例のリクエスト</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;version title&#34;</span>,
@@ -639,19 +639,19 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>&quot;プロファイルライブラリが古くなっています。プロファイルをパッチする前に変更をマージしてください - {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;patchProfile.arg2.notes: 空であってはなりません&quot;</code></td>
+<td><code>&quot;プロファイルライブラリが古くなっています。プロファイルをパッチする前に変更をマージしてください - {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;patchProfile.arg2.notes: 空であってはなりません&quot;</code></td>
 </tr>
 <tr>
 <td>404</td>
-<td><code>&quot;プロファイルが見つかりません - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;プロファイルライブラリが見つかりません - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;プロファイル（レガシー）が見つかりません - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;同じアカウントを現在他のユーザーが閲覧しています: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;最新バージョンが見つかりません - {ACCOUNT} | profile: {PROFILE}&quot;</code></td>
+<td><code>&quot;プロファイルが見つかりません - アカウント: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;プロファイルライブラリが見つかりません - アカウント: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;プロファイル（レガシー）が見つかりません - アカウント: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;同じアカウントを現在他のユーザーが閲覧しています: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;最新バージョンが見つかりません - {ACCOUNT} | プロファイル: {PROFILE}&quot;</code></td>
 </tr>
 <tr>
 <td>409</td>
-<td><code>&quot;プロファイルの保存エラー: {PROFILE} for account: {ACCOUNT}, 重複バージョン: {VERSION}&quot;</code></td>
+<td><code>&quot;プロファイルの保存エラー: {PROFILE} アカウント: {ACCOUNT}, 重複するバージョン: {VERSION}&quot;</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td><code>&quot;プロファイル: {PROFILE} はライブラリプロファイルを継承しています&quot;</code><br><code>&quot;プロファイルメタデータの保存エラー - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;プロファイルの保存エラー - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br><code>&quot;プロファイル（レガシー）の保存エラー - {ACCOUNT} | profile: {PROFILE}&quot;</code></td>
+<td><code>&quot;プロファイル: {PROFILE} はライブラリプロファイルを継承しています&quot;</code><br><code>&quot;プロファイルメタデータの保存エラー - アカウント: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;プロファイルの保存エラー - アカウント: {ACCOUNT} | プロファイル: {PROFILE}&quot;</code><br><code>&quot;プロファイル（レガシー）の保存エラー - {ACCOUNT} | プロファイル: {PROFILE}&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -700,7 +700,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月12日
+          <p>最終更新日 ::  2025年August月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

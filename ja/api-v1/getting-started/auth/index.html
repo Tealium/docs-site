@@ -215,17 +215,22 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>これは、<a href="/ja/api/v2/getting-started/auth/">現行のTealium API</a>の古いバージョンです。</p>
-<p>APIは、有効なTealiumアカウントを持つユーザーのみが使用できます。APIは、ユーザーの身元を確認するために、メールアドレスとパスワードを使用した認証をサポートしています。APIエンドポイントにアクセスする前に、セッションを開始するために認証する必要があります。その後のすべての呼び出しでは、セキュリティ目的でセッションクッキーと<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRFトークン</a>を使用します。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これは<a href="/ja/api/v2/getting-started/auth/">現在のTealium API</a>の古いバージョンです。</p>
+<p>APIは、有効なTealiumアカウントを持つユーザーのみが使用できます。APIは、ユーザーの身元を確認するためにメールアドレスとパスワードを使用した認証をサポートしています。APIエンドポイントにアクセスする前に、セッションを開始するために認証を行う必要があります。その後のすべての呼び出しは、セキュリティ目的でセッションクッキーと<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRFトークン</a>を使用します。</p>
 <h2 id="ログイン">ログイン</h2>
-<p>ログインに成功すると、<strong>JSESSIONID</strong>という名前のクッキーと<strong>utk</strong>という名前のトークンの2つのアイテムが付与されます。これらの値は、その後のすべてのAPI呼び出しを認証するために使用されます。</p>
+<p>ログインに成功すると、次の2つのアイテムが付与されます：</p>
+<ul>
+<li><code>JSESSIONID</code>という名前のクッキー。</li>
+<li><code>utk</code>という名前のトークン。</li>
+</ul>
+<p>これらの値は、その後のすべてのAPI呼び出しで認証に使用されます。</p>
 <h3 id="リソースurl">リソースURL</h3>
 <p><code>POST /v1/login</code></p>
-<p>cURLリクエスト</p>
+<p>cURLリクエスト：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -d username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{email}&#39;</span> -d password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{password}&#39;</span> https://api.tealiumiq.com/v1/login
-</span></span></code></pre></div><p>例のリクエスト</p>
+</span></span></code></pre></div><p>例のリクエスト：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -i -d username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user@example.com&#39;</span> -d password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;password123&#39;</span> https://api.tealiumiq.com/v1/login
-</span></span></code></pre></div><p>例のレスポンス</p>
+</span></span></code></pre></div><p>例のレスポンス：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Cache-Control: no-cache,no-store,must-revalidate
@@ -244,23 +249,23 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;utk&#34;</span>: <span style="color:#e6db74">&#34;65489FMSTJGF549870KSH&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>このレスポンスから、次のすべてのAPI呼び出しのための次の値をメモします：</p>
+</span></span></code></pre></div><p>このレスポンスから、次の値をすべての後続のAPI呼び出しでメモしておく必要があります：</p>
 <p>(サンプル値)</p>
 <ul>
-<li>JSESSION = 3513642946826543477</li>
-<li>utk = 65489FMSTJGF549870KSH</li>
+<li>JSESSION = <code>3513642946826543477</code></li>
+<li>utk = <code>65489FMSTJGF549870KSH</code></li>
 </ul>
 <h3 id="エラーメッセージ">エラーメッセージ</h3>
-<p>呼び出しが失敗すると、APIは<strong>401認証失敗</strong>エラーを返します。以下に表示されるエラーメッセージを示します：</p>
+<p>呼び出しが失敗した場合、APIは<code>401 Authentication Failure</code>エラーを返します。期待されるエラーメッセージは次のとおりです：</p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1401,&lt;br&gt;  &quot;message&quot; : &quot;Authentication Failed&quot;&lt;br&gt;}</code></p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1402,&lt;br&gt;  &quot;message&quot; : &quot;Too many unsuccessful login attempts. Please try again in 10 minutes&quot; &lt;br&gt;}</code></p>
 <p><code>{ &lt;br&gt;   &quot;returnCode&quot; : 1469,&lt;br&gt;  &quot;message&quot; : &quot;Although the user is authenticated, the request is denied due of lack of proper permissions&quot; &lt;br&gt;}</code></p>
 <h2 id="ログアウト">ログアウト</h2>
 <p>ログイン中のユーザーの現在のセッションを終了します。</p>
-<p><strong>注意</strong>：セッションが期限切れになると、ユーザーは自動的にログアウトされるため、このAPI呼び出しを行うことはオプションです。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このAPI呼び出しはオプショナルです。ユーザーのセッションが期限切れになると自動的にログアウトされます。</p>
 <h3 id="リソースurl-1">リソースURL</h3>
 <p>POST <a href="https://api.tealiumiq.com/v1/logout">https://api.tealiumiq.com/v1/logout</a></p>
-<h3 id="リクエストヘッダー">リクエストヘッダー</h3>
+<h3 id="リクエストヘッダ">リクエストヘッダ</h3>
 <table>
 <thead>
 <tr>
@@ -272,18 +277,18 @@
 <tbody>
 <tr>
 <td><a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">Content-type</a></td>
-<td>GETリクエストの本文のMIMEタイプを示します</td>
-<td>application/x-www-form-urlencoded</td>
+<td>GETリクエストの本体のMIMEタイプを示します</td>
+<td><code>application/x-www-form-urlencoded</code></td>
 </tr>
 <tr>
-<td>JSESSIONクッキー</td>
+<td>JSESSION cookie</td>
 <td>jsession IDを送信するためのクッキー。例えば、一意のセッション識別子。</td>
-<td>JSESSIONID=415072043799098022</td>
+<td><code>JSESSIONID=415072043799098022</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="例のレスポンス">例のレスポンス</h3>
-<p>ログアウトが成功すると、APIは<strong>ステータス200 OK</strong>を返します。</p>
+<p>ログアウトに成功すると、APIは<code>status 200 OK</code>を返します。</p>
 
 </div>
 
@@ -329,7 +334,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月31日
+          <p>最終更新日 ::  2025年August月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -348,7 +353,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88" href="javascript:void(0)">ログアウト</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9url" href="javascript:void(0)">リソースURL</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%98%E3%83%83%E3%83%80%E3%83%BC" href="javascript:void(0)">リクエストヘッダー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%98%E3%83%83%E3%83%80" href="javascript:void(0)">リクエストヘッダ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9" href="javascript:void(0)">例のレスポンス</a></li>
               </nav>
   </aside></nav>
