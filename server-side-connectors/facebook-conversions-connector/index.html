@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "20",
+        reading_time  : "21",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -712,7 +712,7 @@
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Dataset ID</strong>
+<li><strong>Pixel / Dataset ID</strong>
 <ul>
 <li>The Facebook Pixel ID.</li>
 <li>For your Facebook Pixel to work properly, ensure that you have followed the steps outlined in <a href="#prerequisites">Prerequisites</a> to enable the partner integration for your Facebook Pixel.</li>
@@ -773,7 +773,24 @@
 <li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <code>Event ID</code> is used, if it is populated.</li>
 </ul>
 <h3 id="offline-conversions">Offline conversions</h3>
-<p>To process offline and store events through the Facebook Conversions connector, set the <code>action_source</code> parameter to <code>physical_store</code>.</p>
+<p>To process offline and store events through the Facebook Conversions connector, configure the connector to include the required parameters.</p>
+<h4 id="prerequisites-1">Prerequisites</h4>
+<ul>
+<li>Offline events sent through the Facebook Conversions API must be associated with a dataset in Facebook Events Manager.</li>
+<li>For all offline and store events, advertisers must set the <code>action_source</code> parameter to <code>physical_store</code> in the event payload.</li>
+<li>Offline events must include all required event parameters. For details, see <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event">Meta: Server Event Parameters</a>.</li>
+</ul>
+<h4 id="configuration-steps">Configuration steps</h4>
+<p>Use the following steps to configure the Facebook Conversions connector to send offline and store events:</p>
+<ol>
+<li>In Facebook Events Manager, create or select an existing offline data source. For setup instructions, see <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/offline-events/">Meta: Sending Offline Events Using the Conversions API</a>.</li>
+<li>In the connector configuration, enter the <strong>Dataset ID</strong> associated with your offline data source. This ID is used to send events to the correct Meta dataset.</li>
+<li>In the <strong>Actions</strong> tab, add a new action such as <strong>Send Event</strong>.</li>
+<li>Map the <strong>Action Source</strong> parameter to <code>physical_store</code>.</li>
+<li>Map the required parameters, and include optional parameters as needed based on your event type.</li>
+<li>Send the event and verify it in Facebook Events Manager.</li>
+</ol>
+<p>For more information, see <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/offline-events/">Meta: Sending Offline Events Using the Conversions API</a>.</p>
 <h2 id="actions-1">Actions</h2>
 <p>Click <strong>Next</strong> or click the <strong>Actions</strong> tab. You configure connector actions in the <strong>Actions</strong> tab.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
@@ -1548,7 +1565,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  August 28, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
