@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/flutter-v1/install/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Tealium for Flutterのインストール方法を学びます。" />
+<meta property="og:description" content="Flutter用Tealiumのインストール方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>インストール | フラッター用ティーリアムバージョン1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -334,49 +334,50 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Tealium for Flutterのインストール方法を学びます。
+      Flutter用Tealiumのインストール方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium for Flutterを使用すると、Flutterアプリケーションで<a href="/ja/platforms/android-java/">Android</a>または<a href="/ja/platforms/ios-swift/">iOS</a>のTealiumネイティブモバイルライブラリを使用できます。</p>
-<h2 id="必要条件">必要条件</h2>
+  <p>Flutter用Tealiumを使用すると、Flutterアプリケーションで<a href="/ja/platforms/android-java/">Android</a>または<a href="/ja/platforms/ios-swift/">iOS</a>のTealiumネイティブモバイルライブラリを使用できます。</p>
+<h2 id="要件">要件</h2>
 <ul>
 <li><a href="https://flutter.dev/">Flutter</a> アプリケーション開発フレームワーク</li>
-<li><a href="https://developer.android.com/studio">Android Studio</a>や<a href="https://code.visualstudio.com/">VS Code</a>などのIDE</li>
+<li><a href="https://developer.android.com/studio">Android Studio</a> や <a href="https://code.visualstudio.com/">VS Code</a> などのIDE</li>
 <li>IDEにインストールされたFlutter <a href="https://github.com/flutter-v1/plugins">プラグイン</a></li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Flutter用TealiumはFlutter Webアプリケーションと互換性がありません。Flutter Webアプリケーションを追跡するには、<a href="/ja/platforms/javascript/">JavaScript用Tealium</a>を使用してください。</p>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>ライブラリ、トラッキング方法、ベストプラクティスの実装について理解を深めるために、Tealium for Flutterのサンプルアプリをご覧ください。</p>
+<p>ライブラリ、追跡方法、およびベストプラクティスの実装に慣れるために、Flutter用Tealiumのサンプルアプリを探索してください。</p>
 <ul>
 <li><a href="https://github.com/Tealium/tealium-flutter-v1/tree/master/android">Android用サンプルアプリ</a></li>
 <li><a href="https://github.com/Tealium/tealium-flutter-v1/tree/master/ios">iOS用サンプルアプリ</a></li>
 </ul>
 <h2 id="インストール">インストール</h2>
-<p>Flutter用のTealiumライブラリをインストールするには：</p>
+<p>Flutter用Tealiumライブラリをインストールするには：</p>
 <ol>
 <li>
-<p>Flutterアプリプロジェクトで、<code>pubspec.yaml</code>ファイルを更新して、以下のようにTealium Flutterプラグインの依存関係を追加します：</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">dependencies:
-  flutter:
-  sdk: flutter
-  tealium: &#39;1.0.0&#39;
-</code></pre></li>
+<p>Flutterアプリプロジェクトで、<code>pubspec.yaml</code>ファイルを更新して、次のようにTealium Flutterプラグインの依存関係を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flutter</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sdk</span>: <span style="color:#ae81ff">flutter</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tealium</span>: <span style="color:#e6db74">&#39;1.0.0&#39;</span>
+</span></span></code></pre></div></li>
 <li>
-<p>プロジェクトでTealium Flutterプラグインの依存関係を引き込むには、次のコマンドを実行します：</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">flutter pub get
-</code></pre></li>
+<p>プロジェクトでTealium Flutterプラグインの依存関係を取り込むには、次のコマンドを実行します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>flutter pub get
+</span></span></code></pre></div></li>
 <li>
 <p>Dartコードをプロジェクトにインポートします：</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">import tealium/tealium.dart
+<pre tabindex="0"><code>import tealium/tealium.dart
 </code></pre></li>
 </ol>
 <p>FlutterプロジェクトでTealium APIを使用します。</p>
 <h2 id="初期化">初期化</h2>
-<p>以下の例に示すように、<a href="/ja/platforms/flutter-v1/api/#initialize"><code>initialize()</code></a>メソッドでTealiumインスタンスを初期化します：</p>
+<p>次の例に示すように、<a href="/ja/platforms/flutter-v1/api/#initialize"><code>initialize()</code></a>メソッドでTealiumインスタンスを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>var teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
-</span></span></code></pre></div><p>以下の例に示すように、<a href="/ja/platforms/flutter-v1/api/#initializecustom"><code>initializeCustom()</code></a>メソッドはすべての初期化オプションでTealiumインスタンスを初期化します：</p>
+</span></span></code></pre></div><p>次の例に示すように、<a href="/ja/platforms/flutter-v1/api/#initializecustom"><code>initializeCustom()</code></a>メソッドはすべての初期化オプションでTealiumインスタンスを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>var teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">initializeCustom</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;INSTANCE&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><p>初期化オプションについては、<a href="/ja/platforms/flutter-v1/api/">Flutter API</a>を参照してください。</p>
@@ -425,7 +426,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年September月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -439,7 +440,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA" href="javascript:void(0)">サンプルアプリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
