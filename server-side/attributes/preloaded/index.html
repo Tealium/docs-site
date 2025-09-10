@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "10",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1351,8 +1351,8 @@
 <td>Client IPv6</td>
 <td>83</td>
 <td>String</td>
-<td>The IPv6 address of the visitor. The visitor must have an IPv6 address and their network infrastructure must be able to transmit the address.</td>
-<td>If you want to create an attribute that uses the IPv4 address as a fallback when the IPv6 address is not available, see our <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000521207">Setting Fallbacks When Using IPv6</a> knowledge base article.</td>
+<td>The IPv6 address of the visitor. The visitor must have an IPv6 address and their network infrastructure must be able to transmit the address. For more information, see <a href="#support-for-ipv6">Support for IPv6</a>.</td>
+<td></td>
 </tr>
 <tr>
 <td>Current URL</td>
@@ -1524,6 +1524,50 @@
 </tr>
 </tbody>
 </table>
+<h3 id="support-for-ipv6">Support for IPv6</h3>
+<p>This section shows which components support IPv6 and how to set a fallback when the IPv6 address is not available.</p>
+<p><strong>Tag hostnames</strong></p>
+<table>
+<thead>
+<tr>
+<th>Hostname</th>
+<th>IPv4 Support</th>
+<th>IPv6 Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tags.tiqcdn.com</code></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>tags.tiqcdn.cn</code></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>tags-eu.tiqcdn.com</code></td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p><strong>First-party domains</strong></p>
+<p>IPv6 support for first-party domains depends on when the configuration was created:</p>
+<ul>
+<li>Configurations created before the release of the first-party domain feature support IPv6.</li>
+<li>Configurations created through the product UI after the feature was released do not support IPv6 by default. To enable IPv6, add an AAAA DNS record that points to the same distribution as the domain&rsquo;s A record.</li>
+</ul>
+<p><strong>Other components</strong></p>
+<p>The following components do not support IPv6:</p>
+<ul>
+<li>Tealium Collect tag and Collect HTTP API (<code>collect.tealiumiq.com</code> and <code>collect-&lt;region&gt;.tealiumiq.com</code>)</li>
+<li>First-party Collect domains</li>
+<li>Tealium v1, v2, and v3 APIs (<code>platform.tealiumapis.com</code>)</li>
+<li>Connectors and external file imports</li>
+</ul>
+<p>To create an attribute that uses the IPv4 address as a fallback when the IPv6 address is not available, see the <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000521207">Setting Fallbacks When Using IPv6</a> knowledge base article.</p>
 <h2 id="examples">Examples</h2>
 <p>The following examples demonstrate how you can use preloaded attributes:</p>
 <ul>
@@ -1591,7 +1635,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 14, 2025 
+          <p>This page was last updated:  September 5, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1609,7 +1653,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-attributes" href="javascript:void(0)">Visitor attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-attributes" href="javascript:void(0)">Visit attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-attributes" href="javascript:void(0)">Event attributes</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#support-for-ipv6" href="javascript:void(0)">Support for IPv6</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
               </nav>
   </aside></nav>
 

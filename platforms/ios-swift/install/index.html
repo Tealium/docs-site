@@ -383,7 +383,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
 </span></span></code></pre></div></li>
 <li>
-<p>Once you have added your desired modules, run the following command:</p>
+<p>Once you have added the modules you want, run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod install
 </span></span></code></pre></div></li>
 </ol>
@@ -466,7 +466,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCollect</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumRemoteCommands</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumLifecycle</span>
-</span></span></code></pre></div><p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s necessary to add each module you wish to use individually.</p>
+</span></span></code></pre></div><p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s necessary to add each module you want to use individually.</p>
 <ul>
 <li>Carthage builds <em>all</em> the modules and output the resulting <code>.framework</code> files into your Carthage build directory.</li>
 <li>Delete any modules you don&rsquo;t need, and drag the modules that you do need into Xcode.</li>
@@ -489,12 +489,12 @@
 </span></span><span style="display:flex;"><span>        config.batchingEnabled = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>        config.logLevel = .debug
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// add desired Collectors</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// add the Collectors you want</span>
 </span></span><span style="display:flex;"><span>        config.collectors = [Collectors.Lifecycle,
 </span></span><span style="display:flex;"><span>                             Collectors.Location,
 </span></span><span style="display:flex;"><span>                             Collectors.VisitorService]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// add desired Dispatchers</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// add the Dispatchers you want</span>
 </span></span><span style="display:flex;"><span>        config.dispatchers = [Dispatchers.TagManagement,
 </span></span><span style="display:flex;"><span>                              Dispatchers.RemoteCommands]
 </span></span><span style="display:flex;"><span>
@@ -526,7 +526,7 @@
 <li><code>ENVIRONMENT</code>: the environment where you want to initialize Tealium.</li>
 <li><code>DATASOURCE</code>: the Tealium data source you want to use.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Mobile Publish Settings are enabled by default, and must be disabled if you don’t want to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
 <h2 id="log-level">Log Level</h2>
 <p>To set a log level, set the <a href="/platforms/ios-swift/api/tealium-config/#loglevel"><code>logLevel</code></a> property on your <code>TealiumConfig</code> instance:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.logLevel = .debug <span style="color:#75715e">// or .info, .error, .fault, .silent</span>
@@ -550,7 +550,7 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="appdelegate-proxy">AppDelegate Proxy</h2>
-<p>By default, the Tealium Swift library includes a proxy for your app&rsquo;s AppDelegate which automatically tracks deep links and initiates Tealium trace sessions using the <a href="/platforms/getting-started-mobile/trace/#mobile-trace-tool">Mobile Trace Tool</a>. If you don&rsquo;t wish to use this feature, set the <code>appDelegateProxyEnabled</code> property to <code>false</code> on your <code>TealiumConfig</code> instance.</p>
+<p>By default, the Tealium Swift library includes a proxy for your app&rsquo;s AppDelegate which automatically tracks deep links and initiates Tealium trace sessions using the <a href="/platforms/getting-started-mobile/trace/#mobile-trace-tool">Mobile Trace Tool</a>. If you don&rsquo;t want to use this feature, set the <code>appDelegateProxyEnabled</code> property to <code>false</code> on your <code>TealiumConfig</code> instance.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.appDelegateProxyEnabled = <span style="color:#66d9ef">false</span>
 </span></span></code></pre></div><h2 id="event-batching">Event Batching</h2>
 <p>Event Batching is either be configured locally on the <code>TealiumConfig</code> instance, or by using the <a href="/iq-tag-management/profiles/creating-a-mobile-profile/">Mobile Publish Settings</a>. Local settings override remote settings.</p>
@@ -649,7 +649,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 25, 2025 
+          <p>This page was last updated:  September 5, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

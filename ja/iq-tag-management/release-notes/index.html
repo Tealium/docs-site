@@ -790,7 +790,7 @@
       const filter = this.filtersByName[filterName];
       const optionElem = filter.querySelector(`input[type="checkbox"][value="${filterValue}"`);
       optionElem.checked = true;
-      this.addToken(filterName, optionElem.dataset.filterLabel, filterValue);
+      this.addToken(filterName, optionElem.dataset.filterLabel, filterValue, optionElem.dataset.class);
       this.addFilterToURL(filterName, filterValue);
     }
 
@@ -864,7 +864,7 @@
       const filterLabel = elem.parentElement.textContent.trim();
 
       if (elem.checked) {
-        this.addToken(filterName, filterLabel, filterValue);
+        this.addToken(filterName, filterLabel, filterValue, elem.dataset.class);
         this.addFilterToURL(filterName, filterValue);
       } else {
         this.removeToken(filterName, filterLabel, filterValue);

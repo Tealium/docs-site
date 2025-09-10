@@ -297,9 +297,7 @@
         <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li></ul>
-      </li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li></ul>
+      </li></ul>
       </li></ul>
       </li></ul></li></ul>
 </nav>
@@ -361,7 +359,7 @@
 <p>The <strong>Segments Overview</strong> table lists the following information about each segment:</p>
 <ul>
 <li>Name</li>
-<li>Total Volume</li>
+<li>Total Processed: The total number of incoming events that match the segment conditions, where at least one action is configured and enabled.</li>
 <li>Date Modified</li>
 <li>Labels</li>
 <li>Activations</li>
@@ -375,6 +373,12 @@
 <li>Follow the steps in the <a href="#segment-builder">Segment Builder</a>.</li>
 <li><a href="#manual-builder">Manually build the segment</a>.</li>
 </ul>
+<p>If you see the error, <code>Segment creation requires Cloud Stream Connectors to be enabled in Settings</code>, use the following steps to enable connectors on your profile:</p>
+<ol>
+<li>Go to <strong>Admin menu</strong> &gt; <strong>Server-Side Settings</strong> &gt; <strong>CloudStream Connectors</strong>.</li>
+<li>Toggle on <strong>Activate CloudStream Connectors</strong>.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
 <h3 id="segment-builder">Segment Builder</h3>
 <p>Click <strong>Segment Builder</strong>. The <strong>Data Source Configuration</strong> step appears.</p>
 <h4 id="data-source-configuration">Data source configuration</h4>
@@ -415,7 +419,7 @@ For operators that specify a time frame, select a value and the time frame.</li>
 <p>To activate a segment, select and configure a connector, as follows:</p>
 <ol>
 <li>
-<p>Click <strong>+ Add Activation</strong>. The <strong>Connector Marketplace</strong> is displayed.</p>
+<p>Click <strong>+ Add Activation</strong>. The <strong>Connector Marketplace</strong> is displayed. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not see any connectors listed, go to <strong>Admin menu</strong> &gt; <strong>Server-Side Settings</strong> &gt; <strong>CloudStream Connectors</strong>, set <strong>Activate CloudStream Connectors</strong> to <code>On</code>, and click <strong>Save</strong>.</p></p>
 </li>
 <li>
 <p>Select the connector and click <strong>Continue</strong>.</p>
@@ -475,6 +479,7 @@ For operators that specify a time frame, select a value and the time frame.</li>
          title="CloudStream segment path"/>
     </a>
 </figure>
+<h4 id="manage-data-sources-and-activations">Manage data sources and activations</h4>
 <p>You can add or edit data sources for the segment, and you can add or edit activations on the segment.</p>
 <ol>
 <li>After you add and configure a new data source, it appears as an <strong>Unused Data Source</strong>.</li>
@@ -483,11 +488,15 @@ For operators that specify a time frame, select a value and the time frame.</li>
 <li>Select and configure the action.</li>
 <li>The data flow diagram updates to include the new data source and the actions.</li>
 </ol>
-<p>You can enable and disable activations by clicking that activation&rsquo;s toggle.</p>
+<p>Use the toggle in an activation to enable and disable it, or use the toggle next to the segment name to enable and disable all of its activations.</p>
 <h3 id="configuration">Configuration</h3>
 <p>The <strong>Configuration</strong> window lets you edit the configuration of the segment. Update the conditions for the segment and click <strong>Done</strong>.</p>
 <h3 id="insights">Insights</h3>
-<p>The <strong>Insights</strong> window displays a summary of the connector actions for the past 24 hours and a chart of hourly activity for the past day.</p>
+<p>The <strong>Insights</strong> window displays a summary and chart of the connector actions for the time range that you select:</p>
+<ul>
+<li><strong>Matched</strong>: The number of imported records from any data source meeting the segment conditions, regardless of segment activity.</li>
+<li><strong>Processed</strong>: The number of imported records from any data source meeting the active segment conditions and triggering an enabled action.</li>
+</ul>
 
 </div>
 
@@ -533,7 +542,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 15, 2025 
+          <p>This page was last updated:  September 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

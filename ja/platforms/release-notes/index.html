@@ -213,7 +213,10 @@
       <a href="/ja/platforms/csharp/install/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>C#</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/platforms/http-api/endpoint/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>HTTP API</span></a>
+      <a href="/ja/api/v3/http-api/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>HTTP API v3</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/ja/platforms/http-api/endpoint/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>HTTP API v1</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/platforms/java/install/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Java</span></a>
@@ -333,7 +336,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/csharp/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".csharp">C#</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/http-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".http-api">HTTP API</a></li>
+        <a href="/ja/api/v3/http-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".http-api-v3">HTTP API v3</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/http-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".http-api-v1">HTTP API v1</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/java/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".java">Java</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -476,7 +481,7 @@
       const filter = this.filtersByName[filterName];
       const optionElem = filter.querySelector(`input[type="checkbox"][value="${filterValue}"`);
       optionElem.checked = true;
-      this.addToken(filterName, optionElem.dataset.filterLabel, filterValue);
+      this.addToken(filterName, optionElem.dataset.filterLabel, filterValue, optionElem.dataset.class);
       this.addFilterToURL(filterName, filterValue);
     }
 
@@ -550,7 +555,7 @@
       const filterLabel = elem.parentElement.textContent.trim();
 
       if (elem.checked) {
-        this.addToken(filterName, filterLabel, filterValue);
+        this.addToken(filterName, filterLabel, filterValue, elem.dataset.class);
         this.addFilterToURL(filterName, filterValue);
       } else {
         this.removeToken(filterName, filterLabel, filterValue);

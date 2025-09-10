@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "16",
+        reading_time  : "17",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1702,7 +1702,7 @@
 <p>To connect Databricks to an AWS S3 instance, you must first create an IAM role in your AWS instance that can be used to create storage credentials in the Databricks instance. For more information about creating the AWS IAM role, see <a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html">Databricks: Create a storage credential for connecting to AWS S3</a>.</p>
 <p>After the storage credentials have been created, define the external location in the AWS S3 instance that you will pull data from. For more information, see <a href="https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/external-locations.html">Databricks: Create an external location to connect cloud storage to Databricks</a>.</p>
 <h3 id="databricks-to-azure-blob-storage-connection">Databricks to Azure Blob Storage connection</h3>
-<p>To connect Databricks to an Azure Blob Storage instance, you need to create a storage credential using Azure service principals or managed identities. This allows Databricks to authenticate and access the Blob Storage securely.  For more information, see <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Create a storage credential for connecting to Azure Blob Storage</a>.</p>
+<p>To connect Databricks to an Azure Blob Storage instance, you need to create a storage credential using Azure service principals or managed identities. This allows Databricks to authenticate and access the Blob Storage securely. For more information, see <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Create a storage credential for connecting to Azure Blob Storage</a>.</p>
 <p>Once the storage credentials are configured, define an external location in Azure Blob Storage that Databricks will use for reading and writing data. For more information, see <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/unity-catalog/cloud-storage/external-locations">Databricks: Create an external location to connect cloud storage to Databricks</a>.</p>
 <h3 id="databricks-to-google-cloud-storage-connection">Databricks to Google Cloud Storage connection</h3>
 <p>To integrate Google Cloud Storage with Databricks, you first need to set up a service account in Google Cloud with the required permissions to access storage buckets. Then, you create a storage credential in Databricks to use this service account for authentication. For more information, see <a href="https://docs.databricks.com/gcp/en/connect/unity-catalog/cloud-storage/storage-credentials">Databricks: Create a storage credential for connecting to Google Cloud Storage</a>.</p>
@@ -1725,21 +1725,16 @@
 <p>Authentication settings vary based on the cloud solution you use:</p>
 <h3 id="databricks-unity-catalog-volume">Databricks Unity Catalog Volume</h3>
 <ul>
+<li><strong>JDBC HTTP path</strong>: The HTTP path to your compute resource. For example, <code>/sql/1.0/warehouses/3fbc78304284503a</code>.</li>
 <li><strong>Authentication type</strong>: Select the <strong>Databricks OAuth</strong> authentication type.</li>
 <li><strong>Client ID</strong>: The unique identifier assigned to your service principal secret.</li>
-<li><strong>Client Secret</strong>: The string that acts like a password, used by the application to authenticate with Databricks as a service principal.</li>
+<li><strong>Secret</strong>: The string that acts like a password, used by the application to authenticate with Databricks as a service principal.</li>
 </ul>
 <h3 id="amazon-aws-s3">Amazon AWS S3</h3>
 <ul>
 <li><strong>Region</strong>: (Required) Select a region.</li>
 <li><strong>Authentication Type</strong>: (Required) Select the authentication type for your platform:
 <ul>
-<li>Provide an Access Key and Access Secret.
-<ul>
-<li><strong>Access Key - AWS Access Key</strong>: Required for Access Key authentication. Provide the AWS access key.</li>
-<li><strong>Access Key - AWS Secret Access Key</strong>: Required for Access Key authentication. Provide the AWS secret access key.</li>
-</ul>
-</li>
 <li>Provide STS (Security Token Service) credentials.
 <ul>
 <li><strong>STS - Assume Role: ARN</strong>: Required for STS authentication. Provide the Amazon Resource Name (ARN) of the role to assume. For example: <code>arn:aws:iam:222222222222:role/myrole</code>. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS Identity and Access Management: Switch to an IAM role (AWS API)</a>.</li>
@@ -1747,21 +1742,44 @@
 <li><strong>STS - Assume Role: External ID</strong>: Required for STS authentication. Provide a third-party external identifier. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS Identity and Access Management: Access to AWS accounts owned by third parties</a>.</li>
 </ul>
 </li>
+<li>Provide an Access Key and Access Secret.
+<ul>
+<li><strong>Access Key - AWS Access Key</strong>: Required for Access Key authentication. Provide the AWS access key.</li>
+<li><strong>Access Key - AWS Secret Access Key</strong>: Required for Access Key authentication. Provide the AWS secret access key.</li>
 </ul>
 </li>
 </ul>
-<h3 id="azure-blob-storage">Azure Blob Storage</h3>
-<ul>
-<li><strong>Tenant ID</strong>: The unique identifier for your Azure Active Directory instance, representing your organization.</li>
-<li><strong>Authentication type</strong>: Select the authentication type. Available options are: Client credentials, Authorization Code flow (SSO) and Shared Access Signature (SAS).</li>
-<li><strong>Client ID</strong>: The unique identifier assigned to your application registered in Azure Active Directory.</li>
-<li><strong>Client Secret</strong>: The string that acts like a password, used by the application to authenticate with Azure Active Directory.</li>
-<li><strong>Shared Access Signature</strong>: Provide the special set of query parameters that indicate how the resources may be accessed by Tealium.</li>
-<li><strong>Storage account name</strong>: The unique name of your Azure Storage account, used to access storage services like Blob, File, Queue, and Table storage.</li>
-<li><strong>API version</strong>: The API version compatible with your Azure Storage instance. The default version is <code>2025-01-05</code>.</li>
+</li>
 </ul>
 <h3 id="google-cloud-storage">Google Cloud Storage</h3>
-<p>Click <strong>Sign in with Google</strong> and follow the on-screen instructions.</p>
+<ol>
+<li>Click <strong>Sign in with Google</strong> and follow the on-screen instructions.</li>
+<li>Select the <strong>Project ID</strong>.</li>
+</ol>
+<h3 id="azure-blob-storage">Azure Blob Storage</h3>
+<ul>
+<li><strong>Authentication type</strong>: Select the authentication type. Available options are: Client credentials, Authorization Code flow (SSO), and Shared Access Signature (SAS).
+<ul>
+<li>Provide client credentials.
+<ul>
+<li><strong>Tenant ID</strong>: The unique identifier for your Azure Active Directory instance, representing your organization.</li>
+<li><strong>Client ID</strong>: The unique identifier assigned to your application registered in Azure Active Directory.</li>
+<li><strong>Client Secret</strong>: The string that acts like a password, used by the application to authenticate with Azure Active Directory.</li>
+<li><strong>Storage account name</strong>: The unique name of your Azure Storage account, used to access storage services like Blob, File, Queue, and Table storage.</li>
+</ul>
+</li>
+<li>Provide authorization code flow (SSO).
+* <strong>Storage account name</strong>: The unique name of your Azure Storage account. Click <strong>Establish Connection</strong> and follow the on-screen instructions.</li>
+<li>Provide shared access signature (SAS).
+<ul>
+<li><strong>Shared Access Signature</strong>: The shared access signature for your Azure Storage account.</li>
+<li><strong>Storage account name</strong>: The unique name of your Azure Storage account.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>API version</strong>: The API version compatible with your Azure Storage instance.</li>
+</ul>
 <h2 id="create-a-notebook">Create a notebook</h2>
 <p>Notebooks in Databricks are documents that contain executable code, visualizations, and narrative text. They are used for data exploration, visualization, and collaboration. In the connector configuration, you have the option to create a new notebook while you create a new connector by clicking <strong>Create Notebook</strong> in the configuration step.</p>
 <ol>
@@ -1861,6 +1879,10 @@
 <td>Timestamp Attribute</td>
 <td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
 </tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="send-custom-event-data">Send Custom Event Data</h3>
@@ -1893,10 +1915,16 @@
 <td>Databricks Table</td>
 <td>Select the Databricks table or provide a custom value.</td>
 </tr>
+<tr>
+<td>Event Parameters</td>
+<td>Map event attributes to the columns of the Databricks table. You must map at least one event attribute.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+</tr>
 </tbody>
 </table>
-<h4 id="event-parameters">Event Parameters</h4>
-<p>Map parameters to the columns of the Databricks table. You must map at least one parameter.</p>
 <h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -1943,6 +1971,10 @@
 <td>Include Current Visit Data with Visitor Data</td>
 <td>Select to include the current visit data with visitor data.</td>
 </tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
@@ -1975,10 +2007,16 @@
 <td>Databricks Table</td>
 <td>Select the Databricks table or provide a custom value.</td>
 </tr>
+<tr>
+<td>Visitor Parameters</td>
+<td>Map visitor attributes to the columns of the Databricks table. You must map at least one visitor attribute.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+</tr>
 </tbody>
 </table>
-<h4 id="visitor-parameters">Visitor Parameters</h4>
-<p>Map parameters to the columns of the Databricks table. You must map at least one parameter.</p>
 
 </div>
 
@@ -2039,7 +2077,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 3, 2025 
+          <p>This page was last updated:  September 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2063,8 +2101,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#databricks-unity-catalog-volume" href="javascript:void(0)">Databricks Unity Catalog Volume</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-aws-s3" href="javascript:void(0)">Amazon AWS S3</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#azure-blob-storage" href="javascript:void(0)">Azure Blob Storage</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#google-cloud-storage" href="javascript:void(0)">Google Cloud Storage</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#azure-blob-storage" href="javascript:void(0)">Azure Blob Storage</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-notebook" href="javascript:void(0)">Create a notebook</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-job" href="javascript:void(0)">Create a job</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-job-and-notebook" href="javascript:void(0)">Create a job and notebook</a></li>

@@ -1550,7 +1550,7 @@ You are now on the <strong>Actions</strong> tab.</p>
 <p>For a full reference of all attributes, including details on exactly what each field should contain, see Adobe&rsquo;s <a href="https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/reference/r_supported_tags.md">API documentation</a> and the <a href="#visitor-and-experience-cloud-ids">Visitor &amp; Experience Cloud IDs</a> section of this article.</p>
 <h4 id="report-suite-ids">Report Suite IDs</h4>
 <ul>
-<li>Specify a report suite ID, which will override any value previously entered in the Connector Configuration UI. If you do not need to override that value, you can leave this field blank. You can use either a data layer variable, or a <strong>Custom Value</strong>. If you wish to send data to multiple report suites, you may use a comma-separated list.</li>
+<li>Specify a report suite ID, which will override any value previously entered in the Connector Configuration UI. If you do not need to override that value, you can leave this field blank. You can use either a data layer variable, or a <strong>Custom Value</strong>. If you want to send data to multiple report suites, you may use a comma-separated list.</li>
 <li>This will overwrite the value defined in the Configuration Tab</li>
 <li>Specifies the report suites where you want to submit data. Contained in the URL</li>
 <li>If specifying Data Layer attributes, use simple attribute types per row. We will format the data correctly to be passed along</li>
@@ -2192,7 +2192,7 @@ You are now on the <strong>Actions</strong> tab.</p>
 <ul>
 <li>
 <p>In iQ Tag Management, go to the Data Layer tab and create two new First-Party Cookie variables called <code>utag_main_adobe_mcid</code> and <code>utag_main_aa_vid</code>.</p>
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>You may rename these variables if you wish, but be sure to retain the <code>utag_main_</code> prefix, which will save cookie space by stacking into the <code>utag_main</code> cookie. If you rename the variables, you will need to also update the JavaScript snippet below.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>You may rename these variables if you want to, but be sure to retain the <code>utag_main_</code> prefix, which will save cookie space by stacking into the <code>utag_main</code> cookie. If you rename the variables, you will need to also update the JavaScript snippet below.</p>
 </li>
 <li>
 <p>Create a new JavaScript Code extension, scoped to the Adobe Experience Cloud ID Service tag, and paste in the following code:</p>
@@ -2216,7 +2216,7 @@ vAPI.getInstance(u.data.adobe_org_id,
 },
 u.clearEmptyKeys(u.data.config), u.data.customer_ids);
 }   
-</code></pre><p>This extension creates a callback to the Adobe Visitor ID service which is called when the visitor ID(s) have been successfully retrieved from Adobe&rsquo;s servers, and stores the Visitor ID and Experience Cloud ID in Tealium&rsquo;s own first-party cookie (<code>utag_main</code>). The cookie expires at the end of the session in case the Visitor ID gets updated in the future. If you wish to make the cookie persistent (non-expiring), set <code>sessionExpiry</code> to <code>&quot;&quot;</code> in the above code.</p>
+</code></pre><p>This extension creates a callback to the Adobe Visitor ID service which is called when the visitor ID(s) have been successfully retrieved from Adobe&rsquo;s servers, and stores the Visitor ID and Experience Cloud ID in Tealium&rsquo;s own first-party cookie (<code>utag_main</code>). The cookie expires at the end of the session in case the Visitor ID gets updated in the future. If you want to make the cookie persistent (non-expiring), set <code>sessionExpiry</code> to <code>&quot;&quot;</code> in the above code.</p>
 </li>
 <li>
 <p>Add a condition to the JavaScript extension &ldquo;utag_main_adobe_mcid <code>is not defined</code> AND utag_main_aa_vid <code>is not defined</code>&rdquo;. This prevents the code from running again during this session.</p>

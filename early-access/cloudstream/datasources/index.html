@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -297,9 +297,7 @@
         <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li></ul>
-      </li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li></ul>
+      </li></ul>
       </li></ul>
       </li></ul></li></ul>
 </nav>
@@ -376,13 +374,22 @@
 </ul>
 <h2 id="enable-processing">Enable processing</h2>
 <p>Turn on <strong>Enable Processing</strong> to begin importing data immediately after you save and publish your changes. Or, leave this setting off while you complete the configuration and turn it on later.</p>
+<h3 id="frequency">Frequency</h3>
+<p>Select how often you want to fetch data:</p>
+<ul>
+<li><strong>Near real-time</strong>: The process runs every 2 seconds.</li>
+<li><strong>Hourly</strong>: The process runs at the start of each hour.</li>
+<li><strong>Daily</strong>: The process runs once a day at the time you select (UTC).</li>
+<li><strong>Weekly</strong>: The process runs once a week on a specified day and time (UTC).</li>
+</ul>
 <h2 id="configure-the-query">Configure the query</h2>
 <p>In the <strong>Query Mode and Configuration</strong> screen, select the appropriate query mode and optionally include a SQL <code>WHERE</code> clause to import only those records that match your custom condition.</p>
 <h4 id="select-a-query-mode">Select a query mode</h4>
 <p>The query mode determines how to select new rows, modified rows, or both for import.</p>
 <ul>
-<li>If you select <strong>Timestamp + Incrementing</strong> (recommended) you must select two columns, a timestamp column and a strictly incrementing column.</li>
+<li>If you select <strong>Timestamp + Incrementing (Recommended)</strong>, you must select two columns, a timestamp column and a strictly incrementing column.</li>
 <li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must select a column to use to detect either new and modified rows or new rows only.</li>
+<li>If you select <strong>Full Resync</strong>, all rows are imported during each import cycle. This option is useful when data changes frequently or when you want to ensure that all records are up-to-date. Full resync query mode requires that you use <strong>Hourly</strong> or <strong>Daily</strong> frequency, and you must specify the <strong>Timestamp Column</strong> or <strong>Incrementing Column</strong>.</li>
 </ul>
 <p>For more information, see <a href="/server-side/data-sources/cloud-data/about/#query-modes">Query modes</a>.</p>
 <h4 id="configure-the-query-1">Configure the query</h4>
@@ -392,6 +399,9 @@
 </li>
 <li>
 <p>(Optional) To add a custom condition, include a SQL <code>WHERE</code> clause. <p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple tables, create a view and select the view in the data source configuration.</p></p>
+</li>
+<li>
+<p>For full resync query mode, enter the <strong>Limit</strong> for the maximum number of records to import. Daily queries can import up to 1,000,000 records, and hourly queries can import up to 50,000 records.</p>
 </li>
 <li>
 <p>Click <strong>Test Query</strong> to validate your SQL query and preview the results.</p>
@@ -408,7 +418,12 @@
 <li>Click <strong>Save/Publish</strong> to save and publish your changes.</li>
 </ol>
 <h2 id="duplicate-a-data-source">Duplicate a data source</h2>
-<p>To duplicate a data source, click the <strong>Duplicate</strong> button and enter a name for the new copy of the data source.</p>
+<p>To duplicate a data source:</p>
+<ol>
+<li>Click the data source.</li>
+<li>Click the <strong>Duplicate</strong> button.</li>
+<li>Enter a name for the duplicated data source.</li>
+</ol>
 <h2 id="processed-rows-and-errors">Processed rows and errors</h2>
 <p>To see import activity, navigate to <strong>Data Sources</strong> and expand the data source.</p>
 <figure><a class="slb" href="/images/server-side/data-sources/cloud-data-source-status-line.png"><img src="/images/server-side/data-sources/cloud-data-source-status-line.png"/>
@@ -444,6 +459,10 @@
 <tr>
 <td><strong>Stopped</strong></td>
 <td>The data source was previously enabled but is now turned off. No data imports occur until it is enabled.</td>
+</tr>
+<tr>
+<td><strong>Inactive</strong></td>
+<td>The data source was created but was never turned on or transitioned to any other status.</td>
 </tr>
 </tbody>
 </table>
@@ -507,7 +526,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 15, 2025 
+          <p>This page was last updated:  September 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -525,7 +544,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-cloud-data-source" href="javascript:void(0)">Create a cloud data source</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#establish-a-connection" href="javascript:void(0)">Establish a connection</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-processing" href="javascript:void(0)">Enable processing</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-query" href="javascript:void(0)">Configure the query</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-query" href="javascript:void(0)">Configure the query</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-columns" href="javascript:void(0)">Map columns</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#duplicate-a-data-source" href="javascript:void(0)">Duplicate a data source</a></li>

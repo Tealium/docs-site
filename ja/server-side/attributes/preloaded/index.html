@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -1009,7 +1009,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p>便宜上、AudienceStreamとEventStreamには、事前に読み込まれたイベント、訪問、および訪問属性のセットが含まれています。各属性は、統計情報を収集するように構成されており、各訪問や訪問に関する有用な情報を判断するのに役立ちます。これらの属性には、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>からの標準イベントデータ以外の追加データは必要ありません。</p>
+<p>便宜上、AudienceStream および EventStream には、事前に読み込まれたイベント、訪問、および訪問属性のセットが含まれています。各属性は、各訪問または訪問について有用な情報を決定するのに役立つ統計情報を収集するように構成されています。これらの属性には、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>からの標準イベントデータを超える追加データは必要ありません。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>事前読み込みされた属性は変更できませんが、複製してそのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれています。</p>
 <h2 id="訪問属性">訪問属性</h2>
 <table>
@@ -1028,175 +1028,175 @@
 <td>26</td>
 <td>数値</td>
 <td>分単位の平均訪問時間。</td>
-<td>訪問終了時に「サイトで過ごした総時間（分）」を「生涯訪問回数」で割った比率を「平均訪問時間（分）」に構成。</td>
+<td>訪問終了時に <code>サイトでの合計滞在時間（分）</code> を <code>訪問回数</code> で割った比率 <code>平均訪問時間（分）</code> を構成。</td>
 </tr>
 <tr>
 <td>週平均訪問回数</td>
 <td>29</td>
 <td>数値</td>
 <td>週平均訪問回数。</td>
-<td>新規訪問時に「生涯訪問回数」を「初訪問からの週数」で割った比率を「週平均訪問回数」に構成（「初訪問からの週数」が「1」以上の場合）。</td>
+<td>新規訪問時に <code>最初の訪問からの週数</code> が <code>1</code> 以上の場合、<code>訪問回数</code> を <code>最初の訪問からの週数</code> で割った比率 <code>週平均訪問回数</code> を構成。</td>
 </tr>
 <tr>
 <td>ファン</td>
 <td>30</td>
 <td>バッジ</td>
-<td>訪問が2回以上訪問し、紹介より直接訪問が多い場合。</td>
-<td>新規訪問時に「総直接訪問数」が「総紹介訪問数」を超える場合、訪問に「ファン」バッジを割り当てる。</td>
+<td>訪問が2回以上訪問し、紹介よりも直接訪問が多い場合。</td>
+<td>新規訪問時に <code>直接訪問の合計</code> が <code>紹介訪問の合計</code> より多い場合、訪問に <code>ファン</code> バッジを割り当てる。</td>
 </tr>
 <tr>
-<td>初訪問</td>
+<td>初回訪問</td>
 <td>23</td>
 <td>日付</td>
 <td>最初の訪問日。</td>
-<td>新規訪問時に「最後のイベントタイムスタンプ」を「初訪問_copy」に構成。</td>
+<td>新規訪問時に <code>最後のイベントのタイムスタンプ</code> を <code>初回訪問_copy</code> に構成。</td>
 </tr>
 <tr>
 <td>頻繁な訪問</td>
 <td>31</td>
 <td>バッジ</td>
-<td>訪問が週に2回以上訪問する平均。</td>
-<td>新規訪問時に「週平均訪問回数」が「2」未満の場合は「頻繁な訪問」バッジを訪問から削除し、「週平均訪問回数」が「2」以上の場合は訪問に「頻繁な訪問」を割り当てる。</td>
+<td>訪問が週に2回以上訪問する平均を持つ場合。</td>
+<td>新規訪問時に <code>週平均訪問回数</code> が <code>2</code> 未満の場合は <code>頻繁な訪問</code> バッジを訪問から削除し、<code>週平均訪問回数</code> が <code>2</code> 以上の場合は訪問に <code>頻繁な訪問</code> を割り当てる。</td>
 </tr>
 <tr>
-<td>最後のイベントURL</td>
+<td>最後のイベントのURL</td>
 <td>17</td>
 <td>文字列</td>
 <td>訪問の最後のイベントURL。</td>
-<td>任意のイベント時に「最後のイベントURL」を「現在のURL」に構成。</td>
+<td>任意のイベント時に文字列 <code>最後のイベントのURL</code> を <code>現在のURL</code> に構成。</td>
 </tr>
 <tr>
 <td>最後の訪問</td>
 <td>24</td>
 <td>日付</td>
 <td>最後の訪問日。</td>
-<td>訪問終了時に「最後の訪問」を最後のイベントタイムスタンプに構成。</td>
+<td>訪問終了時に <code>最後の訪問</code> を最後のイベントのタイムスタンプに構成。</td>
 </tr>
 <tr>
-<td>使用されたブラウザの種類の生涯数</td>
+<td>使用されたブラウザの種類の合計</td>
 <td>57</td>
 <td>集計</td>
 <td>使用された各種類のブラウザの回数を記録する集計。</td>
-<td>訪問終了時に「アクティブなブラウザの種類」に見つかった場合、すべての値を「1」増やす。</td>
+<td>訪問終了時に <code>アクティブなブラウザの種類</code> に見つかった場合、<code>使用されたブラウザの種類の合計</code> のすべての値を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたブラウザの種類の生涯数（お気に入り）</td>
+<td>使用されたブラウザの種類のお気に入り</td>
 <td>56</td>
 <td>文字列</td>
-<td>使用されたブラウザの種類の属性から生成されたお気に入りアイテム。</td>
-<td>使用されたブラウザの種類の生涯数から自動生成。</td>
+<td>使用されたブラウザの種類の属性からお気に入りのアイテム。</td>
+<td>使用されたブラウザの種類から自動生成。</td>
 </tr>
 <tr>
-<td>使用されたブラウザのバージョンの生涯数</td>
+<td>使用されたブラウザのバージョンの合計</td>
 <td>63</td>
 <td>集計</td>
 <td>使用されたブラウザのバージョンを記録する集計。</td>
-<td>訪問終了時に「アクティブなブラウザのバージョン」に見つかった場合、すべての値を「1」増やす。</td>
+<td>訪問終了時に <code>アクティブなブラウザのバージョン</code> に見つかった場合、<code>使用されたブラウザのバージョンの合計</code> のすべての値を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたブラウザのバージョンの生涯数（お気に入り）</td>
+<td>使用されたブラウザのバージョンのお気に入り</td>
 <td>62</td>
 <td>文字列</td>
-<td>使用されたブラウザのバージョンの属性から生成されたお気に入りアイテム。</td>
-<td>使用されたブラウザのバージョンの生涯数から自動生成。</td>
+<td>使用されたブラウザのバージョンの属性からお気に入りのアイテム。</td>
+<td>使用されたブラウザのバージョンから自動生成。</td>
 </tr>
 <tr>
-<td>使用されたデバイスの生涯数</td>
+<td>使用されたデバイスの合計</td>
 <td>55</td>
 <td>集計</td>
 <td>使用されたデバイスを記録する集計</td>
-<td>訪問終了時に「アクティブなデバイス」に見つかった場合、すべての値を「1」増やす。</td>
+<td>訪問終了時に <code>アクティブなデバイス</code> に見つかった場合、<code>使用されたデバイスの合計</code> のすべての値を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたデバイスの生涯数（お気に入り）</td>
+<td>使用されたデバイスのお気に入り</td>
 <td>54</td>
 <td>文字列</td>
-<td>使用されたデバイスの属性から生成されたお気に入りアイテム。</td>
-<td>使用されたデバイスの生涯数から自動生成。</td>
+<td>使用されたデバイスの属性からお気に入りのアイテム。</td>
+<td>使用されたデバイスから自動生成。</td>
 </tr>
 <tr>
-<td>生涯イベント数</td>
+<td>トリガーされたイベントの合計回数</td>
 <td>22</td>
 <td>数値</td>
 <td>ユーザーによってトリガーされたイベントの総数。</td>
-<td>任意のイベント時に「生涯イベント数」を「1」増やす。</td>
+<td>任意のイベント時に数値 <code>トリガーされたイベントの合計回数</code> を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたオペレーティングシステムの生涯数</td>
+<td>使用されたオペレーティングシステムの合計</td>
 <td>59</td>
 <td>集計</td>
 <td>使用されたオペレーティングシステムを記録する集計。</td>
-<td>訪問終了時に「アクティブなオペレーティングシステム」に見つかった場合、すべての値を「1」増やす。</td>
+<td>訪問終了時に <code>アクティブなオペレーティングシステム</code> に見つかった場合、<code>使用されたオペレーティングシステムの合計</code> のすべての値を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたオペレーティングシステムの生涯数（お気に入り）</td>
+<td>使用されたオペレーティングシステムのお気に入り</td>
 <td>58</td>
 <td>文字列</td>
-<td>使用されたオペレーティングシステムの属性から生成されたお気に入りアイテム</td>
-<td>使用されたオペレーティングシステムの生涯数から自動生成。</td>
+<td>使用されたオペレーティングシステムの属性からお気に入りのアイテム</td>
+<td>使用されたオペレーティングシステムから自動生成。</td>
 </tr>
 <tr>
-<td>使用されたプラットフォームの生涯数</td>
+<td>使用されたプラットフォームの合計</td>
 <td>61</td>
 <td>集計</td>
 <td>使用されたプラットフォームを記録する集計。</td>
-<td>訪問終了時に「アクティブなプラットフォーム」に見つかった場合、すべての値を「1」増やす。</td>
+<td>訪問終了時に <code>アクティブなプラットフォーム</code> に見つかった場合、<code>使用されたプラットフォームの合計</code> のすべての値を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>使用されたプラットフォームの生涯数（お気に入り）</td>
+<td>使用されたプラットフォームのお気に入り</td>
 <td>60</td>
 <td>文字列</td>
-<td>使用されたプラットフォームの属性から生成されたお気に入りアイテム。</td>
-<td>使用されたプラットフォームの生涯数から自動生成。</td>
+<td>使用されたプラットフォームの属性からお気に入りのアイテム。</td>
+<td>使用されたプラットフォームから自動生成。</td>
 </tr>
 <tr>
-<td>生涯訪問回数</td>
+<td>サイト訪問回数の合計</td>
 <td>21</td>
 <td>数値</td>
 <td>ユーザーがサイトを訪問した総回数。</td>
-<td><ul><li>訪問終了時に「サイトで過ごした総時間（分）」を「生涯訪問回数」で割った比率を「平均訪問時間（分）」に構成。</li><li>新規訪問時に「生涯訪問回数」を「初訪問からの週数」で割った比率を「週平均訪問回数」に構成（「初訪問からの週数」が「1」以上の場合）。</li></ul></td>
+<td><ul><li>訪問終了時に <code>サイトでの合計滞在時間（分）</code> を <code>サイト訪問回数の合計</code> で割った比率 <code>平均訪問時間（分）</code> を構成。</li><li>新規訪問時に <code>最初の訪問からの週数</code> が <code>1</code> 以上の場合、<code>サイト訪問回数の合計</code> を <code>最初の訪問からの週数</code> で割った比率 <code>週平均訪問回数</code> を構成。</li></ul></td>
 </tr>
 <tr>
 <td>リピーター</td>
 <td>27</td>
 <td>ブール値</td>
-<td>訪問がリピーターである。</td>
-<td>新規訪問時に「生涯訪問回数」が「1」を超える場合、「リピーター」を「true」に構成。</td>
+<td>訪問がリピーターである場合。</td>
+<td>新規訪問時に <code>サイト訪問回数の合計</code> が <code>1</code> より大きい場合、<code>リピーター</code> を <code>true</code> に構成。</td>
 </tr>
 <tr>
-<td>総直接訪問数</td>
+<td>直接訪問の合計</td>
 <td>15</td>
 <td>数値</td>
 <td>直接訪問の総数。</td>
-<td>新規訪問時に「紹介URL」が空または「紹介URL」が「現在のURL」と等しい場合、「総直接訪問数」を「1」増やす。</td>
+<td>新規訪問時に <code>紹介URL</code> が空または <code>紹介URL</code> が <code>現在のURL</code> と等しい場合、数値 <code>直接訪問の合計</code> を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>総紹介訪問数</td>
+<td>紹介訪問の合計</td>
 <td>16</td>
 <td>数値</td>
 <td>紹介による訪問の総数。</td>
-<td>新規訪問時に「紹介URL」が空でなく、「紹介URL」が「現在のURL」と等しくない場合、「総紹介訪問数」を「1」増やす。</td>
+<td>新規訪問時に <code>紹介URL</code> が空でなく、<code>紹介URL</code> が <code>現在のURL</code> と等しくない場合、数値 <code>紹介訪問の合計</code> を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>サイトで過ごした総時間（分）</td>
+<td>サイトでの合計滞在時間（分）</td>
 <td>25</td>
 <td>数値</td>
-<td>すべての訪問の総時間。</td>
-<td>訪問終了時に「訪問時間」を「サイトで過ごした総時間（分）」に加算。</td>
+<td>すべての訪問の滞在時間の合計。</td>
+<td>訪問終了時に数値 <code>サイトでの合計滞在時間（分）</code> を <code>訪問時間</code> で増やす。</td>
 </tr>
 <tr>
 <td>バッジなし</td>
 <td>32</td>
 <td>バッジ</td>
-<td>訪問にバッジが割り当てられていない。</td>
-<td>新規訪問時に訪問に「バッジなし」バッジを割り当てる。</td>
+<td>訪問にバッジが割り当てられていない場合。</td>
+<td>新規訪問時に訪問に <code>バッジなし</code> バッジを割り当てる。</td>
 </tr>
 <tr>
-<td>初訪問からの週数</td>
+<td>最初の訪問からの週数</td>
 <td>28</td>
 <td>数値</td>
-<td>初訪問から経過した週数。</td>
-<td>新規訪問時に「生涯訪問回数」を「初訪問からの週数」で割った比率を「週平均訪問回数」に構成（「初訪問からの週数」が「1」以上の場合）。</td>
+<td>最初の訪問から経過した週数。</td>
+<td>新規訪問時に <code>最初の訪問からの週数</code> が <code>1</code> 以上の場合、<code>サイト訪問回数の合計</code> を <code>最初の訪問からの週数</code> で割った比率 <code>週平均訪問回数</code> を構成。</td>
 </tr>
 </tbody>
 </table>
@@ -1213,130 +1213,130 @@
 </thead>
 <tbody>
 <tr>
-<td>アクティブブラウザタイプ</td>
+<td>アクティブなブラウザの種類</td>
 <td>44</td>
 <td>文字列</td>
 <td>訪問が現在使用しているブラウザ。</td>
-<td><ul><li><code>User Agent</code>が<code>Firefox</code>、<code>Safari</code>、<code>MSIE</code>、<code>Edg</code>、<code>Opera</code>を含まない場合、任意のイベントで文字列<code>Active browser version</code>を<code>Active browser type</code>に構成する。</li><li><code>User Agent</code>が<code>Chrome</code>の場合、任意のイベントで文字列<code>Active browser version</code>を<code>Active browser type</code>に構成する。</li><li><code>User Agent</code>が<code>Firefox</code>の場合、任意のイベントで文字列<code>Active browser version</code>を<code>Active browser type</code>に構成する。</li><li><code>User Agent</code>が<code>Opera</code>の場合、任意のイベントで文字列<code>Active browser version</code>を<code>Active browser type</code>に構成する。</li><li>任意のイベントで<code>Set of Strings</code>アクティブブラウザタイプに<code>Active browser type</code>を追加する。</li></ul></td>
+<td><ul><li>イベントの <code>User Agent</code> が <code>Firefox</code>、<code>Safari</code>、<code>MSIE</code>、<code>Edg</code>、<code>Opera</code> を含まない場合、文字列 <code>Active browser version</code> を <code>Active browser type</code> に構成する。</li><li>イベントの <code>User Agent</code> が <code>Chrome</code> の場合、文字列 <code>Active browser version</code> を <code>Active browser type</code> に構成する。</li><li>イベントの <code>User Agent</code> が <code>Firefox</code> の場合、文字列 <code>Active browser version</code> を <code>Active browser type</code> に構成する。</li><li>イベントの <code>User Agent</code> が <code>Opera</code> の場合、文字列 <code>Active browser version</code> を <code>Active browser type</code> に構成する。</li><li>イベントがある場合、<code>Set of Strings</code> アクティブなブラウザの種類に <code>Active browser type</code> を追加する。</li></ul></td>
 </tr>
 <tr>
-<td>アクティブブラウザタイプ</td>
+<td>アクティブなブラウザの種類</td>
 <td>49</td>
 <td>文字列のセット</td>
-<td>この訪問で使用されたブラウザタイプの重複排除リスト。</td>
-<td>訪問終了時に<code>Active browser types</code>で見つかったすべての値に<code>1</code>を加算して<code>Lifetime browser types used</code>を増やす。</td>
+<td>この訪問で使用されたブラウザの種類の重複排除リスト。</td>
+<td>訪問終了時に <code>Active browser types</code> に見つかったすべての値に <code>1</code> を加算して <code>Lifetime browser types used</code> を集計する。</td>
 </tr>
 <tr>
-<td>アクティブブラウザバージョン</td>
+<td>アクティブなブラウザのバージョン</td>
 <td>48</td>
 <td>文字列</td>
 <td>訪問が現在使用しているブラウザのバージョン。</td>
-<td>文字列のセット<code>Active browser versions</code>に任意のイベントで<code>Active browser version</code>を追加する。</td>
+<td>イベントがある場合、文字列のセット <code>Active browser versions</code> に <code>Active browser version</code> を追加する。</td>
 </tr>
 <tr>
-<td>アクティブブラウザバージョン</td>
+<td>アクティブなブラウザのバージョン</td>
 <td>53</td>
 <td>文字列のセット</td>
-<td>この訪問でのブラウザバージョンの重複排除リスト。</td>
-<td>訪問終了時に<code>Active browser versions</code>で見つかったすべての値に<code>1</code>を加算して<code>Lifetime browser versions used</code>を増やす。</td>
+<td>この訪問でのブラウザのバージョンの重複排除リスト。</td>
+<td>訪問終了時に <code>Active browser versions</code> に見つかったすべての値に <code>1</code> を加算して <code>Lifetime browser versions used</code> を集計する。</td>
 </tr>
 <tr>
-<td>アクティブデバイス</td>
+<td>アクティブなデバイス</td>
 <td>46</td>
 <td>文字列</td>
 <td>訪問が現在使用しているデバイス。</td>
-<td>文字列のセット<code>Active devices</code>に任意の訪問で<code>Active device</code>を追加する。</td>
+<td>訪問時に文字列のセット <code>Active devices</code> に <code>Active device</code> を追加する。</td>
 </tr>
 <tr>
-<td>アクティブデバイス</td>
+<td>アクティブなデバイス</td>
 <td>51</td>
 <td>文字列のセット</td>
 <td>この訪問でのデバイスの重複排除リスト。</td>
-<td>訪問終了時に<code>Active devices</code>で見つかったすべての値に<code>1</code>を加算して<code>Lifetime devices used</code>を増やす。</td>
+<td>訪問終了時に <code>Active devices</code> に見つかったすべての値に <code>1</code> を加算して <code>Lifetime devices used</code> を集計する。</td>
 </tr>
 <tr>
-<td>アクティブオペレーティングシステム</td>
+<td>アクティブなオペレーティングシステム</td>
 <td>45</td>
 <td>文字列</td>
 <td>訪問が現在使用しているオペレーティングシステム。</td>
-<td>文字列のセット<code>Active operating systems</code>に任意のイベントで<code>Active operating system</code>を追加する。</td>
+<td>イベントがある場合、文字列のセット <code>Active operating systems</code> に <code>Active operating system</code> を追加する。</td>
 </tr>
 <tr>
-<td>アクティブオペレーティングシステム</td>
+<td>アクティブなオペレーティングシステム</td>
 <td>50</td>
 <td>文字列のセット</td>
-<td>オペレーティングシステムの重複排除リスト。</td>
-<td>訪問終了時に<code>Active operating systems</code>で見つかったすべての値に<code>1</code>を加算して<code>Lifetime operating systems used</code>を増やす。</td>
+<td>この訪問でのオペレーティングシステムの重複排除リスト。</td>
+<td>訪問終了時に <code>Active operating systems</code> に見つかったすべての値に <code>1</code> を加算して <code>Lifetime operating systems used</code> を集計する。</td>
 </tr>
 <tr>
-<td>アクティブプラットフォーム</td>
+<td>アクティブなプラットフォーム</td>
 <td>47</td>
 <td>文字列</td>
 <td>訪問が現在使用しているプラットフォーム。</td>
-<td>文字列のセット<code>Active platforms</code>に任意のイベントで<code>Active platform</code>を追加する。</td>
+<td>イベントがある場合、文字列のセット <code>Active platforms</code> に <code>Active platform</code> を追加する。</td>
 </tr>
 <tr>
-<td>アクティブプラットフォーム</td>
+<td>アクティブなプラットフォーム</td>
 <td>52</td>
 <td>文字列のセット</td>
-<td>アクティブプラットフォームの重複排除リスト。</td>
-<td>訪問終了時に<code>Active platforms</code>で見つかったすべての値に<code>1</code>を加算して<code>Lifetime platforms used</code>を増やす。</td>
+<td>この訪問でのアクティブなプラットフォームの重複排除リスト。</td>
+<td>訪問終了時に <code>Active platforms</code> に見つかったすべての値に <code>1</code> を加算して <code>Lifetime platforms used</code> を集計する。</td>
 </tr>
 <tr>
 <td>ダイレクト訪問</td>
 <td>14</td>
 <td>ブール値</td>
-<td>ユーザーが直接サイトにアクセスしたかどうか。</td>
-<td>新しい訪問時に<code>Referring URL</code>が空または<code>Referring URL</code>が<code>Current URL</code>と等しい場合、ブール値<code>Direct visit</code>を<code>true</code>に構成する。</td>
+<td>ユーザーが直接サイトにアクセスしたか。</td>
+<td>新しい訪問時に <code>Referring URL</code> が空か <code>Referring URL</code> が <code>Current URL</code> と等しい場合、ブール値 <code>Direct visit</code> を <code>true</code> に構成する。</td>
 </tr>
 <tr>
-<td>エントリURL</td>
+<td>エントリー URL</td>
 <td>5</td>
 <td>文字列</td>
-<td>最初に訪れたページのURL。</td>
-<td>新しい訪問時に文字列<code>Entry URL</code>を<code>Current URL</code>に構成する。</td>
+<td>最初に訪れたページの URL。</td>
+<td>新しい訪問時に文字列 <code>Entry URL</code> を <code>Current URL</code> に構成する。</td>
 </tr>
 <tr>
 <td>イベント数</td>
 <td>7</td>
 <td>数値</td>
-<td>この訪問の総イベント数。</td>
-<td>任意のイベントで数値<code>Event count</code>を<code>1</code>増やす。</td>
+<td>この訪問のイベントの総数。</td>
+<td>イベントがある場合、数値 <code>Event count</code> を <code>1</code> 増やす。</td>
 </tr>
 <tr>
-<td>エグジットURL</td>
+<td>エグジット URL</td>
 <td>6</td>
 <td>文字列</td>
-<td>最後に訪れたページのURL。</td>
-<td>訪問終了時に文字列<code>Exit URL</code>を<code>Current URL</code>に構成する。</td>
+<td>最後に訪れたページの URL。</td>
+<td>訪問終了時に文字列 <code>Exit URL</code> を <code>Current URL</code> に構成する。</td>
 </tr>
 <tr>
-<td>紹介訪問</td>
+<td>紹介された訪問</td>
 <td>13</td>
 <td>ブール値</td>
-<td>ユーザーが他のサイトから紹介されたかどうか。</td>
-<td>新しい訪問時に<code>Referring URL</code>が空でなく、<code>Referring URL</code>が<code>Current URL</code>と等しくない場合、ブール値<code>Referred visit</code>を<code>true</code>に構成する。</td>
+<td>ユーザーが他のサイトから紹介されたか。</td>
+<td>新しい訪問時に <code>Referring URL</code> が空でなく <code>Referring URL</code> が <code>Current URL</code> と等しくない場合、ブール値 <code>Referred visit</code> を <code>true</code> に構成する。</td>
 </tr>
 <tr>
 <td>訪問期間</td>
 <td>12</td>
 <td>数値</td>
 <td>この訪問の期間。</td>
-<td>訪問終了時に数値<code>Total time spent on site in minutes</code>に<code>Visit duration</code>を加算する。</td>
+<td>訪問終了時に数値 <code>Total time spent on site in minutes</code> に <code>Visit duration</code> を加算する。</td>
 </tr>
 <tr>
 <td>訪問終了</td>
 <td>11</td>
 <td>日付</td>
 <td>この訪問の終了日。</td>
-<td>任意のイベントで数値<code>Visit duration</code>を<code>Visit end</code>と<code>Visit start</code>の差（分）に構成する。</td>
+<td>イベントがある場合、数値 <code>Visit duration</code> を <code>Visit end</code> と <code>Visit start</code> の差（分）に構成する。</td>
 </tr>
 <tr>
 <td>訪問開始</td>
 <td>10</td>
 <td>日付</td>
 <td>この訪問の開始日。</td>
-<td>任意のイベントで数値<code>Visit duration</code>を<code>Visit end</code>と<code>Visit start</code>の差（分）に構成する。</td>
+<td>イベントがある場合、数値 <code>Visit duration</code> を <code>Visit end</code> と <code>Visit start</code> の差（分）に構成する。</td>
 </tr>
 </tbody>
 </table>
@@ -1353,25 +1353,25 @@
 </thead>
 <tbody>
 <tr>
-<td>クライアントIP</td>
+<td>クライアント IP</td>
 <td>74</td>
 <td>文字列</td>
-<td>訪問のIPv4アドレス。</td>
+<td>訪問の IPv4 アドレス。</td>
 <td></td>
 </tr>
 <tr>
-<td>クライアントIPv6</td>
+<td>クライアント IPv6</td>
 <td>83</td>
 <td>文字列</td>
-<td>訪問のIPv6アドレス。訪問にはIPv6アドレスがあり、そのネットワークインフラがアドレスを伝送できる必要がある。</td>
-<td>IPv6アドレスが利用不可能な場合にIPv4アドレスをフォールバックとして使用する属性を作成する方法については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000521207">IPv6を使用する際のフォールバック構成</a>のナレッジベース記事を参照してください。</td>
+<td>訪問の IPv6 アドレス。訪問は IPv6 アドレスを持っている必要があり、そのネットワークインフラはアドレスを伝送できる必要がある。詳細は <a href="#support-for-ipv6">IPv6のサポート</a> を参照。</td>
+<td></td>
 </tr>
 <tr>
-<td>現在のURL</td>
+<td>現在の URL</td>
 <td>4</td>
 <td>文字列</td>
-<td>現在のページのURL。</td>
-<td><ul><li>新しい訪問時に文字列<code>Entry URL</code>を<code>Current URL</code>に構成する。</li><li>訪問終了時に文字列<code>Exit URL</code>を<code>Current URL</code>に構成する。</li><li>任意のイベントで文字列<code>Last event URL</code>を<code>Current URL</code>に構成する。</li></ul></td>
+<td>現在のページの URL。</td>
+<td><ul><li>新しい訪問時に文字列 <code>Entry URL</code> を <code>Current URL</code> に構成する。</li><li>訪問終了時に文字列 <code>Exit URL</code> を <code>Current URL</code> に構成する。</li><li>イベントがある場合、文字列 <code>Last event URL</code> を <code>Current URL</code> に構成する。</li></ul></td>
 </tr>
 <tr>
 <td>ドメイン</td>
@@ -1384,7 +1384,7 @@
 <td>イベント名</td>
 <td>64</td>
 <td>文字列</td>
-<td>この属性は非推奨です。代わりに<code>tealium_event</code>を使用してください。</td>
+<td>この属性は非推奨です。代わりに <code>tealium_event</code> を使用してください。</td>
 <td></td>
 </tr>
 <tr>
@@ -1392,7 +1392,7 @@
 <td>8</td>
 <td>文字列</td>
 <td>最後のイベントのタイムスタンプ。</td>
-<td><ul><li>新しい訪問時に日付<code>Visit start</code>を<code>Last event timestamp</code>に構成する。</li><li>任意のイベントで日付<code>Visit end</code>を<code>Last event timestamp</code>に構成する。</li><li>新しい訪問の場合、日付<code>First visit</code>を<code>Last event timestamp</code>に構成する。</li><li>訪問終了時に日付<code>Last visit</code>を<code>Last event timestamp</code>に構成する。</li></ul></td>
+<td><ul><li>新しい訪問時に日付 <code>Visit start</code> を <code>Last event timestamp</code> に構成する。</li><li>イベントがある場合、日付 <code>Visit end</code> を <code>Last event timestamp</code> に構成する。</li><li>新しい訪問の場合、日付 <code>First visit</code> を <code>Last event timestamp</code> に構成する。</li><li>訪問終了時に日付 <code>Last visit</code> を <code>Last event timestamp</code> に構成する。</li></ul></td>
 </tr>
 <tr>
 <td>ページタイトル</td>
@@ -1423,10 +1423,10 @@
 <td></td>
 </tr>
 <tr>
-<td>参照URL</td>
+<td>参照元 URL</td>
 <td>3</td>
 <td>文字列</td>
-<td>前のページのURL。</td>
+<td>前のページの URL。</td>
 <td></td>
 </tr>
 <tr>
@@ -1454,14 +1454,14 @@
 <td>tealium_event</td>
 <td>75</td>
 <td>文字列</td>
-<td>Tealiumのイベント名（<code>view</code>または<code>link</code>）。</td>
+<td>Tealiumのイベント名（<code>view</code> または <code>link</code>）。</td>
 <td></td>
 </tr>
 <tr>
 <td>tealium_event_type</td>
 <td>78</td>
 <td>文字列</td>
-<td>発行されるTealiumイベントのタイプ（<code>view</code>または<code>event</code>）。</td>
+<td>発行されるTealiumイベントのタイプ（<code>view</code> または <code>event</code>）。</td>
 <td></td>
 </tr>
 <tr>
@@ -1496,14 +1496,14 @@
 <td>tealium_random</td>
 <td>65</td>
 <td>数値</td>
-<td>各イベントに対してプラットフォームが生成したランダムな数値。期待される値は16桁の数字です。16桁未満の場合はゼロで埋められます。</td>
+<td>この値はプラットフォームが各イベントに対して生成したランダムな数値です。予想される値は16桁の数字です。この値は16桁未満の場合、ゼロで埋められます。</td>
 <td></td>
 </tr>
 <tr>
 <td>tealium_session_id</td>
 <td>71</td>
 <td>数値</td>
-<td>最初のページビュー、イベント、またはライブラリの起動が完了したときのエポックタイムスタンプ（ミリ秒）。30分間活動がない場合、この値はリセットされます。</td>
+<td>この値は、最初のページビュー、イベント、またはライブラリの起動が完了したときのエポックタイムスタンプ（ミリ秒単位）です。この値は、ウェブ上で30分間活動がない場合にリセットされます。</td>
 <td></td>
 </tr>
 <tr>
@@ -1517,14 +1517,14 @@
 <td>tealium_timestamp_epoch</td>
 <td>73</td>
 <td>数値</td>
-<td>イベントが発生した時刻（秒）。イベントがキューに入れられた場合、この値は元々発生した時刻です。</td>
+<td>この値はイベントが発生したときの秒数です。イベントがキューに入れられた場合、この値は元々発生した時間です。</td>
 <td></td>
 </tr>
 <tr>
 <td>tealium_visitor_id</td>
 <td>72</td>
 <td>文字列</td>
-<td>生成されたUUIDで、AudienceStreamでは大文字と小文字が区別されます。以前は<code>vdata</code>コールで<code>tealium_vid</code>として使用されていました。</td>
+<td>生成されたUUIDで、AudienceStream上では大文字と小文字が区別されます。この値は以前 <code>vdata</code> コールで <code>tealium_vid</code> として使用されていました。</td>
 <td></td>
 </tr>
 <tr>
@@ -1536,12 +1536,56 @@
 </tr>
 </tbody>
 </table>
+<h3 id="ipv6のサポート">IPv6のサポート</h3>
+<p>このセクションでは、どのコンポーネントがIPv6をサポートしているか、およびIPv6アドレスが利用できない場合のフォールバックの構成方法を示します。</p>
+<p><strong>タグホスト名</strong></p>
+<table>
+<thead>
+<tr>
+<th>ホスト名</th>
+<th>IPv4サポート</th>
+<th>IPv6サポート</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tags.tiqcdn.com</code></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>tags.tiqcdn.cn</code></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>tags-eu.tiqcdn.com</code></td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ファーストパーティドメイン</strong></p>
+<p>ファーストパーティドメインのIPv6サポートは、構成が作成された時期に依存します：</p>
+<ul>
+<li>ファーストパーティドメイン機能のリリース前に作成された構成はIPv6をサポートします。</li>
+<li>機能リリース後に製品UIを通じて作成された構成は、デフォルトではIPv6をサポートしません。IPv6を有効にするには、ドメインのAレコードと同じディストリビューションを指すAAAA DNSレコードを追加します。</li>
+</ul>
+<p><strong>その他のコンポーネント</strong></p>
+<p>以下のコンポーネントはIPv6をサポートしていません：</p>
+<ul>
+<li>Tealium CollectタグおよびCollect HTTP API（<code>collect.tealiumiq.com</code>および<code>collect-&lt;region&gt;.tealiumiq.com</code>）</li>
+<li>ファーストパーティCollectドメイン</li>
+<li>Tealium v1、v2、およびv3 API（<code>platform.tealiumapis.com</code>）</li>
+<li>コネクターおよび外部ファイルのインポート</li>
+</ul>
+<p>IPv6アドレスが利用できない場合にIPv4アドレスをフォールバックとして使用する属性を作成する方法については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000521207">IPv6を使用する際のフォールバックの構成</a>のナレッジベース記事を参照してください。</p>
 <h2 id="例">例</h2>
 <p>以下の例は、プリロードされた属性を使用する方法を示しています：</p>
 <ul>
-<li><strong>頻繁な訪問</strong>バッジを使用してオーディエンスを作成し、そのオーディエンスにコネクタを使用して「定期的に訪問してくれてありがとう」というメールを送信します。</li>
-<li>**使用されたオペレーティングシステムのライフタイム（お気に入り）**属性を使用して、特定のダウンロードの配置を変更し、より関連性の高いアプリが最初に表示されるようにします。</li>
-<li><strong>合計ダイレクト訪問</strong>と<strong>合計紹介訪問</strong>を使用して、訪問ごとのダイレクト訪問と紹介訪問の比率を計算し、各訪問や訪問を理解します。</li>
+<li><strong>頻繁な訪問</strong>バッジを使用してオーディエンスを作成し、そのオーディエンスにコネクタを使用して「定期的な訪問であることに感謝します」というメールを送信します。</li>
+<li>**使用したオペレーティングシステムのライフタイム（お気に入り）**属性を使用して、特定のダウンロードの配置を変更し、より関連性の高いアプリが最初に表示されるようにします。</li>
+<li><strong>合計ダイレクト訪問数</strong>と<strong>合計リファード訪問数</strong>を使用して、訪問ごとのダイレクト訪問とリファード訪問の比率を計算し、各訪問または訪問を理解します。</li>
 </ul>
 
 </div>
@@ -1603,7 +1647,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月19日
+          <p>最終更新日 ::  2025年September月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1621,7 +1665,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E5%B1%9E%E6%80%A7" href="javascript:void(0)">訪問属性</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E5%B1%9E%E6%80%A7" href="javascript:void(0)">訪問属性</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%B1%9E%E6%80%A7" href="javascript:void(0)">イベント属性</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ipv6%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">IPv6のサポート</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               </nav>
   </aside></nav>
 

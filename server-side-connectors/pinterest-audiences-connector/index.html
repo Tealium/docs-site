@@ -1446,7 +1446,49 @@
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Ad Account ID</strong><br>
+(Required) Unique identifier of an ad account. You can find this identifier with the following methods:
+<ul>
+<li>Log in to the Pinterest account that owns your advertiser account and then navigate to <a href="https://ads.pinterest.com">https://ads.pinterest.com/</a>. In the top navigation section, click <strong>Viewing</strong>. The ad account ID will be the number underneath the ad account name in the drop-down list.</li>
+<li>Navigate to <strong>Ads &gt; Overview</strong> and locate the ad account ID in the URL path. The URL uses the following format: <code>ads.pinterest.com/advertiser/{ad_account_id}/?...</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Click <strong>Establish Connection</strong> to connect to Pinterest.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Authorization tokens expire after 60 days. To prevent audience sync interruptions, log in to Tealium and click <strong>Establish Connection</strong> at least once every 60 days.</p>
+<h3 id="create-a-customer-list">Create a Customer List</h3>
+<p>To create a customer list on Pinterest:</p>
+<ol>
+<li>Click <strong>Create Customer List</strong>.</li>
+<li>Enter the customer list name.</li>
+<li>Enter an audience name. A Pinterest audience with type <code>CUSTOMER_LIST</code> will be created automatically after successful customer list creation.</li>
+<li>Select the type of customer list:
+<ul>
+<li><strong>Email</strong>: An email address as identifier.</li>
+<li><strong>Apple Identifier for Advertisers (IDFA)</strong>: A random device identifier assigned by Apple to a user&rsquo;s device. The IDFA can also identify when users interact with a mobile advertising campaign. This is possible if the channel offers IDFA tracking and the advertiser tracks users who interact with ads successfully.</li>
+<li><strong>Mobile Ad ID (MAID)</strong>: Hexadecimal digit strings that Android or Apple assigns to a mobile device.</li>
+</ul>
+</li>
+</ol>
+<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
+<ol>
+<li>Enter a list of emails, MAIDs, or IDFAs in any combination with one record per line.
+<ul>
+<li>Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5.</li>
+<li>MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.</li>
+</ul>
+</li>
+<li>Enter a description of the audience.</li>
+<li>Click <strong>Done</strong>.</li>
+</ol>
+<p>Enter a name for the action and select the action type from the drop-down list.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1468,47 +1510,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Ad Account ID</strong><br>
-(Required) Unique identifier of an ad account. You can find this identifier with the following methods:
-<ul>
-<li>Log in to the Pinterest account that owns your advertiser account and then navigate to <a href="https://ads.pinterest.com">https://ads.pinterest.com/</a>. In the top navigation section, click <strong>Viewing</strong>. The ad account ID will be the number underneath the ad account name in the drop-down list.</li>
-<li>Navigate to <strong>Ads &gt; Overview</strong> and locate the ad account ID in the URL path. The URL uses the following format: <code>ads.pinterest.com/advertiser/{ad_account_id}/?...</code>.</li>
-</ul>
-</li>
-</ul>
-<p>Click <strong>Establish Connection</strong> to connect to Pinterest.</p>
-<p>To create a customer list on Pinterest:</p>
-<ol>
-<li>Click <strong>Create Customer List</strong>.</li>
-<li>Enter the customer list name.</li>
-<li>Enter an audience name. A Pinterest audience with type <code>CUSTOMER_LIST</code> will be created automatically after successful customer list creation.</li>
-<li>Select the type of customer list:
-<ul>
-<li><strong>Email</strong>: An email address as identifier.</li>
-<li><strong>Apple Identifier for Advertisers (IDFA)</strong>: A random device identifier assigned by Apple to a user&rsquo;s device. The IDFA can also identify when users interact with a mobile advertising campaign, provided the channel offers IDFA tracking and the advertiser tracks users who interact with ads successfully.</li>
-<li><strong>Mobile Ad ID (MAID)</strong>: Hexadecimal digit strings that Android or Apple assigns to a mobile device.</li>
-</ul>
-</li>
-</ol>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<ol>
-<li>Enter a list of emails, MAIDs, or IDFAs in any combination with one record per line.
-<ul>
-<li>Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5.</li>
-<li>MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.</li>
-</ul>
-</li>
-<li>Enter a description of the audience.</li>
-<li>Click <strong>Done</strong>.</li>
-</ol>
-<p>Enter a name for the action and select the action type from the drop-down list.</p>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-user-to-audience">Action - Add User to Audience</h3>
+<h3 id="add-user-to-audience">Add User to Audience</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1532,15 +1536,15 @@
 </tr>
 <tr>
 <td>Email Address (apply MD5 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA1 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA1 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (already hashed)</td>
@@ -1548,15 +1552,15 @@
 </tr>
 <tr>
 <td>Apple IDFA (apply MD5 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using MD5 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (apply SHA1 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (apply SHA256 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (already hashed)</td>
@@ -1564,19 +1568,19 @@
 </tr>
 <tr>
 <td>Mobile Ad ID (apply MD5 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using MD5 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply SHA1 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply SHA256 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-user-from-audience">Action - Remove User from Audience</h3>
+<h3 id="remove-user-from-audience">Remove User from Audience</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -1600,15 +1604,15 @@
 </tr>
 <tr>
 <td>Email Address (apply MD5 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA1 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA1 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (already hashed)</td>
@@ -1616,15 +1620,15 @@
 </tr>
 <tr>
 <td>Apple IDFA (apply MD5 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using MD5 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (apply SHA1 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Apple IDFA (apply SHA256 hash)</td>
-<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide an Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (already hashed)</td>
@@ -1632,15 +1636,15 @@
 </tr>
 <tr>
 <td>Mobile Ad ID (apply MD5 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using MD5 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply SHA1 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using SHA1 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply SHA256 hash)</td>
-<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a Mobile Ad ID and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 </tbody>
 </table>
@@ -1704,7 +1708,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  September 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1720,11 +1724,12 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-user-to-audience" href="javascript:void(0)">Action - Add User to Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-user-from-audience" href="javascript:void(0)">Action - Remove User from Audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-customer-list" href="javascript:void(0)">Create a Customer List</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-audience" href="javascript:void(0)">Add User to Audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-audience" href="javascript:void(0)">Remove User from Audience</a></li>
               </nav>
   </aside></nav>
 

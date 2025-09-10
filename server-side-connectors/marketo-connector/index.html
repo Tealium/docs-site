@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1430,7 +1430,16 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>REST API Client ID</strong>: (Required) Provide the client ID found in <strong>Marketo &gt; Admin &gt; LaunchPoint</strong>. The API user must have permissions for <em>Read-Write Lead</em>, <em>Read/Execute Campaigns</em>, and <em>Read Lists</em>. For more information, see <a href="http://docs.marketo.com/display/public/DOCS/Create+a+Custom+Service+for+Use+with+ReST+API">Marketo: Create a Custom Service for Use with ReST API</a>.</li>
+<li><strong>REST API Client Secret</strong>: (Required) Provide the client secret found in <strong>Marketo &gt; Admin &gt; LaunchPoint</strong>.</li>
+<li><strong>REST API Endpoint URL</strong>: (Required) REST API Endpoint found in <strong>Marketo &gt; Admin &gt; Web Service</strong>. For example, <code>https://123-ABC-123.mktorest.com/rest</code>.</li>
+<li><strong>REST API Identity URL</strong>: (Required) REST API Identity found in <strong>Marketo &gt; Admin &gt; Web Service</strong>. For example, <code>https://123-ABC-123.mktorest.com/identity</code>.</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1480,21 +1489,16 @@
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Bulk Import Leads (optionally add to list)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>REST API Client ID</strong>: (Required) Provide the client ID found in <strong>Marketo &gt; Admin &gt; LaunchPoint</strong>. The API user must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Execute Campaigns&rsquo; and &lsquo;Read Lists&rsquo;. (Learn more about <a href="http://docs.marketo.com/display/public/DOCS/Create+a+Custom+Service+for+Use+with+ReST+API">How to Create a Custom Service</a>.)</li>
-<li><strong>REST API Client Secret</strong>: (Required) Provide client secret found in <strong>Marketo &gt; Admin &gt; LaunchPoint.</strong></li>
-<li><strong>REST API Endpoint URL</strong>: (Required) REST API Endpoint can be found in <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <code>https://123-ABC-123.mktorest.com/rest</code></li>
-<li><strong>REST API Identity URL</strong>: (Required) REST API Identity can be found in <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <code>https://123-ABC-123.mktorest.com/identity</code></li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-lead-to-a-list">Action - Add Lead to a List</h3>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="add-lead-to-a-list">Add Lead to a List</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1506,55 +1510,15 @@
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td>(Required) Select list. The platform loads a maximum of 300 lists. If the list you want does not appear, enter the list ID manually.</td>
+<td>(Required) Select a list. The platform loads a maximum of 300 lists. If the list does not appear, enter the list ID.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
+<td>Use if the <strong>Lead ID</strong> for the user is known. Leave <strong>Lead ID Lookup</strong> blank.</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>cookies</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>twitterId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>facebookId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>linkedInId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcAccountId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcContactId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadOwnerId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcOpptyId</code></td>
-<td></td>
+<td>Lead ID Lookup</td>
+<td>Use if the <strong>Lead ID</strong> for the user is unknown. Leave <strong>Target Lead ID</strong> blank and use this field to search for the Lead ID with a variety of filters. Possible values: <code>id</code>, <code>cookies</code>, <code>email</code>, <code>twitterId</code>, <code>facebookId</code>, <code>linkedInId</code>, <code>sfdcAccountId</code>, <code>sfdcContactId</code>, <code>sfdcLeadId</code>, <code>sfdcLeadOwnerId</code>, <code>sfdcOpptyId</code>.</td>
 </tr>
 <tr>
 <td>Add lead</td>
@@ -1562,7 +1526,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---add-lead-to-a-list-batched">Action - Add Lead to a List (Batched)</h3>
+<h3 id="add-lead-to-a-list-batched">Add Lead to a List (Batched)</h3>
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -1581,55 +1545,15 @@
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td>(Required) Select list. The platform loads a maximum of 300 lists. If the list you want does not appear, enter the list ID manually.</td>
+<td>(Required) Select a list. The platform loads a maximum of 300 lists. If the list does not appear, enter the list ID.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
+<td>Use if the <strong>Lead ID</strong> for the user is known. Leave <strong>Lead ID Lookup</strong> blank.</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>cookies</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>twitterId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>facebookId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>linkedInId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcAccountId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcContactId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadOwnerId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcOpptyId</code></td>
-<td></td>
+<td>Lead ID Lookup</td>
+<td>Use if the <strong>Lead ID</strong> for the user is unknown. Leave <strong>Target Lead ID</strong> blank and use this field to search for the Lead ID with a variety of filters. Possible values: <code>id</code>, <code>cookies</code>, <code>email</code>, <code>twitterId</code>, <code>facebookId</code>, <code>linkedInId</code>, <code>sfdcAccountId</code>, <code>sfdcContactId</code>, <code>sfdcLeadId</code>, <code>sfdcLeadOwnerId</code>, <code>sfdcOpptyId</code>.</td>
 </tr>
 <tr>
 <td>Add lead</td>
@@ -1637,7 +1561,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-lead-from-a-list">Action - Remove Lead from a List</h3>
+<h3 id="remove-lead-from-a-list">Remove Lead from a List</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -1649,59 +1573,23 @@
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td>(Required) Select list. The platform loads a maximum of 300 lists. If the list you want does not appear, enter the list ID manually.</td>
+<td>(Required) Select a list. The platform loads a maximum of 300 lists. If the list does not appear, enter the list ID.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID</strong> Lookup field blank and use this field.</td>
+<td>Use if the <strong>Lead ID</strong> for the user is known. Leave <strong>Lead ID Lookup</strong> blank.</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td></td>
+<td>Lead ID Lookup</td>
+<td>Use if the <strong>Lead ID</strong> for the user is unknown. Leave <strong>Target Lead ID</strong> blank and use this field to search for the Lead ID with a variety of filters. Possible values: <code>id</code>, <code>cookies</code>, <code>email</code>, <code>twitterId</code>, <code>facebookId</code>, <code>linkedInId</code>, <code>sfdcAccountId</code>, <code>sfdcContactId</code>, <code>sfdcLeadId</code>, <code>sfdcLeadOwnerId</code>, <code>sfdcOpptyId</code>.</td>
 </tr>
 <tr>
-<td><code>cookies</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>twitterId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>facebookId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>linkedInId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcAccountId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcContactId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadOwnerId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcOpptyId</code></td>
-<td></td>
+<td>Add lead</td>
+<td>Add lead if it does not exist.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-lead-from-a-list-batched">Action - Remove Lead from a List (Batched)</h3>
+<h3 id="remove-lead-from-a-list-batched">Remove Lead from a List (Batched)</h3>
 <h4 id="batch-limits-1">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -1720,59 +1608,23 @@
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td>(Required) Select list. The platform loads a maximum of 300 lists. If the list you want does not appear, enter the list ID manually.</td>
+<td>(Required) Select a list. The platform loads a maximum of 300 lists. If the list does not appear, enter the list ID.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
+<td>Use if the <strong>Lead ID</strong> for the user is known. Leave <strong>Lead ID Lookup</strong> blank.</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td></td>
+<td>Lead ID Lookup</td>
+<td>Use if the <strong>Lead ID</strong> for the user is unknown. Leave <strong>Target Lead ID</strong> blank and use this field to search for the lead ID with a variety of filters. Possible values: <code>id</code>, <code>cookies</code>, <code>email</code>, <code>twitterId</code>, <code>facebookId</code>, <code>linkedInId</code>, <code>sfdcAccountId</code>, <code>sfdcContactId</code>, <code>sfdcLeadId</code>, <code>sfdcLeadOwnerId</code>, <code>sfdcOpptyId</code>.</td>
 </tr>
 <tr>
-<td><code>cookies</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>twitterId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>facebookId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>linkedInId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcAccountId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcContactId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcLeadOwnerId</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sfdcOpptyId</code></td>
-<td></td>
+<td>Add lead</td>
+<td>Add lead if it does not exist.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-transactional-email">Action - Send Transactional Email</h3>
+<h3 id="send-transactional-email">Send Transactional Email</h3>
 <h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
@@ -1784,7 +1636,7 @@
 <tbody>
 <tr>
 <td>Target Email Campaign</td>
-<td>Select the Target Smart Campaign that was created according to: <a href="http://developers.marketo.com/blog/sending-a-transactional-email-from-marketo-using-the-api/">Sending a transactional email from Marketo using the API</a></td>
+<td>Select the target smart campaign created for transactional email. For more information, see <a href="https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/transactional-email">Marketo: Transactional Email</a>.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
@@ -1792,11 +1644,11 @@
 </tr>
 <tr>
 <td>Token Data to Set</td>
-<td>(Optional) Map token value to token name. Use the full token format as in the Marketo UI. For example, <code>{ { my.message } }</code></td>
+<td>(Optional) Map token value to token name. Use the full token format from the Marketo UI. For example, <code>{ { my.message } }</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---create-or-update-a-lead">Action - Create or Update a Lead</h3>
+<h3 id="create-or-update-a-lead">Create or Update a Lead</h3>
 <h4 id="parameters-5">Parameters</h4>
 <table>
 <thead>
@@ -1808,11 +1660,15 @@
 <tbody>
 <tr>
 <td>Update Strategy</td>
-<td>(Required) Select update strategy</td>
+<td>(Required) Select the update strategy.</td>
 </tr>
 <tr>
 <td>Lead Lookup Filter</td>
-<td><ul><li>(Optional) Select filter field by which to look up an existing lead.</li><li>Selected lookup filter field must have value set in <strong>Lead Data</strong> section.</li></ul></td>
+<td><ul><li>(Optional) Select the filter field to look up an existing lead.</li><li>The selected lookup filter field must have a value set in the <strong>Lead Data</strong> section.</li></ul></td>
+</tr>
+<tr>
+<td>Lead Data to Set</td>
+<td>(Required) Map values to lead property names. Date attributes are automatically formatted to ISO 8601 format.</td>
 </tr>
 </tbody>
 </table>
@@ -1835,15 +1691,19 @@
 <tbody>
 <tr>
 <td>Update Strategy</td>
-<td>(Required) Select update strategy.</td>
+<td>(Required) Select the update strategy.</td>
 </tr>
 <tr>
 <td>Lead Lookup Filter</td>
-<td><ul><li>(Optional) Select filter field by which to look up an existing lead.</li><li>Selected lookup filter field must have value set in <strong>Lead Data</strong> section.</li></ul></td>
+<td><ul><li>(Optional) Select the filter field to look up an existing lead.</li><li>The selected lookup filter field must have a value set in the <strong>Lead Data</strong> section.</li></ul></td>
+</tr>
+<tr>
+<td>Lead Data to Set</td>
+<td>(Required) Map values to lead property names. Date attributes are automatically formatted to ISO 8601 format.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---merge-a-lead">Action - Merge a Lead</h3>
+<h3 id="merge-a-lead">Merge a Lead</h3>
 <h4 id="parameters-7">Parameters</h4>
 <table>
 <thead>
@@ -1854,89 +1714,113 @@
 </thead>
 <tbody>
 <tr>
-<td>Winning Lead ID</td>
-<td>(Required)</td>
-</tr>
-<tr>
-<td>Losing Lead ID</td>
-<td>(Required)</td>
+<td>General Data to Set</td>
+<td>(Required) <ul><li><strong>Winning Lead ID</strong>: The winning lead.</li><li><strong>Losing Lead ID</strong>: Lead to merge (losing lead).</li></ul></td>
 </tr>
 <tr>
 <td>Merge in CRM</td>
-<td></td>
+<td>Specify if the merge should also occur in CRM.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="use-case-example">Use Case Example</h2>
-<p>In this example, you will use the Marketo connector to create and push a new lead into our lead database. More specifically, you will make those who join the <strong>Shoe Fans</strong> audience into leads.</p>
-<h3 id="step-1-define-attributes-and-audience-conditions">Step 1: Define Attributes and Audience conditions.</h3>
-<p>Create a new <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> to store the user&rsquo;s email address. It is the unique value associated with the lead.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Although it is possible to create a lead solely from an email address, we recommend that you capture more information to associate with the lead. In step 6, you will pass this <strong>Visitor Email</strong> visitor ID attribute along with three <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">trait attributes</a> for First name, Last name and Company.</p>
+<h3 id="bulk-import-leads-optionally-add-to-list">Bulk Import Leads (optionally add to list)</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 25,000</li>
+<li>Max time since oldest request: 30 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-8">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Static List</td>
+<td>(Optional) Select a list to add leads to.</td>
+</tr>
+<tr>
+<td>Lead Lookup Field</td>
+<td>(Required) Field used for lead lookup.<ul><li>The selected lookup field must have a value set in <strong>Lead Data</strong> section.</li><li>Possible values: <code>id</code>, <code>cookies</code>, <code>email</code>, <code>twitterId</code>, <code>facebookId</code>, <code>linkedInId</code>, <code>sfdcAccountId</code>, <code>sfdcContactId</code>, <code>sfdcLeadId</code>, <code>sfdcLeadOwnerId</code>, <code>sfdcOpptyId</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Lead Data</td>
+<td>(Required) Map values to lead property names. The lookup field must also be mapped.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="use-case-example">Use case example</h2>
+<p>In this example, the Marketo connector creates and pushes a new lead into the lead database. Visitors who join the <strong>Shoe Fans</strong> audience become leads.</p>
+<h3 id="step-1-define-attributes-and-audience-conditions">Step 1: Define attributes and audience conditions</h3>
+<p>Create a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> to store the user&rsquo;s email address. It is the unique value associated with the lead.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Although it is possible to create a lead from only an email address, we recommend that you capture more information to associate with the lead. In step 6, you pass this <strong>Visitor Email</strong> visitor ID attribute with three <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">trait attributes</a> for first name, last name and company.</p>
 <figure><a class="slb" href="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"
          alt="1. visit_email_id.png"
          title=" visit_email_id.png "/>
     </a>
 </figure>
-<p>Then <a href="/server-side/audiences/manage/">create a new audience</a> titled <code>Shoe Fans</code> and set up logic so that all visitors with the <strong>Shoe Fan</strong> badge and a true <strong>Known User</strong> <a href="/server-side/attributes/data-types/boolean/">boolean attribute</a> will be added to the audience.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The <strong>Known user</strong> boolean was created to determine whether or not the user is known. If there is an email address associated with user, it is set to <code>true</code>. If no email address, it is set to <code>false</code>. It is a necessary condition because you cannot convert a site user into a lead if you do not know who they are.</p>
+<p>Then <a href="/server-side/audiences/manage/">create a new audience</a> titled <code>Shoe Fans</code>. Set up logic so that all visitors with the <strong>Shoe Fan</strong> badge and a true <strong>Known user</strong> <a href="/server-side/attributes/data-types/boolean/">boolean attribute</a> are added to the audience.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <strong>Known user</strong> boolean determines whether the user is known. If an email address is associated with the user, it is set to <code>true</code>. If no email address is present, it is set to <code>false</code>. This condition is required because you cannot convert an unidentified user into a lead.</p>
 <figure><a class="slb" href="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"
          alt="2. audience config.png"
          title=" audience config.png "/>
     </a>
 </figure>
-<h3 id="step-2-create-a-custom-service-in-marketo">Step 2: Create a Custom Service in Marketo</h3>
-<p>Log in to your Marketo account: <a href="https://login.marketo.com/">https://login.marketo.com/</a></p>
-<p>A custom service allows users to describe and define what data their client application can access. Before the application can be used, a Marketo Admin must associate it with a single API-only user with the ability to read, write, and merge leads, as well as being able to read, and execute campaigns.</p>
+<h3 id="step-2-create-a-custom-service-in-marketo">Step 2: Create a custom service in Marketo</h3>
+<p>Log in to your Marketo account at <a href="https://login.marketo.com/">https://login.marketo.com/</a>.</p>
+<p>A custom service lets users describe and define what data their client app can access. Before the app can be used, a Marketo Admin must associate it with an API-only user that can read, write, merge leads, and read and execute campaigns.</p>
 <p><strong>You need to obtain the following information:</strong></p>
 <ul>
-<li>REST API, Client ID</li>
-<li>REST API, Client Secret</li>
-<li>REST API, Complete REST endpoint URL</li>
-<li>REST API, Complete Identity endpoint URL</li>
+<li>REST API Client ID</li>
+<li>REST API Client Secret</li>
+<li>REST API Endpoint URL</li>
+<li>REST API Identity URL</li>
 </ul>
-<p>Follow steps 1-7 on <a href="http://developers.marketo.com/documentation/rest/custom-service/">Marketo Custom Service</a>
-to learn how to create a Custom Service in Marketo.</p>
-<h3 id="step-3-add-the-marketo-connector">Step 3: Add the Marketo Connector</h3>
+<p>To create a custom service in Marketo, see <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api">Marketo: Create a Custom Service for Use with ReST API</a>.</p>
+<h3 id="step-3-add-the-marketo-connector">Step 3: Add the Marketo connector</h3>
 <p>To add the Marketo connector, perform the following steps:</p>
 <ol>
-<li>Navigate to <strong>AudienceStream &gt; Connectors</strong>.</li>
+<li>Go to <strong>AudienceStream &gt; Connectors</strong>.</li>
 <li>Click <strong>+ Add Connector</strong>.</li>
 <li>Click <strong>Marketo</strong>.</li>
 <li>Click <strong>+ Add Connector</strong>.</li>
 </ol>
-<h4 id="configure-rest-api-fields">Configure REST API Fields</h4>
-<p>You should now have all the information needed to properly set up your connector:</p>
+<h4 id="configure-rest-api-fields">Configure REST API fields</h4>
 <ol>
-<li>Navigate to the <strong>Configure</strong> tab of your connector window.</li>
-<li>Copy and paste the values obtained from step 3, along with your title and any relevant notes.</li>
+<li>Go to the <strong>Configure</strong> tab of your connector window.</li>
+<li>Enter the values from step 2, along with your title and any relevant notes.</li>
 <li>Click <strong>Next</strong>.</li>
 </ol>
-<h4 id="configure-actions">Configure Actions</h4>
-<p>In this window, give the connector instructions on what to do.</p>
+<h4 id="configure-actions">Configure actions</h4>
 <ol>
-<li>In the <strong>Actions</strong> drop-down, select <strong>Create or Update a lead</strong>.</li>
+<li>In the <strong>Actions</strong> menu, select <strong>Create or Update a lead</strong>.</li>
 <li>Select the <strong>Shoe Fans</strong> audience.</li>
 <li>For the <strong>Update Strategy</strong>, select <strong>Create only</strong>.</li>
 <li>For the <strong>Lead Lookup Filter</strong>, select <strong>Update Strategy</strong>.</li>
 </ol>
-<p>Since a lead is only as good as the information associated with it, map the appropriate data and values. Under <strong>Lead Data to Set</strong>, select the attribute created in step 1 along with any others, and map them to their corresponding values.</p>
+<p>Map the appropriate data and values. Under <strong>Lead Data to Set</strong>, select the attribute created in step 1 and any others, and map them to their corresponding values.</p>
 <figure><a class="slb" href="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"
          alt="6. values.png"
          title=" values.png "/>
     </a>
 </figure>
-<h3 id="step-4-test--trace-configuration">Step 4: Test / Trace Configuration</h3>
-<p>After you finish setting up your configuration you need to test it. The best way to test your configuration is to run a <a href="/server-side/trace/about/">Trace</a> to make sure that your events are handled properly and to check your Marketo dashboard to make sure your lead was created with the proper information.</p>
+<h3 id="step-4-test-and-trace-configuration">Step 4: Test and trace configuration</h3>
+<p>After setting up your configuration, test it. Run a <a href="/server-side/trace/about/">Trace</a> to verify that events are handled properly and that the lead was created with the correct information in your Marketo dashboard.</p>
 <figure><a class="slb" href="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"
          alt="7. trace.png"
          title=" trace.png " width="607" height="399"/>
     </a>
 </figure>
-<p>The image above shows 3 main things:</p>
+<p>The trace shows:</p>
 <ol>
-<li>My audience was joined (<code>Shoe Fans</code>)</li>
-<li>My action was triggered (<code>Marketo- Create leads</code>)</li>
-<li>My action was processed successfully. (<code>1 action processed/ 0 actions failed</code>)</li>
+<li>The audience was joined (<code>Shoe Fans</code>).</li>
+<li>The action was triggered (<code>Marketo- Create leads</code>).</li>
+<li>The action was processed successfully (<code>1 action processed / 0 actions failed</code>).</li>
 </ol>
 <figure><a class="slb" href="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"
          alt="1 Action Processed/ 0 Actions Failed"
@@ -2009,7 +1893,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 13, 2025 
+          <p>This page was last updated:  September 9, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2023,22 +1907,22 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-lead-to-a-list" href="javascript:void(0)">Action - Add Lead to a List</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-lead-to-a-list-batched" href="javascript:void(0)">Action - Add Lead to a List (Batched)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-lead-from-a-list" href="javascript:void(0)">Action - Remove Lead from a List</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-lead-from-a-list-batched" href="javascript:void(0)">Action - Remove Lead from a List (Batched)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-transactional-email" href="javascript:void(0)">Action - Send Transactional Email</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---create-or-update-a-lead" href="javascript:void(0)">Action - Create or Update a Lead</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-lead-to-a-list" href="javascript:void(0)">Add Lead to a List</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-lead-to-a-list-batched" href="javascript:void(0)">Add Lead to a List (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-lead-from-a-list" href="javascript:void(0)">Remove Lead from a List</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-lead-from-a-list-batched" href="javascript:void(0)">Remove Lead from a List (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-transactional-email" href="javascript:void(0)">Send Transactional Email</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-or-update-a-lead" href="javascript:void(0)">Create or Update a Lead</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-or-update-a-lead-batched" href="javascript:void(0)">Create or Update a Lead (Batched)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---merge-a-lead" href="javascript:void(0)">Action - Merge a Lead</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-example" href="javascript:void(0)">Use Case Example</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-define-attributes-and-audience-conditions" href="javascript:void(0)">Step 1: Define Attributes and Audience conditions.</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-create-a-custom-service-in-marketo" href="javascript:void(0)">Step 2: Create a Custom Service in Marketo</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-add-the-marketo-connector" href="javascript:void(0)">Step 3: Add the Marketo Connector</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-test--trace-configuration" href="javascript:void(0)">Step 4: Test / Trace Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#merge-a-lead" href="javascript:void(0)">Merge a Lead</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#bulk-import-leads-optionally-add-to-list" href="javascript:void(0)">Bulk Import Leads (optionally add to list)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-example" href="javascript:void(0)">Use case example</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-define-attributes-and-audience-conditions" href="javascript:void(0)">Step 1: Define attributes and audience conditions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-create-a-custom-service-in-marketo" href="javascript:void(0)">Step 2: Create a custom service in Marketo</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-add-the-marketo-connector" href="javascript:void(0)">Step 3: Add the Marketo connector</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-test-and-trace-configuration" href="javascript:void(0)">Step 4: Test and trace configuration</a></li>
               </nav>
   </aside></nav>
 
