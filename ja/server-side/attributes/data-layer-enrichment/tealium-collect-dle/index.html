@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/attributes/data-layer-enrichment/tealium-collect-dle/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Data Layer Enrichmentを有効にするためのTealium Collectタグの構成方法について説明します。" />
+<meta property="og:description" content="この記事では、データレイヤーのエンリッチメントを有効にするためにTealium Collectタグを構成する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Tealium Collectタグの追加と構成 | データレイヤーのエンリッチメント | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -1008,47 +1008,50 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Data Layer Enrichmentを有効にするためのTealium Collectタグの構成方法について説明します。
+      この記事では、データレイヤーのエンリッチメントを有効にするためにTealium Collectタグを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>詳細な手順については、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ構成ガイド</a>を参照してください。<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-tealiumcollecttagconfiguration.png"><img src="/images/server-side/whiteui-datalayerenrichment-tealiumcollecttagconfiguration.png"
+  <p>詳細な手順については、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ構成ガイド</a>を参照してください。</p>
+<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-tealiumcollecttagconfiguration.png"><img src="/images/server-side/whiteui-datalayerenrichment-tealiumcollecttagconfiguration.png"
          alt="WhiteUI_DataLayerEnrichment_TealiumCollectTagConfiguration.png"
          title="WhiteUI_DataLayerEnrichment_TealiumCollectTagConfiguration.png"/>
     </a>
-</figure></p>
+</figure>
 <h2 id="データエンリッチメントの頻度">データエンリッチメントの頻度</h2>
-<p>Data Layer Enrichmentを有効にするためのTealium Collectタグを構成するには、属性情報をデータレイヤーにどのくらいの頻度で更新するかを決定する必要があります。以下のオプションがあります：</p>
+<p>データレイヤーエンリッチメントを有効にするためにTealium Collectタグを構成する際、属性情報でデータレイヤーをどのくらいの頻度で更新するかを決定する必要があります。以下のオプションがあります：</p>
 <ul>
-<li>
-<p><strong>なし</strong>
-* デフォルト。
-* データレイヤーエンリッチメントは発生しません。</p>
+<li><strong>なし</strong>（デフォルト）
+<ul>
+<li>データレイヤーエンリッチメントは行われません。</li>
+</ul>
 </li>
-<li>
-<p><strong>稀</strong>
-* データレイヤーエンリッチメントは訪問（セッション）ごとに一度発生します。
-* 取得した顧客データは、セッション中の後続のトラッキング呼び出しで使用するためにローカル保存に保存されます。</p>
+<li><strong>まれ</strong>
+<ul>
+<li>データレイヤーエンリッチメントは訪問（セッション）ごとに一度行われます。</li>
+<li>取得した顧客データはローカル保存に保存され、セッション中の後続のトラッキングコールで使用されます。</li>
+</ul>
 </li>
-<li>
-<p><strong>頻繁</strong>
-* 推奨。
-* データレイヤーエンリッチメントはすべてのトラッキング呼び出しで発生し、セッション中に変更された顧客データがUDOでリアルタイムに反映されます。<br>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このオプションはページごとに追加のHTTPリクエストを引き起こします。</p></p>
+<li><strong>頻繁</strong>（推奨）
+<ul>
+<li>データレイヤーエンリッチメントはトラッキングコールごとに行われます。セッション中に変更された顧客データはリアルタイムでユニバーサルデータオブジェクト（UDO）に反映されます。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このオプションはページごとに追加のHTTPリクエストを発生させます。</p>
 </li>
 </ul>
 <h2 id="ロードルールの選択">ロードルールの選択</h2>
-<p>Tealium Collectタグについては、デフォルトの<strong>すべてのページでロード</strong>ロードルールを選択したままにすることをお勧めします。データレイヤーをできるだけ豊かで堅牢にするためには、できるだけ早く最も関連性の高いデータでそれを充実させる必要があります。</p>
-<h3 id="tealium-iqでのaudiencestream属性の使用">Tealium iQでのAudienceStream属性の使用</h3>
-<p>AudienceStream属性はTealium iQでインポートされた変数として扱われます。これは、Tealium iQからそれらを編集または削除することはできないことを意味します。AudienceStream属性を削除または変更したい場合は、AudienceStreamプロファイルから行う必要があります。また、属性を<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>にインポートすることはできず、通常のプロファイルにのみインポートできます。</p>
-<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"><img src="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"/>
-    </a><figcaption><p>WhiteUI_DataLayerEnrichment_EditAudienceStreamVariables.png</p>
-        </figcaption>
+<p>Tealium Collectタグについては、デフォルトの<strong>すべてのページでロード</strong>ルールを選択したままにすることをお勧めします。データレイヤーに必要な属性が含まれるように、最も関連性の高いデータでそれを満たしてください。</p>
+<h3 id="tealium-iqでaudiencestream属性を使用する">Tealium iQでAudienceStream属性を使用する</h3>
+<p>AudienceStreamの属性はTealium iQでインポートされた変数として扱われます。これらの変数は編集や削除ができません。AudienceStream属性を削除または変更するには、AudienceStreamプロファイルで変更を行います。属性は<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>にはインポートできず、通常のプロファイルにのみインポートできます。</p>
+<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"><img src="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"
+         alt="Data-Layer-Enrichment-Edit-AudienceStream-Variables"
+         title="Data-Layer-Enrichment-Edit-AudienceStream-Variables"/>
+    </a>
 </figure>
-<h3 id="どのaudiencestream属性タイプがインポートされますか">どのAudienceStream属性タイプがインポートされますか？</h3>
-<p>すべてのデータタイプがiQアカウントにインポートされるわけではありません。以下のデータタイプがインポートされ、iQで利用可能になります：</p>
+<h3 id="どのようなaudiencestream属性タイプがインポートされますか">どのようなAudienceStream属性タイプがインポートされますか？</h3>
+<p>以下の属性タイプがTealium iQにインポートされ、データレイヤーで利用可能になります：</p>
 <ul>
 <li>バッジ</li>
 <li>数値</li>
@@ -1056,25 +1059,27 @@
 <li>ブール値</li>
 <li>日付</li>
 </ul>
-<h2 id="ロードルールの作成">ロードルールの作成</h2>
-<p>属性を使用してロードルールを作成することができます。以下の2つのルール演算子が、ロードルールでのバッジの使用を可能にするために利用可能です。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>日付属性はデータレイヤーにインポートされ、UDOで表示されますが、ロードルールやタグマッピングで使用することはできません。</p>
+<h2 id="ロードルールの構築">ロードルールの構築</h2>
+<p>サポートされている属性を使用してロードルールを作成できます。ロードルールで使用可能なルール演算子は、バッジに対して以下の通りです。</p>
 <ul>
 <li><strong>バッジが割り当てられている</strong><br>
-バッジ属性が訪問に割り当てられている場合は真です。<br>
-<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"><img src="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"/>
-          </a><figcaption><p>WhiteUI_DataLayerEnrichment_BadgeIsOrIsNotAssigned.png</p>
-              </figcaption>
+<code>True</code> は、バッジ属性が訪問に割り当てられている場合です。<br>
+<figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"><img src="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"
+               alt="Data-Layer-Enrichment-Badge-Is-Or-Is-Not-Assigned"
+               title="Data-Layer-Enrichment-Badge-Is-Or-Is-Not-Assigned"/>
+          </a>
       </figure></li>
 <li><strong>バッジが割り当てられていない</strong><br>
-バッジ属性が訪問に割り当てられていない場合は偽です。</li>
+<code>False</code> は、バッジ属性が訪問に割り当てられていない場合です。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStreamから属性を削除すると、iQのデータレイヤースクリーンからも自動的に削除されます。ただし、削除された属性を使用するロードルールは、そのロジックから自動的に削除されません。削除されたAudienceStream属性をまだ参照しているロードルールを手動で更新する必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>AudienceStreamから属性を削除すると、Tealium iQのデータレイヤースクリーンから自動的に削除されます。ただし、削除された属性を参照するロードルールは自動的に更新されません。削除された属性をまだ参照しているロードルールを手動で更新する必要があります。</p>
 <h2 id="コールバック関数">コールバック関数</h2>
-<p>データレイヤーエンリッチメントリクエストは、データレイヤーエンリッチメントリクエストの応答に基づいてコードを実行できるようにするコールバックメカニズムを提供します。コールバックメソッドは<code>window.tealium_enrichment()</code>という名前です。</p>
-<p>コールバック関数を使用するには、以下のコード例を持つPre Loaderにスコープを持つ<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a>を作成します：</p>
+<p>データレイヤーエンリッチメントリクエストは、レスポンスに基づいてコードを実行することができるコールバックメソッド <code>window.tealium_enrichment()</code> を提供します。</p>
+<p>コールバック関数を使用するには、次のコードを含む<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a>をPre Loaderにスコープ構成して作成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">tealium_enrichment</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Data Layer Enrichment Callback&#34;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Your code here...
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ここにコードを記述...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span></code></pre></div>
 </div>
@@ -1121,7 +1126,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2025年September月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1137,9 +1142,9 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E9%A0%BB%E5%BA%A6" href="javascript:void(0)">データエンリッチメントの頻度</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E9%81%B8%E6%8A%9E" href="javascript:void(0)">ロードルールの選択</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E3%81%A7%E3%81%AEaudiencestream%E5%B1%9E%E6%80%A7%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">Tealium iQでのAudienceStream属性の使用</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%A9%E3%81%AEaudiencestream%E5%B1%9E%E6%80%A7%E3%82%BF%E3%82%A4%E3%83%97%E3%81%8C%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B" href="javascript:void(0)">どのAudienceStream属性タイプがインポートされますか？</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ロードルールの作成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E3%81%A7audiencestream%E5%B1%9E%E6%80%A7%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealium iQでAudienceStream属性を使用する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AAaudiencestream%E5%B1%9E%E6%80%A7%E3%82%BF%E3%82%A4%E3%83%97%E3%81%8C%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B" href="javascript:void(0)">どのようなAudienceStream属性タイプがインポートされますか？</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E6%A7%8B%E7%AF%89" href="javascript:void(0)">ロードルールの構築</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0" href="javascript:void(0)">コールバック関数</a></li>
               </nav>
   </aside></nav>

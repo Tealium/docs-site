@@ -393,7 +393,7 @@
 <h2 id="接続の確立">接続の確立</h2>
 <p>データのインポートを構成する前に、クラウドデータソースへの接続を確立する必要があります。接続は、Tealiumをクラウドデータソースに接続するためのベンダーの資格情報の再利用可能な構成です。</p>
 <p><strong>接続構成</strong>画面で、データソースの名前を確認し、リストから既存の接続を選択するか、**+**アイコンをクリックして接続を作成します。</p>
-<p><strong>保存</strong>をクリックして<strong>接続構成</strong>画面に戻り、<strong>接続を確立</strong>をクリックします。</p>
+<p><strong>保存</strong>をクリックして<strong>接続構成</strong>画面に戻り、<strong>接続の確立</strong>をクリックします。</p>
 <p>接続を正常に確立した後、<strong>テーブル選択</strong>リストからテーブルを選択します。</p>
 <p>ベンダーへの接続についての詳細は、以下を参照してください：</p>
 <ul>
@@ -401,23 +401,23 @@
 <li><a href="/ja/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
 </ul>
 <h2 id="処理の有効化">処理の有効化</h2>
-<p><strong>処理を有効にする</strong>をオンにして、変更を保存して公開した直後にデータのインポートを開始します。または、構成を完了するまでこの構成をオフにしておき、後でオンにします。</p>
+<p><strong>処理の有効化</strong>をオンにして、変更を保存して公開した直後にデータのインポートを開始します。または、構成を完了するまでこの構成をオフにしておき、後でオンにします。</p>
 <h3 id="頻度">頻度</h3>
 <p>データを取得する頻度を選択します：</p>
 <ul>
 <li><strong>ほぼリアルタイム</strong>：プロセスは2秒ごとに実行されます。</li>
-<li><strong>毎時</strong>：プロセスは毎時の開始時に実行されます。</li>
+<li><strong>毎時</strong>：プロセスは毎時開始時に実行されます。</li>
 <li><strong>毎日</strong>：プロセスは選択した時間（UTC）に1日1回実行されます。</li>
-<li><strong>毎週</strong>：プロセスは指定された日と時間（UTC）に1週間に1回実行されます。</li>
+<li><strong>毎週</strong>：プロセスは指定した日と時間（UTC）に1週間に1回実行されます。</li>
 </ul>
 <h2 id="クエリの構成">クエリの構成</h2>
-<p><strong>クエリモードと構成</strong>画面で、適切なクエリモードを選択し、必要に応じてSQL <code>WHERE</code>句を含めて、カスタム条件に一致するレコードのみをインポートします。</p>
+<p><strong>クエリモードと構成</strong>画面で、適切なクエリモードを選択し、必要に応じてSQLの<code>WHERE</code>句を含めて、カスタム条件に一致するレコードのみをインポートします。</p>
 <h4 id="クエリモードの選択">クエリモードの選択</h4>
 <p>クエリモードは、新しい行、変更された行、またはその両方をインポートする方法を決定します。</p>
 <ul>
 <li>**タイムスタンプ + インクリメント（推奨）**を選択する場合、タイムスタンプ列と厳密にインクリメントする列の2つの列を選択する必要があります。</li>
-<li><strong>タイムスタンプ</strong>または<strong>インクリメント</strong>を選択する場合、新しい行と変更された行、または新しい行のみを検出するために使用する列を選択する必要があります。</li>
-<li><strong>完全再同期</strong>を選択する場合、各インポートサイクル中にすべての行がインポートされます。このオプションは、データが頻繁に変更される場合や、すべてのレコードが最新であることを確認したい場合に便利です。完全再同期クエリモードを使用するには、<strong>毎時</strong>または<strong>毎日</strong>の頻度を指定し、<strong>タイムスタンプ列</strong>または<strong>インクリメント列</strong>を指定する必要があります。</li>
+<li><strong>タイムスタンプ</strong>または<strong>インクリメント</strong>を選択する場合、新規および変更された行、または新規行のみを検出するために使用する列を選択する必要があります。</li>
+<li><strong>フルリシンク</strong>を選択する場合、各インポートサイクル中にすべての行がインポートされます。このオプションは、データが頻繁に変更される場合や、すべてのレコードが最新であることを確認したい場合に便利です。フルリシンククエリモードでは、<strong>毎時</strong>または<strong>毎日</strong>の頻度を使用し、<strong>タイムスタンプ列</strong>または<strong>インクリメント列</strong>を指定する必要があります。</li>
 </ul>
 <p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h4 id="クエリの構成-1">クエリの構成</h4>
@@ -426,20 +426,20 @@
 <p><strong>クエリ &gt; 列の選択</strong>セクションで、インポートする列を選択します。テーブルまたはビューを変更するには、<strong>前へ</strong>をクリックして別のテーブルを選択します。</p>
 </li>
 <li>
-<p>（オプション）カスタム条件を追加するには、SQL <code>WHERE</code>句を含めます。<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のテーブルからデータをインポートするには、ビューを作成し、データソース構成でビューを選択します。</p></p>
+<p>（オプション）カスタム条件を追加するには、SQLの<code>WHERE</code>句を含めます。<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のテーブルからデータをインポートするには、ビューを作成し、データソース構成でビューを選択します。</p></p>
 </li>
 <li>
-<p>完全再同期クエリモードの場合、インポートする最大レコード数の<strong>制限</strong>を入力します。毎日のクエリは最大1,000,000レコードをインポートでき、毎時のクエリは最大50,000レコードをインポートできます。</p>
+<p>フルリシンククエリモードの場合、インポートする最大レコード数の<strong>制限</strong>を入力します。毎日のクエリは最大1,000,000レコードをインポートでき、毎時のクエリは最大50,000レコードをインポートできます。</p>
 </li>
 <li>
-<p><strong>クエリのテスト</strong>をクリックしてSQLクエリを検証し、結果をプレビューします。</p>
+<p><strong>テストクエリ</strong>をクリックしてSQLクエリを検証し、結果をプレビューします。</p>
 </li>
 </ol>
 <h2 id="列のマッピング">列のマッピング</h2>
-<p>列のマッピングページでは、前のステップで選択した列が表示されます。各列には自動的にデータタイプが割り当てられ、必要に応じて変更できる推奨されるクラウド属性名が提案されます。</p>
+<p>列マッピングページでは、前のステップで選択した列が表示されます。各列には自動的にデータタイプが割り当てられ、必要に応じて変更できる推奨されるクラウド属性名が割り当てられます。</p>
 <p>クラウド属性にマッピングされていない列は無視されます。</p>
-<h2 id="まとめ">まとめ</h2>
-<p>この最終ステップでは、まとめを表示し、必要な修正を行った後、プロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために<strong>前へ</strong>をクリックします。</p>
+<h2 id="概要">概要</h2>
+<p>この最終ステップでは、概要を表示し、必要に応じて修正を加えてからプロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために<strong>前へ</strong>をクリックします。</p>
 <ol>
 <li>クラウド属性のマッピングを確認します。</li>
 <li><strong>完了</strong>をクリックしてデータソースを作成し、構成画面を終了します。新しいデータソースは<strong>データソース</strong>ダッシュボードにリストされます。</li>
@@ -453,13 +453,13 @@
 <li>複製されたデータソースの名前を入力します。</li>
 </ol>
 <h2 id="処理された行とエラー">処理された行とエラー</h2>
-<p>インポート活動を確認するには、<strong>データソース</strong>に移動し、データソースを展開します。</p>
+<p>インポートアクティビティを確認するには、<strong>データソース</strong>に移動し、データソースを展開します。</p>
 <figure><a class="slb" href="/images/server-side/data-sources/cloud-data-source-status-line.png"><img src="/images/server-side/data-sources/cloud-data-source-status-line.png"/>
     </a>
 </figure>
 <p>CloudStreamは、1秒間に最大500イベントを取り込むことができます。</p>
 <h2 id="ステータス">ステータス</h2>
-<p>クラウドデータソースを構成した後、次のいずれかのステータスが表示される場合があります：</p>
+<p>クラウドデータソースを構成した後、以下のステータスのいずれかが表示される場合があります：</p>
 <table>
 <thead>
 <tr>
@@ -469,28 +469,32 @@
 </thead>
 <tbody>
 <tr>
+<td><strong>失敗</strong></td>
+<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスをトリガーせず、データソースが<strong>実行中</strong>のままでログに記録されます。</td>
+</tr>
+<tr>
+<td><strong>非アクティブ</strong></td>
+<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行されていません。</td>
+</tr>
+<tr>
 <td><strong>初期化中</strong></td>
-<td>コネクタが初めて起動するか、<strong>停止</strong>状態から再開する際の一時的な状態です。この状態から<strong>実行中</strong>または<strong>スケジュール済み</strong>に移行します。</td>
+<td>コネクタは初めて起動するか、<strong>停止</strong>状態から再開するときです。これは一時的な状態で、<strong>実行中</strong>または<strong>スケジュール済み</strong>に移行する前の状態です。</td>
 </tr>
 <tr>
 <td><strong>実行中</strong></td>
-<td>コネクタがアクティブにクエリを実行し、データをインポートしています。</td>
+<td>コネクタはアクティブにクエリを実行し、データをインポートしています。</td>
 </tr>
 <tr>
 <td><strong>スケジュール済み</strong></td>
 <td>次のインポートがスケジュールされています。この状態は<strong>初期化中</strong>または<strong>実行中</strong>の後に続くことがあります。</td>
 </tr>
 <tr>
-<td><strong>失敗</strong></td>
-<td>認証失敗などの接続エラーが発生し、エラーが解決されるまでインポートが停止します。インポート中の行レベルのエラーはこのステータスを引き起こさず、データソースが<strong>実行中</strong>のままログに記録されます。</td>
-</tr>
-<tr>
 <td><strong>停止</strong></td>
-<td>データソースは以前に有効化されていましたが、現在はオフになっています。有効にするまでデータのインポートは行われません。</td>
+<td>データソースは以前に有効化されましたが、現在はオフになっています。有効化されるまでデータのインポートは行われません。</td>
 </tr>
 <tr>
-<td><strong>非アクティブ</strong></td>
-<td>データソースは作成されましたが、オンにされることなく他のステータスに移行することはありません。</td>
+<td><strong>未割り当て</strong></td>
+<td>タスクはクラウドワーカーに割り当てられるのを待っています。</td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +558,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2025年September月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -575,7 +579,7 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6" href="javascript:void(0)">頻度</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">クエリの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">列のマッピング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%BE%E3%81%A8%E3%82%81" href="javascript:void(0)">まとめ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E8%A4%87%E8%A3%BD" href="javascript:void(0)">データソースの複製</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%87%A6%E7%90%86%E3%81%95%E3%82%8C%E3%81%9F%E8%A1%8C%E3%81%A8%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">処理された行とエラー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9" href="javascript:void(0)">ステータス</a></li>

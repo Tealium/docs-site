@@ -1040,7 +1040,7 @@
 <li><a href="/ja/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
 </ul>
 <h2 id="処理の有効化">処理の有効化</h2>
-<p><strong>Enable Processing</strong> をオンにして、変更を保存して公開した直後にデータのインポートを開始します。または、構成を完了するまでこの構成をオフにして、後でオンにします。</p>
+<p><strong>Enable Processing</strong> をオンにして、変更を保存して公開した直後にデータのインポートを開始します。または、構成を完了するまでこの構成をオフにしておき、後でオンにします。</p>
 <h2 id="クエリの構成">クエリの構成</h2>
 <p><strong>Query Mode and Configuration</strong> 画面で、適切なクエリモードを選択し、カスタム条件に一致するレコードのみをインポートするために、必要に応じて SQL <code>WHERE</code> 句を含めます。</p>
 <h4 id="クエリモードの選択">クエリモードの選択</h4>
@@ -1049,7 +1049,7 @@
 <li><strong>Timestamp + Incrementing</strong>（推奨）を選択した場合、タイムスタンプ列と厳密に増加する列の2つの列を選択する必要があります。</li>
 <li><strong>Timestamp</strong> または <strong>Incrementing</strong> を選択した場合、新規および変更された行、または新規行のみを検出するために使用する列を選択する必要があります。</li>
 </ul>
-<p>詳細については <a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a> を参照してください。</p>
+<p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a> を参照してください。</p>
 <h4 id="クエリの構成-1">クエリの構成</h4>
 <ol>
 <li>
@@ -1069,7 +1069,7 @@
 <p>AudienceStreamでクラウドデータソースを使用するには、列を訪問ID属性にマッピングします。訪問IDを表す列を選択し、対応する訪問ID属性にマッピングします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><strong>AudienceStreamでの訪問IDマッピング</strong>はデフォルトで有効になっています。訪問IDマッピングを無効にすると、訪問のスティッチングにエラーが発生する可能性があります。詳細については、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用した訪問識別</a>を参照してください。</p>
 <h2 id="まとめ">まとめ</h2>
-<p>最後のステップでは、要約を表示し、必要に応じて修正を行い、プロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために <strong>Previous</strong> をクリックします。</p>
+<p>この最終ステップでは、要約を表示し、必要に応じて修正を行い、プロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために <strong>Previous</strong> をクリックします。</p>
 <ol>
 <li>イベント属性と訪問IDのマッピングを表示します。</li>
 <li><strong>Finish</strong> をクリックしてデータソースを作成し、構成画面を終了します。新しいデータソースは <strong>Data Sources</strong> ダッシュボードにリストされます。</li>
@@ -1091,28 +1091,32 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Initializing</strong></td>
-<td>データソースが初めて起動するか、<strong>Stopped</strong> 状態から再開します。これは <strong>Running</strong> または <strong>Scheduled</strong> に移行する前の一時的な状態です。</td>
-</tr>
-<tr>
-<td><strong>Running</strong></td>
-<td>データソースがアクティブにクエリを実行し、データをインポートしています。</td>
-</tr>
-<tr>
-<td><strong>Scheduled</strong></td>
-<td>次のインポートがスケジュールされています。この状態は <strong>Initializing</strong> または <strong>Running</strong> の後に続くことがあります。</td>
-</tr>
-<tr>
 <td><strong>Failed</strong></td>
-<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスを引き起こさず、データソースが <strong>Running</strong> のままでログに記録されます。</td>
-</tr>
-<tr>
-<td><strong>Stopped</strong></td>
-<td>データソースは以前に有効にされていましたが、現在はオフになっています。有効にするまでデータのインポートは行われません。</td>
+<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスをトリガーせず、データソースは <strong>Running</strong> のままでログに記録されます。</td>
 </tr>
 <tr>
 <td><strong>Inactive</strong></td>
-<td>データソースは作成されましたが、オンにされず、他のステータスに移行していません。</td>
+<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行されていません。</td>
+</tr>
+<tr>
+<td><strong>Initializing</strong></td>
+<td>コネクタは初めて起動するか、<strong>Stopped</strong> 状態から再開します。これは <strong>Running</strong> または <strong>Scheduled</strong> に移行する前の一時的な状態です。</td>
+</tr>
+<tr>
+<td><strong>Running</strong></td>
+<td>コネクタはアクティブにクエリを実行し、データをインポートしています。</td>
+</tr>
+<tr>
+<td><strong>Scheduled</strong></td>
+<td>次のインポートがスケジュールされて実行されます。この状態は <strong>Initializing</strong> または <strong>Running</strong> の後に続くことがあります。</td>
+</tr>
+<tr>
+<td><strong>Stopped</strong></td>
+<td>データソースは以前に有効化されましたが、現在はオフになっています。有効にするまでデータのインポートは行われません。</td>
+</tr>
+<tr>
+<td><strong>Unassigned</strong></td>
+<td>タスクはクラウドワーカーに割り当てられるのを待っています。</td>
 </tr>
 </tbody>
 </table>
@@ -1176,7 +1180,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年September月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
