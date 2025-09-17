@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -606,6 +606,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/movable-ink-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Movable Ink</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/new-relic-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>New Relic</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/new-relic-browser-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>New Relic Browser</span></a>
@@ -1215,6 +1218,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/movable-ink-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".movable-ink-connector">Movable Ink</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/new-relic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-connector">New Relic</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/new-relic-browser-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-browser-connector">New Relic Browser</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a></li>
@@ -1430,53 +1435,87 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector is now deprecated and is no longer available in the connector marketplace.</p>
-<h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Splunk token</strong>
+<ul>
+<li>The HTTP Event Collector token. Create a token at <strong>Settings &gt; Data Inputs &gt; HTTP Event Collector</strong>.</li>
+</ul>
+</li>
+<li><strong>Host</strong>
+<ul>
+<li>The Splunk instance that runs HTTP Event Collector. For example, <code>https://hec.example.com</code>.</li>
+</ul>
+</li>
+<li><strong>Port</strong>
+<ul>
+<li>(Optional) The HTTP Event Collector port number.</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>POST - Visitor to Index</td>
+<td>Send Entire Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Event Data (Batch)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Custom Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Custom Event Data (Batch)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data (Batch)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data (Batch)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/manage/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li>
-<p><strong>REST API Username</strong></p>
-<ul>
-<li>Required</li>
-</ul>
-</li>
-<li>
-<p><strong>REST API Password</strong></p>
-<ul>
-<li>Required</li>
-</ul>
-</li>
-<li>
-<p><strong>REST API Complete Host URL</strong></p>
-<ul>
-<li>Required</li>
-<li>Provide the complete Splunk Server REST endpoint, including protocol and port.</li>
-</ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---post---visitor-to-index">Action - POST - Visitor to Index</h3>
-<h4 id="parameters">Parameters</h4>
+<p>Enter a name for the action and select the <strong>Action Type</strong>.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="send-entire-event-data">Send Entire Event Data</h3>
+<h4 id="metadata">Metadata</h4>
 <table>
 <thead>
 <tr>
@@ -1486,12 +1525,516 @@
 </thead>
 <tbody>
 <tr>
-<td>Select the Target Index</td>
-<td><ul><li>(Required) Select the target Splunk Index to post the Visitor JSON to.</li></ul></td>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td><ul><li>If attribute names get updated, the names in the payload will reflect the update.</li></ul></td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-event-data-batch">Send Entire Event Data (Batch)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="metadata-1">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default is <code>15</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-event-data">Send Custom Event Data</h3>
+<h4 id="metadata-2">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Message Definition</td>
+<td>Provide values to construct message data. For template support, reference the template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-event-data-batch">Send Custom Event Data (Batch)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="metadata-3">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data-1">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Message Definition</td>
+<td>Provide values to construct message data. For template support, reference the template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default is <code>15</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="metadata-4">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
+<h4 id="metadata-5">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data With Visitor Data</td>
+<td>Add the current visit data to the payload. This includes event visit data, unless Exclude Current Visit Event Data is checked.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Exclude event data from the current visit data.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data (Batch)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="metadata-6">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Exclude event data from the current visit data.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default is <code>15</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
+<h4 id="metadata-7">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data-2">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Message Definition</td>
+<td>Provide values to construct message data. For template support, reference the template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-visitor-data-batch">Send Custom Visitor Data (Batch)</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="metadata-8">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data-3">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Message Definition</td>
+<td>Provide values to construct message data. For template support, reference the template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default is <code>15</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1555,7 +2098,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  September 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1569,10 +2112,17 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---post---visitor-to-index" href="javascript:void(0)">Action - POST - Visitor to Index</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-batch" href="javascript:void(0)">Send Entire Event Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data-batch" href="javascript:void(0)">Send Custom Event Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-batch" href="javascript:void(0)">Send Custom Visitor Data (Batch)</a></li>
               </nav>
   </aside></nav>
 

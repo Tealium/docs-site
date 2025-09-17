@@ -700,8 +700,8 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p><a href="/ja/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 測定プロトコルコネクタ</a>は、開発者がHTTPリクエストを行い、イベントを直接Google Analyticsサーバーに送信することを可能にします。これにより、開発者はHTTPが有効な環境からビジネスとのユーザーのやり取りを測定でき、サーバー間でのやり取りを簡単に測定できます。</p>
-<p>Tealium EventStreamは、Google Analytics 4のトラッキングを可能にするための伝送路として機能します。モバイル、IoT、オフラインイベントおよびページビューのトラッキングを統合することにより、以下のサポートを提供します：</p>
+<p><a href="/ja/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 測定プロトコルコネクタ</a>は、開発者がHTTPリクエストを行い、イベントを直接Google Analyticsサーバーに送信することを可能にします。これにより、開発者はHTTPが有効な環境からビジネスとのユーザーのやり取りを測定でき、サーバー間でのやり取りが発生する場合でも簡単に測定できます。</p>
+<p>Tealium EventStreamは、Google Analytics 4のトラッキングを可能にするための伝送路として機能します。モバイル、IoT、オフラインイベントおよびページビューのトラッキングをサポートすることにより、以下を実現します：</p>
 <ul>
 <li>Webアプリケーションとアプリの両方をトラッキング。</li>
 <li>オンラインとオフラインの行動を結びつける。</li>
@@ -740,22 +740,22 @@
 <p>測定プロトコルAPIは、URLのクエリパラメータとして含まれる測定IDとAPIシークレットを使用します。</p>
 <pre tabindex="0"><code>https://google-analytics.com/mp/collect?measurement_id=G-1234567890&amp;api_secret=xxxxxxxxxx
 </code></pre><h2 id="構成">構成</h2>
-<p>コネクタを構成するには、APIシークレットとデータストリームの測定IDまたはFirebase IDのいずれかを入力します。</p>
+<p>コネクタを構成するには、APIシークレットとデータストリームの測定IDまたはFirebase IDを入力します。</p>
 <h2 id="レスポンスデバッグ">レスポンス/デバッグ</h2>
 <p>測定プロトコルは、HTTPリクエストが受信された場合に常に<code>2xx</code>ステータスコードを返します。ペイロードデータが不正であったり、ペイロードのデータが誤っていたり、Google Analyticsによって処理されなかった場合、測定プロトコルはエラーコードを返しません。</p>
 <p>Googleはイベントの検証用に別のエンドポイントを提供しています：</p>
 <pre tabindex="0"><code>https://google-analytics.com/debug/mp/collect?
 </code></pre><p>Tealium測定プロトコルコネクタは、このエンドポイントをTrace中に使用し、イベントデータの検証プロセスを表示します。</p>
 <h3 id="推奨事項と構成の詳細">推奨事項と構成の詳細</h3>
-<p>指摘された制限を緩和し、すべてのデータ要件を完全にカバーするために、Tealium iQタグ管理で<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4タグ</a>を実装します。すべてのページでタグをロードするように構成し、<strong>Send Page View</strong>を<code>false</code>に構成します。さらに、Google <code>clientId</code>が自動的に<code>utag_main__ga</code>クッキー値として追加されるように、Google Analytics Cookie Matching Serviceタグを追加します。</p>
-<p>Googleの自動収集イベント以外のすべての必要なイベントは、Tealium EventStreamのGoogle Analyticsコネクタで構成できます。</p>
-<p>Google Analytics 4タグは、E-commerce拡張マッピングを通じて<code>order_id</code>が存在する場合に自動的に購入イベントをトリガーします。E-commerce拡張機能を有効にしていて、EventStreamを通じて購入を追跡したい場合は、Google Analytics 4にスコープされた<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a>拡張機能を構成して、<code>_corder</code>属性をクリアします。</p>
+<p>指摘された制限を緩和し、すべてのデータ要件を完全にカバーするために、Tealium iQタグ管理で<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4タグ</a>を実装し、すべてのページでタグをロードするように構成します。<strong>Send Page View</strong>は<code>false</code>に構成します。さらに、Google <code>clientId</code>が自動的に<code>utag_main__ga</code>クッキー値として追加されるように、Google Analytics Cookie Matching Serviceタグを追加します。</p>
+<p>Googleの自動収集イベント以外の必要なイベントは、Tealium EventStreamのGoogle Analyticsコネクタで構成できます。</p>
+<p>Google Analytics 4タグは、E-commerce拡張マッピングを通じて<code>order_id</code>が存在する場合に自動的に購入イベントをトリガーします。E-commerce拡張機能を有効にしており、EventStreamを通じて購入を追跡したい場合は、Google Analytics 4にスコープされた<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a>拡張機能を構成して、<code>_corder</code>属性をクリアします。</p>
 <figure><a class="slb" href="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"><img src="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"
          alt="google analytics 4 測定プロトコルデータ値構成"
          title="google analytics 4 測定プロトコルデータ値構成"/>
     </a>
 </figure>
-<p>Tealiumは、ウェブクライアント統合に対応するクライアントサイド実装をサポートすることができるだけでなく、TealiumのEventStreamを通じてモバイルおよびオフラインイベントもサポートするため、両方のソリューションと統合し、組み合わせたアプローチを作成することができます。</p>
+<p>Tealiumは、Webクライアント統合に対応するクライアントサイド実装をサポートするだけでなく、TealiumのEventStreamを通じてモバイルおよびオフラインイベントもサポートするため、両方のソリューションと統合し、組み合わせたアプローチを作成できます。</p>
 <p>クライアントサイドタグの構成に関する詳細情報については、<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) タグ構成ガイド</a>を参照してください。</p>
 <h3 id="前提条件">前提条件</h3>
 <table>
@@ -776,7 +776,7 @@
 </tr>
 <tr>
 <td>Tealium iQタグ管理</td>
-<td>任意だが推奨</td>
+<td>任意ですが、推奨されます</td>
 </tr>
 </tbody>
 </table>
@@ -793,17 +793,17 @@
 <tr>
 <td>APIシークレット (必須)</td>
 <td>Google Analytics UIで生成されたAPIシークレット。</td>
-<td>新しいシークレットを作成するには、<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定プロトコル</strong> &gt; <strong>追加構成</strong> &gt; <strong>測定プロトコルAPIシークレット</strong>に移動します。</td>
+<td>新しいシークレットを作成するには、<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定プロトコル</strong> &gt; <strong>追加構成</strong> &gt; <strong>測定プロトコルAPIシークレット</strong>に進みます。</td>
 </tr>
 <tr>
 <td>測定ID (任意)</td>
 <td>ストリームに関連付けられた測定ID。</td>
-<td>Google Analytics UIで、<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定ID</strong> &gt; <strong>作成</strong>に移動します。</td>
+<td>Google Analytics UIで、<strong>管理</strong> &gt; <strong>データストリーム</strong> &gt; <strong>ストリームを選択</strong> &gt; <strong>測定ID</strong> &gt; <strong>作成</strong>に進みます。</td>
 </tr>
 <tr>
 <td>FirebaseアプリID (任意)</td>
 <td>Firebaseアプリの識別子。</td>
-<td>Firebaseコンソールで、<strong>プロジェクト構成</strong> &gt; <strong>一般</strong> &gt; <strong>アプリ</strong> &gt; <strong>アプリID</strong>に移動します。</td>
+<td>Firebaseコンソールで、<strong>プロジェクト構成</strong> &gt; <strong>一般</strong> &gt; <strong>アプリ</strong> &gt; <strong>アプリID</strong>に進みます。</td>
 </tr>
 </tbody>
 </table>
@@ -823,11 +823,11 @@
 </tr>
 <tr>
 <td>ページ位置</td>
-<td>必須。ページの完全なURLです。</td>
+<td>（必須）ページの完全なURLです。</td>
 </tr>
 <tr>
-<td>ユーザー属性</td>
-<td>ユーザーベースのセグメントを記述するユーザー属性、例えば言語の好みや地理的な位置などです。これらは<strong>テンプレート</strong>セクションに構成できます。</td>
+<td>ユーザープロパティ</td>
+<td>ユーザーベースのセグメントを記述するユーザープロパティ、例えば言語の好みや地理的な位置です。これらは<strong>テンプレート</strong>セクションに構成できます。</td>
 </tr>
 <tr>
 <td>アイテムID</td>
@@ -847,7 +847,7 @@
 </tr>
 <tr>
 <td>通貨</td>
-<td>3文字のISO 4217形式の通貨です。構成されている場合、イベントレベルの通貨は無視されます。イベント内で複数の通貨はサポートされていないため、すべてのエントリーには同じ通貨値が含まれます。</td>
+<td>3文字のISO 4217形式の通貨です。構成されている場合、イベントレベルの通貨は無視されます。イベント内で複数の通貨はサポートされていないため、すべてのエントリーは同じ通貨値を含みます。</td>
 </tr>
 <tr>
 <td>割引（数値）</td>
@@ -867,19 +867,19 @@
 </tr>
 <tr>
 <td>アイテムカテゴリ2</td>
-<td>アイテムの第二カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第二のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ3</td>
-<td>アイテムの第三カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第三のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ4</td>
-<td>アイテムの第四カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第四のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムカテゴリ5</td>
-<td>アイテムの第五カテゴリ階層または追加の分類法です。</td>
+<td>アイテムの第五のカテゴリ階層または追加の分類法です。</td>
 </tr>
 <tr>
 <td>アイテムリストID</td>
@@ -891,7 +891,7 @@
 </tr>
 <tr>
 <td>アイテムバリアント</td>
-<td>アイテムのバリアントまたは追加のアイテム詳細またはオプションに関する一意のコードまたは説明です。</td>
+<td>アイテムのバリアントまたは追加のアイテム詳細やオプションに関する一意のコードや説明です。</td>
 </tr>
 <tr>
 <td>ロケーションID</td>
@@ -907,18 +907,18 @@
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td>テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記を使用してネストされたテンプレート変数に名前を付けます。例えば、<code>items.name</code>です。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td>テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。例えば、<code>items.name</code>のようにドット表記でネストされたテンプレート変数を名付けます。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>ユーザー属性で参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例えば、<code>{{SomeTemplateName}}</code>です。</td>
+<td>ユーザープロパティで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは、例えば<code>{{SomeTemplateName}}</code>のように、サポートされているフィールドに名前でダブルカーリーブレースで注入されます。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="pageviewイベントの送信">PageViewイベントの送信</h2>
 <h3 id="概要">概要</h3>
 <p>このアクションは、ウェブサイトのページビューイベントをGoogle Analyticsに渡すために使用されます。</p>
-<h3 id="本文パラメータ">本文パラメータ</h3>
+<h3 id="ボディパラメータ">ボディパラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -929,7 +929,7 @@
 <tbody>
 <tr>
 <td>クライアントID</td>
-<td>必須。クライアントの一意の識別子です。<br><br>この識別子はGoogle Analytics 4タグによって構成されたクライアントIDを使用する必要があります。詳細については、<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) タグ構成ガイド</a>を参照してください。</td>
+<td>（必須）クライアントの一意の識別子です。<br><br>この識別子は、Google Analytics 4タグによって構成されたクライアントIDを使用する必要があります。詳細については、<a href="/ja/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) タグ構成ガイド</a>を参照してください。</td>
 </tr>
 <tr>
 <td>測定IDオーバーライド</td>
@@ -937,7 +937,7 @@
 </tr>
 <tr>
 <td>FirebaseアプリIDオーバーライド</td>
-<td>必須。Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
+<td>（必須）Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
@@ -945,7 +945,7 @@
 </tr>
 <tr>
 <td>タイムスタンプマイクロ秒</td>
-<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。過去に発生したイベントを記録するためにこの値を構成します。この値は<code>user_property</code>またはイベントのタイムスタンプを介して上書きすることができます。イベントはプロパティのタイムゾーンに基づいて最大3カレンダー日まで遡って日付を構成することができます。</td>
+<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。過去に発生したイベントを記録するためにこの値を構成します。この値は<code>user_property</code>またはイベントのタイムスタンプを介して上書きすることができます。イベントは、プロパティのタイムゾーンに基づいて最大3カレンダー日まで遡って日付を構成することができます。</td>
 </tr>
 <tr>
 <td>非パーソナライズ広告</td>
@@ -968,7 +968,7 @@
 </tr>
 <tr>
 <td>ページ位置</td>
-<td>必須。ページの完全なURLです。</td>
+<td>（必須）ページの完全なURLです。</td>
 </tr>
 </tbody>
 </table>
@@ -981,7 +981,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;params&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;page_location&#34;</span>: <span style="color:#e6db74">&#34;http://demosite.com/ecomm/category.html&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...other</span> <span style="color:#960050;background-color:#1e0010">mapped</span> <span style="color:#960050;background-color:#1e0010">parameters...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...他のマップされたパラメータ...</span>
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ],
@@ -989,8 +989,8 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="イベントの送信">イベントの送信</h2>
 <h3 id="概要-1">概要</h3>
-<p>このアクションは、ページビュー以外のイベントをGoogle Analyticsに送信するために使用されます。イベントタイプは、Googleが定義したイベントリストから選択することができます（詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol (Google Analytics 4) Events</a>を参照してください）。さらに、カスタムイベントを選択し、カスタムイベント値を<strong>カスタムイベントタイプ</strong>にマッピングすることができます。</p>
-<h3 id="本文パラメータ-1">本文パラメータ</h3>
+<p>このアクションは、Google Analyticsに非ページビューイベントを送信するために使用されます。Googleが定義したイベントタイプのリストからイベントタイプを選択することができます（詳細については、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol (Google Analytics 4) Events</a>を参照してください）。さらに、カスタムイベントを選択し、カスタムイベント値を<strong>カスタムイベントタイプ</strong>にマッピングすることができます。</p>
+<h3 id="ボディパラメータ-1">ボディパラメータ</h3>
 <table>
 <thead>
 <tr>
@@ -1001,7 +1001,7 @@
 <tbody>
 <tr>
 <td>クライアントID</td>
-<td>必須。クライアントの一意の識別子です。Google Analytics 4タグによって構成されたクライアントIDです。Cookie Matching Tagが推奨される実装方法です。</td>
+<td>（必須）クライアントの一意の識別子です。Google Analytics 4タグによって構成されたクライアントIDです。Cookie Matching Tagが推奨される実装方法です。</td>
 </tr>
 <tr>
 <td>測定IDオーバーライド</td>
@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td>FirebaseアプリIDオーバーライド</td>
-<td>必須。Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
+<td>（必須）Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
@@ -1017,7 +1017,7 @@
 </tr>
 <tr>
 <td>タイムスタンプマイクロ秒</td>
-<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。過去に発生したイベントを記録するためにこの値を構成します。この値は<code>user_property</code>またはイベントのタイムスタンプを介して上書きすることができます。イベントはプロパティのタイムゾーンに基づいて最大3カレンダー日まで遡って日付を構成することができます。</td>
+<td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）です。過去に発生したイベントを記録するためにこの値を構成します。この値は<code>user_property</code>またはイベントのタイムスタンプを介して上書きすることができます。イベントは、プロパティのタイムゾーンに基づいて最大3カレンダー日まで遡って日付を構成することができます。</td>
 </tr>
 <tr>
 <td>非パーソナライズ広告</td>
@@ -1044,7 +1044,7 @@
 <tr>
 <td>配送情報の追加</td>
 <td>ユーザーが配送情報を提出したとき。</td>
-<td>イベントパラメータ：<ul><li>通貨（必須）</li><li>価値（必須）</li><li>クーポン（オプション）</li><li>配送レベル（オプション）</li></ul>アイテムパラメータ：<ul><li>アイテムID（必須）</li><li>アイテム名（必須）</li></ul></td>
+<td>イベントパラメータ：<ul><li>通貨（必須）</li><li>価値（必須）</li><li>クーポン（オプション）</li><li>配送層（オプション）</li></ul>アイテムパラメータ：<ul><li>アイテムID（必須）</li><li>アイテム名（必須）</li></ul></td>
 </tr>
 <tr>
 <td>ほしい物リストへの追加</td>
@@ -1068,7 +1068,7 @@
 </tr>
 <tr>
 <td>グループへの参加</td>
-<td>ユーザーがグループ（ギルド、チーム、ホーム族など）に参加したとき。このイベントを使用して、特定のグループや社会的機能の人気を分析します。</td>
+<td>ユーザーがグループ（ギルド、チーム、ホーム族など）に参加したとき。このイベントを使用して、特定のグループやソーシャル機能の人気を分析します。</td>
 <td>イベントパラメータ：<ul><li>グループID（オプション） - グループのID。</li></ul></td>
 </tr>
 <tr>
@@ -1083,7 +1083,7 @@
 </tr>
 <tr>
 <td>スコアの投稿</td>
-<td>ユーザーがスコアを投稿したとき。このイベントを使用して、ゲーム内でユーザーがどのようにパフォーマンスしているかを理解し、高スコアをオーディエンスや行動と相関させます。</td>
+<td>ユーザーがスコアを投稿したとき。このイベントを使用して、ゲーム内でユーザーのパフォーマンスを理解し、高スコアをオーディエンスや行動と相関させます。</td>
 <td>イベントパラメータ：<ul><li>スコア（必須） - 投稿するスコア。</li><li>レベル（オプション） - キャラクターのレベル。</li><li>キャラクター（オプション） - レベルアップしたキャラクター。</li></ul></td>
 </tr>
 <tr>
@@ -1108,7 +1108,7 @@
 </tr>
 <tr>
 <td>コンテンツの選択</td>
-<td>ユーザーが特定のタイプのコンテンツを選択したとき。このイベントを使用して、アプリ内で人気のあるコンテンツやコンテンツのカテゴリを特定します。</td>
+<td>ユーザーが特定のタイプのコンテンツを選択したとき。このイベントを使用して、アプリ内で人気のコンテンツやコンテンツのカテゴリを特定します。</td>
 <td>イベントパラメータ：<ul><li>コンテンツタイプ（オプション）</li><li>アイテムID（オプション）</li></ul></td>
 </tr>
 <tr>
@@ -1173,7 +1173,7 @@
 </tr>
 <tr>
 <td>検索結果の表示</td>
-<td>ユーザーに検索結果が表示されたとき。</td>
+<td>ユーザーに検索結果が提示されたとき。</td>
 <td>イベントパラメータ：<ul><li>検索語（オプション）</li></ul></td>
 </tr>
 <tr>
@@ -1186,7 +1186,7 @@
 <p>サポートされているイベントの完全なリストを表示するには、<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol - Google Analytics 4 events</a>を参照してください。</p>
 <h2 id="firebaseイベントの送信">Firebaseイベントの送信</h2>
 <h3 id="概要-2">概要</h3>
-<p>このアクションは、FirebaseイベントをGoogleアナリティクスに送信するために使用されます。構成は「イベント送信」と同じですが、アプリインスタンスIDの提供も必要です。</p>
+<p>このアクションは、FirebaseイベントをGoogleアナリティクスに送信するために使用されます。構成は「イベント送信」と同じですが、アプリインスタンスIDも提供する必要があります。</p>
 <p>このコネクタアクションイベントタイプは、主にモバイルアプリケーションデータをFirebaseに渡して分析するために使用されます。</p>
 <table>
 <thead>
@@ -1198,30 +1198,30 @@
 <tbody>
 <tr>
 <td>アプリインスタンスID</td>
-<td>必須。Firebaseアプリの特定のインストールを一意に識別します。この値はFirebase SDKを通じて取得できます。</td>
+<td>(必須) Firebaseアプリの特定のインストールを一意に識別します。この値はFirebase SDKを通じて取得できます。</td>
 </tr>
 <tr>
 <td>FirebaseアプリIDオーバーライド</td>
-<td>必須。Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
+<td>(必須) Firebaseアプリの識別子です。この構成は<strong>構成</strong>セクションで使用されるFirebaseアプリIDを上書きします。</td>
 </tr>
 <tr>
-<td>ユーザーID（オプション）</td>
+<td>ユーザーID (オプション)</td>
 <td>ユーザーの一意の識別子です。</td>
 </tr>
 <tr>
-<td>タイムスタンプマイクロ秒（オプション）</td>
+<td>タイムスタンプマイクロ秒 (オプション)</td>
 <td>イベントに関連付ける時間のUnixタイムスタンプ（マイクロ秒単位）。</td>
 </tr>
 <tr>
-<td>非パーソナライズ広告（オプション）</td>
-<td>これらのイベントがパーソナライズ広告に使用されないことを示すために、これをtrueに構成します。</td>
+<td>非パーソナライズ広告 (オプション)</td>
+<td>これらのイベントがパーソナライズされた広告に使用されないことを示すために、これをtrueに構成します。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="イベントパラメータ-2">イベントパラメータ</h3>
 <p>このアクションは、「イベント送信」アクションと同じ一般的なイベントパラメータをサポートし、同じイベント固有のパラメータもサポートします。</p>
 <h3 id="ユーザープロパティ">ユーザープロパティ</h3>
-<p>ユーザープロパティは、言語の好みや地理的な位置など、ユーザーベースのセグメントを記述します。アナリティクスは<a href="https://support.google.com/analytics/answer/9268042">自動的にいくつかのユーザープロパティを記録します</a>。追加のプロパティを収集したい場合は、プロジェクトごとに最大25の追加ユーザープロパティを構成できます。<a href="https://support.google.com/analytics/answer/9269570">GA4カスタムディメンション</a>とメトリクスおよび<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=firebase#example_usage">Firebaseカスタムユーザープロパティ</a>を読んで、ユーザープロパティの構成と登録方法を学びましょう。</p>
+<p>ユーザープロパティは、言語の好みや地理的な位置など、ユーザーベースのセグメントを記述します。アナリティクスは<a href="https://support.google.com/analytics/answer/9268042">自動的にいくつかのユーザープロパティを記録します</a>。追加のプロパティを収集したい場合は、プロジェクトごとに最大25の追加ユーザープロパティを構成できます。<a href="https://support.google.com/analytics/answer/9269570">GA4カスタムディメンション</a>とメトリクス、および<a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=firebase#example_usage">Firebaseカスタムユーザープロパティ</a>について読んで、ユーザープロパティの構成と登録方法を学びましょう。</p>
 
 </div>
 
@@ -1267,7 +1267,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1293,11 +1293,11 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントパラメータ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pageview%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">PageViewイベントの送信</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%9C%AC%E6%96%87%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">本文パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9C%E3%83%87%E3%82%A3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">ボディパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントパラメータ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">イベントの送信</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%9C%AC%E6%96%87%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">本文パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9C%E3%83%87%E3%82%A3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">ボディパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントとイベントパラメータ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#firebase%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">Firebaseイベントの送信</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>

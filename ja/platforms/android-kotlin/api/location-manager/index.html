@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/android-kotlin/api/location-manager/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="TealiumがAndroid（Kotlin）用に提供するLocationManagerクラスとメソッドのリファレンスガイド。" />
+<meta property="og:description" content="TealiumのAndroid（Kotlin）用LocationManagerクラスとメソッドのリファレンスガイド。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>LocationManager | APIリファレンス | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -405,14 +405,14 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      TealiumがAndroid（Kotlin）用に提供するLocationManagerクラスとメソッドのリファレンスガイド。
+      TealiumのAndroid（Kotlin）用LocationManagerクラスとメソッドのリファレンスガイド。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="クラス-locationmanager">クラス: LocationManager</h2>
-<p><code>LocationManager</code>クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下に、Tealium Kotlinの<code>LocationManager</code>クラスの一般的に使用されるメソッドをまとめています。詳細については、<a href="/ja/platforms/android-kotlin/module-list/location/">Location module</a>を参照してください。</p>
+<p><code>LocationManager</code> クラスは、位置データの収集、ジオフェンスの作成と監視のためのメソッドを提供します。以下は、Tealium Kotlinの<code>LocationManager</code>クラスで一般的に使用されるメソッドをまとめたものです。詳細については、<a href="/ja/platforms/android-kotlin/module-list/location/">Location module</a>を参照してください。</p>
 <table>
 <thead>
 <tr>
@@ -423,36 +423,36 @@
 <tbody>
 <tr>
 <td><a href="#addgeofence"><code>addGeofence()</code></a></td>
-<td>新しい<code>GeofenceLocation</code>をallGeofenceLocationsに作成し追加します</td>
+<td>新しい<code>GeofenceLocation</code>をallGeofenceLocationsに作成して追加します。</td>
 </tr>
 <tr>
 <td><a href="#allgeofencenames"><code>allGeofenceNames()</code></a></td>
-<td>すべての<code>GeofenceLocation</code>の名前のリストを返します</td>
+<td>すべての<code>GeofenceLocation</code>名のリストを返します。</td>
 </tr>
 <tr>
 <td><a href="#lastlocation"><code>lastLocation()</code></a></td>
-<td>ユーザーのデバイスの最後に知られている位置結果を返します</td>
+<td>ユーザーのデバイスの最後の既知の位置情報を返します。</td>
 </tr>
 <tr>
 <td><a href="#lastlocationlatitude"><code>lastLocationLatitude()</code></a></td>
-<td>最後の位置結果の緯度を返します</td>
+<td>最後の位置情報の緯度を返します。</td>
 </tr>
 <tr>
 <td><a href="#lastlocationlongitude"><code>lastLocationLongitude()</code></a></td>
-<td>最後の位置結果の経度を返します</td>
+<td>最後の位置情報の経度を返します。</td>
 </tr>
 <tr>
 <td><a href="#startlocationtracking"><code>startLocationTracking()</code></a></td>
-<td>希望する精度と間隔更新に基づいて位置追跡を開始します</td>
+<td>望む精度と更新間隔で位置追跡を開始します。</td>
 </tr>
 <tr>
 <td><a href="#stoplocationtracking"><code>stopLocationTracking()</code></a></td>
-<td>位置追跡の更新を停止します</td>
+<td>位置追跡の更新を停止します。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="addgeofence"><code>addGeofence()</code></h3>
-<p>手動でジオフェンスを作成し、監視のために追加する機能を提供します。</p>
+<p>手動でジオフェンスを作成し、監視用に追加する機能を提供します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">addGeofence</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>							<span style="color:#e6db74">&#34;Tealium-HQ&#34;</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>							<span style="color:#ae81ff">45.0</span><span style="color:#f92672">,</span> <span style="color:#75715e">// 緯度
@@ -460,8 +460,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#ae81ff">100</span><span style="color:#f92672">,</span> <span style="color:#75715e">// 半径
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#75715e">// 有効期限
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> <span style="color:#75715e">// 滞在時間
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#75715e">// ジオフェンス入場時にイベントがトリガーされる
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#75715e">// ジオフェンス退出時にイベントがトリガーされる
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#75715e">// ジオフェンス入場時にイベントをトリガー
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>							<span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#75715e">// ジオフェンス退出時にイベントをトリガー
 </span></span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -499,43 +499,43 @@
 <tr>
 <td><code>expireTime</code></td>
 <td><code>Int</code></td>
-<td>ジオフェンスの有効期限（ミリ秒）を構成します</td>
+<td>ジオフェンスの有効期限（ミリ秒）</td>
 <td><code>-1</code></td>
 </tr>
 <tr>
 <td><code>loiterTime</code></td>
 <td><code>Int</code></td>
-<td>ジオフェンスに入ってから滞在するまでの時間遅延（ミリ秒）を構成します</td>
+<td>ジオフェンスに入ってから滞在するまでの時間（ミリ秒）</td>
 <td><code>0</code></td>
 </tr>
 <tr>
 <td><code>triggerEnter</code></td>
 <td><code>Boolean</code></td>
-<td>ジオフェンスに入るときにイベントがトリガーされるようにします</td>
+<td>ジオフェンスに入った際にイベントをトリガーするか</td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>triggerExit</code></td>
 <td><code>Boolean</code></td>
-<td>ジオフェンスを出るときにイベントがトリガーされるようにします</td>
+<td>ジオフェンスから出た際にイベントをトリガーするか</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="allgeofencenames"><code>allGeofenceNames()</code></h3>
-<p>観察されるすべてのジオフェンスの名前のリストを返します。</p>
+<p>監視するすべてのジオフェンス名のリストを返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">allGeofenceNames</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="lastlocation"><code>lastLocation()</code></h3>
-<p>ユーザーのデバイスの最新の位置を記録し、位置が利用できない場合は<code>null</code>を返します。</p>
+<p>ユーザーのデバイスの最新の位置情報を返します。位置情報が利用不可能な場合は<code>null</code>を返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val location <span style="color:#f92672">=</span> tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">lastLocation</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="lastlocationlatitude"><code>lastLocationLatitude()</code></h3>
-<p>ユーザーのデバイスの最新の位置の緯度を返します。</p>
+<p>ユーザーのデバイスの最新の位置情報の緯度を返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val latitude <span style="color:#f92672">=</span> tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">lastLocationLatitude</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="lastlocationlongitude"><code>lastLocationLongitude()</code></h3>
-<p>ユーザーのデバイスの最新の位置の経度を返します。</p>
+<p>ユーザーのデバイスの最新の位置情報の経度を返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val longitude <span style="color:#f92672">=</span> tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">lastLocationLongitude</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><h3 id="startlocationtracking"><code>startLocationTracking()</code></h3>
-<p>連続的な位置追跡を開始し、位置更新の希望する精度と間隔（ミリ秒）を構成します。高精度の位置情報と頻繁な位置更新間隔を有効にすると、バッテリー消費が高まる可能性があります。</p>
+<p>連続的な位置追跡を開始し、位置更新の精度と間隔（ミリ秒）を構成します。正確な位置情報と頻繁な位置更新間隔はバッテリー消費に影響を与える可能性があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealiumInstance<span style="color:#f92672">.</span><span style="color:#a6e22e">location</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">startLocationTracking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1000</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><table>
 <thead>
@@ -550,13 +550,13 @@
 <tr>
 <td><code>isHighAcuracy</code></td>
 <td><code>Boolean</code></td>
-<td>高精度の位置追跡のために&rsquo;true&rsquo;に構成し、100メートル以内の精度のために<code>false</code>に構成します</td>
+<td>高精度の位置追跡を行う場合は<code>true</code>、100メートル以内の精度で良い場合は<code>false</code></td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>updateInterval</code></td>
 <td><code>Int</code></td>
-<td>希望する位置更新頻度の間隔（ミリ秒）</td>
+<td>位置更新の頻度を好みの間隔（ミリ秒）で構成</td>
 <td><code>10000</code></td>
 </tr>
 </tbody>
@@ -624,7 +624,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

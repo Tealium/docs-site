@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift/consent-management/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="iOS（Swift）で同意管理を実装する方法を学びます。" />
+<meta property="og:description" content="iOS（Swift）での同意管理の実装方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>同意管理 | iOS（Swift）用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -331,7 +331,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/moments-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-moments-api">Moments APIモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommands モジュール</a></li>
+        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommandsモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/tag-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-tagmanagement">TagManagement モジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -403,31 +403,31 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      iOS（Swift）で同意管理を実装する方法を学びます。
+      iOS（Swift）での同意管理の実装方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用法">使用法</h2>
-<p>Consent Managerモジュールは、トラッキング同意を細かいレベルで管理するためのシンプルなAPIを提供します。すべてのAppleプラットフォーム（iOS、iPadOS、tvOS、watchOS、macOS、macOS Catalyst）でサポートされています。</p>
-<p>Tealium Swiftライブラリのバージョン2.xでは、Consent Managerモジュールに重要な変更が加えられました：</p>
+  <h2 id="使用方法">使用方法</h2>
+<p>同意管理モジュールは、細かいレベルでのトラッキング同意を管理するためのシンプルなAPIを提供します。これは、すべてのAppleプラットフォーム（iOS、iPadOS、tvOS、watchOS、macOS、macOS Catalyst）でサポートされています。</p>
+<p>Tealium Swiftライブラリのバージョン2.xでは、同意管理モジュールに重要な変更が導入されています：</p>
 <ul>
-<li>デフォルトでConsent Managerが無効化（有効化するには<a href="#full-consent">Full Consent</a>を参照）</li>
-<li>Consent Managerが<code>TealiumCore</code>モジュールに組み込まれる</li>
-<li>CCPAのサポートが導入される</li>
-<li>同意の有効期限オプションが追加される</li>
+<li>同意管理はデフォルトで無効（有効にするには<a href="#full-consent">完全同意</a>を参照）</li>
+<li><code>TealiumCore</code>モジュールに同意管理が組み込まれています</li>
+<li>CCPAのサポートが導入されました</li>
+<li>同意の有効期限オプション</li>
 </ul>
-<p><a href="/ja/platforms/getting-started-mobile/consent-management/">Consent Management</a>と同意ポリシーについて詳しく学びましょう。</p>
+<p><a href="/ja/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについてもっと学びましょう。</p>
 <h2 id="同意">同意</h2>
 <h3 id="ポリシーの構成">ポリシーの構成</h3>
-<p>初期化時に同意ポリシーを以下のいずれかに構成します：</p>
+<p>初期化時に以下のいずれかを構成して同意ポリシーを構成します：</p>
 <ul>
 <li><code>.gdpr</code></li>
 <li><code>.ccpa</code></li>
 </ul>
-<p>Consent Managementモジュールはコアライブラリに含まれていますが、同意ポリシーが構成されるまではアクティブになりません。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>一度にデバイス上で強制できるポリシーは一つだけです。</p>
+<p>同意管理モジュールはコアライブラリに含まれており、同意ポリシーが構成されるまでアクティブになりません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>任意の時点でデバイスに強制できるポリシーは1つだけです。</p>
 <p>GDPRポリシーを構成するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
@@ -442,7 +442,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentLoggingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="同意の有効期限">同意の有効期限</h3>
 <p><a href="/ja/platforms/ios-swift/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a>プロパティを使用して、同意選択の有効期限を構成します。</p>
-<p>次の例では、同意マネージャーポリシーをGDPRに構成し、有効期限を90日に構成しています：</p>
+<p>以下の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
@@ -453,7 +453,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同意が期限切れになったときにコールバックをトリガーするには、<a href="/ja/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a>オブジェクト上でコールバックを定義します：</p>
+</span></span></code></pre></div><p>同意が期限切れになった場合にコールバックをトリガーするには、<a href="/ja/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a>オブジェクトにコールバックを定義します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
@@ -467,41 +467,41 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>あるいは、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a>オブジェクト上でコールバックを定義します：</p>
+</span></span></code></pre></div><p>または、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a>オブジェクトにコールバックを定義します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>?.tealium?.consentManager?.onConsentExpiration = {
 </span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;Consent expired&#34;</span>)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="全面的な同意の構成">全面的な同意の構成</h3>
-<p>全面的な同意を構成するには：</p>
+</span></span></code></pre></div><h3 id="完全同意の構成">完全同意の構成</h3>
+<p>完全同意を構成するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">grantFullConsent</span>() {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentStatus = .consented
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="カテゴリ別の部分的な同意の構成">カテゴリ別の部分的な同意の構成</h3>
-<p>部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>.consented</code>に構成されます。</p>
+</span></span></code></pre></div><h3 id="カテゴリ別の部分同意の構成">カテゴリ別の部分同意の構成</h3>
+<p>部分同意を構成するには、同意カテゴリのサブセットを指定します。これにより、暗黙的に<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>.consented</code>に構成されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentCategories = categories
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>使用例：<code>grantPartialConsent([.analytics, .cdp])</code>（パラメータカテゴリを参照）</p>
-<h3 id="同意の拒否の構成">同意の拒否の構成</h3>
+<h3 id="同意の拒否">同意の拒否</h3>
 <p>同意を拒否するには、同意ステータスを構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">declineConsent</span>() {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentStatus = .notConsented
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="カスタム同意">カスタム同意</h2>
-<p>あなたの組織の同意要件が私たちの標準的なGDPRとCCPAポリシーに含まれていない場合は、カスタム同意ポリシーを作成します。</p>
+<p>組織の同意要件が標準のGDPRおよびCCPAポリシーに含まれていない場合、カスタム同意ポリシーを作成します。</p>
 <ol>
 <li><code>ConsentPolicy</code>プロトコルを実装します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeCustomConsentPolicy</span>: ConsentPolicy {
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// implement methods...</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// メソッドを実装...</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="2">
-<li><code>TealiumConfig</code>オブジェクトの<a href="/ja/platforms/ios-swift/api/tealium-config/#consentpolicy"><code>consentPolicy</code></a>プロパティを、<code>TealiumConsentPolicy.custom</code>列挙型と関連型を使用して新しいカスタムポリシーに構成します。</li>
+<li><code>TealiumConfig</code>オブジェクトの<a href="/ja/platforms/ios-swift/api/tealium-config/#consentpolicy"><code>consentPolicy</code></a>プロパティに新しいカスタムポリシーを構成します。<code>TealiumConsentPolicy.custom</code>列挙型を関連付けたタイプで使用します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentPolicy = .custom(SomeCustomConsentPolicy.<span style="color:#66d9ef">self</span>)
-</span></span></code></pre></div><p>カスタム同意ポリシーが実装された後、必要に応じて<code>ConsentPolicy</code>で利用可能な以下のプロパティを上書きします：</p>
+</span></span></code></pre></div><p>カスタム同意ポリシーが実装された後、必要に応じて<code>ConsentPolicy</code>で利用可能な以下のプロパティをオーバーライドします：</p>
 <table>
 <thead>
 <tr>
@@ -519,12 +519,12 @@
 <tr>
 <td><code>consentPolicyStatusInfo</code></td>
 <td><code>[String: Any]?</code></td>
-<td>各<code>TealiumDispatch</code>のペイロードに追加されるキー値データの<code>[String: Any]</code>を返します</td>
+<td>戻り値：各<code>TealiumDispatch</code>のペイロードに追加されるキー値データの<code>[String: Any]</code></td>
 </tr>
 <tr>
 <td><code>consentTrackingEventName</code></td>
 <td><code>String</code></td>
-<td>同意の変更をログに記録するときに使用するイベント名（キー：<code>tealium_event</code>）を構成します</td>
+<td>同意の変更をログに記録する際に使用するイベント名（キー：<code>tealium_event</code>）を構成します</td>
 </tr>
 <tr>
 <td><code>defaultConsentExpiry</code></td>
@@ -534,7 +534,7 @@
 <tr>
 <td><code>preferences</code></td>
 <td><code>UserConsentPreferences</code></td>
-<td>プリファレンスが変更されると<code>ConsentManager</code>によって自動的に更新される現在の<code>UserConsentPreferences</code></td>
+<td><code>ConsentManager</code>によって構成が変更されるたびに自動的に更新される現在の<code>UserConsentPreferences</code></td>
 </tr>
 <tr>
 <td><code>shouldLogConsentStatus</code></td>
@@ -544,7 +544,7 @@
 <tr>
 <td><code>shouldUpdateConsentCookie</code></td>
 <td><code>Bool</code></td>
-<td>TagManagementモジュールのwebview内のクッキーを更新するかどうかを構成します</td>
+<td>TagManagementモジュールのウェブビューでクッキーを更新するかどうかを構成します</td>
 </tr>
 <tr>
 <td><code>trackAction</code></td>
@@ -554,17 +554,17 @@
 <tr>
 <td><code>updateConsentCookieEventName</code></td>
 <td><code>String</code></td>
-<td><code>shouldUpdateConsentCookie</code>がtrueに構成されているときに使用するイベント名を構成します</td>
+<td><code>shouldUpdateConsentCookie</code>がtrueに構成されている場合に使用するイベント名を構成します</td>
 </tr>
 </tbody>
 </table>
-<p>以下は、カスタム同意ポリシーの完全な例です：</p>
+<p>以下はカスタム同意ポリシーの完全な例です：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCustomConsentPolicy</span>: ConsentPolicy {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> preferences: UserConsentPreferences
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">required</span> <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> preferences: UserConsentPreferences) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.preferences = preferences
+</span></span><span style="display:flex;"><span>        this.preferences = preferences
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> name: String = <span style="color:#e6db74">&#34;my custom policy&#34;</span>
@@ -591,11 +591,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(...)
 </span></span><span style="display:flex;"><span>config.consentPolicy = .custom(MyCustomConsentPolicy.<span style="color:#66d9ef">self</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/// ... other configuration options</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// ... その他の構成オプション</span>
 </span></span><span style="display:flex;"><span>tealium = Tealium(config: config)
-</span></span></code></pre></div><p><code>GDPRConsentPolicyCreatable</code>または<code>CCPAConsentPolicyCreatable</code>プロトコルに準拠するカスタムポリシーを作成します。カスタムポリシーを作成し、必要なものを上書きした後、<code>config.consentPolicy</code>を<code>.custom(YourCustomPolicy.self)</code>に構成します。</p>
+</span></span></code></pre></div><p><code>GDPRConsentPolicyCreatable</code>または<code>CCPAConsentPolicyCreatable</code>プロトコルに準拠するカスタムポリシーを作成します。カスタムポリシーを作成し、オーバーライドしたいものをオーバーライドした後、<code>config.consentPolicy</code>を<code>.custom(YourCustomPolicy.self)</code>に構成します。</p>
 <h3 id="例">例</h3>
-<p>既存のGDPR実装を使用していますが、ポリシーの名前を上書きします（トラッキングペイロードの<code>policy</code>値を上書きします）：</p>
+<p>既存のGDPR実装を使用して、ポリシーの名前をオーバーライドする（トラッキングペイロードの <code>policy</code> 値をオーバーライドします）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomGDPRConsentPolicy</span>: GDPRConsentPolicyCreatable {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> preferences: UserConsentPreferences
@@ -611,7 +611,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>config.consentPolicy = .custom(CustomGDPRConsentPolicy.<span style="color:#66d9ef">self</span>)
-</span></span></code></pre></div><p>ポリシーデータキーを再マッピングして、Tealium EventStreamの固定同意値を避けます：</p>
+</span></span></code></pre></div><p>Tealium EventStreamの固定同意値を避けるためにポリシーデータキーを再マッピングする：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomGDPRConsentPolicy</span>: GDPRConsentPolicyCreatable {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> preferences: UserConsentPreferences
@@ -627,13 +627,13 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>送信される同意ログイベント名をカスタマイズします：</p>
+</span></span></code></pre></div><p>送信される同意ログイベント名をカスタマイズする：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomGDPRConsentPolicy</span>: GDPRConsentPolicyCreatable {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> preferences: UserConsentPreferences
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">required</span> <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> preferences: UserConsentPreferences) {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.preferences = preferences
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.preferences = preferences
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> consentTrackingEventName: String {
@@ -648,7 +648,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>thirdPartyConsentProvider</code>が別の同意プロバイダーを参照している場合は、代わりにサードパーティの同意値を返します:</p>
+</span></span></code></pre></div><p>代わりに第三者の同意値を返す場合、<code>thirdPartyConsentProvider</code> が別の同意プロバイダーを参照している場合：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomGDPRConsentPolicy</span>: GDPRConsentPolicyCreatable {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> thirdPartyConsentProvider = ThirdPartyProvider()
@@ -665,20 +665,20 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="ユースケース">ユースケース</h2>
-<h3 id="全面的な同意">全面的な同意</h3>
-<p>次の例は、ユーザーが同意ポリシーに同意するか拒否するオプションを提供する方法を示しています。ユーザーが同意または拒否した後、選択した同意ポリシーのルールが適用されます。<a href="/ja/platforms/getting-started-mobile/consent-management/#consent-policies">同意ポリシー</a>について詳しくはこちらをご覧ください。</p>
+<h3 id="完全な同意">完全な同意</h3>
+<p>次の例は、ユーザーに同意ポリシーに同意または拒否するオプションを与える方法を示しています。ユーザーが同意または拒否すると、選択した同意ポリシーのルールが有効になります。<a href="/ja/platforms/getting-started-mobile/consent-management/#consent-policies">同意ポリシー</a>についてもっと学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setConsentStatusSimple</span>(<span style="color:#66d9ef">_</span> consented: Bool) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> status: TealiumConsentStatus = consented ? .consented: .notConsented
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentStatus = status
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>アプリのユーザーがトラッキングに同意するか拒否するときに、Tealium Helperクラスでメソッドを定義し呼び出します。ユーザーがトラッキングに同意すると、Consent Managerは自動的にすべてのトラッキングカテゴリにユーザーを含めます。</p>
+</span></span></code></pre></div><p>Tealium Helperクラスでこのメソッドを定義し、呼び出して、アプリユーザーがトラッキングに同意または拒否したときに使用します。ユーザーがトラッキングに同意すると、同意マネージャーは自動的にすべてのトラッキングカテゴリにユーザーを含めます。</p>
 <figure><a class="slb" href="/images/platforms/ios-swift/simple-consent"><img src="/images/platforms/ios-swift/simple-consent" width="234" height="480"/>
-    </a><figcaption><p>Simple Content</p>
+    </a><figcaption><p>シンプルな同意</p>
         </figcaption>
 </figure>
-<h3 id="カテゴリ別の部分的な同意-gdpr">カテゴリ別の部分的な同意 (GDPR)</h3>
-<p>カテゴリベースの同意では、ユーザーは全カテゴリリストから各カテゴリを明示的に選択する必要があります。</p>
-<p>次のヘルパーメソッドは、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> APIのメソッドを呼び出します:</p>
+<h3 id="カテゴリ別の部分同意gdpr">カテゴリ別の部分同意（GDPR）</h3>
+<p>カテゴリベースの同意では、ユーザーはカテゴリの完全なリストから各カテゴリを明示的に選択する必要があります。</p>
+<p>次のヘルパーメソッドは、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> APIのメソッドを呼び出します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateConsentPreferences</span>(<span style="color:#66d9ef">_</span> dict: [String: Any]) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> categories = dict[<span style="color:#e6db74">&#34;consentCategories&#34;</span>] <span style="color:#66d9ef">as</span>? [String] {
@@ -690,14 +690,14 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>カテゴリのリストを更新するには:</p>
+</span></span></code></pre></div><p>カテゴリのリストを更新するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setUserConsentPreferences</span>(<span style="color:#66d9ef">_</span> categories: [String]){
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> settingsDict: [String: Any] = [<span style="color:#e6db74">&#34;consentStatus&#34;</span>: <span style="color:#e6db74">&#34;consented&#34;</span>, <span style="color:#e6db74">&#34;consentCategories&#34;</span>: categories]
 </span></span><span style="display:flex;"><span>	updateConsentPreferences(settingsDict)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h4 id="カテゴリグループ-gdpr">カテゴリグループ (GDPR)</h4>
-<p>カテゴリベースの同意モデルでは、トラッキングカテゴリは、顧客が定義するより少ない数の高レベルのカテゴリにグループ化されます。</p>
-<p>例えば、Tealiumの同意カテゴリ<code>&quot;big_data&quot;</code>、<code>&quot;analytics&quot;</code>、<code>&quot;monitoring&quot;</code>を<code>&quot;performance&quot;</code>という単一のカテゴリにグループ化することを選択するかもしれません。これは、全カテゴリリストから選択するよりもユーザーにとって簡単かもしれません。これを最も許可範囲が狭いものから最も許可範囲が広いもの（全カテゴリ）までのスライダーインターフェースで表現することを選択するかもしれません。</p>
+</span></span></code></pre></div><h4 id="カテゴリグループgdpr">カテゴリグループ（GDPR）</h4>
+<p>カテゴリベースの同意モデルでは、トラッキングカテゴリは、顧客によって定義された少数の高レベルのカテゴリにグループ化されます。</p>
+<p>たとえば、Tealiumの同意カテゴリ <code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, <code>&quot;monitoring&quot;</code> を <code>&quot;performance&quot;</code> という単一のカテゴリにグループ化することを選択するかもしれません。これは、ユーザーがカテゴリの完全なリストから選択するよりも簡単かもしれません。最も許可されていないものから最も許可されているものまでの範囲のスライダーインターフェースでこれを表現することを選択するかもしれません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateConsentPreferences</span>(<span style="color:#66d9ef">_</span> dict: [String: Any]) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> categories = dict[<span style="color:#e6db74">&#34;consentCategories&#34;</span>] <span style="color:#66d9ef">as</span>? [String] {
@@ -709,7 +709,7 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>次のヘルパー関数は、カテゴリのグループを定義し、ユーザーの同意構成を構成します:</p>
+</span></span></code></pre></div><p>次のヘルパー関数は、カテゴリのグループを定義し、ユーザーの同意構成を構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setUserConsentPreferences</span>(){
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> consentGroups = [<span style="color:#e6db74">&#34;Off&#34;</span> : [],
 </span></span><span style="display:flex;"><span>	        <span style="color:#e6db74">&#34;Performance&#34;</span>: [<span style="color:#e6db74">&#34;analytics&#34;</span>, <span style="color:#e6db74">&#34;monitoring&#34;</span>, <span style="color:#e6db74">&#34;big_data&#34;</span>, <span style="color:#e6db74">&#34;mobile&#34;</span>, <span style="color:#e6db74">&#34;crm&#34;</span>],
@@ -725,13 +725,13 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><figure><a class="slb" href="/images/platforms/ios-swift/grouped-gif.gif"><img src="/images/platforms/ios-swift/grouped-gif.gif" width="234" height="480"/>
-    </a><figcaption><p>Grouped</p>
+    </a><figcaption><p>グループ化</p>
         </figcaption>
 </figure>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>私たちのライブラリ、トラッキング方法、およびベストプラクティスの実装についてより詳しく理解するために、Tealium for Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">Consent Manager sample app</a>をご覧ください。</p>
+<p>当社のライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れるために、Tealium for Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">consent manager sample app</a>を探索してください。</p>
 <figure><a class="slb" href="/images/platforms/ios-swift/category-based"><img src="/images/platforms/ios-swift/category-based" width="234" height="480"/>
-    </a><figcaption><p>Category-based</p>
+    </a><figcaption><p>カテゴリベース</p>
         </figcaption>
 </figure>
 
@@ -794,7 +794,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -808,18 +808,18 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F" href="javascript:void(0)">同意</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ポリシーの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90" href="javascript:void(0)">同意の有効期限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E9%9D%A2%E7%9A%84%E3%81%AA%E5%90%8C%E6%84%8F%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">全面的な同意の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E5%88%A5%E3%81%AE%E9%83%A8%E5%88%86%E7%9A%84%E3%81%AA%E5%90%8C%E6%84%8F%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">カテゴリ別の部分的な同意の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%81%AE%E6%8B%92%E5%90%A6%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">同意の拒否の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%8C%E5%85%A8%E5%90%8C%E6%84%8F%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">完全同意の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E5%88%A5%E3%81%AE%E9%83%A8%E5%88%86%E5%90%8C%E6%84%8F%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">カテゴリ別の部分同意の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%81%AE%E6%8B%92%E5%90%A6" href="javascript:void(0)">同意の拒否</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E5%90%8C%E6%84%8F" href="javascript:void(0)">カスタム同意</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E9%9D%A2%E7%9A%84%E3%81%AA%E5%90%8C%E6%84%8F" href="javascript:void(0)">全面的な同意</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E5%88%A5%E3%81%AE%E9%83%A8%E5%88%86%E7%9A%84%E3%81%AA%E5%90%8C%E6%84%8F-gdpr" href="javascript:void(0)">カテゴリ別の部分的な同意 (GDPR)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%8C%E5%85%A8%E3%81%AA%E5%90%8C%E6%84%8F" href="javascript:void(0)">完全な同意</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E5%88%A5%E3%81%AE%E9%83%A8%E5%88%86%E5%90%8C%E6%84%8Fgdpr" href="javascript:void(0)">カテゴリ別の部分同意（GDPR）</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA" href="javascript:void(0)">サンプルアプリ</a></li>
               </nav>
   </aside></nav>

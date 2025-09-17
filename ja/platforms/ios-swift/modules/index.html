@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift/modules/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="利用可能なモジュールのリスト" />
+<meta property="og:description" content="利用可能なモジュールのリストです。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>モジュール | iOS（Swift）用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -331,7 +331,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/moments-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-moments-api">Moments APIモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommands モジュール</a></li>
+        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommandsモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/tag-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-tagmanagement">TagManagement モジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -403,22 +403,22 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      利用可能なモジュールのリスト
+      利用可能なモジュールのリストです。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium Swiftライブラリは、モジュール型アーキテクチャを基に設計されています。必要なモジュールは、ライブラリが初期化されるときに<code>TealiumConfig</code>インスタンスで指定する必要があります。</p>
+  <p>Tealium Swiftライブラリは、モジュラーなアーキテクチャを採用して設計されています。ライブラリを初期化する際には、必要なモジュールを<code>TealiumConfig</code>インスタンスで指定する必要があります。</p>
 <p>すべてのモジュールは<code>TealiumCore</code>に依存しています。モジュールは、その目的に応じて<code>Collectors</code>と<code>Dispatchers</code>に分けられます。</p>
 <h2 id="collectors">Collectors</h2>
-<p>Collectorsは、デバイスから補足情報を収集し、それをデータレイヤーに追加してからTealium Customer Data Hubに送信するモジュールです。一部のcollectorsはコアライブラリに含まれていますが、他のものはオプションで、別のモジュールとしてインストールされます。</p>
-<p>以下の表は、利用可能なcollectorsを一覧にしたものです。</p>
+<p>Collectorsは、デバイスから追加情報を収集し、Tealium Customer Data Hubに送信される前にデータレイヤーに追加するモジュールです。一部のコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてオプションでインストールされます。</p>
+<p>以下の表に利用可能なコレクターを示します。</p>
 <table>
 <thead>
 <tr>
-<th>Collector Name</th>
-<th>TealiumConfig Reference</th>
+<th>コレクター名</th>
+<th>TealiumConfig 参照</th>
 </tr>
 </thead>
 <tbody>
@@ -460,8 +460,8 @@
 </tr>
 </tbody>
 </table>
-<p>アスタリスク (<code>*</code>) でマークされたモジュールはコアライブラリに含まれています。これらはデフォルトで有効になっていますが、以下に説明するように<code>TealiumConfig</code>の<code>collectors</code>プロパティを使用して無効にすることもできます。</p>
-<h3 id="使用法">使用法</h3>
+<p>アスタリスク（<code>*</code>）が付いているモジュールはコアライブラリに含まれており、デフォルトで有効になっていますが、以下に説明するように<code>TealiumConfig</code>の<code>collectors</code>プロパティを使用して無効にすることができます。</p>
+<h3 id="使用方法">使用方法</h3>
 <p><code>Collector</code>を追加するには、<code>TealiumConfig</code>インスタンスの<code>collectors</code>プロパティで指定します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCore</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumLifecycle</span>
@@ -471,13 +471,13 @@
 </span></span><span style="display:flex;"><span>                               environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                               datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds desired Collectors. If omitted, default Collectors are added.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 追加したいCollectorsを追加します。省略した場合、デフォルトのCollectorsが追加されます。</span>
 </span></span><span style="display:flex;"><span>config.collectors = [Collectors.AppData, Collectors.Device, Collectors.Connectivity, Collectors.Lifecycle]                               
-</span></span></code></pre></div><p>デフォルトのcollectorsのみを使用する場合は、初期化コードから<code>config.collectors</code>行を省略またはコメントアウトします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>新しいcollectorsを追加するときは、配列に<code>Collectors.Device</code>と<code>Collectors.Connectivity</code>も含めるようにしてください。そうしないと、これらのcollectorsは無効になります。</p>
-<p>AppData collectorは、Tealium Visitor IDなどの重要な情報を収集するため、無効にすることはできません。</p>
-<h3 id="カスタムcollectors">カスタムCollectors</h3>
-<p>一般的にはカスタムcollectorsは必要ありませんが、<code>Collector</code>プロトコルに準拠する自分自身のクラスを作成することで、カスタムcollectorを作成することが可能です。以下の例は、現在の曜日を収集し、それを各トラッキング呼び出しのデータレイヤーに追加するシンプルなcollectorを示しています。</p>
+</span></span></code></pre></div><p>デフォルトのコレクターのみを使用する場合は、初期化コードから<code>config.collectors</code>行を省略またはコメントアウトします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>新しいコレクターを追加する際は、<code>Collectors.Device</code>と<code>Collectors.Connectivity</code>も配列に含めることを忘れないでください。そうしないとこれらのコレクターは無効になります。</p>
+<p>AppDataコレクターは、Tealium Visitor IDなどの重要な情報を収集するため、無効にすることはできません。</p>
+<h3 id="カスタムコレクター">カスタムコレクター</h3>
+<p>一般的にカスタムコレクターは必要ありませんが、<code>Collector</code>プロトコルに準拠した独自のクラスを作成することでカスタムコレクターを構築することが可能です。以下の例は、トラッキングコールごとに現在の曜日をデータレイヤーに追加するシンプルなコレクターを示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyDateCollector</span>: Collector {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> id = <span style="color:#e6db74">&#34;MyDateCollector&#34;</span>
 </span></span><span style="display:flex;"><span>
@@ -491,7 +491,7 @@
 </span></span><span style="display:flex;"><span>                  delegate: ModuleDelegate?,
 </span></span><span style="display:flex;"><span>                  diskStorage: TealiumDiskStorageProtocol?,
 </span></span><span style="display:flex;"><span>                  completion: (ModuleResult) -&gt; Void) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.context = context
+</span></span><span style="display:flex;"><span>        this.context = context
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> dayOfWeek: String {
@@ -499,7 +499,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add collector to your config instance prior to Tealium initialization</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealium初期化前にconfigインスタンスにコレクターを追加します</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
@@ -509,7 +509,7 @@
 </span></span><span style="display:flex;"><span>                               environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                               datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add desired Collectors. If omitted, default Collectors are added.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 追加したいCollectorsを追加します。省略した場合、デフォルトのCollectorsが追加されます。</span>
 </span></span><span style="display:flex;"><span>config.collectors = [Collectors.AppData,
 </span></span><span style="display:flex;"><span>					  Collectors.Lifecycle,
 </span></span><span style="display:flex;"><span>					  MyDateCollector.<span style="color:#66d9ef">self</span>]   
@@ -517,12 +517,12 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="dispatchers">Dispatchers</h2>
-<p>Dispatchersは、データレイヤーからのデータを送信し、それをTealiumエンドポイントに送信するモジュールです。現在利用可能なdispatchersは以下の通りです：</p>
+<p>Dispatchersは、データレイヤーからのデータをTealiumエンドポイントに送信するモジュールです。現在利用可能なディスパッチャーは以下の通りです：</p>
 <table>
 <thead>
 <tr>
-<th>Dispatcher Name</th>
-<th>TealiumConfig Reference</th>
+<th>ディスパッチャー名</th>
+<th>TealiumConfig 参照</th>
 </tr>
 </thead>
 <tbody>
@@ -540,8 +540,8 @@
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>少なくとも1つのdispatcherが必要です。dispatcherが指定されていない場合、データはどこにも送信されません。</p>
-<h3 id="使用法-1">使用法</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>少なくとも1つのディスパッチャーが必要です。ディスパッチャーが指定されていない場合、データはどこにも送信されません。</p>
+<h3 id="使用方法-1">使用方法</h3>
 <p><code>Dispatcher</code>を追加するには、<code>TealiumConfig</code>オブジェクトの<code>dispatchers</code>プロパティで指定します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCore</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumLifecycle</span>
@@ -551,35 +551,35 @@
 </span></span><span style="display:flex;"><span>                               environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                               datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add desired Collectors. Do not include if you want to use compiled Collectors</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 追加したいCollectorsを追加します。コンパイルされたCollectorsを使用する場合は含めないでください</span>
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.Collect]                               
-</span></span></code></pre></div><h3 id="カスタムdispatchers">カスタムDispatchers</h3>
-<p>一般的にはカスタムdispatchersは必要ありませんが、<code>Dispatcher</code>プロトコルに準拠する自分自身のクラスを作成することで、カスタム<code>Dispatcher</code>を作成することが可能です。以下の例は、各トラックリクエストのイベント名を印刷するシンプルなdispatcherを示しています。カスタム<code>Dispatcher</code>は、データをTealiumエンドポイントに加えて、自分自身のカスタムエンドポイントに送信したい場合に便利です。</p>
+</span></span></code></pre></div><h3 id="カスタムディスパッチャー">カスタムディスパッチャー</h3>
+<p>一般的にカスタムディスパッチャーは必要ありませんが、<code>Dispatcher</code>プロトコルに準拠した独自のクラスを作成することでカスタムディスパッチャーを構築することが可能です。以下の例は、各トラックリクエストのイベント名を印刷するシンプルなディスパッチャーを示しています。カスタム<code>Dispatcher</code>は、Tealiumエンドポイントに加えて独自のカスタムエンドポイントにデータを送信したい場合に役立つかもしれません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCustomDispatcher</span>: Dispatcher {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> isReady: Bool
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> id = <span style="color:#e6db74">&#34;MyCustomDispatcher&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> config: TealiumConfig
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">required</span> <span style="color:#66d9ef">init</span>(config: TealiumConfig, delegate: ModuleDelegate, completion: ModuleCompletion?) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.config = config
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.isReady = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        this.config = config
+</span></span><span style="display:flex;"><span>        this.isReady = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">dynamicTrack</span>(<span style="color:#66d9ef">_</span> request: TealiumRequest, completion: ModuleCompletion?) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">switch</span> request {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">let</span> request <span style="color:#66d9ef">as</span> TealiumTrackRequest:
 </span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Track received: </span><span style="color:#e6db74">\(</span>request.event ?? <span style="color:#e6db74">&#34;no event name&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// perform track action. For example, send to custom endpoint</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// トラックアクションを実行します。たとえば、カスタムエンドポイントに送信する</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">as</span> TealiumBatchTrackRequest:
 </span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Batch track received&#34;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// perform batch track action. For example, send to custom endpoint</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// バッチトラックアクションを実行します。たとえば、カスタムエンドポイントに送信する</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span>:
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add dispatcher to your config instance prior to Tealium initialization</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealium初期化前にconfigインスタンスにディスパッチャーを追加します</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">startTracking</span>() {
@@ -588,38 +588,38 @@
 </span></span><span style="display:flex;"><span>                               environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                               datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// add desired Dispatchers</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 追加したいDispatchersを追加します</span>
 </span></span><span style="display:flex;"><span>   config.dispatchers = [Dispatchers.Collect, MyCustomDispatcher.<span style="color:#66d9ef">self</span>]      
 </span></span><span style="display:flex;"><span>					  <span style="color:#66d9ef">self</span>.tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span> }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="推奨モジュール">推奨モジュール</h2>
 <h3 id="基本実装">基本実装</h3>
-<p>基本的な実装には、以下のモジュールのリストが推奨されます。どのTealium製品を使用する予定かにより、少なくとも1つの<code>Dispatcher</code>が有効になっている必要があります。</p>
+<p>基本実装のために、以下のモジュールリストが推奨されます。少なくとも1つの<code>Dispatcher</code>が有効になっている必要があります。これは、使用予定のTealium製品に依存します。</p>
 <ul>
 <li>AppData Collector</li>
 <li>Device Collector</li>
 <li>Lifecycle Collector</li>
 </ul>
-<h3 id="クライアントサイド">クライアントサイド</h3>
-<p>基本モジュールに加えて、これらのモジュールはTealiumライブラリがTealium iQを使用してクライアントサイドでデータを処理することを可能にします。</p>
+<h3 id="クライアント側">クライアント側</h3>
+<p>基本モジュールに加えて、これらのモジュールはTealium iQを使用してクライアント側でデータを処理することを可能にします。</p>
 <ul>
 <li>TagManagement Dispatcher - Tealium iQを使用するために必要</li>
-<li>RemoteCommands Dispatcher - Remote Commands機能が必要な場合のみ必要</li>
+<li>RemoteCommands Dispatcher - Remote Commands機能が必要な場合のみ必要です</li>
 </ul>
-<h3 id="サーバーサイド">サーバーサイド</h3>
-<p>基本モジュールに加えて、これらのモジュールはライブラリがデータをTealiumのサーバーサイド製品（EventStream、AudienceStream、Event Data Framework）に送信することを可能にします。</p>
+<h3 id="サーバー側">サーバー側</h3>
+<p>基本モジュールに加えて、これらのモジュールはライブラリがTealiumのサーバー側製品（EventStream、AudienceStream、Event Data Framework）にデータを送信することを可能にします。</p>
 <ul>
-<li>Collect Dispatcher - サーバーサイド製品を使用するために必要</li>
-<li>Visitor Service Collector - Tealium AudienceStreamからVisitor Profilesを取得するために必要。</li>
+<li>Collect Dispatcher - 任意のサーバー側製品を使用するために必要</li>
+<li>Visitor Service Collector - Tealium AudienceStreamから訪問プロファイルを取得するためにのみ必要です。</li>
 </ul>
 <h2 id="モジュールのインストール">モジュールのインストール</h2>
-<p>モジュールはCocoaPodsまたはCarthageでインストールします。</p>
+<p>CocoaPodsまたはCarthageでモジュールをインストールします。</p>
 <h3 id="cocoapods">CocoaPods</h3>
 <p>特定のモジュールを含めるまたは除外する方法については、<a href="/ja/platforms/ios-swift/install/#cocoapods">CocoaPodsでのインストール</a>を参照してください。</p>
 <h3 id="carthage">Carthage</h3>
-<p>Carthageでインストールすると、必要なモジュールを明示的にインポートする必要があります。前述のように、すべてのモジュールをインポートすることも可能ですが、必要なモジュールのみをインポートするとアプリが軽量になります。特定のモジュールを含める/除外する方法については、<a href="/ja/platforms/ios-swift/install/#carthage">Carthageでインストールする</a>を参照してください。</p>
-<h3 id="swiftパッケージマネージャ">Swiftパッケージマネージャ</h3>
-<p>特定のモジュールを含めるおよび除外する方法については、<a href="/ja/platforms/ios-swift/install#swift-package-manager-recommended">Swiftパッケージマネージャでインストールする</a>を参照してください。</p>
+<p>Carthageを使用してインストールする場合、必要なモジュールを明示的にインポートする必要があります。すべてのモジュールをインポートすることもできますが、以前に説明したモジュールリストを使用すると、必要なモジュールのみをインポートすることでアプリを軽量化できます。特定のモジュールを含める/除外する方法については、<a href="/ja/platforms/ios-swift/install/#carthage">Carthageでのインストール</a>を参照してください。</p>
+<h3 id="swift-package-manager">Swift Package Manager</h3>
+<p>特定のモジュールを含める/除外する方法については、<a href="/ja/platforms/ios-swift/install#swift-package-manager-recommended">Swift Package Managerでのインストール</a>を参照してください。</p>
 
 </div>
 
@@ -680,7 +680,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月10日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -695,19 +695,19 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#collectors" href="javascript:void(0)">Collectors</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0collectors" href="javascript:void(0)">カスタムCollectors</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">カスタムコレクター</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dispatchers" href="javascript:void(0)">Dispatchers</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0dispatchers" href="javascript:void(0)">カスタムDispatchers</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%82%A3%E3%82%B9%E3%83%91%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC" href="javascript:void(0)">カスタムディスパッチャー</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8E%A8%E5%A5%A8%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB" href="javascript:void(0)">推奨モジュール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%9F%BA%E6%9C%AC%E5%AE%9F%E8%A3%85" href="javascript:void(0)">基本実装</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89" href="javascript:void(0)">クライアントサイド</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89" href="javascript:void(0)">サーバーサイド</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4" href="javascript:void(0)">クライアント側</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%81%B4" href="javascript:void(0)">サーバー側</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">モジュールのインストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cocoapods" href="javascript:void(0)">CocoaPods</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#carthage" href="javascript:void(0)">Carthage</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">Swiftパッケージマネージャ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift-package-manager" href="javascript:void(0)">Swift Package Manager</a></li>
               </nav>
   </aside></nav>
 

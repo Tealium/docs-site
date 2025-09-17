@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift/module-list/location/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="イベント用のデバイスの位置情報と興味のあるポイントの周囲にジオフェンスを追加する機能を提供します。" />
+<meta property="og:description" content="イベントのためのデバイスの位置情報を提供し、興味のあるポイントの周りにジオフェンスを追加する機能を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ロケーションモジュール | モジュール | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -331,7 +331,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/moments-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-moments-api">Moments APIモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommands モジュール</a></li>
+        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommandsモジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/platforms/ios-swift/module-list/tag-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-tagmanagement">TagManagement モジュール</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -409,7 +409,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      イベント用のデバイスの位置情報と興味のあるポイントの周囲にジオフェンスを追加する機能を提供します。
+      イベントのためのデバイスの位置情報を提供し、興味のあるポイントの周りにジオフェンスを追加する機能を提供します。
     </p>
   
 </div>
@@ -432,10 +432,10 @@
 <h3 id="swift-package-manager推奨">Swift Package Manager（推奨）</h3>
 <p>バージョン1.9.0+でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールするための推奨される最も簡単な方法です：</p>
 <ol>
-<li>Xcodeプロジェクトで<strong>File &gt; Add Package Dependencies</strong>を選択します。</li>
+<li>Xcodeプロジェクトで<strong>ファイル &gt; パッケージ依存関係を追加</strong>を選択します。</li>
 <li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-swift</code></li>
-<li>バージョンルールを構成します。通常は<code>Up to next major</code>が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
-<li>インストールするモジュールのリストから<code>Location</code>モジュールを選択し、Xcodeプロジェクトのアプリターゲットの<strong>Frameworks and Libraries</strong>の下に追加します。</li>
+<li>バージョンルールを構成します。通常は<code>次のメジャーまで</code>が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールするモジュールのリストから<code>ロケーション</code>モジュールを選択し、Xcodeプロジェクトの<strong>フレームワークとライブラリ</strong>の下にあるアプリターゲットごとに追加します。</li>
 </ol>
 <p><a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">iOSのSwift Package Managerインストールについてもっと学ぶ</a>。</p>
 <h3 id="cocoapods">CocoaPods</h3>
@@ -446,10 +446,10 @@
 <p>Carthageでロケーションモジュールをインストールするには：</p>
 <ol>
 <li>
-<p>XcodeでアプリターゲットのGeneral構成ページに移動します。</p>
+<p>Xcodeでアプリターゲットの一般構成ページに移動します。</p>
 </li>
 <li>
-<p>次のフレームワークを<strong>Embedded Binaries</strong>セクションに追加します：</p>
+<p>次のフレームワークを<strong>組み込みバイナリ</strong>セクションに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>TealiumLocation<span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 </ol>
@@ -457,7 +457,7 @@
 <h2 id="初期化">初期化</h2>
 <p>モジュールを初期化するには、<code>TealiumConfig</code>の<a href="/ja/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティに指定されていることを確認してください。</p>
 <p><code>config.collectors = [Collectors.Location]</code></p>
-<p><code>TealiumConfig</code>インスタンスの<a href="#location-tracking">位置精度</a>と<a href="#geofencing">ジオフェンシング</a>の追加オプションも構成可能です。</p>
+<p><code>TealiumConfig</code>インスタンスの<a href="#location-tracking">位置精度</a>および<a href="#geofencing">ジオフェンシング</a>の追加オプションも構成可能です。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメントを確認して、必要なコレクターを正しく指定する方法を理解してください。</p>
 <h3 id="認証">認証</h3>
 <p>アプリが位置情報を収集するための認証を行うには、アプリの<code>Info.plist</code>ファイルに次のキーを追加します：</p>
@@ -466,72 +466,33 @@
 <li><code>Privacy - Location Always and When In Use Usage Description</code></li>
 </ul>
 <p>キーが存在しない場合、位置情報のリクエストは即座に失敗します。<a href="https://developer.apple.com/documentation/corelocation/requesting_authorization_for_location_services">位置情報サービスの認証リクエストについてもっと学ぶ</a>。</p>
-<p>現在の実装内で位置情報の認証をすでにリクエストしていない場合、Tealiumの完了コールバックでロケーションモジュールのAPIメソッド<code>requestAuthorization()</code>を使用することができます：</p>
+<p>現在の実装内で位置情報の認証をすでにリクエストしていない場合、Tealiumの完了コールバックでロケーションモジュールのAPIメソッド<code>requestAuthorization()</code>を使用できます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">start</span>() {
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>      tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>      		<span style="color:#66d9ef">self</span>.tealium?.location?.requestAuthorization()
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>  }
-</span></span></code></pre></div><h3 id="近似位置追跡ios-14">近似位置追跡（iOS 14+）</h3>
-<p>Apple iOS 14+は、正確な位置ではなく近似位置を共有するためのアプリ構成を提供します。この方法は、アプリが正確な位置を必要とし、ユーザーが当初デバイス構成を通じて正確な位置追跡を無効にした場合に推奨されます。</p>
-<p>コードベースで一時的な完全な認証をすでにリクエストしていない場合、次の例に示すTealiumのヘルパーメソッド<code>requestTemporaryFullAccuracyAuthorization</code>を使用してください。これは一時的な完全な精度のリクエストを行います。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">start</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...</span>
-</span></span><span style="display:flex;"><span>    tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> location = <span style="color:#66d9ef">self</span>.tealium?.location <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> location.isAuthorized {
-</span></span><span style="display:flex;"><span>          location.requestTemporaryFullAccuracyAuthorization(purposeKey: <span style="color:#e6db74">&#34;NearStore&#34;</span>)
-</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>          location.requestAuthorization()
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>String</code>パラメータ<code>purposeKey</code>は、アプリの<code>Info.plist</code>ファイルの<code>NSLocationTemporaryUsageDescriptionDictionary</code>辞書のキーに対応します。次の例に示します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>    &lt;<span style="color:#f92672">key</span>&gt;NSLocationTemporaryUsageDescriptionDictionary&lt;/<span style="color:#f92672">key</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">dict</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">key</span>&gt;NearStore&lt;/<span style="color:#f92672">key</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">string</span>&gt;店舗の近くにいるときに割引を送信するため&lt;/<span style="color:#f92672">string</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">dict</span>&gt;
-</span></span></code></pre></div><p><a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/3600217-requesttemporaryfullaccuracyauth">一時的な完全な認証のリクエストについてもっと学ぶ</a>。</p>
-<h2 id="位置追跡">位置追跡</h2>
-<p>ユーザーが位置情報サービスを承認すると、ロケーションモジュールは連続的な位置追跡を実行します。位置更新は、精度と距離の構成に基づいています。</p>
-<p>ジオフェンス機能を無効にすると、Appleの<a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423531-startmonitoringsignificantlocati"><code>startMonitoringSignificantLocationChanges()</code></a>メソッドによってのみ重要な位置更新が監視され、更新が少なくなり、バッテリーの消費も少なくなります。この方法は、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled"><code>config.geofencesTrackingEnabled</code></a>または<a href="/ja/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>config.useHighAccuracy</code></a>のいずれかがfalseに構成されている場合に呼び出されます。それ以外の場合は、Appleの<a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423750-startupdatinglocation"><code>startUpdatingLocation</code></a>メソッドが呼び出されます。</p>
-<p>ジオフェンス機能はデフォルトで有効になっており、位置更新はより頻繁に行われ、精度が向上します。より頻繁な位置更新を有効または無効にするには、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a>を構成します。</p>
-<p>より正確な位置と距離の構成を希望する場合は、更新をトリガーするメートル単位の値でプロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a>を構成します。</p>
-<p>また、アプリが受け取りたい精度レベルを指定する拡張精度構成、<a href="/ja/platforms/ios-swift/api/tealium-config/#desiredaccuracy"><code>desiredAccuracy</code></a>もあります。これは<a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy"><code>CLLocationManager desiredAccuracy</code></a>プロパティと同様です。iOS 14+ではデフォルト値は<code>.reduced</code>で、以前のバージョンでは<code>.nearestHundredMeters</code>です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">start</span>() {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>      config.useHighAccuracy = <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>      config.updateDistance = <span style="color:#ae81ff">150</span>
-</span></span><span style="display:flex;"><span>      config.desiredAccuracy = .nearestThreeKilometers
-</span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><h2 id="ジオフェンシング">ジオフェンシング</h2>
 <p>ジオフェンシングはデフォルトで有効になっており、ジオフェンスを構成するには、以下の方法のいずれかを使用して<a href="/ja/platforms/getting-started-mobile/location/#json-file">ジオフェンス JSON ファイル</a>を提供します：</p>
 <ul>
 <li><strong>ホストされた URL</strong><br>
-自分のホストされたジオフェンスファイルを、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofenceurl"><code>geofenceUrl</code></a>にURLとして提供します。<br>
+自分のホストされたジオフェンスファイルをURLとして提供します。プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofenceurl"><code>geofenceUrl</code></a>を使用します。<br>
 このオプションは、公開構成のURLを上書きした場合や<a href="/ja/iq-tag-management/data-layer/hosted-data-layer/use-case-supplementing-product-data/">ホストされたデータレイヤー</a>を使用したい場合に推奨されます。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.geofenceUrl = <span style="color:#e6db74">&#34;https://example.com/geofences.json&#34;</span>
 </span></span></code></pre></div><ul>
 <li><strong>ローカルファイル</strong><br>
-アプリに保存されているジオフェンスファイルを使用するには、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofencefilename"><code>geofenceFileName</code></a>を構成します。ファイル拡張子は省略します。</li>
+アプリ内に保存されているジオフェンスファイルを使用するには、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofencefilename"><code>geofenceFileName</code></a>を構成します。ファイル拡張子は省略します。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.geofenceFileName = <span style="color:#e6db74">&#34;geofences&#34;</span> <span style="color:#75715e">// geofences.json</span>
 </span></span></code></pre></div><p>ジオフェンシングを無効にするには、プロパティ<a href="/ja/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled"><code>geofenceTrackingEnabled</code></a>を構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.geofenceTrackingEnabled = <span style="color:#66d9ef">false</span>
 </span></span></code></pre></div><h2 id="追加の考慮事項">追加の考慮事項</h2>
 <p><strong>アクティブなジオフェンスの数</strong><br>
-ジオフェンスは動的に追加および削除され、できるだけ少ないリソースを使用します。定義されるジオフェンスの数に制限はありませんが、アクティブなジオフェンスの数はデバイスユーザーごとにアプリケーション全体で20に制限されています。</p>
+ジオフェンスは動的に追加および削除され、可能な限り少ないリソースを使用します。定義されるジオフェンスの数に制限はありませんが、アクティブなジオフェンスの数はデバイスユーザーごとに20個に制限されています。</p>
 <p><strong>ジオフェンスの初期化</strong><br>
-作成時にユーザーがジオフェンス内にいる場合、<code>enter</code>遷移イベントは発生しません。これは、境界を越えるときに<code>exit</code>および<code>enter</code>遷移イベントが発生するためであり、内部に実体化したときではありません。</p>
+作成時にユーザーがジオフェンス内にいる場合、<code>enter</code> トランジションイベントは発火しません。これは、<code>exit</code> および <code>enter</code> トランジションイベントが境界を越えるときに発火され、内部に現れたときには発火されないためです。</p>
 <h2 id="データレイヤー">データレイヤー</h2>
 <p>以下の変数は、モバイルデータレイヤーの一部としてロケーションモジュールによって構成されます。これらの変数はライブラリからの各トラッキングコールに自動的に含まれます。</p>
 <table>
@@ -559,18 +520,18 @@
 <tr>
 <td><code>location_accuracy</code></td>
 <td><code>String</code></td>
-<td>位置情報の更新が要求される頻度、例えば <code>high</code> や <code>low</code></td>
+<td>位置情報の更新が要求される頻度、例えば <code>high</code> または <code>low</code></td>
 <td><code>high</code></td>
 </tr>
 <tr>
 <td><code>location_accuracy_extended</code></td>
 <td><code>String</code></td>
-<td>ロケーションモジュールの精度構成、例えば <code>best</code> や <code>reduced</code></td>
+<td>ロケーションモジュールの精度構成、例えば <code>best</code> または <code>reduced</code></td>
 <td><code>reduced</code></td>
 </tr>
 </tbody>
 </table>
-<p>ジオフェンシング中、ユーザーの遷移状態が変化すると、位置データを含むトラッキングコールが送信されます。遷移状態の変化には、ユーザーがジオフェンスに入るか出ることが含まれます。データレイヤーに送信される追加の変数は以下の通りです：</p>
+<p>ジオフェンシング中、ユーザーの遷移状態が変化すると、位置データを含むトラッキングコールが送信されます。遷移状態の変化には、ユーザーがジオフェンスに入るか出ることが含まれます。以下の追加変数がデータレイヤーに送信されます：</p>
 <table>
 <thead>
 <tr>
@@ -675,7 +636,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月30日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -698,9 +659,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#carthage" href="javascript:void(0)">Carthage</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%91%E4%BC%BC%E4%BD%8D%E7%BD%AE%E8%BF%BD%E8%B7%A1ios-14" href="javascript:void(0)">近似位置追跡（iOS 14&#43;）</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%8D%E7%BD%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">位置追跡</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B8%E3%82%AA%E3%83%95%E3%82%A7%E3%83%B3%E3%82%B7%E3%83%B3%E3%82%B0" href="javascript:void(0)">ジオフェンシング</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B8%E3%82%AA%E3%83%95%E3%82%A7%E3%83%B3%E3%82%B7%E3%83%B3%E3%82%B0" href="javascript:void(0)">ジオフェンシング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E3%81%AE%E8%80%83%E6%85%AE%E4%BA%8B%E9%A0%85" href="javascript:void(0)">追加の考慮事項</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC" href="javascript:void(0)">データレイヤー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9" href="javascript:void(0)">API リファレンス</a></li>

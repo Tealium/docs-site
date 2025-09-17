@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/attributes/data-layer-enrichment/tealium-collect-dle/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to configure the Tealium Collect tag to enable Data Layer Enchrichment." />
+<meta property="og:description" content="This article describes how to configure the Tealium Collect tag to enable data layer enchrichment." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Add and configure the Tealium Collect tag | Data Layer Enrichment | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -996,7 +996,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to configure the Tealium Collect tag to enable Data Layer Enchrichment.
+      This article describes how to configure the Tealium Collect tag to enable data layer enchrichment.
     </p>
   
 </div>
@@ -1009,7 +1009,7 @@
     </a>
 </figure>
 <h2 id="data-enrichment-frequency">Data enrichment frequency</h2>
-<p>To set up your Tealium Collect tag to enable Data Layer Enrichment, you must determine how often to update your data layer with attribute information. Here are the options:</p>
+<p>To set up your Tealium Collect tag to enable data layer enrichment, you must determine how often to update your data layer with attribute information. Here are the options:</p>
 <ul>
 <li><strong>None</strong> (Default)
 <ul>
@@ -1024,22 +1024,22 @@
 </li>
 <li><strong>Frequent</strong> (Recommended)
 <ul>
-<li>Data layer enrichment occurs on every tracking call, which allows for customer data that changes during the session to be reflected in real-time in the UDO.</li>
+<li>Data layer enrichment occurs on every tracking call. Customer data that changes during the session is reflected in real-time in the Universal Data Object (UDO).</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This option causes an additional HTTP request per page.</p>
 </li>
 </ul>
 <h2 id="selecting-a-load-rule">Selecting a load rule</h2>
-<p>We recommend leaving the default <strong>Load on All Pages</strong> load rule selected for the Tealium Collect tag. To make your data layer as rich and robust as possible, you need to populate it with the most relevant data as soon as you can.</p>
+<p>We recommend leaving the default <strong>Load on All Pages</strong> load rule selected for the Tealium Collect tag. To ensure the data layer contains the necessary attributes, populate it with the most relevant data.</p>
 <h3 id="using-audiencestream-attributes-in-tealium-iq">Using AudienceStream attributes in Tealium iQ</h3>
-<p>AudienceStream attributes are treated as imported variables in Tealium iQ. This means you cannot edit or delete them from Tealium iQ. If you want to delete or modify an AudienceStream attribute, you must do so from your AudienceStream profile. Moreover, you cannot import attributes to a <a href="/iq-tag-management/profiles/profile-libraries/about/">profile library</a>, only to a regular profile.</p>
+<p>AudienceStream attributes are treated as imported variables in Tealium iQ. These variables cannot be edited or deleted. To delete or modify an AudienceStream attribute, make the change in your AudienceStream profile. Attributes cannot be imported into a <a href="/iq-tag-management/profiles/profile-libraries/about/">profile library</a>, they can only be imported into a regular profile.</p>
 <figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"><img src="/images/server-side/whiteui-datalayerenrichment-editaudiencestreamvariables.png"
          alt="Data-Layer-Enrichment-Edit-AudienceStream-Variables"
          title="Data-Layer-Enrichment-Edit-AudienceStream-Variables"/>
     </a>
 </figure>
 <h3 id="which-audiencestream-attribute-types-are-imported">Which AudienceStream attribute types are imported?</h3>
-<p>Not all data types are imported into your iQ account. The following data types are imported and made available in iQ:</p>
+<p>The following attribute types are imported into Tealium iQ and made available in the data layer:</p>
 <ul>
 <li>Badges</li>
 <li>Numbers</li>
@@ -1047,23 +1047,24 @@
 <li>Booleans</li>
 <li>Dates</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Date attributes are imported into the data layer and visible in the UDO. They are not available for use in load rules or tag mappings.</p>
 <h2 id="building-load-rules">Building load rules</h2>
-<p>You can use the attributes to create your load rules. The following two rule operators are available to accommodate the use of badges in load rules.</p>
+<p>You can use supported attributes to create load rules. The following rule operators are available for badges in load rules.</p>
 <ul>
 <li><strong>is badge assigned</strong><br>
-True if the badge attribute is assigned to the visitor.<br>
+<code>True</code> if the badge attribute is assigned to the visitor.<br>
 <figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"><img src="/images/server-side/whiteui-datalayerenrichment-badgeisorisnotassigned.png"
                alt="Data-Layer-Enrichment-Badge-Is-Or-Is-Not-Assigned"
                title="Data-Layer-Enrichment-Badge-Is-Or-Is-Not-Assigned"/>
           </a>
       </figure></li>
 <li><strong>is badge not assigned</strong><br>
-False if the badge attribute is not assigned to the visitor.</li>
+<code>False</code> if the badge attribute is not assigned to the visitor.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Deleting an attribute from AudienceStream automatically removes it from the data layer screen in iQ as well. However, load rules that use a deleted attribute do not automatically remove it from their logic. You must manually update load rules that still reference deleted AudienceStream attributes.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Deleting an attribute from AudienceStream automatically removes it from the data layer screen in Tealium iQ. However, load rules that reference the deleted attribute do not update automatically. You must manually update any load rules that still reference deleted attributes.</p>
 <h2 id="callback-function">Callback function</h2>
-<p>The data layer enrichment request provides a callback mechanism so that you can execute code based on the response of the data layer enrichment request. The callback method is named <code>window.tealium_enrichment()</code>.</p>
-<p>To use the callback function, create a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a> scoped to Pre Loader with the following code example:</p>
+<p>The data layer enrichment request provides a callback method <code>window.tealium_enrichment()</code> that lets you execute code based on the response.</p>
+<p>To use the callback function, create a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a> scoped to Pre Loader with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">tealium_enrichment</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Data Layer Enrichment Callback&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Your code here...
@@ -1113,7 +1114,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 27, 2024 
+          <p>This page was last updated:  September 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

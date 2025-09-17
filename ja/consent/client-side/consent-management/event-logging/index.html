@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/consent/client-side/consent-management/event-logging/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Tealiumの同意管理でイベントログがどのように機能するかを学びます。" />
+<meta property="og:description" content="クライアントサイドの同意管理におけるイベントログの仕組みを学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>イベントログ | クライアント側の同意管理 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -301,7 +301,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-explicit-consent-prompt">明示的同意プロンプトマネージャーについて</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的な同意プロンプトの管理</a></li></ul>
+        <a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-explicit-consent-prompt">明示的同意プロンプトの管理</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".consent-preferences-dialog">同意構成ダイアログ</a>
@@ -401,7 +401,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Tealiumの同意管理でイベントログがどのように機能するかを学びます。
+      クライアントサイドの同意管理におけるイベントログの仕組みを学びます。
     </p>
   
 </div>
@@ -409,31 +409,31 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li>Tealium EventStreamまたは<a href="/ja/server-side/data-storage/about/">Tealium DataAccess</a>（EventStoreまたはEventDB）</li>
+<li>Tealium EventStream または <a href="/ja/server-side/data-storage/about/">Tealium DataAccess</a> (EventStore または EventDB)</li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
-<p>イベントログ機能は、訪問が行ったすべての同意アクションを記録し、<a href="/ja/consent/client-side/consent-management/about/">Tealium同意管理</a>のすべてのオファリングで機能します。Tealiumの同意管理があなたのサイトに展開され、イベントログが有効になっている場合、同意アクションはHTTPリクエストとしてTealiumのサーバーサイドCDHに送信され、監査および記録保持の目的でEventStoreまたはEventDBでログ記録されたり、EventStreamでストリーミングされたりします。</p>
+<p>イベントログ機能は、訪問によるすべての同意アクションを記録し、すべての<a href="/ja/consent/client-side/consent-management/about/">クライアントサイド同意管理</a>オファリングで動作します。クライアントサイド同意管理があなたのサイトにデプロイされ、イベントログが有効になっている場合、同意アクションはHTTPリクエストとしてTealiumのサーバーサイドCDHに送信され、監査および記録保持の目的でEventStoreやEventDBでログ記録されたり、EventStreamでストリーミングされたりします。</p>
 <p>以下の同意アクションが記録されます：</p>
 <ul>
 <li>同意の付与または撤回</li>
 <li>同意構成の変更</li>
-<li><strong>販売しない</strong> オプションの変更</li>
+<li><strong>Do Not Sell</strong> オプションの変更</li>
 </ul>
-<p>関連製品にアクセスできる顧客の場合、これらのイベントはEventDBおよびEventStoreに保存されるか、EventStreamでストリーミングされます（これらの特定のイベントには同意に基づくブロッキングは適用されません）。</p>
-<p>独自のデータ収集エンドポイントを使用することを好む顧客の場合、カスタムURLを指定できます。</p>
+<p>関連製品にアクセスできる顧客の場合、これらのイベントはEventDBおよびEventStoreに保存されたり、EventStreamでストリーミングされたりすることができます（これらの特定のイベントには同意に基づくブロッキングが適用されません）。</p>
+<p>独自のデータ収集エンドポイントを使用することを好む顧客の場合、カスタムURLを指定することができます。</p>
 <h2 id="イベントログ構成">イベントログ構成</h2>
 <p>以下の構成が利用可能です：</p>
 <ul>
 <li>
-<p><strong>同意変更のログ</strong> - イベントログを有効にするには<strong>はい</strong>に構成します（すべての同意管理オファリングに適用されます）。</p>
+<p><strong>Log Consent Changes</strong> - すべての同意管理オファリングに対してイベントログを有効にするには<strong>Yes</strong>に構成します。</p>
 </li>
 <li>
-<p><strong>イベントログURL</strong> - 同意変更をログするために使用されるイベント収集エンドポイント。独自のデータ収集エンドポイントを持っている場合のみこの構成を編集してください。
+<p><strong>Event Log URL</strong> - 同意変更をログするために使用されるイベント収集エンドポイント。独自のデータ収集エンドポイントを持っている場合のみこの構成を編集してください。
 デフォルト：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://collect.tealiumiq.com/event
 </span></span></code></pre></div></li>
 <li>
-<p><strong>イベントログプロファイル</strong> - ログされたイベントが送信されるプロファイル。ここで構成された値はパラメータ <code>tealium_profile=&quot;PROFILE&quot;</code> としてイベントログURLに渡されます。</p>
+<p><strong>Event Log Profile</strong> - ログされたイベントが送信されるプロファイル。ここで構成された値はパラメータ <code>tealium_profile=&quot;PROFILE&quot;</code> としてイベントログURLに渡されます。</p>
 </li>
 </ul>
 <p><a href="/ja/consent/server-side/event-specs/">同意イベント</a>のペイロードをカスタマイズするには、これらの2つのテンプレート <code>fullConsentEventHandler</code> と <code>partialConsentEventHandler</code> を編集します。テンプレートの更新についての詳細は、<a href="/ja/iq-tag-management/templates/about/">テンプレートの管理</a>を参照してください。</p>
@@ -482,7 +482,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

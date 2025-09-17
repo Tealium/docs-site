@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/xamarin-v1/install/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Tealium for Xamarin 1.x のインストールについて説明します。" />
+<meta property="og:description" content="Tealium for Xamarin 1.xのインストール方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>インストール | Xamarin用Tealium 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -287,12 +287,12 @@
         <span class="pb2">Xamarin 1.x</span>
         
         <ul data-level="1" class="xamarin-v1 desktopmenu animated fadeIn list pl0 mt2">
-    <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".xamarin-v1-install">インストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/data-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-data-management">データ管理</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/consent-mangagement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-consent-management">同意管理</a></li>
+    <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".xamarin-v1-install">インストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-track">トラック</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -337,45 +337,48 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Tealium for Xamarin 1.x のインストールについて説明します。
+      Tealium for Xamarin 1.xのインストール方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>TealiumのXamarin統合には、一連のクロスプラットフォームインターフェイスと、ネイティブのTealium iOSおよびAndroid SDKと連携するための構成クラスが用意されています。</p>
+  <p>Tealium Xamarin統合は、ネイティブTealium iOSおよびAndroid SDKとインターフェースする一連のクロスプラットフォームインターフェースと構成クラスを提供します。</p>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>当社のライブラリ、トラッキングメソッド、ベストプラクティスの実装に精通していただけるよう、Xamarinの<a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleApp">サンプルアプリ</a>をダウンロードできるようになっています。</p>
+<p>ライブラリ、トラッキング方法、およびベストプラクティスの実装に慣れるために、Xamarin <a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleApp">サンプルアプリ</a>をダウンロードしてください。</p>
 <h2 id="コードの取得">コードの取得</h2>
 <h4 id="利用可能なdll">利用可能なDLL</h4>
-<p>Xamarin統合では、以下の<a href="https://github.com/Tealium/tealium-xamarin">ダイナミックリンクライブラリ</a>（DLL）が利用可能です。</p>
+<p>Xamarin統合用にいくつかの<a href="https://github.com/Tealium/tealium-xamarin">ダイナミックリンクライブラリ</a>（DLL）が利用可能です：</p>
 <ul>
 <li><strong><code>Tealium.Common.dll</code></strong><br>
-このDLLには、Xamarinアプリケーション内のすべてのプロジェクトで使用するクロスプラットフォームコード、インターフェイス、共通コードが含まれています。このDLLを、共通プロジェクトとプラットフォーム固有のプロジェクトの両方に、リファレンスとして追加します。</li>
-<li><strong>抽象DLL</strong>
-プラットフォーム固有のプロジェクト内のネイティブTealium SDK向けにC# APIラッパーを作成するための抽象DLLが含まれています。これらのライブラリには、Tealium共通ライブラリにより提供されているインターフェイスおよび抽象クラス向けの、プラットフォーム固有の具象クラスの実装が含まれています。すべてのクロスプラットフォームロジックを共通ライブラリに基づいてコーディングします。
+このDLLには、Xamarinアプリケーション内のすべてのプロジェクトで使用されるクロスプラットフォームコード、インターフェース、および共通コードが含まれています。このDLLを共有プロジェクトとプラットフォーム固有のプロジェクトの両方に参照として追加します。</li>
+<li><strong>抽象化DLL</strong><br>
+抽象化DLLは、プラットフォーム固有のプロジェクトでネイティブTealium SDKをC# APIラッパーとして作成するために含まれています。これらのライブラリには、Tealium共通ライブラリによって提供されるインターフェースと抽象クラスのプラットフォーム固有の具体的なクラス実装が含まれています。共通ライブラリに対してクロスプラットフォームロジックをすべてコーディングします。
 <ul>
 <li><code>Tealium.Droid.dll</code> – Androidモバイルプラットフォーム用</li>
 <li><code>Tealium.iOS.dll</code> – Appleモバイルプラットフォーム用</li>
 </ul>
 </li>
 </ul>
-<p>抽象DLLにより参照される、各モバイルプラットフォームに固有のDLLもあります。プラットフォームDLLはバインディングライブラリであるため、ネイティブSDKを埋め込んであります。プラットフォームDLLが提供する自動生成ラッパーコードにより、ネイティブSDKと直接やりとりできるため、必要に応じてスタンドアロンで使用することも可能です。</p>
+<p>各モバイルプラットフォームに固有のDLLがあり、抽象化DLLによって参照されます。プラットフォームDLLはバインディングライブラリであり、TealiumのネイティブSDKに組み込まれています。これにより、ネイティブSDKと直接やり取りし、結果として単独で使用できる自動生成のラッパーコードが提供されます。</p>
 <ul>
 <li><code>Tealium.Platform.Droid.dll</code></li>
 <li><code>Tealium.Platform.iOS.dll</code></li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>バインディングライブラリは、単独で使用可能です。ライブラリが自動的に生成されるということは、プラットフォームごとに大きく異なる名前空間ができることになり、開発作業が必要以上に複雑になります。代わりに<code>Common</code>ライブラリや、プラットフォーム固有の抽象ライブラリを利用することを推奨しています。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>バインディングライブラリは単独で使用できます。自動生成されるため、各プラットフォームの名前空間が大きく異なり、開発努力に追加の複雑さが生じます。代わりに<code>Common</code>およびプラットフォーム固有の抽象化ライブラリを使用することをお勧めします。</p>
 <h4 id="ライフサイクルモジュール">ライフサイクルモジュール</h4>
-<p>プラットフォームに関連するDLLを参照することで、任意のライフサイクルモジュールを利用できます。これらはネイティブ同等のSDKのためのバインディングライブラリです。</p>
+<p>プラットフォームに関連するDLLを参照することで、オプションのライフサイクルモジュールが利用可能です。これらはネイティブ同等のSDKのバインディングライブラリです：</p>
 <ul>
 <li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
 <li><code>Tealium.Platform.Lifecycle.iOS.dll</code></li>
 </ul>
 <h4 id="androidの例">Androidの例</h4>
-<p>以下の例では、典型的なXamarinベースのアプリのSharedプロジェクトおよびAndroidプラットフォーム固有のプロジェクトを示しています。</p>
-<img src="/images/platforms/xamarin/consent-manager-model.png" alt="Consent Manager Model" title="Consent Manager Model" width="450">
-<p>この例で示されているように、Sharedプロジェクトでは<code>Tealium.Common.dll</code>のみが参照されているのに対し、Android固有のプロジェクトでは以下のすべてが参照されています。</p>
+<p>次の例は、典型的なXamarinベースのアプリからの共有プロジェクトとAndroidプラットフォーム固有のプロジェクトを示しています：</p>
+<figure><a class="slb" href="/images/platforms/xamarin/consent-manager-model.png"><img src="/images/platforms/xamarin/consent-manager-model.png" width="375" height="750"/>
+    </a><figcaption><p>XamarinアプリのConsent Manager共有プロジェクト</p>
+        </figcaption>
+</figure>
+<p>例に示されているように、共有プロジェクトは<code>Tealium.Common.dll</code>ライブラリのみを参照していますが、Android固有のプロジェクトは次のすべてを参照しています：</p>
 <ul>
 <li><code>Tealium.Common.dll</code></li>
 <li><code>Tealium.Droid.dll</code></li>
@@ -383,7 +386,7 @@
 <li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
 </ul>
 <h2 id="インストール">インストール</h2>
-<p>Xamarin向けTealiumライブラリをインストールするには、まず、プロジェクトが適切なライブラリを参照していることを確認します。追加構成が不要で、スレッドセーフなTealiumインスタンスの管理に対応した、<code>TealiumInstanceManager</code>クラスを使用することをお勧めします。</p>
+<p>Xamarin用Tealiumライブラリをインストールするには、まずプロジェクトが適切なライブラリを参照していることを確認してください。スレッドセーフなTealiumインスタンス管理を提供する<code>TealiumInstanceManager</code>クラスの使用をお勧めします。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -392,7 +395,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ITealiumInstanceManager instanceManager = <span style="color:#66d9ef">new</span> TealiumInstanceManager(<span style="color:#66d9ef">new</span> TealiumInstanceFactoryDroid(&lt;myAndroidApplication&gt;));
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.Droid.dll</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//オプションのライフサイクルモジュールの有効化 - Tealium.Platform.Lifecycle.Droid.dllを参照する必要があります</span>
 </span></span><span style="display:flex;"><span>TealiumLifecycleManager.SetLifecycleAutoTracking = TealiumDroid.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
 </span></span></code></pre></div>
 </div>
@@ -401,7 +404,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ITealiumInstanceManager instanceManager = <span style="color:#66d9ef">new</span> TealiumInstanceManager(<span style="color:#66d9ef">new</span> TealiumInstanceFactoryIOS());
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.iOS.dll</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//オプションのライフサイクルモジュールの有効化 - Tealium.Platform.Lifecycle.iOS.dllを参照する必要があります</span>
 </span></span><span style="display:flex;"><span>TealiumLifecycleManager.SetLifecycleAutoTracking =TealiumIOS.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
 </span></span></code></pre></div>
 </div>
@@ -409,61 +412,61 @@
 </div>
 
 <h3 id="nuget">NuGet</h3>
-<p>Xamarin向けTealiumライブラリをNuGetパッケージとしてインストールするには、組み込みのNuGetパッケージマネージャを使用してVisual Studioから直接インストールします。Tealium NuGetリストの詳細については、<a href="https://www.nuget.org/packages/Tealium.Xamarin/">こちら</a>を参照してください。</p>
+<p>Xamarin用TealiumライブラリをNuGetパッケージとしてインストールするには、Visual Studioの組み込みNuGetパッケージマネージャーを使用して直接インストールします。<a href="https://www.nuget.org/packages/Tealium.Xamarin/">詳細を学ぶ</a> Tealium NuGetリスティングについて。</p>
 <h2 id="初期化">初期化</h2>
-<p><code>TealiumInstanceManager</code>が作成されたら、ネイティブSDKと同様に<code>Tealium</code>インスタンスの作成を開始します。<code>TealiumInstanceManager</code>は、2つ以上のTealiumプロファイルのデータをトラッキングする必要がある場合に、複数の名前付きインスタンスへのアクセスを提供するMultitonパターンです。</p>
-<p>新しいインスタンスを作成するには、まず、アカウントの詳細とともに<code>TealiumConfig</code>オブジェクトを作成します。</p>
+<p><code>TealiumInstanceManager</code>が作成されたら、ネイティブSDKと同様に<code>Tealium</code>インスタンスを作成して開始します。<code>TealiumInstanceManager</code>はマルチトンパターンであり、複数の名前付きインスタンスへのアクセスを提供します。複数のTealiumプロファイルでデータを追跡する必要がある場合は、これを使用します。</p>
+<p>新しいインスタンスを作成するには、まずアカウントの詳細を含む<code>TealiumConfig</code>オブジェクトを作成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>TealiumConfig tealConfig
 </span></span><span style="display:flex;"><span>     = <span style="color:#66d9ef">new</span> TealiumConfig(instance, account, profile, environment, lifecycleAutoTracking);
 </span></span></code></pre></div><table>
 <thead>
 <tr>
-<th>パラメータ</th>
-<th>型</th>
-<th>説明</th>
-<th>例</th>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>instance</code></td>
-<td><code>String</code></td>
-<td>TealiumインスタンスID</td>
-<td><code>&quot;tealium_main&quot;</code></td>
+<td style="text-align:left"><code>instance</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">TealiumインスタンスID</td>
+<td style="text-align:left"><code>&quot;tealium_main&quot;</code></td>
 </tr>
 <tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>Tealiumアカウントの名前</td>
-<td><code>&quot;companyXYZ&quot;</code></td>
+<td style="text-align:left"><code>account</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Tealiumアカウント名</td>
+<td style="text-align:left"><code>&quot;companyXYZ&quot;</code></td>
 </tr>
 <tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>Tealiumプロファイルの名前</td>
-<td><code>&quot;main&quot;</code></td>
+<td style="text-align:left"><code>profile</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Tealiumプロファイル名</td>
+<td style="text-align:left"><code>&quot;main&quot;</code></td>
 </tr>
 <tr>
-<td><code>environment</code></td>
-<td><code>String</code></td>
-<td>Tealium環境の名前</td>
-<td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
+<td style="text-align:left"><code>environment</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Tealium環境名</td>
+<td style="text-align:left">[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
 </tr>
 <tr>
-<td><code>lifecycleAutoTracking</code></td>
-<td><code>Boolean</code></td>
-<td>（オプション）ライフサイクル自動トラッキング（デフォルト：<code>true</code>）</td>
-<td><code>true`, `false</code></td>
+<td style="text-align:left"><code>lifecycleAutoTracking</code></td>
+<td style="text-align:left"><code>Boolean</code></td>
+<td style="text-align:left">(オプション) ライフサイクル自動追跡 (デフォルト: <code>true</code>)</td>
+<td style="text-align:left"><code>true`, `false</code></td>
 </tr>
 </tbody>
 </table>
-<p>次に、<code>TealiumInstanceManager</code>を使用してTealiumインスタンスを作成します。Tealiumインスタンスはイベントのトラッキングに使用します。</p>
+<p>その後、<code>TealiumInstanceManager</code>を使用してTealiumインスタンスを作成し、イベントを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>ITealium tealium = instanceManager.CreateInstance(tealConfig);
 </span></span></code></pre></div><h2 id="高度な構成">高度な構成</h2>
-<p><code>TealiumConfig</code>クラスにはオーバーロードされたコンストラクタがあり、そこでオプションのパラメータを指定することによって、Tealium Mobile SDKのより高度な機能の有効と無効を切り替えられるようになっています。すべてのお客様がこれらの機能を必要とするわけではないため、これらのパラメータは任意となっています。</p>
+<p><code>TealiumConfig</code>クラスには、TealiumモバイルSDKのより高度な側面を有効または無効にするオプションのパラメータを指定するためのオーバーロードされたコンストラクタがあります。これらのパラメータはオプションであり、すべての顧客がこれらの機能を必要とするわけではありません。</p>
 <h3 id="リモートコマンド">リモートコマンド</h3>
-<p>モバイル内のイベントの大部分は、データ収集サーバーに送信されてコネクタで処理されるか、タグ管理ウェブ ビューで処理されてベンダ ータグをトリガーします。リモート コマンドは、 <code>IRemoteCommand</code> インターフェイスを通じてネイティブコードをトリガーする追加の柔軟性を提供します。</p>
-<p>以下のサンプルコードでは、コマンドID（<code>TealiumConsts.REMOTE_COMMAND_ID</code>に構成）を出力しています。この例を使用することで、このセットアップに必要な関連TagBridge Custom Commandタグで構成されているとおり、データの完全なペイロードにアクセスすることもできます。</p>
+<p>モバイル内のイベントの大部分は、コネクタを介してアクションを実行するためにデータ収集サーバーに送信されるか、タグ管理ウェブビューでベンダータグをトリガーするために処理されますが、リモートコマンドはネイティブコードをトリガーするための追加の柔軟性を提供します。</p>
+<p>次のサンプルコードは、コマンドID（<code>TealiumConsts.REMOTE_COMMAND_ID</code>に構成）を出力します。この例では、これを構成するために必要なTagBridgeカスタムコマンドタグで構成された完全なペイロードデータにもアクセスします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> List&lt;IRemoteCommand&gt; SetupRemoteCommands()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> command = <span style="color:#66d9ef">new</span> DelegateRemoteCommand(TealiumConsts.REMOTE_COMMAND_ID, <span style="color:#e6db74">&#34;Test command &#34;</span> + TealiumConsts.REMOTE_COMMAND_ID) {
@@ -474,40 +477,40 @@
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> List&lt;IRemoteCommand&gt;() { command };
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>リモートコマンドの詳細については、<a href="/ja/platforms/remote-commands/how-it-works/">こちら</a>を参照してください。</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/remote-commands/how-it-works/">詳細を学ぶ</a> リモートコマンドについて。</p>
 <h3 id="デリゲートメソッド">デリゲートメソッド</h3>
-<p>Tealium SDK内でコードを処理ロジックに注入できるデリゲートメソッドが5つあります。</p>
+<p>Tealium SDK内の処理ロジックにコードを挿入するための5つのデリゲートメソッドがあります：</p>
 <table>
 <thead>
 <tr>
-<th>Delegated メソッド</th>
-<th>説明</th>
+<th style="text-align:left">デリゲートメソッド</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>DelegateDispatchValidator()</code></td>
-<td>2つのデリゲートメソッド[<code>ShouldDropDispatchDelegate()</code>、<code>ShouldQueueDispatchDelegate()</code>]を提供します。ここで、既存のディスパッチが削除されるかキューに入れられるかは、ブール値の戻り値によって決まります。ユーザーがオフラインである可能性があることがわかっているステップがアプリ内にある場合、または独自のバッチ処理ロジックを具体的に記述する必要がある場合に役立ちます。</td>
+<td style="text-align:left"><code>DelegateDispatchValidator()</code></td>
+<td style="text-align:left">2つのデリゲートメソッド [<code>ShouldDropDispatchDelegate()</code>,  <code>ShouldQueueDispatchDelegate()</code>] を提供し、ブール値の戻り値が既存のディスパッチがドロップされるかキューに入れられるかを決定します。アプリ内でユーザーがオフラインである可能性があるステップがある場合や、独自のバッチ処理ロジックを書きたい場合に便利です</td>
 </tr>
 <tr>
-<td><code>DispatchSentDelegateEventListener()</code></td>
-<td>ディスパッチが送信されるたびに呼び出されます</td>
+<td style="text-align:left"><code>DispatchSentDelegateEventListener()</code></td>
+<td style="text-align:left">ディスパッチが送信されたときに呼び出されます</td>
 </tr>
 <tr>
-<td><code>DispatchQueuedDelegateEventListener()</code></td>
-<td>ディスパッチがキューに登録されるたびに呼び出されます</td>
+<td style="text-align:left"><code>DispatchQueuedDelegateEventListener()</code></td>
+<td style="text-align:left">ディスパッチがキューに入れられたときに呼び出されます</td>
 </tr>
 <tr>
-<td><code>WebViewReadyDelegateEventListener()</code></td>
-<td>Tag Managementモジュールを使用している場合に、WebViewが完全に読み込まれて準備が整った時点で呼び出されます</td>
+<td style="text-align:left"><code>WebViewReadyDelegateEventListener()</code></td>
+<td style="text-align:left">WebViewが完全にロードされ準備が整ったときに呼び出されます。タグ管理モジュールを使用している場合</td>
 </tr>
 <tr>
-<td><code>SettingsPublishedDelegateEventListener()</code></td>
-<td>取得した一連の公開構成に更新があったときに呼び出されます</td>
+<td style="text-align:left"><code>SettingsPublishedDelegateEventListener()</code></td>
+<td style="text-align:left">公開構成の更新されたセットが取得されたときに呼び出されます</td>
 </tr>
 </tbody>
 </table>
-<p>以下はデリゲートメソッドの使用例です。</p>
+<p>以下の例は、デリゲートメソッドの使用方法を示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> TealiumAdvancedConfig SetupAdvancedConfig() {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    DelegateDispatchValidator validator = <span style="color:#66d9ef">new</span> DelegateDispatchValidator() {
@@ -548,12 +551,12 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> advConfig;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="リソース">リソース</h2>
-<p>以下のリソースは、TealiumのAndroidおよびiOSライブラリの追加に関するさまざまなXamarinドキュメントへのリンクです。</p>
+<p>以下のリソースは、TealiumのAndroidおよびiOSライブラリをXamarinに追加するための広範なドキュメントへのリンクを提供します：</p>
 <ul>
 <li><a href="https://www.xamarin.com/platform">Xamarin</a></li>
-<li><a href="https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library" title="Xamarin How to Bind a Java Library">Javaライブラリのバインディング</a></li>
+<li><a href="https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library" title="Xamarin Javaライブラリのバインド方法">Javaライブラリのバインディング</a></li>
 <li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/">Xamarin - iOS Objective-Cライブラリのバインディング</a></li>
-<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/" title="Xamarin how to bind an Objective-C library">解説：iOS Objective-Cライブラリのバインディング</a></li>
+<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/" title="Xamarin Objective-Cライブラリのバインド方法">ウォークスルー：iOS Objective-Cライブラリのバインディング</a></li>
 </ul>
 
 </div>
@@ -561,18 +564,33 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/platforms/xamarin-v1/data-management/"
+  <a href="/ja/platforms/xamarin-v1/track/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>データ管理</div>
+      <div>トラック</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"データ管理"</title>
+      <title>"トラック"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
   
   
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/xamarin-v1/consent-mangagement/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"同意管理 "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>同意管理</div>
+    </section>
+  </a>
+  
+
 </div></div>
 
 
@@ -600,7 +618,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年September月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
