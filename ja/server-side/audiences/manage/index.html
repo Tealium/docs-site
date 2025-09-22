@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/audiences/manage/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="オーディエンスの作成、編集、削除、活性化、セグメントの作成に関する情報を提供します。" />
+<meta property="og:description" content="この記事では、オーディエンスの作成、編集、削除、アクティベーション、セグメントの作成についての情報を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>オーディエンスの管理 | オーディエンス | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -1002,132 +1002,179 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      オーディエンスの作成、編集、削除、活性化、セグメントの作成に関する情報を提供します。
+      この記事では、オーディエンスの作成、編集、削除、アクティベーション、セグメントの作成についての情報を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>オーディエンスとは、1つ以上の属性条件の組み合わせです。フィルターを追加するほど、オーディエンスは具体的になります。</p>
+  <p>オーディエンスは、1つ以上の属性条件の組み合わせです。フィルターを追加するほど、オーディエンスは具体的になります。</p>
 <h2 id="オーディエンスの作成">オーディエンスの作成</h2>
-<p>オーディエンスを作成するには、以下の手順を使用します：</p>
+<figure><a class="slb" href="/images/early-access/integrated-audiences-potential-size.png"><img src="/images/early-access/integrated-audiences-potential-size.png"
+          alt="新しいオーディエンス画面で表示される潜在的なオーディエンスサイズ"
+          title="新しいオーディエンス画面で表示される潜在的なオーディエンスサイズ"/>
+     </a>
+ </figure>
+<p>オーディエンスを作成するには、以下の手順に従ってください：</p>
 <ol>
 <li>
-<p><strong>AudienceStream &gt; Audiences</strong>に移動します。</p>
+<p><strong>AudienceStream &gt; Audiences</strong> に移動します。</p>
 </li>
 <li>
-<p><strong>+ New Audience</strong>をクリックします。</p>
+<p><strong>+ New Audience</strong> をクリックします。</p>
 </li>
 <li>
-<p>オーディエンスの<strong>Name</strong>を入力します。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、オーディエンス名は128文字以下でなければなりません。そうでない場合、DataAccessはオーディエンス名を切り詰め、エラーが発生する可能性があります。</p></p>
+<p>オーディエンスの<strong>名前</strong>を入力します。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。</p></p>
 </li>
 <li>
-<p>オーディエンスの条件を追加するには、属性、演算子、値を選択します。<br>
-属性にマウスを置くと、その属性のエンリッチメントが表示されます。<br>
-属性のバッジを選択した場合、<strong>is assigned</strong>または<strong>is not assigned</strong>を選択します。<br>
-時間枠を指定する演算子の場合、値と時間枠を選択します。</p>
+<p>オーディエンスの条件を追加するには、属性、演算子、値を選択します。</p>
+<ul>
+<li>オーディエンスの潜在的なサイズが表示されます。詳細は<a href="#potential-size">潜在的なサイズ</a>を参照してください。</li>
+<li>属性にカーソルを合わせると、その属性のエンリッチメントが表示されます。</li>
+<li>属性にバッジを選択する場合は、<strong>is assigned</strong> または <strong>is not assigned</strong> を選択します。</li>
+<li>時間枠を指定する演算子の場合は、値と時間枠を選択します。</li>
+</ul>
 </li>
 <li>
-<p>別の条件を追加するには、<strong>+ Add Condition</strong>をクリックします。</p>
+<p>別の条件を追加するには、<strong>+ Add Condition</strong> をクリックします。</p>
+<ul>
+<li>条件を追加するにつれて潜在的なサイズを更新するには、<strong>Calculate</strong> をクリックします。</li>
+</ul>
 </li>
 <li>
-<p>このセグメントを保存するには、<strong>Save</strong>アイコンをクリックします。<figure><a class="slb" href="/images/guides/server-side/int-aud-save-segment-icon.png"><img src="/images/guides/server-side/int-aud-save-segment-icon.png"/>
+<p>このセグメントを保存するには、<strong>Save</strong> アイコンをクリックします。<figure><a class="slb" href="/images/guides/server-side/int-aud-save-segment-icon.png"><img src="/images/guides/server-side/int-aud-save-segment-icon.png"/>
     </a>
-</figure>
-セグメントの<strong>Name</strong>を入力し、<strong>Done</strong>をクリックします。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字以下でなければなりません。そうでない場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。</p></p>
+</figure></p>
 </li>
 <li>
-<p>セグメントを追加するには、<strong>+ Add Segment</strong>をクリックし、セグメントの条件を追加します。</p>
+<p>セグメントの<strong>名前</strong>を入力し、<strong>Done</strong> をクリックします。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/data-storage/about/">DataAccess</a>製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでないと、DataAccessがセグメント名を切り詰め、エラーが発生する可能性があります。</p></p>
 </li>
 <li>
-<p>以前に保存したセグメントを追加するには、<strong>+ Add Segment</strong>の隣の下向き矢印をクリックし、セグメントを選択します。<br>
-セグメントにマウスを置くと、そのセグメントの条件が表示されます。</p>
+<p>セグメントを追加するには、<strong>+ Add Segment</strong> をクリックし、セグメントの条件を追加します。</p>
 </li>
 <li>
-<p>ラベルやメモを追加するには、<strong>More Options</strong>をクリックします。</p>
+<p>保存済みのセグメントを追加するには、<strong>+ Add Segment</strong> の隣の下矢印をクリックしてセグメントを選択します。
+セグメントにカーソルを合わせると、そのセグメントの条件が表示されます。</p>
+</li>
+<li>
+<p>ラベルやメモを追加するには、<strong>More Options</strong> をクリックします。</p>
 <ol>
-<li>ラベルを追加するには、<strong>Add Label</strong>をクリックし、ラベルを選択します。</li>
+<li>ラベルを追加するには、<strong>Add Label</strong> をクリックしてラベルを選択します。</li>
 <li>必要に応じてメモを入力します。</li>
 </ol>
 </li>
 <li>
-<p>オーディエンスをすぐに活性化するには、<strong>Connect &amp; Activate</strong>をクリックし、コネクタを選択して構成します。<br>
-詳細については、選択したコネクタの構成ガイドを参照してください。</p>
+<p>オーディエンスを即座にアクティブ化するには、<strong>Connect &amp; Activate</strong> をクリックし、コネクタを選択して構成します。</p>
+<ul>
+<li>選択したコネクタの構成ガイドについては、詳細を参照してください。</li>
+</ul>
 </li>
 <li>
-<p>オーディエンスを活性化せずに保存するには、<strong>Done</strong>をクリックします。</p>
+<p>オーディエンスをアクティブ化せずに保存するには、<strong>Done</strong> をクリックします。</p>
 </li>
 <li>
 <p>保存して公開します。</p>
 </li>
 </ol>
+<h3 id="潜在的なサイズ">潜在的なサイズ</h3>
+<p>オーディエンスの潜在的なサイズは、定義されたオーディエンス条件に一致する訪問プロファイルの数です。計算結果は、条件に合致する訪問の数を数値とパーセンテージの両方で表示し、訪問の総数とともに表示されます。訪問の総数は、匿名およびステッチされた訪問を含む、構成された保持ウィンドウ内のTealiumプロファイルの訪問数です。</p>
+<h4 id="制限事項">制限事項</h4>
+<p>次の属性で構築されたオーディエンスでは、潜在的なオーディエンスサイズは利用できません：</p>
+<ul>
+<li><strong>訪問属性</strong>：訪問属性は一時的であり、訪問のセッションが終了すると持続しません。</li>
+<li><strong>未保存および未公開の属性</strong>：属性値は、属性構成が保存および公開されたときにのみ作成、エンリッチ、保存されます。保存および公開プロセスが行われるまでは、潜在的なオーディエンスサイズを計算するために照会できる値は存在しません。</li>
+</ul>
 <h2 id="既存のオーディエンスからオーディエンスを作成する">既存のオーディエンスからオーディエンスを作成する</h2>
-<p>オーディエンスのリストから、またはオーディエンスの詳細ビューからオーディエンスを複製し、その複製を変更して新しいオーディエンスを作成することができます。</p>
-<p>オーディエンスのリストからオーディエンスを複製するには、以下の手順を実行します：</p>
+<p>オーディエンスリストから、またはオーディエンスの詳細ビューからオーディエンスを複製し、複製を変更して新しいオーディエンスを作成することができます。</p>
+<p>オーディエンスリストからオーディエンスを複製するには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>オーディエンスメニューで<strong>Duplicate</strong>を選択します。<br>
-オーディエンスのコピーが表示されます。</li>
-<li>新しいオーディエンスのために必要な<strong>Name</strong>と条件を変更するために<strong>Edit</strong>をクリックします。</li>
-<li><strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>オーディエンスメニューで <strong>Duplicate</strong> を選択します。
+<ul>
+<li>オーディエンスのコピーが表示されます。</li>
+</ul>
+</li>
+<li><strong>Edit</strong> をクリックして、新しいオーディエンスのために<strong>名前</strong>と条件を必要に応じて変更します。
+<ul>
+<li>条件を編集または追加するにつれて潜在的なサイズを更新するには、<strong>Calculate</strong> をクリックします。</li>
+</ul>
+</li>
+<li><strong>Done</strong> または <strong>Connect &amp; Activate</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>オーディエンスの詳細からオーディエンスを複製するには、以下の手順を実行します：</p>
+<p>オーディエンスの詳細からオーディエンスを複製するには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>リストのオーディエンスをクリックし、<strong>Duplicate</strong>をクリックします。<br>
-オーディエンスのコピーが表示されます。</li>
-<li>新しいオーディエンスのために必要な<strong>Name</strong>と条件を変更するために<strong>Edit</strong>をクリックします。</li>
-<li><strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>リストからオーディエンスをクリックし、<strong>Duplicate</strong> をクリックします。
+<ul>
+<li>オーディエンスのコピーが表示されます。</li>
+</ul>
+</li>
+<li><strong>Edit</strong> をクリックして、新しいオーディエンスのために<strong>名前</strong>と条件を必要に応じて変更します。
+<ul>
+<li>条件を編集または追加するにつれて潜在的なサイズを更新するには、<strong>Calculate</strong> をクリックします。</li>
+</ul>
+</li>
+<li><strong>Done</strong> または <strong>Connect &amp; Activate</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="オーディエンスの編集">オーディエンスの編集</h2>
-<p>オーディエンスを編集するには、以下の手順を実行します：</p>
+<p>オーディエンスを編集するには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>リストのオーディエンスをクリックし、<strong>Edit</strong>をクリックします。</li>
-<li>必要に応じてオーディエンスを変更します。</li>
-<li>このオーディエンスの活性化を追加するか、このオーディエンスの活性化を表示するには、<strong>Activations</strong>をクリックします。<br>
-活性化の追加については、<a href="#activate-an-audience">Activate an audience</a>を参照してください。</li>
-<li>このオーディエンスの訪問と活動に関する情報を表示するには、<strong>Insights</strong>をクリックします。</li>
-<li>このオーディエンスによってトリガーされる関数を表示するには、<strong>Functions</strong>をクリックします。</li>
-<li>オーディエンスの編集が完了したら、<strong>Done</strong>または<strong>Connect &amp; Activate</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>リストからオーディエンスをクリックし、<strong>Edit</strong> をクリックします。</li>
+<li>必要に応じてオーディエンスを変更します。
+<ul>
+<li>条件を編集または追加するにつれて潜在的なサイズを更新するには、<strong>Calculate</strong> をクリックします。</li>
+</ul>
+</li>
+<li>このオーディエンスのアクティベーションを追加するか、アクティベーションを表示するには、<strong>Activations</strong> をクリックします。
+<ul>
+<li>アクティベーションを追加する方法については、<a href="#activate-an-audience">オーディエンスのアクティベーション</a>を参照してください。</li>
+</ul>
+</li>
+<li>このオーディエンスの訪問情報や活動情報を表示するには、<strong>Insights</strong> をクリックします。</li>
+<li>このオーディエンスによってトリガーされる関数を表示するには、<strong>Functions</strong> をクリックします。</li>
+<li>オーディエンスの編集が完了したら、<strong>Done</strong> または <strong>Connect &amp; Activate</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<h2 id="オーディエンスの活性化">オーディエンスの活性化</h2>
-<p>オーディエンスを活性化するには、コネクタを選択し、構成します：</p>
+<h2 id="オーディエンスのアクティベーション">オーディエンスのアクティベーション</h2>
+<p>オーディエンスをアクティベートするには、コネクタを選択して構成します：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>リストのオーディエンスをクリックし、<strong>Edit</strong>をクリックします。</li>
-<li><strong>Activations</strong>タブをクリックし、<strong>+ Add Activation</strong>をクリックします。</li>
-<li>コネクタを選択し、構成します。<br>
-詳細については、選択したコネクタの構成ガイドを参照してください。</li>
-<li>オーディエンスを閉じるには、<strong>X</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>リストからオーディエンスをクリックし、<strong>Edit</strong> をクリックします。</li>
+<li><strong>Activations</strong> タブをクリックし、<strong>+ Add Activation</strong> をクリックします。</li>
+<li>コネクタを選択して構成します。
+<ul>
+<li>選択したコネクタの構成ガイドについては、詳細を参照してください。</li>
+</ul>
+</li>
+<li>オーディエンスを閉じるために <strong>X</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<h2 id="オーディエンスの非活性化">オーディエンスの非活性化</h2>
-<p>オーディエンスを非活性化するには、以下の手順を実行します：</p>
+<h2 id="オーディエンスの非アクティベーション">オーディエンスの非アクティベーション</h2>
+<p>オーディエンスを非アクティベートするには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>リストのオーディエンスをクリックし、<strong>Activations</strong>をクリックします。</li>
-<li>コネクタをクリックし、コネクタを<strong>Off</strong>に切り替えます。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>リストからオーディエンスをクリックし、<strong>Activations</strong> をクリックします。</li>
+<li>コネクタをクリックし、コネクタを <strong>Off</strong> に切り替えます。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="オーディエンスの削除">オーディエンスの削除</h2>
-<p>オーディエンスは、オーディエンスのリストから、またはオーディエンスの詳細ビューから削除できます。</p>
-<p>オーディエンスのリストからオーディエンスを削除するには、以下の手順を実行します：</p>
+<p>オーディエンスリストまたはオーディエンスの詳細ビューからオーディエンスを削除することができます。</p>
+<p>オーディエンスリストからオーディエンスを削除するには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>オーディエンスメニューをクリックし、<strong>Delete</strong>を選択します。</li>
-<li>確認ダイアログで<strong>Delete</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>オーディエンスメニューをクリックし、<strong>Delete</strong> を選択します。</li>
+<li>確認ダイアログで <strong>Delete</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>オーディエンスの詳細からオーディエンスを削除するには、以下の手順を実行します：</p>
+<p>オーディエンスの詳細からオーディエンスを削除するには、次の手順に従います：</p>
 <ol>
-<li><strong>AudienceStream &gt; Audiences</strong>に移動します。</li>
-<li>オーディエンスのリストからオーディエンスをクリックします。</li>
-<li><strong>Delete</strong>をクリックします。</li>
-<li>確認ダイアログで<strong>Delete</strong>をクリックします。</li>
+<li><strong>AudienceStream &gt; Audiences</strong> に移動します。</li>
+<li>オーディエンスリストでオーディエンスをクリックします。</li>
+<li><strong>Delete</strong> をクリックします。</li>
+<li>確認ダイアログで <strong>Delete</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 
@@ -1190,7 +1237,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月10日
+          <p>最終更新日 ::  2025年September月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1205,10 +1252,11 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">オーディエンスの作成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A2%E5%AD%98%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">既存のオーディエンスからオーディエンスを作成する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%BD%9C%E5%9C%A8%E7%9A%84%E3%81%AA%E3%82%B5%E3%82%A4%E3%82%BA" href="javascript:void(0)">潜在的なサイズ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A2%E5%AD%98%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">既存のオーディエンスからオーディエンスを作成する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">オーディエンスの編集</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E6%B4%BB%E6%80%A7%E5%8C%96" href="javascript:void(0)">オーディエンスの活性化</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E9%9D%9E%E6%B4%BB%E6%80%A7%E5%8C%96" href="javascript:void(0)">オーディエンスの非活性化</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">オーディエンスのアクティベーション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E9%9D%9E%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">オーディエンスの非アクティベーション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">オーディエンスの削除</a></li>
               </nav>
   </aside></nav>
