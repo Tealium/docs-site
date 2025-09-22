@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -232,9 +232,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/audiences/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/audiences/potential-size/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".potential-audience-sizing">Potential audience sizing</a></li></ul>
+        <a href="/early-access/audiences/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">CloudStream</a>
@@ -362,10 +360,14 @@
 <p>Enter a <strong>Name</strong> for the audience. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you use a <a href="/server-side/data-storage/about/">DataAccess</a> product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p></p>
 </li>
 <li>
-<p>To add a condition for the audience, select an attribute, an operator, and a value.<br>
-When you hover over an attribute, the enrichment for the attribute is displayed.<br>
-If you select a badge for the attribute, select <strong>is assigned</strong> or <strong>is not assigned</strong>.<br>
-For operators that specify a time frame, select a value and the time frame.</p>
+<p>To add a condition for the audience, select an attribute, an operator, and a value.</p>
+<ul>
+<li>The estimated potential size for the audience is displayed. For more information, see <a href="#potential-size">potential size</a>.</li>
+<li>Click <strong>Calculate</strong> to update the potential size as you edit or add conditions.</li>
+<li>When you hover over an attribute, the enrichment for the attribute is displayed.</li>
+<li>If you select a badge for the attribute, select <strong>is assigned</strong> or <strong>is not assigned</strong>.</li>
+<li>For operators that specify a time frame, select a value and the time frame.</li>
+</ul>
 </li>
 <li>
 <p>To add another condition, click <strong>+ Add Condition</strong>.</p>
@@ -378,10 +380,15 @@ Enter a <strong>Name</strong> for the segment, then click <strong>Done</strong>.
 </li>
 <li>
 <p>To add a segment, click <strong>+ Add Segment</strong>, then add conditions for the segment.</p>
+<ul>
+<li>Click <strong>Calculate</strong> to update the potential size as you edit or add conditions.</li>
+</ul>
 </li>
 <li>
-<p>To add a previously saved segment, click the down-arrow next to <strong>+ Add Segment</strong> and select a segment.<br>
-When you hover over a segment, the conditions for the segment are displayed.</p>
+<p>To add a previously saved segment, click the down-arrow next to <strong>+ Add Segment</strong> and select a segment.</p>
+<ul>
+<li>When you hover over a segment, the conditions for the segment are displayed.</li>
+</ul>
 </li>
 <li>
 <p>To exclude a segment, click <strong>+ Add Segment to Exclude</strong>, then add conditions for the segment.</p>
@@ -392,7 +399,7 @@ When you hover over a segment, the conditions for the segment are displayed.</p>
 <li>
 <p>To fill the audience with visitors that currently meet the audience conditions, select <strong>Fill Audience</strong>.</p>
 <ul>
-<li>Once published, the audience includes visitors who include visitors who have met the conditions in the past. The <a href="/early-access/audiences/potential-size/"><strong>Potential Size</strong></a> number estimates the number of qualified visitors from existing data that will fill the audience.</li>
+<li>Once published, the audience includes visitors who include visitors who have met the conditions in the past. The <strong>Potential Size</strong> number estimates the number of qualified visitors from existing data that will fill the audience.</li>
 <li>Real-time evaluation will occur simultaneously.</li>
 <li>You can fill an audience only once.</li>
 <li>Before publishing the profile and starting the fill process, connect your audience to at least one connector action. This ensures that as the audience is populated, matching visitors are automatically sent to the specified connectors.</li>
@@ -403,13 +410,14 @@ When you hover over a segment, the conditions for the segment are displayed.</p>
 <ol>
 <li>To add a label, click <strong>Add Label</strong> and select a label.</li>
 <li>Enter notes, if needed.</li>
-<li>To modify the audience retention time, select a value from the list.<br>
-The time of a visitor&rsquo;s last visit determines the start of the retention time for that visitor.</li>
+<li>To modify the audience retention time, select a value from the list. The time of a visitor&rsquo;s last visit determines the start of the retention time for that visitor.</li>
 </ol>
 </li>
 <li>
-<p>To immediately activate the audience, click <strong>Connect &amp; Activate</strong>, then select and configure a connector.<br>
-For more information, refer to the setup guide for the selected connector.</p>
+<p>To immediately activate the audience, click <strong>Connect &amp; Activate</strong>, then select and configure a connector.</p>
+<ul>
+<li>For more information, refer to the setup guide for the selected connector.</li>
+</ul>
 </li>
 <li>
 <p>To save the audience without activating it, click <strong>Done</strong>.</p>
@@ -423,8 +431,11 @@ For more information, refer to the setup guide for the selected connector.</p>
 <p>To duplicate an audience from the list of audiences, follow these steps:</p>
 <ol>
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
-<li>In the audience menu, select <strong>Duplicate</strong>.<br>
-The copy of the audience is displayed.</li>
+<li>In the audience menu, select <strong>Duplicate</strong>.
+<ul>
+<li>The copy of the audience is displayed.</li>
+</ul>
+</li>
 <li>Click <strong>Edit</strong> to modify the <strong>Name</strong> and conditions as needed for the new audience.</li>
 <li>Click <strong>Done</strong> or <strong>Connect &amp; Activate</strong>.</li>
 <li>Save and publish.</li>
@@ -432,8 +443,11 @@ The copy of the audience is displayed.</li>
 <p>To duplicate an audience from audience details, follow these steps:</p>
 <ol>
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
-<li>Click an audience in the list, then click <strong>Duplicate</strong>.<br>
-The copy of the audience is displayed.</li>
+<li>Click an audience in the list, then click <strong>Duplicate</strong>.
+<ul>
+<li>The copy of the audience is displayed.</li>
+</ul>
+</li>
 <li>Click <strong>Edit</strong> to modify the <strong>Name</strong> and conditions as needed for the new audience.</li>
 <li>Click <strong>Done</strong> or <strong>Connect &amp; Activate</strong>.</li>
 <li>Save and publish.</li>
@@ -443,20 +457,20 @@ The copy of the audience is displayed.</li>
 <ol>
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
 <li>Click an audience in the list, then click <strong>Edit</strong>.</li>
-<li>Modify the audience as needed.</li>
-</ol>
+<li>Modify the audience as needed.
 <ul>
-<li>Once published, the audience includes visitors who include visitors who have met the conditions in the past. The <a href="/early-access/audiences/potential-size/"><strong>Potential Size</strong></a> number estimates the number of qualified visitors from existing data that will fill the audience.
-<ul>
+<li>Click <strong>Calculate</strong> to update the potential size as you edit or add conditions.</li>
+<li>Once published, the audience includes visitors who include visitors who have met the conditions in the past. The <strong>Potential Size</strong> number estimates the number of qualified visitors from existing data that will fill the audience.</li>
 <li>Real-time evaluation will occur simultaneously.</li>
 <li>You can fill an audience only once.</li>
 <li>Before publishing the profile and starting the fill process, connect your audience to at least one connector action. This ensures that as the audience is populated, matching visitors are automatically sent to the specified connectors.</li>
 </ul>
 </li>
+<li>To add an activation or view activations for this audience, click <strong>Activations</strong>.
+<ul>
+<li>For information on adding an activation, see <a href="#activate-an-audience">Activate an audience</a>.</li>
 </ul>
-<ol>
-<li>To add an activation or view activations for this audience, click <strong>Activations</strong>.<br>
-For information on adding an activation, see <a href="#activate-an-audience">Activate an audience</a>.</li>
+</li>
 <li>To view information about visitors and activity for this audience, click <strong>Insights</strong>.</li>
 <li>To view the functions triggered by this audience, click <strong>Functions</strong>.</li>
 <li>When you are finished editing the audience, click <strong>Done</strong> or <strong>Connect &amp; Activate</strong>.</li>
@@ -468,8 +482,11 @@ For information on adding an activation, see <a href="#activate-an-audience">Act
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
 <li>Click an audience in the list, then click <strong>Edit</strong>.</li>
 <li>Click the <strong>Activations</strong> tab, then click <strong>+ Add Activation</strong>.</li>
-<li>Select and configure a connector.<br>
-For more information, refer to the setup guide for the selected connector.</li>
+<li>Select and configure a connector.
+<ul>
+<li>For more information, refer to the setup guide for the selected connector.</li>
+</ul>
+</li>
 <li>Click <strong>X</strong> to close the audience.</li>
 <li>Save and publish.</li>
 </ol>
@@ -501,22 +518,7 @@ For more information, refer to the setup guide for the selected connector.</li>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
-
-  
-  <a href="/early-access/audiences/potential-size/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
-    <section class="tl pr3">
-      <div>Potential audience sizing</div>
-    </section>
-    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Potential audience sizing"</title>
-      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-    </svg>
-  </a>
-  
-  
-</div><div class="di mr3">
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="di mr3">
   
   
   <a href="/early-access/audiences/about/"
@@ -558,7 +560,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 21, 2025 
+          <p>This page was last updated:  September 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

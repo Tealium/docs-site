@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1009,17 +1009,31 @@
 <p>Enter a <strong>Name</strong> for the segment. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you use a <a href="/server-side/data-storage/about/">DataAccess</a> product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.</p></p>
 </li>
 <li>
-<p>To add a condition, select an attribute, an operator, and a value.<br>
-For operators that specify a time frame, select a value and the time frame.</p>
+<p>To add a condition, select an attribute, an operator, and a value.</p>
+<ul>
+<li>The estimated potential size for the segment is displayed. For more information, see <a href="#potential-size">potential size</a>.</li>
+<li>For operators that specify a time frame, select a value and the time frame.</li>
+</ul>
 </li>
 <li>
 <p>To add another condition, click <strong>+ Add Condition</strong>.</p>
+<ul>
+<li>Click <strong>Calculate</strong> to update the potential size as you edit or add conditions.</li>
+</ul>
 </li>
 <li>
 <p>Click <strong>Done</strong>.
 Save and publish is not required.</p>
 </li>
 </ol>
+<h3 id="potential-size">Potential size</h3>
+<p>The potential size of the segment is the count of visitor profiles that match the defined segment conditions. The calculation result displays the number of visitors meeting the conditions as both a number and a percentage, alongside the total number of visitors. The total visitors count is the number of visitors in your Tealium profile within your configured retention window, which includes both anonymous and stitched visitors.</p>
+<h4 id="limitations">Limitations</h4>
+<p>Potential segment sizing is not available when a segment is built with the following attributes:</p>
+<ul>
+<li><strong>Visit attributes</strong>: Visit attributes are transitory and do not persist after the visitor’s session ends.</li>
+<li><strong>Unsaved and unpublished attributes</strong>: Attribute values are only created, enriched, and saved to a visitor profile when the attribute configuration is saved and published. Until the save and publish process occurs, no values exist that can be queried to calculate a potential segment size.</li>
+</ul>
 <h2 id="save-a-segment-to-favorites">Save a segment to favorites</h2>
 <p>To save a segment to favorites, use the following steps:</p>
 <ol>
@@ -1041,10 +1055,13 @@ Save and publish is not required.</p>
 <ol>
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
 <li>Click the <strong>SEGMENTS</strong> tab, then select the segment to edit.</li>
-<li>Click <strong>Edit</strong>.<br>
-Add or edit conditions as needed.</li>
-<li>Click <strong>Done</strong>.<br>
-Save and publish is not required.</li>
+<li>Click <strong>Edit</strong>.
+<ul>
+<li>Add or edit conditions as needed.</li>
+<li>Click <strong>Calculate</strong> to update the potential size as you edit or add conditions.</li>
+</ul>
+</li>
+<li>Click <strong>Done</strong>. Save and publish is not required.</li>
 </ol>
 <h2 id="delete-a-segment">Delete a segment</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You cannot delete a segment that is in use in an audience.</p>
@@ -1114,7 +1131,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  September 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1129,7 +1146,8 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-segment" href="javascript:void(0)">Create a segment</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#save-a-segment-to-favorites" href="javascript:void(0)">Save a segment to favorites</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#potential-size" href="javascript:void(0)">Potential size</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#save-a-segment-to-favorites" href="javascript:void(0)">Save a segment to favorites</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#filter-the-segments-list" href="javascript:void(0)">Filter the segments list</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-a-segment" href="javascript:void(0)">Edit a segment</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-a-segment" href="javascript:void(0)">Delete a segment</a></li>
