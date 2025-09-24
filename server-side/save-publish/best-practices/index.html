@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.111.3">
     
-    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    <meta name="robots" content="index, follow">
     
     
     <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/server-side/save-publish/best-practices/">
@@ -477,7 +477,11 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-connect/manage-data-connect-integrations/facebook-lead-ads-data-connect-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-facebook-lead-ads-data-connect-integration">Facebook Lead Ads Data Connect Integration Setup Guide</a></li></ul>
+        <a href="/server-side/data-connect/manage-data-connect-integrations/facebook/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-facebook-lead-ads-data-connect-integration">Facebook Lead Ads</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-connect/manage-data-connect-integrations/authenticom/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-authenticom-dealervault-data-connect-integration">Authenticom DealerVault</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-connect/manage-data-connect-integrations/dealertrack/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-dealertrack-data-connect-integration">DealerTrack</a></li></ul>
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -878,7 +882,9 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/insights/datasets-best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datasets-best-practices">Datasets best practices</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/insights/manage-analyses/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-analyses">Manage analyses</a></li></ul>
+        <a href="/server-side/insights/manage-analyses/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-analyses">Manage analyses</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/insights/healthcare-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".healthcare-dashboard">Healthcare dashboard</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ss-save-publish">Save and publish</a>
@@ -996,14 +1002,13 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Server-side Concurrency is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
-<h2 id="general-guidelines">General guidelines</h2>
+  <h2 id="general-guidelines">General guidelines</h2>
 <p>We recommend that you follow these best practices for team collaboration:</p>
 <ul>
 <li><strong>Only create a separate version for new long-term projects</strong>:<br>
-If you&rsquo;re performing a quick fix, you should use the <strong>Save</strong> option to save a revision of the current version. Only use the <strong>Save As</strong> option to create a separate version based on the published version for development of new projects.</li>
+If you&rsquo;re performing a quick fix, you should use the <strong>Save</strong> option to save a revision of the current version. Do not use the <strong>Save As</strong> option for minor changes. Only use <strong>Save As</strong> to create a separate version based on the published version when starting development of new, long-term projects.</li>
 <li><strong>Save revisions to your current version frequently, and avoid multiple versions for the same project</strong>:<br>
-Save your changes frequently to a new project&rsquo;s version with the <strong>Save</strong> option, not <strong>Save As</strong>. Creating multiple new versions during development can result in confusion when it is time to reconcile your changes to the published version and then publish them. Also, notifications of updates on a version only appear to other users who are logged into that version.</li>
+Save your changes frequently to a new project&rsquo;s version with the <strong>Save</strong> option, not <strong>Save As</strong>. Creating multiple new versions during development causes confusion when reconciling your changes to the published version and publishing them. Only users logged into that version receive update notifications.</li>
 <li><strong>Make small changes, publish often</strong>:<br>
 Keep your development version changes small and publish often to reduce the impact on your peers. This will make it easier to troubleshoot any errors and revert changes.</li>
 <li><strong>Your changes supersede the changes of others</strong>:<br>
@@ -1023,6 +1028,8 @@ Your current version and the currently published version match.</li>
 The currently published version includes changes that are not in your current version. To view those changes, click <strong>View latest published changes</strong>. For more about these status messages and how to use them, see <a href="/server-side/save-publish/about/">About Server-Side Saving and Publishing</a>.</li>
 </ul>
 </li>
+<li><strong>Delete items only from the published version</strong>:<br>
+To permanently delete an item, delete it from the published version. If you delete an item from a version that is not the published version and then save and publish, the platform will restore the deleted item during publishing. This is to prevent accidental removal of dependencies, such as attributes required by audiences.</li>
 </ul>
 <h2 id="example-workflows">Example workflows</h2>
 <p>In the following examples, an organization has two users working on the server-side platform. <strong>User 1</strong> is working on a connector while <strong>User 2</strong> is working on a data source.</p>
@@ -1068,7 +1075,7 @@ The currently published version includes changes that are not in your current ve
 <li><strong>Project 2</strong>: You are up to date.</li>
 </ul>
 </li>
-<li><strong>User 1</strong> adds a connector to version <strong>Project 1</strong> and and saves a revision.
+<li><strong>User One</strong> adds a connector to version <strong>Project 1</strong> and saves a revision.
 <ul>
 <li><strong>Project 1</strong>: You are ahead of the published version.</li>
 </ul>
@@ -1080,7 +1087,7 @@ The currently published version includes changes that are not in your current ve
 </li>
 <li><strong>User 1</strong> publishes version <strong>Project 1</strong> and receives a notification that version <strong>Project 1</strong> has been published. When visitors go to the site or app, they use version <strong>Project 1</strong> with the new connector.
 <ul>
-<li><strong>Project 1</strong>: You are up to date</li>
+<li><strong>Project 1</strong>: You are up to date.</li>
 <li><strong>Project 2</strong>: You are behind the published version.</li>
 </ul>
 </li>
@@ -1158,7 +1165,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 14, 2025 
+          <p>This page was last updated:  September 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
