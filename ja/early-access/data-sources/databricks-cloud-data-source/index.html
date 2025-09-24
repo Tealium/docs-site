@@ -294,7 +294,9 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-data-sources">データソース</a>
         <ul class="pl2 bl b--primary bw1 ea-data-sources desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/data-sources/databricks-cloud-data-source/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Databricks</a></li></ul>
+        <a href="/ja/early-access/data-sources/databricks-cloud-data-source/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-cloud-data-source-ea">Databricks</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/data-sources/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".bigquery-cloud-data-source-ea">Google BigQuery</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
@@ -372,10 +374,11 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Databricks クラウドデータソースは現在アーリーアクセス段階にあり、一部の選ばれたお客様のみご利用いただけます。Databricks をデータソースとして利用したい場合は、Tealium サポート担当者までご連絡ください。</p>
-<p>クラウドデータソースの構成の概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Databricksクラウドデータソースは現在アーリーアクセス中で、選ばれた顧客のみが利用可能です。Databricksをデータソースとして使用することに興味がある場合は、Tealiumサポート担当者に連絡してください。</p>
+<p>クラウドデータソースは、クラウドデータウェアハウスまたはデータベースをTealiumにリンクし、行をイベントとしてインポートすることができます。</p>
+<p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Databricksデータソースは、すべてのDatabricksデータタイプをサポートしています。データを正しくインポートするために、以下のガイドラインに従ってDatabricksデータタイプをマッピングしてください：</p>
+<p>Databricksデータソースは、すべてのDatabricksデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってDatabricksデータタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -412,42 +415,57 @@
 </table>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">Databricks: データタイプ</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>）を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Tealiumはサービスプリンシパルを使用してDatabricksコンピュートリソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを認証する</a>を参照してください。</p>
+<p>Tealiumはサービスプリンシパルを使用してDatabricksの計算リソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを承認する</a>を参照してください。</p>
 <p>新しい接続を構成するには、次の接続詳細を入力します：</p>
 <ul>
-<li><strong>ホスト名</strong>: Databricksコンピュートリソースのホスト名。例：
+<li><strong>ホスト名</strong>: Databricks計算リソースのホスト名。例：
 <ul>
 <li>AWS: <code>MY_ACCOUNT.cloud.databricks.com</code></li>
 <li>Azure: <code>MY_ACCOUNT.azuredatabricks.net</code></li>
 <li>GCP: <code>MY_ACCOUNT.gcp.databricks.com</code></li>
 </ul>
 </li>
-<li><strong>HTTPパス</strong>: コンピュートリソースへのHTTPパス。例：<code>/sql/1.0/warehouses/3fbc78304284503a</code>。</li>
+<li><strong>HTTPパス</strong>: 計算リソースへのHTTPパス。例：<code>/sql/1.0/warehouses/3fbc78304284503a</code>。</li>
 <li><strong>カタログ</strong>: この接続のカタログ名。</li>
 <li><strong>スキーマ</strong>: この接続のスキーマ名。</li>
 <li><strong>OAuthクライアントID</strong>: サービスプリンシパルのUUIDまたはアプリケーションID。</li>
 <li><strong>OAuthクライアントシークレット</strong>: サービスプリンシパルが生成したシークレット。</li>
 </ul>
-<p>詳細については、<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">Databricks: コンピュート構成</a>（<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>、<a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>）を参照してください。</p>
+<p>詳細については、<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">Databricks: 計算構成</a>（<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>、<a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>）を参照してください。</p>
 <p>Databricksに接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</p>
 <h2 id="クエリモード">クエリモード</h2>
-<p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
+<p>全体的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は<code>TIMESTAMP_NTZ</code>タイプでなければなりません。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-ntz-type">Databricks: TIMESTAMP_NTZ</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-ntz-type">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-ntz-type">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-ntz-type">GCP</a>）を参照してください。</p>
 <p><strong>インクリメント</strong>モードの場合、選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Databricks CREATE TABLE</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>）を参照してください。</p>
 <h2 id="where句">WHERE句</h2>
-<p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のDatabricksテーブルからデータをインポートするには、Databricksでビューを作成し、データソース構成でそのビューを選択してください。</p>
+<p>全体的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
+<p><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のDatabricksテーブルからデータをインポートするには、Databricksでビューを作成し、データソース構成でビューを選択します。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/views/">Databricks: ビューとは何か？</a>（<a href="https://docs.databricks.com/aws/en/views/">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>、<a href="https://docs.databricks.com/gcp/en/views/">GCP</a>）を参照してください。</p>
-<h2 id="ip許可リスト">IP許可リスト</h2>
-<p>DatabricksワークスペースがIPアドレスによって制限されている場合、<a href="">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
+<h2 id="ipアクセスリスト">IPアクセスリスト</h2>
+<p>DatabricksワークスペースがIPアドレスによって制限されている場合は、<a href="">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">Databricks: IPアクセスリストの管理</a>（<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>、<a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>）を参照してください。</p>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"></div>
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/early-access/data-sources/google-bigquery-cloud-data-source/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>Google BigQuery</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Google BigQuery"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div></div>
 
 
 
@@ -474,7 +492,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月17日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -492,7 +510,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8E%A5%E7%B6%9A%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">接続の作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where%E5%8F%A5" href="javascript:void(0)">WHERE句</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E8%A8%B1%E5%8F%AF%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">IP許可リスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">IPアクセスリスト</a></li>
               </nav>
   </aside></nav>
 

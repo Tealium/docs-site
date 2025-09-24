@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="トラック" />
+    <meta property="og:title" content="トラッキング" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/xamarin-v1/track/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="ユーザー活動の追跡方法について学びます。" />
+<meta property="og:description" content="ユーザー活動を追跡する方法について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>トラック | Xamarin用Tealium 1.x | Tealiumドキュメント</title>
+    <title>トラッキング | Xamarin用Tealium 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -264,15 +264,15 @@
         
         <ul data-level="1" class="xamarin-v1 desktopmenu animated fadeIn list pl0 mt2">
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-install">インストール</a></li>
+    <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/xamarin-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".xamarin-v1-track">トラッキング</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/data-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-data-management">データ管理</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/consent-mangagement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-consent-management">同意管理</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-install">インストール</a></li>
-    <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".xamarin-v1-track">トラック</a></li>
-    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/xamarin-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -305,7 +305,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">トラック</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">トラッキング</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -313,25 +313,26 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ビューの追跡">ビューの追跡</h2>
-<p><code>TrackView()</code>メソッドは、以下の例に示すように、ページビューを追跡するために使用されます：</p>
-<p>まず、tealiumのインスタンスを取得します：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>現在のバージョンについては、<a href="/ja/platforms/xamarin/">Tealium for Xamarin 2.x</a>をご覧ください。</p>
+<h2 id="ビューのトラッキング">ビューのトラッキング</h2>
+<p><code>TrackView()</code> メソッドはページビューを追跡するために使用されます。以下の例を参照してください：</p>
+<p>まず、tealiumインスタンスを取得します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
 </span></span></code></pre></div><p>タイトルのみでページビューイベントを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.TrackView(<span style="color:#e6db74">&#34;SCREEN_NAME&#34;</span>);
 </span></span></code></pre></div><p>タイトルとページタイプでページビューイベントを追跡します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.TrackView(<span style="color:#e6db74">&#34;SCREEN_NAME&#34;</span>, <span style="color:#66d9ef">new</span> Dictionary&lt;String, <span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">1</span>){ {<span style="color:#e6db74">&#34;PAGE_TYPE&#34;</span>, <span style="color:#e6db74">&#34;product detail page&#34;</span>} });
-</span></span></code></pre></div><p>タイトルとページタイプ、さらに1つのイベントデータでページビューイベントを追跡します（前の例と同等）：</p>
+</span></span></code></pre></div><p>タイトルとページタイプ、そしてイベントデータ1つを含むページビューイベントを追跡します（前の例と同等）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.TrackView(<span style="color:#e6db74">&#34;SCREEN_NAME&#34;</span>, <span style="color:#e6db74">&#34;PAGE_TYPE&#34;</span>, <span style="color:#e6db74">&#34;product detail page&#34;</span>);
-</span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
-<p><code>TrackEvent()</code>メソッドは、非ビューイベントを追跡するために使用されます。次の例は、3つの特定のイベントデータでイベントを追跡する方法を示しています：</p>
-<p>まず、tealiumのインスタンスを取得します：</p>
+</span></span></code></pre></div><h2 id="イベントのトラッキング">イベントのトラッキング</h2>
+<p><code>TrackEvent()</code> メソッドはビュー以外のイベントを追跡するために使用されます。以下の例は、3つの特定のイベントデータを持つイベントを追跡する方法を示しています：</p>
+<p>まず、tealiumインスタンスを取得します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.TrackEvent(<span style="color:#e6db74">&#34;Event Name&#34;</span>, <span style="color:#66d9ef">new</span> Dictionary&lt;String, <span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">3</span>){
 </span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;event_category&#34;</span>, <span style="color:#e6db74">&#34;EVENT_CATEGORY&#34;</span>},
@@ -343,13 +344,13 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/platforms/xamarin-v1/api/"
+  <a href="/ja/platforms/xamarin-v1/data-management/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>APIリファレンス</div>
+      <div>データ管理</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"APIリファレンス"</title>
+      <title>"データ管理"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -397,7 +398,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -411,8 +412,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">ビューの追跡</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビューのトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
               </nav>
   </aside></nav>
 

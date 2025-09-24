@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="トラック" />
+    <meta property="og:title" content="トラッキング" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/react-native-v1/track/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="ユーザー活動の追跡方法について学びます。" />
+<meta property="og:description" content="ユーザー活動を追跡する方法について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>トラック | React Native用Tealiumバージョン1.x | Tealiumドキュメント</title>
+    <title>トラッキング | React Native用Tealiumバージョン1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -265,10 +265,10 @@
         <ul data-level="1" class="react-native-v1 desktopmenu animated fadeIn list pl0 mt2">
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/react-native-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".react-native-v1-install">インストール</a></li>
-    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/react-native-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".react-native-v1-api">APIリファレンス</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/react-native-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".react-native-v1-track">トラック</a></li></ul></li></ul>
+        <a href="/ja/platforms/react-native-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".react-native-v1-track">トラッキング</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/react-native-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".react-native-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -301,7 +301,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">トラック</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">トラッキング</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -309,36 +309,53 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h3 id="ビューのトラック">ビューのトラック</h3>
-<p><a href="/ja/platforms/react-native-v1/api/#trackview"><code>trackView()</code></a> メソッドは、以下の例のように画面のビューを追跡します：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealiumのReact Native用の以前のバージョン（1.x）です。<br>
+現在のバージョンは<a href="/ja/platforms/react-native/">Tealium for React Native 2.x</a>を参照してください。</p>
+<h3 id="ビューのトラッキング">ビューのトラッキング</h3>
+<p>以下の例に示すように、<a href="/ja/platforms/react-native-v1/api/#trackview"><code>trackView()</code></a>メソッドは画面ビューを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">trackView</span>(<span style="color:#e6db74">&#34;VIEW_NAME&#34;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>});
-</span></span></code></pre></div><p>Tealiumの複数のインスタンスが実行されている場合は、<a href="/ja/platforms/react-native-v1/api/#trackviewforinstancename"><code>trackViewForInstanceName()</code></a> メソッドを使用します。以下の例を参照してください：</p>
+</span></span></code></pre></div><p>複数のTealiumインスタンスが動作している場合は、以下の例に示すように<a href="/ja/platforms/react-native-v1/api/#trackviewforinstancename"><code>trackViewForInstanceName()</code></a>メソッドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">trackViewForInstanceName</span>(<span style="color:#e6db74">&#34;INSTANCE&#34;</span>, <span style="color:#e6db74">&#34;SCREEN_NAME&#34;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>});
-</span></span></code></pre></div><h3 id="イベントのトラック">イベントのトラック</h3>
-<p><a href="/ja/platforms/react-native-v1/api/#trackevent"><code>trackEvent()</code></a> メソッドは、以下の例のように非ビューイベントを追跡します：</p>
+</span></span></code></pre></div><h3 id="イベントのトラッキング">イベントのトラッキング</h3>
+<p>以下の例に示すように、<a href="/ja/platforms/react-native-v1/api/#trackevent"><code>trackEvent()</code></a>メソッドはビュー以外のイベントを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">trackEvent</span>(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>}); 
-</span></span></code></pre></div><p>Tealiumの複数のインスタンスが実行されている場合は、<a href="/ja/platforms/react-native-v1/api/#trackeventforinstancename"><code>trackEventForInstanceName()</code></a> メソッドを使用します。以下の例を参照してください：</p>
+</span></span></code></pre></div><p>複数のTealiumインスタンスが動作している場合は、以下の例に示すように<a href="/ja/platforms/react-native-v1/api/#trackeventforinstancename"><code>trackEventForInstanceName()</code></a>メソッドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">trackEventForInstanceName</span>(<span style="color:#e6db74">&#34;INSTANCE&#34;</span>, <span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, {<span style="color:#e6db74">&#34;KEY&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE&#34;</span>}); 
 </span></span></code></pre></div>
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="di mr3">
-  
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
+
   
   <a href="/ja/platforms/react-native-v1/api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>API リファレンス</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"API リファレンス"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/react-native-v1/install/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"APIリファレンス "</title>
+      <title>"インストール "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>APIリファレンス</div>
+      <div>インストール</div>
     </section>
   </a>
   
@@ -370,7 +387,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -384,8 +401,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">ビューのトラック</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">イベントのトラック</a></li>
+      <nav id="TableOfContents"><ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビューのトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
               </nav>
   </aside></nav>
 

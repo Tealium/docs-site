@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift-v1/identity-resolution/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="アイデンティティ解決について学びます。" />
+<meta property="og:description" content="アイデンティティ解決について学びましょう。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>アイデンティティ解決 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -324,7 +324,7 @@
         <a href="/ja/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-module-volatiledata">VolatileData モジュール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cとの連携</a></li>
+        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cの使用方法</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/ios-feature-comparison/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-feature-comparison">機能比較</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -387,26 +387,27 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      アイデンティティ解決について学びます。
+      アイデンティティ解決について学びましょう。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="それはどのように動作するのか">それはどのように動作するのか</h2>
-<p>Tealium Swiftライブラリは、<a href="/ja/platforms/ios-swift-v1/api/tealium/#getvisitorid"><code>getVisitorId()</code></a>メソッドで初めて起動されると、ランダムで一意の永続的な訪問IDを生成します。この値は、各トラッキングイベントに<code>tealium_visitor_id</code>属性として含まれます。この値はTealium AudienceStreamで使用される主要な訪問IDです。必要に応じて、永続的なデータストレージに追加することで、二次的な訪問ID属性を含めることができます。</p>
-<p>AudienceStreamを使用している場合、これがこの訪問に関連付けられた主要な第一者訪問IDになります。必要に応じて、追加の既知の訪問IDを提供し、それらをトラッキング呼び出しの変数として送信することができます。</p>
-<p>AudienceStreamで訪問IDを構成する方法について<a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/">詳しく学ぶ</a>。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for iOS (Swift)の以前のバージョン（1.x）です。最新バージョンは<a href="/ja/platforms/ios-swift/">Tealium for iOS (Swift) 2.x</a>をご覧ください。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Tealium Swiftライブラリは、最初に<a href="/ja/platforms/ios-swift-v1/api/tealium/#getvisitorid"><code>getVisitorId()</code></a>メソッドで起動されたときにランダムかつ一意の永続的な訪問IDを生成します。この値は、<code>tealium_visitor_id</code>属性として各トラッキングイベントに含まれます。この値はTealium AudienceStreamで使用される主要な訪問IDです。必要に応じて、永続的なデータ保存に追加の訪問ID属性を追加することができます。</p>
+<p>AudienceStreamを使用している場合、これがこの訪問に関連付けられた主要な第一者訪問IDになります。必要に応じて、追跡コールで変数として追加の既知の訪問IDを提供することができます。</p>
+<p><a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/">AudienceStreamで訪問IDの構成についてもっと学ぶ</a>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 必要に応じてTealiumの第一者訪問IDを取得する</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 必要に応じてTealiumの第一者訪問IDを取得</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getVisitorId</span>() -&gt; String? {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">self</span>.tealium?.visitorId
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 既知の訪問ID（例えばメールアドレスなど）を永続的なデータストアに追加する</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 永続的データストアに既知の訪問ID（例：メールアドレス）を追加</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setKnownVisitorId</span>(<span style="color:#66d9ef">_</span> id: String) {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.persistentData()?.addPersistentData([<span style="color:#e6db74">&#34;customer_id&#34;</span>: id])
 </span></span><span style="display:flex;"><span>	}
@@ -472,7 +473,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -486,7 +487,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%9D%E3%82%8C%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E5%8B%95%E4%BD%9C%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B" href="javascript:void(0)">それはどのように動作するのか</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               </nav>
   </aside></nav>
 

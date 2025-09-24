@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/xamarin-v1/data-management/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="永続性データと揮発性データの管理方法について説明します。" />
+<meta property="og:description" content="永続的および揮発性データの管理方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>データ管理 | Xamarin用Tealium 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -263,16 +263,16 @@
         <span class="pb2">Xamarin 1.x</span>
         
         <ul data-level="1" class="xamarin-v1 desktopmenu animated fadeIn list pl0 mt2">
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-install">インストール</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/xamarin-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-track">トラッキング</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/data-management/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".xamarin-v1-data-management">データ管理</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/xamarin-v1/consent-mangagement/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-consent-management">同意管理</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-install">インストール</a></li>
-    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-track">トラック</a></li>
-    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/xamarin-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/xamarin-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".xamarin-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -313,23 +313,24 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      永続性データと揮発性データの管理方法について説明します。
+      永続的および揮発性データの管理方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用方法">使用方法</h2>
-<p>一部の変数はイベントごとに構成する必要があります。必要な変数データをすべてのイベントに手動で追加する手間を省くため、データを揮発性または永続性のいずれかとして保存するオプションがあります。データは保存されると、各イベント（ライフサイクルイベントを含む）に追加されます。</p>
-<p>データ管理の詳細については、<a href="/ja/platforms/getting-started/mobile-concepts/#data-management">こちら</a>を参照してください。</p>
-<h2 id="永続性データ">永続性データ</h2>
-<p>永続性データは、トラッキングコールのたびにデータディクショナリにマージされ、次回起動後も持続します。</p>
-<p><code>AddPersistentDataSources()</code>メソッドは、次の例に示すように永続性データを追加します。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>現在のバージョンについては、<a href="/ja/platforms/xamarin/">Tealium for Xamarin 2.x</a>を参照してください。</p>
+<h2 id="使用法">使用法</h2>
+<p>すべてのイベントには必要な変数が必要です。すべてのイベントに必要な変数データを手動で追加する必要をなくすために、データを揮発性または永続的として保存するオプションがあります。データが保存されると、ライフサイクルイベントを含むすべてのイベントに追加されます。</p>
+<p><a href="/ja/platforms/getting-started-mobile/mobile-concepts/#data-management">データ管理についてもっと学ぶ</a>。</p>
+<h2 id="永続的データ">永続的データ</h2>
+<p>永続的データは、トラッキングコールのたびにデータ辞書に統合され、起動間でも持続します。</p>
+<p>次の例に示すように、<code>AddPersistentDataSources()</code> メソッドは永続的データを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.AddPersistentDataSources(<span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">&#34;KEY&#34;</span>, <span style="color:#e6db74">&#34;VALUE&#34;</span>}});
 </span></span></code></pre></div><h2 id="揮発性データ">揮発性データ</h2>
-<p>揮発性データは、トラッキングコールのたびにデータディクショナリにマージされます。ただし、揮発性データはアプリケーションが終了すると消失するので、次回起動時までは保持されません。</p>
-<p><code>AddVolatileDataSources()</code>メソッドは、次の例に示すように揮発性データを追加します。</p>
+<p>揮発性データは、トラッキングコールのたびにデータ辞書に統合されますが、アプリケーションが閉じられると揮発性データは失われ、次の起動時には存在しません。</p>
+<p>次の例に示すように、<code>AddVolatileDataSources()</code> メソッドは揮発性データを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.AddVolatileDataSources(<span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">object</span>&gt;(<span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>   {<span style="color:#e6db74">&#34;KEY&#34;</span>, <span style="color:#e6db74">&#34;VALUE&#34;</span>}});
 </span></span></code></pre></div>
@@ -350,6 +351,21 @@
   </a>
   
   
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/xamarin-v1/track/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"トラッキング "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>トラッキング</div>
+    </section>
+  </a>
+  
+
 </div></div>
 
 
@@ -377,7 +393,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -391,8 +407,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続性データ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続的データ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8F%AE%E7%99%BA%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">揮発性データ</a></li>
               </nav>
   </aside></nav>

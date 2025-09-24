@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift-v1/consent-management/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="iOS（Swift）の同意管理の実装方法を学びます。" />
+<meta property="og:description" content="iOS（Swift）での同意管理の実装方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>同意管理 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -324,7 +324,7 @@
         <a href="/ja/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-module-volatiledata">VolatileData モジュール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cとの連携</a></li>
+        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cの使用方法</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/ios-feature-comparison/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-feature-comparison">機能比較</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -387,28 +387,29 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      iOS（Swift）の同意管理の実装方法を学びます。
+      iOS（Swift）での同意管理の実装方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用法">使用法</h2>
-<p>同意管理モジュールは、トラッキング同意を細かいレベルで管理するためのシンプルなAPIを提供します。CocoaPodsの依存関係やCarthageフレームワークを含めている場合、同意管理はデフォルトで有効になり、ユーザーがトラッキングに同意したことをAPIに明示的に通知するまで、トラッキングコールは送信されません。</p>
-<p>このモジュールの使用は推奨されており、CarthageとCocoaPodsフレームワークのビルドでは自動的に含まれ、有効になっています。Foundationフレームワークは外部依存関係です。</p>
-<p>サポートされているプラットフォームは、iOS、macOS、tvOS、watchOSです。</p>
-<p><a href="/ja/platforms/getting-started-mobile/consent-management/">詳細を学ぶ</a> 同意管理について。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、<a href="/ja/platforms/ios-swift/">iOS（Swift）用Tealium 2.x</a>をご覧ください。</p>
+<h2 id="使用方法">使用方法</h2>
+<p>同意管理モジュールは、追跡同意を詳細に管理するためのシンプルなAPIを提供します。CocoaPodsの依存関係またはCarthageフレームワークを含めている場合、同意管理はデフォルトで有効になっており、APIにユーザーが追跡に同意したことを明示的に通知するまで追跡呼び出しは送信されません。</p>
+<p>このモジュールの使用は推奨されており、CarthageおよびCocoaPodsフレームワークビルドに自動的に含まれ、有効になっています。Foundationフレームワークは外部依存関係です。</p>
+<p>サポートされているプラットフォームには、iOS、macOS、tvOS、およびwatchOSが含まれます。</p>
+<p><a href="/ja/platforms/getting-started-mobile/consent-management/">同意管理についてもっと学ぶ</a>。</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/68rF6Qo5DOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>私たちのライブラリ、トラッキング方法、ベストプラクティスの実装について理解を深めるために、Tealium for Swift Consent Managerの<a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">サンプルアプリ</a>を探索してみてください。</p>
+<p>当社のライブラリ、追跡方法、およびベストプラクティスの実装に慣れるために、Tealium for Swift同意マネージャー<a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">サンプルアプリ</a>を探索してください。</p>
 <h2 id="無効化">無効化</h2>
-<p>同意管理を無効にするには、初期化時の<a href="/ja/platforms/ios-swift-v1/api/">TealiumConfig</a>オブジェクトの無効化モジュールリストにそれを含めます。</p>
+<p>同意管理を無効にするには、初期化時に<a href="/ja/platforms/ios-swift-v1/api/">TealiumConfig</a>オブジェクトの無効化モジュールリストに含めてください。</p>
 <h2 id="データレイヤー">データレイヤー</h2>
-<p>モジュールが有効な間、以下の変数が各トラッキングコールと共に送信されます：</p>
+<p>モジュールが有効な間に各追跡呼び出しで送信される変数は以下の通りです：</p>
 <table>
 <thead>
 <tr>
@@ -425,7 +426,7 @@
 </tr>
 <tr>
 <td><code>consent_status</code></td>
-<td>ユーザーの現在の同意ステータス</td>
+<td>ユーザーの現在の同意状態</td>
 <td>[<code>consented</code>, <code>notConsented</code>]</td>
 </tr>
 <tr>
@@ -436,7 +437,7 @@
 </tbody>
 </table>
 <h2 id="例">例</h2>
-<p>以下の例のコードは、同意管理にアクセスする方法を示しています。</p>
+<p>以下の例コードは、同意マネージャーにアクセスする方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
@@ -446,57 +447,54 @@
 </span></span><span style="display:flex;"><span>        	   	                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>           		                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期ステータスをnotConsentedに構成します。送信されるすべてのイベントは削除されます。</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期状態をnotConsentedに構成します。送信されたすべてのイベントは削除されます。</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// config.initialUserConsentStatus = .notConsented</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期ステータスをconsentedに構成します。すべてのイベントは、同意ステータスが.notConsentedに変更されるまで即時に送信されます。</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期状態をconsentedに構成します。同意状態が.notConsentedに変更されるまですべてのイベントが即座に送信されます。</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// config.initialUserConsentStatus = .consented</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期ステータスをunknown（デフォルト）に構成します。すべてのイベントは、同意ステータスが変更されるまでキューに入れられます。</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 初期状態をunknown（デフォルト）に構成します。同意状態が変更されるまですべてのイベントがキューに入れられます。</span>
 </span></span><span style="display:flex;"><span>		config.initialUserConsentStatus = .unknown
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// trueの場合、同意ステータスが変更されるたびに同意ログイベントが生成されます。</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// trueの場合、同意状態が変更されるたびに同意ログイベントが生成されます。</span>
 </span></span><span style="display:flex;"><span>		config.consentLoggingEnabled = <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium = Tealium(config: config)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 全面的な同意を得る（すべてのカテゴリ）</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 全カテゴリに完全同意を与えます。</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">grantFullConsent</span>() {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.consentManager()?.setUserConsentStatus(.consented)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/// 特定のカテゴリに対して部分的な同意を得る</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/// 特定のカテゴリに部分的に同意を与えます</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">/// 使用例：`grantPartialConsent([.analytics, .cdp])`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/// - Parameter categories: `[TealiumConsentCategories]`.</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/// - パラメータ categories: `[TealiumConsentCategories]`。</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: .consented, categories: categories)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 同意を拒否する；すべての未来のイベントは削除されます。</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 同意を拒否します。今後のすべてのイベントは削除されます。</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">declineConsent</span>() {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.consentManager()?.setUserConsentStatus(.notConsented)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="ユースケース">ユースケース</h2>
+</span></span></code></pre></div><h2 id="使用例">使用例</h2>
 <h3 id="シンプルなオプトイン">シンプルなオプトイン</h3>
-<p>この例では、ユーザーにシンプルな「オプトイン/オプトアウト」オプションを提供する方法を示しています。ユーザーが同意すると、自動的にすべてのトラッキングカテゴリにオプトインされます。彼らが同意を取り消すと、アクティブなカテゴリは残らず、トラッキングコールは送信されません。</p>
+<p>この例では、ユーザーにシンプルな「オプトイン/オプトアウト」オプションを提供する方法を示しています。ユーザーが同意した場合、自動的にすべての追跡カテゴリにオプトインされます。同意を取り消した場合、アクティブなカテゴリは残らず、追跡呼び出しは送信されません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setConsentStatusSimple</span>(<span style="color:#66d9ef">_</span> consented: Bool) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> status: TealiumConsentStatus = consented ? .consented: .notConsented
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">self</span>.tealium?.consentManager()?.setUserConsentStatus(status)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Tealium Helperクラスで以下のメソッドを定義し、アプリのユーザーがトラッキングに同意または拒否したときに呼び出します。ユーザーがトラッキングに同意すると、同意管理は自動的にすべてのトラッキングカテゴリにユーザーをオプトインします。</p>
+</span></span></code></pre></div><p>Tealium Helperクラスで、アプリユーザーが追跡に同意または拒否したときに次のメソッドを定義して呼び出します。ユーザーが追跡に同意した場合、同意マネージャーは自動的にすべての追跡カテゴリにオプトインします。</p>
 <figure><a class="slb" href="/images/platforms/ios-swift/simple-consent"><img src="/images/platforms/ios-swift/simple-consent" width="234" height="480"/>
     </a><figcaption><p>シンプルな同意</p>
         </figcaption>
 </figure>
 <h3 id="グループ化されたオプトイン">グループ化されたオプトイン</h3>
-<p>この例では、トラッキングカテゴリがより少ない数の高レベルカテゴリにグループ化されているカテゴリベースの同意モデルを示しています。これは、あなたが定義します。</p>
-<p>例えば、Tealiumの同意カテゴリ<code>&quot;big_data&quot;</code>、<code>&quot;analytics&quot;</code>、<code>&quot;monitoring&quot;</code>を<code>&quot;performance&quot;</code>という単一のカテゴリの下にグループ化することを選択するかもしれません。これは、全カテゴリリストから選択するよりもユーザーにとって簡単かもしれません。あなたはこれを最小許可から最大許可（全カテゴリ）までのスライダーインターフェースで表現することを選択するかもしれません。</p>
+<p>この例では、追跡カテゴリをより少ない数の上位カテゴリにグループ化するカテゴリベースの同意モデルを示しています。</p>
+<p>たとえば、Tealiumの同意カテゴリ<code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, <code>&quot;monitoring&quot;</code>を<code>&quot;performance&quot;</code>という単一のカテゴリにグループ化することを選択するかもしれません。これは、ユーザーがカテゴリの完全なリストから選択するよりも簡単かもしれません。最も許可されていないものから最も許可されているもの（すべてのカテゴリ）までの範囲でスライダーインターフェースでこれを表現することを選択するかもしれません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateConsentPreferences</span>(<span style="color:#66d9ef">_</span> dict: [String: Any]) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> status = dict[<span style="color:#e6db74">&#34;consentStatus&#34;</span>] <span style="color:#66d9ef">as</span>? String {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
@@ -508,8 +506,8 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// カテゴリのグループを定義し、同意の構成をconsentManager APIに構成するための関数の例。</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ユーザーが構成を保存したときにこの関数を呼び出します。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// カテゴリのグループを定義し、consentManager APIで同意構成を構成する例関数。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ユーザーが構成を保存するときにこの関数を呼び出します。</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setUserConsentPreferences</span>(){
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// グループ化されたカテゴリを含む辞書を定義します。</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> consentGroups = [<span style="color:#e6db74">&#34;Off&#34;</span> : [],
@@ -517,7 +515,7 @@
 </span></span><span style="display:flex;"><span>	        <span style="color:#e6db74">&#34;Marketing&#34;</span>: [<span style="color:#e6db74">&#34;analytics&#34;</span>, <span style="color:#e6db74">&#34;monitoring&#34;</span>, <span style="color:#e6db74">&#34;big_data&#34;</span>, <span style="color:#e6db74">&#34;mobile&#34;</span>, <span style="color:#e6db74">&#34;crm&#34;</span>, <span style="color:#e6db74">&#34;affiliates&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>, <span style="color:#e6db74">&#34;search&#34;</span>, <span style="color:#e6db74">&#34;engagement&#34;</span>, <span style="color:#e6db74">&#34;cdp&#34;</span>],
 </span></span><span style="display:flex;"><span>	        <span style="color:#e6db74">&#34;Personalized Advertising&#34;</span>: [<span style="color:#e6db74">&#34;analytics&#34;</span>, <span style="color:#e6db74">&#34;monitoring&#34;</span>, <span style="color:#e6db74">&#34;big_data&#34;</span>, <span style="color:#e6db74">&#34;mobile&#34;</span>, <span style="color:#e6db74">&#34;crm&#34;</span>, <span style="color:#e6db74">&#34;affiliates&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>, <span style="color:#e6db74">&#34;search&#34;</span>, <span style="color:#e6db74">&#34;engagement&#34;</span>, <span style="color:#e6db74">&#34;cdp&#34;</span>, <span style="color:#e6db74">&#34;display_ads&#34;</span>, <span style="color:#e6db74">&#34;personalization&#34;</span>, <span style="color:#e6db74">&#34;social&#34;</span>, <span style="color:#e6db74">&#34;cookiematch&#34;</span>, <span style="color:#e6db74">&#34;misc&#34;</span>]]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// これはユーザーが選択した構成レベルです。実際のアプリでは通常、動的です。</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// これは実際のアプリでは通常動的ですが、ユーザーが選択した構成レベルです。</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> userSelection = <span style="color:#e6db74">&#34;Marketing&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> userList = consentGroups[userSelection] {
@@ -530,9 +528,9 @@
     </a><figcaption><p>グループ化</p>
         </figcaption>
 </figure>
-<h3 id="カテゴリベースのオプトイン">カテゴリベースのオプトイン</h3>
-<p>この例では、ユーザーが全カテゴリリストから各カテゴリを明示的に選択しなければならないカテゴリベースの同意モデルを示しています。デフォルトの状態は<code>&quot;Unknown&quot;</code>で、ユーザーが同意を提供するまでヒットをキューに入れます。ユーザーが任意のカテゴリに同意すると、イベントはデキューされ、同意したカテゴリデータが各トラッキングコールに追加されます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">// Tealium consentManager APIを呼び出すためのヘルパーメソッド</span>
+<h3 id="カテゴリーベースのオプトイン">カテゴリーベースのオプトイン</h3>
+<p>この例では、ユーザーが全カテゴリーのリストから明示的に各カテゴリーを選択する必要があるカテゴリーベースの同意モデルを示しています。デフォルト状態は<code>&quot;Unknown&quot;</code>で、ユーザーが同意を提供するまでヒットをキューに入れます。ユーザーが任意のカテゴリーに同意すると、イベントはキューから出され、同意したカテゴリーのデータが各トラッキングコールに追加されます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">// Tealium consentManager APIを呼び出すヘルパーメソッド</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateConsentPreferences</span>(<span style="color:#66d9ef">_</span> dict: [String: Any]) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> status = dict[<span style="color:#e6db74">&#34;consentStatus&#34;</span>] <span style="color:#66d9ef">as</span>? String {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
@@ -544,14 +542,14 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// カテゴリのリストを取得し、Tealium consentManager APIに渡すための関数の例</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealium consentManager APIにカテゴリーリストを渡す例示関数</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setUserConsentPreferences</span>(<span style="color:#66d9ef">_</span> categories: [String]){
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> settingsDict: [String: Any] = [<span style="color:#e6db74">&#34;consentStatus&#34;</span>: <span style="color:#e6db74">&#34;consented&#34;</span>, <span style="color:#e6db74">&#34;consentCategories&#34;</span>: categories]
 </span></span><span style="display:flex;"><span>	updateConsentPreferences(settingsDict)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><figure><a class="slb" href="/images/platforms/ios-swift/category-based"><img src="/images/platforms/ios-swift/category-based" width="234" height="480"/>
-    </a><figcaption><p>カテゴリベース</p>
+    </a><figcaption><p>カテゴリーベース</p>
         </figcaption>
 </figure>
 
@@ -614,7 +612,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -628,15 +626,15 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA" href="javascript:void(0)">サンプルアプリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%84%A1%E5%8A%B9%E5%8C%96" href="javascript:void(0)">無効化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC" href="javascript:void(0)">データレイヤー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">使用例</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AA%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3" href="javascript:void(0)">シンプルなオプトイン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%8C%96%E3%81%95%E3%82%8C%E3%81%9F%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3" href="javascript:void(0)">グループ化されたオプトイン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3" href="javascript:void(0)">カテゴリベースのオプトイン</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%BC%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3" href="javascript:void(0)">カテゴリーベースのオプトイン</a></li>
               </nav>
   </aside></nav>
 

@@ -266,9 +266,9 @@
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/unity-v1/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".unity-v1-install">インストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/unity-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".unity-v1-track">トラック</a></li>
+        <a href="/ja/platforms/unity-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".unity-v1-track">トラッキング</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/unity-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".unity-v1-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/unity-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".unity-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -315,9 +315,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium for Unityでは、UnityアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for Unityの以前のバージョン（1.x）です。現在のバージョンについては、<a href="/ja/platforms/unity/">Tealium for Unity 2.x</a>を参照してください。</p>
-<h2 id="要件">要件</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはUnity用Tealiumの以前のバージョン（1.x）です。現在のバージョンについては、<a href="/ja/platforms/unity/">Tealium for Unity 2.x</a>を参照してください。</p>
+<p>Tealium for Unityを使用すると、UnityアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>これはUnity用Tealiumの以前のバージョン（1.x）です。現在のバージョンについては、<a href="/ja/platforms/unity/">Tealium for Unity 2.x</a>を参照してください。</p>
+<h2 id="必要条件">必要条件</h2>
 <ul>
 <li><a href="https://unity.com/">Unity</a> 4.5以上</li>
 <li>iOSまたはAndroidターゲット</li>
@@ -334,7 +335,7 @@
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <p>Androidマニフェストファイル<code>~/Assets/Plugins/Android/AndroidManifest.xml</code>の以下の<a href="https://developer.android.com/guide/topics/manifest/meta-data-element">メタデータ</a>キーを更新して、Tealiumインスタンスを指定します。</p>
+  <p>Androidマニフェストファイル<code>~/Assets/Plugins/Android/AndroidManifest.xml</code>の以下の<a href="https://developer.android.com/guide/topics/manifest/meta-data-element">meta-data</a>キーを更新して、Tealiumインスタンスを指定します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.ACCOUNT&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.PROFILE&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;PROFILE&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.tealium.library.ENVIRONMENT&#34;</span> <span style="color:#a6e22e">android:value=</span><span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span> <span style="color:#f92672">/&gt;</span>
@@ -344,7 +345,7 @@
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>ブリッジングコードファイル<code>Assets/Plugins/iOS/TealiumBridge.mm</code>でTealiumアカウント情報を更新して、Tealiumインスタンスを指定します。</p>
+  <p><code>Assets/Plugins/iOS/TealiumBridge.mm</code>のブリッジコードファイルでTealiumアカウント情報を更新して、Tealiumインスタンスを指定します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>#define TEALIUM_INSTANCE_NAME    @<span style="color:#e6db74">&#34;TEALIUM_INSTANCE&#34;</span>
 </span></span><span style="display:flex;"><span>#define TEALIUM_ACCOUNT_NAME     @<span style="color:#e6db74">&#34;ACCOUNT&#34;</span>
 </span></span><span style="display:flex;"><span>#define TEALIUM_PROFILE_NAME     @<span style="color:#e6db74">&#34;PROFILE&#34;</span>
@@ -356,7 +357,7 @@
 </div>
 
 <h2 id="確認">確認</h2>
-<p>以下の手順で、TealiumがUnityアプリケーションに正しくインストールされていることを確認します。</p>
+<p>以下のステップで、TealiumがUnityアプリケーションに正しくインストールされていることを確認します。</p>
 <ul>
 <li>
 <p>Unityで、メニューから<strong>GameObject &gt; Create Empty</strong>を選択して新しい空の<code>GameObject</code>を作成します。<code>GameObject</code>は<strong>Inspector</strong>ウィンドウに表示されます。</p>
@@ -368,14 +369,14 @@
 <p>メニューから<strong>Edit &gt; Project Settings &gt; Script Execution Order</strong>を選択し、**+**記号をクリックして<code>TealiumInitializer</code>スクリプトを追加します。</p>
 </li>
 <li>
-<p><code>TealiumInitializer</code>スクリプトを既存のスクリプトのリストの一番上にドラッグしてプラグインを初期化し、変更を適用します。</p>
+<p><code>TealiumInitializer</code>スクリプトを既存のスクリプトのリストの一番上にドラッグし、変更を適用します。</p>
 </li>
 <li>
 <p><strong>Play</strong>ボタン（または<strong>Edit &gt; Play</strong>）をクリックしてUnityエディタを起動し、Unityコンソールに以下のような初期化メッセージがログされていることを確認します：
 <code>view: { custom_alpha : alpha custom_beta : beta screen_title : SCREEN_NAME }</code></p>
 </li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>コンソールを開くには、Unityのメインメニューから<strong>Window &gt; General &gt; Console</strong>を選択します。スピーチバルーンアイコンをクリックして詳細を表示します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>コンソールを開くには、Unityのメインメニューから<strong>Window &gt; General &gt; Console</strong>を選択します。詳細を表示するには、吹き出しアイコンをクリックします。</p>
 
 </div>
 
@@ -385,10 +386,10 @@
   <a href="/ja/platforms/unity-v1/track/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>トラック</div>
+      <div>トラッキング</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"トラック"</title>
+      <title>"トラッキング"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -421,7 +422,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -435,7 +436,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA" href="javascript:void(0)">サンプルアプリ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>

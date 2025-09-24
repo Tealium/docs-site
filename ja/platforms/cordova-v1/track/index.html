@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="トラック" />
+    <meta property="og:title" content="トラッキング" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/cordova-v1/track/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="ユーザー活動の追跡方法について学びます。" />
+<meta property="og:description" content="ユーザー活動を追跡する方法について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>トラック | Cordova用Tealiumバージョン1.x | Tealiumドキュメント</title>
+    <title>トラッキング | Cordova用Tealiumバージョン1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -266,7 +266,7 @@
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/cordova-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-install">インストール</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cordova-v1-track">トラック</a></li>
+        <a href="/ja/platforms/cordova-v1/track/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cordova-v1-track">トラッキング</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/cordova-v1/data-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-data-management">データ管理</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -280,7 +280,7 @@
         <a href="/ja/platforms/cordova-v1/module-list/install-referrer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-module-list-install-referrer">Install Referrerモジュールのインストール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/cordova-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -313,7 +313,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">トラック</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">トラッキング</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -321,17 +321,19 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      ユーザー活動の追跡方法について学びます。
+      ユーザー活動を追跡する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ビューの追跡">ビューの追跡</h2>
-<p><a href="/ja/platforms/cordova-v1/api/#trackview"><code>trackView()</code></a> メソッドは、ユーザーがアプリ内の画面を開いたり、変更したりするたびに追跡します。以下の例を参照してください：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for Cordovaの以前のバージョン（1.x）です。<br>
+現在のバージョンについては、<a href="/ja/platforms/cordova/">Tealium for Cordova 2.x</a>をご覧ください。</p>
+<h2 id="画面のトラッキング">画面のトラッキング</h2>
+<p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#trackview"><code>trackView()</code></a> メソッドは、ユーザーがアプリ内で画面を開いたり変更したりするたびに追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">trackView</span>({<span style="color:#a6e22e">tealium_event</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SCREEN_NAME&#34;</span>, <span style="color:#e6db74">&#34;KEY1&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VALUE1&#34;</span>}, <span style="color:#e6db74">&#34;INSTANCE&#34;</span>);
-</span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
-<p><a href="/ja/platforms/cordova-v1/api/#trackevent"><code>trackEvent()</code></a> メソッドは、ビュー以外のすべての活動を追跡します。以下の例を参照してください：</p>
+</span></span></code></pre></div><h2 id="イベントのトラッキング">イベントのトラッキング</h2>
+<p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#trackevent"><code>trackEvent()</code></a> メソッドは、画面表示以外のすべての活動を追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">trackEvent</span>({<span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>}, <span style="color:#e6db74">&#34;INSTANCE&#34;</span>);
 </span></span></code></pre></div>
 </div>
@@ -393,7 +395,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -407,8 +409,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">ビューの追跡</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">画面のトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
               </nav>
   </aside></nav>
 

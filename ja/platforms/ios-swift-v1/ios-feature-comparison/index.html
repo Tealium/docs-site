@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift-v1/ios-feature-comparison/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="iOS Objective-CとiOS Swiftライブラリの詳細な機能比較リスト。" />
+<meta property="og:description" content="iOS Objective-C と iOS Swift ライブラリ間の詳細な機能比較リスト。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>機能比較 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -324,7 +324,7 @@
         <a href="/ja/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-module-volatiledata">VolatileData モジュール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cとの連携</a></li>
+        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cの使用方法</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/ios-feature-comparison/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".ios-swift-v1-feature-comparison">機能比較</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -387,34 +387,35 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      iOS Objective-CとiOS Swiftライブラリの詳細な機能比較リスト。
+      iOS Objective-C と iOS Swift ライブラリ間の詳細な機能比較リスト。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Swift用のTealiumライブラリは、純粋なSwift、Objective-C、またはその両方を実行するアプリと完全に互換性があります。最新で最もアップデートされたライブラリであるため、可能であればSwiftライブラリの実装を強くお勧めします。</p>
-<p>Objective-Cライブラリはまだ完全にサポートされていますが、Swiftライブラリは一般的により速く更新され、最新の機能を備えています。さらに、SwiftはサーバーサイドのSwift環境を含む、すべてのTealiumライブラリの互換性が最も広いです。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for iOS (Swift)の以前のバージョン（1.x）です。最新バージョンについては、<a href="/ja/platforms/ios-swift/">Tealium for iOS (Swift) 2.x</a>をご覧ください。</p>
+<p>Swift用Tealiumライブラリは、純粋なSwift、Objective-C、またはその両方の組み合わせで動作するアプリと完全に互換性があります。最新で最もアップデートされたライブラリであるため、可能であればSwiftライブラリの実装を強くお勧めします。</p>
+<p>Objective-Cライブラリも完全にサポートされていますが、Swiftライブラリは一般的により速く更新され、最新の機能を持っています。さらに、SwiftはTealiumライブラリの中で最も広い互換性を持っており、サーバーサイドSwift環境もサポートしています。</p>
 <p>以下の比較表をチェックして、あなたのニーズに最も適したものを見つけてください。</p>
 <h2 id="メモリフットプリントとパフォーマンス">メモリフットプリントとパフォーマンス</h2>
-<p>すべてのSDKは、アプリにパフォーマンスとメモリの影響を与えます。これはアプリによって異なり、特定のSDKの正確なフットプリントを測定することは困難かもしれません。</p>
-<p>私たちは、Tealium Swift SDKを、標準の空のiOSシングル閲覧者プリのベースラインに対して測定しました。これらの数値は、特定の実装によって異なる場合があるため、あくまで目安としてのみ使用されます。すべての数値は、XCode Allocations Instrumentを使用して取得されました。</p>
+<p>すべてのSDKはアプリに何らかのパフォーマンスとメモリの影響を与えます。これはアプリによって異なり、特定のSDKの正確なフットプリントを測定するのは難しいかもしれません。</p>
+<p>私たちは標準的な空のiOSシングル閲覧者プリのベースラインに対してTealium Swift SDKを測定しました。これらの数字はあなたの特定の実装によって異なる可能性があるため、あくまで大まかな指標としてのみ機能します。すべての数字はXCode Allocations Instrumentを使用して取得されました。</p>
 <p><strong>コンパイルされたアプリアーカイブ（<code>.ipa</code>ファイル）</strong></p>
 <ul>
 <li>3+ MB（すべてのモジュールを含む）</li>
 </ul>
 <p><strong>ランタイムメモリ使用量</strong></p>
 <ul>
-<li>2 - 2.5+ MB（Collectモジュールとサポートモジュール）</li>
-<li>7 - 10+ MB（Tag Managementモジュール、Collectモジュール、およびサポートモジュール）</li>
+<li>2 - 2.5+ MB（Collectモジュールおよびサポートモジュール）</li>
+<li>7 - 10+ MB（タグ管理モジュール、Collectモジュール、およびサポートモジュール）</li>
 </ul>
 <p><strong>起動時間</strong></p>
 <ul>
-<li>≈0.05秒（初期化から完了コールバックの発火までのおおよその時間）</li>
+<li>≈0.05秒（初期化から完了コールバックが発火するまでのおおよその時間）</li>
 </ul>
 <h2 id="swiftバージョン">Swiftバージョン</h2>
 <ul>
-<li>4.0+（Xcode 9.0+）</li>
+<li>4.0+ (Xcode 9.0+)</li>
 </ul>
 <h2 id="オペレーティングシステム">オペレーティングシステム</h2>
 <ul>
@@ -425,21 +426,21 @@
 </ul>
 <h2 id="tealium製品">Tealium製品</h2>
 <ul>
-<li>Tealium iQ タグ管理</li>
+<li>Tealium iQタグ管理</li>
 <li>Tealium EventStream</li>
 <li>Tealium AudienceStream</li>
 <li>Tealium DataAccess</li>
 </ul>
-<h2 id="tealium-swift-vs-tealium-ios">tealium-swift vs. tealium-ios</h2>
-<p>Swiftライブラリは、<a href="https://github.com/Tealium/tealium-ios">Objective-Cライブラリ</a>とは完全に異なるコードベースで完全に新しく構築されており、現在の機能セットにおいていくつかの微妙な違いがあります。以下では、両方のライブラリの異なる機能を比較しています。新しい機能のリクエストがある場合は、GitHubページで問題を開いたり、アカウントマネージャーに連絡したりしてください。</p>
+<h2 id="tealium-swift-と-tealium-ios-の比較">tealium-swift と tealium-ios の比較</h2>
+<p>Swift ライブラリは、<a href="https://github.com/Tealium/tealium-ios">Objective-C ライブラリ</a>とは全く新しいコードベースで一から構築されました。現在の機能セットには、両ライブラリ間でいくつかの微妙な違いがあります。以下に、両ライブラリの異なる機能を比較しました。新機能のリクエストがある場合は、GitHub ページで issue を開くか、アカウントマネージャーに連絡してください。</p>
 <table>
 <thead>
 <tr>
 <th>機能</th>
-<th>TealiumIOS（Objective-C）</th>
+<th>TealiumIOS (Objective-C)</th>
 <th>Tealium-Swift</th>
 <th>説明</th>
-<th>ノート</th>
+<th>備考</th>
 </tr>
 </thead>
 <tbody>
@@ -447,154 +448,154 @@
 <td>インスタンスマネージャー/マルチトン</td>
 <td>✔</td>
 <td>✔</td>
-<td>アプリ内で複数のTealiumインスタンス（プロファイル）をサポートします。</td>
-<td>Swiftに将来のリリースで追加されるかもしれません。Objective-Cライブラリの広く使用されていない機能です。ほとんどの顧客はこの機能を必要としません。</td>
+<td>同じアプリで複数の Tealium インスタンス（プロファイル）をサポートします。</td>
+<td>Swift に将来的に追加される可能性があります。Objective-C ライブラリの広く使われている機能ではありません。ほとんどの顧客にはこの機能は必要ありません。</td>
 </tr>
 <tr>
-<td>UIオートトラッキング</td>
+<td>UI 自動トラッキング</td>
 <td></td>
 <td>✔</td>
-<td>UIViewとイベントを自動的にトラッキングします</td>
-<td>オプションのモジュールとして利用可能ですが、追加のパフォーマンスオーバーヘッドがあるため、推奨されていません</td>
+<td>UIViews とイベントを自動的にトラッキングします。</td>
+<td>オプションのモジュールとして利用可能ですが、追加のパフォーマンスオーバーヘッドのためお勧めしません。</td>
 </tr>
 <tr>
 <td>ライフサイクルトラッキング</td>
 <td>✔</td>
 <td>✔</td>
-<td>アプリのライフサイクルイベントをトラッキングします</td>
+<td>アプリのライフサイクルイベントをトラッキングします。</td>
 <td></td>
 </tr>
 <tr>
 <td>タグ管理</td>
 <td>✔</td>
 <td>✔</td>
-<td>レンダリングされないWebビューを介してTealium iQを使用することができます</td>
+<td>レンダリングされていないウェブビューを通じて Tealium iQ を使用できます。</td>
 <td></td>
 </tr>
 <tr>
 <td>Tealium Collect</td>
 <td>✔</td>
 <td>✔</td>
-<td>ネイティブのHTTPSリクエストを使用してデータをTealium Customer Data Hubに送信します</td>
+<td>ネイティブ HTTPS リクエストを使用して Tealium Customer Data Hub にデータを送信します。</td>
 <td></td>
 </tr>
 <tr>
-<td>オフライン機能/キュー</td>
+<td>オフライン機能/キューイング</td>
 <td>✔</td>
 <td>✔</td>
-<td>デバイスがオンラインでない場合は自動的にイベントをキューに入れ、デバイスが再びオンラインになったときに送信します</td>
+<td>デバイスがオンラインの場合、イベントを自動的にキューに入れ、デバイスが再びオンラインになったときに送信します。</td>
 <td></td>
 </tr>
 <tr>
-<td>リモートモバイルパブリッシュ構成（MPS）</td>
+<td>リモートモバイルパブリッシュ構成 (MPS)</td>
 <td>✔</td>
 <td>✔</td>
-<td>特定のライブラリ構成をリモートで構成することができます</td>
-<td>バージョン1.9.0でサポートが追加されました</td>
+<td>特定のライブラリ構成のリモート構成を許可します。</td>
+<td>バージョン 1.9.0 でサポートが追加されました。</td>
 </tr>
 <tr>
 <td>ボラティルデータ</td>
 <td>✔</td>
 <td>✔</td>
-<td>現在のセッションのデータを保存します（アプリが終了するまで）</td>
+<td>現在のセッションのデータを保存します（アプリが終了するまで）。</td>
 <td></td>
 </tr>
 <tr>
 <td>永続データ</td>
 <td>✔</td>
 <td>✔</td>
-<td>アプリの起動間にデータを保存します</td>
+<td>アプリ起動間でデータを保存します。</td>
 <td></td>
 </tr>
 <tr>
 <td>リモートコマンド</td>
 <td>✔</td>
 <td>✔</td>
-<td>Tealium iQから指定されたネイティブコードブロックをトリガーすることができます</td>
+<td>Tealium iQ から指定されたネイティブコードブロックのトリガーを許可します。</td>
 <td></td>
 </tr>
 <tr>
-<td>Apple Search Adsのサポート</td>
+<td>Apple Search Ads サポート</td>
 <td></td>
 <td>✔</td>
-<td>Apple Search Ads APIのサポートを追加し、自動的にアトリビューションデータを収集します</td>
-<td>Objective-Cに移植する予定はありません</td>
+<td>Apple Search Ads API を自動的にサポートし、帰属データを収集します。</td>
+<td>Objective-C に移植する予定はありません。</td>
 </tr>
 <tr>
-<td>Optimizely実験トラッキング</td>
+<td>Optimizely 実験トラッキング</td>
 <td>✔</td>
 <td></td>
-<td>Optimizelyの実験データを自動的にトラッキングします</td>
-<td>将来的にSwiftに移植するかもしれません</td>
+<td>Optimizely の実験データを自動的にトラッキングします。</td>
+<td>将来的に Swift に移植する可能性があります。</td>
 </tr>
 <tr>
-<td>iOSのサポート</td>
-<td>✔</td>
-<td>✔</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>watchOSのサポート</td>
+<td>iOS サポート</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>tvOSのサポート</td>
+<td>watchOS サポート</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>macOSのサポート</td>
+<td>tvOS サポート</td>
+<td>✔</td>
+<td>✔</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>macOS サポート</td>
 <td></td>
 <td>✔</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>CocoaPodsのサポート</td>
+<td>CocoaPods サポート</td>
 <td>✔</td>
 <td>✔</td>
-<td>CocoaPodsの依存関係マネージャーのサポート</td>
+<td>CocoaPods 依存関係マネージャーのサポート</td>
 <td></td>
 </tr>
 <tr>
-<td>Carthageのサポート</td>
+<td>Carthage サポート</td>
 <td>✔</td>
 <td>✔</td>
-<td>Carthageの依存関係マネージャーのサポート</td>
+<td>Carthage 依存関係マネージャーのサポート</td>
 <td></td>
 </tr>
 <tr>
-<td>Swift Package Manager（SPM）のサポート</td>
+<td>Swift Package Manager (SPM) サポート</td>
 <td></td>
 <td>✔</td>
-<td>Swift Package Managerの依存関係マネージャーのサポート</td>
-<td></td>
-</tr>
-<tr>
-<td>ソースコードの入手</td>
-<td></td>
-<td>✔</td>
-<td>デバッグに役立つかもしれません</td>
+<td>Swift Package Manager 依存関係マネージャーのサポート</td>
 <td></td>
 </tr>
 <tr>
-<td>コンセントマネージャー</td>
+<td>ソースコード利用可能</td>
+<td></td>
+<td>✔</td>
+<td>デバッグを支援するかもしれません</td>
+<td></td>
+</tr>
+<tr>
+<td>同意管理者</td>
 <td>✔</td>
 <td>✔</td>
-<td>GDPR/プライバシーのコンプライアンスを支援します</td>
+<td>GDPR/プライバシー遵守を支援</td>
 <td></td>
 </tr>
 <tr>
 <td>Tealium Visitor Service API</td>
 <td>✔</td>
 <td>✔</td>
-<td>ユーザーのAudienceStreamビジタープロファイルの変更に対するコールバックを提供します</td>
+<td>ユーザーのAudienceStream訪問プロファイルの変更に対するコールバックを提供します</td>
 <td></td>
 </tr>
 </tbody>
@@ -608,11 +609,11 @@
   <a href="/ja/platforms/ios-swift-v1/with-objective-c/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Objective-Cとの連携 "</title>
+      <title>"Objective-Cの使用方法 "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Objective-Cとの連携</div>
+      <div>Objective-Cの使用方法</div>
     </section>
   </a>
   
@@ -644,7 +645,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -662,7 +663,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">Swiftバージョン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0" href="javascript:void(0)">オペレーティングシステム</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E8%A3%BD%E5%93%81" href="javascript:void(0)">Tealium製品</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-swift-vs-tealium-ios" href="javascript:void(0)">tealium-swift vs. tealium-ios</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-swift-%E3%81%A8-tealium-ios-%E3%81%AE%E6%AF%94%E8%BC%83" href="javascript:void(0)">tealium-swift と tealium-ios の比較</a></li>
               </nav>
   </aside></nav>
 

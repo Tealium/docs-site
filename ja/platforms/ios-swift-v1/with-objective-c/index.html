@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Objective-Cとの連携" />
+    <meta property="og:title" content="Objective-Cの使用方法" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift-v1/with-objective-c/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Objective-CとSwiftの間で動作するブリッジングヘッダーの作成について学びます。" />
+<meta property="og:description" content="Objective-CとSwiftの間でブリッジングヘッダーを作成する方法について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>Objective-Cとの連携 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
+    <title>Objective-Cの使用方法 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -324,7 +324,7 @@
         <a href="/ja/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-module-volatiledata">VolatileData モジュール</a></li></ul>
       </li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cとの連携</a></li>
+        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cの使用方法</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/ios-feature-comparison/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-feature-comparison">機能比較</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -379,7 +379,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Objective-Cとの連携</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Objective-Cの使用方法</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -387,34 +387,35 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Objective-CとSwiftの間で動作するブリッジングヘッダーの作成について学びます。
+      Objective-CとSwiftの間でブリッジングヘッダーを作成する方法について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>私たちは、Objective-Cのプロジェクトであっても、ネイティブのSwiftライブラリを使用することをお勧めしますが、Objective-Cライブラリを使用する必要がある場合は、このドキュメントが役立ちます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンは<a href="/ja/platforms/ios-swift/">iOS（Swift）用Tealium 2.x</a>を参照してください。</p>
+<p>私たちはネイティブのSwiftライブラリの使用を推奨していますが、Objective-Cライブラリを使用する必要がある場合、このドキュメントが役立ちます。</p>
 <h2 id="swiftからobjective-cを呼び出す">SwiftからObjective-Cを呼び出す</h2>
-<p>プロジェクトにブリッジングヘッダーを追加し、適切なヘッダーをインポートすることで、SwiftコードからObjective-Cライブラリを簡単に呼び出すことができます。</p>
-<h3 id="ブリッジングヘッダー">ブリッジングヘッダー</h3>
+<p>プロジェクトにブリッジングヘッダーを追加し、適切なヘッダーをインポートすることで、SwiftコードからObjective-Cライブラリを呼び出します。</p>
+<h3 id="ブリッジングヘッダーの作成">ブリッジングヘッダーの作成</h3>
 <p>ブリッジングヘッダーを作成するには：</p>
 <ol>
 <li>
 <p>Swiftプロジェクトで新しいファイルを作成します。ファイルタイプを選択するように求められたら、Objective-Cファイルを選択します。</p>
 </li>
 <li>
-<p>このファイルに一時的な名前を付けます。例えば、&ldquo;placeholder.m&quot;などとします。後でこのファイルは削除します。</p>
+<p>このファイルに一時的な名前を付けます。例えば「placeholder.m」とします。後でこのファイルを削除するためです。</p>
 </li>
 <li>
-<p>&ldquo;Finish&quot;をクリックすると、XCodeがブリッジングヘッダーの作成を求めてきます（求められない場合は、すでにプロジェクトにブリッジングヘッダーがある可能性があります）。&ldquo;Create Bridging Header&quot;を押して続行し、Xcodeが自動的に新しいヘッダーファイルを作成します。</p>
+<p>「Finish」をクリックすると、XCodeがブリッジングヘッダーの作成を促します（すでにプロジェクトにブリッジングヘッダーがある場合は表示されないかもしれません）。続行するには「Create Bridging Header」を押します。Xcodeが自動的に新しいヘッダーファイルを作成します。</p>
 </li>
 <li>
-<p><code>placeholder.m</code>ファイルをプロジェクトから削除し、新しいファイル<code>&lt;ProjectName&gt;-Bridging-Header.h</code>が作成されたことを確認します。</p>
+<p>プロジェクトから<code>placeholder.m</code>ファイルを削除し、<code>&lt;ProjectName&gt;-Bridging-Header.h</code>という新しいファイルが作成されたことに注意してください。</p>
 </li>
 <li>
-<p>新しいブリッジングヘッダーに以下のインポート文を追加します：</p>
+<p>新しいブリッジングヘッダーに次のインポート文を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>@import TealiumIOS;
-</span></span></code></pre></div><p>次に、SwiftからObjective-Cのコードを呼び出します：</p>
+</span></span></code></pre></div><p>次に、SwiftからObjective-Cコードを呼び出すには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> TealiumHelper {
 </span></span><span style="display:flex;"><span>    func somefunc () {
 </span></span><span style="display:flex;"><span>        let tealConfig <span style="color:#f92672">=</span> TEALConfiguration.init(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>, environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>)
@@ -425,24 +426,24 @@
 </span></span></code></pre></div></li>
 </ol>
 <h2 id="objective-cからswiftを呼び出す">Objective-CからSwiftを呼び出す</h2>
-<p>Swiftライブラリは、コードに必要な注釈が欠けていたり、多くの場合、モジュールがNSObjectから継承されず、ネイティブのSwiftデータ型を使用しているため、直接Objective-Cから呼び出すことはできません。
-しかし、中間のヘルパークラスを使用することで、Objective-CからSwiftライブラリを呼び出すことが可能です。</p>
+<p>Swiftライブラリは、コードに必要なアノテーションが欠けているため、Objective-Cから直接呼び出すことはできません。また、多くの場合、モジュールはNSObjectから継承されず、ネイティブのSwiftデータタイプを使用します。
+しかし、中間ヘルパークラスを使用することで、Objective-CからSwiftライブラリを呼び出すことが可能です。</p>
 <h3 id="ヘルパークラス">ヘルパークラス</h3>
 <ol>
-<li>Objective-Cプロジェクトで新しいSwiftファイルを作成します。まだブリッジングヘッダーを追加していない場合は、追加するように求められます。このプロンプトを受け入れます。新しいSwiftファイルの名前を&quot;TealiumHelper.swift&quot;とします。</li>
-<li>新しいヘルパーを呼び出す必要があるファイルに新しいSwiftヘッダー（<code>&lt;ProjectName&gt;-Swift.h</code>）をインポートします。
+<li>Objective-Cプロジェクトで新しいSwiftファイルを作成します。ブリッジングヘッダーがまだない場合は、このプロンプトを受け入れます。新しいSwiftファイルに「TealiumHelper.swift」と名前を付けます。</li>
+<li>新しいSwiftヘッダー（<code>&lt;ProjectName&gt;-Swift.h</code>）を、新しいヘルパーを呼び出す必要があるファイルにインポートします。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">#import &#34;ProjectName-Swift.h&#34;
 </span></span></span></code></pre></div></li>
 </ol>
-<p>ヘルパーファイルのメソッドは、Objective-Cのコードで使用できるようになります。ヘルパーをシングルトンにすることをお勧めします。</p>
+<p>ヘルパーファイルのメソッドは、Objective-Cコードで使用することができます。ヘルパーをシングルトンにすることをお勧めします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">#import &#34;TestSwiftBridge-Swift.h&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>- (<span style="color:#66d9ef">BOOL</span>)<span style="color:#a6e22e">application:</span>(UIApplication <span style="color:#f92672">*</span>)application <span style="color:#a6e22e">didFinishLaunchingWithOptions:</span>(NSDictionary <span style="color:#f92672">*</span>)launchOptions {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// instantiate the helper singleton
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ヘルパーシングルトンをインスタンス化
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    TealiumHelper <span style="color:#f92672">*</span> help <span style="color:#f92672">=</span> [TealiumHelper sharedInstance];
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// call the start method, which initializes the Tealium library
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealiumライブラリを初期化するstartメソッドを呼び出す
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [help start];
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// trigger a new event tracking call from objective-c
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Objective-Cから新しいイベントトラッキングコールをトリガーする
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [help track:<span style="color:#e6db74">@&#34;this is from objective-c!&#34;</span> data:<span style="color:#ae81ff">@{</span><span style="color:#e6db74">@&#34;mydata&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">@&#34;hello from obj-c&#34;</span><span style="color:#ae81ff">}</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> YES;
 </span></span><span style="display:flex;"><span>}
@@ -510,7 +511,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -525,7 +526,7 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift%E3%81%8B%E3%82%89objective-c%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99" href="javascript:void(0)">SwiftからObjective-Cを呼び出す</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8%E3%83%B3%E3%82%B0%E3%83%98%E3%83%83%E3%83%80%E3%83%BC" href="javascript:void(0)">ブリッジングヘッダー</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8%E3%83%B3%E3%82%B0%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ブリッジングヘッダーの作成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#objective-c%E3%81%8B%E3%82%89swift%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99" href="javascript:void(0)">Objective-CからSwiftを呼び出す</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%98%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF%E3%83%A9%E3%82%B9" href="javascript:void(0)">ヘルパークラス</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%B3%E3%82%AF" href="javascript:void(0)">リンク</a></li>

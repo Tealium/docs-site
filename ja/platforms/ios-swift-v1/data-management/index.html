@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift-v1/data-management/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="永続的なデータと揮発性のデータの管理方法を学びます。" />
+<meta property="og:description" content="永続的および揮発性データの管理方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>データ管理 | Tealium for iOS (Swift) バージョン 1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -324,7 +324,7 @@
         <a href="/ja/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-module-volatiledata">VolatileData モジュール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cとの連携</a></li>
+        <a href="/ja/platforms/ios-swift-v1/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-with-objective-c">Objective-Cの使用方法</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/ios-swift-v1/ios-feature-comparison/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1-feature-comparison">機能比較</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -387,60 +387,61 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      永続的なデータと揮発性のデータの管理方法を学びます。
+      永続的および揮発性データの管理方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用法">使用法</h2>
-<p>一部の変数はすべてのイベントで必要とされます。手動で必要な変数データをすべてのイベントに追加するのを防ぐために、データを揮発性または永続的に保存するオプションがあります。データが保存されると、ライフサイクルイベントを含むすべてのイベントに追加されます。</p>
-<p><a href="/ja/platforms/getting-started-mobile/mobile-concepts/#data-management">こちら</a>でデータ管理について詳しく学びましょう。</p>
-<h2 id="永続的なデータ">永続的なデータ</h2>
-<p>永続的なデータの値はデバイスに保存され、アプリの起動間で保持されます。これらの値は、トラッキング呼び出しに渡される任意の辞書とマージされます。</p>
-<p><a href="/ja/platforms/ios-swift-v1/api/tealium-persistent-data/#add"><code>persistentData().add()</code></a> メソッドは永続的なデータを保存します。以下の例を参照してください：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはiOS（Swift）用Tealiumの以前のバージョン（1.x）です。最新バージョンについては、<a href="/ja/platforms/ios-swift/">iOS（Swift）用Tealium 2.x</a>を参照してください。</p>
+<h2 id="使用方法">使用方法</h2>
+<p>すべてのイベントに必要な変数があります。毎回必要な変数データを手動で追加するのを避けるために、データを揮発性または永続的として保存するオプションがあります。データが保存されると、ライフサイクルイベントを含むすべてのイベントに追加されます。</p>
+<p><a href="/ja/platforms/getting-started-mobile/mobile-concepts/#data-management">データ管理</a>についてもっと学びましょう。</p>
+<h2 id="永続的データ">永続的データ</h2>
+<p>永続的データ値はデバイスに保存され、アプリの起動間で保持されます。これらの値は、トラッキングコールに渡された任意の辞書とマージされます。</p>
+<p>次の例に示すように、<a href="/ja/platforms/ios-swift-v1/api/tealium-persistent-data/#add"><code>persistentData().add()</code></a> メソッドは永続的データを保存します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.persistentData()?.add(data: [<span style="color:#e6db74">&#34;KEY&#34;</span>:<span style="color:#e6db74">&#34;VALUE&#34;</span>])
 </span></span></code></pre></div><p>特定のキーのデータをクリアするには、<a href="/ja/platforms/ios-swift-v1/api/tealium-persistent-data/#deletedata"><code>persistentData.deleteData()</code></a> メソッドを使用し、すべてのデータを削除するには <a href="/ja/platforms/ios-swift-v1/api/tealium-persistent-data/#deletealldata"><code>persistentData.deleteAllData()</code></a> メソッドを使用します。</p>
-<p>以下の例はこれらのメソッドを示しています：</p>
+<p>次の例はこれらのメソッドを示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Adds persistent data to be sent on each hit until manually cleared		</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter data: `[String: Any]` containing key-value pairs to be stored as persistent data</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 永続的データを追加し、手動でクリアされるまで各ヒットに送信されます</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter data: 永続的データとして保存されるキーと値のペアを含む `[String: Any]`</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addPersistentData</span>(<span style="color:#66d9ef">_</span> data: [String: Any]) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.persistentData()?.add(data)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Deletes persistent data for specific keys</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// - Parameter keys: `[String]` containing keys to be deleted</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 特定のキーの永続的データを削除します</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// - Parameter keys: 削除されるキーを含む `[String]`</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">deleteData</span>(<span style="color:#66d9ef">for</span> keys: [String]) {
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// clear data for specific keys</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 特定のキーのデータをクリアします</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.persistentData.deleteData(forKeys: keys)
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.persistentData.deleteAllData()
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="揮発性のデータ">揮発性のデータ</h2>
-<p>揮発性のデータの値は各イベントにマージされますが、アプリを閉じて再起動すると破棄されます。これらの値は、トラッキング呼び出しに渡される任意の辞書とマージされます。</p>
-<p><a href="/ja/platforms/ios-swift-v1/api/tealium-volatile-data/#add"><code>volatileData().add()</code></a> メソッドは揮発性のデータを保存します。</p>
+</span></span></code></pre></div><h2 id="揮発性データ">揮発性データ</h2>
+<p>揮発性データ値は各イベントにマージされますが、アプリを閉じて再起動すると破棄されます。これらの値は、トラッキングコールに渡された任意の辞書とマージされます。</p>
+<p><a href="/ja/platforms/ios-swift-v1/api/tealium-volatile-data/#add"><code>volatileData().add()</code></a> メソッドは揮発性データを保存します。</p>
 <p>特定のキーのデータをクリアするには、<a href="/ja/platforms/ios-swift-v1/api/tealium-volatile-data/#deletedata"><code>voltileData.deleteData()</code></a> メソッドを使用し、すべてのデータを削除するには <a href="/ja/platforms/ios-swift-v1/api/tealium-volatile-data/#deletealldata"><code>volatileData.deleteAllData()</code></a> メソッドを使用します。</p>
-<p>以下の例はこれらのメソッドを示しています：</p>
+<p>次の例はこれらのメソッドを示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Adds volatile data to be sent on each hit until the app is terminated</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter data: `[String: Any]` containing key-value pairs to be stored as volatile data</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 揮発性データを追加し、アプリが終了するまで各ヒットに送信されます</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter data: 揮発性データとして保存されるキーと値のペアを含む `[String: Any]`</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addVolatileData</span>(<span style="color:#66d9ef">_</span> data: [String: Any]) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.volatileData()?.add(data)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Deletes volatile data for specific keys</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter keys: `[String]` containing keys to be deleted</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 特定のキーの揮発性データを削除します</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// - Parameter keys: 削除されるキーを含む `[String]`</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">deleteData</span>(<span style="color:#66d9ef">for</span> keys: [String]) {
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// clear data for specific keys</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// 特定のキーのデータをクリアします</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.volatileData.deleteData(forKeys: keys)
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">self</span>.tealium?.volatileData.deleteAllData()
 </span></span><span style="display:flex;"><span>	}
@@ -505,7 +506,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -519,9 +520,9 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%81%AA%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続的なデータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8F%AE%E7%99%BA%E6%80%A7%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">揮発性のデータ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" href="javascript:void(0)">使用方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続的データ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8F%AE%E7%99%BA%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">揮発性データ</a></li>
               </nav>
   </aside></nav>
 

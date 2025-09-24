@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/cordova-v1/data-management/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="永続的なデータと揮発性のデータの管理方法を学びます。" />
+<meta property="og:description" content="永続的および揮発性データの管理方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>データ管理 | Cordova用Tealiumバージョン1.x | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -266,7 +266,7 @@
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/cordova-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-install">インストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-track">トラック</a></li>
+        <a href="/ja/platforms/cordova-v1/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-track">トラッキング</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/cordova-v1/data-management/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".cordova-v1-data-management">データ管理</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -280,7 +280,7 @@
         <a href="/ja/platforms/cordova-v1/module-list/install-referrer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-module-list-install-referrer">Install Referrerモジュールのインストール</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/cordova-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-api">APIリファレンス</a></li></ul></li></ul>
+        <a href="/ja/platforms/cordova-v1/api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cordova-v1-api">API リファレンス</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -321,42 +321,44 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      永続的なデータと揮発性のデータの管理方法を学びます。
+      永続的および揮発性データの管理方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="使用法">使用法</h2>
-<p>一部の変数はすべてのイベントで必要とされます。手動で必要な変数データをすべてのイベントに追加するのを防ぐために、データを揮発性または永続的に保存するオプションがあります。データが保存されると、ライフサイクルイベントを含むすべてのイベントに追加されます。</p>
-<p><a href="/ja/platforms/getting-started-mobile/mobile-concepts/#data-management">データ管理</a>について詳しく学びましょう。</p>
-<h2 id="永続的なデータ">永続的なデータ</h2>
-<p><a href="/ja/platforms/cordova-v1/api/#addpersistent"><code>addPersistent()</code></a>メソッドは永続的なデータを追加します。以下の例を参照してください:</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for Cordovaの以前のバージョン（1.x）です。<br>
+現在のバージョンについては、<a href="/ja/platforms/cordova/">Tealium for Cordova 2.x</a>を参照してください。</p>
+<h2 id="使用法">使用法</h2>
+<p>すべてのイベントに必要な変数があります。すべてのイベントに必要な変数データを手動で追加する必要を避けるために、データを揮発性または永続的として保存するオプションがあります。データが保存されると、ライフサイクルイベントを含むすべてのイベントに追加されます。</p>
+<p><a href="/ja/platforms/getting-started-mobile/mobile-concepts/#data-management">データ管理についてもっと学ぶ</a>。</p>
+<h2 id="永続的データ">永続的データ</h2>
+<p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#addpersistent"><code>addPersistent()</code></a> メソッドは永続的データを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">addPersistent</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, <span style="color:#e6db74">&#34;DATA&#34;</span>, <span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span>);
-</span></span></code></pre></div><p><a href="/ja/platforms/cordova-v1/api/#getpersistent"><code>getPersistent()</code></a>メソッドは、コールバックを使用して永続的なデータを取得します。以下の例を参照してください:</p>
+</span></span></code></pre></div><p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#getpersistent"><code>getPersistent()</code></a> メソッドは永続的データを取得します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">getPersistent</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, <span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">val</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// このコールバックは、永続的なデータソースが見つかったときに呼び出されます
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// このコールバックは永続的データソースが見つかったときに呼び出されます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">val</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// データが見つからなかった場合はnullを返します
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;要求した永続的なデータが見つかりませんでした&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;要求された永続的データが見つかりませんでした&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;永続的なオブジェクトデータが返されました: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;mypersistentvariable = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;永続的オブジェクトデータが返されました: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;mypersistentvariable = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">toString</span>());
 </span></span><span style="display:flex;"><span>    }});
-</span></span></code></pre></div><p><a href="/ja/platforms/cordova-v1/api/#removepersistent"><code>removePersistent()</code></a>メソッドは永続的なデータを削除します。以下の例を参照してください:</p>
+</span></span></code></pre></div><p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#removepersistent"><code>removePersistent()</code></a> メソッドは永続的データを削除します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">removePersistent</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, <span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span>);
-</span></span></code></pre></div><h2 id="揮発性のデータ">揮発性のデータ</h2>
-<p><a href="/ja/platforms/cordova-v1/api/#addvolatile"><code>addVolatile()</code></a>メソッドは揮発性のデータを追加します。以下の例を参照してください:</p>
+</span></span></code></pre></div><h2 id="揮発性データ">揮発性データ</h2>
+<p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#addvolatile"><code>addVolatile()</code></a> メソッドは揮発性データを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">addVolatile</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, <span style="color:#e6db74">&#34;DATA&#34;</span>, <span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span>);
-</span></span></code></pre></div><p><a href="/ja/platforms/cordova-v1/api/#getvolatile"><code>getVolatile()</code></a>メソッドは、コールバックを使用して揮発性のデータを取得します。以下の例を参照してください:</p>
+</span></span></code></pre></div><p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#getvolatile"><code>getVolatile()</code></a> メソッドは揮発性データを取得します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">getVolatile</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, <span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">val</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// このコールバックは、揮発性のデータソースが見つかったときに呼び出されます
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// このコールバックは揮発性データソースが見つかったときに呼び出されます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">val</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// データが見つからなかった場合はnullを返します
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;要求した揮発性のデータが見つかりませんでした&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;要求された揮発性データが見つかりませんでした&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;揮発性のオブジェクトデータが返されました: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;myvolatilevariable = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;揮発性オブジェクトデータが返されました: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;myvolatilevariable = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">toString</span>());
 </span></span><span style="display:flex;"><span>    }});
-</span></span></code></pre></div><p><a href="/ja/platforms/cordova-v1/api/#removevolatile"><code>removeVolatile()</code></a>メソッドは揮発性のデータを削除します。以下の例を参照してください:</p>
+</span></span></code></pre></div><p>次の例に示すように、<a href="/ja/platforms/cordova-v1/api/#removevolatile"><code>removeVolatile()</code></a> メソッドは揮発性データを削除します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">removeVolatile</span>(<span style="color:#e6db74">&#34;KEY_NAME&#34;</span>, window.<span style="color:#a6e22e">tealium_instance</span>);
 </span></span></code></pre></div>
 </div>
@@ -367,10 +369,10 @@
   <a href="/ja/platforms/cordova-v1/api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>APIリファレンス</div>
+      <div>API リファレンス</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"APIリファレンス"</title>
+      <title>"API リファレンス"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -382,11 +384,11 @@
   <a href="/ja/platforms/cordova-v1/track/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"トラック "</title>
+      <title>"トラッキング "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>トラック</div>
+      <div>トラッキング</div>
     </section>
   </a>
   
@@ -418,7 +420,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -433,8 +435,8 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E6%B3%95" href="javascript:void(0)">使用法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%81%AA%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続的なデータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8F%AE%E7%99%BA%E6%80%A7%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">揮発性のデータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B0%B8%E7%B6%9A%E7%9A%84%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">永続的データ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8F%AE%E7%99%BA%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">揮発性データ</a></li>
               </nav>
   </aside></nav>
 

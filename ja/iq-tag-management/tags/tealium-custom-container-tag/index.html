@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -349,7 +349,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/advanced-settings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-advanced-settings">高度なタグ構成</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">ティーリアムジェネリックタグ</a></li>
+        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium汎用タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -729,18 +729,18 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="tip"><i class="fa fa-info-circle"></i>カスタムコンテナタグが使用される場合のほとんどで、<a href="/ja/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a>は、ほとんどのタグニーズを満たすよりシンプルな解決策です。カスタムコンテナは高度なタグにのみ必要であり、完了するためにJavaScriptコードの記述が必要です。</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>カスタムコンテナタグが使用される場合のほとんどで、<a href="/ja/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a>は、ほとんどのタグニーズを満たすよりシンプルな解決策です。カスタムコンテナは高度なタグにのみ必要であり、完成させるためにJavaScriptコードの記述が必要です。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li><a href="/ja/iq-tag-management/templates/manage/">タグテンプレートについて</a></li>
 <li><a href="/ja/iq-tag-management/administration/user-permissions/about/">テンプレート管理の権限</a></li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
-<p>Tealiumカスタムコンテナタグは、<strong>タグマーケットプレイス</strong>で見つかる公式統合と同じコードテンプレートを使用します。カスタムコンテナで構築されたタグは、iQのネイティブ機能、組み込みのEコマース拡張変数、データマッピング、イベントトラッキング、その他の拡張機能を活用できます。</p>
+<p>Tealiumカスタムコンテナタグは、タグマーケットプレイスで見つかる公式統合と同じコードテンプレートを使用します。カスタムコンテナで構築されたタグは、iQのネイティブ機能、例えば組み込みのEコマース拡張変数、データマッピング、イベントトラッキング、その他の拡張機能を活用できます。</p>
 <p><a href="/ja/iq-tag-management/tags/tag-marketplace/about/">タグマーケットプレイス</a>から事前に構築されたタグを使用することがベストプラクティスですが、必要なタグが利用できない場合は、タグを追加するいくつかのオプションがあります。ほとんどのタグは、<a href="/ja/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a>または<a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/">Tealium Pixel Container tag</a>を使用して実装できます。</p>
-<p>Tealiumカスタムコンテナタグを実装するには、タグテンプレートを変更するためにJavaScriptコードを記述する必要があります。見慣れないJavaScriptコードを読み、自分のニーズに合わせてカスタマイズすることに慣れている必要があります。</p>
+<p>Tealiumカスタムコンテナタグを実装するには、タグテンプレートを変更するためにJavaScriptコードを書く必要があります。見慣れないJavaScriptコードを読み、自分のニーズに合わせてカスタマイズすることに慣れている必要があります。</p>
 <h2 id="テンプレートの概要">テンプレートの概要</h2>
-<p>まず、<strong>タグマーケットプレイス</strong>にアクセスしてカスタムコンテナタグを追加します。</p>
+<p>まず、タグマーケットプレイスにアクセスしてカスタムコンテナタグを追加します。</p>
 <p>カスタムコンテナには構成フィールドがありませんが、ロードルール、データマッピング、拡張機能の使用をサポートしています。</p>
 <h3 id="データマッピング">データマッピング</h3>
 <p>他のタグと同様にデータマッピングを構成します。データマッピングはタグテンプレート変数 <code>u.data</code> に保存されます。カスタムコンテナタグはカスタムデータマッピングのみをサポートし、マッピングツールボックスで選択した名前がタグテンプレートコードで値を参照する際に使用する名前と同じです。</p>
@@ -751,59 +751,12 @@
     </a>
 </figure>
 <h3 id="コード構造">コード構造</h3>
-<p>カスタムコンテナタグの構成のほとんどは、タグテンプレート、つまりタグの基本となるコードで行われます。次の手順は、<a href="/ja/iq-tag-management/templates/manage/">タグテンプレートの管理方法</a>に精通しており、必要な権限を持っていることを前提としています。</p>
+<p>カスタムコンテナタグの構成のほとんどは、タグテンプレート、つまりタグの基本となるコードで行われます。以下の手順は、<a href="/ja/iq-tag-management/templates/manage/">タグテンプレートの管理方法</a>に精通しており、必要な権限を持っていることを前提としています。</p>
 <p><figure><a class="slb" href="/images/iq-tag-management/tags/tealium_custom_container_tag_code_structure.png"><img src="/images/iq-tag-management/tags/tealium_custom_container_tag_code_structure.png"
          alt="Template ConfigJS"
          title="Template ConfigJS"/>
     </a>
 </figure>​​</p>
-<p>次の表は、テンプレート内の異なるコードセクションをリストアップしており、各セクションはテンプレート内の <code>/* Start */</code> および <code>/* End */</code> のコメントで始まります。</p>
-<table>
-<thead>
-<tr>
-<th><strong>テンプレートコード</strong></th>
-<th><strong>説明</strong></th>
-<th><strong>注意点</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>タグライブラリコード</td>
-<td>経験豊富なユーザーは、静的ライブラリ関数を追加するか、サードパーティのURLを使用してライブラリコードをインスタンス化してロードすることができます。</td>
-<td>21-22行目。このセクションはデフォルトでは空です。</td>
-</tr>
-<tr>
-<td>タグスコープの拡張コード</td>
-<td><code>##UTGEN##</code> は、公開エンジンが後でタグにTealium iQ拡張のコードを挿入するプレースホルダー領域です。</td>
-<td>56-59行目。このセクションは編集しないでください。</td>
-</tr>
-<tr>
-<td>マッピングコード</td>
-<td>選択した値と <code>u.data</code> オブジェクトにマッピングされたアイテムとの間で1対1のマッピングを行います。</td>
-<td>62-71行目。デフォルトのコードはほとんどの使用例に対応します。変更を行った場合は、十分にテストしてください。</td>
-</tr>
-<tr>
-<td>タグ送信コード</td>
-<td>ベンダーのタグは、ベンダーのURLが呼び出される前に特定のデータを処理またはフォーマットする必要があります。</td>
-<td>74-78行目。変更は通常、URLの変更、ベンダー仕様に合わせてデータポイントの値を変更すること、データをクエリ文字列パラメータにフォーマットすることなどを含みます。</td>
-</tr>
-<tr>
-<td>ローダーコールバック関数</td>
-<td>一部のタグは、そのJavaScriptファイルがロードされた後にデータを送信する必要があります。これらのデータ変更は、適切なタイミングで行うためにローダーコールバック内で行う必要があります。タグがデータの変更やフォーマットを必要とする場合、これもローダーコールバック関数内で行うことができます。ファイルがロードされる前に利用可能だった同じ <code>u.data</code> の値がコールバックで利用可能になります。</td>
-<td>81-93行目。 <code>// </code> のコメントを解除して、外部JavaScriptファイルをロードするローダーコールバック関数の使用を有効にします。外部JavaScriptファイルがロードされた後に実行するJavaScriptコードをローダーコールバック関数に挿入します。 <code>u.initialized=true;</code> は、 <code>utag.view</code> または <code>utag.link</code> の呼び出しがある場合にJavaScriptファイルが2回ロードされるのを防ぎます。外部JavaScriptファイルを必要とするほとんどのタグは、再度ロードされるべきではありません。</td>
-</tr>
-<tr>
-<td>ローダーコールバックタグ送信コード</td>
-<td>外部JavaScriptファイルがロードされた後に実行されるJavaScriptコード。</td>
-<td>86-90行目。</td>
-</tr>
-<tr>
-<td>ローダー関数の呼び出し</td>
-<td>実装しているタグによっては、外部JavaScriptファイルなど、いくつかのタイプのファイルをロードする必要があります。必要に応じて <code>//</code> の行を解除します。</td>
-<td>96-108行目。ローダーが <code>iframe</code> 画像リクエストを呼び出すために100行目のコメントを解除します。外部JavaScriptファイルへのパスをロードするために <code>script</code> を呼び出す101行目のコメントを解除します。 <code>u</code> オブジェクトのコールバックが初期化されていない場合にコールバックをロードし、要求されたファイルが2回実行されるのを防ぐための <code>if-else</code> コードを解除します。タグがコールバックを必要としない場合は、 <code>&quot;cb&quot;:u.loader_cb</code> を <code>&quot;cb&quot;:null</code> に構成します。 <code>c.join(u.data.qsp_delim)</code> はクエリ文字列のサンプルであり、 <code>c</code> はキー値の配列で、 <code>base_url</code> には &lsquo;?&rsquo; が事前にエンリッチメントされています。</td>
-</tr>
-</tbody>
-</table>
 <h3 id="テンプレート変数">テンプレート変数</h3>
 <p>以下の表は、カスタムコンテナテンプレートに含まれる変数を説明しています。</p>
 <table>
@@ -816,7 +769,7 @@
 <tbody>
 <tr>
 <td><code>tv</code></td>
-<td>テンプレートバージョン、フォーマット: <code>version.YYYYMMDD</code>。このコメントのフォーマットと内容は重要で、Tag Status Checkerなどのシステムがテンプレートの制御と検証に使用します。</td>
+<td>テンプレートバージョン、フォーマット: <code>version.YYYYMMDD</code>。このコメントのフォーマットと内容は重要で、Tag Status Checkerなどのシステムがテンプレートの制御と検証に使用します</td>
 </tr>
 <tr>
 <td><code>tc </code></td>
@@ -832,7 +785,7 @@
 </tr>
 <tr>
 <td><code>utag.o[&lt;ACCOUNT.PROFILE&gt;] .sender</code></td>
-<td>プロパティを持つエントリ（オブジェクト）を取得するグローバルオブジェクト。</td>
+<td>グローバルオブジェクトで、プロパティを持つエントリ（オブジェクト）が取得されます。</td>
 </tr>
 <tr>
 <td><code>utag.ut</code></td>
@@ -840,15 +793,15 @@
 </tr>
 <tr>
 <td><code>utag.js</code></td>
-<td>このファイルのバージョンからマッチが作成されます。入力は<code>ut4.45.201805212154</code>のようなフォーマットで、二つのドット（<code>ut4.</code>と次の<code>.</code>の間）の間のサブストリングを取得します。</td>
+<td>このファイルのバージョンと実行中のバージョンからマッチが作成されます。入力は<code>ut4.45.201805212154</code>のようなフォーマットで、2つのドット（<code>ut4.</code>と次の<code>.</code>の間）の間のサブストリングを取得します。</td>
 </tr>
 <tr>
 <td><code>utag.ut.loader</code></td>
-<td>テンプレートで使用される関数を参照します。ローダー関数が未定義の場合、正当なマッチが見つからない場合（上記で決定）、またはマッチの二番目のサブストリングが指定された数より少ない場合、テンプレートのローダー関数の定義が使用されます。この関数は必要な画像、iframe、またはスクリプトリクエストを行う責任があります。関数が呼び出されるときに、正確なリソースがテンプレートで後で構成されます。何らかの理由でローダー関数が未定義の場合、フォールバックとして定義が提供されます。</td>
+<td>テンプレートで使用される関数を参照します。ローダー関数が未定義の場合、正当なマッチが見つからない場合（上記のように決定された場合）、またはマッチの2番目のサブストリングが指定された数より少ない場合、テンプレートのローダー関数の定義が使用されます。この関数は、必要な画像、iframe、またはスクリプトリクエストを行う責任があります。関数が呼び出されるときに、正確なリソースがテンプレートで後で構成されます。何らかの理由でローダー関数が未定義の場合、フォールバックとして定義が提供されます。</td>
 </tr>
 <tr>
 <td><code>utag.ut.typeOf</code></td>
-<td><code>utag.ut.loader</code>と同様のチェックを持つ関数で、<code>typeOf</code>演算子と同様の機能を提供しますが、<code>null</code>に対しては‘object’を返さず、<code>toString()</code>関数を使用してさまざまなデータタイプ（基本的なものと抽象的なもの）に対してより詳細な値を返します。</td>
+<td><code>utag.ut.loader</code>と同様のチェックを持つ関数で、<code>typeOf</code>演算子と同様の機能を提供しますが、<code>null</code>に対しては「object」とは返さず、<code>toString()</code>関数を使用してさまざまなデータタイプ（基本的なものと抽象的なもの）に対してより詳細な値を返します。</td>
 </tr>
 <tr>
 <td><code>u.ev</code></td>
@@ -864,7 +817,7 @@
 </tr>
 <tr>
 <td><code>u.extend</code></td>
-<td>拡張機能の定義を含む配列。時々、タグが完全に実行されるのを停止する目的で拡張が追加されます。</td>
+<td>拡張機能の定義を含む配列。時々、タグの完全な実行を停止する目的で、falseを返す拡張機能が追加されます。</td>
 </tr>
 <tr>
 <td><code>u.callBack</code></td>
@@ -876,7 +829,7 @@
 </tr>
 <tr>
 <td><code>u.send</code></td>
-<td><code>a</code>と<code>b</code>の2つの引数を受け取る関数で、さまざまな<code>u.send</code>固有のパラメータが定義されています：<ul><li><code>a</code> - イベントタイプの文字列、例えば<code>view</code>または<code>link</code>。</li><li><code>b</code> - テンプレートファイルに渡されたデータレイヤー（コピー）。</li><li><code>c</code> - 拡張を実行する<code>for</code>ループカウンター。</li><li><code>d</code> - <code>for…in</code>ループの<code>u.map</code>オブジェクトキーイテレーター。</li><li><code>e</code> - 特定のマッピングの<code>,</code>で分割された配列。これにより複数のマッピングに対するチェックが可能になります。</li><li><code>f</code> - <code>e</code>配列の<code>for</code>ループイテレーターで、マップされた値を<code>u.data</code>オブジェクトに構成します。</li><li><code>g</code> - （予約済み/使用禁止）</li><li><code>h</code> - イベントマッピングのための<code>:</code>で分割された配列。</li></ul></td>
+<td>2つの引数<code>a</code>と<code>b</code>を受け取る関数で、さまざまな<code>u.send</code>固有のパラメータが定義されています：<ul><li><code>a</code> - イベントタイプの文字列、例えば<code>view</code>または<code>link</code>。</li><li><code>b</code> - テンプレートファイルに渡されるデータレイヤー（コピー）。</li><li><code>c</code> - 拡張機能を実行する<code>for</code>ループカウンター。</li><li><code>d</code> - <code>for…in</code>ループの<code>u.map</code>オブジェクトキーイテレーター。</li><li><code>e</code> - 特定のマッピングの<code>,</code>で分割された配列。これにより、複数のマッピングに対するチェックが可能になります。</li><li><code>f</code> - <code>e</code>配列の<code>for</code>ループイテレーターで、マップされた値を<code>u.data</code>オブジェクトに構成します。</li><li><code>g</code> - （予約済み/使用禁止）</li><li><code>h</code> - イベントマッピングのための<code>:</code>で分割された配列。</li></ul></td>
 </tr>
 <tr>
 <td><code>u.data</code></td>
@@ -884,7 +837,7 @@
 </tr>
 <tr>
 <td><code>u.data.base_url</code></td>
-<td>ベースURL変数。これは動的値なしでベンダーファイルをロードするURLまたは完全に動的なURLです。</td>
+<td>ベースURL変数。これは動的値なしでベンダーファイルをロードするURL、または完全に動的なURLです。</td>
 </tr>
 <tr>
 <td><code>utag.DB</code></td>
@@ -893,19 +846,19 @@
 </tbody>
 </table>
 <h3 id="eコマース変数">Eコマース変数</h3>
-<p><a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">Eコマース拡張</a>から値を使用する場合、各値のコピーをテンプレート固有の変数として作成することを強くお勧めします。ベンダー固有のフォーマットのために元の値を変更すると、他のタグに悪影響を及ぼす可能性があります。</p>
+<p><a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">Eコマース拡張</a>からの値を使用する場合、各値のコピーをテンプレート固有の変数として作成することを強くお勧めします。ベンダー固有のフォーマットのために元の値を変更すると、他のタグに悪影響を及ぼす可能性があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order_id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order_id</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">_corder</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">product_id</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">_cprod</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">undefined</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">product_id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">_cprod</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="tealiumイベント変数">Tealiumイベント変数</h3>
-<p><code>tealium_event</code>変数を使用すると、異なるイベントが異なる処理を必要とする場合に役立ちます。受け取ったTealiumトラッキングコールに基づいて、どのベンダートラッキングコールを行うかを決定するために、<code>if</code>または<code>switch</code>ステートメントを作成できます。他のイベントが構成されていない場合、<code>tealium_event</code>はデフォルトで&quot;view&quot;または&quot;link&quot;になります。</p>
+<p><code>tealium_event</code>変数を使用すると、異なるイベントが異なる処理を必要とする場合に便利です。受け取ったTealiumトラッキングコールに基づいて、どのベンダートラッキングコールを行うかを決定するために、<code>if</code>または<code>switch</code>ステートメントを作成できます。他のイベントが構成されていない場合、<code>tealium_event</code>はデフォルトで&quot;view&quot;または&quot;link&quot;になります。</p>
 <h2 id="例">例</h2>
 <h3 id="例-1-購入のロードとトラッキング">例 1: 購入のロードとトラッキング</h3>
 <p>次のコードはベンダーによって提供され、タグテンプレートに組み込む必要があります。このコードは、Part AとPart Bとしてコメントされた2つの主要な部分に分かれています。このコードは、外部のJavaScriptファイルをロードする（Part A）というJavaScriptタグで一般的に使用されるパターンと、動的値を持つベンダーオブジェクト変数を構成してトラッキングコールをトリガーする（Part B）というパターンを示しています。</p>
-<p>タグテンプレートコードでは、この慣習は次の2つの関数を使用して達成されます：</p>
+<p>タグテンプレートコードでは、この慣習は次の2つの関数を使用して実現されます：</p>
 <ul>
-<li><code>u.loader</code> - ページロードごとに一度呼び出され、ベンダーの外部JavaScriptライブラリをロードします。</li>
+<li><code>u.loader</code> - ページロードごとに1回呼び出され、ベンダーの外部JavaScriptライブラリをロードします。</li>
 <li><code>u.loader_cb</code> - <code>u.loader</code>の完了時およびページ上の後続のトラッキングコール時に呼び出されます。</li>
 </ul>
 <p>この例では、組み込みのEコマース変数の使用方法も示されています。</p>
@@ -916,7 +869,7 @@
 </span></span><span style="display:flex;"><span>// Part B
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">text/javascript</span>&gt;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">kenshoo</span>.<span style="color:#a6e22e">trackConversion</span>(<span style="color:#e6db74">&#39;0000&#39;</span>,<span style="color:#e6db74">&#39;000-00-00-000-00000&#39;</span>, {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*オプションパラメータ。値を入力するか、不要なパラメータを削除してください*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*オプションパラメータ。値を入力するか、不要なパラメータを削除*/</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">conversionType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;lead&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">revenue</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.0</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">currency</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;USD&#39;</span>,
@@ -928,20 +881,20 @@
 </span></span><span style="display:flex;"><span>})
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
 </span></span></code></pre></div><h4 id="ベースurlの構成">ベースURLの構成</h4>
-<p>Part Aでは、<code>cid</code>というカスタムクエリ文字列パラメータを持つJavaScript URLがロードされています。<code>cid</code>値を動的にする必要があります。Customer Containerで外部JavaScriptファイルをロードするには、<code>u.data</code>オブジェクト内の<code>base_url</code>値を構成します。この値は後で<code>u.loader</code>関数によってコードで使用されます。</p>
+<p>Part Aでは、<code>cid</code>というカスタムクエリ文字列パラメータを持つJavaScript URLがロードされています。<code>cid</code>値を動的にする必要があります。Customer Containerで外部JavaScriptファイルをロードするには、51行目の<code>u.data</code>オブジェクト内に<code>base_url</code>値を構成します。この値は後で<code>u.loader</code>関数によってコードで使用されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">47</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">48</span> <span style="color:#75715e">/* ここでデフォルトのタグパラメータ値を初期化 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">49</span> <span style="color:#75715e">/* 例: */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">50</span> <span style="color:#75715e">/* &#34;account_id&#34; : &#34;1234567&#34; */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">51</span>     <span style="color:#e6db74">&#34;base_url&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://services.xg4ken.com/js/kenshoo.js?&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">52</span>     <span style="color:#e6db74">&#34;cid&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">53</span> <span style="color:#75715e">/* TiQで&#34;account_id&#34;または&#34;base_url&#34;にマップされた値がこれらのデフォルト値を置き換えます。 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">53</span> <span style="color:#75715e">/* TiQで&#34;account_id&#34;または&#34;base_url&#34;にマッピングされた値がこれらのデフォルト値を置き換えます。 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">54</span> };
 </span></span></code></pre></div><h4 id="ローダーコールバック関数">ローダーコールバック関数</h4>
-<p>外部ファイルが<code>u.loader</code>を使用してロードされると、コールバック関数を実行したいです。<strong>ローダーコールバック関数</strong>セクションを更新して、84-85行目と91行目のコメントを解除します。このコールバック関数、<code>u.loader_cb</code>は外部ファイルがロードされた後に呼び出されます。</p>
-<p>次のスニペットは、タグテンプレートの完成したセクションを示しています：</p>
+<p>外部ファイルが<code>u.loader</code>を使用してロードされると、コールバック関数を実行したいです。<strong>ローダーコールバック関数</strong>セクションを更新するには、84-85行目と91行目のコメントを解除します。このコールバック関数、<code>u.loader_cb</code>は外部ファイルがロードされた後に呼び出されます。</p>
+<p>以下のスニペットは、タグテンプレートの完成したセクションを示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">81</span> <span style="color:#75715e">/* ローダーコールバック関数の開始 */</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">82</span> <span style="color:#75715e">/* シングルラインJavaScriptコメント（&#34;//&#34;）のコメントを解除して、ローダーコールバック関数を使用します。 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">82</span> <span style="color:#75715e">/* 単一行のJavaScriptコメント（&#34;//&#34;）を解除して、ローダーコールバック関数を使用します。 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">83</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">84</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">loader_cb</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">85</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">initialized</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
@@ -968,8 +921,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">107</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">108</span> <span style="color:#75715e">/* ローダー関数呼び出しの終了 */</span>
 </span></span></code></pre></div><h4 id="タグ送信コード">タグ送信コード</h4>
-<p>このコードは、カスタムコンテナタグがロードされたときに実行されます。この場合、動的な <code>cid</code> パラメータを基本URLに追加し（これには <code>cid</code> へのマッピングが必要であるか、正しいファイルをロードするために <code>u.data</code> 変数にデフォルト値を構成しておく必要があります）、必要なeコマースデータを組み込み変数からコピーします。</p>
-<p>76行目の下にあるタグ送信コードを以下のように更新してください：</p>
+<p>このコードは、カスタムコンテナタグがロードされたときに実行されます。この場合、動的な <code>cid</code> パラメータをベースURLに追加し（これには <code>cid</code> へのマッピングが必要であるか、正しいファイルをロードするために <code>u.data</code> 変数にデフォルト値を構成しておく必要があります）、必要なeコマースデータを組み込み変数からコピーします。</p>
+<p>76行目以下のタグ送信コードを以下のように更新してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">74</span> <span style="color:#75715e">/* タグ送信コードの開始 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">75</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">76</span> <span style="color:#75715e">// ここにタグ送信コードを挿入します。
@@ -982,10 +935,10 @@
 </span></span></code></pre></div><p>次に、コンバージョンを追跡するタイミングを決定する必要があります（<code>kenshoo.trackConversion</code>）。</p>
 <ul>
 <li>1つのオプションは <code>tealium_event</code> を使用し、特定のイベント名からキーを取得することです。</li>
-<li>別のオプションは、コンバージョンが発生しているか、特定の種類のコンバージョンが発生していることを示す値を持つ独自の変数を使用することです。これにより、各イベントで送信されるデータポイントに柔軟性が生まれます。</li>
+<li>別のオプションは、コンバージョンまたは特定の種類のコンバージョンが発生していることを示す値を持つ独自の変数を使用することです。これにより、各イベントで送信されるデータポイントに柔軟性が生まれます。</li>
 <li>コンバージョンイベントに必要な一意のパラメータであるコンバージョンコード値のチェックを使用することもできます。この方法では1つの値のみをチェックすることができますが、オプションパラメータの送信方法が制限される可能性があります。</li>
 </ul>
-<p>この例では、コンバージョンコード変数のチェックを使用するオプションを使用しています。この値をUIで <code>conversionCode</code> にマッピングしますが、<code>base_url</code> や <code>cid</code> のようにテンプレート内で手動で <code>u.data</code> オブジェクトに入れることはしません。この方法では、<code>conversionCode</code> の存在をチェックするとき、何らかの値が存在するためにのみ行われます。</p>
+<p>この例では、コンバージョンコード変数のチェックを使用するオプションを使用しています。この値をUIで <code>conversionCode</code> にマッピングしますが、<code>base_url</code> や <code>cid</code> のようにテンプレート内の <code>u.data</code> オブジェクトに手動で入れることはしません。この方法では、<code>conversionCode</code> の存在をチェックするとき、何らかの値が存在するためにのみ行われます。</p>
 <p>タグテンプレートを以下のように更新してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">84</span>  <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">loader_cb</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">85</span>      <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">initialized</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
@@ -1005,16 +958,16 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">100</span>     }
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">101</span>     <span style="color:#75715e">/* ローダーコールバックタグ送信コードの終了 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">102</span> };
-</span></span></code></pre></div><h4 id="パートbローダー関数の呼び出し">パートB：ローダー関数の呼び出し</h4>
-<p>このコードは<strong>ローダー関数の呼び出し</strong>セクションで使用されます。このスクリプトは同期的であり、次のステップに進む前に完了します。<code>u.data</code>に<code>script_id</code>という変数を追加し、基本URLのクライアント固有の部分（<code>b7381bb8-71e7-408c-91d0-3adb90b5c736</code>）を格納します。</p>
+</span></span></code></pre></div><h4 id="パートb-ローダー関数の呼び出し">パートB: ローダー関数の呼び出し</h4>
+<p>このコードは<strong>ローダー関数の呼び出し</strong>セクションで使用されます。このスクリプトは同期的であり、次のステップに進む前に完了します。<code>u.data</code>に<code>script_id</code>という変数を追加し、ベースURLのクライアント固有の部分（<code>b7381bb8-71e7-408c-91d0-3adb90b5c736</code>）を保存します。</p>
 <p>タグテンプレートを以下のように更新してください：</p>
 <ol>
 <li>行番号99および101-104のコメントを解除します。</li>
-<li>行番号101の&quot;src&quot;の値をベンダーの基本URLとIDに置き換えます。</li>
+<li>行番号101の&quot;src&quot;の値をベンダーのベースURLとIDに置き換えます。</li>
 </ol>
 <p>以下のスニペットは、タグテンプレートの完成したセクションを示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">96</span> <span style="color:#75715e">/* ローダー関数の呼び出しを開始 */</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">97</span> <span style="color:#75715e">/* ローダーを使用するためにJavaScriptの単一行コメント（&#34;//&#34;）のコメントを解除します。 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">97</span> <span style="color:#75715e">/* ローダーを使用するためにJavaScriptの単一行コメント（&#34;//&#34;）をコメント解除します。 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">98</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">99</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">initialized</span>) {
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">100</span>   <span style="color:#75715e">//u.loader({&#34;type&#34; : &#34;iframe&#34;, &#34;src&#34; : u.data.base_url + c.join(u.data.qsp_delim), &#34;cb&#34; : u.loader_cb, &#34;loc&#34; : &#34;body&#34;, &#34;id&#34; : &#39;utag_##UTID##&#39; });
@@ -1025,8 +978,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">105</span> <span style="color:#75715e">//u.loader({&#34;type&#34; : &#34;img&#34;, &#34;src&#34; : u.data.base_url + c.join(u.data.qsp_delim) });
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">106</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">107</span> <span style="color:#75715e">/* ローダー関数の呼び出しを終了 */</span>
-</span></span></code></pre></div><h4 id="パートcローダーコールバック関数">パートC：ローダーコールバック関数</h4>
-<p>このコードは<strong>ローダーコールバック関数</strong>セクションで使用されます。進む前に、<code>domainId</code>や<code>actionid</code>など動的に見える変数をマッピングします。</p>
+</span></span></code></pre></div><h4 id="パートc-ローダーコールバック関数">パートC: ローダーコールバック関数</h4>
+<p>このコードは<strong>ローダーコールバック関数</strong>セクションで使用されます。進む前に、<code>domainId</code>や<code>actionid</code>などの動的に見える変数をマッピングします。</p>
 <p>タグテンプレートファイルを以下のように更新してください：</p>
 <ol>
 <li>行番号84-85および91のコメントを解除します。</li>
@@ -1036,7 +989,7 @@
 </ol>
 <p>以下のスニペットは、テンプレート構成ファイルの完成したセクションを示しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#ae81ff">81</span> <span style="color:#75715e">/* ローダーコールバック関数の開始 */</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">82</span> <span style="color:#75715e">/* このローダーコールバック関数を使用するためにJavaScriptの単一行コメント（&#34;//&#34;）のコメントを解除します。 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">82</span> <span style="color:#75715e">/* このローダーコールバック関数を使用するためにJavaScriptの単一行コメント（&#34;//&#34;）をコメント解除します。 */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">83</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">84</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">loader_cb</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">85</span>   <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">initialized</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
@@ -1048,8 +1001,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">91</span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">92</span> };
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">93</span> <span style="color:#75715e">/* ローダーコールバック関数の終了 */</span>
-</span></span></code></pre></div><h4 id="パートdノースクリプトオプション">パートD：ノースクリプトオプション</h4>
-<p>このコードは、ブラウザがJavaScriptをサポートしていない場合やJavaScriptが無効になっている場合のフォールバックオプションを提供します。TealiumはJavaScriptを必要とするため、このフォールバックコードはオプションではありません。したがって、このコードは無視できます。</p>
+</span></span></code></pre></div><h4 id="パートd-no-scriptオプション">パートD: No scriptオプション</h4>
+<p>このコードは、ブラウザがJavaScriptをサポートしていない場合やJavaScriptが無効になっている場合のフォールバックオプションを提供します。TealiumはJavaScriptを必要とするため、このフォールバックコードはオプションではありません。したがって、このコードは無視してください。</p>
 <h4 id="テンプレートの保存">テンプレートの保存</h4>
 <p>元のファイルを上書きせずに新しいバージョンのテンプレートを保存するには、<strong>Save Version Template</strong>をクリックします。それ以外の場合は、<strong>Save Profile Template</strong>をクリックして元のファイルを上書きします。</p>
 
@@ -1112,7 +1065,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

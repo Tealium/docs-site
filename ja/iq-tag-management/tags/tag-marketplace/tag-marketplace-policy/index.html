@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/iq-tag-management/tags/tag-marketplace/tag-marketplace-policy/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="タグマーケットプレイスポリシーでは、ユーザーがタグマーケットプレイスで利用できるベンダータグを制御できます。このポリシーを使用して、事前に承認された限られたベンダータグのみがアカウントに追加できるように、アカウントを制限し保護することができます。" />
+<meta property="og:description" content="タグマーケットプレイスポリシーを使用すると、ユーザーが利用できるベンダータグを制御できます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>タグマーケットプレイスポリシー | タグマーケットプレイス | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -349,7 +349,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/advanced-settings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-advanced-settings">高度なタグ構成</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">ティーリアムジェネリックタグ</a></li>
+        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium汎用タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -729,102 +729,54 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      タグマーケットプレイスポリシーでは、ユーザーがタグマーケットプレイスで利用できるベンダータグを制御できます。このポリシーを使用して、事前に承認された限られたベンダータグのみがアカウントに追加できるように、アカウントを制限し保護することができます。
+      タグマーケットプレイスポリシーを使用すると、ユーザーが利用できるベンダータグを制御できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="前提条件">前提条件</h2>
+  <p>このポリシーを使用して、事前に承認されたベンダータグのみがアカウントに追加できるように制限し、保護することができます。これは、タグの追加や公開の権限を持つ複数のユーザーがいる大規模な組織にとって特に有用です。タグマーケットプレイスで利用可能なタグを制限することで、承認されていないタグがサイトに追加されるのを防ぐことができます。</p>
+<h2 id="前提条件">前提条件</h2>
 <ul>
 <li>この機能にアクセスするには、<a href="/ja/iq-tag-management/administration/user-permissions/about/">アカウント管理権限レベル</a>が必要です。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>タグマーケットプレイスには、Tealium iQが提供するすべてのベンダー統合が含まれています。これは、タグを追加し公開する権限を持つ任意のユーザーが、これらのタグのいずれかをあなたの構成（およびあなたのサイト）に追加できることを意味します。タグマーケットプレイスには数百のタグがあり、簡単に検索し閲覧することができます。例えば、タグマーケットプレイスで「Google」を検索すると、いくつかのオファーが表示されます。</p>
-<p>ポリシーが有効になると、それは自動的にすべての下位プロファイルに適用されます。有効にすると、ポリシーはデフォルトですべてのベンダーを非表示にします。あなたのサイトで承認されたベンダーをタグマーケットプレイスポリシーで選択すると、それらのベンダーのみが提供されます。利用可能なタグを制限することで、アカウントに追加のセキュリティが提供され、承認されていないタグがサイトにリリースされるのを防ぎます。</p>
-<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq%29manage-tag-marketplace-policy.jpg"><img src="/images/iq-tag-management/whiteui-tiq%29manage-tag-marketplace-policy.jpg"
+<h2 id="動作原理">動作原理</h2>
+<p>タグマーケットプレイスには、Tealium iQが提供するすべてのベンダー統合が含まれています。これは、タグを追加して公開する権限を持つ任意のユーザーが、これらのタグをあなたの構成（およびあなたのサイト）に追加できることを意味します。</p>
+<p>タグマーケットプレイスポリシーが有効になると、デフォルトではすべてのベンダーが非表示になります。サイトで承認したいベンダーを選択します。利用可能なタグを制限することで、アカウントのセキュリティがエンリッチメントされ、承認されていないタグがサイトにリリースされるのを防ぎます。</p>
+<p>タグマーケットプレイスポリシーにアクセスするには、管理メニューで<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。</p>
+<figure><a class="slb" href="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png"><img src="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy.png"
          alt="タグマーケットプレイスポリシーの管理"
          title="タグマーケットプレイスポリシーの管理"/>
     </a>
 </figure>
-<p>タグマーケットプレイスポリシーダイアログでは、以下の用語とボタンが使用されます：</p>
+<h3 id="タグの管理">タグの管理</h3>
+<p>タグマーケットプレイスでタグを管理するには：</p>
+<ol>
+<li><strong>タグマーケットプレイスポリシーを有効にする</strong> チェックボックスをクリックします。</li>
+<li><strong>マーケットプレイスタグ</strong> 列から、非表示にしたいタグまでスクロールし、<strong>非表示</strong>をクリックします。</li>
+<li><strong>非表示タグ</strong> 列から、表示したいタグまでスクロールし、<strong>表示</strong>をクリックします。
 <ul>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong><br>
-このボックスをチェックすると、アカウントのタグマーケットプレイスポリシーが有効になります。デフォルトでは、この機能は無効になっており、すべてのベンダータグがタグマーケットプレイスで利用可能です。</li>
-<li><strong>非表示タグ</strong><br>
-ポリシーが有効になると、このリストのタグは<strong>タグマーケットプレイス</strong>で利用できません。</li>
-<li><strong>マーケットプレイスタグ</strong><br>
-ポリシーが有効になると、このリストのタグが<strong>タグマーケットプレイス</strong>に表示されます。</li>
-<li><strong>すべて非表示</strong><br>
-このボタンをクリックすると、すべてのタグが<strong>非表示タグ</strong>ウィンドウに移動し、<strong>タグマーケットプレイス</strong>で利用できなくなります。</li>
-<li><strong>すべて表示</strong><br>
-このボタンをクリックすると、すべてのタグが<strong>タグマーケットプレイス</strong>ウィンドウに移動し、<strong>タグマーケットプレイス</strong>ですべてのタグが利用可能になります。</li>
-<li><strong>リセット</strong><br>
-リセットをクリックすると、保存をクリックする前の値にタグマーケットプレイスポリシーを戻すことができます。</li>
-<li><strong>保存</strong><br>
-保存をクリックすると、プロファイルの値が保存されます。</li>
+<li>すべてのタグを表示するには、<strong>すべて表示</strong>をクリックします。</li>
+<li>すべてのタグを非表示にするには、<strong>すべて非表示</strong>をクリックします。</li>
 </ul>
-<h3 id="タグの有効化">タグの有効化</h3>
-<p>このセクションでは、タグマーケットプレイスで指定したタグのみを利用可能にする方法を説明し、Tealiumタグを例に使用します。</p>
-<p>ポリシーで「Tealium」タグのみを有効にするには、次の手順を使用します：</p>
-<ol>
-<li>管理メニューで、<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。<strong>タグマーケットプレイスポリシーの管理</strong>ダイアログが表示されます。</li>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong>チェックボックスをクリックします。</li>
-<li>非表示タグのリストを下にスクロールし、すべてのTealiumタグの隣にある<strong>表示</strong>をクリックします。<br>
-選択したTealiumタグがマーケットプレイスタグの列に移動し、これらのタグのみがタグマーケットプレイスに表示されることを示します。<br>
-<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq%29manage-tag-marketplace-policy.jpg"><img src="/images/iq-tag-management/whiteui-tiq%29manage-tag-marketplace-policy.jpg"
-             alt="タグマーケットプレイスポリシーの管理"
-             title="タグマーケットプレイスポリシーの管理"/>
-        </a>
-    </figure></li>
-<li><strong>保存</strong>をクリックします。<br>
-このステップの後に保存して公開する必要はありません、変更はすぐに有効になります。このポリシーが適用されると、タグマーケットプレイスは「Tealium」タグのみを提供し、タグマーケットプレイスポリシーが有効になっていることを示すアラートが表示されます。<br>
-<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-tag-marketplace-policy-tag-marketplace-policy-enabled.jpg"><img src="/images/iq-tag-management/whiteui-tiq-tag-marketplace-policy-tag-marketplace-policy-enabled.jpg"
-             alt="タグマーケットプレイスポリシー_タグマーケットプレイスポリシー有効"
-             title="タグマーケットプレイスポリシー_タグマーケットプレイスポリシー有効"/>
-        </a>
-    </figure></li>
-<li>別のベンダーを検索してみてください。<br>
-結果は返されません。</li>
-</ol>
-<h3 id="タグの表示">タグの表示</h3>
-<ol>
-<li>管理メニューで、<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。<strong>タグマーケットプレイスポリシーの管理</strong>ダイアログが表示されます。</li>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong>チェックボックスをクリックします。</li>
-<li>非表示タグの列から、表示したいタグを特定します。</li>
-<li>目的のタグの隣にある<strong>表示</strong>をクリックします。<br>
-タグが<strong>マーケットプレイスタグ</strong>列に移動します。</li>
-<li>他のタグを追加するために繰り返します。</li>
+</li>
 <li><strong>保存</strong>をクリックして確認します。</li>
 </ol>
-<h3 id="タグの非表示">タグの非表示</h3>
-<ol>
-<li>管理メニューで、<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。<strong>タグマーケットプレイスポリシーの管理</strong>ダイアログが表示されます。</li>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong>チェックボックスをクリックします。</li>
-<li><strong>マーケットプレイスタグ</strong>列から、非表示にしたいタグを特定します。</li>
-<li>目的のタグの隣にある<strong>非表示</strong>をクリックします。<br>
-タグが<strong>非表示タグ</strong>列に戻されます。</li>
-<li>他のタグを非表示にするために繰り返します。</li>
-<li><strong>保存</strong>をクリックして確認します。</li>
-</ol>
-<h3 id="すべてのタグを表示">すべてのタグを表示</h3>
-<ol>
-<li>管理メニューで、<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。<strong>タグマーケットプレイスポリシーの管理</strong>ダイアログが表示されます。</li>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong>チェックボックスをクリックします。</li>
-<li><strong>すべて表示</strong>をクリックします。<br>
-すべてのタグが<strong>マーケットプレイスタグ</strong>列に移動します。</li>
-<li><strong>保存</strong>をクリックして確認します。</li>
-</ol>
-<h3 id="すべてのタグを非表示">すべてのタグを非表示</h3>
-<ol>
-<li>管理メニューで、<strong>タグマーケットプレイスポリシーの管理</strong>をクリックします。<strong>タグマーケットプレイスポリシーの管理</strong>ダイアログが表示されます。</li>
-<li><strong>タグマーケットプレイスポリシーを有効にする</strong>チェックボックスをクリックします。</li>
-<li><strong>すべて非表示</strong>をクリックします。<br>
-すべてのタグが<strong>非表示タグ</strong>列に戻されます。</li>
-<li><strong>保存</strong>をクリックして確認します。</li>
-</ol>
+<p>このステップの後で保存して公開する必要はありません。変更は即時に有効になります。</p>
+<p>たとえば、「Tealium」で始まるタグのみを表示する場合：</p>
+<figure><a class="slb" href="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png"><img src="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-only.png"
+         alt="タグマーケットプレイスポリシーの管理"
+         title="タグマーケットプレイスポリシーの管理"/>
+    </a>
+</figure>
+<p>タグマーケットプレイスは現在、「Tealium」タグのみを提供し、タグマーケットプレイスポリシーが有効であることを示すバナーが表示されます：</p>
+<figure><a class="slb" href="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png"><img src="/images/iq-tag-management/tags/tag-marketplace-policy/manage-tag-marketplace-policy-tealium-list.png"
+         alt="タグマーケットプレイスポリシーの管理"
+         title="タグマーケットプレイスポリシーの管理"/>
+    </a>
+</figure>
 <h3 id="ポリシーのリセット">ポリシーのリセット</h3>
-<p><strong>リセット</strong>をクリックすると、保存前の表示/非表示の操作がキャンセルされ、2つの列が保存前の状態に戻ります。</p>
+<p><strong>リセット</strong>をクリックすると、保存する前の両方の列を保存前の元の状態に戻し、保存前の表示または非表示のアクションがキャンセルされます。</p>
 
 </div>
 
@@ -870,7 +822,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年September月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -885,12 +837,8 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">タグの有効化</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">タグの表示</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E9%9D%9E%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">タグの非表示</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%BF%E3%82%B0%E3%82%92%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">すべてのタグを表示</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%BF%E3%82%B0%E3%82%92%E9%9D%9E%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">すべてのタグを非表示</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">タグの管理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">ポリシーのリセット</a></li>
               </nav>
   </aside></nav>
