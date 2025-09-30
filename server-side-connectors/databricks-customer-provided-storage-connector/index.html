@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "17",
+        reading_time  : "20",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1471,6 +1471,26 @@
 <td>✓</td>
 <td>✗</td>
 </tr>
+<tr>
+<td>Send Entire Event Data (Batch)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Custom Event Data (Batch)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data (Batch)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data (Batch)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
 </tbody>
 </table>
 <h2 id="how-it-works">How it works</h2>
@@ -1734,11 +1754,12 @@
 </ul>
 <p>Authentication settings vary based on the cloud solution you use:</p>
 <h3 id="databricks-unity-catalog-volume">Databricks Unity Catalog Volume</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you expect more than 1000 events per minute, use the batch actions.</p>
 <ul>
-<li><strong>JDBC HTTP path</strong>: The HTTP path to your compute resource. For example, <code>/sql/1.0/warehouses/3fbc78304284503a</code>.</li>
 <li><strong>Authentication type</strong>: Select the <strong>Databricks OAuth</strong> authentication type.</li>
 <li><strong>Client ID</strong>: The unique identifier assigned to your service principal secret.</li>
 <li><strong>Secret</strong>: The string that acts like a password, used by the application to authenticate with Databricks as a service principal.</li>
+<li><strong>JDBC HTTP path</strong>: The HTTP path to your compute resource. For example, <code>/sql/1.0/warehouses/3fbc78304284503a</code>.</li>
 </ul>
 <h3 id="amazon-aws-s3">Amazon AWS S3</h3>
 <ul>
@@ -1858,12 +1879,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Volume</td>
-<td>Select the Databricks Unity Catalog Volume or provide a custom value.</td>
-</tr>
-<tr>
-<td>Cloud Bucket</td>
-<td>Select the cloud bucket or provide a custom value.</td>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databrick pulls the the data.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -1889,10 +1906,6 @@
 <td>Timestamp Attribute</td>
 <td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
 </tr>
-<tr>
-<td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
-</tr>
 </tbody>
 </table>
 <h3 id="send-custom-event-data">Send Custom Event Data</h3>
@@ -1906,12 +1919,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Volume</td>
-<td>Select the Databricks Unity Catalog Volume or provide a custom value.</td>
-</tr>
-<tr>
-<td>Cloud Bucket</td>
-<td>Select the cloud bucket or provide a custom value.</td>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databrick pulls the the data.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -1929,10 +1938,6 @@
 <td>Event Parameters</td>
 <td>Map event attributes to the columns of the Databricks table. You must map at least one event attribute.</td>
 </tr>
-<tr>
-<td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
-</tr>
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
@@ -1946,12 +1951,185 @@
 </thead>
 <tbody>
 <tr>
-<td>Volume</td>
-<td>Select the Databricks Unity Catalog Volume or provide a custom value.</td>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databrick pulls the the data.</td>
 </tr>
 <tr>
-<td>Cloud Bucket</td>
-<td>Select the cloud bucket or provide a custom value.</td>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Column to record the visitor data</td>
+<td>Select the <code>VARIANT</code> column to record the visitor data.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Select the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data with Visitor Data</td>
+<td>Select to include the current visit data with visitor data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databrick pulls the the data.</td>
+</tr>
+<tr>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Visitor Parameters</td>
+<td>Map visitor attributes to the columns of the Databricks table. You must map at least one visitor attribute.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-event-data-batch">Send Entire Event Data (Batch)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databricks pulls the data.</td>
+</tr>
+<tr>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Column to record the payload</td>
+<td>Select the <code>VARIANT</code> column to record the payload.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Select the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-event-data-batch">Send Custom Event Data (Batch)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databricks pulls the data.</td>
+</tr>
+<tr>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Event Parameters</td>
+<td>Map the parameters to the columns of the table. You must map at least one parameter.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data (Batch)</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databricks pulls the data.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -1983,12 +2161,19 @@
 </tr>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
-<h4 id="parameters-3">Parameters</h4>
+<h3 id="send-custom-visitor-data-batch">Send Custom Visitor Data (Batch)</h3>
+<h4 id="batch-limits-4">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-7">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1998,12 +2183,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Volume</td>
-<td>Select the Databricks Unity Catalog Volume or provide a custom value.</td>
-</tr>
-<tr>
-<td>Cloud Bucket</td>
-<td>Select the cloud bucket or provide a custom value.</td>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databricks pulls the data.</td>
 </tr>
 <tr>
 <td>Databricks Catalog</td>
@@ -2019,11 +2200,11 @@
 </tr>
 <tr>
 <td>Visitor Parameters</td>
-<td>Map visitor attributes to the columns of the Databricks table. You must map at least one visitor attribute.</td>
+<td>Map the parameters to the columns of the table. You must map at least one parameter.</td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
-<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. Default <code>10</code> minutes.</td>
+<td>Time To Live (Minute) should be between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -2087,7 +2268,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 10, 2025 
+          <p>This page was last updated:  September 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2121,6 +2302,10 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-batch" href="javascript:void(0)">Send Entire Event Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data-batch" href="javascript:void(0)">Send Custom Event Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-batch" href="javascript:void(0)">Send Custom Visitor Data (Batch)</a></li>
               </nav>
   </aside></nav>
 

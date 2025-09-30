@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift/api/tealium-config/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="メインのTealiumクラスの構成オプションを構成するためのクラスです。個々のモジュールは、有効になっている場合、TealiumConfigクラスの拡張を提供します。" />
+<meta property="og:description" content="メインのTealiumクラスの構成オプションを構成するためのクラスです。有効になっている場合、個々のモジュールはTealiumConfigクラスのために独自の拡張を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>TealiumConfig | APIリファレンス | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -385,7 +385,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      メインのTealiumクラスの構成オプションを構成するためのクラスです。個々のモジュールは、有効になっている場合、TealiumConfigクラスの拡張を提供します。
+      メインのTealiumクラスの構成オプションを構成するためのクラスです。有効になっている場合、個々のモジュールはTealiumConfigクラスのために独自の拡張を提供します。
     </p>
   
 </div>
@@ -415,11 +415,11 @@
 </tr>
 <tr>
 <td><a href="#adobevisitordataproviderid"><code>adobeVisitorDataProviderId</code></a></td>
-<td>Adobeが提供するデータプロバイダーIDを構成します。これは、ECIDを既知のIDにリンクする際に必要です。</td>
+<td>Adobeから提供されるデータプロバイダーIDを構成します。これは、ECIDを既知のIDにリンクする際に必要です。</td>
 </tr>
 <tr>
 <td><a href="#adobevisitorexistingecid"><code>adobeVisitorExistingEcid</code></a></td>
-<td>以前のインストールからの既存のECIDを構成し、新しいECIDを要求する代わりにAdobe SDKなどで使用します。</td>
+<td>以前のインストールからの既存のECIDを構成し、新しいECIDを要求する代わりに使用します。</td>
 </tr>
 <tr>
 <td><a href="#adobevisitororgid"><code>adobeVisitorOrgId</code></a></td>
@@ -427,7 +427,7 @@
 </tr>
 <tr>
 <td><a href="#adobevisitorretries"><code>adobeVisitorRetries</code></a></td>
-<td>無効な訪問IDのリトライが許可される回数を構成します。これにより、リクエストが失敗し、ECIDなしでトラッキングコールが送信されます。</td>
+<td>ECIDなしでトラッキングコールが送信される前に、無効な訪問IDのリトライが許可される回数。</td>
 </tr>
 <tr>
 <td><a href="#appDelegateProxyEnabled"><code>appDelegateProxyEnabled</code></a></td>
@@ -447,7 +447,7 @@
 </tr>
 <tr>
 <td><a href="#batchingbypasskeys"><code>batchingBypassKeys</code></a></td>
-<td>バッチ処理をバイパスする（個別のイベントとして送信される）イベント名のリストを構成します。</td>
+<td>バッチ処理がバイパスされる（個別のイベントとして送信される）イベント名のリストを構成します。</td>
 </tr>
 <tr>
 <td><a href="#batchingenabled"><code>batchingEnabled</code></a></td>
@@ -456,6 +456,10 @@
 <tr>
 <td><a href="#batchsize"><code>batchSize</code></a></td>
 <td>単一のバッチリクエストに組み合わせるイベントの量を構成します（最大：10）。</td>
+</tr>
+<tr>
+<td><a href="#batteryreportingenabled"><code>batteryReportingEnabled</code></a></td>
+<td>DeviceDataモジュールでのバッテリーレポートを有効または無効にします。</td>
 </tr>
 <tr>
 <td><a href="#connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></a></td>
@@ -503,7 +507,7 @@
 </tr>
 <tr>
 <td><a href="#dispatchlisteners"><code>dispatchListeners</code></a></td>
-<td>トラッキングコールがディスパッチされる直前にリスニングするカスタム <code>DispatchListener</code> を追加するオプションを提供します。</td>
+<td>トラッキングコールのディスパッチ直前にリスニングするカスタム <code>DispatchListener</code> を追加するオプションを提供します。</td>
 </tr>
 <tr>
 <td><a href="#dispatchvalidators"><code>dispatchValidators</code></a></td>
@@ -511,11 +515,11 @@
 </tr>
 <tr>
 <td><a href="#enablebackgroundlocation"><code>enableBackgroundLocation</code></a></td>
-<td>アプリがバックグラウンドで実行されている間に位置情報の更新が行われるようにします。</td>
+<td>アプリがバックグラウンドで実行されている間に位置情報の更新を有効にします。</td>
 </tr>
 <tr>
 <td><a href="#existingvisitorid"><code>existingVisitorId</code></a></td>
-<td>既存の訪問IDを構成します。これはアプリ拡張で第一者IDとして使用されます。</td>
+<td>アプリ拡張で第一者IDとして使用される既存の訪問IDを構成します。</td>
 </tr>
 <tr>
 <td><a href="#geofencefilename"><code>geofenceFileName</code></a></td>
@@ -535,19 +539,19 @@
 </tr>
 <tr>
 <td><a href="#hosteddatalayerkeys"><code>hostedDataLayerKeys</code></a></td>
-<td>データレイヤーIDを検索する際にホストされたデータレイヤーモジュールが使用するイベントマッピングを構成します。</td>
+<td>ホストされたデータレイヤーモジュールがデータレイヤーIDを検索する際に使用するイベントマッピングを構成します。</td>
 </tr>
 <tr>
 <td><a href="#iscollectenabled"><code>isCollectEnabled</code></a></td>
-<td>Collectディスパッチャを無効にするオプションを提供します。</td>
+<td>Collectディスパッチャーを無効にするオプションを提供します。</td>
 </tr>
 <tr>
 <td><a href="#lifecycleautotrackingenabled"><code>lifecycleAutoTrackingEnabled</code></a></td>
-<td>ライフサイクルの自動追跡を有効または無効にします。デフォルトは <code>true</code> です。<code>false</code> に構成し、ライフサイクルの起動/スリープ/ウェイクイベントが必要な場合は、<code>LifecycleModule</code> の公開メソッドを使用して手動で呼び出す必要があります。</td>
+<td>ライフサイクルの自動追跡を有効または無効にします。デフォルトは <code>true</code>です。<code>false</code>に構成した場合、ライフサイクルの起動/スリープ/ウェイクイベントが必要な場合は、<code>LifecycleModule</code>の公開メソッドを使用して手動で呼び出す必要があります。</td>
 </tr>
 <tr>
 <td><a href="#logger"><code>logger</code></a></td>
-<td>現在の <code>TealiumLogger</code> を置き換える <code>TealiumLoggerProtocol</code> に準拠したカスタムロガーを構成します。</td>
+<td>現在の <code>TealiumLogger</code> を置き換える、<code>TealiumLoggerProtocol</code> に準拠したカスタムロガーを構成します。</td>
 </tr>
 <tr>
 <td><a href="#loglevel"><code>logLevel</code></a></td>
@@ -571,7 +575,7 @@
 </tr>
 <tr>
 <td><a href="#onconsentexpiration"><code>onConsentExpiration</code></a></td>
-<td>同意選択が期限切れになった後に実行するコールバック。</td>
+<td>同意選択が期限切れになった際に実行するコールバック。</td>
 </tr>
 <tr>
 <td><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
@@ -603,7 +607,7 @@
 </tr>
 <tr>
 <td><a href="#remoteapienabled"><code>remoteAPIEnabled</code></a></td>
-<td><code>remote_api</code> イベントを有効または無効にします。DispatchQueueモジュールが使用されている場合、RemoteCommandsモジュールに必要です。</td>
+<td><code>remote_api</code>イベントを有効または無効にします。DispatchQueueモジュールが使用されている場合、RemoteCommandsモジュールに必要です。</td>
 </tr>
 <tr>
 <td><a href="#remotecommands"><code>remoteCommands</code></a></td>
@@ -618,8 +622,12 @@
 <td><code>WKWebView</code>を取り付けるための現在の<code>UIView</code>を構成します。</td>
 </tr>
 <tr>
+<td><a href="#screenreportingenabled"><code>screenReportingEnabled</code></a></td>
+<td>DeviceDataモジュールでのスクリーンレポートを有効または無効にします。</td>
+</tr>
+<tr>
 <td><a href="#searchadsenabled"><code>searchAdsEnabled</code></a></td>
-<td>AttributionモジュールのApple Search Ads APIを有効または無効にします。</td>
+<td>Apple Search Ads APIをAttributionモジュールで有効または無効にします</td>
 </tr>
 <tr>
 <td><a href="#sendcrashdataoncrashdetected"><code>sendCrashDataOnCrashDetected</code></a></td>
@@ -627,7 +635,7 @@
 </tr>
 <tr>
 <td><a href="#senddeeplinkevent"><code>sendDeepLinkEvent</code></a></td>
-<td>ディープリンクが受信されるたびに関連データを含む <code>deep_link</code> イベントを送信します</td>
+<td>ディープリンクが受信されるたびに関連データを含む<code>deep_link</code>イベントを送信します</td>
 </tr>
 <tr>
 <td><a href="#sessioncountingenabled"><code>sessionCountingEnabled</code></a></td>
@@ -635,7 +643,7 @@
 </tr>
 <tr>
 <td><a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a></td>
-<td><code>WKWebView</code> のクッキーオブザーバーを追加するかどうかを決定します</td>
+<td><code>WKWebView</code>クッキーオブザーバーを追加するかどうかを決定します</td>
 </tr>
 <tr>
 <td><a href="#shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></a></td>
@@ -643,11 +651,11 @@
 </tr>
 <tr>
 <td><a href="#skadattributionenabled"><code>skAdAttributionEnabled</code></a></td>
-<td><a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork</a> フレームワークの使用を有効にします</td>
+<td><a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork</a>フレームワークの使用を有効にします</td>
 </tr>
 <tr>
 <td><a href="#skadconversionkeys"><code>skAdConversionKeys</code></a></td>
-<td><a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue"><code>SKAdNetwork.updateConversionValue()</code></a> メソッドを呼び出すイベントと値を定義します</td>
+<td><a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue"><code>SKAdNetwork.updateConversionValue()</code></a>メソッドを呼び出すイベントと値を定義します</td>
 </tr>
 <tr>
 <td><a href="#tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></a></td>
@@ -655,11 +663,11 @@
 </tr>
 <tr>
 <td><a href="#tealiumconfig"><code>TealiumConfig()</code></a></td>
-<td><code>TealiumConfig</code> オブジェクトのコンストラクタ</td>
+<td><code>TealiumConfig</code>オブジェクトのコンストラクタ</td>
 </tr>
 <tr>
 <td><a href="#timedeventtriggers"><code>timedEventTriggers</code></a></td>
-<td>タイムドイベントを自動的に追跡するための <code>TimedEventTrigger</code> オブジェクトのリスト</td>
+<td>タイムドイベントを自動的に追跡するための<code>TimedEventTrigger</code>オブジェクトのリスト</td>
 </tr>
 <tr>
 <td><a href="#updatedistance"><code>updateDistance</code></a></td>
@@ -679,12 +687,12 @@
 </tr>
 <tr>
 <td><a href="#webviewconfig"><code>webviewConfig</code></a></td>
-<td>カスタム <code>WKWebviewConfiguration</code> オブジェクトを許可し、Tealiumタグ管理ウェブビューで使用されます</td>
+<td>カスタム<code>WKWebviewConfiguration</code>オブジェクトを許可し、Tealiumタグ管理ウェブビューで使用されます</td>
 </tr>
 </tbody>
 </table>
 <h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
-<p>後で実行するリモートコマンドを追加します。</p>
+<p>後で実行するためのリモートコマンドを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>addRemoteCommand(command)
 </span></span></code></pre></div><table>
 <thead>
@@ -698,7 +706,7 @@
 <tr>
 <td style="text-align:left"><code>command</code></td>
 <td style="text-align:left"><code>RemoteCommand</code></td>
-<td style="text-align:left">追加される <code>TealiumRemoteCommand</code> のインスタンス</td>
+<td style="text-align:left">追加される<code>TealiumRemoteCommand</code>のインスタンス</td>
 </tr>
 </tbody>
 </table>
@@ -717,13 +725,13 @@
 </span></span><span style="display:flex;"><span>config.adobeVisitorAuthState = .loggedOut
 </span></span><span style="display:flex;"><span>config.adobeVisitorAuthState = .unknown
 </span></span></code></pre></div><h3 id="adobevisitorcustomvisitorid"><code>adobeVisitorCustomVisitorId</code></h3>
-<p>初期化時に既知の訪問IDをAdobe ECIDに構成します。将来ECIDが変更された場合は、<a href="/ja/platforms/ios-swift/api/tealium/#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a> を呼び出して訪問IDを更新してください。</p>
+<p>初期化時に既知のAdobe ECIDがある場合、そのECIDを既知の訪問IDに構成します。将来ECIDが変更された場合は、<a href="/ja/platforms/ios-swift/api/tealium/#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a>を呼び出して訪問IDを更新します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.adobeVisitorCustomVisitorId = <span style="color:#e6db74">&#34;20381482060927465156359999806251989655&#34;</span>
 </span></span></code></pre></div><h3 id="adobevisitordataproviderid"><code>adobeVisitorDataProviderId</code></h3>
 <p>Adobeによって提供されるデータプロバイダーIDを構成します。これは、ECIDを既知のIDにリンクする際に必要です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.adobeVisitorDataProviderId = <span style="color:#e6db74">&#34;01&#34;</span>
 </span></span></code></pre></div><h3 id="adobevisitorexistingecid"><code>adobeVisitorExistingEcid</code></h3>
-<p>以前のインストールからの既存のECIDを構成し、新しいECIDの要求の代わりに使用します。例えば、Adobe SDKなどです。</p>
+<p>以前のインストールからの既存のECIDを構成し、新しいECIDを要求する代わりに使用します。例えば、Adobe SDKなどです。</p>
 <p>例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.adobeVisitorExistingEcid = <span style="color:#e6db74">&#34;20381482060927465156359999806251989655&#34;</span>
 </span></span></code></pre></div><h3 id="adobevisitororgid"><code>adobeVisitorOrgId</code></h3>
@@ -739,34 +747,34 @@
 <p>AppDelegateプロキシを有効にして、自動的にディープリンクトラッキングを開始し、ディープリンクからTealiumトレースセッションを開始します。このプロパティはデフォルトで有効になっており、<code>true</code>に構成されています。無効にするには、プロパティを<code>false</code>に構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.appDelegateProxyEnabled = <span style="color:#66d9ef">false</span>
 </span></span></code></pre></div><h3 id="autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></h3>
-<p><a href="/ja/platforms/ios-swift/module-list/autotracking/#block-list">自動トラッキングモジュール</a>で使用します。</p>
+<p><a href="/ja/platforms/ios-swift/module-list/autotracking/#block-list">AutoTrackingモジュール</a>で使用します。</p>
 <p>自動トラッキングから除外するビューのリストを含むブロックリストファイルの名前を構成します。ファイルはAndroidの<code>assets</code>ディレクトリにある必要があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.autoTrackingBlocklistFilename = <span style="color:#e6db74">&#34;autotracking-blocklist.json&#34;</span>
 </span></span></code></pre></div><h3 id="autotrackingblocklisturl"><code>autoTrackingBlocklistURL</code></h3>
-<p><a href="/ja/platforms/ios-swift/module-list/autotracking/#block-list">自動トラッキングモジュール</a>で使用します。</p>
+<p><a href="/ja/platforms/ios-swift/module-list/autotracking/#block-list">AutoTrackingモジュール</a>で使用します。</p>
 <p>自動トラッキングから除外するビューのリストを含むJSON形式のブロックリストファイルへのURLを構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.autoTrackingBlocklistUrl = <span style="color:#e6db74">&#34;https://example.com/autotracking-blocklist.json&#34;</span>
 </span></span></code></pre></div><h3 id="autotrackingcollectordelegate"><code>autoTrackingCollectorDelegate</code></h3>
-<p><a href="/ja/platforms/ios-swift/module-list/autotracking/">自動トラッキングモジュール</a>で使用します。</p>
-<p><code>TealiumConfig</code>オブジェクトに構成されたグローバルデリゲートで、<a href="/ja/platforms/ios-swift/module-list/autotracking/">自動トラッキングモジュール</a>によって追跡されたビューに含まれるデータをカスタマイズするためにこのデリゲートを編集します。</p>
+<p><a href="/ja/platforms/ios-swift/module-list/autotracking/">AutoTrackingモジュール</a>で使用します。</p>
+<p><code>TealiumConfig</code>オブジェクトに構成されたグローバルデリゲートで、<a href="/ja/platforms/ios-swift/module-list/autotracking/">AutoTrackingモジュール</a>によって追跡されたビューに含まれるデータをカスタマイズするためにこのデリゲートを編集します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.autoTrackingCollectorDelegate = myCollectorDelegate
 </span></span></code></pre></div><h3 id="batchingbypasskeys"><code>batchingBypassKeys</code></h3>
 <p>バッチ処理をバイパスする（個々のイベントとして送信される）イベント名のリストを構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.batchingBypassKeys = [<span style="color:#e6db74">&#34;home_screen&#34;</span>]
 </span></span></code></pre></div><h3 id="batchingenabled"><code>batchingEnabled</code></h3>
-<p>イベントのバッチ処理を有効または無効にします。デフォルトでは無効です。</p>
+<p>イベントバッチ処理を有効または無効にします。デフォルトでは無効です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.batchingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="batchsize"><code>batchSize</code></h3>
-<p>単一のバッチリクエストに組み合わせるイベントの量を構成します。最大は10です。</p>
+<p>単一のバッチリクエストに組み合わせるイベントの数を構成します。最大は10です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.batchSize = <span style="color:#ae81ff">8</span>
 </span></span></code></pre></div><h3 id="collectors"><code>Collectors</code></h3>
-<p>コレクターは、デバイスから追加情報を収集し、データレイヤーに追加してからTealium Customer Data Hubに送信するモジュールです。いくつかのコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてインストールされています。</p>
-<p>以下の表は、利用可能なコレクターをリストしています。デフォルトのコレクターはコレクター名の隣に <code>*</code> が付けられています。</p>
+<p>コレクターは、デバイスから追加情報を収集し、データレイヤーに追加してからTealium Customer Data Hubに送信するモジュールです。いくつかのコレクターはコアライブラリに含まれており、他のコレクターは別のモジュールとしてオプションでインストールされます。</p>
+<p>以下の表は、利用可能なコレクターをリストしています。デフォルトのコレクターはコレクター名の隣に<code>*</code>が付けられています。</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">コレクター名</th>
-<th style="text-align:left">TealiumConfig 参照</th>
+<th style="text-align:left">TealiumConfig参照</th>
 </tr>
 </thead>
 <tbody>
@@ -796,7 +804,7 @@
 <p>次の例は、使用しているコレクターの既存のリストに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.collectors = [Collectors.AdobeVisitor]
 </span></span></code></pre></div><h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
-<p>有効にすると（デフォルト）、接続性モジュールは指定された間隔（<code>setConnectivityRefreshInterval</code>で制御）で接続をチェックします。接続が再開されると、キューに入れられたディスパッチが送信されます。</p>
+<p>有効にすると（デフォルト）、接続性モジュールは指定された間隔（<code>setConnectivityRefreshInterval</code>を介して制御）で接続をチェックします。接続が再開されると、キューに入れられたディスパッチが送信されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.connectivityRefreshEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="connectivityrefreshinterval"><code>connectivityRefreshInterval</code></h3>
 <p>秒単位でデフォルトの接続性リフレッシュ間隔を構成します。TealiumConfigインスタンスで構成されていない場合、デフォルトは30秒です。</p>
@@ -807,16 +815,16 @@
 <li>CCPA: 395日</li>
 <li>GDPR: 365日</li>
 </ul>
-<p>以下は、同意の有効期限を90日に構成します。</p>
+<p>以下は、同意の有効期限を90日に構成する例です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentExpiry = (<span style="color:#ae81ff">90</span>, .days)
 </span></span></code></pre></div><h3 id="consentloggingenabled"><code>consentLoggingEnabled</code></h3>
-<p><a href="/ja/consent/server-side/event-specs/">同意ログ記録</a>機能を有効にし、すべての同意ステータスの変更を監査目的でTealium Customer Data Hubに送信します。</p>
+<p><a href="/ja/consent/server-side/event-specs/">同意ログ記録</a>機能を有効にし、すべての同意ステータス変更を監査目的でTealium Customer Data Hubに送信します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentLoggingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="consentpolicy"><code>consentPolicy</code></h3>
 <p><a href="/ja/platforms/ios-swift/consent-management/#set-policy">同意ポリシー</a>を構成します。このプロパティが構成されている場合のみ、同意マネージャーが有効になります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentPolicy = .ccpa
 </span></span></code></pre></div><h3 id="deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></h3>
-<p>標準的なディープリンク（Facebookや他のソースからのアプリへのリンクなど）の自動追跡を有効または無効にします。デフォルトでは有効になっています。</p>
+<p>標準的なディープリンク（Facebookや他のソースからのアプリへのリンクなど）およびQRトレースの自動追跡を有効または無効にします。デフォルトでは有効になっています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.deepLinkTrackingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="desiredaccuracy"><code>desiredAccuracy</code></h3>
 <p>アプリが受け取りたい位置情報の精度。</p>
@@ -832,11 +840,11 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>.bestForNavigation</code></td>
-<td style="text-align:left">ナビゲーションアプリで必要とされる精密な位置情報を常に提供するための精度レベル</td>
+<td style="text-align:left">ナビゲーションアプリで常に正確な位置情報が必要な場合に使用する精度レベル</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>.best</code></td>
-<td style="text-align:left">非常に高い精度ですが、ナビゲーションアプリで必要とされるレベルの精度は必要ありません</td>
+<td style="text-align:left">非常に高い精度が必要だが、ナビゲーションアプリほどの精度は必要ない場合</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>.nearestTenMeters</code></td>
@@ -860,7 +868,7 @@
 </tr>
 </tbody>
 </table>
-<p>Appleの<a href="https://developer.apple.com/documentation/corelocation/cllocationaccuracy">位置情報精度定数</a>についてもっと学ぶ。</p>
+<p>Appleの<a href="https://developer.apple.com/documentation/corelocation/cllocationaccuracy">位置精度定数</a>についてもっと学ぶ。</p>
 <h3 id="diskstoragedirectory"><code>diskStorageDirectory</code></h3>
 <p>ディスク保存用のディレクトリを構成します。デフォルトは<code>.caches</code>です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.diskStorageDirectory = .documents
@@ -882,11 +890,17 @@
 </span></span></code></pre></div><h3 id="enablebackgroundlocation"><code>enableBackgroundLocation</code></h3>
 <p>アプリがバックグラウンドで実行されている間に位置情報の更新を有効にします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.enableBackgroundLocation = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h3 id="batteryreportingenabled"><code>batteryReportingEnabled</code></h3>
+<p>デバイスデータモジュールでのバッテリー報告を有効または無効にします（デフォルト：有効）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.batteryReportingEnabled = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h3 id="screenreportingenabled"><code>screenReportingEnabled</code></h3>
+<p>デバイスデータモジュールでのスクリーン報告を有効または無効にします（デフォルト：有効）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.screenReportingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="minimumfreediskspace"><code>minimumFreeDiskSpace</code></h3>
-<p>ディスク保存を有効にするための最小空きディスク容量をメガバイト単位で構成します。</p>
+<p>ディスク保存を有効にするための最小限の空きディスクスペースをメガバイト単位で構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.minimumFreeDiskSpace = <span style="color:#ae81ff">25</span>
 </span></span></code></pre></div><h3 id="minutesbetweenrefresh"><code>minutesBetweenRefresh</code></h3>
-<p>公開構成を取得する頻度を決定します。</p>
+<p>公開構成をフェッチする頻度を決定します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.minutesBetweenRefresh = <span style="color:#ae81ff">15</span>
 </span></span></code></pre></div><h3 id="onconsentexpiration"><code>onConsentExpiration</code></h3>
 <p>同意選択が期限切れになった際に実行するコールバック。</p>
@@ -917,7 +931,7 @@
 </table>
 <p>デフォルトのURLは以下の通りです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://collect.tealiumiq.com/event/
-</span></span></code></pre></div><p>このプロパティはカスタムホスト名を構成するか、特定の地域のホスト名を構成するために使用されます。以下の例では、EU Central地域内に留まるようにTealium Collectの基本URLを構成しています：</p>
+</span></span></code></pre></div><p>このプロパティは、カスタムホスト名を構成するか、特定の地域のホスト名を構成するために使用されます。以下の例では、EU Central地域内に留まるようにTealium Collectの基本URLを構成しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> url = <span style="color:#e6db74">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
 </span></span><span style="display:flex;"><span>config.overrideCollectURL = url
 </span></span></code></pre></div><h3 id="overridecollectbatchurl"><code>overrideCollectBatchURL</code></h3>
@@ -945,10 +959,10 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> url = <span style="color:#e6db74">&#34;https://collect-eu-central-1.tealiumiq.com/bulk-event/&#34;</span>
 </span></span><span style="display:flex;"><span>config.overrideCollectBatchURL = url
 </span></span></code></pre></div><h3 id="overridecollectdomain"><code>overrideCollectDomain</code></h3>
-<p>デフォルトのCollectドメインを上書きします。プロトコルを除外したホスト名（例：<code>my-company.com</code>）を値として構成します。このプロパティはバッチおよび単一イベントの送信に使用します。<code>overrideCollectURL</code>または<code>overrideCollectBatchURL</code>が入力されている場合、このプロパティが優先されます。</p>
+<p>デフォルトのCollectドメインを上書きします。プロトコルを除外したホスト名（例：<code>my-company.com</code>）を値として構成します。このプロパティはバッチおよび単一イベントのディスパッチの両方に使用します。<code>overrideCollectURL</code>または<code>overrideCollectBatchURL</code>が入力されている場合、このプロパティが優先されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.overrideCollectDomain = <span style="color:#e6db74">&#34;my-company.com&#34;</span>
 </span></span></code></pre></div><h3 id="overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></h3>
-<p>同意イベントで送信される同意カテゴリ属性の名前を上書きします。サーバーサイドの同意をカスタムで強制するためにこの機能を使用します。デフォルト値は<code>consent_categories</code>です。</p>
+<p>同意イベントで送信される同意カテゴリ属性の名前を上書きします。サーバーサイドの同意をカスタムで強制するために使用します。デフォルト値は<code>consent_categories</code>です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.overrideConsentCategoriesKey = <span style="color:#e6db74">&#34;consent_categories_granted&#34;</span>
 </span></span></code></pre></div><p>デフォルトの同意イベント：</p>
 <pre tabindex="0"><code>{
@@ -962,7 +976,7 @@
     &#34;policy&#34;                     : &#34;gdpr&#34;,
     &#34;consent_categories_granted&#34; : [&#34;Affiliates&#34;, &#34;Social&#34;]
 }
-</code></pre><p><a href="/ja/consent/server-side/consent-management/">サーバーサイドの同意管理の自動強制を無効にする方法</a>についてもっと学びましょう。</p>
+</code></pre><p><a href="/ja/consent/server-side/consent-management/">サーバーサイドの同意の自動強制を無効にする方法</a>について詳しく学びましょう。</p>
 <h3 id="tealiumconfig"><code>TealiumConfig()</code></h3>
 <p><code>TealiumConfig</code> オブジェクトのコンストラクタ。このオブジェクトは、特定のアカウント用にライブラリを初期化するために必要です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>TealiumConfig(account:String, profile:String, environment:String, dataSource:String)
@@ -1003,7 +1017,7 @@
 </tbody>
 </table>
 <h3 id="timedeventtriggers"><code>timedEventTriggers</code></h3>
-<p>自動的にタイムドイベントを追跡するための <code>TimedEventTrigger</code> オブジェクトのリスト。</p>
+<p>タイムドイベントを自動的に追跡するための <code>TimedEventTrigger</code> オブジェクトのリスト。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.timedEventTriggers = [TimedEventTrigger(start: <span style="color:#e6db74">&#34;START_EVENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                                               stop: <span style="color:#e6db74">&#34;STOP_EVENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                                               name: <span style="color:#e6db74">&#34;TIMED_EVENT_NAME&#34;</span>)]
@@ -1066,9 +1080,9 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><h3 id="usehighaccuracy"><code>useHighAccuracy</code></h3>
 <p>位置情報の精度を低精度（デフォルト）または高精度に構成します。</p>
-<p>デフォルトではこのプロパティは無効で、位置情報の精度を低精度に構成します。位置情報が有効なデバイスが500メートル以上移動すると、これは重要な位置情報の変更と見なされ、位置情報の更新が行われます。この構成では、位置情報の更新には通常5分以上かかります。</p>
+<p>デフォルトでは無効に構成されており、位置情報の精度は低精度に構成されます。位置情報が有効なデバイスが500メートル以上移動すると、これは重要な位置情報の変更と見なされ、位置情報の更新が行われます。この構成では、位置情報の更新には通常5分以上かかります。</p>
 <p><a href="https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service">Appleの重要な変更位置情報サービス</a>についてもっと学ぶ。</p>
-<p>有効にすると、このプロパティは可能な限り最高の精度で位置情報の精度を構成します。最初のイベントはできるだけ早く配信され、その後、位置情報を特定し、必要に応じて追加のイベントを配信します。</p>
+<p>有効にすると、データの精度を可能な限り高く構成します。最初のイベントはできるだけ早く配信され、その後、位置を特定し、データが利用可能になると追加のイベントが必要に応じて配信されます。</p>
 <p><a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift">Appleの位置情報の精度</a>についてもっと学ぶ。</p>
 <p>高精度を使用すると、位置情報の更新が頻繁に行われるため、低精度よりもデバイスのバッテリー消費が増加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.useHighAccuracy = &lt;Bool&gt;
@@ -1108,15 +1122,15 @@
 </span></span><span style="display:flex;"><span>                                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
 </span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>      config.visitorIdentityKey = customerIdentifierKey
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// use the same customerIdentifierKey for storing a specific customer identifier in the data layer</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// データレイヤーに特定の顧客識別子を格納するために同じ customerIdentifierKey を使用します</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><h3 id="webviewprocesspool"><code>webviewProcessPool</code></h3>
-<p>Tealiumタグ管理ウェブビュー以外のウェブビューを含むアプリの場合、クッキーの同期問題を防ぐために、アプリで <code>WKProcessPool</code> のシングルトンインスタンスを作成して保持し、Tealiumをインスタンス化する前に構成します。</p>
+<p>Tealium Tag Managementのウェブビュー以外にアプリに他のウェブビューが含まれている場合、クッキーの同期問題を防ぎます。アプリでウェブビューを使用する場合は、<code>WKProcessPool</code> のシングルトンインスタンスを作成して保持し、Tealiumをインスタンス化する前に構成します。</p>
 <p>例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> processPool = MyApp.wkProcessPool
 </span></span><span style="display:flex;"><span>config.webviewProcessPool = processPool
 </span></span></code></pre></div><h3 id="webviewconfig"><code>webviewConfig</code></h3>
-<p>カスタム <code>WKWebviewConfiguration</code> オブジェクトを渡すことができ、Tealiumタグ管理ウェブビューで使用されます。このオプションを <code>webviewProcessPool</code> オプションの代わりに使用する場合は、カスタマイズ可能な <code>WKWebviewConfiguration</code> の <code>processPool</code> プロパティを介してシングルトン <code>WKProcessPool</code> を構成します。</p>
+<p>カスタム <code>WKWebviewConfiguration</code> オブジェクトを渡すことができ、Tealium Tag Managementのウェブビューで使用されます。このオプションを <code>webviewProcessPool</code> オプションの代わりに使用する場合は、カスタマイズ可能な <code>WKWebviewConfiguration</code> の <code>processPool</code> プロパティを介してシングルトン <code>WKProcessPool</code> を構成します。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>将来のAPI変更が行われた場合に必要になる可能性があるため、このオプションの使用を推奨します。</p>
 <p>例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> processPool = MyApp.wkProcessPool
@@ -1183,7 +1197,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2025年September月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1227,6 +1241,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dispatchexpiration" href="javascript:void(0)">dispatchExpiration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dispatchqueuelimit" href="javascript:void(0)">dispatchQueueLimit</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enablebackgroundlocation" href="javascript:void(0)">enableBackgroundLocation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batteryreportingenabled" href="javascript:void(0)">batteryReportingEnabled</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#screenreportingenabled" href="javascript:void(0)">screenReportingEnabled</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#minimumfreediskspace" href="javascript:void(0)">minimumFreeDiskSpace</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#minutesbetweenrefresh" href="javascript:void(0)">minutesBetweenRefresh</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#onconsentexpiration" href="javascript:void(0)">onConsentExpiration</a></li>

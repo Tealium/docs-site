@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1475,6 +1475,16 @@
 <td>✓</td>
 <td>✗</td>
 </tr>
+<tr>
+<td>Send Entire Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <h2 id="how-it-works">How it works</h2>
@@ -1673,6 +1683,10 @@ To successfully assign the public key to the user, ensure the following:
 <td>Timestamp Attribute</td>
 <td>(Optional) The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
 </tr>
+<tr>
+<td>Additional Event Data</td>
+<td>The following parameters are only available when using Tealium iQ and EventStream.<ul><li><strong>First-party Cookies</strong> - Include first-party cookie information captured with the event.</li><li><strong>DOM</strong> - Include DOM data captured with the event.</li><li><strong>Meta</strong> - Include Meta data captured with the event.</li></ul></td>
+</tr>
 </tbody>
 </table>
 <h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
@@ -1740,6 +1754,82 @@ To successfully assign the public key to the user, ensure the following:
 <tr>
 <td>Timestamp Attribute</td>
 <td>(Optional) The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data with Visitor Data</td>
+<td>Select to include the current visit data with visitor data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-log-event">Send Entire Log Event</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database Name</td>
+<td>The Snowflake database that contains the required table.</td>
+</tr>
+<tr>
+<td>Schema Name</td>
+<td>The name of the schema used in the table.</td>
+</tr>
+<tr>
+<td>Table Name</td>
+<td>The name of the Snowflake table that the data will be inserted into.</td>
+</tr>
+<tr>
+<td>Column to record the payload</td>
+<td>Choose the column to record the payload.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Choose the column to record the Timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database Name</td>
+<td>The Snowflake database that contains the required table.</td>
+</tr>
+<tr>
+<td>Schema Name</td>
+<td>The name of the schema used in the table.</td>
+</tr>
+<tr>
+<td>Table Name</td>
+<td>The name of the Snowflake table that the data will be inserted into.</td>
+</tr>
+<tr>
+<td>Log event resource attributes</td>
+<td>These fields capture information about the entity for which telemetry is recorded.</td>
+</tr>
+<tr>
+<td>Log event HTTP attributes</td>
+<td>These fields log the HTTP requests and responses within the logging system. To map the entire <code>http</code> array to a single column, map the <code>http</code> attribute. If the target column is of type <strong>VARIANT</strong>, the raw array is sent; otherwise, it is converted to a string.</td>
+</tr>
+<tr>
+<td>Log event result attributes</td>
+<td>These fields log the outcome of the operation, detailing whether it was successful or if it encountered errors.</td>
+</tr>
+<tr>
+<td>Log event other attributes</td>
+<td>These fields provide additional metadata about the logged events.</td>
 </tr>
 </tbody>
 </table>
@@ -1825,7 +1915,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 23, 2025 
+          <p>This page was last updated:  September 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1853,6 +1943,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-log-event" href="javascript:void(0)">Send Entire Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#drop-channels" href="javascript:void(0)">Drop channels</a></li>
               </nav>
   </aside></nav>
