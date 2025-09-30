@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "21",
+        reading_time  : "22",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1487,7 +1487,7 @@
 </tbody>
 </table>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Pixel / Dataset ID</strong>
@@ -1555,7 +1555,7 @@
 <h4 id="prerequisites-1">Prerequisites</h4>
 <ul>
 <li>Offline events sent through the Facebook Conversions API must be associated with a dataset in Facebook Events Manager.</li>
-<li>For all offline and store events, advertisers must set the <code>action_source</code> parameter to <code>physical_store</code> in the event payload.</li>
+<li>For all offline and store events, advertisers must set the <code>action_source</code> parameter to <code>physical_store</code> in the event.</li>
 <li>Offline events must include all required event parameters. For details, see <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event">Meta: Server Event Parameters</a>.</li>
 </ul>
 <h4 id="configuration-steps">Configuration steps</h4>
@@ -1569,6 +1569,75 @@
 <li>Send the event and verify it in Facebook Events Manager.</li>
 </ol>
 <p>For more information, see <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/offline-events/">Meta: Sending Offline Events Using the Conversions API</a>.</p>
+<h2 id="automatic-mapping">Automatic mapping</h2>
+<p>The connector automatically maps the following parameters from the e-commerce extension by default:</p>
+<table>
+<thead>
+<tr>
+<th>Tealium attribute</th>
+<th>Facebook Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_csubtotal</code></td>
+<td><code>value</code></td>
+<td>The subtotal value of the event.</td>
+</tr>
+<tr>
+<td><code>_ccurrency</code></td>
+<td><code>currency</code></td>
+<td>The currency of the event.</td>
+</tr>
+<tr>
+<td><code>_cprod</code></td>
+<td><code>contents[].id</code></td>
+<td>The product ID associated with the event.</td>
+</tr>
+<tr>
+<td><code>_csku</code></td>
+<td><code>contents[].content_ids</code></td>
+<td>The SKU of the product.</td>
+</tr>
+<tr>
+<td><code>_cquan</code></td>
+<td><code>contents[].quantity</code></td>
+<td>The quantity of the product.</td>
+</tr>
+<tr>
+<td><code>_corder</code></td>
+<td><code>order_id</code></td>
+<td>The order ID associated with the event.</td>
+</tr>
+<tr>
+<td><code>_ccat</code></td>
+<td><code>contents[].category</code></td>
+<td>The category of the product.</td>
+</tr>
+<tr>
+<td><code>_cprodname</code></td>
+<td><code>contents[].content_name</code></td>
+<td>The name of the product.</td>
+</tr>
+<tr>
+<td><code>_cprice</code></td>
+<td><code>contents[].item_price</code></td>
+<td>The price of the product.</td>
+</tr>
+<tr>
+<td>Browser ID</td>
+<td><code>fbp</code></td>
+<td>The Browser ID stored in the Facebook <code>_fbp</code> cookie.</td>
+</tr>
+<tr>
+<td>Click ID</td>
+<td><code>fbc</code></td>
+<td>The Facebook click ID value stored in the Facebook <code>_fbc</code> cookie.</td>
+</tr>
+</tbody>
+</table>
+<p>To prevent the connector from automatically sending these parameters to the vendor, enable <strong>Disable Automapping</strong> by setting it to <code>true</code>.</p>
 <h2 id="actions-1">Actions</h2>
 <p>Click <strong>Next</strong> or click the <strong>Actions</strong> tab. You configure connector actions in the <strong>Actions</strong> tab.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
@@ -1689,11 +1758,11 @@
 </tr>
 <tr>
 <td style="text-align:left">External ID</td>
-<td style="text-align:left">Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs. Map array type attributes to add multiple IDs. This mapping is automatically populated with the Tealium Visitor ID unless automapping is disabled.</td>
+<td style="text-align:left">Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs. Map array type attributes to add multiple IDs. This mapping is automatically populated with the Tealium Visitor ID unless automatic mapping is disabled.</td>
 </tr>
 <tr>
 <td style="text-align:left">Browser ID (fpb)</td>
-<td style="text-align:left">The browser ID value stored in Facebook&rsquo;s <code>_fbp</code> cookie. This parameter is automapped unless you disable automapping. Do not hash this value. <strong>Importance: High</strong></td>
+<td style="text-align:left">The browser ID value stored in Facebook&rsquo;s <code>_fbp</code> cookie. This parameter is automatically mapped unless you disable automatic mapping. Do not hash this value. <strong>Importance: High</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscription ID</td>
@@ -1709,7 +1778,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Click ID (fbc)</td>
-<td style="text-align:left">The Facebook click ID value stored in Facebook&rsquo;s <code>_fbc</code> cookie. This parameter is automapped unless automapping is disabled. Do not hash this value. Facebook recommends storing and persisting the <code>fbclid</code> cookie. <strong>Importance: High</strong></td>
+<td style="text-align:left">The Facebook click ID value stored in Facebook&rsquo;s <code>_fbc</code> cookie. This parameter is automatically mapped unless automatic mapping is disabled. Do not hash this value. Facebook recommends storing and persisting the <code>fbclid</code> cookie. <strong>Importance: High</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">User Data is already hashed</td>
@@ -1717,11 +1786,11 @@
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
-<td style="text-align:left">The currency for the value specified if applicable. Currency must be a valid ISO 4217 three-digit currency code. For example: <code>usd</code>.</td>
+<td style="text-align:left">The currency for the value specified if applicable. Currency must be a valid ISO 4217 three-digit currency code. For example: <code>usd</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Name</td>
-<td style="text-align:left">The name of the page or product associated with the event. For example: <code>lettuce</code>.</td>
+<td style="text-align:left">The name of the page or product associated with the event. For example: <code>lettuce</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Number of Items</td>
@@ -1732,8 +1801,12 @@
 <td style="text-align:left">A search query made by a user. Use only with search events. For example: <strong>lettuce</strong></td>
 </tr>
 <tr>
+<td style="text-align:left">Status</td>
+<td style="text-align:left">Use only with <strong>CompleteRegistration</strong> events. The status of the registration event. For example: <code>registered</code>.</td>
+</tr>
+<tr>
 <td style="text-align:left">Order ID</td>
-<td style="text-align:left">The order ID for this transaction. For example: <code>order1234</code>.</td>
+<td style="text-align:left">The order ID for this transaction. For example: <code>order1234</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Type</td>
@@ -1745,27 +1818,27 @@
 </tr>
 <tr>
 <td style="text-align:left">Content IDs</td>
-<td style="text-align:left">The Content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example: <code>['ABC123', 'XYZ789']</code>. If a non-array event attribute is provided, it is converted into a single-item array. If <strong>Content Type</strong> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array.</td>
+<td style="text-align:left">The Content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example: <code>['ABC123', 'XYZ789']</code>. If a non-array event attribute is provided, it is converted into a single-item array. If <strong>Content Type</strong> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Value</td>
-<td style="text-align:left">A numeric value associated with this event. This may be a monetary value or a value in another metric. For example: <code>142.54</code>.</td>
+<td style="text-align:left">A numeric value associated with this event. This may be a monetary value or a value in another metric. For example: <code>142.54</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Category</td>
-<td style="text-align:left">The category of the content associated with the event. For example: <code>grocery</code>.</td>
+<td style="text-align:left">The category of the content associated with the event. For example: <code>grocery</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Quantities</td>
-<td style="text-align:left">Product quantities.</td>
+<td style="text-align:left">Product quantities. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Prices</td>
-<td style="text-align:left">Product individual prices.</td>
+<td style="text-align:left">Product individual prices. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">IDs</td>
-<td style="text-align:left">Product IDs.</td>
+<td style="text-align:left">Product IDs. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">JSON Template Variables</td>
@@ -1781,7 +1854,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Disable Automapping</td>
-<td style="text-align:left">Disable automapping of parameters.</td>
+<td style="text-align:left">Disable automatic mapping of parameters.</td>
 </tr>
 <tr>
 <td style="text-align:left">Automatic Deduplication</td>
@@ -1796,8 +1869,8 @@
 <td style="text-align:left">(Required) This parameter enables ad tracking at the app level. Your SDK should allow an app developer to put an opt-out setting into their app. Use this field to specify the person&rsquo;s choice. Use <code>0</code> for disabled, <code>1</code> for enabled.</td>
 </tr>
 <tr>
-<td style="text-align:left">App Version</td>
-<td style="text-align:left">(Required) The Version must be <code>a2</code> for Android or <code>i2</code> for iOS.</td>
+<td style="text-align:left">OS Version</td>
+<td style="text-align:left">(Required) OS version, for example: <code>13.4.1</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">OS Version</td>
@@ -1889,13 +1962,6 @@
 </tr>
 </tbody>
 </table>
-<h5 id="disable-automapping">Disable Automapping</h5>
-<p>The connector automaps the following parameters by default:</p>
-<ul>
-<li>Browser ID (<code>fbp</code>)</li>
-<li>User Agent (<code>fbc</code>)</li>
-</ul>
-<p>To disable automapping, set <strong>Disable Automapping</strong> to <code>true</code>. Any automapped parameters will not be sent to the vendor.</p>
 <h3 id="send-advanced-measurement-event">Send Advanced Measurement Event</h3>
 <p>This Facebook action has limited availability. Contact your Facebook representative to request access. If this action has not been activated in your Facebook account, it returns errors such as &ldquo;Application does not have the capability to make this API call.&rdquo; or &ldquo;This pixel is not authorized to report server events.&rdquo;</p>
 <h4 id="event-data">Event Data</h4>
@@ -2009,23 +2075,23 @@
 <tbody>
 <tr>
 <td>Value</td>
-<td>A numeric value associated with this event. This could be a monetary value or a value in some other metric: <code>142.54</code>.</td>
+<td>A numeric value associated with this event. This could be a monetary value or a value in some other metric: <code>142.54</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Currency</td>
-<td>The currency for the value specified, if applicable. Currency must be a valid ISO 4217 three digit currency code. For example: <code>usd</code>.</td>
+<td>The currency for the value specified, if applicable. Currency must be a valid ISO 4217 three digit currency code. For example: <code>usd</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Content Name</td>
-<td>The name of the page or product associated with the event. For example: <code>lettuce</code>.</td>
+<td>The name of the page or product associated with the event. For example: <code>lettuce</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Content Category</td>
-<td>The category of the content associated with the event. For example: <code>grocery</code>.</td>
+<td>The category of the content associated with the event. For example: <code>grocery</code>.The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Content IDs</td>
-<td><ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event: <code>[</code>ABC123<code>, </code>XYZ789<code>]</code>.</li> <li>If a non-array event attribute is provided, it will be converted into a single-item array.</li> <li>If <b>Content Type</b> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array.</li></ul></td>
+<td><ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event: <code>[</code>ABC123<code>, </code>XYZ789<code>]</code>.</li> <li>If a non-array event attribute is provided, it will be converted into a single-item array.</li> <li>If <b>Content Type</b> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array.</li><li>The connector automatically maps this parameter when it appears in the event.</li></ul></td>
 </tr>
 <tr>
 <td>Content Type</td>
@@ -2033,7 +2099,7 @@
 </tr>
 <tr>
 <td>Order ID</td>
-<td>The order ID for this transaction. For example: <code>order1234</code>.</td>
+<td>The order ID for this transaction. For example: <code>order1234</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Predicted Lifetime Value</td>
@@ -2064,15 +2130,15 @@
 <tbody>
 <tr>
 <td>IDs</td>
-<td>Product IDs.</td>
+<td>Product IDs. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Quantities</td>
-<td>Product quantities.</td>
+<td>Product quantities.  The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Prices</td>
-<td>Product individual prices.</td>
+<td>Product individual prices.  The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 </tbody>
 </table>
@@ -2281,7 +2347,7 @@
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You can verify events within 20 minutes after sending them from your server.</p>
 <h3 id="validation">Validation</h3>
-<p>For validation, use Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a> with your data parameter fields to see how to structure your payload when it&rsquo;s sent to Facebook from your server. For more information, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">Support</a> page for troubleshooting issues.</p>
+<p>For validation, use Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a> with your data parameter fields to see how to structure your event when it&rsquo;s sent to Facebook from your server. For more information, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">Support</a> page for troubleshooting issues.</p>
 <p>For more information about the Conversions API, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">Using the Conversions API</a>.</p>
 
 </div>
@@ -2343,7 +2409,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 28, 2025 
+          <p>This page was last updated:  September 26, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2365,7 +2431,8 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-mapping" href="javascript:void(0)">Automatic mapping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event" href="javascript:void(0)">Send Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-advanced-measurement-event" href="javascript:void(0)">Send Advanced Measurement Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-lead-event" href="javascript:void(0)">Send Lead Event</a></li>

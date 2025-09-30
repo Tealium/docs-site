@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "11",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1458,7 +1458,7 @@
 <h2 id="how-it-works">How it Works</h2>
 <p>The Pinterest API for Conversions allows advertisers to send conversion events to Pinterest without using the Pinterest tag. By mapping conversions to Pinterest campaigns, you can improve conversion visibility and receive a more accurate picture of the effectiveness of your campaigns and actions that are driving conversions. Additional benefits include enhanced optimization and targeting, greater transparency, and enhancing reporting and analysis.</p>
 <p>The Pinterest API for Conversions can receive web, in-app, or offline conversions. Events received within an hour of the event occurring are reported as web or app events. Events received outside of that window are categorized as offline events.</p>
-<p>We recommend using both the Pinterest Conversions connector and the Pinterest tag together to maximize visibility and track conversions. You can use the Pinterest Conversions connector as a standalone solution, but using both tools together provides the best results.</p>
+<p>We recommend using both the Pinterest Conversions connector and the Pinterest tag together to maximize visibility and track conversions. The Pinterest Conversions connector is available as a standalone solution; however, using both the Pinterest Conversions connector and the Pinterest tag together provides the best results.</p>
 <p>Events that can be tracked include:</p>
 <ul>
 <li><strong>Add to Cart</strong>: Items are added to shopping carts.</li>
@@ -1533,6 +1533,25 @@
 (Required) Unique identifier of an ad account. To locate your <strong>Ad Account ID</strong> in Pinterest, log in to the Pinterest account that owns your advertiser account and navigate to <strong>Ads &gt; Overview</strong>. The <strong>Ad Account ID</strong> is visible in the URL path. For example, <code>ads.pinterest.com/advertiser/{ad_account_id}/...</code> .</li>
 </ul>
 <p>Click <strong>Done</strong> when you finish configuring the connector.</p>
+<h3 id="offline-conversions">Offline conversions</h3>
+<p>Offline events allow you to measure the impact of ads on purchases, interactions, and conversions that happen outside of your website or app, such as in a physical retail location. To process offline events and conversions through the Pinterest Conversions connector, configure the connector to include the required parameters.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<ul>
+<li>For all offline events, you must set the Event Action Source to <code>Offline</code> in the connector configuration.</li>
+<li>Offline events must include all required event parameters. For details, see <a href="https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#format-server-event-parameters">Pinterest: Format server event parameters</a>.</li>
+</ul>
+<h4 id="configuration-steps">Configuration steps</h4>
+<p>Use the following steps to configure the Pinterest Conversions connector to send offline events:</p>
+<ol>
+<li>In the <strong>Actions</strong> tab, add a new <strong>Send Conversion Event</strong> action.</li>
+<li>Map the <strong>Event Action Source</strong> parameter to <code>Offline</code>.</li>
+<li>Map the required parameters, and include optional parameters as needed for your event type.
+<ul>
+<li>Pinterest recommends mapping a transaction ID, order ID, or Tealium Random to the required Event ID parameter for offline events.</li>
+</ul>
+</li>
+<li>Verify in Pinterest Ads Manager.</li>
+</ol>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -1548,7 +1567,7 @@
 <tbody>
 <tr>
 <td>Event Name</td>
-<td>(Required) The type of the user event to record. <br>Note: Events with custom event types will not be available to use in reporting.<br><strong>Add to Cart</strong> - Items are added to shopping carts.<br><strong>Checkout</strong> - Completed transactions.<br><strong>Custom</strong> - Use this event name to track a special event that you want to include in your conversion reporting.<br><strong>Lead</strong> - Interest in product or service.<br><strong>Page Visit</strong> - Views of primary pages, such as product pages and article pages.<br><strong>Search</strong> - Searches on your website.<br><strong>Signup</strong> - Sign ups for your products or services.<br><strong>View Category</strong> - Views of category pages.<br><strong>Watch Video</strong> - Video views.</td>
+<td>(Required) The type of the user event to record. <br>Note: Events with custom event types will not be available to use in reporting.<br><strong>Add to Cart</strong> - Items are added to shopping carts.<br><strong>Checkout</strong> - Completed transactions.<br><strong>Custom</strong> - Use this event name to track a special event that you want to include in your conversion reporting.<br><strong>Lead</strong> - Interest in product or service.<br><strong>Page Visit</strong> - Views of primary pages, such as product pages and article pages.<br><strong>Search</strong> - Searches on your website.<br><strong>Signup</strong> - Signups for your products or services.<br><strong>View Category</strong> - Views of category pages.<br><strong>Watch Video</strong> - Video views.</td>
 </tr>
 </tbody>
 </table>
@@ -1905,7 +1924,7 @@
 <tbody>
 <tr>
 <td>Disable Automapping</td>
-<td>Disable automapping for the connector.</td>
+<td>Disable automatic mapping for the connector.</td>
 </tr>
 </tbody>
 </table>
@@ -1969,7 +1988,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 8, 2025 
+          <p>This page was last updated:  September 26, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1990,7 +2009,8 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-pinterest-tag-and-pinterest-api-for-conversions" href="javascript:void(0)">Deduplication for Pinterest tag and Pinterest API for Conversions</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion-event" href="javascript:void(0)">Action — Send Conversion Event</a></li>
               </nav>
   </aside></nav>
