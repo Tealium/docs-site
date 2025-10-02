@@ -11,9 +11,9 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side-connectors/criteo-audience-match-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/integrations/criteo.png" />
-<meta property="og:description" content="この記事では、Criteo Audience Matchコネクタの構成方法について説明します。" />
+<meta property="og:description" content="この記事では、Criteo Audience Match コネクタの構成方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>Criteo Audience Match コネクタ構成ガイド | サーバーサイドコネクター | Tealiumドキュメント</title>
+    <title>Criteo Audience Match コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -1702,7 +1702,7 @@
 
   
   
-  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/server-side-connectors/">サーバーサイドコネクター</a></li>
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/server-side-connectors/">サーバーサイドコネクタ</a></li>
   
 
   
@@ -1719,13 +1719,13 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Criteo Audience Matchコネクタの構成方法について説明します。
+      この記事では、Criteo Audience Match コネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="コネクタのアクション">コネクタのアクション</h2>
+  <h2 id="コネクタアクション">コネクタアクション</h2>
 <table>
 <thead>
 <tr>
@@ -1750,37 +1750,37 @@
 <h3 id="api情報">API情報</h3>
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
-<li>API名：Criteo API</li>
-<li>APIバージョン：2024-10</li>
-<li>APIエンドポイント：<code>https://api.criteo.com/2024-10/audiences</code></li>
-<li>ドキュメンテーション：<a href="https://developers.criteo.com/marketing-solutions/docs/audiences">Criteo: Audiences API</a></li>
+<li>API名: Criteo API</li>
+<li>APIバージョン: 2025-07</li>
+<li>APIエンドポイント: <code>https://api.criteo.com/2025-07/audiences</code></li>
+<li>ドキュメント: <a href="https://developers.criteo.com/marketing-solutions/docs/audiences">Criteo: Audiences API</a></li>
 </ul>
 <h3 id="バッチ制限">バッチ制限</h3>
-<p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：50000</li>
-<li>最も古いリクエストからの最大時間：15分</li>
-<li>リクエストの最大サイズ：10 MB</li>
+<li>最大リクエスト数: 50000</li>
+<li>最古のリクエストからの最大時間: 15分</li>
+<li>リクエストの最大サイズ: 10 MB</li>
 </ul>
 <h2 id="構成の構成">構成の構成</h2>
-<h3 id="criteoからの同意リンクのリクエスト">Criteoからの同意リンクのリクエスト</h3>
-<p>このコネクタを使用する予定がある場合は、<a href="mailto:asintegrations@tealium.com">asintegrations@tealium.com</a>にメールを送信して、Tealium Customer Data Hubが広告主を代表してオーディエンスを管理するための同意リンクを受け取ります。詳細については、<a href="https://developers.criteo.com/marketing-solutions/docs/authorization-requests">Criteo Developers: ユーザーに承認リクエストを送信する</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このステップは承認までに最大3営業日かかる場合があります。</p>
-<p>Criteoのアクティベーションリンクを受け取った後、以下の手順を完了します：</p>
+<h3 id="criteoから同意リンクをリクエスト">Criteoから同意リンクをリクエスト</h3>
+<p>このコネクタを使用する場合、<a href="mailto:asintegrations@tealium.com">asintegrations@tealium.com</a>にメールを送って、Tealium Customer Data Hubが広告主の代わりにオーディエンスを管理するための同意リンクを受け取ってください。詳細については、<a href="https://developers.criteo.com/marketing-solutions/docs/authorization-requests">Criteo Developers: Send an Authorization Request to Your Users</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この手続きには最大3営業日かかる場合があります。</p>
+<p>Criteoのアクティベーションリンクを受け取った後、次の手順を完了してください：</p>
 <ol>
 <li>提供されたアクティベーションリンクをクリックします。<br>
-<strong>Criteo Consent Portal</strong>が表示されます。</li>
-<li>アカウントの要求された承認レベルを付与します。</li>
+<strong>Criteo同意ポータル</strong>が表示されます。</li>
+<li>アカウントの要求された認証レベルを付与します。</li>
 </ol>
-<h3 id="コネクタの追加と構成の構成">コネクタの追加と構成の構成</h3>
-<p>Connector Marketplaceに移動し、Criteo Audience Matchコネクタをプロファイルに追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタの概要</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
+<h3 id="コネクタを追加して構成を構成">コネクタを追加して構成を構成</h3>
+<p>コネクタマーケットプレースにアクセスして、プロファイルにCriteo Audience Matchコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">Connector Overview</a>を参照してください。</p>
+<p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
 <li><strong>広告主ID（必須）</strong><br>
 Criteoアカウント内の統合に関連付けられた<strong>広告主ID</strong>を構成します。</li>
 </ul>
 <h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタアクションを構成します。</p>
+<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに進みます。ここでコネクタアクションを構成します。</p>
 <p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="アクション---ユーザーをオーディエンスに追加">アクション - ユーザーをオーディエンスに追加</h3>
 <h4 id="パラメータ">パラメータ</h4>
@@ -1794,15 +1794,15 @@ Criteoアカウント内の統合に関連付けられた<strong>広告主ID</st
 <tbody>
 <tr>
 <td>オーディエンス</td>
-<td>ユーザーを追加するオーディエンスを選択するか、オーディエンスIDを入力します。</td>
+<td>オーディエンスを選択するか、ユーザーを追加するオーディエンスIDを入力します。</td>
 </tr>
 <tr>
 <td>識別子</td>
-<td>ユーザー識別子の値をマップします。 <ul><li><strong>Email</strong>: ビルトインのハッシュを適用せずにそのままのメール値を送信します。値がハッシュを必要としない場合やすでにハッシュ化されている場合は、このオプションを選択します。</li><li><strong>Email (apply MD5 hash)</strong>: 送信前にMD5でメール値をハッシュ化します。</li><li><strong>Email (apply MD5 SHA256 hash)</strong>: MD5でメール値をハッシュ化し、その後SHA256でハッシュ化します。</li><li><strong>Mobile ID</strong>: AppleのIDFAモバイルID、AndroidのADIDモバイルID。</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: クッキーマッチングから取得した識別子。対応するGum Caller IDが自動的にリクエストに追加されます。</li></ul></td>
+<td>ユーザー識別値をマッピングします。 <ul><li><strong>Email</strong>: ハッシュ化せずにそのままのメール値を送信します。値がハッシュ化されていない場合やすでにハッシュ化されている場合は、このオプションを選択します。</li><li><strong>Email (MD5ハッシュを適用)</strong>: 送信前にMD5でメール値をハッシュ化します。</li><li><strong>Email (MD5およびSHA256ハッシュを適用)</strong>: MD5でメール値をハッシュ化し、その後SHA256でハッシュ化します。</li><li><strong>モバイルID</strong>: AppleのIDFAモバイルID、AndroidのADIDモバイルID。</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: クッキーマッチングから取得した識別子。対応するGum Caller IDが自動的にリクエストに追加されます。</li></ul></td>
 </tr>
 <tr>
 <td>Gum Caller ID</td>
-<td>Gum Caller <code>ID</code> - Criteoが<code>GUM</code>（Generative Unified Media）のソルティングに使用する値。Tealium iQ Criteo Cookie Matching Serviceタグを使用している場合は、これをマップしないでください。</td>
+<td>Gum Caller <code>ID</code> - Criteoによる<code>GUM</code>（Generative Unified Media）のソルティングに使用される値です。Tealium iQ Criteo Cookie Matching Serviceタグを使用している場合は、この項目を未マッピングのままにしてください。</td>
 </tr>
 </tbody>
 </table>
@@ -1818,15 +1818,15 @@ Criteoアカウント内の統合に関連付けられた<strong>広告主ID</st
 <tbody>
 <tr>
 <td>オーディエンス</td>
-<td>ユーザーを削除するオーディエンスを選択するか、オーディエンスIDを入力します。</td>
+<td>オーディエンスを選択するか、ユーザーを削除するオーディエンスIDを入力します。</td>
 </tr>
 <tr>
 <td>識別子</td>
-<td>ユーザー識別子の値をマップします。 <ul><li><strong>Email</strong>: ビルトインのハッシュを適用せずにそのままのメール値を送信します。値がハッシュを必要としない場合やすでにハッシュ化されている場合は、このオプションを選択します。</li><li><strong>Email (apply MD5 hash)</strong>: 送信前にMD5でメール値をハッシュ化します。</li><li><strong>Email (apply MD5 SHA256 hash)</strong>: MD5でメール値をハッシュ化し、その後SHA256でハッシュ化します。</li><li><strong>Mobile ID</strong>: AppleのIDFAモバイルID、AndroidのADIDモバイルID。</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: クッキーマッチングから取得した識別子。対応するGum Caller IDが自動的にリクエストに追加されます。</li></ul></td>
+<td>ユーザー識別値をマッピングします。 <ul><li><strong>Email</strong>: ハッシュ化せずにそのままのメール値を送信します。値がハッシュ化されていない場合やすでにハッシュ化されている場合は、このオプションを選択します。</li><li><strong>Email (MD5ハッシュを適用)</strong>: 送信前にMD5でメール値をハッシュ化します。</li><li><strong>Email (MD5およびSHA256ハッシュを適用)</strong>: MD5でメール値をハッシュ化し、その後SHA256でハッシュ化します。</li><li><strong>モバイルID</strong>: AppleのIDFAモバイルID、AndroidのADIDモバイルID。</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: クッキーマッチングから取得した識別子。対応するGum Caller IDが自動的にリクエストに追加されます。</li></ul></td>
 </tr>
 <tr>
 <td>Gum Caller ID</td>
-<td>Gum Caller <code>ID</code> - Criteoが<code>GUM</code>（Generative Unified Media）のソルティングに使用する値。Tealium iQ Criteo Cookie Matching Serviceタグを使用している場合は、これをマップしないでください。</td>
+<td>Gum Caller <code>ID</code> - Criteoによる<code>GUM</code>（Generative Unified Media）のソルティングに使用される値です。Tealium iQ Criteo Cookie Matching Serviceタグを使用している場合は、この項目を未マッピングのままにしてください。</td>
 </tr>
 </tbody>
 </table>
@@ -1890,7 +1890,7 @@ Criteoアカウント内の統合に関連付けられた<strong>広告主ID</st
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年October月2日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1904,12 +1904,12 @@ Criteoアカウント内の統合に関連付けられた<strong>広告主ID</st
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#criteo%E3%81%8B%E3%82%89%E3%81%AE%E5%90%8C%E6%84%8F%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">Criteoからの同意リンクのリクエスト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0%E3%81%A8%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">コネクタの追加と構成の構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#criteo%E3%81%8B%E3%82%89%E5%90%8C%E6%84%8F%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">Criteoから同意リンクをリクエスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%A6%E6%A7%8B%E6%88%90%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">コネクタを追加して構成を構成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AB%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション - ユーザーをオーディエンスに追加</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%8B%E3%82%89%E5%89%8A%E9%99%A4" href="javascript:void(0)">アクション - ユーザーをオーディエンスから削除</a></li>

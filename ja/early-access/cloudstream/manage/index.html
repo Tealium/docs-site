@@ -319,6 +319,8 @@
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-administration">管理</a>
         <ul class="pl2  ea-administration desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/administration/navigation-menu/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ナビゲーションメニュー</a></li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".platform-permissions">プラットフォームの権限</a>
         <ul class="pl2  platform-permissions desktopmenu animated fadeIn list  dn">
@@ -376,7 +378,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
 <p>CloudStreamセグメントは、SnowflakeやDatabricksなどの接続されたクラウドデータウェアハウス（CDW）から、そのデータソースの属性に適用される構成可能な条件に基づいてレコードのセットを定義します。</p>
-<p>セグメントがアクティブになると、CDWをクエリして定義された基準に一致するレコードのみを取得します。セグメントデータはTealiumシステムに永続化または保存されません。データを取得して構成されたコネクタに送信した後、Tealiumはそれを破棄します。</p>
+<p>セグメントがアクティブになると、CDWにクエリを実行し、定義された基準に一致するレコードのみを取得します。セグメントデータはTealiumシステムに保存または保持されません。データを取得して構成されたコネクタに送信した後、Tealiumはそれを破棄します。</p>
 <h2 id="セグメントの表示">セグメントの表示</h2>
 <p><strong>CloudStream &gt; セグメント</strong>に移動して、<strong>セグメント概要</strong>ページを表示します。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segments_overview.png"><img src="/images/early-access/cloudstream/cloudstream_segments_overview.png"
@@ -387,21 +389,21 @@
 <p><strong>セグメント概要</strong>テーブルには、各セグメントについて以下の情報がリストされています：</p>
 <ul>
 <li>名前</li>
-<li>合計処理数：セグメント条件に一致する受信イベントの総数で、少なくとも1つのアクションが構成され有効になっている場合。</li>
+<li>合計処理数：セグメント条件に一致する受信データレコードの総数で、少なくとも1つのアクションが構成され有効になっている場合。</li>
 <li>変更日</li>
 <li>ラベル</li>
 <li>アクティベーション</li>
-<li>ステータス：アクティブなセグメントには、少なくとも1つの動作するチェーンが必要で、アクティブなデータソースとアクティブなコネクタアクションが必要です。</li>
+<li>ステータス：アクティブなセグメントには、アクティブなデータソースとアクティブなコネクタアクションを持つ少なくとも1つの動作チェーンが必要です。</li>
 </ul>
-<p>詳細アクションボタンを使用すると、各セグメントにラベルを追加したり、セグメントを削除したりできます。</p>
-<p>各アクションの横にあるチェックボックスを選択し、セグメントのラベルを編集したり、それらを削除するための一括アクションを実行できます。</p>
+<p>その他のアクションボタンを使用して、各セグメントにラベルを追加したり、セグメントを削除したりできます。</p>
+<p>各アクションの横にあるチェックボックスを選択し、セグメントのラベルを編集するための一括アクションを実行したり、それらを削除したりできます。</p>
 <h2 id="セグメントの追加">セグメントの追加</h2>
 <p>セグメントを構築するには、次の2つの方法のいずれかを使用します：</p>
 <ul>
 <li><a href="#segment-builder">セグメントビルダー</a>の手順に従います。</li>
 <li><a href="#manual-builder">手動でセグメントを構築する</a>。</li>
 </ul>
-<p>エラーが表示された場合、<code>セグメントの作成には構成でCloud Streamコネクタを有効にする必要があります</code>、プロファイルでコネクタを有効にするために次の手順を使用します：</p>
+<p>エラー <code>セグメントの作成には構成でCloud Streamコネクタを有効にする必要があります</code> が表示された場合は、次の手順でコネクタを有効にします：</p>
 <ol>
 <li><strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に移動します。</li>
 <li><strong>CloudStreamコネクタを有効にする</strong>をオンに切り替えます。</li>
@@ -415,13 +417,13 @@
          title="CloudStreamデータソース選択"/>
     </a>
 </figure>
-<p>セグメントのクラウドデータソースを選択します。</p>
+<p>セグメントのためのクラウドデータソースを選択します。</p>
 <p>データソースが構成されていない場合は、<strong>+ クラウドデータソースを追加</strong>をクリックします。クラウドデータソースの構成方法については、<a href="/ja/early-access/cloudstream/datasources/">CloudStreamデータソースの管理</a>を参照してください。</p>
 <p>データソースを複製するには、データソースを選択して<strong>複製</strong>をクリックします。次に、データソースの新しいコピーの名前を入力します。</p>
 <p>各データソースは一度に1つのビューまたはテーブルに接続できます。</p>
 <ul>
-<li>CDWから複数のテーブルまたはビューに接続する必要がある場合は、各テーブルまたはビューに対して別々のデータソースを構成します。</li>
-<li>CloudStreamがセグメントで読み取るイベントに複数のテーブルのデータを組み合わせる場合は、CDWでテーブルまたはビューを1つのテーブルまたはビューに結合し、その結合したテーブルをセグメントのデータソースとして使用する必要があります。</li>
+<li>CDWから複数のテーブルやビューに接続する必要がある場合は、各テーブルやビューに対して別々のデータソースを構成します。</li>
+<li>CloudStreamがセグメントで読み取れるデータレコードから複数のテーブルのデータを組み合わせる場合は、CDWでテーブルやビューを1つのテーブルやビューに結合し、その結合したテーブルをセグメントのデータソースとして使用する必要があります。</li>
 </ul>
 <p>データソースの構成が完了したら、<strong>次へ</strong>をクリックします。</p>
 <h4 id="セグメント構成">セグメント構成</h4>
@@ -433,33 +435,33 @@
 <p>セグメントを構成するには、次の手順を使用します：</p>
 <ol>
 <li>セグメントの<strong>名前</strong>を入力します。</li>
-<li>条件を追加するには、属性、演算子、および値を選択します。
+<li>条件を追加するには、属性、演算子、および値を選択します。<br>
 時間枠を指定する演算子の場合は、値と時間枠を選択します。</li>
 <li>別の条件を追加するには、<strong>+ 条件を追加</strong>をクリックします。</li>
 <li>ラベルを追加するか、セグメントに関するメモを入力したい場合は、<strong>その他のオプション</strong>をクリックして変更を行います。</li>
 </ol>
 <h4 id="セグメントのアクティベーション">セグメントのアクティベーション</h4>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_activation.png"><img src="/images/early-access/cloudstream/cloudstream_segment_activation.png"
-         alt="CloudStreamセグメントのアクティベーション"
-         title="CloudStreamセグメントのアクティベーション"/>
+         alt="CloudStreamセグメントアクティベーション"
+         title="CloudStreamセグメントアクティベーション"/>
     </a>
 </figure>
 <p>セグメントをアクティブにするには、次のようにコネクタを選択して構成します：</p>
 <ol>
 <li>
-<p><strong>+ アクティベーションを追加</strong>をクリックします。<strong>コネクタマーケットプレイス</strong>が表示されます。<p class="note"><i class="fa fa-exclamation-triangle"></i>コネクタがリストされていない場合は、<strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に移動し、<strong>CloudStreamコネクタを有効にする</strong>を<code>オン</code>に構成し、<strong>保存</strong>をクリックします。</p></p>
+<p><strong>+ アクティベーションを追加</strong>をクリックします。<strong>コネクタマーケットプレイス</strong>が表示されます。<p class="note"><i class="fa fa-exclamation-triangle"></i>コネクタがリストされていない場合は、<strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に移動し、<strong>CloudStreamコネクタを有効にする</strong>を<code>On</code>に構成し、<strong>保存</strong>をクリックします。</p></p>
 </li>
 <li>
 <p>コネクタを選択して<strong>続行</strong>をクリックします。</p>
 </li>
 <li>
-<p><strong>データソース</strong>を選択して<strong>続行</strong>をクリックします。<strong>セグメント</strong>は自動的に構成中のセグメントで入力されます。<p class="tip"><i class="fa fa-info-circle"></i>構成された各コネクタアクションは、1つのデータソースからのデータのみを使用できます。追加のデータソースからデータをアクティブにしたい場合は、各データソースに対して別のコネクタアクションを構成します。</p></p>
+<p><strong>データソース</strong>を選択して<strong>続行</strong>をクリックします。<strong>セグメント</strong>は自動的に構成中のセグメントで自動的に入力されます。<p class="tip"><i class="fa fa-info-circle"></i>構成された各コネクタアクションは、1つのデータソースからのデータのみを使用できます。追加のデータソースからデータをアクティブにしたい場合は、各データソースに対して別のコネクタアクションを構成します。</p></p>
 </li>
 <li>
 <p>必要に応じてコネクタを構成し、<strong>続行</strong>をクリックします。</p>
 </li>
 <li>
-<p>アクションに名前を付け、必要に応じて構成し、<strong>続行</strong>をクリックします。</p>
+<p>アクションの名前を付け、必要に応じて構成し、<strong>続行</strong>をクリックします。</p>
 </li>
 </ol>
 <p>詳細については、<a href="/ja/server-side/connectors/add/">コネクタを追加する</a>を参照し、選択したコネクタの構成ガイドを参照してください。</p>
@@ -468,18 +470,18 @@
 <h4 id="概要">概要</h4>
 <p><strong>概要</strong>ページには、データソースから構築したセグメントへ、そしてアクティベーションへのデータの流れを示す図が表示されます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_summary.png"><img src="/images/early-access/cloudstream/cloudstream_segment_summary.png"
-         alt="CloudStreamセグメントの概要"
-         title="CloudStreamセグメントの概要"/>
+         alt="CloudStreamセグメント概要"
+         title="CloudStreamセグメント概要"/>
     </a>
 </figure>
-<p>詳細矢印をクリックすると、各アクティベーションの個々のアクションを表示できます。</p>
+<p>さらに矢印をクリックすると、各アクティベーションの個々のアクションを確認できます。</p>
 <p><strong>保存</strong>をクリックし、その後プロファイルを保存して公開します。</p>
 <h3 id="手動ビルダー">手動ビルダー</h3>
 <p>手動でセグメントを構築するには：</p>
 <ol>
 <li><strong>+ 新しいセグメント</strong>をクリックして手動でセグメントを構築します。</li>
 <li>セグメントの<strong>名前</strong>を入力します。</li>
-<li>条件を追加するには、属性、演算子、および値を選択します。
+<li>条件を追加するには、属性、演算子、および値を選択します。<br>
 時間枠を指定する演算子の場合は、値と時間枠を選択します。</li>
 <li>別の条件を追加するには、<strong>+ 条件を追加</strong>をクリックします。</li>
 <li>ラベルを追加するか、セグメントに関するメモを入力したい場合は、<strong>その他のオプション</strong>をクリックして変更を行います。</li>
@@ -489,8 +491,8 @@
 <h2 id="セグメントの管理">セグメントの管理</h2>
 <p>セグメントをクリックして管理します。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_details.png"><img src="/images/early-access/cloudstream/cloudstream_segment_details.png"
-         alt="CloudStreamセグメントの詳細"
-         title="CloudStreamセグメントの詳細"/>
+         alt="CloudStreamセグメント詳細"
+         title="CloudStreamセグメント詳細"/>
     </a>
 </figure>
 <p><strong>セグメント詳細</strong>ページには、以下の情報がリストされています：</p>
@@ -501,28 +503,28 @@
 </ul>
 <p>次の3つのタブのいずれかをクリックします：</p>
 <h3 id="概要-1">概要</h3>
-<p><strong>概要</strong>ウィンドウには、データソース、セグメント、およびアクティベーションをリストするデータフロー図が表示されます。データソースをクリックすると、そのデータソースからセグメントを通じて接続されたアクティベーションへのパスが表示されます：</p>
+<p><strong>概要</strong>ウィンドウには、データソース、セグメント、アクティベーションをリストしたデータフロー図が表示されます。データソースをクリックすると、そのデータソースからセグメントを通じて接続されたアクティベーションへのパスが表示されます：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_path.png"><img src="/images/early-access/cloudstream/cloudstream_segment_path.png"
          alt="CloudStreamセグメントパス"
          title="CloudStreamセグメントパス"/>
     </a>
 </figure>
 <h4 id="データソースとアクティベーションの管理">データソースとアクティベーションの管理</h4>
-<p>セグメントのデータソースを追加または編集し、セグメントのアクティベーションを追加または編集できます。</p>
+<p>セグメントのためにデータソースを追加または編集し、セグメントのアクティベーションを追加または編集できます。</p>
 <ol>
 <li>新しいデータソースを追加して構成すると、<strong>未使用のデータソース</strong>として表示されます。</li>
 <li><strong>構成</strong>をクリックして、新しいデータソースの属性をクエリするための条件をセグメントに追加します。</li>
-<li><strong>アクティベーションを追加</strong>をクリックして、コネクタのアクティベーションを追加します。</li>
+<li><strong>アクティベーションを追加</strong>をクリックして、コネクタのためのアクティベーションを追加します。</li>
 <li>アクションを選択して構成します。</li>
 <li>データフロー図は、新しいデータソースとアクションを含むように更新されます。</li>
 </ol>
-<p>アクティベーションのトグルを使用して有効/無効にするか、セグメント名の横にあるトグルを使用して、すべてのアクティベーションを有効/無効にします。</p>
+<p>アクティベーションのトグルを使用して有効/無効にするか、セグメント名の横にあるトグルを使用して、そのすべてのアクティベーションを有効/無効にします。</p>
 <h3 id="構成">構成</h3>
 <p><strong>構成</strong>ウィンドウでは、セグメントの構成を編集できます。セグメントの条件を更新して<strong>完了</strong>をクリックします。</p>
 <h3 id="インサイト">インサイト</h3>
-<p><strong>インサイト</strong>ウィンドウには、選択した期間のコネクタアクションの要約とチャートが表示されます：</p>
+<p><strong>インサイト</strong>ウィンドウには、選択した時間範囲のコネクタアクションの要約とチャートが表示されます：</p>
 <ul>
-<li><strong>一致</strong>：セグメント条件に一致する任意のデータソースからのインポートされたレコードの数、セグメントのアクティビティに関係なく。</li>
+<li><strong>一致</strong>：セグメント条件に一致する任意のデータソースからのインポートされたレコードの数、セグメントの活動に関係なく。</li>
 <li><strong>処理済み</strong>：アクティブなセグメント条件に一致し、有効なアクションをトリガーした任意のデータソースからのインポートされたレコードの数。</li>
 </ul>
 
@@ -570,7 +572,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2025年October月2日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

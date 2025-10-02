@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/magento/install/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Magento MarketplaceからTealium iQタグ管理拡張機能を使用して、Magento® 2システムにTealiumをインストールする方法を説明します。" />
+<meta property="og:description" content="この記事では、Magento® 2 システムに Tealium iQ タグ管理拡張機能を Magento Marketplace からインストールする方法を示しています。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>インストール | Magento 2用のTealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -305,7 +305,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Magento MarketplaceからTealium iQタグ管理拡張機能を使用して、Magento® 2システムにTealiumをインストールする方法を説明します。
+      この記事では、Magento® 2 システムに Tealium iQ タグ管理拡張機能を Magento Marketplace からインストールする方法を示しています。
     </p>
   
 </div>
@@ -314,82 +314,47 @@
   <h2 id="必要条件">必要条件</h2>
 <p>以下の項目が必要です：</p>
 <ul>
-<li>アクティブなTealium iQタグ管理アカウント</li>
-<li>あなたのTealiumアカウントID</li>
-<li>あなたのTealiumプロファイル名</li>
-<li>使用するTealium環境（prod、qa、dev、またはカスタム）</li>
+<li>アクティブな Tealium iQ タグ管理アカウント</li>
+<li>あなたの Tealium アカウント ID</li>
+<li>あなたの Tealium プロファイル名</li>
+<li>使用する Tealium 環境（prod、qa、dev、またはカスタム）</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Tealium for Magento拡張機能は、さまざまなページタイプでユニバーサルデータオブジェクト（UDOs）を実装し、拡張するための最小限のボイラープレートコードの堅牢な実装を提供します。 Magentoの推奨される依存性注入とレイアウトシステムを活用して、モジュールはUDOsの作成と拡張を簡素化します。</p>
-<p>拡張機能には、新しいUDOを作成するときにボイラープレートコードをスキャフォールド化するシンプルなスクリプトが含まれています。 これにより、新しいUDOが拡張する可能性のあるUDOを指定し、新しいUDOが表示されるサイトのページを指定できます。 完了すると、特定のユースケースのデータ固有のロジックで埋める必要があるスキャフォールド化されたテンプレートが作成されます。</p>
-<p>Magentoについての詳細情報は、<a href="http://devdocs.magento.com/">Magento Documentation</a>を参照してください。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Magento 用 Tealium 拡張機能は、さまざまなページタイプにわたってユニバーサルデータオブジェクト（UDOs）を実装および拡張するための最小限のボイラープレートコードの堅牢な実装を提供します。Magento の依存性注入とレイアウトシステムを活用することで、UDOs の作成と拡張のプロセスを簡素化します。</p>
+<p>拡張機能には、新しい UDO を作成する際にボイラープレートコードをスキャフォールドするシンプルなスクリプトが含まれています。それは、拡張する可能性のある任意の UDO を指定し、新しい UDO が表示されるサイトのページを指定することができます。完了すると、特定のユースケースに対するデータ固有のロジックを記入する必要があるスキャフォールドされたテンプレートが作成されます。</p>
+<p>Magento の詳細については、<a href="http://devdocs.magento.com/">Magento Documentation</a>を参照してください。</p>
 <h2 id="インストール">インストール</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>以下の手順はUbuntuサーバー環境のコマンドを使用します。他のサーバー環境の場合は、コマンドを適宜調整してください。</p>
-<p>あなたのMagnetoシステムにTealiumをインストールするには：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>以下の手順は Ubuntu サーバー環境のコマンドを使用しています。他のサーバー環境の場合は、コマンドを適宜調整してください。</p>
+<p>Magento システムに Tealium をインストールするには：</p>
 <ol>
-<li><strong>メンテナンスモードを有効にする</strong>：拡張機能をインストールする前にメンテナンスモードを有効にし、ユーザーの問題を避けます。 メンテナンスモードを有効にするには、次のコマンドを実行します：
+<li><strong>メンテナンスモードを有効にする</strong>：拡張機能をインストールする前に、ユーザーの問題を避けるためにメンテナンスモードを有効にします。メンテナンスモードを有効にするには、次のコマンドを実行します：
 <pre tabindex="0"><code>php bin/magento maintenance:enable
 </code></pre></li>
-<li><strong>Tealiumフォルダをコピーする</strong>：<a href="https://github.com/Tealium/integration-magento2/tree/DependencyUpdates">GitHub</a>からTealiumフォルダをコピーし、Magentoフォルダ内の<code>app/code/Tealium/Tags</code>に貼り付けます。 <code>app/code/Tealium/Tags</code>が存在しない場合は、それを作成します。</li>
-<li><strong>変更を更新する</strong>：次のコマンドを実行して変更を更新します：
+<li><strong>Tealium フォルダをコピーする</strong>：<a href="https://github.com/Tealium/integration-magento2/tree/DependencyUpdates">GitHub</a>から <code>app/code/Tealium/Tags</code> 内の Magento フォルダに Tealium フォルダをコピーします。<code>app/code/Tealium/Tags</code> が存在しない場合は、作成します。</li>
+<li><strong>変更を更新する</strong>：変更を更新するために、次のコマンドを実行します：
 <pre tabindex="0"><code>php bin/magento setup:upgrade
 php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy -f
 php bin/magento cache:flush
 </code></pre></li>
-<li><strong>メンテナンスモードを無効にする</strong>：インストールが完了したら、ユーザーがサイトにアクセスできるようにメンテナンスモードを無効にします。 メンテナンスモードを無効にするには、次のコマンドを実行します：
+<li><strong>メンテナンスモードを無効にする</strong>：インストールが完了したら、ユーザーがサイトにアクセスできるようにメンテナンスモードを無効にします。メンテナンスモードを無効にするには、次のコマンドを実行します：
 <pre tabindex="0"><code>php bin/magento maintenance:disable
 </code></pre></li>
 </ol>
 <h2 id="構成">構成</h2>
-<p>Magento 2を構成するには、次の手順を実行します：</p>
+<p>Magento 2 を構成するには、次の手順を実行します：</p>
 <ol>
-<li>管理パネルで、<strong>Stores &gt; Configuration &gt; Tealium &gt; Tag Management</strong>に移動します。</li>
-<li>拡張機能を有効にし、Tealium iQアカウント、プロファイル、環境を入力します。</li>
-<li>ファーストパーティドメインを使用している場合は、<strong>First Party Domain</strong>フィールドにクライアントドメインを入力します。</li>
-<li>平文の顧客メールアドレスを許可するには、<strong>Allow plain text customer email</strong>ドロップダウンリストで<strong>No</strong>を選択します。 それ以外の場合、メールアドレスはSHA-256ハッシュを使用して暗号化されます。</li>
+<li>管理パネルで、<strong>Stores &gt; Configuration &gt; Tealium &gt; Tag Management</strong> に移動します。</li>
+<li>拡張機能を有効にし、Tealium iQ アカウント、プロファイル、および環境を入力します。</li>
+<li>ファーストパーティドメインを使用している場合は、<strong>First Party Domain</strong> フィールドにクライアントドメインを入力します。</li>
+<li>プレーンテキストの顧客メールアドレスを許可する場合は、<strong>Allow plain text customer email</strong> ドロップダウンリストの下で <strong>No</strong> を選択します。それ以外の場合、メールアドレスは SHA-256 ハッシュを使用して暗号化されます。</li>
 </ol>
 <h2 id="テスト">テスト</h2>
-<p>TealiumとMagentoの構成が正しく連携して動作していることを確認するために、次のテストを使用します：</p>
+<p>Tealium と Magento の構成が正しく機能していることを確認するために、次のテストを使用します：</p>
 <ul>
 <li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/code-sniffer/">Code Sniffer</a></li>
 <li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/installation-and-varnish-tests/">Installation and Varnish Tests</a></li>
 <li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/mftf-magento/">MFTF Commerce-supplied Tests</a></li>
-</ul>
-<h2 id="リリースノート">リリースノート</h2>
-<h4 id="320">3.2.0</h4>
-<ul>
-<li>任意のFPD（First-Party Domain）構成。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/manage/">Manage First-Party Domains</a>を参照してください。</li>
-<li>メールハッシング：<strong>Yes</strong>に構成すると、<code>customer_email</code>パラメータのメールアドレスにSHA256()が適用されます。</li>
-<li>拡張機能の<code>etc</code>ディレクトリ（<code>public_html/integration-magento/etc</code>）の<code>csp_whitelist.xml</code>ファイルを更新しました。</li>
-<li>Magento 2.4.6のCSP（Content Security Policy）更新</li>
-<li>バグ修正</li>
-</ul>
-<h4 id="310">3.1.0</h4>
-<ul>
-<li>Magento 2.4のサポートを更新</li>
-<li>ユーザーが提出した製品レビューの追跡を追加</li>
-<li>バグ修正</li>
-</ul>
-<h4 id="302">3.0.2</h4>
-<ul>
-<li>Magento 2.3.3のサポートを追加</li>
-</ul>
-<h4 id="301">3.0.1</h4>
-<ul>
-<li>Magento 2.2.8、2.3.0、および2.3.1-2のサポートを追加</li>
-</ul>
-<h4 id="200">2.0.0</h4>
-<ul>
-<li>composer.JSONを更新</li>
-<li>readmeを更新</li>
-<li>すべての以前のコミットをリリース</li>
-</ul>
-<h4 id="101">1.0.1</h4>
-<ul>
-<li>Magento拡張機能を介してデプロイされるデフォルトのUDO（ページソースのutag_data JSONオブジェクト）は、Tealium iQ TMS Data Layerバンドルと一致します</li>
-<li>管理パネルでアカウント情報を構成します
-UDOを拡張およびカスタマイズします</li>
 </ul>
 
 </div>
@@ -421,7 +386,7 @@ UDOを拡張およびカスタマイズします</li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年October月2日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -436,11 +401,10 @@ UDOを拡張およびカスタマイズします</li>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88" href="javascript:void(0)">テスト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">リリースノート</a></li>
               </nav>
   </aside></nav>
 
