@@ -596,9 +596,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">Endpoint</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation</a></li>
+        <a href="/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation with iQ Tag Management</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">Managed MCP server</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">Connectors</a>
@@ -666,18 +668,6 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/vendor-examples/webhook-salesforce-predictive-intelligence-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-salesforce-predictive-intelligence-api">Webhook Salesforce Predictive Intelligence API</a></li></ul>
       </li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors-legacy">Connectors (Legacy)</a>
-        <ul class="pl2  connectors-legacy desktopmenu animated fadeIn list  dn">
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-connectors-legacy">About connectors (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface-legacy">Connector interface (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector-legacy">Add a connector (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors-legacy">Manage connectors (legacy)</a></li></ul>
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5  active">
@@ -1150,13 +1140,13 @@ If the visitor is not a member of any audiences with a retention time specified,
 </ul>
 <p class="tip"><i class="fa fa-info-circle"></i>The maximum allowed profile and audience retention times are determined by your contract terms.</p>
 <h3 id="example">Example</h3>
-<p>If your account has a profile retention time of 60 days, all visitor profiles with a last event activity timestamp older than 60 days are removed from AudienceStream. This means the entire visitor profile is deleted. If that same visitor were to return and trigger event activity, a new visitor profile would be created in AudienceStream.</p>
-<p>To store visitor profiles longer than your account/profile retention period, the visitor must be added to an audience that has a longer retention time.</p>
-<p>The following example illustrates how visitor retention time works with audiences that have times that are longer and shorter than the profile retention time.</p>
+<p>If your account has a profile retention time of 395 days, all visitor profiles with a last event activity timestamp older than 395 days are removed from AudienceStream. This means the entire visitor profile is deleted. If that same visitor returns and triggers event activity, AudienceStream creates a new visitor profile for them.</p>
+<p>To store visitor profiles longer than your account or profile retention period, the visitor must belong to an audience that has a longer retention time.</p>
+<p>The following example illustrates how visitor profile retention works with audiences that have longer and shorter retention times than the profile retention time.</p>
 <ul>
-<li><strong>Profile Retention Time</strong>: 60 days</li>
+<li><strong>Profile Retention Time</strong>: 395 days</li>
 <li><strong>&ldquo;Window Shopper&rdquo; audience retention time</strong>: 30 days</li>
-<li><strong>&ldquo;VIP Purchaser (&gt; $500)&rdquo; audience retention time</strong>: 90 days</li>
+<li><strong>&ldquo;VIP Purchaser (&gt; $500)&rdquo; audience retention time</strong>: 400 days</li>
 </ul>
 <table>
 <thead>
@@ -1172,7 +1162,7 @@ If the visitor is not a member of any audiences with a retention time specified,
 <tbody>
 <tr>
 <td>Visits Website,<br> browses products</td>
-<td>May 1</td>
+<td>May 1, 2024</td>
 <td>0</td>
 <td>✓ Added</td>
 <td></td>
@@ -1180,7 +1170,7 @@ If the visitor is not a member of any audiences with a retention time specified,
 </tr>
 <tr>
 <td>N/A</td>
-<td>May 31</td>
+<td>May 31, 2024</td>
 <td>30</td>
 <td>✗ Removed</td>
 <td></td>
@@ -1188,7 +1178,7 @@ If the visitor is not a member of any audiences with a retention time specified,
 </tr>
 <tr>
 <td>Visits Website,<br> Purchases $550</td>
-<td>Aug 1</td>
+<td>Aug 1, 2024</td>
 <td>0</td>
 <td></td>
 <td>✓ Added</td>
@@ -1196,16 +1186,16 @@ If the visitor is not a member of any audiences with a retention time specified,
 </tr>
 <tr>
 <td>N/A</td>
-<td>Sep 30</td>
-<td>60</td>
+<td>Aug 31, 2025</td>
+<td>395</td>
 <td></td>
 <td>✓ Retained</td>
 <td>✓ Retained</td>
 </tr>
 <tr>
 <td>N/A</td>
-<td>Oct 30</td>
-<td>90</td>
+<td>Sep 5, 2025</td>
+<td>400</td>
 <td></td>
 <td>✗ Removed</td>
 <td>✗ Removed</td>
@@ -1257,7 +1247,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 15, 2025 
+          <p>This page was last updated:  October 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

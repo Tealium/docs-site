@@ -598,15 +598,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".moments-api">モーメンツ API</a>
         <ul class="pl2  moments-api desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">について</a></li>
+        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">概要</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-manage-engines">エンジンの管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">実装</a></li>
+        <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">管理MCPサーバー</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">コネクター</a>
@@ -1031,7 +1033,7 @@
 <p><strong>Audiences</strong>ページでオーディエンスを選択すると、オーディエンスの詳細ページが表示され、以下のタブがあります：</p>
 <ul>
 <li><strong>Configuration</strong>：オーディエンスの条件を表示し、条件を編集できます。</li>
-<li><strong>Insights</strong>：訪問とオーディエンスの活動のグラフを表示し、毎日UTCの午前0時に更新されます。グラフの期間は、以下のいずれかになります：<strong>Today</strong>、過去7日間（<strong>7D</strong>）、過去30日間（<strong>30D</strong>）、過去2ヶ月（<strong>2M</strong>）、過去3ヶ月（<strong>3M</strong>）。デフォルトの期間は<strong>7D</strong>です。
+<li><strong>Insights</strong>：訪問とオーディエンスの活動のグラフを表示し、毎日UTCの午前0時に更新されます。グラフの期間は以下のいずれかです：<strong>Today</strong>、過去7日間（<strong>7D</strong>）、過去30日間（<strong>30D</strong>）、過去2ヶ月（<strong>2M</strong>）、過去3ヶ月（<strong>3M</strong>）。デフォルトの期間は<strong>7D</strong>です。
 <ul>
 <li><strong>Visits</strong>グラフは、選択した期間にオーディエンスに参加したかすでにオーディエンスの一部である訪問の訪問数を示します。</li>
 <li><strong>Activity</strong>グラフは、1日ごとのオーディエンスから離れた（オレンジ色のバー）または参加した（緑色のバー）訪問の数を示します。以下の図は<strong>Insights</strong>グラフの例を示しています：
@@ -1042,12 +1044,12 @@
     </figure></li>
 </ul>
 </li>
-<li><strong>Activations</strong>：オーディエンスのアクティベーションリストを表示し、アクティベーションを編集、有効化、または無効化できます。</li>
+<li><strong>Activations</strong>：オーディエンスのアクティベーションリストを表示し、アクティベーションを編集、アクティブ化、または非アクティブ化できます。</li>
 <li><strong>Functions</strong>：オーディエンスによってトリガーされる関数のリストを表示します。</li>
 </ul>
 <h2 id="オーディエンスの条件とセグメント">オーディエンスの条件とセグメント</h2>
 <p>オーディエンスは、訪問または訪問の属性を使用して1つ以上の条件を定義することによって作成されます。オーディエンスセグメントは、複数のオーディエンスでビルディングブロックとして使用できる条件のセットです。</p>
-<p>セグメントはANDまたはORの論理で重ね合わせてオーディエンスを作成できます。オーディエンスの条件を満たす訪問を除外するために除外論理を使用できます。これらのオーディエンス条件を満たす訪問は、ユーザー生成イベントに基づいてリアルタイムでオーディエンスに追加または削除されます。</p>
+<p>セグメントはANDまたはORの論理でレイヤー化してオーディエンスを作成できます。オーディエンスの条件を満たす訪問を除外するために、除外論理を使用できます。これらのオーディエンスの条件を満たす訪問は、ユーザー生成イベントに基づいてリアルタイムでオーディエンスに追加または削除されます。</p>
 <h3 id="and論理の例">AND論理の例</h3>
 <p>この例は、$1000以上を費やし、Fanバッジを持つ訪問のセグメントを示しており、以下の条件をAND論理で組み合わせています：</p>
 <ul>
@@ -1083,7 +1085,7 @@
     </a>
 </figure>
 <h2 id="保存されたセグメント">保存されたセグメント</h2>
-<p>保存されたセグメントは、複数のオーディエンスで使用でき、各オーディエンスに同じ条件を作成する必要を避けることができます。オーディエンスに条件を追加しているときにセグメントを保存できます。以下の図に示すように：
+<p>保存されたセグメントは、各オーディエンスで同じ条件を作成する必要を避けるために、複数のオーディエンスで使用できます。オーディエンスに条件を追加しているときにセグメントを保存できます。以下の図に示すように：
 <figure><a class="slb" href="/images/guides/server-side/audiences-save-a-segment.png"><img src="/images/guides/server-side/audiences-save-a-segment.png"
          alt="audiences page, tooltip for save icon for segments displayed"
          title="audiences page, tooltip for save icon for segments displayed"/>
@@ -1094,59 +1096,59 @@
 <p class="note"><i class="fa fa-exclamation-triangle"></i>オーディエンスで使用されるセグメントは編集できません。</p>
 <h3 id="セグメントの例">セグメントの例</h3>
 <p><strong>例1：以前に購入し、カートを放棄したロイヤリティメンバーのオーディエンス</strong></p>
-<p>この例では、以前に購入し、カートを放棄したロイヤリティメンバーのオーディエンスを作成するために、2つの保存されたセグメントを使用しています。ロイヤリティメンバーセグメントには、以下の条件があります：
+<p>この例では、2つの保存されたセグメントを使用して、以前に購入し、カートを放棄したロイヤリティメンバーのオーディエンスを作成します。ロイヤリティメンバーセグメントには以下の条件があります：
 <figure><a class="slb" href="/images/server-side/audiences-segment-loyalty.png"><img src="/images/server-side/audiences-segment-loyalty.png"
          alt="loyalty segment showing condition is email address is assigned"
          title="loyalty segment showing condition is email address is assigned"/>
     </a>
 </figure></p>
-<p>カート放棄および以前に購入したセグメントには、以下の条件があります：
+<p>カート放棄および以前に購入したセグメントには以下の条件があります：
 <figure><a class="slb" href="/images/server-side/audiences-segment-abandoned-purchases.png"><img src="/images/server-side/audiences-segment-abandoned-purchases.png"
          alt="abandoned cart, previous purchases segment showing conditions are cart abandoner is assigned and lifetime spending is greater than zero"
          title="abandoned cart, previous purchases segment showing conditions are cart abandoner is assigned and lifetime spending is greater than zero"/>
     </a>
 </figure></p>
-<p>以前に購入し、カートを放棄したロイヤリティメンバーのオーディエンスは、これらの2つのセグメントを次のように使用します：
+<p>以前に購入し、カートを放棄したロイヤリティメンバーのオーディエンスは、これら2つのセグメントを以下のように使用します：
 <figure><a class="slb" href="/images/server-side/audiences-loyal-purchases-abandoned.png"><img src="/images/server-side/audiences-loyal-purchases-abandoned.png"
          alt="audience containing these two segments"
          title="audience containing these two segments"/>
     </a>
 </figure></p>
-<p><strong>例2：過去60日間訪問していないロイヤリティメンバーのオーディエンス</strong></p>
-<p>この例では、前の例のロイヤリティメンバーセグメントと、過去60日間訪問がない訪問のための以下のセグメントを使用しています。これは、<strong>Last Visit</strong>属性が60より大きいかどうかをチェックします：
+<p><strong>例2：過去60日間に訪問していないロイヤリティメンバーのオーディエンス</strong></p>
+<p>この例では、前の例からのロイヤリティメンバーセグメントと、過去60日間に訪問がない訪問のための以下のセグメントを使用します。これは、<strong>Last Visit</strong>属性が60より大きいかどうかをチェックします：
 <figure><a class="slb" href="/images/server-side/audiences-segment-last-visit-60days.png"><img src="/images/server-side/audiences-segment-last-visit-60days.png"
          alt="segment with condition for Last Visit attribute greater than 60"
          title="segment with condition for Last Visit attribute greater than 60"/>
     </a>
 </figure></p>
-<p><code>Loyalty member, no visits in last 60 days</code>オーディエンスは、これらの両方のセグメントを次のように使用します：
+<p><code>Loyalty member, no visits in last 60 days</code>オーディエンスは、これらのセグメントを以下のように使用します：
 <figure><a class="slb" href="/images/server-side/audiences-loyal-novisit-60d.png"><img src="/images/server-side/audiences-loyal-novisit-60d.png"
          alt="audience of loyalty members with no visits in the last 60 days"
          title="audience of loyalty members with no visits in the last 60 days"/>
     </a>
 </figure></p>
 <h3 id="お気に入りのセグメント">お気に入りのセグメント</h3>
-<p><strong>Segments</strong>タブでセグメントをお気に入りに保存できます。これにより、お気に入りでフィルタリングして、頻繁に使用するセグメントに簡単にアクセスできます。たとえば：
+<p><strong>Segments</strong>タブでセグメントをお気に入りに保存できます。これにより、頻繁に使用するセグメントに簡単にアクセスできます。たとえば：
 <figure><a class="slb" href="/images/guides/server-side/audiences-favorites-example.png"><img src="/images/guides/server-side/audiences-favorites-example.png"
          alt="example of saving a segment to favorites"
          title="example of saving a segment to favorites"/>
     </a>
 </figure></p>
-<p>セグメントのリストを<strong>Favorites</strong>でフィルタリングし、お気に入りのセグメントのみが表示されます。たとえば：
+<p>セグメントリストを<strong>Favorites</strong>でフィルタリングし、お気に入りのセグメントのみが表示されます。たとえば：
 <figure><a class="slb" href="/images/guides/server-side/audiences-filter-segments-example.png"><img src="/images/guides/server-side/audiences-filter-segments-example.png"
          alt="example of filtered segments list"
          title="example of filtered segments list"/>
     </a>
 </figure></p>
 <h2 id="訪問の保持時間">訪問の保持時間</h2>
-<p>訪問の保持時間とは、Tealium AudienceStreamが最後の記録された活動後に訪問プロファイルを保持する期間を指します。訪問プロファイルに関連付けられた各イベントは、保持タイマーをリセットします。訪問が保持期間の長さにわたって非活動的である場合、そのプロファイルはシステムから永久に削除されます。</p>
+<p>訪問の保持時間とは、Tealium AudienceStreamが最後の記録された活動後に訪問プロファイルを保持する期間を指します。訪問プロファイルに関連付けられた各イベントが保持タイマーをリセットします。訪問が保持期間の長さにわたって非アクティブのままでいる場合、そのプロファイルはシステムから永久に削除されます。</p>
 <p>保持時間は以下の2か所で指定されます：</p>
 <ul>
 <li>
-<p><strong>プロファイル保持時間</strong>（<a href="/ja/server-side/administration/account-settings/">サーバーサイドアカウント構成</a>）はアカウントに構成され、変更することはできません。</p>
+<p><strong>プロファイル保持時間</strong>（<a href="/ja/server-side/administration/account-settings/">サーバーサイドアカウント構成</a>）はアカウントに構成され、変更はできません。</p>
 </li>
 <li>
-<p><strong>オーディエンス保持時間</strong>はプロファイル保持時間を特定のオーディエンスに対して上書きします。この構成を変更することはできません。変更を要求するにはTealiumサポートに連絡してください。</p>
+<p><strong>オーディエンス保持時間</strong>は特定のオーディエンスのプロファイル保持時間を上書きします。この構成は変更できません。変更を要求するにはTealiumサポートに連絡してください。</p>
 </li>
 </ul>
 <p>訪問に適用される保持時間は、以下のいずれかによって決定されます：</p>
@@ -1160,22 +1162,22 @@
 訪問が保持時間が指定されたオーディエンスのメンバーでない場合、プロファイル保持時間が使用されます。</p>
 </li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>プロファイルおよびオーディエンスの最大許容保持時間は、契約条件によって決定されます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>許可される最大のプロファイルおよびオーディエンス保持時間は、契約条件によって決定されます。</p>
 <h3 id="例">例</h3>
-<p>あなたのアカウントのプロファイル保持時間が60日である場合、最後のイベント活動のタイムスタンプが60日より古いすべての訪問プロファイルはAudienceStreamから削除されます。これは訪問プロファイルが完全に削除されることを意味します。同じ訪問が戻ってイベント活動をトリガーした場合、AudienceStreamに新しい訪問プロファイルが作成されます。</p>
-<p>アカウント/プロファイルの保持期間よりも長く訪問プロファイルを保存するには、訪問を保持時間がより長いオーディエンスに追加する必要があります。</p>
-<p>以下の例は、プロファイル保持時間よりも長いまたは短いオーディエンスの保持時間で訪問保持時間がどのように機能するかを示しています。</p>
+<p>あなたのアカウントのプロファイル保持時間が395日の場合、最後のイベント活動のタイムスタンプが395日より古いすべての訪問プロファイルはAudienceStreamから削除されます。これは訪問プロファイル全体が削除されることを意味します。同じ訪問が戻ってイベント活動を引き起こした場合、AudienceStreamはその訪問のために新しい訪問プロファイルを作成します。</p>
+<p>アカウントまたはプロファイルの保持期間よりも長く訪問プロファイルを保管するには、訪問はより長い保持時間を持つオーディエンスのメンバーでなければなりません。</p>
+<p>以下の例は、プロファイル保持時間よりも長い保持時間と短い保持時間を持つオーディエンスでの訪問プロファイル保持の仕組みを示しています。</p>
 <ul>
-<li><strong>プロファイル保持時間</strong>: 60日</li>
+<li><strong>プロファイル保持時間</strong>: 395日</li>
 <li><strong>「ウィンドウショッパー」オーディエンス保持時間</strong>: 30日</li>
-<li><strong>「VIP購入者（&gt; $500）」オーディエンス保持時間</strong>: 90日</li>
+<li><strong>「VIP購入者（&gt; $500）」オーディエンス保持時間</strong>: 400日</li>
 </ul>
 <table>
 <thead>
 <tr>
 <th>アクション</th>
 <th>日付</th>
-<th>非活動日数</th>
+<th>非アクティブ日数</th>
 <th>「ウィンドウショッパー」</th>
 <th>「VIP購入者」</th>
 <th>AudienceStream</th>
@@ -1184,7 +1186,7 @@
 <tbody>
 <tr>
 <td>ウェブサイト訪問、<br>商品閲覧</td>
-<td>5月1日</td>
+<td>2024年5月1日</td>
 <td>0</td>
 <td>✓ 追加</td>
 <td></td>
@@ -1192,7 +1194,7 @@
 </tr>
 <tr>
 <td>N/A</td>
-<td>5月31日</td>
+<td>2024年5月31日</td>
 <td>30</td>
 <td>✗ 削除</td>
 <td></td>
@@ -1200,7 +1202,7 @@
 </tr>
 <tr>
 <td>ウェブサイト訪問、<br>$550購入</td>
-<td>8月1日</td>
+<td>2024年8月1日</td>
 <td>0</td>
 <td></td>
 <td>✓ 追加</td>
@@ -1208,16 +1210,16 @@
 </tr>
 <tr>
 <td>N/A</td>
-<td>9月30日</td>
-<td>60</td>
+<td>2025年8月31日</td>
+<td>395</td>
 <td></td>
 <td>✓ 保持</td>
 <td>✓ 保持</td>
 </tr>
 <tr>
 <td>N/A</td>
-<td>10月30日</td>
-<td>90</td>
+<td>2025年9月5日</td>
+<td>400</td>
 <td></td>
 <td>✗ 削除</td>
 <td>✗ 削除</td>
@@ -1269,7 +1271,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年April月22日
+          <p>最終更新日 ::  2025年October月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

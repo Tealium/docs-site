@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="NextDoor Conversion Pixel" />
+    <meta property="og:title" content="NextDoor Conversion Pixel (Legacy)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/client-side-tags/nextdoor-conversion-pixel-tag/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
 <meta property="og:description" content="This article describes how to set up the Nextdoor Conversion Pixel tag." />
 <meta property="og:site_name" content="Tealium Docs" />
-    <title>NextDoor Conversion Pixel | Client-Side Tags | Tealium Docs</title>
+    <title>NextDoor Conversion Pixel (Legacy) | Client-Side Tags | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -734,7 +734,7 @@
       <a href="/client-side-tags/nextag-roi-tracker-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nextag ROI Tracker</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Conversion Pixel</span></a>
+      <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Conversion Pixel (Legacy)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nielsen Digital Content Ratings (DCR) - Page Measurement</span></a>
@@ -1497,7 +1497,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nextag-roi-tracker-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextag-roi-tracker-tag">Nextag ROI Tracker</a></li>
     <li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor Conversion Pixel</a></li>
+        <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor Conversion Pixel (Legacy)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nielsen-digital-content-ratings-dcr-page-measurement-tag">Nielsen Digital Content Ratings (DCR) - Page Measurement</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1746,7 +1746,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">NextDoor Conversion Pixel</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">NextDoor Conversion Pixel (Legacy)</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1760,7 +1760,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Use the Nextdoor Conversion Pixel to accurately measure conversions that can be attributed to your ads on Nextdoor. The Nextdoor Pixel is key to understanding your campaign’s Cost Per Action (CPA). Additionally, it lets you optimize your targeting and creative strategy, which will ultimately lead to a more effective Return on Investment (ROI).</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This is the legacy version of the tag. It will soon be deprecated and replaced with the Universal Pixel.</p>
+<p>Use the Nextdoor Conversion Pixel to accurately measure conversions that can be attributed to your ads on Nextdoor. The Nextdoor Pixel is key to understanding your campaign’s Cost Per Action (CPA). Additionally, it lets you optimize your targeting and creative strategy, which will ultimately lead to a more effective Return on Investment (ROI).</p>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>Use mappings to override Standard parameters.</li>
@@ -1773,6 +1774,7 @@
 <li><strong>Pixel ID</strong>: Your NextDoor Pixel ID.</li>
 <li><strong>Auto Page View</strong>: Automatically create a trigger for page views.</li>
 <li><strong>Auto Purchase Event</strong>: Automatically create a trigger for purchase events.</li>
+<li><strong>Generate Event ID</strong>: Automatically generate an event ID for every Nextdoor tracking event.</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
 <p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
@@ -1803,6 +1805,16 @@
 <td style="text-align:left"><code>autoPurchaseEvent</code></td>
 <td style="text-align:left">Boolean</td>
 <td style="text-align:left">Auto Purchase Event</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>generate_event_id</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Generate event IDs</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>event_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Event ID</td>
 </tr>
 </tbody>
 </table>
@@ -1860,10 +1872,6 @@
 <td style="text-align:left">PageView</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>CONVERSION</code></td>
-<td style="text-align:left">Conversion</td>
-</tr>
-<tr>
 <td style="text-align:left"><code>LEAD</code></td>
 <td style="text-align:left">Lead</td>
 </tr>
@@ -1874,6 +1882,30 @@
 <tr>
 <td style="text-align:left"><code>SIGN_UP</code></td>
 <td style="text-align:left">Sign Up</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ADD_TO_CART</code></td>
+<td style="text-align:left">Add to Cart</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>INITIATE_CHECKOUT</code></td>
+<td style="text-align:left">Initiate Checkout</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SEARCH</code></td>
+<td style="text-align:left">Search</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ADD_TO_WISHLIST</code></td>
+<td style="text-align:left">Add to Wishlist</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SUBSCRIBE</code></td>
+<td style="text-align:left">Subscribe</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VIEW_CONTENT</code></td>
+<td style="text-align:left">View Content</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>CUSTOM_CONVERSION_1</code></td>

@@ -746,7 +746,7 @@
       <a href="/ja/client-side-tags/nextag-roi-tracker-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nextag ROIトラッカー</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor変換ピクセル</span></a>
+      <a href="/ja/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor コンバージョンピクセル（レガシー）</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nielsen (DCR)</span></a>
@@ -1550,7 +1550,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/nextag-roi-tracker-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextag-roi-tracker-tag">Nextag ROIトラッカー</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor変換ピクセル</a></li>
+        <a href="/ja/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor コンバージョンピクセル（レガシー）</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nielsen-digital-content-ratings-dcr-page-measurement-tag">Nielsen (DCR)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1838,24 +1838,32 @@
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>マッピングを通じて標準構成を上書きします。</li>
-<li>複数のパートナーIDについては、<strong>パートナーID</strong>フィールドにカンマで区切って入力します。</li>
-</ul>
-<h2 id="タグ構成">タグ構成</h2>
-<p>新しいタグを追加するためにタグマーケットプレイスに移動します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
-<p>タグを追加した後、以下の構成を行います：</p>
+<li>複数のパートナーIDの場合、<strong>パートナーID</strong>フィールドにカンマ区切りのリストを入力します。</li>
+<li>次のEコマース変数を使用します：
 <ul>
-<li><strong>パートナーID</strong>: LinkedInアカウントのパートナーID。</li>
-<li><strong>イベントIDの生成</strong>: LinkedInのトラッキングイベントごとに自動的にイベントIDを生成します。デフォルト値は<code>true</code>です。</li>
+<li>注文ID（<code>_corder</code>）</li>
+<li>注文合計（<code>_ctotal</code>）</li>
+<li>注文通貨（<code>_ccurrency</code>）</li>
+<li>顧客ID（<code>_ccustid</code>）</li>
 </ul>
-<h3 id="web用のconversions-api">Web用のConversions API</h3>
-<p>LinkedInのWeb用Conversions APIをサポートするために、タグはトラッキングされる各イベントに対してユニークなイベントIDを生成し、それをTealium EventStreamに送信してLinkedIn Conversionsコネクタで使用します。イベントIDは、Webベースとサーバーベースの統合を同期するためにコネクタでマッピングすることができます。この機能には、アクティブな<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>が必要です。</p>
-<p>タグは以下の命名規則を使用して新しいイベント属性を発行します：</p>
+</li>
+</ul>
+<h2 id="タグの構成">タグの構成</h2>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>パートナーID</strong>：LinkedInアカウントのパートナーID。</li>
+<li><strong>イベントIDの生成</strong>：LinkedInの追跡イベントごとに自動的にイベントIDを生成します。デフォルト値は<code>true</code>です。</li>
+</ul>
+<h3 id="web用コンバージョンapi">Web用コンバージョンAPI</h3>
+<p>Web用LinkedInコンバージョンAPIをサポートするために、タグは各イベントに対してユニークなイベントIDを生成し、それをTealium EventStreamに送信してLinkedInコンバージョンコネクタで使用します。このイベントIDはコネクタでマッピング可能で、Webベースのサーバーベースの統合を同期させることができます。この機能にはアクティブな<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>が必要です。</p>
+<p>タグは次の命名規則を使用して新しいイベント属性を発行します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">linkedin_event_id_{CONVERSION_EVENT}_{TAG_UID}
-</code></pre><p>例えば：<code>window.lintrk('track', { conversion_id: 11563522 });</code></p>
-<p><a href="/ja/server-side-connectors/linkedin-conversions-connector/">LinkedIn Conversions Connector構成ガイド</a>を参照してください。</p>
+</code></pre><p>例：<code>window.lintrk('track', { conversion_id: 11563522 });</code></p>
+<p><a href="/ja/server-side-connectors/linkedin-conversions-connector/">LinkedInコンバージョンコネクタ構成ガイド</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
-<p>利用可能なカテゴリーは以下の通りです：</p>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>利用可能なカテゴリは以下の通りです：</p>
 <h3 id="標準">標準</h3>
 <table>
 <thead>
@@ -1868,6 +1876,10 @@
 <tr>
 <td><code>partner_id</code></td>
 <td>パートナーID</td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td>イベントID</td>
 </tr>
 <tr>
 <td><code>linkedin.custom_channel_id</code></td>
@@ -1923,7 +1935,7 @@
 </tr>
 <tr>
 <td><code>linkedin.raw_data_overwrite</code></td>
-<td>生データの上書き</td>
+<td>生データ上書き</td>
 </tr>
 <tr>
 <td><code>linkedin.encrypted_data</code></td>
@@ -1939,11 +1951,11 @@
 </tr>
 <tr>
 <td><code>linkedin.employee_range</code></td>
-<td>従業員の範囲</td>
+<td>従業員範囲</td>
 </tr>
 <tr>
 <td><code>linkedin.default_keywords</code></td>
-<td>デフォルトのキーワード</td>
+<td>デフォルトキーワード</td>
 </tr>
 <tr>
 <td><code>linkedin.async_target</code></td>
@@ -1951,11 +1963,11 @@
 </tr>
 <tr>
 <td><code>linkedin.use_iframe</code></td>
-<td>iframeの使用</td>
+<td>Iframe使用</td>
 </tr>
 <tr>
 <td><code>linkedin.use_callback</code></td>
-<td>コールバックの使用</td>
+<td>コールバック使用</td>
 </tr>
 <tr>
 <td><code>linkedin.test_url</code></td>
@@ -2027,7 +2039,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2025年October月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2042,8 +2054,8 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web%E7%94%A8%E3%81%AEconversions-api" href="javascript:void(0)">Web用のConversions API</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web%E7%94%A8%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3api" href="javascript:void(0)">Web用コンバージョンAPI</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
               </nav>

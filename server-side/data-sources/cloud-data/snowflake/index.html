@@ -596,9 +596,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">Endpoint</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation</a></li>
+        <a href="/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation with iQ Tag Management</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">Managed MCP server</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">Connectors</a>
@@ -666,18 +668,6 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/vendor-examples/webhook-salesforce-predictive-intelligence-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-salesforce-predictive-intelligence-api">Webhook Salesforce Predictive Intelligence API</a></li></ul>
       </li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors-legacy">Connectors (Legacy)</a>
-        <ul class="pl2  connectors-legacy desktopmenu animated fadeIn list  dn">
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-connectors-legacy">About connectors (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface-legacy">Connector interface (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector-legacy">Add a connector (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors-legacy">Manage connectors (legacy)</a></li></ul>
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -1076,18 +1066,39 @@
 </ul>
 <p>For more information, see <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: Custom roles</a> and <a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: Access control privileges</a>.</p>
 <h3 id="authentication">Authentication</h3>
-<p>To authorize a connection using an RSA key pair, Tealium can generate an unencrypted key pair for you. Assign the generated public key to the Snowflake user account that requires access to the specified tables or views.</p>
-<p>Select from the following key algorithms based on your security requirements: RSA-2048, RSA-3072, or RSA-4096.</p>
-<p>After the key is generated, download the public key file and assign the key to the user in your cloud database. The key fingerprint is also provided if you need to verify that the user&rsquo;s public key was assigned correctly.</p>
+<p>You can authorize a Snowflake connection with an RSA key pair in three ways:</p>
+<ul>
+<li><strong>Generate a new key pair</strong> in Tealium.</li>
+<li><strong>Upload a private key file</strong> that you generated outside of Tealium.</li>
+<li><strong>Reuse an existing key pair</strong> that you previously generated or uploaded in Tealium.</li>
+</ul>
+<p>In all cases, you must assign the corresponding public key to the Snowflake user account that requires access to the specified tables or views.</p>
+<p>Select from the following key algorithms based on your security requirements: <strong>RSA-2048</strong>, <strong>RSA-3072</strong>, or <strong>RSA-4096</strong>.</p>
+<h4 id="steps-to-configure-authentication">Steps to configure authentication</h4>
 <ol>
-<li>Enter the username of the user with access to your Snowflake database, schema, warehouse, and table or view.</li>
-<li>Generate a key-pair using one of the following encryption algorithms: RSA-2048, RSA-3072, RSA-4096.</li>
-<li>Download the public key file. The key is only the text between the lines <code>-----BEGIN PUBLIC KEY-----</code> and <code>-----END PUBLIC KEY-----</code>.</li>
-<li>Assign the public key to the user in Snowflake with the following command:
+<li>
+<p><strong>Username</strong>: Enter the username of the Snowflake user with access to the required database, schema, warehouse, and table or view.</p>
+</li>
+<li>
+<p><strong>Authentication</strong>: Choose one of the following credential options:</p>
+<ul>
+<li><strong>Generate new key pair</strong>: Select an RSA algorithm. Tealium displays the private key (once only) and the public key. Download the keys and store them securely.</li>
+<li><strong>Upload private key file</strong>: Upload an existing private key file. If the file is encrypted, enter the passphrase to unlock it.</li>
+<li><strong>Reuse existing key</strong>: Select a key from the existing generated and uploaded keys. Confirm that the associated public key is already assigned to the correct Snowflake user.</li>
+</ul>
+</li>
+<li>
+<p><strong>Download</strong>: Download the public key file. The key is only the text between the lines <code>-----BEGIN PUBLIC KEY-----</code> and <code>-----END PUBLIC KEY-----</code>.</p>
+</li>
+<li>
+<p><strong>Assign</strong>: Assign the public key to the Snowflake user with the following SQL command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> your_username
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> RSA_PUBLIC_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your_public_key&#39;</span>;
-</span></span></code></pre></div>For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Assign a public key to a Snowflake user</a>.</li>
-<li>Copy the key fingerprint if you want to verify that the key was assigned to the user correctly by following instructions at <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#verify-the-user-s-public-key-fingerprint">Snowflake: Verify the user’s public key fingerprint</a>.</li>
+</span></span></code></pre></div><p>For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Assign a public key to a Snowflake user</a>.</p>
+</li>
+<li>
+<p>(Optional) Copy the key fingerprint to verify that the key was assigned correctly. See <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#verify-the-user-s-public-key-fingerprint">Snowflake: Verify the user’s public key fingerprint</a>.</p>
+</li>
 </ol>
 <p>After you connect to Snowflake, select the data source table from the <strong>Table Selection</strong> list.</p>
 <h2 id="query-mode">Query mode</h2>
@@ -1144,7 +1155,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 17, 2025 
+          <p>This page was last updated:  October 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

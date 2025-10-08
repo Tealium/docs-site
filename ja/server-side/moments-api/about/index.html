@@ -598,15 +598,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".moments-api">モーメンツ API</a>
         <ul class="pl2 bl b--primary bw1 moments-api desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-moments-api">について</a></li>
+        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-moments-api">概要</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-manage-engines">エンジンの管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">実装</a></li>
+        <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">管理MCPサーバー</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">コネクター</a>
@@ -1014,87 +1016,89 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Moments APIをアカウントで有効にするには、アカウントマネージャーに連絡してください。</p>
-<p>Moments APIは、リアルタイムの訪問パーソナライゼーションのための高性能データを取得することができるAudienceStream APIです。Moments APIをTealiumのクライアントサイドアプリケーション、<code>utag.js</code>がインストールされている場所、またはTealium for Mobileに統合できます。</p>
-<h2 id="仕組み">仕組み</h2>
-<p>Moments APIは、_エンジン_と呼ばれる構成を使用して、現在の訪問に必要なデータのみを取得するためのAPIレスポンスをカスタマイズします。例えば、訪問のプロファイル全体を取得する代わりに、Moments APIはエンジン構成で選択したオーディエンス、バッジ、属性データのみを取得します。</p>
-<p>エンジンを構成した後、Moments APIはワークフローに統合できるユニークなエンドポイントを作成します。</p>
-<h3 id="ユースケース">ユースケース</h3>
-<p>Moments APIは、パーソナライズされた顧客体験のためのリアルタイムの訪問データが必要な場合にいつでも使用できます。これには以下のようなものが含まれます：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>アカウントマネージャーに連絡して、アカウントでMoments APIを有効にしてください。</p>
+<p>Moments APIは、リアルタイムの訪問パーソナライゼーションのための高性能データを取得するための、組み合わせ可能なAudienceStream APIです。Moments APIをTealiumのクライアントサイドアプリケーションに統合し、<code>utag.js</code>がインストールされている場所やTealium for Mobileで使用します。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Moments APIは、_エンジン_と呼ばれる構成を使用して、現在の訪問に必要なデータのみを取得するためにAPIレスポンスをカスタマイズします。たとえば、訪問プロファイル全体を取得する代わりに、エンジン構成で選択したオーディエンス、バッジ、および属性データのみを取得します。</p>
+<p>エンジンを構成した後、ワークフローに統合するためのユニークなエンドポイントがMoments APIによって作成されます。</p>
+<h3 id="使用例">使用例</h3>
+<p>Moments APIは、パーソナライズされた顧客体験のためにリアルタイムの訪問データが必要な場合にいつでも使用できます。例えば：</p>
 <ul>
 <li>パーソナライゼーション（最初のページ以降）</li>
-<li>データエンリッチメントロジックと組み合わせた次の最善のアクション</li>
+<li>データエンリッチメントロジックと組み合わせた次の最適なアクション</li>
 <li>エンタープライズグレードのAPI管理とコンプライアンス</li>
 </ul>
-<p>例えば、顧客があなたのウェブサイトやアプリに戻ってきたとき、訪問データのためのユニークなMoments APIエンドポイントへのリクエストが行われます。Moments APIは必要なデータのみを提供するように最適化されているため、APIはリアルタイムでストリームライン化されたレスポンスをあなたのアプリに送信します。その重要なデータを活用して、顧客に対するパーソナライズされた体験をトリガーする追加のロジックを活性化できます。</p>
+<p>たとえば、顧客がウェブサイトやアプリに戻ったとき、訪問データのためにユニークなMoments APIエンドポイントへのリクエストが行われます。Moments APIは必要なデータのみを提供するように最適化されているため、APIはリアルタイムでストリームライン化されたレスポンスをアプリに送信します。その重要なデータを使用して、顧客にパーソナライズされた体験をトリガーする追加のロジックをアクティブにすることができます。</p>
 <figure><a class="slb" href="/images/early-access/moments-api-workflow.png"><img src="/images/early-access/moments-api-workflow.png"
-         alt="High-level Moments API workflow"
-         title="High-level Moments API workflow"/>
+         alt="Moments APIのハイレベルなワークフロー"
+         title="Moments APIのハイレベルなワークフロー"/>
     </a>
 </figure>
 <h3 id="エンジン">エンジン</h3>
-<p>Moments APIのエンジンは、各ユニークなエンドポイントに保存する訪問データを構成し、それらのエンドポイントにアクセスを許可するドメインを構成することができます。</p>
-<p>エンジンを構成するとき、ユースケースに必要なオーディエンス、バッジ、属性のみを選択します。Moments APIエンジンは、リクエストを作成するときにJSONレスポンスを表示するため、リクエストの正確さと範囲を確認することができます。</p>
-<p>訪問のデータは、エンジンを有効にし、訪問がアクティブなセッションをログし、システム内でイベントを生成した後に利用可能になります。例えば、顧客があなたのサイトを訪れたとき、Moments APIは新しい訪問のイベントがエンジン構成で定義されたオーディエンス、バッジ、属性に影響を与えるかどうかを判断します。訪問データが更新される必要があるときのみ、データは各エンジンのユニークなデータストアに書き込まれます。</p>
-<p>エンジンはリアルタイムでデータストアを更新するため、APIエンドポイントのデータは訪問があなたのブランドと交流するにつれて最新の状態を保ちます。</p>
-<p>デフォルトでは、プロファイルごとに最大10のエンジンを有効にすることができます。これにより、特定のビジネスケースごとにカスタマイズされたエンジンを作成することができます。追加のエンジンを有効にする必要がある場合は、Tealiumのアカウントマネージャーに連絡してください。</p>
+<p>Moments APIのエンジンは、各ユニークなエンドポイントに格納する訪問データと、それらのエンドポイントにアクセスを許可するドメインを構成することを可能にします。</p>
+<p>エンジンを構成するとき、使用例に必要なオーディエンス、バッジ、および属性のみを選択します。Moments APIエンジンは、構築する際にJSONレスポンスを表示するため、リクエストの正確性と範囲を確認することができます。</p>
+<p>訪問がアクティブなセッションをログし、システムでイベントを生成した後、訪問のデータが利用可能になります。たとえば、顧客がサイトを訪れたとき、Moments APIは新しい訪問イベントがエンジン構成で定義されたオーディエンス、バッジ、および属性に影響を与えるかどうかを判断します。訪問データが更新される必要がある場合にのみ、各エンジンのユニークなデータストアにデータが書き込まれます。</p>
+<p>エンジンはリアルタイムでデータストアを更新するため、訪問がブランドとのやり取りを行うにつれて、APIエンドポイントのデータは常に最新の状態を保ちます。</p>
+<p>デフォルトでは、特定のビジネスケースごとにカスタマイズされたエンジンを作成できるように、プロファイルごとに最大10個のエンジンを有効にすることができます。追加のエンジンを有効にする必要がある場合は、Tealiumサポートに連絡してください。</p>
 <h3 id="エンドポイント">エンドポイント</h3>
-<p>Moments APIは、各エンジンごとにユニークなエンドポイントを作成します。訪問データはJSONオブジェクトとして返されます。</p>
-<p>Tealiumは、ペイロードサイズが1kB以下の場合の平均Moments APIエンドポイントのパフォーマンスを60msでベンチマークしています。</p>
-<p>訪問データを取得するために、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を構成して、<a href="/ja/server-side/moments-api/endpoint/">Moments API endpoint</a>へのリクエストを行います。</p>
+<p>Moments APIは、各エンジンに対してユニークなエンドポイントを作成します。訪問データはJSONオブジェクトとして返されます。</p>
+<p>Tealiumは、ペイロードサイズが1kB以下の場合、平均Moments APIエンドポイントのパフォーマンスを60 msでベンチマークしています。</p>
+<p>訪問データを取得するには、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を構成して、<a href="/ja/server-side/moments-api/endpoint/">Moments APIエンドポイント</a>にリクエストを行います。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>エンジンをオンにしてからアクティブなセッションを持っていない訪問のデータは利用できません。</p>
+<h3 id="mcpサーバー">MCPサーバー</h3>
+<p>Moments APIはMCPサーバーとの統合をサポートしており、高度なパーソナライゼーションとオートメーションの使用例に対して大規模な言語モデル（LLM）およびエージェントベースのソリューションとのシームレスな接続を可能にします。詳細については、<a href="/ja/server-side/moments-api/managed-mcp-server/">Moments API 管理MCPサーバー</a>を参照してください。</p>
 <h3 id="訪問識別子">訪問識別子</h3>
-<p>Moments APIのエンドポイントは、Tealiumの匿名訪問IDと訪問ID属性を使用したGETリクエストをサポートしており、訪問データを取得することができます。</p>
+<p>Moments APIエンドポイントは、Tealiumの匿名訪問IDと訪問ID属性の両方を使用するGETリクエストをサポートしています。</p>
 <ul>
-<li><strong>匿名訪問ID</strong>：サイトの訪問ごとやアプリの使用ごとに訪問に割り当てられるユニークで匿名の値。匿名IDは、同じブラウザやアプリからの複数の訪問を追跡しますが、異なるブラウザやデバイス間では追跡しません。</li>
-<li><strong>訪問ID属性</strong>：ユーザー識別子から値を取得するAudienceStreamの特別な属性タイプで、訪問のスティッチングに使用されます。</li>
+<li><strong>匿名訪問ID</strong>: 各訪問またはアプリの使用ごとに訪問に割り当てられるユニークで匿名の値です。匿名IDは、同じブラウザーやアプリからの複数の訪問を通じて訪問を追跡しますが、異なるブラウザーやデバイス間では追跡しません。</li>
+<li><strong>訪問ID属性</strong>: AudienceStream内でユーザー識別子からその値を取得する特別な属性タイプであり、訪問スティッチングに使用されます。</li>
 </ul>
-<p>詳細については、<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">匿名ID、ユーザー識別子、訪問ID属性</a>を参照してください。</p>
+<p>詳細については、<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">匿名ID、ユーザー識別子、および訪問ID属性</a>を参照してください。</p>
 <h2 id="制限">制限</h2>
-<p>Moments APIには以下のデフォルトの制限があります：</p>
+<p>Moments APIには次のデフォルトの制限があります：</p>
 <ul>
 <li>
-<p>プロファイルごとの全エンジンに対する読み取りレート制限：200リクエスト/秒/プロファイル</p>
+<p>プロファイル全体のエンジンの読み取りレート制限：200リクエスト/秒/プロファイル</p>
 </li>
 <li>
-<p>プロファイルごとの最大有効エンジン数：10</p>
+<p>プロファイルごとに有効なエンジンの最大数：10</p>
 </li>
 <li>
-<p>訪問ごとのエンジンごとに保存できるMoments APIデータの最大サイズ：1kB <p class="note"><i class="fa fa-exclamation-triangle"></i>訪問属性データがデータストアの制限を超える場合、その訪問のデータは保存されません。</p></p>
+<p>訪問ごとのエンジンごとに保存できるMoments APIデータの最大サイズ：1kB <p class="note"><i class="fa fa-exclamation-triangle"></i>訪問属性データがデータストアの制限を超える場合、その訪問のためには保存されません。</p></p>
 </li>
 <li>
 <p>Moments APIエンドポイントで利用可能なデータ：新しいイベントが処理されない場合の30日間の保持</p>
 </li>
 </ul>
-<p>ユースケースにより高い制限が必要な場合は、Tealiumのアカウントマネージャーに連絡してください。</p>
-<h2 id="データのパージ">データのパージ</h2>
-<p>Moments APIでは、パージデータ機能を使用してエンドポイントから古いデータを削除することができます。</p>
-<p>以下の例は、エンドポイントからデータをパージしたい状況を説明しています：</p>
+<p>使用例により高い制限が必要な場合は、Tealiumアカウントマネージャーに連絡してください。</p>
+<h2 id="データの削除">データの削除</h2>
+<p>Moments APIでは、データの削除機能を使用してエンドポイントから古いデータを削除することができます。</p>
+<p>次の例は、エンドポイントからデータを削除する場合に参考になる状況を説明しています：</p>
 <ul>
-<li>エンジン構成に含まれるオーディエンス、バッジ、属性の名前を変更したり、削除したりする。</li>
-<li>属性の個人識別情報（PII）ステータスを変更する。属性のPIIステータスを変更すると、制限された情報がAPIエンドポイントに公開されたままになる可能性があります。</li>
-<li>エンジン構成からオーディエンス、バッジ、属性を削除する。</li>
+<li>エンジン構成に含まれているオーディエンス、バッジ、または属性の名前を変更または削除する場合。</li>
+<li>属性の個人識別情報（PII）ステータスを変更する場合。属性のPIIステータスを変更すると、制限された情報がAPIエンドポイントに引き続き公開されて保存される可能性があります。</li>
+<li>エンジン構成からオーディエンス、バッジ、または属性を削除する場合。</li>
 </ul>
-<p>エンジンで使用されるオーディエンス、バッジ、属性がAudienceStreamまたはエンジン構成から削除されると、その項目は今後エンドポイントに表示されなくなります。削除された属性を含むエンジンデータは変更されません。一般的に、依存関係の削除がエンドポイント統合に破壊的な変更を引き起こす場合、エンジンデータをパージすることを検討するかもしれません。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>データをパージすると、Moments APIエンジンのデータのみが削除されます。AudienceStreamの訪問レコードは影響を受けません。</p>
-<p>エンジンデータのパージについての詳細は、<a href="/ja/server-side/moments-api/manage/#purge-data">Moments APIエンジンの管理 &gt; データのパージ</a>を参照してください。</p>
+<p>エンジンで使用されているオーディエンス、バッジ、または属性がAudienceStreamまたはエンジン構成から削除されると、その項目は今後エンドポイントに表示されなくなります。エンジンデータに含まれる削除された属性を含むデータは変更されません。一般的に、依存関係の削除がエンドポイント統合に破壊的な変更を引き起こす場合、エンジンデータを削除することを検討するかもしれません。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>データの削除は、Moments APIエンジンデータのみを削除します。AudienceStreamの訪問レコードは影響を受けません。</p>
+<p>エンジンデータの削除についての詳細は、<a href="/ja/server-side/moments-api/manage/#purge-data">Manage Moments API engines &gt; Purge data</a>を参照してください。</p>
 <h2 id="ドメイン許可リスト">ドメイン許可リスト</h2>
-<p class="tip"><i class="fa fa-info-circle"></i>APIエンドポイントのテストが完了した後に、ドメイン許可リストを作成することをお勧めします。</p>
-<p>許可リストは、信頼できないドメインからあなたのMoments APIエンドポイントへのリクエストを防ぎます。エンジンを構成するときに、特定のドメインを許可リストに追加することができます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>APIエンドポイントをテストした後にのみ、ドメイン許可リストを作成することをお勧めします。</p>
+<p>許可リストは、信頼できないドメインがMoments APIエンドポイントへのリクエストを行うのを防ぎます。エンジンを構成するときに特定のドメインを許可リストに追加することができます。</p>
 <p>Moments APIは、<code>Referer</code> HTTPリクエストヘッダーのドメインとMoments APIエンジンで定義された許可リストを比較して、エンドポイントへの呼び出しを許可または制限します：</p>
 <ul>
-<li>ドメインが一致：リクエストは処理されます。</li>
+<li>ドメインが一致する：リクエストは処理されます。</li>
 <li>ドメインが一致しない：リクエストは処理されず、403エラーが返されます。</li>
 </ul>
 <p>ドメインをリストに追加しない場合、すべてのドメインが許可されます。</p>
 <h3 id="サブドメイン">サブドメイン</h3>
-<p>ドメインを許可リストに追加すると、そのすべてのサブドメインが自動的に含まれます。例えば、<code>example.com</code>を許可すると、<code>*.example.com</code>に一致するすべてのサブドメインが含まれます。</p>
+<p>ドメインを許可リストに追加すると、そのすべてのサブドメインが自動的に含まれます。たとえば、<code>example.com</code>を許可すると、<code>*.example.com</code>に一致するすべてのサブドメインが含まれます。</p>
 <h2 id="権限">権限</h2>
-<p>Moments APIの機能は、以下の権限レベルを通じて管理されます：</p>
+<p>Moments APIの機能は、次の権限レベルを通じて管理されます：</p>
 <ul>
-<li><strong>エンジンの作成、編集、削除、エンジンデータのパージ</strong>
+<li><strong>エンジンの作成、編集、削除およびエンジンデータの削除</strong>
 <ul>
-<li>エディターまたはパブリッシャーのレガシー権限</li>
+<li>編集者または発行者のレガシー権限</li>
 <li>プラットフォーム権限での書き込みまたは削除アクセス</li>
 </ul>
 </li>
@@ -1105,7 +1109,7 @@
 </li>
 </ul>
 <h2 id="moments-apiとdata-layer-enrichment-apiの比較">Moments APIとData Layer Enrichment APIの比較</h2>
-<p>Moments APIと<a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/data-layer-enrichment-public-api/">Data Layer Enrichment API</a>の両方でライブ訪問データを取得することができますが、ユースケース、構成、実装は異なります。これら2つの訪問プロファイルデータ取得方法の違いを理解するために、以下の比較を参照してください。</p>
+<p>Moments APIと<a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/data-layer-enrichment-public-api/">Data Layer Enrichment API</a>はどちらもリアルタイムで訪問データを取得できますが、使用例、構成、実装が異なります。これら二つの訪問プロファイルデータ取得方法の違いについて学ぶために、以下の比較を参照してください。</p>
 <table>
 <thead>
 <tr>
@@ -1116,9 +1120,9 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>ユースケース</strong></td>
+<td><strong>使用例</strong></td>
 <td>最初のページのパーソナライゼーションとそれ以降のための現在の訪問データへのリアルタイムアクセス。</td>
-<td>初期の処理イベントの後にリアルタイムからほぼリアルタイムで利用可能なライブ訪問データ。</td>
+<td>初期処理されたイベント後のリアルタイムからほぼリアルタイムで利用可能な訪問データ。</td>
 </tr>
 <tr>
 <td><strong>レート</strong></td>
@@ -1132,8 +1136,8 @@
 </tr>
 <tr>
 <td><strong>利用可能なデータ</strong></td>
-<td>オーディエンス、バッジ、または<a href="/ja/server-side/moments-api/endpoint/#objects">サポートされている属性データタイプ</a>。<br> 利用可能なオーディエンスとバッジの名前とID。</td>
-<td>訪問ID、ファネル、タイムライン以外の属性、属性IDによりリスト化されます。バッジとオーディエンスの場合、名前が利用可能です。<br>バッジ名の場合、<a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/">Profile Definition API</a>と組み合わせて使用します。</td>
+<td>オーディエンス、バッジ、または<a href="/ja/server-side/moments-api/endpoint/#objects">サポートされている属性データタイプ</a>。<br> オーディエンスとバッジの名前とIDが利用可能。</td>
+<td>訪問ID、ファネル、タイムライン以外の属性で、属性IDでリストされます。バッジとオーディエンスの場合、名前が利用可能。<br>バッジ名の場合は、<a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/">Profile Definition API</a>と組み合わせます。</td>
 </tr>
 <tr>
 <td><strong>ルックアップID</strong></td>
@@ -1151,7 +1155,7 @@
 <td>いいえ</td>
 </tr>
 <tr>
-<td><strong>カスタムレスポンスオブジェクト</strong></td>
+<td><strong>カスタム応答オブジェクト</strong></td>
 <td>はい</td>
 <td>いいえ</td>
 </tr>
@@ -1163,11 +1167,11 @@
 </tbody>
 </table>
 <h2 id="はじめに">はじめに</h2>
-<p>Moments APIを使用したワークフローには、以下のステップが含まれます：</p>
+<p>Moments APIを使用するワークフローには、以下のステップが含まれます：</p>
 <ol>
-<li>パーソナライズされた体験を作成するために必要なオーディエンス、バッジ、属性を考慮します。</li>
-<li>必要な訪問データでカスタマイズされたエンドポイントを埋めるためのMoments APIエンジンを作成します。</li>
-<li>エンドポイントをTealiumのクライアントサイドアプリケーション、utag.jsがインストールされている場所、またはTealium for Mobileに統合します。</li>
+<li>パーソナライズされた体験を作成するために必要なオーディエンス、バッジ、および属性を検討します。</li>
+<li>訪問データが必要なカスタマイズされたエンドポイントを構成するためにMoments APIエンジンを作成します。</li>
+<li>utag.jsがインストールされているTealiumクライアントサイドアプリケーションやTealium for Mobileにエンドポイントを統合します。</li>
 <li>データを収集し、活用します。</li>
 </ol>
 
@@ -1215,7 +1219,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年December月5日
+          <p>最終更新日 ::  2025年October月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1229,13 +1233,14 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">使用例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3" href="javascript:void(0)">エンジン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88" href="javascript:void(0)">エンドポイント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#mcp%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC" href="javascript:void(0)">MCPサーバー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E8%AD%98%E5%88%A5%E5%AD%90" href="javascript:void(0)">訪問識別子</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%B6%E9%99%90" href="javascript:void(0)">制限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%91%E3%83%BC%E3%82%B8" href="javascript:void(0)">データのパージ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">データの削除</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E8%A8%B1%E5%8F%AF%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">ドメイン許可リスト</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%96%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3" href="javascript:void(0)">サブドメイン</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90" href="javascript:void(0)">権限</a></li>

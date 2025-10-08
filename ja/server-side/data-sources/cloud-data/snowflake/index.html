@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/data-sources/cloud-data/snowflake/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Snowflakeクラウドデータソースの構成について具体的な詳細を提供します。" />
+<meta property="og:description" content="この記事では、Snowflakeクラウドデータソースの構成についての具体的な詳細を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Snowflakeクラウドデータソース | クラウドデータソース | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -598,15 +598,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".moments-api">モーメンツ API</a>
         <ul class="pl2  moments-api desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">について</a></li>
+        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">概要</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-manage-engines">エンジンの管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">実装</a></li>
+        <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">管理MCPサーバー</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">コネクター</a>
@@ -1014,15 +1016,15 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Snowflakeクラウドデータソースの構成について具体的な詳細を提供します。
+      この記事では、Snowflakeクラウドデータソースの構成についての具体的な詳細を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>クラウドデータソースの構成に関する一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
+  <p>クラウドデータソースの構成の一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
 <h2 id="ユーザーロール">ユーザーロール</h2>
-<p>Tealiumが選択したSnowflakeのテーブルまたはビューからのみデータをポーリングできるようにするために、データベース、スキーマ、ウェアハウス、および接続したいテーブルまたはビューに対して<code>USAGE</code>権限を持つカスタムユーザーロールを作成します。</p>
+<p>Tealiumが選択したSnowflakeのテーブルまたはビューからのみデータをポーリングできるようにするには、データベース、スキーマ、ウェアハウス、および接続したいテーブルまたはビューに対して<code>USAGE</code>権限を持つカスタムユーザーロールを作成します。</p>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: カスタムロール</a>および<a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: アクセス制御権限</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
 <p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeデータタイプをマッピングしてください：</p>
@@ -1060,9 +1062,9 @@
 </tr>
 </tbody>
 </table>
-<p>Snowflakeデータタイプについての詳細は、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
+<p>Snowflakeデータタイプの詳細については、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Snowflakeに接続するためには、以下のアカウント情報が必要です：</p>
+<p>Snowflakeへの接続を作成するには、次のアカウント情報が必要です：</p>
 <ul>
 <li>ホスト名</li>
 <li>接続ウェアハウス</li>
@@ -1072,7 +1074,7 @@
 <li>Snowflakeユーザー名</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>接続情報は、Snowflakeデータアカウントの構成によっては大文字と小文字を区別する場合があることに注意してください。</p>
-<p>新しい接続を構成するには、以下の接続詳細を入力します。</p>
+<p>新しい接続を構成するには、次の接続詳細を入力します。</p>
 <ul>
 <li><strong>Snowflake接続構成名</strong>：再利用可能な接続構成の名前を提供します。</li>
 <li><strong>アカウント識別子</strong>：次の形式で<code>http://</code>プレフィックスなしのSnowflakeアカウント識別子：
@@ -1088,24 +1090,45 @@
 </ul>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles">Snowflake: カスタムロール</a>および<a href="https://docs.snowflake.com/en/user-guide/security-access-control-privileges">Snowflake: アクセス制御権限</a>を参照してください。</p>
 <h3 id="認証">認証</h3>
-<p>RSAキーペアを使用して接続を認証する場合、Tealiumは暗号化されていないキーペアを生成することができます。生成された公開キーを指定されたテーブルまたはビューへのアクセスが必要なSnowflakeユーザーアカウントに割り当てます。</p>
-<p>セキュリティ要件に基づいて、次のキーアルゴリズムから選択します：RSA-2048、RSA-3072、またはRSA-4096。</p>
-<p>キーが生成された後、公開キーファイルをダウンロードし、クラウドデータベースのユーザーにキーを割り当てます。キーの指紋も提供されているので、ユーザーの公開キーが正しく割り当てられたかを確認する必要がある場合に使用できます。</p>
+<p>RSAキーペアを使用してSnowflake接続を認証する方法は3つあります：</p>
+<ul>
+<li>Tealiumで<strong>新しいキーペアを生成</strong>します。</li>
+<li>Tealiumの外部で生成した<strong>プライベートキーファイルをアップロード</strong>します。</li>
+<li>Tealiumで以前に生成またはアップロードした<strong>既存のキーペアを再利用</strong>します。</li>
+</ul>
+<p>いずれの場合も、指定されたテーブルまたはビューへのアクセスが必要なSnowflakeユーザーアカウントに対応する公開キーを割り当てる必要があります。</p>
+<p>セキュリティ要件に基づいて、次のキーアルゴリズムから選択します：<strong>RSA-2048</strong>、<strong>RSA-3072</strong>、または<strong>RSA-4096</strong>。</p>
+<h4 id="認証を構成する手順">認証を構成する手順</h4>
 <ol>
-<li>Snowflakeデータベース、スキーマ、ウェアハウス、およびテーブルまたはビューにアクセスするユーザーのユーザー名を入力します。</li>
-<li>次の暗号化アルゴリズムのいずれかを使用してキーペアを生成します：RSA-2048、RSA-3072、RSA-4096。</li>
-<li>公開キーファイルをダウンロードします。キーは<code>-----BEGIN PUBLIC KEY-----</code>と<code>-----END PUBLIC KEY-----</code>の間のテキストのみです。</li>
-<li>次のコマンドを使用して、Snowflakeでユーザーに公開キーを割り当てます：
+<li>
+<p><strong>ユーザー名</strong>：必要なデータベース、スキーマ、ウェアハウス、およびテーブルまたはビューにアクセスするSnowflakeユーザーのユーザー名を入力します。</p>
+</li>
+<li>
+<p><strong>認証</strong>：次のいずれかの認証オプションを選択します：</p>
+<ul>
+<li><strong>新しいキーペアを生成</strong>：RSAアルゴリズムを選択します。Tealiumはプライベートキー（一度だけ表示）と公開キーを表示します。キーをダウンロードして安全に保管してください。</li>
+<li><strong>プライベートキーファイルをアップロード</strong>：既存のプライベートキーファイルをアップロードします。ファイルが暗号化されている場合は、それを解除するためのパスフレーズを入力します。</li>
+<li><strong>既存のキーを再利用</strong>：生成されたキーとアップロードされたキーからキーを選択します。関連する公開キーが正しいSnowflakeユーザーにすでに割り当てられていることを確認します。</li>
+</ul>
+</li>
+<li>
+<p><strong>ダウンロード</strong>：公開キーファイルをダウンロードします。キーは<code>-----BEGIN PUBLIC KEY-----</code>と<code>-----END PUBLIC KEY-----</code>の行の間のテキストのみです。</p>
+</li>
+<li>
+<p><strong>割り当て</strong>：次のSQLコマンドでSnowflakeユーザーに公開キーを割り当てます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> your_username
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> RSA_PUBLIC_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your_public_key&#39;</span>;
-</span></span></code></pre></div>詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Snowflakeユーザーに公開キーを割り当てる</a>を参照してください。</li>
-<li>キーがユーザーに正しく割り当てられたかを確認するための指示に従って、キーの指紋をコピーします。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#verify-the-user-s-public-key-fingerprint">Snowflake: ユーザーの公開キーの指紋を確認する</a>を参照してください。</li>
+</span></span></code></pre></div><p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Snowflake: Snowflakeユーザーに公開キーを割り当てる</a>を参照してください。</p>
+</li>
+<li>
+<p>（オプション）キーが正しく割り当てられたことを確認するために、キーのフィンガープリントをコピーします。<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#verify-the-user-s-public-key-fingerprint">Snowflake: ユーザーの公開キーフィンガープリントを確認する</a>を参照してください。</p>
+</li>
 </ol>
 <p>Snowflakeに接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</p>
 <h2 id="クエリモード">クエリモード</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は次のいずれかのSnowflakeデータタイプである必要があります：<code>TIMESTAMP_LTZ</code>、<code>TIMESTAMP_TZ</code>、または<code>TIMESTAMP_NTZ</code>。</p>
-<p>詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: 日付および時間データタイプ</a>を参照してください。</p>
+<p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は次のいずれかのSnowflakeデータタイプでなければなりません：<code>TIMESTAMP_LTZ</code>、<code>TIMESTAMP_TZ</code>、または<code>TIMESTAMP_NTZ</code>。</p>
+<p>詳細については、<a href="https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz">Snowflake: 日付＆時間データタイプ</a>を参照してください。</p>
 <p><strong>インクリメント</strong>モードの場合、選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><h2 id="where句">WHERE句</h2>
@@ -1156,7 +1179,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月17日
+          <p>最終更新日 ::  2025年October月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

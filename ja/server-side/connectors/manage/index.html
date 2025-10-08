@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/manage/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、コネクタの管理方法について説明します。これには、コネクタの有効化または無効化、コネクタの複製と削除、コネクタまたはアクションUIDの取得が含まれます。" />
+<meta property="og:description" content="この記事では、コネクタの管理方法について説明します。これには、コネクタの有効化または無効化、複製および削除、コネクタまたはアクションUIDの取得が含まれます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>コネクタの管理 | コネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -598,15 +598,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".moments-api">モーメンツ API</a>
         <ul class="pl2  moments-api desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">について</a></li>
+        <a href="/ja/server-side/moments-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-moments-api">概要</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-manage-engines">エンジンの管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">実装</a></li>
+        <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">管理MCPサーバー</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".connectors">コネクター</a>
@@ -1008,7 +1010,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、コネクタの管理方法について説明します。これには、コネクタの有効化または無効化、コネクタの複製と削除、コネクタまたはアクションUIDの取得が含まれます。
+      この記事では、コネクタの管理方法について説明します。これには、コネクタの有効化または無効化、複製および削除、コネクタまたはアクションUIDの取得が含まれます。
     </p>
   
 </div>
@@ -1016,97 +1018,97 @@
 <div class="prose nested-links" id="prose">
   <p>コネクタの追加については、<a href="/ja/server-side/connectors/add/">コネクタの追加</a>を参照してください。</p>
 <h2 id="コネクタの有効化または無効化">コネクタの有効化または無効化</h2>
-<p>コネクタを無効化すると、そのコネクタのアクションは一切実行されません。特定のアクションを無効化するには、そのアクションを無効化してください。詳細については、<a href="#activate-or-deactivate-a-connector-action">コネクタアクションの有効化または無効化</a>を参照してください。</p>
-<p>コネクタを有効化または無効化するには、次の手順を実行します：</p>
+<p>コネクタを無効化すると、そのコネクタのアクションは一切実行されません。特定のアクションを無効化するには、そのアクションを無効化します。詳細については、<a href="#activate-or-deactivate-a-connector-action">コネクタアクションの有効化または無効化</a>を参照してください。</p>
+<p>コネクタを有効化または無効化するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
 <li>有効化または無効化するコネクタの横にあるチェックボックスをクリックします。<br>
-同じステータスの複数のコネクタを選択できます。選択したコネクタの数と取れるアクションが表示されるツールバーが表示されます。例えば：<br>
+同じステータスの複数のコネクタを選択できます。選択したコネクタの数と取れるアクションが表示されるツールバーが表示されます。例：<br>
 <figure><a class="slb" href="/images/server-side/connectors/activate-deactivate.png"><img src="/images/server-side/connectors/activate-deactivate.png"/>
     </a>
 </figure></li>
-<li><strong>有効化</strong>または<strong>無効化</strong>をクリックします。</li>
+<li><strong>Activate</strong> または <strong>Deactivate</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>コネクタを有効化した後、コネクタのアクションを有効化できます。</p>
+<p>コネクタを有効化した後、コネクタアクションを有効化できます。</p>
 <h2 id="アクションの有効化または無効化">アクションの有効化または無効化</h2>
-<p>アクションを有効化または無効化するには、次の手順を実行します：</p>
+<p>アクションを有効化または無効化するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>コネクタをクリックし、<strong>アクション</strong>タブをクリックします。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>コネクタをクリックし、<strong>Actions</strong> タブをクリックします。</li>
 <li>有効化または無効化するアクションの横にあるチェックボックスをクリックします。<br>
-同じステータスの複数のアクションを選択できます。選択したアクションの数と取れるアクションが表示されるツールバーが表示されます。例えば：<br>
+同じステータスの複数のアクションを選択できます。選択したアクションの数と取れるアクションが表示されるツールバーが表示されます。例：<br>
 <figure><a class="slb" href="/images/server-side/connectors/activate-actions.png"><img src="/images/server-side/connectors/activate-actions.png"/>
     </a>
 </figure></li>
-<li><strong>有効化</strong>または<strong>無効化</strong>をクリックします。</li>
+<li><strong>Activate</strong> または <strong>Deactivate</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="アクションタイプの変更">アクションタイプの変更</h2>
-<p>アクションのアクションタイプを変更するには、次の手順を実行します：</p>
+<p>アクションのアクションタイプを変更するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>コネクタをクリックし、<strong>アクション</strong>タブをクリックします。</li>
-<li>アクションをクリックします。<strong>アクション詳細</strong>画面が表示されます。</li>
-<li>画面の右上隅にあるその他のアクションボタンをクリックし、<strong>アクションタイプの変更</strong>をクリックします。
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>コネクタをクリックし、<strong>Actions</strong> タブをクリックします。</li>
+<li>アクションをクリックします。<strong>Action Details</strong> 画面が表示されます。</li>
+<li>画面の右上隅にあるその他のアクションボタンをクリックし、<strong>Change Action Type</strong> をクリックします。
 <figure><a class="slb" href="/images/server-side/connectors/change-action-type.png"><img src="/images/server-side/connectors/change-action-type.png"
              alt="アクションタイプの変更"
              title="アクションタイプの変更"/>
         </a>
     </figure></li>
-<li>使用したいアクションタイプを選択し、<strong>完了</strong>をクリックします。警告メッセージが表示されます。</li>
-<li>変更を確認するには<strong>アクションタイプの変更</strong>をクリックし、キャンセルするには<strong>キャンセル</strong>をクリックします。</li>
+<li>使用したいアクションタイプを選択し、<strong>Done</strong> をクリックします。警告メッセージが表示されます。</li>
+<li>変更を確認するには <strong>Change Action Type</strong> をクリックし、キャンセルするには <strong>Cancel</strong> をクリックします。</li>
 <li>必要に応じてデータマッピングを更新します。詳細については、<a href="/ja/server-side/connectors/add/#data-mappings">データマッピング</a>を参照してください。</li>
-<li><strong>完了</strong>をクリックします。</li>
+<li><strong>Done</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="コネクタの複製">コネクタの複製</h2>
-<p>コネクタと関連するアクションを複製するには、次の手順を実行します：</p>
+<p>コネクタと関連するアクションを複製するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>コネクタメニューをクリックし、<strong>複製</strong>をクリックします。<br>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>コネクタメニューをクリックし、<strong>Duplicate</strong> をクリックします。<br>
 <figure><a class="slb" href="/images/server-side/connectors/duplicate-connector.png"><img src="/images/server-side/connectors/duplicate-connector.png"/>
         </a>
     </figure><br>
-コネクタリストに新しい、同一のコネクタが表示されます。コネクタ名には**- copy**が追加されます。<br>
+リストに新しい、同一のコネクタが表示されます。コネクタ名には <strong>- copy</strong> が追加されます。<br>
 <figure><a class="slb" href="/images/server-side/connectors/duplicate-copy.png"><img src="/images/server-side/connectors/duplicate-copy.png"
              alt="コネクタ複製コピー"
              title="コネクタ複製コピー"/>
         </a>
     </figure></li>
 <li>(推奨) 複製したコネクタをクリックし、コネクタ名を変更します。</li>
-<li>(オプション) 新しいコネクタに関連するアクションを追加または編集するには、<strong>+ 新しいアクション</strong>をクリックし、アクションを追加する通常の手順に従います。</li>
-<li><strong>完了</strong>をクリックします。</li>
+<li>(オプション) 新しいコネクタに関連するアクションを追加または編集するには、<strong>+ New Action</strong> をクリックし、アクションを追加する通常の手順に従います。</li>
+<li><strong>Done</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="コネクタの削除">コネクタの削除</h2>
-<p>コネクタを削除するには、次の手順を実行します：</p>
+<p>コネクタを削除するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>コネクタメニューをクリックし、<strong>削除</strong>をクリックします。<br>
-コネクタに関連するアクションがある場合、そのすべてのアクションを削除するかどうかを確認するプロンプトが表示されます。</li>
-<li>コネクタとすべてのアクションを削除するには<strong>削除</strong>をクリックします。</li>
-<li>コネクタとすべてのアクションを保持するには<strong>キャンセル</strong>をクリックします。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>コネクタメニューをクリックし、<strong>Delete</strong> をクリックします。<br>
+コネクタに関連するアクションがある場合、コネクタのすべてのアクションを削除するかどうかを確認するプロンプトが表示されます。</li>
+<li>コネクタとすべてのアクションを削除するには <strong>Delete</strong> をクリックします。</li>
+<li>コネクタとすべてのアクションを保持するには <strong>Cancel</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="コネクタアクションの削除">コネクタアクションの削除</h2>
-<p>コネクタアクションを削除するには、次の手順を実行します：</p>
+<p>コネクタアクションを削除するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>その行をクリックしてコネクタを選択します。<strong>コネクタ詳細</strong>画面が表示されます。</li>
-<li><strong>アクション</strong>タブをクリックします。</li>
-<li>削除したいアクションのアクションメニューをクリックし、<strong>削除</strong>を選択します。</li>
-<li>確認ダイアログで<strong>削除</strong>をクリックします。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>その行をクリックしてコネクタを選択します。<strong>Connector Details</strong> 画面が表示されます。</li>
+<li><strong>Actions</strong> タブをクリックします。</li>
+<li>削除したいアクションのアクションメニューをクリックし、<strong>Delete</strong> を選択します。</li>
+<li>確認ダイアログで <strong>Delete</strong> をクリックします。</li>
 <li>保存して公開します。</li>
 </ol>
 <h2 id="お気に入りに追加">お気に入りに追加</h2>
-<p><strong>お気に入り</strong>フィルターメニューを使用して簡単に見つけるために、コネクタをお気に入りにマークします。</p>
+<p><strong>Favorite</strong> フィルターメニューを使用して簡単に見つけるために、コネクタをお気に入りにマークします。</p>
 <p>コネクタをお気に入りにマークする方法はいくつかあります：</p>
-<p><strong>コネクタ概要</strong>画面で、コネクタ名の横にある星をクリックします。<br>
+<p><strong>Connectors Overview</strong> 画面で、コネクタ名の横にある星をクリックします。<br>
 <figure><a class="slb" href="/images/server-side/connectors/connectors-favorites-star.png"><img src="/images/server-side/connectors/connectors-favorites-star.png"/>
     </a>
 </figure></p>
-<p>コネクタの詳細画面で、上部のアクションバーで<strong>お気に入り</strong>をクリックします。<br>
+<p>コネクタの詳細画面で、上部のアクションバーで <strong>Favorite</strong> をクリックします。<br>
 <figure><a class="slb" href="/images/server-side/connectors/connectors-details-favorite.png"><img src="/images/server-side/connectors/connectors-details-favorite.png"/>
     </a>
 </figure></p>
@@ -1118,46 +1120,46 @@
 <li>ラベルの編集</li>
 <li>削除</li>
 </ul>
-<p>コネクタアクションに対する一括アクションを実行するには、次の手順を実行します：</p>
+<p>コネクタアクションに対する一括アクションを実行するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
-<li>その行をクリックしてコネクタを選択します。<strong>コネクタ詳細</strong>画面が表示されます。</li>
-<li><strong>アクション</strong>タブをクリックします。</li>
+<li><strong>Server-side &gt; Connectors &gt; Overview</strong> に移動します。</li>
+<li>その行をクリックしてコネクタを選択します。<strong>Connector Details</strong> 画面が表示されます。</li>
+<li><strong>Actions</strong> タブをクリックします。</li>
 <li>変更または削除したい各アクションのボックスをクリックします。<br>
-または、すべてのアクションを選択するには、表の見出しの<strong>名前</strong>の横のボックスをクリックします。<br>
+または、すべてのアクションを選択するには、テーブル見出しの <strong>Name</strong> の横のボックスをクリックします。<br>
 次のようにアクションツールバーが表示されます：<br>
 <figure><a class="slb" href="/images/server-side/connectors/bulk-actions-toolbar.png"><img src="/images/server-side/connectors/bulk-actions-toolbar.png"/>
     </a>
 </figure></li>
-<li>適切なアクションをクリックします：<strong>ラベルの編集</strong>または<strong>削除</strong>。<br>
-<strong>削除</strong>を選択した場合、確認ダイアログで<strong>削除</strong>をクリックします。<strong>ラベルの編集</strong>を選択した場合、追加または削除するラベルを選択します。</li>
+<li>適切なアクションをクリックします：<strong>Edit Labels</strong> または <strong>Delete</strong>。<br>
+<strong>Delete</strong> を選択した場合、確認ダイアログで <strong>Delete</strong> をクリックします。<strong>Edit Labels</strong> を選択した場合、追加または削除するラベルを選択します。</li>
 </ol>
 <h2 id="コネクタidの取得">コネクタIDの取得</h2>
-<p>コネクタのIDを取得するには、次の手順を実行します：</p>
+<p>コネクタのコネクタIDを取得するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
 <li>その行をクリックしてコネクタを選択します。<br>
-<strong>コネクタ詳細</strong>画面が表示され、コネクタ名の下にUIDが表示されます。例えば：<br>
+<strong>Connector Details</strong> 画面が表示され、コネクタ名の下にコネクタのUIDが表示されます。例：<br>
 <figure><a class="slb" href="/images/server-side/connectors/get-uid.png"><img src="/images/server-side/connectors/get-uid.png"/>
     </a>
 </figure></li>
-<li>コネクタUIDをコピーするには、UIDテキストを選択し、右クリックして<strong>コピー</strong>を選択します。</li>
+<li>コネクタUIDをコピーするには、UIDテキストを選択し、右クリックして <strong>Copy</strong> を選択します。</li>
 </ol>
 <h2 id="アクションidの取得">アクションIDの取得</h2>
-<p>コネクタアクションのアクションIDを取得するには、次の手順を実行します：</p>
+<p>コネクタアクションのアクションIDを取得するには、以下の手順を実行します：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクタ &gt; 概要</strong>に移動します。</li>
+<li><strong>Server-Side &gt; Connectors &gt; Overview</strong> に移動します。</li>
 <li>その行をクリックしてコネクタを選択します。</li>
-<li><strong>コネクタ詳細</strong>画面で<strong>アクション</strong>タブをクリックします。</li>
+<li><strong>Connector Details</strong> 画面で、<strong>Actions</strong> タブをクリックします。</li>
 <li>その行をクリックしてアクションを選択します。<br>
-<strong>アクション詳細</strong>画面が表示され、アクション名の下にUIDが表示されます。例えば：<br>
+<strong>Action Details</strong> 画面が表示され、アクション名の下にアクションのUIDが表示されます。例：<br>
 <figure><a class="slb" href="/images/server-side/connectors/get-action-uid.png"><img src="/images/server-side/connectors/get-action-uid.png"/>
     </a>
 </figure></li>
-<li>アクションUIDをコピーするには、UIDテキストを選択し、右クリックして<strong>コピー</strong>を選択します。</li>
+<li>アクションUIDをコピーするには、UIDテキストを選択し、右クリックして <strong>Copy</strong> を選択します。</li>
 </ol>
 <h2 id="以前のコネクタバージョンに戻す">以前のコネクタバージョンに戻す</h2>
-<p><strong>バージョン履歴</strong>を使用して以前のコネクタバージョンに戻すことができます。詳細については、<a href="/ja/server-side/save-publish/version-history/">サーバーサイドバージョン履歴</a>を参照してください。</p>
+<p><strong>Version History</strong> を使用して以前のコネクタバージョンに戻すことができます。詳細については、<a href="/ja/server-side/save-publish/version-history/">サーバーサイドバージョン履歴</a>を参照してください。</p>
 
 </div>
 
@@ -1218,7 +1220,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月13日
+          <p>最終更新日 ::  2025年October月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

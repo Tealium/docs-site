@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -596,9 +596,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">Endpoint</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation</a></li>
+        <a href="/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation with iQ Tag Management</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li></ul>
+        <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/moments-api/managed-mcp-server/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-mcp-server">Managed MCP server</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors">Connectors</a>
@@ -666,18 +668,6 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/vendor-examples/webhook-salesforce-predictive-intelligence-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-salesforce-predictive-intelligence-api">Webhook Salesforce Predictive Intelligence API</a></li></ul>
       </li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".connectors-legacy">Connectors (Legacy)</a>
-        <ul class="pl2  connectors-legacy desktopmenu animated fadeIn list  dn">
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-connectors-legacy">About connectors (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface-legacy">Connector interface (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector-legacy">Add a connector (legacy)</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/connectors-legacy/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors-legacy">Manage connectors (legacy)</a></li></ul>
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -1005,8 +995,8 @@
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Contact your account manager to enable Moments API for your account.</p>
 <p>Moments API is a composable AudienceStream API that lets you retrieve high-performance data for real-time visitor personalization. Integrate Moments API into your Tealium client-side applications, wherever <code>utag.js</code> is installed, or in Tealium for Mobile.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>Moments API uses configurations called <em>engines</em> that let you customize API responses to retrieve only the data you need for current visitors. For example, instead of retrieving an entire visitor profile, Moments API will retrieve only the audience, badge, and attribute data you select in the engine configuration.</p>
-<p>After you configure the engine, Moments API creates a unique endpoint that you can then integrate into your workflow.</p>
+<p>Moments API uses configurations called <em>engines</em> that let you customize API responses to retrieve only the data you need for current visitors. For example, instead of retrieving an entire visitor profile, Moments API retrieves only the audience, badge, and attribute data you select in the engine configuration.</p>
+<p>After you configure the engine, Moments API creates a unique endpoint that you integrate into your workflow.</p>
 <h3 id="use-cases">Use cases</h3>
 <p>Moments API can be used any time you need real-time visitor data for personalized customer experiences, including:</p>
 <ul>
@@ -1025,12 +1015,14 @@
 <p>When you configure an engine, you select only the audiences, badges, and attributes necessary for your use case. The Moments API engine shows you the JSON response as you build it, which lets you verify the accuracy and scope of your requests.</p>
 <p>Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. For example, when a customer visits your site, Moments API determines if the new visitor events impact the audiences, badges, and attributes defined in your engine configuration. Data is written to a unique data store for each engine only when visitor data needs to be updated.</p>
 <p>Engines update their data stores in real-time, so the API endpoint data remains up-to-date as visitors interact with you brand.</p>
-<p>By default, you can enable up to 10 engines per profile so that you can create a customized engine for each specific business case. If you need enable additional engines, contact your Tealium account manager.</p>
+<p>By default, you can enable up to 10 engines per profile so that you can create a customized engine for each specific business case. If you need to enable additional engines, contact Tealium Support.</p>
 <h3 id="endpoints">Endpoints</h3>
 <p>Moments API creates a unique endpoint for each engine. Visitor data is returned as a JSON object.</p>
 <p>Tealium has benchmarked the average Moments API endpoint performance at 60 ms for payload sizes of 1 kB and smaller,</p>
 <p>To retrieve visitor data, configure a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a> to make a request to the <a href="/server-side/moments-api/endpoint/">Moments API endpoint</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Data is not available for visitors that have not had an active session since turning on the engine.</p>
+<h3 id="mcp-server">MCP Server</h3>
+<p>Moments API supports integration with an MCP server, enabling seamless connectivity with large language models (LLMs) and agent-based solutions for advanced personalization and automation use cases. For more information, see <a href="/server-side/moments-api/managed-mcp-server/">Moments API managed MCP server</a>.</p>
 <h3 id="visitor-identifiers">Visitor identifiers</h3>
 <p>Moments API endpoints support GET requests that use both the Tealium anonymous visitor ID and a visitor ID attribute to retrieve visitor data.</p>
 <ul>
@@ -1203,7 +1195,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 4, 2024 
+          <p>This page was last updated:  October 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1221,6 +1213,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-cases" href="javascript:void(0)">Use cases</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#engines" href="javascript:void(0)">Engines</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#endpoints" href="javascript:void(0)">Endpoints</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#mcp-server" href="javascript:void(0)">MCP Server</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-identifiers" href="javascript:void(0)">Visitor identifiers</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#limits" href="javascript:void(0)">Limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#purge-data" href="javascript:void(0)">Purge data</a></li>
