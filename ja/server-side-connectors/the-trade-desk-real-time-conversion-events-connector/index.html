@@ -338,6 +338,9 @@
       <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audience Match</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/criteo-audiences-oauth-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences (OAuth)</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/databricks-customer-provided-storage-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Databricks コネクタ</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1212,6 +1215,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/criteo-audiences-oauth-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-oauth-connector">Criteo Audiences (OAuth)</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-customer-provided-storage-connector">Databricks コネクタ</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/datadog-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datadog-connector">Datadog</a></li>
@@ -1725,17 +1730,17 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>The Trade Desk (TTD) リアルタイムコンバージョンイベントのサーバーサイドコネクタは、TealiumからのコンバージョンイベントデータをTTDインスタンスにシームレスに統合し、アトリビューションの追跡とリターゲティングの支援を行います。</p>
-<p>このコネクタは、TealiumとThe Trade Deskのパートナーシップからの他の統合と組み合わせてエンリッチメントします。Unified ID 2.0 (UID2)またはEuropean Unified ID (EUID) Functionを使用して、イベントデータを送信する前にユニバーサルユーザー識別子を生成し、割り当てます。オプションとして、Tealium iQタグ管理にTTD Universal Pixelを実装して、ユーザーの行動をリアルタイムで包括的にキャプチャします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>必要なすべてのパラメータが生成され、利用可能であることを確認するために、指定されたTTD担当者と連携することを強く推奨します。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>The Trade Desk（TTD）リアルタイムコンバージョンイベントサーバーサイドコネクタは、TealiumからTTDインスタンスへのコンバージョンイベントデータのシームレスな統合を可能にし、アトリビューションの追跡とリターゲティングを支援します。</p>
+<p>このコネクタは、TealiumとThe Trade Deskのパートナーシップからの他の統合とともにエンリッチメントされます。Unified ID 2.0（UID2）またはEuropean Unified ID（EUID）Functionを使用して、イベントデータを送信する前にユニバーサルユーザー識別子を生成して割り当てます。オプションで、Tealium iQタグ管理にTTDユニバーサルピクセルを実装して、リアルタイムでユーザーの行動を包括的に捉えます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>必要なすべてのパラメータが生成され、利用可能であることを確認するために、割り当てられたTTD担当者と協力することを強く推奨します。</p>
 <h2 id="api情報">API情報</h2>
-<p>このコネクタは、以下のベンダーAPIを使用します：</p>
+<p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：The Trade Desk API</li>
 <li>APIバージョン：v3</li>
 <li>APIエンドポイント：<code>https://insight.adsrvr.org</code></li>
-<li>ドキュメンテーション：<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataConversionEventsApi">The Trade Desk API</a></li>
+<li>ドキュメント：<a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataConversionEventsApi">The Trade Desk API</a></li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -1748,46 +1753,46 @@
 </thead>
 <tbody>
 <tr>
-<td>コンバージョンイベントの送信</td>
+<td>コンバージョンイベントを送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>The Trade Desk リアルタイムコンバージョンコネクタは、イベントマッピングとURLマッピングのトラッキングをサポートしています。コネクタを構成する際には、以下のパラメータをアプローチに応じて構成します：</p>
+<p>コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>The Trade Deskリアルタイムコンバージョンコネクタは、イベントマッピングとURLマッピングの追跡をサポートしています。コネクタを構成する際は、アプローチに応じて以下のパラメータを構成します：</p>
 <ul>
-<li><strong>URLマッピング</strong> - このアプローチでは、ユーザーが訪れたページのURLがTTDプラットフォーム内でリターゲティングとコンバージョン測定の基礎として割り当てられます。
+<li><strong>URLマッピング</strong> - このアプローチでは、ユーザーが訪れたページのURLがTTDプラットフォーム内でリターゲティングとコンバージョン測定の基盤として割り当てられます。
 <ul>
-<li>ユーザーが閲覧するページに焦点を当てたウェブサイトに推奨されます。</li>
-<li><a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/">TTD Universal Pixel tag</a>と同じ方法論を使用します。</li>
-<li>構成パラメータ：<strong>広告主ID</strong>と<strong>Universal Pixel ID</strong>。</li>
+<li>ユーザーが閲覧するページに焦点を当てるウェブサイトに推奨されます。</li>
+<li><a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/">TTDユニバーサルピクセルタグ</a>と同じ方法論を使用します。</li>
+<li>構成パラメータ：<strong>広告主ID</strong>および<strong>ユニバーサルピクセルID</strong>。</li>
 </ul>
 </li>
-<li><strong>イベントマッピング</strong> - このアプローチでは、コンバージョンはイベント名（例：<code>Purchase</code>、<code>Addtocart</code>）とオプションの関連コマース製品詳細を使用してキャプチャされます。イベント名と製品は、リターゲティングとコンバージョン測定の基礎としてTTDプラットフォーム内で評価されます。
+<li><strong>イベントマッピング</strong> - このアプローチでは、イベント名（例：<code>Purchase</code>、<code>Addtocart</code>）を使用してコンバージョンをキャプチャし、オプションで関連する商業製品の詳細があります。イベント名と製品は、リターゲティングとコンバージョン測定の基盤としてTTDプラットフォーム内で評価されます。
 <ul>
-<li>構成パラメータ：<strong>Merchant ID</strong>と<strong>Event Tracker ID</strong>。</li>
+<li>構成パラメータ：<strong>マーチャントID</strong>および<strong>イベントトラッカーID</strong>。</li>
 </ul>
 </li>
 </ul>
-<p>コネクタを追加した後、以下の構成を行います：</p>
+<p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
 <li><strong>広告主ID</strong><br>
-<strong>Merchant ID</strong>が提供されていない場合は必須。トラッキングコールが行われた広告主の<code>advertiserId</code>。</li>
-<li><strong>Merchant ID</strong><br>
-<strong>広告主ID</strong>が提供されていない場合は必須。<code>merchantId</code>はTTDからオンボーディングプロセス中に提供されます。</li>
-<li><strong>Pixel ID</strong><br>
-<strong>Event Tracker ID</strong>が提供されていない場合は必須。イベントのユニバーサルピクセルID。</li>
-<li><strong>Event Tracker ID</strong><br>
-<strong>Pixel ID</strong>が提供されていない場合は必須。イベントトラッカーのプラットフォームID。</li>
+<strong>マーチャントID</strong>が提供されていない場合に必要です。トラッキングコールが行われた広告主の<code>advertiserId</code>です。</li>
+<li><strong>マーチャントID</strong><br>
+<strong>広告主ID</strong>が提供されていない場合に必要です。TTDのオンボーディングプロセス中に提供される<code>merchantId</code>です。</li>
+<li><strong>ピクセルID</strong><br>
+<strong>イベントトラッカーID</strong>が提供されていない場合に必要です。イベントのユニバーサルピクセルIDです。</li>
+<li><strong>イベントトラッカーID</strong><br>
+<strong>ピクセルID</strong>が提供されていない場合に必要です。イベントトラッカーのプラットフォームIDです。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>広告主ID</strong>を提供し、<strong>Universal Pixel ID</strong>を提供しない場合、コネクタリクエストはエラーを返します。
-また、<strong>構成ウィンドウ</strong>のすべてのパラメータに値を入力するのではなく、選択したアプローチの値のみを提供することをお勧めします。例えば、<strong>広告主ID</strong>と<strong>Merchant ID</strong>の両方を提供するべきではありません。代わりに、トラッキング方法に必要な構成を入力します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>広告主ID</strong>を提供して<strong>ユニバーサルピクセルID</strong>を提供しない場合、コネクタリクエストはエラーを返します。
+また、<strong>構成ウィンドウ</strong>のすべてのパラメータを入力することを避け、選択したアプローチにのみ値を提供することをお勧めします。たとえば、<strong>広告主ID</strong>と<strong>マーチャントID</strong>の両方を提供するのではなく、トラッキング方法論に必要な構成のみを入力してください。</p>
 <h2 id="アクション-1">アクション</h2>
 <p>次のセクションでは、各アクションのサポートされるパラメータをリストします。</p>
-<h3 id="コンバージョンイベントの送信">コンバージョンイベントの送信</h3>
-<p>イベントが適切にTTDインスタンス内で定義されていることを確認してください。そうでないと、TTDから402エラーが発生する可能性があります。</p>
+<h3 id="コンバージョンイベントを送信">コンバージョンイベントを送信</h3>
+<p>イベントがTTDインスタンス内で適切に定義されていることを確認してください。そうでない場合、TTDから402エラーが発生する可能性があります。</p>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -1799,7 +1804,7 @@
 <tbody>
 <tr>
 <td>コンバージョンイベント名</td>
-<td>パートナープラットフォームで定義されたイベントの種類。利用可能なイベントタイプ：<ul><li><code>addtocart</code>：ユーザーがショッピングカートにアイテムを追加しました。</li><li><code>purchase</code>：ユーザーが購入を完了し、<strong>Thank You page</strong>が表示されました。</li><li><code>viewitem</code>：ユーザーがアイテムまたはSKU番号を表示しました。</li><li><code>searchitem</code>：ユーザーがアイテムまたはSKU番号を検索しました。</li><li><code>searchcategory</code>：ユーザーがカテゴリを検索しました。</li><li><code>login</code>：ユーザーがサイトにログインしました。</li><li><code>messagebusiness</code>：ユーザーがビジネスにメッセージを送った、またはフォームやメールでビジネスに連絡しました。</li><li><code>direction</code>：ユーザーがビジネスへの道順をリクエストし、受け取りました。</li><li><code>startcheckout</code>：ユーザーがチェックアウトプロセスを開始しました。</li><li><code>viewcart</code>：ユーザーがショッピングカートの内容を表示しました。</li><li><code>sitevisit</code>：ユーザーがサイトを訪れました。</li><li><code>wishlistitem</code>：ユーザーがアイテムまたはSKU番号をウィッシュリストに追加しました。</li></ul></td>
+<td>パートナープラットフォームによって定義されたイベントのタイプ。利用可能なイベントタイプ：<ul><li><code>addtocart</code>: ユーザーがショッピングカートにアイテムを追加しました。</li><li><code>purchase</code>: ユーザーが購入を完了し、<strong>サンキューページ</strong>が表示されました。</li><li><code>viewitem</code>: ユーザーがアイテムまたはSKU番号を閲覧しました。</li><li><code>searchitem</code>: ユーザーがアイテムまたはSKU番号を検索しました。</li><li><code>searchcategory</code>: ユーザーがカテゴリを検索しました。</li><li><code>login</code>: ユーザーがサイトにログインしました。</li><li><code>messagebusiness</code>: ユーザーがビジネスにメッセージを送信したり、フォームやメールでビジネスに連絡しました。</li><li><code>direction</code>: ユーザーがビジネスへの道順をリクエストして受け取りました。</li><li><code>startcheckout</code>: ユーザーがチェックアウトプロセスを開始しました。</li><li><code>viewcart</code>: ユーザーがショッピングカートの内容を閲覧しました。</li><li><code>sitevisit</code>: ユーザーがサイトを訪問しました。</li><li><code>wishlistitem</code>: ユーザーがアイテムまたはSKU番号をウィッシュリストに追加しました。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1814,40 +1819,40 @@
 <tbody>
 <tr>
 <td>UID2</td>
-<td>ユーザーのUnified ID 2.0を44文字のbase64エンコードされたSHA-256文字列として。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">UID2を生成するための関数の使用</a>と<a href="https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">TTD: Unified IDs</a>を参照してください。</td>
+<td>ユーザーのUnified ID 2.0で、44文字のbase64エンコードされたSHA-256文字列です。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/uid2/">UID2を生成するための関数の使用</a>および<a href="https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">TTD: Unified IDs</a>を参照してください。</td>
 </tr>
 <tr>
 <td>EUID</td>
-<td>ユーザーのEuropean Unified IDを44文字のbase64エンコードされたSHA-256文字列として。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/euid/">EUIDを生成するための関数の使用</a>と<a href="https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">Unified IDs</a>を参照してください。</td>
+<td>ユーザーのEuropean Unified IDで、44文字のbase64エンコードされたSHA-256文字列です。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/euid/">EUIDを生成するための関数の使用</a>および<a href="https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">Unified IDs</a>を参照してください。</td>
 </tr>
 <tr>
 <td>TDID</td>
-<td>このユーザーのThe Trade Deskの36文字のGUID（ダッシュを含む）。<a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service Tag</a>を通じて取得できます。</td>
+<td>このユーザーのThe Trade Desk 36文字のGUID（ダッシュを含む）です。<a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service Tag</a>を通じて取得できます。</td>
 </tr>
 <tr>
 <td>IDFA</td>
-<td>iOSデバイスの広告識別子。</td>
+<td>iOSデバイスの広告識別子です。</td>
 </tr>
 <tr>
 <td>AAID</td>
-<td>Androidデバイスの広告識別子。</td>
+<td>Androidデバイスの広告識別子です。</td>
 </tr>
 <tr>
 <td>DAID</td>
-<td>このユーザーの生のデバイスID、36文字のGUID形式（ダッシュを含む）で送信されます。</td>
+<td>このユーザーの生のデバイスIDで、36文字のGUID形式（ダッシュを含む）で送信されます。</td>
 </tr>
 <tr>
 <td>NAID</td>
-<td>Windowsデバイスの広告識別子。</td>
+<td>Windowsデバイスの広告識別子です。</td>
 </tr>
 <tr>
 <td>IDL</td>
-<td>49文字または70文字のRampID（以前はIdentityLinkとして知られていました）。<br>注：これは、The Trade Desk専用にマッピングされたLiveRampからのRampIDでなければなりません。RampIDのマッピングについての詳細は、<a href="https://sidecar.readme.io/docs/getting-started">LiveRamp documentation</a>を参照してください。</td>
+<td>49文字または70文字のRampID（以前はIdentityLinkとして知られていました）。<br>注意：これはLiveRampがThe Trade Desk用に特別にマッピングしたRampIDでなければなりません。RampIDのマッピングについての詳細は、<a href="https://sidecar.readme.io/docs/getting-started">LiveRampドキュメント</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="イベントパラメータ">イベントパラメータ</h4>
-<p>以下のパラメータは、コンバージョンイベントに関連付けられており、説明で特定のイベントに注意が必要な場合を除き、オプションです。</p>
+<p>次のパラメータは、コンバージョンイベントに関連しており、説明に記載されている特定のイベントを除き、オプションです。</p>
 <table>
 <thead>
 <tr>
@@ -1857,33 +1862,33 @@
 </thead>
 <tbody>
 <tr>
-<td>注文ID</td>
-<td>イベントに関連する注文識別子。</td>
+<td>Order ID</td>
+<td>イベントの関連注文識別子です。</td>
 </tr>
 <tr>
-<td>リファラーURL</td>
-<td>イベントが発生したウェブサイトのURL（ある場合）。URLマッピングを使用している場合は必須。</td>
+<td>Referrer URL</td>
+<td>イベントが発生したウェブサイトのURL（該当する場合）。URLマッピングを使用する場合に必要です。</td>
 </tr>
 <tr>
-<td>購入価格</td>
-<td>小数点（カンマではなく）を含む収益追跡値。</td>
+<td>Purchase Value</td>
+<td>収益追跡値で、小数点としてピリオド（コンマではない）を使用します。</td>
 </tr>
 <tr>
-<td>購入通貨</td>
-<td>収益値のISO 4217通貨コード。購入イベントに必須。</td>
+<td>Purchase Currency</td>
+<td>収益値のISO 4217通貨コードです。購入イベントの場合に必要です。</td>
 </tr>
 <tr>
-<td>クライアントIPアドレス</td>
-<td>マシン上のネットワークインターフェースを一意に識別するクライアントのIPv4またはIPv6 IPアドレス。</td>
+<td>Client IP Address</td>
+<td>マシン上のネットワークインターフェースを一意に識別するクライアントのIPv4またはIPv6 IPアドレスです。</td>
 </tr>
 <tr>
-<td>インプレッションID</td>
-<td>イベントインプレッションの一意のIDとして機能する36文字の文字列（ダッシュを含む）。</td>
+<td>Impression ID</td>
+<td>イベントインプレッションの一意のIDとして機能する36文字の文字列（ダッシュを含む）です。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="アイテムパラメータ">アイテムパラメータ</h4>
-<p>アイテムをマッピングするときは、複数のアイテムを割り当てるために文字列データ属性の配列を使用します。マッピングされた属性が受信したコンバージョンイベントから適切なデータで入力されていることを確認してください。</p>
+<p>アイテムをマッピングする場合、複数のアイテムを割り当てるために文字列データ属性の配列を使用します。受信したコンバージョンイベントから適切なデータでマッピングされた属性が入力されていることを確認してください。</p>
 <table>
 <thead>
 <tr>
@@ -1894,28 +1899,28 @@
 <tbody>
 <tr>
 <td><code>Item Code</code></td>
-<td>(必須) アイテム識別子、例えばSKU番号。</td>
+<td>（必須）アイテム識別子、例えばSKU番号です。</td>
 </tr>
 <tr>
 <td><code>name</code></td>
-<td>アイテムコードに関連付けられた名前。</td>
+<td>アイテムコードに関連する名前です。</td>
 </tr>
 <tr>
 <td><code>qty</code></td>
-<td>注文内のアイテムコードのアイテム数。</td>
+<td>注文内のアイテムコードのアイテム数です。</td>
 </tr>
 <tr>
 <td><code>price</code></td>
-<td>アイテムの単価。</td>
+<td>アイテムの単価です。</td>
 </tr>
 <tr>
 <td><code>cat</code></td>
-<td>アイテムのカテゴリID。注：Real-Time Conversion Events APIは、指定されたアイテムコードを含む製品カタログがあるが、カテゴリIDが異なる場合を除き、提供された値を使用します。この場合、製品カタログのカテゴリIDが使用されます。</td>
+<td>アイテムカテゴリIDです。注意：リアルタイムコンバージョンイベントAPIは、指定されたアイテムコードが含まれているが異なるカテゴリIDの製品カタログを持つマーチャントの場合を除き、提供された値をすべてのケースで使用します。その場合、製品カタログのカテゴリIDが使用されます。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="プライバシー構成プロパティ">プライバシー構成プロパティ</h4>
-<p>3つのプライバシー構成プロパティすべてが必要です。</p>
+<h4 id="プライバシー構成のプロパティ">プライバシー構成のプロパティ</h4>
+<p>すべてのプライバシー構成プロパティは必須です。</p>
 <table>
 <thead>
 <tr>
@@ -1926,28 +1931,28 @@
 <tbody>
 <tr>
 <td><code>privacy_type</code></td>
-<td>次の値から1つだけをオブジェクトごとに指定します：<ul><li>GDPR（一般データ保護規則、欧州経済領域（EEA）に適用）</li><li>CCPA（カリフォルニア消費者プライバシー法）</li></ul></td>
+<td>次の値からオブジェクトごとに1つの値のみ: <ul><li>GDPR（一般データ保護規則）、欧州経済領域（EEA）に適用。</li><li>GPP（グローバルプライバシープラットフォーム）、適用されるプライバシー規制がある米国の州のユーザー向け。</li></ul></td>
 </tr>
 <tr>
 <td><code>is_applicable</code></td>
-<td><code>privacy_type</code>パラメータで指定された値が適用可能かどうかを示します。CCPAの場合、クライアントのIPアドレスがCCPAの適用可能性を判断するために使用されます。</td>
+<td><code>privacy_type</code> パラメータで指定された値が適用可能かどうかを示します。</td>
 </tr>
 <tr>
 <td><code>consent_string</code></td>
-<td>プライバシー規制が適用されている場合のユーザーの同意。詳細については、<a href="https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/">IAB Tech Lab: GDPR透明性と同意フレームワーク</a>を参照してください。</td>
+<td>プライバシー規制が有効な場合のユーザーの同意。詳細については、<a href="https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/">IAB Tech Lab: GDPR 透明性と同意フレームワーク</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="カスタムプロパティ">カスタムプロパティ</h4>
-<p>追加のコンバージョンメタデータを提供するために使用できる、順番に番号が付けられた10のカスタム動的プロパティ（<code>td1</code>から<code>td10</code>まで）。新規ブランドへのフラグ、製品名、レポート作成に役立つその他の詳細などを提供できます。</p>
+<p>新規ブランド、製品名、レポートに役立つその他の詳細など、追加のコンバージョンメタデータを提供するために使用できる、連番のカスタムダイナミックプロパティ（<code>td1</code> から <code>td10</code> まで）。</p>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
   <a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>The Trade Desk 第一者データ</div>
     </section>
@@ -1958,11 +1963,11 @@
   </a>
   
   
-</div><div class="di mr3">
+</div><div class="w-50 mr3">
   
   
   <a href="/ja/server-side-connectors/the-trade-desk-offline-conversion-connector/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
       <title>"The Trade Desk オフラインコンバージョン "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
@@ -2000,7 +2005,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年January月10日
+          <p>最終更新日 ::  2025年October月15日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2014,12 +2019,12 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョンイベントの送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョンイベントを送信</a></li>
               </nav>
   </aside></nav>
 

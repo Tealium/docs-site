@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/client-side-tags/google-consent-mode-tag/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to set up the Google Consent Mode tag in your Tealium iQ Tag Management account." />
+<meta property="og:description" content="Learn how to set up the Google consent mode tag in your Tealium iQ Tag Management account." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Google Consent Mode Tag Setup Guide | Client-Side Tags | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -1754,17 +1754,22 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to set up the Google Consent Mode tag in your Tealium iQ Tag Management account.
+      Learn how to set up the Google consent mode tag in your Tealium iQ Tag Management account.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Google consent mode lets you adjust how your Google tags behave based on the consent status of your users. When using basic or advanced consent modes, Google tags send consented flags to Google, or dynamically adapt, only using measurement tools for the specified purposes when consent has been given by the user.</p>
-<h2 id="basic-consent-mode">Basic consent mode</h2>
-<p>Basic consent mode follows the traditional consent approach, where tags are blocked unless user consent is granted. The Google Consent Mode tag should always be fired to set consent signals, which are then passed to Google along with the consented Analytics or Ads tag pings. This ensures that Google recognizes the consented status of the tags.</p>
-<h2 id="advanced-consent-mode">Advanced consent mode</h2>
-<p>In Advanced consent mode, the Google Consent Mode tag records consent signals. Each Google tag then reacts to the consent decision. If consent is not given for certain purposes, the tags use a cookie-less &ldquo;anonymous&rdquo; collection endpoint. Otherwise, they use the standard endpoint for consented data. This approach aims to collect maximum data for analytics and ad conversions, using personally identifiable information (PII) selectively when consented.</p>
+  <p>Google consent mode communicates user consent status to Google tags, enabling them to adjust their data collection and measurement behavior according to the specified consent preferences.</p>
+<h2 id="about-consent-modes">About consent modes</h2>
+<p>You can implement consent mode in two ways: basic and advanced.</p>
+<p>For more information, see <a href="https://support.google.com/google-ads/answer/10000067?hl=en">Google Ads Help: About consent mode</a></p>
+<h3 id="basic-consent-mode">Basic consent mode</h3>
+<p>When you use basic consent mode, tags are completely blocked from loading until the user interacts with a consent banner. The Google Consent Mode tag is designed to always fire so that it can send consent signals to the other Google tags, but it never transmits data to Google until consent is granted.</p>
+<h3 id="advanced-consent-mode">Advanced consent mode</h3>
+<p>When you use advanced consent mode, Google tags load and assume a default consent of denied (unless configured otherwise in Google). The Google Consent Mode tag records consent signals and each Google tag reacts to the updated consent states. While consent is denied, the Google tags use a cookieless ping to transmit consent state and anonymous user activity.</p>
+<p>For more information, see <a href="https://support.google.com/analytics/answer/10000067?sjid=16066762200831072014-NC#Pings">Google Analytics Help: Consent mode pings</a></p>
+<p>This approach aims to collect maximum data for analytics and ad conversions, using personally identifiable information (PII) selectively when consented.</p>
 <h2 id="tips">Tips</h2>
 <p>This section provides general information regarding tag configuration and mapping options. For details on how to integrate Google consent mode with Tealium consent register (a feature of client-side <a href="/consent/client-side/consent-integrations/about/">consent integrations</a> and <a href="/consent/client-side/consent-management/about/">consent manager</a>), refer to <a href="/consent/client-side/consent-register/">Tealium consent register</a>. This is the recommended implementation approach.</p>
 <p>To allow the Google Consent Mode tag to dynamically adapt to user consent status, we recommend the following:</p>
@@ -1946,11 +1951,11 @@ When <code>ads_data_redaction</code> is <code>true</code> and <code>ad_storage</
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
   <a href="/client-side-tags/google-cookie-matching-admgr-dv360/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>Google Cookie Matching Service for Google Ad Manager and DV360 (Google-hosted)</div>
     </section>
@@ -1961,11 +1966,11 @@ When <code>ads_data_redaction</code> is <code>true</code> and <code>ad_storage</
   </a>
   
   
-</div><div class="di mr3">
+</div><div class="w-50 mr3">
   
   
   <a href="/client-side-tags/google-cloud-retail-tag/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
       <title>"Google Cloud Retail "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
@@ -2003,7 +2008,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 4, 2025 
+          <p>This page was last updated:  October 13, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2017,9 +2022,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-consent-mode" href="javascript:void(0)">Basic consent mode</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#about-consent-modes" href="javascript:void(0)">About consent modes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-consent-mode" href="javascript:void(0)">Basic consent mode</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#advanced-consent-mode" href="javascript:void(0)">Advanced consent mode</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tips" href="javascript:void(0)">Tips</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tips" href="javascript:void(0)">Tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>

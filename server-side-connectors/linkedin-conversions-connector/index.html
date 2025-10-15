@@ -344,6 +344,9 @@
       <a href="/server-side-connectors/criteo-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audience Match</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences (OAuth)</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/databricks-customer-provided-storage-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Databricks Connector</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1045,6 +1048,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-oauth-connector">Criteo Audiences (OAuth)</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/databricks-customer-provided-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-customer-provided-storage-connector">Databricks Connector</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/datadog-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datadog-connector">Datadog</a></li>
@@ -1440,7 +1445,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser’s server and LinkedIn. This integration enables advertisers to measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API can help strengthen performance and decrease cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
+  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser’s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API can help strengthen performance and decrease cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
 <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -1477,8 +1482,15 @@
 <ul>
 <li><strong>Ad Account</strong>: (Required) Select an ad account ID that aligns with your sponsored account.</li>
 </ul>
+<h3 id="authentication">Authentication</h3>
+<p>You must sign in to LinkedIn for the connector to function.</p>
+<ol>
+<li>Click <strong>Establish Connection</strong>.</li>
+<li>Sign in to your LinkedIn account.</li>
+<li>Click <strong>Allow</strong> to authorize the connection.</li>
+</ol>
 <h2 id="deduplication">Deduplication</h2>
-<p>Deduplication is the ability for the system to identify the same event being sent from both the Insight Tag and CAPI, and then discard one to ensure proper counting. Deduplication lets you send the same events through both sources, allowing CAPI to work in tandem with your <a href="/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> to provide maximum visibility into the conversions your campaigns are driving.</p>
+<p>Deduplication means the system identifies when both the Insight Tag and CAPI send the same event, then discards one to count the event only once. You can send the same events through both sources, so CAPI works with your <a href="/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> to give you complete visibility into your campaign conversions.</p>
 <p>To configure this connector action to receive event IDs from the LinkedIn Insights tag in your iQ Tag Management account, look for event attributes using the following naming convention:</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">linkedin_event_id_{CONVERSION_ID}_{TAG_UID}
 </code></pre><p>Find your tag&rsquo;s UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
@@ -1501,18 +1513,35 @@
 <li>After all required forms are created and you have copied your <strong>Partner ID</strong> value, click <strong>Create</strong>.</li>
 </ol>
 <h3 id="automatic-deduplication">Automatic deduplication</h3>
-<p>When the <strong>Automatic Deduplication</strong> values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
+<p>When the <strong>Automatic Deduplication</strong> values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. Enable Generate Event ID on the LinkedIn Insights tag with the tag&rsquo;s UID. Also, the following approach may still be needed when using EventStream without Tealium iQ.</p>
 <p>The connector uses the following order of operations:</p>
 <ol>
 <li>If <strong>Automatic Deduplication</strong> values are set, and the value is found in the data layer, (for example, <code>linkedin_event_id_10501014_30</code>) and this value supersedes any mapping for event ID.</li>
 <li>If <strong>Automatic Deduplication</strong> values are set, but the values are not found, the mapped event ID is used, if it is set.</li>
 </ol>
 <h3 id="deduplication-limitations">Deduplication limitations</h3>
-<p>LinkedIn does not currently offer a way to properly deduplicate conversion events that are tracked by both the Insight Tag (pixel) and the Conversions API (CAPI). When both methods send tracking signals for the same event, LinkedIn keeps only the most recent signal and discards the earlier one—even if both signals use the same event ID. This means that if you use both the Insight Tag and the Conversions API to track the same conversion event, you may encounter missing or overwritten data in your LinkedIn reporting.</p>
+<p>LinkedIn does not support deduplication of conversion events tracked by both the Insight Tag (pixel) and the Conversions API (CAPI). When both methods send tracking signals for the same event, LinkedIn keeps only the most recent signal and discards the earlier one—even if both signals use the same event ID. If you use both the Insight Tag and the Conversions API to track the same conversion event, you may see missing or overwritten data in your LinkedIn reports.</p>
 <p>There are also differences in the data fields each method supports. The Insight Tag cannot accept value or currency information for conversion events. These fields are supported only in Conversions API implementations.</p>
 <p>To ensure accurate reporting, such as calculating return on ad spend (ROAS) and total revenue, LinkedIn recommends that you use only one tracking method (either the Insight Tag or the Conversions API) for each specific conversion event and not both at the same time. For advertisers who need comprehensive conversion tracking and ROAS optimization, LinkedIn recommends using the Conversions API with all relevant event details, including value and currency.</p>
+<h3 id="persist-the-linkedin-click-id">Persist the LinkedIn Click ID</h3>
+<p>If you are using the LinkedIn Insight Tag with this connector, we recommend that you persist the LinkedIn Click ID as a first party cookie.</p>
+<ol>
+<li>Create a <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</li>
+<li>Add the querystring parameter <code>li_fat_id</code> to your data layer.</li>
+<li>Set the value of <code>li_fat_id</code> to the <code>li_fat_id</code> cookie.<figure><a class="slb" href="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-1.png"><img src="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-1.png"
+         alt="Persist data value extension"
+         title="Persist data value extension"/>
+    </a>
+</figure></li>
+<li>In EventStream, create a first party cookie attribute named <code>li_fat_id_cookie</code>.</li>
+<li>In the connector, map <code>li_fat_id_cookie</code> to the LinkedIn First Party Ads Tracking UUID.<figure><a class="slb" href="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"><img src="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"
+         alt="Map cookie to tracking UID"
+         title="Map cookie to tracking UID"/>
+    </a>
+</figure></li>
+</ol>
 <h2 id="create-a-conversion">Create a conversion</h2>
-<p>You can use Tealium to create a conversion event to be tracked within your <strong>Campaign Manager</strong> interface. Creating a conversion within Tealium negates the need to configure a conversion event for tracking within the LinkedIn Campaign Manager. These values will be used to track the conversion events and be used to associate the conversion event values with campaigns being run. These will appear in the <strong>Analyze &gt; Conversion Tracking</strong> section. The events will appear with a data source value of <code>Tealium</code> when viewing within the LinkedIn Campaign Manager platform.</p>
+<p>Use Tealium to create a conversion event tracked in your <strong>Campaign Manager</strong> interface. If you create a conversion in Tealium, you do not need to configure a conversion event in LinkedIn Campaign Manager. These values track conversion events and associate them with campaigns. The conversion events appear in the <strong>Analyze &gt; Conversion Tracking</strong> section with a data source value of <code>Tealium</code> in the LinkedIn Campaign Manager platform.</p>
 <table>
 <thead>
 <tr>
@@ -1560,7 +1589,7 @@
 </tbody>
 </table>
 <h2 id="associate-campaigns-to-conversions">Associate campaigns to conversions</h2>
-<p>It is important to associate the conversion events that are generated to the required campaign values. These conversion events can have a one-to-many relationship with LinkedIn campaigns that are running. Tealium will also retrieve conversion events for population into the actions that are to be mapped. Use the <strong>Associate Campaigns to Conversions</strong> overlay to map your conversions to campaigns. After you select your conversion and campaign values, select <strong>Create Association</strong> and wait for the <strong>Success</strong> message to appear.</p>
+<p>Associate each conversion event with the required campaign value. A conversion event can relate to multiple LinkedIn campaigns. Tealium retrieves conversion events for use in mapped actions. Use the <strong>Associate Campaigns to Conversions</strong> overlay to map conversions to campaigns. After selecting your conversion and campaign values, select <strong>Create Association</strong> and wait for the <strong>Success</strong> message.</p>
 <table>
 <thead>
 <tr>
@@ -1655,7 +1684,7 @@
 </tr>
 <tr>
 <td>Conversion Amount</td>
-<td>The monetary value for this conversion. Required to send <strong>conversionValue</strong> object.</td>
+<td>The monetary value for this conversion. Required, along with Currency Code, when sending a conversion value object.</td>
 </tr>
 <tr>
 <td>Currency Code</td>
@@ -1668,7 +1697,7 @@
 </tbody>
 </table>
 <h4 id="automatic-deduplication-1">Automatic Deduplication</h4>
-<p>Because LinkedIn recommends that you use a separate conversion ID for tags and for the CAPI, deduplication is based on event ID regardless of the conversion ID. When the Tealium iQ Tag ID is provided, the connector will automatically look for your event ID value that is sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to LinkedIn Insight Tag Conversion ID.</p>
+<p>Because LinkedIn recommends that you use a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. When you provide the Tealium iQ Tag ID, the connector looks for the event ID value sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.</p>
 <table>
 <thead>
 <tr>
@@ -1805,11 +1834,11 @@
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="fr ml3">
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
   <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>LinkedIn Matched Audiences</div>
     </section>
@@ -1820,11 +1849,11 @@
   </a>
   
   
-</div><div class="di mr3">
+</div><div class="w-50 mr3">
   
   
   <a href="/server-side-connectors/line-connector/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
       <title>"LINE "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
@@ -1862,7 +1891,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 5, 2025 
+          <p>This page was last updated:  October 15, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1879,9 +1908,11 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-limitations" href="javascript:void(0)">Deduplication limitations</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#persist-the-linkedin-click-id" href="javascript:void(0)">Persist the LinkedIn Click ID</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-conversion" href="javascript:void(0)">Create a conversion</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#associate-campaigns-to-conversions" href="javascript:void(0)">Associate campaigns to conversions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
