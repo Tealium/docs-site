@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/api-v3/scim-api/get-scim-sync-logs-api/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="SCIM同期ログを取得するAPIです。" />
+<meta property="og:description" content="SCIM同期ログ取得APIは、SCIMユーザーの同期ログを取得します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>SCIM同期ログの取得 | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -246,17 +246,17 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
+    <li data-level="5" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/api-v3/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".get-scim-sync-logs-api">SCIM同期ログの取得</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GETユーザーAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
-    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT ユーザー API</a></li>
-    <li data-level="5" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/api-v3/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".get-scim-sync-logs-api">SCIM同期ログの取得</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">ユーザー削除API</a></li></ul>
       </li>
@@ -404,17 +404,17 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      SCIM同期ログを取得するAPIです。
+      SCIM同期ログ取得APIは、SCIMユーザーの同期ログを取得します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
+  <h2 id="動作方法">動作方法</h2>
 <p>SCIM同期ログを取得するにはGETメソッドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /admin/scim-sync/logs
 </span></span></code></pre></div><h2 id="認証">認証</h2>
-<p>APIキーではなく、JSESSIONID値を使用してすべてのAPI呼び出しを認証します。APIキーは認証呼び出しでのみ使用されます。</p>
+<p>すべてのAPI呼び出しにはJSESSIONID値が使用され、APIキーは認証呼び出しでのみ使用されます。</p>
 <p>詳細については、<a href="/ja/early-access/api/api-v3/scim-api/about/#authentication">認証</a>を参照してください。</p>
 <h2 id="get操作のパラメータ">GET操作のパラメータ</h2>
 <p>このコマンドは以下のパラメータを取ります：</p>
@@ -430,61 +430,61 @@
 <tbody>
 <tr>
 <td><code>account</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>必須</td>
 <td>アカウントの一意の識別子です。</td>
 </tr>
 <tr>
 <td><code>from</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>ログの時間範囲の開始です。ISO 8601形式。デフォルト値は30日前です。</td>
 </tr>
 <tr>
 <td><code>to</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>ログの時間範囲の終了です。ISO 8601形式。デフォルト値は現在の日付と時刻です。</td>
 </tr>
 <tr>
 <td><code>status</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
-<td>同期の状態です。例えば、<code>SUCCESS</code>や<code>ERROR</code>。</td>
+<td>同期の状態です。例えば、<code>SUCCESS</code>や<code>ERROR</code>です。</td>
 </tr>
 <tr>
 <td><code>action</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
-<td>同期中に行われたアクションです。例えば：<code>User OOO</code>, <code>User Patch</code>, <code>User Update</code>, <code>User Creation</code>, <code>User Deletion</code>, <code>User Retrieval</code>。</td>
+<td>同期中に行われたアクションです。例えば：<code>User OOO</code>, <code>User Patch</code>, <code>User Update</code>, <code>User Creation</code>, <code>User Deletion</code>, <code>User Retrieval</code>です。</td>
 </tr>
 <tr>
 <td><code>source</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
-<td>同期リクエストのソースです。例えば、<code>SCIM_API</code>。</td>
+<td>同期リクエストのソースです。例えば、<code>SCIM_API</code>です。</td>
 </tr>
 <tr>
 <td><code>userEmail</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>ユーザーのメールアドレスです。この値は大文字小文字を区別しない部分文字列です。</td>
 </tr>
 <tr>
 <td><code>correlationId</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>リクエストの相関IDです。</td>
 </tr>
 <tr>
 <td><code>format</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>応答形式です。許可される値は<code>csv</code>と<code>json</code>です。デフォルト値は<code>csv</code>です。</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>任意</td>
 <td>返すログエントリの最大数です。デフォルト値は<code>1000</code>で、最大値は<code>5000</code>です。</td>
 </tr>
@@ -492,7 +492,7 @@
 </table>
 <h3 id="例-curlリクエスト">例 cURLリクエスト</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request GET <span style="color:#e6db74">&#39;https://api.tealiumiq.com/scim/v2/admin/scim-sync/logs?account=testaccount&amp;from=2023-10-01T00:00:00Z&amp;to=2023-10-31T23:59:59Z&amp;limit=100&amp;format=csv&#39;</span>
-</span></span></code></pre></div><h3 id="例応答">例応答</h3>
+</span></span></code></pre></div><h3 id="例-応答">例 応答</h3>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -650,13 +650,13 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/ja/early-access/api/api-v3/scim-api/delete-user-api/"
+  <a href="/ja/early-access/api/api-v3/scim-api/get-user-api/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>ユーザー削除API</div>
+      <div>GETユーザーAPI</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ユーザー削除API"</title>
+      <title>"GETユーザーAPI"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -665,14 +665,14 @@
 </div><div class="w-50 mr3">
   
   
-  <a href="/ja/early-access/api/api-v3/scim-api/put-user-api/"
+  <a href="/ja/early-access/api/api-v3/scim-api/post-user-api/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"PUT ユーザー API "</title>
+      <title>"POSTユーザーAPI "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>PUT ユーザー API</div>
+      <div>POSTユーザーAPI</div>
     </section>
   </a>
   
@@ -704,7 +704,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月20日
+          <p>最終更新日 ::  2025年October月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/javascript/settings/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="`utag.js`の挙動を調整する構成について学びましょう。" />
+<meta property="og:description" content="`utag.js`の挙動を調整する構成について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>構成 | JavaScript用Tealium (utag.js) | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -337,14 +337,14 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      <code>utag.js</code>の挙動を調整する構成について学びましょう。
+      <code>utag.js</code>の挙動を調整する構成について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p><code>utag.js</code>の多くの挙動は、<code>utag.cfg</code>オブジェクト内の構成で制御されます。これらの構成によるデフォルトの挙動は、<code>utag_cfg_ovrd</code>という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、<code>utag.js</code>の読み込み前または<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code Extension</a>内で<strong>Pre Loader</strong>にスコープされた状態でページコードに構成します。</p>
+<p><code>utag.js</code>の多くの挙動は、<code>utag.cfg</code>オブジェクト内の構成で制御されます。これらのデフォルトの挙動は、<code>utag_cfg_ovrd</code>という新しいオブジェクトを使用して上書きされます。このオブジェクトを使用するには、<code>utag.js</code>をロードする前または<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code Extension</a>内で<strong>Pre Loader</strong>にスコープされた以下のように構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {};
 </span></span></code></pre></div><h2 id="オプションのリスト">オプションのリスト</h2>
 <p>以下の表は、利用可能な構成をまとめたものです：</p>
@@ -369,8 +369,12 @@
 <td>ユーザーの同意構成を保持する日数を構成します。</td>
 </tr>
 <tr>
+<td><a href="#disable_tealium_attribute_override"><code>disable_tealium_attribute_override</code></a></td>
+<td>システム定義の属性<code>tealium_*</code>が受信データによって上書きされるのを防ぎます。</td>
+</tr>
+<tr>
 <td><a href="#dom_complete"><code>dom_complete</code></a></td>
-<td>DOM完了（ロード）イベントまでタグの実行を遅延させます。</td>
+<td>DOM完了（ロード）イベントまでタグのロードを遅延させます。</td>
 </tr>
 <tr>
 <td><a href="#domain"><code>domain</code></a></td>
@@ -382,11 +386,11 @@
 </tr>
 <tr>
 <td><a href="#ignorelocalstorage"><code>ignoreLocalStorage</code></a></td>
-<td>データレイヤーにローカル保存変数を追加しないようにします。</td>
+<td>ローカル保存変数をデータレイヤーに追加しないようにします。</td>
 </tr>
 <tr>
 <td><a href="#ignoresessionstorage"><code>ignoreSessionStorage</code></a></td>
-<td>データレイヤーにセッション保存変数を追加しないようにします。</td>
+<td>セッション保存変数をデータレイヤーに追加しないようにします。</td>
 </tr>
 <tr>
 <td><a href="#load_rules_ajax"><code>load_rules_ajax</code></a></td>
@@ -394,7 +398,7 @@
 </tr>
 <tr>
 <td><a href="#load_rules_at_wait"><code>load_rules_at_wait</code></a></td>
-<td>拡張機能の後でロードルールを実行します（レガシー）。</td>
+<td>拡張機能の後にロードルールを実行します（レガシー）。</td>
 </tr>
 <tr>
 <td><a href="#lowermeta"><code>lowermeta</code></a></td>
@@ -418,7 +422,7 @@
 </tr>
 <tr>
 <td><a href="#nonblocking_tags"><code>nonblocking_tags</code></a></td>
-<td>すべてのタグを非ブロッキングにして、極端なケースでのパフォーマンスとInteraction to Next Paint (INP)スコアを向上させます。デフォルト：<code>false</code>。</td>
+<td>すべてのタグをノンブロッキングにして、極端なケースでのパフォーマンスとInteraction to Next Paint (INP)スコアを向上させます。デフォルト：<code>false</code>。</td>
 </tr>
 <tr>
 <td><a href="#path"><code>path</code></a></td>
@@ -434,7 +438,7 @@
 </tr>
 <tr>
 <td><a href="#session_timeout"><code>session_timeout</code></a></td>
-<td>セッションの有効期限（ミリ秒単位）を構成します。</td>
+<td>セッションの有効期限を構成します（ミリ秒単位）。</td>
 </tr>
 <tr>
 <td><a href="#split_cookie"><code>split_cookie</code></a></td>
@@ -450,13 +454,13 @@
 </tr>
 <tr>
 <td><a href="#waittimer"><code>waittimer</code></a></td>
-<td>タグのロード前に遅延する時間（ミリ秒単位）を構成します。</td>
+<td>タグのロード前に遅延する時間を構成します（ミリ秒単位）。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="always_set_v_id"><code>always_set_v_id</code></h3>
 <p><strong><code>utag.js</code>に<code>utag_main_v_id</code>クッキーまたは<code>utag_main</code>の<code>v_id</code>コンポーネントを構成させる</strong><br>
-(<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01"><code>utag.js</code> 4.50</a>で新規導入)<br>
+（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01"><code>utag.js</code> 4.50</a>で新規導入）<br>
 <code>v_id</code>変数はTealium Collectタグによって構成され、データプライバシーと同意目的に準拠することを保証します。この<code>true</code>に構成すると、<code>utag.js</code>はすべての訪問に対してこのクッキーを構成するように強制します。（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">always_set_v_id</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="cmcookiens"><code>cmcookiens</code></h3>
@@ -464,19 +468,26 @@
 同意管理クッキー名をカスタマイズします。同じドメイン名で複数のプロファイルを持っている場合は、クッキー間の競合や潜在的なデータ漏洩を防ぐために、各プロファイルに固有の同意管理クッキー名を構成してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">cmcookiens</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CONSENTMGR_NL-CMB-CG1&#34;</span>;
 </span></span></code></pre></div><h3 id="consentperiod"><code>consentPeriod</code></h3>
-<p><strong>同意構成の保持期間</strong><br>
-GDPRおよびCCPAの同意ステータスを保持する日数を構成します。GDPRの場合は365日、CCPAの場合は395日が組み込みの有効期限です。</p>
+<p><strong>同意構成保持期間</strong><br>
+GDPRおよびCCPAの同意ステータスを保持する日数を構成します。GDPRの組み込み有効期限は365日、CCPAは395日です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">consentPeriod</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>;
+</span></span></code></pre></div><h3 id="disable_tealium_attribute_override"><code>disable_tealium_attribute_override</code></h3>
+<p><strong>システム定義の属性の上書きを防ぐ</strong></p>
+<p>（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22"><code>utag.js</code> 4.54</a>で新規導入）</p>
+<p><code>true</code>に構成すると、この構成は受信データが<code>tealium_visitor_id</code>などの<code>tealium_</code>で始まるシステム定義の属性を上書きするのをブロックします。</p>
+<p><code>utag.js</code>のバージョン4.52および4.53では、この保護はデフォルトで有効になっており、一部のモバイルWebビュー環境で問題を引き起こしました。バージョン4.54では、保護はオプトインになり、完全な制御が可能です。</p>
+<p>（デフォルト：<code>false</code>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">disable_tealium_attribute_override</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="dom_complete"><code>dom_complete</code></h3>
-<p><strong>DOM完了（ロード）ブラウザイベントまでタグのロードを遅延させる</strong><br>
-DOM Readyではなく、<a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a>でタグをロードします。これにより、DOM Readyにスコープされた拡張機能も保留されます。（デフォルト：<code>false</code>）</p>
+<p><strong>DOM完了（ロード）ブラウザイベントまでタグを遅延させる</strong><br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">ドキュメントロードイベント</a>でタグをロードするのではなく、DOM Readyでロードします。これにより、DOM Readyにスコープされた拡張機能も保留されます。（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">dom_complete</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="domain"><code>domain</code></h3>
-<p><strong>クッキードメインの上書き</strong><br>
-<code>utag_main</code>クッキーが構成されるドメインを構成します。たとえば、<code>amazonaws.com</code>のようなルートドメインでクッキーを受け入れないサイトに便利です。（デフォルト：<code>location.hostname</code>のトップレベルドメイン）</p>
+<p><strong>クッキードメインを上書きする</strong><br>
+<code>utag_main</code>クッキーが構成されるドメインを構成します。たとえば、クッキーを受け入れないルートドメインのサイトの場合、<code>amazonaws.com</code>などです。（デフォルト：<code>location.hostname</code>のトップレベルドメイン）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysite.amazonaws.com&#34;</span>;
 </span></span></code></pre></div><h3 id="gdprdlref"><code>gdprDLRef</code></h3>
-<p><strong>同意管理者で使用する言語構成の上書き</strong><br>
+<p><strong>同意管理者で使用する言語構成を上書きする</strong><br>
 同意管理者で使用される言語を格納するデータレイヤー変数の名前を指定します。</p>
 <p>たとえば、データレイヤーに<code>site_language</code>という変数が含まれている場合：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {}
@@ -492,11 +503,11 @@ DOM Readyではなく、<a href="https://developer.mozilla.org/en-US/docs/Web/Ev
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">ignoreSessionStorage</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="load_rules_ajax"><code>load_rules_ajax</code></h3>
 <p><strong>ページロード後のロードルールを無効にする（レガシー）</strong><br>
-同じページロード内で<code>utag.view</code>および<code>utag.link</code>が呼び出されるたびにロードルールが再処理されるかどうかを制御します。新しくトリガーされたロードルールがページに新しいタグをロードする可能性があります。<code>utag.js</code>の4.2xより前のバージョンの動作を再現するためにこの構成を使用します。（デフォルト：<code>true</code>）</p>
+同じページロード内で<code>utag.view</code>および<code>utag.link</code>が呼び出されるたびにロードルールが再処理されるかどうかを制御します。新たにトリガーされたロードルールがページに新しいタグをロードする可能性があります。<code>utag.js</code>の4.2xより前のバージョンの動作を再現するためにこの構成を使用します。（デフォルト：<code>true</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">load_rules_ajax</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
 </span></span></code></pre></div><h3 id="load_rules_at_wait"><code>load_rules_at_wait</code></h3>
-<p><strong>拡張機能の後でロードルールを実行する（レガシー）</strong><br>
-拡張機能の後でロードルールを評価します。<code>utag.js</code>の古いバージョンや、<code>utag.js</code>のロード後にデータレイヤーオブジェクトが生成されるインストールで使用されます。<code>utag.js</code>の新しいバージョンでは、この構成の代わりに拡張実行順序を使用します。（デフォルト：<code>false</code>）</p>
+<p><strong>拡張機能の後にロードルールを実行する（レガシー）</strong><br>
+拡張機能の後にロードルールを評価します。<code>utag.js</code>の古いバージョンや、<code>utag.js</code>のロード後にデータレイヤーオブジェクトが入力されるインストールで使用されます。<code>utag.js</code>の新しいバージョンでは、この構成の代わりに拡張機能の実行順序を使用します。（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">load_rules_at_wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="lowermeta"><code>lowermeta</code></h3>
 <p><strong>メタタグデータを小文字にする（レガシー）</strong><br>
@@ -508,82 +519,37 @@ DOM Readyではなく、<a href="https://developer.mozilla.org/en-US/docs/Web/Ev
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">lowermeta</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="lowerqp"><code>lowerqp</code></h3>
 <p><strong>クエリ文字列パラメータ名と値を小文字にする（レガシー）</strong><br>
-すべてのクエリ文字列変数名と値を小文字にします。<code>utag.js</code>の4.2xより前のバージョンの動作を再現します。（デフォルト：<code>false</code>）</p>
-<p>クエリ文字列パラメータの例：<code>&amp;RefId=Abc123</code>
+すべてのクエリ文字列変数名と値を小文字にします。<code>utag.js</code> バージョン4.2x以前の動作を再現します。（デフォルト：<code>false</code>）</p>
+<p>例のクエリ文字列パラメータ：<code>&amp;RefId=Abc123</code>
 結果の値：<code>utag.data['qp.refid']=&quot;abc123&quot;</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">lowerqp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="noload"><code>noload</code></h3>
-<p><strong>すべての操作を停止する</strong><br>
-<strong>Pre Loader</strong>にスコープされた拡張機能の後ですべてのコードの実行が停止します。<strong>DOM Ready</strong>にスコープされた拡張機能は引き続き実行されます。これは通常、<strong>Prevent Tag Load</strong>の公開構成を使用して調整されます。（デフォルト：<code>0</code>）</p>
+<p><strong>すべての操作を停止</strong><br>
+<strong>Pre Loader</strong> にスコープされた拡張機能の後でコードの実行が停止します。<strong>DOM Ready</strong> にスコープされた拡張機能は実行されます。通常、<strong>Prevent Tag Load</strong> の公開構成を使用して調整されます。（デフォルト：<code>0</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="noview"><code>noview</code></h3>
-<p><strong>初回ページロード時の自動トラッキングコールを無効にする</strong><br>
-初回ページロード時に自動的に発生するトラッキングコールを抑制します。この構成はシングルページアプリケーションサイトでよく使用されます。（デフォルト：<code>false</code>）</p>
+<p><strong>初期ページロード時の自動トラッキングコールを無効にする</strong><br>
+初期ページロード時に自動的に発生するトラッキングコールを抑制します。この構成は、シングルページアプリケーションサイトでよく使用されます。（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noview</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="nocookie"><code>nocookie</code></h3>
 <p><strong>Cookieのオプトアウト</strong><br>
 訪問がすべてのCookieの使用を明示的にオプトアウトした場合のみ、このオプションを構成してください。（デフォルト：<code>false</code>）</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このオプションを使用すると、訪問数とセッション数が増加し、すべての訪問が「シングルページセッション」のように見えます。</p>
-<p>このオプションは、<a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>で構成されたCookieやセッションCookieを含む、すべてのCookieの保存を無効にします。また、Cookieが利用できない場合には、<code>ut.visitor_id</code>、<code>tealium_visitor_id</code>、<code>cp.utag_main_v_id</code>の変数に新しいタイムスタンプを構成します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このオプションを使用すると、訪問とセッションのカウントが増加し、すべての訪問が「シングルページセッション」のように見えます。</p>
+<p>このオプションは、<code>utag.js</code> によって構成されるすべてのCookieの保存を無効にし、<a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a> およびセッションCookieを含むCookieも無効にします。また、Cookieが利用できない場合には <code>ut.visitor_id</code>、<code>tealium_visitor_id</code>、<code>cp.utag_main_v_id</code> の変数に新しいタイムスタンプを構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nocookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="nonblocking_tags"><code>nonblocking_tags</code></h3>
-<p><strong>タグを非同期でロード</strong><br>
-（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>で新規導入）<br>
-このオプションはすべてのタグの非ブロッキング動作を有効にし、INPスコアと全体的なページパフォーマンスを向上させることができます。ユーザーインタラクションを遅くし、INPスコアを低下させるリソース集約型のタグがあるページでこの構成を使用してくださいが、終了リンクのトラッキングを徹底的にテストしてください。（デフォルト：<code>false</code>）</p>
+<p><strong>タグを非同期で読み込む</strong><br>
+(<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>で新設)<br>
+このオプションは、すべてのタグの非ブロッキング動作を有効にし、INPスコアと全体的なページパフォーマンスを向上させることができます。ユーザーのインタラクションを遅くし、INPスコアを低下させるリソース集約型のタグがあるページでこの構成を使用してくださいが、リンク追跡のテストを十分に行ってください。（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nonblocking_tags</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h4 id="ベストプラクティス">ベストプラクティス</h4>
-<p><code>nonblocking_tags</code>構成を使用する際のベストプラクティス：</p>
+<p><code>nonblocking_tags</code> 構成を使用する際のベストプラクティス：</p>
 <ul>
-<li>ページを測定および監視し、<code>nonblocking_tags</code>構成を使用する前にタグ実装を軽量化します。</li>
-<li>INPスコアが200ミリ秒を超え、DOMレンダリングをブロックする必要がないページでのみ<code>nonblocking_tags</code>を使用してください。</li>
-<li>非ブロッキングタグはページを保持せずにロードされるため（これがINPスコアを改善する理由です）、重要なナビゲーションや終了イベントの遅延に注意してください。</li>
+<li>ページを測定し、監視し、タグの実装を軽くすることを検討してから、<code>nonblocking_tags</code> 構成の使用を検討してください。</li>
+<li>INPスコアが200ミリ秒を超え、DOMのレンダリングをブロックする必要がないページでのみ <code>nonblocking_tags</code> を使用してください。</li>
+<li>ナビゲーション遅延が重要なナビゲーションおよび終了イベントで発生する可能性があるため、非ブロッキングタグはページの追跡を保持せずに読み込まれます（これがINPスコアを改善する理由です）。</li>
 </ul>
-<h3 id="path"><code>path</code></h3>
-<p><strong>公開URLパスを構成</strong><br>
-タグテンプレートの公開URLパスを構成し、指定されている場合は<a href="/ja/iq-tag-management/save-publish/publish-configuration/">公開構成ダイアログ</a>の公開URLフィールドを上書きします。公開URLパスの構成は、自己ホスティングおよび<a href="/ja/iq-tag-management/administration/first-party-domains/about/">First Party Domains</a>の顧客にとって有用です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;//tags.example.com/main/prod&#39;</span>;
-</span></span></code></pre></div><h3 id="readywait"><code>readywait</code></h3>
-<p><strong>DOM-readyまで操作を遅延</strong><br>
-ブラウザからDOM-readyシグナルを受信するまで、すべての操作を停止します。<strong>Pre Loader</strong>にスコープされた拡張機能は、<code>utag.js</code>がロードされるときに実行されます。（デフォルト：<code>0</code>）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">readywait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span></code></pre></div><h3 id="secure_cookie"><code>secure_cookie</code></h3>
-<p><strong>セキュアCookie</strong><br>
-（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2021-04-01"><code>utag.js</code> 4.48</a>で新規導入）<br>
-<a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Values extension</a>および<a href="/ja/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a>関数によって構成されるすべての<code>utag_main</code>クッキーの属性文字列を<code>secure</code>に構成します。セキュアクッキーはHTTPSページでのみ構成およびアクセスが可能です。（デフォルト：<code>false</code>）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">secure_cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span></code></pre></div><h3 id="session_timeout"><code>session_timeout</code></h3>
-<p><strong>セッションタイムアウト</strong>
-現在のセッションが期限切れになるまでの待ち時間をミリ秒単位で構成します。通常、セッションタイムアウトの公開構成で調整されます。（デフォルト：<code>1800000</code>（30分））</p>
-<p>タイムアウトを900000ミリ秒（15分）に構成する例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">session_timeout</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">900000</span>;
-</span></span></code></pre></div><h3 id="split_cookie"><code>split_cookie</code></h3>
-<p><strong>スタンドアロンクッキー</strong><br>
-（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01"><code>utag.js</code> 4.50</a>で新規導入）<br>
-<code>utag_</code>名前空間のクッキー（組み込みの<code>utag_main</code>クッキーなど）がマルチバリュークッキーとして書き込まれるか、<a href="/ja/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>によってスタンドアロンクッキーとして書き込まれるかを決定します。（デフォルト：<code>true</code>）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">split_cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-</span></span></code></pre></div><h3 id="split_cookie_allowlist"><code>split_cookie_allowlist</code></h3>
-<p><strong><code>utag_main</code>サブクッキー</strong><br>
-（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2023-09-01"><code>utag.js</code> 4.50</a>で新規導入）<br>
-許可された<code>utag_main</code>サブクッキーの配列を指定します。許可リストは、<code>split_cookie</code>が<code>true</code>に構成されている場合にのみ適用されます。これはバージョン4.50以降のデフォルト構成です。</p>
-<p><code>split_cookie_allowlist</code>が定義されており、有効な場合、以下が適用されます：</p>
-<ul>
-<li><code>utag.loader.SC</code>は<code>utag_main</code>クッキーのみを構成します。</li>
-<li>このリストにあるサブクッキーのみが<code>utag_main</code>名前空間で構成されます。</li>
-</ul>
-<p><code>split_cookie_allowlist</code>が定義されていない場合や<code>split_cookie</code>が<code>true</code>でない場合、すべての<code>utag_</code>名前空間のクッキーが許可されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>ses_id</code>、<code>_st</code>、<code>_ss</code>を許可せずにこのオプションを使用すると、訪問数とセッション数が増加し、すべての訪問がシングルページセッションのように見えます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">split_cookie_allowlist</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;v_id&#34;</span>, <span style="color:#e6db74">&#34;_ss&#34;</span>, <span style="color:#e6db74">&#34;_st&#34;</span>, <span style="color:#e6db74">&#34;ses_id&#34;</span>];
-</span></span></code></pre></div><h3 id="suppress_before_load_rules_with_uids"><code>suppress_before_load_rules_with_uids</code></h3>
-<p><strong>UIDによるトラッキングタグの場合、Before Load Rules拡張機能をスキップ</strong><br>
-（<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2024-12-18"><code>utag.js</code> 4.52</a>で新規導入）</p>
-<p>デフォルトでは、<a href="/ja/platforms/javascript/api/tracking-functions/">tracking tags by UID</a>の場合でも、<strong>Before Load Rules</strong>にスコープされた拡張機能はすべてのトラッキングコールで実行されます。以前は、UIDによるトラッキングタグの場合、これらの拡張機能は実行されませんでした。</p>
-<p>このオプションを<code>true</code>に構成すると、UIDによるトラッキングタグの場合、<strong>Before Load Rules</strong>にスコープされた拡張機能をスキップします（従来の動作）。（デフォルト：<code>false</code>）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">suppress_before_load_rules_with_uids</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span></code></pre></div><h3 id="waittimer"><code>waittimer</code></h3>
-<p><strong>タイマーでタグの遅延</strong>
-DOM Readyイベント後にタグのロードを待つ時間（ミリ秒単位）を構成します。（デフォルト：構成されていません）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">waittimer</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
-</span></span></code></pre></div>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -643,7 +609,7 @@ DOM Readyイベント後にタグのロードを待つ時間（ミリ秒単位�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月18日
+          <p>最終更新日 ::  2025年October月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -662,6 +628,7 @@ DOM Readyイベント後にタグのロードを待つ時間（ミリ秒単位�
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#always_set_v_id" href="javascript:void(0)">always_set_v_id</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cmcookiens" href="javascript:void(0)">cmcookiens</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consentperiod" href="javascript:void(0)">consentPeriod</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#disable_tealium_attribute_override" href="javascript:void(0)">disable_tealium_attribute_override</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom_complete" href="javascript:void(0)">dom_complete</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#domain" href="javascript:void(0)">domain</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#gdprdlref" href="javascript:void(0)">gdprDLRef</a></li>
@@ -675,14 +642,6 @@ DOM Readyイベント後にタグのロードを待つ時間（ミリ秒単位�
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#noview" href="javascript:void(0)">noview</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#nocookie" href="javascript:void(0)">nocookie</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#nonblocking_tags" href="javascript:void(0)">nonblocking_tags</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#path" href="javascript:void(0)">path</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#readywait" href="javascript:void(0)">readywait</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#secure_cookie" href="javascript:void(0)">secure_cookie</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#session_timeout" href="javascript:void(0)">session_timeout</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split_cookie" href="javascript:void(0)">split_cookie</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split_cookie_allowlist" href="javascript:void(0)">split_cookie_allowlist</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#suppress_before_load_rules_with_uids" href="javascript:void(0)">suppress_before_load_rules_with_uids</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#waittimer" href="javascript:void(0)">waittimer</a></li>
               </nav>
   </aside></nav>
 
