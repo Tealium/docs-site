@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "12",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -594,6 +594,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/microsoft-fabric-eventhouse-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Microsoft Fabric Eventhouse</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/microsoft-uet-conversion-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Microsoft UET Conversion API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/mixpanel-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Mixpanel</span></a>
@@ -1216,6 +1219,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/microsoft-fabric-eventhouse-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-fabric-eventhouse-connector">Microsoft Fabric Eventhouse</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/microsoft-uet-conversion-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Microsoft UET Conversion API</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/mixpanel-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mixpanel-connector">Mixpanel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/mocean-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mocean-connector">Mocean</a></li>
@@ -1445,7 +1450,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser’s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API can help strengthen performance and decrease cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
+  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser’s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API strengthens performance and decreases cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
 <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -1477,20 +1482,20 @@
 </tbody>
 </table>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Ad Account</strong>: (Required) Select an ad account ID that aligns with your sponsored account.</li>
 </ul>
 <h3 id="authentication">Authentication</h3>
-<p>You must sign in to LinkedIn for the connector to function.</p>
+<p>Sign in to LinkedIn to use the connector.</p>
 <ol>
 <li>Click <strong>Establish Connection</strong>.</li>
 <li>Sign in to your LinkedIn account.</li>
 <li>Click <strong>Allow</strong> to authorize the connection.</li>
 </ol>
 <h2 id="deduplication">Deduplication</h2>
-<p>Deduplication means the system identifies when both the Insight Tag and CAPI send the same event, then discards one to count the event only once. You can send the same events through both sources, so CAPI works with your <a href="/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> to give you complete visibility into your campaign conversions.</p>
+<p>Deduplication works by comparing events sent from both the Insight Tag and CAPI. If both sources send the same event, the system keeps only one and discards the duplicate to ensure accurate counting. Send the same events through both sources to combine CAPI data with your <a href="/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> for complete visibility into campaign conversions.</p>
 <p>To configure this connector action to receive event IDs from the LinkedIn Insights tag in your iQ Tag Management account, look for event attributes using the following naming convention:</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">linkedin_event_id_{CONVERSION_ID}_{TAG_UID}
 </code></pre><p>Find your tag&rsquo;s UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
@@ -1503,14 +1508,14 @@
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">linkedin_event_id_11563522_172
 </code></pre><p>Your <strong>Conversion ID</strong> can be found in your LinkedIn <strong>Campaign Manager</strong> account while configuring your LinkedIn Insights tag to track a specific event:</p>
 <ol>
-<li>Navigate to <strong>Analyze</strong> &gt; <strong>Conversion Tracking</strong>.</li>
-<li>Select <strong>Create Conversion</strong> &gt; <strong>Conversions API or CSV</strong> depending upon your use case. For more information, see <a href="https://www.linkedin.com/help/lms/answer/a420536">LinkedIn: Conversion Tracking</a>.</li>
+<li>Go to <strong>Analyze</strong> &gt; <strong>Conversion Tracking</strong>.</li>
+<li>Select <strong>Create Conversion</strong> &gt; <strong>Conversions API or CSV</strong>. For more information, see <a href="https://www.linkedin.com/help/lms/answer/a420536">LinkedIn: Conversion Tracking</a>.</li>
 <li>Select the integration and enter the required <strong>Settings</strong> values, including the <strong>Key Conversion Behavior</strong> that you want to track.</li>
 <li>Select <strong>Next Step</strong>.</li>
 <li>Select any campaigns to be tracked.</li>
 <li>From the left side menu, select <strong>Analyze &gt; Insight Tag</strong>.</li>
-<li>Click <strong>I will use a tag manager</strong> and copy the partner ID listed on the page.</li>
-<li>After all required forms are created and you have copied your <strong>Partner ID</strong> value, click <strong>Create</strong>.</li>
+<li>If you use a tag manager, click <strong>I will use a tag manager</strong> and copy the partner ID listed on the page. The Partner ID value is required in the Insights Tag configuration, but is not a required mapping for CAPI.</li>
+<li>After all required forms are created, click <strong>Create</strong>.</li>
 </ol>
 <h3 id="automatic-deduplication">Automatic deduplication</h3>
 <p>When the <strong>Automatic Deduplication</strong> values are set, the connector looks for the corresponding variables within the UDO object. You are no longer required to add an event ID if this section is populated and you are using Tealium iQ. Enable Generate Event ID on the LinkedIn Insights tag with the tag&rsquo;s UID. Also, the following approach may still be needed when using EventStream without Tealium iQ.</p>
@@ -1520,11 +1525,33 @@
 <li>If <strong>Automatic Deduplication</strong> values are set, but the values are not found, the mapped event ID is used, if it is set.</li>
 </ol>
 <h3 id="deduplication-limitations">Deduplication limitations</h3>
-<p>LinkedIn does not support deduplication of conversion events tracked by both the Insight Tag (pixel) and the Conversions API (CAPI). When both methods send tracking signals for the same event, LinkedIn keeps only the most recent signal and discards the earlier one—even if both signals use the same event ID. If you use both the Insight Tag and the Conversions API to track the same conversion event, you may see missing or overwritten data in your LinkedIn reports.</p>
-<p>There are also differences in the data fields each method supports. The Insight Tag cannot accept value or currency information for conversion events. These fields are supported only in Conversions API implementations.</p>
-<p>To ensure accurate reporting, such as calculating return on ad spend (ROAS) and total revenue, LinkedIn recommends that you use only one tracking method (either the Insight Tag or the Conversions API) for each specific conversion event and not both at the same time. For advertisers who need comprehensive conversion tracking and ROAS optimization, LinkedIn recommends using the Conversions API with all relevant event details, including value and currency.</p>
+<p>LinkedIn deduplicates conversion events tracked by both the Insight Tag (pixel) and the Conversions API (CAPI) when the same Conversion ID and Event ID are sent from both sources. The deduplication outcome depends on the combination of identifiers provided. Review your measurement goals and reporting priorities, and choose the configuration that matches your requirements:</p>
+<ul>
+<li>
+<p><strong>Same Conversion ID and Event ID</strong></p>
+<ul>
+<li>LinkedIn treats the events as the same event and deduplicates them, keeping only the Insight Tag event for reporting. The CAPI event is discarded.</li>
+<li>Use this configuration if you want the pixel to remain your primary source of attribution and you only need CAPI as a backup signal.</li>
+</ul>
+</li>
+<li>
+<p><strong>Same Conversion ID and different Event ID</strong></p>
+<ul>
+<li>LinkedIn treats the events as separate conversions and counts both. This results in double counting, but allows advertisers to compare pixel versus CAPI data during testing or transition periods.</li>
+<li>Use this configuration for short-term validation when migrating from pixel-based tracking to CAPI.</li>
+</ul>
+</li>
+<li>
+<p><strong>Different Conversions ID (regardless of Event ID)</strong></p>
+<ul>
+<li>LinkedIn considers the events to represent distinct conversions, one tracked via the Insight Tag and one via CAPI. This setup avoids deduplication entirely and ensures full server-side attribution for CAPI events.</li>
+<li>Use this configuration if you want CAPI to serve as your primary source of truth and maintain independent attribution for server-side conversions.</li>
+</ul>
+</li>
+</ul>
+<p>Each approach carries trade-offs in accuracy, visibility, and reporting alignment. CAPI-only tracking provides the most complete and future-ready implementation. Parallel tracking enables controlled testing and validation during migration. Deduplication mode minimizes double-counting but restricts server-side data visibility. Tealium supports all three methods and encourages advertisers to determine which option best reflects how they want LinkedIn to measure and attribute their conversions.</p>
 <h3 id="persist-the-linkedin-click-id">Persist the LinkedIn Click ID</h3>
-<p>If you are using the LinkedIn Insight Tag with this connector, we recommend that you persist the LinkedIn Click ID as a first party cookie.</p>
+<p>If you are using the LinkedIn Insight Tag with this connector, persist the LinkedIn Click ID as a first-party cookie.</p>
 <ol>
 <li>Create a <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</li>
 <li>Add the querystring parameter <code>li_fat_id</code> to your data layer.</li>
@@ -1541,7 +1568,7 @@
 </figure></li>
 </ol>
 <h2 id="create-a-conversion">Create a conversion</h2>
-<p>Use Tealium to create a conversion event tracked in your <strong>Campaign Manager</strong> interface. If you create a conversion in Tealium, you do not need to configure a conversion event in LinkedIn Campaign Manager. These values track conversion events and associate them with campaigns. The conversion events appear in the <strong>Analyze &gt; Conversion Tracking</strong> section with a data source value of <code>Tealium</code> in the LinkedIn Campaign Manager platform.</p>
+<p>If you create a conversion in Tealium, you do not need to configure a conversion event in LinkedIn Campaign Manager. Use Tealium to create a conversion event tracked in your <strong>Campaign Manager</strong> interface. These values track conversion events and associate them with campaigns. The conversion events appear in the <strong>Analyze &gt; Conversion Tracking</strong> section with a data source value of <code>Tealium</code> in the LinkedIn Campaign Manager platform.</p>
 <table>
 <thead>
 <tr>
@@ -1609,7 +1636,7 @@
 </tbody>
 </table>
 <h2 id="actions">Actions</h2>
-<p>The connector&rsquo;s actions are used to send the contact information from the conversion to LinkedIn.</p>
+<p>Send contact information from the conversion to LinkedIn using connector actions.</p>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="stream-conversion-event">Stream Conversion Event</h3>
@@ -1697,7 +1724,7 @@
 </tbody>
 </table>
 <h4 id="automatic-deduplication-1">Automatic Deduplication</h4>
-<p>Because LinkedIn recommends that you use a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. When you provide the Tealium iQ Tag ID, the connector looks for the event ID value sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.</p>
+<p>Because LinkedIn recommends that you use a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. If you provide the Tealium iQ Tag ID, the connector retrieves the event ID value from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.</p>
 <table>
 <thead>
 <tr>
@@ -1808,7 +1835,7 @@
 </tbody>
 </table>
 <h4 id="automatic-deduplication-2">Automatic Deduplication</h4>
-<p>Because LinkedIn recommends that you use a separate conversion ID for tags and for the CAPI, deduplication is based on event ID regardless of the conversion ID. When the Tealium iQ Tag ID is provided, the connector will automatically look for your event ID value that is sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to LinkedIn Insight Tag Conversion ID.</p>
+<p>Because LinkedIn recommends using a separate conversion ID for tags and for the CAPI, deduplication uses the event ID regardless of the conversion ID. When you provide the Tealium iQ Tag ID, the connector searches for the event ID value sent from Tealium iQ. If the tag conversion ID differs from the connector conversion ID, map that ID value to the LinkedIn Insight Tag Conversion ID.</p>
 <table>
 <thead>
 <tr>
@@ -1891,7 +1918,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 15, 2025 
+          <p>This page was last updated:  October 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

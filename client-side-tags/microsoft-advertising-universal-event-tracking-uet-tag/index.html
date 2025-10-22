@@ -737,6 +737,9 @@
       <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Conversion Pixel (Legacy)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/nextdoor-universal-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Universal Pixel</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nielsen Digital Content Ratings (DCR) - Page Measurement</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1499,6 +1502,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor Conversion Pixel (Legacy)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/nextdoor-universal-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-universal-pixel-tag">NextDoor Universal Pixel</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nielsen-digital-content-ratings-dcr-page-measurement-tag">Nielsen Digital Content Ratings (DCR) - Page Measurement</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/observepoint-data-layer-validator-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".observepoint-data-layer-validator-tag">ObservePoint Data Layer Validator</a></li>
@@ -1793,13 +1798,15 @@
 </li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the Tealium tag marketplace and add the Microsoft Advertising Universal Event Tracking (UET) tag. For more information, see <a href="/iq-tag-management/tags/manage/#add-a-tag">Manage Tags</a>.</p>
-<p>After adding the tag, configure the following settings:</p>
+<p>Go to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Tag ID</strong>: Your Microsoft Advertising tag identifier.</li>
 <li><strong>Ad Storage Consent</strong>: Set the default consent for Ad Storage. Dynamically update this value by mapping the <code>ad_storage</code> parameter in the <strong>Data Mappings</strong> section.</li>
 <li><strong>Automatically read from Tealium Consent Cookie</strong>: If set to true, consent is set based on the <a href="/consent/client-side/consent-management/about/">Tealium consent manager</a>.</li>
 </ul>
+<h2 id="load-rules">Load Rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="consent-mode">Consent mode</h2>
 <p>There are two options to implement consent mode for this tag:</p>
 <ul>
@@ -1828,7 +1835,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
 </span></span></code></pre></div><p>If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the <code>ad_storage</code> parameter to attributes for your specific case.</p>
 <h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
+<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="standard">Standard</h3>
 <table>
@@ -1905,7 +1912,23 @@
 </tr>
 <tr>
 <td><code>enableAutoSpaTracking</code></td>
-<td><code>Boolean</code></td>
+<td>Enable automatic SPA tracking.</td>
+</tr>
+<tr>
+<td><code>id_sync_beacon</code></td>
+<td>ID sync beacon.</td>
+</tr>
+<tr>
+<td><code>customer_id</code></td>
+<td>Microsoft customer ID.</td>
+</tr>
+<tr>
+<td><code>visitor_id</code></td>
+<td>Visitor ID.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>User ID.</td>
 </tr>
 <tr>
 <td><code>custom.myvar</code></td>
@@ -2604,7 +2627,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 5, 2025 
+          <p>This page was last updated:  October 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2620,6 +2643,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag Tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load Rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-mode" href="javascript:void(0)">Consent mode</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-consent-management" href="javascript:void(0)">Client-side consent management</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "5",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -308,7 +308,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIM and identity provider configuration</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li>
+        <a href="/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">GET SCIM Sync Logs</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -318,9 +318,9 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
+        <a href="/early-access/api/api-v3/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li></ul>
+        <a href="/early-access/api/api-v3/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li></ul>
       </li></ul>
       </li></ul>
       </li></ul></li></ul>
@@ -385,8 +385,8 @@
 <li>In the <strong>Name</strong> field, enter a unique name for the data source related to your use case.</li>
 <li>Click <strong>Continue</strong>.</li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>You can connect to up to 10 data sources in a profile.</p>
-<h2 id="establish-a-connection">Establish a connection</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>You can connect to up to 10 data sources in a profile.</p>
+<h3 id="establish-a-connection">Establish a connection</h3>
 <p>Before you configure the data to import, you must establish a connection to your cloud data source. A connection is the reusable configuration of your vendor credentials that connects Tealium to your cloud data source.</p>
 <p>On the <strong>Connection Configuration</strong> screen, confirm the name of the data source, then select an existing connection from the list or create a connection by clicking the <strong>+</strong> icon.</p>
 <p>Click <strong>Save</strong> to return to the <strong>Connection Configuration</strong> screen, then click <strong>Establish Connection</strong>.</p>
@@ -396,8 +396,9 @@
 <li><a href="/early-access/data-sources/databricks-cloud-data-source/#create-a-connection">Databricks</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
 </ul>
-<h2 id="enable-processing">Enable processing</h2>
+<h3 id="enable-processing">Enable processing</h3>
 <p>Turn on <strong>Enable Processing</strong> to begin importing data immediately after you save and publish your changes. Or, leave this setting off while you complete the configuration and turn it on later.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>We recommend that you <a href="#test-configuration">test the data source and query</a> before you enable any data sources, segments, or activations.</p>
 <h3 id="frequency">Frequency</h3>
 <p>Select how often you want to fetch data:</p>
 <ul>
@@ -406,17 +407,18 @@
 <li><strong>Daily</strong>: The process runs once a day at the time you select (UTC).</li>
 <li><strong>Weekly</strong>: The process runs once a week on a specified day and time (UTC).</li>
 </ul>
-<h2 id="configure-the-query">Configure the query</h2>
+<h2 id="configure-query-mode-and-query">Configure query mode and query</h2>
 <p>In the <strong>Query Mode and Configuration</strong> screen, select the appropriate query mode and optionally include a SQL <code>WHERE</code> clause to import only those records that match your custom condition.</p>
-<h4 id="select-a-query-mode">Select a query mode</h4>
-<p>The query mode determines how to select new rows, modified rows, or both for import.</p>
+<h5 id="select-a-query-mode">Select a query mode</h5>
+<p>The query mode determines how to select new rows, modified rows, or both for import. The timestamp and incrementing columns ensure accurate data processing by allowing the connector to resume from the correct position after any interruptions or errors. This prevents data from being missed or duplicated.</p>
 <ul>
 <li>If you select <strong>Timestamp + Incrementing (Recommended)</strong>, you must select two columns, a timestamp column and a strictly incrementing column.</li>
 <li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must select a column to use to detect either new and modified rows or new rows only.</li>
-<li>If you select <strong>Full Resync</strong>, all rows are imported during each import cycle. This option is useful when data changes frequently or when you want to ensure that all records are up-to-date. Full resync query mode requires that you use <strong>Hourly</strong> or <strong>Daily</strong> frequency, and you must specify the <strong>Timestamp Column</strong> or <strong>Incrementing Column</strong>.</li>
+<li>If you select <strong>Full Resync</strong>, all rows are imported during each import cycle. This option is useful when data changes frequently or when you want to ensure that all records are up-to-date. Full resync query mode requires that you use <strong>Hourly</strong> or <strong>Daily</strong> frequency, and you must specify the <strong>Timestamp Column</strong>, <strong>Incrementing Column</strong>, or both. <p class="note"><i class="fa fa-exclamation-triangle"></i>Offset management is not available in full resync mode.</p></li>
 </ul>
 <p>For more information, see <a href="/server-side/data-sources/cloud-data/about/#query-modes">Query modes</a>.</p>
-<h4 id="configure-the-query-1">Configure the query</h4>
+<h5 id="configure-the-query">Configure the query</h5>
+<p>To configure the query, use the following steps:</p>
 <ol>
 <li>
 <p>In the <strong>Query &gt; Select Columns</strong> section, select the columns to import. To change the table or view, click <strong>Previous</strong> and select a different table.</p>
@@ -431,16 +433,66 @@
 <p>Click <strong>Test Query</strong> to validate your SQL query and preview the results.</p>
 </li>
 </ol>
-<h2 id="map-columns">Map columns</h2>
+<h3 id="map-columns">Map columns</h3>
 <p>On the column mapping page, you&rsquo;ll see the columns you selected in the previous step. Each column is automatically assigned a data type and a suggested cloud attribute name, which you can change as needed.</p>
 <p>Columns not mapped to a cloud attribute are ignored.</p>
-<h2 id="summary">Summary</h2>
+<h3 id="summary">Summary</h3>
 <p>In this final step, view the summary, make any needed corrections, and then save and publish your profile. To edit your configuration, click <strong>Previous</strong> to return to the step where you want to make changes.</p>
 <ol>
 <li>Confirm the cloud attribute mappings.</li>
 <li>Click <strong>Finish</strong> to create the data source and exit the configuration screen. The new data source is listed in the <strong>Data Sources</strong> dashboard.</li>
 <li>Click <strong>Save/Publish</strong> to save and publish your changes.</li>
 </ol>
+<h2 id="test-configuration">Test configuration</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>We recommend that you test the data source and query before enabling data sources, segments, or activations. However, running a test may activate segments, trigger enabled actions, or affect downstream systems. To prevent unintended results, disable connectors and functions, limit test records, and coordinate with recipients.</p>
+<p>To test your data source configuration, use the following steps:</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_configuration.png"><img src="/images/early-access/cloudstream/cloudstream_test_configuration.png"
+         alt="Cloud test configuration"
+         title="Cloud test configuration"/>
+    </a>
+</figure>
+<ol>
+<li>Click the action button in the upper-right corner of a data source window, and then click <strong>End-to-end Testing</strong>.</li>
+<li>Select how you want to receive the output
+<ul>
+<li><strong>New Trace Session</strong>: The output will be displayed in a new trace session with up to 10 records. This option is best for confirming end-to-end verification and log details.</li>
+<li><strong>Existing Trace Session</strong>: The output will be displayed in a trace session you have already started. Enter the <strong>Trace ID</strong> and click <strong>Join Trace</strong>.</li>
+<li><strong>Direct Output</strong>: The raw results from the output will be displayed on the screen. No trace ID will be added to the data records and trace will not be available. This option is best for quickly confirming the query and attribute mapping.</li>
+</ul>
+</li>
+<li>Select the number of rows to process for the test. The maximum number of rows is 10.</li>
+<li>Under <strong>Test Query</strong>, select the columns from the table to include in the test. Click the <strong>X</strong> in a column to remove it from the list. You must select at least one column.</li>
+<li>Under <strong>From Table</strong>, select the table you want to query. The Select Columns box will update with the table’s columns.</li>
+<li>Under <strong>Where</strong>, enter the SQL query to perform on the table.</li>
+<li>Click <strong>Check Query</strong> to validate the SQL and verify that required fields are set.</li>
+<li>The results will appear in a table under the <strong>Query Result Preview</strong> tab: <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
+         alt="Cloud test check query"
+         title="Cloud test check query"/>
+    </a>
+</figure></li>
+<li>Click <strong>Start Test</strong> to start the configuration test.</li>
+</ol>
+<p>The right sidebar will display a progress bar that estimates the amount of time to finish the test and status messages to let you know if the test has encountered any errors.</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_output.png"><img src="/images/early-access/cloudstream/cloudstream_test_output.png"
+         alt="Cloud test output"
+         title="Cloud test output"/>
+    </a>
+</figure>
+<p>When the test is complete, the results are displayed:</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_results.png"><img src="/images/early-access/cloudstream/cloudstream_test_results.png"
+         alt="Cloud test results"
+         title="Cloud test results"/>
+    </a>
+</figure>
+<ul>
+<li>If you want to watch the test run in a trace, click <strong>Join Trace</strong>.</li>
+<li>If the test fails, you can do the following:
+<ul>
+<li>Click <strong>Edit Test Configuration</strong> to change the configuration settings.</li>
+<li>Click <strong>Retry Test</strong> to run the current configuration again.</li>
+</ul>
+</li>
+</ul>
 <h2 id="duplicate-a-data-source">Duplicate a data source</h2>
 <p>To duplicate a data source:</p>
 <ol>
@@ -448,12 +500,66 @@
 <li>Click the <strong>Duplicate</strong> button.</li>
 <li>Enter a name for the duplicated data source.</li>
 </ol>
+<h2 id="edit-a-data-source">Edit a data source</h2>
+<p>To edit a data source, use the following steps:</p>
+<ol>
+<li>Click the data source.</li>
+<li>Click the edit button.</li>
+<li>Update the configuration as needed.</li>
+<li>Click <strong>Done</strong>.</li>
+</ol>
+<h3 id="manage-offset">Manage offset</h3>
+<p>Data sources track the date or incrementing value position where querying begins in your cloud data view or table. An offset lets you reset or manually set that position to control where in the view or table to start querying.</p>
+<p>For example, suppose a recent mailing list activation contained an error and processed 100 records, and now the current incrementing offset is 342. To reprocess those records after correcting the email activation, set the offset to 242. When you restart the data source, it queries records starting from that position and sends the corrected email.</p>
+<p>You can only manage the offset if the following conditions are true:</p>
+<ul>
+<li>The current profile is published.</li>
+<li>The query mode is <strong>Timestamp + Incrementing (Recommended)</strong>, <strong>Timestamp</strong>, or <strong>Incrementing</strong>. You cannot manage the offset for <strong>Full Resync</strong> query mode.</li>
+<li>The data source is stopped.
+<ul>
+<li>If the data source status is running, scheduled, or failed, you cannot edit the offset. Only information about the current offset is available.</li>
+<li>If the status is initializing, inactive, or there is a connection error, the offset is not available.</li>
+</ul>
+</li>
+</ul>
+<p>To manage the offset for the data source, use the following steps:</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/manage_offset.png"><img src="/images/early-access/cloudstream/manage_offset.png"
+         alt="manage offset"
+         title="manage offset"/>
+    </a>
+</figure>
+<ol>
+<li>Click the action button in the upper-right corner of the data source details window and then click <strong>Manage Offset</strong>.</li>
+<li>The offset methods available are <strong>Timestamp</strong> and <strong>Incrementing Column</strong>. Your query mode determines which offsets are available.</li>
+<li>Under <strong>Timestamp Column</strong>, select the column in the table that represents the timestamp.</li>
+<li>Under <strong>New Timestamp</strong>, select a date and time to offset the timestamp from when importing the data.
+<ul>
+<li>The new timestamp must be a past time and date. It cannot be a future date and time.</li>
+<li>The current timestamp field displays the currently used offset.</li>
+</ul>
+</li>
+<li>Under <strong>Incrementing column</strong>, select the column that represents the incrementing value for each row added to the table.</li>
+<li>Under <strong>New Increment</strong>, enter a number to use to offset the ID from when importing the data.
+<ul>
+<li>The new offset ID must be a positive integer.</li>
+<li>The current offset ID field displays the currently used number to use as an offset.</li>
+</ul>
+</li>
+</ol>
+<p>Click <strong>Validate Offset Changes</strong> to preview the data that will be imported from the new offset position. The table shows sample rows. It also provides an estimate of how many rows will be processed after you adjust the offset.</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/validate_offset.png"><img src="/images/early-access/cloudstream/validate_offset.png"
+         alt="validate offset"
+         title="validate offset"/>
+    </a>
+</figure>
+<p>Click <strong>Done</strong> to confirm the new offset settings. Click <strong>Cancel</strong> to discard your changes.</p>
+<p>Restart the data source after changing the offset.</p>
 <h2 id="processed-rows-and-errors">Processed rows and errors</h2>
 <p>To see import activity, navigate to <strong>Data Sources</strong> and expand the data source.</p>
 <figure><a class="slb" href="/images/server-side/data-sources/cloud-data-source-status-line.png"><img src="/images/server-side/data-sources/cloud-data-source-status-line.png"/>
     </a>
 </figure>
-<p>CloudStream can ingest up to 500 data records per second.</p>
+<p>CloudStream can import up to 500 data records per second.</p>
 <h2 id="statuses">Statuses</h2>
 <p>After configuring a cloud data source, it may display one of the following statuses:</p>
 <table>
@@ -554,7 +660,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 2, 2025 
+          <p>This page was last updated:  October 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -570,14 +676,17 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-vendors" href="javascript:void(0)">Supported vendors</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-cloud-data-source" href="javascript:void(0)">Create a cloud data source</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#establish-a-connection" href="javascript:void(0)">Establish a connection</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#establish-a-connection" href="javascript:void(0)">Establish a connection</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-processing" href="javascript:void(0)">Enable processing</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-query" href="javascript:void(0)">Configure the query</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-columns" href="javascript:void(0)">Map columns</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-query-mode-and-query" href="javascript:void(0)">Configure query mode and query</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-columns" href="javascript:void(0)">Map columns</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-configuration" href="javascript:void(0)">Test configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#duplicate-a-data-source" href="javascript:void(0)">Duplicate a data source</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#processed-rows-and-errors" href="javascript:void(0)">Processed rows and errors</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-a-data-source" href="javascript:void(0)">Edit a data source</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manage-offset" href="javascript:void(0)">Manage offset</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#processed-rows-and-errors" href="javascript:void(0)">Processed rows and errors</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#statuses" href="javascript:void(0)">Statuses</a></li>
               </nav>
   </aside></nav>

@@ -737,6 +737,9 @@
       <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Conversion Pixel (Legacy)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/nextdoor-universal-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>NextDoor Universal Pixel</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nielsen Digital Content Ratings (DCR) - Page Measurement</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1499,6 +1502,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nextdoor-conversion-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-conversion-pixel-tag">NextDoor Conversion Pixel (Legacy)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/nextdoor-universal-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-universal-pixel-tag">NextDoor Universal Pixel</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/nielsen-digital-content-ratings-dcr-page-measurement-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nielsen-digital-content-ratings-dcr-page-measurement-tag">Nielsen Digital Content Ratings (DCR) - Page Measurement</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/observepoint-data-layer-validator-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".observepoint-data-layer-validator-tag">ObservePoint Data Layer Validator</a></li>
@@ -1762,18 +1767,40 @@
 <div class="prose nested-links" id="prose">
   <h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>Use data mappings to override and dynamically set the tag configurations.</li>
-<li>By default, the tag template detects if mapped product parameters contain single or multiple products per event. If a single product is detected, the individual TikTok product variables (<code>content_id</code>, <code>content_category</code>, <code>content_name</code>) are used. If multiple products are detected, the <code>contents</code> array is automatically populated and used.</li>
-<li>By default, the <code>Identify</code> method is automatically sent for each event where user data (hashed or unhashed email or phone number) is populated. TikTok automatically hashes raw customer information with SHA256 before the value enters their servers for matching. Automatic hashing can be disabled in the tag configuration.</li>
-<li>For TikTok to collect an unhashed email, the input text must contain an <code>@</code> symbol. The text must also end in a domain designation.</li>
-<li>For TikTok to collect an unhashed phone number, the entered numeric values must follow the format <code>+{country code}{phone number}</code>.</li>
-<li>You can use the Crypto Extension to encrypt and populate the <strong>Hashed Email</strong> and <strong>Phone Number</strong> values.</li>
-<li>The <code>value</code> parameter is automatically calculated and set in the template based on product prices and quantities.</li>
-<li>By default, the pixel always includes page view events, which track when a visitor lands on your website. You can disable <code>auto_page_tracking</code> in the tag configuration or override it in the data mappings.</li>
-<li>By default, the <code>CompletePayment</code> event occurs when an order ID is populated. You can disable this <code>auto_purchase_tracking</code> in the tag configuration or override it in the data mappings.</li>
+<li>
+<p>Use data mappings to override and dynamically set the tag configurations.</p>
+</li>
+<li>
+<p>By default, the tag template detects if mapped product parameters contain single or multiple products per event. If a single product is detected, the individual TikTok product variables (<code>content_id</code>, <code>content_category</code>, <code>content_name</code>) are used. If multiple products are detected, the <code>contents</code> array is automatically populated and used.</p>
+</li>
+<li>
+<p>By default, the <code>Identify</code> method is automatically sent for each event where user data (hashed or unhashed email or phone number) is populated. TikTok automatically hashes raw customer information with SHA256 before the value enters their servers for matching. Automatic hashing can be disabled in the tag configuration.</p>
+</li>
+<li>
+<p>For TikTok to collect an unhashed email, the input text must contain an <code>@</code> symbol. The text must also end in a domain designation.</p>
+</li>
+<li>
+<p>For TikTok to collect an unhashed phone number, the entered numeric values must follow the format <code>+{country code}{phone number}</code>.</p>
+</li>
+<li>
+<p>You can use the Crypto Extension to encrypt and populate the <strong>Hashed Email</strong> and <strong>Phone Number</strong> values.</p>
+</li>
+<li>
+<p>The <code>value</code> parameter is automatically calculated and set in the template based on product prices and quantities.</p>
+</li>
+<li>
+<p>By default, the pixel always includes page view events, which track when a visitor lands on your website. You can disable <code>auto_page_tracking</code> in the tag configuration or override it in the data mappings.</p>
+</li>
+<li>
+<p>By default, the <code>CompletePayment</code> event occurs when an order ID is populated. You can disable this <code>auto_purchase_tracking</code> in the tag configuration or override it in the data mappings.</p>
+</li>
+<li>
+<p>Use <strong>Custom Destination</strong> to send custom or non-standard parameters that are not included in TikTok’s default parameter list. To add custom parameters, click <strong>+ Add Custom Destination</strong>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Custom or non-standard parameters are not processed by TikTok. Advertisers can request a custom report from their TikTok account representative to calculate metrics for the custom parameters.</p>
+</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>Go to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Content Type</strong>: Send TikTok information about the format of product IDs that are being sent through the <code>content_id</code> parameter. For example, <code>content_type</code> = <code>product_group</code> refers to general product groups or SPU values (often a prefix in the product ID), while <code>content_type</code> = <code>product</code> is the full product ID for a single product (commonly referred to as the SKU).</li>
@@ -2071,7 +2098,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 1, 2025 
+          <p>This page was last updated:  October 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

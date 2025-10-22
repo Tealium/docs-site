@@ -316,6 +316,10 @@
 <td>Set the number of days to retain the user&rsquo;s consent preference.</td>
 </tr>
 <tr>
+<td><a href="#disable_tealium_attribute_override"><code>disable_tealium_attribute_override</code></a></td>
+<td>Prevent system-defined attributes <code>tealium_*</code> from being overwritten by incoming data.</td>
+</tr>
+<tr>
 <td><a href="#dom_complete"><code>dom_complete</code></a></td>
 <td>Delay tags until the DOM complete (load) event.</td>
 </tr>
@@ -414,6 +418,13 @@ Customize the consent management cookie name. If you have multiple profiles on t
 <p><strong>Consent preference retention period</strong><br>
 Set the number of days to retain GDPR and CCPA consent status. The built-in expiry is 365 days for GDPR and 395 days for CCPA.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">consentPeriod</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>;
+</span></span></code></pre></div><h3 id="disable_tealium_attribute_override"><code>disable_tealium_attribute_override</code></h3>
+<p><strong>Prevent overrides of system-defined attributes</strong></p>
+<p>(New in <a href="/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22"><code>utag.js</code> 4.54</a>)</p>
+<p>When set to <code>true</code>, this setting blocks incoming data from overwriting system-defined attributes that start with <code>tealium_</code>, such as <code>tealium_visitor_id</code>.</p>
+<p>In <code>utag.js</code> versions 4.52 and 4.53, this protection was enabled by default, which caused issues in some mobile webview environments. In version 4.54, the protection is now opt-in, allowing full control.</p>
+<p>(Default: <code>false</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">disable_tealium_attribute_override</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="dom_complete"><code>dom_complete</code></h3>
 <p><strong>Delay tags until the DOM complete (load) browser event</strong><br>
 Load tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready. This also holds back any extensions scoped to DOM Ready. (Default: <code>false</code>)</p>
@@ -590,7 +601,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 14, 2025 
+          <p>This page was last updated:  October 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -609,6 +620,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#always_set_v_id" href="javascript:void(0)">always_set_v_id</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cmcookiens" href="javascript:void(0)">cmcookiens</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consentperiod" href="javascript:void(0)">consentPeriod</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#disable_tealium_attribute_override" href="javascript:void(0)">disable_tealium_attribute_override</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom_complete" href="javascript:void(0)">dom_complete</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#domain" href="javascript:void(0)">domain</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#gdprdlref" href="javascript:void(0)">gdprDLRef</a></li>

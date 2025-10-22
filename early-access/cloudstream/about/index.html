@@ -308,7 +308,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIM and identity provider configuration</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li>
+        <a href="/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">GET SCIM Sync Logs</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -318,9 +318,9 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
+        <a href="/early-access/api/api-v3/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li></ul>
+        <a href="/early-access/api/api-v3/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li></ul>
       </li></ul>
       </li></ul>
       </li></ul></li></ul>
@@ -370,7 +370,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>CloudStream is a segment builder that activates customer data directly from your cloud data warehouse (CDW), without storing or loading data into Tealium. Designed primarily for batch marketing lists and warehouse activation, CloudStream lets you create and manage segments from your CDW and activate them using supported connectors.</p>
+  <p>CloudStream is a segment builder that activates customer data directly from your data cloud, without storing or loading data into Tealium. Designed primarily for batch marketing lists and warehouse activation, CloudStream lets you create and manage segments from your data cloud and activate them using supported connectors.</p>
 <p>This reduces overhead in the following ways:</p>
 <ul>
 <li>No cost to replicate or synchronize data.</li>
@@ -389,28 +389,44 @@
 </li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>CloudStream connects directly to your CDW, letting you activate customer data without moving or storing it in Tealium.</p>
-<p>In a dedicated server-side profile, you define a data source to connect to a table or view in your CDW, then map its columns to cloud attributes. You can add enrichments to further process the data in attributes, or enrich additional cloud attributes with averages or other calculations. Using these attributes, you build segments — groups of users or entities that meet specific criteria. Finally, you activate these segments by sending them to your chosen destinations through connectors.</p>
+<p>CloudStream connects directly to your data cloud, letting you activate customer data without moving or storing it in Tealium.</p>
+<p>In a dedicated server-side profile, you define a data source to connect to a table or view in your data cloud, then map its columns to cloud attributes. You can add enrichments to further process the data in attributes, or enrich additional cloud attributes with averages or other calculations. Using these attributes, you build segments — groups of users or entities that meet specific criteria. Finally, you activate these segments by sending them to your chosen destinations through connectors.</p>
 <p>CloudStream uses a dedicated CloudStream profile, keeping your workflow organized and separate from other Tealium products.</p>
 <p>The process involves the following components:</p>
 <h3 id="dedicated-profile">Dedicated profile</h3>
 <p>CloudStream uses its own dedicated server-side profile, separate from other platform profiles. This separation lets you manage attributes, segments, rules, and connectors for large datasets and complex segments without impacting your AudienceStream or EventStream workflows.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To create a dedicated CloudStream profile, contact Tealium Support.</p>
+<h3 id="data-supply-chain-dashboard">Data supply chain dashboard</h3>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_profile_dashboard.png"><img src="/images/early-access/cloudstream/cloudstream_profile_dashboard.png"
+         alt="CloudStream profile dashboard"
+         title="CloudStream profile dashboard"/>
+    </a>
+</figure>
+<p>The CloudStream data supply chain dashboard lists the following information:</p>
+<ul>
+<li>The number of cloud data sources configured.</li>
+<li>The number of data records received.</li>
+<li>The number of enrichments applied.</li>
+<li>The number of active segments.</li>
+<li>The number of activations triggered.</li>
+<li>The number of connectors configured.</li>
+</ul>
+<p>Tables list the cloud data sources, segments, and destinations (connectors and functions) configured in the profile.</p>
 <h3 id="data-sources">Data sources</h3>
-<p>Data sources are defined connections to your CDW, such as Snowflake or Databricks. CloudStream connects to these data sources to retrieve and activate segments without storing the data in Tealium. This lets you work with large datasets directly from the cloud, leveraging the power of your existing data infrastructure.</p>
+<p>Data sources are defined connections to your data cloud, such as Snowflake or Databricks. CloudStream connects to these data sources to retrieve and activate segments without storing the data in Tealium. This lets you work with large datasets directly from the cloud, leveraging the power of your existing data infrastructure.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_datasource_summary.png"><img src="/images/early-access/cloudstream/cloudstream_datasource_summary.png"
          alt="CloudStream datasource summary"
          title="CloudStream datasource summary"/>
     </a>
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>You can connect to up to 10 data sources in a profile.</p>
-<p>CloudStream data sources are designed to work directly with data stored in CDW. Data remains in the CDW and is only temporarily imported for activation through connectors, without being stored in Tealium.</p>
-<p>Each data source can connect to a single view or table at a time. If you need to connect to multiple tables or views from a CDW, configure a separate data source for each table or view.</p>
-<p>If you want to combine data from multiple tables into data records that CloudStream can read in a segment, you need to join the tables or views at the CDW into a single table or view and then use that joined table as the segment data source.</p>
+<p>CloudStream data sources are designed to work directly with data stored in a data cloud. Data remains in the data cloud and is only temporarily imported for activation through connectors, without being stored in Tealium.</p>
+<p>Each data source can connect to a single view or table at a time. If you need to connect to multiple tables or views from a data cloud, configure a separate data source for each table or view.</p>
+<p>If you want to combine data from multiple tables into data records that CloudStream can read in a segment, you need to join the tables or views in the data cloud into a single table or view and then use that joined table as the segment data source.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStream only supports cloud data sources.</p>
 <p>For more information, see <a href="/early-access/cloudstream/datasources/">Manage CloudStream data sources</a>.</p>
 <h3 id="cloud-attributes">Cloud attributes</h3>
-<p>Cloud attributes are defined when you create a data source in CloudStream. As you connect to a table in your CDW, CloudStream analyzes the table’s columns, determines their data types, and generates corresponding cloud attributes. You can review and adjust these attribute mappings during the data source setup process to ensure they align with your activation needs.</p>
+<p>Cloud attributes are defined when you create a data source in CloudStream. As you connect to a table in your data cloud, CloudStream analyzes the table’s columns, determines their data types, and generates corresponding cloud attributes. You can review and adjust these attribute mappings during the data source setup process to ensure they align with your activation needs.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloud_attributes.png"><img src="/images/early-access/cloudstream/cloud_attributes.png"
          alt="Cloud attributes"
          title="Cloud attributes"/>
@@ -420,7 +436,7 @@
 <p class="tip"><i class="fa fa-info-circle"></i>If you need more than 500 attributes in a profile, contact your Customer Success Manager.</p>
 <p>For more information, see <a href="/early-access/cloudstream/attributes/">Cloud attributes</a>.</p>
 <h3 id="segments">Segments</h3>
-<p>Segments are groups of users or entities that meet a set of conditions based on the cloud attributes defined in your data source. Segments in CloudStream are not persisted in the system and are only dynamically evaluated in real time while data is imported from your CDW and activated through connectors.</p>
+<p>Segments are groups of users or entities that meet a set of conditions based on the cloud attributes defined in your data source. Segments in CloudStream are not persisted in the system and are only dynamically evaluated in real time while data is imported from your data cloud and activated through connectors.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_details.png"><img src="/images/early-access/cloudstream/cloudstream_segment_details.png"
          alt="CloudStream segment details"
          title="CloudStream segment details"/>
@@ -450,15 +466,15 @@
 <thead>
 <tr>
 <th>Feature</th>
-<th>CloudStream (CDW)</th>
+<th>CloudStream</th>
 <th>EventStream / AudienceStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Data Source</td>
-<td>CDW (Snowflake, Databricks)</td>
-<td>CDW, web, mobile, server, API events</td>
+<td>Data cloud  (Snowflake, Databricks)</td>
+<td>Data cloud, web, mobile, server, API events</td>
 </tr>
 <tr>
 <td>Data Storage</td>
@@ -538,7 +554,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 2, 2025 
+          <p>This page was last updated:  October 22, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -555,6 +571,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dedicated-profile" href="javascript:void(0)">Dedicated profile</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-supply-chain-dashboard" href="javascript:void(0)">Data supply chain dashboard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-sources" href="javascript:void(0)">Data sources</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cloud-attributes" href="javascript:void(0)">Cloud attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#segments" href="javascript:void(0)">Segments</a></li>
