@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "22",
+        reading_time  : "28",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1638,6 +1638,66 @@ The following credentials are required for this connector:
 <td>Templates</td>
 <td>Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.<br>For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
+<tr>
+<td>Referer</td>
+<td>Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&rsquo;s Referer header, if available, or the corresponding data layer property.</td>
+</tr>
+<tr>
+<td>X-Forwarded-For</td>
+<td>Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&rsquo;s IP address.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Proto</td>
+<td>Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is <code>HTTPS</code>.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Host</td>
+<td>Identifies the original host requested by the client, such as <code>www.clientsite.com</code>. Required by AEP to maintain accurate host attribution.</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA</td>
+<td>(Required) Low-entropy Client Hint header listing the browser brands and versions.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Mobile</td>
+<td>(Required) Indicates whether the client is on a mobile device. Required by AEP for mobile classification.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform</td>
+<td>Identifies the platform on which the browser is running (for example, <code>Windows</code>, <code>macOS</code>, <code>Android</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform-Version</td>
+<td>Provides the version of the operating system platform. Used for advanced device and compatibility attribution.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Arch</td>
+<td>Specifies the CPU architecture of the client device (for example, <code>x86</code>, <code>arm</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Model</td>
+<td>Identifies the device model. Primarily used for mobile devices.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Bitness</td>
+<td>Indicates the bitness of the client architecture (for example, <code>64</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-WoW64</td>
+<td>Indicates whether the client is running a 32-bit process on a 64-bit Windows system.</td>
+</tr>
+<tr>
+<td>Custom Header Key CSV</td>
+<td>Provide a custom header key to send with the request.</td>
+</tr>
+<tr>
+<td>Custom Header Value CSV</td>
+<td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="send-event-batched">Send Event (Batched)</h3>
@@ -1678,6 +1738,66 @@ The following credentials are required for this connector:
 <td>Templates</td>
 <td>Provide templates to be referenced in Data section. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.<br>For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
+<tr>
+<td>Referer</td>
+<td>Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&rsquo;s Referer header, if available, or the corresponding data layer property.</td>
+</tr>
+<tr>
+<td>X-Forwarded-For</td>
+<td>Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&rsquo;s IP address.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Proto</td>
+<td>Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is <code>HTTPS</code>.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Host</td>
+<td>Identifies the original host requested by the client, such as <code>www.clientsite.com</code>. Required by AEP to maintain accurate host attribution.</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA</td>
+<td>(Required) Low-entropy Client Hint header listing the browser brands and versions.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Mobile</td>
+<td>(Required) Indicates whether the client is on a mobile device. Required by AEP for mobile classification.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform</td>
+<td>Identifies the platform on which the browser is running (for example, <code>Windows</code>, <code>macOS</code>, <code>Android</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform-Version</td>
+<td>Provides the version of the operating system platform. Used for advanced device and compatibility attribution.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Arch</td>
+<td>Specifies the CPU architecture of the client device (for example, <code>x86</code>, <code>arm</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Model</td>
+<td>Identifies the device model. Primarily used for mobile devices.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Bitness</td>
+<td>Indicates the bitness of the client architecture (for example, <code>64</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-WoW64</td>
+<td>Indicates whether the client is running a 32-bit process on a 64-bit Windows system.</td>
+</tr>
+<tr>
+<td>Custom Header Key CSV</td>
+<td>Provide a custom header key to send with the request.</td>
+</tr>
+<tr>
+<td>Custom Header Value CSV</td>
+<td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="stream-record-data">Stream Record Data</h3>
@@ -1704,11 +1824,67 @@ The following credentials are required for this connector:
 </tr>
 <tr>
 <td>Body parameters</td>
-<td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br></td>
+<td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
 </tr>
 <tr>
-<td>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
-<td></td>
+<td>Referer</td>
+<td>Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&rsquo;s Referer header, if available, or the corresponding data layer property.</td>
+</tr>
+<tr>
+<td>X-Forwarded-For</td>
+<td>Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&rsquo;s IP address.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Proto</td>
+<td>Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is <code>HTTPS</code>.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Host</td>
+<td>Identifies the original host requested by the client, such as <code>www.clientsite.com</code>. Required by AEP to maintain accurate host attribution.</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA</td>
+<td>(Required) Low-entropy Client Hint header listing the browser brands and versions.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Mobile</td>
+<td>(Required) Indicates whether the client is on a mobile device. Required by AEP for mobile classification.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform</td>
+<td>Identifies the platform on which the browser is running (for example, <code>Windows</code>, <code>macOS</code>, <code>Android</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform-Version</td>
+<td>Provides the version of the operating system platform. Used for advanced device and compatibility attribution.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Arch</td>
+<td>Specifies the CPU architecture of the client device (for example, <code>x86</code>, <code>arm</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Model</td>
+<td>Identifies the device model. Primarily used for mobile devices.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Bitness</td>
+<td>Indicates the bitness of the client architecture (for example, <code>64</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-WoW64</td>
+<td>Indicates whether the client is running a 32-bit process on a 64-bit Windows system.</td>
+</tr>
+<tr>
+<td>Custom Header Key CSV</td>
+<td>Provide a custom header key to send with the request.</td>
+</tr>
+<tr>
+<td>Custom Header Value CSV</td>
+<td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
 </tr>
 </tbody>
 </table>
@@ -1736,11 +1912,67 @@ The following credentials are required for this connector:
 </tr>
 <tr>
 <td>Body parameters</td>
-<td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br></td>
+<td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
 </tr>
 <tr>
-<td>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
-<td></td>
+<td>Referer</td>
+<td>Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&rsquo;s Referer header, if available, or the corresponding data layer property.</td>
+</tr>
+<tr>
+<td>X-Forwarded-For</td>
+<td>Contains the originating IP address of the client connecting through Tealium or another proxy. Used by AEP for geolocation and attribution. The default value is taken from the IP address provided in the incoming request or the Tealium system variable representing the visitor&rsquo;s IP address.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Proto</td>
+<td>Specifies the protocol (HTTP or HTTPS) that the client used to connect. Helps AEP interpret the original request scheme when routed through a proxy. The default value is <code>HTTPS</code>.</td>
+</tr>
+<tr>
+<td>X-Forwarded-Host</td>
+<td>Identifies the original host requested by the client, such as <code>www.clientsite.com</code>. Required by AEP to maintain accurate host attribution.</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>Provides the full user agent string identifying the client’s browser, operating system, and rendering engine. Used by AEP for device and browser detection.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA</td>
+<td>(Required) Low-entropy Client Hint header listing the browser brands and versions.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Mobile</td>
+<td>(Required) Indicates whether the client is on a mobile device. Required by AEP for mobile classification.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform</td>
+<td>Identifies the platform on which the browser is running (for example, <code>Windows</code>, <code>macOS</code>, <code>Android</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Platform-Version</td>
+<td>Provides the version of the operating system platform. Used for advanced device and compatibility attribution.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Arch</td>
+<td>Specifies the CPU architecture of the client device (for example, <code>x86</code>, <code>arm</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Model</td>
+<td>Identifies the device model. Primarily used for mobile devices.</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-Bitness</td>
+<td>Indicates the bitness of the client architecture (for example, <code>64</code>).</td>
+</tr>
+<tr>
+<td>Sec-CH-UA-WoW64</td>
+<td>Indicates whether the client is running a 32-bit process on a 64-bit Windows system.</td>
+</tr>
+<tr>
+<td>Custom Header Key CSV</td>
+<td>Provide a custom header key to send with the request.</td>
+</tr>
+<tr>
+<td>Custom Header Value CSV</td>
+<td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
 </tr>
 </tbody>
 </table>
@@ -2148,7 +2380,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 25, 2025 
+          <p>This page was last updated:  October 23, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
