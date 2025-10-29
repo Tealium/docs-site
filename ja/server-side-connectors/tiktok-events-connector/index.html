@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -420,9 +420,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/friendbuy-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Friendbuy</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1049,6 +1046,9 @@
       <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>チーターデジタル</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>ファイル転送プロトコル</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/branch-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>ブランチイベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1273,8 +1273,6 @@
         <a href="/ja/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/friendbuy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".friendbuy-connector">Friendbuy</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1692,6 +1690,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">チーターデジタル</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ファイル転送プロトコル</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/branch-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".branch-events-connector">ブランチイベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/lithium-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".lithium-connector">リチウム</a></li></ul>
@@ -1775,20 +1775,20 @@
 <li><strong>アクセストークン</strong><br>
 TikTokで構成されたアクセストークン。</li>
 <li><strong>ピクセルID</strong><br>
-すでにウェブサイトでTikTokピクセルが統合されている場合は、既存のピクセルコードを使用できます。<code>pixel_code</code>は、TikTok広告マネージャーアカウントにログインして見つけることができます。ウェブサイトごとに1つのピクセルを作成することをお勧めします。</li>
+ウェブサイトにすでにTikTokピクセルが統合されている場合は、既存のピクセルコードを使用します。TikTok広告マネージャーアカウントにログインして、<code>pixel_code</code>を見つけます。ウェブサイトごとに1つのピクセルを作成します。</li>
 </ul>
-<h3 id="tiktokピクセルとwebイベントのtiktokコンバージョンの重複排除">TikTokピクセルとWebイベントのTikTokコンバージョンの重複排除</h3>
+<h2 id="重複排除">重複排除</h2>
 <p>このコネクタを構成して、Tealium iQタグ管理アカウントのTikTokピクセルタグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：</p>
-<p>形式：<code>tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;</code></p>
-<p>例えば、UIDが<code>174</code>のタグからのイベントは、次の属性値を送信します：</p>
-<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174`
-</code></pre><p>タグのUIDは、Tealium iQの<strong>タグ</strong>テーブルまたはタグの詳細画面で見つけることができます：</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;
+</code></pre><p>例えば、UIDが<code>174</code>のタグからのイベントは、次の属性を送信します：</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174
+</code></pre><p>Tealium iQの<strong>タグ</strong>テーブルまたはタグの詳細画面でタグのUIDを見つけます：</p>
 <figure><a class="slb" href="/images/server-side-connectors/tiktok-pixel-uid.png"><img src="/images/server-side-connectors/tiktok-pixel-uid.png"
          alt="TikTok Pixel UID"
          title="TikTok Pixel UID"/>
     </a>
 </figure>
-<p>上記の形式に一致する各イベントIDについて、別々のアクションを構成します。イベント固有の<strong>イベントID</strong>属性を<strong>イベントID</strong>にマッピングし、対応するイベント名を<strong>イベント名</strong>にマッピングします。</p>
+<p>このイベントID形式に一致する各イベントIDについて、別のアクションを構成します。イベント固有のイベントID属性を<code>Event ID</code>にマップし、対応するイベント名を<code>Event Name</code>にマップします。</p>
 <p>例：</p>
 <table>
 <thead>
@@ -1799,23 +1799,24 @@ TikTokで構成されたアクセストークン。</li>
 </thead>
 <tbody>
 <tr>
-<td><code>tiktok_event_id_Purchase</code></td>
+<td><code>tiktok_event_id_Checkout_174</code></td>
 <td>イベントID</td>
 </tr>
 <tr>
-<td>&ldquo;Purchase&rdquo;（カスタムテキスト）</td>
+<td><code>Checkout</code>（カスタムテキスト）</td>
 <td>イベント名</td>
 </tr>
 </tbody>
 </table>
 <p>詳細については、<a href="/ja/client-side-tags/tiktok-pixel-tag/">TikTokピクセルタグ構成ガイド</a>を参照してください。</p>
-<h4 id="自動重複排除">自動重複排除</h4>
-<p>同じイベントソースID（<code>event_source_id</code>）、イベントタイプ（例：<code>AddToCart</code>）、およびイベントID（<code>event_id</code>）を持つ複数のイベントが受信された場合、TikTokは最初のものを使用し、最初のイベントの48時間以内に受信された後のイベントは破棄します。後のイベントが最初のイベントの5分以内に受信された場合、TikTokはそのデータを最初のイベントにマージしようとします。例えば、最初のイベントにユーザーのメール（<code>user.email</code>）が含まれていないが、5分以内に受信された後の重複イベントにこの情報が含まれている場合、TikTokはメールデータを最初のイベントにマージします。</p>
-<h3 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h3>
+<h3 id="自動重複排除">自動重複排除</h3>
+<p>同じイベントソースID（<code>event_source_id</code>）、イベントタイプ（例：<code>AddToCart</code>）、およびイベントID（<code>event_id</code>）を持つ複数のイベントが受信された場合、TikTokは最初のイベントを使用し、最初のイベントから48時間以内に受信された後のイベントは破棄します。</p>
+<p>最初のイベントの受信から5分以内に後のイベントが受信された場合、TikTokはそのデータを最初のイベントにマージします。たとえば、最初のイベントにユーザーのメール（<code>user.email</code>）が含まれていないが、5分以内に受信された後の重複イベントにこの情報が含まれている場合、TikTokはメールデータを最初のイベントにマージします。</p>
+<h2 id="アクション">アクション</h2>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h4 id="アクション---トラックイベント送信">アクション - トラックイベント送信</h4>
-<h5 id="パラメータ">パラメータ</h5>
+<h3 id="トラックイベント送信">トラックイベント送信</h3>
+<h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -1830,7 +1831,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>イベントタイプ</td>
-<td>変換イベント名。<ul><li>レベル達成</li><li>支払情報追加</li><li>カートに追加</li><li>ウィッシュリストに追加</li><li>チェックアウト</li><li>ボタンクリック</li><li>支払い完了</li><li>登録完了</li><li>チュートリアル完了</li><li>連絡</li><li>グループ作成</li><li>役割作成</li><li>カスタム</li><li>ダウンロード</li><li>リード生成</li><li>チェックアウト開始</li><li>アプリインストール</li><li>アプリ内広告クリック</li><li>アプリ内広告表示</li><li>グループ参加</li><li>アプリ起動</li><li>アプリケーション読み込み</li><li>ローン承認</li><li>ローン支払い</li><li>ログイン成功</li><li>注文</li><li>購入</li><li>評価</li><li>検索</li><li>クレジット使用</li><li>トライアル開始</li><li>フォーム提出</li><li>購読</li><li>実績解除</li><li>コンテンツ閲覧</li></ul></td>
+<td>変換イベント名。<ul><li>レベル達成</li><li>支払情報追加</li><li>カートに追加</li><li>ウィッシュリストに追加</li><li>チェックアウト</li><li>ボタンクリック</li><li>支払い完了</li><li>登録完了</li><li>チュートリアル完了</li><li>連絡</li><li>グループ作成</li><li>役割作成</li><li>カスタム</li><li>ダウンロード</li><li>リード生成</li><li>チェックアウト開始</li><li>アプリインストール</li><li>アプリ内広告クリック</li><li>アプリ内広告表示</li><li>グループ参加</li><li>アプリ起動</li><li>アプリケーション読み込み</li><li>ローン承認</li><li>ローン支払い</li><li>ログイン成功</li><li>注文</li><li>購入</li><li>評価</li><li>検索</li><li>クレジット使用</li><li>トライアル開始</li><li>フォーム提出</li><li>サブスクライブ</li><li>実績解除</li><li>コンテンツ閲覧</li></ul></td>
 </tr>
 <tr>
 <td>イベントソースID</td>
@@ -1838,11 +1839,11 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>イベント時間</td>
-<td>(必須) イベントが発生した時のタイムスタンプ（ISO 8601形式 <code>YYYY-MM-DDThh:mm:ssZ</code>）。タイムスタンプが提供されていない場合は、現在のタイムスタンプが使用されます。</td>
+<td>(必須) イベントが発生した時のタイムスタンプ（ISO 8601形式 <code>YYYY-MM-DDThh:mm:ssZ</code>）。タイムスタンプを提供しない場合、コネクタは現在のタイムスタンプを使用します。</td>
 </tr>
 <tr>
 <td>カスタムイベント名</td>
-<td><strong>イベントタイプ</strong>ドロップダウンから<strong>カスタム</strong>を選択した場合に必要です。</td>
+<td><strong>カスタム</strong>を<strong>イベントタイプ</strong>ドロップダウンから選択した場合に必要です。</td>
 </tr>
 <tr>
 <td>ピクセルIDオーバーライド</td>
@@ -1850,19 +1851,23 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>アクセストークンオーバーライド</td>
-<td>構成での値を上書きするカスタムアクセストークン。</td>
+<td>構成内の値を上書きするカスタムアクセストークン。</td>
 </tr>
 <tr>
 <td>イベントID</td>
-<td>ユニークなユーザーやセッションを識別できる任意のハッシュID。例：<code>SessionID_RandomNumber</code>。<a href="/ja/client-side-tags/tiktok-pixel-tag/">TikTokピクセルタグでイベントIDを生成</a>を<code>true</code>に構成すると、このIDはTikTokトラッキングイベントごとに自動的に生成されます。</td>
+<td>ユニークなユーザーまたはセッションを識別できる任意のハッシュID。例えば、<code>SessionID_RandomNumber</code>。<a href="/ja/client-side-tags/tiktok-pixel-tag/">TikTokピクセルタグでイベントIDを生成する</a>を<code>true</code>に構成すると、このIDはTikTokトラッキングイベントごとに自動的に生成されます。</td>
 </tr>
 <tr>
-<td>限定データ使用</td>
-<td>このフィールドは、イベントソースが<code>WEB</code>または<code>APP</code>の場合にのみサポートされます。限定データ処理構成。限定データ使用機能について詳しくは、<a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: 限定データ使用</a>を参照してください。</td>
+<td>データ使用制限</td>
+<td>このフィールドはイベントソースが<code>WEB</code>または<code>APP</code>の場合にのみサポートされます。限定データ処理構成。限定データ使用機能について詳しくは、<a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: 限定データ使用</a>を参照してください。</td>
+</tr>
+<tr>
+<td>テストイベントコード</td>
+<td>TikTokイベントマネージャー（<code>TTEM</code>）の本番データに含まれないテストイベントを送信します。<code>test_event_code</code>は<code>TTEM</code>の<code>Test Events</code>タブから取得します。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="広告データ">広告データ</h5>
+<h4 id="広告データ">広告データ</h4>
 <table>
 <thead>
 <tr>
@@ -1873,7 +1878,7 @@ TikTokで構成されたアクセストークン。</li>
 <tbody>
 <tr>
 <td>コールバック</td>
-<td>TikTok広告とウェブサイト訪問イベントを照合するために使用される<code>ttclid</code>の値。</td>
+<td>TikTok広告とウェブサイト訪問イベントをマッチさせるために使用される<code>ttclid</code>の値。</td>
 </tr>
 <tr>
 <td>キャンペーンID</td>
@@ -1901,11 +1906,11 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>帰属プロバイダー</td>
-<td>帰属プロバイダー名。</td>
+<td>帰属プロバイダーの名前。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="ページデータ">ページデータ</h5>
+<h4 id="ページデータ">ページデータ</h4>
 <table>
 <thead>
 <tr>
@@ -1924,7 +1929,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </tbody>
 </table>
-<h5 id="ユーザーデータ">ユーザーデータ</h5>
+<h4 id="ユーザーデータ">ユーザーデータ</h4>
 <table>
 <thead>
 <tr>
@@ -1939,7 +1944,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>ユーザーの電話番号</td>
-<td>推奨。ユーザーの電話番号をSHA256でハッシュ化。国コードは<code>+</code>を付け、他の文字（スペース、<code>-</code>）は削除（例：アメリカの場合は<code>+12125551212</code>）。国コードが<code>86</code>の場合は、国コードを含めない（例：<code>13800000000</code>）。</td>
+<td>推奨。ユーザーの電話番号をSHA256でハッシュ化。国コードは<code>+</code>を付け、その他の文字（スペース、<code>-</code>）は削除（例：アメリカの場合は<code>+12125551212</code>）。国コードが<code>86</code>の場合は、国コードを含めない（例：<code>13800000000</code>）。</td>
 </tr>
 <tr>
 <td>ユーザー外部ID</td>
@@ -1955,31 +1960,35 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>User Agent</td>
-<td>ユーザーのデバイスからの非ハッシュ化されたユーザーエージェント。TikTok広告とウェブサイト訪問イベントのマッチング確率を高めるため、<strong>IP</strong>と<strong>User Agent</strong>の両方を送信することを推奨。自動マッピングを無効にしない限り、このパラメータは訪問の<strong>User Agent</strong>に自動マッピングされます。</td>
+<td>ユーザーのデバイスからの非ハッシュ化されたユーザーエージェント。TikTok広告とウェブサイト訪問イベントのマッチング確率を高めるため、<strong>IP</strong>と<strong>User Agent</strong>の両方を送信することを推奨。自動マッピングを無効にしない限り、このパラメータは訪問の<strong>User Agent</strong>に自動的にマッピングされます。</td>
 </tr>
 <tr>
 <td>IDFA</td>
-<td>iOSの広告主識別子。</td>
+<td>広告主向けiOS識別子。</td>
 </tr>
 <tr>
 <td>IDFV</td>
-<td>iOSのベンダー識別子。</td>
+<td>ベンダー向けiOS識別子。</td>
 </tr>
 <tr>
 <td>GAID</td>
 <td>Google広告ID。</td>
 </tr>
 <tr>
-<td>Locale</td>
-<td><code>la-CO</code>形式のロケール言語と国。<code>la</code>は言語を表す2文字のコード、<code>CO</code>は国を表す2文字の大文字コード。</td>
+<td>ロケール</td>
+<td><code>la-CO</code>形式のロケール言語とロケール。ここで<code>la</code>は言語を表す2文字のコード、<code>CO</code>は国を表す2文字の大文字コード。</td>
 </tr>
 <tr>
-<td>Att Status</td>
-<td>ユーザーまたはデバイスのトラッキングに関連するアプリデータへのアクセスをモバイルアプリが認証したかどうか。これはiOS専用フィールドです。サポートされる値は<code>AUTHORIZED</code>, <code>DENIED</code>, <code>NOT_DETERMINED</code>, <code>NOT_APPLICABLE</code>です。</td>
+<td>Attステータス</td>
+<td>ユーザーまたはデバイスの追跡に関連するアプリデータへのアクセスをモバイルアプリが認証したかどうか。これはiOS専用フィールドです。サポートされる値は<code>AUTHORIZED</code>, <code>DENIED</code>, <code>NOT_DETERMINED</code>, <code>NOT_APPLICABLE</code>。</td>
+</tr>
+<tr>
+<td>バーティカル選択</td>
+<td><strong>プロパティデータ</strong>の下でバーティカル固有のパラメータを表示するバーティカルを選択します。利用可能なオプションは<code>Hotel</code>, <code>Flight</code>, <code>Destination</code>, <code>No Vertical Selected</code>です。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="プロパティデータ">プロパティデータ</h5>
+<h4 id="プロパティデータ">プロパティデータ</h4>
 <table>
 <thead>
 <tr>
@@ -1994,10 +2003,10 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 <tr>
 <td>通貨</td>
-<td>3文字のISO 4217コード。例えば、<code>EUR</code>, <code>USD</code>, <code>JPY</code>。</td>
+<td>3文字のISO 4217コード。例：<code>EUR</code>, <code>USD</code>, <code>JPY</code>。</td>
 </tr>
 <tr>
-<td>値</td>
+<td>価値</td>
 <td>注文または販売されたアイテムの総価値。</td>
 </tr>
 <tr>
@@ -2018,7 +2027,160 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </tbody>
 </table>
-<h5 id="コンテンツデータ">コンテンツデータ</h5>
+<h4 id="ホテルバーティカル固有のパラメータ">ホテルバーティカル固有のパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテンツID</td>
+<td>イベントに関連する製品ID、例えばSKU。</td>
+</tr>
+<tr>
+<td>市</td>
+<td>ホテルの市の位置。</td>
+</tr>
+<tr>
+<td>地域</td>
+<td>ホテルの地域。</td>
+</tr>
+<tr>
+<td>国</td>
+<td>ホテルの国。</td>
+</tr>
+<tr>
+<td>チェックイン日</td>
+<td>ホテルのチェックイン日。</td>
+</tr>
+<tr>
+<td>チェックアウト日</td>
+<td>ホテルのチェックアウト日。</td>
+</tr>
+<tr>
+<td>大人の数</td>
+<td>予約の大人の数。</td>
+</tr>
+<tr>
+<td>子供の数</td>
+<td>予約の子供の数。</td>
+</tr>
+<tr>
+<td>推奨ホテル</td>
+<td>このユーザーに推奨されるホテル。文字列または文字列の配列であることができます。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="フライトバーティカル固有のパラメータ">フライトバーティカル固有のパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目的地市</td>
+<td>目的地の市名。</td>
+</tr>
+<tr>
+<td>出発日</td>
+<td>フライトの出発日。受け入れられる形式は<code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>です。例：<code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>。</td>
+</tr>
+<tr>
+<td>帰りの出発日</td>
+<td>帰りのフライトの日付。受け入れられる形式は<code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>です。例：<code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>。</td>
+</tr>
+<tr>
+<td>出発空港</td>
+<td>出発空港コード。例：<code>JFK</code>。</td>
+</tr>
+<tr>
+<td>目的地空港</td>
+<td>目的地空港コード。例：<code>CDG</code>。</td>
+</tr>
+<tr>
+<td>大人の数</td>
+<td>大人の数。</td>
+</tr>
+<tr>
+<td>子供の数</td>
+<td>子供の数。</td>
+</tr>
+<tr>
+<td>幼児の数</td>
+<td>幼児の数。</td>
+</tr>
+<tr>
+<td>旅行クラス</td>
+<td>フライトチケットのクラス。この値は<code>economy</code>, <code>premium</code>, <code>business</code>, <code>first</code>でなければなりません。</td>
+</tr>
+<tr>
+<td>ユーザースコア</td>
+<td>この潜在顧客の広告主に対する相対的な価値を表します。例：<code>50</code>。</td>
+</tr>
+<tr>
+<td>停留回数の希望数</td>
+<td>停留回数の希望数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="目的地バーティカル固有のパラメータ">目的地バーティカル固有のパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテンツID</td>
+<td>イベントに関連する製品ID、例えばSKU。</td>
+</tr>
+<tr>
+<td>市</td>
+<td>目的地の市の位置。</td>
+</tr>
+<tr>
+<td>地域</td>
+<td>目的地の地域。</td>
+</tr>
+<tr>
+<td>国</td>
+<td>目的地の国。</td>
+</tr>
+<tr>
+<td>旅行開始</td>
+<td>ユーザーの旅行の開始日。受け入れられる形式は<code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>です。例：<code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>。</td>
+</tr>
+<tr>
+<td>旅行終了</td>
+<td>ユーザーの旅行の終了日。受け入れられる形式は<code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>です。例：<code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>。</td>
+</tr>
+<tr>
+<td>大人の数</td>
+<td>大人の数。</td>
+</tr>
+<tr>
+<td>子供の数</td>
+<td>子供の数。</td>
+</tr>
+<tr>
+<td>幼児の数</td>
+<td>幼児の数。</td>
+</tr>
+<tr>
+<td>推奨される目的地</td>
+<td>このユーザーに対する目的地の提案を表すIDのリスト。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="コンテンツデータ">コンテンツデータ</h4>
 <table>
 <thead>
 <tr>
@@ -2053,7 +2215,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </tbody>
 </table>
-<h5 id="アプリデータ">アプリデータ</h5>
+<h4 id="アプリデータ">アプリデータ</h4>
 <table>
 <thead>
 <tr>
@@ -2076,7 +2238,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </tbody>
 </table>
-<h5 id="リードデータ">リードデータ</h5>
+<h4 id="リードデータ">リードデータ</h4>
 <table>
 <thead>
 <tr>
@@ -2095,7 +2257,7 @@ TikTokで構成されたアクセストークン。</li>
 </tr>
 </tbody>
 </table>
-<h5 id="自動重複排除-1">自動重複排除</h5>
+<h4 id="自動重複排除-1">自動重複排除</h4>
 <table>
 <thead>
 <tr>
@@ -2106,7 +2268,7 @@ TikTokで構成されたアクセストークン。</li>
 <tbody>
 <tr>
 <td>自動マッピング無効</td>
-<td>自動マッピングが無効の場合、自動マッピングされたパラメータはデフォルトでベンダーに送信されません。</td>
+<td>自動マッピングが無効の場合、自動的にマッピングされたパラメータはデフォルトでベンダーに送信されません。</td>
 </tr>
 </tbody>
 </table>
@@ -2115,11 +2277,11 @@ TikTokで構成されたアクセストークン。</li>
 <li>TikTokクリックID (<code>ttclid</code>)</li>
 <li>User Agent</li>
 </ul>
-<p>自動マッピングを無効にするには、<strong>自動マッピング無効</strong>を<code>true</code>に構成します。自動マッピングされたパラメータはベンダーに送信されません。</p>
+<p>自動マッピングを無効にするには、<strong>自動マッピング無効</strong>を<code>true</code>に構成します。自動的にマッピングされたパラメータはベンダーに送信されません。</p>
 <h4 id="カスタムイベント">カスタムイベント</h4>
 <p>このコネクタのカスタムイベントを選択するには：</p>
 <ol>
-<li><strong>イベントタイプ</strong>カテゴリーで、<strong>変換イベント名</strong>に<code>Custom</code>を選択します。</li>
+<li><strong>イベントタイプ</strong>カテゴリの下で、<strong>変換イベント名</strong>に<code>Custom</code>を選択します。</li>
 <li><strong>カスタムイベント名</strong>フィールドにカスタムイベント名を入力し、<strong>+ マッピング追加</strong>をクリックします。</li>
 </ol>
 
@@ -2182,7 +2344,7 @@ TikTokで構成されたアクセストークン。</li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月24日
+          <p>最終更新日 ::  2025年October月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2200,8 +2362,10 @@ TikTokで構成されたアクセストークン。</li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tiktok%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%A8web%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AEtiktok%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">TikTokピクセルとWebイベントのTikTokコンバージョンの重複排除</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">重複排除</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">自動重複排除</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%80%81%E4%BF%A1" href="javascript:void(0)">トラックイベント送信</a></li>
               </nav>
   </aside></nav>
 

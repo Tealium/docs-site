@@ -401,6 +401,9 @@
       <a href="/server-side-connectors/facebook-messenger-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Facebook Messenger</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>File Transfer Protocol</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Firebase Cloud Messaging</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -408,9 +411,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/freshdesk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Freshdesk</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1089,13 +1089,13 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">File Transfer Protocol</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1471,14 +1471,10 @@
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Account ID</strong><br>
-The Optimizely account to which the events should be attributed.</p>
-</li>
-<li>
-<p><strong>Access Token</strong><br>
-Access token can be obtained by navigating to <strong><a href="https://app.optimizely.com/v2/profile/api">Optimizely Profile &gt; API Access</a></strong>.</p>
-</li>
+<li><strong>Account ID</strong><br>
+The Optimizely account to which the events should be attributed.</li>
+<li><strong>Access Token</strong><br>
+Access token can be obtained by going to <strong><a href="https://app.optimizely.com/v2/profile/api">Optimizely Profile &gt; API Access</a></strong>.</li>
 </ul>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
@@ -1551,23 +1547,11 @@ Access token can be obtained by navigating to <strong><a href="https://app.optim
 </tr>
 <tr>
 <td style="text-align:left">Event Tags</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Additional event properties.</li><li>Key-value attributes related to tags.</li><li>If used, <code>type</code> and <code>value</code> must be included as two of the keys.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Campaign ID</td>
-<td style="text-align:left"><ul><li>Required</li><li>The ID of the campaign containing this experiment.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Experiment ID</td>
-<td style="text-align:left"><ul><li>Required</li><li>The ID of the experiment the visitor was exposed to.</li><li>For Personalization Campaigns, explicitly send <code>null</code> as the Experiment ID for visitors not bucketed into an Experiment, to accurately calculate Campaign reach.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Variation ID</td>
-<td style="text-align:left"><ul><li>Required</li><li>The ID of the variation the visitor was exposed to.</li><li>For Personalization campaigns, explicitly send <code>null</code> as the Variation ID for visitors not bucketed into an Experiment to accurately calculate campaign reach.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Event Tags</td>
 <td style="text-align:left"><ul><li>(Optional) Additional event properties.</li><li>Key-value attributes related to tags.</li><li>If used, <code>type</code> and <code>value</code> must be included as two of the keys.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Event Properties</td>
+<td style="text-align:left">Key-value pairs that define properties or characteristics of the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Campaign ID</td>
@@ -1663,7 +1647,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 23, 2025 
+          <p>This page was last updated:  October 28, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

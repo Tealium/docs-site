@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -401,6 +401,9 @@
       <a href="/server-side-connectors/facebook-messenger-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Facebook Messenger</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>File Transfer Protocol</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Firebase Cloud Messaging</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -408,9 +411,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/freshdesk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Freshdesk</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1089,13 +1089,13 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">File Transfer Protocol</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1476,7 +1476,7 @@
 </tbody>
 </table>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Customer ID</strong><br>
@@ -1484,6 +1484,27 @@
 <li><strong>Account ID</strong><br>
 (Required) You can find the account ID in the URL after <code>AID=</code> when logged into the Microsoft Ads UI.</li>
 </ul>
+<p>Click <strong>Establish Connection</strong> to connect to Microsoft. Follow the on-screen directions to complete the connection process.</p>
+<h3 id="create-offline-conversion-goal">Create offline conversion goal</h3>
+<p>Click <strong>Create Offline Conversion Goal</strong> to set a goal for conversions. Enter the following information:</p>
+<ol>
+<li>Enter a unique <strong>Name</strong> for the conversion goal. The maximum length of the name is 100 characters.</li>
+<li>Select a <strong>Goal Category</strong> to segment the conversion goal.</li>
+<li>Select a <strong>Scope</strong> to determine if the goal applies to all accounts of just the specified account. After you set the scope, you can only change the scope by creating a new conversion goal and pausing the old one.</li>
+<li>Under <strong>ID</strong>, enter the Microsoft Advertising identifier for the conversion goal.</li>
+<li>Under <strong>Conversion Window in Minutes</strong>, enter the length of time in minutes after a click that you want to track conversions. The default value is <code>43200</code>. The minimum value supported is <code>1</code> minute. The maximum value supported is <code>129600</code> minutes (90 days). Shorter conversion windows reduce the number of conversions your account records.</li>
+<li>Select a <strong>Count Type</strong> to determine how your conversions are recorded within the conversion window. The default is <code>All</code>:
+<ul>
+<li><strong>All</strong>: All conversions with different offline conversion times that happen after an ad click are counted. This is a common choice for sales.</li>
+<li><strong>Unique</strong>: Only the first conversion that happens after an ad click is counted. This is a common choice for leads.</li>
+</ul>
+</li>
+<li>Under <strong>Exclude from Bidding</strong>, select whether to include or exclude this goal from bidding. This determines whether data related to this conversion goal appears in a subset of performance report columns.</li>
+<li>Under <strong>Revenue Value</strong>, enter a value to determine how much each conversion is worth to your business.</li>
+<li>Under <strong>Revenue Code</strong>, enter the currency type that you use in reports.</li>
+<li>(Optional) Under <strong>Status</strong>, select <code>Active</code>, <code>Paused</code>, or <code>Deleted</code> to define the possible user-determined status values of a conversion goal.</li>
+<li>Click <strong>Create &amp; Close</strong>.</li>
+</ol>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -1499,7 +1520,7 @@
 <tbody>
 <tr>
 <td>Conversion Name</td>
-<td>(Required) The conversion goal name. This name must match an existing conversion goal name, otherwise the offline conversion goal data will not be applied.</td>
+<td>(Required) The conversion goal name. This name must match an existing conversion goal name, otherwise the offline conversion goal data is not applied.</td>
 </tr>
 <tr>
 <td>Microsoft Click ID</td>
@@ -1524,6 +1545,22 @@
 <tr>
 <td>Currency Code</td>
 <td>The currency code for the offline conversion. If you do not specify an offline conversion currency code, then the Currency Code element of the goal&rsquo;s <a href="https://learn.microsoft.com/en-us/advertising/campaign-management-service/conversiongoalrevenue?view=bingads-13" target="_blank">Conversion Goal Revenue</a> is used.</td>
+</tr>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>Provide an email address which has been already whitespace trimmed, lowercased and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plain text email address and the connector trims whitespace, lowercases, and hashes this value using SHA256.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number according to the E.164 standard which has already been trimmed of whitespace, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plain text phone number and the connector removes all non-digit symbols, prefixes the number with a plus sign (<code>+</code>), trims whitespace, lowercases, and hash this value using SHA256.</td>
 </tr>
 </tbody>
 </table>
@@ -1587,7 +1624,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  October 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1604,7 +1641,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-offline-conversion-goal" href="javascript:void(0)">Create offline conversion goal</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>
               </nav>
   </aside></nav>

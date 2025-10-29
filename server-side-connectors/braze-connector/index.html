@@ -401,6 +401,9 @@
       <a href="/server-side-connectors/facebook-messenger-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Facebook Messenger</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>File Transfer Protocol</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Firebase Cloud Messaging</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -408,9 +411,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/freshdesk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Freshdesk</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1089,13 +1089,13 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">File Transfer Protocol</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1536,12 +1536,18 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <li>Alias Name/Alias Label</li>
 </ul>
 <p>For more information, see <a href="https://www.braze.com/docs/api/endpoints/user_data/post_user_track/">Braze API: User Track</a>.</p>
+<h4 id="batch-vs-non-batch">Batch vs. non-batch</h4>
+<ul>
+<li><strong>Batch</strong>: Use for large user profile backfills and syncs.</li>
+<li><strong>Non-batch</strong>: Use for real-time use cases.</li>
+</ul>
+<p class="tip"><i class="fa fa-info-circle"></i>During peak traffic conditions, Braze prioritizes non-batch requests over batch requests.</p>
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
-<li>Max number of requests: 75</li>
+<li>Max number of requests: 1000</li>
 <li>Max time since oldest request: 10 minutes</li>
-<li>Max size of requests: 1 MB</li>
+<li>Max size of requests: 2 MB</li>
 </ul>
 <h4 id="user-id">User ID</h4>
 <table>
@@ -1562,17 +1568,17 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 <tr>
 <td style="text-align:left">User Alias Name</td>
-<td style="text-align:left">The alias name of the user. When specifying a user alias, both Alias Name and Alias Label should be set.</td>
+<td style="text-align:left">The alias name of the user. When specifying a user alias, both <code>Alias Name</code> and <code>Alias Label</code> must be set.</td>
 </tr>
 <tr>
 <td style="text-align:left">User Alias Label</td>
-<td style="text-align:left">The alias label of the user. When specifying a user alias, both Alias Name and Alias Label should be set.</td>
+<td style="text-align:left">The alias label of the user. When specifying a user alias, both <code>Alias Name</code> and <code>Alias Label</code> must be set.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="user-attributes">User Attributes</h4>
-<p>We recommend following the Braze best practice of only sending changed user attributes and avoiding sending unchanged attributes. You can do this using visit and visitor attribute enrichments and rules that recognize when an attribute has changed. For more information, see <a href="#">Enrichment Rules</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Empty values are converted to null and removed from the Braze user profile.</p>
+<p>We recommend following the Braze best practice of only sending changed user attributes and avoiding sending unchanged attributes. To avoid sending unchanged attributes, use visit and visitor attribute enrichments and rules that recognize when an attribute has changed. For more information, see <a href="/server-side/attributes/enrichments/">Enrichment Rules</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Empty values are converted to <code>null</code> and removed from the Braze user profile.</p>
 <table>
 <thead>
 <tr>
@@ -1623,7 +1629,7 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 <tr>
 <td style="text-align:left">Gender</td>
-<td style="text-align:left">The gender of the user. <code>M</code>, <code>F</code>, <code>O</code> (other), <code>N</code> (not applicable), <code>P</code> (prefer not to say) or nil (unknown).</td>
+<td style="text-align:left">The gender of the user. <code>M</code>, <code>F</code>, <code>O</code> (other), <code>N</code> (not applicable), <code>P</code> (prefer not to say), or nil (unknown).</td>
 </tr>
 <tr>
 <td style="text-align:left">Home City</td>
@@ -1635,7 +1641,7 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 <tr>
 <td style="text-align:left">Language</td>
-<td style="text-align:left">The language preference of the user in ISO 639-1 format. See <a href="https://www.braze.com/docs/user_guide/data_and_analytics/user_data_collection/language_codes/">list of accepted language codes</a>.</td>
+<td style="text-align:left">The language preference of the user in ISO 639-1 format. For more information, see <a href="https://www.braze.com/docs/user_guide/data_and_analytics/user_data_collection/language_codes/">Braze: List of accepted language codes</a>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Last Name</td>
@@ -1671,7 +1677,7 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 <tr>
 <td style="text-align:left">Twitter</td>
-<td style="text-align:left">Hash containing any of ID (integer), screen name (string, X handle), followers count (integer), friends count (integer), statuses count (integer).</td>
+<td style="text-align:left">Hash containing any of ID (integer), screen name (string, X handle), followers count (integer), friends count (integer), and statuses count (integer).</td>
 </tr>
 <tr>
 <td style="text-align:left">Update Existing Only (Users)</td>
@@ -1904,7 +1910,7 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <tbody>
 <tr>
 <td style="text-align:left">Group Type</td>
-<td style="text-align:left">(Required) The subscription group type to manage (<code>SMS</code>, EMAIL, or <code>SMS</code> and <code>EMAIL</code>).</td>
+<td style="text-align:left">(Required) The subscription group type to manage (<code>SMS</code>, <code>EMAIL</code>, or  both <code>SMS</code> and <code>EMAIL</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">Update Type</td>
@@ -1927,15 +1933,6 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <td style="text-align:left">(Used with SMS subscription groups.)<br> The phone number in E.164 format.<br> Example: <code>+1415555371</code><br> Phone is required if External ID is not set for an <code>SMS</code> group.</td>
 </tr>
 </tbody>
-</table>
-<h4 id="attributes">Attributes</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
 </table>
 <h3 id="send-campaign-message">Send Campaign Message</h3>
 <h4 id="batch-limits-1">Batch Limits</h4>
@@ -2202,7 +2199,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 13, 2025 
+          <p>This page was last updated:  October 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

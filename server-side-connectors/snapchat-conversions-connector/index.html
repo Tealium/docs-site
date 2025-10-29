@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "10",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -401,6 +401,9 @@
       <a href="/server-side-connectors/facebook-messenger-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Facebook Messenger</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>File Transfer Protocol</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Firebase Cloud Messaging</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -408,9 +411,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/freshdesk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Freshdesk</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1089,13 +1089,13 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">File Transfer Protocol</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1744,32 +1744,60 @@ When sending data from multiple integrations, we recommend sending redundant dat
 <td>Provide a plain text vendor identifier and the connector hashes this value in the format Snapchat expects.</td>
 </tr>
 <tr>
-<td>First Name</td>
-<td>First name in lowercase letters only.</td>
+<td>First Name (apply SHA256 hash)</td>
+<td>Provide a first name in lowercase letters and the connector hashes this value in the format Snapchat expects.</td>
 </tr>
 <tr>
-<td>Last Name</td>
-<td>Last name in lowercase letters only.</td>
+<td>First Name (already SHA256 hashed)</td>
+<td>Provide a first name value which has been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Gender</td>
-<td>Customer gender. Supported values: <code>f</code> for female, <code>m</code> for male.</td>
+<td>Last Name (apply SHA256 hash)</td>
+<td>Provide a last name in lowercase letters and the connector hashes this value in the format Snapchat expects.</td>
 </tr>
 <tr>
-<td>City</td>
-<td>City associated with the conversion in lowercase letters only.</td>
+<td>Last Name (already SHA256 hashed)</td>
+<td>Provide a last name value which has been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>State</td>
-<td>State associated with the conversion.</td>
+<td>Gender (apply SHA256 hash)</td>
+<td>Provide the gender (<code>f</code> for female, <code>m</code> for male) and the connector hashes this value in the format Snapchat expects.</td>
 </tr>
 <tr>
-<td>Zip</td>
-<td>Zip or postal code in lowercase.</td>
+<td>Gender (already SHA256 hashed)</td>
+<td>Provide a gender value which has been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Country</td>
-<td>Country associated with the event.</td>
+<td>City (apply SHA256 hash)</td>
+<td>Provide a city associated with the conversion in lowercase letters and the connector hashes this value in the format Snapchat expects.</td>
+</tr>
+<tr>
+<td>City (already SHA256 hashed)</td>
+<td>Provide a city value which has been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>State (apply SHA256 hash)</td>
+<td>Provide a state associated with the conversion and the connector hashes this value in the format Snapchat expects.</td>
+</tr>
+<tr>
+<td>State (already SHA256 hashed)</td>
+<td>Provide a state value which has been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Zip (apply SHA256 hash)</td>
+<td>Provide a zip or postal code in lowercase and the connector hashes this value in the format Snapchat expects.</td>
+</tr>
+<tr>
+<td>Zip (already SHA256 hashed)</td>
+<td>Provide a zip or postal code which has been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Country (apply SHA256 hash)</td>
+<td>Provide a country associated with the event and the connector hashes this value in the format Snapchat expects.</td>
+</tr>
+<tr>
+<td>Country (already SHA256 hashed)</td>
+<td>Provide a country value which has been SHA256 hashed.</td>
 </tr>
 <tr>
 <td>External ID</td>
@@ -2088,7 +2116,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 4, 2025 
+          <p>This page was last updated:  October 28, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

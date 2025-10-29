@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -401,6 +401,9 @@
       <a href="/server-side-connectors/facebook-messenger-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Facebook Messenger</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>File Transfer Protocol</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Firebase Cloud Messaging</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -408,9 +411,6 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/freshdesk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Freshdesk</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
@@ -1089,13 +1089,13 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/facebook-messenger-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".facebook-messenger-connector">Facebook Messenger</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">File Transfer Protocol</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/firebase-cloud-messaging-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".firebase-cloud-messaging-connector">Firebase Cloud Messaging</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/flashtalking-user-segments-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".flashtalking-user-segments-connector-setup-guide">Flashtalking User Segments</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1465,7 +1465,7 @@
 <li>Maximum time since oldest request: 5 minutes</li>
 <li>Maximum size of requests: 1 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
 <tr>
@@ -1483,27 +1483,27 @@
 </tbody>
 </table>
 <p>Use the Track endpoint to report App, Web, Offline, or CRM events.</p>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<h2 id="configure-settings">Configure settings</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Access Token</strong><br>
 The Access Token that is configured in TikTok.</li>
 <li><strong>Pixel ID</strong><br>
-If you already have a TikTok pixel integrated for the website, you can use the existing pixel code. You can find <code>pixel_code</code> by logging in your TikTok ads manager account. We recommend that you create one Pixel per website.</li>
+If a TikTok pixel is already integrated for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the <code>pixel_code</code>. Create one pixel per website.</li>
 </ul>
-<h3 id="deduplication-for-tiktok-pixel-and-tiktok-conversions-for-web-events">Deduplication for TikTok Pixel and TikTok Conversions for Web Events</h3>
+<h2 id="deduplication">Deduplication</h2>
 <p>To configure this connector to receive event IDs from the TikTok Pixel tag in your Tealium iQ Tag Management account, look for event attributes using the following naming convention:</p>
-<p>Format: <code>tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;</code></p>
-<p>For example, an event from a tag with a UID of <code>174</code> would send the following attribute value:</p>
-<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174`
-</code></pre><p>You can find your tag&rsquo;s UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;
+</code></pre><p>For example, an event from a tag with a UID of <code>174</code> sends the following attribute:</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174
+</code></pre><p>Find your tag&rsquo;s UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
 <figure><a class="slb" href="/images/server-side-connectors/tiktok-pixel-uid.png"><img src="/images/server-side-connectors/tiktok-pixel-uid.png"
          alt="TikTok Pixel UID"
          title="TikTok Pixel UID"/>
     </a>
 </figure>
-<p>For each event ID that matches the above format, configure a separate action. Map the event-specific <strong>Event ID</strong> attribute to <strong>Event ID</strong> and map the corresponding event name to <strong>Event Name</strong>.</p>
+<p>For each event ID that matches this event ID format, configure a separate action. Map the event-specific event ID attribute to <code>Event ID</code> and map the corresponding event name to <code>Event Name</code>.</p>
 <p>For example:</p>
 <table>
 <thead>
@@ -1514,23 +1514,24 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </thead>
 <tbody>
 <tr>
-<td><code>tiktok_event_id_Purchase</code></td>
+<td><code>tiktok_event_id_Checkout_174</code></td>
 <td>Event ID</td>
 </tr>
 <tr>
-<td>&ldquo;Purchase&rdquo; (Custom Text)</td>
+<td><code>Checkout</code> (Custom Text)</td>
 <td>Event Name</td>
 </tr>
 </tbody>
 </table>
 <p>For more information, see <a href="/client-side-tags/tiktok-pixel-tag/">TikTok Pixel Tag Setup Guide</a>.</p>
-<h4 id="automatic-deduplication">Automatic Deduplication</h4>
-<p>If multiple events with the same Event Source ID (<code>event_source_id</code>), Event Type (for example, <code>AddToCart</code>), and Event ID (<code>event_id</code>) are received, TikTok will use the first one and discard any later events received within 48 hours of the first event. If a later event is received within 5 minutes of the first event, TikTok attempts to merge its data into the first event. For example, if the first event does not include User Email (<code>user.email</code>) but a later duplicate event (received within 5 minutes) contains this information, TikTok merges the email data into the first event.</p>
-<h3 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h3>
+<h3 id="automatic-deduplication">Automatic deduplication</h3>
+<p>If multiple events with the same event source ID (<code>event_source_id</code>), event type (for example, <code>AddToCart</code>), and event ID (<code>event_id</code>) are received, TikTok uses the first event and discards any later events received within forty-eight hours of the first event.</p>
+<p>If a later event is received within five minutes of the first event, TikTok merges its data into the first event. For example, if the first event does not include user email (<code>user.email</code>) but a later duplicate event (received within five minutes) contains this information, TikTok merges the email data into the first event.</p>
+<h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h4 id="action---send-track-event">Action - Send Track Event</h4>
-<h5 id="parameters">Parameters</h5>
+<h3 id="send-track-event">Send Track Event</h3>
+<h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1553,7 +1554,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 <tr>
 <td>Event Time</td>
-<td>(Required) Timestamp when the event took place with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+<td>(Required) Timestamp when the event took place with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If you do not provide a timestamp, the connector uses the current timestamp.</td>
 </tr>
 <tr>
 <td>Custom Event Name</td>
@@ -1575,9 +1576,13 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <td>Limited Data Use</td>
 <td>This field is only supported when the Event Source is <code>WEB</code> or <code>APP</code>. Limited data processing setting. To learn more about the Limited Data Use Feature, see <a href="https://business-api.tiktok.com/portal/docs?id=1771101204435970">TikTok: Limited Data Use</a>.</td>
 </tr>
+<tr>
+<td>Test Event Code</td>
+<td>Send test events that will not be included in production data from TikTok Events Manager (<code>TTEM</code>). Retrieve the <code>test_event_code</code> from the <code>Test Events</code> Tab in <code>TTEM</code>.</td>
+</tr>
 </tbody>
 </table>
-<h5 id="ad-data">Ad Data</h5>
+<h4 id="ad-data">Ad Data</h4>
 <table>
 <thead>
 <tr>
@@ -1620,7 +1625,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="page-data">Page Data</h5>
+<h4 id="page-data">Page Data</h4>
 <table>
 <thead>
 <tr>
@@ -1639,7 +1644,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="user-data">User Data</h5>
+<h4 id="user-data">User Data</h4>
 <table>
 <thead>
 <tr>
@@ -1692,9 +1697,13 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <td>Att Status</td>
 <td>Whether the user has authorized your mobile app to access app-related data for tracking the user or the device. This is an iOS-only field. Supported values are <code>AUTHORIZED</code>, <code>DENIED</code>, <code>NOT_DETERMINED</code>, <code>NOT_APPLICABLE</code>.</td>
 </tr>
+<tr>
+<td>Vertical Choice</td>
+<td>Select the vertical to display vertical-specific parameters under <strong>Property Data</strong>. Available options are <code>Hotel</code>, <code>Flight</code>, <code>Destination</code>, and <code>No Vertical Selected</code>.</td>
+</tr>
 </tbody>
 </table>
-<h5 id="property-data">Property Data</h5>
+<h4 id="property-data">Property Data</h4>
 <table>
 <thead>
 <tr>
@@ -1733,7 +1742,160 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="content-data">Content Data</h5>
+<h4 id="hotel-vertical-specific-parameters">Hotel vertical specific parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content IDs</td>
+<td>Product IDs associated with the event, such as SKUs.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>Hotel city location.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>Hotel region.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>Hotel country.</td>
+</tr>
+<tr>
+<td>Check-in Date</td>
+<td>Hotel check-in date.</td>
+</tr>
+<tr>
+<td>Check-out Date</td>
+<td>Hotel check-out date.</td>
+</tr>
+<tr>
+<td>Number of Adults</td>
+<td>Number of adults in the booking.</td>
+</tr>
+<tr>
+<td>Number of Children</td>
+<td>Number of children in the booking.</td>
+</tr>
+<tr>
+<td>Suggested Hotels</td>
+<td>Suggested hotels for this user. Can be a string or an array of strings.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="flight-vertical-specific-parameters">Flight vertical specific parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Destination City</td>
+<td>Destination city name.</td>
+</tr>
+<tr>
+<td>Departing Departure Date</td>
+<td>Date of flight departure. Accepted formats are <code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>. For example, <code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>.</td>
+</tr>
+<tr>
+<td>Returning Departure Date</td>
+<td>Date of return flight. Accepted formats are <code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>. For example, <code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>.</td>
+</tr>
+<tr>
+<td>Origin Airport</td>
+<td>Origin airport code. For example, <code>JFK</code>.</td>
+</tr>
+<tr>
+<td>Destination Airport</td>
+<td>Destination airport code. For example, <code>CDG</code>.</td>
+</tr>
+<tr>
+<td>Number of Adults</td>
+<td>Number of adults.</td>
+</tr>
+<tr>
+<td>Number of Children</td>
+<td>Number of children.</td>
+</tr>
+<tr>
+<td>Number of Infants</td>
+<td>Number of infants.</td>
+</tr>
+<tr>
+<td>Travel Class</td>
+<td>Class of the flight ticket. This value must be <code>economy</code>, <code>premium</code>, <code>business</code>, or <code>first</code>.</td>
+</tr>
+<tr>
+<td>User Score</td>
+<td>Represents the relative value of this potential customer to advertiser. For example, <code>50</code>.</td>
+</tr>
+<tr>
+<td>Preferred Number of Stops</td>
+<td>Number of preferred stops.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="destination-vertical-specific-parameters">Destination vertical specific parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content IDs</td>
+<td>Product IDs associated with the event, such as SKUs.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>Destination city location.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>Destination region.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>Destination country.</td>
+</tr>
+<tr>
+<td>Travel Start</td>
+<td>The start date of the user&rsquo;s trip. Accepted formats are <code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>. For example, <code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>.</td>
+</tr>
+<tr>
+<td>Travel End</td>
+<td>The end date of the user&rsquo;s trip. Accepted formats are <code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDThh:mmTZD</code>, <code>YYYY-MM-DDThh:mm:ssTZD</code>. For example, <code>20180623</code>, <code>2018-06-23</code>, <code>2017-06-23T15:30GMT</code>, <code>2017-06-23T15:30:00GMT</code>.</td>
+</tr>
+<tr>
+<td>Number of Adults</td>
+<td>Number of adults.</td>
+</tr>
+<tr>
+<td>Number of Children</td>
+<td>Number of children.</td>
+</tr>
+<tr>
+<td>Number of Infants</td>
+<td>Number of infants.</td>
+</tr>
+<tr>
+<td>Suggested Destinations</td>
+<td>A list of IDs representing destination suggestions for this user.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="content-data">Content Data</h4>
 <table>
 <thead>
 <tr>
@@ -1768,7 +1930,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="app-data">App Data</h5>
+<h4 id="app-data">App Data</h4>
 <table>
 <thead>
 <tr>
@@ -1791,7 +1953,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="lead-data">Lead Data</h5>
+<h4 id="lead-data">Lead Data</h4>
 <table>
 <thead>
 <tr>
@@ -1810,7 +1972,7 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 </tr>
 </tbody>
 </table>
-<h5 id="automatic-deduplication-1">Automatic Deduplication</h5>
+<h4 id="automatic-deduplication-1">Automatic Deduplication</h4>
 <table>
 <thead>
 <tr>
@@ -1821,16 +1983,16 @@ If you already have a TikTok pixel integrated for the website, you can use the e
 <tbody>
 <tr>
 <td>Disable Automapping</td>
-<td>If automapping is disabled, any automapped parameters will not be sent to the vendor by default.</td>
+<td>If automapping is disabled, any automatically mapped parameters will not be sent to the vendor by default.</td>
 </tr>
 </tbody>
 </table>
-<p>The connector automaps the following parameters by default:</p>
+<p>The connector automatically maps the following parameters by default:</p>
 <ul>
 <li>TikTok Click ID (<code>ttclid</code>)</li>
 <li>User Agent</li>
 </ul>
-<p>To disable automapping, set <strong>Disable Automapping</strong> to <code>true</code>. Any automapped parameters will not be sent to the vendor.</p>
+<p>To disable automapping, set <strong>Disable Automapping</strong> to <code>true</code>. Any automatically mapped parameters will not be sent to the vendor.</p>
 <h4 id="custom-events">Custom events</h4>
 <p>To select a custom event for this connector:</p>
 <ol>
@@ -1897,7 +2059,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 23, 2025 
+          <p>This page was last updated:  October 29, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1913,10 +2075,12 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-tiktok-pixel-and-tiktok-conversions-for-web-events" href="javascript:void(0)">Deduplication for TikTok Pixel and TikTok Conversions for Web Events</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-track-event" href="javascript:void(0)">Send Track Event</a></li>
               </nav>
   </aside></nav>
 

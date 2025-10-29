@@ -1025,6 +1025,7 @@
   <h2 id="サポートされているベンダー">サポートされているベンダー</h2>
 <p>クラウドデータソースの構成は、ほとんどのベンダーでほぼ同じです。ベンダー固有の構成の詳細については、以下を参照してください：</p>
 <ul>
+<li><a href="/ja/early-access/data-sources/amazon-redshift-cloud-data-source/">Amazon Redshift</a></li>
 <li><a href="/ja/early-access/data-sources/databricks-cloud-data-source/">Databricks</a></li>
 <li><a href="/ja/early-access/data-sources/google-bigquery-cloud-data-source/">Google BigQuery</a></li>
 <li><a href="/ja/server-side/data-sources/cloud-data/snowflake/">Snowflake</a></li>
@@ -1035,16 +1036,17 @@
 <li><strong>Sources &gt; Data Sources</strong> に移動します。</li>
 <li><strong>+ Add Data Source</strong> をクリックします。</li>
 <li><strong>Categories</strong> の下で <strong>Data Warehouse</strong> をクリックし、ベンダーを選択します。</li>
-<li><strong>Name</strong> フィールドに、使用事例に関連するデータソースのユニークな名前を入力します。</li>
+<li><strong>Name</strong> フィールドに、使用事例に関連するデータソースの一意の名前を入力します。</li>
 <li><strong>Continue</strong> をクリックします。</li>
 </ol>
 <h2 id="接続の確立">接続の確立</h2>
-<p>データのインポートを構成する前に、クラウドデータソースへの接続を確立する必要があります。接続は、Tealiumとクラウドデータソースを接続するベンダーの資格情報の再利用可能な構成です。</p>
+<p>データのインポートを構成する前に、クラウドデータソースへの接続を確立する必要があります。接続は、ベンダーの認証情報の再利用可能な構成で、Tealiumをクラウドデータソースに接続します。</p>
 <p><strong>Connection Configuration</strong> 画面で、データソースの名前を確認し、リストから既存の接続を選択するか、<strong>+</strong> アイコンをクリックして接続を作成します。</p>
 <p><strong>Save</strong> をクリックして <strong>Connection Configuration</strong> 画面に戻り、<strong>Establish Connection</strong> をクリックします。</p>
 <p>接続を正常に確立した後、<strong>Table Selection</strong> リストからテーブルを選択します。</p>
 <p>ベンダーへの接続に関する詳細は、以下を参照してください：</p>
 <ul>
+<li><a href="/ja/early-access/data-sources/amazon-redshift-cloud-data-source/#create-a-connection">Amazon Redshift</a></li>
 <li><a href="/ja/early-access/data-sources/databricks-cloud-data-source/#create-a-connection">Databricks</a></li>
 <li><a href="/ja/early-access/data-sources/google-bigquery-cloud-data-source/#create-a-connection">Google BigQuery</a></li>
 <li><a href="/ja/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
@@ -1056,8 +1058,8 @@
 <h4 id="クエリモードの選択">クエリモードの選択</h4>
 <p>クエリモードは、新しい行、変更された行、またはその両方をインポートする方法を決定します。</p>
 <ul>
-<li><strong>Timestamp + Incrementing</strong>（推奨）を選択した場合、タイムスタンプ列と厳密に増加する列の2つの列を選択する必要があります。</li>
-<li><strong>Timestamp</strong> または <strong>Incrementing</strong> を選択した場合、新しい行と変更された行、または新しい行のみを検出するために使用する列を選択する必要があります。</li>
+<li><strong>Timestamp + Incrementing</strong>（推奨）を選択する場合、タイムスタンプ列と厳密に増加する列の2つの列を選択する必要があります。</li>
+<li><strong>Timestamp</strong> または <strong>Incrementing</strong> を選択する場合、新しい行と変更された行、または新しい行のみを検出するために使用する列を選択する必要があります。</li>
 </ul>
 <p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a> を参照してください。</p>
 <h4 id="クエリの構成-1">クエリの構成</h4>
@@ -1079,7 +1081,7 @@
 <p>AudienceStreamでクラウドデータソースを使用するには、列を訪問ID属性にマッピングします。訪問IDを表す列を選択し、対応する訪問ID属性にマッピングします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><strong>AudienceStreamでの訪問IDマッピング</strong>はデフォルトで有効になっています。訪問IDマッピングを無効にすると、訪問のスティッチングにエラーが発生する可能性があります。詳細については、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用した訪問識別</a>を参照してください。</p>
 <h2 id="まとめ">まとめ</h2>
-<p>この最終ステップでは、要約を表示し、必要に応じて修正を加えてからプロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために <strong>Previous</strong> をクリックします。</p>
+<p>最後のステップでは、要約を表示し、必要に応じて修正を行い、プロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために <strong>Previous</strong> をクリックします。</p>
 <ol>
 <li>イベント属性と訪問IDのマッピングを表示します。</li>
 <li><strong>Finish</strong> をクリックしてデータソースを作成し、構成画面を終了します。新しいデータソースは <strong>Data Sources</strong> ダッシュボードにリストされます。</li>
@@ -1102,11 +1104,11 @@
 <tbody>
 <tr>
 <td><strong>Failed</strong></td>
-<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスをトリガーせず、データソースは <strong>Running</strong> のままでログに記録されます。</td>
+<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスを引き起こさず、データソースは <strong>Running</strong> のままでログに記録されます。</td>
 </tr>
 <tr>
 <td><strong>Inactive</strong></td>
-<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行されませんでした。</td>
+<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行されていません。</td>
 </tr>
 <tr>
 <td><strong>Initializing</strong></td>
@@ -1122,7 +1124,7 @@
 </tr>
 <tr>
 <td><strong>Stopped</strong></td>
-<td>データソースは以前に有効化されましたが、現在はオフになっています。有効にするまでデータのインポートは行われません。</td>
+<td>データソースは以前に有効にされましたが、現在はオフになっています。有効にされるまでデータのインポートは行われません。</td>
 </tr>
 <tr>
 <td><strong>Unassigned</strong></td>
@@ -1190,7 +1192,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月24日
+          <p>最終更新日 ::  2025年October月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

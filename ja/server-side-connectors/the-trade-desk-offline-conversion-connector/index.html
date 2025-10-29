@@ -422,9 +422,6 @@
       <a href="/ja/server-side-connectors/friendbuy-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Friendbuy</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FTP</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/fullstory-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>FullStory</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1049,6 +1046,9 @@
       <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>チーターデジタル</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/ftp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>ファイル転送プロトコル</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/branch-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>ブランチイベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1273,8 +1273,6 @@
         <a href="/ja/server-side-connectors/freshdesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".freshdesk-connector">Freshdesk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/friendbuy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".friendbuy-connector">Friendbuy</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">FTP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/fullstory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1692,6 +1690,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/cheetah-digital-by-marigold-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cheetah-digital-by-marigold-connector">チーターデジタル</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/ftp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ファイル転送プロトコル</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/branch-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".branch-events-connector">ブランチイベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/lithium-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".lithium-connector">リチウム</a></li></ul>
@@ -1739,11 +1739,8 @@
 <p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>エージェンシーシークレットキー</strong>
-<ul>
-<li>The Trade Deskから提供されたシークレットキー。</li>
-</ul>
-</li>
+<li><strong>Agency Secret Key</strong>: The Trade Deskから提供される秘密鍵。</li>
+<li><strong>Merchant ID</strong>: （オプション）The Trade Desk内のマーチャントアカウントに関連付けられたID。このIDはThe Trade Deskから提供されます。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -1782,7 +1779,7 @@
 <tbody>
 <tr>
 <td>データプロバイダーID</td>
-<td>TTDシステム内のデータプロバイダーのID。この値はThe Trade Deskのテクニカルアカウントマネージャーが提供します。</td>
+<td>TTDシステム内のデータプロバイダーのID。この値はThe Trade Deskのテクニカルアカウントマネージャーから提供されます。</td>
 </tr>
 </tbody>
 </table>
@@ -1790,8 +1787,8 @@
 <ul>
 <li>Trade Desk ID、デバイス広告ID、Unified ID、またはIdentityLinkをマッピングします。</li>
 <li>複数のIDがマッピングされている場合、最初の空でないIDが次の優先順位で選択されます：Trade Desk ID、デバイス広告ID、Unified ID、IdentityLink。</li>
-<li>デバイス広告IDは、iOS IDFAまたはAndroid Advertising ID (AAID)で表されます。</li>
-<li>ハッシュされていないIDFAおよびAAIDのIDのみが、ダッシュを含む36文字のGUIDで受け入れられます。</li>
+<li>デバイス広告IDは、iOS IDFAまたはAndroid Advertising ID（AAID）で表されます。</li>
+<li>ハッシュ化されていないIDFAおよびAAIDのIDのみが、36文字（ダッシュを含む）のGUIDとして受け入れられます。</li>
 </ul>
 <table>
 <thead>
@@ -1807,7 +1804,7 @@
 </tr>
 <tr>
 <td><code>DAID</code></td>
-<td>このユーザーの生のデバイスIDで、36文字のGUID形式（ダッシュを含む）で送信します。iOS IDFAまたはAndroidのAAIDを使用します。</td>
+<td>このユーザーの生のデバイスIDで、36文字のGUID形式（ダッシュを含む）で送信されます。iOS IDFAまたはAndroidのAAIDを使用します。</td>
 </tr>
 <tr>
 <td><code>UID2</code></td>
@@ -1829,44 +1826,48 @@
 </thead>
 <tbody>
 <tr>
+<td>コンバージョンタイムスタンプ</td>
+<td>（必須）UTCでのコンバージョン日時。オフラインコンバージョンが発生したUTCの時間。例：<code>2019-02-07T13:25:00Z</code></td>
+</tr>
+<tr>
 <td>トラッキングタグID</td>
-<td>(必須) トラッキングタグAPIを使用して作成されたトラッキングタグID。例：<code>abc1234</code></td>
+<td>（必須）トラッキングタグAPIを使用して作成されたトラッキングタグID。例：<code>abc1234</code></td>
 </tr>
 <tr>
 <td>コンバージョンタイムスタンプ</td>
-<td>(必須) UTCでのコンバージョン日時。オフラインコンバージョンが発生したUTCの時間。例：<code>2019-02-07T13:25:00Z</code></td>
+<td>（必須）UTCでのコンバージョン日時。オフラインコンバージョンが発生したUTCの時間。例：<code>2019-02-07T13:25:00Z</code></td>
 </tr>
 <tr>
-<td>インプレッションID</td>
-<td>ダッシュを含む36文字の生の（ハッシュされていない）GUID。</td>
+<td>インプレッションId</td>
+<td>ハッシュ化されていない36文字のGUID（ダッシュを含む）。</td>
 </tr>
 <tr>
-<td>金銭的価値</td>
-<td>金銭的価値。例：<code>0.02</code></td>
+<td>金額</td>
+<td>金額。例：<code>0.02</code></td>
 </tr>
 <tr>
 <td>通貨</td>
-<td>金銭的価値の通貨。例：<code>USD</code></td>
+<td>金額の通貨。例：<code>USD</code></td>
 </tr>
 <tr>
 <td>国</td>
-<td>国 例：<code>United States</code></td>
+<td>国。例：<code>United States</code>。</td>
 </tr>
 <tr>
 <td>地域</td>
-<td>地域 例：<code>New York</code></td>
+<td>地域。例：<code>New York</code>。</td>
 </tr>
 <tr>
 <td>メトロ</td>
-<td>メトロエリア 例：<code>501</code></td>
+<td>メトロエリア。例：<code>501</code></td>
 </tr>
 <tr>
 <td>市</td>
-<td>市 例：<code>Brooklyn</code></td>
+<td>市。例：<code>Brooklyn</code>。</td>
 </tr>
 <tr>
 <td>イベント名</td>
-<td>パートナープラットフォームによって定義されたイベントのタイプ。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-providerapi-offlineconversion#event-mapping">The Trade Desk: イベントマッピング</a>を参照してください。</td>
+<td>パートナープラットフォームによって定義されるイベントのタイプ。詳細については、<a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-providerapi-offlineconversion#event-mapping">The Trade Desk: イベントマッピング</a>を参照してください。</td>
 </tr>
 <tr>
 <td>オーダーID</td>
@@ -1885,7 +1886,7 @@
 <tbody>
 <tr>
 <td><code>TD1 - TD10</code></td>
-<td>カテゴリーやその他の組織用のオプション報告フィールドで、最大長は64文字です。</td>
+<td>カテゴリーやその他の組織用のオプションのレポートフィールドで、最大64文字です。</td>
 </tr>
 </tbody>
 </table>
@@ -1905,7 +1906,7 @@
 </tr>
 <tr>
 <td>アイテム名</td>
-<td>アイテムコードに関連付けられた名前で、最大長は150文字です。</td>
+<td>アイテムコードに関連付けられた名前で、最大150文字です。</td>
 </tr>
 <tr>
 <td>アイテム数量</td>
@@ -1916,8 +1917,8 @@
 <td>アイテムの単価。</td>
 </tr>
 <tr>
-<td>アイテムカテゴリ</td>
-<td>アイテムカテゴリID。</td>
+<td>アイテムカテゴリー</td>
+<td>アイテムカテゴリーID。</td>
 </tr>
 </tbody>
 </table>
@@ -1981,7 +1982,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月22日
+          <p>最終更新日 ::  2025年October月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -1028,14 +1028,14 @@
 <p>管理MCPサーバーと対話するには、Large Language Model（LLM）に明確で簡潔な指示を提供する必要があります。これらの指示には、以下を含める必要があります：</p>
 <ul>
 <li><strong>コンテキスト</strong>: 対話の目的と、受け取りたい情報を説明します。</li>
-<li><strong>パラメーター</strong>: <code>account</code>、<code>profile</code>、<code>engineId</code>、および訪問固有の識別子など、ツールに必要なパラメーターを明確に記載します。</li>
+<li><strong>パラメーター</strong>: ツールに必要なパラメーターを明確に記載します。例えば、<code>account</code>、<code>profile</code>、<code>engineId</code>、および訪問固有の識別子などです。</li>
 </ul>
 <h3 id="指示とプロンプト">指示とプロンプト</h3>
 <p>このセクションでは、MCPサーバーとの対話時に効果的な指示とプロンプトを作成するための主要な概念を説明します。</p>
 <ol>
 <li>
 <p><strong>指示: 静的パラメーターの使用</strong><br>
-指示は、MCPツールに必要な静的パラメーターを定義します。これには、<code>account</code>、<code>profile</code>、および<code>engineId</code>などが含まれます。これらのパラメーターは、特定の構成に対して一定であり、MCPツールがリクエストを処理する際にどのアカウント、プロファイル、エンジンを使用するかを知るために必要です。例えば：</p>
+指示は、MCPツールに必要な静的パラメーターを定義します。例えば、<code>account</code>、<code>profile</code>、<code>engineId</code>などです。これらのパラメーターは、特定の構成に対して一定であり、MCPツールがリクエストを処理する際にどのアカウント、プロファイル、エンジンを使用するかを知るために必要です。例えば：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">Tealium MCPツールを使用して質問に答えてください。
 次の必要なパラメーターを使用してください：
 * Tealiumアカウント: my_account
@@ -1044,31 +1044,31 @@
 </code></pre></li>
 <li>
 <p><strong>プロンプト: 動的パラメーターの使用</strong><br>
-プロンプトは、MCPツールに必要な動的パラメーターを指定します。これには、各ツールが必要とする訪問固有の値が含まれます。プロンプトで動的パラメーターを参照することにより、MCPツールは現在のコンテキストに合わせたデータを取得できます。例えば：</p>
+プロンプトは、MCPツールに必要な動的パラメーターを指定します。これらのパラメーターは、問い合わせられる特定の訪問や使用ケースに応じて変化します。動的パラメーターをプロンプトに記載することで、MCPツールは現在のコンテキストに合わせたデータを取得できます。例えば：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">匿名訪問{anon_visitor_id}はVIPオーディエンスの一部ですか？
 </code></pre></li>
 <li>
 <p><strong>応答データ: 特定のプロパティの参照</strong><br>
-プロンプトには、期待される応答データの特定のプロパティへの参照が含まれるべきです。これには、<code>audiences</code>、<code>attributes</code>、または<code>badges</code>などがあります。これにより、MCPツールは使用ケースに必要な関連データのみを返すことができ、明確さが向上し、不要な出力が減少します。例えば：</p>
+プロンプトには、期待される応答データの特定のプロパティへの参照が含まれるべきです。例えば、<code>audiences</code>、<code>attributes</code>、または<code>badges</code>などです。これにより、MCPツールは使用ケースに必要な関連データのみを返すようになり、明確性が向上し、不要な出力が減少します。例えば：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">こちらは訪問のオーディエンスリストです：{response.audiences}
 </code></pre><p>これにより、MCPツールは応答の<code>audiences</code>プロパティに焦点を当てるように導かれ、プロンプトの要件に合った出力が保証されます。詳細については、<a href="/ja/server-side/moments-api/endpoint/#objects">Moments API: Objects</a>を参照してください。</p>
 </li>
 </ol>
-<p>指示で静的パラメーターを組み合わせ、プロンプトで動的パラメーターを使用し、特定の応答プロパティを指定することで、MCPサーバーに対して正確で効果的なクエリを作成できます。</p>
+<p>指示に静的パラメーターを組み合わせ、プロンプトに動的パラメーターと特定の応答プロパティを使用することで、MCPサーバーに対して正確で効果的なクエリを作成できます。</p>
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
-<p>このソリューションから最良の結果を得るために、以下のことを強く推奨します：</p>
+<p>このソリューションから最良の結果を得るために、以下を強く推奨します：</p>
 <p><strong>属性名の使用</strong>（強く推奨）<br>
-デフォルトでは、Moments APIエンジンは数値の属性IDを返しますが、これにはコンテキストが欠けています。最良の結果を得るために、エンジンが属性名を返すように構成してください。属性名は記述的であり、LLMが正確に解釈して応答するのに役立ちます。アカウントが広く認識されていない頭字語や略語を使用している場合、LLMはそれらを解釈するのが難しいかもしれません。属性名が記述的であり、人間とAIシステムの両方によって容易に理解できるように、見直して更新を検討してください。</p>
+デフォルトでは、Moments APIエンジンは数値の属性IDを返しますが、これはLLMにとってコンテキストが不足しています。最良の結果を得るために、エンジンが属性名を返すように構成してください。属性名は記述的であり、LLMが正確に解釈して応答するのに役立ちます。アカウントが広く認識されていない頭字語や略語を使用している場合、LLMはそれらを解釈するのが難しいかもしれません。属性名が記述的であり、人間とAIシステムの両方によって容易に理解できるように、属性名の見直しと更新を検討してください。</p>
 <p class="tip"><i class="fa fa-info-circle"></i>属性名を使用することは、LLMベースのソリューションで管理MCPサーバーを活用する唯一の実現可能なアプローチです。詳細については、<a href="/ja/server-side/moments-api/endpoint/#objects">Moments API: Objects</a>を参照してください。</p>
 <p><strong>専用のMoments APIエンジン</strong><br>
-他の目的で作成された既存のMoments APIエンジンを再利用しないでください。各管理MCPサーバーの使用ケースに対して別のエンジンを作成し、そのシナリオに必要な属性、バッジ、およびオーディエンスのみを構成してください。これにより：</p>
+他の目的で作成された既存のMoments APIエンジンを再利用しないでください。各管理MCPサーバーの使用ケースに対して別々のエンジンを作成し、そのシナリオに必要な属性、バッジ、およびオーディエンスのみを構成してください。これにより：</p>
 <ul>
 <li>関連するデータのみが公開され、正確なコンテキストが提供されます。</li>
 <li>複雑さが減少し、メンテナンスが容易になります。</li>
 <li>要件が変更された場合の監査と更新が簡単になります。</li>
 </ul>
 <p><strong>特定の訪問データの使用</strong><br>
-使用ケースに関連しない大量の訪問データをMoments APIエンジンに公開しないでください。特定の使用ケースに不可欠な属性、バッジ、およびオーディエンスのみを含めてください。不要なデータを提供すると、LLMが圧倒されて応答の正確性が低下する可能性があります。関連するデータの焦点を絞ったセットは、明確さと応答品質を向上させます。</p>
+使用ケースに関連しない大量の訪問データをMoments APIエンジンに公開しないでください。特定の使用ケースに不可欠な属性、バッジ、およびオーディエンスのみを含めてください。不要なデータを提供すると、LLMが圧倒され、応答の正確性が低下する可能性があります。関連するデータの焦点を絞ったセットは、明確性と応答品質を向上させます。</p>
 <h2 id="利用可能なツール">利用可能なツール</h2>
 <p>すべてのツールは次のパラメーターをサポートしています：</p>
 <table>
@@ -1101,7 +1101,7 @@
 </tr>
 <tr>
 <td><code>suppressNotFound</code></td>
-<td>訪問レコードが見つからない場合の応答タイプを決定します。<br><code>false</code> (デフォルト): HTTPステータスコード<code>404 Not Found</code>を返します。<br><code>true</code>: HTTPステータスコード<code>200 OK</code>を空の応答本体で返します。</td>
+<td>訪問レコードが見つからない場合の応答タイプを決定します。<br><code>false</code> (デフォルト): HTTPステータスコード <code>404 Not Found</code> を返します。<br><code>true</code>: HTTPステータスコード <code>200 OK</code> を返し、レスポンスボディが空です。</td>
 </tr>
 </tbody>
 </table>
@@ -1118,7 +1118,7 @@
 <tbody>
 <tr>
 <td><code>visitorId</code></td>
-<td>訪問に各訪問またはアプリの使用ごとに割り当てられる一意で匿名の値です。匿名IDは、同じブラウザーやアプリからの複数の訪問を追跡しますが、異なるブラウザーやデバイス間では追跡しません。</td>
+<td>(必須) 訪問に各訪問または各アプリ使用ごとに割り当てられる一意で匿名の値です。匿名IDは、同じブラウザーやアプリからの複数の訪問を追跡しますが、異なるブラウザーやデバイス間では追跡しません。</td>
 </tr>
 </tbody>
 </table>
@@ -1136,15 +1136,15 @@
 <tbody>
 <tr>
 <td><code>attributeId</code></td>
-<td><a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を表す数値UIDです。</td>
+<td>(必須) <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID属性</a>を表す数値UIDです。</td>
 </tr>
 <tr>
 <td><code>attributeValue</code></td>
-<td>検索する属性の値です。</td>
+<td>(必須) 検索する属性の値です。</td>
 </tr>
 </tbody>
 </table>
-<p>このツールを使用するには、プロンプトを特に属性IDと値に言及するようにフォーマットしてください。例えば：</p>
+<p>このツールを使用するには、プロンプトを特に属性IDと値を検索するようにフォーマットしてください。例えば：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">訪問属性ID {visitor_attribute_id} と値 {visitor_attribute_value} は何に興味がありますか？
 </code></pre><h2 id="openaiエージェントsdkソリューション">OpenAIエージェントSDKソリューション</h2>
 <p>以下のサンプルコードは、Python用OpenAIエージェントを使用してMoments API管理MCPサーバーに接続し、訪問に関する質問をする方法を示しています。エージェントの指示には、リクエストに関連する静的パラメータが指定されています。プロンプトでは、訪問の匿名IDが既知であると仮定しています。</p>
@@ -1246,8 +1246,8 @@
 </div>
 
 <h2 id="mcpサーバーをmcpインスペクターでテストする">MCPサーバーをMCPインスペクターでテストする</h2>
-<p>MCPサーバーに接続するために、オープンソースのMCPインスペクターなどのツールの使用をお勧めします。</p>
-<p>MCPインスペクターを使用してください：</p>
+<p>MCPサーバーに接続するために、オープンソースのMCPインスペクターなどのツールを使用することをお勧めします。</p>
+<p>MCPインスペクターを使用して：</p>
 <ul>
 <li>サーバー接続を確認します。</li>
 <li>利用可能なツールとそのパラメータを確認します。</li>
@@ -1261,7 +1261,7 @@
 <pre tabindex="0"><code>npx @modelcontextprotocol/inspector
 </code></pre>これにより、MCPインスペクターがインストールされ、ブラウザウィンドウでツールが開きます。</li>
 <li><strong>Transport Type</strong>に<code>Streamable HTTP</code>を構成します。</li>
-<li><strong>URL</strong>に<code>https://us-west-2.prod.developer.tealiumapis.com/v1/personalization/mcp</code>を構成します。リージョンは、Moments APIエンジンのリージョンと一致する必要があります。</li>
+<li><strong>URL</strong>に<code>https://us-west-2.prod.developer.tealiumapis.com/v1/personalization/mcp</code>を構成します。リージョンはMoments APIエンジンのリージョンと一致する必要があります。</li>
 <li><strong>Custom Headers</strong>の下に、<code>X-Tealium-Api-Key</code>キーとMCPサーバーAPIキーを追加します。MCP APIキーはMCPサーバーアクセス専用のAPIキーであり、Tealiumサポートから要求する必要があります。</li>
 </ol>
 <figure><a class="slb" href="/images/server-side/moments-api/moments-mcp-server-inspector-config.png"><img src="/images/server-side/moments-api/moments-mcp-server-inspector-config.png"/>
@@ -1270,8 +1270,8 @@
 <p><strong>Connect</strong>をクリックすると、ステータスが<strong>Connected</strong>に更新され、<strong>List Tools</strong>ボタンが表示されます。</p>
 <p>サーバーでツールを実行するには：</p>
 <ol>
-<li>利用可能なツールを調べるために<strong>List Tools</strong>をクリックします。</li>
-<li>ツールの定義を確認するためにツールをクリックします。</li>
+<li><strong>List Tools</strong>をクリックして利用可能なツールを確認します。</li>
+<li>ツールをクリックしてその定義を確認します。</li>
 <li>必要なパラメータの値を入力します。</li>
 <li><strong>Run Tool</strong>をクリックします。</li>
 <li><strong>Tool Result</strong>の下に、<code>Success</code>メッセージとMoments APIの結果が表示されます。</li>
@@ -1321,7 +1321,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月8日
+          <p>最終更新日 ::  2025年October月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
