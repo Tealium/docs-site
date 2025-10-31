@@ -276,13 +276,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-cloudstream">クラウドストリーム</a>
         <ul class="pl2 bl b--primary bw1 ea-cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">CloudStreamについて</a></li>
+        <a href="/ja/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/cloudstream/datasources/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-cloudstream-datasources">データソース</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">クラウド属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">セグメント</a></li></ul>
+        <a href="/ja/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">セグメント</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">コネクタ</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">データレコード機能</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-new-ui">コネクター</a></li>
@@ -405,46 +409,42 @@
 <ul>
 <li><a href="/ja/early-access/data-sources/databricks-cloud-data-source/">Databricks</a></li>
 <li><a href="/ja/server-side/data-sources/cloud-data/snowflake/">Snowflake</a></li>
+<li><a href="/ja/early-access/data-sources/google-bigquery-cloud-data-source/#create-a-connection">BigQuery</a></li>
 </ul>
 <h2 id="クラウドデータソースの作成">クラウドデータソースの作成</h2>
 <p>CloudStream用のクラウドデータソースを作成するには、以下の手順を使用します：</p>
 <ol>
 <li><strong>CloudStream &gt; Data Sources</strong>に移動します。</li>
 <li><strong>+ Add Data Source</strong>をクリックします。</li>
-<li><strong>Categories</strong>の下で<strong>Data Warehouse</strong>をクリックし、ベンダーを選択します。</li>
+<li>ベンダーを選択します。</li>
 <li><strong>Name</strong>フィールドに、使用事例に関連するデータソースの一意の名前を入力します。</li>
 <li><strong>Continue</strong>をクリックします。</li>
 </ol>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイルで最大10個のデータソースに接続できます。</p>
 <h3 id="接続の確立">接続の確立</h3>
-<p>データのインポートを構成する前に、クラウドデータソースへの接続を確立する必要があります。接続は、Tealiumをクラウドデータソースに接続するベンダーの資格情報の再利用可能な構成です。</p>
+<p>データのインポートを構成する前に、クラウドデータソースに接続を確立する必要があります。接続は、Tealiumをクラウドデータソースに接続するためのベンダーの資格情報の再利用可能な構成です。</p>
 <p><strong>Connection Configuration</strong>画面で、データソースの名前を確認し、リストから既存の接続を選択するか、**+**アイコンをクリックして接続を作成します。</p>
 <p><strong>Save</strong>をクリックして<strong>Connection Configuration</strong>画面に戻り、<strong>Establish Connection</strong>をクリックします。</p>
 <p>接続を正常に確立した後、<strong>Table Selection</strong>リストからテーブルを選択します。</p>
-<p>ベンダーへの接続に関する詳細は、以下を参照してください：</p>
-<ul>
-<li><a href="/ja/early-access/data-sources/databricks-cloud-data-source/#create-a-connection">Databricks</a></li>
-<li><a href="/ja/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
-</ul>
 <h3 id="処理の有効化">処理の有効化</h3>
 <p><strong>Enable Processing</strong>をオンにして、変更を保存して公開した直後にデータのインポートを開始します。または、構成を完了するまでこの構成をオフにしておき、後でオンにします。</p>
 <p class="tip"><i class="fa fa-info-circle"></i>データソース、セグメント、またはアクティベーションを有効にする前に、<a href="#test-configuration">データソースとクエリをテストする</a>ことをお勧めします。</p>
 <h3 id="頻度">頻度</h3>
 <p>データを取得する頻度を選択します：</p>
 <ul>
-<li><strong>ほぼリアルタイム</strong>：プロセスは2秒ごとに実行されます。</li>
-<li><strong>毎時</strong>：プロセスは毎時開始時に実行されます。</li>
-<li><strong>毎日</strong>：プロセスは選択した時間（UTC）に1日1回実行されます。</li>
-<li><strong>毎週</strong>：プロセスは指定した日と時間（UTC）に1週間に1回実行されます。</li>
+<li><strong>ほぼリアルタイム</strong>：2秒ごとに処理が実行されます。</li>
+<li><strong>毎時</strong>：毎時の開始時に処理が実行されます。</li>
+<li><strong>毎日</strong>：選択した時間（UTC）に1日1回処理が実行されます。</li>
+<li><strong>毎週</strong>：指定した日と時間（UTC）に1週間に1回処理が実行されます。</li>
 </ul>
 <h2 id="クエリモードとクエリの構成">クエリモードとクエリの構成</h2>
-<p><strong>Query Mode and Configuration</strong>画面で、適切なクエリモードを選択し、カスタム条件に一致するレコードのみをインポートするために、必要に応じてSQL <code>WHERE</code>句を含めます。</p>
+<p><strong>Query Mode and Configuration</strong>画面で、適切なクエリモードを選択し、必要に応じてSQLの<code>WHERE</code>句を含めて、カスタム条件に一致するレコードのみをインポートします。</p>
 <h5 id="クエリモードの選択">クエリモードの選択</h5>
 <p>クエリモードは、新しい行、変更された行、またはその両方をインポートする方法を決定します。タイムスタンプとインクリメント列は、中断やエラー後にコネクタが正しい位置から再開できるようにすることで、データの欠落や重複を防ぎます。</p>
 <ul>
 <li>**タイムスタンプ + インクリメント（推奨）**を選択する場合、タイムスタンプ列と厳密にインクリメントする列の2つの列を選択する必要があります。</li>
 <li><strong>タイムスタンプ</strong>または<strong>インクリメント</strong>を選択する場合、新しい行と変更された行、または新しい行のみを検出するために使用する列を選択する必要があります。</li>
-<li><strong>フルリシンク</strong>を選択すると、各インポートサイクル中にすべての行がインポートされます。このオプションは、データが頻繁に変更される場合や、すべてのレコードが最新であることを確認したい場合に便利です。フルリシンククエリモードでは、<strong>毎時</strong>または<strong>毎日</strong>の頻度を使用し、<strong>タイムスタンプ列</strong>、<strong>インクリメント列</strong>、またはその両方を指定する必要があります。<p class="note"><i class="fa fa-exclamation-triangle"></i>フルリシンクモードではオフセット管理は利用できません。</p></li>
+<li><strong>フルリシンク</strong>を選択する場合、各インポートサイクル中にすべての行がインポートされます。このオプションは、データが頻繁に変更される場合や、すべてのレコードが最新であることを確認したい場合に便利です。フルリシンククエリモードでは、<strong>毎時</strong>または<strong>毎日</strong>の頻度を使用し、<strong>タイムスタンプ列</strong>、<strong>インクリメント列</strong>、またはその両方を指定する必要があります。<p class="note"><i class="fa fa-exclamation-triangle"></i>フルリシンクモードではオフセット管理は利用できません。</p></li>
 </ul>
 <p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h5 id="クエリの構成">クエリの構成</h5>
@@ -454,7 +454,7 @@
 <p><strong>Query &gt; Select Columns</strong>セクションで、インポートする列を選択します。テーブルまたはビューを変更するには、<strong>Previous</strong>をクリックして別のテーブルを選択します。</p>
 </li>
 <li>
-<p>(オプション) カスタム条件を追加するには、SQL <code>WHERE</code>句を含めます。<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のテーブルからデータをインポートするには、ビューを作成し、データソース構成でそのビューを選択します。</p></p>
+<p>（オプション）カスタム条件を追加するには、SQLの<code>WHERE</code>句を含めます。<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のテーブルからデータをインポートするには、ビューを作成し、データソース構成でビューを選択します。</p></p>
 </li>
 <li>
 <p>フルリシンククエリモードの場合、インポートするレコードの最大数を<strong>Limit</strong>で入力します。毎日のクエリでは最大1,000,000レコード、毎時のクエリでは最大50,000レコードをインポートできます。</p>
@@ -464,62 +464,63 @@
 </li>
 </ol>
 <h3 id="列のマッピング">列のマッピング</h3>
-<p>列マッピングページでは、前のステップで選択した列が表示されます。各列には自動的にデータタイプが割り当てられ、必要に応じて変更できる推奨されるクラウド属性名が提案されます。</p>
+<p>列のマッピングページでは、前のステップで選択した列が表示されます。各列には自動的にデータタイプが割り当てられ、必要に応じて変更できる推奨されるクラウド属性名が付けられます。</p>
 <p>クラウド属性にマッピングされていない列は無視されます。</p>
-<h3 id="概要">概要</h3>
-<p>この最終ステップでは、概要を表示し、必要に応じて修正を加えてからプロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために<strong>Previous</strong>をクリックします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>クラウド属性は制限されたデータとしてマークすることはできません。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>この最終ステップでは、要約を表示し、必要に応じて修正を加えてからプロファイルを保存して公開します。構成を編集するには、変更を加えたいステップに戻るために<strong>Previous</strong>をクリックします。</p>
 <ol>
 <li>クラウド属性のマッピングを確認します。</li>
 <li><strong>Finish</strong>をクリックしてデータソースを作成し、構成画面を終了します。新しいデータソースは<strong>Data Sources</strong>ダッシュボードにリストされます。</li>
 <li><strong>Save/Publish</strong>をクリックして変更を保存して公開します。</li>
 </ol>
-<h2 id="テスト構成">テスト構成</h2>
-<p class="tip"><i class="fa fa-info-circle"></i>データソース、セグメント、またはアクティベーションを有効にする前に、データソースとクエリのテストを行うことをお勧めします。ただし、テストを実行すると、セグメントがアクティブになる可能性があり、有効なアクションがトリガーされるか、下流システムに影響を与える可能性があります。意図しない結果を防ぐために、コネクターと機能を無効にし、テストレコードを制限し、受信者と調整してください。</p>
+<h2 id="構成のテスト">構成のテスト</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>データソースとクエリを有効にする前にデータソースとクエリをテストすることをお勧めします。ただし、テストの実行によりセグメントがアクティブ化される可能性があり、有効なアクションがトリガーされるか、下流システムに影響を与える可能性があります。予期しない結果を防ぐために、コネクタと機能を無効にし、テストレコードを制限し、受信者と調整してください。</p>
 <p>データソース構成をテストするには、以下の手順を使用します：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_configuration.png"><img src="/images/early-access/cloudstream/cloudstream_test_configuration.png"
-         alt="クラウドテスト構成"
-         title="クラウドテスト構成"/>
+         alt="Cloud test configuration"
+         title="Cloud test configuration"/>
     </a>
 </figure>
 <ol>
-<li>データソースウィンドウの右上隅にあるアクションボタンをクリックし、<strong>エンドツーエンドテスト</strong>をクリックします。</li>
-<li>出力を受け取りたい方法を選択します。
+<li>データソースウィンドウの右上隅にあるアクションボタンをクリックし、次に<strong>End-to-end Testing</strong>をクリックします。</li>
+<li>出力を受け取る方法を選択します
 <ul>
-<li><strong>新しいトレースセッション</strong>：出力は最大10レコードの新しいトレースセッションで表示されます。このオプションは、エンドツーエンドの検証とログの詳細を確認するのに最適です。</li>
-<li><strong>既存のトレースセッション</strong>：すでに開始したトレースセッションで出力が表示されます。<strong>トレースID</strong>を入力し、<strong>トレースに参加</strong>をクリックします。</li>
-<li><strong>ダイレクト出力</strong>：出力の生の結果が画面に表示されます。データレコードにトレースIDは追加されず、トレースは利用できません。このオプションは、クエリと属性マッピングを迅速に確認するのに最適です。</li>
+<li><strong>New Trace Session</strong>：出力は新しいトレースセッションで表示され、最大10レコードが表示されます。このオプションは、エンドツーエンドの検証とログの詳細を確認するのに最適です。</li>
+<li><strong>Existing Trace Session</strong>：出力はすでに開始しているトレースセッションで表示されます。<strong>Trace ID</strong>を入力して<strong>Join Trace</strong>をクリックします。</li>
+<li><strong>Direct Output</strong>：出力の生の結果が画面に表示されます。データレコードにトレースIDは追加されず、トレースは利用できません。このオプションは、クエリと属性マッピングをすばやく確認するのに最適です。</li>
 </ul>
 </li>
-<li>テストのために処理する行数を選択します。最大行数は10です。</li>
-<li><strong>テストクエリ</strong>の下で、テストに含めるテーブルの列を選択します。リストから列を削除するには、列の<strong>X</strong>をクリックします。少なくとも1つの列を選択する必要があります。</li>
-<li><strong>From Table</strong>の下で、クエリを実行するテーブルを選択します。選択列ボックスがテーブルの列で更新されます。</li>
+<li>テストのために処理する行の数を選択します。最大行数は10です。</li>
+<li><strong>Test Query</strong>の下で、テーブルからテストに含める列を選択します。リストから列を削除するには、列の<strong>X</strong>をクリックします。少なくとも1つの列を選択する必要があります。</li>
+<li><strong>From Table</strong>の下で、クエリを実行するテーブルを選択します。Select Columnsボックスは、テーブルの列で更新されます。</li>
 <li><strong>Where</strong>の下で、テーブルに対して実行するSQLクエリを入力します。</li>
-<li><strong>クエリチェック</strong>をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。</li>
-<li>結果は<strong>クエリ結果プレビュー</strong>タブの下のテーブルに表示されます：<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
-         alt="クラウドテストチェッククエリ"
-         title="クラウドテストチェッククエリ"/>
+<li><strong>Check Query</strong>をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。</li>
+<li>結果は<strong>Query Result Preview</strong>タブの下のテーブルに表示されます：<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
+         alt="Cloud test check query"
+         title="Cloud test check query"/>
     </a>
 </figure></li>
-<li><strong>テスト開始</strong>をクリックして構成テストを開始します。</li>
+<li><strong>Start Test</strong>をクリックして構成テストを開始します。</li>
 </ol>
 <p>右サイドバーには、テストの完了までの時間を見積もるプログレスバーと、テストがエラーに遭遇した場合に知らせるステータスメッセージが表示されます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_output.png"><img src="/images/early-access/cloudstream/cloudstream_test_output.png"
-         alt="クラウドテスト出力"
-         title="クラウドテスト出力"/>
+         alt="Cloud test output"
+         title="Cloud test output"/>
     </a>
 </figure>
 <p>テストが完了すると、結果が表示されます：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_results.png"><img src="/images/early-access/cloudstream/cloudstream_test_results.png"
-         alt="クラウドテスト結果"
-         title="クラウドテスト結果"/>
+         alt="Cloud test results"
+         title="Cloud test results"/>
     </a>
 </figure>
 <ul>
-<li>トレースでテストの実行を見たい場合は、<strong>トレースに参加</strong>をクリックします。</li>
-<li>テストが失敗した場合、次のことができます：
+<li>テストの実行をトレースで見たい場合は、<strong>Join Trace</strong>をクリックします。</li>
+<li>テストが失敗した場合は、次のことができます：
 <ul>
-<li><strong>テスト構成の編集</strong>をクリックして構成を変更します。</li>
-<li><strong>テストを再試行</strong>をクリックして現在の構成を再度実行します。</li>
+<li><strong>Edit Test Configuration</strong>をクリックして構成を変更します。</li>
+<li><strong>Retry Test</strong>をクリックして現在の構成を再度実行します。</li>
 </ul>
 </li>
 </ul>
@@ -528,7 +529,7 @@
 <ol>
 <li>データソースをクリックします。</li>
 <li><strong>複製</strong>ボタンをクリックします。</li>
-<li>複製されたデータソースに名前を入力します。</li>
+<li>複製したデータソースに名前を入力します。</li>
 </ol>
 <h2 id="データソースの編集">データソースの編集</h2>
 <p>データソースを編集するには、以下の手順を使用します：</p>
@@ -539,12 +540,12 @@
 <li><strong>完了</strong>をクリックします。</li>
 </ol>
 <h3 id="オフセットの管理">オフセットの管理</h3>
-<p>データソースは、クエリが開始されるクラウドデータビューまたはテーブルの日付またはインクリメント値の位置を追跡します。オフセットを使用すると、クエリを開始するビューまたはテーブルの位置をリセットまたは手動で構成して制御できます。</p>
-<p>たとえば、最近のメーリングリストのアクティベーションにエラーが含まれており、100レコードが処理された場合、現在のインクリメントオフセットは342です。メールアクティベーションを修正した後、これらのレコードを再処理するには、オフセットを242に構成します。データソースを再起動すると、その位置からレコードのクエリが開始され、修正されたメールが送信されます。</p>
-<p>次の条件が真の場合にのみ、オフセットを管理できます：</p>
+<p>データソースは、クラウドデータビューまたはテーブルでのクエリ開始位置を示す日付またはインクリメント値の位置を追跡します。オフセットを使用すると、ビューまたはテーブルでのクエリ開始位置を制御して、リセットまたは手動で構成できます。</p>
+<p>例えば、最近のメーリングリストのアクティベーションにエラーが含まれており、100レコードが処理され、現在のインクリメントオフセットが342であるとします。メールアクティベーションを修正した後、これらのレコードを再処理するには、オフセットを242に構成します。データソースを再起動すると、その位置からレコードのクエリが開始され、修正されたメールが送信されます。</p>
+<p>以下の条件が真の場合にのみ、オフセットを管理できます：</p>
 <ul>
 <li>現在のプロファイルが公開されています。</li>
-<li>クエリモードは<strong>タイムスタンプ + インクリメント（推奨）</strong>、<strong>タイムスタンプ</strong>、または<strong>インクリメント</strong>です。<strong>フルリシンク</strong>クエリモードでは、オフセットを管理できません。</li>
+<li>クエリモードが<strong>タイムスタンプ + インクリメント（推奨）</strong>、<strong>タイムスタンプ</strong>、または<strong>インクリメント</strong>です。<strong>フルリシンク</strong>クエリモードではオフセットを管理できません。</li>
 <li>データソースが停止しています。
 <ul>
 <li>データソースのステータスが実行中、スケジュールされている、または失敗している場合、オフセットを編集することはできません。現在のオフセットに関する情報のみが利用可能です。</li>
@@ -554,37 +555,37 @@
 </ul>
 <p>データソースのオフセットを管理するには、以下の手順を使用します：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/manage_offset.png"><img src="/images/early-access/cloudstream/manage_offset.png"
-         alt="オフセットの管理"
-         title="オフセットの管理"/>
+         alt="manage offset"
+         title="manage offset"/>
     </a>
 </figure>
 <ol>
 <li>データソースの詳細ウィンドウの右上隅にあるアクションボタンをクリックし、<strong>オフセットの管理</strong>をクリックします。</li>
-<li>利用可能なオフセット方法は<strong>タイムスタンプ</strong>と<strong>インクリメント列</strong>です。クエリモードが利用可能なオフセットを決定します。</li>
-<li><strong>タイムスタンプ列</strong>の下で、タイムスタンプを表すテーブルの列を選択します。</li>
-<li><strong>新しいタイムスタンプ</strong>の下で、データをインポートする際にタイムスタンプからオフセットする日時を選択します。
+<li>利用可能なオフセット方法は<strong>タイムスタンプ</strong>と<strong>インクリメント列</strong>です。クエリモードによって利用可能なオフセットが決まります。</li>
+<li><strong>タイムスタンプ列</strong>の下で、テーブル内のタイムスタンプを表す列を選択します。</li>
+<li><strong>新しいタイムスタンプ</strong>の下で、データのインポート時にタイムスタンプからオフセットする日付と時間を選択します。
 <ul>
 <li>新しいタイムスタンプは過去の日時でなければなりません。未来の日時は使用できません。</li>
 <li>現在のタイムスタンプフィールドには、現在使用されているオフセットが表示されます。</li>
 </ul>
 </li>
 <li><strong>インクリメント列</strong>の下で、テーブルに追加される各行のインクリメント値を表す列を選択します。</li>
-<li><strong>新しいインクリメント</strong>の下で、データをインポートする際にIDからオフセットする数を入力します。
+<li><strong>新しいインクリメント</strong>の下で、データのインポート時にIDからオフセットする数値を入力します。
 <ul>
 <li>新しいオフセットIDは正の整数でなければなりません。</li>
-<li>現在のオフセットIDフィールドには、オフセットとして使用する現在の数が表示されます。</li>
+<li>現在のオフセットIDフィールドには、オフセットとして使用される現在の数値が表示されます。</li>
 </ul>
 </li>
 </ol>
-<p><strong>オフセット変更の検証</strong>をクリックして、新しいオフセット位置からインポートされるデータのプレビューを表示します。テーブルにはサンプル行が表示され、オフセットを調整した後に処理される行数の見積もりも提供されます。</p>
+<p><strong>オフセット変更の検証</strong>をクリックして、新しいオフセット位置からインポートされるデータのプレビューを表示します。テーブルにはサンプル行が表示され、オフセットを調整した後に処理される行の数の見積もりも提供されます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/validate_offset.png"><img src="/images/early-access/cloudstream/validate_offset.png"
-         alt="オフセットの検証"
-         title="オフセットの検証"/>
+         alt="validate offset"
+         title="validate offset"/>
     </a>
 </figure>
 <p><strong>完了</strong>をクリックして新しいオフセット構成を確認します。<strong>キャンセル</strong>をクリックして変更を破棄します。</p>
 <p>オフセットを変更した後、データソースを再起動します。</p>
-<h2 id="処理された行とエラー">処理された行とエラー</h2>
+<h2 id="処理済み行とエラー">処理済み行とエラー</h2>
 <p>インポート活動を確認するには、<strong>データソース</strong>に移動し、データソースを展開します。</p>
 <figure><a class="slb" href="/images/server-side/data-sources/cloud-data-source-status-line.png"><img src="/images/server-side/data-sources/cloud-data-source-status-line.png"/>
     </a>
@@ -602,11 +603,11 @@
 <tbody>
 <tr>
 <td><strong>失敗</strong></td>
-<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスをトリガーせず、データソースは<strong>実行中</strong>のままでエラーが記録されます。</td>
+<td>接続エラーが発生しました。たとえば、認証失敗などで、エラーが解決されるまでインポートは停止されます。インポート中の行レベルのエラーはこのステータスを引き起こさず、データソースが<strong>実行中</strong>のままでログに記録されます。</td>
 </tr>
 <tr>
 <td><strong>非アクティブ</strong></td>
-<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行することもありませんでした。</td>
+<td>データソースは作成されましたが、オンにされたことがなく、他のステータスに移行されたこともありません。</td>
 </tr>
 <tr>
 <td><strong>初期化中</strong></td>
@@ -654,11 +655,11 @@
   <a href="/ja/early-access/cloudstream/about/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"CloudStreamについて "</title>
+      <title>"について "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>CloudStreamについて</div>
+      <div>について</div>
     </section>
   </a>
   
@@ -690,7 +691,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月22日
+          <p>最終更新日 ::  2025年October月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -711,12 +712,12 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6" href="javascript:void(0)">頻度</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A8%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">クエリモードとクエリの構成</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">列のマッピング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88%E6%A7%8B%E6%88%90" href="javascript:void(0)">テスト構成</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%BE%E3%81%A8%E3%82%81" href="javascript:void(0)">まとめ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88" href="javascript:void(0)">構成のテスト</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E8%A4%87%E8%A3%BD" href="javascript:void(0)">データソースの複製</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B7%A8%E9%9B%86" href="javascript:void(0)">データソースの編集</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%95%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">オフセットの管理</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%87%A6%E7%90%86%E3%81%95%E3%82%8C%E3%81%9F%E8%A1%8C%E3%81%A8%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">処理された行とエラー</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%87%A6%E7%90%86%E6%B8%88%E3%81%BF%E8%A1%8C%E3%81%A8%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">処理済み行とエラー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9" href="javascript:void(0)">ステータス</a></li>
               </nav>
   </aside></nav>

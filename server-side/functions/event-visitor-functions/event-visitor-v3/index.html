@@ -998,30 +998,28 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="input-data">Input data</h2>
-<p>The input parameters vary depending on function type, as follows:</p>
-<ul>
-<li>Event functions have an <code>event</code> parameter. The <code>visit</code> and <code>visitor</code> parameters are null.</li>
-<li>Visitor functions have <code>visitor</code> and <code>visit</code> parameters. The <code>event</code> parameter is null.</li>
-</ul>
-<p>Event and visitor functions have additional parameters, <code>helper</code>, which provides <code>helper.getAuth()</code> and <code>helper.getGlobalVariable()</code> for getting authorization and retrieving global variables.</p>
-<h2 id="activate-function">activate() function</h2>
-<p>When you create a V3 event or visitor function, default code is shown in the <strong>Code</strong> tab of the functions code editor. This code contains a global <code>activate</code> function. The input parameters for your function are passed to the <code>activate()</code> function. The following example shows <code>activate()</code> for an event function:</p>
-<pre tabindex="0"><code>activate(async ({ event, helper }) =&gt; {
-
-  ...
-
-});
-</code></pre><p>Change the code between the first and last lines of the default code to suit your needs.</p>
+  <h2 id="activate-function">activate() function</h2>
+<p>When you create a V3 event or visitor function, the default code is shown in the <strong>Code</strong> tab of the functions code editor. This code contains the <code>activate()</code> function and its input parameters.</p>
+<p>Event functions have an <a href="#event-object"><code>event object</code></a> and a <a href="#helper-object"><code>helper</code> object</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Visitor functions have a <a href="#visitor-object"><code>visitor</code> object</a>, a <a href="#visit-object"><code>visit</code> object</a>, and a <a href="#helper-object"><code>helper</code> object</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>The <code>helper</code> parameter provides <code>helper.getAuth()</code> and <code>helper.getGlobalVariable()</code> for getting authorization and retrieving global variables.</p>
+<p>Change the code between the first and last lines of the default code to suit your needs.</p>
 <h2 id="track-function">track() function</h2>
-<p>Functions can use the global <code>track()</code> function to send an event to Tealium Collect. <code>track()</code> has two input parameters, as follows:</p>
+<p>Functions can use the global <code>track()</code> method to send an event to Tealium Collect.</p>
+<p><code>track()</code> has two input parameters:</p>
 <ul>
-<li><code>data</code> object – The event data to be sent to Tealium Collect.</li>
-<li><code>config</code> object – (Optional) Contains the following fields:
+<li><code>data</code> object: The event data to be sent to Tealium Collect.</li>
+<li><code>config</code> object: (Optional) Contains the following fields:
 <ul>
-<li><code>tealium_account</code> – Specifies the account name.</li>
-<li><code>tealium_profile</code> – Specifies the profile.</li>
-<li><code>tealium_datasource</code> – Specifies the data source.<br>
+<li><code>tealium_account</code>: The account name.</li>
+<li><code>tealium_profile</code>: The profile name.</li>
+<li><code>tealium_datasource</code>: The data source key.<br>
 If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_datasource</code> fields are included in the <code>data</code> object, the <code>config</code> object is not required.</li>
 </ul>
 </li>
@@ -1047,8 +1045,8 @@ If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tea
 </span></span><span style="display:flex;"><span>  })
 </span></span></code></pre></div><p>For a more detailed example for the <code>track()</code> function, see <a href="/server-side/functions/event-visitor-functions/v3-function-examples/#send-an-event-to-the-tealium-collect-http-api">Send an event to the Tealium Collect HTTP API</a>.</p>
 <h2 id="event-object">Event object</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Event functions cannot change an event because these functions are invoked after Tealium has processed the event. To change an event, use either event attribute enrichments or an event transformation function. You can also change the event at the data source before it is sent to Tealium.</p>
-<p>The <code>event</code> object is available for event functions and contains the event data.</p>
+<p>The <code>event</code> data object is available for event functions and contains the event data.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>At the point that event functions run in the data pipeline, modifications to the event data object have no effect on other parts of the system. To modify event data to effect the data pipeline, use either event attribute enrichments or a <a href="/server-side/functions/data-transformation-functions/about/">data transformation function</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1110,7 +1108,6 @@ If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tea
 </tr>
 </tbody>
 </table>
-<h3 id="data-object">Data object</h3>
 <p>The <code>data</code> object contains the data for the incoming event.</p>
 <table>
 <thead>
@@ -1197,23 +1194,9 @@ If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tea
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;env&#34;</span>: <span style="color:#e6db74">&#34;prod&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;post_time&#34;</span>: <span style="color:#ae81ff">1537305808000</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="helper-object">Helper object</h2>
-<p>The <code>helper</code> object provides the <code>helper.getGlobalVariable()</code> and <code>helper.getAuth()</code> methods.</p>
-<h3 id="helpergetglobalvariable"><code>helper.getGlobalVariable()</code></h3>
-<p>Functions use <code>helper.getGlobalVariable()</code> to retrieve global variables, passing the global variable key as a parameter, as follows:</p>
-<pre tabindex="0"><code>activate(({ helper }) =&gt; {
-  console.log(helper.getGlobalVariable(&#34;TEST_GLOBAL_VAR&#34;));
-});
-</code></pre><p>For more information on adding and editing global variables, see <a href="/server-side/functions/manage-functions/manage-global-variables/">Manage global variables</a>.</p>
-<h3 id="helpergetauth"><code>helper.getAuth()</code></h3>
-<p>Functions use <code>helper.getAuth()</code> to retrieve an authentication that has been added to the function. The function passes the authentication token to <code>helper.getAuth()</code>, as follows:</p>
-<pre tabindex="0"><code>activate(({ helper }) =&gt; {
-    console.log(helper.getAuth(&#34;auth_token_name&#34;));
-})
-</code></pre><p>The authentication token is created when the authentication is added to the function. For information on adding authentication to a function, see <a href="/server-side/functions/event-visitor-functions/authentication/">Add authentication to an event or visitor function</a>.</p>
-<h2 id="visitor-object">Visitor object</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Visitor functions are invoked after the visitor has been processed. Visitor functions cannot change a visitor object after the visitor has been processed. To change visitor data, use visitor attribute enrichments.</p>
-<p>The <code>visitor</code> object is available for visitor functions and contains the visitor data.</p>
+</span></span></code></pre></div><h2 id="visitor-object">Visitor object</h2>
+<p>The <code>visitor</code> data object is available for visitor functions and contains the visitor data.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>At the point that visitor functions run in the data pipeline, modifications to the visitor data object have no effect on other parts of the system. To make modifications to the visitor data object that persist in the system, use visitor attribute enrichments.</p>
 <table>
 <thead>
 <tr>
@@ -1442,7 +1425,7 @@ If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tea
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="visit-object">Visit object</h2>
 <p>The <code>visit</code> object is available for visitor functions and contains the data for the current visit.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Visitor functions are invoked after the visitor has been processed. Visitor functions cannot change a visit object after the visitor has been processed. To change the visit data, use visit attribute enrichments.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>At the point that visitor functions run in the data pipeline, modifications to the visit data object have no effect on other parts of the system. To make modifications to the visit data object that persist in the system, use visit attribute enrichments.</p>
 <table>
 <thead>
 <tr>
@@ -1621,7 +1604,23 @@ If the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tea
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;total_event_count&#34;</span>: <span style="color:#ae81ff">2</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events_compressed&#34;</span>: <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="helper-object">Helper object</h2>
+<p>The <code>helper</code> object provides the <code>helper.getGlobalVariable()</code> and <code>helper.getAuth()</code> methods.</p>
+<h3 id="helpergetglobalvariable"><code>helper.getGlobalVariable()</code></h3>
+<p>Functions use <code>helper.getGlobalVariable()</code> to retrieve global variables.</p>
+<p>To retrieve a global variable, pass the key as a parameter:</p>
+<pre tabindex="0"><code>activate(({ helper }) =&gt; {
+  console.log(helper.getGlobalVariable(&#34;TEST_GLOBAL_VAR&#34;));
+});
+</code></pre><p>For more information about adding and editing global variables, see <a href="/server-side/functions/manage-functions/manage-global-variables/">Manage global variables</a>.</p>
+<h3 id="helpergetauth"><code>helper.getAuth()</code></h3>
+<p>Functions use <code>helper.getAuth()</code> to retrieve an authentication that has been added to the function.</p>
+<p>To retrieve an authentication, pass the name of the authentication token as the parameter:</p>
+<pre tabindex="0"><code>activate(({ helper }) =&gt; {
+    console.log(helper.getAuth(&#34;auth_token_name&#34;));
+})
+</code></pre><p>For information on adding authentication to a function, see <a href="/server-side/functions/event-visitor-functions/authentication/">Add authentication to an event or visitor function</a>.</p>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -1681,7 +1680,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1695,19 +1694,17 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#input-data" href="javascript:void(0)">Input data</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate-function" href="javascript:void(0)">activate() function</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate-function" href="javascript:void(0)">activate() function</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-function" href="javascript:void(0)">track() function</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-object" href="javascript:void(0)">Event object</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-object" href="javascript:void(0)">Data object</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-object-example" href="javascript:void(0)">Event object example</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helper-object" href="javascript:void(0)">Helper object</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helpergetglobalvariable" href="javascript:void(0)">helper.getGlobalVariable()</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helpergetauth" href="javascript:void(0)">helper.getAuth()</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-object-example" href="javascript:void(0)">Event object example</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-object" href="javascript:void(0)">Visitor object</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-object-example" href="javascript:void(0)">Visitor object example</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-object" href="javascript:void(0)">Visit object</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-object-example" href="javascript:void(0)">Visit object example</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helper-object" href="javascript:void(0)">Helper object</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helpergetglobalvariable" href="javascript:void(0)">helper.getGlobalVariable()</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#helpergetauth" href="javascript:void(0)">helper.getAuth()</a></li>
               </nav>
   </aside></nav>
 

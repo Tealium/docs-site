@@ -240,13 +240,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-cloudstream">CloudStream</a>
         <ul class="pl2 bl b--primary bw1 ea-cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About CloudStream</a></li>
+        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li></ul>
+        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -377,13 +381,14 @@
 <ul>
 <li><a href="/early-access/data-sources/databricks-cloud-data-source/">Databricks</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake/">Snowflake</a></li>
+<li><a href="/early-access/data-sources/google-bigquery-cloud-data-source/#create-a-connection">BigQuery</a></li>
 </ul>
 <h2 id="create-a-cloud-data-source">Create a cloud data source</h2>
 <p>To create a cloud data source for CloudStream, use the following steps:</p>
 <ol>
 <li>Go to <strong>CloudStream &gt; Data Sources</strong>.</li>
 <li>Click <strong>+ Add Data Source</strong>.</li>
-<li>Under <strong>Categories</strong>, click <strong>Data Warehouse</strong> and select a vendor.</li>
+<li>Select a vendor.</li>
 <li>In the <strong>Name</strong> field, enter a unique name for the data source related to your use case.</li>
 <li>Click <strong>Continue</strong>.</li>
 </ol>
@@ -393,11 +398,6 @@
 <p>On the <strong>Connection Configuration</strong> screen, confirm the name of the data source, then select an existing connection from the list or create a connection by clicking the <strong>+</strong> icon.</p>
 <p>Click <strong>Save</strong> to return to the <strong>Connection Configuration</strong> screen, then click <strong>Establish Connection</strong>.</p>
 <p>After you successfully establish a connection, select a table from the <strong>Table Selection</strong> list.</p>
-<p>For more information about connecting to your vendor, see:</p>
-<ul>
-<li><a href="/early-access/data-sources/databricks-cloud-data-source/#create-a-connection">Databricks</a></li>
-<li><a href="/server-side/data-sources/cloud-data/snowflake/#create-a-connection">Snowflake</a></li>
-</ul>
 <h3 id="enable-processing">Enable processing</h3>
 <p>Turn on <strong>Enable Processing</strong> to begin importing data immediately after you save and publish your changes. Or, leave this setting off while you complete the configuration and turn it on later.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>We recommend that you <a href="#test-configuration">test the data source and query</a> before you enable any data sources, segments, or activations.</p>
@@ -438,7 +438,8 @@
 <h3 id="map-columns">Map columns</h3>
 <p>On the column mapping page, you&rsquo;ll see the columns you selected in the previous step. Each column is automatically assigned a data type and a suggested cloud attribute name, which you can change as needed.</p>
 <p>Columns not mapped to a cloud attribute are ignored.</p>
-<h3 id="summary">Summary</h3>
+<p class="tip"><i class="fa fa-info-circle"></i>Cloud attributes cannot be marked as restricted data.</p>
+<h2 id="summary">Summary</h2>
 <p>In this final step, view the summary, make any needed corrections, and then save and publish your profile. To edit your configuration, click <strong>Previous</strong> to return to the step where you want to make changes.</p>
 <ol>
 <li>Confirm the cloud attribute mappings.</li>
@@ -626,11 +627,11 @@
   <a href="/early-access/cloudstream/about/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"About CloudStream "</title>
+      <title>"About "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>About CloudStream</div>
+      <div>About</div>
     </section>
   </a>
   
@@ -662,7 +663,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 22, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -683,8 +684,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-query-mode-and-query" href="javascript:void(0)">Configure query mode and query</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-columns" href="javascript:void(0)">Map columns</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-configuration" href="javascript:void(0)">Test configuration</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-configuration" href="javascript:void(0)">Test configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#duplicate-a-data-source" href="javascript:void(0)">Duplicate a data source</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-a-data-source" href="javascript:void(0)">Edit a data source</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manage-offset" href="javascript:void(0)">Manage offset</a></li>

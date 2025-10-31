@@ -1771,29 +1771,29 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
+<p>Go to the tag marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Conversion ID</strong>
 <ul>
-<li>Enter the value of the <code>google_conversion_id</code> here.</li>
+<li>Enter the value of the <code>google_conversion_id</code>.</li>
 <li>This value is provided in your code snippet and also available in your Ads control panel.</li>
 </ul>
 </li>
 <li><strong>Page Type</strong>
 <ul>
 <li>Select the page type of your site where you are tracking conversions with this tag instance.</li>
-<li>This is also the value of the custom <code>ecomm_pagetype</code>&lsquo;parameter in your code snippet.</li>
+<li>This is also the value of the custom <code>ecomm_pagetype</code> parameter in your code snippet.</li>
 </ul>
 </li>
 <li><strong>Conversion Value</strong>
 <ul>
 <li>Enter a value that you want to assign to the conversion action.</li>
-<li>You cahn leave this field blank if you prefer to use the order subtotal value or otherwise set it dynamically via the Data Mapping toolbox.</li>
+<li>You can leave this field blank if you prefer to use the order subtotal value or otherwise set it dynamically via the Data Mapping toolbox.</li>
 </ul>
 </li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>You can optionally set all of the above settings in the Data Mappings toolbox.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Optionally, set all of the above settings in the Data Mappings toolbox.</p>
 <h2 id="load-rules">Load rules</h2>
 <p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
 <h2 id="data-mappings">Data mappings</h2>
@@ -2152,27 +2152,27 @@
 </thead>
 <tbody>
 <tr>
-<td>Recommended Product IDs<br> <code>custom.ecomm_rec_prodid</code></td>
+<td>Recommended Product IDs <code>custom.ecomm_rec_prodid</code></td>
 <td><ul><li>This parameter may be used to pass product IDs of recommended products on the page.</li></ul></td>
 </tr>
 <tr>
-<td>Visitor&rsquo;s Age <br> <code>custom.a</code></td>
+<td>Visitor&rsquo;s Age <code>custom.a</code></td>
 <td><ul><li>This parameter may be used to pass a visitor&rsquo;s age.</li></ul></td>
 </tr>
 <tr>
-<td>Visitor&rsquo;s Gender <br> <code>custom.g</code></td>
+<td>Visitor&rsquo;s Gender <code>custom.g</code></td>
 <td><ul><li>This parameter may be used to pass a visitor&rsquo;s gender.</li></ul></td>
 </tr>
 <tr>
-<td>Visitor Has Account<br> <code>custom.hasaccount</code></td>
+<td>Visitor Has Account <code>custom.hasaccount</code></td>
 <td><ul><li>This parameter may be used to indicate if the visitor has an account.</li></ul></td>
 </tr>
 <tr>
-<td>Customer Quality Score <br> <code>custom.cqs</code></td>
+<td>Customer Quality Score <code>custom.cqs</code></td>
 <td><ul><li>This parameter can be used to report a visitor&rsquo;s customer quality score.</li></ul></td>
 </tr>
 <tr>
-<td>Repeat Purchaser<br> <code>custom.rp</code></td>
+<td>Repeat Purchaser<code>custom.rp</code></td>
 <td><ul><li>This parameter can be used to identify if the visitor is a repeat purchaser.</li></ul></td>
 </tr>
 <tr>
@@ -2180,16 +2180,22 @@
 <td><ul><li>This parameter is used to identify the visitor&rsquo;s loyalty score.</li></ul></td>
 </tr>
 <tr>
-<td>Visitor High Spender Score<br> <code>custom.hs</code></td>
+<td>Visitor High Spender Score <code>custom.hs</code></td>
 <td><ul><li>This parameter is used to identify the visitor&rsquo;s high spender score.</li></ul></td>
 </tr>
 <tr>
-<td>Custom<br> <code>custom.myvar</code></td>
+<td>Custom <code>custom.myvar</code></td>
 <td><ul><li>This parameter can be used to pass any customized parameters.</li><li>Replace <code>myvar</code> with your own parameter name.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="e-commerce">E-Commerce</h3>
+<p>This tag automatically pulls in data from the E-Commerce extension to populate the following retail parameters:</p>
+<ul>
+<li><code>ecomm.prodid</code> from <code>_cprod</code></li>
+<li><code>ecomm.category</code> from <code>_ccat</code></li>
+<li><code>ecomm.totalvalue</code> from <code>_csubtotal</code> when <code>_corder</code> is present or one of the page types includes <code>purchase</code>, <code>conversion</code>, <code>cart</code>, or <code>conversionintent</code>.</li>
+</ul>
 <p>The following table describes destination names and descriptions for E-Commerce variables.</p>
 <table>
 <thead>
@@ -2200,32 +2206,36 @@
 </thead>
 <tbody>
 <tr>
-<td>Order ID<br> <code>_corder</code></td>
+<td>Order ID <code>_corder</code></td>
 <td><ul><li>Represents the unique identifier assigned to the final order.</li><li>One advantage of using Ecommerce parameters is the tag will automatically use <code>_csubtotal</code> for the total value for any business type you configure.</li><li>For example, for the Retail business type, the value of <code>ecomm.totalvalue</code> will use <code>_csubtotal</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Sub Total<br> <code>_csubtotal</code></td>
-<td><ul><li>Represents the sub total amount of the final order.</li><li>The value within <code>_csubtotal</code> will automatically use <code>_csubtotal</code> for the total value for any business type being reported.</li><li>For example, for the Retail business type, the value of <code>ecomm.totalvalue</code> will use <code>&gt;_csubtotal</code>.</li></ul></td>
+<td>Sub Total (<code>_csubtotal</code>)</td>
+<td><ul><li>Represents the sub total amount of the final order.</li><li>The value within <code>_csubtotal</code> will automatically use <code>_csubtotal</code> for the total value for any business type being reported.</li><li>For example, for the Retail business type, the value of <code>ecomm.totalvalue</code> will use <code>_csubtotal</code>.</li></ul></td>
 </tr>
 <tr>
-<td>List of Product IDs<br> <code>_cprod</code></td>
+<td>List of Product IDs <code>_cprod</code></td>
 <td><ul><li>Represents the unique identifier of each product in the product array.</li><li>When present, a custom parameter ecomm.prodid will contain the contents of <code>_cprod</code>.</li></ul></td>
 </tr>
 <tr>
-<td>List of Categories <br> <code>_ccat</code></td>
+<td>List of Categories <code>_ccat</code></td>
 <td><ul><li>Represents the category of each product in the product array.</li><li>When present, a custom parameter ecomm.category will contain the contents of <code>_ccat</code>.</li></ul></td>
 </tr>
 <tr>
-<td>List of Quantities<br> <code>_cquan</code></td>
+<td>List of Quantities <code>_cquan</code></td>
 <td><ul><li>Represents the quantity of each product in the product array.</li><li>When present, a custom parameter ecomm.quantity will contain the contents of <code>_cquan</code>.</li></ul></td>
 </tr>
 <tr>
-<td>List of Prices<br> <code>_cprice</code></td>
+<td>List of Prices <code>_cprice</code></td>
 <td><ul><li>Represents the product unit price of each product in the product array.</li><li>When present, a custom parameter ecomm.pvalue will contain the contents of <code>_cprice</code>.</li></ul></td>
 </tr>
 <tr>
-<td>This tag automatically pulls in data from the E-Commerce extension to populate the following &ldquo;Retail&rdquo; parameters: <ul><li><code>ecomm.prodid </code>- from <code>_cprod</code></li><li><code>ecomm.category</code> - from <code>_ccat</code></li><li><code>ecomm.totalvalue </code>- from <code>_csubtotal</code> when <code>_corder</code> is present or one of the page types includes purchase, conversion, cart, or conversionintent.</li></ul></td>
-<td></td>
+<td>Currency <code>_ccurrency</code></td>
+<td><ul><li>Represents the currency of the prices in the product array.</li><li>When present, a custom parameter ecomm.currency will contain the contents of <code>_ccurrency</code>.</li></ul></td>
+</tr>
+<tr>
+<td>List of Discounts <code>product_discount</code></td>
+<td><ul><li>Represents the product unit discount of each product in the product array.</li><li>When present, a custom parameter ecomm.discount will contain the contents of <code>_cdisc</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2321,7 +2331,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 16, 2022 
+          <p>This page was last updated:  October 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

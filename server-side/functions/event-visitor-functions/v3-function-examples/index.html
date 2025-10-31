@@ -1000,88 +1000,86 @@
 <div class="prose nested-links" id="prose">
   <h2 id="send-event-data-with-http-get">Send event data with HTTP GET</h2>
 <p>The following example shows how to make an HTTP GET request to an endpoint with event data as query string parameters.</p>
-<pre tabindex="0"><code>activate(({ event }) =&gt; {
-    console.log(JSON.stringify(event));
-
-    fetch(encodeURI(`https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d?param=${event.data}`))
-        .then(response =&gt; {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-            }
-            return response.json();
-        })
-        .then(data =&gt; console.log(&#39;Response:&#39;, JSON.stringify(data)))
-        .catch(error =&gt; console.log(&#39;Error:&#39;, error.message)); 
-})
-</code></pre><h2 id="send-visitor-data-with-http-post">Send visitor data with HTTP POST</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">event</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetch</span>(encodeURI(<span style="color:#e6db74">`https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d?param=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Response:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>)))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>)); 
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="send-visitor-data-with-http-post">Send visitor data with HTTP POST</h2>
 <p>The following example shows how to make an HTTP POST request to an endpoint with visitor profile data in the request body JSON.</p>
-<pre tabindex="0"><code>activate(({ visitor }) =&gt; {
-    console.log(JSON.stringify(visitor));
-
-    fetch(&#39;https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d&#39;,
-        {
-            method: &#39;POST&#39;,
-            body: JSON.stringify(visitor), 
-            headers: {
-                &#39;Content-Type&#39;: &#39;application/json&#39;
-            }
-        })
-        .then(response =&gt; {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-            }
-            return response.json();
-        })
-        .then(data =&gt; console.log(&#39;Response:&#39;, JSON.stringify(data)))
-        .catch(error =&gt; console.log(&#39;Error:&#39;, error.message));
-})
-</code></pre><h2 id="send-visitor-data-with-http-get">Send visitor data with HTTP GET</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">visitor</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visitor</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d&#39;</span>,
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visitor</span>), 
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Response:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>)))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="send-visitor-data-with-http-get">Send visitor data with HTTP GET</h2>
 <p>The following example shows how to make an HTTP GET request to an endpoint with visitor profile data as query string parameters.</p>
-<pre tabindex="0"><code>activate(({ visit }) =&gt; {
-    console.log(JSON.stringify(visit)); // notice separate visit property
-
-    fetch(encodeURI(`https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d?param=${visit.creation_ts}`))
-        .then(response =&gt; {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-            }
-            return response.json();
-        })
-        .then(data =&gt; console.log(&#39;Response:&#39;, JSON.stringify(data)))
-        .catch(error =&gt; console.log(&#39;Error:&#39;, error.message));
-})
-</code></pre><h2 id="send-an-event-to-the-tealium-collect-http-api">Send an event to the Tealium Collect HTTP API</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">visit</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visit</span>)); <span style="color:#75715e">// notice separate visit property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetch</span>(encodeURI(<span style="color:#e6db74">`https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d?param=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">visit</span>.<span style="color:#a6e22e">creation_ts</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Response:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>)))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="send-an-event-to-the-tealium-collect-http-api">Send an event to the Tealium Collect HTTP API</h2>
 <p>The following example shows how to fetch data and send an event to Tealium Collect.</p>
-<pre tabindex="0"><code>activate(async ({ event }) =&gt; {
-    const searchQuery = new URLSearchParams({ path: event.data.dom.pathname, query: event.data.dom.search_query });
-    
-    const newEvent = await fetch(`https://getnew.event.com?${searchQuery}`)
-        .then(response =&gt; {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-            }
-            return response.json();
-        });
-        
-    track(newEvent, {
-            tealium_account: event.account,
-            tealium_profile: event.profile,
-            tealium_datasource: &#39;p9v81m&#39;
-        })
-        .then(response =&gt; {
-            if(!response.ok){
-                throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-            }
-            return response.text();
-        })
-        .then(data =&gt; console.log(&#39;Result : &#39;, data))
-        .catch(error =&gt; console.error(&#39;Error:&#39;, error.message));
-})
-</code></pre><h2 id="use-an-authentication-access-token-in-a-call-to-a-service-provider">Use an authentication access token in a call to a service provider</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchQuery</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">pathname</span>, <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">search_query</span> });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`https://getnew.event.com?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">searchQuery</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">newEvent</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;p9v81m&#39;</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Result : &#39;</span>, <span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="use-an-authentication-access-token-in-a-call-to-a-service-provider">Use an authentication access token in a call to a service provider</h2>
 <p>This example uses OAuth 2.0 authentication to make API calls to Google Firebase Cloud Messaging. The access token, which is created when you add OAuth2.0 authentication to a function, is passed as a parameter to <code>helper.getAuth()</code>. The following figure shows the access token for this example function:
-<figure><a class="slb" href="/images/server-side/functions-editor-advanced-tab.png"><img src="/images/server-side/functions-editor-advanced-tab.png"
-         alt="functions advanced tab showing the access token returned after adding authentication to a function"
-         title="functions advanced tab showing the access token returned after adding authentication to a function"/>
+<figure><a class="slb" href="/images/server-side/functions-editor-advanced-tab.png"><img src="/images/server-side/functions-editor-advanced-tab.png"/>
     </a>
 </figure></p>
 <p>The following code examples show how to call <code>helper.getAuth()</code> to retrieve the authentication when making an API call to send a message with firebase cloud messaging:</p>
@@ -1089,55 +1087,55 @@
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Action V3" title="Action V3">
-  <pre tabindex="0"><code>activate(async ({ visitor, helper }) =&gt; {
-  const response = await fetch(
-    &#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;,
-    {
-      method: &#34;POST&#34;,
-      headers: {
-        &#39;Authorization&#39;: &#39;Bearer &#39;+helper.getAuth(&#39;firebase_cloud_messaging&#39;),
-        &#39;Content-Type&#39;: &#39;application/json&#39;
-      },
-      body:body
-    }
-  );
-});
-</code></pre>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;</span>,
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer &#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span><span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Action V2" title="Action V2">
-  <pre tabindex="0"><code>const response = await fetch(
-  &#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;,
-  {
-    method: &#34;POST&#34;,
-    headers: {
-      `Authorization&#39;: &#39;Bearer &#39;+auth.get(&#39;firebase_cloud_messaging&#39;),
-      &#39;Content-Type&#39;: &#39;application/json&#39;
-    },
-    body:body
-  }
-);
-</code></pre>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;</span>,
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">`Authorization&#39;: &#39;Bearer &#39;+auth.get(&#39;firebase_cloud_messaging&#39;),
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#39;Content-Type&#39;: &#39;application/json&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    body:body
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">);
+</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
 
 <h2 id="get-the-value-of-a-global-variable">Get the value of a global variable</h2>
 <p>The following code example shows how to use <code>helper.getGlobalVariable()</code> to retrieve a global variable, <code>Cloud_function_URL</code>, that contains the URL for a Google cloud function, and then use this URL to invoke the Google cloud function.</p>
-<pre tabindex="0"><code>const cfunction_url = helper.getGlobalVariable(&#34;Cloud_function_URL&#34;);
-
-let headers = {
-            &#34;content-type&#34;: &#34;application/json&#34;,
-            &#34;mute-http-exceptions&#34;: &#34;true&#34;
-        };
-
-// code to populate body parameter goes here
-
-const response = await fetch(cfunction_url, {
-            method: &#34;POST&#34;,
-            headers: headers,
-            body: body
-        });
-</code></pre><p>For information on creating a global variable, see <a href="/server-side/functions/manage-functions/manage-global-variables/#add-a-global-variable-for-event-or-visitor-functions">Add a global variable for event or visitor functions</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cfunction_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#34;Cloud_function_URL&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">headers</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;content-type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;mute-http-exceptions&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// code to populate body parameter goes here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">cfunction_url</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">headers</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>        });
+</span></span></code></pre></div><p>For information on creating a global variable, see <a href="/server-side/functions/manage-functions/manage-global-variables/#add-a-global-variable-for-event-or-visitor-functions">Add a global variable for event or visitor functions</a>.</p>
 <h2 id="get-an-attribute-name-or-attribute-value-by-attribute-id">Get an attribute name or attribute value by attribute ID</h2>
 <p>Attribute names can be changed, which can cause problems when code references attributes by name. When  the attribute name is changed, the attribute ID is not changed. To avoid problems with attribute names changing, you can reference attributes by ID by using the <code>getAttrNameById()</code> and <code>getAttrValueByID()</code> methods provided by the <code>event</code>, <code>visitor</code>, and <code>visit</code> objects.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend using the <code>getAttrValueByID()</code> method sparingly. This method recursively searches the properties of the event or visitor object to locate the value. If your event or visitor object is complex, this operation may increase the computation time of your function invocation.</p>
@@ -1207,7 +1205,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 1, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta property="og:title" content="Manage CloudStream segments" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://docs.tealium.com/early-access/cloudstream/manage/" />
+<meta property="og:url" content="https://docs.tealium.com/early-access/cloudstream/segments/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
 <meta property="og:description" content="This article provides information about how to manage CloudStream segments." />
 <meta property="og:site_name" content="Tealium Docs" />
@@ -22,7 +22,7 @@
     <meta name="robots" content="index, follow">
     
     
-    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/cloudstream/manage/">
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/cloudstream/segments/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -98,7 +98,7 @@
         
       
         
-          <a href="/ja/early-access/cloudstream/manage/" class="dim link mid-gray">日本語</a>
+          <a href="/ja/early-access/cloudstream/segments/" class="dim link mid-gray">日本語</a>
         
       
       </li>
@@ -121,7 +121,7 @@
         
       
         
-          <a href="/ja/early-access/cloudstream/manage/" class="dim link mid-gray">日本語</a>
+          <a href="/ja/early-access/cloudstream/segments/" class="dim link mid-gray">日本語</a>
         
       
       </li>
@@ -240,13 +240,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-cloudstream">CloudStream</a>
         <ul class="pl2 bl b--primary bw1 ea-cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About CloudStream</a></li>
+        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-cloudstream-segments">Segments</a></li></ul>
+        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -385,14 +389,14 @@
 <p>The <strong>Segments Overview</strong> table lists the following information about each segment:</p>
 <ul>
 <li>Name</li>
-<li>Total Processed: The total number of incoming data records that match the segment conditions, where at least one action is configured and enabled.</li>
+<li>Total Processed: The total number of incoming data records that match the segment conditions, where at least one activation is configured and enabled.</li>
 <li>Date Modified</li>
 <li>Labels</li>
 <li>Activations</li>
-<li>Status: An active segment requires at least one working chain, with an active data source and an active connector action.</li>
+<li>Status: An active segment requires at least one working chain, with an active data source and an activation.</li>
 </ul>
 <p>The more actions button lets you add labels to each segment or delete the segment.</p>
-<p>You can select checkboxes next to each action and perform bulk actions to edit the labels on the segments or delete them.</p>
+<p>You can select checkboxes next to each activation and perform bulk actions to edit the labels on the segments or delete them.</p>
 <h2 id="add-a-segment">Add a segment</h2>
 <p>Use one of two methods to build a segment:</p>
 <ul>
@@ -437,30 +441,16 @@ For operators that specify a time frame, select a value and the time frame.</li>
 <li>If you want to add labels or enter any notes about the segment, click <strong>More Options</strong> and make your changes.</li>
 </ol>
 <h4 id="segment-activations">Segment activations</h4>
+<p>You can activate a segment through a connector or a function.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_activation.png"><img src="/images/early-access/cloudstream/cloudstream_segment_activation.png"
          alt="CloudStream segment activation"
          title="CloudStream segment activation"/>
     </a>
 </figure>
-<p>To activate a segment, select and configure a connector, as follows:</p>
-<ol>
-<li>
-<p>Click <strong>+ Add Activation</strong>. The <strong>Connector Marketplace</strong> is displayed. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you do not see any connectors listed, go to <strong>Admin menu</strong> &gt; <strong>Server-Side Settings</strong> &gt; <strong>CloudStream Connectors</strong>, set <strong>Activate CloudStream Connectors</strong> to <code>On</code>, and click <strong>Save</strong>.</p></p>
-</li>
-<li>
-<p>Select the connector and click <strong>Continue</strong>.</p>
-</li>
-<li>
-<p>Select the <strong>Data Source</strong> and click <strong>Continue</strong>. The <strong>Segment</strong> automatically populates with the segment you are configuring. <p class="tip"><i class="fa fa-info-circle"></i>Each configured connector action can only use data from one data source. If you want to activate data from additional data sources, configure a separate connector action for each data source.</p></p>
-</li>
-<li>
-<p>Configure the connector as needed and click <strong>Continue</strong>.</p>
-</li>
-<li>
-<p>Name and configure the action as needed and click <strong>Continue</strong>.</p>
-</li>
-</ol>
-<p>For more information, see <a href="/server-side/connectors/add/">Add a connector</a> and refer to the setup guide for the selected connector.</p>
+<ul>
+<li>To activate a segment through a connector, see <a href="/early-access/cloudstream/connectors/#add-a-connector">Add a connector</a>.</li>
+<li>To activate a segment through a function, see <a href="/early-access/cloudstream/data-record-functions/">About data record functions</a>.</li>
+</ul>
 <p>The <strong>Segment Activations</strong> table lists the actions that you have configured.</p>
 <p>Click <strong>Next</strong>.</p>
 <h4 id="summary">Summary</h4>
@@ -470,7 +460,7 @@ For operators that specify a time frame, select a value and the time frame.</li>
          title="CloudStream segment summary"/>
     </a>
 </figure>
-<p>Click the more arrow to see the individual actions for each activation.</p>
+<p>Click the more arrow to see the individual actions and functions for each activation.</p>
 <p>Click <strong>Save</strong>, and then save and publish your profile.</p>
 <h3 id="manual-builder">Manual builder</h3>
 <p>To build a segment manually:</p>
@@ -483,7 +473,7 @@ For operators that specify a time frame, select a value and the time frame.</li>
 <li>If you want to add labels or enter any notes about the segment, click <strong>More Options</strong> and make your changes.</li>
 <li>Click <strong>Done</strong>.</li>
 </ol>
-<p>You will need to manually add a data source, configure it, add an activation, and configure the action.</p>
+<p>You will need to manually add a data source, configure it, add an activation, and configure the action or function.</p>
 <h2 id="manage-segments">Manage segments</h2>
 <p>Click a segment to manage it.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_details.png"><img src="/images/early-access/cloudstream/cloudstream_segment_details.png"
@@ -511,22 +501,37 @@ For operators that specify a time frame, select a value and the time frame.</li>
 <li>After you add and configure a new data source, it appears as an <strong>Unused Data Source</strong>.</li>
 <li>Click <strong>Configuration</strong> to add conditions to the segment to query the new data source attributes.</li>
 <li>Click <strong>Add Activation</strong> to add an activation for the connector.</li>
-<li>Select and configure the action.</li>
-<li>The data flow diagram updates to include the new data source and the actions.</li>
+<li>Select and configure the action or function.</li>
+<li>The data flow diagram updates to include the new data source and activations.</li>
 </ol>
 <p>Use the toggle in an activation to enable and disable it, or use the toggle next to the segment name to enable and disable all of its activations.</p>
 <h3 id="configuration">Configuration</h3>
 <p>The <strong>Configuration</strong> window lets you edit the configuration of the segment. Update the conditions for the segment and click <strong>Done</strong>.</p>
 <h3 id="insights">Insights</h3>
-<p>The <strong>Insights</strong> window displays a summary and chart of the connector actions for the time range that you select:</p>
+<p>The <strong>Insights</strong> window displays a summary and chart of the connector activations for the time range that you select:</p>
 <ul>
 <li><strong>Matched</strong>: The number of imported records from any data source meeting the segment conditions, regardless of segment activity.</li>
-<li><strong>Processed</strong>: The number of imported records from any data source meeting the active segment conditions and triggering an enabled action.</li>
+<li><strong>Processed</strong>: The number of imported records from any data source meeting the active segment conditions and triggering an enabled activation.</li>
 </ul>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 mr3">
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
+
+  
+  <a href="/early-access/cloudstream/connectors/"
+    class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>Connectors</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Connectors"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="w-50 mr3">
   
   
   <a href="/early-access/cloudstream/attributes/"
@@ -568,7 +573,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 22, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -1012,14 +1012,16 @@ Functions larger than 64 KB cannot be saved until the size has been reduced.</li
 <h3 id="runtime-versions">Runtime Versions</h3>
 <p>The execution environment for functions, referred to as the runtime version, varies depending on the function type, as follows:</p>
 <ul>
-<li><strong>Data Transformation Functions</strong> – The current runtime version is Transformation V0. For more information, see <a href="/server-side/functions/data-transformation-functions/about/">About Data Transformation Functions</a>.</li>
-<li><strong>Event and Visitor Functions</strong> – The latest runtime version is Action V3. Existing functions use Action V2, which is deprecated. For more information, see the following:
+<li><strong>Data Transformation Functions</strong>: The current runtime version is Transformation V0. For more information, see <a href="/server-side/functions/data-transformation-functions/about/">About Data Transformation Functions</a>.</li>
+<li><strong>Event and Visitor Functions</strong>: The latest runtime version is Action V3. Existing functions use Action V2, which is deprecated. For more information, see the following:
 <ul>
 <li><a href="/server-side/functions/event-visitor-functions/v2-functions/">Event and visitor functions V2</a></li>
 <li><a href="/server-side/functions/event-visitor-functions/event-visitor-v3/">Event and visitor functions V3</a></li>
 <li><a href="/server-side/functions/event-visitor-functions/migrate-v2-to-v3/">Migrate a V2 function to V3</a></li>
 </ul>
 </li>
+<li><strong>CloudStream Data Record Transformation Functions</strong>: The current runtime version is Transformation V1.</li>
+<li><strong>CloudStream Data Record Functions</strong>: The latest runtime version is CLS Action V1.</li>
 </ul>
 <p>The runtime version for a function is shown in the <strong>Code</strong> tab of the code editor, as shown below: <figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
     </a>
@@ -1030,7 +1032,7 @@ Functions larger than 64 KB cannot be saved until the size has been reduced.</li
     </a>
 </figure></p>
 <p>As Tealium releases new runtime versions, older versions will be deprecated, and will eventually become obsolete. A message is displayed on the <strong>Functions Overview</strong> screen and on the <strong>Code</strong> tab for a function when the runtime version in use is deprecated or becomes obsolete.</p>
-<h2 id="execution-time-limits-for-data-transformation-functions">Execution time limits for data transformation functions</h2>
+<h2 id="execution-time-limits-for-event-and-data-record-transformation-functions">Execution time limits for event and data record transformation functions</h2>
 <p>Data transformation functions have the following execution limits:</p>
 <ul>
 <li>1 hour of execution time per minute OR</li>
@@ -1047,8 +1049,8 @@ If a function exceeds the 150 milliseconds execution time, the following error i
     </a>
 </figure>
 <p>For information on how to view details for throttled functions, see <a href="/server-side/functions/manage-functions/view-function-statistics/">View function statistics</a>.</p>
-<h2 id="execution-time-limits-for-event-and-visitor-functions">Execution time limits for event and visitor functions</h2>
-<p>Event and visitor functions have the following execution limits:</p>
+<h2 id="execution-time-limits-for-event-visitor-and-data-record-functions">Execution time limits for event, visitor, and data record functions</h2>
+<p>Event, visitor, and data record functions have the following execution limits:</p>
 <ul>
 <li>Execution rate: 180,000 invocations per minute</li>
 <li>Execution time: 8 hours per minute</li>
@@ -1059,7 +1061,7 @@ If a function exceeds the 10 seconds execution time, the following error is writ
 <h2 id="trace-limits">Trace limits</h2>
 <p>When testing functions with trace, function calls are limited to 15 per minute.</p>
 <h2 id="execution-rate-and-execution-time-example-1">Execution rate and execution time: example 1</h2>
-<p>In this example, we assume that function that communicates with external APIs takes about 100 ms per invocation. In addition, we assume there is only one function configured for the account and the average execution rate of this function is 1000 invocations per second.</p>
+<p>In this example, we assume a function that communicates with external APIs takes about 100 ms per invocation. In addition, we assume there is only one function configured for the account and the average execution rate of this function is 1000 invocations per second.</p>
 <p>The execution rate and execution time within a 1-minute time window are as follows:</p>
 <p>Execution rate = 1000 * 60 * 1 min = <strong>execution rate of 60,000 invocations per minute</strong></p>
 <p>Execution time = 1000 invocations/second * 100 ms / 1000 = 100 minutes = <strong>1.66 hours execution time per minute</strong></p>
@@ -1128,7 +1130,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 10, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1145,8 +1147,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-environment" href="javascript:void(0)">Execution environment</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#function-limitations" href="javascript:void(0)">Function limitations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#runtime-versions" href="javascript:void(0)">Runtime Versions</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-time-limits-for-data-transformation-functions" href="javascript:void(0)">Execution time limits for data transformation functions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-time-limits-for-event-and-visitor-functions" href="javascript:void(0)">Execution time limits for event and visitor functions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-time-limits-for-event-and-data-record-transformation-functions" href="javascript:void(0)">Execution time limits for event and data record transformation functions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-time-limits-for-event-visitor-and-data-record-functions" href="javascript:void(0)">Execution time limits for event, visitor, and data record functions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#trace-limits" href="javascript:void(0)">Trace limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-rate-and-execution-time-example-1" href="javascript:void(0)">Execution rate and execution time: example 1</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execution-rate-and-execution-time-example-2" href="javascript:void(0)">Execution rate and execution time: example 2</a></li>

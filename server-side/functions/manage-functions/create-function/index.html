@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/functions/manage-functions/create-function/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article provides instructions for creating a data transformation functions and event and visitor functions." />
+<meta property="og:description" content="This article provides instructions for creating data transformation functions and event or visitor functions." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Create a function | Manage functions | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -992,7 +992,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article provides instructions for creating a data transformation functions and event and visitor functions.
+      This article provides instructions for creating data transformation functions and event or visitor functions.
     </p>
   
 </div>
@@ -1001,26 +1001,24 @@
   <h2 id="create-a-data-transformation-function">Create a data transformation function</h2>
 <p>Follow these steps to create a data transformation function:</p>
 <ol>
-<li>Navigate to <strong>Server-Side,</strong> <strong>Functions &gt;</strong> <strong>Overview</strong>.</li>
 <li>Click <strong>+ Add Function</strong>.</li>
 <li>Enter a name for the function.</li>
 <li>For the trigger, select <strong>Data Transformation</strong>, then click <strong>Continue</strong>.</li>
 <li>Enter a <strong>Trigger Name</strong>.</li>
-<li>Enter a <strong>Selector</strong>, which is a JSONPath expression (see <a href="https://github.com/json-path/JsonPath">JSONPath</a>). For example, <code>$.datasourceId</code> or <code>$.data.udo.tealium_event</code>.<br>
-The <strong>Selector</strong> is limited to 128 characters.</li>
+<li>In <strong>Selector</strong>, enter a JSONPath expression (see <a href="https://github.com/json-path/JsonPath">JSONPath</a>). For example, <code>$.datasourceId</code> or <code>$.data.udo.tealium_event</code>. The selector is limited to 128 characters.</li>
 <li>Select an <strong>Operator</strong>, and enter a <strong>Value</strong>.<br>
 The <strong>Value</strong> is limited to 128 characters.</li>
-<li>Click <strong>+ Add Condition</strong> to add an additional AND condition.<br>
-A block of AND conditions is limited to 10 conditions.</li>
-<li>Click <strong>+ OR</strong> to add a block of AND conditions.<br>
-The number of OR condition blocks is limited to 10.</li>
+<li>Click <strong>+ Add Condition</strong> to add an additional <code>AND</code> condition.<br>
+A block of <code>AND</code> conditions is limited to 10 conditions.</li>
+<li>Click <strong>+ OR</strong> to add a block of <code>OR</code> conditions.<br>
+The number of <code>OR</code> condition blocks is limited to <code>10</code>.</li>
 <li>Click <strong>Continue</strong>.<br>
 Commented example code is displayed. You can modify this code, or replace it with your own function code.</li>
 <li>After testing the function, click the <strong>Configuration</strong> tab, change the <strong>Status</strong> to ON, and click <strong>Done</strong>.<br>
 For more information on testing functions, see <a href="/server-side/functions/manage-functions/test-functions/">Test Functions</a>.</li>
-<li>Save and publish.<br>
-The function is not saved, and cannot be triggered, until you save and publish. If you edit a function later on, make sure you save and publish for the changes to take effect.</li>
+<li>Save and publish.</li>
 </ol>
+<p>The function is not saved and cannot be triggered until you save and publish. If you edit a function later on, make sure you save and publish for the changes to take effect.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you save and publish after creating a data transformation function, it can take up to 300 seconds for the change to take effect.</p>
 <h3 id="example-of-conditions-for-a-data-transformation-function">Example of conditions for a data transformation function</h3>
 <p>To run a campaign for users whose purchase is more than $1000 and whose cart includes personal electronics products, the following conditions could be used:</p>
@@ -1029,24 +1027,35 @@ The function is not saved, and cannot be triggered, until you save and publish. 
         </figcaption>
 </figure>
 <h2 id="create-an-event-or-visitor-function">Create an event or visitor function</h2>
+<!-- ## Create an event, visitor, or data record function -->
+<blockquote>
+</blockquote>
 <ol>
-<li>Navigate to <strong>Server-Side,</strong> <strong>Functions &gt;</strong> <strong>Overview</strong>.</li>
 <li>Click <strong>+ Add Function</strong>.</li>
 <li>Enter a name for the function.</li>
-<li>Select a trigger: <strong>Processed Event</strong>, or <strong>Processed Visitor</strong>, then click <strong>Continue</strong>.</li>
+<li>Select a trigger: <strong>Processed Event</strong>, <strong>Processed Visitor</strong>, or <strong>Processed Data Record</strong>, then click <strong>Continue</strong>.</li>
 <li>Configure the function, as follows:
 <ul>
 <li>If you selected the <strong>Processed Event</strong> trigger, select an <strong>Event Feed</strong>.</li>
 <li>If you selected the <strong>Processed Visitor</strong> trigger, select an <strong>Audience</strong>.</li>
 </ul>
 </li>
-<li>Click <strong>Continue</strong>.<br>
-Commented example code is displayed. You can modify this code, or replace it with your own function code.</li>
-<li>After testing the function, click the <strong>Configuration</strong> tab, change the <strong>Status</strong> to ON, and click <strong>Done</strong>.<br>
-For more information on testing functions, see <a href="/server-side/functions/manage-functions/test-functions/">Test Functions</a>.</li>
-<li>Save and publish.
-The function is not saved, and cannot be triggered, until you save and publish. If you edit a function later on, make sure you save and publish for the changes to take effect.</li>
 </ol>
+<!--    * If you selected the **Processed Data Record** trigger, select a **Segment**. -->
+<ol>
+<li>Click <strong>Continue</strong>.
+<ul>
+<li>Commented example code is displayed. You can modify this code, or replace it with your own function code.</li>
+</ul>
+</li>
+<li>After testing the function, click the <strong>Configuration</strong> tab, change the <strong>Status</strong> to ON, and click <strong>Done</strong>.
+<ul>
+<li>For more information on testing functions, see <a href="/server-side/functions/manage-functions/test-functions/">Test Functions</a>.</li>
+</ul>
+</li>
+<li>Save and publish.</li>
+</ol>
+<p>The function is not saved and cannot be triggered until you save and publish. If you edit a function later on, make sure you save and publish for the changes to take effect.</p>
 
 </div>
 
@@ -1092,7 +1101,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 8, 2024 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

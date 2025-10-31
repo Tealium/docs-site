@@ -240,13 +240,17 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-cloudstream">CloudStream</a>
         <ul class="pl2 bl b--primary bw1 ea-cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">About CloudStream</a></li>
+        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">About</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li></ul>
+        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -410,7 +414,7 @@
 <li>The number of data records received.</li>
 <li>The number of enrichments applied.</li>
 <li>The number of active segments.</li>
-<li>The number of activations triggered.</li>
+<li>The number of functions and connector actions triggered.</li>
 <li>The number of connectors configured.</li>
 </ul>
 <p>Tables list the cloud data sources, segments, and destinations (connectors and functions) configured in the profile.</p>
@@ -444,7 +448,7 @@
          title="CloudStream segment details"/>
     </a>
 </figure>
-<p>For more information, see <a href="/early-access/cloudstream/manage/">Manage CloudStream segments</a>.</p>
+<p>For more information, see <a href="/early-access/cloudstream/segments/">Manage CloudStream segments</a>.</p>
 <h4 id="segments-with-multiple-data-sources">Segments with multiple data sources</h4>
 <p>You cannot directly join multiple data sources within CloudStream. However, you might want to combine multiple data sources into a segment that has a shared purpose, such as identifying high value customers or high potential prospects.</p>
 <p>For example, suppose you want to create a single segment to find high potential prospects for buying a car from a prospects table and from a table of people who have taken a test drive. First, create a segment that includes each of these data sources. Then, set a filter for the prospects, use an OR condition, and set another filter for the test drive participants.</p>
@@ -453,15 +457,16 @@
          title="CloudStream combined segment details"/>
     </a>
 </figure>
-<h3 id="connectors">Connectors</h3>
-<p>Connectors are integrations between CloudStream and your marketing, analytics, and advertising platforms. They enable the activation of segments by delivering the data to the vendor endpoints.</p>
-<p>You can output a segment to multiple connector actions. However, each configured connector action can only use data from one data source. If you want to activate data from additional data sources through a connector, configure a separate action for each data source.</p>
+<h3 id="activations">Activations</h3>
+<p>Activate a segment by delivering it to a destination using a function or a connector action. Functions allow you to process and transform data before activation, while connector actions send the data directly to marketing, analytics, or advertising platforms.
+Activations are the process of delivering segments to your marketing, analytics, and advertising platforms. You can set activations through connector actions or functions.</p>
+<p>You can output a segment to multiple connector actions or functions. However, each configured activation can only use data from one data source. If you want to activate data from additional data sources through an activation, configure a separate action or function for each data source.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_path.png"><img src="/images/early-access/cloudstream/cloudstream_segment_path.png"
          alt="CloudStream segment path"
          title="CloudStream segment path"/>
     </a>
 </figure>
-<p>For more information, see <a href="/server-side/connectors/about/">About connectors</a>.</p>
+<p>For more information, see <a href="/early-access/cloudstream/connectors/">Manage CloudStream connectors</a> and <a href="/early-access/cloudstream/data-record-functions/">About data record functions</a>.</p>
 <h2 id="comparison">Comparison</h2>
 <p>The key differences between CloudStream, EventStream, and AudienceStream are:</p>
 <table>
@@ -475,13 +480,13 @@
 <tbody>
 <tr>
 <td>Data Source</td>
-<td>Data cloud  (Snowflake, Databricks)</td>
+<td>Data cloud (Snowflake, Databricks)</td>
 <td>Data cloud, web, mobile, server, API events</td>
 </tr>
 <tr>
 <td>Data Storage</td>
 <td>No data stored in Tealium</td>
-<td>Data loaded and stored in Tealium (DataAccess)</td>
+<td>Data loaded and stored in Tealium (Visitor profiles and DataAccess)</td>
 </tr>
 <tr>
 <td>Segment Persistence</td>
@@ -489,19 +494,19 @@
 <td>Persisted in visitor profiles</td>
 </tr>
 <tr>
-<td>Connectors</td>
-<td>Limited</td>
-<td>Extensive</td>
+<td>Activations</td>
+<td>AudienceStream connectors and functions</td>
+<td>AudienceStream and EventStream connectors and functions</td>
 </tr>
 <tr>
 <td>Connector Actions</td>
 <td>Separate for each data source</td>
-<td>Multiple data sources  per action.</td>
+<td>Multiple data sources per action.</td>
 </tr>
 <tr>
 <td>Primary Use Case</td>
 <td>Batch/warehouse activation</td>
-<td>Real-time processing &amp; activation</td>
+<td>Real-time processing and activation</td>
 </tr>
 </tbody>
 </table>
@@ -556,7 +561,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 22, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -577,7 +582,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-sources" href="javascript:void(0)">Data sources</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cloud-attributes" href="javascript:void(0)">Cloud attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#segments" href="javascript:void(0)">Segments</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connectors" href="javascript:void(0)">Connectors</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activations" href="javascript:void(0)">Activations</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#comparison" href="javascript:void(0)">Comparison</a></li>
               </nav>
   </aside></nav>

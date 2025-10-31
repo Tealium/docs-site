@@ -998,8 +998,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Event and visitor functions are invoked after the event or visitor is processed. You can use event and visitor functions to retrieve data from other systems, augment Tealium data, or send data to other endpoints. To retrieve data from other systems, a function typically requires authentication for that system. For information on adding authentication to an event or visitor function, see <a href="/server-side/functions/event-visitor-functions/authentication/">Adding an Authentication to a Function</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Event and visitor functions cannot change an event or visitor profile because these functions are invoked after Tealium has processed the event or visitor profile. To change an event, use either event attribute enrichments or an event transformation function. You can also change the event at the data source before it is sent to Tealium. To change a visitor profile, use visit or visitor attribute enrichments.</p>
+  <p>Event and visitor functions run at the end of the data pipeline, after the event or visitor is processed. Use event and visitor functions to retrieve data from other systems, augment Tealium data, or send data to other endpoints.</p>
+<figure><a class="slb" href="/images/server-side/functions-event-data-pipeline.png"><img src="/images/server-side/functions-event-data-pipeline.png"/>
+    </a>
+</figure>
+<p>If your function needs authentication to access an external system, see <a href="/server-side/functions/event-visitor-functions/authentication/">Add authentication to a function</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>At this point in the data pipeline, modifications to the event or visitor data have no effect on other parts of the system. To modify an event, use either event attribute enrichments or an event transformation function. To modify a visitor profile, use visitor attribute enrichments.</p>
 <h2 id="action-v2-and-action-v3-runtimes">Action V2 and Action V3 runtimes</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The Action V2 runtime is obsolete and is no longer supported. Functions that use the V2 runtime are still executing but you cannot save code changes. To save code changes, you need to update the runtime version, which may require changes to the function code. For information on the required code changes, see <a href="/server-side/functions/event-visitor-functions/migrate-v2-to-v3/">Migrate a V2 function to the V3 runtime</a>.</p>
 <p>The input data for event and visitor functions varies depending on the function type (event or visitor) and the runtime version (Action V2 or Action V3). Functions that use the Action V2 runtime have named exports for input data. Functions that use the Action V3 runtime receive data as input parameters.</p>
@@ -1062,7 +1066,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 12, 2024 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
