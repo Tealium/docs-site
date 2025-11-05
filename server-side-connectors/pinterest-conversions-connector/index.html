@@ -776,6 +776,9 @@
       <a href="/server-side-connectors/splunk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Splunk</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Audiences</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1339,6 +1342,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdapt Audiences</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li>
@@ -1450,7 +1455,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Pinterest API</li>
@@ -1458,15 +1463,15 @@
 <li>API Endpoint: <code>https://api.pinterest.com/</code></li>
 <li>Vendor documentation: <a href="https://developers.pinterest.com/docs/conversions/conversion-management/">Pinterest Conversions Guide</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
+<h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 1000</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 2 MB</li>
 </ul>
-<h2 id="how-it-works">How it Works</h2>
-<p>The Pinterest API for Conversions allows advertisers to send conversion events to Pinterest without using the Pinterest tag. By mapping conversions to Pinterest campaigns, you can improve conversion visibility and receive a more accurate picture of the effectiveness of your campaigns and actions that are driving conversions. Additional benefits include enhanced optimization and targeting, greater transparency, and enhancing reporting and analysis.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>The Pinterest API for Conversions lets advertisers send conversion events to Pinterest without using the Pinterest tag. Mapping conversions to Pinterest campaigns increases conversion visibility and provides a more accurate view of campaign effectiveness and the actions driving conversions. This approach optimizes targeting, increases transparency, and improves reporting and analysis.</p>
 <p>The Pinterest API for Conversions can receive web, in-app, or offline conversions. Events received within an hour of the event occurring are reported as web or app events. Events received outside of that window are categorized as offline events.</p>
 <p>We recommend using both the Pinterest Conversions connector and the Pinterest tag together to maximize visibility and track conversions. The Pinterest Conversions connector is available as a standalone solution; however, using both the Pinterest Conversions connector and the Pinterest tag together provides the best results.</p>
 <p>Events that can be tracked include:</p>
@@ -1484,7 +1489,6 @@
 </ul>
 <h2 id="deduplication">Deduplication</h2>
 <p>If redundant implementations exist (for example, the Pinterest API for Conversions and <a href="/client-side-tags/pinterest-tag/">Pinterest tag</a>), deduplication is required to prevent double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions to be attributed than if the connector or tag solution is used independently.</p>
-<h3 id="deduplication-for-pinterest-tag-and-pinterest-api-for-conversions">Deduplication for Pinterest tag and Pinterest API for Conversions</h3>
 <p>The <a href="/client-side-tags/pinterest-tag/">Pinterest tag</a> and Pinterest API for Conversions use the Event ID for deduplication. Ensure this value is included when multiple sources are used to track conversion data. To find your Event IDs, complete the following steps:</p>
 <ol>
 <li>Log in to your <a href="http://pinterest.com/business/create/">Pinterest business account</a>.</li>
@@ -1509,13 +1513,13 @@
 <td>Event ID</td>
 </tr>
 <tr>
-<td>Checkout (dropdown selection)</td>
+<td><code>Checkout</code> (dropdown selection)</td>
 <td>Event Name</td>
 </tr>
 </tbody>
 </table>
 <p>For more information, see the <a href="/client-side-tags/pinterest-tag/">Pinterest Tag Setup Guide</a>.</p>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1532,7 +1536,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
+<h2 id="settings">Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
@@ -1562,10 +1566,10 @@
 </li>
 <li>Verify in Pinterest Ads Manager.</li>
 </ol>
-<h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
+<h2 id="actions-1">Actions</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--send-conversion-event">Action — Send Conversion Event</h3>
+<h3 id="send-conversion-event">Send Conversion Event</h3>
 <table>
 <thead>
 <tr>
@@ -1605,7 +1609,7 @@
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Apple&rsquo;s Identifier for Advertisers (already SHA256 hashed)</td>
@@ -1613,7 +1617,7 @@
 </tr>
 <tr>
 <td>Apple&rsquo;s Identifier for Advertisers (apply SHA256 hash)</td>
-<td>Provide a plain text Apple&rsquo;s Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a plain text Apple&rsquo;s Identifier for Advertisers and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Google Advertising ID (already SHA256 hashed)</td>
@@ -1621,7 +1625,7 @@
 </tr>
 <tr>
 <td>Google Advertising ID (apply SHA256 hash)</td>
-<td>Provide a plain text Google Advertising ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a plain text Google Advertising ID and the connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Client IP Address</td>
@@ -1637,7 +1641,7 @@
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number and the connector will remove all non-numeric characters and leading zeroes, whitespace trim, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number and the connector will remove all non-numeric characters and leading zeroes, whitespace trims, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Gender (already SHA256 hashed)</td>
@@ -1645,7 +1649,7 @@
 </tr>
 <tr>
 <td>Gender (apply SHA256 hash)</td>
-<td>Provide a plain text gender and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text gender and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Birthdate (already SHA256 hashed)</td>
@@ -1653,7 +1657,7 @@
 </tr>
 <tr>
 <td>Birthdate (apply SHA256 hash)</td>
-<td>Provide a plain text birthdate and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text birthdate and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>First Name (already SHA256 hashed)</td>
@@ -1661,7 +1665,7 @@
 </tr>
 <tr>
 <td>First Name (apply SHA256 hash)</td>
-<td>Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text first name and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Last Name (already SHA256 hashed)</td>
@@ -1669,7 +1673,7 @@
 </tr>
 <tr>
 <td>Last Name (apply SHA256 hash)</td>
-<td>Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text last name and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>City (already SHA256 hashed)</td>
@@ -1677,7 +1681,7 @@
 </tr>
 <tr>
 <td>City (apply SHA256 hash)</td>
-<td>Provide a plain text city and the connector will remove spaces and punctuation, whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text city and the connector removes spaces and punctuation, whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>State (already SHA256 hashed)</td>
@@ -1685,7 +1689,7 @@
 </tr>
 <tr>
 <td>State (apply SHA256 hash)</td>
-<td>Provide a plain text state and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text state and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Zip Code (already SHA256 hashed)</td>
@@ -1693,7 +1697,7 @@
 </tr>
 <tr>
 <td>Zip Code (apply SHA256 hash)</td>
-<td>Provide a plain text zip code and the connector will remove all non-numeric characters, whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a plain text zip code and the connector removes all non-numeric characters, whitespace trims, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Country Code (already SHA256 hashed)</td>
@@ -1701,7 +1705,7 @@
 </tr>
 <tr>
 <td>Country Code (apply SHA256 hash)</td>
-<td>Provide a plain text country code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text country code and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>External ID (already SHA256 hashed)</td>
@@ -1709,7 +1713,7 @@
 </tr>
 <tr>
 <td>External ID (apply SHA256 hash)</td>
-<td>Provide one or more plain text external IDs and the connector will whitespace trim and hash these values using SHA256 hash. If you provide multiple External IDs, format them as an array.</td>
+<td>Provide one or more plain text external IDs and the connector whitespace trims and hashes these values using SHA256 hash. If you provide multiple External IDs, format them as an array.</td>
 </tr>
 <tr>
 <td>Click ID</td>
@@ -1763,7 +1767,7 @@
 <tbody>
 <tr>
 <td>Currency</td>
-<td>The ISO 4217 currency code. If not provided, Pinterest will default to the advertiser&rsquo;s currency set during account creation.</td>
+<td>The ISO 4217 currency code. If not provided, Pinterest uses the advertiser&rsquo;s currency set during account creation.</td>
 </tr>
 <tr>
 <td>Value</td>
@@ -1787,7 +1791,7 @@
 </tr>
 <tr>
 <td>Opt Out Type</td>
-<td>Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Array type attributes can be mapped and will be converted to a comma separated string.</td>
+<td>Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Array type attributes can be mapped and are converted to a comma separated string.</td>
 </tr>
 </tbody>
 </table>
@@ -1907,7 +1911,7 @@
 <tbody>
 <tr>
 <td>Testing Mode</td>
-<td>Select the checkbox to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly.</td>
+<td>Select the checkbox to mark the request as a test request. The events will not be recorded, but the API  still returns the same response messages. Use this mode to verify your requests are working and your events are constructed correctly.</td>
 </tr>
 </tbody>
 </table>
@@ -1923,6 +1927,21 @@
 <tr>
 <td>Disable Automapping</td>
 <td>Disable automatic mapping for the connector.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="configuration">Configuration</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access Token</td>
+<td>Access Token generated through the Pinterest Ads Manager. For more information, see <a href="https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint">Pinterest: Conversions Guide</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1986,7 +2005,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 28, 2025 
+          <p>This page was last updated:  November 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2000,16 +2019,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-pinterest-tag-and-pinterest-api-for-conversions" href="javascript:void(0)">Deduplication for Pinterest tag and Pinterest API for Conversions</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#settings" href="javascript:void(0)">Settings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion-event" href="javascript:void(0)">Action — Send Conversion Event</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>
               </nav>
   </aside></nav>
 

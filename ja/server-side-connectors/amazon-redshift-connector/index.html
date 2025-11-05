@@ -860,6 +860,9 @@
       <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt イベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdaptオーディエンス</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Swrveアプリイベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1566,6 +1569,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt イベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdaptオーディエンス</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrveアプリイベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences コネクタ</a></li>
@@ -1743,8 +1748,8 @@
 <ul>
 <li>認証タイプを選択します：
 <ul>
-<li><strong>STS</strong>：次のフィールドが必要です <strong>Assume Role: ARN</strong>、<strong>Assume Role: Session Name</strong>。詳細については、<a href="#sts-credentials">STS 資格情報</a>を参照してください。</li>
-<li><strong>アクセスキー</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> と <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">アクセスキーとシークレット資格情報</a>を参照してください。</li>
+<li><strong>STS</strong>：次のフィールドが必要です <strong>Assume Role: ARN</strong>、<strong>Assume Role: Session Name</strong>。詳細については、<a href="#sts-credentials">STS 認証情報</a>を参照してください。</li>
+<li><strong>アクセスキー</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> と <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">アクセスキーとシークレット認証情報</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
@@ -1790,12 +1795,12 @@
 </li>
 <li><strong>ワークグループ名</strong>
 <ul>
-<li><strong>クラスター識別子</strong>が提供されていない場合に必要です。Redshift SERVERLESSインスタンスにアクセスする場合は、ワークグループ名を提供してください。</li>
+<li><strong>クラスタ識別子</strong>が提供されていない場合に必要です。Redshift SERVERLESSインスタンスにアクセスする場合は、ワークグループ名を提供してください。</li>
 </ul>
 </li>
-<li><strong>クラスター識別子</strong>
+<li><strong>クラスタ識別子</strong>
 <ul>
-<li><strong>ワークグループ名</strong>が提供されていない場合に必要です。Redshiftクラスターを使用している場合は、クラスター識別子を提供してください。</li>
+<li><strong>ワークグループ名</strong>が提供されていない場合に必要です。Redshiftクラスタを使用している場合は、クラスタ識別子を提供してください。</li>
 </ul>
 </li>
 <li><strong>データベース名</strong>
@@ -1805,12 +1810,12 @@
 </li>
 </ul>
 <h3 id="aws-redshiftへの接続を作成する">AWS Redshiftへの接続を作成する</h3>
-<p>Tealiumは、クラスター、ワークスペース、データベースのリストを表示し、イベントデータとオーディエンスデータをRedshiftテーブルにアップロードするために、AWS Redshiftインスタンスへの接続を必要とします。認証には2つのオプションがあります：</p>
+<p>Tealiumは、クラスタ、ワークスペース、データベースのリストを表示し、イベントデータとオーディエンスデータをRedshiftテーブルにアップロードするために、AWS Redshiftインスタンスへの接続を必要とします。認証には2つのオプションがあります：</p>
 <ul>
 <li><a href="#access-key-and-secret-credentials">アクセスキーとアクセスシークレットを提供する</a>。</li>
-<li><a href="#sts-credentials">STS資格情報を提供する</a>。</li>
+<li><a href="#sts-credentials">STS認証情報を提供する</a>。</li>
 </ul>
-<h4 id="アクセスキーとシークレット資格情報">アクセスキーとシークレット資格情報</h4>
+<h4 id="アクセスキーとシークレット認証情報">アクセスキーとシークレット認証情報</h4>
 <p>AWSアクセスキーとシークレットを見つけるには：</p>
 <ol>
 <li>AWS管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
@@ -1820,25 +1825,25 @@
 <li>キーを作成します。
 <ul>
 <li><strong>セキュリティ認証情報</strong>タブに移動し、<strong>アクセスキーの作成</strong>をクリックします。</li>
-<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存します。</li>
+<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存してください。</li>
 </ul>
 </li>
 </ol>
-<h4 id="sts資格情報">STS資格情報</h4>
-<p>STS資格情報を見つけるには：</p>
+<h4 id="sts認証情報">STS認証情報</h4>
+<p>STS認証情報を見つけるには：</p>
 <ol>
 <li>AWS管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
 <li><strong>ロール</strong>をクリックし、次に<strong>ロールの作成</strong>をクリックします。</li>
-<li><strong>信頼されたエンティティタイプ</strong>の下で、AWSアカウントを選択します。</li>
+<li><strong>信頼されたエンティティタイプ</strong>で、AWSアカウントを選択します。</li>
 <li>別のAWSアカウントを選択し、TealiumアカウントID：<code>757913464184</code>を入力します。</li>
-<li>（オプション）<strong>外部IDが必要</strong>チェックボックスを選択し、使用したい外部IDを指定します。外部IDは最大256文字の長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
+<li>（オプション）<strong>外部IDが必要</strong>チェックボックスを選択し、使用したい外部IDを指定します。外部IDは256文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含めることができます。</li>
 <li>ロールの名前を入力します。ロール名は<code>TealiumRedshift</code>で始まる必要があります。例：<code>TealiumRedshift-test</code>。</li>
 <li>ロールにポリシーをアタッチします。詳細については、<a href="#attach-policies">ポリシーのアタッチ</a>を参照してください。</li>
 <li>信頼ポリシーを作成します。
 <ul>
 <li><strong>信頼関係</strong>タブに移動し、<strong>信頼関係の編集</strong>をクリックします。</li>
 <li>作成したロールを使用するために特定の外部IDを許可する信頼ポリシーがあることを確認し、Tealiumの本番アカウントIDが<code>757913464184</code>であることを確認します。</li>
-<li>Tealiumへの接続のための<code>EXTERNAL_ID</code>値を構成します。IDは最大256文字の長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
+<li>Tealiumへの接続に使用する<code>EXTERNAL_ID</code>値を構成します。IDは256文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含めることができます。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -1862,7 +1867,7 @@
 <h4 id="ポリシーのアタッチ">ポリシーのアタッチ</h4>
 <p>ポリシーをアタッチするには：</p>
 <ol>
-<li><strong>権限</strong>タブで<strong>既存のポリシーを直接アタッチ</strong>をクリックします。
+<li><strong>Permissions</strong> タブで <strong>Attach existing policies directly</strong> をクリックします。
 <ol>
 <li>
 <p>フルアクセス</p>
@@ -1871,7 +1876,7 @@
 </ul>
 </li>
 <li>
-<p>制限されたアクセス</p>
+<p>制限付きアクセス</p>
 <ul>
 <li>特定のクラスターへのアクセスを制限するには、以下の例のようなポリシーを作成します。例では、<code>YOUR_CLUSTER_ARN</code> が Tealium がイベントおよびオーディエンスデータを <code>YOUR_DATABASE_ARN</code> Redshift テーブルに挿入するために使用するクラスターです：</li>
 </ul>
@@ -2013,11 +2018,11 @@
 </tr>
 </tbody>
 </table>
-<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="全イベントデータ送信マイクロバッチ">全イベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a> を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2053,13 +2058,13 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチを送信するまでの待ち時間です。この値は <code>1</code> から <code>16</code> 分の間である必要があります。デフォルト値は <code>5</code> 分です。</td>
+<td>バッチアクションが送信される頻度を指定するために有効期限 (TTL) を構成します。<code>1</code> から <code>16</code> 分の間で値を入力します。デフォルト値は <code>5</code> 分です。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="全イベントデータ送信バッチ">全イベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a> を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2095,13 +2100,13 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチを送信するまでの待ち時間です。この値は <code>15</code> から <code>60</code> 分の間である必要があります。デフォルト値は <code>30</code> 分です。</td>
+<td>バッチアクションが送信される頻度を指定するために有効期限 (TTL) を構成します。<code>15</code> から <code>60</code> 分の間で値を入力します。デフォルト値は <code>30</code> 分です。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="カスタムイベントデータ送信マイクロバッチ">カスタムイベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-2">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a> を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2136,13 +2141,13 @@
 <tbody>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチを送信するまでの待ち時間です。この値は <code>1</code> から <code>16</code> 分の間である必要があります。デフォルト値は <code>5</code> 分です。</td>
+<td>バッチアクションが送信される頻度を指定するために有効期限 (TTL) を構成します。<code>1</code> から <code>16</code> 分の間で値を入力します。デフォルト値は <code>5</code> 分です。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="カスタムイベントデータ送信バッチ">カスタムイベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-3">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a> を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2158,11 +2163,11 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 </tbody>
 </table>
@@ -2176,8 +2181,8 @@
 </thead>
 <tbody>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>15</code> 分から <code>60</code> 分の間である必要があります。デフォルト値は <code>30</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>15</code>分から<code>60</code>分の間で値を入力してください。デフォルト値は<code>30</code>分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2199,19 +2204,19 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 <tr>
-<td>ペイロードを記録する列</td>
-<td>ペイロードを記録するために <code>SUPER</code> 列を選択してください。</td>
+<td>ペイロードを記録するカラム</td>
+<td>ペイロードを記録するために<code>SUPER</code>カラムを選択してください。</td>
 </tr>
 <tr>
-<td>タイムスタンプを記録する列</td>
-<td>タイムスタンプを記録する列を選択してください。テーブルに <strong>timestamp</strong> 列が <strong>default sysdate</strong> に構成されている場合は不要です。</td>
+<td>タイムスタンプを記録するカラム</td>
+<td>タイムスタンプを記録するカラムを選択してください。テーブルに<strong>timestamp</strong>カラムが<strong>default sysdate</strong>に構成されている場合は不要です。</td>
 </tr>
 <tr>
 <td>全訪問イベントを含む</td>
@@ -2219,11 +2224,11 @@
 </tr>
 <tr>
 <td>属性名を印刷</td>
-<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新された場合、ペイロード名が更新を反映することに注意してください。</td>
+<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。</td>
 </tr>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>1</code> 分から <code>16</code> 分の間である必要があります。デフォルト値は <code>5</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>1</code>分から<code>16</code>分の間で値を入力してください。デフォルト値は<code>5</code>分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2245,19 +2250,19 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 <tr>
-<td>ペイロードを記録する列</td>
-<td>ペイロードを記録するために <code>SUPER</code> 列を選択してください。</td>
+<td>ペイロードを記録するカラム</td>
+<td>ペイロードを記録するために<code>SUPER</code>カラムを選択してください。</td>
 </tr>
 <tr>
-<td>タイムスタンプを記録する列</td>
-<td>タイムスタンプを記録する列を選択してください。テーブルに <strong>timestamp</strong> 列が <strong>default sysdate</strong> に構成されている場合は不要です。</td>
+<td>タイムスタンプを記録するカラム</td>
+<td>タイムスタンプを記録するカラムを選択してください。テーブルに<strong>timestamp</strong>カラムが<strong>default sysdate</strong>に構成されている場合は不要です。</td>
 </tr>
 <tr>
 <td>全訪問イベントを含む</td>
@@ -2265,11 +2270,11 @@
 </tr>
 <tr>
 <td>属性名を印刷</td>
-<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新された場合、ペイロード名が更新を反映することに注意してください。</td>
+<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。</td>
 </tr>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>15</code> 分から <code>60</code> 分の間である必要があります。デフォルト値は <code>30</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>15</code>分から<code>60</code>分の間で値を入力してください。デフォルト値は<code>30</code>分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2291,11 +2296,11 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 </tbody>
 </table>
@@ -2309,8 +2314,8 @@
 </thead>
 <tbody>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>1</code> 分から <code>16</code> 分の間である必要があります。デフォルト値は <code>5</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>1</code>分から<code>16</code>分の間で値を入力してください。デフォルト値は<code>5</code>分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2332,11 +2337,11 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 </tbody>
 </table>
@@ -2350,8 +2355,8 @@
 </thead>
 <tbody>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>15</code> 分から <code>60</code> 分の間である必要があります。デフォルト値は <code>15</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>15</code>分から<code>60</code>分の間で値を入力してください。デフォルト値は<code>15</code>分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2373,29 +2378,29 @@
 <tbody>
 <tr>
 <td>スキーマ</td>
-<td>接続するスキーマ名を指定してください。</td>
+<td>接続したいスキーマ名を指定してください。</td>
 </tr>
 <tr>
 <td>テーブル</td>
-<td>接続するテーブル名を指定してください。</td>
+<td>接続したいテーブル名を指定してください。</td>
 </tr>
 <tr>
 <td>クエリパラメータ</td>
-<td>クエリ内のプレースホルダーに置き換えるパラメータをマッピングしてください。少なくとも1つのパラメータをマッピングする必要があります。</td>
+<td>クエリ内のプレースホルダーに置き換えるパラメータをマッピングします。少なくとも1つのパラメータをマッピングする必要があります。</td>
 </tr>
 <tr>
 <td>クエリ</td>
-<td><code>SQL</code> 属性に渡す生のステートメントを指定してください。<strong><code>INSERT</code></strong> または <strong><code>UPDATE</code></strong> ステートメントのみが許可されます。置き換える必要がある属性名を二重中括弧 <code>{{ }}</code> で囲んでください。詳細については、<a href="#query-example">クエリ例</a>を参照してください。</td>
+<td><code>SQL</code>属性に渡す生のステートメントを指定してください。**<code>INSERT</code><strong>または</strong><code>UPDATE</code>**ステートメントのみが許可されます。置き換える必要がある属性名を波括弧<code>{{ }}</code>で囲んでください。詳細については、<a href="#query-example">クエリ例</a>を参照してください。</td>
 </tr>
 <tr>
-<td>バッチ有効時間</td>
-<td>バッチを送信するまでの待機時間です。この値は <code>1</code> 分から <code>60</code> 分の間である必要があります。デフォルト値は <code>15</code> 分です。</td>
+<td>バッチの有効期限</td>
+<td>バッチを送信するまでの待ち時間です。この値は<code>1</code>分から<code>60</code>分の間で構成できます。デフォルト値は<code>15</code>分です。</td>
 </tr>
 </tbody>
 </table>
 <h5 id="クエリ例">クエリ例</h5>
-<p><strong>クエリパラメータ</strong> セクションで <code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code> というマッピングを追加した場合、クエリ内でそのパラメータを <code>{{MY_BOOLEAN_PARAM}}</code> を使用して参照します。</p>
-<p>例えば、次のクエリパラメータがマッピングされています：<code>MY_STRING_PARAM</code>, <code>MY_BOOLEAN_PARAM</code>, <code>ANOTHER_PARAM</code>, <code>MY_PARAM</code>.</p>
+<p><strong>クエリパラメータ</strong>セクションでマッピングを追加した場合、例えば<code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code>とした場合、クエリ内でそのパラメータを<code>{{MY_BOOLEAN_PARAM}}</code>を使用して参照します。</p>
+<p>クエリの例では、次のクエリパラメータがマッピングされています：<code>MY_STRING_PARAM</code>, <code>MY_BOOLEAN_PARAM</code>, <code>ANOTHER_PARAM</code>, <code>MY_PARAM</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> redshift_table (key1,key2) <span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;{{MY_STRING_PARAM}}&#39;</span>, <span style="color:#960050;background-color:#1e0010">{{</span>MY_BOOLEAN_PARAM<span style="color:#960050;background-color:#1e0010">}}</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table <span style="color:#66d9ef">SET</span> key1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{{MY_STRING_PARAM}}&#39;</span>, key2 <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{{</span>MY_BOOLEAN_PARAM<span style="color:#960050;background-color:#1e0010">}}</span> <span style="color:#66d9ef">WHERE</span> key3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{{ANOTHER_PARAM}}&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table <span style="color:#66d9ef">SET</span> key2 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">SELECT</span> new_key2 <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.key1 <span style="color:#f92672">=</span> redshift_table.key1)
@@ -2460,7 +2465,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月6日
+          <p>最終更新日 ::  2025年November月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

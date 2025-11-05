@@ -860,6 +860,9 @@
       <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt イベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdaptオーディエンス</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Swrveアプリイベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1566,6 +1569,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt イベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdaptオーディエンス</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrveアプリイベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences コネクタ</a></li>
@@ -1735,53 +1740,94 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="コネクタアクション">コネクタアクション</h2>
+  <h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>プライベートアプリアクセストークン</strong>：（必須）プライベートアプリアクセストークンを提供してください。この値は、HubSpotのデータを取得するためのアクションパラメータフィールドに正しく入力する必要があります。詳細については、<a href="https://developers.hubspot.com/docs/api/private-apps">HubSpot: プライベートアプリ</a>を参照してください。</li>
+</ul>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
-<th><strong>アクション名</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>コンタクトの挿入</td>
+<td>コンタクトの作成（リアルタイム）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>コンタクトの更新</td>
+<td>コンタクトの作成（バッチ処理）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>コンタクトリストへのコンタクト追加</td>
+<td>コンタクトの更新（リアルタイム）</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>コンタクトリストからのコンタクト削除</td>
+<td>コンタクトの更新（バッチ処理）</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>コンタクトをリストに追加</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>リストからコンタクトを削除</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>の記事を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
+<p>アクションの名前を入力し、<strong>アクションタイプ</strong>を選択します。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="コンタクトの作成リアルタイム">コンタクトの作成（リアルタイム）</h3>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンタクトプロパティ</td>
+<td><ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="コンタクトの作成バッチ処理">コンタクトの作成（バッチ処理）</h3>
+<h4 id="バッチ制限">バッチ制限</h4>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。以下のいずれかの閾値に達するまでリクエストがキューに入ります：</p>
 <ul>
-<li><strong>タイトル</strong><br>
-タイトルを追加します。</li>
-<li><strong>HubSpot API キー</strong><br>
-HubSpot API キーを入力します。詳細については、<a href="https://app.hubspot.com/hapikeys/">アカウントのAPIキーをどのように見つける/作成するか？</a>を参照してください。</li>
-<li><strong>ノート</strong><br>
-(オプション) このコネクタの使用に関する組織の情報を記載します。</li>
+<li>最大リクエスト数：10</li>
+<li>最古のリクエストからの最大時間：5分</li>
+<li>リクエストの最大サイズ：1 MB</li>
 </ul>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>次へ</strong> をクリックするか、<strong>アクション</strong> タブに進みます。ここでコネクタアクションを構成します。</p>
-<p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---コンタクトの挿入">アクション - コンタクトの挿入</h3>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンタクトプロパティ</td>
+<td><ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="コンタクトの更新リアルタイム">コンタクトの更新（リアルタイム）</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -1792,29 +1838,23 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 </thead>
 <tbody>
 <tr>
-<td>アクション名</td>
-<td>この特定のアクションの名前。</td>
+<td>コンタクト識別子</td>
+<td><ul><li>（必須）コンタクトのメールアドレスまたはコンタクトID。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>アクションカテゴリ</td>
-<td><ul><li>CRM、メール、エンゲージメント、VoC。</li><li>変更不可。</li><li>これらのカテゴリは、同意プロンプトおよび同意構成機能を通じてユーザーに提示されます。</li><li>ユーザーはこれらのカテゴリに基づいてトラッキングのオプトイン/オプトアウトが可能です。</li></ul></td>
-</tr>
-<tr>
-<td>頻度制限</td>
-<td><ul><li>オンまたはオフの値。</li><li>デフォルトはオン。</li><li>このアクションがトリガーされる頻度を制御します。</li></ul></td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>事前に用意されたドロップダウンリストからソースを選択します。</td>
-</tr>
-<tr>
-<td>構成するデータ</td>
-<td><ul><li>(必須) メールアドレス。</li><li>マップするメールアドレスを特定します。</li></ul> から <ul><li>ドロップダウンリストからマップするHubSpotフィールドを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、HubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p></td>
+<td>コンタクトプロパティ</td>
+<td><ul><li>（必須）構成するコンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-<h3 id="アクション---コンタクトの更新">アクション - コンタクトの更新</h3>
+<h3 id="コンタクトの更新バッチ処理">コンタクトの更新（バッチ処理）</h3>
+<h4 id="バッチ制限-1">バッチ制限</h4>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。以下のいずれかの閾値に達するまでリクエストがキューに入ります：</p>
+<ul>
+<li>最大リクエスト数：10</li>
+<li>最古のリクエストからの最大時間：5分</li>
+<li>リクエストの最大サイズ：1 MB</li>
+</ul>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -1825,31 +1865,23 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 </thead>
 <tbody>
 <tr>
-<td>アクション名</td>
-<td>この特定のアクションの名前。</td>
+<td>コンタクト識別子</td>
+<td><ul><li>（必須）コンタクトのメールアドレスまたはコンタクトID。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>アクションカテゴリ</td>
-<td><ul><li>CRM、メール、エンゲージメント、VoC</li><li>変更不可。</li><li>これらのカテゴリは、同意プロンプトおよび同意構成機能を通じてユーザーに提示されます。</li><li>ユーザーはこれらのカテゴリに基づいてトラッキングのオプトイン/オプトアウトが可能です。</li></ul></td>
-</tr>
-<tr>
-<td>頻度制限</td>
-<td><ul><li>オンまたはオフの値。</li><li>デフォルトはオン。</li><li>このアクションがトリガーされる頻度を制御します。</li></ul></td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>事前に用意されたドロップダウンリストからソースを選択します。</td>
-</tr>
-<tr>
-<td>コンタクト検索</td>
-<td><ul><li>(必須) メールアドレス。</li><li>マップするメールアドレスを特定します。</li></ul> から <ul><li>ドロップダウンリストからマップするHubSpotフィールドを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p></td>
+<td>コンタクトプロパティ</td>
+<td><ul><li>（必須）構成するコンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|構成するデータ|  <ul><li>(必須) コンタクトIDまたはコンタクトメール</li></ul> から <ul><li>ドロップダウンリストからマップするHubSpotフィールドを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p>
- </li></ul> |
-<h3 id="アクション---コンタクトリストへのコンタクト追加">アクション - コンタクトリストへのコンタクト追加</h3>
+<h3 id="リストにコンタクトを追加">リストにコンタクトを追加</h3>
+<h4 id="バッチ制限-2">バッチ制限</h4>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。以下のいずれかの閾値に達するまでリクエストがキューに入ります：</p>
+<ul>
+<li>最大リクエスト数：500</li>
+<li>最古のリクエストからの最大時間：10分</li>
+<li>リクエストの最大サイズ：1 MB</li>
+</ul>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -1860,31 +1892,21 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 </thead>
 <tbody>
 <tr>
-<td>アクション名</td>
-<td>(必須) コンタクトのコンタクトリスト</td>
+<td>対象コンタクトリスト</td>
+<td><ul><li>（必須）コンタクトを追加するリストを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>アクションカテゴリ</td>
-<td><ul><li>CRM、メール、エンゲージメント、VoC</li><li>変更不可。</li><li>これらのカテゴリは、同意プロンプトおよび同意構成機能を通じてユーザーに提示されます。</li><li>ユーザーはこれらのカテゴリに基づいてトラッキングのオプトイン/オプトアウトが可能です。</li></ul></td>
-</tr>
-<tr>
-<td>頻度制限</td>
-<td><ul><li>オンまたはオフの値。</li><li>デフォルトはオン。</li><li>このアクションがトリガーされる頻度を制御します。</li></ul></td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>事前に用意されたドロップダウンリストからソースを選択します。</td>
-</tr>
-<tr>
-<td>ターゲットコンタクトリスト</td>
-<td><ul><li>(必須) 事前に用意されたドロップダウンリストからコンタクトのコンタクトリストを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p></td>
+<td>コンタクト検索</td>
+<td><ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|コンタクト検索|  <ul><li>(必須) コンタクトIDまたはコンタクトメール。</li></ul> から <ul><li>ドロップダウンリストからマップするHubSpotフィールドを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p>
- </li></ul> |
-<h3 id="アクション---コンタクトリストからのコンタクト削除">アクション - コンタクトリストからのコンタクト削除</h3>
+<h3 id="リストからコンタクトを削除">リストからコンタクトを削除</h3>
+<ul>
+<li>最大リクエスト数：500</li>
+<li>最古のリクエストからの最大時間：10分</li>
+<li>リクエストの最大サイズ：1 MB</li>
+</ul>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
@@ -1895,30 +1917,15 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 </thead>
 <tbody>
 <tr>
-<td>アクション名</td>
-<td>(必須) コンタクトのコンタクトリスト</td>
+<td>対象コンタクトリスト</td>
+<td><ul><li>（必須）コンタクトを削除するリストを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>アクションカテゴリ</td>
-<td><ul><li>CRM、メール、エンゲージメント、VoC</li><li>変更不可。</li><li>これらのカテゴリは、同意プロンプトおよび同意構成機能を通じてユーザーに提示されます。</li><li>ユーザーはこれらのカテゴリに基づいてトラッキングのオプトイン/オプトアウトが可能です。</li></ul></td>
-</tr>
-<tr>
-<td>頻度制限</td>
-<td><ul><li>オンまたはオフの値。</li><li>デフォルトはオン。</li><li>このアクションがトリガーされる頻度を制御します。</li></ul></td>
-</tr>
-<tr>
-<td>ソース</td>
-<td>事前に用意されたドロップダウンリストからソースを選択します。</td>
-</tr>
-<tr>
-<td>ターゲットコンタクトリスト</td>
-<td><ul><li>(必須) 事前に用意されたドロップダウンリストからコンタクトのコンタクトリストを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p></td>
+<td>コンタクト検索</td>
+<td><ul><li>（必須）コンタクトのメールアドレス。</li><li>リストからHubSpotフィールドを選択します。</li></ul></td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|コンタクト検索|  <ul><li>(必須) コンタクトIDまたはコンタクトメール。</li></ul> から <ul><li>ドロップダウンリストからマップするHubSpotフィールドを選択します。 <p class="note"><i class="fa fa-exclamation-triangle"></i>このフィールドがHubSpotのデータを正確に取得するためには、以前の手順でHubSpotアカウントの認証情報を正しく入力する必要があります。そうでない場合、エラーが表示されます。</p>
- </li></ul> |
 
 </div>
 
@@ -1979,7 +1986,7 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2020年January月23日
+          <p>最終更新日 ::  2025年November月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1993,13 +2000,14 @@ HubSpot API キーを入力します。詳細については、<a href="https://
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E6%8C%BF%E5%85%A5" href="javascript:void(0)">アクション - コンタクトの挿入</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">アクション - コンタクトの更新</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%83%AA%E3%82%B9%E3%83%88%E3%81%B8%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション - コンタクトリストへのコンタクト追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E5%89%8A%E9%99%A4" href="javascript:void(0)">アクション - コンタクトリストからのコンタクト削除</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">コンタクトの作成（リアルタイム）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">コンタクトの作成（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0" href="javascript:void(0)">コンタクトの更新（リアルタイム）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E6%9B%B4%E6%96%B0%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">コンタクトの更新（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%AB%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%82%92%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">リストにコンタクトを追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%82%92%E5%89%8A%E9%99%A4" href="javascript:void(0)">リストからコンタクトを削除</a></li>
               </nav>
   </aside></nav>
 

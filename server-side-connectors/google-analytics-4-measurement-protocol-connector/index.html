@@ -776,6 +776,9 @@
       <a href="/server-side-connectors/splunk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Splunk</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Audiences</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1339,6 +1342,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdapt Audiences</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li>
@@ -1464,7 +1469,12 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </ul>
 <h3 id="mapping-client-id">Mapping client ID</h3>
 <p>Client ID is a required parameter for web-based events that uniquely identifies a user instance of a web client.</p>
-<p>Google Analytics stores the client ID in a cookie named <code>_ga</code>. The format of this cookie is <code>GA1.2.12349876.1500644855</code> where the client ID is <code>12349876.150064485</code>. You should get the <code>clientId</code> value directly from the Google Analytics tracker.</p>
+<p>Google Analytics stores the client ID in a cookie named <code>_ga</code>. The format of this cookie is <code>GA1.2.12349876.1500644855</code> where the client ID is <code>12349876.150064485</code>. You can get the <code>clientId</code> value directly from the Google Analytics tracker.</p>
+<ul>
+<li>If you provide a correctly formatted client ID value, the connector uses this value.</li>
+<li>If the event includes the full <code>_ga</code> cookie value in the <code>client_id</code> mapping, the connector automatically parses and extracts only the client ID portion.</li>
+<li>If <code>cp.utag_main__ga</code> is available in the event data, and it contains the client ID in the correct format, the connector automatically maps this value to <code>client_id</code>.</li>
+</ul>
 <h3 id="consent">Consent</h3>
 <p>The connector will not send any consent signals by default. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for <code>ad_user_data</code> and <code>ad_personalization</code>.</p>
 <h3 id="event-names">Event names</h3>
@@ -1547,7 +1557,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <tbody>
 <tr>
 <td>Client ID</td>
-<td>(Required) A unique identifier for a client.</td>
+<td>(Required) A unique identifier for a client. For more information, see <a href="#mapping-client-id">Mapping client ID</a>.</td>
 </tr>
 <tr>
 <td>Measurement ID Override</td>
@@ -2097,7 +2107,7 @@ If you map device attributes then the user agent is ignored.</p>
 <tbody>
 <tr>
 <td>Client ID</td>
-<td>(Required) A unique identifier for a client.</td>
+<td>(Required) A unique identifier for a client. For more information, see <a href="#mapping-client-id">Mapping client ID</a>.</td>
 </tr>
 <tr>
 <td>Measurement ID Override</td>
@@ -2409,7 +2419,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 29, 2025 
+          <p>This page was last updated:  November 5, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

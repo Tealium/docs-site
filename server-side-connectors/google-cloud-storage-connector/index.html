@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -776,6 +776,9 @@
       <a href="/server-side-connectors/splunk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Splunk</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Audiences</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1339,6 +1342,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdapt Audiences</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li>
@@ -1450,7 +1455,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Google Cloud Storage API</li>
@@ -1458,7 +1463,7 @@
 <li>API Endpoint: <code>https://storage.googleapis.com/</code></li>
 <li>Documentation: <a href="https://cloud.google.com/storage/docs/json_api">Google Cloud Storage API</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
+<h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
@@ -1469,11 +1474,7 @@
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Project ID</strong>
-<ul>
-<li>Select the project ID you want to connect to.</li>
-</ul>
-</li>
+<li><strong>Project ID</strong>: Select the project ID to connect to.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -1505,6 +1506,11 @@
 <td>✓</td>
 <td>✗</td>
 </tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
@@ -1529,7 +1535,7 @@
 </tr>
 <tr>
 <td>Object Path Suffix</td>
-<td>If you want to dynamically add a suffix to the file path, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1537,11 +1543,15 @@
 </tr>
 <tr>
 <td>Overwrite Existing Object</td>
-<td>If the object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
+<td>If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
 <td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1576,7 +1586,7 @@
 <tbody>
 <tr>
 <td>Object Path Suffix</td>
-<td>If you want to dynamically add a suffix to the file path, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1584,7 +1594,7 @@
 </tr>
 <tr>
 <td>Overwrite Existing Object</td>
-<td>If the object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
+<td>If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Template Variables</td>
@@ -1593,6 +1603,10 @@
 <tr>
 <td>Templates</td>
 <td><ul><li>Provide templates to be referenced in the Message Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields, For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1616,7 +1630,7 @@
 </tr>
 <tr>
 <td>Object Path Suffix</td>
-<td>If you want to dynamically add a suffix to the file path, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1624,7 +1638,7 @@
 </tr>
 <tr>
 <td>Overwrite Existing Object</td>
-<td>If the object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
+<td>If the object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of an array of a single object containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
@@ -1633,6 +1647,10 @@
 <tr>
 <td>Include Current Visit Data with Visitor Data</td>
 <td>Select this option to include current visit data with visitor data.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1667,7 +1685,7 @@
 <tbody>
 <tr>
 <td>Object Path Suffix</td>
-<td>If you want to dynamically add a suffix to the file path, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1684,6 +1702,39 @@
 <tr>
 <td>Templates</td>
 <td><ul><li>Provide templates to be referenced in the Message Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields, For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<p>Send connector error logs to this vendor. For more information, see <a href="/early-access/log-streaming/about/">Connector error logging</a>.</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bucket</td>
+<td>Select the bucket where you want to create the objects.</td>
+</tr>
+<tr>
+<td>Object Path</td>
+<td>Specify the path to the object where you want the data to be appended.</td>
+</tr>
+<tr>
+<td>Object Path Suffix</td>
+<td>Select an attribute to append to the file path as a dynamic suffix (for example, a timestamp). If multiple suffix values are provided, they are separated by an underscore character.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Suffix added to the end of each record to be used as a delimiter. Select either a newline (<code>\n</code>) or no delimiter.</td>
 </tr>
 </tbody>
 </table>
@@ -1747,7 +1798,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 11, 2025 
+          <p>This page was last updated:  November 5, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1761,14 +1812,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               </nav>
   </aside></nav>
 

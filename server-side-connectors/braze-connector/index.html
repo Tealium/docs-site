@@ -776,6 +776,9 @@
       <a href="/server-side-connectors/splunk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Splunk</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Audiences</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1339,6 +1342,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdapt Audiences</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li>
@@ -1450,7 +1455,27 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="consent-categories">Consent categories</h2>
+<ul>
+<li>Analytics</li>
+<li>Mobile</li>
+<li>Personalization</li>
+</ul>
+<h2 id="settings">Settings</h2>
+<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>API Endpoint</strong><br>
+(Required) Select API endpoint for the instance your account is provisioned to.<br>
+For more information, see <a href="https://www.braze.com/docs/developer_guide/rest_api/basics/#endpoints">Braze API Endpoints</a>.</li>
+<li><strong>API Key</strong><br>
+(Required) Provide API key with permission enabled for <code>users.track</code> and <code>users.delete</code>.<br>
+For more information, see <a href="https://www.braze.com/docs/api/basics/?redirected=true#app-group-rest-api-keys">Braze App Group REST API Keys</a>.</li>
+</ul>
+<p>For additional information see Braze Documentation <a href="https://www.braze.com/docs/partners/data_and_infrastructure_agility/customer_data_platform/tealium/">Braze Technology Partners: Tealium</a>.</p>
+<h2 id="actions">Actions</h2>
+<p>This section describes how to set up parameters and options for each action.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>The <strong>Track User</strong> action contains the same functionality for both AudienceStream and EventStream. As a best practice, set the user attribute mappings for the AudienceStream action and the event and purchase mappings for the EventStream action.</p>
 <table>
 <thead>
 <tr>
@@ -1507,28 +1532,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="consent-categories">Consent Categories</h2>
-<ul>
-<li>Analytics</li>
-<li>Mobile</li>
-<li>Personalization</li>
-</ul>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>API Endpoint</strong><br>
-(Required) Select API endpoint for the instance your account is provisioned to.<br>
-For more information, see <a href="https://www.braze.com/docs/developer_guide/rest_api/basics/#endpoints">Braze API Endpoints</a>.</li>
-<li><strong>API Key</strong><br>
-(Required) Provide API key with permission enabled for <code>users.track</code> and <code>users.delete</code>.<br>
-For more information, see <a href="https://www.braze.com/docs/api/basics/?redirected=true#app-group-rest-api-keys">Braze App Group REST API Keys</a>.</li>
-</ul>
-<p>For additional information see Braze Documentation <a href="https://www.braze.com/docs/partners/data_and_infrastructure_agility/customer_data_platform/tealium/">Braze Technology Partners: Tealium</a>.</p>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>This section describes how to set up parameters and options for each action.</p>
-<p class="tip"><i class="fa fa-info-circle"></i>The <strong>Track User</strong> action contains the same functionality for both AudienceStream and EventStream. As a best practice, set the user attribute mappings for the AudienceStream action and the event and purchase mappings for the EventStream action.</p>
-<h3 id="action---track-user-batchnon-batch">Action - Track User (Batch/Non-Batch)</h3>
+<h3 id="track-user-batchnon-batch">Track User (Batch/Non-Batch)</h3>
 <p>We recommend mapping as many ID parameters as possible. When an action triggers with multiple IDs mapped, the first non-blank value is selected based on the following priority order:</p>
 <ul>
 <li>External ID</li>
@@ -1573,6 +1577,14 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <tr>
 <td style="text-align:left">User Alias Label</td>
 <td style="text-align:left">The alias label of the user. When specifying a user alias, both <code>Alias Name</code> and <code>Alias Label</code> must be set.</td>
+</tr>
+<tr>
+<td style="text-align:left">Customer Email Address</td>
+<td style="text-align:left">The email address of the customer.</td>
+</tr>
+<tr>
+<td style="text-align:left">Customer Phone Number</td>
+<td style="text-align:left">The phone number of the customer.</td>
 </tr>
 </tbody>
 </table>
@@ -1825,8 +1837,8 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <p>When a template is defined, the mappings from the <strong>Purchases</strong> section are ignored.</p>
 <p>Provide templates to be referenced in Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</p>
 <p>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</p>
-<h3 id="action---delete-user-non-batch">Action - Delete User (Non-Batch)</h3>
-<p>Only one of External ID, Braze ID, and User Alias is needed in each action. However, we recommend mapping as many attributes as you can. When IDs are mapped, the first non-blank value is selected based on the following priority order:</p>
+<h3 id="delete-user-non-batch">Delete User (Non-Batch)</h3>
+<p>Only one of External ID, Braze ID, and User Alias is needed in each action, but we recommend mapping as many attributes as you can. When IDs are mapped, the first non-blank value is selected based on the following priority order:</p>
 <ul>
 <li>External ID</li>
 <li>Braze ID</li>
@@ -1859,9 +1871,21 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 <td style="text-align:left">User Alias Label</td>
 <td style="text-align:left">The alias label of the user to be deleted. When specifying a user alias, Alias Name and Alias Label should both be set.</td>
 </tr>
+<tr>
+<td style="text-align:left">Customer Email Address</td>
+<td style="text-align:left">The email address of the user.</td>
+</tr>
+<tr>
+<td style="text-align:left">Customer Phone Number</td>
+<td style="text-align:left">The phone number of the user in E.164 format.</td>
+</tr>
+<tr>
+<td style="text-align:left">Deletion Prioritization</td>
+<td style="text-align:left">Required if <strong>Customer Email Address</strong> is the parameter used to identify the user to delete. An array that lists the prioritization of the deletion request. Allowed values are <code>most_recently_updated</code> and either <code>identified</code> (users with an External ID) or <code>unidentified</code> (users without an External ID).</td>
+</tr>
 </tbody>
 </table>
-<h3 id="action---update-user-subscription-group-status-non-batch">Action - Update User Subscription Group Status (Non-Batch)</h3>
+<h3 id="update-user-subscription-group-status-non-batch">Update User Subscription Group Status (Non-Batch)</h3>
 <p>For more information, see <a href="https://www.braze.com/docs/api/endpoints/subscription_groups/">Braze API: Subscription Groups Endpoints</a>.</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -2199,7 +2223,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 29, 2025 
+          <p>This page was last updated:  November 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2213,13 +2237,12 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-categories" href="javascript:void(0)">Consent Categories</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---track-user-batchnon-batch" href="javascript:void(0)">Action - Track User (Batch/Non-Batch)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---delete-user-non-batch" href="javascript:void(0)">Action - Delete User (Non-Batch)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---update-user-subscription-group-status-non-batch" href="javascript:void(0)">Action - Update User Subscription Group Status (Non-Batch)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-categories" href="javascript:void(0)">Consent categories</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#settings" href="javascript:void(0)">Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-user-batchnon-batch" href="javascript:void(0)">Track User (Batch/Non-Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-user-non-batch" href="javascript:void(0)">Delete User (Non-Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-user-subscription-group-status-non-batch" href="javascript:void(0)">Update User Subscription Group Status (Non-Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-user-subscription-group-status-across-multiple-subscription-groups-non-batch" href="javascript:void(0)">Update User Subscription Group Status Across Multiple Subscription Groups (Non-Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-campaign-message" href="javascript:void(0)">Send Campaign Message</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-canvas-message" href="javascript:void(0)">Send Canvas Message</a></li>

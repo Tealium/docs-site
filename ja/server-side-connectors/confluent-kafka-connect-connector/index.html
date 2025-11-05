@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Confluent Kafka Connectコネクタ構成ガイド" />
+    <meta property="og:title" content="Confluent Kafka Connect コネクタ構成ガイド" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side-connectors/confluent-kafka-connect-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Confluent Kafka Connectコネクタの構成方法について説明します。" />
+<meta property="og:description" content="この記事では、Confluent Kafka Connect コネクタの構成方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>Confluent Kafka Connectコネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
+    <title>Confluent Kafka Connect コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -860,6 +860,9 @@
       <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt イベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdaptオーディエンス</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Swrveアプリイベント</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1566,6 +1569,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt イベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdaptオーディエンス</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrveアプリイベント</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences コネクタ</a></li>
@@ -1721,7 +1726,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Confluent Kafka Connectコネクタ構成ガイド</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Confluent Kafka Connect コネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1729,7 +1734,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Confluent Kafka Connectコネクタの構成方法について説明します。
+      この記事では、Confluent Kafka Connect コネクタの構成方法について説明します。
     </p>
   
 </div>
@@ -1776,14 +1781,14 @@
 <p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>APIキー</strong><br>
-必須。Confluent APIキー。</li>
-<li><strong>APIシークレット</strong><br>
-必須。Confluent APIシークレット。</li>
+<li><strong>API キー</strong><br>
+(必須) Confluent API キー。</li>
+<li><strong>API シークレット</strong><br>
+(必須) Confluent API シークレット。</li>
 <li><strong>ブートストラップサーバー</strong><br>
-必須。Confluentブートストラップサーバー。プロトコルやパスは含めないでください。例えば、<code>https://confluent.bootstrap.server:443</code>は<code>confluent.bootstrap.server</code>としてください。</li>
-<li><strong>クラスターID</strong><br>
-必須。KafkaクラスターID。</li>
+(必須) Confluent ブートストラップサーバー。プロトコルやパスは含めないでください。例えば、<code>https://confluent.bootstrap.server:443</code> は <code>confluent.bootstrap.server</code> としてください。</li>
+<li><strong>クラスター ID</strong><br>
+(必須) Kafka クラスター ID。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
@@ -1794,7 +1799,7 @@
 <ul>
 <li>リクエストの最大数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
-<li>リクエストの最大サイズ：10MB</li>
+<li>リクエストの最大サイズ：10 MB</li>
 </ul>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
@@ -1806,36 +1811,36 @@
 </thead>
 <tbody>
 <tr>
-<td>トピックID</td>
-<td>トピックを選択するか、トピックIDを入力します。</td>
+<td>トピック ID</td>
+<td>トピックを選択するか、トピック ID を入力します。</td>
 </tr>
 <tr>
-<td>パーティションID</td>
-<td>パーティションIDを選択します。</td>
+<td>パーティション ID</td>
+<td>パーティション ID を選択します。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または<code>BINARY</code>。</td>
+<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセット。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として<code>BINARY</code>を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealium はこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC 形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限は1分から60分の間です。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
 </tr>
 <tr>
-<td>属性名を印刷</td>
-<td>デフォルトでは、属性IDがキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
+<td>属性名の印刷</td>
+<td>デフォルトでは、属性 ID がキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
 </tr>
 </tbody>
 </table>
@@ -1845,7 +1850,7 @@
 <ul>
 <li>リクエストの最大数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
-<li>リクエストの最大サイズ：10MB</li>
+<li>リクエストの最大サイズ：10 MB</li>
 </ul>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
@@ -1857,28 +1862,28 @@
 </thead>
 <tbody>
 <tr>
-<td>トピックID</td>
-<td>トピックを選択するか、トピックIDを入力します。</td>
+<td>トピック ID</td>
+<td>トピックを選択するか、トピック ID を入力します。</td>
 </tr>
 <tr>
-<td>パーティションID</td>
-<td>パーティションIDを選択します。</td>
+<td>パーティション ID</td>
+<td>パーティション ID を選択します。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または<code>BINARY</code>。</td>
+<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセット。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として<code>BINARY</code>を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealium はこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC 形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -1897,11 +1902,11 @@
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに二重中括弧で名前を注入して使用します。例：<code>{{SomeTemplateName}}</code>。</td>
+<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して挿入されます。例：<code>{{SomeTemplateName}}</code>。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限は1分から60分の間です。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
 </tr>
 </tbody>
 </table>
@@ -1911,7 +1916,7 @@
 <ul>
 <li>リクエストの最大数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
-<li>リクエストの最大サイズ：10MB</li>
+<li>リクエストの最大サイズ：10 MB</li>
 </ul>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
@@ -1923,32 +1928,32 @@
 </thead>
 <tbody>
 <tr>
-<td>トピックID</td>
-<td>トピックを選択するか、トピックIDを入力します。</td>
+<td>トピック ID</td>
+<td>トピックを選択するか、トピック ID を入力します。</td>
 </tr>
 <tr>
-<td>パーティションID</td>
-<td>パーティションIDを選択します。</td>
+<td>パーティション ID</td>
+<td>パーティション ID を選択します。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または<code>BINARY</code>。</td>
+<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセット。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として<code>BINARY</code>を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealium はこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC 形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 <tr>
-<td>属性名を印刷</td>
-<td>デフォルトでは、属性IDがキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
+<td>属性名の印刷</td>
+<td>デフォルトでは、属性 ID がキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
 </tr>
 <tr>
 <td>現在の訪問データを訪問データに含める</td>
@@ -1960,7 +1965,7 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限は1分から60分の間です。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
 </tr>
 </tbody>
 </table>
@@ -1970,7 +1975,7 @@
 <ul>
 <li>リクエストの最大数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
-<li>リクエストの最大サイズ：10MB</li>
+<li>リクエストの最大サイズ：10 MB</li>
 </ul>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
@@ -1982,28 +1987,28 @@
 </thead>
 <tbody>
 <tr>
-<td>トピックID</td>
-<td>トピックを選択するか、トピックIDを入力します。</td>
+<td>トピック ID</td>
+<td>トピックを選択するか、トピック ID を入力します。</td>
 </tr>
 <tr>
-<td>パーティションID</td>
-<td>パーティションIDを選択します。</td>
+<td>パーティション ID</td>
+<td>パーティション ID を選択します。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または<code>BINARY</code>。</td>
+<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセット。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として<code>BINARY</code>を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealium はこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC 形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -2018,15 +2023,15 @@
 <tbody>
 <tr>
 <td>テンプレート変数</td>
-<td>テンプレートにデータ入力としてテンプレート変数を提供します。<br>詳細と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>ドット表記を使用してネストされたテンプレート変数を命名します。例：<code>items.name.</code><br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td>テンプレートにデータ入力としてテンプレート変数を提供します。<br>詳細と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code><br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
+<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前とダブルカーリーブレースで注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>有効期限は1分から60分の間です。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するために、有効期限（TTL）を構成します。1分から60分の間で値を入力してください。デフォルト値は60分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2058,7 +2063,7 @@
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として<code>BINARY</code>を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
@@ -2126,7 +2131,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年November月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

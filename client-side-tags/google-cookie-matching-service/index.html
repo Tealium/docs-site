@@ -704,6 +704,9 @@
       <a href="/client-side-tags/movable-ink-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Movable Ink Studio</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/mparticle-by-rokt-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>mParticle by Rokt</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/mybuys-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>MyBuys</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1483,6 +1486,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/movable-ink-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".movable-ink-studio-tag">Movable Ink Studio</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/mparticle-by-rokt-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mparticle-rokt-tag">mParticle by Rokt</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/mybuys-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mybuys-tag">MyBuys</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/namogoo-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".namogoo-tag">Namogoo</a></li>
@@ -1771,16 +1776,19 @@
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>When using this tag with <code>utag</code> version 4.50 or later, you must set the <code>utag.js</code> <a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> setting</a> to <code>true</code>. This setting ensures that the visitor ID is available for cookie synchronization. For more information, see the <a href="/platforms/javascript/version-4-50/#updating-to-version-450-or-later">utag 4.50 release notes</a> and <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000535887-considerations-for-tealium-visitor-id-when-upgrading-to-utag-4-50-">Considerations for tealium_visitor_id when upgrading to utag 4.50+</a>.</p>
-<p>Google&rsquo;s Cookie Matching Service enables a buyer to associate the cookie that identifies a Tealium visitor and the doubleclick.net cookie that identifies the user for Google. The Tealium-hosted tag allows clients to persist the Google cookie value in AudienceStream for use in the relevant connectors.</p>
+<p>Google&rsquo;s Cookie Matching Service lets a buyer associate the cookie that identifies a Tealium visitor and the doubleclick.net cookie that identifies the user for Google. The Tealium-hosted tag allows clients to persist the Google cookie value in AudienceStream for use in the relevant connectors.</p>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>Use mappings to override the standard configuration.</li>
-<li>If left blank, Tealium Account and Tealium Profile are automatically populated.</li>
+<li>If left blank, the Tealium account and Tealium profile are automatically populated.</li>
 <li>In allowed regions, sends the following server-side attribute back to Tealium: <code>google_gid</code>.</li>
 <li>For more information, see the <a href="https://developers.google.com/ad-exchange/rtb/cookie-guide">Google Cookie Matching</a> documentation.</li>
+<li>Use <a href="/consent/client-side/consent-management/about/">consent management</a> or your CMP integration to ensure that the tag runs only when the visitor has granted consent for Advertising or equivalent categories.</li>
+<li>Map <code>process_consent</code> to the value <code>T</code> only when consent has been obtained.</li>
+<li>You may still pass <code>gdpr=1</code> and <code>gdpr_consent</code> for record-keeping, but Google ignores these settings for the Tealium <code>google_nid</code> since Tealium is not a GVL vendor.</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>Go to the Tag Marketplace to add a new tag. For general instructions on how to add a tag, see <a href="/iq-tag-management/tags/about/">Tag Overview</a>.</p>
+<p>Go to the tag marketplace to add a new tag. For general instructions on how to add a tag, see <a href="/iq-tag-management/tags/about/">Tag Overview</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Network ID</strong>: Use <code>tealium_dmp</code> to pass <code>google_gid</code> in the server-side request, or your Google provided Network or Buyer ID for other solutions.</li>
@@ -1811,19 +1819,19 @@
 </tr>
 <tr>
 <td><code>tealium_selector</code></td>
-<td>Tealium Selector.</td>
+<td>Tealium selector.</td>
 </tr>
 <tr>
 <td><code>tealium_account</code></td>
-<td>Tealium Account.</td>
+<td>Tealium account.</td>
 </tr>
 <tr>
 <td><code>tealium_profile</code></td>
-<td>Tealium Profile.</td>
+<td>Tealium profile.</td>
 </tr>
 <tr>
 <td><code>process_consent</code></td>
-<td>If you are not using a consent management platform with IAB support, map <code>T</code> to this variable to indicate that the end user has given consent.</td>
+<td>If you are not using a consent management platform with IAB support, map this parameter to the value <code>T</code> only if the end user has given consent.</td>
 </tr>
 </tbody>
 </table>
@@ -1887,7 +1895,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 12, 2025 
+          <p>This page was last updated:  November 4, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

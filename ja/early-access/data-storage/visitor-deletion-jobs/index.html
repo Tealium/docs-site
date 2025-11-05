@@ -404,10 +404,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>訪問削除ジョブ機能は現在アーリーアクセス中で、この時点で選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、アーリーアクセスに関する情報を得るためにアカウントマネージャーに連絡してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>訪問削除ジョブ機能は現在アーリーアクセス中で、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、アカウントマネージャーに連絡してアーリーアクセスに関する情報を求めてください。</p>
 <h2 id="動作方法">動作方法</h2>
-<p>訪問削除ジョブは、Tealium Customer Data Hubのすべての製品から複数の訪問レコードを削除する自動化されたプロセスです。訪問削除ジョブは、アカウントのS3バケット（TealiumのS3バケットまたはご自身のS3バケット）にアップロードされたCSVファイルを処理します。これらのCSVファイルには、削除する訪問レコードを指定する訪問IDが含まれています。</p>
-<p>訪問削除ジョブが有効になると、新しいCSVファイルを毎時S3バケットでチェックします。新しいファイルが見つかると、ジョブはCSVファイルを処理し、各訪問IDについて、Customer Data Hubの以下の領域から訪問プロファイルデータを削除します：</p>
+<p>訪問削除ジョブは、Tealium Customer Data Hubのすべての製品から複数の訪問レコードを削除する自動化されたプロセスです。訪問削除ジョブは、アカウントのS3バケット（TealiumのS3バケットまたは自分のS3バケット）にアップロードされたCSVファイルを処理します。これらのCSVファイルには、削除する訪問レコードを指定する訪問IDが含まれています。</p>
+<p>訪問削除ジョブが有効になると、新しいCSVファイルがS3バケットにあるかどうかを毎時チェックします。新しいファイルが見つかると、ジョブはCSVファイルを処理し、各訪問IDについて、Customer Data Hubの以下の領域から訪問プロファイルデータを削除します：</p>
 <ul>
 <li>Tealium AudienceStream</li>
 <li>Tealium AudienceStore</li>
@@ -415,12 +415,12 @@
 <li>Tealium EventStore</li>
 <li>Tealium EventDB</li>
 </ul>
-<p>訪問削除ジョブインターフェースを使用して、処理された各CSVファイルのステータスと結果を確認できます。ファイルが処理された後、結果のログファイルをインターフェースからダウンロードして、法的記録保持およびGDPRコンプライアンス監査のために使用できます。</p>
-<p>また、<a href="/ja/server-side/audiences/visitor-lookup-tool/">訪問ルックアップツール</a>または<a href="/ja/api/v2/visitor-privacy/about/">訪問ルックアップAPI</a>を使用して訪問レコードを削除することもできますが、これらの方法では一度に1つの訪問のみを削除できます。訪問削除ジョブを使用すると、一度に複数の訪問を削除できます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問レコードが削除されても、「オーディエンスからの退出」アクションはコネクターでトリガーされません。オーディエンスのコネクターアクションは、ルールが再評価され、訪問のステータスがオーディエンスに含まれることから除外されるときにのみ実行されます。</p>
+<p>訪問削除ジョブインターフェースを使用して、処理された各CSVファイルの状態と結果を確認できます。ファイルが処理された後、インターフェースから結果のログファイルをダウンロードして、法的記録保持およびGDPRコンプライアンス監査のために使用できます。</p>
+<p>また、<a href="/ja/server-side/audiences/visitor-lookup-tool/">訪問ルックアップツール</a>または<a href="/ja/api/v3/visitor-privacy/about/">訪問ルックアップAPI</a>を使用して訪問レコードを削除することもできますが、これらの方法では一度に1人の訪問のみを削除できます。訪問削除ジョブを使用すると、一度に複数の訪問を削除できます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問レコードが削除されても、「オーディエンスからの離脱」アクションはコネクターでトリガーされません。オーディエンスのコネクターアクションは、ルールが再評価され、訪問のステータスがオーディエンスに含まれている状態から除外される状態に移行するときにのみ実行されます。</p>
 <h3 id="要件">要件</h3>
 <ul>
-<li>必要な権限：パブリッシャーロール。<br>
+<li>必要な権限：パブリッシャー役割。
 詳細については、<a href="/ja/server-side/administration/user-permissions/about/">サーバーサイドユーザー権限の管理</a>を参照してください。</li>
 <li>CSVファイルをアップロードするためのAmazon S3バケットへのアクセス。</li>
 </ul>
@@ -441,7 +441,7 @@
 &#34;00000352&#34;
 ...
 </code></pre><h4 id="ファイル接頭辞">ファイル接頭辞</h4>
-<p>入力ファイルは次の形式を使用して命名する必要があります：</p>
+<p>入力ファイルは次の形式で命名する必要があります：</p>
 <p><code>{prefix}_{version}.csv</code></p>
 <table>
 <thead>
@@ -474,11 +474,11 @@ customer_id_deletes_03212021.csv
 <ul>
 <li>訪問ID値（入力ファイルからの同じ値）</li>
 <li>確認UID</li>
-<li>ステータスは次のいずれかです：
+<li>状態、以下のいずれか：
 <ul>
 <li><strong>Success</strong> - 訪問プロファイルが見つかり、削除されました。</li>
 <li><strong>Failed - not found</strong> - 訪問プロファイルが見つかりませんでした。</li>
-<li><strong>Failed - error</strong> - 訪問プロファイルは削除されませんでした。削除に失敗した理由の詳細が含まれます。</li>
+<li><strong>Failed - error</strong> - 訪問プロファイルが削除されませんでした。削除に失敗した理由の詳細が含まれます。</li>
 </ul>
 </li>
 <li>タイムスタンプ、<strong>Status</strong> = <strong>Success</strong> の場合、訪問が削除された日時。</li>
@@ -491,8 +491,8 @@ customer_id_deletes_03212021.csv
 <li><strong>Server-Side Tools &gt; Visitor Deletion Jobs</strong> に移動し、<strong>+ Add Visitor Deletion Job</strong> をクリックします。</li>
 <li>ジョブの名前を入力します。</li>
 <li>リストから <strong>File Service</strong> を選択します。</li>
-<li>このジョブのファイル名の接頭辞を入力します。<br>
-このジョブのすべてのCSVファイルは、この接頭辞で始まる必要があります。</li>
+<li>このジョブのファイル名の接頭辞を入力します。
+すべてのCSVファイルはこの接頭辞で始まる必要があります。</li>
 <li>CSVファイルで使用される <strong>Visitor ID Attribute</strong> を選択します。</li>
 <li>訪問削除の処理を開始する準備ができている場合は、<strong>Enable/Disable Visitor Deletion Job</strong> を <strong>ON</strong> に切り替えます。</li>
 <li><strong>Save</strong> をクリックします。</li>
@@ -511,24 +511,24 @@ customer_id_deletes_03212021.csv
 <ul>
 <li><strong>Date</strong> - ジョブが実行された日付。</li>
 <li><strong>File Name</strong> - 処理された入力ファイルの名前。</li>
-<li><strong>Status</strong> - ステータスは次のいずれかです：
+<li><strong>Status</strong> - 状態は次のいずれかです：
 <ul>
-<li><strong>Processing</strong> - CSVファイルが処理中です。ジョブは削除が処理される間、最大6日間 <code>In Progress</code> ステータスを持つことがあります。大きなファイルは処理時間が長くなります。</li>
+<li><strong>Processing</strong> - CSVファイルが処理中です。ジョブは削除が処理される間、最大6日間 <code>In Progress</code> 状態になることがあります。大きなファイルは処理時間が長くなります。</li>
 <li><strong>Completed</strong> - CSVファイルが処理され、結果がダウンロード可能です。</li>
-<li><strong>Failed</strong> - CSVファイルの処理中にエラーが発生しました。ジョブが失敗する理由には、AWSサービスの問題やデータソースの権限不足などがあります。</li>
+<li><strong>Failed</strong> - CSVファイル処理中にエラーが発生しました。AWSサービスの問題やデータソースの権限不足など、さまざまな理由でジョブが失敗することがあります。</li>
 </ul>
 </li>
 <li><strong>Job ID</strong> - このファイルと処理された結果のための一意のID。</li>
 <li><strong>Rows</strong> - 入力ファイルの行数。</li>
 <li><strong>Success</strong> - 成功した削除の数。</li>
-<li><strong>Errors</strong> - エラーの数と失敗した削除の数。結果ファイルには削除エラーの詳細が提供されます。</li>
+<li><strong>Errors</strong> - エラーの数と失敗した削除の数。結果ファイルには削除エラーの詳細が記載されています。</li>
 </ul>
 </li>
 <li><strong>Edit</strong> をクリックします。</li>
 <li>編集を終えたら、<strong>Save</strong> をクリックします。</li>
 </ol>
 <h3 id="訪問削除ジョブの有効化">訪問削除ジョブの有効化</h3>
-<p>定期的に（毎日または毎週）CSV削除ファイルをアップロードする予定の場合、ジョブを有効にしておくことができます。ファイルを頻繁にアップロードしない場合は、不要にCSVファイルをチェックするジョブを避けるために、ジョブを無効にすることが望ましいかもしれません。</p>
+<p>定期的に（毎日または毎週）CSV削除ファイルをアップロードする予定がある場合は、ジョブを有効にしたままにしておくことができます。ファイルを頻繁にアップロードしない場合は、不要にCSVファイルをチェックするのを避けるためにジョブを無効にすることが望ましいかもしれません。</p>
 <p>訪問削除ジョブを有効にするには：</p>
 <ol>
 <li><strong>Visitor Deletion Jobs</strong> リストでジョブを選択します。</li>
@@ -536,7 +536,7 @@ customer_id_deletes_03212021.csv
 <li>確認ダイアログで <strong>Enable</strong> をクリックします。</li>
 </ol>
 <h3 id="訪問削除ジョブの削除">訪問削除ジョブの削除</h3>
-<p>ジョブとその処理済みファイルの履歴を削除することは永久的なものであり、このアクションを元に戻すことはできません。</p>
+<p>ジョブとその処理済みファイルの履歴を削除すると、その操作は永久に取り消すことができません。</p>
 <p>訪問削除ジョブを削除するには：</p>
 <ol>
 <li><strong>Visitor Deletion Jobs</strong> リストでジョブを選択します。</li>
@@ -581,7 +581,7 @@ customer_id_deletes_03212021.csv
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2025年November月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

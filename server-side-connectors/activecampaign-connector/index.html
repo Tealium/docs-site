@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -776,6 +776,9 @@
       <a href="/server-side-connectors/splunk-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Splunk</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/stackadapt-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Audiences</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/stackadapt-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>StackAdapt Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1339,6 +1342,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/stackadapt-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-audiences-connector">StackAdapt Audiences</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/stackadapt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stackadapt-events-connector">StackAdapt Events</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li>
@@ -1499,6 +1504,11 @@
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Update List Status for a Contact</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
@@ -1508,8 +1518,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1536,8 +1546,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1556,14 +1566,14 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Contact ID</td>
-<td>The ID of the Contact.</td>
+<td>The ID of the contact.</td>
 </tr>
 <tr>
 <td>Tag ID</td>
@@ -1576,8 +1586,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1588,6 +1598,38 @@
 <tr>
 <td>Automation ID</td>
 <td>The ID of the automation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---update-list-status-for-a-contact">Action - Update List Status for a Contact</h3>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List ID</td>
+<td>(Required) The ID of the list to subscribe the contact to.</td>
+</tr>
+<tr>
+<td>Contact ID</td>
+<td><ul><li>Either <strong>Contact ID</strong> or <strong>Email</strong> is required. ID of the contact to subscribe to the list.</li></ul></td>
+</tr>
+<tr>
+<td>Email Address</td>
+<td><ul><li>Either <strong>Contact ID</strong> or <strong>Email</strong> is required.</li><li>The email of the contact.</li><li>This field is necessary if the user does not store the <strong>Contact ID</strong> in Tealium. If they do not use the <strong>Contact ID</strong>, search for the user’s email address via API call and use the <strong>ID</strong> field in the response as the <strong>Contact ID</strong>.</li></ul></td>
+</tr>
+<tr>
+<td>Status</td>
+<td><ul><li>(Required) Set to <code>1</code> to subscribe the contact to the list.</li><li>Set to <code>2</code> to unsubscribe the contact from the list.</li><li>WARNING: If you change a status from unsubscribed to active, you can re-subscribe a contact to a list from which they had manually unsubscribed.</li></ul></td>
+</tr>
+<tr>
+<td>Source ID</td>
+<td><ul><li>(Optional) A unique identifier associated with the contact&rsquo;s origin.</li><li>Set to <code>4</code> when re-subscribing a contact to a list.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1651,7 +1693,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  October 31, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1671,6 +1713,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---upsert-contact" href="javascript:void(0)">Action - Upsert Contact</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-tags-to-contact" href="javascript:void(0)">Action - Add Tags to Contact</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-contact-to-automation" href="javascript:void(0)">Action - Add Contact to Automation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---update-list-status-for-a-contact" href="javascript:void(0)">Action - Update List Status for a Contact</a></li>
               </nav>
   </aside></nav>
 
