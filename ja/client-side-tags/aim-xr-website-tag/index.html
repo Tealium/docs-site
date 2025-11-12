@@ -506,7 +506,7 @@
       <a href="/ja/client-side-tags/google-ad-manager-360-audience-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Ad Manager 360 Audience Pixel</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/client-side-tags/google-cookie-matching-service/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Ad Manager および DV360 (Tealiumホスト) のための Google Cookie マッチングサービス</span></a>
+      <a href="/ja/client-side-tags/google-cookie-matching-service/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Ad Manager および DV360 (Tealiumホスト) のための Google Cookie Matching Service</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/google-ad-manager-conversion-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Ad Manager コンバージョン</span></a>
@@ -1399,7 +1399,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-360-audience-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-360-audience-pixel-tag-setup-guide">Google Ad Manager 360 Audience Pixel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad Manager および DV360 (Tealiumホスト) のための Google Cookie マッチングサービス</a></li>
+        <a href="/ja/client-side-tags/google-cookie-matching-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cookie-matching-service-tag-setup-guide">Google Ad Manager および DV360 (Tealiumホスト) のための Google Cookie Matching Service</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/google-ad-manager-conversion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-conversion-tag">Google Ad Manager コンバージョン</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1850,36 +1850,79 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>DMDは、IQVIAビジネスであり、マーケターを重要なヘルスケアの視聴者に接続することに専念しているヘルスケアアイデンティティ会社です。</p>
-<p>彼らのAudience Identity Manager Extended Reach（AIM XR）は、ヘルスケア専門ホーム（HCP）のためのアイデンティティ解決を提供します。このタグはDMDのAIM XRライブラリをロードし、DMDタグ付きデバイスをスキャンします。識別後、<code>AIM.ondetect()</code>は関数内にあるものを実行します。</p>
-<h2 id="タグ構成">タグ構成</h2>
-<p>新しいタグを追加するためにタグマーケットプレイスに移動します。タグを追加する一般的な手順については、<a href="/ja/iq-tag-management/tags/about/">タグ概要</a>の記事を読んでください。</p>
-<p>タグを追加する際には、以下の構成を行います：</p>
+  <p>DMDはIQVIAのビジネスであり、マーケターが重要なヘルスケアオーディエンスと効果的に関わるためのヘルスケアアイデンティティ企業です。彼らのAudience Identity Manager Extended Reach（AIM XR）は、ヘルスケアプロフェッショナル（HCP）のアイデンティティ解決を提供します。このタグはDMDのAIM XRライブラリをロードし、DMDタグ付きデバイスをスキャンします。識別されると、<code>AIM.ondetect()</code>は関数内にあるものを実行します。</p>
+<h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li><strong>APIキー</strong>：マーチャントの場合、この値は製品クライアントIDです。パートナーの場合、この値はパートナークライアントIDです。</li>
-<li><strong>検出時にイベントをトリガー</strong>：AIM XRタグ付きアイデンティティの確認時に<code>utag.link()</code>コールバックイベントをトリガーします（AIM XRシグナルデータの返送を要求）</li>
+<li>標準の構成値を上書きするためにマッピングを使用します。</li>
+</ul>
+<h2 id="タグの構成">タグの構成</h2>
+<p>タグを追加する際には、以下の構成を構成します：</p>
+<ul>
+<li><strong>バージョン</strong>: 使用するタグのバージョンを選択します。</li>
+<li><strong>データレイヤー名</strong>: デフォルトでは、グローバルサイトタグによって初期化され参照されるデータレイヤーは <code>aimDataLayer</code> という名前です。プロジェクトが別の名前を必要とする場合のみ、データレイヤーの名前を変更してください。</li>
+<li><strong>APIキー</strong>: <code>AIM.init</code> 関数で使用されるAIM XR APIキー。</li>
+<li><strong>トリガーイベントAIMシグナル</strong>: サーバーサイドのTealium Collectにデータが送信されていることを示します。</li>
+<li><strong>セッション情報イベント</strong>: セッション情報（<code>id</code>, <code>timestamp</code>）を要求します。</li>
+<li><strong>POIアイデンティティタイプを含む</strong>: このオプションを有効にしてPOIアイデンティティタイプを含めます。デフォルト値は <code>No</code> です。</li>
+<li><strong>TSTアイデンティティタイプを含む</strong>: このオプションを有効にしてTSTアイデンティティタイプを含めます。デフォルト値は <code>No</code> です。</li>
+<li><strong>UNKアイデンティティタイプを含む</strong>: このオプションを有効にしてUNKアイデンティティタイプを含めます。デフォルト値は <code>No</code> です。</li>
+<li><strong>HCPデータを送信する先</strong>: 高価値顧客（HCP）データを通じて送信するタグの一意の識別子（UID）を指定します（コンマで区切られます）。デフォルトでは、すべてのタグを使用します。</li>
+<li><strong>タグは最初のページビューでのみ発火する必要があります</strong>: このパラメータを <code>Yes</code> に構成すると、<code>utag.link</code> はウェブサイトの最初のページビュー時にのみアクティブになります。パラメータを <code>No</code> に構成すると、<code>utag.link</code> はすべてのページで発火します。</li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
-<p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。ロードルールについての詳細は、<a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>のドキュメンテーションを参照してください。</p>
+<p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。タグ宛先に変数をマップする方法については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピング</a>を参照してください。</p>
+<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
-<h3 id="スタンダード">スタンダード</h3>
+<h3 id="構成">構成</h3>
 <table>
 <thead>
 <tr>
-<th>変数</th>
-<th>説明</th>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ/値</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>APIキー（文字列）</td>
-<td><code>(apiKey)</code></td>
+<td style="text-align:left"><code>apiKey</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">APIキー。</td>
 </tr>
 <tr>
-<td>検出時にイベントをトリガー（ブール値）</td>
-<td><code>(triggerEvent)</code></td>
+<td style="text-align:left"><code>triggerEvent</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">トリガーイベントAIMシグナル。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sessionInformation</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">セッション情報。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>poiSelected</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">POIアイデンティティタイプを含む。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tstSelected</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">TSTアイデンティティタイプを含む。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unkSelected</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">UNKアイデンティタイプを含む。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>selectedTagsToSend</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">HCPデータを送信する先。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>firstPageOnly</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">タグは最初のページビューでのみ発火する必要があります。</td>
 </tr>
 </tbody>
 </table>
@@ -1943,7 +1986,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年November月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1957,10 +2000,11 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%80%E3%83%BC%E3%83%89" href="javascript:void(0)">スタンダード</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               </nav>
   </aside></nav>
 

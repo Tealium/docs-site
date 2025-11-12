@@ -1796,7 +1796,7 @@ Add and configure the tag in the same profile and enable the bundle flag, if you
 <h2 id="tag-tips">Tag Tips</h2>
 <ul>
 <li>Heartbeat requires the Adobe Experience Cloud ID Service as well as AppMeasurement for JS to be loaded first, preferably bundled.</li>
-<li>This tag is fired via &ldquo;utag.track(&lsquo;video&rsquo;, data);&rdquo; which should be implemented in your video event handlers.</li>
+<li>This tag is fired with &ldquo;utag.track(&lsquo;video&rsquo;, data);&rdquo; which should be implemented in your video event handlers.</li>
 <li>jQuery is required by Adobe Heartbeat.</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
@@ -2424,7 +2424,7 @@ Add and configure the tag in the same profile and enable the bundle flag, if you
 </table>
 <h2 id="validation">Validation</h2>
 <p>The Heartbeat tag is event-based and leverages the <code>utag.track(&quot;video&quot;, data)</code> call to differentiate itself from other utag calls. For this reason, it is crucial to properly set up the <a href="#video_events_mapping">video event triggers in the Data Mapping toolbox</a>.</p>
-<p>Once configured, the tag fires continuously every second to keep the video data current. This is accomplished by firing the &ldquo;playing&rdquo; event within your video player&rsquo;s &ldquo;playing&rdquo; event handler. Other video events should also be fired via their corresponding Adobe heartbeat events. Network calls are aggregated and reported to Adobe every 10 seconds; including those for event changes.</p>
+<p>Once configured, the tag fires continuously every second to keep the video data current. This is accomplished by firing the &ldquo;playing&rdquo; event within your video player&rsquo;s &ldquo;playing&rdquo; event handler. Other video events should also be fired through their corresponding Adobe heartbeat events. Network calls are aggregated and reported to Adobe every 10 seconds; including those for event changes.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>An easy way to set both the Heartbeat and Nielsen debug flags is by adding a querystring parameter to the URL of the video page. For For example, <code>adobe_debug=1&amp;Nielsen=1</code> <br>You can then add the Query parameter variables to your data layer in Tealium iQ and map them accordingly.<br>Mapping destinations for both the Heartbeat and Nielsen debug flags are available under the Standard category. See &ldquo;Adobe Heartbeat Debug Logging Flag&rdquo; and &ldquo;Nielsen SDK Debug Flag&rdquo;.<br>When complete, you can run the following Tealium debug command in your browser console. <br>
 <code>document.cookie = &quot;utagdb=true&quot;;</code></p>
 <h3 id="sample-implementation">Sample Implementation</h3>

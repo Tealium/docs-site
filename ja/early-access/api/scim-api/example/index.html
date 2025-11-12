@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/scim-api/example/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="SCIMをサポートするIDプロバイダーとの構成方法を学びます。" />
+<meta property="og:description" content="SCIMをサポートするIDプロバイダーでの構成方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>SCIMとIDプロバイダーの構成 | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -404,7 +404,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      SCIMをサポートするIDプロバイダーとの構成方法を学びます。
+      SCIMをサポートするIDプロバイダーでの構成方法を学びます。
     </p>
   
 </div>
@@ -420,29 +420,47 @@
 </ul>
 </li>
 </ul>
-<p>TealiumでSCIMが有効になっている場合、ユーザーメンバーシップはTealiumとIDプロバイダー間で同期されます。</p>
+<!-- * ユーザーとグループの更新 - 近日公開
+    * ユーザーの更新
+    * グループの表示、作成、更新、削除 -->
+<p>TealiumでSCIMが有効になると、TealiumとIDプロバイダー間でユーザーメンバーシップが同期されます。</p>
 <p>Tealiumの内部グループSCIM APIは、RFC7644プロトコルの一部を実装しています。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li><a href="/ja/administration/admin-roles/">アカウント管理者またはユーザー管理者</a>の権限。</li>
 <li>長期間有効なベアラートークン。ベアラートークンの生成方法については、<a href="/ja/early-access/api/scim-api/about/#authentication">認証</a>を参照してください。</li>
 </ul>
+<!--
+### Tealium SCIMの構成方法
+
+GA METHOD
+
+ベアラートークンを生成するには、次の手順を実行します：
+
+1. 管理メニューから **SSO（シングルサインオン）** を選択します。
+1. **SCIMトークンの生成** を選択します。
+1. IDプロバイダーの構成を保存するために、以下を保存します：
+   * **Your SCIM token** フィールドからのトークン。
+   * **SCIM APIエンドポイントURL** フィールドからのURL。
+
+-->
 <h2 id="idプロバイダーの構成">IDプロバイダーの構成</h2>
 <p>以下のIDプロバイダーを構成できます：</p>
 <ul>
 <li>Microsoft Entra ID（旧Azure Active Directory）</li>
 </ul>
-<p>他のプロバイダーもTealiumで動作する可能性がありますが、テストされておらず、サポートされていません。支援が必要な場合は、IDプロバイダーに連絡してください。互換性を確認するには、Tealiumサポートに連絡してください。</p>
+<!-- * Okta -->
+<p>他のプロバイダーもTealiumで動作する可能性がありますが、テストされておらず、サポートされていません。サポートが必要な場合は、IDプロバイダーに連絡してください。互換性を確認するには、Tealiumサポートに連絡してください。</p>
 <h3 id="microsoft-entra-idの構成">Microsoft Entra IDの構成</h3>
 <p>SSO構成中に<a href="https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/view-applications-portal">Azure Active Directory</a>用に作成されたSAMLアプリケーションは、SCIM用に構成する必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>SCIMプロビジョニングは、以下の指示に従って正確に構成する必要があります。構成が間違っていると、ユーザープロビジョニングとサインインに問題が発生します。ステップに関する問題や質問がある場合は、Tealiumサポートに連絡してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>SCIMプロビジョニングは、以下の指示に従って正確に構成する必要があります。構成が間違っていると、ユーザープロビジョニングとサインインに問題が発生します。どのステップでも問題や質問がある場合は、Tealiumサポートに連絡してください。</p>
 <p>Microsoft Entra IDでSCIMを構成するには：</p>
 <h4 id="tealiumをmicrosoft-entra-idに追加">TealiumをMicrosoft Entra IDに追加</h4>
 <ol>
 <li><a href="https://portal.azure.com/">Azure Portal</a>にアクセスします。</li>
 <li><strong>Microsoft Entra ID &gt; Enterprise applications</strong>に移動します。</li>
 <li><strong>+ New application</strong>をクリックし、<strong>Create your own application</strong>をクリックします。</li>
-<li><strong>Name</strong>（例：Tealium）を入力し、<strong>Integrate any other application you don’t find in the gallery</strong>を選択します。</li>
+<li><strong>Name</strong>に名前（例：Tealium）を入力し、<strong>Integrate any other application you don’t find in the gallery</strong>を選択します。</li>
 <li><strong>Create</strong>をクリックします。</li>
 </ol>
 <h4 id="scimプロビジョニングの構成">SCIMプロビジョニングの構成</h4>
@@ -451,28 +469,28 @@
 <li><strong>Provisioning Mode</strong>を<strong>Automatic</strong>に構成します。</li>
 <li><strong>Admin Credentials</strong>の下で、次の値を入力します：
 <ul>
-<li><strong>Tenant URL</strong>フィールドにTealiumのSCIM APIエンドポイントURLを入力します：<code>https://developer.tealiumapis.com/v1/auth-long-lived/token</code></li>
-<li><strong>Secret Token</strong>フィールドにTealiumからのSCIMベアラートークンを入力します。</li>
+<li><strong>Tenant URL</strong>フィールドには、TealiumからのSCIM APIエンドポイントURLを入力します：<code>https://developer.tealiumapis.com/v2/auth-long-lived/token</code></li>
+<li><strong>Secret Token</strong>フィールドには、TealiumからのSCIMベアラートークンを入力します。</li>
 </ul>
 </li>
 <li><strong>Test Connection</strong>をクリックします。成功メッセージが表示されます。</li>
 <li><strong>Save</strong>をクリックします。</li>
 </ol>
 <h4 id="ユーザー割り当ての構成">ユーザー割り当ての構成</h4>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>SCIMグループプロビジョニングはEarly Accessでは現在サポートされていません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>SCIMグループプロビジョニングは、Early Accessでは現在サポートされていません。</p>
 <ol>
 <li><strong>Provisioning</strong>をクリックします。</li>
 <li><strong>Enabled</strong>トグルが<code>Yes</code>に構成されていることを確認します。</li>
 <li>すべての<strong>Target Object Actions</strong>が有効になっていることを確認します。</li>
 <li><strong>Attribute mapping</strong>をクリックし、Microsoft Entra IDとTealium間の属性マッピングを構成します。詳細については、<a href="https://learn.microsoft.com/en-us/entra/identity/app-provisioning/customize-application-attributes">Microsoft: Customize user provisioning attribute-mappings for SaaS applications in Microsoft Entra ID</a>を参照してください。</li>
 </ol>
-<p>TealiumがMicrosoft Entra IDを通じてSCIMで認証するために必要な属性マッピングは、次の表にリストされています：</p>
+<p>以下の表は、TealiumがMicrosoft Entra IDを介してSCIMで認証するために必要な属性マッピングをリストしています：</p>
 <table>
 <thead>
 <tr>
 <th>Microsoft Entra IDのソース属性</th>
 <th><code>customappsso</code>のターゲット属性</th>
-<th>マッチングの優先順位</th>
+<th>優先順位の一致</th>
 </tr>
 </thead>
 <tbody>
@@ -508,14 +526,14 @@
 </tr>
 </tbody>
 </table>
-<p>* これは直接のマッピングではなく、式のタイプです。<strong>Mapping type</strong>リストから<strong>Expression</strong>を選択します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>MicrosoftがAzure Active DirectoryからEntra IDの命名スキームに移行する際、ユーザーインターフェースに不整合が見られることがあります。問題が発生した場合は、Tealiumサポートに連絡してください。</p>
-<p>各属性マッピングには次のものが含まれます：</p>
+<p>* これは直接のマッピングではなく、式タイプです。<strong>Mapping type</strong>リストから<strong>Expression</strong>を選択します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>MicrosoftがAzure Active DirectoryからEntra IDの命名スキームに移行する間、ユーザーインターフェースに不整合が見られることがあります。問題が発生した場合は、Tealiumサポートに連絡してください。</p>
+<p>各属性マッピングには以下が含まれます：</p>
 <ul>
 <li><code>customappsso</code>属性はターゲット属性に対応します。</li>
 <li>Microsoft Entra ID属性はソース属性に対応します。</li>
 </ul>
-<p>各属性について、次のステップを実行します：</p>
+<p>各属性について、次の手順を使用します：</p>
 <ol>
 <li>既存の属性を編集するか、新しい属性を追加します。</li>
 <li>必要なソースとターゲットの属性マッピングをリストから選択します。</li>
@@ -523,23 +541,33 @@
 <li><strong>Save</strong>をクリックします。</li>
 </ol>
 <p>SAML構成が推奨されるSAML構成と異なる場合は、マッピング属性を選択してそれに応じて変更します。<code>externalId</code>ターゲット属性にマッピングするソース属性は、SAMLの<code>mailNickname</code>で使用される属性と一致する必要があります。</p>
-<p>表にリストされていないマッピングを使用する場合は、Microsoft Entra IDのデフォルトを使用します。必要な属性のリストについては、<a href="https://learn.microsoft.com/en-us/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups">Microsoft: Develop and plan provisioning for a SCIM endpoint in Microsoft Entra ID</a>を参照してください。</p>
+<p>表にリストされていないマッピングがある場合は、Microsoft Entra IDのデフォルトを使用します。必要な属性のリストについては、<a href="https://learn.microsoft.com/en-us/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups">Microsoft: Develop and plan provisioning for a SCIM endpoint in Microsoft Entra ID</a>を参照してください。</p>
 <h4 id="ユーザーの割り当て">ユーザーの割り当て</h4>
+<!-- ##### グループ
+
+1. **Provision Microsoft Entra ID Groups**を選択します。
+1. **Attribute Mapping**ページで、**Enabled**トグルを`Yes`に構成します。
+1. **Save**をクリックします。 
+
+##### ユーザー -->
 <ol>
 <li><strong>Users and groups</strong>に移動します。</li>
 <li><strong>+ Add user/group</strong>をクリックします。</li>
-<li>同期したいユーザーまたはグループを選択します。</li>
+<li>同期したいユーザーやグループを選択します。</li>
 <li><strong>Assign</strong>をクリックします。</li>
 </ol>
 <h4 id="最終構成を行いプロビジョニングを開始">最終構成を行い、プロビジョニングを開始</h4>
 <p>次の構成を行います：</p>
 <ol>
-<li>（オプション）<strong>Send an email notification when a failure occurs</strong>チェックボックスを選択します。</li>
-<li>（オプション）<strong>Prevent accidental deletion</strong>チェックボックスを選択します。</li>
-<li>変更がすべて保存されていることを確認するために<strong>Save</strong>をクリックします。</li>
+<li>（オプション）<strong>Send an email notification when a failure occurs</strong> チェックボックスを選択します。</li>
+<li>（オプション）<strong>Prevent accidental deletion</strong> チェックボックスを選択します。</li>
+<li>変更がすべて保存されていることを確認するために <strong>Save</strong> をクリックします。</li>
 <li><strong>Provisioning</strong>に移動し、<strong>Start provisioning</strong>をクリックします。</li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>プロビジョニングは通常数分以内に開始されますが、最初の同期には最大40分かかる場合があります。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>プロビジョニングは通常数分で開始されますが、最初の同期には最大40分かかる場合があります。</p>
+<!-- ### Oktaの構成
+
+-->
 <h4 id="要件">要件</h4>
 <ul>
 <li>Okta Lifecycle Management製品を使用する必要があります。この製品レベルは、OktaでSCIMを使用するために必要です。</li>
@@ -550,7 +578,7 @@
 <ol>
 <li>Oktaにサインインします。</li>
 <li>右上隅にある<strong>管理者</strong>をクリックします。このボタンは<strong>管理者</strong>エリアからは見えません。</li>
-<li><strong>アプリケーション</strong>タブの下で<strong>アプリカタログを閲覧</strong>をクリックします。</li>
+<li><strong>アプリケーション</strong>タブの下で<strong>アプリカタログを参照</strong>をクリックします。</li>
 <li>Tealiumアプリケーションを選択します。</li>
 <li>Tealiumアプリケーションの概要ページで<strong>追加</strong>をクリックします。</li>
 <li><strong>アプリケーションの可視性</strong>の下で、両方のチェックボックスを選択します。</li>
@@ -583,7 +611,7 @@
 <p>プロビジョニング中：</p>
 <ul>
 <li>プライマリとセカンダリのメールアドレスがTealiumユーザーアカウントの存在を確認する際に考慮されます。</li>
-<li>重複するユーザー名は、ユーザーを作成する際に接尾辞<code>1</code>を追加することで処理されます。たとえば、<code>test_user</code>が既に存在する場合は<code>test_user1</code>が使用されます。<code>test_user1</code>が既に存在する場合、Tealiumは未使用のユーザー名を見つけるために接尾辞を増やします。4回試しても未使用のユーザー名が見つからない場合は、ランダムな文字列がユーザー名に添付されます。</li>
+<li>重複するユーザー名は、ユーザーを作成する際に接尾辞<code>1</code>を追加することで処理されます。たとえば、<code>test_user</code>が既に存在する場合は<code>test_user1</code>が使用されます。<code>test_user1</code>が既に存在する場合、Tealiumは未使用のユーザー名を見つけるために接尾辞を増やします。4回試しても未使用のユーザー名が見つからない場合は、ユーザー名にランダムな文字列が添付されます。</li>
 </ul>
 <h2 id="アクセスの削除">アクセスの削除</h2>
 <p>IDプロバイダーでユーザーを削除または無効化して、そのアクセスを削除します。</p>
@@ -652,7 +680,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月29日
+          <p>最終更新日 ::  2025年November月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

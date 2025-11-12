@@ -1793,8 +1793,8 @@
 <li><strong>ピクセル/データセットID</strong>
 <ul>
 <li>FacebookピクセルID。</li>
-<li>Facebookピクセルが正しく機能するためには、<a href="#prerequisites">前提条件</a>で説明されている手順に従って、Facebookピクセルのパートナー統合を有効にすることを確認してください。</li>
-<li>詳細については、<a href="https://www.facebook.com/business/m/pixel-set-up-step-1#step-1">Meta Pixelの構成とインストール方法</a>を参照してください。</li>
+<li>Facebookピクセルが正しく機能するようにするには、<a href="#prerequisites">前提条件</a>で説明されている手順に従って、Facebookピクセルのパートナー統合を有効にしてください。</li>
+<li>詳細については、<a href="https://www.facebook.com/business/m/pixel-set-up-step-1#step-1">Metaピクセルの構成とインストール方法</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
@@ -1846,22 +1846,22 @@
 <p><strong>自動重複排除</strong>値が入力されている場合、コネクタは対応するイベントID属性を検索します。このセクションが入力されていてTealium iQを使用している場合、<code>Event ID</code>を追加する必要はありません。ただし、Tealium iQを使用せずにEventStreamを使用している場合は、次のアプローチが必要になる場合があります。</p>
 <p>コネクタは次の操作順序に従います：</p>
 <ul>
-<li><strong>自動重複排除</strong>が入力され、データレイヤーで値が見つかった場合（例：<code>fb_event_id_ViewContent_30</code>）、この値は<code>Event ID</code>にマッピングされたものより優先されます。</li>
-<li><strong>自動重複排除</strong>が入力されているが、タグIDバージョンを見つけることができず、レガシーバージョン（IDなし）を見つけた場合、その値が使用されます（例：<code>fb_event_id_ViewContent</code>）。</li>
-<li><strong>自動重複排除</strong>が入力されているが、値が見つからない場合は、入力されている<code>Event ID</code>が使用されます。</li>
+<li><strong>自動重複排除</strong>が入力され、値がデータレイヤーで見つかった場合。この値は<code>Event ID</code>でマッピングされたものよりも優先されます。たとえば、<code>fb_event_id_ViewContent_30</code>。</li>
+<li><strong>自動重複排除</strong>が入力されていますが、タグIDバージョンは見つからず、IDが付いていないレガシーバージョンが見つかった場合、その値が使用されます。たとえば、<code>fb_event_id_ViewContent</code>。</li>
+<li><strong>自動重複排除</strong>が入力されていますが、値が見つからない場合は、入力されている場合はマッピングされた<code>Event ID</code>が使用されます。</li>
 </ul>
 <h3 id="オフラインコンバージョン">オフラインコンバージョン</h3>
 <p>Facebookコンバージョンコネクタを使用してオフラインおよび店舗イベントを処理するには、必要なパラメータを含めてコネクタを構成します。</p>
 <h4 id="前提条件-1">前提条件</h4>
 <ul>
 <li>FacebookコンバージョンAPIを通じて送信されるオフラインイベントは、Facebookイベントマネージャーのデータセットに関連付けられている必要があります。</li>
-<li>すべてのオフラインおよび店舗イベントについて、広告主はイベントの<code>action_source</code>パラメータを<code>physical_store</code>に構成する必要があります。</li>
+<li>オフラインおよび店舗イベントのすべての広告主は、イベントで<code>action_source</code>パラメータを<code>physical_store</code>に構成する必要があります。</li>
 <li>オフラインイベントには、すべての必要なイベントパラメータを含める必要があります。詳細については、<a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event">Meta: Server Event Parameters</a>を参照してください。</li>
 </ul>
 <h4 id="構成手順">構成手順</h4>
 <p>Facebookコンバージョンコネクタを使用してオフラインおよび店舗イベントを送信するための構成手順は次のとおりです：</p>
 <ol>
-<li>Facebookイベントマネージャーで、新しいオフラインデータソースを作成するか、既存のものを選択します。構成手順については、<a href="https://developers.facebook.com/docs/marketing-api/conversions-api/offline-events/">Meta: Sending Offline Events Using the Conversions API</a>を参照してください。</li>
+<li>Facebookイベントマネージャーで、既存のオフラインデータソースを作成または選択します。構成手順については、<a href="https://developers.facebook.com/docs/marketing-api/conversions-api/offline-events/">Meta: Sending Offline Events Using the Conversions API</a>を参照してください。</li>
 <li>コネクタ構成で、オフラインデータソースに関連付けられた<strong>データセットID</strong>を入力します。このIDは、正しいMetaデータセットにイベントを送信するために使用されます。</li>
 <li><strong>アクション</strong>タブで、<strong>イベント送信</strong>などの新しいアクションを追加します。</li>
 <li><strong>アクションソース</strong>パラメータを<code>physical_store</code>にマッピングします。</li>
@@ -1937,13 +1937,13 @@
 </tr>
 </tbody>
 </table>
-<p>ベンダーにこれらのパラメータを自動的に送信するのを防ぐには、<strong>自動マッピング無効</strong>を<code>true</code>に構成して有効にします。</p>
+<p>これらのパラメータをベンダーに自動的に送信しないようにするには、<strong>自動マッピング無効</strong>を<code>true</code>に構成して有効にします。</p>
 <h2 id="アクション-1">アクション</h2>
 <p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブをクリックします。<strong>アクション</strong>タブでコネクタアクションを構成します。</p>
 <p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="イベント送信">イベント送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
-<p><strong>ユーザーデータ</strong>パラメータについて、以下の表はいくつかのパラメータの重要度を示しています。重要度は、そのパラメータがイベントマッチ品質に与える影響を説明します。例えば、<strong>Email (em)</strong> の重要度は <strong>最高</strong> であり、<strong>電話番号 (ph)</strong> の重要度は <strong>高</strong> です。</p>
+<p><strong>ユーザーデータ</strong>パラメータについて、以下の表はいくつかのパラメータの重要度を示しています。重要度は、そのパラメータがイベントマッチ品質に与える影響を説明しています。例えば、<strong>Email (em)</strong> の重要度は <strong>最高</strong> であり、<strong>電話番号 (ph)</strong> の重要度は <strong>高</strong> です。</p>
 <table>
 <thead>
 <tr>
@@ -1958,11 +1958,11 @@
 </tr>
 <tr>
 <td style="text-align:left">テストイベントコード</td>
-<td style="text-align:left"><code>test_event_code</code>パラメータにテストIDを送信して、テストイベントウィンドウでイベントアクティビティを開始します。<code>test_event_code</code>で送信されたイベントは削除されず、イベントマネージャーに流れ、ターゲティングおよび広告測定の目的で使用されます。</td>
+<td style="text-align:left"><code>test_event_code</code>パラメータにテストIDを送信して、テストイベントウィンドウでイベントアクティビティを開始します。<code>test_event_code</code>で送信されたイベントは削除されず、イベントマネージャーに流れ込み、ターゲティングや広告測定の目的で使用されます。</td>
 </tr>
 <tr>
 <td style="text-align:left">データ処理オプション</td>
-<td style="text-align:left">(必須) この値を<code>LDU</code>にマッピングして、Facebookがイベントを限定データ使用制限で処理するようにします。それ以外の場合は、この値を<code>None</code>にマッピングして、イベントを限定データ使用制限で処理しないことを指定します。詳細については、<a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebookデータ処理オプション</a>を参照してください。</td>
+<td style="text-align:left">(オプション) このパラメータを<code>LDU</code>の値にマッピングして、Facebookがイベントを限定データ使用制限で処理するようにします。それ以外の場合は、このパラメータを<code>None</code>の値にマッピングして、イベントを限定データ使用制限で処理しないことを指定します。詳細は、<a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook: データ処理オプション</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align:left">イベント名</td>
@@ -1970,7 +1970,7 @@
 </tr>
 <tr>
 <td style="text-align:left">デバッグレベル</td>
-<td style="text-align:left">イベントのトレースレベルを指定します。<ul><li><code>1</code>はエラー</li><li><code>2</code>は情報</li><li><code>3</code>はデバッグ</li></ul>データのハッシュを確認するためにトレースを使用する場合、トレースのトップに表示されるデータ（例：<code>user_data - EMAIL</code>）はコネクタに入ってきたデータであり、Facebookに送信されたデータではありません。Facebookに送信されたデータはトレースの<strong>リクエストボディセクション</strong>に表示されます。</td>
+<td style="text-align:left">イベントのトレースレベルを指定します。<ul><li><code>1</code>はエラー</li><li><code>2</code>は情報</li><li><code>3</code>はデバッグ</li></ul>データのハッシュ化を確認するためにトレースを使用する場合、トレースのトップに表示されるデータ、例えば<code>user_data - EMAIL</code>はコネクタに入ってきたデータであり、Facebookに送信されたデータではありません。Facebookに送信されたデータはトレースの<strong>リクエストボディセクション</strong>に表示されます。</td>
 </tr>
 <tr>
 <td style="text-align:left">アクションソース</td>
@@ -1982,7 +1982,7 @@
 </tr>
 <tr>
 <td style="text-align:left">データ処理オプション国</td>
-<td style="text-align:left">ユーザーイベントに関連付けられた国コードをマッピングします。<strong>データ処理オプション</strong>が<code>LDU</code>にマッピングされている場合、このパラメータは必須です。受け入れられるコード値：<ul><li><code>1</code>はアメリカ合衆国</li><li><code>0</code>は国をFacebookによるジオロケーションを要求する</li></ul>ジオロケーションには、<strong>クライアントIPアドレス</strong>属性のマッピングも必要です。</td>
+<td style="text-align:left">ユーザーイベントに関連付けられた国コードをマッピングします。<strong>データ処理オプション</strong>が<code>LDU</code>にマッピングされている場合、このパラメータは必須です。受け入れられるコード値：<ul><li><code>1</code>はアメリカ合衆国</li><li><code>0</code>は国をFacebookによるジオロケーションを要求する</li></ul>ジオロケーションは、<strong>クライアントIPアドレス</strong>属性のマッピングも必要です。</td>
 </tr>
 <tr>
 <td style="text-align:left">イベントID</td>
@@ -1994,15 +1994,15 @@
 </tr>
 <tr>
 <td style="text-align:left">データ処理オプション州</td>
-<td style="text-align:left"><strong>データ処理オプション</strong>が<code>LDU</code>にマッピングされている場合、このパラメータは必須です。ユーザーイベントに関連付けられた州コードをマッピングします。受け入れられるコード値：<ul><li><code>1000</code>はカリフォルニア州</li><li><code>0</code>は州をFacebookによるジオロケーションを要求する</li></ul>ジオロケーションには、<strong>クライアントIPアドレス</strong>属性のマッピングも必要です。</td>
+<td style="text-align:left"><strong>データ処理オプション</strong>が<code>LDU</code>にマッピングされている場合、このパラメータは必須です。ユーザーイベントに関連付けられた州コードをマッピングします。受け入れられるコード値：<ul><li><code>1000</code>はカリフォルニア州</li><li><code>0</code>は州をFacebookによるジオロケーションを要求する</li></ul>ジオロケーションは、<strong>クライアントIPアドレス</strong>属性のマッピングも必要です。</td>
 </tr>
 <tr>
 <td style="text-align:left">オプトアウト</td>
 <td style="text-align:left">このイベントを広告配信の最適化に使用しないことを示すブール値です。この値を<code>true</code>に構成すると、イベントは帰属のためにのみ使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">郵便番号 (zip)</td>
-<td style="text-align:left">たとえば：<code>94035</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">Zip (<code>zip</code>)</td>
+<td style="text-align:left">郵便番号です。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>90120</code>または<code>[&quot;90120&quot;, &quot;90121&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">FBログインID</td>
@@ -2017,253 +2017,108 @@
 <td style="text-align:left">パートナーの名前です。このパラメータはLiverampやTradeDeskなどのサードパーティIDプロバイダーによって追加のユーザー識別子として使用することができます。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">クライアントユーザーエージェント (ua)</td>
-<td style="text-align:left"><strong>アクションソース</strong>がwebsiteに構成されている場合、このパラメータは必須です。イベントに対応するブラウザのユーザーエージェントです。この値をハッシュ化しないでください。<ul><li><strong>EventStream</strong> - <strong>アクションソース</strong>がwebsiteに構成され、このフィールドがマッピングされていない場合、自動的にEventStreamのユーザーエージェント属性にマッピングされます。</li><li><strong>AudienceStream</strong> - <strong>アクションソース</strong>がwebsiteに構成され、このフィールドがマッピングされていない場合、自動的に訪問の最後のユーザーエージェントにAudienceStreamでマッピングされます。</li></ul> <strong>重要度: 高</strong></td>
+<td style="text-align:left">クライアントユーザーエージェント (<code>ua</code>)</td>
+<td style="text-align:left"><strong>アクションソース</strong>がwebsiteに構成されている場合に必要なパラメータです。イベントに対応するブラウザのユーザーエージェントです。この値をハッシュ化しないでください。<ul><li><strong>EventStream</strong> - <strong>アクションソース</strong>がwebsiteに構成され、このフィールドがマッピングされていない場合、自動的にEventStreamのユーザーエージェント属性にマッピングされます。</li><li><strong>AudienceStream</strong> - <strong>アクションソース</strong>がwebsiteに構成され、このフィールドがマッピングされていない場合、自動的に訪問の最後のユーザーエージェントにマッピングされます。</li></ul> <strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">クライアントIPアドレス (ip)</td>
-<td style="text-align:left">イベントに対応するブラウザのIPアドレスです。TealiumはクライアントIPアドレスをキャプチャすることができますが、デフォルトでは利用できません。この機能を有効にするには、カスタマーサクセスマネージャーに連絡してください。詳細については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products">サーバーサイドTealium製品でのIPアドレス収集の有効化</a>を参照してください。この値をハッシュ化しないでください。<strong>重要度: 高</strong></td>
+<td style="text-align:left">クライアントIPアドレス (<code>ip</code>)</td>
+<td style="text-align:left">イベントに対応するブラウザのIPアドレスです。TealiumはクライアントIPアドレスをキャプチャすることができますが、デフォルトでは利用できません。この機能を有効にするには、カスタマーサクセスマネージャーに連絡してください。詳細は、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products">サーバーサイドTealium製品でのIPアドレス収集の有効化</a>を参照してください。この値をハッシュ化しないでください。<strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">電話 (ph)</td>
-<td style="text-align:left">電話番号です。国コード、市外局番、番号のみの数字を含めます。たとえば：<code>16505551212</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 高</strong></td>
+<td style="text-align:left">電話 (<code>ph</code>)</td>
+<td style="text-align:left">電話番号です。国コード、エリアコード、番号のみの数字を含めます。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>16505551212</code>または<code>[&quot;16505551212&quot;, &quot;16505551213&quot;]</code>。<strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">州 (st)</td>
-<td style="text-align:left">米国の州の略称です。たとえば：<code>ca</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">州 (<code>st</code>)</td>
+<td style="text-align:left">米国の州の略称です。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>ca</code>または<code>[&quot;ca&quot;, &quot;tx&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">メール (em)</td>
-<td style="text-align:left">メールアドレスです。たとえば：<code>user@example.com</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 最高</strong></td>
+<td style="text-align:left">Email (<code>em</code>)</td>
+<td style="text-align:left">メールアドレスです。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>user@example.com</code>または<code>[&quot;user@example.com&quot;, &quot;user2@example.com&quot;]</code>。<strong>重要度: 最高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">姓 (ln)</td>
-<td style="text-align:left">苗字を小文字で。たとえば：<code>smith</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">姓 (<code>ln</code>)</td>
+<td style="text-align:left">苗字を小文字で入力します。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>smith</code>または<code>[&quot;smith&quot;, &quot;jones&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">名 (fn)</td>
-<td style="text-align:left">名前を小文字で。たとえば：<code>joe</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">名 (<code>fn</code>)</td>
+<td style="text-align:left">名前を小文字で入力します。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>joe</code>または<code>[&quot;joe&quot;, &quot;jane&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">リードID</td>
 <td style="text-align:left">Facebook <a href="https://developers.facebook.com/docs/marketing-api/guides/lead-ads">リード広告</a>によって生成されたリードに関連付けられたIDです。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">市 (ct)</td>
-<td style="text-align:left">スペースや句読点なしの小文字の市名です。たとえば：<code>menlopark</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">市 (<code>ct</code>)</td>
+<td style="text-align:left">空白や句読点を含まない小文字の市名です。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>menlopark</code>または<code>[&quot;menlopark&quot;, &quot;sandiego&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">国 (country)</td>
-<td style="text-align:left">二文字の国コードを小文字で。たとえば：<code>us</code>。このパラメータは文字列または文字列の配列を受け入れます。たとえば：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。<strong>重要度: 中</strong></td>
+<td style="text-align:left">国 (<code>country</code>)</td>
+<td style="text-align:left">小文字の2文字の国コードです。このパラメータは文字列または文字列の配列を受け入れます。例えば、<code>us</code>または<code>[&quot;us&quot;, &quot;ca&quot;]</code>。<strong>重要度: 中</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">外部ID</td>
-<td style="text-align:left">広告主からの任意の一意のID、たとえばロイヤルティ会員ID、ユーザーID、外部クッキーIDなどです。複数のIDを追加するために配列タイプの属性にマッピングします。このマッピングは自動マッピングが無効にされていない限り、自動的にTealium訪問IDで構成されます。</td>
+<td style="text-align:left">広告主からの任意の一意のID、例えばロイヤルティ会員ID、ユーザーID、外部クッキーIDなどです。複数のIDを追加するために配列タイプの属性にマッピングします。このマッピングは自動的にTealium訪問IDで自動的に構成されますが、自動マッピングが無効にされている場合は除きます。</td>
 </tr>
 <tr>
-<td style="text-align:left">ブラウザID (fpb)</td>
+<td style="text-align:left">ブラウザID (<code>fpb</code>)</td>
 <td style="text-align:left">Facebookの<code>_fbp</code>クッキーに保存されているブラウザID値です。自動マッピングを無効にしない限り、このパラメータは自動的にマッピングされます。この値をハッシュ化しないでください。<strong>重要度: 高</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">サブスクリプションID</td>
-<td style="text-align:left">このトランザクションのユーザーのサブスクリプションIDです。個々の製品の注文IDに似ています。例：<code>anid1234</code>。この値をハッシュ化しないでください。</td>
-</tr>
-<tr>
-<td style="text-align:left">性別</td>
-<td style="text-align:left">性別の小文字の単一文字値です。このパラメータは文字列または文字列の配列を受け入れます。例：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。オプションは以下の通りです：<ul><li><code>f</code> 女性</li><li><code>m</code> 男性</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">生年月日</td>
-<td style="text-align:left">年、月、日で与えられる生年月日。例：<code>19971226</code> 1997年12月26日。このパラメータは文字列または文字列の配列を受け入れます。例：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">クリックID (fbc)</td>
-<td style="text-align:left">Facebookの<code>_fbc</code>クッキーに保存されるFacebookクリックID値です。自動マッピングが無効にされていない限り、このパラメータは自動的にマッピングされます。この値をハッシュ化しないでください。Facebookは<code>fbclid</code>クッキーの保存と永続化を推奨します。<strong>重要度：高</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">ユーザーデータは既にハッシュ化されています</td>
-<td style="text-align:left">Facebook Conversionsコネクタは、ユーザーデータを自動的にハッシュ化するFacebook Pixelタグを必要とします。このピクセル機能は変更できません。データを再度ハッシュ化することを避けるためにこのオプションを選択します。</td>
-</tr>
-<tr>
-<td style="text-align:left">通貨</td>
-<td style="text-align:left">適用される場合の指定された値の通貨です。通貨は有効なISO 4217の3桁の通貨コードでなければなりません。例：<code>usd</code>。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">コンテンツ名</td>
-<td style="text-align:left">イベントに関連するページまたは製品の名前です。例：<code>lettuce</code>。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">アイテム数</td>
-<td style="text-align:left"><strong>InitiateCheckout</strong>イベントでのみ使用します。チェックアウト中にユーザーが購入しようとしているアイテムの数です。例：<code>4</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">検索文字列</td>
-<td style="text-align:left">ユーザーによって行われた検索クエリです。検索イベントでのみ使用します。例：<strong>lettuce</strong></td>
-</tr>
-<tr>
-<td style="text-align:left">ステータス</td>
-<td style="text-align:left"><strong>CompleteRegistration</strong>イベントでのみ使用します。登録イベントのステータスです。例：<code>registered</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">注文ID</td>
-<td style="text-align:left">このトランザクションの注文IDです。例：<code>order1234</code>。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">コンテンツタイプ</td>
-<td style="text-align:left">この値は<code>product</code>または<code>product_group</code>のいずれかでなければなりません。<ul><li>送信するキーが<strong>Content IDs</strong>または<strong>Content Product</strong>にある場合は<code>product</code>に構成します。<strong>Content Product</strong>は製品を表します。</li><li>送信するキーが<strong>Content IDs</strong>にある場合は<code>product_group</code>に構成します。<strong>Content Product</strong>は製品グループを表します。</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">予測される生涯価値</td>
-<td style="text-align:left">変換イベントの予測される生涯価値です。例：<code>432.12</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">コンテンツID</td>
-<td style="text-align:left">イベントに関連するコンテンツID、例えばAddToCartイベントのアイテムの製品SKUなどです。例：<code>['ABC123', 'XYZ789']</code>。非配列イベント属性が提供された場合、それは単一アイテム配列に変換されます。<strong>Content Type</strong>が<code>product</code>の場合、このマッピングされた値は非配列イベント属性または単一要素配列でなければなりません。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">値</td>
-<td style="text-align:left">このイベントに関連する数値です。これは金銭的な値または他の指標の値かもしれません。例：<code>142.54</code>。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">コンテンツカテゴリ</td>
-<td style="text-align:left">イベントに関連するコンテンツのカテゴリです。例：<code>grocery</code>。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">数量</td>
-<td style="text-align:left">製品の数量です。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">価格</td>
-<td style="text-align:left">製品の個々の価格です。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">ID</td>
-<td style="text-align:left">製品IDです。イベントに表示されるとき、コネクタは自動的にこのパラメータをマッピングします。</td>
-</tr>
-<tr>
-<td style="text-align:left">JSONテンプレート変数</td>
-<td style="text-align:left">テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数に名前を付けます。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
-</tr>
-<tr>
-<td style="text-align:left">JSONテンプレート</td>
-<td style="text-align:left">Custom Dataセクションで参照される有効なJSONテンプレートを提供します。テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
-</tr>
-<tr>
-<td style="text-align:left">Tealium iQタグID</td>
-<td style="text-align:left">Facebook PixelタグUIDです。</td>
-</tr>
-<tr>
-<td style="text-align:left">自動マッピングを無効にする</td>
-<td style="text-align:left">パラメータの自動マッピングを無効にします。</td>
-</tr>
-<tr>
-<td style="text-align:left">自動重複排除</td>
-<td style="text-align:left">Tealium iQタグIDを提供すると、コネクタは自動的にTealium iQが送信する<strong>イベントID</strong>値を検索します。</td>
-</tr>
-<tr>
-<td style="text-align:left">広告トラッキング有効</td>
-<td style="text-align:left">(必須) iOS 14.5+デバイス上でのATT許可を指定するためにこのフィールドを使用します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>に構成します。</td>
-</tr>
-<tr>
-<td style="text-align:left">アプリケーショントラッキング有効</td>
-<td style="text-align:left">(必須) このパラメータはアプリレベルでの広告トラッキングを有効にします。SDKはアプリ開発者がアプリにオプトアウト構成を入れることを許可する必要があります。このフィールドを使用して、その人の選択を指定します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>に構成します。</td>
-</tr>
-<tr>
-<td style="text-align:left">OSバージョン</td>
-<td style="text-align:left">(必須) OSバージョン、例：<code>13.4.1</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">OSバージョン</td>
-<td style="text-align:left">(必須) OSバージョン、例：<code>13.4.1</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">アプリパッケージ名</td>
-<td style="text-align:left">アプリパッケージ名です。例：<code>com.facebook.sdk.samples.hellofacebook</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">ショートバージョン</td>
-<td style="text-align:left">ショートバージョン、例：<code>1.0</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">ロングバージョン</td>
-<td style="text-align:left">ロングバージョン、例：<code>1.0 long</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">デバイスモデル名</td>
-<td style="text-align:left">デバイスモデル名、例：<code>iPhone5,1</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">ロケール</td>
-<td style="text-align:left">ロケール、例：<code>En_US</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">タイムゾーン略称</td>
-<td style="text-align:left">タイムゾーン略称、例：<code>PDT</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">キャリア</td>
-<td style="text-align:left">キャリア、例：<code>AT&amp;T</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">画面幅</td>
-<td style="text-align:left">画面幅、例：<code>320</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">画面高さ</td>
-<td style="text-align:left">画面高さ、例：<code>568</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">画面密度</td>
-<td style="text-align:left">画面密度、例：<code>2</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">CPUコア</td>
-<td style="text-align:left">CPUコア、例：<code>2</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">保存サイズ(GB)</td>
-<td style="text-align:left">外部保存のサイズ（GB）、例：<code>13</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">空き保存(GB)</td>
-<td style="text-align:left">外部保存の空き容量（GB）、例：<code>8</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">デバイスタイムゾーン</td>
-<td style="text-align:left">デバイスのタイムゾーン、例：<code>USA/New York</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">キャンペーンID</td>
-<td style="text-align:left">Facebookからのリンクをクリックしたユーザーに対して、外部URL（例：<code>ad_destination_url</code>）またはディープリンク（App Aggregated Event Manager用）に追加される暗号化された文字列および非ユーザーメタデータです。</td>
-</tr>
-<tr>
-<td style="text-align:left">インストールリファラ</td>
-<td style="text-align:left">サードパーティのインストールリファラで、現在はAndroidのみで利用可能です。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">キャンペーン測定</a>を参照してください。</td>
-</tr>
-<tr>
-<td style="text-align:left">インストーラーパッケージ</td>
-<td style="text-align:left">Android SDK内部で使用されます。</td>
-</tr>
-<tr>
-<td style="text-align:left">URLスキーム(配列)</td>
-<td style="text-align:left">iOSおよびAndroid SDK内部で使用されます。</td>
-</tr>
-<tr>
-<td style="text-align:left">WindowsアトリビューションID</td>
-<td style="text-align:left">Windows 10用のアトリビューショントークンです。</td>
-</tr>
-<tr>
-<td style="text-align:left">Anon ID</td>
-<td style="text-align:left">あなたのインストールIDです。このフィールドはユニークなアプリケーションインストールインスタンスを表します。</td>
-</tr>
-<tr>
-<td style="text-align:left">MADID</td>
-<td style="text-align:left">あなたのモバイル広告IDで、通常はAndroidデバイスの広告IDまたはAppleデバイスの広告識別子(IDFA)です。</td>
+<td style="text-align:left">この取引におけるユーザーのサブスクリプションIDです。個々の製品の注文IDに似ています。この値をハッシュ化しないでください。例えば、<code>anid1234</code>。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="高度な測定イベントを送信する">高度な測定イベントを送信する</h3>
-<p>このFacebookアクションは限定的に利用可能です。アクセスをリクエストするためにFacebook担当者に連絡してください。このアクションがFacebookアカウントで有効になっていない場合、&ldquo;このAPIコールを行う機能がアプリケーションにはありません。&ldquo;または&quot;このピクセルはサーバーイベントを報告する権限がありません。&ldquo;のようなエラーが返されます。</p>
+<p>| 性別   | 性別の小文字一文字の値。このパラメータは文字列または文字列の配列を受け入れます。例：<code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>。選択肢は以下の通りです：<ul><li><code>f</code> 女性用</li><li><code>m</code> 男性用</li></ul>    |
+| 生年月日   | 年、月、日で与えられる生年月日。このパラメータは文字列または文字列の配列を受け入れます。例：<code>19971226</code> は1997年12月26日、または <code>[&quot;19971226&quot;, &quot;19971227&quot;]</code>。  |
+| クリックID (<code>fbc</code>)  | Facebookの<code>_fbc</code>クッキーに保存されたFacebookクリックIDの値。このパラメータは自動的にマッピングされますが、自動マッピングが無効にされている場合は除きます。この値をハッシュ化しないでください。Facebookは<code>fbclid</code>クッキーを保存し続けることを推奨します。<strong>重要度：高</strong>   |
+| ユーザーデータは既にハッシュ化されている   |  Facebook ConversionsコネクタはFacebook Pixelタグを必要とし、これはユーザーデータを自動的にハッシュ化します。このピクセル機能は変更できません。データを再度ハッシュ化することを避けるためにこのオプションを選択してください。   |
+| 通貨  |  適用可能な場合の指定された値の通貨。通貨は有効なISO 4217の3桁の通貨コードでなければなりません。例：<code>usd</code>。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。 |
+| コンテンツ名  |  イベントに関連するページまたは製品の名前。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。例：<code>lettuce</code>。|
+| アイテム数   |  <strong>InitiateCheckout</strong>イベントでのみ使用します。チェックアウト中にユーザーが購入しようとするアイテムの数。例：<code>4</code>。   |
+| 検索文字列  |  ユーザーによる検索クエリ。検索イベントでのみ使用します。例：<strong>lettuce</strong> |
+| ステータス | <strong>CompleteRegistration</strong>イベントでのみ使用します。登録イベントのステータス。例：<code>registered</code>。 |
+| 注文ID   |  この取引の注文ID。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。例：<code>order1234</code>。 |
+| コンテンツタイプ   |  この値は<code>product</code>または<code>product_group</code>のいずれかでなければなりません。<ul><li><code>product</code>に構成する場合、送信するキーは<strong>Content IDs</strong>または<strong>Content Product</strong>にあります。<strong>Content Product</strong>は製品を表します。</li><li><code>product_group</code>に構成する場合、送信するキーは<strong>Content IDs</strong>にあります。<strong>Content Product</strong>は製品グループを表します。</li></ul>  |
+| 予測される生涯価値    | 変換イベントの予測される生涯価値。例：<code>432.12</code>。 |
+| コンテンツID   |  イベントに関連するコンテンツID、例えばAddToCartイベントのアイテムの製品SKUなど。例：<code>['ABC123', 'XYZ789']</code>。非配列イベント属性が提供された場合、それは単一アイテム配列に変換されます。<strong>コンテンツタイプ</strong>が<code>product</code>の場合、このマッピングされた値は非配列イベント属性または単一要素配列でなければなりません。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。 |
+| 値 |  このイベントに関連する数値。これは金額または他の指標の値かもしれません。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。例：<code>142.54</code>。 |
+| コンテンツカテゴリ    |  イベントに関連するコンテンツのカテゴリ。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。例：<code>grocery</code>。  |
+| 数量  |  製品の数量。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。 |
+| 価格   |  製品の個別価格。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。 |
+| ID   |  製品ID。このパラメータはイベントに現れたときにコネクタによって自動的にマッピングされます。 |
+| JSONテンプレート変数       |  テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。   |
+| JSONテンプレート   |  Custom Dataセクションで参照される有効なJSONテンプレートを提供します。テンプレートはサポートされるフィールドに名前で二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。 |
+| Tealium iQタグID | Facebook PixelタグUID。 |
+| 自動マッピングを無効にする | パラメータの自動マッピングを無効にします。 |
+| 自動重複排除  | Tealium iQタグIDを提供すると、コネクタは自動的にTealium iQが送信する<strong>イベントID</strong>値を検索します。 |
+| 広告追跡が有効 | (必須) iOS 14.5+デバイス上でATT許可を指定するためにこのフィールドを使用します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>を構成します。 |
+| アプリ追跡が有効 | (必須) このパラメータはアプリレベルでの広告追跡を有効にします。SDKはアプリ開発者がアプリにオプトアウト構成を入れることを許可する必要があります。このフィールドを使用してその人の選択を指定します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>を使用します。 |
+| OSバージョン | (必須) OSバージョン。例：<code>13.4.1</code>。 |
+| アプリパッケージ名 | アプリパッケージ名。例：<code>com.facebook.sdk.samples.hellofacebook</code>。 |
+| ショートバージョン | ショートバージョン。例：<code>1.0</code>。 |
+| ロングバージョン | ロングバージョン。例：<code>1.0 long</code>。 |
+| デバイスモデル名 | デバイスモデル名。例：<code>iPhone5,1</code>。 |
+| ロケール | ロケール。例：<code>En_US</code>。 |
+| タイムゾーン略称 | タイムゾーン略称。例：<code>PDT</code>。 |
+| キャリア | キャリア。例：<code>AT&amp;T</code>。 |
+| 画面幅 | 画面幅。例：<code>320</code>。 |
+| 画面高さ | 画面高さ。例：<code>568</code>。 |
+| 画面密度 | 画面密度。例：<code>2</code>。 |
+| CPUコア数 | CPUコア数。例：<code>2</code>。 |
+| 保存サイズ (GB) | 外部保存のサイズ（GB）。例：<code>13</code>。 |
+| 空き保存 (GB) | 外部保存の空き容量（GB）。例：<code>8</code>。 |
+| デバイスタイムゾーン | デバイスのタイムゾーン。例：<code>USA/New York</code>。 |
+| キャンペーンID | Facebookからのリンクをクリックしたユーザーに対して外部URL（例：<code>ad_destination_url</code>）またはディープリンク（App Aggregated Event Manager用）に追加される暗号化された文字列および非ユーザーメタデータ。 |
+| インストールリファラ | サードパーティのインストールリファラ、現在はAndroidのみ利用可能です。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">キャンペーン測定</a>を参照してください。 |
+| インストーラーパッケージ | Android SDK内部で使用されます。 |
+| URLスキーム (配列) | iOSおよびAndroid SDK内部で使用されます。 |
+| Windows帰属ID | Windows 10用の帰属トークン。 |
+| Anon ID | あなたのインストールID。このフィールドはユニークなアプリケーションインストールインスタンスを表します。 |
+| MADID | あなたのモバイル広告IDで、通常はAndroidデバイスの広告IDまたはAppleデバイスの広告識別子(IDFA)です。 |</p>
+<h3 id="send-advanced-measurement-event">Send Advanced Measurement Event</h3>
+<p>このFacebookアクションは限定的に利用可能です。アクセスをリクエストするためにFacebook担当者に連絡してください。このアクションがFacebookアカウントで有効になっていない場合、&ldquo;このAPIコールを行う機能がアプリケーションにはありません。&ldquo;または&quot;このピクセルはサーバーイベントを報告する権限がありません。&ldquo;といったエラーが返されます。</p>
 <h4 id="イベントデータ">イベントデータ</h4>
 <table>
 <thead>
@@ -2279,19 +2134,19 @@
 </tr>
 <tr>
 <td>イベント時間</td>
-<td>実際のイベントが発生したときのUnixタイムスタンプ（秒）。マップされた日付属性を秒に変換し、存在しない場合はイベント時間を自動的に入力します。</td>
+<td>実際のイベントが発生したときのUnixタイムスタンプ（秒）。コネクタはマッピングされた日付属性を秒に変換し、イベント時間がない場合は自動的に入力されます。</td>
 </tr>
 <tr>
 <td>イベントソースURL</td>
-<td>イベントが発生したブラウザのURL。<strong>アクションソース</strong>が<code>website</code>に構成されている場合は必須です。<strong>アクションソース</strong>が<code>website</code>に構成され、このフィールドがマップされていない場合、EventStreamでは<code>Current URL</code>属性に、AudienceStreamでは<code>Last Event URL</code>属性に自動的にマップされます。</td>
+<td>イベントが発生したブラウザのURL。<strong>アクションソース</strong>が<code>website</code>に構成されている場合は必須です。<strong>アクションソース</strong>が<code>website</code>に構成され、このフィールドがマッピングされていない場合、EventStreamでは<code>Current URL</code>属性に自動マッピングされます。AudienceStreamでは<code>Last Event URL</code>属性に自動マッピングされます。</td>
 </tr>
 <tr>
 <td>オプトアウト</td>
-<td>このイベントを広告配信の最適化に使用しないことを示すフラグ。これを<code>true</code>に構成すると、イベントを帰属のみに使用します。</td>
+<td>このイベントを広告配信の最適化に使用しないことを示すフラグ。このイベントをアトリビューションのみに使用する場合は、<code>true</code>に構成します。</td>
 </tr>
 <tr>
 <td>イベントID</td>
-<td>Facebookがサーバーとブラウザーの両方から送信された同じイベントを重複排除するために使用するID。これがブラウザーとサーバーから送信された一組のイベントに固有のIDであることを確認してください。</td>
+<td>Facebookがサーバーとブラウザーの両方から送信された同じイベントの重複を排除するために使用するID。これがブラウザーとサーバーから送信された一組のイベントに固有のIDであることを確認してください。</td>
 </tr>
 <tr>
 <td>デバッグレベル</td>
@@ -2299,7 +2154,7 @@
 </tr>
 <tr>
 <td>テストイベントコード</td>
-<td>テストイベントウィンドウでイベント活動が表示されるように、test_event_codeパラメータとしてテストIDを送信します。test_event_codeで送信されたイベントは削除されません。これらはイベントマネージャーに流れ込み、ターゲティングと広告測定の目的で使用されます。</td>
+<td><code>test_event_code</code>パラメータとしてテストIDを送信して、テストイベントウィンドウにイベントアクティビティが表示されるようにします。<code>test_event_code</code>で送信されたイベントは削除されません。これらはイベントマネージャーに流れ込み、ターゲティングと広告測定の目的で使用されます。</td>
 </tr>
 <tr>
 <td>ピクセル/データセットIDオーバーライド</td>
@@ -2323,11 +2178,11 @@
 </tr>
 <tr>
 <td>名</td>
-<td>名前を小文字で。</td>
+<td>名前の小文字。</td>
 </tr>
 <tr>
 <td>姓</td>
-<td>姓を小文字で。</td>
+<td>姓の小文字。</td>
 </tr>
 <tr>
 <td>電話</td>
@@ -2339,15 +2194,15 @@
 </tr>
 <tr>
 <td>生年月日</td>
-<td>年、月、日で与えられる生年月日。例: <code>19971226</code>は1997年12月26日。</td>
+<td>年、月、日で与えられた生年月日。例: <code>19971226</code>は1997年12月26日。</td>
 </tr>
 <tr>
 <td>市区町村</td>
-<td>スペースや句読点を含まない小文字の市区町村名。例: <code>menlopark</code>。</td>
+<td>スペースや句読点なしの小文字の市区町村。例: <code>menlopark</code>。</td>
 </tr>
 <tr>
 <td>州または省</td>
-<td>2文字の州コードを小文字で。例: <code>ca</code>。</td>
+<td>2文字の州コードの小文字。例: <code>ca</code>。</td>
 </tr>
 <tr>
 <td>郵便番号</td>
@@ -2355,7 +2210,7 @@
 </tr>
 <tr>
 <td>国</td>
-<td>2文字の国コードを小文字で。例: <code>us</code>。</td>
+<td>2文字の国コードの小文字。例: <code>us</code>。</td>
 </tr>
 <tr>
 <td>高度な測定テーブル</td>
@@ -2364,7 +2219,7 @@
 </tbody>
 </table>
 <h4 id="カスタムデータ">カスタムデータ</h4>
-<p>カスタムデータをプレーンテキスト値またはJSONテンプレートを使用してマップします。テンプレート名を<code>{{template_name}}</code>形式で参照します。</p>
+<p>カスタムデータをプレーンテキスト値またはJSONテンプレートを使用してマッピングします。テンプレート名を<code>{{template_name}}</code>の形式で参照します。</p>
 <table>
 <thead>
 <tr>
@@ -2375,31 +2230,31 @@
 <tbody>
 <tr>
 <td>値</td>
-<td>このイベントに関連する数値。これは金額または他の指標の値である可能性があります: <code>142.54</code>。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>このイベントに関連する数値。これは金額またはその他の指標の値である可能性があります: <code>142.54</code>。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</td>
 </tr>
 <tr>
 <td>通貨</td>
-<td>指定された値の通貨。適用される場合、通貨は有効なISO 4217の3桁の通貨コードでなければなりません。例: <code>usd</code>。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>指定された値の通貨。通貨は有効なISO 4217の3桁の通貨コードでなければなりません。例: <code>usd</code>。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</td>
 </tr>
 <tr>
 <td>コンテンツ名</td>
-<td>イベントに関連するページまたは製品の名前。例: <code>lettuce</code>。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>イベントに関連するページまたは製品の名前。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。例: <code>lettuce</code>。</td>
 </tr>
 <tr>
 <td>コンテンツカテゴリ</td>
-<td>イベントに関連するコンテンツのカテゴリ。例: <code>grocery</code>。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>イベントに関連するコンテンツのカテゴリ。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。例: <code>grocery</code>。</td>
 </tr>
 <tr>
 <td>コンテンツID</td>
-<td><ul><li>イベントに関連するコンテンツID、例えばAddToCartイベントのアイテムの製品SKU: <code>[</code>ABC123<code>, </code>XYZ789<code>]</code>。</li> <li>非配列イベント属性が提供された場合、単一アイテム配列に変換されます。</li> <li><b>コンテンツタイプ</b>が<code>product</code>の場合、このマップされた値は非配列イベント属性または単一要素配列でなければなりません。</li><li>コネクタはこのパラメータがイベントに表示されると自動的にマップします。</li></ul></td>
+<td><ul><li>イベントに関連するコンテンツID、例えばAddToCartイベントのアイテムの製品SKUなど。例: <code>[ABC123, XYZ789]</code>。</li> <li>非配列イベント属性が提供された場合、単一アイテム配列に変換されます。</li> <li><b>コンテンツタイプ</b>が<code>product</code>の場合、このマッピングされた値は非配列イベント属性または単一要素配列でなければなりません。</li><li>コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</li></ul></td>
 </tr>
 <tr>
 <td>コンテンツタイプ</td>
-<td><ul><li><code>product</code>または<code>product_group</code>のいずれかでなければなりません。</li> <li><strong>コンテンツID</strong>または<strong>コンテンツ製品</strong>で送信するキーが製品を表している場合は<code>product</code>に構成します。</li> <li><strong>コンテンツID</strong>で送信するキーが製品グループを表している場合は<code>product_group</code>に構成します。</li></ul></td>
+<td><ul><li>許可される値は<code>product</code>または<code>product_group</code>です。</li> <li><strong>コンテンツID</strong>または<strong>コンテンツ製品</strong>で送信するキーが製品を表している場合は<code>product</code>に構成します。</li> <li><strong>コンテンツID</strong>で送信するキーが製品グループを表している場合は<code>product_group</code>に構成します。</li></ul></td>
 </tr>
 <tr>
 <td>注文ID</td>
-<td>この取引の注文ID。例: <code>order1234</code>。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>この取引の注文ID。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。例: <code>order1234</code>。</td>
 </tr>
 <tr>
 <td>予測される生涯価値</td>
@@ -2430,15 +2285,15 @@
 <tbody>
 <tr>
 <td>ID</td>
-<td>製品ID。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>製品ID。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>製品の数量。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>製品の数量。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</td>
 </tr>
 <tr>
 <td>価格</td>
-<td>製品の個別価格。コネクタはこのパラメータがイベントに表示されると自動的にマップします。</td>
+<td>製品の個々の価格。コネクタはこのパラメータがイベントに表示されると自動的にマッピングします。</td>
 </tr>
 </tbody>
 </table>
@@ -2453,7 +2308,7 @@
 <tbody>
 <tr>
 <td>Tealium iQタグID</td>
-<td>Tealium iQタグUIDが提供されると、TealiumはTealium iQから送信されたイベントID値を自動的に検索します。</td>
+<td>Tealium iQタグUIDが提供されると、Tealiumは自動的にTealium iQから送信されたイベントID値を検索します。</td>
 </tr>
 </tbody>
 </table>
@@ -2472,8 +2327,8 @@
 <td>(必須) iOS 14.5+デバイス上でのATT許可を指定するためにこのフィールドを使用します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>に構成します。</td>
 </tr>
 <tr>
-<td>アプリケーショントラッキング有効</td>
-<td>(必須) ユーザーはアプリレベルで広告トラッキングを有効にすることができます。アプリ開発者がアプリにオプトアウト構成を入れることをSDKが許可する必要があります。ユーザーの選択を指定するためにこのフィールドを使用します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>に構成します。</td>
+<td>アプリケーション追跡有効</td>
+<td>(必須) ユーザーはアプリレベルで広告追跡を有効にすることができます。アプリ開発者がアプリにオプトアウト構成を入れることをSDKが許可する必要があります。ユーザーの選択を指定するためにこのフィールドを使用します。無効にする場合は<code>0</code>、有効にする場合は<code>1</code>に構成します。</td>
 </tr>
 <tr>
 <td>アプリバージョン</td>
@@ -2524,7 +2379,7 @@
 <td>画面の密度。例: <code>2</code>。</td>
 </tr>
 <tr>
-<td>CPUコア数</td>
+<td>CPUコア</td>
 <td>CPUのコア数。例: <code>2</code>。</td>
 </tr>
 <tr>
@@ -2541,7 +2396,7 @@
 </tr>
 <tr>
 <td>キャンペーンID</td>
-<td>Facebookからのリンクをクリックしたユーザーに対して、外部URL（例: <code>ad_destination_url</code>）またはディープリンク（App Aggregated Event Manager用）に追加される暗号化された文字列および非ユーザーメタデータ。</td>
+<td>Facebookからのリンクをクリックしたユーザーによって外部URL（例: <code>ad_destination_url</code>）またはディープリンク（アプリ集約イベントマネージャー用）に追加される暗号化された文字列および非ユーザーメタデータ。</td>
 </tr>
 <tr>
 <td>インストールリファラ</td>
@@ -2552,12 +2407,12 @@
 <td>Android SDK内部で使用されます。</td>
 </tr>
 <tr>
-<td>URLスキーム (配列)</td>
+<td>URLスキーム(配列)</td>
 <td>iOSおよびAndroid SDK内部で使用されます。</td>
 </tr>
 <tr>
-<td>Windows帰属ID</td>
-<td>Windows 10用の帰属トークン。</td>
+<td>WindowsアトリビューションID</td>
+<td>Windows 10用のアトリビューショントークン。</td>
 </tr>
 </tbody>
 </table>
@@ -2566,7 +2421,7 @@
 <p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：1000</li>
-<li>最も古いリクエストからの最大時間：10分</li>
+<li>最古のリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
 <h4 id="パラメータ-1">パラメータ</h4>
@@ -2584,7 +2439,7 @@
 </tr>
 <tr>
 <td>イベント名</td>
-<td>(必須) CRMで使用するリードステージをキャプチャします。<code>event_name</code>パラメータはCRMでのリードのセールスファネルを通過することを示します。更新されたすべてのステージを送信してください、生リードも含めて。</td>
+<td>(必須) CRMで使用するリードステージをキャプチャします。<code>event_name</code>パラメータはCRMでの販売ファネルを通じてリードが移動することを示します。更新されたすべてのステージを送信してください、生のリードも含めて。</td>
 </tr>
 <tr>
 <td>イベント時間</td>
@@ -2632,14 +2487,14 @@
     </a>
 </figure>
 <h3 id="概要タブ">概要タブ</h3>
-<p><strong>概要</strong>タブでは、<strong>すべて</strong>から<strong>サーバー</strong>にビューを変更して、正常に送信されたイベントの数を確認します。</p>
+<p><strong>概要</strong>タブで、ビューを<strong>全て</strong>から<strong>サーバー</strong>に変更して、正常に送信されたイベントの数を確認します。</p>
 <figure><a class="slb" href="/images/server-side-connectors/overview.png"><img src="/images/server-side-connectors/overview.png"
          alt="Overview"
          title="Overview"/>
     </a>
 </figure>
 <h3 id="詳細タブ">詳細タブ</h3>
-<p><strong>詳細</strong>タブでは、正常に送信されたイベントの内訳を表示します。ドロップされたイベントは<code>Server Events Received</code>列に表示されません。</p>
+<p><strong>詳細</strong>タブでは、正常に送信されたイベントの内訳が表示されます。ドロップされたイベントは<code>サーバーイベント受信</code>列に表示されません。</p>
 <figure><a class="slb" href="/images/server-side-connectors/breakdown.png"><img src="/images/server-side-connectors/breakdown.png"
          alt="Breakdown"
          title="Breakdown"/>
@@ -2647,8 +2502,8 @@
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>イベントをサーバーから送信してから20分以内にイベントを確認できます。</p>
 <h3 id="検証">検証</h3>
-<p>検証のために、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a>を使用して、サーバーからFacebookにイベントが送信される際のデータパラメータフィールドの構造を確認します。問題のトラブルシューティングについては、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">サポート</a>ページを参照してください。</p>
-<p>Conversions APIについての詳細は、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">Conversions APIの使用</a>を参照してください。</p>
+<p>イベント構造を検証するには、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">ペイロードヘルパー</a>をデータパラメータフィールドと共に使用します。このツールは、サーバーからFacebookにイベントを送信する際の構造を示します。問題のトラブルシューティングについては、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">サポート</a>ページを参照してください。</p>
+<p>コンバージョンAPIについての詳細は、Facebookの<a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">コンバージョンAPIの使用</a>を参照してください。</p>
 
 </div>
 
@@ -2709,7 +2564,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月30日
+          <p>最終更新日 ::  2025年November月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2734,7 +2589,7 @@
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">自動マッピング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%80%81%E4%BF%A1" href="javascript:void(0)">イベント送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%AB%98%E5%BA%A6%E3%81%AA%E6%B8%AC%E5%AE%9A%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">高度な測定イベントを送信する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-advanced-measurement-event" href="javascript:void(0)">Send Advanced Measurement Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">リードイベントの送信</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">イベントの確認</a></li>

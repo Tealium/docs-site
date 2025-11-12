@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/scim-api/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="SCIMプロビジョニングを使用して、あなたのIDプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。" />
+<meta property="og:description" content="SCIMプロビジョニングを使用して、アイデンティティプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>SCIM APIについて | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -404,7 +404,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      SCIMプロビジョニングを使用して、あなたのIDプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。
+      SCIMプロビジョニングを使用して、アイデンティティプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。
     </p>
   
 </div>
@@ -412,19 +412,19 @@
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
 <p>System for Cross-domain Identity Management (SCIM)は、クラウドアプリケーション間でユーザーアカウントの作成、更新、削除を自動化し、簡素化するための標準です。</p>
-<p>SCIMプロビジョニングを使用して、IDプロバイダ（IdP）からTealiumに自動的にユーザーを同期します。SCIMはオンボーディング中に適切なアクセス権を持つユーザーを作成し、IDプロバイダでユーザーがデプロビジョニングされたときにTealiumアクセスを削除することで、一貫したオフボーディングを保証し、不正アクセスを防ぎます。</p>
+<p>SCIMプロビジョニングを使用して、アイデンティティプロバイダ（IdP）からTealiumに自動的にユーザーを同期します。SCIMはオンボーディング中に適切なアクセス権を持つユーザーを作成し、アイデンティティプロバイダでユーザーがデプロビジョニングされたときにTealiumアクセスを削除することで、一貫したオフボーディングを保証し、不正アクセスを防ぎます。</p>
 <p>IdPでSCIMプロビジョニングコネクタを使用するか、直接SCIM APIを呼び出します。</p>
 <h2 id="認証">認証</h2>
-<p>TealiumのSCIM統合は、アプリケーションとの認証に長期間有効なベアラートークンを使用します。このベアラートークンをSCIMトークンとして、ユーザープロビジョニングアプリケーションを構成するときに使用します。</p>
+<p>TealiumのSCIM統合は、アプリケーションとの認証に長期間有効なベアラートークンを使用します。このベアラートークンをユーザープロビジョニングアプリケーションを構成する際のSCIMトークンとして使用します。</p>
 <p>すべてのSCIM API呼び出しは、このベアラートークンで認証されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーとベアラートークンは、それを生成したユーザーにリンクされています。必要なTealiumの権限を持つ専用のサービスユーザーを使用してください。サービスユーザーは、人物にリンクされていないリソースを管理するために使用されるユーザーアカウントです。このアプローチは、通常のユーザーアカウントが利用できなくなった場合のアクセス問題を防ぎます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーとベアラートークンは、それを生成したユーザーにリンクされています。必要なTealiumの権限を持つ専用のサービスユーザーを使用してください。サービスユーザーは、人物にリンクされていないユーザーアカウントで、リソースを管理するために使用されます。このアプローチは、通常のユーザーアカウントが利用できなくなった場合のアクセス問題を防ぎます。</p>
 <p>ベアラートークンを生成するには：</p>
 <ol>
 <li>専用のサービスユーザーとしてTealiumにログインします。</li>
 <li><a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>を生成します。</li>
-<li>次のcURLコマンドを使用して、長期間有効なベアラートークンを生成するための長期間有効なトークンエンドポイントを呼び出します。プレースホルダーをアカウント名、プロファイル名、専用ユーザー名、APIキーに置き換えてください：</li>
+<li>次のcURLコマンドを使用して長期間有効なベアラートークンを生成するための長期トークンエンドポイントを呼び出します。プレースホルダーをアカウント名、プロファイル名、専用ユーザー名、APIキーに置き換えてください：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v1/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v2/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;account={ACCOUNT_NAME}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;profile=main&#39;</span> <span style="color:#ae81ff">\
@@ -446,9 +446,9 @@
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Description</th>
-<th>Tealium permissions</th>
+<th>メソッド</th>
+<th>説明</th>
+<th>Tealiumの権限</th>
 </tr>
 </thead>
 <tbody>
@@ -459,7 +459,7 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td>ユーザーの詳細を取得するか、ユーザーをリストします。</td>
+<td>ユーザーの詳細またはユーザーのリストを取得します。</td>
 <td>すべてのアカウントユーザー</td>
 </tr>
 <tr>
@@ -529,7 +529,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月29日
+          <p>最終更新日 ::  2025年November月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

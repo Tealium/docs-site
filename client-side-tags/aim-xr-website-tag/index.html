@@ -1775,36 +1775,79 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>DMD, an IQVIA Business, is a healthcare identity company dedicated to connecting marketers to key healthcare audiences for impactful engagement.</p>
-<p>Their Audience Identity Manager Extended Reach (AIM XR) provides identity resolution for Healthcare Professionals (HCPs). This tag will load DMD’s AIM XR library and will scan for a DMD tagged device. Upon identification, <code>AIM.ondetect()</code> will execute whatever is located within the function.</p>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
+  <p>DMD, an IQVIA Business, is a healthcare identity company dedicated to connecting marketers to key healthcare audiences for impactful engagement. Their Audience Identity Manager Extended Reach (AIM XR) provides identity resolution for Healthcare Professionals (HCPs). This tag will load DMD’s AIM XR library and will scan for a DMD tagged device. Upon identification, <code>AIM.ondetect()</code> will execute whatever is located within the function.</p>
+<h2 id="tag-tips">Tag tips</h2>
+<ul>
+<li>Use mappings to override standard config values.</li>
+</ul>
+<h2 id="tag-configuration">Tag configuration</h2>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>API KEY</strong>: For merchants, this value is the production client ID. For partners, this value is the partner client ID.</li>
-<li><strong>Trigger Event On Detect</strong>: Trigger a <code>utag.link()</code> callback event upon the confirmation of a AIM XR Tagged Identity (request AIM XR Signal Data to be returned)</li>
+<li><strong>Version</strong>: Select the version of the tag to use.</li>
+<li><strong>Data Layer Name</strong>: By default, the data layer initiated and referenced by the global site tag is named <code>aimDataLayer</code>. Rename the data layer only if your project requires a separate name.</li>
+<li><strong>API KEY</strong>: The AIM XR API key used in the <code>AIM.init</code> function.</li>
+<li><strong>Trigger Event AIM Signal</strong>: Signal data is being sent to Tealium Collect on server-side.</li>
+<li><strong>Session Information Event</strong>: Request session information (<code>id</code>, <code>timestamp</code>).</li>
+<li><strong>Include POI Identity Type</strong>: Enable this option to include POI identity type. The default value is <code>No</code>.</li>
+<li><strong>Include TST Identity Type</strong>: Enable this option to include TST identity type. The default value is <code>No</code>.</li>
+<li><strong>Include UNK Identity Type</strong>: Enable this option to include UNK identity type. The default value is <code>No</code>.</li>
+<li><strong>Send HCP data to</strong>: Specify the unique identifiers (UIDs) of the tags you want to selectively target for sending High-Value Customer (HCP) data through <code>utag.link</code> (separated by commas). By default, it uses all tags.</li>
+<li><strong>Tag must only fire on the first page view</strong>: By setting the parameter to <code>Yes</code>, <code>utag.link</code> will exclusively activate during the initial page view of the website. If the parameter is set to <code>No</code>, <code>utag.link</code> will fire on all pages.</li>
 </ul>
-<h2 id="load-rules">Load Rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/about/">data mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
-<h3 id="standard">Standard</h3>
+<h3 id="configuration">Configuration</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type/Values</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>API Key (string)</td>
-<td><code>(apiKey)</code></td>
+<td style="text-align:left"><code>apiKey</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">API key.</td>
 </tr>
 <tr>
-<td>Trigger Event On Detect (boolean)</td>
-<td><code>(triggerEvent)</code></td>
+<td style="text-align:left"><code>triggerEvent</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Trigger Event AIM signal.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sessionInformation</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Session information.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>poiSelected</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Include POI identity type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tstSelected</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Include TST identity type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unkSelected</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Include UNK identity type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>selectedTagsToSend</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Send HCP data to.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>firstPageOnly</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Tag must only fire on the first page view.</td>
 </tr>
 </tbody>
 </table>
@@ -1868,7 +1911,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2025 
+          <p>This page was last updated:  November 12, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1882,10 +1925,11 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load Rules</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               </nav>
   </aside></nav>
 

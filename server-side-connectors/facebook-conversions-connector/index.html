@@ -1561,8 +1561,8 @@
 <p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an <code>Event ID</code> if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
 <p>The connector follows this order of operations:</p>
 <ul>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example: <code>fb_event_id_ViewContent_30</code>) this value supersedes anything mapped in <code>Event ID</code>.</li>
-<li>If <strong>Automatic Deduplication</strong> is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example: <code>fb_event_id_ViewContent</code>).</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer. This value supersedes anything mapped in <code>Event ID</code>. For example, <code>fb_event_id_ViewContent_30</code>.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used. For example, <code>fb_event_id_ViewContent</code>.</li>
 <li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <code>Event ID</code> is used, if it is populated.</li>
 </ul>
 <h3 id="offline-conversions">Offline conversions</h3>
@@ -1677,7 +1677,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Data Processing Options</td>
-<td style="text-align:left">(Required) Map this value to <code>LDU</code> to have Facebook process the event with Limited Data Use restrictions. Otherwise map this value to <code>None</code> to specify that the event should not be processed with Limited Data Use restrictions. For more information, see <a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook Data Processing Options</a>.</td>
+<td style="text-align:left">(Optional) Map this parameter to the value <code>LDU</code> to have Facebook process the event with Limited Data Use restrictions. Otherwise map this parameter to the value <code>None</code> to specify that the event should not be processed with Limited Data Use restrictions. For more information, see <a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook: Data Processing Options</a>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Event Name</td>
@@ -1716,8 +1716,8 @@
 <td style="text-align:left">A boolean indicating to not use this event for ads delivery optimization. Set this value to <code>true</code> to only use the event for attribution.</td>
 </tr>
 <tr>
-<td style="text-align:left">Zip (zip)</td>
-<td style="text-align:left">Postal zip code. For example: <code>94035</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">Zip (<code>zip</code>)</td>
+<td style="text-align:left">Postal zip code. This parameter accepts strings or an array of strings. For example, <code>90120</code> or <code>[&quot;90120&quot;, &quot;90121&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">FB Login ID</td>
@@ -1732,67 +1732,67 @@
 <td style="text-align:left">The partner&rsquo;s name. This parameter can be used by third-party ID providers such as Liveramp and TradeDesk as an additional user identifier. Do not hash this value.</td>
 </tr>
 <tr>
-<td style="text-align:left">Client User Agent (ua)</td>
+<td style="text-align:left">Client User Agent (<code>ua</code>)</td>
 <td style="text-align:left">This parameter is required if the <strong>Action Source</strong> is set to website. The user agent for the browser corresponding to the event. Do not hash this value.  <ul><li><strong>EventStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the User Agent attribute in EventStream.</li><li><strong>AudienceStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the visitor&rsquo;s last User Agent in AudienceStream.</li></ul> <strong>Importance: High</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Client IP Address (ip)</td>
+<td style="text-align:left">Client IP Address (<code>ip</code>)</td>
 <td style="text-align:left">The IP address of the browser corresponding to the event. Tealium can capture the client IP address, but it is not available by default. To enable this feature, contact your Customer Success Manager. For more information, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products">Enabling IP Address Collection in Server-Side Tealium Products</a>. Do not hash this value. <strong>Importance: High</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Phone (ph)</td>
-<td style="text-align:left">A phone number. Include only digits with country code, area code, and number. For example: <code>16505551212</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: High</strong></td>
+<td style="text-align:left">Phone (<code>ph</code>)</td>
+<td style="text-align:left">A phone number. Include only digits with country code, area code, and number. This parameter accepts strings or an array of strings. For example, <code>16505551212</code> or <code>[&quot;16505551212&quot;, &quot;16505551213&quot;]</code>. <strong>Importance: High</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">State (st)</td>
-<td style="text-align:left">US State abbreviation. For example: <code>ca</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">State (<code>st</code>)</td>
+<td style="text-align:left">US State abbreviation. This parameter accepts strings or an array of strings. For example, <code>ca</code> or <code>[&quot;ca&quot;, &quot;tx&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Email (em)</td>
-<td style="text-align:left">Email address. For example: <code>user@example.com</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Highest</strong></td>
+<td style="text-align:left">Email (<code>em</code>)</td>
+<td style="text-align:left">Email address. This parameter accepts strings or an array of strings. For example, <code>user@example.com</code> or <code>[&quot;user@example.com&quot;, &quot;user2@example.com&quot;]</code>. <strong>Importance: Highest</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Last Name (ln)</td>
-<td style="text-align:left">Last name in lowercase. For example: <code>smith</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">Last Name (<code>ln</code>)</td>
+<td style="text-align:left">Last name in lowercase. This parameter accepts strings or an array of strings. For example, <code>smith</code> or <code>[&quot;smith&quot;, &quot;jones&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">First Name (fn)</td>
-<td style="text-align:left">First name in lowercase. For example: <code>joe</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">First Name (<code>fn</code>)</td>
+<td style="text-align:left">First name in lowercase. This parameter accepts strings or an array of strings. For example, <code>joe</code> or <code>[&quot;joe&quot;, &quot;jane&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">Lead ID</td>
 <td style="text-align:left">ID associated with a lead generated by Facebook <a href="https://developers.facebook.com/docs/marketing-api/guides/lead-ads">Lead Ads</a>. Do not hash this value.</td>
 </tr>
 <tr>
-<td style="text-align:left">City (ct)</td>
-<td style="text-align:left">City in lowercase without spaces or punctuation. For example: <code>menlopark</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">City (<code>ct</code>)</td>
+<td style="text-align:left">City in lowercase without spaces or punctuation. This parameter accepts strings or an array of strings. For example, <code>menlopark</code> or <code>[&quot;menlopark&quot;, &quot;sandiego&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Country (country)</td>
-<td style="text-align:left">Two-letter country code in lowercase. For example: <code>us</code>. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. <strong>Importance: Medium</strong></td>
+<td style="text-align:left">Country (<code>country</code>)</td>
+<td style="text-align:left">Two-letter country code in lowercase. This parameter accepts strings or an array of strings. For example, <code>us</code> or <code>[&quot;us&quot;, &quot;ca&quot;]</code>. <strong>Importance: Medium</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">External ID</td>
 <td style="text-align:left">Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs. Map array type attributes to add multiple IDs. This mapping is automatically populated with the Tealium Visitor ID unless automatic mapping is disabled.</td>
 </tr>
 <tr>
-<td style="text-align:left">Browser ID (fpb)</td>
+<td style="text-align:left">Browser ID (<code>fpb</code>)</td>
 <td style="text-align:left">The browser ID value stored in Facebook&rsquo;s <code>_fbp</code> cookie. This parameter is automatically mapped unless you disable automatic mapping. Do not hash this value. <strong>Importance: High</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscription ID</td>
-<td style="text-align:left">The subscription ID for the user in this transaction. This is similar to the order ID for an individual product. For example: <code>anid1234</code>. Do not hash this value.</td>
+<td style="text-align:left">The subscription ID for the user in this transaction. This is similar to the order ID for an individual product. Do not hash this value.  For example, <code>anid1234</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Gender</td>
-<td style="text-align:left">Lowercase single-letter value for gender.  This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. Options are:  <ul><li><code>f</code> for female</li><li><code>m</code> for male</li></ul></td>
+<td style="text-align:left">Lowercase single-letter value for gender.  This parameter accepts strings or an array of strings. For example, <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>. Options are:  <ul><li><code>f</code> for female</li><li><code>m</code> for male</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Date of Birth</td>
-<td style="text-align:left">Date of birth given as year, month, and day. For example: <code>19971226</code> for December 26, 1997. This parameter accepts strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>.</td>
+<td style="text-align:left">Date of birth given as year, month, and day.  This parameter accepts strings or an array of strings. For example, <code>19971226</code> for December 26, 1997 or <code>[&quot;19971226&quot;, &quot;19971227&quot;]</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Click ID (fbc)</td>
+<td style="text-align:left">Click ID (<code>fbc</code>)</td>
 <td style="text-align:left">The Facebook click ID value stored in Facebook&rsquo;s <code>_fbc</code> cookie. This parameter is automatically mapped unless automatic mapping is disabled. Do not hash this value. Facebook recommends storing and persisting the <code>fbclid</code> cookie. <strong>Importance: High</strong></td>
 </tr>
 <tr>
@@ -1801,27 +1801,27 @@
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
-<td style="text-align:left">The currency for the value specified if applicable. Currency must be a valid ISO 4217 three-digit currency code. For example: <code>usd</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">The currency for the value specified if applicable. Currency must be a valid ISO 4217 three-digit currency code.  The connector automatically maps this parameter when it appears in the event. For example, <code>usd</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Name</td>
-<td style="text-align:left">The name of the page or product associated with the event. For example: <code>lettuce</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">The name of the page or product associated with the event.  The connector automatically maps this parameter when it appears in the event. For example, <code>lettuce</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Number of Items</td>
-<td style="text-align:left">Use only with <strong>InitiateCheckout</strong> events. The number of items that a user tries to buy during checkout. For example: <code>4</code>.</td>
+<td style="text-align:left">Use only with <strong>InitiateCheckout</strong> events. The number of items that a user tries to buy during checkout. For example, <code>4</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Search String</td>
-<td style="text-align:left">A search query made by a user. Use only with search events. For example: <strong>lettuce</strong></td>
+<td style="text-align:left">A search query made by a user. Use only with search events. For example, <strong>lettuce</strong></td>
 </tr>
 <tr>
 <td style="text-align:left">Status</td>
-<td style="text-align:left">Use only with <strong>CompleteRegistration</strong> events. The status of the registration event. For example: <code>registered</code>.</td>
+<td style="text-align:left">Use only with <strong>CompleteRegistration</strong> events. The status of the registration event. For example, <code>registered</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Order ID</td>
-<td style="text-align:left">The order ID for this transaction. For example: <code>order1234</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">The order ID for this transaction.  The connector automatically maps this parameter when it appears in the event. For example, <code>order1234</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Type</td>
@@ -1829,19 +1829,19 @@
 </tr>
 <tr>
 <td style="text-align:left">Predicted Lifetime Value</td>
-<td style="text-align:left">The predicted lifetime value of a conversion event. For example: <code>432.12</code>.</td>
+<td style="text-align:left">The predicted lifetime value of a conversion event. For example, <code>432.12</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content IDs</td>
-<td style="text-align:left">The Content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example: <code>['ABC123', 'XYZ789']</code>. If a non-array event attribute is provided, it is converted into a single-item array. If <strong>Content Type</strong> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">The Content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example, <code>['ABC123', 'XYZ789']</code>. If a non-array event attribute is provided, it is converted into a single-item array. If <strong>Content Type</strong> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td style="text-align:left">Value</td>
-<td style="text-align:left">A numeric value associated with this event. This may be a monetary value or a value in another metric. For example: <code>142.54</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">A numeric value associated with this event. This may be a monetary value or a value in another metric.  The connector automatically maps this parameter when it appears in the event.  For example, <code>142.54</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Content Category</td>
-<td style="text-align:left">The category of the content associated with the event. For example: <code>grocery</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td style="text-align:left">The category of the content associated with the event. The connector automatically maps this parameter when it appears in the event. For example, <code>grocery</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Quantities</td>
@@ -1857,7 +1857,7 @@
 </tr>
 <tr>
 <td style="text-align:left">JSON Template Variables</td>
-<td style="text-align:left">Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example: <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td style="text-align:left">Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
 </tr>
 <tr>
 <td style="text-align:left">JSON Templates</td>
@@ -1885,71 +1885,67 @@
 </tr>
 <tr>
 <td style="text-align:left">OS Version</td>
-<td style="text-align:left">(Required) OS version, for example: <code>13.4.1</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left">OS Version</td>
-<td style="text-align:left">(Required) OS version, for example: <code>13.4.1</code>.</td>
+<td style="text-align:left">(Required) OS version. For example, <code>13.4.1</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">App Package Name</td>
-<td style="text-align:left">The app package name. For example: <code>com.facebook.sdk.samples.hellofacebook</code>.</td>
+<td style="text-align:left">The app package name. For example, <code>com.facebook.sdk.samples.hellofacebook</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Short Version</td>
-<td style="text-align:left">The short version, for example: <code>1.0</code>.</td>
+<td style="text-align:left">The short version. For example, <code>1.0</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Long Version</td>
-<td style="text-align:left">The long version, for example: <code>1.0 long</code>.</td>
+<td style="text-align:left">The long version. For example, <code>1.0 long</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Device Model Name</td>
-<td style="text-align:left">The device model name, for example: <code>iPhone5,1</code>.</td>
+<td style="text-align:left">The device model name. For example, <code>iPhone5,1</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Locale</td>
-<td style="text-align:left">The locale, for example: <code>En_US</code>.</td>
+<td style="text-align:left">The locale. For example, <code>En_US</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Timezone Abbreviation</td>
-<td style="text-align:left">The timezone abbreviation, for example: <code>PDT</code>.</td>
+<td style="text-align:left">The timezone abbreviation. For example, <code>PDT</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Carrier</td>
-<td style="text-align:left">The carrier, for example: <code>AT&amp;T</code>.</td>
+<td style="text-align:left">The carrier. For example, <code>AT&amp;T</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Screen Width</td>
-<td style="text-align:left">The screen width, for example: <code>320</code>.</td>
+<td style="text-align:left">The screen width. For example, <code>320</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Screen Height</td>
-<td style="text-align:left">The screen height, for example: <code>568</code>.</td>
+<td style="text-align:left">The screen height. For example, <code>568</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Screen Density</td>
-<td style="text-align:left">The screen density, for example: <code>2</code>.</td>
+<td style="text-align:left">The screen density. For example, <code>2</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">CPU Cores</td>
-<td style="text-align:left">The CPU cores, for example: <code>2</code>.</td>
+<td style="text-align:left">The CPU cores. For example, <code>2</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Storage Size (GB)</td>
-<td style="text-align:left">The external storage size in GB, for example: <code>13</code>.</td>
+<td style="text-align:left">The external storage size in GB. For example, <code>13</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Free Storage (GB)</td>
-<td style="text-align:left">The free space on external storage in GB, for example: <code>8</code>.</td>
+<td style="text-align:left">The free space on external storage in GB. For example, <code>8</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Device Timezone</td>
-<td style="text-align:left">The device timezone, for example: <code>USA/New York</code>.</td>
+<td style="text-align:left">The device timezone. For example, <code>USA/New York</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Campaign IDs</td>
-<td style="text-align:left">An encrypted string and non-user metadata appended to the outbound URL (for example: <code>ad_destination_url</code>) or deep link (for App Aggregated Event Manager) when a user clicks a link from Facebook.</td>
+<td style="text-align:left">An encrypted string and non-user metadata appended to the outbound URL (For example, <code>ad_destination_url</code>) or deep link (for App Aggregated Event Manager) when a user clicks a link from Facebook.</td>
 </tr>
 <tr>
 <td style="text-align:left">Install Referrer</td>
@@ -2006,7 +2002,7 @@
 </tr>
 <tr>
 <td>Event ID</td>
-<td>An ID used by Facebook to de-duplicate the same event sent from both server and browser. Verify this is an ID unique to one pair of events sent from browser and server.</td>
+<td>An ID used by Facebook to de-duplicate the same event sent from both server and browser. Verify that this is an ID unique to one pair of events sent from browser and server.</td>
 </tr>
 <tr>
 <td>Debugging Level</td>
@@ -2014,7 +2010,7 @@
 </tr>
 <tr>
 <td>Test Event Code</td>
-<td>Send the test ID as a test_event_code parameter to start seeing event activity appear in the Test Events window. Events sent with test_event_code are not dropped. They flow into Events Manager and are used for targeting and ads measurement purposes.</td>
+<td>Send the test ID as a <code>test_event_code</code> parameter to start seeing event activity appear in the Test Events window. Events sent with <code>test_event_code</code> are not dropped. They flow into Events Manager and are used for targeting and ads measurement purposes.</td>
 </tr>
 <tr>
 <td>Pixel/Dataset ID Override</td>
@@ -2023,7 +2019,7 @@
 </tbody>
 </table>
 <h4 id="user-data">User Data</h4>
-<p>All user data parameters accept strings or an array of strings. For example: <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>.</p>
+<p>All user data parameters accept strings or an array of strings. For example, <code>[&quot;&lt;first value&gt;&quot;, &quot;&lt;second value&gt;&quot;]</code>.</p>
 <table>
 <thead>
 <tr>
@@ -2046,7 +2042,7 @@
 </tr>
 <tr>
 <td>Phone</td>
-<td>A phone number. Digits only including country code and area code. For example: <code>16505554444</code>.</td>
+<td>A phone number. Digits only including country code and area code. For example, <code>16505554444</code>.</td>
 </tr>
 <tr>
 <td>Gender</td>
@@ -2054,23 +2050,23 @@
 </tr>
 <tr>
 <td>Date of Birth</td>
-<td>A date of birth given as year, month, and day. For example: <code>19971226</code> for December 26, 1997.</td>
+<td>A date of birth given as year, month, and day. For example, <code>19971226</code> for December 26, 1997.</td>
 </tr>
 <tr>
 <td>City</td>
-<td>A city in lower-case without spaces or punctuation. For example: <code>menlopark</code>.</td>
+<td>A city in lower case without spaces or punctuation. For example, <code>menlopark</code>.</td>
 </tr>
 <tr>
 <td>State or Province</td>
-<td>A two-letter state code in lowercase. For example: <code>ca</code>.</td>
+<td>A two-letter state code in lowercase. For example, <code>ca</code>.</td>
 </tr>
 <tr>
 <td>Zip or Postal Code</td>
-<td>A five-digit zip code. For example: <code>94035</code>.</td>
+<td>A five-digit zip code. For example, <code>94035</code>.</td>
 </tr>
 <tr>
 <td>Country</td>
-<td>A two-letter country code in lowercase. For example: <code>us</code>.</td>
+<td>A two-letter country code in lowercase. For example, <code>us</code>.</td>
 </tr>
 <tr>
 <td>Advanced Measurement Table</td>
@@ -2094,43 +2090,43 @@
 </tr>
 <tr>
 <td>Currency</td>
-<td>The currency for the value specified, if applicable. Currency must be a valid ISO 4217 three digit currency code. For example: <code>usd</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td>The currency for the value specified, if applicable. Currency must be a valid ISO 4217 three digit currency code. For example, <code>usd</code>. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Content Name</td>
-<td>The name of the page or product associated with the event. For example: <code>lettuce</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td>The name of the page or product associated with the event. The connector automatically maps this parameter when it appears in the event. For example, <code>lettuce</code>.</td>
 </tr>
 <tr>
 <td>Content Category</td>
-<td>The category of the content associated with the event. For example: <code>grocery</code>.The connector automatically maps this parameter when it appears in the event.</td>
+<td>The category of the content associated with the event. The connector automatically maps this parameter when it appears in the event. For example, <code>grocery</code>.</td>
 </tr>
 <tr>
 <td>Content IDs</td>
-<td><ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event: <code>[</code>ABC123<code>, </code>XYZ789<code>]</code>.</li> <li>If a non-array event attribute is provided, it will be converted into a single-item array.</li> <li>If <b>Content Type</b> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array.</li><li>The connector automatically maps this parameter when it appears in the event.</li></ul></td>
+<td><ul><li>The content IDs associated with the event, such as product SKUs for items in an AddToCart event. For example, <code>[ABC123, XYZ789]</code>.</li> <li>If a non-array event attribute is provided, it will be converted into a single-item array.</li> <li>If <b>Content Type</b> is <code>product</code>, this mapped value must be a non-array event attribute or single-element array.</li><li>The connector automatically maps this parameter when it appears in the event.</li></ul></td>
 </tr>
 <tr>
 <td>Content Type</td>
-<td><ul><li>Must be either <code>product</code> or <code>product_group</code>.</li> <li>Set to <code>product</code> if the keys you send in <strong>Content IDs</strong> or <strong>Content Product</strong> represent products.</li> <li>Set to <code>product_group</code> if the keys you send in <strong>Content IDs</strong> represent product groups. </li></ul></td>
+<td><ul><li>Allowed values are <code>product</code> or <code>product_group</code>.</li> <li>Set to <code>product</code> if the keys you send in <strong>Content IDs</strong> or <strong>Content Product</strong> represent products.</li> <li>Set to <code>product_group</code> if the keys you send in <strong>Content IDs</strong> represent product groups. </li></ul></td>
 </tr>
 <tr>
 <td>Order ID</td>
-<td>The order ID for this transaction. For example: <code>order1234</code>. The connector automatically maps this parameter when it appears in the event.</td>
+<td>The order ID for this transaction. The connector automatically maps this parameter when it appears in the event. For example, <code>order1234</code>.</td>
 </tr>
 <tr>
 <td>Predicted Lifetime Value</td>
-<td>The predicted lifetime value of a conversion event. For example: <code>432.12</code>.</td>
+<td>The predicted lifetime value of a conversion event. For example, <code>432.12</code>.</td>
 </tr>
 <tr>
 <td>Number of Items</td>
-<td>Use only with <code>InitiateCheckout</code> events. The number of items that a user tries to buy during checkout. For example: <code>4</code>.</td>
+<td>Use only with <code>InitiateCheckout</code> events. The number of items that a user tries to buy during checkout. For example, <code>4</code>.</td>
 </tr>
 <tr>
 <td>Search String</td>
-<td>Use only with Search events. A search query made by a user. For example: <code>lettuce</code>.</td>
+<td>Use only with Search events. A search query made by a user. For example, <code>lettuce</code>.</td>
 </tr>
 <tr>
 <td>Status</td>
-<td>Use only with <code>CompleteRegistration</code> events. The status of the registration event. For example: <code>registered</code>.</td>
+<td>Use only with <code>CompleteRegistration</code> events. The status of the registration event. For example, <code>registered</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -2149,11 +2145,11 @@
 </tr>
 <tr>
 <td>Quantities</td>
-<td>Product quantities.  The connector automatically maps this parameter when it appears in the event.</td>
+<td>Product quantities. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 <tr>
 <td>Prices</td>
-<td>Product individual prices.  The connector automatically maps this parameter when it appears in the event.</td>
+<td>Product individual prices. The connector automatically maps this parameter when it appears in the event.</td>
 </tr>
 </tbody>
 </table>
@@ -2196,67 +2192,67 @@
 </tr>
 <tr>
 <td>App Package Name</td>
-<td>The app package name. For example: <code>com.facebook.sdk.samples.hellofacebook</code>.</td>
+<td>The app package name. For example, <code>com.facebook.sdk.samples.hellofacebook</code>.</td>
 </tr>
 <tr>
 <td>Short Version</td>
-<td>The short version. For example: <code>1.0</code>.</td>
+<td>The short version. For example, <code>1.0</code>.</td>
 </tr>
 <tr>
 <td>Long Version</td>
-<td>The long version. For example: <code>1.0 long</code>.</td>
+<td>The long version. For example, <code>1.0 long</code>.</td>
 </tr>
 <tr>
 <td>OS Version</td>
-<td>(Required) OS version. For example: 13.4.1.</td>
+<td>(Required) OS version. For example, 13.4.1.</td>
 </tr>
 <tr>
 <td>Device Model Name</td>
-<td>The device model name. For example: <code>iPhone5,1</code>.</td>
+<td>The device model name. For example, <code>iPhone5,1</code>.</td>
 </tr>
 <tr>
 <td>Locale</td>
-<td>The locale. For example: <code>En_US</code>.</td>
+<td>The locale. For example, <code>En_US</code>.</td>
 </tr>
 <tr>
 <td>Timezone Abbreviation</td>
-<td>The timezone abbreviation. For example: <code>PDT</code>.</td>
+<td>The timezone abbreviation. For example, <code>PDT</code>.</td>
 </tr>
 <tr>
 <td>Carrier</td>
-<td>The carrier. For example: <code>AT&amp;T</code>.</td>
+<td>The carrier. For example, <code>AT&amp;T</code>.</td>
 </tr>
 <tr>
 <td>Screen Width</td>
-<td>The screen width. For example: <code>320</code>.</td>
+<td>The screen width. For example, <code>320</code>.</td>
 </tr>
 <tr>
 <td>Screen Height</td>
-<td>The screen height. For example: <code>568</code>.</td>
+<td>The screen height. For example, <code>568</code>.</td>
 </tr>
 <tr>
 <td>Screen Density</td>
-<td>The screen density. For example: <code>2</code>.</td>
+<td>The screen density. For example, <code>2</code>.</td>
 </tr>
 <tr>
 <td>CPU Cores</td>
-<td>The CPU cores. For example: <code>2</code>.</td>
+<td>The CPU cores. For example, <code>2</code>.</td>
 </tr>
 <tr>
 <td>Storage Size (GB)</td>
-<td>The external storage size in GB. For example: <code>13</code>.</td>
+<td>The external storage size in GB. For example, <code>13</code>.</td>
 </tr>
 <tr>
 <td>Free Storage (GB)</td>
-<td>The free space on external storage in GB. For example: <code>8</code>.</td>
+<td>The free space on external storage in GB. For example, <code>8</code>.</td>
 </tr>
 <tr>
 <td>Device Timezone</td>
-<td>The device timezone. For example: <code>USA/New York</code>.</td>
+<td>The device timezone. For example, <code>USA/New York</code>.</td>
 </tr>
 <tr>
 <td>Campaign IDs</td>
-<td>An encrypted string and non-user metadata appended to the outbound URL (for example: <code>ad_destination_url</code>) or deep link (for App Aggregated Event Manager) when a user clicked on a link from Facebook.</td>
+<td>An encrypted string and non-user metadata appended to the outbound URL (For example, <code>ad_destination_url</code>) or deep link (for App Aggregated Event Manager) when a user clicked on a link from Facebook.</td>
 </tr>
 <tr>
 <td>Install Referrer</td>
@@ -2316,7 +2312,8 @@
 </tbody>
 </table>
 <h2 id="setup">Setup</h2>
-<p>There are several options available to setup and manage the Tealium server-side API partner integration with Facebook.</p>
+<p>There are several options available to setup and manage the Tealium server-side API partner integration with Facebook.
+You have several options to set up and manage the Tealium server-side API partner integration with Facebook.</p>
 <ul>
 <li><a href="https://www.facebook.com/events_manager2/partner_integrations/tealium"><strong>The Facebook Partner Integration Gallery</strong></a><br>
 <figure><a class="slb" href="/images/server-side-connectors/facebook-partner-integration-gallery.png"><img src="/images/server-side-connectors/facebook-partner-integration-gallery.png"
@@ -2362,7 +2359,7 @@
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You can verify events within 20 minutes after sending them from your server.</p>
 <h3 id="validation">Validation</h3>
-<p>For validation, use Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a> with your data parameter fields to see how to structure your event when it&rsquo;s sent to Facebook from your server. For more information, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">Support</a> page for troubleshooting issues.</p>
+<p>To validate your event structure, use Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a> with your data parameter fields. This tool shows how to structure your event when you send it to Facebook from your server. For more information, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">Support</a> page for troubleshooting issues.</p>
 <p>For more information about the Conversions API, see Facebook&rsquo;s <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">Using the Conversions API</a>.</p>
 
 </div>
@@ -2424,7 +2421,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 26, 2025 
+          <p>This page was last updated:  November 12, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
