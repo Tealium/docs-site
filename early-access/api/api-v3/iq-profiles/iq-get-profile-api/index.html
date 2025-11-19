@@ -326,7 +326,9 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li></ul>
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tag-templates-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a></li></ul>
       </li></ul>
       </li></ul>
       </li></ul></li></ul>
@@ -416,15 +418,14 @@
 <td>includes</td>
 <td>Array</td>
 <td>Optional</td>
-<td>An array of the configuration components to include in the response. Add this query string parameter for each component to include.<br> For example, to get variables and extensions: <code>&amp;includes=variables&amp;includes=extensions</code> Default: none<br> Values: <code>loadRules</code>, <code>tags</code>, <!--`tags.templateList`, `tags.template`,--> <code>extensions</code>, <code>variables</code>, <code>events</code> , and <code>versionIDs</code></td>
+<td>An array of the configuration components to include in the response. Add this query string parameter for each component to include.<br> For example, to get variables and extensions: <code>&amp;includes=variables&amp;includes=extensions</code> Default: none<br> Values: <code>loadRules</code>, <code>tags</code>, <code>tags.templateList</code>, <code>tags.template</code>, <code>extensions</code>, <code>variables</code>, <code>events</code> , and <code>versionIDs</code></td>
 </tr>
 </tbody>
 </table>
- <!--<p class="note"><i class="fa fa-exclamation-triangle"></i>To retrieve the list of tag templates for a profile, your GET request must include <code>tags</code> and <code>tags.templateList</code>. For example, <code>&amp;includes=tags&amp;includes=tags.templateList</code>.<br> To retrieve the tag templates themselves, include <code>tags</code> and <code>tags.template</code>. For example, <code>&amp;includes=tags&amp;includes=tags.template</code>.</p>
--->
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To retrieve the list of tag templates for a profile, your GET request must include <code>tags</code> and <code>tags.templateList</code>. For example, <code>&amp;includes=tags&amp;includes=tags.templateList</code>.<br> To retrieve the tag templates themselves, include <code>tags</code> and <code>tags.template</code>. For example, <code>&amp;includes=tags&amp;includes=tags.template</code>.</p>
 <h3 id="example-curl-request">Example cURL request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://platform.tealiumapis.com/v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>?includes<span style="color:#f92672">=</span>loadRules&amp;includes<span style="color:#f92672">=</span>extensions&amp;includes<span style="color:#f92672">=</span>tags&amp;includes<span style="color:#f92672">=</span>variables&amp;includes<span style="color:#f92672">=</span>events&amp;includes<span style="color:#f92672">=</span>versionIds&amp;publishVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">202003161355</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>https://platform.tealiumapis.com/v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>?includes<span style="color:#f92672">=</span>loadRules&amp;includes<span style="color:#f92672">=</span>extensions&amp;includes<span style="color:#f92672">=</span>tags&amp;includes<span style="color:#f92672">=</span>tags.template&amp;includes<span style="color:#f92672">=</span>variables&amp;includes<span style="color:#f92672">=</span>events&amp;includes<span style="color:#f92672">=</span>versionIds&amp;publishVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">202003161355</span>
 </span></span></code></pre></div><h3 id="example-response">Example response</h3>
 
 <div class="pv2">
@@ -652,6 +653,7 @@
 </span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;apply&#34;</span>: <span style="color:#66d9ef">null</span>,
 </span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;exclude&#34;</span>: <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;template&#34;</span>: <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>       }
 </span></span><span style="display:flex;"><span>    ],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events&#34;</span>: [
@@ -707,7 +709,8 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309191128&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309191127&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;202309061342&#34;</span>
-</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;templateList&#34;</span>: <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
     </div>
@@ -801,7 +804,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 5, 2025 
+          <p>This page was last updated:  November 18, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -809,7 +812,20 @@ No</button>
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-operation-parameters" href="javascript:void(0)">GET operation parameters</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-curl-request" href="javascript:void(0)">Example cURL request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-response" href="javascript:void(0)">Example response</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-messages" href="javascript:void(0)">Error messages</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

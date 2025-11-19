@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/api-v3/iq-profiles/iq-variables-api/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="iQ変数APIを使用すると、iQタグ管理プロファイル内でプログラム的に変数を作成、更新、削除できます。" />
+<meta property="og:description" content="iQ変数APIを使用すると、iQタグ管理プロファイル内の変数をプログラムで作成、更新、削除できます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>iQ変数API | iQプロファイルAPI | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -258,7 +258,9 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ ロードルール API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ タグ API</a></li></ul>
+        <a href="/ja/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ タグ API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/api-v3/iq-profiles/iq-tag-templates-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQタグテンプレートAPI</a></li></ul>
       </li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/api/v3/getting-started/tealium-api-v3-getting-started-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-api-v3-getting-started-early-access">認証とリクエスト形式</a></li></ul>
@@ -410,17 +412,17 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      iQ変数APIを使用すると、iQタグ管理プロファイル内でプログラム的に変数を作成、更新、削除できます。
+      iQ変数APIを使用すると、iQタグ管理プロファイル内の変数をプログラムで作成、更新、削除できます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>このAPIと利用可能なオブジェクトフィールドについて詳しくは、<a href="/ja/early-access/api/api-v3/iq-profiles/about/">iQプロファイルAPI</a>と<a href="/ja/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/">iQプロファイルオブジェクト</a>を参照してください。</p>
+  <p>このAPIと利用可能なオブジェクトフィールドについて詳しくは、<a href="/ja/early-access/api/api-v3/iq-profiles/about/">iQプロファイルAPI</a>および<a href="/ja/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/">iQプロファイルオブジェクト</a>を参照してください。</p>
 <h2 id="動作原理">動作原理</h2>
 <p><code>PATCH</code> メソッドを使用して、iQプロファイルオブジェクト内の変数を作成、更新、削除します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>PATCHメソッドを使用すると、保存または名前を付けて保存を使用してプログラム的にプロファイル変数を変更します。APIで変更を加えた後でも、アプリケーションにログインして公開する必要があります。</p>
+</span></span></code></pre></div><p>PATCHメソッドを使用すると、保存または名前を付けて保存を使用してプログラムでプロファイル変数を変更します。APIで変更を加えた後でも、アプリケーションにログインして公開する必要があります。</p>
 <h3 id="curlリクエストの例">cURLリクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request PATCH <span style="color:#e6db74">&#39;https://platform.tealiumapis.com/v3/tiq/accounts/{account}/profiles/{profile}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9&#39;</span> <span style="color:#ae81ff">\
@@ -486,7 +488,7 @@
 <tr>
 <td><code>value.name</code></td>
 <td>文字列</td>
-<td>必須 (add/replaceの場合)</td>
+<td>必須（add/replaceの場合）</td>
 <td>変数のタイトル。</td>
 </tr>
 <tr>
@@ -499,7 +501,7 @@
 <td><code>value.type</code></td>
 <td>文字列</td>
 <td>必須</td>
-<td>変数タイプを表すプレフィックス。<br> <code>ls</code> - ローカル保存 <br> <code>ss</code> - セッション保存 <br> <code>udo</code> - ユニバーサルデータオブジェクト<br> <code>qp</code> - クエリ文字列パラメータ<br> <code>cp</code> - クッキー<br> <code>js_page</code> - JavaScript変数<br> <code>meta</code> - メタデータ要素<br> <code>va</code> - AudienceStream属性 (読み取り専用。このタイプは他のiQプロファイルAPI要素で使用できますが、APIを使用して作成することはできません。)</td>
+<td>変数タイプを表すプレフィックス。<br> <code>ls</code> - ローカル保存 <br> <code>ss</code> - セッション保存 <br> <code>udo</code> - ユニバーサルデータオブジェクト<br> <code>qp</code> - クエリ文字列パラメータ<br> <code>cp</code> - クッキー<br> <code>js_page</code> - JavaScript変数<br> <code>meta</code> - メタデータ要素<br> <code>va</code> - AudienceStream属性（読み取り専用。このタイプは他のiQプロファイルAPI要素で使用できますが、APIを使用して作成することはできません。）</td>
 </tr>
 <tr>
 <td><code>value.notes</code></td>
@@ -690,7 +692,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2025年November月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -698,7 +700,27 @@
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">cURLリクエストの例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89" href="javascript:void(0)">プロファイルフィールド</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">リクエストの例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#patch%E6%93%8D%E4%BD%9C%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">PATCH操作パラメータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">変数の作成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">リクエストの例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%95%B0%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">変数の更新</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">リクエストの例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%95%B0%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">変数の削除</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">リクエストの例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

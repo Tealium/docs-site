@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/tech-partners/tealium-invoca-integration-guide/" />
 <meta property="og:image" content="https://docs.tealium.com/images/integrations/invoca.svg" />
-<meta property="og:description" content="この記事では、Tealium iQ タグ管理でInvocaタグを構成し、Tealium AudienceStreamで双方向統合を有効にする方法について説明します。" />
+<meta property="og:description" content="この記事では、Tealium iQ タグ管理でInvocaタグを構成し、Tealium AudienceStreamで双方向統合を有効にすることで、TealiumとInvocaを最大限に活用する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Tealium &#43; Invoca 統合ガイド | テクノロジーパートナー | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "tech-partners",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -710,266 +710,229 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium iQ タグ管理でInvocaタグを構成し、Tealium AudienceStreamで双方向統合を有効にする方法について説明します。
+      この記事では、Tealium iQ タグ管理でInvocaタグを構成し、Tealium AudienceStreamで双方向統合を有効にすることで、TealiumとInvocaを最大限に活用する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>TealiumとInvoca間の双方向統合により、組織は貴重なInvocaの通話インタラクションデータをクロスチャネルの顧客プロファイルと統合し、より知的な顧客エンゲージメントとより正確な洞察を実現することができます。</p>
-<h2 id="前提条件">前提条件</h2>
+  <p>双方向統合により、TealiumとInvocaは、Invocaの通話インタラクションデータとクロスチャネルの顧客プロファイルを使用して組織を支援します。この統合は、インテリジェントな顧客エンゲージメントを促進し、正確な洞察を提供します。</p>
+<h2 id="要件">要件</h2>
+<p>Tealium</p>
 <ul>
-<li>Tealium
+<li>（必須）iQ タグ管理</li>
+<li>（推奨）双方向統合の最大の価値を実現するためのAudienceStream</li>
+</ul>
+<p>Invoca</p>
 <ul>
-<li>iQ タグ管理（必須）</li>
-<li>AudienceStream（推奨）<br>
-双方向統合の最大の価値を得るために。</li>
+<li>（必須）ネットワークアカウント。この統合はネットワークInvocaアカウントでのみ利用可能です。詳細については、<a href="https://community.invoca.com/t5/invoca-overview/platform-organization-and-account-types/m-p/466#U466">Invoca: プラットフォームの組織とアカウントの種類</a>を参照してください。</li>
 </ul>
-</li>
-<li>Invoca
-<ul>
-<li>ネットワークレベルアカウント（必須）<br>
-この統合はネットワークレベルのInvocaアカウントでのみ利用可能です。</li>
-</ul>
-</li>
-</ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Invocaは、顧客ジャーニーで最も重要なステップである電話通話を最適化するのに役立ちます。Invocaの通話および会話分析プラットフォームを使用すると、マーケターは以下を行うことができます：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Invocaは、顧客ジャーニーの最も重要なステップである電話通話の最適化をマーケターが支援します。Invocaの通話および会話分析プラットフォームを使用すると、マーケターは以下を実現できます：</p>
 <ul>
 <li>顧客がなぜ電話をかけるのかを理解するための詳細なキャンペーン帰属を取得します。</li>
-<li>電話をかけている人が誰かをリアルタイムで把握し、会話内容を分析します。</li>
-<li>各通話の前、中、後に理想的な顧客体験を自動化することで、プラットフォームで直接データを活用します。</li>
+<li>電話をかける人が誰であるかについてのリアルタイムの情報を得て、会話内容を分析します。</li>
+<li>プラットフォーム内でデータを直接活用し、各通話の前、中、後に理想的な顧客体験を自動化します。</li>
 </ul>
-<p>詳細については、<a href="https://tealium.com/technology-partner/invoca/">Tealium + Invoca Technology Partnership Overview</a>をご覧ください。</p>
-<h2 id="タグの構成">タグの構成</h2>
-<p>Invocaタグを追加および構成するには、まずInvocaアカウントで<a href="https://invoca.force.com/community/s/article/Invoca-Tag-Wizard">Invocaタグを作成</a>する必要があります。その後、TealiumのタグマーケットプレイスからInvocaタグを追加および構成します。</p>
-<h3 id="invocaアカウントでタグを作成する">Invocaアカウントでタグを作成する</h3>
-<p>InvocaアカウントからInvocaタグを作成します：</p>
-<ol>
-<li>Invocaアカウントにログインします。</li>
-<li><a href="https://invoca.force.com/community/s/article/Invoca-Tag-Wizard">Invocaタグウィザード</a>にアクセスし、Invocaアカウントでタグを作成して展開する手順に従います。</li>
-</ol>
-<h3 id="tealiumアカウントでタグを追加および構成する">Tealiumアカウントでタグを追加および構成する</h3>
-<p>TealiumでInvocaタグを追加および構成するには：</p>
+<p>詳細については、<a href="https://tealium.com/technology-partner/invoca/">Tealium + Invoca テクノロジーパートナーシップ概要</a>を参照してください。</p>
+<h2 id="セクション1-tealium-iqを使用してinvocaタグを管理する">セクション1: Tealium iQを使用してInvocaタグを管理する</h2>
+<p>Invocaタグを追加するには、以下の手順を使用します：</p>
 <ol>
 <li>Tealiumアカウントにログインします。</li>
-<li>タグマーケットプレイスから<a href="/ja/iq-tag-management/tags/manage/">新しいタグを追加</a>する手順に従います。<br>
-Invocaタグを見つけるには、検索フィールドに<strong>Invoca</strong>と入力します。</li>
-<li><strong>InvocaJS Web Integration</strong>タグを見つけて、<strong>Add</strong>をクリックします。</li>
+<li>アカウントにInvocaJS Web統合タグを追加します。詳細については、<a href="/ja/client-side-tags/invocajs-web-integration-tag/">Invoca Web統合タグ</a>を参照してください。
+<ul>
+<li>複数のInvocaタグを使用する場合は、それぞれに一意の名前を付けます。</li>
+</ul>
+</li>
+<li>Invocaアカウントにログインします。</li>
+<li>右上隅の歯車アイコンをクリックし、<strong>Invocaタグ</strong>を選択します。
+<ul>
+<li>複数のInvocaタグを持っている場合は、<strong>Invocaタグ</strong>の下のメニューからTealiumアカウントに追加したいタグを選択します。</li>
+</ul>
+</li>
+<li><strong>コードスニペット</strong>までスクロールダウンし、4桁のネットワークIDと一意のタグIDをコピーします：<figure><a class="slb" href="/images/tech-partners/invoca-network-id.jpg"><img src="/images/tech-partners/invoca-network-id.jpg"
+         alt="Invoca Network ID.jpg"
+         title="Invoca Network ID.jpg"/>
+    </a>
+</figure></li>
+<li>Tealiumタグ構成ページで、InvocaネットワークIDと一意のタグIDを入力します。</li>
+<li>Invocaタグに使用したいロードルールを適用します。私たちは「すべてのページ」のロードルールの使用をお勧めします。</li>
+<li>Invocaタグをデプロイしたい環境を選択します。</li>
 </ol>
-<h2 id="タグの展開">タグの展開</h2>
-<p>タグを追加および構成したので、次の手順に従ってInvocaアカウントからタグを展開します：</p>
+<h2 id="セクション2-invocaデータをtealiumアカウントに送信する">セクション2: InvocaデータをTealiumアカウントに送信する</h2>
+<h3 id="ステップ1-tealiumでinvocaのデータソースを作成する">ステップ1: TealiumでInvocaのデータソースを作成する</h3>
+<p>TealiumアカウントでInvocaのデータソースを作成するには、以下の手順を使用します：</p>
+<ol>
+<li>Tealiumアカウントにログインします。</li>
+<li>新しいデータソースを追加します。詳細については、<a href="/ja/server-side/data-sources/create-data-source/">データソースの作成</a>を参照してください。</li>
+<li><strong>開発言語</strong>の下で、<strong>HTTP APIデータソース</strong>を選択します。</li>
+<li>新しいデータソースに<code>Invoca Post-Call Webhook</code>という名前を付けます。</li>
+<li><strong>続ける</strong>をクリックし、<strong>イベント仕様</strong>ステップをスキップするために<strong>スキップ</strong>をクリックします。</li>
+<li>このページに表示されるアカウント、プロファイル、データソースキーをコピーします。</li>
+<li>完了したら、プロファイルを保存して公開します。</li>
+</ol>
+<h3 id="ステップ2-invocaでtealium統合タイルを構成する">ステップ2: InvocaでTealium統合タイルを構成する</h3>
+<p>InvocaをTealiumアカウントに接続するには、以下の手順を使用します：</p>
+<ol>
+<li>Invocaのサイドバーメニューで<strong>統合</strong>をクリックします。</li>
+<li><strong>統合の管理</strong>を選択します。</li>
+<li><strong>Tealium</strong>タイルをクリックします。
+<ul>
+<li>アカウントのタイルに<strong>詳細を学ぶ</strong>と表示されている場合は、統合の追加、アクセスの有効化、またはその両方についてカスタマーサクセスマネージャーまたはアカウントマネージャーに相談してください。</li>
+</ul>
+</li>
+<li>Tealiumアカウントを識別する名前を入力します。</li>
+<li>Tealiumアカウント名、プロファイル、データソースキーを入力します。</li>
+</ol>
+<h4 id="アクションの作成">アクションの作成</h4>
+<p>アクションを作成するには、以下の手順を使用します：</p>
+<ol>
+<li>
+<p><strong>+ 新しいアクション</strong>をクリックします。</p>
+</li>
+<li>
+<p>アクションに名前を入力します。既に構成しているアクションと区別するために、名前に<code>Call</code>または信号の名前を含めることをお勧めします。</p>
+</li>
+<li>
+<p>通話または信号を送信するフィルターを構成したい場合は、プロファイル（ネットワークレベルの場合）またはキャンペーン（プロファイルまたは広告主レベルの場合）を選択します。</p>
+<ul>
+<li>ほとんどの顧客はすべてのデータを送信することを選択しますが、複数のTealiumアカウントと特定のInvocaプロファイルまたはInvocaキャンペーンがそれぞれにマッピングされている場合はフィルタリングを検討してください。</li>
+</ul>
+</li>
+<li>
+<p><strong>トリガー元</strong>メニューからTealiumにイベントとして送信するInvocaトランザクションタイプを選択します。通話を報告する場合は<strong>すべての通話</strong>を選択します。</p>
+<ul>
+<li>信号を報告する場合は、<strong>信号</strong>を選択し、次に表示されるリストから特定の信号を選択します。</li>
+<li>複数のトランザクションタイプを送信する場合は、各トランザクションタイプごとに別のアクションを作成します。<p class="note"><i class="fa fa-exclamation-triangle"></i>有料通話トランザクションタイプのトリガーは、Invocaで手数料が発生するアフィリエイト/またはパブリッシャーの通話に関連しています。</p></li>
+</ul>
+</li>
+<li>
+<p>このアクションの<strong>トリガー元</strong>で選択したものに対応するTealiumイベント名は、<code>tealium_event</code>属性で送信され、イベントのタイプを識別します。カスタムイベントまたはマーケットプレイスイベント名を入力できます。<p class="note"><i class="fa fa-exclamation-triangle"></i>カスタムイベントの場合、データの流れが始まると、Tealiumでイベント仕様を定義できます。</p></p>
+</li>
+<li>
+<p>Tealiumに属性として追加のInvocaパラメータを送信したい場合は、<strong>追加パラメータ</strong>セクションの左側に名前を入力し、右側に値を入力します。左側の名前は通常、ハードコーディングされたテキストであり、Tealiumでカスタムイベントを作成する際に定義する属性です。値はハードコーディングされたテキストまたはInvocaがキャプチャした値を動的に入力するためにInvoca置換トークンを選択できます。</p>
+</li>
+<li>
+<p><strong>保存</strong>をクリックします。</p>
+</li>
+</ol>
+<p>アクション構成手順を繰り返し、報告したい各トランザクションタイプに対して既存の環境を選択します。複数のTealiumアカウントを統合したい場合は、新しいTealiumアカウントの下で新しいアクションを作成するオプションを使用します。</p>
+<h3 id="ステップ3-tealium訪問idのキャプチャ">ステップ3: Tealium訪問IDのキャプチャ</h3>
+<p>Invocaタグを構成してTealium訪問IDをキャプチャするには、以下の手順を使用します：</p>
 <ol>
 <li>
 <p>Invocaアカウントにログインします。</p>
 </li>
 <li>
-<p>右上隅の歯車アイコンをクリックし、<strong>Invoca Tags</strong>を選択します。</p>
-</li>
-<li>
-<p>複数のInvocaタグがある場合は、<strong>Invoca Tags</strong>ドロップダウンメニューをクリックして、Tealiumアカウントに追加したいタグを選択します。</p>
-</li>
-<li>
-<p>Code Snippetsタイルまでスクロールダウンし、4桁のネットワークIDとユニークなTag IDをコピーします。<br>
-<figure><a class="slb" href="/images/tech-partners/invoca-network-id.jpg"><img src="/images/tech-partners/invoca-network-id.jpg"
-             alt="Invoca Network ID.jpg"
-             title="Invoca Network ID.jpg"/>
-        </a>
-    </figure></p>
-</li>
-<li>
-<p>Tealiumに戻り、iQタグ管理構成ページに4桁のネットワークIDとユニークなTag IDを貼り付けて、タグ構成を完了します。</p>
-</li>
-<li>
-<p>Invocaタグに使用したいロードルールを適用します。</p>
- <p class="tip"><i class="fa fa-info-circle"></i>「すべてのページ」のロードルールが推奨されます。</p>
-</li>
-<li>
-<p>Invocaタグを展開したい環境を選択します。</p>
-</li>
-<li>
-<p>変更を保存して公開します。<br>
-Invocaタグは、有効になっている環境に正常に実装されました。</p>
-</li>
-</ol>
-<h2 id="データの送信">データの送信</h2>
-<p>この統合を使用し、データを送信する能力を持つためには、InvocaアカウントでカスタムマーケティングデータフィールドとカスタムWebhookを作成する必要があります。次のセクションでは、InvocaデータをTealium AudienceStreamに送信し、Tealium AudienceStreamデータをInvocaに送信するために必要な手順を説明します。</p>
-<h3 id="audiencestreamでinvocaデータを受信するための構成">AudienceStreamでInvocaデータを受信するための構成</h3>
-<p>InvocaデータをAudienceStreamに送信するには：</p>
-<ol>
-<li>Invocaアカウントにログインします。</li>
-<li>次の構成で新しいマーケティングデータフィールドを作成します：
+<p>次の構成で新しいマーケティングデータフィールドを作成します：</p>
 <ul>
-<li><strong>フィールドタイプ</strong><br>
-短文テキスト</li>
-<li><strong>パートナー（API）名</strong><br>
-tealium_visitor_id</li>
-<li><strong>フレンドリーネーム</strong><br>
-Tealium訪問ID</li>
-<li><strong>帰属</strong><br>
-ユニーク</li>
+<li><strong>フィールドタイプ：</strong> <code>Short Text</code></li>
+<li><strong>パートナー（API）名：</strong> <code>tealium_visitor_id</code></li>
+<li><strong>フレンドリー名：</strong> <code>Tealium訪問ID</code></li>
+<li><strong>帰属：</strong> <code>Unique</code></li>
 </ul>
 </li>
-<li>メニューリボンの歯車アイコンをクリックし、<strong>Invoca Tags</strong>を選択します。<br>
-複数のInvocaタグがある場合は、タグ選択ドロップダウンメニューを使用して、Tealium統合に使用したいタグを見つけて編集します。</li>
-<li>タグウィザードのマーケティングデータセクションまでスクロールダウンし、作成したばかりの「Tealium訪問ID」マーケティングデータフィールドを見つけます。</li>
-<li><strong>Enabled</strong>スライダーをクリックして、そのフィールドのデータ収集を有効にします。</li>
-<li>データソースタイプと名前のフィールドを次のように完了します：<br>
-Tealium訪問ID (<code>tealium_visitor_id</code>):
-<ul>
-<li><strong>タイプ</strong>: JavaScriptデータレイヤー</li>
-<li><strong>名前</strong>: <code>utag_data.tealium_visitor_id</code></li>
-</ul>
+<li>
+<p>歯車アイコンをクリックし、<strong>Invocaタグ</strong>を選択し、ウェブサイトに実装されているInvocaタグを見つけます。</p>
 </li>
-<li>Tealium AudienceStreamアカウントにログインし、新しいデータソースを追加します。(<a href="/ja/server-side/data-sources/about-data-sources/">詳細を学ぶ</a>)</li>
-<li>開発言語の下で、<strong>HTTP APIデータソース</strong>を選択します。</li>
-<li>新しいデータソースに「Invoca Post-Call Webhook」という名前を付けます。</li>
-<li>イベント仕様ステップをスキップして、<strong>Get Code</strong>ページに進みます。</li>
-<li>このページに表示されるアカウント、プロファイル、データソースキーを別のドキュメントにコピーします。これらがすぐに必要になります。</li>
-<li>完了したら、新しいAudienceStreamプロファイルを保存して公開します。<br>
-これで、Tealium AudienceStreamアカウントがInvocaデータを受信するように構成されました。</li>
+<li>
+<p><strong>リビジョン履歴</strong>タブをクリックし、新しいドラフトを作成するか、既存のドラフトの編集を続けます。<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>新しいタグ</strong>ボタンを選択しないでください</p></p>
+</li>
+<li>
+<p><strong>ノート</strong>に<code>Tealium訪問IDを追加</code>と入力します。</p>
+</li>
+<li>
+<p><strong>タグの編集</strong>ページの<strong>マーケティングデータ</strong>セクションで、<strong>Tealium訪問ID</strong>パラメータを探します。</p>
+</li>
+<li>
+<p><strong>データソースタイプ</strong>の下で、<strong>DataLayer</strong>を選択し、有効になっていることを確認します。</p>
+</li>
+<li>
+<p><strong>データソース名</strong>に<code>utag.data.tealium_visitor_id</code>を入力します。</p>
+</li>
+<li>
+<p>変更をテストし、すべてが正常に動作していることを確認します。</p>
+</li>
+<li>
+<p><strong>保存して公開</strong>をクリックします。<p class="note"><i class="fa fa-exclamation-triangle"></i>InvocaタグがTealiumスクリプトを構成する識別子を構成する前に一貫して実行される場合は、Invocaタグの<strong>再帰属構成</strong>を使用することをお勧めします。タグのロード数と各タグのタイミングによって異なりますが、遅延を5秒に構成し、最適なタイミングを見つけるためにテストを実施することを提案します。</p></p>
+</li>
+<li>
+<p>複数のInvocaタグを持っている場合は、それぞれに更新を公開します。</p>
+</li>
 </ol>
-<h3 id="audiencestreamにデータを送信するためのinvoca-webhookを作成する">AudienceStreamにデータを送信するためのInvoca Webhookを作成する</h3>
-<p>次に、Tealium AudienceStreamにデータを送信する新しいInvoca Webhookを作成します。</p>
-<p>Invoca Webhookを作成する手順：</p>
+<h2 id="セクション3通話ルーティングと発信者体験のカスタマイズ">セクション3：通話ルーティングと発信者体験のカスタマイズ</h2>
+<p>Tealiumアカウントを構成して訪問プロファイルデータをInvocaに送信するには、以下の手順を使用します：</p>
 <ol>
+<li>Tealium iQアカウントにログインし、Invocaタグに移動します。</li>
+<li>Invocaに送信したい各パラメーターに対してカスタムデータマッピングを作成します。これらの変数をInvocaに送信することができ、その数はInvocaアカウントで利用可能なカスタムマーケティングデータフィールドの数にのみ制限されます。</li>
+<li>選択した変数に応じて、各データマッピングの送信先を命名します。例えば、リードスコア変数には <code>invoca_leadscore</code> という名前を使用します。</li>
+<li>すべての送信先名をメモに保存します。</li>
 <li>Invocaアカウントに戻ります。</li>
-<li>次の構成で新しいルールベースのシグナルを作成します：
+<li>作成した各データマッピングについて、以下の構成を使用します：
 <ul>
-<li><strong>名前</strong>: Tealium Visitor</li>
-<li><strong>説明</strong>: この通話のTealium Visitor ID (<code>tealium_visitor_id</code>) がキャプチャされます。</li>
-<li><strong>ルール</strong>: <strong>テキスト</strong> タブをクリックし、<code>custom_data[tealium_visitor_id] present</code>を貼り付けます。</li>
+<li><strong>フィールドタイプ</strong>：<code>Short Text</code></li>
+<li><strong>パートナー（API）名</strong>：以前に選択した変数を反映する名前を入力します。例えば、<code>tealium_leadscore</code>。</li>
+<li><strong>フレンドリーネーム</strong>：以前に選択した変数を反映するラベルを入力します。例えば、<code>Tealium Lead Score</code>。</li>
+<li><strong>帰属</strong>：<code>Last</code></li>
 </ul>
 </li>
-<li><strong>保存</strong>をクリックします。</li>
-<li>次の構成で新しいカスタムWebhookを作成します：
+<li>歯車アイコンをクリックし、<strong>Invoca Tags</strong>を選択します。
 <ul>
-<li><strong>名前</strong>: Tealium AudienceStream POST</li>
-<li><strong>HTTP動詞</strong>: POST</li>
-<li><strong>URL</strong>: <code>https://collect.tealiumiq.com/event</code></li>
+<li>複数のInvocaタグがある場合は、タグ選択ドロップダウンメニューを使用してTealium統合に使用するタグを見つけ、そのタグを編集します。</li>
 </ul>
 </li>
-<li>Webhookの<strong>ボディ</strong>タブを選択し、JSONを選択します。</li>
-<li>以下をBODYテキストボックスに貼り付けます：
-各行はInvocaがキャプチャしたデータパラメータを表し、このWebhookがAudienceStreamに送信するものです。</li>
+<li>タグウィザードの<strong>マーケティングデータ</strong>セクションまでスクロールダウンし、新しいマーケティングデータフィールドをすべて見つけます。</li>
+<li>各フィールドのデータ収集を可能にするために、<strong>有効</strong>スライダーをクリックします。</li>
+<li>各フィールドのデータソースタイプと名前を入力し、関連する各パラメーターに選択した送信先名で赤いテキストを置き換えます：
+<ul>
+<li><strong>データソースタイプ</strong>：<code>JavaScript Data Layer</code></li>
+<li><strong>データソース名</strong>：<code>localStorage.getItem(&quot;DESTINATION NAME&quot;)</code></li>
+</ul>
+</li>
+<li>Invocaタグのリビジョンを保存してテストします。</li>
+<li><strong>Go Live</strong>をクリックします。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>          : <span style="color:#e6db74">&#34;{Your Tealium Account Name}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>          : <span style="color:#e6db74">&#34;main&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_datasource&#34;</span>       : <span style="color:#e6db74">&#34;{Data Source Key}&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>            : <span style="color:#e6db74">&#34;InvocaPhoneCall&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>       : <span style="color:#e6db74">&#34;&lt;tealium_visitor_id&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;connect_duration&#34;</span>         : <span style="color:#e6db74">&#34;&lt;connect_duration&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;advertiser_campaign_name&#34;</span> : <span style="color:#e6db74">&#34;&lt;advertiser_campaign_name&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;advertiser_name&#34;</span>          : <span style="color:#e6db74">&#34;&lt;advertiser_name&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;unique_promo_number&#34;</span>      : <span style="color:#e6db74">&#34;&lt;call_source_description&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;media_type&#34;</span>               : <span style="color:#e6db74">&#34;&lt;media_type&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;phone_type&#34;</span>               : <span style="color:#e6db74">&#34;&lt;mobile&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;calling_phone_number&#34;</span>     : <span style="color:#e6db74">&#34;&lt;calling_phone_number&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;unique_promo_description&#34;</span> : <span style="color:#e6db74">&#34;&lt;promo_line_description&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;call_start_time_utc&#34;</span>      : <span style="color:#e6db74">&#34;&lt;start_time_utc&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;destination_phone_number&#34;</span> : <span style="color:#e6db74">&#34;&lt;destination_phone_number&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_campaign&#34;</span>             : <span style="color:#e6db74">&#34;&lt;utm_campaign&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;gclid&#34;</span>                    : <span style="color:#e6db74">&#34;&lt;gclid&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;g_cid&#34;</span>                    : <span style="color:#e6db74">&#34;&lt;g_cid&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_source&#34;</span>               : <span style="color:#e6db74">&#34;&lt;utm_source&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_medium&#34;</span>               : <span style="color:#e6db74">&#34;&lt;utm_medium&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_content&#34;</span>              : <span style="color:#e6db74">&#34;&lt;utm_content&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;first_page&#34;</span>               : <span style="color:#e6db74">&#34;&lt;firstPage&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;last_page&#34;</span>                : <span style="color:#e6db74">&#34;&lt;lastPage&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ol>
-<li>上記のサンプルからあなたのTealiumアカウントの情報にフィールドを置き換えてください：
+<h2 id="セクション4tealium-live-eventsを使用して統合を検証しイベント仕様を追加する">セクション4：Tealium Live Eventsを使用して統合を検証し、イベント仕様を追加する</h2>
+<p>Tealium EventStreamのイベント仕様を使用して、以下を確認し、Tealium for Invoca統合の検証とトラブルシューティングを行います：</p>
 <ul>
-<li><code>{Your Tealium Account Name}</code> - アカウントが作成されたときに割り当てられたTealiumアカウントの名前に置き換えてください。アカウント名がわからない場合は、Tealiumにログインして、ウィンドウの左上隅に表示されるアカウント名を確認できます。</li>
-<li><code>{Data Source Key}</code> - 前のセクションからコピーして保存したData Source Keyに置き換えてください。</li>
-</ul>
-</li>
-<li>(オプション) サンプルボディテキストの任意の行を削除して、そのデータをWebhookから省略するか、カスタムマーケティングデータフィールドや作成したシグナルなど、追加のデータを送信することができます。</li>
-<li>追加データを送信するには、ボディテキストサンプルに戻り、Webhookに新しい行を作成するために<strong>Enter</strong>を押します。</li>
-<li><strong>置換パラメータを追加</strong> (<strong>&lt;&gt;</strong>) ボタンをクリックし、送信したいInvocaデータパラメータを選択します。</li>
-<li>次の形式でWebhook行の残りを完成させます：<code>&quot;parametername&quot; : &quot;&lt;parametername&gt;&quot;</code></li>
-<li>Webhookの<strong>発火条件</strong>タブに移動し、次の構成を完了します：
-<ul>
-<li><strong>発火時</strong>: シグナル<br>
-ドロップダウンメニューで<strong>Tealium Visitor</strong>を選択します</li>
-<li><strong>最初の試行が失敗した場合に再試行する</strong>: はい</li>
-<li><strong>通話修正のために発火する</strong>: いいえ</li>
-<li><strong>バッチの送信方法</strong>: バッチを送信しない</li>
-</ul>
-</li>
-<li><strong>保存</strong>をクリックします。</li>
-<li>カスタムWebhooksメニューで新しいWebhookを見つけます。</li>
-<li>アクションメニューで<strong>構成</strong>ボタンをクリックし、<strong>アクティブ化</strong>を選択します。<br>
-これで、あなたのInvocaアカウントはAudienceStreamに通話データを送信するように構成されました。</li>
-</ol>
-<p>これで、顧客データプラットフォーム（CDP）内の訪問プロファイルにInvocaの通話および変換データを追加し、すべてのマーケティングアプリケーションで使用することができます。</p>
-<h3 id="tealium-audiencestreamのデータをinvocaに送信する">Tealium AudienceStreamのデータをInvocaに送信する</h3>
-<p>このセクションでは、Tealiumアカウントを構成して訪問プロファイルデータをInvocaに送り返す方法について説明します。Invocaでは、このデータを使用してリアルタイムの通話ルーティングと発信者体験を最適化することができます。</p>
-<p>Tealiumを構成してランディングページのJavaScriptデータレイヤーにデータを注入するための次の手順を使用します。</p>
-<ol>
-<li>このガイドのすべての前の手順が完了していることを確認します。</li>
-<li>iQタグ管理アカウントにログインします。</li>
-<li>Invocaタグに移動し、Tealiumアカウントで送信したい各パラメータに対して新しいカスタムデータマッピングパラメータを作成します。
- <p class="tip"><i class="fa fa-info-circle"></i>Invocaに送りたいこれらの変数を好きなだけ送ることができます。これは、Invocaアカウントで利用可能なカスタムマーケティングデータフィールドの数にのみ制限されます。</p>
-</li>
-</ol>
-<p><a href="/ja/iq-tag-management/data-mappings/manage/">カスタムデータマッピングの作成</a>にアクセスして詳しい手順をご覧ください。</p>
-<ol>
-<li>選択した変数に応じて、各データマッピングの宛先の名前を指定します。
-例：リードスコア変数の場合は <code>invoca_leadscore</code></li>
-<li>完了したら、次の手順で必要になる各宛先名のリストを別のドキュメントに記録します。</li>
-</ol>
-<h3 id="invocaでカスタムマーケティングデータフィールドを作成する">Invocaでカスタムマーケティングデータフィールドを作成する</h3>
-<p>指定したデータを取得するためにInvocaタグがデータを取得できるように、Invocaでカスタムマーケティングデータフィールドを作成するための次の手順を使用します：</p>
-<ol>
-<li>Invocaアカウントに戻り、作成したデータマッピングのそれぞれに対して新しいカスタムマーケティングデータフィールドを作成するための次の構成を使用します。
-<ul>
-<li><strong>フィールドタイプ</strong><br>
-短文テキスト</li>
-<li><strong>パートナー(API)名</strong>:<br>
-前の手順で選択した変数を反映する名前を選択します。例えば、<code>tealium_leadscore</code>など。</li>
-<li><strong>フレンドリーネーム</strong><br>
-前の手順で選択した変数を反映する「フレンドリーネーム」を選択します。例えば、Tealium Lead Scoreなど。</li>
-<li><strong>帰属</strong>  最後</li>
-</ul>
-</li>
-<li>メニューリボンの歯車アイコンをクリックし、次に<strong>Invocaタグ</strong>を選択します。</li>
-<li>複数のInvocaタグがある場合は、タグ選択ドロップダウンメニューを使用してTealium統合に使用したいタグを見つけて編集します。</li>
-<li>タグウィザードのマーケティングデータセクションまでスクロールダウンし、作成したばかりの「Tealium Visitor ID」マーケティングデータフィールドを見つけます。</li>
-<li><strong>有効</strong>スライダーをクリックして、そのフィールドのデータ収集を有効にします。</li>
-<li>データソースタイプと名前のフィールドを次のように完了します：
-<ul>
-<li><strong>タイプ</strong>: JavaScriptデータレイヤ</li>
-<li><strong>名前</strong>: <code>localStorage.getItem(&quot;DESTINATION NAME&quot;)</code></li>
-</ul>
-</li>
-<li><strong>保存</strong>をクリックします。</li>
-<li><strong>ライブにする</strong>をクリックします。<br>
-これで、Tealiumからの任意のデータをマーケティングデータフィールドでキャプチャするInvocaタグが構成されました。</li>
-</ol>
-<p>これで、リアルタイムルーティングWebhookの一部として、新しいルールベースのシグナルを構築する際、通話処理（IVR）オプションで、または他のInvoca統合で渡す際に、マーケティングデータフィールドを使用することができます。</p>
-<h2 id="eventstreamで検証およびトラブルシューティングを行う">EventStreamで検証およびトラブルシューティングを行う</h2>
-<p>Tealium EventStreamのイベント仕様を使用して、TealiumとInvocaの統合を検証およびトラブルシューティングするために次のことを確認できます：</p>
-<ul>
-<li>ライブイベント</li>
-<li>Invocaタグの発火記録</li>
+<li>ライブイベント。</li>
+<li>Invocaタグの発火記録。</li>
 <li>この統合を通じて収集および転送されたデータ。</li>
 </ul>
 <p>Invoca + Tealium統合のイベント仕様を作成するには：</p>
 <ol>
-<li>Tealiumアカウントにログインし、<strong>EventStream</strong>に移動します。</li>
-<li><a href="/ja/server-side/data-sources/about-data-sources/">データソースメニュー</a>に移動し、<strong>Invoca Post-Call Webhook</strong>データソースまでスクロールダウンします。</li>
-<li>行の右側にある<strong>ライブイベントで表示</strong>をクリックします。</li>
-<li>ライブイベントメニューから、Invoca Webhookによって送信されたイベントを見つけて選択します。
-ここから、1回の電話からTealiumに送信されたすべてのデータを確認できます。</li>
-<li>このイベントから新しいイベント仕様を作成します。
-必要な場合は、<a href="/ja/server-side/event-specifications/manage/">イベント仕様</a>を参照し、説明されている手順に従ってください。</li>
-<li>イベント仕様のタイトルを「InvocaPhoneCall」とします。</li>
-<li>すべての属性の<strong>必須</strong>チェックボックスをオフにします。
-このイベント仕様は主にトラブルシューティング目的で使用され、Invocaを通じて通過する電話の総量を追跡するために使用されます。</li>
+<li>Tealiumアカウントにログインし、EventStreamに移動します。</li>
+<li><strong>データソース</strong>に移動し、<strong>Invoca Post-Call Webhook</strong>データソースまでスクロールダウンします。</li>
+<li><strong>View in Live Events</strong>をクリックします。</li>
+<li><strong>Live Events</strong>メニューから、Invoca webhookによって送信されたイベントを見つけて選択します。1回の電話からTealiumに送信されたすべてのデータが表示されます。</li>
+<li>このイベントから新しいイベント仕様を作成します。詳細については、<a href="/ja/server-side/event-specifications/manage/">イベント仕様</a>を参照してください。</li>
+<li>イベント仕様に<code>InvocaPhoneCall</code>という名前を付けます。</li>
+<li>すべての属性の<strong>必須</strong>チェックボックスをオフにします。</li>
 <li>変更を適切な環境に保存して公開します。</li>
 </ol>
+<p>このイベント仕様は主にトラブルシューティングの目的で使用され、Invocaを通じて通過する電話の総量を追跡するために使用されます。</p>
+<h2 id="webhookデータ例">Webhookデータ例</h2>
+<p>この例は、あなたに代わって送信されたwebhookを示しています：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>          : <span style="color:#e6db74">&#34;{Your Tealium Account Name}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>          : <span style="color:#e6db74">&#34;{Your Tealium Profile}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_datasource&#34;</span>       : <span style="color:#e6db74">&#34;{Data Source Key}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>            : <span style="color:#e6db74">&#34;{Event Name}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>       : <span style="color:#e6db74">&#34;&lt;tealium_vid&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;connect_duration&#34;</span>         : <span style="color:#e6db74">&#34;&lt;connect_duration&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;call_start_time_utc&#34;</span>      : <span style="color:#e6db74">&#34;&lt;start_time_utc&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_source&#34;</span>               : <span style="color:#e6db74">&#34;&lt;utm_source&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_medium&#34;</span>               : <span style="color:#e6db74">&#34;&lt;utm_medium&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_campaign&#34;</span>             : <span style="color:#e6db74">&#34;&lt;utm_campaign&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;utm_content&#34;</span>              : <span style="color:#e6db74">&#34;&lt;utm_content&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;calling_page&#34;</span>             : <span style="color:#e6db74">&#34;&lt;calling_page&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="関連ドキュメント">関連ドキュメント：</h2>
+<ul>
+<li><a href="https://community.invoca.com/t5/invoca-overview/best-practices-for-configuring-and-managing-your-integrations/ta-p/584#U584">Invoca: 統合の構成と管理に関するベストプラクティス</a></li>
+<li><a href="https://community.invoca.com/t5/call-tracking/how-to-configure-and-deploy-your-invoca-tag/ta-p/465#U465">Invoca: Invocaタグウィザードを使用してInvocaタグを構成およびデプロイする方法</a></li>
+<li><a href="https://community.invoca.com/t5/invoca-reporting-suite/what-kinds-of-data-can-invoca-collect-about-a-phone-call/ta-p/695#U695">Invoca: Invocaが電話について収集できるデータの種類</a></li>
+</ul>
 
 </div>
 
@@ -1030,7 +993,7 @@ Tealium訪問ID (<code>tealium_visitor_id</code>):
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年May月22日
+          <p>最終更新日 ::  2025年November月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1044,18 +1007,17 @@ Tealium訪問ID (<code>tealium_visitor_id</code>):
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#invoca%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A7%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Invocaアカウントでタグを作成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A7%E3%82%BF%E3%82%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%8A%E3%82%88%E3%81%B3%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealiumアカウントでタグを追加および構成する</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E5%B1%95%E9%96%8B" href="javascript:void(0)">タグの展開</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">データの送信</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E3%81%A7invoca%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">AudienceStreamでInvocaデータを受信するための構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEinvoca-webhook%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">AudienceStreamにデータを送信するためのInvoca Webhookを作成する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-audiencestream%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92invoca%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealium AudienceStreamのデータをInvocaに送信する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#invoca%E3%81%A7%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Invocaでカスタムマーケティングデータフィールドを作成する</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventstream%E3%81%A7%E6%A4%9C%E8%A8%BC%E3%81%8A%E3%82%88%E3%81%B3%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%92%E8%A1%8C%E3%81%86" href="javascript:void(0)">EventStreamで検証およびトラブルシューティングを行う</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B31-tealium-iq%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6invoca%E3%82%BF%E3%82%B0%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">セクション1: Tealium iQを使用してInvocaタグを管理する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B32-invoca%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92tealium%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">セクション2: InvocaデータをTealiumアカウントに送信する</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-tealium%E3%81%A7invoca%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: TealiumでInvocaのデータソースを作成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972-invoca%E3%81%A7tealium%E7%B5%B1%E5%90%88%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ2: InvocaでTealium統合タイルを構成する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973-tealium%E8%A8%AA%E5%95%8Fid%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3" href="javascript:void(0)">ステップ3: Tealium訪問IDのキャプチャ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B33%E9%80%9A%E8%A9%B1%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A8%E7%99%BA%E4%BF%A1%E8%80%85%E4%BD%93%E9%A8%93%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA" href="javascript:void(0)">セクション3：通話ルーティングと発信者体験のカスタマイズ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B34tealium-live-events%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E7%B5%B1%E5%90%88%E3%82%92%E6%A4%9C%E8%A8%BC%E3%81%97%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E4%BB%95%E6%A7%98%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">セクション4：Tealium Live Eventsを使用して統合を検証し、イベント仕様を追加する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook%E3%83%87%E3%83%BC%E3%82%BF%E4%BE%8B" href="javascript:void(0)">Webhookデータ例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%96%A2%E9%80%A3%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">関連ドキュメント：</a></li>
               </nav>
   </aside></nav>
 

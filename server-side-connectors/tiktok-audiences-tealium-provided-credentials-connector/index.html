@@ -1455,7 +1455,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: TikTok HTTP API</li>
@@ -1463,14 +1463,34 @@
 <li>API Endpoint: <code>https://business-api.tiktok.com/open_api/v1.3</code></li>
 <li>Documentation: <a href="https://ads.tiktok.com/marketing_api/docs?id=1736874036878337">TikTok Audience segment</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
+<h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
 <li>Max number of requests: 1000</li>
 <li>Max time since oldest request: 30 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Advertiser ID</strong>: (Required) The ad account ID from your TikTok Ads Manager. For more information, see <a href="https://ads.tiktok.com/help/article/find-your-ad-account-id?lang=en">TikTok: How to find your ad account ID</a>.</li>
+</ul>
+<p>Click <strong>Establish Connection</strong> to test the connection to TikTok.</p>
+<p>To create an audience for this connector, follow these steps:</p>
+<ol>
+<li>Click <strong>Create Audience</strong>.</li>
+<li>Under <strong>Custom Audience Name</strong>, enter the audience name for this connector to use.</li>
+<li>From the <strong>Encryption Type</strong> drop-down list, select the encryption type to use when populating the audience.</li>
+<li>Click <strong>Create</strong>, then click <strong>Done</strong>.</li>
+</ol>
+<p>To remove an audience, follow these steps:</p>
+<ol>
+<li>Click <strong>Remove Audience</strong>.</li>
+<li>From the <strong>Audience ID</strong> drop-down list, select the audience to remove.</li>
+<li>Click <strong>Remove</strong>, then click <strong>Done</strong>.</li>
+</ol>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1492,31 +1512,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Advertiser ID</strong><br>
-(Required) The advertiser ID.</li>
-</ul>
-<p>Click <strong>Establish Connection</strong> to test the connection to TikTok.</p>
-<p>To create an audience for this connector, follow these steps:</p>
-<ol>
-<li>Click <strong>Create Audience</strong>.</li>
-<li>Under <strong>Custom Audience Name</strong>, enter the audience name for this connector to use.</li>
-<li>From the <strong>Encryption Type</strong> drop-down list, select the encryption type to use when populating the audience.</li>
-<li>Click <strong>Create</strong>, then click <strong>Done</strong>.</li>
-</ol>
-<p>To remove an audience, follow these steps:</p>
-<ol>
-<li>Click <strong>Remove Audience</strong>.</li>
-<li>From the <strong>Audience ID</strong> drop-down list, select the audience to remove.</li>
-<li>Click <strong>Remove</strong>, then click <strong>Done</strong>.</li>
-</ol>
-<h2 id="actions">Actions</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the <strong>Action Type</strong>.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--add-visitor-to-audience">Action — Add Visitor to Audience</h3>
+<h3 id="add-visitor-to-audience">Add Visitor to Audience</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1532,7 +1530,7 @@
 </tr>
 <tr>
 <td>IDFA (apply MD5 hash)</td>
-<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text iOS IDFA. The connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>IDFA (already MD5 hashed)</td>
@@ -1540,7 +1538,7 @@
 </tr>
 <tr>
 <td>AAID (apply MD5 hash)</td>
-<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>AAID (already MD5 hashed)</td>
@@ -1548,7 +1546,7 @@
 </tr>
 <tr>
 <td>IDFA (apply SHA256 hash)</td>
-<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text iOS IDFA. The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>IDFA (already SHA256 hashed)</td>
@@ -1556,7 +1554,7 @@
 </tr>
 <tr>
 <td>AAID (apply SHA256 hash)</td>
-<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>AAID (already SHA256 hashed)</td>
@@ -1564,7 +1562,7 @@
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>). The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>). The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -1572,7 +1570,7 @@
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number. The connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number. The connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Phone Number (already SHA256 hashed)</td>
@@ -1580,7 +1578,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-visitor-from-audience">Action - Remove Visitor from Audience</h3>
+<h3 id="remove-visitor-from-audience">Remove Visitor from Audience</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -1596,7 +1594,7 @@
 </tr>
 <tr>
 <td>IDFA (apply MD5 hash)</td>
-<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text iOS IDFA. The connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>IDFA (already MD5 hashed)</td>
@@ -1604,7 +1602,7 @@
 </tr>
 <tr>
 <td>AAID (apply MD5 hash)</td>
-<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector whitespace trims, lowercases, and hashes this value using MD5 hash.</td>
 </tr>
 <tr>
 <td>AAID (already MD5 hashed)</td>
@@ -1612,7 +1610,7 @@
 </tr>
 <tr>
 <td>IDFA (apply SHA256 hash)</td>
-<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text iOS IDFA. The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>IDFA (already SHA256 hashed)</td>
@@ -1620,7 +1618,7 @@
 </tr>
 <tr>
 <td>AAID (apply SHA256 hash)</td>
-<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>AAID (already SHA256 hashed)</td>
@@ -1628,7 +1626,7 @@
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address (must include an <code>@</code>). The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address (must include an <code>@</code>). The connector whitespace trims, lowercases, and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -1636,7 +1634,7 @@
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number. The connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number. The connector whitespace trims and hashes this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Phone Number (already SHA256 hashed)</td>
@@ -1704,7 +1702,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 31, 2023 
+          <p>This page was last updated:  November 13, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1718,13 +1716,12 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--add-visitor-to-audience" href="javascript:void(0)">Action — Add Visitor to Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-visitor-from-audience" href="javascript:void(0)">Action - Remove Visitor from Audience</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-visitor-to-audience" href="javascript:void(0)">Add Visitor to Audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-visitor-from-audience" href="javascript:void(0)">Remove Visitor from Audience</a></li>
               </nav>
   </aside></nav>
 

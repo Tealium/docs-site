@@ -1459,7 +1459,7 @@
 <h2 id="overview">Overview</h2>
 <p>Advertisers use the Microsoft UET Conversion API to send web and offline conversion events directly to Microsoft Advertising. This connector enables enhanced attribution, signal resiliency, and privacy-focused measurement.</p>
 <p>You can use the Microsoft UET Conversion API as a standalone integration or together with the Microsoft UET tag. In a dual-delivery setup, the UET tag sends real-time, client-side events, while the conversion API delivers events reliably in cases of cookie loss, JavaScript restrictions, or offline conversions. Using both methods provides redundancy and improves coverage throughout the customer journey.</p>
-<h2 id="batch-limits">Batch Limits</h2>
+<h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 1,000</li>
@@ -1470,7 +1470,7 @@
 <ul>
 <li><strong>Microsoft Ads Account</strong>: Active Microsoft Advertising account with UET tag and CAPI access.</li>
 <li><strong>UET Tag ID</strong>: Microsoft requires a UET tag ID for attribution and audience association, even if using only server-side tracking through Tealium for online or offline conversions. Find the UET tag ID in your Microsoft Ads platform. Use an existing tag or provision a new UET tag ID as needed.</li>
-<li><strong>Access Token</strong>: Get the token from your Microsoft Account Manager.</li>
+<li><strong>Access Token</strong>: The Microsoft Developer token for CAPI. For more information, see <a href="#generate-access-token">Generate access token</a>.</li>
 <li><strong>Conversion Goal</strong>: To ensure Microsoft can attribute CAPI events correctly, create at least one conversion goal tied to your UET tag.
 <ol>
 <li>Go to <strong>Tools &gt; Conversion Goals</strong>.</li>
@@ -1484,11 +1484,24 @@
 <p>To add the connector, go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>UET tagID</strong><br>
-You can use your existing tag or provision a new UET tag ID in your Microsoft Advertising account.</li>
-<li><strong>Access Token</strong><br>
-The access token for your Microsoft Advertising account.</li>
+<li><strong>UET tagID</strong>: You can use your existing tag or provision a new UET tag ID in your Microsoft Advertising account.</li>
+<li><strong>Access Token</strong>: The access token for your Microsoft Advertising account.</li>
 </ul>
+<h3 id="generate-access-token">Generate access token</h3>
+<p>To generate an access token for the Microsoft UET Conversion API, follow these steps:</p>
+<ol>
+<li>In your Microsoft Ads account, go to <strong>Conversions &gt; UET tag</strong>.</li>
+<li>Hover over the tag name and then click the pencil icon.
+<ul>
+<li>You may need to select a value for <strong>Industry</strong>.</li>
+</ul>
+</li>
+<li>Click <strong>Save and next</strong>.</li>
+<li>Click <strong>Use Conversions API</strong>.</li>
+<li>Click <strong>Save and next</strong>.</li>
+<li>Save your token in a secure location for reference later. It is required to establish the connection.</li>
+<li>Save the tag.</li>
+</ol>
 <!-- ## Deduplication
 
 To configure this connector to deduplicate events from the Microsoft UET Advertising tag, use the event IDs sent as event attributes with the following naming convention:
@@ -1520,7 +1533,7 @@ The connector follows this order of operations:
 * If Automatic Deduplication is populated, and the value is found in the data layer, (for example, `microsoft_purchase_id_88`) this value supersedes anything mapped in Event ID.
 * If Automatic Deduplication is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, `microsoft_purchase_id`).
 * If Automatic Deduplication is populated, but the value isn’t found, the mapped Event ID is used, if it is populated.-->
-<h2 id="offline-conversions">Offline Conversions</h2>
+<h2 id="offline-conversions">Offline conversions</h2>
 <p>To process offline and store events through the Microsoft UET Conversions connector, configure the connector to include the required parameters.</p>
 <p>For online conversions, attribution typically occurs in real time. For offline conversions, Microsoft supports backdated events up to 90 days old. Attribution accuracy improves when events are sent closer to real time.</p>
 <h3 id="prerequisites-1">Prerequisites</h3>
@@ -1544,7 +1557,7 @@ The connector follows this order of operations:
 <li><strong>Ensure that the UET tag ID exists</strong>: Ensure that the UET tag ID referenced in your goal exists in Microsoft Ads, even if the tag itself is not deployed.</li>
 <li><strong>Pass click IDs or hashed PII with the event</strong>: This lets Microsoft perform matching.</li>
 </ul>
-<h2 id="best-practices">Best Practices</h2>
+<h2 id="best-practices">Best practices</h2>
 <ul>
 <li><strong>Persist the click ID</strong>: The Microsoft Click ID (<code>msclkid</code>) is critical to conversion tracking. When auto-tagging is enabled in Microsoft Ads, this identifier is appended as a query parameter on the landing page URL after a user clicks an ad. Persisting the click ID with a <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Values extension</a> ensures that it is available for server-side use. Map the cookie attribute server-side. Without the click ID, Microsoft may not be able to link the conversion back to the originating ad click, resulting in lost attribution and under-optimized bidding.</li>
 <li><strong>Every click fires a page load event</strong>: Every page view or single-page application (SPA) navigation must fire one page load event. You may also fire one or more custom events. Each custom event links to a page load event through the <code>pageLoadId</code> parameter.</li>
@@ -1906,7 +1919,7 @@ Yes. Send lead form completions, pre-qualification submissions, and call center 
 <tbody>
 <tr>
 <td>Disable Automapping</td>
-<td>If Automapping is disabled, automatically mapped parameters are not sent to the vendor by default.</td>
+<td>If automapping is disabled, automatically mapped parameters are not sent to the vendor by default.</td>
 </tr>
 </tbody>
 </table>
@@ -1972,7 +1985,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 23, 2025 
+          <p>This page was last updated:  November 18, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1987,12 +2000,13 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#overview" href="javascript:void(0)">Overview</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline Conversions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-access-token" href="javascript:void(0)">Generate access token</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best Practices</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequently-asked-questions" href="javascript:void(0)">Frequently asked questions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#troubleshooting" href="javascript:void(0)">Troubleshooting</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>

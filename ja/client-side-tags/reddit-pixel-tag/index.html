@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -980,6 +980,9 @@
       <a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>The Trade Desk Universal Pixel</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/the-trade-desk-real-time-conversion-events-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>The Trade Desk リアルタイムコンバージョンイベント</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/tiktok-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>TikTok Pixel</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1014,6 +1017,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/utiq-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Utiq</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/vwo-async-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>VWO非同期</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/webgains-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webgains</span></a>
@@ -1715,6 +1721,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/the-trade-desk-universal-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".trade-desk-universal-pixel-setup-guide-for-tealium-iq">The Trade Desk Universal Pixel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/the-trade-desk-real-time-conversion-events-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-real-time-conversion-events-tag">The Trade Desk リアルタイムコンバージョンイベント</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/tiktok-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-pixel-tag">TikTok Pixel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/topmailru-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".topmailru-tag">Top.Mail.ru</a></li>
@@ -1738,6 +1746,8 @@
         <a href="/ja/client-side-tags/userway-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userway-tag">UserWayタグの構成</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/utiq-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utiq-tag">Utiq</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/vwo-async-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vwo-async-tag">VWO非同期</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/webgains-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webgains-tag">Webgains</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1852,32 +1862,25 @@
 <div class="prose nested-links" id="prose">
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>標準の構成値を上書きし、イベントをトリガーするためにマッピングを使用します。</li>
+<li>マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。</li>
 <li><strong>Order ID</strong> が構成されているときに購入イベントが発火します。</li>
 <li>Reddit Pixel イベント ID をサーバーサイド属性として利用可能にするには、<strong>Generate Event ID</strong> を <code>true</code> に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>の最新バージョンを使用してください。</li>
 <li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>の変換 ID 構成を使用することをお勧めします。変換 ID 構成を使用すると、同じ変換イベントが両方のソースから送信された場合に二重にカウントされるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
-<li>最も正確な変換トラッキングとレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシュを適用します。</li>
+<li>最も正確な変換トラッキングとレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシングを適用します。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>タグマーケットプレイスに移動して新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
-<p>タグを追加する際に、以下の構成を構成します：</p>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、<a href="/ja/iq-tag-management/tags/manage/">タグの管理</a>を参照してください。</p>
+<p>タグを追加する際には、以下の構成を構成します：</p>
 <ul>
-<li><strong>Account ID</strong>
-<ul>
-<li>あなたの Reddit アカウント ID。</li>
-</ul>
-</li>
+<li><strong>Account ID</strong>: あなたの Reddit アカウント ID。</li>
 <li><strong>Send Page Visit</strong>
 <ul>
-<li>デフォルトでは、ページ訪問イベントはサイトの各ページで自動的に記録されます。</li>
-<li>Reddit Pixel にページ訪問イベントを送信しない場合は、このオプションを <code>false</code> に構成します。</li>
+<li>デフォルトでは、サイトの各ページに対してページ訪問イベントが自動的に記録されます。</li>
+<li>Reddit Pixel にページ訪問イベントを送信したくない場合は、このオプションを <code>false</code> に構成します。</li>
 </ul>
 </li>
-<li><strong>Generate Event ID</strong>:
-<ul>
-<li>すべての Reddit トラッキングイベントに対して自動的にイベント ID を生成します。</li>
-</ul>
-</li>
+<li><strong>Send Default Purchase Event</strong>: デフォルトでは、購入イベントがサイトで追跡されます。しかし、Reddit Pixel に購入イベントを送信したくない場合は、このオプションを <code>false</code> に構成します。</li>
+<li><strong>Generate Event ID</strong>: すべての Reddit トラッキングイベントに対してイベント ID を自動生成します。</li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
@@ -1888,7 +1891,7 @@
 <table>
 <thead>
 <tr>
-<th>変数</th>
+<th>変数名</th>
 <th>データタイプ</th>
 <th>説明</th>
 </tr>
@@ -1896,23 +1899,38 @@
 <tbody>
 <tr>
 <td><code>account_id</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>アカウント ID。</td>
 </tr>
 <tr>
 <td><code>send_page_visit</code></td>
-<td>Boolean</td>
+<td>ブール値</td>
 <td>ページ訪問を送信。</td>
 </tr>
 <tr>
+<td><code>send_purchase_event</code></td>
+<td>ブール値</td>
+<td>購入イベントを送信。</td>
+</tr>
+<tr>
 <td><code>generate_event_id</code></td>
-<td>Boolean</td>
+<td>ブール値</td>
 <td>イベント ID を生成。</td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>イベント ID。</td>
+</tr>
+<tr>
+<td><code>conversion_id</code></td>
+<td>文字列</td>
+<td>変換 ID。</td>
+</tr>
+<tr>
+<td><code>transaction_id</code></td>
+<td>文字列</td>
+<td>トランザクション ID。</td>
 </tr>
 </tbody>
 </table>
@@ -1920,7 +1938,7 @@
 <table>
 <thead>
 <tr>
-<th>変数</th>
+<th>変数名</th>
 <th>データタイプ</th>
 <th>説明</th>
 </tr>
@@ -1928,33 +1946,60 @@
 <tbody>
 <tr>
 <td><code>itemCount</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>アイテム数。</td>
 </tr>
 <tr>
 <td><code>value</code></td>
-<td>Number</td>
+<td>数値</td>
 <td>価値。</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>通貨（<code>_ccurrency</code>を上書き）。</td>
 </tr>
 <tr>
 <td><code>transactionId</code></td>
-<td>String</td>
+<td>文字列</td>
 <td>トランザクション ID。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="イベント">イベント</h3>
-<p>選択したイベントをトリガーするために必要なマップされた変数の値を入力します。</p>
+<h3 id="製品データ">製品データ</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">変数</th>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">タイプ/値</th>
 <th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">製品 ID（<code>_cprod</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>category</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">製品カテゴリ（<code>_ccat</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">製品名（<code>_cprodname</code>を上書き）。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="イベント">イベント</h3>
+<p>マップされた変数の値を入力して、選択したイベントをトリガーします。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明。</th>
 </tr>
 </thead>
 <tbody>
@@ -1964,7 +2009,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">コンテンツ閲覧。</td>
+<td style="text-align:left">コンテンツを表示。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Search</code></td>
@@ -1976,7 +2021,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">ウィッシュリストに追加。</td>
+<td style="text-align:left">ほしい物リストに追加。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
@@ -2001,7 +2046,7 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">変数</th>
+<th style="text-align:left">変数名</th>
 <th style="text-align:left">説明</th>
 </tr>
 </thead>
@@ -2011,16 +2056,16 @@
 <td style="text-align:left">通貨。</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>content_category</code></td>
-<td style="text-align:left">コンテンツカテゴリ。</td>
+<td style="text-align:left"><code>category</code></td>
+<td style="text-align:left">製品カテゴリ。</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>content_name</code></td>
-<td style="text-align:left">コンテンツ名。</td>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">製品名。</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>content_ids</code></td>
-<td style="text-align:left">コンテンツ ID。</td>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">製品 ID。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content_type</code></td>
@@ -2031,6 +2076,18 @@
 <td style="text-align:left">コンテンツ。</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>predicted_ltv</code></td>
+<td style="text-align:left">予測される生涯価値。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>search_string</code></td>
+<td style="text-align:left">検索文字列。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">状態。</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>num_items</code></td>
 <td style="text-align:left">アイテム数。</td>
 </tr>
@@ -2038,49 +2095,13 @@
 <td style="text-align:left"><code>value</code></td>
 <td style="text-align:left">価値。</td>
 </tr>
-<tr>
-<td style="text-align:left"><code>PageVisit</code></td>
-<td style="text-align:left">ページ訪問。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">コンテンツ閲覧。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Search</code></td>
-<td style="text-align:left">検索。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>AddToCart</code></td>
-<td style="text-align:left">カートに追加。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">ウィッシュリストに追加。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Purchase</code></td>
-<td style="text-align:left">購入。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Lead</code></td>
-<td style="text-align:left">リード。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SignUp</code></td>
-<td style="text-align:left">サインアップ。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Custom_Event</code></td>
-<td style="text-align:left">カスタムイベント。</td>
-</tr>
 </tbody>
 </table>
 <h3 id="高度なマッチング">高度なマッチング</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">変数</th>
+<th style="text-align:left">変数名</th>
 <th style="text-align:left">データタイプ</th>
 <th style="text-align:left">説明</th>
 </tr>
@@ -2088,27 +2109,27 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>email</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">メールアドレス。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>phoneNumber</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">電話番号。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>idfa</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">IDFA。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>aaid</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">AAID。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>externalId</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">外部 ID。</td>
 </tr>
 </tbody>
@@ -2118,7 +2139,7 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">変数</th>
+<th style="text-align:left">変数名</th>
 <th style="text-align:left">データタイプ</th>
 <th style="text-align:left">説明</th>
 </tr>
@@ -2126,18 +2147,18 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>dpm</code></td>
-<td style="text-align:left">String</td>
+<td style="text-align:left">文字列</td>
 <td style="text-align:left">データ処理モード。デフォルト値は <code>LDU</code>。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dpcc</code></td>
-<td style="text-align:left">String</td>
-<td style="text-align:left">データ処理国コード（ISO 3166-1 alpha-2 国コード形式）。</td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">データ処理国コードは ISO 3166-1 alpha-2 国コード形式です。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dprc</code></td>
-<td style="text-align:left">String</td>
-<td style="text-align:left">データ処理地域コード（ISO 3166-2 地域コード形式、国のプレフィックスありまたはなし）。</td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">データ処理地域コードは ISO 3166-2 地域コード形式で、国のプレフィックスがあるかないかです。</td>
 </tr>
 </tbody>
 </table>
@@ -2201,7 +2222,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月6日
+          <p>最終更新日 ::  2025年November月19日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2221,6 +2242,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">製品データ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%AB%98%E5%BA%A6%E3%81%AA%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0" href="javascript:void(0)">高度なマッチング</a></li>
