@@ -150,10 +150,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>CloudStream</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/early-access/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data sources</span></a>
       </li>
       
@@ -235,22 +231,6 @@
         <a href="/early-access/audiences/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">CloudStream</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -378,7 +358,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>The new attributes interface is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>The fill audience feature is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
 <p>Tealium AudienceStream CDP Audiences provides a streamlined and powerful audience management experience with the following features:</p>
 <ul>
 <li>The ability to create a set of conditions to define a dynamic, real-time audience.</li>
@@ -395,7 +375,7 @@
          title="graphs showing visitors per day and visitor activity for the audience"/>
     </a>
 </figure>
-<p>If the <a href="#audience-fill">system is filling an audience with historical data</a>, this column displays its progress.</p>
+<p>If the <a href="#fill-an-audience">system is filling an audience with historical data</a>, the table displays its progress.</p>
 <h3 id="segments">Segments</h3>
 <p>The <strong>Segments</strong> page displays the list of saved segments. For more information, see <a href="#saved-segments">Saved segments</a>.</p>
 <h2 id="audience-details">Audience details</h2>
@@ -451,19 +431,24 @@
 <h3 id="activity">Activity</h3>
 <p>This page displays a log of user actions on the audience, such as edits, condition changes, and fill actions.</p>
 <h2 id="fill-an-audience">Fill an audience</h2>
-<p>When you are creating or editing an audience, the audience is initially empty. You can use historical data to fill that audience with visitors that meet the audience conditions. The <a href="/server-side/audiences/manage/#potential-size"><strong>Potential Size</strong></a> number estimates the number of qualified visitors from existing data that will fill the audience.</p>
-<p>After you request to fill an audience and publish it, the system adds visitors who matched the specified conditions in the past and activates the <strong>Joined Audience</strong> actions for connectors that use the audience. Real-time evaluation continues as new events occur.</p>
-<p>Consider the following when filling an audience:</p>
-<ul>
-<li>You can fill an audience only once.</li>
-<li>Before publishing the profile and starting the fill process, connect your audience to at least one connector action. This ensures that as the audience is populated, matching visitors are automatically sent to the specified connectors.</li>
-<li>The import rate is similar to a <a href="/server-side/data-sources/file-import/about/">file import</a>, depending on the number of visitors that meet the audience conditions and the number of attributes that are being evaluated. The <strong>Audiences</strong> table displays the progress of audience fills.</li>
-<li>When you fill an audience, every visitor included in the fill is counted as an event for billing purposes, which may impact your billing.
-<ul>
-<li>For example, if you have a 30-day purchase audience and a 90-day purchase audience, we recommend that you fill the 90-day purchase audience because it will capture a larger pool of visitors who made a purchase in the last 90 days, rather than just the last 30 days.</li>
-</ul>
-</li>
-</ul>
+<p>You can backfill an audience from historical data once with visitors who meet the audience conditions. This applies to both new and existing audiences. <a href="/server-side/audiences/manage/#potential-size"><strong>Potential Size</strong></a> shows the estimated number of qualified visitors in existing data:</p>
+<figure><a class="slb" href="/images/server-side/audiences/fill-audience.png"><img src="/images/server-side/audiences/fill-audience.png"
+         alt="Potential size with filling an audience"
+         title="Potential size with filling an audience"/>
+    </a>
+</figure>
+<p>Connect the audience to at least one connector action. This ensures that as the audience is populated, matching visitors are automatically sent to the connectors. If no connector actions are configured for the audience, the backfill does not trigger any actions and you cannot perform it again.</p>
+<h3 id="how-it-works-1">How it works</h3>
+<p>When you select <strong>Fill Audience</strong> and then save and publish the profile, the system performs a one-time backfill that adds inactive visitors who previously met the specified conditions. This process activates the <strong>Joined Audience</strong> trigger for connectors that use the audience; it does not activate the other connector action triggers.</p>
+<p>The <strong>Audiences</strong> table displays the progress:</p>
+<figure><a class="slb" href="/images/server-side/audiences/audience-table-fill-highlight.png"><img src="/images/server-side/audiences/audience-table-fill-highlight.png"
+         alt="Audience filling in audience table"
+         title="Audience filling in audience table"/>
+    </a>
+</figure>
+<p>Filling an audience does not generate new visits or change visitor attributes from historical data. You can fill an audience only once, so review the audience conditions carefully and ensure that you have configured at least one connector action for the audience before starting.</p>
+<p>The filling rate is typically 200 visitor profiles per second, depending on the number of attributes and visitors who meet the conditions. Filling an audience may cause throttling on the platform due to the volume of visitor profiles being evaluated or the number of connector actions being queued for delivery. However, real-time evaluation of incoming events continues as a priority, so live campaigns and personalization are not interrupted.</p>
+<p>Joined audience actions generated during backfilling appear in profile activity, including connector statistics and charts. To reduce throttling and analytics noise from this activity, we recommend filling an audience during off-peak traffic hours.</p>
 <h2 id="audience-conditions-and-segments">Audience conditions and segments</h2>
 <p>An audience is created by defining one or more conditions using visit or visitor attributes. An audience segment is a set of conditions that can be saved and used as a building block in multiple audiences.</p>
 <p>Segments can be layered with AND or OR logic to create an audience. You can use excluding logic to remove visitors that meet the audience conditions. Visitors that meet these audience conditions are added or removed from an audience in real-time based on user-generated events.</p>
@@ -684,7 +669,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 22, 2025 
+          <p>This page was last updated:  November 20, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -708,7 +693,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#functions" href="javascript:void(0)">Functions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activity" href="javascript:void(0)">Activity</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fill-an-audience" href="javascript:void(0)">Fill an audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audience-conditions-and-segments" href="javascript:void(0)">Audience conditions and segments</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audience-conditions-and-segments" href="javascript:void(0)">Audience conditions and segments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#and-logic-example" href="javascript:void(0)">AND logic example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#or-logic-example" href="javascript:void(0)">OR logic example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#excluding-logic-example" href="javascript:void(0)">Excluding logic example</a></li>

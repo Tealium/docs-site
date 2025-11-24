@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side-connectors/adobe-target-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Adobe Targetは直感的なユーザーインターフェースと拡張されたパーソナライゼーションツールセットを提供します。すばやくテストを作成し、自信を持ってコンテンツをターゲットにします。この記事では、Customer Data HubアカウントでAdobe Targetコネクタを構成する方法について説明します。" />
+<meta property="og:description" content="この記事では、Adobe Target コネクタの構成方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Adobe Target コネクタ構成ガイド | サーバーサイドコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -1734,19 +1734,33 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Adobe Targetは直感的なユーザーインターフェースと拡張されたパーソナライゼーションツールセットを提供します。すばやくテストを作成し、自信を持ってコンテンツをターゲットにします。この記事では、Customer Data HubアカウントでAdobe Targetコネクタを構成する方法について説明します。
+      この記事では、Adobe Target コネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="コネクタのアクション">コネクタのアクション</h2>
+  <h2 id="api-情報">API 情報</h2>
+<p>このコネクタは以下のベンダー API を使用します：</p>
+<ul>
+<li>API 名：Adobe Profile API</li>
+<li>API エンドポイント：<code>https://your-client-code.tt.omtrdc.net/m2/client/profile/update</code>、ここで <code>your-client-code</code> はあなたの Adobe Target インスタンス ID です。</li>
+<li>ドキュメント：<a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/implementation/methods/profile-api-settings">Adobe: Profile API 構成</a></li>
+</ul>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a> の記事を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>認証トークン</strong>：（オプション）Profile API 構成で <strong>認証が必要</strong> が有効になっている場合、認証トークンを提供します。トークンの有効期限は Profile API 構成に表示されます。詳細については、<a href="https://experienceleague.adobe.com/docs/target/using/implement-target/before-implement/methods/profile-api-settings.html">Adobe Target: Profile API 構成</a> を参照してください。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問のプロファイルを新規サイト訪問に対して Adobe Target が作成するのに十分な時間を確保するために、<strong>訪問終了時にオーディエンス内</strong> にトリガーを構成するか、1時間の <a href="/ja/server-side/connectors/delayed-actions/">遅延アクション</a> を使用することをお勧めします。</p>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
-<th><strong>アクション名</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -1757,13 +1771,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Adobe Targetが新規サイト訪問の訪問プロファイルを作成するのに十分な時間を確保するため、トリガーを<strong>訪問終了時のオーディエンス内</strong>に構成するか、<a href="/ja/server-side/connectors/delayed-actions/">遅延アクション</a>を1時間に構成することをお勧めします。</p>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタアクションを構成します。</p>
-<p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---シングルプロファイル更新">アクション - シングルプロファイル更新</h3>
+<p>アクションの名前を入力し、<strong>アクションタイプ</strong>を選択します。</p>
+<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="シングルプロファイル更新">シングルプロファイル更新</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -1775,19 +1785,19 @@
 <tbody>
 <tr>
 <td>クライアント</td>
-<td><ul><li>クライアントコードを指定します。例：<code>https://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update</code></li></ul></td>
+<td><ul><li>Adobe によって提供されるクライアントコード。この値は API エンドポイントに次のように表示されます：<code>https://your-client-code.tt.omtrdc.net/m2/client/profile/update</code></li></ul></td>
 </tr>
 <tr>
 <td>mboxpcID</td>
-<td><ul><li>mboxpcIDまたはmbox3rdPartyIdのいずれかが必要です。詳細については、次のサイトを参照してください：<a href="http://developers.adobetarget.com/api/#updating-profiles">http://developers.adobetarget.com/api/#updating-profiles</a>.</li></ul></td>
+<td><ul><li>mboxpcID または mbox3rdPartyId のいずれかが必要です。詳細については、<a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/api/profile-apis/profile-single-api">Adobe Target: プロファイルの更新</a> を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>mbox3rdPartyId</td>
-<td><ul><li>mboxpcIDまたはmbox3rdPartyIdのいずれかが必要です。詳細については、次のサイトを参照してください：<a href="http://developers.adobetarget.com/api/#updating-profiles">http://developers.adobetarget.com/api/#updating-profiles</a>.</li></ul></td>
+<td><ul><li>mboxpcID または mbox3rdPartyId のいずれかが必要です。詳細については、<a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/api/profile-apis/profile-single-api">Adobe Target: プロファイルの更新</a> を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>属性</td>
-<td><ul><li>パラメータ形式はprofile.paramNameです。</li><li>すべてのpcIds/mbox3rdPartyIdに対してすべてのパラメータ値が存在する必要はありません。</li><li>パラメータと値は大文字と小文字を区別します。</li><li>現在のサイズ制限はGETの場合8KBです。</li><li>プロファイル更新APIへの呼び出しは、あなたのmbox料金にはカウントされません。</li></ul></td>
+<td><ul><li>パラメータ形式は <code>profile.paramName</code> です。</li><li>すべての pcIds または mbox3rdPartyId に対してすべてのパラメータ値が存在する必要はありません。</li><li>パラメータと値は大文字と小文字が区別されます。</li><li>GET の現在のサイズ制限は 8 KB です。</li><li>プロファイル更新 API への呼び出しは mbox の料金には含まれません。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1851,7 +1861,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2023年November月10日
+          <p>最終更新日 ::  2025年November月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1865,10 +1875,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B4%E6%96%B0" href="javascript:void(0)">アクション - シングルプロファイル更新</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-%E6%83%85%E5%A0%B1" href="javascript:void(0)">API 情報</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B4%E6%96%B0" href="javascript:void(0)">シングルプロファイル更新</a></li>
               </nav>
   </aside></nav>
 

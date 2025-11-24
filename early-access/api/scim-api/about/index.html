@@ -150,10 +150,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>CloudStream</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/early-access/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data sources</span></a>
       </li>
       
@@ -235,22 +231,6 @@
         <a href="/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">CloudStream</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -389,7 +369,7 @@
 <p>Use SCIM provisioning to automatically sync users from your identity provider (IdP) to Tealium. SCIM creates users with appropriate access during onboarding and removes Tealium access when users are deprovisioned in the identity provider, ensuring consistent offboarding and preventing unauthorized access.</p>
 <p>Use a SCIM provisioning connector in your IdP or invoke the SCIM API directly.</p>
 <h2 id="authentication">Authentication</h2>
-<p>The Tealium SCIM integration uses a long-lived bearer token to authenticate with applications. Use this bearer token as the SCIM token when you configure your user provisioning application.</p>
+<p>The Tealium SCIM integration uses a long-lived bearer token to authenticate with applications. Use this bearer token as the OAuth bearer token when you configure your user provisioning application.</p>
 <p>All SCIM API calls are authenticated with this bearer token.</p>
 <!--
 
@@ -411,9 +391,9 @@ To generate a bearer token, perform the following steps:
 <li>Generate an <a href="/iq-tag-management/administration/security/api-keys/">API key</a>.</li>
 <li>Call the long-lived token endpoint to generate a long-lived bearer token using the following cURL command. Replace the placeholders with your account name, profile name, dedicated username, and the API key:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v2/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v1/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;account={ACCOUNT_NAME}&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;account={ACCOUNT}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;profile=main&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;username={USERNAME@EXAMPLE.COM}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;key={API_KEY}&#39;</span>
@@ -448,11 +428,6 @@ To generate a bearer token, perform the following steps:
 <td><code>GET</code></td>
 <td>Retrieve user details or list users.</td>
 <td>All account users</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
-<td>Retrieve the audit log.</td>
-<td>User admin or account admin</td>
 </tr>
 <tr>
 <td><code>PATCH</code></td>
@@ -516,7 +491,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 12, 2025 
+          <p>This page was last updated:  November 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

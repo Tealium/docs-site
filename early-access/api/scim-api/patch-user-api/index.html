@@ -150,10 +150,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>CloudStream</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/early-access/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data sources</span></a>
       </li>
       
@@ -235,22 +231,6 @@
         <a href="/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">CloudStream</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -388,7 +368,7 @@
 <p>Use the PATCH method to update an existing user:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /scim/v2/Users/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="authentication">Authentication</h2>
-<p>The SCIM bearer token is used to authenticate all API calls, not the API key.</p>
+<p>The OAuth bearer token is used to authenticate all API calls, not the API key.</p>
 <p>For more information, see <a href="/early-access/api/scim-api/about/#authentication">Authentication</a>.</p>
 <h2 id="patch-operation-parameters">PATCH operation parameters</h2>
 <p>This command takes the following parameters:</p>
@@ -450,7 +430,7 @@
 <li><code>userName</code> is immutable and cannot be changed.</li>
 </ul>
 <h3 id="example-curl-request">Example cURL request</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PATCH <span style="color:#e6db74">&#34;https://api.tealiumiq.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PATCH <span style="color:#e6db74">&#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/scim+json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Accept: application/scim+json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
@@ -558,7 +538,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 29, 2025 
+          <p>This page was last updated:  November 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

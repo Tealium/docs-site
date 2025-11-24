@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side-connectors/adobe-target-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="Adobe Target provides an intuitive user interface and an expanded personalization toolset. Quickly create tests and confidently target content. This article describes how to set up the Adobe Target connector in your Customer Data Hub account." />
+<meta property="og:description" content="This article describes how to set up the Adobe Target connector." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Adobe Target Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1449,19 +1449,33 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      Adobe Target provides an intuitive user interface and an expanded personalization toolset. Quickly create tests and confidently target content. This article describes how to set up the Adobe Target connector in your Customer Data Hub account.
+      This article describes how to set up the Adobe Target connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Adobe Profile API</li>
+<li>API Endpoint: <code>https://your-client-code.tt.omtrdc.net/m2/client/profile/update</code>, where <code>your-client-code</code> is your Adobe Target instance ID.</li>
+<li>Documentation: <a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/implementation/methods/profile-api-settings">Adobe: Profile API settings</a></li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Authentication Token</strong>: (Optional) Provide your authentication token if <strong>Require Authentication</strong> is enabled in the Profile API settings. The token expiration date appears in the Profile API settings. For more information, see <a href="https://experienceleague.adobe.com/docs/target/using/implement-target/before-implement/methods/profile-api-settings.html">Adobe Target: Profile API settings</a>.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend that you set the trigger to <strong>In Audience at End of Visit</strong> or use a <a href="/server-side/connectors/delayed-actions/">delayed action</a> of one hour to allow Adobe Target enough time to create visitor profiles for new site visitors.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -1472,13 +1486,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend that you set the trigger to <strong>In Audience at End of Visit</strong> or use a <a href="/server-side/connectors/delayed-actions/">delayed action</a> of one hour to allow Adobe Target enough time to create visitor profiles for new site visitors.</p>
-<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---single-profile-update">Action - Single Profile Update</h3>
+<p>Enter a name for the action and select the <strong>Action Type</strong>.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="single-profile-update">Single Profile Update</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1490,19 +1500,19 @@
 <tbody>
 <tr>
 <td>Client</td>
-<td><ul><li>Specify your client code. Example: <code>https://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update</code></li></ul></td>
+<td><ul><li>Your client code provided by Adobe. This value appears in the API endpoint like this:<code>https://your-client-code.tt.omtrdc.net/m2/client/profile/update</code></li></ul></td>
 </tr>
 <tr>
 <td>mboxpcID</td>
-<td><ul><li>Either mboxpcID or mbox3rdPartyId is required. For more information, visit: <a href="http://developers.adobetarget.com/api/#updating-profiles">http://developers.adobetarget.com/api/#updating-profiles</a>.</li></ul></td>
+<td><ul><li>Either mboxpcID or mbox3rdPartyId is required. For more information, see <a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/api/profile-apis/profile-single-api">Adobe Target: Updating profiles</a>.</li></ul></td>
 </tr>
 <tr>
 <td>mbox3rdPartyId</td>
-<td><ul><li>Either mboxpcID or mbox3rdPartyId is required. For more information, visit: <a href="http://developers.adobetarget.com/api/#updating-profiles">http://developers.adobetarget.com/api/#updating-profiles</a>.</li></ul></td>
+<td><ul><li>Either mboxpcID or mbox3rdPartyId is required. For more information, see <a href="https://experienceleague.adobe.com/en/docs/target-dev/developer/api/profile-apis/profile-single-api">Adobe Target: Updating profiles</a>.</li></ul></td>
 </tr>
 <tr>
 <td>Attributes</td>
-<td><ul><li>Parameter format is profile.paramName.</li><li>Not all parameter values need to exist for all pcIds/mbox3rdPartyId.</li><li>Parameters and values are case sensitive.</li><li>The current size limitations for limit is 8KB for GET.</li><li>The calls to the profile update API do not count toward your mbox charges.</li></ul></td>
+<td><ul><li>Parameter format is <code>profile.paramName</code>.</li><li>Not all parameter values need to exist for all pcIds or mbox3rdPartyId.</li><li>Parameters and values are case sensitive.</li><li>The current size limit is 8 KB for GET.</li><li>The calls to the profile update API do not count toward your mbox charges.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1566,7 +1576,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 10, 2023 
+          <p>This page was last updated:  November 21, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1580,10 +1590,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action settings - parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---single-profile-update" href="javascript:void(0)">Action - Single Profile Update</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#single-profile-update" href="javascript:void(0)">Single Profile Update</a></li>
               </nav>
   </aside></nav>
 

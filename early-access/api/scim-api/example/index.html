@@ -150,10 +150,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>CloudStream</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/early-access/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data sources</span></a>
       </li>
       
@@ -235,22 +231,6 @@
         <a href="/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">CloudStream</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">Data sources</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">Connectors</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">Data record functions</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
@@ -424,7 +404,7 @@ To generate a bearer token, perform the following steps:
 <li>Microsoft Entra ID (formerly Azure Active Directory)</li>
 </ul>
 <!-- * Okta -->
-<p>Other providers may work with Tealium, but they have not been tested and are not supported. For assistance, contact your identity provider. Contact Tealium support to confirm compatibility.</p>
+<p>We can guarantee compatibility with this provider. However, other IdPs may require additional configuration or tuning. For further guidance, contact your identity provider and Tealium Support to validate compatibility.</p>
 <h3 id="configure-microsoft-entra-id">Configure Microsoft Entra ID</h3>
 <p>The SAML application created for <a href="https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/view-applications-portal">Azure Active Directory</a> during SSO setup must be configured for SCIM.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must configure SCIM provisioning exactly as detailed in the following instructions. If misconfigured, you will encounter issues with user provisioning and sign in. If you have any trouble or questions with any step, contact Tealium support.</p>
@@ -439,26 +419,27 @@ To generate a bearer token, perform the following steps:
 </ol>
 <h4 id="configure-scim-provisioning">Configure SCIM provisioning</h4>
 <ol>
-<li>In your app, click the <strong>Provisioning</strong> tab and click <strong>Get started</strong>.</li>
-<li>Set <strong>Provisioning Mode</strong> to <strong>Automatic</strong>.</li>
+<li>In your app, click the <strong>Provisioning</strong> tab and click <strong>Connect your application</strong>.</li>
 <li>Under <strong>Admin Credentials</strong>, enter the following values:
 <ul>
-<li>In the <strong>Tenant URL</strong> field, enter the SCIM API endpoint URL from Tealium: <code>https://developer.tealiumapis.com/v2/auth-long-lived/token</code></li>
-<li>In the <strong>Secret Token</strong> field, enter your SCIM bearer token from Tealium.</li>
+<li>In the <strong>Tenant URL</strong> field, enter the SCIM API endpoint URL from Tealium: <code>https://developer.tealiumapis.com/scim/v2</code></li>
+<li>In the <strong>Secret Token</strong> field, enter your OAuth bearer token from Tealium.</li>
 </ul>
 </li>
 <li>Click <strong>Test Connection</strong>. A success message will appear.</li>
-<li>Click <strong>Save</strong>.</li>
+<li>Click <strong>Create</strong>.</li>
+<li>Click <strong>Get Started</strong> and then click <strong>Start provisioning</strong></li>
 </ol>
 <h4 id="configure-user-assignments">Configure user assignments</h4>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>SCIM group provisioning is not currently supported in Early Access.</p>
 <ol>
 <li>Click <strong>Provisioning</strong>.</li>
-<li>Ensure that the <strong>Enabled</strong> toggle is set to <code>Yes</code>.</li>
-<li>Ensure that all <strong>Target Object Actions</strong> are enabled.</li>
+<li>Ensure that the <strong>Provisioning Status</strong> toggle is set to <code>ON</code>.</li>
+<li>Expand the <strong>Mappings</strong> section.</li>
+<li>Click each mapping and ensure that all <strong>Target Object Actions</strong> are enabled.</li>
 <li>Click <strong>Attribute mapping</strong> and configure the attribute mapping between Microsoft Entra ID and Tealium. For more information, see <a href="https://learn.microsoft.com/en-us/entra/identity/app-provisioning/customize-application-attributes">Microsoft: Customize user provisioning attribute-mappings for SaaS applications in Microsoft Entra ID</a>.</li>
 </ol>
-<p>The following table lists required attribute mappings for Tealium to authenticate to Microsoft Entra ID through SCIM:</p>
+<p>The following table lists required attribute mappings for Tealium to authenticate to Microsoft Entra ID through SCIM. Delete all other mappings so only these mappings remain:</p>
 <table>
 <thead>
 <tr>
@@ -651,7 +632,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 12, 2025 
+          <p>This page was last updated:  November 24, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

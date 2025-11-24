@@ -146,10 +146,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/ja/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>クラウドストリーム</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/ja/early-access/connectors/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>コネクター</span></a>
       </li>
       
@@ -274,22 +270,6 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">オーディエンスの管理</a></li></ul>
       </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">クラウドストリーム</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">データソース</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">クラウド属性</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">セグメント</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">コネクタ</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">データレコード機能</a></li></ul>
-      </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-new-ui">コネクター</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -412,23 +392,23 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>System for Cross-domain Identity Management (SCIM)は、クラウドアプリケーション間でユーザーアカウントの作成、更新、削除を自動化し、簡素化するための標準です。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>System for Cross-domain Identity Management（SCIM）は、クラウドアプリ間でユーザーアカウントの作成、更新、削除を自動化し、簡素化する標準です。</p>
 <p>SCIMプロビジョニングを使用して、アイデンティティプロバイダ（IdP）からTealiumに自動的にユーザーを同期します。SCIMはオンボーディング中に適切なアクセス権を持つユーザーを作成し、アイデンティティプロバイダでユーザーがデプロビジョニングされたときにTealiumアクセスを削除することで、一貫したオフボーディングを保証し、不正アクセスを防ぎます。</p>
-<p>IdPでSCIMプロビジョニングコネクタを使用するか、直接SCIM APIを呼び出します。</p>
+<p>IdPでSCIMプロビジョニングコネクタを使用するか、SCIM APIを直接呼び出します。</p>
 <h2 id="認証">認証</h2>
-<p>TealiumのSCIM統合は、アプリケーションとの認証に長期間有効なベアラートークンを使用します。このベアラートークンをユーザープロビジョニングアプリケーションを構成する際のSCIMトークンとして使用します。</p>
+<p>TealiumのSCIM統合は、アプリケーションとの認証に長期間有効なベアラートークンを使用します。このベアラートークンをSCIMトークンとして使用して、ユーザープロビジョニングアプリケーションを構成します。</p>
 <p>すべてのSCIM API呼び出しは、このベアラートークンで認証されます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーとベアラートークンは、それを生成したユーザーにリンクされています。必要なTealiumの権限を持つ専用のサービスユーザーを使用してください。サービスユーザーは、人物にリンクされていないユーザーアカウントで、リソースを管理するために使用されます。このアプローチは、通常のユーザーアカウントが利用できなくなった場合のアクセス問題を防ぎます。</p>
 <p>ベアラートークンを生成するには：</p>
 <ol>
 <li>専用のサービスユーザーとしてTealiumにログインします。</li>
 <li><a href="/ja/iq-tag-management/administration/security/api-keys/">APIキー</a>を生成します。</li>
-<li>次のcURLコマンドを使用して長期間有効なベアラートークンを生成するための長期トークンエンドポイントを呼び出します。プレースホルダーをアカウント名、プロファイル名、専用ユーザー名、APIキーに置き換えてください：</li>
+<li>次のcURLコマンドを使用して、長期間有効なベアラートークンを生成するための長期間有効なトークンエンドポイントを呼び出します。プレースホルダーをアカウント名、プロファイル名、専用ユーザー名、APIキーに置き換えてください：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v2/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/v1/auth-long-lived/token&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;account={ACCOUNT_NAME}&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;account={ACCOUNT}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;profile=main&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;username={USERNAME@EXAMPLE.COM}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-urlencode <span style="color:#e6db74">&#39;key={API_KEY}&#39;</span>
@@ -442,7 +422,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scope&#34;</span>:<span style="color:#e6db74">&#34;profile email&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>トークンは90日後に期限切れになります。必要に応じてトークンを再生成してください。</p>
-<p>トークンの生成や権限に関する質問がある場合は、Tealiumサポートに連絡してください。</p>
+<p>トークンの生成や権限についての質問がある場合は、Tealiumサポートに連絡してください。</p>
 <h2 id="エンドポイントと権限">エンドポイントと権限</h2>
 <p>TealiumのSCIM実装は、以下のHTTPメソッドをサポートしています：</p>
 <table>
@@ -461,7 +441,7 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td>ユーザーの詳細またはユーザーのリストを取得します。</td>
+<td>ユーザーの詳細を取得するか、ユーザーをリストします。</td>
 <td>すべてのアカウントユーザー</td>
 </tr>
 <tr>
@@ -531,7 +511,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月12日
+          <p>最終更新日 ::  2025年November月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -545,7 +525,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A8%E6%A8%A9%E9%99%90" href="javascript:void(0)">エンドポイントと権限</a></li>
               </nav>

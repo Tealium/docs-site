@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/functions/manage-functions/create-function/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、データ変換関数およびイベントまたは訪問関数を作成するための手順を提供します。" />
+<meta property="og:description" content="この記事では、データ変換関数およびイベントまたは訪問関数を作成するための指示を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>関数を作成する | 関数の管理 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -143,6 +143,10 @@
       
       <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>データソース</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>クラウドストリーム</span></a>
       </li>
       
       <li  class="tl dib ma0 w-100">
@@ -445,6 +449,18 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-sources/webhooks/insider/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-insider-data-source-setup-guide">インサイダー</a></li></ul>
       </li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".cloudstream">クラウドストリーム</a>
+        <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">データソース</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">クラウド属性</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">セグメント</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".event-specifications">イベント仕様</a>
@@ -818,6 +834,12 @@
         <a href="/ja/server-side/functions/data-transformation-functions/transforms-flatten-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-flatten-library">ネストされたオブジェクトのフラット化</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/functions-transforms-example-code/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-transforms-example-code">例のコード</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".data-record-functions">データレコード機能</a>
+        <ul class="pl2  data-record-functions desktopmenu animated fadeIn list  dn">
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/data-record-functions/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">データレコード機能について</a></li></ul>
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -1016,7 +1038,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、データ変換関数およびイベントまたは訪問関数を作成するための手順を提供します。
+      この記事では、データ変換関数およびイベントまたは訪問関数を作成するための指示を提供します。
     </p>
   
 </div>
@@ -1029,20 +1051,20 @@
 <li>関数の名前を入力します。</li>
 <li>トリガーとして<strong>データ変換</strong>を選択し、<strong>続行</strong>をクリックします。</li>
 <li><strong>トリガー名</strong>を入力します。</li>
-<li><strong>セレクター</strong>にJSONPath式を入力します（<a href="https://github.com/json-path/JsonPath">JSONPath</a>を参照）。例えば、<code>$.datasourceId</code> や <code>$.data.udo.tealium_event</code> です。セレクターは128文字に制限されています。</li>
+<li><strong>セレクター</strong>にJSONPath式を入力します（<a href="https://github.com/json-path/JsonPath">JSONPath</a>を参照）。例えば、<code>$.datasourceId</code> や <code>$.data.udo.tealium_event</code> です。セレクターは128文字に制限されます。</li>
 <li><strong>演算子</strong>を選択し、<strong>値</strong>を入力します。
-<strong>値</strong>は128文字に制限されています。</li>
+<strong>値</strong>は128文字に制限されます。</li>
 <li><strong>+ 条件を追加</strong>をクリックして追加の<code>AND</code>条件を追加します。
-<code>AND</code>条件のブロックは10条件に制限されています。</li>
+<code>AND</code>条件のブロックは10条件に制限されます。</li>
 <li><strong>+ OR</strong>をクリックして<code>OR</code>条件のブロックを追加します。
-<code>OR</code>条件ブロックの数は<code>10</code>に制限されています。</li>
+<code>OR</code>条件ブロックの数は<code>10</code>に制限されます。</li>
 <li><strong>続行</strong>をクリックします。
 コメント付きの例示コードが表示されます。このコードを変更するか、自分の関数コードに置き換えることができます。</li>
 <li>関数をテストした後、<strong>構成</strong>タブに移動し、<strong>ステータス</strong>をONに変更して<strong>完了</strong>をクリックします。
 関数のテストに関する詳細は、<a href="/ja/server-side/functions/manage-functions/test-functions/">関数のテスト</a>を参照してください。</li>
 <li>保存して公開します。</li>
 </ol>
-<p>関数は保存して公開するまで保存されず、トリガーされません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。</p>
+<p>関数は保存して公開するまで保存されず、トリガーすることはできません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>データ変換関数を作成して保存して公開した後、変更が有効になるまで最大300秒かかることがあります。</p>
 <h3 id="データ変換関数の条件の例">データ変換関数の条件の例</h3>
 <p>購入額が1000ドル以上で、カートに個人用電子製品が含まれているユーザー向けのキャンペーンを実行する場合、以下の条件を使用できます：</p>
@@ -1050,7 +1072,7 @@
     </a><figcaption><p>trigger-conditions-create-edit.png</p>
         </figcaption>
 </figure>
-<h2 id="イベントまたは訪問関数を作成する">イベントまたは訪問関数を作成する</h2>
+<h2 id="イベント訪問またはデータレコード関数を作成する">イベント、訪問、またはデータレコード関数を作成する</h2>
 <ol>
 <li><strong>+ 関数を追加</strong>をクリックします。</li>
 <li>関数の名前を入力します。</li>
@@ -1059,6 +1081,7 @@
 <ul>
 <li><strong>処理済みイベント</strong>トリガーを選択した場合、<strong>イベントフィード</strong>を選択します。</li>
 <li><strong>処理済み訪問</strong>トリガーを選択した場合、<strong>オーディエンス</strong>を選択します。</li>
+<li><strong>処理済みデータレコード</strong>トリガーを選択した場合、<strong>セグメント</strong>を選択します。</li>
 </ul>
 </li>
 <li><strong>続行</strong>をクリックします。
@@ -1073,7 +1096,7 @@
 </li>
 <li>保存して公開します。</li>
 </ol>
-<p>関数は保存して公開するまで保存されず、トリガーされません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。</p>
+<p>関数は保存して公開するまで保存されず、トリガーすることはできません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。</p>
 
 </div>
 
@@ -1119,7 +1142,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月31日
+          <p>最終更新日 ::  2025年November月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1135,7 +1158,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E6%8F%9B%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">データ変換関数を作成する</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E6%8F%9B%E9%96%A2%E6%95%B0%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%AE%E4%BE%8B" href="javascript:void(0)">データ変換関数の条件の例</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%BE%E3%81%9F%E3%81%AF%E8%A8%AA%E5%95%8F%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">イベントまたは訪問関数を作成する</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E8%A8%AA%E5%95%8F%E3%81%BE%E3%81%9F%E3%81%AF%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">イベント、訪問、またはデータレコード関数を作成する</a></li>
               </nav>
   </aside></nav>
 

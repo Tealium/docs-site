@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/scim-api/patch-user-api/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="PATCH ユーザー API は既存のユーザーをアカウントで更新します。" />
+<meta property="og:description" content="PATCH ユーザー API はアカウント内の既存ユーザーを更新します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>PATCH ユーザー API | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -146,10 +146,6 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/ja/early-access/cloudstream/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>クラウドストリーム</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
       <a href="/ja/early-access/connectors/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>コネクター</span></a>
       </li>
       
@@ -274,22 +270,6 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">オーディエンスの管理</a></li></ul>
       </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-cloudstream">クラウドストリーム</a>
-        <ul class="pl2  ea-cloudstream desktopmenu animated fadeIn list  dn">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-datasources">データソース</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">クラウド属性</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">セグメント</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-connectors">コネクタ</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/cloudstream/data-record-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-record-functions">データレコード機能</a></li></ul>
-      </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/early-access/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-new-ui">コネクター</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -406,19 +386,19 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      PATCH ユーザー API は既存のユーザーをアカウントで更新します。
+      PATCH ユーザー API はアカウント内の既存ユーザーを更新します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
-<p>既存のユーザーを更新するには、PATCH メソッドを使用します：</p>
+  <h2 id="動作方法">動作方法</h2>
+<p>既存のユーザーを更新するには PATCH メソッドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /scim/v2/Users/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="認証">認証</h2>
 <p>すべての API 呼び出しには SCIM ベアラートークンが使用され、API キーは使用されません。</p>
 <p>詳細については、<a href="/ja/early-access/api/scim-api/about/#authentication">認証</a>を参照してください。</p>
-<h2 id="patch-操作パラメータ">PATCH 操作パラメータ</h2>
+<h2 id="patch-操作のパラメータ">PATCH 操作のパラメータ</h2>
 <p>このコマンドは以下のパラメータを取ります：</p>
 <table>
 <thead>
@@ -477,8 +457,8 @@
 <ul>
 <li><code>userName</code> は不変であり、変更することはできません。</li>
 </ul>
-<h3 id="例-curl-リクエスト">例 cURL リクエスト</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PATCH <span style="color:#e6db74">&#34;https://api.tealiumiq.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
+<h3 id="curl-リクエストの例">cURL リクエストの例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PATCH <span style="color:#e6db74">&#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/scim+json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Accept: application/scim+json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-d <span style="color:#e6db74">&#39;{
@@ -492,7 +472,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  },
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;active&#34;: true
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
-</span></span></code></pre></div><h3 id="例応答">例応答</h3>
+</span></span></code></pre></div><h3 id="応答の例">応答の例</h3>
 <p>この呼び出しは 204 ステータスコードを返します。</p>
 <h2 id="エラーメッセージ">エラーメッセージ</h2>
 <p>このエンドポイントの潜在的なエラーメッセージ：</p>
@@ -586,7 +566,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月29日
+          <p>最終更新日 ::  2025年November月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
