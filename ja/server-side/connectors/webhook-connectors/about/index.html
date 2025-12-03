@@ -1046,59 +1046,66 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li>イベントデータ用にEventStreamが有効になっているTealiumアカウント</li>
-<li>訪問データ用にAudienceStreamが有効になっているTealiumアカウント</li>
+<li>イベントデータ用に有効化されたTealiumアカウント（EventStream用）</li>
+<li>訪問データ用に有効化されたTealiumアカウント（AudienceStream用）</li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
 <p>Webhookコネクタは、URL、URLパラメータ、ヘッダー、クッキー、ボディコンテンツタイプ、ボディデータを含むHTTPリクエストのすべての側面を使用して、カスタマイズされたデータをベンダーに送信します。Webhookはバッチ処理もサポートしています。さらに、複雑で動的なデータ形式を扱うために設計された強力なテンプレート機能を含んでいます。</p>
-<p>ベンダーの認証要件に基づいて選択できるWebhookコネクタは3種類あります：</p>
+<p>ベンダーの認証要件に基づいて選択できるWebhookコネクタは以下の4つです：</p>
 <ul>
-<li><strong>Webhook (BasicAuth)</strong> – 認証が不要、またはユーザー名とパスワードの基本認証のみが必要なサービス用。</li>
-<li><strong>Webhook (OAuth2 - 3-Legged)</strong> – アクセストークンを取得するためにサービスへのログインが必要。</li>
-<li><strong>Webhook (OAuth2 - 2-Legged)</strong> – サービスへのログインが不要。認証に必要な情報でWebhookが構成されます。</li>
-<li><strong>Webhook (JWT)</strong> – JSON Webトークン認証を使用。サービスへのログインが不要。認証に必要な情報でWebhookが構成されます。</li>
+<li><strong>Webhook（BasicAuth）</strong>：認証が不要、またはユーザー名とパスワードの基本認証のみが必要なサービス用。</li>
+<li><strong>Webhook（OAuth2 - 3-Legged）</strong>：アクセストークンを取得するためにサービスにログインする必要があります。</li>
+<li><strong>Webhook（OAuth2 - 2-Legged）</strong>：サービスにログインする必要はありません。認証に必要な情報でWebhookが構成されます。</li>
+<li><strong>Webhook（JWT）</strong>：JSON Webトークン認証を使用します。サービスにログインする必要はありません。認証に必要な情報でWebhookが構成されます。</li>
 </ul>
-<p>OAuth 2.0認証を明示的に要求するサービスにはWebhook OAuth2が使用されます。</p>
+<p>Webhook OAuth2は、OAuth 2.0認証を明示的に要求するサービスに使用されます。</p>
 <p>始めるには、コネクタマーケットプレイスにアクセスして使用したいWebhookインスタンスを追加してください。コネクタの追加方法についての一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>を参照してください。</p>
-<h2 id="コネクタアクション">コネクタアクション</h2>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
-<th><strong>アクション名</strong></th>
-<th><strong>説明</strong></th>
-<th><strong>Webhook (BasicAuth)</strong></th>
-<th><strong>Webhook OAuth2</strong></th>
+<th style="text-align:left">アクション名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">Webhook（BasicAuth）</th>
+<th style="text-align:left">Webhook OAuth2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-event-data-via-http-request">HTTPリクエストを介してイベントデータを送信</a></td>
-<td>イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
-<td>✓</td>
-<td>✗</td>
+<td style="text-align:left">HTTPリクエストを介してイベントデータを送信</td>
+<td style="text-align:left">イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-visitor-data-via-http-request">HTTPリクエストを介して訪問データを送信</a></td>
-<td>訪問プロファイルオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
-<td>✓</td>
-<td>✗</td>
+<td style="text-align:left">HTTPリクエストを介して訪問データを送信</td>
+<td style="text-align:left">訪問プロファイルオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-customized-data-via-http-request-advanced">HTTPリクエストを介してカスタマイズされたデータを送信（高度）</a></td>
-<td>マッピングを介して指定された個々のイベント/訪問属性を送信します。</td>
-<td>✓</td>
-<td>✓</td>
+<td style="text-align:left">HTTPリクエストを介してカスタマイズされたデータを送信（高度）</td>
+<td style="text-align:left">マッピングで指定された個々のイベント/訪問属性を送信します。</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/connectors/webhook-connectors/action-parameters/#action---send-batched-customized-data-via-http-request-advanced">HTTPリクエストを介してバッチ処理されたカスタマイズデータを送信（高度）</a></td>
-<td>マッピングを介して指定されたバッチ処理されたイベント/訪問属性を送信します。</td>
-<td>✓</td>
-<td>✓</td>
+<td style="text-align:left">HTTPリクエストを介してバッチデータを送信</td>
+<td style="text-align:left">イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">HTTPリクエストを介してバッチカスタマイズデータを送信（高度）</td>
+<td style="text-align:left">マッピングで指定されたバッチイベント/訪問属性を送信します。</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
 </tr>
 </tbody>
 </table>
+<p>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/action-parameters/">アクションパラメータ</a>を参照してください。</p>
 <h2 id="httpレスポンスクッキー">HTTPレスポンスクッキー</h2>
-<p>ウェブブラウザではクッキーベースのセッション管理が一般的ですが、ステートレスAPIと通信するサーバー間環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
+<p>クッキーベースのセッション管理はWebブラウザでは一般的ですが、ステートレスAPIと通信するサーバー間環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
 
 </div>
 
@@ -1144,7 +1151,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1160,7 +1167,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">HTTPレスポンスクッキー</a></li>
               </nav>
   </aside></nav>

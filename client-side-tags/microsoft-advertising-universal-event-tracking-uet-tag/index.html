@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "12",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -860,6 +860,9 @@
       <a href="/client-side-tags/rokt-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Rokt</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/roku-javascript-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Roku JS Pixel</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/rtb-house-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>RTB House Retargeting</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1596,6 +1599,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/rokt-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-tag">Rokt</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/roku-javascript-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-javascript-pixel-tag">Roku JS Pixel</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/rtb-house-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-tarargeting-tag-setup-guide">RTB House Retargeting</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/rtoaster-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtoaster-tag">RToaster</a></li>
@@ -1785,10 +1790,9 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-tips">Tag Tips</h2>
+  <h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>
-<p>Use mapping to:</p>
+<li>Use mapping to:
 <ul>
 <li>Override the standard configuration values.</li>
 <li>Override the E-Commerce extension values.</li>
@@ -1796,36 +1800,56 @@
 <li>Set up event triggers.</li>
 </ul>
 </li>
-<li>
-<p>Mapping a parameter to <strong>Custom Property/Parameter</strong> in the <strong>Standard</strong> tab sends that parameter with all events. Use the <strong>Event Parameters</strong> tab to send data only to certain events.</p>
-</li>
-<li>
-<p>Supports the following e-commerce extension values:</p>
+<li>Mapping a parameter to <strong>Custom Property/Parameter</strong> in the <strong>Standard</strong> tab sends that parameter with all events. Use the <strong>Event Parameters</strong> tab to send data only to certain events.</li>
+<li>Supports the following e-commerce extension values:
 <ul>
 <li>Order ID.</li>
-<li>Order Sub Total.</li>
-<li>Order Shipping.</li>
-<li>Order Tax.</li>
-<li>Order Currency.</li>
-<li>Order Coupon/Promo Code.</li>
-<li>List of Product IDs.</li>
-<li>List of Names.</li>
-<li>List of Brands.</li>
-<li>List of Categories.</li>
-<li>List of Quantities.</li>
-<li>List of Prices.</li>
+<li>Order subtotal.</li>
+<li>Order shipping.</li>
+<li>Order tax.</li>
+<li>Order currency.</li>
+<li>Order coupon/promo code.</li>
+<li>List of product IDs.</li>
+<li>List of names.</li>
+<li>List of brands.</li>
+<li>List of categories.</li>
+<li>List of quantities.</li>
+<li>List of prices.</li>
 </ul>
 </li>
 </ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
+<h2 id="tag-configuration">Tag configuration</h2>
 <p>Go to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Tag ID</strong>: Your Microsoft Advertising tag identifier.</li>
+<li><strong>ID Sync Beacon</strong>: Persist internal user IDs to Microsoft third-party cookie IDs. Recommended when using the <a href="/server-side-connectors/microsoft-uet-conversion-api-connector/">Microsoft UET Conversion API connector</a>.</li>
 <li><strong>Ad Storage Consent</strong>: Set the default consent for Ad Storage. Dynamically update this value by mapping the <code>ad_storage</code> parameter in the <strong>Data Mappings</strong> section.</li>
-<li><strong>Automatically read from Tealium Consent Cookie</strong>: If set to true, consent is set based on the <a href="/consent/client-side/consent-management/about/">Tealium consent manager</a>.</li>
+<li><strong>Automatically read from Tealium Consent Cookie</strong>: If set to <code>true</code>, consent is set based on the <a href="/consent/client-side/consent-management/about/">Tealium consent manager</a>.</li>
+<li><strong>Generate Event ID</strong>: Automatically generate an event ID for every tracking event. Recommended for deduplication when using the <a href="/server-side-connectors/microsoft-uet-conversion-api-connector/">Microsoft UET Conversion API connector</a></li>
 </ul>
-<h2 id="load-rules">Load Rules</h2>
+<h3 id="conversions-api">Conversions API</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature requires an active <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</p>
+<p>To support the Microsoft UET Conversion API, set <strong>Generate Event ID</strong> to <code>true</code>.  When <strong>Generate Event ID</strong> is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Microsoft UET Conversion API connector and passes it to the Microsoft Advertising UET tag in the <code>event_id</code> parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration.</p>
+<p>The tag sends event IDs using generated event attributes using the following naming convention:</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">microsoft_event_id_{EVENT_TYPE}_{TAG_UID}
+</code></pre><p>For example, a purchase event from tag #88 would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;microsoft_event_id_purchase_88&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A page load event from the same tag would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;microsoft_event_id_pageload_88&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="deduplication">Deduplication</h4>
+<p>To ensure proper event deduplication, the event ID from the Microsoft Advertising UET tag must be included in the payload sent by the Tealium Collect tag. To do this, use the following steps:</p>
+<ul>
+<li>From the <strong>Tag Timing</strong> drop-down, select <strong>Prioritized</strong>.</li>
+<li>Set the <strong>Bundle Flag</strong> toggle to <code>On</code>.</li>
+<li>Use the <a href="/iq-tag-management/extensions/load-order-manager/">Load Order Manager screen</a> to fire the Microsoft Advertising UET tag before the Tealium Collect tag. We recommend that you fire the Tealium Collect tag last.
+For information on using these event ID attributes, see <a href="/server-side-connectors/microsoft-uet-conversion-api-connector/#deduplication">Microsoft UET Conversion API connector: Deduplication</a>.</li>
+</ul>
+<h2 id="load-rules">Load rules</h2>
 <p>Load the tag on all pages or set conditions for when your tag loads. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="consent-mode">Consent mode</h2>
 <p>There are two options to implement consent mode for this tag:</p>
@@ -1854,7 +1878,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
 </span></span></code></pre></div><p>If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the <code>ad_storage</code> parameter to attributes for your specific case.</p>
-<h2 id="data-mappings">Data Mappings</h2>
+<h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="standard">Standard</h3>
@@ -1880,7 +1904,7 @@
 </tr>
 <tr>
 <td><code>event_label</code></td>
-<td><ul><li>Event label.</li><li>Sends informative labels or details about the even goal.</li><li>Example: <code>Product demo</code>.</li></ul></td>
+<td><ul><li>Event label.</li><li>Sends informative labels or details about the event goal.</li><li>Example: <code>Product demo</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>event_value</code></td>
@@ -1924,7 +1948,7 @@
 </tr>
 <tr>
 <td><code>promotion_id</code></td>
-<td><ul><li>List of promotion IDs.</li><li>An array of promotion iDs used in the promotion.</li></ul></td>
+<td><ul><li>List of promotion IDs.</li><li>An array of promotion IDs used in the promotion.</li></ul></td>
 </tr>
 <tr>
 <td><code>promotion_name</code></td>
@@ -1952,7 +1976,15 @@
 </tr>
 <tr>
 <td><code>custom.myvar</code></td>
-<td><ul><li>Custom property/parameter.</li><li>A custom property for you events.</li><li>Sent with all events, use Event Parameters to set properties for specific events.</li><li>Replace <code>myvar</code> with the name of your property.</li></ul></td>
+<td><ul><li>Custom property/parameter.</li><li>A custom property for your events.</li><li>Sent with all events, use Event Parameters to set properties for specific events.</li><li>Replace <code>myvar</code> with the name of your property.</li></ul></td>
+</tr>
+<tr>
+<td><code>generate_event_id</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td><code>String</code></td>
 </tr>
 </tbody>
 </table>
@@ -2035,11 +2067,11 @@
 </tr>
 </tbody>
 </table>
-<h3 id="events-and-engagements">Events and Engagements</h3>
+<h3 id="events-and-engagements">Events and engagements</h3>
 <p>Map to these destinations for triggering specific events on a page.</p>
 <p>Use the following steps to trigger an event:</p>
 <ol>
-<li>Select an event from the drop-down list.<br>
+<li>Select an event from the list.<br>
 Choose from the predefined list, or create a custom event.</li>
 </ol>
 <ul>
@@ -2093,11 +2125,11 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 <tr>
 <td><code>page_view</code></td>
-<td><ul><li>Page view&lt;./li&gt;<li>The user has viewed a page.</li></ul></td>
+<td><ul><li>Page view.</li><li>The user has viewed a page.</li></ul></td>
 </tr>
 <tr>
 <td><code>purchase</code></td>
-<td><ul><li>Purchase.</li><li>Te user has completed a purchase of one or more products.</li></ul></td>
+<td><ul><li>Purchase.</li><li>The user has completed a purchase of one or more products.</li></ul></td>
 </tr>
 <tr>
 <td><code>refund</code></td>
@@ -2105,7 +2137,7 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 <tr>
 <td><code>remove_from_cart</code></td>
-<td><ul><li>Remove from cart.</li><li>The user had removed one or more items from a shopping cart.</li></ul></td>
+<td><ul><li>Remove from cart.</li><li>The user has removed one or more items from a shopping cart.</li></ul></td>
 </tr>
 <tr>
 <td><code>screen_view</code></td>
@@ -2133,7 +2165,7 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 <tr>
 <td><code>timing_complete</code></td>
-<td><ul><li>Timing complete.</li><li>The timing information for he user&rsquo;s page load.</li></ul></td>
+<td><ul><li>Timing complete.</li><li>The timing information for the user&rsquo;s page load.</li></ul></td>
 </tr>
 <tr>
 <td><code>view_item</code></td>
@@ -2141,11 +2173,11 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 <tr>
 <td><code>view_item_list</code></td>
-<td><ul><li>View item list.</li><li>The user ahas viewed a list page with one or more items.</li></ul></td>
+<td><ul><li>View item list.</li><li>The user has viewed a list page with one or more items.</li></ul></td>
 </tr>
 <tr>
 <td><code>view_promotion</code></td>
-<td><ul><li>View promotion&lt;./li&gt;<li>The user has clicked on a promotion.</li></ul></td>
+<td><ul><li>View promotion.</li><li>The user has clicked on a promotion.</li></ul></td>
 </tr>
 <tr>
 <td><code>view_search_results</code></td>
@@ -2161,11 +2193,11 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="product-audience-events">Product Audience Events</h3>
+<h3 id="product-audience-events">Product audience events</h3>
 <p>Map to these destinations for triggering specific events on a page.</p>
 <p>Use the following steps to trigger an event:</p>
 <ol>
-<li>Select an event from the drop-down list.<br>
+<li>Select an event from the list.<br>
 Choose from the predefined list, or create a custom event.</li>
 </ol>
 <ul>
@@ -2199,7 +2231,7 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="enhanced-conversion-data">Enhanced Conversion Data</h3>
+<h3 id="enhanced-conversion-data">Enhanced conversion data</h3>
 <table>
 <thead>
 <tr>
@@ -2236,13 +2268,13 @@ The event triggers when the value supplied is found in the data layer.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="event-parameters">Event Parameters</h3>
-<p>Map to these destination if you want to pass additional data with events mapped earlier.</p>
+<h3 id="event-parameters">Event parameters</h3>
+<p>Map to these destinations if you want to pass additional data with events mapped earlier.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Parameters are only used with predefined events. To learn how to pass a parameter with a custom event, see <a href="/server-side/event-specifications/manage/">Creating a Custom Event Specification</a>.</p>
 <p>Use the following steps to pass a parameter with a predefined event:</p>
 <ol>
-<li>Select an event from the drop-down list.</li>
-<li>Select a parameter from the drop-down list.<br>
+<li>Select an event from the list.</li>
+<li>Select a parameter from the list.<br>
 If using a custom parameter, enter a name with which to identify it.</li>
 <li>Click <strong>Add</strong>.</li>
 </ol>
@@ -2364,7 +2396,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 <tr>
 <td><code>product_creative_name</code></td>
-<td><ul><li>Array</li><li>List of product creative names.</li><li>An array of creative name used for the product.</li></ul></td>
+<td><ul><li>Array</li><li>List of product creative names.</li><li>An array of creative names used for the product.</li></ul></td>
 </tr>
 <tr>
 <td><code>product_creative_slot</code></td>
@@ -2388,13 +2420,13 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="product-audience-parameters">Product Audience Parameters</h3>
-<p>Map to these destination if you want to pass additional data with events mapped earlier.</p>
+<h3 id="product-audience-parameters">Product audience parameters</h3>
+<p>Map to these destinations if you want to pass additional data with events mapped earlier.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Parameters are only used with predefined events. To learn how to pass a parameter with a custom event, see <a href="/server-side/event-specifications/manage/">Creating a Custom Event Specification</a>.</p>
 <p>Use the following steps to pass a parameter with a predefined event:</p>
 <ol>
-<li>Select an event from the drop-down list.</li>
-<li>Select a parameter from the drop-down list.<br>
+<li>Select an event from the list.</li>
+<li>Select a parameter from the list.<br>
 If using a custom parameter, enter a name with which to identify it.</li>
 <li>Click <strong>Add</strong>.</li>
 </ol>
@@ -2456,7 +2488,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 <tr>
 <td><code>hct_cid</code></td>
-<td><ul><li>Hotel check in date.</li><li>The checkin date for the user&rsquo;s stay.</li></ul></td>
+<td><ul><li>Hotel check-in date.</li><li>The check-in date for the user&rsquo;s stay.</li></ul></td>
 </tr>
 <tr>
 <td><code>hct_cod</code></td>
@@ -2476,7 +2508,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="product-audience---retail">Product Audience - Retail</h3>
+<h3 id="product-audience---retail">Product audience - Retail</h3>
 <table>
 <thead>
 <tr>
@@ -2503,7 +2535,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="product-audience---travel">Product Audience - Travel</h3>
+<h3 id="product-audience---travel">Product audience - Travel</h3>
 <table>
 <thead>
 <tr>
@@ -2538,7 +2570,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="product-audience---hotel">Product Audience - Hotel</h3>
+<h3 id="product-audience---hotel">Product audience - Hotel</h3>
 <table>
 <thead>
 <tr>
@@ -2569,7 +2601,7 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 <tr>
 <td><code>hct_partner_hotel_id</code></td>
-<td><ul><li>Hotel partner ID.</li><li>The partner ID for the hotel the user wanted to book.</li></ul></td>
+<td><ul><li>Hotel partner ID.</li><li>The partner ID for the hotel the user wants to book.</li></ul></td>
 </tr>
 <tr>
 <td><code>hct_booking_ref</code></td>
@@ -2581,11 +2613,11 @@ If using a custom parameter, enter a name with which to identify it.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="vendor-documentation">Vendor Documentation</h3>
+<h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
-<li><a href="http://help.bingads.microsoft.com/#apex/3/en/n5012/2">Tracking sales and other conversions</a></li>
-<li><a href="https://help.bingads.microsoft.com/#apex/3/en/56681/0">What is UET and how can it help me?</a></li>
-<li><a href="http://help.bingads.microsoft.com/apex/index/3/en-us/53056">FAQs</a></li>
+<li><a href="http://help.bingads.microsoft.com/#apex/3/en/n5012/2">Microsoft Bing: Tracking sales and other conversions</a></li>
+<li><a href="https://help.bingads.microsoft.com/#apex/3/en/56681/0">Microsoft Bing: What is UET and how can it help me?</a></li>
+<li><a href="http://help.bingads.microsoft.com/apex/index/3/en-us/53056">Microsoft Bing: FAQs</a></li>
 </ul>
 
 </div>
@@ -2647,7 +2679,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 21, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2661,25 +2693,26 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag Tips</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load Rules</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversions-api" href="javascript:void(0)">Conversions API</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-mode" href="javascript:void(0)">Consent mode</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-consent-management" href="javascript:void(0)">Client-side consent management</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-and-engagements" href="javascript:void(0)">Events and Engagements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience-events" href="javascript:void(0)">Product Audience Events</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enhanced-conversion-data" href="javascript:void(0)">Enhanced Conversion Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-and-engagements" href="javascript:void(0)">Events and engagements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience-events" href="javascript:void(0)">Product audience events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enhanced-conversion-data" href="javascript:void(0)">Enhanced conversion data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-management" href="javascript:void(0)">Consent management</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-parameters" href="javascript:void(0)">Event Parameters</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience-parameters" href="javascript:void(0)">Product Audience Parameters</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---retail" href="javascript:void(0)">Product Audience - Retail</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---travel" href="javascript:void(0)">Product Audience - Travel</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---hotel" href="javascript:void(0)">Product Audience - Hotel</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor Documentation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-parameters" href="javascript:void(0)">Event parameters</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience-parameters" href="javascript:void(0)">Product audience parameters</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---retail" href="javascript:void(0)">Product audience - Retail</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---travel" href="javascript:void(0)">Product audience - Travel</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-audience---hotel" href="javascript:void(0)">Product audience - Hotel</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
               </nav>
   </aside></nav>
 

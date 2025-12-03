@@ -1458,29 +1458,6 @@
   <h2 id="how-it-works">How it works</h2>
 <p>The Adobe Analytics 2.0 connector uses the <a href="https://developer.adobe.com/analytics-apis/docs/2.0/guides/endpoints/bulk-data-insertion/">Adobe Bulk Data Insertion API</a> to send analytics data, in place of using the JavaScript beacon on a web page or mobile app. This reduces the amount of data transmitted from the client-side, and also offers the advantage of being able to pass audience and visitor data from EventStream or AudienceStream to Adobe Analytics.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The end of life date for Adobe Analytics 1.4 is August 12, 2026, including WSSE authentication. Although the Data Insertion API will remain accessible beyond that date, it will not receive updates or active support. We recommend that you use the Adobe Analytics 2 connector instead.</p>
-<h2 id="connector-actions">Connector Actions</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Send Analytics Event</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Analytics Event (Batch)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-</tbody>
-</table>
-<p>Enter these credentials during configuration of the Adobe Analytics 2.0 connector and test the connection.</p>
 <h2 id="adobe-analytics-20-connector-differences">Adobe Analytics 2.0 connector differences</h2>
 <p>The following Adobe Analytics 1.4 connector features are not available in the Adobe Analytics 2.0 connector:</p>
 <ul>
@@ -1671,7 +1648,7 @@
 </tbody>
 </table>
 <p>For information on migrating Adobe Analytics 1.4 connectors to Adobe Analytics 2.0 connectors, see <a href="#migrator-tool">Migrator Tool</a>.</p>
-<h2 id="connector-configuration">Connector Configuration</h2>
+<h2 id="configuration">Configuration</h2>
 <p>Configuring the Adobe Analytics 2.0 Connector requires the Client ID (API Key) and Client Secret for the Adobe Analytics 2.0 API. To create credentials in the Adobe Developer Console and obtain the Client ID and Client Secret for Adobe Analytics 2.0 API, use the following steps:</p>
 <ol>
 <li>Go to the Adobe Developer Console and log in with your Adobe ID.</li>
@@ -1697,7 +1674,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <li>Click <strong>Done</strong>, then click <strong>Continue</strong>.</li>
 </ol>
 <p>The next step is <a href="#configure-an-action">configuring an action</a>.</p>
-<h3 id="batch-limits">Batch Limits</h3>
+<h3 id="batch-limits">Batch limits</h3>
 <p>Adobe Analytics 2.0 only allows a compressed file to be sent in each call, which means the connector cannot perform a real-time action. The connector performs a 30-second micro-batched action instead.</p>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -1705,6 +1682,28 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <li>Maximum time since oldest request: 30 minutes</li>
 <li>Maximum size of requests: Compressed file 100 MB, Uncompressed file 1 GB</li>
 </ul>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Action Name</th>
+<th style="text-align:left">AudienceStream</th>
+<th style="text-align:left">EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Send Analytics Event</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Analytics Event (Batch)</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+</tbody>
+</table>
 <h3 id="configure-an-action">Configure an action</h3>
 <p>Select an action, then configure the following parameters:</p>
 <table>
@@ -1771,12 +1770,16 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <td>Brands</td>
 <td><ul><li>Specify brand attributes.</li><li>Available attributes are <strong>brand</strong> and <strong>version</strong>.</li><li>All arrays must be equal-sized.</li></ul></td>
 </tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>30</code> minutes.</td>
+</tr>
 </tbody>
 </table>
 <p>When you are done configuring parameters, click <strong>Save</strong>, and then Save and Publish your changes.</p>
-<h2 id="general-attributes">General Attributes</h2>
+<h2 id="general-attributes">General attributes</h2>
 <p>For a full reference of all attributes, including details on exactly what each field should contain, see <a href="https://github.com/AdobeDocs/analytics-1.4-apis/blob/master/docs/data-insertion-api/reference/r_supported_tags.md">Adobe: API documentation</a> and the <a href="#visitor-and-experience-cloud-ids">Visitor &amp; Experience Cloud IDs</a> section of this article.</p>
-<h3 id="user-agent-client-hints">User Agent Client Hints</h3>
+<h3 id="user-agent-client-hints">User agent client hints</h3>
 <p>Client Hints, from Chromium browsers such as Google Chrome and Microsoft Edge, offer device-specific information. This set of data replaces the user agent string as the primary source for device information.</p>
 <p>These mapping selections appear in the <strong>Event Parameters</strong> section.</p>
 <table>
@@ -1809,7 +1812,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 <tr>
 <td>Server-side attribute containing the platform hint.</td>
-<td>hints.platform</td>
+<td><code>hints.platform</code></td>
 <td><ul><li>String value.</li></ul></td>
 <td><code>win</code></td>
 </tr>
@@ -1827,20 +1830,20 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h3 id="context-data">Context Data</h3>
-<p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en">Context Data</a> may be used as a more user-friendly alternative to props and eVars. You can map any event attribute or visitor attribute to Context Data variables in Adobe Analytics. Context Data variables may have any name, but it is an Adobe best practice is to prefix all variables with a unique key, such as your company name. Some variables are reserved and may only be used for predetermined functionality, such as Lifecycle Metrics; these variables are prefixed with <code>a.</code>.</p>
+<h3 id="context-data">Context data</h3>
+<p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en">Context Data</a> may be used as a more user-friendly alternative to props and eVars. You can map any event attribute or visitor attribute to Context Data variables in Adobe Analytics. Context Data variables may have any name, but it is an Adobe best practice to prefix all variables with a unique key, such as your company name. Some variables are reserved and may only be used for predetermined functionality, such as Lifecycle Metrics; these variables are prefixed with <code>a.</code>.</p>
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
+<th>Map From</th>
+<th>Map To</th>
+<th>Description</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Select any attribute from the drop-down, or enter a custom value.</td>
+<td>Select any attribute from the list, or enter a custom value.</td>
 <td>companyname.someproperty</td>
 <td>Maps a defined server-side attribute to a Context Data attribute</td>
 <td>Map: (Server-side Attribute) Campaign Name to <code>tealium.productColor</code></td>
@@ -1852,35 +1855,35 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
+<th>Map From</th>
+<th>Map To</th>
+<th>Description</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Select any attribute from the drop-down, or enter a custom value.</td>
+<td>Select any attribute from the list, or enter a custom value.</td>
 <td>X, where X is an integer in the range 1-250</td>
 <td>Maps a defined server-side attribute to an eVar in your analytics reports</td>
 <td>For example, map <code>event_count</code> to <code>1</code> for <code>eVar1</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="analytics-property-name-sprops">Analytics Property Name (s.props)</h3>
+<h3 id="analytics-property-name-sprops">Analytics property name (s.props)</h3>
 <p>This field is used to map server-side attributes to <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en">props</a>. Props must be specified using the word <code>prop</code>, plus the number of the prop, for example, <code>prop4</code>. Props must be specified by mapping an attribute to a number. Valid range is <code>1</code> through <code>75</code>. <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en#list-props">List props</a> are supported, but these require prior configuration in your Adobe Analytics Report Suite admin interface.</p>
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
+<th>Map From</th>
+<th>Map To</th>
+<th>Description</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Select any attribute from the drop-down, or enter a custom value.</td>
+<td>Select any attribute from the list, or enter a custom value.</td>
 <td>X, where X is an integer in the range <code>1</code> through <code>75</code>.</td>
 <td>Maps a defined server-side attribute to a prop in your analytics reports.</td>
 <td>Map <code>lifetime_value</code> to <code>1</code> for <code>prop1</code>.</td>
@@ -1893,8 +1896,8 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <table>
 <thead>
 <tr>
-<th><strong>Input</strong></th>
-<th><strong>Sample Connector Output</strong></th>
+<th>Input</th>
+<th>Sample Connector Output</th>
 </tr>
 </thead>
 <tbody>
@@ -1904,17 +1907,17 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h3 id="events-mapping">Events Mapping</h3>
+<h3 id="events-mapping">Events mapping</h3>
 <p>If you need to rename any event name above by an event X, it can be renamed by mapping.</p>
 <p>For example, mapping <code>purchase</code> to <code>4</code>, replaces <code>purchase</code> with <code>event4</code>, so the final output based on the Events Mapping example in the <a href="#configure-an-action">Configure an action</a> section would change from <code>event1,event2,event3,purchase</code> to <code>event1,event2,event3,event4</code>.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Map From</th>
+<th style="text-align:left">Data Type</th>
 <th style="text-align:left">Map To</th>
-<th style="text-align:left">Example Event Array</th>
 <th style="text-align:left">Example Input</th>
-<th></th>
+<th style="text-align:left">Sample Connector Output</th>
 </tr>
 </thead>
 <tbody>
@@ -1927,7 +1930,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h3 id="event-values">Event Values</h3>
+<h3 id="event-values">Event values</h3>
 <p>This field allows numerical values to be assigned to events.</p>
 <table>
 <thead>
@@ -1949,7 +1952,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h3 id="event-serialization">Event Serialization</h3>
+<h3 id="event-serialization">Event serialization</h3>
 <p>Configure event serialization by mapping an attribute that contains the event ID to a number that specifies the event.</p>
 <table>
 <thead>
@@ -1973,15 +1976,15 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </table>
 <h3 id="products">Products</h3>
 <p>The <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">Products</a> variable is used wherever it is necessary to capture e-commerce information about one or more products on a particular page (Category, Product ID, Price, Quantity).</p>
-<p>Only server-side attributes with array data types may be used to populate the Products variable. All arrays must be equal in length. For example:, if there are five products on the page, Product ID, Quantity, Price, and Category must all be five elements in length.</p>
+<p>Only server-side attributes with array data types may be used to populate the Products variable. All arrays must be equal in length. For example, if there are five products on the page, Product ID, Quantity, Price, and Category must all be five elements in length.</p>
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Example Input Data</strong></th>
-<th><strong>Sample Connector Output</strong></th>
+<th>Map From</th>
+<th>Data Type</th>
+<th>Map To</th>
+<th>Example Input Data</th>
+<th>Sample Connector Output</th>
 </tr>
 </thead>
 <tbody>
@@ -2015,7 +2018,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h3 id="product-events">Product Events</h3>
+<h3 id="product-events">Product events</h3>
 <p>This field allows a custom conversion event to be assigned to each product in the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">Products</a> variable, and a numerical value to be assigned to each event.</p>
 <p>If a simple variable is mapped (a singular value, or a custom text value), then the same value is applied to all products in the list. If a list (array) value is mapped, then the array must have the same length as the rest of the product arrays, and each item in the array will have a different value (according to its position in the array).</p>
 <p>For these examples, assume the following product arrays are present as event attributes:</p>
@@ -2053,11 +2056,11 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Example Input Value</strong></th>
-<th><strong>Sample Connector Output</strong></th>
+<th>Map From</th>
+<th>Data Type</th>
+<th>Map To</th>
+<th>Example Input Value</th>
+<th>Sample Connector Output</th>
 </tr>
 </thead>
 <tbody>
@@ -2079,24 +2082,24 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </table>
 <h3 id="hierarchy">Hierarchy</h3>
 <p>Page <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en">Hierarchy</a> helps to classify a page within your site/app&rsquo;s navigation structure. There are five available slots: <code>hier1</code> through <code>hier5</code>.</p>
-<h3 id="list-data">List Data</h3>
+<h3 id="list-data">List data</h3>
 <p><a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en">List Variables</a> are delimited strings containing multiple values, and are often used for attribution purposes. A maximum of three list variables is available for each Report Suite. Array vars will be converted to a comma separated string.</p>
 <table>
 <thead>
 <tr>
-<th><strong>Map From</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Map To</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Example</strong></th>
-<th><strong>Sample Connector Output</strong></th>
+<th>Map From</th>
+<th>Data Type</th>
+<th>Map To</th>
+<th>Description</th>
+<th>Example</th>
+<th>Sample Connector Output</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Select any array attribute from the drop-down.</td>
+<td>Select any array attribute from the list.</td>
 <td>Array</td>
-<td><code>list1</code>, <code>list2</code>, <code>list3</code> (drop-down selection)</td>
+<td><code>list1</code>, <code>list2</code>, <code>list3</code> (list selection)</td>
 <td>Maps a defined Server-side attribute in array format to a specified list variable in Adobe Analytics.</td>
 <td>Map: (Server-side Attribute) Referrer List to <code>list1</code></td>
 <td><code>google.com,yahoo.com</code></td>
@@ -2123,8 +2126,8 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -2146,7 +2149,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </tr>
 </tbody>
 </table>
-<h2 id="visitor-and-experience-cloud-ids">Visitor and Experience Cloud IDs</h2>
+<h2 id="visitor-and-experience-cloud-ids">Visitor and experience cloud IDs</h2>
 <p>See the Adobe Analytics documentation on <a href="https://experienceleague.adobe.com/docs/analytics/components/metrics/unique-visitors.html?lang=en">Visitor IDs</a>, and the order of preference in the event that multiple IDs are provided.</p>
 <h3 id="use-case-1-no-prior-adobe-analytics-implementation">Use Case 1: No prior Adobe Analytics implementation</h3>
 <p>If this is a brand new Adobe Analytics implementation, 100% server-side, you may use your own unique visitor ID, and pass it to the visitorID attribute in the connector. You need to decide what constitutes a suitable visitor ID, within the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/visitorid.html?lang=en">constraints</a> set out by Adobe.</p>
@@ -2215,7 +2218,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 </ul>
 </li>
 </ul>
-<h2 id="debugging-common-issues">Debugging Common Issues</h2>
+<h2 id="debugging-common-issues">Debugging common issues</h2>
 <ul>
 <li>
 <p>To test the connector, we recommend using <a href="/server-side/trace/about/">trace</a>. While running a trace, look for the <strong>HTTP Request Body</strong> field, which shows a sample of the CSV header and the first line that will be sent to Adobe when the batch call is executed. You can compare the CSV output to the <strong>Sample Connector Output</strong> fields in the above tables to verify the output.</p>
@@ -2249,7 +2252,7 @@ For general instructions on how to add a connector, see <a href="/server-side/co
 <li>To migrate only active actions, select <strong>Migrate only active actions</strong>.</li>
 </ul>
 </li>
-<li>Select the scope of the migration from the drop-down list:
+<li>Select the scope of the migration from the list:
 <ul>
 <li>All Adobe Analytics 1.4 actions</li>
 <li>Specific Adobe Analytics 1.4 action</li>
@@ -2322,7 +2325,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 5, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2337,30 +2340,30 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-analytics-20-connector-differences" href="javascript:void(0)">Adobe Analytics 2.0 connector differences</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-configuration" href="javascript:void(0)">Connector Configuration</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-action" href="javascript:void(0)">Configure an action</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#general-attributes" href="javascript:void(0)">General Attributes</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-agent-client-hints" href="javascript:void(0)">User Agent Client Hints</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#context-data" href="javascript:void(0)">Context Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-an-action" href="javascript:void(0)">Configure an action</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#general-attributes" href="javascript:void(0)">General attributes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-agent-client-hints" href="javascript:void(0)">User agent client hints</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#context-data" href="javascript:void(0)">Context data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analytics-evars" href="javascript:void(0)">Analytics eVars</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analytics-property-name-sprops" href="javascript:void(0)">Analytics Property Name (s.props)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analytics-property-name-sprops" href="javascript:void(0)">Analytics property name (s.props)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-sevents" href="javascript:void(0)">Events (s.events)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-mapping" href="javascript:void(0)">Events Mapping</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-values" href="javascript:void(0)">Event Values</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-serialization" href="javascript:void(0)">Event Serialization</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-mapping" href="javascript:void(0)">Events mapping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-values" href="javascript:void(0)">Event values</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-serialization" href="javascript:void(0)">Event serialization</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#products" href="javascript:void(0)">Products</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-events" href="javascript:void(0)">Product Events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-events" href="javascript:void(0)">Product events</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#product-evars" href="javascript:void(0)">Product eVars</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#hierarchy" href="javascript:void(0)">Hierarchy</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#list-data" href="javascript:void(0)">List Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#list-data" href="javascript:void(0)">List data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-id-values" href="javascript:void(0)">Custom ID values</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-and-experience-cloud-ids" href="javascript:void(0)">Visitor and Experience Cloud IDs</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-and-experience-cloud-ids" href="javascript:void(0)">Visitor and experience cloud IDs</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-1-no-prior-adobe-analytics-implementation" href="javascript:void(0)">Use Case 1: No prior Adobe Analytics implementation</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-case-2-migrating-from-existing-adobe-analytics-client-side-javascript" href="javascript:void(0)">Use Case 2: Migrating from existing Adobe Analytics client-side JavaScript</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#debugging-common-issues" href="javascript:void(0)">Debugging Common Issues</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#debugging-common-issues" href="javascript:void(0)">Debugging common issues</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrator-tool" href="javascript:void(0)">Migrator tool</a></li>
               </nav>
   </aside></nav>

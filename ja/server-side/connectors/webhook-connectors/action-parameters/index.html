@@ -1044,7 +1044,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/manage/">コネクタの管理</a>を参照してください。</p>
+  <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/manage/">コネクタの管理</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>基本認証 - ユーザー名</strong><br>
@@ -1053,246 +1053,325 @@ APIエンドポイントが基本認証を要求する場合はユーザー名�
 APIエンドポイントが基本認証を要求する場合はパスワードを入力</li>
 </ul>
 <p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<h2 id="アクション">アクション</h2>
+<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、リストからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="アクション---httpリクエストを介してイベントデータを送信">アクション - HTTPリクエストを介してイベントデータを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>メソッド</td>
-<td><strong>必須。</strong> リクエストメソッドを選択します。<strong>GET</strong>が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで配信されます。</td>
+<td style="text-align:left">メソッド</td>
+<td style="text-align:left"><ul><li>(必須) リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで配信されます。</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td><strong>必須。</strong> リクエストを送信するURLを提供します。テンプレートサポート：テンプレート名を参照してURLを生成します。</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(必須) リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul></td>
 </tr>
 <tr>
-<td>URLパラメータ</td>
-<td>URLに追加するパラメータを提供します。テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</td>
+<td style="text-align:left">URLパラメータ</td>
+<td style="text-align:left"><ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>ヘッダー</td>
-<td>HTTPヘッダー値をヘッダー名にマッピングします。テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</td>
+<td style="text-align:left">ヘッダー</td>
+<td style="text-align:left"><ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>クッキー</td>
-<td>クッキー値をクッキー名にマッピングします。クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code>。テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</td>
+<td style="text-align:left">クッキー</td>
+<td style="text-align:left"><ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>本文コンテンツタイプ</td>
-<td>利用可能なタイプを選択するか、カスタム値を提供します。すべてのタイプはUTF-8エンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code>。本文データが提供される場合、コンテンツタイプは必須です。</td>
+<td style="text-align:left">ボディコンテンツタイプ</td>
+<td style="text-align:left"><ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8エンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート変数</td>
-<td>テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td style="text-align:left">テンプレート変数</td>
+<td style="text-align:left"><ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート</td>
-<td>URL、URLパラメータ、ヘッダー、または本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは名前でサポートされるフィールドに二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</td>
+<td style="text-align:left">テンプレート</td>
+<td style="text-align:left"><ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
 </tr>
 <tr>
-<td>属性名の印刷</td>
-<td>属性名が更新されると、ペイロードの名前が更新を反映します。</td>
+<td style="text-align:left">属性名の印刷</td>
+<td style="text-align:left"><ul><li>属性名が更新されると、ペイロードの名前が更新を反映します。</li></ul></td>
 </tr>
 <tr>
-<td>リダイレクション</td>
-<td>メソッドがGETの場合のみリダイレクションを許可します。</td>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---httpリクエストを介して訪問データを送信">アクション - HTTPリクエストを介して訪問データを送信</h3>
+<h3 id="httpリクエストを介して訪問データを送信">HTTPリクエストを介して訪問データを送信</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>メソッド</td>
-<td><strong>必須。</strong> リクエストメソッドを選択します。<strong>GET</strong>が選択された場合、訪問データはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで配信されます。</td>
+<td style="text-align:left">メソッド</td>
+<td style="text-align:left"><ul><li>(必須) リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで配信されます。</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td><strong>必須。</strong> リクエストを送信するURLを提供します。テンプレートサポート：テンプレート名を参照してURLを生成します。</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(必須) リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul></td>
 </tr>
 <tr>
-<td>URLパラメータ</td>
-<td>URLに追加するパラメータを提供します。テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</td>
+<td style="text-align:left">URLパラメータ</td>
+<td style="text-align:left"><ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>ヘッダー</td>
-<td>HTTPヘッダー値をヘッダー名にマッピングします。テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</td>
+<td style="text-align:left">ヘッダー</td>
+<td style="text-align:left"><ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>クッキー</td>
-<td>クッキー値をクッキー名にマッピングします。クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code>。テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</td>
+<td style="text-align:left">クッキー</td>
+<td style="text-align:left"><ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>本文コンテンツタイプ</td>
-<td>利用可能なタイプを選択するか、カスタム値を提供します。すべてのタイプはUTF-8エンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code>。本文データが提供される場合、コンテンツタイプは必須です。</td>
+<td style="text-align:left">ボディコンテンツタイプ</td>
+<td style="text-align:left"><ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8エンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート変数</td>
-<td>テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td style="text-align:left">テンプレート変数</td>
+<td style="text-align:left"><ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート</td>
-<td>URL、URLパラメータ、ヘッダー、または本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは名前でサポートされるフィールドに二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</td>
+<td style="text-align:left">テンプレート</td>
+<td style="text-align:left"><ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
 </tr>
 <tr>
-<td>現在の訪問データを含む</td>
-<td>現在の訪問データを含める場合はこのボックスをチェックします。</td>
+<td style="text-align:left">現在の訪問データを訪問データに含める</td>
+<td style="text-align:left"><ul><li>ペイロードに現在の訪問データを追加します。</li><li>これには、現在の訪問イベントデータが除外されていない場合のイベント訪問データが含まれます。</li></ul></td>
 </tr>
 <tr>
-<td>属性名の印刷</td>
-<td>属性名が更新されると、ペイロードの名前が更新を反映します。</td>
+<td style="text-align:left">現在の訪問イベントデータを除外</td>
+<td style="text-align:left"><ul><li>現在の訪問データからイベントデータを除外します。</li></ul></td>
 </tr>
 <tr>
-<td>リダイレクション</td>
-<td>メソッドがGETの場合のみリダイレクションを許可します。</td>
+<td style="text-align:left">属性名の印刷</td>
+<td style="text-align:left"><ul><li>属性名が更新されると、ペイロードの名前が更新を反映します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---httpリクエストを介してカスタマイズされたデータを送信高度">アクション - HTTPリクエストを介してカスタマイズされたデータを送信（高度）</h3>
-<p>カスタムリクエストが複雑なペイロード、例えばネストされたJSONやXMLを必要とする場合、<strong>テンプレート</strong>オプションを使用してベンダーのエンドポイントに必要な形式のペイロードを構築します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</p>
+<h3 id="httpリクエストを介してカスタマイズされたデータを送信高度">HTTPリクエストを介してカスタマイズされたデータを送信（高度）</h3>
+<p>カスタムリクエストがネストされたJSONやXMLなどの複雑なペイロードを必要とする場合は、<strong>テンプレート</strong>オプションを使用して、ベンダーのエンドポイントに必要な形式でペイロードを構築します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</p>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>メソッド</td>
-<td><strong>必須。</strong> リクエストメソッドを選択します。詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhookカスタムリクエストガイド</a>を参照してください。</td>
+<td style="text-align:left">メソッド</td>
+<td style="text-align:left"><ul><li>(必須) 詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook送信カスタムリクエストガイド</a>を参照してください。</li><li>リクエストメソッドを選択してください。</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td><strong>必須。</strong> リクエストを送信するURLを提供します。テンプレートサポート：テンプレート名を参照してURLを生成します。</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(必須) リクエストを送信するURLを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul></td>
 </tr>
 <tr>
-<td>URLパラメータ</td>
-<td>オプション。URLに追加するパラメータを提供します。テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</td>
+<td style="text-align:left">URLパラメータ</td>
+<td style="text-align:left"><ul><li>(オプション) URLに追加するパラメータを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>ヘッダー</td>
-<td>HTTPヘッダー値をヘッダー名にマッピングします。テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</td>
+<td style="text-align:left">ヘッダー</td>
+<td style="text-align:left"><ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>クッキー</td>
-<td>クッキー値をクッキー名にマッピングします。クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code>。テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</td>
+<td style="text-align:left">クッキー</td>
+<td style="text-align:left"><ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>本文コンテンツタイプ</td>
-<td>利用可能なタイプを選択するか、カスタム値を提供します。すべてのタイプはUTF-8エンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code>。本文データが提供される場合、コンテンツタイプは必須です。</td>
+<td style="text-align:left">ボディコンテンツタイプ</td>
+<td style="text-align:left"><ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供してください。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
-<td>本文データ</td>
-<td>メッセージ本文を構築するためのデータを提供します。テンプレートサポート：テンプレート名を参照して本文データを生成します。本文コンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して<strong>本文</strong>オプションのみを選択します。</td>
+<td style="text-align:left">ボディデータ</td>
+<td style="text-align:left"><ul><li>(オプション) メッセージボディを構築するためのデータを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してボディデータを生成します。</li><li>ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して<strong>ボディ</strong>オプションのみを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート変数</td>
-<td>テンプレートのデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td style="text-align:left">テンプレート変数</td>
+<td style="text-align:left"><ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供してください。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート</td>
-<td>URL、URLパラメータ、ヘッダー、または本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは名前でサポートされるフィールドに二重中括弧で注入されます。例：<code>{{SomeTemplateName}}</code>。OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</td>
+<td style="text-align:left">テンプレート</td>
+<td style="text-align:left"><ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供してください。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを指します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---httpリクエストを介してバッチ処理されたカスタマイズデータを送信高度">アクション - HTTPリクエストを介してバッチ処理されたカスタマイズデータを送信（高度）</h3>
-<p>カスタムリクエストが複雑なペイロード、例えばネストされたJSONやXMLを必要とする場合、<strong>テンプレート</strong>オプションを使用してベンダーのエンドポイントに必要な形式のペイロードを構築します。カスタムリクエスト用のテンプレートを使用する方法の詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">カスタムリクエスト - テンプレート変数ガイド</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/trace/about/">Trace</a>を使用する場合、バッチ処理は無視されます。</p>
+<h2 id="httpリクエストを介してバッチデータを送信">HTTPリクエストを介してバッチデータを送信</h2>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。リクエストは、以下のいずれかの閾値に達するまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値が満たされるか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：100</li>
-<li>最も古いリクエストからの経過時間（生存時間、TTL）：1分から60分の間</li>
+<li>最大リクエスト数：100</li>
+<li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：16 MB</li>
 </ul>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>メソッド</td>
-<td><strong>必須。</strong> リクエストメソッドを選択します。詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook送信カスタムリクエストガイド</a>を参照してください。</td>
+<td style="text-align:left">メソッド</td>
+<td style="text-align:left"><ul><li>(必須) 詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook送信カスタムリクエストガイド</a>を参照してください。</li><li>リクエストメソッドを選択してください。</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td><strong>必須。</strong> リクエストを送信するURLを提供します。テンプレートサポート：テンプレート名を参照してURLを生成します。</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(必須) リクエストを送信するURLを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul></td>
 </tr>
 <tr>
-<td>ボディコンテンツタイプ</td>
-<td>利用可能なタイプを選択するか、カスタム値を提供します。すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code> ボディデータが提供されている場合、コンテンツタイプは必須です。</td>
+<td style="text-align:left">URLパラメータ</td>
+<td style="text-align:left"><ul><li>(オプション) URLに追加するパラメータを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td>ボディデータ</td>
-<td>メッセージボディを構築するためのデータを提供します。テンプレートサポート：テンプレート名を参照してボディデータを生成します。ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して<code>Body</code>オプションのみを選択します。</td>
+<td style="text-align:left">ヘッダー</td>
+<td style="text-align:left"><ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td><strong>プレフィックス</strong></td>
-<td>ボディデータの前に繰り返されないリクエストの部分です。JSON配列のプレフィックスは開き括弧（<code>[</code>）です。例として<code>Custom [</code>を<strong>プレフィックス</strong>にマッピングします。例：<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+<td style="text-align:left">クッキー</td>
+<td style="text-align:left"><ul><li>(オプション) クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</li></ul></td>
 </tr>
 <tr>
-<td><strong>ジョイナー</strong></td>
-<td>ボディデータ内の個々のデータ項目を分離する文字または文字列です。JSONオブジェクトのジョイナーはカンマ（<code>,</code>）です。例として<code>Custom ,</code>を<strong>ジョイナー</strong>にマッピングします。例：<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },  {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ]</code></td>
+<td style="text-align:left">ボディコンテンツタイプ</td>
+<td style="text-align:left"><ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供してください。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
-<td><strong>サフィックス</strong></td>
-<td>ボディデータの後に繰り返されないリクエストの部分です。JSON配列のプレフィックスは閉じ括弧（<code>]</code>）です。例として<code>Custom ]</code>を<strong>サフィックス</strong>にマッピングします。例：<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers: true   } ] </code></td>
+<td style="text-align:left">テンプレート変数</td>
+<td style="text-align:left"><ul><li>(オプション) テンプレートのデータ入力としてテンプレート変数を提供してください。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
-<td>レコード数の最大値</td>
-<td>最大レコード数。</td>
+<td style="text-align:left">テンプレート</td>
+<td style="text-align:left"><ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供してください。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを指します。</li></ul></td>
 </tr>
 <tr>
-<td>生存時間（分）</td>
-<td>分単位の生存時間。</td>
+<td style="text-align:left">現在の訪問データを含む</td>
+<td style="text-align:left"><ul><li>現在の訪問データを含める場合は、このチェックボックスを選択してください。</li></ul></td>
 </tr>
 <tr>
-<td>URLパラメータ</td>
-<td>URLに追加するパラメータを提供します。テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</td>
+<td style="text-align:left">現在の訪問イベントデータを除外</td>
+<td style="text-align:left"><ul><li>現在の訪問データからイベントデータを除外します。</li></ul></td>
 </tr>
 <tr>
-<td>ヘッダー</td>
-<td>HTTPヘッダー値をヘッダー名にマッピングします。テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</td>
+<td style="text-align:left">属性名を印刷</td>
+<td style="text-align:left"><ul><li>属性名が更新された場合、ペイロードに反映される名前が更新されます。</li></ul></td>
 </tr>
 <tr>
-<td>クッキー</td>
-<td>クッキー値をクッキー名にマッピングします。クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code>。テンプレートサポート：テンプレート名を参照してクッキー値を生成します。</td>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート変数</td>
-<td>テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td style="text-align:left">タイムアウト</td>
+<td style="text-align:left"><code>HTTP</code>リクエストを介してデータを送信する際に、システムがバッチアクションを完了するのを待つ最大時間（秒）を構成します。最小値は<code>1</code>、最大値は<code>10</code>です。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="httpリクエストを介してバッチカスタムデータを送信高度">HTTPリクエストを介してバッチカスタムデータを送信（高度）</h3>
+<p>カスタムリクエストに複雑なペイロード（ネストされたJSONやXMLなど）が必要な場合は、<strong>テンプレート</strong>オプションを使用して、ベンダーのエンドポイントに必要な形式のペイロードを構築します。カスタムリクエスト用のテンプレートを使用する方法の詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">カスタムリクエスト - テンプレート変数ガイド</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/trace/about/">Trace</a>を使用する場合、バッチ処理は無視されます。</p>
+<h4 id="バッチ制限-1">バッチ制限</h4>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。次の3つの閾値のいずれかが満たされるまでリクエストがキューに入れられます：</p>
+<ul>
+<li>最大リクエスト数：100</li>
+<li>最古のリクエストからの時間（生存時間、TTL）：1分から60分の間</li>
+<li>リクエストの最大サイズ：16 MB</li>
+</ul>
+<h4 id="パラメータ-4">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">パラメータ</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">メソッド</td>
+<td style="text-align:left"><ul><li>(必須) 詳細は<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook送信カスタムリクエストガイド</a>を参照してください。</li><li>リクエストメソッドを選択します。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート</td>
-<td>URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(必須) リクエストを送信するURLを提供してください。</li><li>テンプレートサポート：テンプレート名を参照してURLを生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">ボディコンテンツタイプ</td>
+<td style="text-align:left"><ul><li>(オプション) 利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供されている場合、コンテンツタイプが必要です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">ボディデータ</td>
+<td style="text-align:left"><ul><li>(オプション) メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してボディデータを生成します。</li><li>ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は値を名前にマッピングし、それ以外の場合はテンプレート名を参照して<code>Body</code>オプションのみを選択します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">プレフィックス</td>
+<td style="text-align:left">ボディデータの前に繰り返されないリクエストの部分です。JSON配列のプレフィックスは開き括弧(<code>[</code>)です。例として<code>Custom [</code>を<strong>プレフィックス</strong>にマッピングします。<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+</tr>
+<tr>
+<td style="text-align:left">ジョイナー</td>
+<td style="text-align:left">ボディデータ内の個々のデータ項目を分離する文字または文字列です。JSONオブジェクトのジョイナーはカンマ(<code>,</code>)です。例として<code>Custom ,</code>を<strong>ジョイナー</strong>にマッピングします。<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },  {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ]</code></td>
+</tr>
+<tr>
+<td style="text-align:left">サフィックス</td>
+<td style="text-align:left">ボディデータの後に繰り返されないリクエストの部分です。JSON配列のサフィックスは閉じ括弧(<code>]</code>)です。例として<code>Custom ]</code>を<strong>サフィックス</strong>にマッピングします。<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+</tr>
+<tr>
+<td style="text-align:left">レコード数の最大値</td>
+<td style="text-align:left"><ul><li>最大レコード数。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">生存時間 (分)</td>
+<td style="text-align:left"><ul><li>生存時間（分単位）。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URLパラメータ</td>
+<td style="text-align:left"><ul><li>(オプション) URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照してパラメータ値を生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">ヘッダー</td>
+<td style="text-align:left"><ul><li>(オプション) HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照してヘッダー値を生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">テンプレート変数</td>
+<td style="text-align:left"><ul><li>(オプション) テンプレートにデータ入力としてテンプレート変数を提供します。詳細は<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">テンプレート</td>
+<td style="text-align:left"><ul><li>(オプション) URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細は<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">タイムアウト</td>
+<td style="text-align:left"><code>HTTP</code>リクエストを通じてデータを送信する際にシステムがバッチアクションを完了するのを待つ最大時間（秒単位）を構成します。最小値は<code>1</code>で、最大値は<code>10</code>です。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="イベントデータjson">イベントデータJSON</h3>
-<p>イベントに含まれる予想されるJSONペイロードには、イベントの一部であるすべての標準属性と、イベントを送信したプラットフォームに固有の追加属性が含まれます。例えば、ウェブサイトから受信したイベントにはDOMおよびクッキー属性が含まれ、モバイルデバイスから受信したイベントにはデバイスおよびキャリア属性が含まれます。</p>
-<p>イベントデータJSONオブジェクトの形式例：</p>
+<p>イベントに含まれる予想されるJSONペイロードには、イベントの一部であるすべての標準属性と、イベントを送信したプラットフォームに固有の追加属性が含まれます。例えば、ウェブサイトから受信したイベントにはDOMおよびcookie属性が含まれ、モバイルデバイスから受信したイベントにはデバイスおよびキャリア属性が含まれます。</p>
+<p>イベントデータJSONオブジェクト形式の例：</p>
 <pre tabindex="0"><code>{
     &#34;account&#34;: &#34;tealium&#34;,
     &#34;profile&#34;: &#34;main&#34;,
@@ -1328,8 +1407,8 @@ APIエンドポイントが基本認証を要求する場合はパスワード�
     &#34;visitor_id&#34;: &#34;1a1ee055145646f8ab4d779628c05dd4&#34;
 }
 </code></pre><h3 id="訪問データjson">訪問データJSON</h3>
-<p>訪問に関連するすべての適用可能な訪問属性を含む訪問の予想されるJSONペイロードです。データオブジェクトは属性タイプ別に整理されています。属性が割り当てられていない場合、訪問オブジェクトには表示されません。現在の訪問に関するデータも<code>current_visit</code>キーの下に含まれます。</p>
-<p>訪問データJSONオブジェクトの形式例：</p>
+<p>訪問に含まれる予想されるJSONペイロードには、その訪問に適用されるすべての訪問属性が含まれます。データオブジェクトは属性タイプ別に整理されています。属性が割り当てられていない場合、訪問オブジェクトには表示されません。現在の訪問のデータも<code>current_visit</code>キーの下に含まれます。</p>
+<p>訪問データJSONオブジェクト形式の例：</p>
 <pre tabindex="0"><code>{
     &#34;metrics&#34;: {
         &#34;Weeks since first visit&#34;: 0.0,
@@ -1471,7 +1550,7 @@ APIエンドポイントが基本認証を要求する場合はパスワード�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1485,11 +1564,12 @@ APIエンドポイントが基本認証を要求する場合はパスワード�
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - HTTPリクエストを介してイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - HTTPリクエストを介して訪問データを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E9%AB%98%E5%BA%A6" href="javascript:void(0)">アクション - HTTPリクエストを介してカスタマイズされたデータを送信（高度）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86%E3%81%95%E3%82%8C%E3%81%9F%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E9%AB%98%E5%BA%A6" href="javascript:void(0)">アクション - HTTPリクエストを介してバッチ処理されたカスタマイズデータを送信（高度）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">HTTPリクエストを介して訪問データを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E9%AB%98%E5%BA%A6" href="javascript:void(0)">HTTPリクエストを介してカスタマイズされたデータを送信（高度）</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%83%90%E3%83%83%E3%83%81%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">HTTPリクエストを介してバッチデータを送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%83%90%E3%83%83%E3%83%81%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E9%AB%98%E5%BA%A6" href="javascript:void(0)">HTTPリクエストを介してバッチカスタムデータを送信（高度）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BFjson" href="javascript:void(0)">イベントデータJSON</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BFjson" href="javascript:void(0)">訪問データJSON</a></li>
               </nav>

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "9",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1029,240 +1029,323 @@ Enter username if API endpoint requires basic authentication</li>
 Enter password if API endpoint requires basic authentication</li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<h2 id="actions">Actions</h2>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the list.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action---send-event-data-via-http-request">Action - Send Event Data via HTTP Request</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Method</td>
-<td>(Required) select request method. If <strong>GET</strong> is selected, the event data is delivered as a JSON URL-encoded query string parameter with the data key.</td>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) select request method.</li><li>If <strong>GET</strong> is selected, the event data is delivered as a JSON URL-encoded query string parameter with the <code>data</code> key.</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required) Provide URL to submit request to. Template Support: reference template name to generate URL from template.</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
 </tr>
 <tr>
-<td>URL Parameters</td>
-<td>Provide parameters to append to URL. Template Support: reference template name to generate parameter value from template.</td>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Headers</td>
-<td>Map HTTP header values to header names. Template Support: reference template name to generate header value from template.</td>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Cookies</td>
-<td>Map cookie values to cookie names. Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code>. Template Support: reference template name to generate cookie value from template.</td>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Body Content Type</td>
-<td>Select available type or provide custom value. All types are UTF-8 encoded and added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code>. Content type is required if body data is provided.</td>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
 </tr>
 <tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>. When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</td>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
 </tr>
 <tr>
-<td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload reflects the update.</td>
+<td style="text-align:left">Print Attribute Names</td>
+<td style="text-align:left"><ul><li>If attribute names are updated, the names in the payload reflects the update.</li></ul></td>
 </tr>
 <tr>
-<td>Redirection</td>
-<td>Allow redirection only if the method is GET.</td>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-visitor-data-via-http-request">Action - Send Visitor Data via HTTP Request</h3>
+<h3 id="send-visitor-data-via-http-request">Send Visitor Data via HTTP Request</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Method</td>
-<td>(Required) Select request method. If <strong>GET</strong> is selected, the visitor data is delivered as a JSON URL-encoded query string parameter with the <code>data</code> key.</td>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) select request method.</li><li>If <strong>GET</strong> is selected, the event data is delivered as a JSON URL-encoded query string parameter with the <code>data</code> key.</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required) Provide URL to submit request to. Template Support: reference template name to generate URL from template.</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
 </tr>
 <tr>
-<td>URL Parameters</td>
-<td>Provide parameters to append to URL. Template Support: reference template name to generate parameter value from template.</td>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Headers</td>
-<td>Map HTTP header values to header names. Template Support: reference template name to generate header value from template.</td>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Cookies</td>
-<td>Map cookie values to cookie names. Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code> Template Support: reference template name to generate cookie value from template.</td>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Body Content Type</td>
-<td>Select available type or provide custom value. All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code> Content type is required if body data is provided.</td>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
 </tr>
 <tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example: <code>items.name</code> Nested template variables are typically built from data layer list attributes.</td>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>. When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</td>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
 </tr>
 <tr>
-<td>Include Current Visit Data</td>
-<td>Check this box if you want to include current visit data.</td>
+<td style="text-align:left">Include Current Visit Data With Visitor Data</td>
+<td style="text-align:left"><ul><li>Add the current visit data to the payload.</li><li>This includes event visit data if Exclude Current Visit Event Data isn&rsquo;t selected.</li></ul></td>
 </tr>
 <tr>
-<td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload reflect the update.</td>
+<td style="text-align:left">Exclude Current Visit Event Data</td>
+<td style="text-align:left"><ul><li>Exclude event data from the current visit data.</li></ul></td>
 </tr>
 <tr>
-<td>Redirection</td>
-<td>Allow redirection only if the method is GET.</td>
+<td style="text-align:left">Print Attribute Names</td>
+<td style="text-align:left"><ul><li>If attribute names are updated, the names in the payload reflect the update.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-customized-data-via-http-request-advanced">Action - Send Customized Data via HTTP Request (Advanced)</h3>
-<p>If your custom request requires a complex payload, such as nested JSON or XML, you will use the <strong>Templates</strong> option to construct a payload in the format needed by the vendor&rsquo;s endpoint. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</p>
+<h3 id="send-customized-data-via-http-request-advanced">Send Customized Data via HTTP Request (Advanced)</h3>
+<p>If your custom request requires a complex payload, such as nested JSON or XML, use the <strong>Templates</strong> option to construct a payload in the format needed by the vendor&rsquo;s endpoint. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Method</td>
-<td>(Required) Select request method. For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</td>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</li><li>Select request method.</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required) Provide URL to submit request to. Template Support: reference template name to generate URL from template.</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
 </tr>
 <tr>
-<td>URL Parameters</td>
-<td>(Optional) Provide parameters to append to URL. Template Support: reference template name to generate parameter value from template.</td>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Headers</td>
-<td>Map HTTP header values to header names. Template Support: reference template name to generate header value from template.</td>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Cookies</td>
-<td>Map cookie values to cookie names. Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code> Template Support: reference template name to generate cookie value from template.</td>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Body Content Type</td>
-<td>Select available type or provide custom value. All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code> Content type is required if body data is provided.</td>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
 </tr>
 <tr>
-<td>Body Data</td>
-<td>Provide data to construct message body. Template Support: reference template name to generate body data from template. Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference template name and select only the <strong>Body</strong> option.</td>
+<td style="text-align:left">Body Data</td>
+<td style="text-align:left"><ul><li>(Optional) Provide data to construct message body.</li><li>Template Support: reference template name to generate body data from template.</li><li>Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference template name and select only the <strong>Body</strong> option.</li></ul></td>
 </tr>
 <tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example: <code>items.name</code> Nested template variables are typically built from data layer list attributes.</td>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in either URL, URL Parameter, Header. or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>. When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</td>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}} </code>refers to the token returned by the authentication request.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-batched-customized-data-via-http-request-advanced">Action - Send Batched Customized Data via HTTP Request (Advanced)</h3>
-<p>If your custom request requires a complex payload, such as nested JSON or XML, you will use the <strong>Templates</strong> option to construct a payload in the format needed by the vendor&rsquo;s endpoint. For more information on using templates for custom requests, see <a href="/server-side/connectors/templates/template-variables/">Send Custom Request - Template Variables Guide</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Batching is ignored when using <a href="/server-side/trace/about/">Trace</a>.</p>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following three thresholds is met:</p>
+<h2 id="send-batched-data-via-http-request">Send Batched Data via HTTP Request</h2>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 100</li>
-<li>Time since oldest request (Time to Live, TTL): Between 1 and 60 minutes</li>
+<li>Maximum time since oldest request: 60 minutes</li>
 <li>Maximum size of requests: 16 MB</li>
 </ul>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Method</td>
-<td>(Required) Select request method. For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</td>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) For more information see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</li><li>Select request method.</li></ul></td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required) Provide URL to submit request to. Template Support: reference template name to generate URL from template.</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
 </tr>
 <tr>
-<td>Body Content Type</td>
-<td>Select available type or provide custom value. All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code> Content type is required if body data is provided.</td>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
 </tr>
 <tr>
-<td>Body Data</td>
-<td>Provide data to construct message body. Template Support: reference template name to generate body data from template. Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference a template name and select only the <code>Body</code> option.</td>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
-<td><strong>Prefix</strong></td>
-<td>A non-repeating portion of the request that precedes Body Data. The JSON array prefix is the opening bracket character (<code>[</code>). Map <code>Custom [</code> to <strong>Prefix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
 </tr>
 <tr>
-<td><strong>Joiner</strong></td>
-<td>A character or string that separates individual data items in Body Data. The JSON objects joiner is the comma (<code>,</code>). Map <code>Custom ,</code> to <strong>Joiner</strong>. For example: <br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },  {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ]</code></td>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
 </tr>
 <tr>
-<td><strong>Suffix</strong></td>
-<td>A non-repeating portion of the request that follows Body Data. The JSON array prefix is the closing bracket character (<code>]</code>). Map <code>Custom ]</code> to <strong>Suffix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
-<td>Record Count Maximum</td>
-<td>Maximum record count.</td>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
 </tr>
 <tr>
-<td>Time To Live (minutes)</td>
-<td>Time to live, in minutes.</td>
+<td style="text-align:left">Include Current Visit Data</td>
+<td style="text-align:left"><ul><li>Select this checkbox if you want to include current visit data.</li></ul></td>
 </tr>
 <tr>
-<td>URL Parameters</td>
-<td>Provide parameters to append to URL. Template Support: reference template name to generate parameter value from template.</td>
+<td style="text-align:left">Exclude Current Visit Event Data</td>
+<td style="text-align:left"><ul><li>Exclude event data from the current visit data.</li></ul></td>
 </tr>
 <tr>
-<td>Headers</td>
-<td>Map HTTP header values to header names. Template Support: reference template name to generate header value from template.</td>
+<td style="text-align:left">Print Attribute Names</td>
+<td style="text-align:left"><ul><li>If attribute names are updated, the names in the payload reflect the update.</li></ul></td>
 </tr>
 <tr>
-<td>Cookies</td>
-<td>Map cookie values to cookie names. Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code>. Template Support: reference template name to generate cookie value from template.</td>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
 </tr>
 <tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example: <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td style="text-align:left">Timeout</td>
+<td style="text-align:left">Set the maximum time (in seconds) the system will wait for batch actions to complete when sending data through <code>HTTP</code> requests. The minimum value is <code>1</code> and the maximum value is <code>10</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-batched-customized-data-via-http-request-advanced">Send Batched Customized Data via HTTP Request (Advanced)</h3>
+<p>If your custom request requires a complex payload, such as nested JSON or XML, use the <strong>Templates</strong> option to construct a payload in the format needed by the vendor&rsquo;s endpoint. For more information on using templates for custom requests, see <a href="/server-side/connectors/templates/template-variables/">Send Custom Request - Template Variables Guide</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Batching is ignored when using <a href="/server-side/trace/about/">Trace</a>.</p>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following three thresholds is met:</p>
+<ul>
+<li>Maximum number of requests: 100</li>
+<li>Time since oldest request (Time to Live, TTL): Between 1 and 60 minutes</li>
+<li>Maximum size of requests: 16 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) For more information see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</li><li>Select request method.</li></ul></td>
 </tr>
 <tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data.  For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>. When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Body Data</td>
+<td style="text-align:left"><ul><li>(Optional) Provide data to construct message body.</li><li>Template Support: reference template name to generate body data from template.</li><li>Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference a template name and select only the <code>Body</code> option.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Prefix</td>
+<td style="text-align:left">A non-repeating portion of the request that precedes Body Data. The JSON array prefix is the opening bracket character (<code>[</code>). Map <code>Custom [</code> to <strong>Prefix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+</tr>
+<tr>
+<td style="text-align:left">Joiner</td>
+<td style="text-align:left">A character or string that separates individual data items in Body Data. The JSON objects joiner is the comma (<code>,</code>). Map <code>Custom ,</code> to <strong>Joiner</strong>. For example: <br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },  {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ]</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Suffix</td>
+<td style="text-align:left">A non-repeating portion of the request that follows Body Data. The JSON array prefix is the closing bracket character (<code>]</code>). Map <code>Custom ]</code> to <strong>Suffix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+</tr>
+<tr>
+<td style="text-align:left">Record Count Maximum</td>
+<td style="text-align:left"><ul><li>Maximum record count.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Time To Live (minutes)</td>
+<td style="text-align:left"><ul><li>Time to live, in minutes.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) &gt;Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Timeout</td>
+<td style="text-align:left">Set the maximum time (in seconds) the system will wait for batch actions to complete when sending data through <code>HTTP</code> requests. The minimum value is <code>1</code> and the maximum value is <code>10</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1447,7 +1530,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1461,11 +1544,12 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-event-data-via-http-request" href="javascript:void(0)">Action - Send Event Data via HTTP Request</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-visitor-data-via-http-request" href="javascript:void(0)">Action - Send Visitor Data via HTTP Request</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-customized-data-via-http-request-advanced" href="javascript:void(0)">Action - Send Customized Data via HTTP Request (Advanced)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-batched-customized-data-via-http-request-advanced" href="javascript:void(0)">Action - Send Batched Customized Data via HTTP Request (Advanced)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-via-http-request" href="javascript:void(0)">Send Visitor Data via HTTP Request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-customized-data-via-http-request-advanced" href="javascript:void(0)">Send Customized Data via HTTP Request (Advanced)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-batched-data-via-http-request" href="javascript:void(0)">Send Batched Data via HTTP Request</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-batched-customized-data-via-http-request-advanced" href="javascript:void(0)">Send Batched Customized Data via HTTP Request (Advanced)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-data-json" href="javascript:void(0)">Event Data JSON</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-data-json" href="javascript:void(0)">Visitor Data JSON</a></li>
               </nav>

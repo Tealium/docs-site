@@ -397,7 +397,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DELETE /scim/v2/User/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーが複数のアカウントに存在する場合、その他のアカウントにはユーザーが残ります。ユーザーが唯一のアカウントから削除された場合、ユーザーはどのアカウントにもアクセスできなくなります。</p>
 <h2 id="認証">認証</h2>
-<p>すべてのAPI呼び出しにはSCIMベアラートークンが使用され、APIキーは使用されません。</p>
+<p>すべてのAPI呼び出しにはOAuthベアラートークンを使用して認証します。APIキーではありません。</p>
 <p>詳細については、<a href="/ja/early-access/api/scim-api/about/#authentication">認証</a>を参照してください。</p>
 <h2 id="delete操作のパラメータ">DELETE操作のパラメータ</h2>
 <p>このコマンドは以下のパラメータを取ります：</p>
@@ -451,11 +451,11 @@
 </tr>
 <tr>
 <td>405</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;このエンドポイントでは許可されていない方法です。許可されている方法：GET, PUT, DELETE。&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;このエンドポイントでは許可されていないメソッドです。許可されているメソッド: GET, PUT, DELETE.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;500&quot;,&quot;scimType&quot;: &quot;internalServerError&quot;,&quot;detail&quot;: &quot;拡張機能のjson処理中にエラーが発生しました - アカウント{ACCOUNT}&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;500&quot;,&quot;scimType&quot;: &quot;internalServerError&quot;,&quot;detail&quot;: &quot;拡張のためのjson処理エラー - アカウント{ACCOUNT}&quot;}</code></td>
 </tr>
 </tbody>
 </table>
@@ -504,7 +504,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月24日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

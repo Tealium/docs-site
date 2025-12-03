@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "10",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1502,37 +1502,22 @@
 <li>Save your token in a secure location for reference later. It is required to establish the connection.</li>
 <li>Save the tag.</li>
 </ol>
-<!-- ## Deduplication
-
-To configure this connector to deduplicate events from the Microsoft UET Advertising tag, use the event IDs sent as event attributes with the following naming convention:
-
-```
-microsoft_purchase_id_88
-```
-
-You can find your tag’s UID in the Tealium iQ Tags table or the tag details screen.
-
-For example, a purchase event from a tag with a UID of 88 would send the following attribute value:
-
-```
-microsoft_purchase_id_88 : “084b1cda7461…”
-```
-
-A page load event from the same tag would send the following attribute value:
-
-```
-microsoft_pageLoad_id_88 : “028b2ade7478…”
-```
-
-### Automatic deduplication
-
-When the Automatic Deduplication value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an Event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.
-
-The connector follows this order of operations:
-
-* If Automatic Deduplication is populated, and the value is found in the data layer, (for example, `microsoft_purchase_id_88`) this value supersedes anything mapped in Event ID.
-* If Automatic Deduplication is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, `microsoft_purchase_id`).
-* If Automatic Deduplication is populated, but the value isn’t found, the mapped Event ID is used, if it is populated.-->
+<h2 id="deduplication">Deduplication</h2>
+<p>To configure this connector to deduplicate events from the Microsoft UET Advertising tag, use the event IDs sent as event attributes with the following naming convention:</p>
+<pre tabindex="0"><code>microsoft_event_id_{EVENT_NAME}}_{TAG_ID}}
+</code></pre><p>You can find your tag’s UID in the Tealium iQ Tags table or the tag details screen.</p>
+<p>For example, a purchase event from a tag with a UID of 88 would send the following attribute value:</p>
+<pre tabindex="0"><code>microsoft_event_id_purchase_88: “084b1cda7461…”
+</code></pre><p>A page load event from the same tag would send the following attribute value:</p>
+<pre tabindex="0"><code>microsoft_event_id_pageload_88: “028b2ade7478…”
+</code></pre><h3 id="automatic-deduplication">Automatic deduplication</h3>
+<p>When the Automatic Deduplication value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an Event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
+<p>The connector follows this order of operations:</p>
+<ul>
+<li>If Automatic Deduplication is populated, and the value is found in the data layer, (for example, <code>microsoft_purchase_id_88</code>) this value supersedes anything mapped in Event ID.</li>
+<li>If Automatic Deduplication is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, <code>microsoft_purchase_id</code>).</li>
+<li>If Automatic Deduplication is populated, but the value isn’t found, the mapped Event ID is used, if it is populated.</li>
+</ul>
 <h2 id="offline-conversions">Offline conversions</h2>
 <p>To process offline and store events through the Microsoft UET Conversions connector, configure the connector to include the required parameters.</p>
 <p>For online conversions, attribution typically occurs in real time. For offline conversions, Microsoft supports backdated events up to 90 days old. Attribution accuracy improves when events are sent closer to real time.</p>
@@ -1586,8 +1571,8 @@ The connector follows this order of operations:
 </li>
 </ul>
 </li>
+<li>Enable automatic deduplication by turning on <strong>Event ID Generation</strong> in the UET Tag. Enter the <strong>Tag ID</strong> in the <strong>Automatic Deduplication</strong> mapping section. Microsoft detects matching IDs across delivery methods and prevents double-counting. This step is important in dual-delivery setups to maintain data integrity.</li>
 </ul>
-<!-- * Enable automatic deduplication by turning on **Event ID Generation** in the UET Tag. Enter the **Tag ID** in the **Automatic Deduplication** mapping section. Microsoft detects matching IDs across delivery methods and prevents double-counting. This step is important in dual-delivery setups to maintain data integrity. -->
 <h2 id="frequently-asked-questions">Frequently asked questions</h2>
 <ul>
 <li><strong>Can I use the UET Conversion API without the UET tag?</strong><br>
@@ -1893,7 +1878,7 @@ Yes. Send lead form completions, pre-qualification submissions, and call center 
 </tr>
 </tbody>
 </table>
-<h5 id="automatic-deduplication">Automatic Deduplication</h5>
+<h5 id="automatic-deduplication-1">Automatic Deduplication</h5>
 <table>
 <thead>
 <tr>
@@ -1985,7 +1970,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 18, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2004,6 +1989,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-access-token" href="javascript:void(0)">Generate access token</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>

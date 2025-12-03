@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1455,56 +1455,50 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li>Microsoft Ads account</li>
+<li>Microsoft user with super admin or write access within the Microsoft Ads tenant.
+<ul>
+<li>The authenticating user must be a Personal Microsoft account (MSA).</li>
+<li>You may use your work email address, but it must be registered as a personal account rather than accessed through SSO. If your organization uses SSO or MFA for Microsoft login, you may still use your work email by registering it as a personal account. During registration, choose <strong>Use a personal account</strong>.</li>
+</ul>
+</li>
+<li>Customer match is enabled and approved for your account region. For more information, see <a href="https://help.ads.microsoft.com/#apex/ads/en/56921/1">Microsoft: Customer match - Use your own data to find customers</a>.</li>
+</ul>
+<h3 id="accept-microsoft-terms-of-service">Accept Microsoft Terms of Service</h3>
+<p>If the Microsoft user you use to authenticate to Tealium is new to the business account, you must first:</p>
+<ol>
+<li>Sign in to Microsoft Ads with that user.</li>
+<li>Create an audience manually once to trigger acceptance of the Microsoft Customer Match Terms and Conditions.</li>
+</ol>
+<p>Until these terms are accepted, the API rejects audience creation requests originating from Tealium.</p>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Bulk API</li>
 <li>API Version: v13</li>
 <li>API Endpoint: <code>https://bulk.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/V13/BulkService.svc</code></li>
-<li>Documentation: <a href="https://learn.microsoft.com/en-us/advertising/bulk-service/bulk-service-reference?view=bingads-13">Bulk API</a></li>
+<li>Documentation: <a href="https://learn.microsoft.com/en-us/advertising/bulk-service/bulk-service-reference?view=bingads-13">Microsoft: Bulk API</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
+<h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100000</li>
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 100 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Add User to Audience</td>
-<td>✓</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Remove User from Audience</td>
-<td>✓</td>
-<td>✗</td>
-</tr>
-</tbody>
-</table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Account ID</strong><br>
-(Required) The identifier of the ad account that owns or is associated with the entities in the request.<br>It can be found in the URL (for example, <code>AID=</code>) when the advertiser logs into Microsoft Ads UI.</li>
-<li><strong>Customer ID</strong><br>
-(Required) The identifier of the manager account (customer) the user is accessing or operating from.<br>It can be found in the URL (for example, <code>CID=</code>) when the advertiser logs into Microsoft Ads UI.</li>
+<li><strong>Account ID</strong>: (Required) The identifier of the ad account that owns or is associated with the entities in the request. It can be found in the URL (for example, <code>AID=</code>) when the advertiser logs into Microsoft Ads UI.</li>
+<li><strong>Customer ID</strong>: (Required) The identifier of the manager account (customer) the user is accessing or operating from. It can be found in the URL (for example, <code>CID=</code>) when the advertiser logs into Microsoft Ads UI.</li>
 </ul>
 <p>After setting <strong>Account ID</strong> and <strong>Customer ID</strong>, click <strong>Establish Connection</strong> to connect to Microsoft&rsquo;s servers.</p>
-<h3 id="create-customer-match-list">Create Customer Match List</h3>
+<h3 id="create-customer-match-list">Create customer match list</h3>
 <p>Use this option to create customer match lists to add subscribers to target with advertising. The resulting <strong>Request ID</strong> value can be used to determine if the list creation process has completed.</p>
-<p>After you click the <strong>Create</strong> button, please wait until you receive a confirmation message. If the customer list has successfully uploaded, the interface will display the upload&rsquo;s <strong>Request ID</strong>. You can copy the <strong>Request ID</strong> and use it to check the upload status.</p>
+<p>After you click the <strong>Create</strong> button, wait until you receive a confirmation message. If the customer list has successfully uploaded, the interface will display the upload&rsquo;s <strong>Request ID</strong>. You can copy the <strong>Request ID</strong> and use it to check the upload status.</p>
 <table>
 <thead>
 <tr>
@@ -1535,7 +1529,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="check-upload-status">Check Upload Status</h3>
+<h3 id="check-upload-status">Check upload status</h3>
 <p>Use this option to check the status of your list creation and upload status. This lets you confirm that customers are being subscribed to the proper lists.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the upload status is <code>Completed</code> or <code>CompletedWithErrors</code>, the URL of the results file will appear. Use this URL to download the results file. The URL expires five minutes after the Check the Status operation displays the upload status. If you do not start the download within this period of time, you will need to check the status again to get a new URL.</p>
 <table>
@@ -1552,8 +1546,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="use-cases">Use cases</h2>
+<h4 id="high-value-remarketing-across-microsoft-properties">High value remarketing across Microsoft properties</h4>
+<p>Activate high-value user segments across Bing, MSN, Outlook, and Edge with improved accuracy by syncing real-time audience lists from Tealium. Behavioral remarketing powered by first-party identifiers improves match rates, reduces dependency on browser-based tracking, and increases ROAS.</p>
+<p>Examples:</p>
+<ul>
+<li>Re-engage cart abandoners who viewed products but didn’t convert.</li>
+<li>Reinforce promotions for users who previously interacted with your brand.</li>
+<li>Extend the reach of CRM audiences into Microsoft’s native ad environment.</li>
+</ul>
+<h4 id="suppression-lists-for-budget-efficiency">Suppression lists for budget efficiency</h4>
+<p>Remove converted users from prospecting and broad-match campaigns. Advertisers reduce wasted budget and direct spend toward incremental users more likely to convert sharpening bidding efficiency.</p>
+<p>Examples:</p>
+<ul>
+<li>Exclude recent purchasers from acquisition campaigns.</li>
+<li>Suppress customer service or refund requesters.</li>
+<li>Remove churned or unsubscribed users.</li>
+</ul>
+<h4 id="lifecycle-and-crm-to-ad-activation">Lifecycle and CRM-to-Ad activation</h4>
+<p>Sync loyalty tiers, subscription statuses, and customer lifecycle stages directly from your CDP into Microsoft Ads. This unlocks a powerful bid strategy: target users differently based on lifetime value and customer stage.</p>
+<p>Examples:</p>
+<ul>
+<li>Loyalty tiers for VIP-only upsell campaigns.</li>
+<li>Subscription renewal reminders.</li>
+<li>Push known in-store customers into digital remarketing campaigns.</li>
+</ul>
+<h4 id="omnichannel-personalization">Omnichannel personalization</h4>
+<p>Bridge offline and online interactions by syncing hashed first-party identifiers.</p>
 <h2 id="actions">Actions</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add User to Audience</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Remove User from Audience</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p>Enter a name for the action and select the <strong>Action Type</strong>.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="add-user-to-audience">Add User to Audience</h3>
 <h4 id="parameters">Parameters</h4>
@@ -1567,7 +1609,7 @@
 <tbody>
 <tr>
 <td>Customer Match List ID</td>
-<td>Please enter the Customer Match List ID.<br>To find your Customer Match List ID: log into <a href="https://ui.ads.microsoft.com/">Microsoft Advertising UI</a> and select <strong>Tools</strong>, then click the <strong>Audiences</strong> tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br></td>
+<td>Enter the customer match list ID.<br>To find your customer match list ID: log into <a href="https://ui.ads.microsoft.com/">Microsoft Advertising UI</a> and select <strong>Tools</strong>, then click the <strong>Audiences</strong> tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br></td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -1591,7 +1633,7 @@
 <tbody>
 <tr>
 <td>Customer Match List ID</td>
-<td>Please enter the Customer Match List ID.<br>To find your Customer Match List ID: log into <a href="https://ui.ads.microsoft.com/">Microsoft Advertising UI</a> and select <strong>Tools</strong>, then click the <strong>Audiences</strong> tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br></td>
+<td>Enter the customer match list ID.<br>To find your customer match list ID: log into <a href="https://ui.ads.microsoft.com/">Microsoft Advertising UI</a> and select <strong>Tools</strong>, then click the <strong>Audiences</strong> tab.<br>Note: Before you can upload customer list data, you must first accept the terms and conditions in the Microsoft Advertising UI.<br></td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -1663,7 +1705,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 22, 2023 
+          <p>This page was last updated:  November 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1677,13 +1719,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-customer-match-list" href="javascript:void(0)">Create Customer Match List</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#check-upload-status" href="javascript:void(0)">Check Upload Status</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#accept-microsoft-terms-of-service" href="javascript:void(0)">Accept Microsoft Terms of Service</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-customer-match-list" href="javascript:void(0)">Create customer match list</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#check-upload-status" href="javascript:void(0)">Check upload status</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-cases" href="javascript:void(0)">Use cases</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-audience" href="javascript:void(0)">Add User to Audience</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-audience" href="javascript:void(0)">Remove User from Audience</a></li>
               </nav>

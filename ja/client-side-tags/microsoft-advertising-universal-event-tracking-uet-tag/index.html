@@ -860,6 +860,9 @@
       <a href="/ja/client-side-tags/rokt-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Rokt</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/roku-javascript-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Roku JS Pixel</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/rtb-house-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>RTB House リターゲティング</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1641,6 +1644,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rokt-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-tag">Rokt</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/roku-javascript-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-javascript-pixel-tag">Roku JS Pixel</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rtb-house-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-tarargeting-tag-setup-guide">RTB House リターゲティング</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rtoaster-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtoaster-tag">RToaster</a></li>
@@ -1862,8 +1867,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>
-<p>マッピングを使用して：</p>
+<li>マッピングを使用して：
 <ul>
 <li>標準構成値を上書きします。</li>
 <li>Eコマース拡張値を上書きします。</li>
@@ -1871,11 +1875,8 @@
 <li>イベントトリガーを構成します。</li>
 </ul>
 </li>
-<li>
-<p><strong>Standard</strong> タブで <strong>Custom Property/Parameter</strong> にパラメーターをマッピングすると、そのパラメーターはすべてのイベントに送信されます。特定のイベントにのみデータを送信するには、<strong>Event Parameters</strong> タブを使用します。</p>
-</li>
-<li>
-<p>次のEコマース拡張値をサポートしています：</p>
+<li><strong>Standard</strong> タブで <strong>Custom Property/Parameter</strong> にパラメーターをマッピングすると、そのパラメーターはすべてのイベントに送信されます。特定のイベントにのみデータを送信するには、<strong>Event Parameters</strong> タブを使用します。</li>
+<li>次のEコマース拡張値をサポートします：
 <ul>
 <li>注文ID。</li>
 <li>注文小計。</li>
@@ -1883,7 +1884,7 @@
 <li>注文税金。</li>
 <li>注文通貨。</li>
 <li>注文クーポン/プロモーションコード。</li>
-<li>商品IDのリスト。</li>
+<li>製品IDのリスト。</li>
 <li>名前のリスト。</li>
 <li>ブランドのリスト。</li>
 <li>カテゴリのリスト。</li>
@@ -1897,16 +1898,39 @@
 <p>タグを追加する際には、以下の構成を構成します：</p>
 <ul>
 <li><strong>Tag ID</strong>: あなたのMicrosoft Advertisingタグ識別子。</li>
-<li><strong>Ad Storage Consent</strong>: 広告保存のデフォルト同意を構成します。<strong>Data Mappings</strong> セクションで <code>ad_storage</code> パラメーターをマッピングすることにより、この値を動的に更新します。</li>
+<li><strong>ID Sync Beacon</strong>: 内部ユーザーIDをMicrosoftのサードパーティクッキーIDに持続させます。<a href="/ja/server-side-connectors/microsoft-uet-conversion-api-connector/">Microsoft UET Conversion APIコネクタ</a>を使用する場合に推奨されます。</li>
+<li><strong>Ad Storage Consent</strong>: 広告保存のデフォルト同意を構成します。<code>ad_storage</code>パラメーターを<strong>Data Mappings</strong>セクションでマッピングすることにより、この値を動的に更新します。</li>
 <li><strong>Automatically read from Tealium Consent Cookie</strong>: <code>true</code>に構成すると、<a href="/ja/consent/client-side/consent-management/about/">Tealium consent manager</a>に基づいて同意が構成されます。</li>
+<li><strong>Generate Event ID</strong>: すべてのトラッキングイベントに対して自動的にイベントIDを生成します。<a href="/ja/server-side-connectors/microsoft-uet-conversion-api-connector/">Microsoft UET Conversion APIコネクタ</a>を使用する際の重複排除に推奨されます。</li>
+</ul>
+<h3 id="conversions-api">Conversions API</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能にはアクティブな<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>が必要です。</p>
+<p>Microsoft UET Conversion APIをサポートするには、<strong>Generate Event ID</strong>を<code>true</code>に構成します。<strong>Generate Event ID</strong>が有効になっている場合、このタグは追跡される各イベントに対して一意のイベントIDを生成し、それをTealium EventStreamの属性として送信し、Microsoft UET Conversion APIコネクタで使用し、<code>event_id</code>パラメーターでMicrosoft Advertising UETタグに渡します。このイベントID属性は、コネクタでマッピングされ、ウェブベースのタグとサーバーサイドの統合を同期させることができます。</p>
+<p>タグは、以下の命名規則を使用してイベントIDを生成したイベント属性を送信します：</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">microsoft_event_id_{EVENT_TYPE}_{TAG_UID}
+</code></pre><p>例えば、タグ＃88からの購入イベントは、以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;microsoft_event_id_purchase_88&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同じタグからのページロードイベントは、以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;microsoft_event_id_pageload_88&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="重複排除">重複排除</h4>
+<p>適切なイベント重複排除を確保するために、Microsoft Advertising UETタグからのイベントIDをTealium Collectタグによって送信されるペイロードに含める必要があります。これを行うには、次の手順を使用します：</p>
+<ul>
+<li><strong>Tag Timing</strong>ドロップダウンから<strong>Prioritized</strong>を選択します。</li>
+<li><strong>Bundle Flag</strong>トグルを<code>On</code>に構成します。</li>
+<li><a href="/ja/iq-tag-management/extensions/load-order-manager/">Load Order Manager screen</a>を使用して、Tealium Collectタグの前にMicrosoft Advertising UETタグを発火させます。Tealium Collectタグは最後に発火させることをお勧めします。
+これらのイベントID属性の使用についての情報は、<a href="/ja/server-side-connectors/microsoft-uet-conversion-api-connector/#deduplication">Microsoft UET Conversion APIコネクタ：重複排除</a>を参照してください。</li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="同意モード">同意モード</h2>
-<p>このタグの同意モードを実装するには、次の2つのオプションがあります：</p>
+<p>このタグの同意モードを実装するには2つのオプションがあります：</p>
 <ul>
 <li><a href="/ja/consent/client-side/consent-management/about/">クライアントサイド同意管理</a>を使用し、Tealium同意クッキーを自動的に読み取ります。</li>
-<li><a href="/ja/iq-tag-management/extensions/extensions-list/javascript-code-extension/">JavaScript Code extension</a>を追加して、あなたの同意管理プラットフォーム（CMP）からこのタグへの同意選択とカテゴリマッピングをマップします。</li>
+<li><a href="/ja/iq-tag-management/extensions/extensions-list/javascript-code-extension/">JavaScript Code extension</a>を追加して、同意管理プラットフォーム（CMP）からの同意選択とカテゴリマッピングをこのタグにマッピングします。</li>
 </ul>
 <p>訪問が同意選択を行うと、タグは第一者および第三者クッキーに対して適切なアプローチを選択します：</p>
 <ul>
@@ -1914,21 +1938,21 @@
 <li><strong>Denied</strong>: 第一者クッキーは読み書きされず、第三者クッキーは詐欺およびスパム目的でのみ読み取り可能で、広告目的ではありません。</li>
 </ul>
 <h3 id="クライアントサイド同意管理">クライアントサイド同意管理</h3>
-<p>このタグの同意モードをクライアントサイド同意管理を使用して実装するには、タグ構成で <strong>Automatically read from Tealium Consent Cookie</strong> を <code>true</code> に構成します。</p>
+<p>このタグの同意モードをクライアントサイド同意管理を使用して実装するには、タグ構成で<strong>Automatically read from Tealium Consent Cookie</strong>を<code>true</code>に構成します。</p>
 <h3 id="javascript-code-extension">JavaScript Code extension</h3>
 <p>エンドユーザーの同意選択をMicrosoft同意モード構成にマッピングするには、JavaScript Code extensionを使用します。拡張機能を次のように構成します：</p>
 <ul>
-<li><strong>Scope</strong> を <strong>After Load Rules (default)</strong> に構成</li>
-<li><strong>Occurrence</strong> を <strong>Run Always</strong> に構成</li>
-<li>あなたのCMPのためのロジックで <code>CUSTOM_LOGIC</code> を置き換えることにより、CMP用の次のJavaScriptコードテンプレートをカスタマイズできます。</li>
+<li><strong>Scope</strong>を**After Load Rules (default)**に構成します。</li>
+<li><strong>Occurrence</strong>を<strong>Run Always</strong>に構成します。</li>
+<li>CMPのロジックに<code>CUSTOM_LOGIC</code>を置き換えて、CMP用の次のコードテンプレートをカスタマイズします。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
-</span></span></code></pre></div><p>例えば、以下のコードはOneTrust用です。</p>
+</span></span></code></pre></div><p>例えば、次のコードはOneTrust用です。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
-</span></span></code></pre></div><p>これらの正確な変数名を使用する場合、追加のマッピングは必要ありません。タグの最新バージョンはデフォルトでこれらの変数を使用します。 <code>ad_storage</code> パラメーターをあなたの特定のケースの属性にマッピングすることにより、これらの変数を上書きします。</p>
+</span></span></code></pre></div><p>これらの正確な変数名を使用する場合、追加のマッピングは必要ありません。タグの最新バージョンはデフォルトでこれらの変数を使用します。<code>ad_storage</code>パラメーターをあなたの特定のケースの属性にマッピングすることにより、これらの変数を上書きします。</p>
 <h2 id="データマッピング">データマッピング</h2>
 <p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは次のとおりです：</p>
@@ -1943,15 +1967,15 @@
 <tbody>
 <tr>
 <td><code>tagid</code></td>
-<td><ul><li>タグID。</li><li>Microsoft Advertisingによって提供されるあなたのタグ識別子。</li></ul></td>
+<td><ul><li>タグID。</li><li>Microsoft Advertisingから提供されるタグ識別子。</li></ul></td>
 </tr>
 <tr>
 <td><code>event_category</code></td>
-<td><ul><li>イベントカテゴリ。</li><li>追跡されている要素またはオブジェクトに関する情報を送信します。</li><li>例：<code>Button</code>。</li></ul></td>
+<td><ul><li>イベントカテゴリ。</li><li>追跡される要素またはオブジェクトに関する情報を送信します。</li><li>例：<code>Button</code>。</li></ul></td>
 </tr>
 <tr>
 <td><code>event_action</code></td>
-<td><ul><li>イベントアクション。</li><li>ユーザーアクションを送信します。</li><li>例：<code>click</code>, <code>mousedown</code>。</li></ul></td>
+<td><ul><li>イベントアクション。</li><li>ユーザーのアクションを送信します。</li><li>例：<code>click</code>, <code>mousedown</code>。</li></ul></td>
 </tr>
 <tr>
 <td><code>event_label</code></td>
@@ -1967,15 +1991,15 @@
 </tr>
 <tr>
 <td><code>fatal</code></td>
-<td><ul><li>エラー致命的。</li><li>ユーザーが経験したエラーが致命的かどうか。</li></ul></td>
+<td><ul><li>エラー致命度。</li><li>ユーザーが経験したエラーが致命的かどうか。</li></ul></td>
 </tr>
 <tr>
 <td><code>method</code></td>
-<td><ul><li>方法。</li><li>ユーザーのアクションに関連する方法。</li></ul></td>
+<td><ul><li>メソッド。</li><li>ユーザーのアクションに関連するメソッド。</li></ul></td>
 </tr>
 <tr>
 <td><code>screen_name</code></td>
-<td><ul><li>スクリーン名。</li><li>ユーザーが現在表示しているスクリーンの名前。</li></ul></td>
+<td><ul><li>スクリーン名。</li><li>ユーザーが現在閲覧しているスクリーンの名前。</li></ul></td>
 </tr>
 <tr>
 <td><code>search_term</code></td>
@@ -2007,7 +2031,7 @@
 </tr>
 <tr>
 <td><code>enableAutoSpaTracking</code></td>
-<td>自動SPAトラッキングを有効にします。</td>
+<td>自動SPAトラッキングを有効にする。</td>
 </tr>
 <tr>
 <td><code>id_sync_beacon</code></td>
@@ -2027,11 +2051,19 @@
 </tr>
 <tr>
 <td><code>custom.myvar</code></td>
-<td><ul><li>カスタムプロパティ/パラメーター。</li><li>あなたのイベントのためのカスタムプロパティ。</li><li>すべてのイベントで送信されますが、特定のイベントのプロパティを構成するにはイベントパラメーターを使用します。</li><li><code>myvar</code>をあなたのプロパティの名前に置き換えてください。</li></ul></td>
+<td><ul><li>カスタムプロパティ/パラメータ。</li><li>イベント用のカスタムプロパティ。</li><li>すべてのイベントで送信され、イベントパラメータを使用して特定のイベントのプロパティを構成します。</li><li><code>myvar</code>をプロパティの名前に置き換えてください。</li></ul></td>
+</tr>
+<tr>
+<td><code>generate_event_id</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td><code>String</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="eコマース">Eコマース</h3>
+<h3 id="e-コマース">E-コマース</h3>
 <table>
 <thead>
 <tr>
@@ -2042,7 +2074,7 @@
 <tbody>
 <tr>
 <td><code>checkout_step</code></td>
-<td><ul><li>チェックアウトステップ。</li><li>ユーザーが現在どのチェックアウトプロセスのステップにいるか。</li></ul></td>
+<td><ul><li>チェックアウトステップ。</li><li>ユーザーが現在進行中のチェックアウトプロセスのステップ。</li></ul></td>
 </tr>
 <tr>
 <td><code>checkout_option</code></td>
@@ -2050,87 +2082,81 @@
 </tr>
 <tr>
 <td><code>order_id</code></td>
-<td><ul><li>注文ID。</li><li>デフォルトのeコマース値 <code>_corder</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>注文ID。</li><li>デフォルトのeコマース値 <code>_corder</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_subtotal</code></td>
-<td><ul><li>小計。</li><li>デフォルトのeコマース値 <code>_csubtotal</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>小計。</li><li>デフォルトのeコマース値 <code>_csubtotal</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_shipping</code></td>
-<td><ul><li>送料。</li><li>デフォルトのeコマース値 <code>_cship</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>送料。</li><li>デフォルトのeコマース値 <code>_cship</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_tax</code></td>
-<td><ul><li>税金。</li><li>デフォルトのeコマース値 <code>_ctax</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>税金。</li><li>デフォルトのeコマース値 <code>_ctax</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_currency</code></td>
-<td><ul><li>通貨。</li><li>デフォルトのeコマース値 <code>_ccurrency</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>通貨。</li><li>デフォルトのeコマース値 <code>_ccurrency</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_coupon_code</code></td>
-<td><ul><li>プロモーションコード。</li><li>デフォルトのeコマース値 <code>_cpromo</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>プロモーションコード。</li><li>デフォルトのeコマース値 <code>_cpromo</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_id</code></td>
-<td><ul><li>配列</li><li>商品IDのリスト。</li><li>デフォルトのeコマース値 <code>_cprod</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>製品IDのリスト。</li><li>デフォルトのeコマース値 <code>_cprod</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_name</code></td>
-<td><ul><li>配列</li><li>商品名のリスト。</li><li>デフォルトのeコマース値 <code>_cprodname</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>名前のリスト。</li><li>デフォルトのeコマース値 <code>_cprodname</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_brand</code></td>
-<td><ul><li>配列</li><li>ブランドのリスト。</li><li>デフォルトのeコマース値 <code>_cbrand</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>ブランドのリスト。</li><li>デフォルトのeコマース値 <code>_cbrand</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_category</code></td>
-<td><ul><li>配列</li><li>カテゴリのリスト。</li><li>デフォルトのeコマース値 <code>_ccat</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>カテゴリのリスト。</li><li>デフォルトのeコマース値 <code>_ccat</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_quantity</code></td>
-<td><ul><li>配列</li><li>数量のリスト。</li><li>デフォルトのeコマース値 <code>_cquan</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>数量のリスト。</li><li>デフォルトのeコマース値 <code>_cquan</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>product_unit_price</code></td>
-<td><ul><li>配列</li><li>価格のリスト。</li><li>デフォルトのeコマース値 <code>_cprice</code> を上書きするために使用。</li></ul></td>
+<td><ul><li>配列</li><li>価格のリスト。</li><li>デフォルトのeコマース値 <code>_cprice</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
-<td>商品クリエイティブ名のリスト</td>
-<td><ul><li>配列</li><li>商品に使用されるクリエイティブ名の配列。</li></ul></td>
+<td>製品クリエイティブ名のリスト</td>
+<td><ul><li>配列</li><li>製品に使用されるクリエイティブ名の配列。</li></ul></td>
 </tr>
 <tr>
-<td>商品クリエイティブスロットのリスト</td>
-<td><ul><li>配列</li><li>商品に使用されるクリエイティブスロットの配列。</li></ul></td>
+<td>製品クリエイティブスロットのリスト</td>
+<td><ul><li>配列</li><li>製品に使用されるクリエイティブスロットの配列。</li></ul></td>
 </tr>
 <tr>
-<td>商品ロケーションIDのリスト</td>
-<td><ul><li>配列</li><li>商品に使用されるロケーションIDの配列。</li></ul></td>
+<td>製品ロケーションIDのリスト</td>
+<td><ul><li>配列</li><li>製品に使用されるロケーションIDの配列。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="イベントとエンゲージメント">イベントとエンゲージメント</h3>
-<p>特定のイベントをページでトリガーするためにこれらの目的地にマッピングします。</p>
-<p>イベントをトリガーするために以下のステップを使用します：</p>
+<p>特定のイベントをページ上でトリガーするためにこれらの目的地にマッピングします。</p>
+<p>イベントをトリガーするための以下のステップを使用します：</p>
 <ol>
-<li>
-<p>ドロップダウンリストからイベントを選択します。
-事前定義されたリストから選択するか、カスタムイベントを作成します。</p>
+<li>リストからイベントを選択します。<br>
+事前定義されたリストから選択するか、カスタムイベントを作成します。</li>
+</ol>
 <ul>
 <li>カスタムイベントの場合、それを識別する名前を入力します。</li>
 </ul>
-</li>
-<li>
-<p><strong>トリガー</strong> フィールドにマッピングされる変数の値を入力します。</p>
-</li>
-<li>
-<p>より多くのイベントをマッピングするには、プラス記号 (<strong>+</strong>) をクリックしてステップ1と2を繰り返します。</p>
-</li>
-<li>
-<p><strong>適用</strong> をクリックします。
-提供された値がデータレイヤーで見つかったときにイベントがトリガーされます。</p>
-</li>
+<ol>
+<li><strong>トリガー</strong>フィールドにマッピングされる変数の値を入力します。</li>
+<li>より多くのイベントをマッピングするには、プラス記号 (<strong>+</strong>) をクリックしてステップ1と2を繰り返します。</li>
+<li><strong>適用</strong>をクリックします。<br>
+データレイヤーに提供された値が見つかるとイベントがトリガーされます。</li>
 </ol>
 <table>
 <thead>
@@ -2178,15 +2204,15 @@
 </tr>
 <tr>
 <td><code>purchase</code></td>
-<td><ul><li>購入。</li><li>ユーザーが一つ以上の商品の購入を完了しました。</li></ul></td>
+<td><ul><li>購入。</li><li>ユーザーが一つ以上の製品の購入を完了しました。</li></ul></td>
 </tr>
 <tr>
 <td><code>refund</code></td>
-<td><ul><li>払い戻し。</li><li>ユーザーが一つ以上の商品について払い戻しを要求しました。</li></ul></td>
+<td><ul><li>払い戻し。</li><li>ユーザーが一つ以上の製品に対して払い戻しを要求しました。</li></ul></td>
 </tr>
 <tr>
 <td><code>remove_from_cart</code></td>
-<td><ul><li>カートから削除。</li><li>ユーザーがショッピングカートから一つ以上のアイテムを削除しました。</li></ul></td>
+<td><ul><li>カートからの削除。</li><li>ユーザーがショッピングカートから一つ以上のアイテムを削除しました。</li></ul></td>
 </tr>
 <tr>
 <td><code>screen_view</code></td>
@@ -2194,7 +2220,7 @@
 </tr>
 <tr>
 <td><code>search</code></td>
-<td><ul><li>検索。</li><li>ユーザーが検索しました。</li></ul></td>
+<td><ul><li>検索。</li><li>ユーザーが検索を行いました。</li></ul></td>
 </tr>
 <tr>
 <td><code>select_content</code></td>
@@ -2230,7 +2256,7 @@
 </tr>
 <tr>
 <td><code>view_search_results</code></td>
-<td><ul><li>検索結果表示。</li><li>ユーザーが検索の結果を閲覧しました。</li></ul></td>
+<td><ul><li>検索結果表示。</li><li>ユーザーが検索結果を閲覧しました。</li></ul></td>
 </tr>
 <tr>
 <td><code>update_consent</code></td>
@@ -2242,27 +2268,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="商品オーディエンスイベント">商品オーディエンスイベント</h3>
+<h3 id="製品オーディエンスイベント">製品オーディエンスイベント</h3>
 <p>特定のイベントをページでトリガーするためにこれらの目的地にマッピングします。</p>
-<p>イベントをトリガーするために以下のステップを使用します：</p>
+<p>イベントをトリガーするには、以下の手順を使用します：</p>
 <ol>
-<li>
-<p>ドロップダウンリストからイベントを選択します。
-事前定義されたリストから選択するか、カスタムイベントを作成します。</p>
+<li>リストからイベントを選択します。<br>
+事前定義されたリストから選択するか、カスタムイベントを作成します。</li>
+</ol>
 <ul>
 <li>カスタムイベントの場合、それを識別する名前を入力します。</li>
 </ul>
-</li>
-<li>
-<p><strong>トリガー</strong> フィールドにマッピングされる変数の値を入力します。</p>
-</li>
-<li>
-<p>より多くのイベントをマッピングするには、プラス記号 (<strong>+</strong>) をクリックしてステップ1と2を繰り返します。</p>
-</li>
-<li>
-<p><strong>適用</strong> をクリックします。
-提供された値がデータレイヤーで見つかったときにイベントがトリガーされます。</p>
-</li>
+<ol>
+<li><strong>トリガー</strong> フィールドにマッピングされる変数の値を入力します。</li>
+<li>より多くのイベントをマッピングするには、プラス記号（<strong>+</strong>）をクリックして手順1と2を繰り返します。</li>
+<li><strong>適用</strong>をクリックします。<br>
+提供された値がデータレイヤーで見つかったときにイベントがトリガーされます。</li>
 </ol>
 <table>
 <thead>
@@ -2274,19 +2294,19 @@
 <tbody>
 <tr>
 <td><code>retail</code></td>
-<td><ul><li>小売。</li><li>小売ベースのマーケティングのためにデータを送信します。</li></ul></td>
+<td><ul><li>小売。</li><li>小売ベースのマーケティングのためのデータを送信します。</li></ul></td>
 </tr>
 <tr>
 <td><code>travel</code></td>
-<td><ul><li>旅行。</li><li>旅行ベースのマーケティングのためにデータを送信します。</li></ul></td>
+<td><ul><li>旅行。</li><li>旅行ベースのマーケティングのためのデータを送信します。</li></ul></td>
 </tr>
 <tr>
 <td><code>hotel</code></td>
-<td><ul><li>ホテル。</li><li>ホテルベースのマーケティングのためにデータを送信します。</li></ul></td>
+<td><ul><li>ホテル。</li><li>ホテルベースのマーケティングのためのデータを送信します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="エンリッチメントされた変換データ">エンリッチメントされた変換データ</h3>
+<h3 id="エンリッチメントされたコンバージョンデータ">エンリッチメントされたコンバージョンデータ</h3>
 <table>
 <thead>
 <tr>
@@ -2324,12 +2344,12 @@
 </tbody>
 </table>
 <h3 id="イベントパラメータ">イベントパラメータ</h3>
-<p>これらの目的地にマップすると、以前にマップされたイベントに追加データを渡すことができます。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>パラメータは事前定義されたイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法を学ぶには、<a href="/ja/server-side/event-specifications/manage/">カスタムイベント仕様の作成</a>を参照してください。</p>
-<p>事前定義されたイベントでパラメータを渡すには、以下の手順に従ってください：</p>
+<p>以前にマッピングされたイベントに追加データを渡したい場合、これらの目的地にマッピングします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>パラメータは事前定義されたイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法については、<a href="/ja/server-side/event-specifications/manage/">カスタムイベント仕様の作成</a>を参照してください。</p>
+<p>事前定義されたイベントでパラメータを渡すための手順は以下の通りです：</p>
 <ol>
-<li>ドロップダウンリストからイベントを選択します。</li>
-<li>ドロップダウンリストからパラメータを選択します。
+<li>リストからイベントを選択します。</li>
+<li>リストからパラメータを選択します。<br>
 カスタムパラメータを使用する場合は、それを識別する名前を入力します。</li>
 <li><strong>追加</strong>をクリックします。</li>
 </ol>
@@ -2351,7 +2371,7 @@
 </tr>
 <tr>
 <td><code>event_label</code></td>
-<td><ul><li>イベントラベル。</li><li>現在のイベントのラベル。</li><li>製品デモなど、製品目標に関する情報ラベルや詳細を送信します。</li></ul></td>
+<td><ul><li>イベントラベル。</li><li>現在のイベントのラベル。</li><li>製品デモなど、製品目標に関する情報的なラベルや詳細を送信します。</li></ul></td>
 </tr>
 <tr>
 <td><code>event_value</code></td>
@@ -2375,11 +2395,11 @@
 </tr>
 <tr>
 <td><code>screen_name</code></td>
-<td><ul><li>スクリーン名。</li><li>ユーザーが閲覧している現在のスクリーンの名前。</li></ul></td>
+<td><ul><li>スクリーン名。</li><li>ユーザーが現在閲覧しているスクリーンの名前。</li></ul></td>
 </tr>
 <tr>
 <td><code>search_term</code></td>
-<td><ul><li>検索用語。</li><li>ユーザーの検索で使用される用語。</li></ul></td>
+<td><ul><li>検索用語。</li><li>ユーザーの検索で使用された用語。</li></ul></td>
 </tr>
 <tr>
 <td><code>content_type</code></td>
@@ -2415,7 +2435,7 @@
 </tr>
 <tr>
 <td><code>order_tax</code></td>
-<td><ul><li>税金。</li><li>デフォルトのeコマース値 <code>_ctax</code> を上書きするために使用します。</li></ul></td>
+<td><ul><li>税額。</li><li>デフォルトのeコマース値 <code>_ctax</code> を上書きするために使用します。</li></ul></td>
 </tr>
 <tr>
 <td><code>order_currency</code></td>
@@ -2476,12 +2496,12 @@
 </tbody>
 </table>
 <h3 id="製品オーディエンスパラメータ">製品オーディエンスパラメータ</h3>
-<p>これらの目的地にマップすると、以前にマップされたイベントに追加データを渡すことができます。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>パラメータは事前定義されたイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法を学ぶには、<a href="/ja/server-side/event-specifications/manage/">カスタムイベント仕様の作成</a>を参照してください。</p>
-<p>事前定義されたイベントでパラメータを渡すには、以下の手順に従ってください：</p>
+<p>以前にマッピングしたイベントに追加データを渡したい場合は、これらの目的地にマッピングしてください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>パラメータは定義済みイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法については、<a href="/ja/server-side/event-specifications/manage/">カスタムイベント仕様の作成</a>を参照してください。</p>
+<p>定義済みイベントでパラメータを渡すには、以下の手順を使用します：</p>
 <ol>
-<li>ドロップダウンリストからイベントを選択します。</li>
-<li>ドロップダウンリストからパラメータを選択します。
+<li>リストからイベントを選択します。</li>
+<li>リストからパラメータを選択します。<br>
 カスタムパラメータを使用する場合は、それを識別する名前を入力します。</li>
 <li><strong>追加</strong>をクリックします。</li>
 </ol>
@@ -2495,19 +2515,19 @@
 <tbody>
 <tr>
 <td><code>ecomm_prodid</code></td>
-<td><ul><li>製品ID。</li><li>ユーザーに現在表示されている、または選択された1つ以上のID。</li></ul></td>
+<td><ul><li>商品ID。</li><li>ユーザーが現在見ているか選択した1つ以上のID。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_pagetype</code></td>
-<td><ul><li>ページタイプ。</li><li>ユーザーに表示されている現在のページタイプ。</li></ul></td>
+<td><ul><li>ページタイプ。</li><li>ユーザーが現在見ているページタイプ。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_totalvalue</code></td>
-<td><ul><li>総価値。</li><li>ユーザーに関連する現在の総価値。</li></ul></td>
+<td><ul><li>総価値。</li><li>ユーザーに現在関連付けられている総価値。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_category</code></td>
-<td><ul><li>カテゴリ。</li><li>ユーザーに表示されている現在のカテゴリ。</li></ul></td>
+<td><ul><li>カテゴリ。</li><li>ユーザーが現在見ているカテゴリ。</li></ul></td>
 </tr>
 <tr>
 <td><code>travel_destid</code></td>
@@ -2559,7 +2579,7 @@
 </tr>
 <tr>
 <td><code>hct_pagetype</code></td>
-<td><ul><li>ホテルページタイプ。</li><li>ユーザーに表示されている現在のページタイプ。</li></ul></td>
+<td><ul><li>ホテルページタイプ。</li><li>ユーザーが現在見ているページタイプ。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2574,19 +2594,19 @@
 <tbody>
 <tr>
 <td><code>ecomm_prodid</code></td>
-<td><ul><li>製品ID。</li><li>ユーザーに現在表示されている、または選択された1つ以上のID。</li></ul></td>
+<td><ul><li>商品ID。</li><li>ユーザーが現在見ているか選択した1つ以上のID。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_pagetype</code></td>
-<td><ul><li>ページタイプ。</li><li>ユーザーに表示されている現在のページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>category</code>, <code>product</code>, <code>cart</code>, <code>purchase</code>, <code>other</code>のいずれか。</li></ul></td>
+<td><ul><li>ページタイプ。</li><li>ユーザーが現在見ているページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>category</code>, <code>product</code>, <code>cart</code>, <code>purchase</code>, <code>other</code>のいずれか。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_totalvalue</code></td>
-<td><ul><li>総価値。</li><li>ユーザーに関連する現在の総価値。</li></ul></td>
+<td><ul><li>総価値。</li><li>ユーザーに現在関連付けられている総価値。</li></ul></td>
 </tr>
 <tr>
 <td><code>ecomm_category</code></td>
-<td><ul><li>カテゴリ。</li><li>ユーザーに表示されている現在のカテゴリ。</li></ul></td>
+<td><ul><li>カテゴリ。</li><li>ユーザーが現在見ているカテゴリ。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2609,7 +2629,7 @@
 </tr>
 <tr>
 <td><code>travel_pagetype</code></td>
-<td><ul><li>ページタイプ。</li><li>ユーザーに表示される現在のページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>offerdetail</code>, <code>conversionintent</code>, <code>conversion</code>, <code>cancel</code>, <code>other</code>のいずれか。</li></ul></td>
+<td><ul><li>ページタイプ。</li><li>ユーザーが現在見ているページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>offerdetail</code>, <code>conversionintent</code>, <code>conversion</code>, <code>cancel</code>, <code>other</code>のいずれか。</li></ul></td>
 </tr>
 <tr>
 <td><code>travel_startdate</code></td>
@@ -2660,19 +2680,19 @@
 </tr>
 <tr>
 <td><code>hct_booking_ref</code></td>
-<td><ul><li>予約参照番号を難読化。</li></ul></td>
+<td><ul><li>予約参照番号（難読化済み）。</li></ul></td>
 </tr>
 <tr>
 <td><code>hct_pagetype</code></td>
-<td><ul><li>ホテルページタイプ。</li><li>ユーザーに表示される現在のページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>property</code>, <code>cart</code>, <code>purchase</code>, <code>cancel</code>, <code>other</code>のいずれか。</li></ul></td>
+<td><ul><li>ホテルページタイプ。</li><li>ユーザーが現在見ているページタイプ。</li><li><code>home</code>, <code>searchresults</code>, <code>property</code>, <code>cart</code>, <code>purchase</code>, <code>cancel</code>, <code>other</code>のいずれか。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="ベンダー文書">ベンダー文書</h3>
+<h2 id="ベンダー文書">ベンダー文書</h2>
 <ul>
-<li><a href="http://help.bingads.microsoft.com/#apex/3/en/n5012/2">販売およびその他のコンバージョンの追跡</a></li>
-<li><a href="https://help.bingads.microsoft.com/#apex/3/en/56681/0">UETとは何か、どのように役立つか？</a></li>
-<li><a href="http://help.bingads.microsoft.com/apex/index/3/en-us/53056">FAQ</a></li>
+<li><a href="http://help.bingads.microsoft.com/#apex/3/en/n5012/2">Microsoft Bing: 販売およびその他のコンバージョンの追跡</a></li>
+<li><a href="https://help.bingads.microsoft.com/#apex/3/en/56681/0">Microsoft Bing: UETとは何か、どのように役立つか？</a></li>
+<li><a href="http://help.bingads.microsoft.com/apex/index/3/en-us/53056">Microsoft Bing: よくある質問</a></li>
 </ul>
 
 </div>
@@ -2734,7 +2754,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月22日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2750,23 +2770,24 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversions-api" href="javascript:void(0)">Conversions API</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">同意モード</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E5%90%8C%E6%84%8F%E7%AE%A1%E7%90%86" href="javascript:void(0)">クライアントサイド同意管理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">E-コマース</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E3%82%A8%E3%83%B3%E3%82%B2%E3%83%BC%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">イベントとエンゲージメント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%95%86%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">商品オーディエンスイベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%E5%A4%89%E6%8F%9B%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">エンリッチメントされた変換データ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">製品オーディエンスイベント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">エンリッチメントされたコンバージョンデータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E7%AE%A1%E7%90%86" href="javascript:void(0)">同意管理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベントパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">製品オーディエンスパラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9---%E5%B0%8F%E5%A3%B2" href="javascript:void(0)">製品オーディエンス - 小売</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9---%E6%97%85%E8%A1%8C" href="javascript:void(0)">製品オーディエンス - 旅行</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9---%E3%83%9B%E3%83%86%E3%83%AB" href="javascript:void(0)">製品オーディエンス - ホテル</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>
 

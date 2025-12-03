@@ -418,11 +418,11 @@
 <p>The needs and requirements of our customers vary widely, so we intend to provide a flexible foundation for our customers to build upon.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This article describes Tealium&rsquo;s client-side support for GPC. For information on server-side support, see <a href="/consent/server-side/server-side-support-gpc/">Server-side Global Privacy Control</a></p>
 <h2 id="client-side-support">Client-side support</h2>
-<p>Since the GPC signal is a simple Boolean, CCPA and similar opt-out type regulations are the most relevant and accepted applications today (see <a href="/consent/client-side/consent-management/global-privacy-control/about/">About Global Privacy Control</a> for more detail).</p>
+<p>Since the GPC signal is a simple boolean, CCPA and similar opt-out type regulations are the most relevant and accepted applications today (see <a href="/consent/client-side/consent-management/global-privacy-control/about/">About Global Privacy Control</a> for more detail).</p>
 <p>A strict interpretation might lead to a decision that Tealium iQ shouldn&rsquo;t load at all if the GPC signal is set to <code>true</code>. If all the tags implemented in Tealium iQ sell or share data, this might be the right choice.</p>
 <p>That can be implemented with a Pre Loader JavaScript extension:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">globalPrivacyControl</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealium iQ not loaded due to Global Privacy Control out-out signal
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealium iQ not loaded due to Global Privacy Control opt-out signal
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {};
 </span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>}
@@ -443,7 +443,10 @@
 <figure><a class="slb" href="/images/guides/server-side/global-privacy-control-consent-flow.png"><img src="/images/guides/server-side/global-privacy-control-consent-flow.png" width="793" height="700"/>
     </a>
 </figure>
-<p>This behavior serves as a starting point for building a consent management solution that meets the needs of your users and your business, and the specific behavior should be discussed with your legal team and clearly explained to your users. You can change or remove this behavior by editing the <code>cmDoNotSell</code> template.</p>
+<p>This behavior serves as a starting point for building a consent management solution that meets the needs of your users and your business. Discuss the specific behavior with your legal team and clearly communicate this to your users. Change or remove this behavior by editing the <code>cmDoNotSell</code> template.</p>
+<h4 id="cookieconsent-with-gpc-support">CookieConsent with GPC support</h4>
+<p><strong>For customers who want to integrate the Global Privacy Control signal into their CookieConsent integration.</strong></p>
+<p>For more information, see <a href="/consent/client-side/cookieconsent-consent-integration/">CookieConsent consent integration</a>.</p>
 
 </div>
 
@@ -489,7 +492,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 4, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="クライアント側のグローバルプライバシーコントロール（GPC）" />
+    <meta property="og:title" content="クライアント側グローバルプライバシーコントロール（GPC）" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/consent/client-side/consent-management/global-privacy-control/client-side-support-gpc/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、個人データの販売または共有からのオプトアウトを可能にする提案されたブラウザ標準であるグローバルプライバシーコントロール（GPC）に対するTealiumのクライアント側のサポートについて説明します。" />
+<meta property="og:description" content="この記事では、ユーザーが個人データの販売または共有をオプトアウトできるブラウザ標準であるグローバルプライバシーコントロール（GPC）に対するTealiumのクライアント側サポートについて説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>クライアント側のグローバルプライバシーコントロール（GPC） | グローバルプライバシーコントロール | Tealiumドキュメント</title>
+    <title>クライアント側グローバルプライバシーコントロール（GPC） | グローバルプライバシーコントロール | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -327,7 +327,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/consent/client-side/consent-management/global-privacy-control/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-global-privacy-control">グローバルプライバシーコントロール（GPC）について</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/consent/client-side/consent-management/global-privacy-control/client-side-support-gpc/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".client-side-global-privacy-control">クライアント側のグローバルプライバシーコントロール（GPC）</a></li></ul>
+        <a href="/ja/consent/client-side/consent-management/global-privacy-control/client-side-support-gpc/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".client-side-global-privacy-control">クライアント側グローバルプライバシーコントロール（GPC）</a></li></ul>
       </li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/consent/client-side/consent-management/event-logging/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">イベントログ</a></li></ul>
@@ -399,7 +399,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">クライアント側のグローバルプライバシーコントロール（GPC）</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">クライアント側グローバルプライバシーコントロール（GPC）</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -407,42 +407,45 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、個人データの販売または共有からのオプトアウトを可能にする提案されたブラウザ標準であるグローバルプライバシーコントロール（GPC）に対するTealiumのクライアント側のサポートについて説明します。
+      この記事では、ユーザーが個人データの販売または共有をオプトアウトできるブラウザ標準であるグローバルプライバシーコントロール（GPC）に対するTealiumのクライアント側サポートについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><a href="https://globalprivacycontrol.org/">グローバルプライバシーコントロール</a>（GPC）は、ブラウザレベルで個人データの販売または共有からのオプトアウトを全世界的に可能にします。GPCについての詳細は、<a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">グローバルプライバシーコントロールについて</a>をご覧ください。</p>
+  <p><a href="https://globalprivacycontrol.org/">Global Privacy Control</a>（GPC）は、ブラウザレベルで個人データの販売または共有をオプトアウトするためのグローバルな方法を提供します。GPCについての詳細は、<a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">グローバルプライバシーコントロールについて</a>をご覧ください。</p>
 <p>お客様のニーズと要件は幅広いため、お客様が構築できる柔軟な基盤を提供することを目指しています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この記事では、GPCに対するTealiumのクライアント側のサポートについて説明します。サーバー側のサポートについては、<a href="/ja/consent/server-side/server-side-support-gpc/">サーバー側のグローバルプライバシーコントロール</a>をご覧ください。</p>
-<h2 id="クライアント側のサポート">クライアント側のサポート</h2>
-<p>GPCシグナルは単純なブール値であり、CCPAや類似のオプトアウト型規制が現在最も関連性が高く受け入れられています（詳細は<a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">グローバルプライバシーコントロールについて</a>を参照）。</p>
-<p>厳格な解釈によれば、GPCシグナルが<code>true</code>に構成されている場合、Tealium iQは全くロードされないという判断になるかもしれません。Tealium iQに実装されているすべてのタグがデータを販売または共有している場合、これが正しい選択かもしれません。</p>
-<p>これはプリローダーJavaScript拡張機能で実装できます：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この記事では、GPCに対するTealiumのクライアント側サポートについて説明します。サーバー側のサポートについては、<a href="/ja/consent/server-side/server-side-support-gpc/">サーバー側グローバルプライバシーコントロール</a>をご覧ください。</p>
+<h2 id="クライアント側サポート">クライアント側サポート</h2>
+<p>GPCシグナルは単純なブール値であるため、CCPAや類似のオプトアウト型規制が現在最も関連性が高く、受け入れられています（詳細は<a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">グローバルプライバシーコントロールについて</a>を参照）。</p>
+<p>厳格な解釈によると、GPCシグナルが<code>true</code>に構成されている場合、Tealium iQは全くロードされないという判断になるかもしれません。Tealium iQに実装されているすべてのタグがデータを販売または共有している場合、これが正しい選択かもしれません。</p>
+<p>これは、プリローダーJavaScript拡張機能で実装できます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">globalPrivacyControl</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// グローバルプライバシーコントロールのオプトアウトシグナルによりTealium iQはロードされません
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealium iQ not loaded due to Global Privacy Control opt-out signal
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {};
 </span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="オプトインモデルgdprのような">オプトインモデル（GDPRのような）</h3>
 <p>GPCシグナルはオプトアウトモデル（CCPA/CPRAのような）用に設計されており、オプトインモデル（GDPRのような）には適していません。Tealiumのオプトイン同意管理モジュール（<a href="/ja/consent/client-side/consent-management/explicit-consent-prompt/">明示的同意プロンプトマネージャー</a>および<a href="/ja/consent/client-side/consent-management/consent-preferences-dialog/">同意構成マネージャー</a>）は、標準でGPC関連のオプトアウトロジックを含んでいません。</p>
-<p>お客様のニーズは多岐にわたり、同意管理モジュールはカスタマイズ可能であり、必要に応じてGPCロジックを追加して、組織のニーズや解釈をサポートできるように設計されています。</p>
+<p>お客様のニーズは多岐にわたり、当社の同意管理モジュールはカスタマイズ可能であり、必要に応じてGPCロジックを追加して、お客様の組織のニーズや解釈をサポートするよう設計されています。</p>
 <h3 id="オプトアウトモデルccpacpraのような">オプトアウトモデル（CCPA/CPRAのような）</h3>
-<h4 id="tealium-iq同意統合---オプトアウトクッキー--gpc統合">Tealium iQ同意統合 - オプトアウトクッキー + GPC統合</h4>
+<h4 id="クライアント側同意統合---オプトアウトクッキー--gpc統合">クライアント側同意統合 - オプトアウトクッキー + GPC統合</h4>
 <p><strong>GPCサポートを含むクッキーベースの強制を必要とする既にアクティブなオプトアウトフォームを持つお客様向け。</strong></p>
-<p><a href="/ja/consent/client-side/consent-integrations/about/">Tealium iQ同意統合</a>は、CCPA/CPRAが要求するシンプルなオプトアウトモデルをサポートします。</p>
-<p>この統合は、GPCのオプトアウトシグナルまたは顧客指定のオプトアウトクッキーが見つかった場合にユーザーがオプトアウトしたと仮定します。Tealium iQ同意統合がGPCをどのようにサポートしているかの詳細については、<a href="/ja/consent/client-side/consent-integrations/supported-vendors/#opt-out-cookie--gpc">ドキュメント</a>を参照してください。</p>
-<h4 id="tealium-iq同意統合---gpcサポート付きcmp">Tealium iQ同意統合 - GPCサポート付きCMP</h4>
+<p><a href="/ja/consent/client-side/consent-integrations/about/">クライアント側同意統合</a>は、CCPA/CPRAが要求するシンプルなオプトアウトモデルをサポートします。</p>
+<p>この統合は、GPCオプトアウトシグナルまたは顧客指定のオプトアウトクッキーが見つかった場合にユーザーがオプトアウトしたと仮定します。同意統合がGPCをサポートする方法についての詳細は、<a href="/ja/consent/client-side/consent-integrations/supported-vendors/">サポートされているベンダー統合</a>を参照してください。</p>
+<h4 id="クライアント側同意統合---gpcサポート付きcmp">クライアント側同意統合 - GPCサポート付きCMP</h4>
 <p><strong>GPCサポートを持つ既にアクティブな同意管理プラットフォーム（CMP）を持ち、強制のみが必要なお客様向け。</strong></p>
-<p><a href="/ja/consent/client-side/consent-integrations/about/">Tealium iQ同意統合</a>は、GPCサポートを提供するCMPの成長するリストをサポートしています。これらのCMPは通常、意思決定のキャプチャの一部としてGPCサポートを提供し、追加のロジックや解釈なしにTealium iQを通じて同意統合によって強制されます。もしまだサポートされていないCMPがあれば、カスタム統合も利用可能です。</p>
-<h4 id="tealium-iq同意管理---オプトアウトプライバシーバナーとポップアップ">Tealium iQ同意管理 - オプトアウトプライバシーバナーとポップアップ</h4>
+<p><a href="/ja/consent/client-side/consent-integrations/about/">クライアント側同意統合</a>は、GPCサポートを提供するCMPのリストを拡大しています。これらのCMPは通常、意思決定のキャプチャの一部としてGPCサポートを提供し、Tealium iQによる同意統合を通じて強制されます。追加のロジックや解釈は必要ありません。お使いのCMPがまだサポートされていない場合は、カスタム統合も利用可能です。</p>
+<h4 id="クライアント側同意管理---オプトアウトプライバシーバナーとポップアップ">クライアント側同意管理 - オプトアウトプライバシーバナーとポップアップ</h4>
 <p><strong>Tealium iQで同意管理を完全に実装したいお客様向け。</strong></p>
-<p><code>cmDoNotSell v1.2.0</code>のリリース時点で、以下の図からの論理フローが<a href="/ja/consent/client-side/consent-management/privacy-banner-and-popup/about/">オプトアウトプライバシーバナーとポップアップ</a>に実装されています。</p>
+<p><code>cmDoNotSell v1.2.0</code>のリリース時点で、以下の図からの論理フローが<a href="/ja/consent/client-side/consent-management/privacy-banner-and-popup/about/">CCPAプライバシーバナーとポップアップ</a>に実装されています。</p>
 <figure><a class="slb" href="/images/guides/server-side/global-privacy-control-consent-flow.png"><img src="/images/guides/server-side/global-privacy-control-consent-flow.png" width="793" height="700"/>
     </a>
 </figure>
-<p>この挙動は、ユーザーとビジネスのニーズに合った同意管理ソリューションを構築するための出発点として機能します。具体的な挙動は法務チームと相談し、ユーザーに明確に説明する必要があります。この挙動は<code>cmDoNotSell</code>テンプレートを編集することで変更または削除できます。</p>
+<p>この挙動は、ユーザーとビジネスのニーズに合った同意管理ソリューションを構築するための出発点として機能します。具体的な挙動については法務チームと相談し、ユーザーに明確に伝えてください。<code>cmDoNotSell</code>テンプレートを編集してこの挙動を変更または削除します。</p>
+<h4 id="gpcサポート付きcookieconsent">GPCサポート付きCookieConsent</h4>
+<p><strong>グローバルプライバシーコントロールシグナルをCookieConsent統合に統合したいお客様向け。</strong></p>
+<p>詳細については、<a href="/ja/consent/client-side/cookieconsent-consent-integration/">CookieConsent同意統合</a>をご覧ください。</p>
 
 </div>
 
@@ -488,7 +491,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -502,7 +505,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">クライアント側のサポート</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">クライアント側サポート</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%ABgdpr%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA" href="javascript:void(0)">オプトインモデル（GDPRのような）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%83%88%E3%82%A2%E3%82%A6%E3%83%88%E3%83%A2%E3%83%87%E3%83%ABccpacpra%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA" href="javascript:void(0)">オプトアウトモデル（CCPA/CPRAのような）</a></li>
               </nav>

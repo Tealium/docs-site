@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -1069,7 +1069,6 @@
 </tr>
 </tbody>
 </table>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに進んでください。アクションタブを使用してHTTPリクエストのトリガーを構成します。</p>
 <h2 id="oauth2-3-legged-の構成">OAuth2 (3-legged) の構成</h2>
 <p>WebhookのOAuth実装はサーバーサイドアプリケーションのみをサポートしています。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth 2.0サービスにWebアプリケーションを登録することを忘れないでください。アプリケーションはリダイレクトURLを許可するように構成する必要があります：<code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
@@ -1104,7 +1103,7 @@
 </tr>
 <tr>
 <td>認証URLクエリパラメータ</td>
-<td>認証URLのための一つ以上の名前-値ペアを選択してください。複数のペアをアンパサンド (<code>&amp;</code>) で区切ってください。アンパサンド (<code>&amp;</code>) を先頭に使用しないでください。<br/>正しい例: <code>access_type=offline&amp;prompt=consent</code>  <br/>       誤った例: <code>&amp;access_type=offline&amp;prompt=consent</code></td>
+<td>認証URLのための1つ以上の名前-値ペアを選択してください。複数のペアをアンパサンド (<code>&amp;</code>) で区切ってください。アンパサンド (<code>&amp;</code>) を先頭に使用しないでください。<br/>正しい例: <code>access_type=offline&amp;prompt=consent</code>  <br/>       誤った例: <code>&amp;access_type=offline&amp;prompt=consent</code></td>
 </tr>
 <tr>
 <td>アクセストークンURL</td>
@@ -1121,7 +1120,7 @@
 </tbody>
 </table>
 <h2 id="oauth2-2-legged-の構成">OAuth2 (2-legged) の構成</h2>
-<p>TealiumのWebhook OAuth2コネクタは、OAuth2 Two-Legged認証を必要とするAPIに完全にカスタマイズされたデータをHTTPリクエストとして送信することを可能にします。これはクライアント認証とリソースオーナーパスワード認証グラントをサポートしています。</p>
+<p>TealiumのWebhook OAuth2コネクタは、OAuth2 Two-Legged認証を必要とするAPIに完全にカスタマイズされたデータをHTTPリクエストとして送信することを可能にします。これはクライアント認証情報とリソースオーナーパスワード認証情報の付与をサポートしています。</p>
 <p>コネクタを追加した後、OAuth2 2-Legged Webhook構成のための以下の構成を使用してください：</p>
 <table>
 <thead>
@@ -1137,7 +1136,7 @@
 </tr>
 <tr>
 <td>アクセストークンURL</td>
-<td>(必須) アクセストークンをリクエストするためのAPIエンドポイントURLを入力してください。</td>
+<td>(必須) アクセストークンを要求するAPIエンドポイントURLを入力してください。</td>
 </tr>
 <tr>
 <td>クライアントID</td>
@@ -1149,11 +1148,11 @@
 </tr>
 <tr>
 <td>ユーザー名</td>
-<td>ユーザー名を入力してください。パスワードグラントタイプを使用する場合は必須です。</td>
+<td>パスワード付与タイプを使用する場合はユーザー名を入力してください。</td>
 </tr>
 <tr>
 <td>パスワード</td>
-<td>パスワードを入力してください。パスワードグラントタイプを使用する場合は必須です。</td>
+<td>パスワード付与タイプを使用する場合はパスワードを入力してください。</td>
 </tr>
 <tr>
 <td>クライアント認証ID</td>
@@ -1173,7 +1172,7 @@
 </tr>
 <tr>
 <td>認証URL</td>
-<td>(必須) 認証コードをリクエストするためのAPIエンドポイントURL。</td>
+<td>(必須) 認証コードを要求するAPIエンドポイントURLを入力してください。</td>
 </tr>
 <tr>
 <td>認証トークンの位置</td>
@@ -1183,11 +1182,27 @@
 <td>認証ヘッダープレフィックス</td>
 <td>デフォルト値は <code>Bearer</code> です。新しい値を指定して上書きする（一部のOAuth2サービスで必要）。</td>
 </tr>
+<tr>
+<td>カスタムヘッダー</td>
+<td>認証コールに追加したいカスタムヘッダーのカンマ区切りのキー値ペアを指定してください。例：<code>'header1:value1','header2:value2','header3:valuex,valuey'</code>。</td>
+</tr>
+<tr>
+<td>カスタムボディ値</td>
+<td>カンマ区切りのキー値ペアを定義してください。例：<code>'var1:value1','var2:value2','var3:varx,vary'</code>。これらは <strong>Body Content Type</strong> フィールドで構成された形式に従ってボディに使用されます。</td>
+</tr>
+<tr>
+<td>ボディコンテンツタイプ</td>
+<td>ボディコンテンツのタイプを指定してください。</td>
+</tr>
+<tr>
+<td>認証値の位置</td>
+<td>認証値（クライアントID、クライアントシークレット、ユーザー名、パスワード、スコープ）の位置を指定してください。</td>
+</tr>
 </tbody>
 </table>
 <h2 id="jwtの構成">JWTの構成</h2>
 <p>このWebhookは、JSON Web Token（JWT）を使用した認証をサポートしています。</p>
-<p>Webhook (JWT) 構成のための以下の構成を使用してください：</p>
+<p>Webhook (JWT)構成のための以下の構成を使用してください：</p>
 <table>
 <thead>
 <tr>
@@ -1202,12 +1217,12 @@
 </tr>
 <tr>
 <td>JWTトークン</td>
-<td>JSON Web Tokenを入力してください。</td>
+<td>JSON Webトークンを入力してください。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="oauth2のアクセストークン">OAuth2のアクセストークン</h2>
-<p>Webhook OAuth2を使用するリクエストは、リクエストにアクセストークンを含める必要があります。OAuth2接続によって生成されたトークンは、コネクタによってテンプレート変数 <code>{{webhook_access_token}}</code> として提供され、APIごとに異なる方法で渡されます。次の例では、<code>Authorization: Bearer TOKEN_HERE</code> &ldquo;Authorization&rdquo; ヘッダーで期待されます。</p>
+<p>Webhook OAuth2を使用するリクエストは、リクエストでアクセストークンを提供する必要があります。OAuth2接続によって生成されたトークンは、コネクタによってテンプレート変数 <code>{{webhook_access_token}}</code> として提供され、各API間で異なる方法で渡されます。次の例では、<code>Authorization: Bearer TOKEN_HERE</code> &ldquo;Authorization&rdquo; ヘッダーで期待されます。</p>
 <p>このヘッダーを生成してマッピングするための以下の手順を使用してください：</p>
 <ol>
 <li>次の例を使用して <code>auth_template</code> というテンプレートを作成します：<br>
@@ -1218,7 +1233,7 @@
          title="Webhook Custom and Batched.jpg"/>
     </a>
 </figure></li>
-<li><strong>保存</strong>をクリックします。</li>
+<li><strong>Save</strong> をクリックします。</li>
 <li>変更を保存して公開します。</li>
 </ol>
 <h2 id="すべてのwebhookアクションのアクションパラメータ">すべてのWebhookアクションのアクションパラメータ</h2>
@@ -1232,8 +1247,8 @@
 </thead>
 <tbody>
 <tr>
-<td>方法</td>
-<td>必須* 次の方法をサポートします：<br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
+<td>メソッド</td>
+<td>必須* 次のメソッドをサポートします：<br/>* GET<br/>* POST<br/>* PUT <br/>* DELETE<br/>* PATCH</td>
 </tr>
 <tr>
 <td>URL*</td>
@@ -1245,7 +1260,7 @@
 </tr>
 <tr>
 <td>ヘッダー*</td>
-<td>Webhook (BasicAuth) ではオプション、<a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a> では必須。<strong>Map</strong> ドロップダウンリストから値を送信したい属性を選択します。<strong>To</strong> フィールドにヘッダー名を入力します。</td>
+<td>Webhook (BasicAuth)の場合はオプション、<a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a>の場合は必須です。<strong>Map</strong> ドロップダウンリストから値を送信したい属性を選択します。<strong>To</strong> フィールドにヘッダー名を入力します。</td>
 </tr>
 <tr>
 <td>クッキー*</td>
@@ -1257,11 +1272,11 @@
 </tr>
 <tr>
 <td>ボディデータ*</td>
-<td><strong>HTTPリクエストを介してカスタマイズされたデータを送信</strong> アクションのみサポートします。GETメソッドの場合はこの構成を無視します。ボディコンテンツタイプが <code>application/x-www-form-urlencoded</code> の場合は名前/値ペアを提供します。より複雑なペイロードの場合はテンプレート名を提供します。</td>
+<td><strong>Send Customized Data via HTTP Request</strong> アクションのみサポートします。GETメソッドの場合はこの構成を無視します。ボディコンテンツタイプが <code>application/x-www-form-urlencoded</code> の場合は名前/値ペアを提供します。より複雑なペイロードの場合はテンプレート名を提供します。</td>
 </tr>
 <tr>
 <td>バッチングオプション*</td>
-<td>レコード数の最大値は10から10,000までです。有効期間は5分から60分までです。</td>
+<td>レコード数の最大値は10から10,000までです。Time To Liveは5分から60分までです。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
@@ -1273,11 +1288,11 @@
 </tr>
 <tr>
 <td>バッチングオプション</td>
-<td>レコード数の最大値は10から10,000までです。有効期間は5分から60分までです。</td>
+<td>レコード数の最大値は10から10,000までです。Time To Liveは5分から60分までです。</td>
 </tr>
 </tbody>
 </table>
-<p>* テンプレートの名前を二重中括弧で囲んでフィールド値を入力することができます。たとえば、テンプレートが <code>some-template</code> という名前の場合、その内容はフィールドに <code>{{some-template}}</code> を参照することで注入できます。</p>
+<p>* カスタムテンプレートからフィールド値を入力する場合、その名前を二重中括弧で囲んで参照します。たとえば、テンプレートが <code>some-template</code> という名前の場合、その内容はフィールドに <code>{{some-template}}</code> として注入されます。</p>
 
 </div>
 
@@ -1338,7 +1353,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

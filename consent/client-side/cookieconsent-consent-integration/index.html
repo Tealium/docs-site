@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "consent",
-        reading_time  : "8",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -526,16 +526,16 @@
 </ol>
 <h3 id="step-1-load-the-cookieconsent-library">Step 1: Load the CookieConsent library</h3>
 <p>Load the CookieConsent library on your site and configure it to display the consent banner and modal with your chosen categories, layout, language, and behavior.</p>
-<p>You can load the library and configuration in one of the following ways:</p>
+<p>Load the library and configuration in one of the following ways:</p>
 <ul>
 <li>Use the CookieConsent v3 Loader extension in Tealium iQ to load the library and apply your configuration. For information on how to configure the extension, see <a href="/iq-tag-management/extensions/extensions-list/cookieconsent-v3-loader-extension/">CookieConsent v3 Loader extension</a>.</li>
 <li>Embed the CookieConsent v3 loader script and configuration code directly on your site.</li>
 </ul>
 <h3 id="step-2-implement-consent-logging">Step 2: Implement consent logging</h3>
 <p>Capture and record consent preferences and decisions for reporting or compliance purposes.</p>
-<p>You can implement consent logging in one of the following ways:</p>
+<p>Implement consent logging in one of the following ways:</p>
 <ul>
-<li>Use the CookieConsent v3 Logging extension in Tealium iQ. This extension listens for consent updates from the CookieConsent banner and sends the decision details as a JSON payload to your specified endpoint. You can configure the destination by updating the extension configuration code. For information on how to configure the extension, see <a href="/iq-tag-management/extensions/extensions-list/cookieconsent-v3-logging-extension/">CookieConsent v3 Logging extension</a>.</li>
+<li>Use the CookieConsent v3 Logging extension in Tealium iQ. This extension listens for consent updates from the CookieConsent banner and sends the decision details as a JSON payload to your specified endpoint. Configure the destination by updating the extension configuration code. For information on how to configure the extension, see <a href="/iq-tag-management/extensions/extensions-list/cookieconsent-v3-logging-extension/">CookieConsent v3 Logging extension</a>.</li>
 <li>Embed the CookieConsent v3 logging extension code directly on your site.</li>
 </ul>
 <h3 id="step-3-create-a-cookieconsent-v3-integration-and-enforcement-rule">Step 3: Create a CookieConsent v3 integration and enforcement rule</h3>
@@ -558,7 +558,7 @@
 </li>
 <li>
 <p>Define appropriate enforcement rules. Include exemptions as needed for specific use cases.</p>
- <p class="note"><i class="fa fa-exclamation-triangle"></i>Avoid overlapping enforcement rules with other integrations or exemptions to prevents conflicts. For more information, see <a href="/consent/client-side/consent-integrations/enforcement-conditions-conflict/">Handling conflicts in enforcement conditions</a>.</p>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i>Avoid overlapping enforcement rules with other integrations or exemptions to prevent conflicts. For more information, see <a href="/consent/client-side/consent-integrations/enforcement-conditions-conflict/">Handling conflicts in enforcement conditions</a>.</p>
 </li>
 <li>
 <p>Click <strong>Next</strong>.</p>
@@ -581,7 +581,7 @@
 </ul>
 </li>
 <li>Click the <strong>Tealium iQ Purpose</strong> tab.</li>
-<li>To ensure Tealium iQ always loads, assign Tealium iQ to a purpose that users cannot opt out such as <strong>Strictly Necessary</strong>.</li>
+<li>To ensure Tealium iQ always loads, assign Tealium iQ to a purpose that users cannot opt out of, such as <strong>Strictly Necessary</strong>.</li>
 <li>Click the <strong>Map Tags</strong> tab.</li>
 <li>Assign each tag to an appropriate purpose.</li>
 <li>Enable tag refiring if you want tags, such as the Tealium Collect tag, to refire when consent is updated in the same event.</li>
@@ -616,6 +616,102 @@
 <p>For more information about validating enforcement and debugging issues, see <a href="/consent/client-side/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>.</p>
 <h3 id="tests">Tests</h3>
 <p>For a suite of end-to-end integration tests for CookieConsent and consent integrations, see <a href="https://solutions.tealium.net/hosted/cookieconsent/integration-test-report/summary.html">CookieConsent + Tealium iQ - End-to-end integration tests</a>.</p>
+<h2 id="integrate-global-privacy-control-gpc">Integrate Global Privacy Control (GPC)</h2>
+<p>There are two ways to integrate Global Privacy Control (GPC) with CookieConsent, depending on how much control and nuance you need.</p>
+<p><a href="#basic-solution"><strong>Basic solution</strong></a><br>
+This simple and strict solution treats the visitor as fully opted out if a GPC signal is present and the visitor hasn&rsquo;t made a consent choice yet. The banner still appears when needed, and any explicit consent decision overrides the GPC signal.</p>
+<p>A tradeoff is that some edge cases may result in missed tracking opportunities. For example, tracking might not get enabled for visitors who previously had GPC enabled and later disabled it, including those who may have opted in before. Although this represents a small segment of traffic, it can reduce the amount of consented data collected. The benefit of this approach is that it is easy to implement and still produces consent logs that can help you quantify the impact of GPC.</p>
+<p><strong>Use this if you want a lightweight implementation with clear, predictable behavior (that can be logged) and don&rsquo;t need to preserve advanced banner interactions.</strong></p>
+<p><a href="#advanced-solution"><strong>Advanced solution</strong></a><br>
+This approach suppresses the banner when GPC is active, honors explicit visitor decisions over GPC, and still lets visitors open the banner manually. It also handles scenarios where GPC is later disabled by falling back to implicit consent rules, ensuring previously consented visitors are not incorrectly treated as opted out.</p>
+<p>Depending on your configuration and consent model, this approach may cause the banner to appear again for some visitors when GPC is deactivated.</p>
+<p><strong>Use this if you need an experience that balances GPC enforcement with full banner functionality and ongoing visitor control.</strong></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>These approaches are provided for technical guidance only. The decision to detect, honor, or prioritize Global Privacy Control (GPC) signals must be made in consultation with your organization&rsquo;s legal team. Your legal team should determine when GPC behavior must be applied, which consent states it should influence, and how it should interact with existing consent workflows. You are responsible for adjusting these solutions to meet your organization&rsquo;s legal, regulatory, and policy requirements.</p>
+<h3 id="basic-solution">Basic solution</h3>
+<p>This basic solution treats the GPC signal as a full opt-out and supports logging.</p>
+<p>This code checks for a Global Privacy Control (GPC) signal and the absence of a prior consent decision. If the GPC signal is present and the visitor has not made a consent choice, it sets consent to no categories and no services. This action treats the visitor as fully opted out. If the GPC signal is not present or the visitor has already made a consent decision, the consent banner is displayed.</p>
+<p>First, prevent the consent modal from appearing automatically by updating the <code>ccConfig</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ccConfig</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;autoShow&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Next, add this code to the bottom of the CookieConsent code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">globalPrivacyControl</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">getUserPreferences</span>().<span style="color:#a6e22e">acceptType</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">acceptCategory</span>([]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">acceptService</span>([]);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="advanced-solution">Advanced solution</h3>
+<h4 id="how-it-works">How it works</h4>
+<p>The following section explains how the solution handles Global Privacy Control (GPC) signals and consent decisions in different scenarios.</p>
+<p><strong>Treats GPC as an opt-out signal</strong><br>
+This solution treats the Global Privacy Control (GPC) signal as a complete opt-out for consent enforcement. When a GPC signal is detected, it suppresses the consent banner on the visitor&rsquo;s initial visit and during subsequent page loads or standard interactions.</p>
+<p><strong>Preserves consent banner and preferences interactions</strong><br>
+Visitors can still open the consent banner or preferences dialog manually, for example by clicking a footer link. When opened, CookieConsent shows the visitor as opted out of all optional tracking due to the GPC signal.</p>
+<p><strong>Enforces explicit consent decisions</strong><br>
+This solution ignores the Global Privacy Control (GPC) signal when a visitor has made an explicit consent decision. If a consent cookie exists, the visitor&rsquo;s choice takes precedence over the GPC opt-out signal, allowing the banner and consent preferences to display and function according to the visitor&rsquo;s selection.</p>
+<p><strong>Fall back to implicit consent decisions</strong><br>
+This solution relies on the default implicit consent decisions if the Global Privacy Control (GPC) signal is deactivated on a device where it was previously active.</p>
+<h4 id="code">Code</h4>
+<p>Add this code to the CookieConsent V3 Loader extension, between the <code>ccConfig</code> definition and the call to <code>CookieConsent.run()</code>.</p>
+<p>This solution has been proposed to the official CookieConsent project. Follow updates here: <a href="https://github.com/orestbida/cookieconsent/issues/811">https://github.com/orestbida/cookieconsent/issues/811</a></p>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">gpcFlagIsTrue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">globalPrivacyControl</span> <span style="color:#75715e">// can replace this with &#39;true&#39; or &#39;false&#39; for simpler testing but make sure to change it back in prod
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">noDecisionYet</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">readCookie</span>((<span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">name</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;cc_cookie&#39;</span> ) <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span> <span style="color:#75715e">// will be a string if already set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// disable anything optional when the GPC flag is true in opt-out mode (like the CCPA)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">gpcFlagIsTrue</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">mode</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;opt-out&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">noDecisionYet</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logMessage</span>(<span style="color:#e6db74">&#39;Enforcing the GPC flag by opting user out of all optional tracking and suppressing the initial banner pop-up in opt-out mode.&#39;</span>)
+</span></span><span style="display:flex;"><span>    Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">categories</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">cat</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">thisCat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">categories</span>[<span style="color:#a6e22e">cat</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">thisCat</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">thisCat</span>.<span style="color:#a6e22e">enabled</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">thisCat</span>.<span style="color:#a6e22e">readOnly</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">thisCat</span>.<span style="color:#a6e22e">enabled</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ccConfig</span>.<span style="color:#a6e22e">onModalShow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">modalNameObj</span>) {
+</span></span><span style="display:flex;"><span>        window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}; <span style="color:#75715e">// safety first!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">modalName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">modalNameObj</span>.<span style="color:#a6e22e">modalName</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">alreadySuppressed</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">gpcAlreadySuppressedOnce</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">validDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">validConsent</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">gpcFlagIsTrue</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">validDecision</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">alreadySuppressed</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// We have to use setTimeout here to let the &#39;show&#39; finish - it breaks if you hide it while it&#39;s showing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">modalName</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;consentModal&#39;</span>) <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">hide</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">modalName</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;preferencesModal&#39;</span>) <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">CookieConsent</span>.<span style="color:#a6e22e">hidePreferences</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">gpcAlreadySuppressedOnce</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>    <span style="color:#75715e">// only suppress the first pop-up, to allow it to be manually popped-up
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// GPC helper functions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">logMessage</span> (<span style="color:#a6e22e">message</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">loggingFunction</span> <span style="color:#f92672">=</span> (window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">logger</span>) <span style="color:#f92672">||</span> (window.<span style="color:#a6e22e">utag</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">DB</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">loggingFunction</span>(<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readCookie</span> (<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;(?:(?:^|.*;\\s*)&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\\s*\\=\\s*([^;]*).*$)|^.*$&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">re</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">reString</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookieValue</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">re</span>, <span style="color:#e6db74">&#34;$1&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">cookieValue</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">undefined</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cookieValue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
 <h2 id="additional-resources">Additional resources</h2>
 <ul>
 <li><a href="/consent/client-side/consent-integrations/about/">Consent integration</a>: Reference for consent integration setup.</li>
@@ -667,7 +763,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 4, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -695,6 +791,9 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-and-troubleshoot" href="javascript:void(0)">Test and troubleshoot</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#verify-your-consent-integration-setup" href="javascript:void(0)">Verify your consent integration setup</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tests" href="javascript:void(0)">Tests</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#integrate-global-privacy-control-gpc" href="javascript:void(0)">Integrate Global Privacy Control (GPC)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#basic-solution" href="javascript:void(0)">Basic solution</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#advanced-solution" href="javascript:void(0)">Advanced solution</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#additional-resources" href="javascript:void(0)">Additional resources</a></li>
               </nav>
   </aside></nav>

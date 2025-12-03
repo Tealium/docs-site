@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/client-side-tags/impact-universal-tracking-tag/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealium iQ タグ管理アカウントで Impact ユニバーサルトラッキングタグを構成する方法について説明します。" />
+<meta property="og:description" content="この記事では、Impact ユニバーサルトラッキングタグの構成方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Impact ユニバーサルトラッキングタグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -860,6 +860,9 @@
       <a href="/ja/client-side-tags/rokt-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Rokt</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/roku-javascript-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Roku JS Pixel</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/rtb-house-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>RTB House リターゲティング</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1641,6 +1644,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rokt-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-tag">Rokt</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/roku-javascript-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".roku-javascript-pixel-tag">Roku JS Pixel</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rtb-house-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtb-house-tarargeting-tag-setup-guide">RTB House リターゲティング</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/rtoaster-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rtoaster-tag">RToaster</a></li>
@@ -1854,7 +1859,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium iQ タグ管理アカウントで Impact ユニバーサルトラッキングタグを構成する方法について説明します。
+      この記事では、Impact ユニバーサルトラッキングタグの構成方法について説明します。
     </p>
   
 </div>
@@ -1862,7 +1867,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>顧客のメールアドレスのSHA1ハッシュが含まれる変数を <code>customerEmail</code> にマッピングします。ハッシュ化されていないメールアドレスはImpactトラッキングコールから削除されます。</li>
+<li>顧客のメールアドレスのSHA1ハッシュが含まれる変数を <code>customerEmail</code> にマッピングします。ハッシュ化されていないメールアドレスはImpactのトラッキングコールから削除されます。</li>
 <li>カスタムマッピングはImpactトラッキングコールのプロパティオブジェクトに渡されます。</li>
 <li>このタグは以下のEコマース拡張パラメータをサポートしています：
 <ul>
@@ -1873,7 +1878,7 @@
 <li>注文通貨 (<code>_ccurrency</code>)</li>
 <li>注文プロモコード (<code>_cpromo</code>)</li>
 <li>顧客ID (<code>_ccustid</code>)</li>
-<li>顧客の市区町村 (<code>_ccity</code>)</li>
+<li>顧客の市町村区 (<code>_ccity</code>)</li>
 <li>顧客の州 (<code>_cstate</code>)</li>
 <li>顧客の郵便番号 (<code>_czip</code>)</li>
 <li>顧客の国 (<code>_ccountry</code>)</li>
@@ -1888,7 +1893,7 @@
 </li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法についての詳細は、<a href="/ja/iq-tag-management/tags/manage/">タグの管理</a>を参照してください。</p>
 <p>タグを追加する際には、以下の構成を構成します：</p>
 <ul>
 <li><strong>ユニークID</strong>：あなたのImpactユニークID。</li>
@@ -1896,7 +1901,7 @@
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
+<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信プロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
 <h3 id="標準">標準</h3>
 <table>
@@ -1930,132 +1935,132 @@
 <tr>
 <td style="text-align:left"><code>currencyCode</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">通貨コード（<code>_ccurrency</code>を上書き）</td>
+<td style="text-align:left">通貨コード（<code>_ccurrency</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderDiscount</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文割引</td>
+<td style="text-align:left">注文割引。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderId</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文ID（<code>_corder</code>を上書き）</td>
+<td style="text-align:left">注文ID（<code>_corder</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderPromoCode</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文プロモコード（<code>_cpromo</code>を上書き）</td>
+<td style="text-align:left">注文プロモコード（<code>_cpromo</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderPromoCodeDesc</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文プロモコード説明</td>
+<td style="text-align:left">注文プロモコード説明。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderRebate</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文リベート</td>
+<td style="text-align:left">注文リベート。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderShipping</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文送料（<code>_cship</code>を上書き）</td>
+<td style="text-align:left">注文送料（<code>_cship</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderSubTotalPostDiscount</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">割引後の注文小計</td>
+<td style="text-align:left">割引後の注文小計。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderSubTotalPreDiscount</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">割引前の注文小計（<code>_csubtotal</code>を上書き）</td>
+<td style="text-align:left">割引前の注文小計（<code>_csubtotal</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>orderTax</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">注文税金（<code>_ctax</code>を上書き）</td>
+<td style="text-align:left">注文税金（<code>_ctax</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>paymentType</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">支払いタイプ</td>
+<td style="text-align:left">支払いタイプ。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_brand</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品ブランドのリスト（<code>_cbrand</code>を上書き）</td>
+<td style="text-align:left">商品ブランドのリスト（<code>_cbrand</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_category</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品カテゴリのリスト（<code>_ccat</code>を上書き）</td>
+<td style="text-align:left">商品カテゴリのリスト（<code>_ccat</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_deliveryType</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品配送タイプのリスト</td>
+<td style="text-align:left">商品配送タイプのリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_discount</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品割引のリスト</td>
+<td style="text-align:left">商品割引のリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_mpn</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品MPNのリスト</td>
+<td style="text-align:left">商品MPNのリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_name</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品名のリスト（<code>_cprodname</code>を上書き）</td>
+<td style="text-align:left">商品名のリスト（<code>_cprodname</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_quantity</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品数量のリスト（<code>_cquan</code>を上書き）</td>
+<td style="text-align:left">商品数量のリスト（<code>_cquan</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_referenceId</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品リファレンスIDのリスト</td>
+<td style="text-align:left">商品参照IDのリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_sku</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品SKUのリスト（<code>_csku</code>を上書き）</td>
+<td style="text-align:left">商品SKUのリスト（<code>_csku</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_subcategory</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品サブカテゴリのリスト（<code>_ccat2</code>を上書き）</td>
+<td style="text-align:left">商品サブカテゴリのリスト（<code>_ccat2</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_subTotal</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品小計/価格のリスト（<code>_cprice</code>を上書き）</td>
+<td style="text-align:left">商品小計/価格のリスト（<code>_cprice</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_promoCode</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品プロモコードのリスト</td>
+<td style="text-align:left">商品プロモコードのリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_promoCodeDesc</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品プロモコード説明のリスト</td>
+<td style="text-align:left">商品プロモコード説明のリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_totalDiscount</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品総割引のリスト</td>
+<td style="text-align:left">商品総割引のリスト。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_totalRebate</code></td>
 <td style="text-align:left"><code>配列</code></td>
-<td style="text-align:left">商品総リベートのリスト</td>
+<td style="text-align:left">商品総リベートのリスト。</td>
 </tr>
 </tbody>
 </table>
@@ -2070,131 +2075,131 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>callerId</code></td>
-<td style="text-align:left">コーラーID</td>
+<td style="text-align:left">コーラーID。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>clickId</code></td>
-<td style="text-align:left">クリックID</td>
+<td style="text-align:left">クリックID。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerCity</code></td>
-<td style="text-align:left">顧客の市区町村（<code>_ccity</code>を上書き）</td>
+<td style="text-align:left">顧客の市町村区（<code>_ccity</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerCountry</code></td>
-<td style="text-align:left">顧客の国（<code>_ccountry</code>を上書き）</td>
+<td style="text-align:left">顧客の国（<code>_ccountry</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerEmail</code></td>
-<td style="text-align:left">顧客メール</td>
+<td style="text-align:left">顧客メール。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerId</code></td>
-<td style="text-align:left">顧客ID（<code>_ccustid</code>を上書き）</td>
+<td style="text-align:left">顧客ID（<code>_ccustid</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerPostCode</code></td>
-<td style="text-align:left">顧客郵便番号（<code>_czip</code>を上書き）</td>
+<td style="text-align:left">顧客の郵便番号（<code>_czip</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerRegion</code></td>
-<td style="text-align:left">顧客地域（<code>_cstate</code>を上書き）</td>
+<td style="text-align:left">顧客の地域（<code>_cstate</code>を上書き）。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customerStatus</code></td>
-<td style="text-align:left">顧客ステータス</td>
+<td style="text-align:left">顧客ステータス。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>date1</code></td>
-<td style="text-align:left">日付パラメータ1</td>
+<td style="text-align:left">日付パラメータ1。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>date2</code></td>
-<td style="text-align:left">日付パラメータ2</td>
+<td style="text-align:left">日付パラメータ2。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>date3</code></td>
-<td style="text-align:left">日付パラメータ3</td>
+<td style="text-align:left">日付パラメータ3。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dispositionCode</code></td>
-<td style="text-align:left">処分コード</td>
+<td style="text-align:left">処分コード。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>giftPurchase</code></td>
-<td style="text-align:left">ギフト購入</td>
+<td style="text-align:left">ギフト購入。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>hearAboutUs</code></td>
-<td style="text-align:left">私たちについて聞く</td>
+<td style="text-align:left">私たちのことを知ったきっかけ。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>locationName</code></td>
-<td style="text-align:left">場所名</td>
+<td style="text-align:left">ロケーション名。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>locationType</code></td>
-<td style="text-align:left">場所タイプ</td>
+<td style="text-align:left">ロケーションタイプ。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>money1</code></td>
-<td style="text-align:left">金額パラメータ1</td>
+<td style="text-align:left">金額パラメータ1。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>money2</code></td>
-<td style="text-align:left">金額パラメータ2</td>
+<td style="text-align:left">金額パラメータ2。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>money3</code></td>
-<td style="text-align:left">金額パラメータ3</td>
+<td style="text-align:left">金額パラメータ3。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>note</code></td>
-<td style="text-align:left">ノート</td>
+<td style="text-align:left">ノート。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>numeric1</code></td>
-<td style="text-align:left">数値パラメータ1</td>
+<td style="text-align:left">数値パラメータ1。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>numeric2</code></td>
-<td style="text-align:left">数値パラメータ2</td>
+<td style="text-align:left">数値パラメータ2。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>numeric3</code></td>
-<td style="text-align:left">数値パラメータ3</td>
+<td style="text-align:left">数値パラメータ3。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>phoneNumber</code></td>
-<td style="text-align:left">電話番号</td>
+<td style="text-align:left">電話番号。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>referenceId</code></td>
-<td style="text-align:left">リファレンスID</td>
+<td style="text-align:left">参照ID。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>siteCategory</code></td>
-<td style="text-align:left">サイトカテゴリ</td>
+<td style="text-align:left">サイトカテゴリ。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>siteVersion</code></td>
-<td style="text-align:left">サイトバージョン</td>
+<td style="text-align:left">サイトバージョン。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>test</code></td>
-<td style="text-align:left">テストフラグ</td>
+<td style="text-align:left">テストフラグ。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>text1</code></td>
-<td style="text-align:left">テキストパラメータ1</td>
+<td style="text-align:left">テキストパラメータ1。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>text2</code></td>
-<td style="text-align:left">テキストパラメータ2</td>
+<td style="text-align:left">テキストパラメータ2。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>text3</code></td>
-<td style="text-align:left">テキストパラメータ3</td>
+<td style="text-align:left">テキストパラメータ3。</td>
 </tr>
 </tbody>
 </table>
@@ -2209,11 +2214,11 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>domReady</code></td>
-<td style="text-align:left">domReady</td>
+<td style="text-align:left">DOM準備完了。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>tag</code></td>
-<td style="text-align:left">タグ</td>
+<td style="text-align:left">タグ。</td>
 </tr>
 </tbody>
 </table>
@@ -2277,7 +2282,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月6日
+          <p>最終更新日 ::  2025年December月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "18",
+        reading_time  : "20",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1455,7 +1455,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="about-webhook-connectors">About Webhook Connectors</h2>
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li>Tealium account enabled for EventStream (for event data)</li>
+<li>Tealium account enabled for AudienceStream (for visitor data)</li>
+</ul>
+<h2 id="about-webhook-connectors">About webhook connectors</h2>
 <p>The Webhook Connector lets you send data to your vendor using customized HTTP requests and configure all aspects of an HTTP request, such as the URL, URL parameters, headers, cookies, body content type, and body data. Webhook also supports batching and a powerful templating feature designed to handle complex and dynamic data formats.</p>
 <p>There are four Webhook connectors to choose from based on the authorization requirements of your vendor, as follows:</p>
 <ul>
@@ -1467,32 +1472,16 @@
 <p>Webhook OAuth2 is used for services that explicitly require OAuth 2.0 authentication.</p>
 <p>To get started, go to the connector marketplace and add the Webhook instance you want to use. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</p>
 <p>The following sections describe the configuration settings for each type of Webhook connector.</p>
-<h3 id="webhook-basicauth-configuration">Webhook (BasicAuth) Configuration</h3>
+<h3 id="webhook-basicauth-configuration">Webhook (BasicAuth) configuration</h3>
 <p>This webhook supports basic HTTP authentication using the HTTP header field <strong>Authorization</strong>. The credentials are passed as a Base64-encoded string of <code>{username}:{password}</code>.</p>
 <p>Use the following configuration settings for the BasicAuth Webhook configuration:</p>
 <ul>
-<li><strong>Name</strong>
-<ul>
-<li>Required</li>
-<li>Enter a descriptive title for the webhook.</li>
-</ul>
-</li>
-<li><strong>BasicAuth Username</strong>
-<ul>
-<li>Enter the username of your webhook&rsquo;s authentication.</li>
-</ul>
-</li>
-<li><strong>BasicAuth Password</strong>
-<ul>
-<li>Enter the password of your webhook&rsquo;s authentication.</li>
-</ul>
-</li>
+<li><strong>Name</strong>: (Required) Enter a descriptive title for the webhook.</li>
+<li><strong>BasicAuth Username</strong>: Enter the username of your webhook&rsquo;s authentication.</li>
+<li><strong>BasicAuth Password</strong>: Enter the password of your webhook&rsquo;s authentication.</li>
 </ul>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
-<ul>
-<li>Use the <strong>Actions</strong> tab to configure the HTTP request to trigger.</li>
-</ul>
-<h3 id="webhook-oauth2-3-legged-configuration">Webhook OAuth2 (3-Legged) Configuration</h3>
+<h3 id="webhook-oauth2-3-legged-configuration">Webhook OAuth2 (3-Legged) configuration</h3>
 <p>This Webhook&rsquo;s OAuth implementation supports server-side applications only.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to register your web application with an OAuth 2.0 service. Your application must be configured to allow the redirect URL: <code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
 <p>Use the following configuration settings for the OAuth2 (3-legged) Webhook configuration:</p>
@@ -1552,7 +1541,8 @@
 </li>
 </ul>
 <p>Click <strong>Establish Connection</strong> to test the connection.</p>
-<h3 id="webhook-oauth2-2-legged-configuration">Webhook OAuth2 (2-Legged) Configuration</h3>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
+<h3 id="webhook-oauth2-2-legged-configuration">Webhook OAuth2 (2-Legged) configuration</h3>
 <p>Tealium&rsquo;s Webhook OAuth2 connector lets you send fully customized data as an HTTP request to an API of your choice that requires OAuth2 Two-Legged authorization and supports client credentials and resource owner password credentials grants.</p>
 <p>After adding the connector, use the following configuration settings for the OAuth2 2-Legged Webhook configuration:</p>
 <ul>
@@ -1628,8 +1618,41 @@
 <li>Specify a new value to override (only required for some OAuth2 services).</li>
 </ul>
 </li>
+<li><strong>Custom Headers</strong>
+<ul>
+<li>Specify comma-separated key-value pairs with the custom headers that you want add to the authentication call. For example: <code>'var1:value1','var2:value2','var3:value3,value4','var4:{&quot;field&quot;: {&quot;name&quot;: &quot;TEST&quot;, &quot;version&quot;: &quot;1.0.0&quot;}}'</code> would translate as:</li>
 </ul>
-<h3 id="webhook-jwt-configuration">Webhook (JWT) Configuration</h3>
+<pre tabindex="0"><code>VERSION: HTTP/1.1
+CONNECTION: close
+ACCEPT-ENCODING: gzip
+X-HEADER-KEY: header_value
+VAR1: value1
+VAR2: value2
+VAR3: value3, value4
+VAR4: {&#34;field&#34;: {&#34;name&#34;: &#34;TEST&#34;, &#34;version&#34;: &#34;1.0.0&#34;}}
+COOKIE: cookie_key=cookie_value
+CONTENT-TYPE: application/json; charset=UTF-8
+USER-AGENT: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
+CONTENT-LENGTH: 13
+</code></pre></li>
+<li><strong>Custom Body Values</strong>
+<ul>
+<li>Define comma-separated key-value pairs. For example: <code>'var1:value1','var2:value2','var3:varx,vary'</code>. They will be used in the body following the format set in the <strong>Body Content Type</strong> field.</li>
+</ul>
+</li>
+<li><strong>Body Content Type</strong>
+<ul>
+<li>Specify the body content type.</li>
+</ul>
+</li>
+<li><strong>Authorization Values Location</strong>
+<ul>
+<li>Specify the location of the authorization values (Client ID, client secret, username, password, and scope).</li>
+</ul>
+</li>
+</ul>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
+<h3 id="webhook-jwt-configuration">Webhook (JWT) configuration</h3>
 <p>This webhook supports authentication using the JSON web token (JWT).</p>
 <p>Use the following configuration settings for the Webhook (JWT) configuration:</p>
 <ul>
@@ -1646,11 +1669,8 @@
 </li>
 </ul>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
-<ul>
-<li>Use the <strong>Actions</strong> tab to configure the HTTP request to trigger.</li>
-</ul>
-<h2 id="action-parameters-for-all-webhook-actions">Action Parameters for all Webhook Actions</h2>
-<p>The following parameters are available to all Webhook Actions.</p>
+<h2 id="action-parameters-for-all-webhook-actions">Action parameters for all webhook actions</h2>
+<p>The following parameters are available to all webhook actions.</p>
 <table>
 <thead>
 <tr>
@@ -1724,83 +1744,58 @@
 </tbody>
 </table>
 <p><strong>Regarding Template Support</strong>: Lets you input the field value from a custom template by enclosing its name in double curly braces. For example, if your template is named <code>some-template</code>, the content rendered can be injected into the field by referencing <code>{{some-template}}</code>.</p>
-<h2 id="requirements">Requirements</h2>
-<ul>
-<li>Tealium account enabled for EventStream (for event data)</li>
-<li>Tealium account enabled for AudienceStream (for visitor data)</li>
-</ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-<th style="text-align:left"><strong>Webhook (BasicAuth)</strong></th>
-<th style="text-align:left"><strong>Webhook OAuth2</strong></th>
+<th style="text-align:left">Action Name</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Webhook (BasicAuth)</th>
+<th style="text-align:left">Webhook OAuth2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><a href="#action-send-event-data">Send Event Data via HTTP Request</a></td>
+<td style="text-align:left"><a href="#send-event-data-via-http-request">Send Event Data via HTTP Request</a></td>
 <td style="text-align:left">Sends the entire event object, either as a URL-encoded JSON string or a JSON payload.</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-visitor-data">Send Visitor Data via HTTP Request</a></td>
+<td style="text-align:left"><a href="#send-visitor-data-via-http-request">Send Visitor Data via HTTP Request</a></td>
 <td style="text-align:left">Sends the entire visitor profile object, either as a URL-encoded JSON string or a JSON payload.</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-custom-data">Send Customized Data via HTTP Request (Advanced)</a></td>
+<td style="text-align:left"><a href="#send-custom-data-via-http-request-advanced">Send Customized Data via HTTP Request (Advanced)</a></td>
 <td style="text-align:left">Sends individual event/visitor attributes specified with mappings</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-batch-custom-data">Send Batched Customized Data via HTTP Request (Advanced)</a></td>
-<td style="text-align:left">Sends batched event/visitor attributes specified with mappings.</td>
+<td style="text-align:left"><a href="#send-batched-data-via-http-request">Send Batched Data via HTTP Request</a></td>
+<td style="text-align:left">Sends the entire event object, either as a URL-encoded JSON string or a JSON payload.</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-batched-visitor-data">Send Batched Visitor Data via HTTP Request</a></td>
-<td style="text-align:left">Sends the entire event object, either as a URL-encoded JSON string or a JSON payload.</td>
+<td style="text-align:left"><a href="#send-batched-customized-data-via-http-request-advanced">Send Batched Customized Data via HTTP Request (Advanced)</a></td>
+<td style="text-align:left">Sends batched event/visitor attributes specified with mappings.</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/manage/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li>
-<p><strong>Basic Authentication</strong></p>
-<ul>
-<li>Username (Optional)</li>
-<li>Enter username if API endpoint requires basic authentication</li>
-</ul>
-</li>
-<li>
-<p><strong>Basic Authentication</strong></p>
-<ul>
-<li>Password (Optional)</li>
-<li>Enter password if API endpoint requires basic authentication</li>
-</ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-event-data-via-http-request">Action - Send Event Data via HTTP Request</h3>
+<h3 id="send-event-data-via-http-request">Send Event Data via HTTP Request</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1846,16 +1841,48 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-visitor-data-via-http-request">Action - Send Visitor Data via HTTP Request</h3>
+<h3 id="send-visitor-data-via-http-request">Send Visitor Data via HTTP Request</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) select request method.</li><li>If <strong>GET</strong> is selected, the event data is delivered as a JSON URL-encoded query string parameter with the <code>data</code> key.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
+</tr>
 <tr>
 <td style="text-align:left">Include Current Visit Data With Visitor Data</td>
 <td style="text-align:left"><ul><li>Add the current visit data to the payload.</li><li>This includes event visit data if Exclude Current Visit Event Data isn&rsquo;t selected.</li></ul></td>
@@ -1874,13 +1901,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-customized-data-via-http-request-advanced">Action - Send Customized Data via HTTP Request (Advanced)</h3>
+<h3 id="send-customized-data-via-http-request-advanced">Send Customized Data via HTTP Request (Advanced)</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1918,12 +1945,16 @@
 </tr>
 <tr>
 <td style="text-align:left">Templates</td>
-<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header. or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}} </code>refers to the token returned by the authentication request.</li></ul></td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}} </code>refers to the token returned by the authentication request.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-batched-data-via-http-request">Action - Send Batched Data via HTTP Request</h3>
-<h4 id="batch-limits">Batch Limits</h4>
+<h3 id="send-batched-data-via-http-request">Send Batched Data via HTTP Request</h3>
+<h4 id="batch-limits">Batch limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 100</li>
@@ -1934,8 +1965,79 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Method</td>
+<td style="text-align:left"><ul><li>(Required) For more information see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</li><li>Select request method.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL</td>
+<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Body Content Type</td>
+<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Include Current Visit Data</td>
+<td style="text-align:left"><ul><li>Select this checkbox if you want to include current visit data.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Exclude Current Visit Event Data</td>
+<td style="text-align:left"><ul><li>Exclude event data from the current visit data.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Print Attribute Names</td>
+<td style="text-align:left"><ul><li>If attribute names are updated, the names in the payload reflect the update.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Redirection</td>
+<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Timeout</td>
+<td style="text-align:left">Set the maximum time (in seconds) the system will wait for batch actions to complete when sending data through <code>HTTP</code> requests. The minimum value is <code>1</code> and the maximum value is <code>10</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-batched-customized-data-via-http-request-advanced">Send Batched Customized Data via HTTP Request (Advanced)</h3>
+<h4 id="batch-limits-1">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Maximum number of requests: 100</li>
+<li>Maximum time since oldest request: 60 minutes</li>
+<li>Maximum size of requests: 16 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1954,6 +2056,18 @@
 <tr>
 <td style="text-align:left">Body Data</td>
 <td style="text-align:left"><ul><li>(Optional) Provide data to construct message body.</li><li>Template Support: reference template name to generate body data from template.</li><li>Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference a template name and select only the <code>Body</code> option.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Prefix</td>
+<td style="text-align:left">A non-repeating portion of the request that precedes Body Data. The JSON array prefix is the opening bracket character (<code>[</code>). Map <code>Custom [</code> to <strong>Prefix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
+</tr>
+<tr>
+<td style="text-align:left">Joiner</td>
+<td style="text-align:left">A character or string that separates individual data items in Body Data. The JSON objects joiner is the comma (<code>,</code>). Map <code>Custom ,</code> to <strong>Joiner</strong>. For example: <br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },  {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ]</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Suffix</td>
+<td style="text-align:left">A non-repeating portion of the request that follows Body Data. The JSON array prefix is the closing bracket character (<code>]</code>). Map <code>Custom ]</code> to <strong>Suffix</strong>. For example:<br/> <code>[   {     &quot;editable_in_signup&quot;: false,     &quot;displayed_for_customers&quot;: true    },   {     &quot;editable_in_signup&quot;: true,     &quot;displayed_for_customers&quot;: true   } ] </code></td>
 </tr>
 <tr>
 <td style="text-align:left">Record Count Maximum</td>
@@ -1969,90 +2083,11 @@
 </tr>
 <tr>
 <td style="text-align:left">Headers</td>
-<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Cookies</td>
-<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Template Variables</td>
-<td style="text-align:left"><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Templates</td>
-<td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Include Current Visit Data</td>
-<td style="text-align:left"><ul><li>Select this checkbox if you want to include current visit data.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Print Attribute Names</td>
-<td style="text-align:left"><ul><li>If attribute names are updated, the names in the payload reflect the update.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Redirection</td>
-<td style="text-align:left"><ul><li>Allow redirection only if the method is GET.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---send-batched-customized-data-via-http-request-advanced">Action - Send Batched Customized Data via HTTP Request (Advanced)</h3>
-<h4 id="batch-limits-1">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Maximum number of requests: 100</li>
-<li>Maximum time since oldest request: 60 minutes</li>
-<li>Maximum size of requests: 16 MB</li>
-</ul>
-<h4 id="parameters-4">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Method</td>
-<td style="text-align:left"><ul><li>(Required) For more information see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>.</li><li>Select request method.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">URL</td>
-<td style="text-align:left"><ul><li>(Required) Provide URL to submit request to.</li><li>Template Support: reference template name to generate URL from template.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Body Content Type</td>
-<td style="text-align:left"><ul><li>(Optional) Select available type or provide custom value.</li><li>All types are UTF-8 encoded and are added as a header. For example: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>Content type is required if body data is provided.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Body Data</td>
-<td style="text-align:left"><ul><li>(Optional) Provide data to construct message body.</li><li>Template Support: reference template name to generate body data from template.</li><li>Map values to names if body content type is <code>multipart/form-data</code> or <code>application/x-www-form-urlencoded</code>, otherwise reference a template name and select only the <code>Body</code> option.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Suffix</td>
-<td style="text-align:left"><ul><li>A non-repeating portion of the request that follows Body Data. For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook - Using the Send Customized Data Via HTTP Request Action (Advanced)</a> .</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Prefix</td>
-<td style="text-align:left"><ul><li>A non-repeating portion of the request that precedes Body Data. For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook - Using the Send Customized Data Via HTTP Request Action (Advanced)</a> .</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Joiner</td>
-<td style="text-align:left"><ul><li>A character or string that separates individual data items in Body Data. For more information, see <a href="/server-side-connectors/webhook-connector-setup-guide/">Webhook - Using the Send Customized Data Via HTTP Request Action (Advanced)</a> .</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">URL Parameters</td>
-<td style="text-align:left"><ul><li>(Optional) Provide parameters to append to URL.</li><li>Template Support: reference template name to generate parameter value from template.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Headers</td>
 <td style="text-align:left"><ul><li>(Optional) &gt;Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Cookies</td>
-<td style="text-align:left"><ul><li>(Optional) Map cookie values to cookie names.</li><li>Cookies are added as single HTTP header value. For example: <code>Cookie: name1=value1; name2=value2</code></li><li>Template Support: reference template name to generate cookie value from template.</li></ul></td>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>(Optional) Map HTTP header values to header names.</li><li>Template Support: reference template name to generate header value from template.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Template Variables</td>
@@ -2062,9 +2097,13 @@
 <td style="text-align:left">Templates</td>
 <td style="text-align:left"><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</li><li>When using OAuth, the template variable <code>{{webhook_access_token}}</code> refers to the token returned by the authentication request.</li></ul></td>
 </tr>
+<tr>
+<td style="text-align:left">Timeout</td>
+<td style="text-align:left">Set the maximum time (in seconds) the system will wait for batch actions to complete when sending data through <code>HTTP</code> requests. The minimum value is <code>1</code> and the maximum value is <code>10</code>.</td>
+</tr>
 </tbody>
 </table>
-<h2 id="event-data-json">Event Data JSON</h2>
+<h2 id="event-data-json">Event data JSON</h2>
 <p>The expected JSON payload for events includes all of the standard attributes that are part of the event, as well as additional attributes that are native to the platform that sent the event. For example, events received from a website include DOM and cookie attributes, and events received from a mobile device include device and carrier attributes.</p>
 <p>Event data JSON object format example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -2101,7 +2140,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;event_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055-1456-46f8-ab4d-779628c05dd4&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;visitor_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055145646f8ab4d779628c05dd4&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="visitor-data-json">Visitor Data JSON</h2>
+</span></span></code></pre></div><h2 id="visitor-data-json">Visitor data JSON</h2>
 <p>The expected JSON payload for visitors includes all of the applicable Visitor attributes for that visitor. The data object is organized by attribute type. If an attribute is not assigned it does not appear in the visitor object. The data for the current visit is also included under the <code>current_visit</code> key.</p>
 <p>Visitor data JSON object format example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -2185,7 +2224,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tealium_main_101&#34;</span>: <span style="color:#ae81ff">1500999542434</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="usage-examples">Usage Examples</h2>
+</span></span></code></pre></div><h2 id="usage-examples">Usage examples</h2>
 <p>This section provides examples of HTTP requests. A simple JSON object is used in these examples for the purpose of clarity. The actual data sent is a full event or visitor object. We also include a single URL parameter of <code>param1</code> receiving a value of <code>value1</code> to demonstrate how additional parameters are sent.</p>
 <h3 id="send-eventvisitor---get-method">Send Event/Visitor - GET Method</h3>
 <p>When using the GET method with the Send Event Data or Send Visitor Data actions, the data is sent as a single query string parameter named <code>data</code>. The value is a URL-encoded JSON string of the event/visitor data object. Any URL parameters configured are appended as additional query string parameters.</p>
@@ -2237,7 +2276,7 @@ USER-AGENT: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
 CONTENT-LENGTH: 32
 
 data=%7B%22foo%22%3A%22bar%22%7D
-</code></pre><h2 id="vendor-use-cases">Vendor Use Cases</h2>
+</code></pre><h2 id="vendor-use-cases">Vendor use cases</h2>
 <p>The following resources provide examples of advanced Webhook configurations and provide a good foundation and overview of what is possible with custom requests.</p>
 <ul>
 <li><a href="/server-side/connectors/webhook-connectors/vendor-examples/webhook-kony-api/">Kony API</a></li>
@@ -2246,9 +2285,9 @@ data=%7B%22foo%22%3A%22bar%22%7D
 <li><a href="/server-side/connectors/webhook-connectors/vendor-examples/webhook-facebook-app-events-api/">Facebook App Events API</a></li>
 </ul>
 <h2 id="faq">FAQ</h2>
-<h3 id="how-are-http-response-cookies-handled">How are HTTP Response Cookies Handled?</h3>
+<h3 id="how-are-http-response-cookies-handled">How are HTTP response cookies handled?</h3>
 <p>While cookie-based session management is common in web browsers, it is generally discouraged in server-to-server environments that communicate with stateless APIs. For that reason, the Webhook connector does not track cookie-based sessions and effectively ignores <code>Set-Cookie</code> header values in HTTP responses.</p>
-<h2 id="change-log">Change Log</h2>
+<h2 id="change-log">Change log</h2>
 <h4 id="07-10-2024">07-10-2024</h4>
 <ul>
 <li>Added Send Event Data via HTTP Request action to all EventStream webhooks.</li>
@@ -2276,8 +2315,8 @@ data=%7B%22foo%22%3A%22bar%22%7D
 </ul>
 <h4 id="08-24-2017">08-24-2017</h4>
 <ul>
-<li>Added two new actions:Send Event Data via HTTP Request and Send Visitor Data via HTTP Request.</li>
-<li>Removed the following two Actions: POST-visitor and PUT-visitor. Though the actions are no longer displayed in the Actions drop-down list, Tealium continues to support them if the actions are currently installed in your profile.</li>
+<li>Added two new actions: Send Event Data via HTTP Request and Send Visitor Data via HTTP Request.</li>
+<li>Added two new actions: Send Event Data via HTTP Request and Send Visitor Data via HTTP Request.</li>
 </ul>
 <h4 id="03-02-2017">03-02-2017</h4>
 <ul>
@@ -2354,7 +2393,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  December 3, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2368,30 +2407,28 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#about-webhook-connectors" href="javascript:void(0)">About Webhook Connectors</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-basicauth-configuration" href="javascript:void(0)">Webhook (BasicAuth) Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-3-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (3-Legged) Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-2-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (2-Legged) Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-jwt-configuration" href="javascript:void(0)">Webhook (JWT) Configuration</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-parameters-for-all-webhook-actions" href="javascript:void(0)">Action Parameters for all Webhook Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-event-data-via-http-request" href="javascript:void(0)">Action - Send Event Data via HTTP Request</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-visitor-data-via-http-request" href="javascript:void(0)">Action - Send Visitor Data via HTTP Request</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-customized-data-via-http-request-advanced" href="javascript:void(0)">Action - Send Customized Data via HTTP Request (Advanced)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-batched-data-via-http-request" href="javascript:void(0)">Action - Send Batched Data via HTTP Request</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-batched-customized-data-via-http-request-advanced" href="javascript:void(0)">Action - Send Batched Customized Data via HTTP Request (Advanced)</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-data-json" href="javascript:void(0)">Event Data JSON</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-data-json" href="javascript:void(0)">Visitor Data JSON</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usage-examples" href="javascript:void(0)">Usage Examples</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#about-webhook-connectors" href="javascript:void(0)">About webhook connectors</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-basicauth-configuration" href="javascript:void(0)">Webhook (BasicAuth) configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-3-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (3-Legged) configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-2-legged-configuration" href="javascript:void(0)">Webhook OAuth2 (2-Legged) configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-jwt-configuration" href="javascript:void(0)">Webhook (JWT) configuration</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-parameters-for-all-webhook-actions" href="javascript:void(0)">Action parameters for all webhook actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-data-via-http-request" href="javascript:void(0)">Send Event Data via HTTP Request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-via-http-request" href="javascript:void(0)">Send Visitor Data via HTTP Request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-customized-data-via-http-request-advanced" href="javascript:void(0)">Send Customized Data via HTTP Request (Advanced)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-batched-data-via-http-request" href="javascript:void(0)">Send Batched Data via HTTP Request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-batched-customized-data-via-http-request-advanced" href="javascript:void(0)">Send Batched Customized Data via HTTP Request (Advanced)</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-data-json" href="javascript:void(0)">Event data JSON</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-data-json" href="javascript:void(0)">Visitor data JSON</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usage-examples" href="javascript:void(0)">Usage examples</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-eventvisitor---get-method" href="javascript:void(0)">Send Event/Visitor - GET Method</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-eventvisitor---post-method" href="javascript:void(0)">Send Event/Visitor - POST Method</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-use-cases" href="javascript:void(0)">Vendor Use Cases</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-use-cases" href="javascript:void(0)">Vendor use cases</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faq" href="javascript:void(0)">FAQ</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-are-http-response-cookies-handled" href="javascript:void(0)">How are HTTP Response Cookies Handled?</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#change-log" href="javascript:void(0)">Change Log</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-are-http-response-cookies-handled" href="javascript:void(0)">How are HTTP response cookies handled?</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#change-log" href="javascript:void(0)">Change log</a></li>
               </nav>
   </aside></nav>
 

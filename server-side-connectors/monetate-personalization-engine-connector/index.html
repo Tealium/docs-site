@@ -1461,96 +1461,98 @@
 <li>API Username &amp; API Keys</li>
 <li>Data Schema</li>
 </ul>
-<h2 id="supported-actions">Supported actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>API Username</strong>: (Required) Enter your API username, which can be found under <strong>Settings &gt; Sites &gt; API Keys</strong> of your account.</li>
+<li><strong>Private Key</strong>: (Required) Provide your private key matching the registered public key in your account. The private key must be generated with the RSA algorithm and transformed to PEM PKCS #8 format. For more information, see: <a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">Monetate: API Keys Overview</a> and <a href="#generate-api-keys">Generating API Keys</a>.</li>
+<li><strong>Client ID</strong>: (Required) Provide your client ID, which can be found under <strong>Settings &gt; API Documentation &gt; Monetate Data API &gt; Base URL</strong> of your account. For example, if the URL is <code>https://api.monetate.net/api/data/v1/abc/production/</code>, then the client ID is <code>abc</code>.</li>
+</ul>
+<p>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</p>
+<h2 id="generate-api-keys">Generate API keys</h2>
+<p>To ensure secure communication, Monetate API uses public and private key pairs. Key pairs can be generated with a free and widely available OpenSSL command line tool.</p>
+<p>Run the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl genrsa -out my_key.pem <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>openssl pkcs8 -topk8 -inform PEM -outform PEM -in my_key.pem -out my_private_key.pem -nocrypt
+</span></span><span style="display:flex;"><span>openssl rsa -in my_key.pem -pubout -outform PEM -out my_public_key.pem
+</span></span></code></pre></div><p>These commands generate a new key using the RSA algorithm (4096-bits key size) and then convert this key into PKCS#8 format without encrypting it. This is your private key. The final line outputs your public key in PEM format.</p>
+<p>Once generated, open the files in a text editor and copy the keys and values accordingly. Register the public key in your Monetate account and provide the private key in the connector configuration screen.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>Trigger on Audience</strong></th>
-<th style="text-align:left"><strong>Trigger on Streams</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Create or Update Data Record</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Create or Update Data Record (Real-Time)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Create or Update Data Record (Batched)</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p>To configure your vendor, follow these steps:</p>
-<ol>
-<li>In the <strong>Configure</strong> tab, provide a title for the Connector instance.</li>
-<li>Enter your API Username, which can be found under <strong>Settings &gt; Sites &gt; API Keys</strong> of your account.</li>
-<li>Provide your Private Key matching the registered public key in your account. The private key must be generated with an RSA algorithm and transformed to PEM PKCS #8 format. For more information, see: <a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">API Keys Overview</a> and the <strong>Generating API Keys</strong> section below.</li>
-<li>Provide your API Client ID, which can be found under <strong>Settings &gt; API Documentation &gt; Monetate Data API &gt; Base URL</strong> of your account. For example, if the URL is <code>https://api.monetate.net/api/data/v1/abc/production/</code>, then the client ID is <code>abc</code>.</li>
-<li>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</li>
-</ol>
-<h2 id="generating-api-keys">Generating API keys</h2>
-<p>To ensure secure communication, Monetate API uses public and private key pairs. Key pairs can be generated with a free and widely available OpenSSL command line tool.</p>
-<p>Run the following commands in order:</p>
-<ol>
-<li><code>openssl genrsa -out my_key.pem 4096</code></li>
-<li><code>openssl pkcs8 -topk8 -inform PEM -outform PEM -in my_key.pem -out my_private_key.pem -nocrypt</code></li>
-<li><code>openssl rsa -in my_key.pem -pubout -outform PEM -out my_public_key.pem</code></li>
-</ol>
-<p>Explanation of each command:</p>
-<ol>
-<li>Generate a new key using RSA algorithm (4096-bits key size) in traditional format.</li>
-<li>Convert key in traditional format to PEM PKCS #8 format. This is your private key.</li>
-<li>Output a public key in PEM format from key in traditional format. This is your public key.</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The above example names the generated key files as <code>my_key.pem</code>, <code>my_private_key.pem</code> and <code>my_public_key.pem</code>, but these are arbitrary and can be named as you see fit.</p>
-<p>Once generated, open the files in a text editor and copy the key-values accordingly. Register the public key in your Monetate account and provide its private key in the connector configuration screen.</p>
-<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions to trigger.</p>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action-create-or-update-data-record-real-time">Action: Create or Update Data Record (Real-Time)</h3>
+<h3 id="update-data-record-real-time">Update Data Record (Real-Time)</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Schema</td>
-<td>(Required) Select schema in which to create or update records.</td>
+<td>(Required) Select the schema in which to create or update records.</td>
 </tr>
 <tr>
 <td>Data Record</td>
-<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, its data will be updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes will be converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
+<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, the data is updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes are converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
 </tr>
 </tbody>
 </table>
 <p class="tip"><i class="fa fa-info-circle"></i>For more information, see: <a href="https://knowledge.monetate.com/hc/en-us/articles/115005090746">Engine API: Sending Data</a>.</p>
-<h3 id="action-create-or-update-data-record-batched">Action: Create or Update Data Record (Batched)</h3>
+<h3 id="create-or-update-data-record-batched">Create or Update Data Record (Batched)</h3>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 5 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Schema</td>
-<td>(Required) Select schema in which to create or update records.</td>
+<td>(Required) Select the schema in which to create or update records.</td>
 </tr>
 <tr>
 <td>Data Record</td>
-<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, its data will be updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes will be converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
+<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, the data is updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, this value will default to now. Date attributes are converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
-<li><a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">API Keys Overview</a></li>
-<li><a href="https://knowledge.monetate.com/hc/en-us/articles/115005090746">Engine API: Sending Data</a></li>
+<li><a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">Monetate: API Keys Overview</a></li>
 </ul>
 
 </div>
@@ -1612,7 +1614,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 24, 2020 
+          <p>This page was last updated:  November 25, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1627,12 +1629,11 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-actions" href="javascript:void(0)">Supported actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generating-api-keys" href="javascript:void(0)">Generating API keys</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action settings - parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-create-or-update-data-record-real-time" href="javascript:void(0)">Action: Create or Update Data Record (Real-Time)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-create-or-update-data-record-batched" href="javascript:void(0)">Action: Create or Update Data Record (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-api-keys" href="javascript:void(0)">Generate API keys</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-data-record-real-time" href="javascript:void(0)">Update Data Record (Real-Time)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-or-update-data-record-batched" href="javascript:void(0)">Create or Update Data Record (Batched)</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
               </nav>
   </aside></nav>
