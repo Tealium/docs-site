@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "12",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -341,7 +341,7 @@
       <a href="/server-side-connectors/criteo-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/criteo-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audience Match</span></a>
+      <a href="/server-side-connectors/criteo-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences (OAuth)</span></a>
@@ -845,7 +845,10 @@
       <a href="/server-side-connectors/vkontakte-ads-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>VKontakte Ads</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/webhook-connector-setup-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook</span></a>
+      <a href="/server-side-connectors/webhook-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/webhook-jdbc/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook JDBC</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/whatsapp-business-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>WhatsApp Business</span></a>
@@ -1052,7 +1055,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li>
+        <a href="/server-side-connectors/criteo-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-connector-setup-guide">Criteo Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-oauth-connector">Criteo Audiences (OAuth)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1388,7 +1391,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte Ads</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li>
+        <a href="/server-side-connectors/webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/webhook-jdbc/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook JDBC</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/whatsapp-business-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".whatsapp-business-connector">WhatsApp Business</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1455,13 +1460,35 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API information</h2>
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li>
+<p>A Pinterest Ad Account with permissions to send conversion events.</p>
+</li>
+<li>
+<p>The ability to send one of the following valid user identities in <code>user_data</code>:</p>
+<ul>
+<li>Email (already SHA256 hashed) (<code>em</code>).</li>
+<li>Apple&rsquo;s Identifier for Advertisers (already SHA256 hashed) or Google Advertising ID (already SHA256 hashed) (<code>hashed_maids</code>).</li>
+<li>Client IP Address and Client User Agent (<code>client_ip_address</code> and <code>client_user_agent</code>).</li>
+<li>App ID (if applicable). <p class="note"><i class="fa fa-exclamation-triangle"></i>Pinterest requires at least one valid user identity for matching. Organizations with PII restrictions should obtain approvals before setting up this integration.</p></li>
+</ul>
+</li>
+<li>
+<p>For all offline events:</p>
+<ul>
+<li>You must set the <strong>Event Action Source</strong> to <code>Offline</code> in the connector configuration.</li>
+<li>Offline events must include all required event parameters. For more information, see <a href="https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#format-server-event-parameters">Pinterest: Format server event parameters</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Pinterest API</li>
 <li>API Version: v5</li>
 <li>API Endpoint: <code>https://api.pinterest.com/</code></li>
-<li>Vendor documentation: <a href="https://developers.pinterest.com/docs/conversions/conversion-management/">Pinterest Conversions Guide</a></li>
+<li>Vendor documentation: <a href="https://developers.pinterest.com/docs/conversions/conversion-management/">Pinterest: Conversions Guide</a></li>
 </ul>
 <h2 id="batch-limits">Batch limits</h2>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
@@ -1519,6 +1546,63 @@
 </tbody>
 </table>
 <p>For more information, see the <a href="/client-side-tags/pinterest-tag/">Pinterest Tag Setup Guide</a>.</p>
+<h3 id="confirm-deduplication">Confirm deduplication</h3>
+<p>Pinterest does not display a deduplicated conversions metric. Instead, you confirm deduplication by validating the following items:</p>
+<ul>
+<li>The <code>event_id</code> exists in both web and API payloads.</li>
+<li>The conversion shows only one time in reporting after triggering both versions.</li>
+</ul>
+<p>To view <code>event_id</code> in Pinterest Ads Manager, use the following steps:</p>
+<ol>
+<li>Go to <strong>Ads Manager &gt; Conversions &gt; Events</strong>.</li>
+<li>Select your Ad Account.</li>
+<li>Select the event (for example, Checkout).</li>
+<li>Open <strong>Event Diagnostics</strong>.</li>
+<li>Click an event payload to expand it.</li>
+<li>Confirm the following:
+<ul>
+<li><code>event_source</code> = <code>web</code> or <code>api</code></li>
+<li><code>event_id</code> matches</li>
+<li><strong>User data status</strong> = <code>accepted</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="validation">Validation</h2>
+<p>To validate the connector action, use test event code as follows:</p>
+<ol>
+<li>In the <strong>Send Conversion Event</strong> action, select <strong>Testing Mode</strong>.</li>
+<li>Send a test event.</li>
+<li>In Pinterest, use the following steps:
+<ul>
+<li>Go to <strong>Conversions &gt; Events &gt; Test Events</strong>.</li>
+<li>Confirm receipt and payload integrity.</li>
+</ul>
+</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>EULA Agreement</strong>: (Required) Select the checkbox to accept Pinterest&rsquo;s data platform policy.</li>
+<li><strong>Access Token</strong>: (Required) Access token generated through the Pinterest Ads Manager. For more information, see <a href="https://developers.pinterest.com/docs/conversions/conversion-management/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint">Pinterest: Conversions Guide</a>.</li>
+<li><strong>Ad Account ID</strong>: (Required) Unique identifier of an ad account. To locate your <strong>Ad Account ID</strong> in Pinterest, log in to the Pinterest account that owns your advertiser account and navigate to <strong>Ads &gt; Overview</strong>. The <strong>Ad Account ID</strong> is visible in the URL path. For example, <code>ads.pinterest.com/advertiser/{ad_account_id}/...</code> .</li>
+</ul>
+<p>Click <strong>Done</strong> when you finish configuring the connector.</p>
+<h3 id="offline-conversions">Offline conversions</h3>
+<p>Offline events allow you to measure the impact of ads on purchases, interactions, and conversions that happen outside of your website or app, such as in a physical retail location. To process offline events and conversions through the Pinterest Conversions connector, configure the connector to include the required parameters.</p>
+<h4 id="configuration-steps">Configuration steps</h4>
+<p>To configure the Pinterest Conversions connector to send offline events:</p>
+<ol>
+<li>In the <strong>Actions</strong> tab, add a new <strong>Send Conversion Event</strong> action.</li>
+<li>Map the <strong>Event Action Source</strong> parameter to <code>Offline</code>.</li>
+<li>Map the required parameters, and include optional parameters as needed for your event type.
+<ul>
+<li>Pinterest recommends mapping a transaction ID, order ID, or Tealium Random to the required Event ID parameter for offline events.</li>
+</ul>
+</li>
+<li>Verify in Pinterest Ads Manager.</li>
+</ol>
 <h2 id="actions">Actions</h2>
 <table>
 <thead>
@@ -1536,37 +1620,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="settings">Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Access Token</strong><br>
-(Required) Access Token generated through the Pinterest Ads Manager. For more information, see <a href="https://developers.pinterest.com/docs/conversions/conversion-management/#Authenticating%20for%20the%20Conversion%20Tracking%20endpoint">Pinterest: Conversions Guide</a>.</li>
-<li><strong>Ad Account ID</strong><br>
-(Required) Unique identifier of an ad account. To locate your <strong>Ad Account ID</strong> in Pinterest, log in to the Pinterest account that owns your advertiser account and navigate to <strong>Ads &gt; Overview</strong>. The <strong>Ad Account ID</strong> is visible in the URL path. For example, <code>ads.pinterest.com/advertiser/{ad_account_id}/...</code> .</li>
-</ul>
-<p>Click <strong>Done</strong> when you finish configuring the connector.</p>
-<h3 id="offline-conversions">Offline conversions</h3>
-<p>Offline events allow you to measure the impact of ads on purchases, interactions, and conversions that happen outside of your website or app, such as in a physical retail location. To process offline events and conversions through the Pinterest Conversions connector, configure the connector to include the required parameters.</p>
-<h4 id="prerequisites">Prerequisites</h4>
-<ul>
-<li>For all offline events, you must set the Event Action Source to <code>Offline</code> in the connector configuration.</li>
-<li>Offline events must include all required event parameters. For details, see <a href="https://developers.pinterest.com/docs/track-conversions/track-conversions-in-the-api/#format-server-event-parameters">Pinterest: Format server event parameters</a>.</li>
-</ul>
-<h4 id="configuration-steps">Configuration steps</h4>
-<p>Use the following steps to configure the Pinterest Conversions connector to send offline events:</p>
-<ol>
-<li>In the <strong>Actions</strong> tab, add a new <strong>Send Conversion Event</strong> action.</li>
-<li>Map the <strong>Event Action Source</strong> parameter to <code>Offline</code>.</li>
-<li>Map the required parameters, and include optional parameters as needed for your event type.
-<ul>
-<li>Pinterest recommends mapping a transaction ID, order ID, or Tealium Random to the required Event ID parameter for offline events.</li>
-</ul>
-</li>
-<li>Verify in Pinterest Ads Manager.</li>
-</ol>
-<h2 id="actions-1">Actions</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-conversion-event">Send Conversion Event</h3>
@@ -1585,6 +1638,41 @@
 <tr>
 <td>Event Action Source</td>
 <td>(Required) Source indicating where the conversion event occurred. <br><strong>App Android</strong> - Through mobile in-app events from an Android device.<br><strong>App iOS</strong> - Through mobile in-app events from an iOS device.<br><strong>Offline</strong> - Event is from offline.<br><strong>Web</strong> - Through desktop web browsers as well as mobile web browsers.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="conversion-event-parameters">Conversion Event Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event ID</td>
+<td>(Required) A String value that contains a unique ID for the event. This ID can be used for deduplication of events ingested from the Pinterest API for Conversions and the Pinterest Tag.</td>
+</tr>
+<tr>
+<td>Ad Account ID Override</td>
+<td>This setting overrides the Pinterest <strong>Ad Account ID</strong> used in the connector configuration section. Either <strong>Ad Account ID Override</strong> or <strong>Ad Account ID</strong> in the connector configuration section must be provided.</td>
+</tr>
+<tr>
+<td>Event Time</td>
+<td>Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. The event time cannot be later than the time Pinterest received the request. If this field is not mapped, it is initialized with the current timestamp.</td>
+</tr>
+<tr>
+<td>Event Source URL</td>
+<td>URL of the web conversion event.</td>
+</tr>
+<tr>
+<td>Opt Out</td>
+<td>When <strong>Event Action Source</strong> is <strong>Web</strong> or <strong>Offline</strong>, this parameter defines whether the user has opted out of tracking for web conversion events. When <strong>Event Action Source</strong> is <strong>App Android</strong> or <strong>App iOS</strong>, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.</td>
+</tr>
+<tr>
+<td>Event Name Override</td>
+<td>When <strong>Event Name</strong> is set to <strong>Custom</strong>, specify the name of the custom event in this field.</td>
 </tr>
 </tbody>
 </table>
@@ -1717,42 +1805,7 @@
 </tr>
 <tr>
 <td>Click ID</td>
-<td>The unique identifier stored in <code>_epik</code> cookie on your domain or <code>&amp;epik= query</code> parameter in the URL. It may improve reporting performance such as ROAS/CPA.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="conversion-event-parameters">Conversion Event Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Event ID</td>
-<td>(Required) A String value that contains a unique ID for the event. This ID can be used for deduplication of events ingested from the Pinterest API for Conversions and the Pinterest Tag.</td>
-</tr>
-<tr>
-<td>Ad Account ID Override</td>
-<td>This setting overrides the Pinterest <strong>Ad Account ID</strong> used in the connector configuration section. Either <strong>Ad Account ID Override</strong> or <strong>Ad Account ID</strong> in the connector configuration section must be provided.</td>
-</tr>
-<tr>
-<td>Event Time</td>
-<td>Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. The event time cannot be later than the time Pinterest received the request. If this field is not mapped, it is initialized with the current timestamp.</td>
-</tr>
-<tr>
-<td>Event Source URL</td>
-<td>URL of the web conversion event.</td>
-</tr>
-<tr>
-<td>Opt Out</td>
-<td>When <strong>Event Action Source</strong> is <strong>Web</strong> or <strong>Offline</strong>, this parameter defines whether the user has opted out of tracking for web conversion events. When <strong>Event Action Source</strong> is <strong>App Android</strong> or <strong>App iOS</strong>, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.</td>
-</tr>
-<tr>
-<td>Event Name Override</td>
-<td>When <strong>Event Name</strong> is set to <strong>Custom</strong>, specify the name of the custom event in this field.</td>
+<td>The unique identifier stored in the <code>_epik</code> cookie on your domain or the <code>&amp;epik=</code> query parameter in the URL. This can improve reporting performance such as ROAS/CPA.</td>
 </tr>
 </tbody>
 </table>
@@ -1775,7 +1828,7 @@
 </tr>
 <tr>
 <td>Content IDs</td>
-<td>List of products IDs.</td>
+<td>List of product IDs.</td>
 </tr>
 <tr>
 <td>Number of Items</td>
@@ -1930,7 +1983,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="configuration">Configuration</h4>
+<h4 id="configuration-1">Configuration</h4>
 <table>
 <thead>
 <tr>
@@ -2005,7 +2058,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  December 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2019,12 +2072,14 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#settings" href="javascript:void(0)">Settings</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#confirm-deduplication" href="javascript:void(0)">Confirm deduplication</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation" href="javascript:void(0)">Validation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#offline-conversions" href="javascript:void(0)">Offline conversions</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>

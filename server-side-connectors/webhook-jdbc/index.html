@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Criteo Audience Match Connector Setup Guide" />
+    <meta property="og:title" content="Webhook JDBC Connector Setup Guide" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://docs.tealium.com/server-side-connectors/criteo-audience-match-connector/" />
-<meta property="og:image" content="https://docs.tealium.com/images/integrations/criteo.png" />
-<meta property="og:description" content="This article describes how to set up the Criteo Audience Match connector." />
+<meta property="og:url" content="https://docs.tealium.com/server-side-connectors/webhook-jdbc/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="Connect this webhook connector to a JDBC-compatible database to write event or visitor data directly into your tables, either by storing the full JSON payload or mapping individual attributes to specific columns." />
 <meta property="og:site_name" content="Tealium Docs" />
-    <title>Criteo Audience Match Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Webhook JDBC Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -21,8 +21,6 @@
     
     <meta name="robots" content="index, follow">
     
-    
-    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/server-side-connectors/criteo-audience-match-connector/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -38,7 +36,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -92,16 +90,6 @@
       <li class="f5 dib mr4">
          <a href="/help/" class="dim link mid-gray">Help</a>
       </li>
-        
-      <li class="f5 dib mr4">
-      
-        
-      
-        
-          <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="dim link mid-gray">日本語</a>
-        
-      
-      </li>
       
     </ul>
   </div>
@@ -114,16 +102,6 @@
     <ul class="list ma0 pa0">
       <li class="f5 dib mr4">
          <a href="/help/" class="dim link mid-gray">Help</a>
-      </li>
-        
-      <li class="f5 dib mr4">
-      
-        
-      
-        
-          <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="dim link mid-gray">日本語</a>
-        
-      
       </li>
       
     </ul>
@@ -341,7 +319,7 @@
       <a href="/server-side-connectors/criteo-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/criteo-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audience Match</span></a>
+      <a href="/server-side-connectors/criteo-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences (OAuth)</span></a>
@@ -845,7 +823,10 @@
       <a href="/server-side-connectors/vkontakte-ads-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>VKontakte Ads</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/webhook-connector-setup-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook</span></a>
+      <a href="/server-side-connectors/webhook-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/webhook-jdbc/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Webhook JDBC</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/whatsapp-business-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>WhatsApp Business</span></a>
@@ -1051,8 +1032,8 @@
         <a href="/server-side-connectors/coveo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".coveo-connector">Coveo</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li>
-    <li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/criteo-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-connector-setup-guide">Criteo Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/criteo-audiences-oauth-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-oauth-connector">Criteo Audiences (OAuth)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1388,7 +1369,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte Ads</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li>
+        <a href="/server-side-connectors/webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook</a></li>
+    <li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/webhook-jdbc/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Webhook JDBC</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/whatsapp-business-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".whatsapp-business-connector">WhatsApp Business</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1441,7 +1424,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Criteo Audience Match Connector Setup Guide</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Webhook JDBC Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1449,71 +1432,112 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to set up the Criteo Audience Match connector.
+      Connect this webhook connector to a JDBC-compatible database to write event or visitor data directly into your tables, either by storing the full JSON payload or mapping individual attributes to specific columns.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>We reccomend that you use the <a href="/server-side-connectors/criteo-audiences-oauth-connector/">Criteo Audience Match (OAuth) connector</a> to send visitor data to Criteo. The OAuth connector uses your Criteo account credentials and the Authorization Code flow for improved security, privacy, and easier account management.</p>
-<h2 id="connector-actions">Connector actions</h2>
+  <p class="tip"><i class="fa fa-info-circle"></i>To use a webhook to send data to an HTTP API endpoint, see <a href="/server-side/connectors/webhook-connectors/about/">About webhook connectors</a>.</p>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following three (3) thresholds is met:</p>
+<ul>
+<li>Max number of requests: 1,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 100 MB</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Navigate to the connector marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li>
+<p><strong>Username</strong>: The username to log into your database from Tealium. For security reasons, allow this user to connect only from these <a href="/server-side/administration/ip-allow-list/">IP addresses</a>.</p>
+</li>
+<li>
+<p><strong>Password</strong>: The password for the username provided.</p>
+</li>
+<li>
+<p><strong>JDBC URL</strong>: The fully qualified JDBC URL to establish the connection (for example, <code>jdbc:postgresql://host:5432/dbname?p1=a&amp;p2=b</code>).</p>
+</li>
+<li>
+<p><strong>Additional properties</strong>: A set of comma-separated pairs to pass as properties when establishing the connection. For example, <code>prop1=a,prop2=b</code> results in the following adjustment to the connection:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>props<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;prop1&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>props<span style="color:#f92672">.</span><span style="color:#a6e22e">setProperty</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;prop2&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>Connection conn <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>url<span style="color:#f92672">,</span> props<span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="column-data-types">Column data types</h3>
+<p>To make it easier to map attributes to table columns, the columns appear with their data type appended to the name. For example, if you have a column named <code>customer_id</code> of type <code>VARCHAR</code>, it appears in the mapping list as <code>customer_id//VARCHAR</code>.</p>
+<h3 id="batch-configuration">Batch configuration</h3>
+<p>All actions that support batch processing support the following parameters:</p>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Add User to Audience</td>
-<td>✓</td>
+<td>Batch time to live</td>
+<td>Set the time to live (<code>TTL</code>) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
+<tr>
+<td>Max query size</td>
+<td>Set the maximum size of the query in megabytes. The default value is <code>1</code>. The maximum value is <code>100</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Entire Event Data</td>
+<td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>Remove User from Audience</td>
+<td>Send Custom Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Log event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Execute Custom Query</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
-<h3 id="api-information">API information</h3>
-<p>This connector uses the following vendor API:</p>
-<ul>
-<li>API Name: Criteo API</li>
-<li>API Version: 2025-07</li>
-<li>API Endpoint: <code>https://api.criteo.com/2025-07/audiences</code></li>
-<li>Documentation: <a href="https://developers.criteo.com/marketing-solutions/docs/audiences">Criteo: Audiences API</a></li>
-</ul>
-<h3 id="batch-limits">Batch limits</h3>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Max number of requests: 50000</li>
-<li>Max time since oldest request: 15 minutes</li>
-<li>Max size of requests: 10 MB</li>
-</ul>
-<h2 id="configure-settings">Configure settings</h2>
-<h3 id="request-consent-link-from-criteo">Request Consent Link from Criteo</h3>
-<p>If you intend to use this connector, send an email to <a href="mailto:asintegrations@tealium.com">asintegrations@tealium.com</a> to receive a consent link that authorizes the Tealium Customer Data Hub to manage audiences on behalf of advertisers. For more information, see <a href="https://developers.criteo.com/marketing-solutions/docs/authorization-requests">Criteo Developers: Send an Authorization Request to Your Users</a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This step may take up to three working days for approval.</p>
-<p>After receiving the Criteo activation link, complete the following steps:</p>
-<ol>
-<li>Click the activation link provided.<br>
-The <strong>Criteo Consent Portal</strong> appears.</li>
-<li>Grant the requested authorization levels for the account.</li>
-</ol>
-<h3 id="add-connector-and-configure-settings">Add Connector and Configure Settings</h3>
-<p>Go to the Connector Marketplace and add the Criteo Audience Match connector to your profile. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Advertiser ID (Required)</strong><br>
-Configure the <strong>Advertiser ID</strong> associated with an integration in your Criteo account.</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-user-to-audience">Action - Add User to Audience</h3>
+<h3 id="send-entire-event-data">Send Entire Event Data</h3>
+<p>Use this action to send the entire event JSON object to a single table column.</p>
+<p>For more information, see <a href="/server-side/connectors/webhook-connectors/actions-and-parameters/#event-data-json">Event Data JSON</a>.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1524,20 +1548,33 @@ Configure the <strong>Advertiser ID</strong> associated with an integration in y
 </thead>
 <tbody>
 <tr>
-<td>Audience</td>
-<td>Select an audience or enter the Audience ID to add the user to.</td>
+<td>Schema</td>
+<td>The schema name you want to connect to.</td>
 </tr>
 <tr>
-<td>Identifier</td>
-<td>Map a user identifier value. <ul><li><strong>Email</strong>: Send email value as-is without applying built-in hashing. Select this option if the value requires no hashing or is already hashed.</li><li><strong>Email (apply MD5 hash)</strong>: Hash email value with MD5 before sending.</li><li><strong>Email (apply MD5 SHA256 hash)</strong>: Hash email value with MD5 and then SHA256 before sending.</li><li><strong>Mobile ID</strong>: IDFA mobile ID for Apple, ADID mobile ID for Android.</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request.</li></ul></td>
+<td>Table</td>
+<td>The table name you want to connect to.</td>
 </tr>
 <tr>
-<td>Gum Caller ID</td>
-<td>Gum Caller <code>ID</code> - Value used by Criteo for <code>GUM</code> (Generative Unified Media) salting. If using the Tealium iQ Criteo Cookie Matching Service tag, leave this unmapped.</td>
+<td>Payload</td>
+<td>Choose the column to store the JSON data object.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Choose the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>Select an attribute to assign as the timestamp to send the timestamp in a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-user-from-audience">Action - Remove User from Audience</h3>
+<h3 id="send-custom-event-data">Send Custom Event Data</h3>
+<p>Use this action to send specific event attributes to specific table columns.</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -1548,16 +1585,195 @@ Configure the <strong>Advertiser ID</strong> associated with an integration in y
 </thead>
 <tbody>
 <tr>
-<td>Audience</td>
-<td>Select an audience or enter the Audience ID to remove the user from.</td>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
 </tr>
 <tr>
-<td>Identifier</td>
-<td>Map a user identifier value. <ul><li><strong>Email</strong>: Send email value as-is without applying built-in hashing. Select this option if the value requires no hashing or is already hashed.</li><li><strong>Email (apply MD5 hash)</strong>: Hash email value with MD5 before sending.</li><li><strong>Email (apply MD5 SHA256 hash)</strong>: Hash email value with MD5 and then SHA256 before sending.</li><li><strong>Mobile ID</strong>: IDFA mobile ID for Apple, ADID mobile ID for Android.</li><li><strong>Identity Link</strong>: Identity Link</li><li><strong>Gum ID</strong>: Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request.</li></ul></td>
+<td>Table</td>
+<td>The table name to connect to.</td>
 </tr>
 <tr>
-<td>Gum Caller ID</td>
-<td>Gum Caller <code>ID</code> - Value used by Criteo for <code>GUM</code> salting. If using the Tealium iQ Criteo Cookie Matching Service tag, leave this unmapped.</td>
+<td>Upsert</td>
+<td>Select to update the data if a record with the same key already exists. To perform an update operation in the database, you must map an attribute to a primary key column.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-log-event">Send Entire Log event</h3>
+<p>For more information, see <a href="/early-access/log-streaming/about/">Connector error logging</a>.</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>The table name to connect to.</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>Choose the column to store the JSON data object.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Choose the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>An attribute to assign as the timestamp to send the timestamp in a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<p>For more information, see <a href="/early-access/log-streaming/about/">Connector error logging</a>.</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>The table name to connect to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="log-event-resource-attributes">Log event resource attributes</h4>
+<p>These fields capture information about the entity for which telemetry is recorded.</p>
+<h4 id="log-event-http-attributes">Log event HTTP attributes</h4>
+<p>These fields log the HTTP requests and responses within the logging system.</p>
+<p>If you want to map the entire HTTP array to a single column, map the <code>http</code> attribute. If the target column is of type <code>VARIANT</code>, the raw array is sent; otherwise, it is converted to a string.</p>
+<h4 id="log-event-result-attributes">Log event result attributes</h4>
+<p>These fields log the outcome of the operation, detailing whether it was successful or if it encountered errors.</p>
+<h4 id="log-event-other-attributes">Log event other attributes</h4>
+<p>These fields provide additional metadata about the logged events.</p>
+<h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
+<p>Use this action to send the entire visitor JSON object to a single table column.</p>
+<p>For more information, see <a href="/server-side/connectors/webhook-connectors/actions-and-parameters/#visitor-data-json">Visitor Data JSON</a>.</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>The table name to connect to.</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>Choose the column to store the JSON data object.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Choose the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>Select an attribute to assign as the timestamp to send the timestamp in a different format. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data With Visitor Data</td>
+<td>Select to include the current visit data with visitor data. This includes event visit data, unless <strong>Exclude Current Visit Data</strong> is selected.</td>
+</tr>
+<tr>
+<td>Exclude Current Visit Event Data</td>
+<td>Select to exclude event data from the current visit data.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
+<p>Use this action to send specific visitor attributes to specific table columns.</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>The table name to connect to.</td>
+</tr>
+<tr>
+<td>Upsert</td>
+<td>Select to update the data if a record with the same key already exists. To perform an update operation in the database, you must map an attribute to a primary key column.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="execute-custom-query">Execute Custom Query</h3>
+<p>Use this action to run custom SQL statements.</p>
+<p>Only <code>INSERT</code>, <code>UPDATE</code> or <code>MERGE</code> statements are allowed, but they can include <code>SELECT</code> sub-queries. Including multiple <code>INSERT</code>, <code>UPDATE</code> or <code>MERGE</code> statements within the same query causes an error.</p>
+<p>To use this feature, map your attributes to named placeholders, that you reference in your SQL using the <code>:MY_PLACEHOLDER</code> format. For example, if you map a boolean attribute to a placeholder named <code>:my_bool_param</code>, then reference <code>:my_bool_param</code> in the query where you want that value to be replaced by the mapped attribute&rsquo;s value.</p>
+<p>Examples:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> redshift_table
+</span></span><span style="display:flex;"><span>(col1, col2) <span style="color:#66d9ef">VALUES</span> (:col1Value, :col2Value)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">UPDATE</span> redshift_table
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> col1 <span style="color:#f92672">=</span> :col1Value, col2 <span style="color:#f92672">=</span> :col2Value
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> col3 <span style="color:#f92672">=</span> :col3Value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">UPDATE</span> redshift_table
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> col2 <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SELECT</span> new_col2 <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.col1 <span style="color:#f92672">=</span> redshift_table.col1
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">EXISTS</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.col1 <span style="color:#66d9ef">LIKE</span> :col1Value
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>The schema name to connect to.</td>
+</tr>
+<tr>
+<td>Query Parameters</td>
+<td>Map the parameters to the placeholder to replace in the query. Parameters must use the format: <code>:ParameterName</code>. You must map at least one parameter.</td>
+</tr>
+<tr>
+<td>Query</td>
+<td>The raw statement to pass into the <code>SQL</code> attribute.</td>
 </tr>
 </tbody>
 </table>
@@ -1567,13 +1783,13 @@ Configure the <strong>Advertiser ID</strong> associated with an integration in y
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side-connectors/criteo-audiences-oauth-connector/"
+  <a href="/server-side-connectors/whatsapp-business-connector/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Criteo Audiences (OAuth)</div>
+      <div>WhatsApp Business</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Criteo Audiences (OAuth)"</title>
+      <title>"WhatsApp Business"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1582,14 +1798,14 @@ Configure the <strong>Advertiser ID</strong> associated with an integration in y
 </div><div class="w-50 mr3">
   
   
-  <a href="/server-side-connectors/coveo-connector/"
+  <a href="/server-side-connectors/webhook-connector/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Coveo "</title>
+      <title>"Webhook "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Coveo</div>
+      <div>Webhook</div>
     </section>
   </a>
   
@@ -1621,7 +1837,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 21, 2025 
+          <p>This page was last updated:  December 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1635,15 +1851,18 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#request-consent-link-from-criteo" href="javascript:void(0)">Request Consent Link from Criteo</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-connector-and-configure-settings" href="javascript:void(0)">Add Connector and Configure Settings</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-user-to-audience" href="javascript:void(0)">Action - Add User to Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-user-from-audience" href="javascript:void(0)">Action - Remove User from Audience</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-data-types" href="javascript:void(0)">Column data types</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-configuration" href="javascript:void(0)">Batch configuration</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-log-event" href="javascript:void(0)">Send Entire Log event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execute-custom-query" href="javascript:void(0)">Execute Custom Query</a></li>
               </nav>
   </aside></nav>
 

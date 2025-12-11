@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/connectors/webhook-connectors/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes the available webhook connectors." />
+<meta property="og:description" content="Connect the webhook connector to an HTTP API endpoint to send event or visitor data directly to your service, either by posting the full JSON payload or mapping individual attributes to request fields." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>About webhook connectors | Webhook connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -661,9 +661,9 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">About webhook connectors</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuth and OAuth2</a></li>
+        <a href="/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Authentication</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Action parameters</a></li>
+        <a href="/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Actions and parameters</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Validate webhook action</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1014,7 +1014,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes the available webhook connectors.
+      Connect the webhook connector to an HTTP API endpoint to send event or visitor data directly to your service, either by posting the full JSON payload or mapping individual attributes to request fields.
     </p>
   
 </div>
@@ -1026,16 +1026,18 @@
 <li>Tealium account enabled for AudienceStream (for visitor data)</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>The Webhook Connector sends customized data to your vendor through HTTP requests, using all aspects of an HTTP request, including the URL, URL Parameters, Headers, Cookies, Body Content Type, and Body Data. Webhook also supports batching. Additionally, it includes a powerful templating feature designed to handle complex and dynamic data formats.</p>
-<p>There are four Webhook connectors to choose from based on the authorization requirements of your vendor, as follows:</p>
+<p>The webhook connector sends event or visitor data to your vendor through HTTP requests. All aspects of the HTTP request can be configured to create the exact request needed by your vendor.</p>
+<h2 id="authentication">Authentication</h2>
+<p>The following authentication methods are supported for HTTP-based webhook connectors:</p>
 <ul>
-<li><strong>Webhook (BasicAuth)</strong>: For services that do not require authentication or only require basic authentication with a username and password.</li>
-<li><strong>Webhook (OAuth2 - 3-Legged)</strong>: Requires the user to log in to the service to obtain an access token.</li>
-<li><strong>Webhook (OAuth2 - 2-Legged)</strong>: Does not require the user to log in to the service. The webhook is configured with the information required to authenticate.</li>
-<li><strong>Webhook (JWT)</strong>: Uses JSON web token authentication. Does not require the user to log in to the service. The webhook is configured with the information required to authenticate.</li>
+<li><strong>BasicAuth</strong>: Authenticate webhook requests using a username and password sent with the request.</li>
+<li><strong>OAuth2 3-Legged</strong>: Authenticate webhook requests through a user-consent flow that issues access tokens on the user&rsquo;s behalf. Requires the user to log in to the service to obtain an access token.</li>
+<li><strong>OAuth2 2-Legged</strong>: Authenticate webhook requests using server-to-server access tokens without any user involvement.</li>
+<li><strong>JWT</strong>: Authenticate webhook requests with a JSON web token.</li>
 </ul>
 <p>Webhook OAuth2 is used for services that explicitly require OAuth 2.0 authentication.</p>
-<p>To get started, go to the connector marketplace and add the Webhook instance you want to use. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">Connector Overview</a>.</p>
+<p>For more information, see <a href="/server-side/connectors/webhook-connectors/authentication/">Webhook authentication</a>.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>To use a webhook to send data to a JDBC-compatible database, see <a href="/server-side-connectors/webhook-jdbc/">Webhook JDBC</a>.</p>
 <h2 id="actions">Actions</h2>
 <table>
 <thead>
@@ -1079,22 +1081,22 @@
 </tr>
 </tbody>
 </table>
-<p>For more information, see <a href="/server-side/connectors/webhook-connectors/action-parameters/">Action parameters</a>.</p>
+<p>For more information, see <a href="/server-side/connectors/webhook-connectors/actions-and-parameters/">Webhook actions and parameters</a>.</p>
 <h2 id="http-response-cookies">HTTP response cookies</h2>
-<p>While cookie-based session management is common in web browsers, it is generally discouraged in server-to-server environments that communicate with stateless APIs. For that reason, the Webhook connector does not track cookie-based sessions and effectively ignores <code>Set-Cookie</code> header values in HTTP responses.</p>
+<p>While cookie-based session management is common in web browsers, it is generally discouraged in server-to-server environments that communicate with stateless APIs. For that reason, the webhook connector does not track cookie-based sessions and effectively ignores <code>Set-Cookie</code> header values in HTTP responses.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side/connectors/webhook-connectors/basicauth-oauth2/"
+  <a href="/server-side/connectors/webhook-connectors/authentication/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>BasicAuth and OAuth2</div>
+      <div>Authentication</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"BasicAuth and OAuth2"</title>
+      <title>"Authentication"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1127,7 +1129,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 3, 2025 
+          <p>This page was last updated:  December 10, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1143,6 +1145,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http-response-cookies" href="javascript:void(0)">HTTP response cookies</a></li>
               </nav>

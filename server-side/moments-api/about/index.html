@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -661,9 +661,9 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About webhook connectors</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuth and OAuth2</a></li>
+        <a href="/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Authentication</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Action parameters</a></li>
+        <a href="/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Actions and parameters</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Validate webhook action</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1020,13 +1020,13 @@
 <p>Moments API uses configurations called <em>engines</em> that let you customize API responses to retrieve only the data you need for current visitors. For example, instead of retrieving an entire visitor profile, Moments API retrieves only the audience, badge, and attribute data you select in the engine configuration.</p>
 <p>After you configure the engine, Moments API creates a unique endpoint that you integrate into your workflow.</p>
 <h3 id="use-cases">Use cases</h3>
-<p>Moments API can be used any time you need real-time visitor data for personalized customer experiences, including:</p>
+<p>Moments API can be used any time you need real-time visitor data for personalized experiences, including:</p>
 <ul>
 <li>Personalization (First-page and beyond)</li>
 <li>Next best action in combination with data enrichment logic</li>
 <li>Enterprise-grade API management and compliance</li>
 </ul>
-<p>For example, when a customer returns to your website or app, a request is made to the unique Moments API endpoint for visitor data. Moments API is optimized to provide only the data you need, so the API sends a real-time, streamlined response back to your app. With that critical data, you can activate additional logic to trigger personalized experiences for your customers.</p>
+<p>For example, when a visitor returns to your website or app, a request is made to the unique Moments API endpoint for visitor data. Moments API is optimized to provide only the data you need, so the API sends a real-time, streamlined response back to your app. With that critical data, you can activate additional logic to trigger personalized experiences for your visitor.</p>
 <figure><a class="slb" href="/images/early-access/moments-api-workflow.png"><img src="/images/early-access/moments-api-workflow.png"
          alt="High-level Moments API workflow"
          title="High-level Moments API workflow"/>
@@ -1035,12 +1035,38 @@
 <h3 id="engines">Engines</h3>
 <p>Moments API engines let you configure the visitor data to store in each unique endpoint and the domains allowed to access those endpoints.</p>
 <p>When you configure an engine, you select only the audiences, badges, and attributes necessary for your use case. The Moments API engine shows you the JSON response as you build it, which lets you verify the accuracy and scope of your requests.</p>
-<p>Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. For example, when a customer visits your site, Moments API determines if the new visitor events impact the audiences, badges, and attributes defined in your engine configuration. Data is written to a unique data store for each engine only when visitor data needs to be updated.</p>
-<p>Engines update their data stores in real-time, so the API endpoint data remains up-to-date as visitors interact with you brand.</p>
+<p>Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. For example, when a visitor visits your site, Moments API determines if the new visitor events impact the audiences, badges, and attributes defined in your engine configuration. Data is written to a unique data store for each engine only when visitor data needs to be updated.</p>
+<p>Engines update their data stores in real-time, so the API endpoint data remains up-to-date as visitors interact with your brand.</p>
 <p>By default, you can enable up to 10 engines per profile so that you can create a customized engine for each specific business case. If you need to enable additional engines, contact Tealium Support.</p>
+<h3 id="reads-and-writes">Reads and writes</h3>
+<p>A <em>read</em> is a request to retrieve visitor data from an engine. A read is counted towards your quota regardless of whether data is found. If Tealium rejects a read due to rate limiting, you are not charged.</p>
+<p>A <em>write</em> is an update to visitor profile data stored by Moments API for an engine. For stitched visitors, Moments API executes a separate write for each associated visitor ID, such as anonymous IDs and configured visitor ID values. The total number of writes depends on the number of engines and the number of associated visitor IDs linked to the stitched visitor.</p>
+<p>For example, a visitor visits a site from two devices, which results in two anonymous IDs:</p>
+<ul>
+<li>Desktop anonymous ID <code>tealium_visitor_id</code> = <code>abc123</code>.</li>
+<li>Mobile anonymous ID <code>tealium_visitor_id</code> = <code>bcd234</code>.</li>
+</ul>
+<p>These result in two visitor profiles, A and B:</p>
+<p><img src="/images/server-side/visitor-stitching-example-first-visit.png"  width="473px" height="120px"/>
+<img src="/images/server-side/visitor-stitching-example-second-visit.png"  width="400px" height="111px"/></p>
+<p>The visitor&rsquo;s email address is <code>user@example.com</code>, which populates the configured visitor ID attribute and is used to stitch the profiles associated with both devices into a new master profile (C).</p>
+<img src="/images/server-side/visitor-stitching-profile-c-created.png"  width="356px" height="206px"/>
+<p>If the account has a single engine and the visitor has an attribute that qualifies it for writing, the system writes that data one time for each visitor profile:</p>
+<ul>
+<li>If visitor ID lookups are enabled, 3 writes (3 visitor profiles × 1 engine).</li>
+<li>If visitor ID lookups are disabled, 2 writes (2 visitor profiles × 1 engine).</li>
+</ul>
+<img src="/images/server-side/moments-api/moments-api-visitor-stitching-1.png"  width="500px" height="300px"/>
+<p>If the account has five identically configured engines and the visitor has an attribute that qualifies it for writing, the system writes that data five times for each visitor profile:</p>
+<ul>
+<li>If visitor ID lookups are enabled, 15 writes (3 visitor profiles × 5 engines).</li>
+<li>If visitor ID lookups are disabled, 10 writes (2 visitor profiles × 5 engines).</li>
+</ul>
+<img src="/images/server-side/moments-api/moments-api-visitor-stitching-2.png"  width="550px" height="300px"/>
+<p>For more information about visitor stitching, see <a href="/server-side/visitor-stitching/about/">About visitor stitching</a>.</p>
 <h3 id="endpoints">Endpoints</h3>
 <p>Moments API creates a unique endpoint for each engine. Visitor data is returned as a JSON object.</p>
-<p>Tealium has benchmarked the average Moments API endpoint performance at 60 ms for payload sizes of 1 kB and smaller,</p>
+<p>Tealium has benchmarked the average Moments API endpoint performance at 60 ms for payload sizes of 1 kB and smaller.</p>
 <p>To retrieve visitor data, configure a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a> to make a request to the <a href="/server-side/moments-api/endpoint/">Moments API endpoint</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Data is not available for visitors that have not had an active session since turning on the engine.</p>
 <h3 id="mcp-server">MCP Server</h3>
@@ -1062,7 +1088,7 @@
 <p>Maximum enabled engines per profile: 10</p>
 </li>
 <li>
-<p>Maximum size of Moments API data that can be stored per visitor per engine: 1 kB <p class="note"><i class="fa fa-exclamation-triangle"></i>If your visitor attribute data exceeds the data store limit, it will not be stored for that visitor.</p></p>
+<p>Maximum size of Moments API data that can be stored per visitor per engine: 1 kB <p class="note"><i class="fa fa-exclamation-triangle"></i>If your visitor attribute data exceeds the data store limit, it is not stored for that visitor.</p></p>
 </li>
 <li>
 <p>Data available in Moments API endpoint: 30-day retention if no new events are processed</p>
@@ -1077,7 +1103,7 @@
 <li>Changing the personally identifiable information (PII) status of an attribute. If you change the PII status of an attribute, restricted information may still be openly stored in the API endpoint.</li>
 <li>Removing an audience, badge, or attribute from an engine configuration.</li>
 </ul>
-<p>If an audience, badge, or attribute used in an engine is deleted from AudienceStream or the engine configuration, that item will no longer be populated in the endpoint moving forward. Engine data that contains the removed attributes will be unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data.</p>
+<p>If an audience, badge, or attribute used in an engine is deleted from AudienceStream or the engine configuration, that item is no longer populated in the endpoint moving forward. Engine data that contains the removed attributes are unchanged. In general, if removing a dependency causes breaking changes in your endpoint integration, you may want to purge the engine data.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Purging data only deletes Moments API engine data. Visitor records in AudienceStream are not affected.</p>
 <p>For more information about purging engine data, see <a href="/server-side/moments-api/manage/#purge-data">Manage Moments API engines &gt; Purge data</a>.</p>
 <h2 id="domain-allow-list">Domain allow list</h2>
@@ -1088,7 +1114,7 @@
 <li>Domains match: The request is processed.</li>
 <li>Domains do not match: The request is not processed and returns a 403 error.</li>
 </ul>
-<p>If you do not list any domains, all domains will be allowed.</p>
+<p>If you do not list any domains, all domains are allowed.</p>
 <h3 id="subdomains">Subdomains</h3>
 <p>When you add a domain to the allow list, all of its subdomains are automatically included. For example, if you allow <code>example.com</code>, any subdomain that matches <code>*.example.com</code> is included.</p>
 <h2 id="permissions">Permissions</h2>
@@ -1217,7 +1243,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 8, 2025 
+          <p>This page was last updated:  December 8, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1234,6 +1260,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-cases" href="javascript:void(0)">Use cases</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#engines" href="javascript:void(0)">Engines</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reads-and-writes" href="javascript:void(0)">Reads and writes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#endpoints" href="javascript:void(0)">Endpoints</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#mcp-server" href="javascript:void(0)">MCP Server</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-identifiers" href="javascript:void(0)">Visitor identifiers</a></li>

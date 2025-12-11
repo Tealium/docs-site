@@ -335,7 +335,7 @@
       <a href="/ja/server-side-connectors/criteo-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audience Match</span></a>
+      <a href="/ja/server-side-connectors/criteo-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/criteo-audiences-oauth-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Criteo Audiences (OAuth)</span></a>
@@ -1219,7 +1219,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/criteo-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-connector-setup-guide">Criteo</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/criteo-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audience-match-connector-setup-guide">Criteo Audience Match</a></li>
+        <a href="/ja/server-side-connectors/criteo-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-connector-setup-guide">Criteo Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/criteo-audiences-oauth-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".criteo-audiences-oauth-connector">Criteo Audiences (OAuth)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1740,8 +1740,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動して、新しいコネクタを追加します。詳細については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+  <h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。詳細については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>ホスト</strong>
@@ -1750,31 +1750,31 @@
 <li>USベースのAPIエンドポイントの場合、<strong><a href="https://app.iterable.com">https://app.iterable.com</a></strong> を選択します。</li>
 </ul>
 </li>
-<li><strong>API キー</strong></li>
+<li><strong>API キー</strong>: Iterable API キーを入力します。</li>
 </ul>
-<p>API キーを見つけるには、Iterable サイトで <strong>Integrations &gt; API Keys</strong> に移動します。</p>
-<h2 id="サポートされるアクション">サポートされるアクション</h2>
+<p>API キーを見つけるには、Iterable サイトで <strong>Integrations &gt; API Keys</strong> にある <strong>Iterable Connector</strong> メニューにアクセスします。</p>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
-<th><strong>アクション名</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>イベントの追跡（バッチ処理）</td>
+<td>イベント追跡（バッチ処理）</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>ユーザーのアップサート（バッチ処理）</td>
+<td>ユーザー追加（バッチ処理）</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>GDPRに準拠してユーザーを忘れる</td>
+<td>GDPRに準拠してユーザーを削除</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -1794,22 +1794,22 @@
 <td>✓</td>
 </tr>
 <tr>
-<td>ユーザーを購読（ASのみ）</td>
+<td>ユーザーをサブスクリプションに追加</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>ユーザーの購読を解除（ASのみ）</td>
+<td>ユーザーをサブスクリプションから削除</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>リストにユーザーを購読</td>
+<td>ユーザーをリストに登録</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>リストからユーザーを購読解除</td>
+<td>ユーザーをリストから解除</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -1835,12 +1835,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでアクションを構成し、トリガーします。</p>
+<p><strong>次へ</strong> をクリックするか、<strong>アクション</strong> タブに進みます。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション--イベントの追跡バッチ処理">アクション — イベントの追跡（バッチ処理）</h3>
+<h3 id="イベント追跡バッチ処理">イベント追跡（バッチ処理）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：1000</li>
 <li>最古のリクエストからの最大時間：10分</li>
@@ -1850,14 +1849,14 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>イベント名</td>
-<td>必須。イベントの名前。</td>
+<td>(必須) イベントの名前。</td>
 </tr>
 <tr>
 <td>作成日時</td>
@@ -1865,45 +1864,45 @@
 </tr>
 <tr>
 <td>メール</td>
-<td><strong>メール</strong>または<strong>ユーザーID</strong>のいずれかを入力してユーザーを識別する必要があります。両方が入力されている場合は、<strong>メール</strong>が優先されます。</td>
+<td><strong>メール</strong> または <strong>ユーザーID</strong> のいずれかを入力してユーザーを識別する必要があります。両方が入力されている場合は、<strong>メール</strong> が優先されます。</td>
 </tr>
 <tr>
 <td>イベントID</td>
-<td>入力されたIDのイベントが存在する場合、そのイベントは更新されます。<strong>イベントID</strong>が指定されていない場合、新しいIDが自動的に生成され、返されます。このIDは512バイトを超えることはできません。</td>
+<td>入力されたIDのイベントが存在する場合、そのイベントは更新されます。<strong>イベントID</strong> が指定されていない場合、新しいIDが自動的に生成されて返されます。このIDは512バイトを超えることはできません。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td><code>updateUser</code>コールに渡されたユーザーID。</td>
+<td><code>updateUser</code> コールに渡されたユーザーID。</td>
 </tr>
 <tr>
 <td>キャンペーン</td>
-<td><ul><li>変換に関連するキャンペーン。</li><li>詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">キャンペーンの紹介</a>を参照してください。</li></ul></td>
+<td><ul><li>変換に関連するキャンペーン。</li><li>詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンの紹介</a>を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>プロジェクトテンプレート</td>
-<td>テンプレートID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-">テンプレートの紹介</a>を参照してください。</td>
+<td>テンプレートID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-">Iterable: テンプレートの紹介</a>を参照してください。</td>
 </tr>
 <tr>
 <td>データフィールド</td>
-<td>イベントに関連する追加データ。たとえば、アイテムの金額や数量などです。同じ名前のイベントの場合、同じ名前のデータフィールドは同じタイプでなければなりません。</td>
+<td>イベントに関連する追加データ。例：アイテムの金額や数量。同じ名前のイベントの場合、同じ名前のデータフィールドは同じタイプでなければなりません。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。たとえば、<code>items.name</code>です。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされるフィールドに名前でテンプレートが注入されます。たとえば、<code>{{SomeTemplateName}}</code>です。</li></ul></td>
+<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
-<td>コネクタ構成で指定されたAPIキーを上書きするために、APIキーを入力するか、APIキーの属性をマッピングします。</td>
+<td>APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーのアップサートバッチ処理">アクション — ユーザーのアップサート（バッチ処理）</h3>
+<h3 id="ユーザー追加バッチ処理">ユーザー追加（バッチ処理）</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：1000</li>
 <li>最古のリクエストからの最大時間：10分</li>
@@ -1913,94 +1912,94 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>メール</td>
-<td>プロファイルが既にユーザーIDで存在する場合を除き、メールを構成する必要があります。プロファイルが既に存在する場合は、<strong>ユーザーID</strong>から<strong>メール</strong>へのルックアップが実行されます。</td>
+<td>プロファイルが既にユーザーIDで存在する場合を除き、メールを構成する必要があります。プロファイルが既に存在する場合は、<strong>ユーザーID</strong> から <strong>メール</strong> へのルックアップが実行されます。</td>
 </tr>
 <tr>
 <td>ネストされたオブジェクトのマージ</td>
-<td>トップレベルのオブジェクトを上書きするのではなくマージします。デフォルト値は <code>False</code> です。たとえば、ユーザープロファイルに <code>{mySettings:{mobile:true}}</code> が含まれ、変更された連絡先フィールドに <code>{mySettings:{email:true}}</code> が含まれている場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含みます。</td>
+<td>トップレベルのオブジェクトを上書きするのではなくマージします。デフォルト値は <code>False</code> です。例えば、ユーザープロファイルに <code>{mySettings:{mobile:true}}</code> が含まれており、変更された連絡先フィールドに <code>{mySettings:{email:true}}</code> が含まれている場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含むことになります。</td>
 </tr>
 <tr>
 <td>ユーザーIDを優先</td>
-<td>ユーザーがまだ存在しない場合は、指定されたユーザーIDで新しいユーザーを作成します。</td>
+<td>ユーザーがまだ存在しない場合、指定されたユーザーIDで新しいユーザーを作成します。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>通常はデータベースで生成されたIDです。<strong>メール</strong>または<strong>ユーザーID</strong>のいずれかを指定する必要があります。</td>
+<td>通常はデータベースで生成されたIDです。<strong>メール</strong> または <strong>ユーザーID</strong> のいずれかが指定されている必要があります。</td>
 </tr>
 <tr>
 <td>データフィールド</td>
-<td>ユーザープロファイルに保存するデータフィールド。</td>
+<td>ユーザープロファイルに格納するデータフィールド。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。たとえば、<code>items.name</code>です。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされるフィールドに名前でテンプレートが注入されます。たとえば、<code>{{SomeTemplateName}}</code>です。</li></ul></td>
+<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
-<td>コネクタ構成で指定されたAPIキーを上書きするために、APIキーを入力するか、APIキーの属性をマッピングします。</td>
+<td>APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--gdprに準拠してユーザーを忘れる">アクション — GDPRに準拠してユーザーを忘れる</h3>
+<h3 id="gdprに準拠してユーザーを削除">GDPRに準拠してユーザーを削除</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>メール</td>
-<td>指定されたユーザーのデータをIterableプロジェクトから削除し、今後のデータ収集を防ぎたい場合は、ユーザーのメールを提供します。</td>
+<td>指定されたユーザーのデータをIterableプロジェクトから削除し、今後のデータ収集を防ぎたい場合は、ユーザーのメールを提供してください。</td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
-<td>コネクタ構成で指定されたAPIキーを上書きするために、APIキーを入力するか、APIキーの属性をマッピングします。</td>
+<td>APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーにsms通知を送信">アクション — ユーザーにSMS通知を送信</h3>
+<h3 id="ユーザーにsms通知を送信">ユーザーにSMS通知を送信</h3>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>キャンペーン</td>
-<td>キャンペーンID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">キャンペーンの紹介</a>を参照してください。</td>
+<td>キャンペーンID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンの紹介</a>を参照してください。</td>
 </tr>
 <tr>
-<td>繰り返しマーケティング送信を許可</td>
+<td>マーケティング送信の繰り返しを許可</td>
 <td>デフォルトはTrueです。</td>
 </tr>
 <tr>
 <td>受信者のメール</td>
-<td><strong>メール</strong>または<strong>ユーザーID</strong>のいずれかを入力してユーザーを識別する必要があります。両方が入力されている場合は、<strong>メール</strong>が優先されます。</td>
+<td><strong>メール</strong> または <strong>ユーザーID</strong> のいずれかを入力してユーザーを識別する必要があります。両方が入力されている場合は、<strong>メール</strong> が優先されます。</td>
 </tr>
 <tr>
 <td>受信者のユーザーID</td>
-<td><code>updateUser</code>コールに渡されたユーザーID。</td>
+<td><code>updateUser</code> コールに渡されたユーザーID。</td>
 </tr>
 <tr>
 <td>送信時刻</td>
-<td>最大365日先までメッセージのスケジュールを構成します。過去に構成されている場合は、メッセージは即時に送信されます。予想される形式は <code>YYYY-MM-DD HH:MM:SS</code> です。データが適切にフォーマットされていることを確認してください。<strong>Date</strong>タイプの属性が提供された場合、コネクタは上記の適切な日付形式に値を変換します。</td>
+<td>最大365日先までのメッセージのスケジュールを構成します。過去に構成されている場合、メッセージは即時に送信されます。予想される形式は <code>YYYY-MM-DD HH:MM:SS</code> です。データが適切にフォーマットされていることを確認してください。<strong>Date</strong> タイプの属性が提供された場合、コネクタは値を上記の適切な日付形式に変換します。</td>
 </tr>
 <tr>
 <td>データフィールド</td>
@@ -2008,25 +2007,25 @@
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。たとえば、<code>items.name</code>です。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を命名します。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされるフィールドに名前でテンプレートが注入されます。たとえば、<code>{{SomeTemplateName}}</code>です。</li></ul></td>
+<td><ul><li>本文データで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>サポートされているフィールドに名前でテンプレートが注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
-<td>コネクタ構成で指定されたAPIキーを上書きするために、APIキーを入力するか、APIキーの属性をマッピングします。</td>
+<td>APIキーを入力するか、APIキーの属性をマッピングして、コネクタ構成で指定されたAPIキーをオーバーライドします。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--メールアドレスにメールを送信">アクション — メールアドレスにメールを送信</h3>
+<h3 id="メールアドレスにメールを送信">メールアドレスにメールを送信</h3>
 <h4 id="パラメータ-4">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2043,12 +2042,12 @@
 <td><strong>メール</strong>または<strong>ユーザーID</strong>のいずれかを入力してユーザーを識別する必要があります。両方が入力された場合、<strong>メール</strong>が優先されます。</td>
 </tr>
 <tr>
-<td>受信者ユーザーID</td>
+<td>受信者のユーザーID</td>
 <td><code>updateUser</code>コールに渡されたユーザーID。</td>
 </tr>
 <tr>
 <td>送信時刻</td>
-<td>メッセージを最大365日後までスケジュール可能です。過去に構成された場合、メッセージは即時に送信されます。期待される形式は<code>YYYY-MM-DD HH:MM:SS</code>です。データが適切にフォーマットされていることを確認してください。<strong>日付</strong>タイプの属性が提供された場合、コネクタは値を上記の適切な日付形式に変換します。</td>
+<td>メッセージを最大365日後までスケジュール構成可能。過去に構成された場合、メッセージは即時送信されます。期待される形式は<code>YYYY-MM-DD HH:MM:SS</code>です。データが適切にフォーマットされていることを確認してください。<strong>日付</strong>タイプの属性が提供された場合、コネクタは値を上記の適切な日付形式に変換します。</td>
 </tr>
 <tr>
 <td>データフィールド</td>
@@ -2056,11 +2055,11 @@
 </tr>
 <tr>
 <td>メタデータ</td>
-<td>Webhooksを介して返送されるメタデータ。レンダリングには使用されません。</td>
+<td>Webhookを通じて返送されるメタデータ。レンダリングには使用されません。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
@@ -2072,13 +2071,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ワークフローをトリガーする">アクション — ワークフローをトリガーする</h3>
+<h3 id="トリガーワークフロー">トリガーワークフロー</h3>
 <h4 id="パラメータ-5">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2092,7 +2091,7 @@
 </tr>
 <tr>
 <td>メール</td>
-<td>指定されたメールアドレスのワークフローをトリガーします。<strong>メール</strong>または<strong>リスト</strong>のみでトリガーします。</td>
+<td>指定されたメールアドレスに対してワークフローをトリガーします。<strong>メール</strong>または<strong>リスト</strong>のみでトリガーします。</td>
 </tr>
 <tr>
 <td>データフィールド</td>
@@ -2100,7 +2099,7 @@
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
@@ -2112,13 +2111,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーを登録するasのみ">アクション — ユーザーを登録する（ASのみ）</h3>
+<h3 id="ユーザーをサブスクリプションに追加">ユーザーをサブスクリプションに追加</h3>
 <h4 id="パラメータ-6">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2128,15 +2127,15 @@
 </tr>
 <tr>
 <td>サブスクリプショングループID</td>
-<td>メッセージチャンネル、メッセージタイプ、またはメールリストのIDを提供します。これにより、ユーザーを登録します。</td>
+<td>ユーザーを登録するメッセージチャンネル、メッセージタイプ、またはメールリストのIDを提供します。</td>
 </tr>
 <tr>
 <td>メール</td>
-<td>登録するユーザーのメールアドレスを提供します。</td>
+<td>サブスクリプションを作成するユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>登録するユーザーのユーザーIDを提供します。<strong>メール</strong>または<strong>ユーザーID</strong>のいずれかが指定されている必要があります。</td>
+<td>サブスクリプションを作成するユーザーのユーザーIDを提供します。<strong>メール</strong>または<strong>ユーザーID</strong>のいずれかが指定されている必要があります。</td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
@@ -2144,13 +2143,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーの登録を解除するasのみ">アクション — ユーザーの登録を解除する（ASのみ）</h3>
+<h3 id="ユーザーをサブスクリプションから削除">ユーザーをサブスクリプションから削除</h3>
 <h4 id="パラメータ-7">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2160,15 +2159,15 @@
 </tr>
 <tr>
 <td>サブスクリプショングループID</td>
-<td>メッセージチャンネル、メッセージタイプ、またはメールリストのIDを提供します。これにより、ユーザーの登録を解除します。</td>
+<td>ユーザーを登録解除するメッセージチャンネル、メッセージタイプ、またはメールリストのIDを提供します。</td>
 </tr>
 <tr>
 <td>メール</td>
-<td>登録を解除するユーザーのメールアドレスを提供します。</td>
+<td>登録解除するユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>ユーザーID</td>
-<td>登録を解除するユーザーのユーザーIDを提供します。<strong>メール</strong>または<strong>ユーザーID</strong>のいずれかが指定されている必要があります。</td>
+<td>登録解除するユーザーのユーザーIDを提供します。<strong>メール</strong>または<strong>ユーザーID</strong>のいずれかが指定されている必要があります。</td>
 </tr>
 <tr>
 <td>APIキーオーバーライド</td>
@@ -2176,13 +2175,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーをリストに登録する">アクション — ユーザーをリストに登録する</h3>
+<h3 id="リストにユーザーを登録">リストにユーザーを登録</h3>
 <h4 id="パラメータ-8">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2196,7 +2195,7 @@
 </tr>
 <tr>
 <td>ネストされたオブジェクトのマージ</td>
-<td>上位レベルのオブジェクトを上書きするのではなくマージします。デフォルト値は<code>False</code>です。例えば、ユーザープロファイルが<code>{mySettings:{mobile:true}}</code>を含み、変更された連絡先フィールドが<code>{mySettings:{email:true}}</code>を含む場合、結果のプロファイルは<code>{mySettings:{mobile:true,email:true}}</code>を含みます。</td>
+<td>上位レベルのオブジェクトを上書きするのではなくマージします。デフォルト値は<code>False</code>です。例えば、ユーザープロファイルに<code>{mySettings:{mobile:true}}</code>が含まれ、変更連絡先フィールドに<code>{mySettings:{email:true}}</code>が含まれる場合、結果のプロファイルは<code>{mySettings:{mobile:true,email:true}}</code>を含みます。</td>
 </tr>
 <tr>
 <td>ユーザーID優先</td>
@@ -2208,11 +2207,11 @@
 </tr>
 <tr>
 <td>データフィールド</td>
-<td>ユーザープロファイルに保存するデータフィールド。</td>
+<td>ユーザープロファイルに格納するデータフィールド。</td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名付けます。例：<code>items.name</code>。ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
@@ -2224,7 +2223,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーをリストから登録解除する">アクション — ユーザーをリストから登録解除する</h3>
+<h3 id="リストからユーザーを登録解除">リストからユーザーを登録解除</h3>
 <h4 id="パラメータ-9">パラメータ</h4>
 <table>
 <thead>
@@ -2236,7 +2235,7 @@
 <tbody>
 <tr>
 <td>リスト</td>
-<td>登録解除するユーザーのリストを選択します。</td>
+<td>ユーザーを登録解除するリストを選択します。</td>
 </tr>
 <tr>
 <td>メール</td>
@@ -2248,7 +2247,7 @@
 </tr>
 <tr>
 <td>キャンペーン</td>
-<td>キャンペーンに登録解除する属性。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンの紹介</a>を参照してください。</td>
+<td>キャンペーンに対する登録解除属性。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンの紹介</a>を参照してください。</td>
 </tr>
 <tr>
 <td>チャンネル登録解除</td>
@@ -2260,19 +2259,19 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ユーザーのメールを更新する">アクション — ユーザーのメールを更新する</h3>
+<h3 id="ユーザーメールの更新">ユーザーメールの更新</h3>
 <h4 id="パラメータ-10">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>新しいメール</td>
-<td>必須。新しいユーザーメール。</td>
+<td>(必須) 新しいユーザーメール。</td>
 </tr>
 <tr>
 <td>現在のメール</td>
@@ -2288,13 +2287,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--ショッピングカートを更新する">アクション — ショッピングカートを更新する</h3>
+<h3 id="ショッピングカートの更新">ショッピングカートの更新</h3>
 <h4 id="パラメータ-11">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2304,7 +2303,7 @@
 </tr>
 <tr>
 <td>Merge Nested Objects</td>
-<td>トップレベルのオブジェクトを上書きするのではなく、マージします。デフォルト値は <code>False</code> です。例えば、ユーザープロファイルが <code>{mySettings:{mobile:true}}</code> を含み、変更連絡先フィールドが <code>{mySettings:{email:true}}</code> を含む場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含むことになります。</td>
+<td>トップレベルのオブジェクトを上書きするのではなく、マージします。デフォルト値は <code>False</code> です。例えば、ユーザープロファイルが <code>{mySettings:{mobile:true}}</code> を含み、連絡先変更フィールドが <code>{mySettings:{email:true}}</code> を含む場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含むことになります。</td>
 </tr>
 <tr>
 <td>Prefer User ID</td>
@@ -2320,11 +2319,11 @@
 </tr>
 <tr>
 <td>User Data Fields Template Variables</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a> を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>User Data Fields Templates</td>
-<td><ul><li>User Data Fieldsで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+<td><ul><li>User Data Fieldsで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a> を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2332,8 +2331,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2379,15 +2378,15 @@
 </tr>
 <tr>
 <td>Items Data Fields</td>
-<td><ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。<br>単一値属性を使用することができ、各アイテムに適用されます。</li></ul></td>
+<td><ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。<br>単一値属性を使用することができ、各アイテムに適用されます。</li></ul></td>
 </tr>
 <tr>
 <td>Items Template Variables</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a> を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>Items Template</td>
-<td><ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションを使用してテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、<strong>Items Attributes</strong>セクションの構成は無視されます。</li><li><strong>Items Template</strong> または <strong>Items Attributes</strong> のいずれかが指定されている必要があります。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li></ul></td>
+<td><ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、<strong>Items Attributes</strong>セクションの構成は無視されます。</li><li><strong>Items Template</strong> または <strong>Items Attributes</strong> のいずれかが指定されている必要があります。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a> を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>API Key Override</td>
@@ -2395,19 +2394,19 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--購入追跡">アクション — 購入追跡</h3>
+<h3 id="購入追跡">購入追跡</h3>
 <h4 id="パラメータ-12">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Total</td>
-<td>必須。注文総額。</td>
+<td>(必須) 注文総額。</td>
 </tr>
 <tr>
 <td>Purchase ID</td>
@@ -2415,7 +2414,7 @@
 </tr>
 <tr>
 <td>Created At</td>
-<td>イベントが発生した時間。指定されていない場合は、受信した時間に構成されます。Unixタイムスタンプを期待します。このフィールドがマップされていない場合、現在のタイムスタンプで初期化されます。</td>
+<td>イベントが発生した時間。指定されていない場合は、イベントが受信された時間に構成されます。Unixタイムスタンプを期待します。このフィールドがマップされていない場合、現在のタイムスタンプで初期化されます。</td>
 </tr>
 </tbody>
 </table>
@@ -2423,18 +2422,18 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Email</td>
-<td><strong>Email</strong> または <strong>User ID</strong> のいずれかが入力されている必要があります。両方が入力されている場合は、<strong>Email</strong> が優先されます。</td>
+<td><strong>Email</strong> または <strong>User ID</strong> のいずれかが入力されている必要があります。両方が入力されている場合、<strong>Email</strong> が優先されます。</td>
 </tr>
 <tr>
 <td>Merge Nested Objects</td>
-<td>トップレベルのオブジェクトを上書きするのではなく、マージします。デフォルト値は <code>False</code> です。例えば、ユーザープロファイルが <code>{mySettings:{mobile:true}}</code> を含み、変更連絡先フィールドが <code>{mySettings:{email:true}}</code> を含む場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含むことになります。</td>
+<td>トップレベルのオブジェクトを上書きするのではなく、マージします。デフォルト値は <code>False</code> です。例えば、ユーザープロファイルが <code>{mySettings:{mobile:true}}</code> を含み、連絡先変更フィールドが <code>{mySettings:{email:true}}</code> を含む場合、結果のプロファイルは <code>{mySettings:{mobile:true,email:true}}</code> を含むことになります。</td>
 </tr>
 <tr>
 <td>Prefer User ID</td>
@@ -2442,15 +2441,15 @@
 </tr>
 <tr>
 <td>User ID</td>
-<td>通常はデータベースで生成されたIDです。<strong>Email</strong>または<strong>User ID</strong>のいずれかが指定されている必要があります。</td>
+<td>通常はデータベースで生成されたIDです。<strong>Email</strong> または <strong>User ID</strong> のいずれかが指定されている必要があります。</td>
 </tr>
 <tr>
 <td>Campaign</td>
-<td>キャンペーンID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンへの導入</a>を参照してください。</td>
+<td>キャンペーンID。詳細については、<a href="https://support.iterable.com/hc/en-us/articles/360050203812-Introduction-to-Campaigns-">Iterable: キャンペーンへの導入</a> を参照してください。</td>
 </tr>
 <tr>
 <td>Project Template</td>
-<td><ul><li>テンプレートID。</li><li>詳細については、<a href="https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates-">Iterable: テンプレートへの導入</a>を参照してください。</li></ul></td>
+<td><ul><li>テンプレートID。</li><li>詳細については、<a href="https://support.iterable.com/hc/en-us/articles/205480315-Introduction-to-Templates">Iterable: テンプレートへの導入</a> を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>Data Fields</td>
@@ -2462,11 +2461,11 @@
 </tr>
 <tr>
 <td>Data Fields Template Variables</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a> を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>Data Fields Templates</td>
-<td><ul><li>Data FieldsおよびUser Data Fieldsで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+<td><ul><li>Data FieldsおよびUser Data Fieldsで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a> を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2474,8 +2473,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2521,15 +2520,15 @@
 </tr>
 <tr>
 <td>Items Data Fields</td>
-<td><ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。</li><li>単一値属性を使用することができ、各アイテムに適用されます。</li></ul></td>
+<td><ul><li>追加のアイテムプロパティ。</li><li>複数のアイテムを追加するために配列型属性を提供します。配列型属性は同じ長さでなければなりません。</li><li>Items Data Fields配列とItems Attributes配列は同じ長さでなければなりません。</li><li>単一値属性を使用することができ、各アイテムに適用されます。</li></ul></td>
 </tr>
 <tr>
 <td>Items Template Variables</td>
-<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li>データ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a> を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>Items Template</td>
-<td><ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションを使用してテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、<strong>Items Attributes</strong>セクションの構成は無視されます。</li><li><strong>Items Template</strong> または <strong>Items Attributes</strong> のいずれかが指定されている必要があります。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li></ul></td>
+<td><ul><li>ネストされたオブジェクトのサポートが必要な場合、このセクションでテンプレートを定義します。</li><li>テンプレートはJSON配列形式を期待します。</li><li>テンプレートが定義されている場合、<strong>Items Attributes</strong>セクションの構成は無視されます。</li><li><strong>Items Template</strong> または <strong>Items Attributes</strong> のいずれかが指定されている必要があります。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a> を参照してください。</li></ul></td>
 </tr>
 <tr>
 <td>API Key Override</td>
@@ -2542,18 +2541,18 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Source Email</td>
-<td>メールによってソースユーザープロファイルを識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10です。</td>
+<td>ソースユーザープロファイルをメールで識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10です。</td>
 </tr>
 <tr>
 <td>Source User ID</td>
-<td>ユーザーIDによってソースユーザープロファイルを識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10です。</td>
+<td>ソースユーザープロファイルをユーザーIDで識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10です。</td>
 </tr>
 </tbody>
 </table>
@@ -2561,18 +2560,18 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Destination Email</td>
-<td>メールによって宛先ユーザープロファイルを識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10であり、ソースパラメータと同じサイズでなければなりません。</td>
+<td>宛先ユーザープロファイルをメールで識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10であり、ソースパラメータと同じサイズでなければなりません。</td>
 </tr>
 <tr>
 <td>Destination User ID</td>
-<td>ユーザーIDによって宛先ユーザープロファイルを識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10であり、ソースパラメータと同じサイズでなければなりません。</td>
+<td>宛先ユーザープロファイルをユーザーIDで識別します。このパラメータは文字列または配列であることができます。配列のサイズ制限は10であり、ソースパラメータと同じサイズでなければなりません。</td>
 </tr>
 <tr>
 <td>API Key Override</td>
@@ -2640,7 +2639,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2025年December月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2654,22 +2653,21 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%82%8B%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされるアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">アクション — イベントの追跡（バッチ処理）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">アクション — ユーザーのアップサート（バッチ処理）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--gdpr%E3%81%AB%E6%BA%96%E6%8B%A0%E3%81%97%E3%81%A6%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E5%BF%98%E3%82%8C%E3%82%8B" href="javascript:void(0)">アクション — GDPRに準拠してユーザーを忘れる</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%ABsms%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — ユーザーにSMS通知を送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — メールアドレスにメールを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション — ワークフローをトリガーする</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8Bas%E3%81%AE%E3%81%BF" href="javascript:void(0)">アクション — ユーザーを登録する（ASのみ）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E7%99%BB%E9%8C%B2%E3%82%92%E8%A7%A3%E9%99%A4%E3%81%99%E3%82%8Bas%E3%81%AE%E3%81%BF" href="javascript:void(0)">アクション — ユーザーの登録を解除する（ASのみ）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション — ユーザーをリストに登録する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E7%99%BB%E9%8C%B2%E8%A7%A3%E9%99%A4%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション — ユーザーをリストから登録解除する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション — ユーザーのメールを更新する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%B7%E3%83%A7%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%82%AB%E3%83%BC%E3%83%88%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション — ショッピングカートを更新する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E8%B3%BC%E5%85%A5%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">アクション — 購入追跡</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E8%BF%BD%E8%B7%A1%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">イベント追跡（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%BF%BD%E5%8A%A0%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">ユーザー追加（バッチ処理）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#gdpr%E3%81%AB%E6%BA%96%E6%8B%A0%E3%81%97%E3%81%A6%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E5%89%8A%E9%99%A4" href="javascript:void(0)">GDPRに準拠してユーザーを削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%ABsms%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">ユーザーにSMS通知を送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">メールアドレスにメールを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">トリガーワークフロー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%82%B5%E3%83%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">ユーザーをサブスクリプションに追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%82%B5%E3%83%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8B%E3%82%89%E5%89%8A%E9%99%A4" href="javascript:void(0)">ユーザーをサブスクリプションから削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%AB%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2" href="javascript:void(0)">リストにユーザーを登録</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2%E8%A7%A3%E9%99%A4" href="javascript:void(0)">リストからユーザーを登録解除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">ユーザーメールの更新</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%83%A7%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%82%AB%E3%83%BC%E3%83%88%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">ショッピングカートの更新</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%B3%BC%E5%85%A5%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">購入追跡</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A1%A7%E5%AE%A2%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%9E%E3%83%BC%E3%82%B8" href="javascript:void(0)">顧客データのマージ</a></li>
               </nav>
   </aside></nav>
