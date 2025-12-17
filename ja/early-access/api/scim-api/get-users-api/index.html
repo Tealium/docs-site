@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/scim-api/get-users-api/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="GETユーザーAPIはアカウントからユーザーリストを取得します。" />
+<meta property="og:description" content="GETユーザーAPIはアカウントからユーザーのリストを取得します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>GETユーザーAPI | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -219,17 +219,27 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">SCIM同期ログの取得</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET グループ API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GETユーザーAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET グループ API</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT グループ API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT ユーザー API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">グループ削除API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">ユーザー削除API</a></li></ul>
       </li>
@@ -386,14 +396,14 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      GETユーザーAPIはアカウントからユーザーリストを取得します。
+      GETユーザーAPIはアカウントからユーザーのリストを取得します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
-<p>GETメソッドを使用してユーザーリストを取得します：</p>
+  <h2 id="動作方法">動作方法</h2>
+<p>GETメソッドを使用してユーザーのリストを取得します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /scim/v2/Users/
 </span></span></code></pre></div><h2 id="認証">認証</h2>
 <p>すべてのAPI呼び出しにはOAuthベアラートークンが使用され、APIキーは使用されません。</p>
@@ -420,7 +430,7 @@
 <td><code>startIndex</code></td>
 <td>数値</td>
 <td>任意</td>
-<td>インデックス内で最初に返すレコード。countがレコード数を超える場合、この値は無視されます。</td>
+<td>インデックスで返す最初のレコード。countがレコード数を超える場合、この値は無視されます。</td>
 </tr>
 <tr>
 <td><code>filter</code></td>
@@ -508,7 +518,7 @@
 </tr>
 <tr>
 <td>405</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -537,14 +547,14 @@
 </div><div class="w-50 mr3">
   
   
-  <a href="/ja/early-access/api/scim-api/get-user-api/"
+  <a href="/ja/early-access/api/scim-api/get-groups-api/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"GETユーザーAPI "</title>
+      <title>"GET グループ API "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>GETユーザーAPI</div>
+      <div>GET グループ API</div>
     </section>
   </a>
   
@@ -576,7 +586,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月3日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -584,7 +594,20 @@
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get%E6%93%8D%E4%BD%9C%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">GET操作のパラメータ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E4%BE%8B" href="javascript:void(0)">cURLリクエストの例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%9C%E7%AD%94%E3%81%AE%E4%BE%8B" href="javascript:void(0)">応答の例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

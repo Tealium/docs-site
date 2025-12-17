@@ -596,7 +596,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -670,6 +670,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1039,14 +1043,14 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p>コネクタは、Tealiumと他のベンダー間でリアルタイムにデータを転送する統合です。コネクタは、ベンダーがサポートするAPIを表すアクションを提供します。アクションは、フィードからの受信イベントや、訪問がオーディエンスに参加または離脱することによってリアルタイムでトリガーされます。アクションは、Tealiumの属性を期待されるベンダーパラメータに関連付けるマッピングに基づいてデータを送信します。</p>
+<p>コネクタは、Tealiumと他のベンダー間でリアルタイムにデータを転送する統合です。コネクタは、ベンダーがサポートするAPIを表すアクションを提供します。アクションは、フィードからの受信イベントや、訪問がオーディエンスに参加または離脱することによってリアルタイムでトリガーされます。アクションは、Tealiumの属性をベンダーの期待するパラメータに関連付けるマッピングに基づいてデータを送信します。</p>
 <p>CloudStreamでは、セグメントデータはTealiumシステムに保存または保持されません。データを取得して構成されたコネクタに送信した後、Tealiumはそれを破棄します。</p>
 <h3 id="用語">用語</h3>
 <ul>
 <li><strong>コネクタ</strong><br>
-コネクタは、アカウントID、ユーザー名とパスワード、またはAPIキーなどの資格情報を使用して構成されるベンダーアカウントへの接続を表します。</li>
+コネクタは、ベンダーアカウントへの接続を表します。接続は、アカウントID、ユーザー名とパスワード、またはAPIキーなどの資格情報を使用して構成されます。</li>
 <li><strong>アクション</strong><br>
-アクションは、メールのトリガー、カスタムオーディエンスの構築、リードの管理などのベンダー操作です。アクションはベンダーサービスによって異なります。単一のコネクタに複数のアクションを関連付けることができます。</li>
+アクションは、メールのトリガー、カスタムオーディエンスの構築、リードの管理などのベンダー操作です。アクションはベンダーサービスによって異なります。複数のアクションを単一のコネクタに関連付けることができます。</li>
 <li><strong>頻度上限</strong><br>
 コネクタアクションはリアルタイムで実行されますが、トリガーされる前に待機期間が設計されているアクションもあります。頻度上限を構成することで、アクションが即座にトリガーされないようにダウンタイム期間を構成できます。詳細については、<a href="/ja/server-side/connectors/frequency-capping/about/">アクションの頻度制限と優先順位付け</a>を参照してください。</li>
 <li><strong>ソース</strong><br>
@@ -1059,29 +1063,29 @@
          title="EventStream Connector Consent Categories"/>
     </a>
 </figure>
-<p>AudienceStreamは<strong>CDP</strong>同意カテゴリに、DataAccessは<strong>ビッグデータ</strong>同意カテゴリに分類されます。サーバーサイドの同意についての追加情報は、<a href="/ja/iq-tag-management/consent-management/consent-preferences-dialog/manage/">Consent Preferences Manager</a>を参照してください。</p>
+<p>AudienceStreamは<strong>CDP</strong>同意カテゴリに、DataAccessは<strong>Big Data</strong>同意カテゴリに分類されます。サーバーサイドの同意についての追加情報は、<a href="/ja/iq-tag-management/consent-management/consent-preferences-dialog/manage/">Consent Preferences Manager</a>を参照してください。</p>
 <h3 id="リトライ">リトライ</h3>
-<p>コネクタアクションが失敗すると、1分、5分、30分の間隔で3回リトライされます。いずれかのリトライ試行でリクエストが成功すると、UIでリクエストが成功したと報告されます。3回のリトライがすべて失敗すると、リクエストはドロップされ、UIでエラーとして報告されます。</p>
+<p>コネクタアクションが失敗した場合、1分、5分、30分の間隔で3回リトライされます。いずれかのリトライ試行でリクエストが成功した場合、UIでリクエストが成功したと報告されます。3回のリトライがすべて失敗した場合、リクエストはドロップされ、UIでエラーとして報告されます。</p>
 <p>次のエラーコードが発生した場合にリトライが試みられます：</p>
 <ul>
-<li>408 – 禁止されています</li>
-<li>429 – リクエストが多すぎます</li>
-<li>500 – サーバー内部エラー</li>
-<li>502 – 不正なゲートウェイ</li>
-<li>503 – サービス利用不可</li>
-<li>504 – ゲートウェイタイムアウト</li>
+<li>408 – Forbidden</li>
+<li>429 – Too Many Requests</li>
+<li>500 – Internal Server Error</li>
+<li>502 – Bad Gateway</li>
+<li>503 – Service Unavailable</li>
+<li>504 – Gateway Timeout</li>
 </ul>
-<p><strong>応答タイムアウト - ベンダーAPIが5000ミリ秒以内に応答しなかった</strong>という応答が受信された場合、リトライは試みられません。リクエストペイロードは送信されましたが、ベンダーからの応答が許可された5秒以内に送信されなかったため、失敗として扱います。リクエストはベンダー側で成功している可能性がありますが、応答を得るのに5秒以上かかったため、失敗と見なします。</p>
+<p><strong>Response Timeout - Vendor API did not respond within 5000 milliseconds</strong>の応答が受信された場合、リトライは試みられません。リクエストペイロードは送信されましたが、ベンダーからの応答が許可された5秒以内に送信されませんでした。ベンダー側でリクエストが成功している可能性がありますが、応答を得るのに5秒以上かかったため、失敗として扱います。</p>
 <h3 id="過負荷保護">過負荷保護</h3>
 <p>コネクタは、複数のデータハンドラーインスタンスを通じてアクションを実行します。時には、データハンドラーがベンダーとの通信エラーに遭遇することがあります。エラーが構成された閾値を超えると、Tealiumはエラー率が下がるまでベンダーへのデータ送信を一時停止または制限することができます。</p>
-<p>例えば、インスタンスの全体的な失敗率が100回の試行につき40%を超える場合、そのインスタンスは1分間アクションの処理を一時停止します。その後、キュー内のアクションの半分を処理しようとします。これら50回の試行の失敗率が20%を超える場合、インスタンスはさらに60秒間一時停止し、その後再試行します。それ以外の場合は、インスタンスは完全な操作を再開します。</p>
+<p>たとえば、インスタンスの全体的な失敗率が100回の試行につき40%を超える場合、そのインスタンスは1分間アクションの処理を一時停止します。その後、キュー内のアクションの半分を処理しようとします。これら50回の試行の失敗率が20%を超える場合、インスタンスはさらに60秒間一時停止し、その後再試行します。それ以外の場合は、インスタンスは完全な操作を再開します。</p>
 <p>Tealiumは、顧客の最大の成功とパフォーマンスを確保するために、必要に応じて各レベルで閾値を活性化および調整します。</p>
 <h3 id="制限データ">制限データ</h3>
-<p>制限データの構成はコネクタには適用されません。制限データとしてマークされた属性は、マッピングを通じて送信される場合でも、訪問プロファイルの一部として送信される場合でも常に含まれます。これは変更できません。<a href="/ja/server-side/attributes/restricted-data/">Restricted Data</a>についてもっと学びましょう。</p>
+<p>制限データの構成はコネクタには適用されません。制限データとしてマークされた属性は、マッピングを通じて送信される場合でも、訪問プロファイルの一部として送信される場合でも常に含まれます。これを変更することはできません。<a href="/ja/server-side/attributes/restricted-data/">Restricted Data</a>についてもっと学びましょう。</p>
 <h3 id="ip許可リスト">IP許可リスト</h3>
-<p>使用しているコネクタに厳しいルールがある場合、Customer Data HubのIPアドレスを許可リストに追加することができます。コネクタリクエストを行うIPアドレスは、<a href="/ja/server-side/administration/ip-allow-list/">IP Addresses for Customer Data Hub</a>で見つけることができます。</p>
+<p>使用しているコネクタに特定のシステムからのリクエストのみを受け入れる厳格なルールがある場合、Customer Data HubのIPアドレスを許可リストに追加することができます。コネクタリクエストを行うIPアドレスは、<a href="/ja/server-side/administration/ip-allow-list/">IP Addresses for Customer Data Hub</a>で見つけることができます。</p>
 <h3 id="訪問idの同期">訪問IDの同期</h3>
-<p>Tealiumとサードパーティベンダー間で訪問IDの一致を改善するために、クッキーマッチングタグを使用します。クッキーマッチングタグは、Tealiumとベンダー間で訪問識別子を同期します。サードパーティ識別子を要求し、匿名IDを受け取り、クッキーに保存します。これにより、コネクタアクションの追跡精度が向上し、データが豊かになります。詳細については、<a href="/ja/iq-tag-management/tags/cookie-matching/">About persistent cookie matching</a>を参照してください。</p>
+<p>Tealiumとサードパーティベンダー間で訪問IDの一致を改善するために、クッキーマッチングタグを使用します。クッキーマッチングタグは、Tealiumとベンダー間で訪問識別子を同期します。サードパーティ識別子を要求し、匿名IDを受け取り、それをクッキーに保存します。これにより、コネクタアクションの追跡精度が向上し、データが豊かになります。詳細については、<a href="/ja/iq-tag-management/tags/cookie-matching/">About persistent cookie matching</a>を参照してください。</p>
 <h2 id="画面ナビゲーション">画面ナビゲーション</h2>
 <h3 id="概要画面">概要画面</h3>
 <p>コネクタの概要画面には、各コネクタについて次のデータが表示されます：</p>
@@ -1102,44 +1106,44 @@
 コネクタのステータスは、<strong>アクティブ</strong>、<strong>非アクティブ</strong>、または<strong>廃止</strong>のいずれかです。</li>
 </ul>
 <p>すべてのコネクタのメトリック（総ボリューム、成功、エラー、リトライ）を<strong>エクスポートメトリック</strong>をクリックしてエクスポートします。データはCSVファイルとしてダウンロードされます。</p>
-<p>コネクタのメニューを展開して、追加のアクションにアクセスします：<strong>ラベルの編集</strong>、<strong>複製</strong>、および<strong>削除</strong>：</p>
+<p>コネクタのメニューを展開して、追加のアクションにアクセスします：<strong>ラベルの編集</strong>、<strong>複製</strong>、<strong>削除</strong>：</p>
 <figure><a class="slb" href="/images/server-side/connectors/connector-menu-expanded.png"><img src="/images/server-side/connectors/connector-menu-expanded.png"/>
     </a>
 </figure>
 <p>詳細については、<a href="/ja/server-side/connectors/add/">Add a connector</a>を参照してください。</p>
 <h3 id="詳細画面">詳細画面</h3>
-<p>コネクタアクションをクリックすると、コネクタの詳細画面が表示されます。デフォルトでは<strong>概要</strong>タブが表示され、アクションの傾向に関する情報、成功したアクション、エラーのあるアクション、および配信ステータスのグラフが表示されます。</p>
+<p>コネクタアクションをクリックすると、コネクタの詳細画面が表示されます。デフォルトでは<strong>概要</strong>タブが表示され、アクションの傾向に関する情報、成功したアクション、エラーのあるアクション、配信ステータスのグラフが表示されます。</p>
 <figure><a class="slb" href="/images/server-side/connectors/connector-details-status.png"><img src="/images/server-side/connectors/connector-details-status.png"/>
     </a>
 </figure>
-<p><strong>過去24時間</strong>、<strong>過去7日間</strong>、または<strong>過去30日間</strong>の傾向データを表示できます。デフォルトは<strong>過去24時間</strong>です。成功したアクションは緑色で、エラーは青色で表示されます。グラフの任意の部分をクリックして、その表示のデータの要約を表示します。</p>
+<p><strong>過去24時間</strong>、<strong>過去7日間</strong>、または<strong>過去30日間</strong>のトレンドデータを表示できます。デフォルトは<strong>過去24時間</strong>です。成功したアクションは緑色で、エラーは青色で表示されます。グラフの任意の部分をクリックすると、その表示のデータの要約が表示されます。</p>
 <h4 id="アクションのサンプルエラーを表示する">アクションのサンプルエラーを表示する</h4>
 <p>コネクタアクションのエラー情報を表示するには、次の手順を実行します：</p>
 <ol>
 <li><strong>サーバーサイド &gt; コネクタ</strong>に移動し、コネクタを選択します。</li>
-<li><strong>アクション</strong>タブをクリックし、エラーのあるアクションを選択します。
-アクション詳細画面が表示されます。</li>
-<li><strong>傾向</strong>の下で、<strong>24時間</strong>、<strong>7日間</strong>、<strong>30日間</strong>、またはカスタムの日付範囲を選択します。</li>
-<li>グラフの下に、エラーメッセージのリストが表示されます。リストの各エントリには、エラーカテゴリ、メッセージ、レポートに含まれるエラーの数、およびエラーの発生回数の合計が表示されます。</li>
-<li>エラーの詳細を表示するには、リストエントリをクリックします。
-詳細ビューには、曜日、日付、時間を含むタイムスタンプのある影響を受けたコードのサンプルが含まれます。</li>
+<li><strong>アクション</strong>タブをクリックし、エラーのあるアクションを選択します。<br>
+<strong>アクション詳細</strong>画面が表示されます。</li>
+<li><strong>トレンド</strong>の下で、<strong>24時間</strong>、<strong>7日間</strong>、<strong>30日間</strong>、またはカスタムの日付範囲を選択します。</li>
+<li>グラフの下に、エラーメッセージのリストが表示されます。リストの各エントリには、エラーカテゴリ、メッセージ、レポートに含まれるエラーの数、エラーの発生総数が表示されます。</li>
+<li>エラーの詳細を表示するには、リストエントリをクリックします。<br>
+詳細ビューには、曜日、日付、時間を含むタイムスタンプで影響を受けたコードのサンプルが含まれます。</li>
 </ol>
 <h4 id="コネクターのサンプルエラーをエクスポートする">コネクターのサンプルエラーをエクスポートする</h4>
 <p>コネクターのサンプルエラーをエクスポートするには、以下の手順に従ってください：</p>
 <ol>
-<li><strong>サーバーサイド &gt; コネクター</strong> に移動し、コネクターを選択します。</li>
-<li><strong>アクション</strong> タブをクリックし、エラーがあるアクションを選択します。<br>
-<strong>アクション詳細</strong> 画面が表示されます。</li>
-<li><strong>エクスポートサンプルエラー</strong> をクリックします。<br>
+<li><strong>サーバーサイド &gt; コネクター</strong>に移動し、コネクターを選択します。</li>
+<li><strong>アクション</strong>タブをクリックし、エラーがあるアクションを選択します。<br>
+<strong>アクション詳細</strong>画面が表示されます。</li>
+<li><strong>サンプルエラーをエクスポート</strong>をクリックします。<br>
 エラーはCSVファイルにエクスポートされ、デフォルトのダウンロード場所に保存されます。</li>
 <li>CSVファイルを開いて詳細を確認するか、他の人と共有してさらなる協力を行います。</li>
 </ol>
 <h3 id="非推奨のコネクターとアクション">非推奨のコネクターとアクション</h3>
-<p>コネクターやアクションが非推奨になることがあり、将来的にサポートされなくなったり、削除される可能性があります。コネクターやアクションが新しいバージョンや新しいコネクターやアクションに置き換えられた場合に、通常非推奨となります。</p>
+<p>コネクターやアクションが非推奨になることがあり、将来的にサポートされなくなったり、削除される可能性があります。非推奨になるのは、通常、コネクターやアクションが新しいバージョンに置き換えられたり、代わりに使用すべき新しいコネクターやアクションが登場した場合です。</p>
 <p>非推奨には以下の二つのタイプがあります：</p>
 <ul>
-<li><strong>機能的非推奨</strong> – コネクターやアクションは非推奨とされ、将来的に削除される可能性がありますが、まだ機能しています。</li>
-<li><strong>完全非推奨</strong> – コネクターやアクションは非推奨とされ、もはや機能しません。完全に非推奨のコネクターのアクションは実行されません。</li>
+<li><strong>機能的非推奨</strong> – コネクターやアクションは非推奨であり、将来的に削除される可能性がありますが、まだ機能しています。</li>
+<li><strong>完全非推奨</strong> – コネクターやアクションは非推奨であり、もはや機能しません。完全に非推奨のコネクターのアクションは実行されません。</li>
 </ul>
 <figure><a class="slb" href="/images/server-side/connectors/deprecated-status.png"><img src="/images/server-side/connectors/deprecated-status.png"/>
     </a>
@@ -1189,7 +1193,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月24日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

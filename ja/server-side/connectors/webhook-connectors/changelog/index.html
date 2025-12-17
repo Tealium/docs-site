@@ -11,7 +11,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/changelog/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="2021年11月30日 Webhookコネクタが構成時に302レスポンスをサポートするための構成オプションを追加しました。 2021年7月20日 コネクタアクションテーブルに、各アクションへのリンクを追加しました。 2021年6月7日 アクション - HTTPリクエストを介したカスタマイズされたバッチデータの送信（アドバンスド）アクションとバッチ制限セクションを追加しました。 2020年11月5日 Webhook 2-Legged OAuth2と3-Legged OAuth2コネクタにバッチサポートを追加しました。 2018年12月18日 ドメインレベルのクッキーが共有されるのを防ぐために、WebhookコネクタのApacheクッキー管理を無効にしました。 2017年8月24日 新たに2つのアクションを追加しました：HTTPリクエストを介したイベントデータの送信とHTTPリクエストを介した訪問データの送信。 次の2つのアクションを削除しました：POST-visitorとPUT-visitor。これらのアクションはアクションドロップダウンリストには表示されなくなりましたが、Tealiumは現在プロファイルにインストールされている場合には引き続きサポートします。 2017年3月2日 OAuthサービスをサポートするための新しいWebhook OAuth2コネクタを追加しました。このサービスはWebhook（BasicAuth）コネクタとは別です。 2016年11月13日 複雑なJSONとXMLペイロードをサポートするための新しいカスタムリクエストアクションを追加しました。ネストされたJSONを翻訳するための組み込みテンプレートユーティリティをサポートします。 GET、POST、PUTメソッドを新しいアクションの下に移動しました。これらはもはや別々のアクションとして扱われません。 2016年6月14日 AudienceDirectコネクタはWebhookに置き換えられて廃止されました。 POST-visitorとPUT-Visitorアクションは新しいWebhook（BasicAuth）コネクタに統合されています。 プロファイルに非機能的なAudienceDirectアクションが含まれている場合は、新しいWebhookインスタンスでそれらを再構成する必要があります。 " />
+<meta property="og:description" content="2024-07-10 すべてのHTTPベースのWebhookコネクタに以下のアクションを追加しました：
+HTTPリクエストを介してイベントデータを送信 HTTPリクエストを介して訪問データを送信 HTTPリクエストを介してバッチ訪問データを送信 2021-11-30 Webhookコネクタの構成オプションを追加し、構成時に302レスポンスをサポートするようにしました。 2021-07-20 コネクタアクションテーブルに各アクションへのリンクを追加しました。 2021-06-07 アクション - HTTPリクエストを介してバッチカスタマイズデータを送信（高度）アクションとバッチ制限セクションを追加しました。 2020-11-05 Webhook 2-Legged OAuth2および3-Legged OAuth2コネクタにバッチサポートを追加しました。 2018-12-18 WebhookコネクタのApacheクッキー管理を無効にし、ドメインレベルのクッキーが共有されるのを防ぎました。 2017-08-24 新しいアクションを2つ追加しました：HTTPリクエストを介してイベントデータを送信、HTTPリクエストを介して訪問データを送信。 次の2つのアクションを削除しました：POST-visitorおよびPUT-visitor。これらのアクションはアクションドロップダウンリストには表示されなくなりましたが、現在プロファイルにインストールされている場合はTealiumが引き続きサポートします。 2017-03-02 OAuthサービスをサポートする新しいWebhook OAuth2コネクタを追加しました。このサービスはWebhook（BasicAuth）コネクタとは別です。 2016-11-13 複雑なJSONおよびXMLペイロードをサポートする新しいカスタムリクエスト送信アクションを追加しました。ネストされたJSONを翻訳するための組み込みテンプレートユーティリティをサポートしています。 GET、POST、およびPUTメソッドを新しいアクションの下に移動しました。これらはもはや別のアクションとして扱われません。 2016-06-14 AudienceDirectコネクタはWebhookに置き換えられ、廃止されました。 POST-visitorおよびPUT-Visitorアクションは新しいWebhook（BasicAuth）コネクタに統合されました。 プロファイルに非機能的なAudienceDirectアクションが含まれている場合は、新しいWebhookインスタンスで再構成する必要があります。 " />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>変更履歴 | Webhookコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -21,6 +22,8 @@
     
     <meta name="robots" content="index, follow">
     
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/server-side/connectors/webhook-connectors/changelog/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -90,6 +93,16 @@
       <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
       </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/server-side/connectors/webhook-connectors/changelog/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
       
     </ul>
   </div>
@@ -102,6 +115,16 @@
     <ul class="list ma0 pa0">
       <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/server-side/connectors/webhook-connectors/changelog/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
       </li>
       
     </ul>
@@ -574,7 +597,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -648,6 +671,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1018,45 +1045,52 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="2021年11月30日">2021年11月30日</h2>
+  <h3 id="2024-07-10">2024-07-10</h3>
+<p>すべてのHTTPベースのWebhookコネクタに以下のアクションを追加しました：</p>
 <ul>
-<li>Webhookコネクタが構成時に302レスポンスをサポートするための構成オプションを追加しました。</li>
+<li><strong>HTTPリクエストを介してイベントデータを送信</strong></li>
+<li><strong>HTTPリクエストを介して訪問データを送信</strong></li>
+<li><strong>HTTPリクエストを介してバッチ訪問データを送信</strong></li>
 </ul>
-<h2 id="2021年7月20日">2021年7月20日</h2>
+<h3 id="2021-11-30">2021-11-30</h3>
 <ul>
-<li>コネクタアクションテーブルに、各アクションへのリンクを追加しました。</li>
+<li>Webhookコネクタの構成オプションを追加し、構成時に302レスポンスをサポートするようにしました。</li>
 </ul>
-<h2 id="2021年6月7日">2021年6月7日</h2>
+<h3 id="2021-07-20">2021-07-20</h3>
 <ul>
-<li>アクション - HTTPリクエストを介したカスタマイズされたバッチデータの送信（アドバンスド）アクションとバッチ制限セクションを追加しました。</li>
+<li>コネクタアクションテーブルに各アクションへのリンクを追加しました。</li>
 </ul>
-<h2 id="2020年11月5日">2020年11月5日</h2>
+<h3 id="2021-06-07">2021-06-07</h3>
 <ul>
-<li>Webhook 2-Legged OAuth2と3-Legged OAuth2コネクタにバッチサポートを追加しました。</li>
+<li>アクション - HTTPリクエストを介してバッチカスタマイズデータを送信（高度）アクションとバッチ制限セクションを追加しました。</li>
 </ul>
-<h2 id="2018年12月18日">2018年12月18日</h2>
+<h3 id="2020-11-05">2020-11-05</h3>
 <ul>
-<li>ドメインレベルのクッキーが共有されるのを防ぐために、WebhookコネクタのApacheクッキー管理を無効にしました。</li>
+<li>Webhook 2-Legged OAuth2および3-Legged OAuth2コネクタにバッチサポートを追加しました。</li>
 </ul>
-<h2 id="2017年8月24日">2017年8月24日</h2>
+<h3 id="2018-12-18">2018-12-18</h3>
 <ul>
-<li>新たに2つのアクションを追加しました：HTTPリクエストを介したイベントデータの送信とHTTPリクエストを介した訪問データの送信。</li>
-<li>次の2つのアクションを削除しました：POST-visitorとPUT-visitor。これらのアクションはアクションドロップダウンリストには表示されなくなりましたが、Tealiumは現在プロファイルにインストールされている場合には引き続きサポートします。</li>
+<li>WebhookコネクタのApacheクッキー管理を無効にし、ドメインレベルのクッキーが共有されるのを防ぎました。</li>
 </ul>
-<h2 id="2017年3月2日">2017年3月2日</h2>
+<h3 id="2017-08-24">2017-08-24</h3>
 <ul>
-<li>OAuthサービスをサポートするための新しいWebhook OAuth2コネクタを追加しました。このサービスはWebhook（BasicAuth）コネクタとは別です。</li>
+<li>新しいアクションを2つ追加しました：HTTPリクエストを介してイベントデータを送信、HTTPリクエストを介して訪問データを送信。</li>
+<li>次の2つのアクションを削除しました：POST-visitorおよびPUT-visitor。これらのアクションはアクションドロップダウンリストには表示されなくなりましたが、現在プロファイルにインストールされている場合はTealiumが引き続きサポートします。</li>
 </ul>
-<h2 id="2016年11月13日">2016年11月13日</h2>
+<h3 id="2017-03-02">2017-03-02</h3>
 <ul>
-<li>複雑なJSONとXMLペイロードをサポートするための新しいカスタムリクエストアクションを追加しました。ネストされたJSONを翻訳するための組み込みテンプレートユーティリティをサポートします。</li>
-<li>GET、POST、PUTメソッドを新しいアクションの下に移動しました。これらはもはや別々のアクションとして扱われません。</li>
+<li>OAuthサービスをサポートする新しいWebhook OAuth2コネクタを追加しました。このサービスはWebhook（BasicAuth）コネクタとは別です。</li>
 </ul>
-<h2 id="2016年6月14日">2016年6月14日</h2>
+<h3 id="2016-11-13">2016-11-13</h3>
 <ul>
-<li>AudienceDirectコネクタはWebhookに置き換えられて廃止されました。</li>
-<li>POST-visitorとPUT-Visitorアクションは新しいWebhook（BasicAuth）コネクタに統合されています。</li>
-<li>プロファイルに非機能的なAudienceDirectアクションが含まれている場合は、新しいWebhookインスタンスでそれらを再構成する必要があります。</li>
+<li>複雑なJSONおよびXMLペイロードをサポートする新しいカスタムリクエスト送信アクションを追加しました。ネストされたJSONを翻訳するための組み込みテンプレートユーティリティをサポートしています。</li>
+<li>GET、POST、およびPUTメソッドを新しいアクションの下に移動しました。これらはもはや別のアクションとして扱われません。</li>
+</ul>
+<h3 id="2016-06-14">2016-06-14</h3>
+<ul>
+<li>AudienceDirectコネクタはWebhookに置き換えられ、廃止されました。</li>
+<li>POST-visitorおよびPUT-Visitorアクションは新しいWebhook（BasicAuth）コネクタに統合されました。</li>
+<li>プロファイルに非機能的なAudienceDirectアクションが含まれている場合は、新しいWebhookインスタンスで再構成する必要があります。</li>
 </ul>
 
 </div>
@@ -1103,7 +1137,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年June月23日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1111,23 +1145,7 @@
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      
-
-
-
-  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
-      <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2021%E5%B9%B411%E6%9C%8830%E6%97%A5" href="javascript:void(0)">2021年11月30日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2021%E5%B9%B47%E6%9C%8820%E6%97%A5" href="javascript:void(0)">2021年7月20日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2021%E5%B9%B46%E6%9C%887%E6%97%A5" href="javascript:void(0)">2021年6月7日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2020%E5%B9%B411%E6%9C%885%E6%97%A5" href="javascript:void(0)">2020年11月5日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2018%E5%B9%B412%E6%9C%8818%E6%97%A5" href="javascript:void(0)">2018年12月18日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2017%E5%B9%B48%E6%9C%8824%E6%97%A5" href="javascript:void(0)">2017年8月24日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2017%E5%B9%B43%E6%9C%882%E6%97%A5" href="javascript:void(0)">2017年3月2日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2016%E5%B9%B411%E6%9C%8813%E6%97%A5" href="javascript:void(0)">2016年11月13日</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2016%E5%B9%B46%E6%9C%8814%E6%97%A5" href="javascript:void(0)">2016年6月14日</a></li>
-              </nav>
-  </aside></nav>
+      </nav>
 
 </div>
 </div>

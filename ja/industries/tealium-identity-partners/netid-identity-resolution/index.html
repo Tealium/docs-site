@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/industries/tealium-identity-partners/netid-identity-resolution/" />
 <meta property="og:image" content="https://docs.tealium.com/images/integrations/netid-logo.png" />
-<meta property="og:description" content="この記事では、Tealium IdentityパートナーとしてnetIDを実装する方法について説明します。" />
+<meta property="og:description" content="この記事では、Tealium Identity PartnerとしてnetIDを実装する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>netID 実装ガイド | Industries | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -727,39 +727,39 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium IdentityパートナーとしてnetIDを実装する方法について説明します。
+      この記事では、Tealium Identity PartnerとしてnetIDを実装する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ファーストパーティデータ、例えばnetIDは、正確なリターゲティングとパーソナライゼーションには不可欠です。Tealiumのリアルタイムファーストパーティデータプラットフォームは、これらの識別子をチャネル間で活性化し、広告キャンペーンの効果を高めます。</p>
+  <p>ファーストパーティデータ、例えばnetIDは、正確なリターゲティングとパーソナライゼーションに不可欠です。Tealiumのリアルタイムファーストパーティデータプラットフォームは、これらの識別子をチャネル間で活用し、広告キャンペーンの効果を高めるのに役立ちます。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>netIDのブラウザベースのJavaScript APIへのリクエスト</li>
+<li>netIDブラウザベースのJavaScript APIへのリクエスト</li>
 <li>Tealium EventStreamまたはAudienceStream</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>netIDのシングルサインオン（SSO）および同意管理ソリューションを統合する際、netIDパートナーはnetIDのブラウザベースのJavaScript APIへのリクエストを実装する必要があります。APIから返されるプロパティは、ファーストパーティのクッキーとして、または<code>localStorage</code>、<code>sessionStorage</code>のいずれかでブラウザセッションに永続化する必要があります。</p>
-<p>NetIDのプロパティ、例えば<code>tpid</code>は、Tealium iQのクライアントサイドタグと一緒に使用して、ウェブページ上の広告技術と統合することができます。</p>
-<p>さらに、同じnetIDのプロパティはTealium Collectタグによって収集され、EventStreamとAudienceStreamの属性として利用可能になります。netIDが訪問属性として保存されていると、訪問プロファイルはリアルタイムコネクタを通じて広告ベンダーに活性化することができます。</p>
-<p>netIDのブラウザベースのJavaScript APIについての詳細は、以下を参照してください：</p>
+<h2 id="動作原理">動作原理</h2>
+<p>netIDのシングルサインオン（SSO）および同意管理ソリューションを統合する際、netIDパートナーはnetIDブラウザベースのJavaScript APIへのリクエストを実装する必要があります。APIから返されるプロパティは、ブラウザセッション内でファーストパーティクッキー、<code>localStorage</code>、または<code>sessionStorage</code>として保持される必要があります。</p>
+<p><code>tpid</code>のようなNetIDプロパティは、Tealium iQのクライアントサイドタグと組み合わせて、ウェブページ上の広告技術と統合するために使用できます。</p>
+<p>さらに、同じnetIDプロパティはTealium Collectタグによって収集され、EventStreamおよびAudienceStreamの属性として利用可能になります。netIDが訪問属性として保存されると、訪問プロファイルはリアルタイムコネクタを通じて広告ベンダーにアクティブ化することができます。</p>
+<p>netIDブラウザベースのJavaScript APIについての詳細は、以下を参照してください：</p>
 <ul>
 <li><a href="https://developerzone.netid.dev/1.6/cmp/browser-based/#response">netID: APIから返されるデータポイント</a></li>
 <li><a href="https://developerzone.netid.dev/1.6/cmp/browser-based/#response-properties">netID: レスポンスプロパティの説明</a></li>
 </ul>
 <h2 id="tealium-iq">Tealium iQ</h2>
-<p>ブラウザに保存されたnetIDのプロパティは、データレイヤー（UDOオブジェクト）の一部として取得することができます。このデータは、Tealium iQのロードルールやタグデータマッピングで使用することができます。</p>
-<p>例えば、netIDの<code>tpid</code>パラメータをファーストパーティクッキーに永続化した場合、データレイヤーに新しい変数を<strong>First-Party Cookie</strong>タイプで追加し、<strong>Source</strong>の値をクッキーの名前（例えば、<code>netid_tpid</code>）に構成します。</p>
-<figure><a class="slb" href="/images//industries/netid-add-variable.png"><img src="/images//industries/netid-add-variable.png"
-         alt="netID変数の追加"
-         title="netID変数の追加"/>
+<p>ブラウザに保存されたnetIDプロパティは、データレイヤー（UDOオブジェクト）の一部として取得できます。このデータは、関連する場合にTealium iQのロードルールおよびタグデータマッピングで使用できます。</p>
+<p>例えば、netIDの<code>tpid</code>パラメータをファーストパーティクッキーとして保持した場合、データレイヤーに新しい変数タイプ<strong>First-Party Cookie</strong>を追加し、<strong>Source</strong>の値をクッキーの名前（例：<code>netid_tpid</code>）に構成します。</p>
+<figure><a class="slb" href="/images/industries/netid-add-variable.png"><img src="/images/industries/netid-add-variable.png"
+         alt="netID add variable"
+         title="netID add variable"/>
     </a>
 </figure>
-<p>netIDパートナーとして、以下の方法のいずれかを使用して、netIDのプロパティをTealium Data Layerのキー-値ペアとして含めます：</p>
+<p>netIDパートナーとして、以下の方法のいずれかを使用して、TealiumデータレイヤーにnetIDのプロパティをキーバリューペアとして含めます：</p>
 <ul>
 <li>
-<p><strong>First-Party-Cookie</strong>: netIDの<code>tpid</code>をブラウザの<code>netid_tpid</code>という名前の<a href="/ja/platforms/javascript/data-layer/#cookies">first-party-cookie</a>として永続化し、それがTealium標準のクッキーと一緒に<code>cp.</code>プレフィックスと共にデータレイヤーに表示されます：</p>
+<p><strong>First-Party-Cookie</strong>: ブラウザに<code>netid_tpid</code>を<a href="/ja/platforms/javascript/data-layer/#cookies">ファーストパーティクッキー</a>として名前<code>netid_tpid</code>で保持し、Tealium標準クッキーと並んでデータレイヤーに<code>cp.</code>プレフィックスで表示されます：</p>
 <pre tabindex="0"><code>{
   ...,
   &#34;cp.netid_tpid&#34;: &#34;Bst040QDNr1nB9JM6sWH0I9__70JEvRyIiKvvd7G0MQLQ&#34;,
@@ -767,7 +767,7 @@
 }
 </code></pre></li>
 <li>
-<p><strong>Universal Data Object (UDO)</strong>: <a href="/ja/iq-tag-management/data-layer/data-layer-variables/#udo-variable">UDO変数</a>を使用して、netIDプロパティを<code>utag_data</code>に明示的に永続化します。例えば、ページのUDOにnetIDの識別プロパティを<code>netid_tpid</code>として追加します：</p>
+<p><strong>Universal Data Object (UDO)</strong>: <a href="/ja/iq-tag-management/data-layer/data-layer-variables/#udo-variable">UDO変数</a>を使用して、<code>utag_data</code>にnetIDプロパティを明示的に保持します。例えば、ページのUDOに<code>netid_tpid</code>としてnetID識別プロパティを追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span><span style="color:#f92672">=</span>{
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;tealium_event&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;page_view&#34;</span>,
@@ -778,7 +778,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
 </span></span></code></pre></div></li>
 <li>
-<p><strong>イベントのトラッキング</strong>: <a href="/ja/platforms/javascript/track/#track-events"><code>utag.link()</code></a>を使用して、ブラウザベースのJavaScript APIからの成功したnetID認証とレスポンスをトラッキングし、ペイロードにnetIDの<code>tpid</code>を<code>netid_tpid</code>として含めます：</p>
+<p><strong>イベントの追跡</strong>: <a href="/ja/platforms/javascript/track/#track-events"><code>utag.link()</code></a>を使用して、ブラウザベースのJavaScript APIからの成功したnetID認証とレスポンスを追跡し、ペイロードに<code>netid_tpid</code>として<code>netid_tpid</code>を含めます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">utag.link(</span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>     : <span style="color:#e6db74">&#34;netid_login&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;netid_tpid&#34;</span>        : <span style="color:#e6db74">&#34;12345&#34;</span>,
@@ -787,51 +787,51 @@
 </span></span></code></pre></div></li>
 </ul>
 <h2 id="eventstream-api">EventStream API</h2>
-<p>Tealium CollectタグがブラウザのデータレイヤーからnetIDのプロパティをキャプチャした後、このデータはイベント属性として処理されます。</p>
-<p>これを行うには、<code>netid_tpid</code>の値をキャプチャするイベント属性を作成します。以下の例では、属性はファーストパーティクッキーの値に構成されています：</p>
+<p>Tealium CollectタグがブラウザのデータレイヤーからnetIDプロパティをキャプチャした後、このデータはイベント属性として処理されます。</p>
+<p>これを行うには、<code>netid_tpid</code>値をキャプチャするイベント属性を作成します。次の例では、属性はファーストパーティクッキーの値に構成されています：</p>
 <figure><a class="slb" href="/images//industries/netid-es-add-attribute.png"><img src="/images//industries/netid-es-add-attribute.png"
-         alt="netID属性の追加"
-         title="netID属性の追加"/>
+         alt="netID add attribute"
+         title="netID add attribute"/>
     </a>
 </figure>
-<p>netIDの識別子（<code>tpid</code>）は、そのコネクタを使用して広告プラットフォームにファーストパーティ（広告主）IDとして活性化することができます。例えば：</p>
+<p>netIDの識別子（<code>tpid</code>）は、広告プラットフォームへのファーストパーティ（広告主）IDとしてアクティブ化できます。そのためのコネクタには、以下があります：</p>
 <ul>
 <li><a href="/ja/server-side-connectors/adform-segments-connector/">Adform</a></li>
 <li><a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk</a></li>
 </ul>
 <h3 id="例">例</h3>
-<p>Adformを使用している場合、<code>netid_tpid</code>イベント属性をAdformのFirst-Party ID属性にマッピングします：</p>
+<p>Adformを使用する場合、<code>netid_tpid</code>イベント属性をAdformのFirst-Party ID属性にマッピングします：</p>
 <figure><a class="slb" href="/images//industries/netid-es-attribute-mapping.png"><img src="/images//industries/netid-es-attribute-mapping.png"
-         alt="netID属性マッピング"
-         title="netID属性マッピング"/>
+         alt="netID attribute mapping"
+         title="netID attribute mapping"/>
     </a>
 </figure>
 <h2 id="audiencestream-cdp">AudienceStream CDP</h2>
-<p>このデータはイベント属性として処理され、リアルタイムの訪問プロファイルに訪問属性として保存することができます。</p>
-<p>これを行うには、訪問プロファイルの訪問文字列属性を<code>netid_tpid</code>イベント属性の値に構成します。以下の例では、属性はファーストパーティクッキーの値に構成されています：</p>
+<p>このデータはイベント属性として処理され、リアルタイム訪問プロファイル上の訪問属性として保存されます。</p>
+<p>これを行うには、訪問プロファイルの訪問文字列属性を<code>netid_tpid</code>イベント属性値に構成します。次の例では、属性はファーストパーティクッキーの値に構成されています：</p>
 <figure><a class="slb" href="/images//industries/netid-as-add-attribute.png"><img src="/images//industries/netid-as-add-attribute.png"
-         alt="netID属性の追加"
-         title="netID属性の追加"/>
+         alt="netID add attribute"
+         title="netID add attribute"/>
     </a>
 </figure>
-<p>訪問IDは、認証方法としてnetIDを使用している訪問のオーディエンスを作成するために使用することができます。</p>
+<p>訪問IDは、netIDを認証方法として使用する訪問のオーディエンスを作成するために使用できます。</p>
 <figure><a class="slb" href="/images//industries/netid-as-new-audience.png"><img src="/images//industries/netid-as-new-audience.png"
-         alt="netID新規オーディエンス"
-         title="netID新規オーディエンス"/>
+         alt="netID new audience"
+         title="netID new audience"/>
     </a>
 </figure>
-<p>AdformやThe Trade Deskなどの広告プラットフォームへのリアルタイム活性化には、そのTealiumコネクタを使用します：</p>
+<p>AdformやThe Trade Deskなどの広告プラットフォームへのリアルタイムアクティブ化には、それらのTealiumコネクタを使用します：</p>
 <ul>
 <li><a href="/ja/server-side-connectors/adform-segments-connector/">Adform</a></li>
 <li><a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk</a></li>
 </ul>
-<h2 id="参考資料">参考資料</h2>
+<h2 id="参考文献">参考文献</h2>
 <ul>
 <li><a href="https://developerzone.netid.dev/1.6/cmp/browser-based/">netID: ブラウザベースのJavaScript API</a></li>
 <li><a href="/ja/server-side-connectors/adform-segments-connector/">Adform: セグメントコネクタ</a></li>
 <li><a href="https://www.adformhelp.com/hc/en-us/articles/9740579323153-Use-First-Party-IDs-for-Site-Tracking">Adform: ファーストパーティIDの使用</a></li>
-<li><a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk First Party Data Connector</a></li>
-<li><a href="/ja/iq-tag-management/data-layer/about/">Tealium Data Layer</a></li>
+<li><a href="/ja/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Deskファーストパーティデータコネクタ</a></li>
+<li><a href="/ja/iq-tag-management/data-layer/about/">Tealiumデータレイヤー</a></li>
 </ul>
 
 </div>
@@ -878,7 +878,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -893,12 +893,12 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq" href="javascript:void(0)">Tealium iQ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventstream-api" href="javascript:void(0)">EventStream API</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream-cdp" href="javascript:void(0)">AudienceStream CDP</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99" href="javascript:void(0)">参考資料</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" href="javascript:void(0)">参考文献</a></li>
               </nav>
   </aside></nav>
 

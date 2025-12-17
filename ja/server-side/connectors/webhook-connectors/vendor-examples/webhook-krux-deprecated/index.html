@@ -13,17 +13,17 @@
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
 <meta property="og:description" content="Krux Webhookは非推奨の機能であり、Salesforce Audience Studio Connectorに置き換えられました。
 前提条件:
-Webhook Send Custom Action この記事では、AudienceStream Webhook Connectorを使用して、KruxのMobile HTTP APIを介してオーディエンスデータをKruxに送信する方法について説明します。
+Webhook Send Custom Action この記事では、AudienceStream Webhook Connectorを使用してKruxにオーディエンスデータを送信する方法について説明します。
 概要 このソリューションは、iQおよびCustomer Data Hubの以下のコンポーネントを組み合わせています:
-iQ内のKruxタグ iQ内のPersist Data Value拡張機能 Customer Data Hub内のVisitor Attribute Customer Data Hub内のWebhook iQタグ管理 Kruxコントロールタグを追加 iQタグ管理のTag MarketplaceからKruxコントロールタグを追加します。Kruxから提供されたKrux Configuration IDでタグを構成します。
-KruxユーザーIDでCookieを構成 Webhookコネクターを介して送信するユーザーをKruxユーザーと照合するために、Kruxコントロールタグによって生成されたKruxオブジェクトからKruxユーザーIDを抽出する必要があります。Kruxオブジェクトの命名規則はクライアントごとに異なります。ユーザーIDを抽出するコードは Krux.ns.CLIENT(&#39;get&#39;, &#39;user&#39;) のようになります。ここで、CLIENTはあなたの特定のKruxクライアント名です。このオブジェクトの命名規則についてはKruxの担当者に尋ねるか、Chrome DevTools Consoleで Krux.ns と入力して結果のオブジェクトを調べることができます。
+iQ内のKruxタグ iQ内のPersist Data Value拡張機能 Customer Data Hub内のVisitor Attribute Customer Data Hub内のWebhook iQタグ管理 Kruxコントロールタグを追加 iQタグ管理タグマーケットプレイスからKruxコントロールタグを追加します。Kruxから提供されたKrux Configuration IDでタグを構成します。
+KruxユーザーIDでCookieを構成 Webhookコネクタを通じて送信するユーザーをKruxユーザーと照合するために、Kruxコントロールタグによって生成されたKruxオブジェクトからKruxユーザーIDを抽出する必要があります。Kruxオブジェクトの命名規則はクライアントごとに異なります。ユーザーIDを抽出するコードは Krux.ns.CLIENT(&#39;get&#39;, &#39;user&#39;) のようになります。ここで、CLIENTはあなたのKruxクライアント名です。このオブジェクトの命名規則についてはKrux担当者に尋ねるか、Chrome DevTools Consoleで Krux.ns と入力して結果のオブジェクトを調べることができます。
 Kruxクライアント名を取得したら、以下の手順でKruxユーザーIDをCookieに保存します:
 Tealium iQタグ管理のData Layerに2つの変数を追加します。
 krux_id を UDO Variableのタイプで utag_main_krux_id を First Party Cookieのタイプで Set Data Values Extensionを追加して、上記の拡張機能からkrux_idにKruxオブジェクトユーザーIDを抽出します。この拡張機能の実行を「タグの後」に構成します。これにより、KruxコントロールタグがKruxオブジェクトを作成する機会を与えます。
 この拡張機能の条件を、utag_main_krux_idクッキーがまだ構成されていない場合にのみ変数を構成するように構成します。
 Persist Data Value Extensionを追加して、上記の拡張機能からkrux_idをクッキーに保存します。
-この条件を、krux_id変数が入力され、最初に構成された値を保持する場合にのみこのクッキーを保存するように構成します。
-Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID&quot;という名前のVisitorスコープのString Attributeを作成します。この属性はutag_main_krux_idクッキーから取得します。" />
+このクッキーを保存する条件を、krux_id変数が入力され、最初に構成された値を保持するように構成します。
+Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID&quot;という名前のVisitorスコープのString Attributeを作成します。この属性をutag_main_krux_idクッキーから取得します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Webhook Krux（非推奨） | ベンダーの例 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -608,7 +608,7 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -682,6 +682,10 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1062,9 +1066,9 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
 <hr>
 <p>前提条件:</p>
 <ul>
-<li><a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Action</a></li>
+<li><a href="/ja/server-side-connectors/webhook-connector/">Webhook Send Custom Action</a></li>
 </ul>
-<p>この記事では、AudienceStream Webhook Connectorを使用して、KruxのMobile HTTP APIを介してオーディエンスデータをKruxに送信する方法について説明します。</p>
+<p>この記事では、AudienceStream Webhook Connectorを使用してKruxにオーディエンスデータを送信する方法について説明します。</p>
 <h2 id="概要">概要</h2>
 <p>このソリューションは、iQおよびCustomer Data Hubの以下のコンポーネントを組み合わせています:</p>
 <ul>
@@ -1075,14 +1079,14 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
 </ul>
 <h2 id="iqタグ管理">iQタグ管理</h2>
 <h3 id="kruxコントロールタグを追加">Kruxコントロールタグを追加</h3>
-<p>iQタグ管理の<a href="/ja/iq-tag-management/tags/tag-marketplace/about/">Tag Marketplace</a>からKruxコントロールタグを追加します。Kruxから提供されたKrux Configuration IDでタグを構成します。</p>
+<p>iQタグ管理タグマーケットプレイスからKruxコントロールタグを追加します。Kruxから提供されたKrux Configuration IDでタグを構成します。</p>
 <figure><a class="slb" href="/images/server-side/kruxtag.png"><img src="/images/server-side/kruxtag.png"
          alt="kruxtag.png"
          title="kruxtag.png"/>
     </a>
 </figure>
 <h3 id="kruxユーザーidでcookieを構成">KruxユーザーIDでCookieを構成</h3>
-<p>Webhookコネクターを介して送信するユーザーをKruxユーザーと照合するために、Kruxコントロールタグによって生成されたKruxオブジェクトからKruxユーザーIDを抽出する必要があります。Kruxオブジェクトの命名規則はクライアントごとに異なります。ユーザーIDを抽出するコードは <code>Krux.ns.CLIENT('get', 'user')</code> のようになります。ここで、CLIENTはあなたの特定のKruxクライアント名です。このオブジェクトの命名規則についてはKruxの担当者に尋ねるか、<a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a> Consoleで <code>Krux.ns</code> と入力して結果のオブジェクトを調べることができます。</p>
+<p>Webhookコネクタを通じて送信するユーザーをKruxユーザーと照合するために、Kruxコントロールタグによって生成されたKruxオブジェクトからKruxユーザーIDを抽出する必要があります。Kruxオブジェクトの命名規則はクライアントごとに異なります。ユーザーIDを抽出するコードは <code>Krux.ns.CLIENT('get', 'user')</code> のようになります。ここで、CLIENTはあなたのKruxクライアント名です。このオブジェクトの命名規則についてはKrux担当者に尋ねるか、<a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a> Consoleで <code>Krux.ns</code> と入力して結果のオブジェクトを調べることができます。</p>
 <p>Kruxクライアント名を取得したら、以下の手順でKruxユーザーIDをCookieに保存します:</p>
 <ol>
 <li>
@@ -1105,7 +1109,7 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
 <p><a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value Extension</a>を追加して、上記の拡張機能から<code>krux_id</code>をクッキーに保存します。</p>
 </li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>この条件を、<code>krux_id</code>変数が入力され、最初に構成された値を保持する場合にのみこのクッキーを保存するように構成します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>このクッキーを保存する条件を、<code>krux_id</code>変数が入力され、最初に構成された値を保持するように構成します。</p>
 <figure><a class="slb" href="/images/server-side/krux-persist"><img src="/images/server-side/krux-persist"
          alt="krux persist"
          title="krux persist"/>
@@ -1113,14 +1117,14 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
 </figure>
 <h2 id="customer-data-hub">Customer Data Hub</h2>
 <h3 id="kruxユーザーidでvisitor-attributeを構成">KruxユーザーIDでVisitor Attributeを構成</h3>
-<p>&ldquo;Krux ID&quot;という名前のVisitorスコープのString Attributeを作成します。この属性は<code>utag_main_krux_id</code>クッキーから取得します。</p>
+<p>&ldquo;Krux ID&quot;という名前のVisitorスコープのString Attributeを作成します。この属性を<code>utag_main_krux_id</code>クッキーから取得します。</p>
 <figure><a class="slb" href="/images/server-side/krux-id-attribute.png"><img src="/images/server-side/krux-id-attribute.png"
          alt="krux id attribute.png"
          title="krux id attribute.png"/>
     </a>
 </figure>
 <h3 id="krux-http-api-webhookを追加">Krux HTTP API Webhookを追加</h3>
-<p>このセクションでは、<a href="/ja/server-side/connectors/webhook-connectors/action-parameters/">Webhook Send Custom Request Action</a>を使用してKruxコネクタを作成するために必要なパラメータを定義します。</p>
+<p>このセクションでは、<a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/">Webhook Send Custom Request Action</a>を使用してKruxコネクタを作成するために必要なパラメータを定義します。</p>
 <p>ベンダー文書: <a href="https://konsole.zendesk.com/hc/en-us/articles/219493027-Mobile-HTTP-API">Krux Mobile HTTP API</a></p>
 <ul>
 <li><strong>Method</strong>: GET</li>
@@ -1229,7 +1233,7 @@ Customer Data Hub KruxユーザーIDでVisitor Attributeを構成 &ldquo;Krux ID
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

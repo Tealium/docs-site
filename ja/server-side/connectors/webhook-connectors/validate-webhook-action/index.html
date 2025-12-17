@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/validate-webhook-action/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Webhookアクションの検証方法について説明します。" />
+<meta property="og:description" content="この記事では、Webhookアクションを検証する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Webhookアクションの検証 | Webhookコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -596,7 +596,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -670,6 +670,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1038,28 +1042,28 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Webhookアクションの検証方法について説明します。
+      この記事では、Webhookアクションを検証する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>新しいアクションを確認し、トラブルシューティングするための以下の方法のいずれかを使用します：</p>
+  <p>新しいアクションを検証およびトラブルシューティングするために、以下の方法のいずれかを使用します：</p>
 <ul>
 <li><strong>ベンダーユーザーインターフェース</strong><br>
-ベンダーが変更を監視できるウェブユーザーインターフェースを提供している場合、ターゲットベンダーエンドポイントにアクションを送信し、ターゲットエンドポイントでそれを確認します。</li>
+ベンダーが変更を監視できるWebユーザーインターフェースを提供している場合、アクションをターゲットベンダーエンドポイントに送信し、ターゲットエンドポイントでそれを確認します。</li>
 <li><strong>PutsReqバケット</strong><br>
-テストリクエストをサンプルのPutsReqバケットURLに送信します。アクションフィールドを構成した後、以下のURLに移動して、PutsReqユーザーインターフェースを使用して受信したリクエストを調査します。<br>
+サンプルのPutsReqバケットURLにテストリクエストを送信します。アクションフィールドを構成した後、以下のURLにアクセスして、PutsReqユーザーインターフェースを使用して受信したリクエストを調べます。<br>
 <code>https://putsreq.com/&gt;YOURBUCKETNAME/inspect</code></li>
 <li><strong>トレース</strong><br>
-<a href="/ja/server-side/trace/about/">トレースツールを実行</a>し、アクションデータを調査します。このアクションのテンプレート機能を使用している場合は、テンプレート変数JSONとレンダリングされたテンプレート：&lt;template name&gt;を確認します。<br>
-個々のデータ項目がバッチに追加されると、トレースはまずバッチ化されたアクションを表示し、その後、バッチが第三者に送信された後に再度表示します。</li>
+<a href="/ja/server-side/trace/about/">トレースツールを実行する</a> してアクションデータを調べます。このアクションのテンプレート機能を使用している場合は、テンプレート変数JSONとレンダリングされたテンプレート：&lt;template name&gt;を確認してください。<br>
+個々のデータ項目がバッチに追加されると、トレースは最初にバッチ化されたアクションを表示し、その後、バッチが第三者に送信された後に再度表示します。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>トレースでは、バッチに追加された個々のデータ項目はバッチ化されません。</p>
-<p>複数のバッチングアクションは、しばしば単一の送信アクションに対応します。二つの間にはかなりの遅延があるかもしれません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>トレースでバッチに追加された個々のデータ項目はバッチ化されません。</p>
+<p>複数のバッチングアクションは、しばしば単一の送信アクションに対応します。2つの間にはかなりの遅延がある場合があります。</p>
 <h2 id="サンプルアクション構成">サンプルアクション構成</h2>
 <ol>
-<li><a href="http://putsreq.com/">https://putsreq.com/</a>に移動し、<strong>PutsReqを作成</strong>をクリックしてテスト用のエンドポイントを作成します。
+<li><a href="http://putsreq.com/">https://putsreq.com/</a> にアクセスし、<strong>PutsReqを作成</strong>をクリックしてテスト用のエンドポイントを作成します。
 <figure><a class="slb" href="/images/server-side/putsreq-yourputsrequrl.jpg"><img src="/images/server-side/putsreq-yourputsrequrl.jpg"
                alt="PutsReq_YourPutsReqURL.jpg"
                title="PutsReq_YourPutsReqURL.jpg"/>
@@ -1067,17 +1071,17 @@
       </figure></li>
 <li><strong>PutsReq URL</strong>をコピーします。</li>
 <li>Webhookコネクタのアクション構成に移動します。</li>
-<li>メソッドまでスクロールダウンし、クリックして展開します。</li>
+<li>Methodまでスクロールダウンし、クリックして展開します。</li>
 <li>ドロップダウンリストから<strong>POST</strong>を選択します。</li>
-<li>URLまでスクロールダウンし、クリックして展開し、<strong>PutsReq URL</strong>をURLパラメータフィールドに貼り付けます。<br>
+<li>URLまでスクロールダウンし、クリックして展開し、URLパラメータフィールドに<strong>PutsReq URL</strong>を貼り付けます。<br>
 <figure><a class="slb" href="/images/server-side/putsreq-webhookconnectorsettings-method-and-url.jpg"><img src="/images/server-side/putsreq-webhookconnectorsettings-method-and-url.jpg"
                alt="PutsReq_WebhookConnectorSettings_Method and URL.jpg"
                title="PutsReq_WebhookConnectorSettings_Method and URL.jpg"/>
           </a>
       </figure></li>
 <li><strong>保存</strong>をクリックします。</li>
-<li>変更を保存し、公開します。</li>
-<li><a href="/ja/server-side/trace/about/">トレースを実行</a>して、アクションが期待通りにトリガーされたことを確認します。</li>
+<li>変更を保存して公開します。</li>
+<li><a href="/ja/server-side/trace/about/">トレースを実行する</a> して、期待通りにアクションがトリガーされたことを確認します。</li>
 </ol>
 
 </div>
@@ -1139,7 +1143,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年June月23日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

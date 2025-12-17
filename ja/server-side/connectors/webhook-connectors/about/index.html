@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/webhook-connectors/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、利用可能なWebhookコネクタについて説明します。" />
+<meta property="og:description" content="WebhookコネクタをHTTP APIエンドポイントに接続して、イベントデータまたは訪問データを直接サービスに送信します。これは、完全なJSONペイロードを投稿するか、個々の属性をリクエストフィールドにマッピングすることによって行います。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Webhookコネクタについて | Webhookコネクタ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -596,7 +596,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -670,6 +670,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1038,7 +1042,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、利用可能なWebhookコネクタについて説明します。
+      WebhookコネクタをHTTP APIエンドポイントに接続して、イベントデータまたは訪問データを直接サービスに送信します。これは、完全なJSONペイロードを投稿するか、個々の属性をリクエストフィールドにマッピングすることによって行います。
     </p>
   
 </div>
@@ -1050,23 +1054,25 @@
 <li>訪問データ用に有効化されたTealiumアカウント（AudienceStream用）</li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
-<p>Webhookコネクタは、URL、URLパラメータ、ヘッダー、クッキー、ボディコンテンツタイプ、ボディデータを含むHTTPリクエストのすべての側面を使用して、カスタマイズされたデータをベンダーに送信します。Webhookはバッチ処理もサポートしています。さらに、複雑で動的なデータ形式を扱うために設計された強力なテンプレート機能を含んでいます。</p>
-<p>ベンダーの認証要件に基づいて選択できるWebhookコネクタは以下の4つです：</p>
+<p>Webhookコネクタは、HTTPリクエストを通じてイベントまたは訪問データをベンダーに送信します。HTTPリクエストのすべての側面を構成して、ベンダーに必要な正確なリクエストを作成できます。</p>
+<h2 id="認証">認証</h2>
+<p>HTTPベースのWebhookコネクタに対応する認証方法は以下の通りです：</p>
 <ul>
-<li><strong>Webhook（BasicAuth）</strong>：認証が不要、またはユーザー名とパスワードの基本認証のみが必要なサービス用。</li>
-<li><strong>Webhook（OAuth2 - 3-Legged）</strong>：アクセストークンを取得するためにサービスにログインする必要があります。</li>
-<li><strong>Webhook（OAuth2 - 2-Legged）</strong>：サービスにログインする必要はありません。認証に必要な情報でWebhookが構成されます。</li>
-<li><strong>Webhook（JWT）</strong>：JSON Webトークン認証を使用します。サービスにログインする必要はありません。認証に必要な情報でWebhookが構成されます。</li>
+<li><strong>BasicAuth</strong>: リクエストと共に送信されるユーザー名とパスワードを使用してWebhookリクエストを認証します。</li>
+<li><strong>OAuth2 3-Legged</strong>: ユーザーの同意を得たフローを通じてWebhookリクエストを認証し、ユーザーの代わりにアクセストークンを発行します。サービスにログインしてアクセストークンを取得する必要があります。</li>
+<li><strong>OAuth2 2-Legged</strong>: ユーザーの関与なしにサーバー間でアクセストークンを使用してWebhookリクエストを認証します。</li>
+<li><strong>JWT</strong>: JSON Webトークンを使用してWebhookリクエストを認証します。</li>
 </ul>
 <p>Webhook OAuth2は、OAuth 2.0認証を明示的に要求するサービスに使用されます。</p>
-<p>始めるには、コネクタマーケットプレイスにアクセスして使用したいWebhookインスタンスを追加してください。コネクタの追加方法についての一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタ概要</a>を参照してください。</p>
+<p>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/authentication/">Webhook認証</a>を参照してください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Webhookを使用してデータをJDBC互換データベースに送信する方法については、<a href="/ja/server-side-connectors/webhook-jdbc/">Webhook JDBC</a>を参照してください。</p>
 <h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">アクション名</th>
 <th style="text-align:left">説明</th>
-<th style="text-align:left">Webhook（BasicAuth）</th>
+<th style="text-align:left">Webhook (BasicAuth)</th>
 <th style="text-align:left">Webhook OAuth2</th>
 </tr>
 </thead>
@@ -1103,9 +1109,9 @@
 </tr>
 </tbody>
 </table>
-<p>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/action-parameters/">アクションパラメータ</a>を参照してください。</p>
+<p>詳細については、<a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/">Webhook アクションとパラメータ</a>を参照してください。</p>
 <h2 id="httpレスポンスクッキー">HTTPレスポンスクッキー</h2>
-<p>クッキーベースのセッション管理はWebブラウザでは一般的ですが、ステートレスAPIと通信するサーバー間環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
+<p>クッキーベースのセッション管理はWebブラウザーで一般的ですが、ステートレスAPIと通信するサーバー間環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
 
 </div>
 
@@ -1151,7 +1157,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月3日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1167,6 +1173,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">HTTPレスポンスクッキー</a></li>
               </nav>

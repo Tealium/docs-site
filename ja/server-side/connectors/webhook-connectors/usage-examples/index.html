@@ -596,7 +596,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -670,6 +670,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1044,16 +1048,16 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>これらの例では、明確さのために単純なJSONオブジェクトが使用されています。実際に送信されるデータは完全なイベントまたは訪問オブジェクトです。また、追加のパラメータがどのように送信されるかを示すために、<code>param1</code>という単一のURLパラメータが<code>value1</code>の値を受け取るように含まれています。</p>
+  <p>これらの例では、明確さのために単純なJSONオブジェクトが使用されています。実際に送信されるデータは完全なイベントまたは訪問オブジェクトです。また、追加のパラメータがどのように送信されるかを示すために、<code>param1</code> が <code>value1</code> の値を受け取る単一のURLパラメータも含まれています。</p>
 <h3 id="イベント訪問の送信---getメソッド">イベント/訪問の送信 - GETメソッド</h3>
-<p>Send Event DataアクションまたはSend Visitor DataアクションでGETメソッドを使用すると、データは<code>data</code>という名前の単一のクエリ文字列パラメータとして送信されます。値はイベント/訪問データオブジェクトのURLエンコードされたJSON文字列です。構成されたURLパラメータは追加のクエリ文字列パラメータとして追加されます。</p>
-<p>この例では、データは次のとおりです：</p>
+<p>Send Event DataまたはSend Visitor DataアクションでGETメソッドを使用する場合、データは <code>data</code> という名前の単一のクエリ文字列パラメータとして送信されます。値はイベント/訪問データオブジェクトのURLエンコードされたJSON文字列です。構成されたURLパラメータは追加のクエリ文字列パラメータとして追加されます。</p>
+<p>この例では、データは以下の通りです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;foo&#34;</span> : <span style="color:#e6db74">&#34;bar&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>結果のURLエンコードされたJSON文字列は次のとおりです：</p>
+</span></span></code></pre></div><p>結果のURLエンコードされたJSON文字列は以下の通りです：</p>
 <p><code>%7B%22foo%22%3A%22bar%22%7D</code></p>
-<p>これが最終的なGETリクエストで次のクエリ文字列パラメータとして表示されることがわかります：</p>
+<p>この文字列が最終的なGETリクエストで以下のクエリ文字列パラメータとして現れます：</p>
 <p><code>data=%7B%22foo%22%3A%22bar%22%7D</code></p>
 <pre tabindex="0"><code>GET /webhook-service?data=%7B%22foo%22%3A%22bar%22%7D&amp;param1=value1
 
@@ -1064,7 +1068,7 @@ X-HEADER-KEY: header_value
 COOKIE: cookie_key=cookie_valie,__cfduid=d63c6b0e0a23195e9a7142f314360b4e11502122913
 USER-AGENT: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
 </code></pre><h3 id="イベント訪問の送信---postメソッド">イベント/訪問の送信 - POSTメソッド</h3>
-<p>以下は、**<code>application/json</code>**と<code>application/x-www-form-urlencoded</code>コンテンツタイプのPOSTリクエストのサンプルです。</p>
+<p>以下は、<strong><code>application/json</code></strong> および <code>application/x-www-form-urlencoded</code> コンテンツタイプのサンプルPOSTリクエストです。</p>
 <h5 id="content-type-applicationjson"><strong>Content-Type: application/json</strong></h5>
 <p>本文データはJSONペイロードとして送信されます。</p>
 <pre tabindex="0"><code>POST /webhook-service?param1=value1
@@ -1082,7 +1086,7 @@ CONTENT-LENGTH: 13
     &#34;foo&#34;: &#34;bar&#34;
 }
 </code></pre><h5 id="content-type-applicationx-form-urlencoded"><strong>Content-Type: application/x-form-urlencoded</strong></h5>
-<p>本文データは、<code>data</code>という名前のform-dataフィールドを使用してURLエンコードされたJSON文字列として送信されます。</p>
+<p>本文データは <code>data</code> という名前のフォームデータフィールドを使用してURLエンコードされたJSON文字列として送信されます。</p>
 <pre tabindex="0"><code>POST /webhook-service?param1=value1
 
 VERSION: HTTP/1.1
@@ -1155,7 +1159,7 @@ data=%7B%22foo%22%3A%22bar%22%7D
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年June月23日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -449,9 +449,6 @@
       <a href="/server-side-connectors/google-bigquery-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google BigQuery</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Campaign Manager 360 Floodlight</span></a>
-      </li>
-  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Cloud Pub/Sub</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -462,6 +459,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-display-video-360-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Display and Video 360</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-floodlight-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Floodlight</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google SA360 Enhanced Conversions</span></a>
@@ -1127,8 +1127,6 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-bigquery-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-bigquery-connector">Google BigQuery</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-campaign-manager-360-floodlight-connector-setup-guide">Google Campaign Manager 360 Floodlight</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-cloud-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-storage-connector">Google Cloud Storage</a></li>
@@ -1136,6 +1134,8 @@
         <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-display-video-360-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-display-amp-video-360-connector-setup-guide">Google Display and Video 360</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-floodlight-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-floodlight-connector-setup-guide">Google Floodlight</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1460,20 +1460,22 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+  <h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>Max number of requests: 100</li>
-<li>Max time since oldest request: 5 minutes</li>
-<li>Max size of requests: 1 MB</li>
+<li><strong>Collection Domain</strong>: (Required) The collection endpoint for your organization.</li>
+<li><strong>Collection Path</strong>: (Required) The collection path.</li>
+<li><strong>Site ID</strong>: (Required) The data source site ID.</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -1484,39 +1486,55 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Collection Domain</strong><br>
-(Required) The collection endpoint for your organization.</li>
-<li><strong>Collection Path</strong><br>
-(Required) The collection path.</li>
-<li><strong>Site ID</strong><br>
-(Required) The data source site ID.</li>
-</ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
-<h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action. For more information about AT Internet Piano Analytics Connector parameters, see the <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns">Collection API</a> documentation.</p>
-<h3 id="action--send-event">Action — Send Event</h3>
+<h3 id="batch-limits">Batch limits</h3>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 5 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h3 id="send-event">Send Event</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Event Type</td>
-<td>All <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/standard-events">Standard events</a> are supported.<br> To send a custom, non-standard event, select the <strong>Custom</strong> option and provide the <strong>Custom Event Type</strong> value in the <strong>Event Properties</strong> section.</td>
+<td>All <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/standard-events">Standard events</a> are supported. To send a custom, non-standard event, select the <strong>Custom</strong> option and provide the <strong>Custom Event Type</strong> value in the <strong>Event Properties</strong> section.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="event-properties">Event Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Date Formats</td>
-<td>Specify the <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date">date format</a> when populating event property.<br> Only milliseconds since epoch UTC (or CDH Date Attributes) are formattable, otherwise the action will fail.<br> Map the following date formats: <strong>YYYYMMDD</strong>, <strong>YYYY-MM-DD</strong>, <strong>YYYY-MM-DDTHH:mm:ssZ</strong>, <strong>UNIX</strong>.</td>
+<td>Specify the <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#date">date format</a> when populating an event property.<br> Only milliseconds since epoch UTC (or CDH Date Attributes) are formattable, otherwise the action fails.<br> The following date formats are valid: <code>YYYYMMDD</code>, <code>YYYY-MM-DD</code>, <code>YYYY-MM-DDTHH:mm:ssZ</code>, <code>UNIX</code>.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="standard-parameters">Standard Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>IP Address</td>
 <td>IP address of the client.</td>
@@ -1527,19 +1545,31 @@
 </tr>
 <tr>
 <td>Site ID</td>
-<td>ID of the site the data belongs to. This parameter will overwrite the value defined in the <strong>Configuration</strong> tab if the value is not empty.</td>
+<td>ID of the site the data belongs to. This parameter overwrites the value defined in the <strong>Configuration</strong> tab if the value is not empty.</td>
 </tr>
 <tr>
 <td>User Agent</td>
-<td>User agent of the client. If this field is not mapped, it will be auto-mapped to the User Agent attribute in Tealium EventStream API Hub and to the visitor’s last User Agent attribute in Tealium AudienceStream CDP.</td>
+<td>User agent of the client. If this field is not mapped, it is auto-mapped to the User Agent attribute in Tealium EventStream API Hub and to the visitor’s last User Agent attribute in Tealium AudienceStream CDP.</td>
 </tr>
 <tr>
 <td>Visitor ID</td>
-<td>Unique identifier of the visitor. If this field is not mapped, it will be auto-mapped to the Tealium Visitor ID.</td>
+<td>Unique identifier of the visitor. If this field is not mapped, it is auto-mapped to the Tealium Visitor ID.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="common-contextual-properties">Common Contextual Properties</h4>
+<p>AT Internet Piano Analytics recommends additional properties to enhance analysis.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Previous URL</td>
-<td>The previous page URL. If this field is not mapped, it will be auto-mapped to the Current URL attribute in EventStream and to the Entry URL attribute in AudienceStream.</td>
+<td>The previous page URL. If this field is not mapped, it is auto-mapped to the Current URL attribute in EventStream and to the Entry URL attribute in AudienceStream.</td>
 </tr>
 <tr>
 <td>Device Timestamp UTC</td>
@@ -1577,6 +1607,18 @@
 <td>Device Screen Width</td>
 <td>Width of the device screen.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="marketing-campaigns-properties">Marketing Campaigns Properties</h4>
+<p>Map fields in this section to track marketing campaigns.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Campaign Medium</td>
 <td>Required property for tracking marketing campaigns.</td>
@@ -1587,7 +1629,7 @@
 </tr>
 <tr>
 <td>Campaign Creation</td>
-<td>The campaign creation. See the AT Internet Piano Analytics Connector <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns">Collection API</a> documentation for usage examples.</td>
+<td>The campaign creation. For usage examples, see <a href="https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/collection-api#marketing-campaigns">AT Internet Piano: Analytics Connector Collection API</a>.</td>
 </tr>
 <tr>
 <td>Campaign Variant</td>
@@ -1601,6 +1643,17 @@
 <td>Campaign Type</td>
 <td>The campaign type.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="user-properties">User Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>User ID</td>
 <td>Map this field to track authenticated users.</td>
@@ -1609,9 +1662,67 @@
 <td>User Category</td>
 <td>Map this field to track authenticated users.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="goals-properties">Goals Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Goal Type</td>
 <td>Set Goal Type to track a conversion.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enhanced-marketing-source-detection">Enhanced Marketing Source Detection</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Content</td>
+<td>Captures content details from marketing campaigns (for example, ad copy or creative label).</td>
+</tr>
+<tr>
+<td>Creative Format</td>
+<td>Identifies the creative format used in campaigns.</td>
+</tr>
+<tr>
+<td>Source ID</td>
+<td>Unique identifier for tracking specific campaigns.</td>
+</tr>
+<tr>
+<td>Marketing Tactic</td>
+<td>Records the marketing tactic employed.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>Indicates the primary traffic source.</td>
+</tr>
+<tr>
+<td>Source Platform</td>
+<td>Specifies the platform where the source originated.</td>
+</tr>
+<tr>
+<td>Source Term</td>
+<td>Captures search terms or keywords.</td>
+</tr>
+<tr>
+<td>Auto Event Collection</td>
+<td>Tracks whether event collection was automatically triggered.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>(Alpha-<code>2</code>) Provides ISO 3166 Alpha-2 country codes for geo reporting.</td>
 </tr>
 </tbody>
 </table>
@@ -1675,7 +1786,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 5, 2022 
+          <p>This page was last updated:  December 16, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1689,11 +1800,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-event" href="javascript:void(0)">Action — Send Event</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event" href="javascript:void(0)">Send Event</a></li>
               </nav>
   </aside></nav>
 

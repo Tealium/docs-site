@@ -219,17 +219,27 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">SCIM同期ログの取得</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET グループ API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GETユーザーAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT グループ API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT ユーザー API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">グループ削除API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">ユーザー削除API</a></li></ul>
       </li>
@@ -427,7 +437,7 @@
 </table>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">Databricks: データタイプ</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>）を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Tealiumはサービスプリンシパルを使用してDatabricksの計算リソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを認証する</a>を参照してください。</p>
+<p>Tealiumはサービスプリンシパルを使用してDatabricksの計算リソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを承認する</a>を参照してください。</p>
 <p>新しい接続を構成するには、次の接続詳細を入力します：</p>
 <ul>
 <li><strong>ホスト名</strong>: Databricks計算リソースのホスト名。例：
@@ -446,18 +456,18 @@
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">Databricks: 計算構成</a>（<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>、<a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>）を参照してください。</p>
 <p>Databricksに接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</p>
 <h2 id="クエリモード">クエリモード</h2>
-<p>全体的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
+<p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <p><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モードの場合、選択されたタイムスタンプ列は<code>TIMESTAMP_NTZ</code>タイプでなければなりません。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-ntz-type">Databricks: TIMESTAMP_NTZ</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-ntz-type">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-ntz-type">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-ntz-type">GCP</a>）を参照してください。</p>
 <p><strong>インクリメント</strong>モードの場合、選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>詳細については、<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Databricks CREATE TABLE</a>（<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>、<a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>）を参照してください。</p>
 <h2 id="where句">WHERE句</h2>
-<p>全体的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
+<p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <p><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のDatabricksテーブルからデータをインポートするには、Databricksでビューを作成し、データソース構成でそのビューを選択します。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/views/">Databricks: ビューとは何か？</a>（<a href="https://docs.databricks.com/aws/en/views/">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>、<a href="https://docs.databricks.com/gcp/en/views/">GCP</a>）を参照してください。</p>
 <h2 id="ipアクセスリスト">IPアクセスリスト</h2>
-<p>DatabricksワークスペースがIPアドレスによって制限されている場合は、<a href="">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
+<p>DatabricksワークスペースがIPアドレスによって制限されている場合は、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
 <p>詳細については、<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">Databricks: IPアクセスリストの管理</a>（<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>、<a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>、<a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>）を参照してください。</p>
 
 </div>
@@ -519,7 +529,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月29日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

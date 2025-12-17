@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/data-sources/file-import/file-transfer-service/aws-s3/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、AWS S3バケットを使用してファイルをアップロードし、管理する方法について説明します。" />
+<meta property="og:description" content="この記事では、AWS S3バケットを使用してファイルをアップロードおよび管理する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>AWS S3 | ファイルのアップロード | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -596,7 +596,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">オブジェクト</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li>
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメントパブリックAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -670,6 +670,10 @@
         <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">認証</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/actions-and-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションとパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1044,13 +1048,13 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、AWS S3バケットを使用してファイルをアップロードし、管理する方法について説明します。
+      この記事では、AWS S3バケットを使用してファイルをアップロードおよび管理する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-    <p class="note"><i class="fa fa-exclamation-triangle"></i>S3バケットに大量のファイルを保存すると、読み取り時間が遅くなる可能性があります。効率的な読み取り時間を維持するために、定期的に処理済みのファイルをS3バケットから削除することをお勧めします。</p>
+    <p class="note"><i class="fa fa-exclamation-triangle"></i>S3バケットに多数のファイルを保存すると、読み取り時間が遅くなる可能性があります。効率的な読み取り時間を維持するために、定期的に処理済みのファイルをS3バケットから削除することをお勧めします。</p>
 <h2 id="資格情報">資格情報</h2>
 <p>ファイルインポート構成でファイルサービスを構成するためには、以下のAWS資格情報が必要です：</p>
 <ul>
@@ -1058,21 +1062,21 @@
 <li>シークレットキー</li>
 <li>バケット</li>
 </ul>
-<p>さらに、バケットプレフィックスとリージョンを追加することもできます。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">AWS: IAMユーザーのアクセスキーを管理する</a>を参照してください。</p>
+<p>さらに、バケットプレフィックスとリージョンを追加することができます。詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">AWS: IAMユーザーのアクセスキーを管理する</a>を参照してください。</p>
 <h2 id="リージョン">リージョン</h2>
 <p>Amazon S3バケットとTealiumプロファイルは、ファイルを正常にインポートするために同じリージョンに割り当てる必要があります。</p>
 <h2 id="amazon-s3アクセス構成">Amazon S3アクセス構成</h2>
-<p>ファイルサービスのために自社のAmazon S3バケットを使用する場合（TealiumのS3バケットは含まれません）、ファイルの処理を開始する前にTealiumがAmazon S3バケットにアクセスできるように構成する必要があります。</p>
+<p>ファイルサービスに自社のAmazon S3バケットを使用する場合（TealiumのS3バケットを含まない）、ファイルを処理する前にTealiumがAmazon S3バケットにアクセスできるように構成する必要があります。</p>
 <h2 id="amazonバケットポリシー">Amazonバケットポリシー</h2>
-<p>AWSポリシージェネレータとAmazon S3コンソールを使用して新しいバケットポリシーを追加します。Amazon S3バケットポリシーは、特定の仮想プライベートクラウド（VPC）エンドポイントからのバケットへのアクセスを制御します。</p>
-<p>AWSバケットポリシーについての詳細は、AWSドキュメンテーションの以下の記事を参照してください：</p>
+<p>AWSポリシージェネレーターとAmazon S3コンソールを使用して、新しいバケットポリシーを追加します。Amazon S3バケットポリシーは、特定の仮想プライベートクラウド（VPC）エンドポイントからのバケットへのアクセスを制御します。</p>
+<p>AWSバケットポリシーに関する詳細は、AWSドキュメントの以下の記事を参照してください：</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html">Amazon S3コンソールを使用してバケットポリシーを追加する</a></li>
 <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies-vpc-endpoint.html">バケットポリシーを使用してVPCエンドポイントからのアクセスを制御する</a></li>
 </ul>
-<p>以下の構成詳細を使用して、ファイルインポートデータソースで使用されるAmazon S3バケットへのTealiumのアクセスを許可します。</p>
+<p>ファイルインポートデータソースで使用するAmazon S3バケットへのTealiumアクセスを許可するための以下の構成詳細を使用してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>, <span style="color:#75715e">//特定のAWSバケットポリシーバージョン。この値を使用します。
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>, <span style="color:#75715e">//特定のAWSバケットポリシーバージョン。この値を使用してください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;VPCe and SourceIP&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Statement&#34;</span>: [
 </span></span><span style="display:flex;"><span>        {
@@ -1081,20 +1085,20 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:*&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Resource&#34;</span>: [
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::name&#34;</span>, <span style="color:#75715e">// &#34;name&#34;をバケットの名前に置き換えます
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#e6db74">&#34;arn:aws:s3:::name/*&#34;</span> <span style="color:#75715e">// &#34;name&#34;をバケットの名前に置き換えます
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;arn:aws:s3:::name&#34;</span>, <span style="color:#75715e">//バケットの名前に「name」を置き換えてください
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#e6db74">&#34;arn:aws:s3:::name/*&#34;</span> <span style="color:#75715e">//バケットの名前に「name」を置き換えてください
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            ],
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Condition&#34;</span>: {
 </span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;NotIpAddress&#34;</span>: {
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;aws:SourceIp&#34;</span>: [
-</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;18.158.6.183&#34;</span>, <span style="color:#75715e">//Tealium Office VPNの例。バケットをオフィスから閲覧するTealiumスタッフを許可する場合は、このIPを追加します。Tealiumオフィスの値はCSMから取得します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#e6db74">&#34;50.18.192.141&#34;</span>, <span style="color:#75715e">//このIPアドレスと次のIPアドレスはus-west-1のTealiumリージョン用です。バケット内のファイルをCDHに表示するためには、常に含める必要があります。
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;18.158.6.183&#34;</span>, <span style="color:#75715e">//TealiumオフィスVPNの例です。Tealiumスタッフがオフィスからバケットを閲覧できるようにする場合は、このIPを追加してください。CSMからTealiumオフィスの値を取得してください。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#e6db74">&#34;50.18.192.141&#34;</span>, <span style="color:#75715e">//これと次のIPアドレスはus-west-1 Tealiumリージョンのものです。CDHがバケット内のファイルを表示するためには、常に含める必要があります。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#e6db74">&#34;52.52.159.89&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;54.153.15.248&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;54.176.233.190&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;54.183.127.212&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;54.193.243.80&#34;</span>,
-</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;3.72.173.191&#34;</span>, <span style="color:#75715e">//このIPアドレスと次のIPアドレスは、特定のCDHリージョン用です。この例では、eu-central-1リージョンです。&#34;Tealium IPアドレスを許可する&#34;から、あなたのCDHリージョンの正しいリストを見つけてください。
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;3.72.173.191&#34;</span>, <span style="color:#75715e">//これと次のIPアドレスは、この例ではeu-central-1リージョンのあなたの特定のCDHリージョンのものです。YOUR CDHリージョンの正しいリストを「Tealium IPアドレスを許可する」ページから見つけてください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#e6db74">&#34;3.79.77.159&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;3.125.211.165&#34;</span>,
 </span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;18.193.100.101&#34;</span>,
@@ -1107,26 +1111,26 @@
 </span></span><span style="display:flex;"><span>                    ]
 </span></span><span style="display:flex;"><span>                },
 </span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;StringNotEquals&#34;</span>: {
-</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;aws:sourceVpce&#34;</span>: <span style="color:#e6db74">&#34;vpce-0846ac0c8e0640982&#34;</span> <span style="color:#75715e">//特定のCDHリージョンのVPCエンドポイントID。この例では、eu-central-1リージョンです。&#34;Tealium IPアドレスを許可する&#34;ページから、あなたのCDHリージョンの正しい値を見つけてください。
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;aws:sourceVpce&#34;</span>: <span style="color:#e6db74">&#34;vpce-0846ac0c8e0640982&#34;</span> <span style="color:#75715e">//あなたの特定のCDHリージョンのVPCエンドポイントIDです。この例では、eu-central-1リージョンです。YOUR CDHリージョンの正しい値を「Tealium IPアドレスを許可する」ページから見つけてください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                }
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="許可するアドレス">許可するアドレス</h2>
-<p><code>us-west-1</code>のVPCe（VPCエンドポイントID）とプロファイルリージョンのVPCeの両方を許可するようにします。</p>
-<p>プロファイルリージョンを見つけるには、サーバーサイドの管理メニューに移動し、<strong>サーバーサイド構成 &gt; リージョン</strong>を選択します。リージョンを見つけたら、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレスを許可する</a>から対応するVPCeを選択します。</p>
+<p><code>us-west-1</code>のVPCe（VPCエンドポイントID）とあなたのプロファイルリージョンのVPCeの両方を許可することを確認してください。</p>
+<p>プロファイルリージョンを確認するには、サーバーサイド管理メニューに移動し、<strong>Server-Side Settings &gt; Region</strong>を選択します。リージョンを特定した後、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレスを許可する</a>から対応するVPCeを選択してください。</p>
 <h2 id="amazon-cliを使用して空のs3バケットにファイルをアップロードする">Amazon CLIを使用して空のS3バケットにファイルをアップロードする</h2>
 <p>S3バケットが最初に作成されると、それは空です。空のS3バケットにアクセスしようとすると、次のメッセージが表示されることがあります：</p>
-<p><code>ACCOUNT-PROFILEの属性の読み取りに失敗しました</code></p>
-<p>CSVファイルをアップロードする前に、次の<code>aws s3api</code>コマンドを使用して空のバケットにファイルをアップロードします：</p>
+<p><code>Failure to read attributes of ACCOUNT-PROFILE</code></p>
+<p>CSVファイルをアップロードする前に、次の<code>aws s3api</code>コマンドを使用して空のバケットにファイルをアップロードしてください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3api put-object --bucket &lt;bucket&gt; --key &lt;key&gt; --body &lt;body&gt;
 </span></span></code></pre></div><ul>
-<li><code>bucket</code>の値は、<code>collect-REGION.tealium.com</code>の形式でリージョンドメインを指定します。</li>
-<li><code>key</code>の値は、ファイルに割り当てるファイル名を指定します。これにはファイルプレフィックスも含まれます。</li>
-<li><code>body</code>の値は、ローカルシステム上のファイルの場所を指定します。</li>
+<li><code>bucket</code>の値はリージョンドメインの形式<code>collect-REGION.tealium.com</code>です。</li>
+<li><code>key</code>の値はファイルに割り当てたいファイル名を指定します。ファイルプレフィックスを含みます。</li>
+<li><code>body</code>の値はローカルシステム上のファイルの場所を指定します。</li>
 </ul>
-<p>例：</p>
+<p>例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3api put-object --bucket collect-us-east-1.tealium.com <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --key bulk-downloader/ACCOUNT-PROFILE/test_fileimp_01.csv <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --body ./test_fileimp_01.csv
@@ -1191,7 +1195,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月2日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

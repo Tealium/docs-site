@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -947,6 +947,9 @@
       <a href="/ja/client-side-tags/spotify-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Spotify Pixel</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/sprinklr-universal-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Sprinklr</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/stirista-vig-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Stirista VIG</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1702,6 +1705,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/spotify-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-pixel-tag">Spotify Pixel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/sprinklr-universal-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sprinklr-universal-pixel-tag">Sprinklr</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/stirista-vig-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stirista-vig-tag">Stirista VIG</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/taboola-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-cookie-matching-service-tag">Taboola Cookie Matching Service</a></li>
@@ -1869,15 +1874,15 @@
 <ul>
 <li>マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。</li>
 <li><strong>Order ID</strong> が構成されているときに購入イベントが発火します。</li>
-<li>Reddit Pixel イベント ID をサーバーサイド属性として利用可能にするには、<strong>Generate Event ID</strong> を <code>true</code> に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>の最新バージョンを使用してください。</li>
-<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>の変換 ID 構成を使用することをお勧めします。変換 ID 構成を使用すると、同じ変換イベントが両方のソースから送信された場合に二重にカウントされるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
+<li>Reddit Pixel イベント ID をサーバーサイドの属性として利用可能にするには、<strong>Generate Event ID</strong> を <code>true</code> に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>の最新バージョンを使用してください。</li>
+<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>の変換 ID 構成を使用することをお勧めします。変換 ID 構成を使用すると、同じ変換イベントが両方のソースに送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
 <li>最も正確な変換トラッキングとレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシングを適用します。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
 <p>タグマーケットプレイスにアクセスして新しいタグを追加します。タグの追加方法については、<a href="/ja/iq-tag-management/tags/manage/">タグの管理</a>を参照してください。</p>
 <p>タグを追加する際には、以下の構成を構成します：</p>
 <ul>
-<li><strong>Account ID</strong>: あなたの Reddit アカウント ID。</li>
+<li><strong>Account ID</strong>: あなたのRedditアカウントID。</li>
 <li><strong>Send Page Visit</strong>
 <ul>
 <li>デフォルトでは、サイトの各ページに対してページ訪問イベントが自動的に記録されます。</li>
@@ -1885,288 +1890,29 @@
 </ul>
 </li>
 <li><strong>Send Default Purchase Event</strong>: デフォルトでは、購入イベントがサイトで追跡されます。しかし、Reddit Pixel に購入イベントを送信したくない場合は、このオプションを <code>false</code> に構成します。</li>
-<li><strong>Generate Event ID</strong>: すべての Reddit トラッキングイベントに対してイベント ID を自動生成します。</li>
+<li><strong>Generate Event ID</strong>: 各Redditトラッキングイベントに対して自動的にイベントIDを生成します。</li>
 </ul>
-<h2 id="ロードルール">ロードルール</h2>
-<p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
-<h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
-<p>利用可能なカテゴリは以下の通りです：</p>
-<h3 id="標準">標準</h3>
-<table>
-<thead>
-<tr>
-<th>変数名</th>
-<th>データタイプ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>account_id</code></td>
-<td>文字列</td>
-<td>アカウント ID。</td>
-</tr>
-<tr>
-<td><code>send_page_visit</code></td>
-<td>ブール値</td>
-<td>ページ訪問を送信。</td>
-</tr>
-<tr>
-<td><code>send_purchase_event</code></td>
-<td>ブール値</td>
-<td>購入イベントを送信。</td>
-</tr>
-<tr>
-<td><code>generate_event_id</code></td>
-<td>ブール値</td>
-<td>イベント ID を生成。</td>
-</tr>
-<tr>
-<td><code>event_id</code></td>
-<td>文字列</td>
-<td>イベント ID。</td>
-</tr>
-<tr>
-<td><code>conversion_id</code></td>
-<td>文字列</td>
-<td>変換 ID。</td>
-</tr>
-<tr>
-<td><code>transaction_id</code></td>
-<td>文字列</td>
-<td>トランザクション ID。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="eコマース">Eコマース</h3>
-<table>
-<thead>
-<tr>
-<th>変数名</th>
-<th>データタイプ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>itemCount</code></td>
-<td>数値</td>
-<td>アイテム数。</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td>数値</td>
-<td>価値。</td>
-</tr>
-<tr>
-<td><code>currency</code></td>
-<td>文字列</td>
-<td>通貨（<code>_ccurrency</code>を上書き）。</td>
-</tr>
-<tr>
-<td><code>transactionId</code></td>
-<td>文字列</td>
-<td>トランザクション ID。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="製品データ">製品データ</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">変数名</th>
-<th style="text-align:left">タイプ/値</th>
-<th style="text-align:left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>id</code></td>
-<td style="text-align:left">配列</td>
-<td style="text-align:left">製品 ID（<code>_cprod</code>を上書き）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>category</code></td>
-<td style="text-align:left">配列</td>
-<td style="text-align:left">製品カテゴリ（<code>_ccat</code>を上書き）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>name</code></td>
-<td style="text-align:left">配列</td>
-<td style="text-align:left">製品名（<code>_cprodname</code>を上書き）。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="イベント">イベント</h3>
-<p>マップされた変数の値を入力して、選択したイベントをトリガーします。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">変数名</th>
-<th style="text-align:left">説明。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>PageVisit</code></td>
-<td style="text-align:left">ページ訪問。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">コンテンツを表示。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Search</code></td>
-<td style="text-align:left">検索。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>AddToCart</code></td>
-<td style="text-align:left">カートに追加。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>AddToWishlist</code></td>
-<td style="text-align:left">ほしい物リストに追加。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Purchase</code></td>
-<td style="text-align:left">購入。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Lead</code></td>
-<td style="text-align:left">リード。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SignUp</code></td>
-<td style="text-align:left">サインアップ。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Custom</code></td>
-<td style="text-align:left">カスタムイベント。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="イベント固有のパラメータ">イベント固有のパラメータ</h3>
-<p>イベントをマップするには、<a href="/ja/iq-tag-management/data-mappings/manage/#add-an-event-mapping">イベントマッピングの作成</a>を参照してください。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">変数名</th>
-<th style="text-align:left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>currency</code></td>
-<td style="text-align:left">通貨。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>category</code></td>
-<td style="text-align:left">製品カテゴリ。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>name</code></td>
-<td style="text-align:left">製品名。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>id</code></td>
-<td style="text-align:left">製品 ID。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>content_type</code></td>
-<td style="text-align:left">コンテンツタイプ。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>contents</code></td>
-<td style="text-align:left">コンテンツ。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>predicted_ltv</code></td>
-<td style="text-align:left">予測される生涯価値。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>search_string</code></td>
-<td style="text-align:left">検索文字列。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>status</code></td>
-<td style="text-align:left">状態。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>num_items</code></td>
-<td style="text-align:left">アイテム数。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>value</code></td>
-<td style="text-align:left">価値。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="高度なマッチング">高度なマッチング</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">変数名</th>
-<th style="text-align:left">データタイプ</th>
-<th style="text-align:left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>email</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">メールアドレス。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>phoneNumber</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">電話番号。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>idfa</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">IDFA。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>aaid</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">AAID。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>externalId</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">外部 ID。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="ldu">LDU</h3>
-<p>Reddit Pixel がデータ処理モードで初期化されると、ページから発火されるすべての変換イベントには自動的に以下のパラメータが含まれます：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">変数名</th>
-<th style="text-align:left">データタイプ</th>
-<th style="text-align:left">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>dpm</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">データ処理モード。デフォルト値は <code>LDU</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>dpcc</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">データ処理国コードは ISO 3166-1 alpha-2 国コード形式です。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>dprc</code></td>
-<td style="text-align:left">文字列</td>
-<td style="text-align:left">データ処理地域コードは ISO 3166-2 地域コード形式で、国のプレフィックスがあるかないかです。</td>
-</tr>
-</tbody>
-</table>
+<h3 id="conversions-api">Conversions API</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能にはアクティブな <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a> が必要です。</p>
+<p>Reddit Conversions API をサポートするには <strong>Generate Event ID</strong> を <code>true</code> に構成します。<strong>Generate Event ID</strong> が有効になっている場合、このタグは追跡される各イベントに対して一意のイベントIDを生成し、それを Tealium EventStream に属性として送信し、Reddit Conversions コネクタで使用し、<code>event_id</code> パラメーターで Reddit Pixel に渡します。このイベントID属性はコネクタでマッピングされ、ウェブベースのタグとサーバーサイドの統合を同期させることができます。</p>
+<p>タグは以下の命名規則を使用して生成されたイベント属性を送信します：</p>
+<pre tabindex="0"><code class="language-nohl" data-lang="nohl">reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
+</code></pre><p>例えば、タグ＃32からの購入イベントは以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_Purchase_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同じタグからのページビューイベントは以下の属性と値を送信します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_PageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="重複排除">重複排除</h4>
+<p>適切なイベントの重複排除を確保するために、Reddit Pixel タグからのイベントIDを Tealium Collect タグによって送信されるペイロードに含める必要があります。これを行うには、以下の手順を使用します：</p>
+<ul>
+<li><strong>Tag Timing</strong> ドロップダウンから <strong>Prioritized</strong> を選択します。</li>
+<li><strong>Bundle Flag</strong> トグルを <code>On</code> に構成します。</li>
+<li><a href="/ja/iq-tag-management/extensions/load-order-manager/">Load Order Manager screen</a> を使用して、Tealium Collect タグの前に Reddit Pixel タグを発火させます。Tealium Collect タグは最後に発火させることをお勧めします。</li>
+</ul>
+<p>これらのイベントID属性の使用に関する情報については、<a href="/ja/server-side-connectors/reddit-conversions-connector/#deduplication-for-web-events">Reddit Conversions コネクタ: ウェブイベントの重複排除</a>を参照してください。</p>
 
 </div>
 
@@ -2227,7 +1973,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月19日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2243,15 +1989,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">製品データ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%AB%98%E5%BA%A6%E3%81%AA%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0" href="javascript:void(0)">高度なマッチング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ldu" href="javascript:void(0)">LDU</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversions-api" href="javascript:void(0)">Conversions API</a></li>
               </nav>
   </aside></nav>
 

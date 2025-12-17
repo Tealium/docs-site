@@ -219,17 +219,27 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">SCIM同期ログの取得</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET グループ API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GETユーザーAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT グループ API</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".put-user-api">PUT ユーザー API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">グループ削除API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">ユーザー削除API</a></li></ul>
       </li>
@@ -420,7 +430,7 @@
 <td><code>userName</code></td>
 <td>オブジェクト</td>
 <td>必須</td>
-<td>ユーザーのユーザー名（メールアドレス形式）。これは有効なメールアドレスでなければなりません。API を通じて <code>userName</code> を変更することはできません。</td>
+<td>ユーザーのユーザー名（メールアドレス形式）。有効なメールアドレスでなければなりません。API を通じて <code>userName</code> を変更することはできません。</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -438,11 +448,11 @@
 <td><code>active</code></td>
 <td>ブール値</td>
 <td>任意</td>
-<td>ユーザーがアクティブかどうかを示します。ユーザーを削除または非アクティブ化しようとしている場合は、<a href="/ja/early-access/api/scim-api/delete-user-api/">DELETE メソッド</a>を使用するか、<a href="/ja/early-access/api/scim-api/patch-user-api/">PATCH メソッド</a>を使用して <code>active</code> 値を <code>false</code> に変更してください。</td>
+<td>ユーザーがアクティブかどうかを示します。ユーザーを削除または非アクティブ化しようとしている場合は、<a href="/ja/early-access/api/scim-api/delete-user-api/">DELETE メソッド</a>を使用してください。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="curl-リクエストの例">cURL リクエストの例</h3>
+<h3 id="例-curl-リクエスト">例 cURL リクエスト</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT <span style="color:#e6db74">&#34;https://developer.tealiumapis.com/scim/v2/Users/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/scim+json&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Accept: application/scim+json&#34;</span> <span style="color:#ae81ff">\
@@ -458,7 +468,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }],
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;active&#34;: true
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}&#39;</span>
-</span></span></code></pre></div><h3 id="応答の例">応答の例</h3>
+</span></span></code></pre></div><h3 id="例応答">例応答</h3>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -467,7 +477,7 @@
         <span style="font-weight:bold;">
         
     	
-    	コードスニペットを表示するには展開してください
+    	コードスニペットを表示するには展開
     	
     	</span>
     </div>
@@ -521,7 +531,7 @@
 </tr>
 <tr>
 <td>405</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -535,13 +545,13 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/ja/early-access/api/scim-api/delete-user-api/"
+  <a href="/ja/early-access/api/scim-api/put-group-api/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>ユーザー削除API</div>
+      <div>PUT グループ API</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ユーザー削除API"</title>
+      <title>"PUT グループ API"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -589,7 +599,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月3日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -597,7 +607,20 @@
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#put-%E6%93%8D%E4%BD%9C%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">PUT 操作のパラメータ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B-curl-%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">例 cURL リクエスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E5%BF%9C%E7%AD%94" href="javascript:void(0)">例応答</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

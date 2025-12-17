@@ -271,17 +271,23 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIM and identity provider configuration</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">GET SCIM Sync Logs</a></li>
+        <a href="/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GET User API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET Groups API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GET Users API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
+        <a href="/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">DELETE Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li></ul>
       </li>
@@ -371,19 +377,6 @@
 <h2 id="authentication">Authentication</h2>
 <p>The Tealium SCIM integration uses a long-lived bearer token to authenticate with applications. Use this bearer token as the OAuth bearer token when you configure your user provisioning application.</p>
 <p>All SCIM API calls are authenticated with this bearer token.</p>
-<!--
-
-GA METHOD
-
-To generate a bearer token, perform the following steps:
-
-1. From the admin menu, select **SSO (Single Sign-On)**.
-1. Select **Generate a SCIM token**.
-1. For configuration of your identity provider, save the:
-   * Token from the **Your SCIM token** field.
-   * URL from the **SCIM API endpoint URL** field.
-
--->
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The API key and bearer token are linked to the user who generates them. Use a dedicated service user with the required Tealium permissions. A service user is a user account not linked to a person that is used to manage resources. This approach prevents access issues if a regular user account becomes unavailable.</p>
 <p>To generate the bearer token:</p>
 <ol>
@@ -421,32 +414,27 @@ To generate a bearer token, perform the following steps:
 <tbody>
 <tr>
 <td><code>POST</code></td>
-<td>Create a user.</td>
+<td>Create a user or group.</td>
 <td>User admin or account admin</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td>Retrieve user details or list users.</td>
+<td>Retrieve user details, group details, or list users or groups.</td>
 <td>All account users</td>
 </tr>
 <tr>
-<td><code>PATCH</code></td>
-<td>Partially update a user.</td>
-<td>User admin or account admin</td>
-</tr>
-<tr>
 <td><code>PUT</code></td>
-<td>Replace a user.</td>
+<td>Replace a user or group.</td>
 <td>User admin or account admin</td>
 </tr>
 <tr>
 <td><code>DELETE</code></td>
-<td>Delete a user.</td>
+<td>Delete a user or group.</td>
 <td>User admin or account admin</td>
 </tr>
 </tbody>
 </table>
-
+<!--  `PATCH`   Partially update a user or group.              User admin or account admin -->
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -491,7 +479,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 24, 2025 
+          <p>This page was last updated:  December 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/client-side-tags/schema-app-tag/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealium iQタグ管理アカウントでスキーマアプリタグを構成する方法について説明します。" />
+<meta property="og:description" content="この記事では、Tealium iQ タグ管理アカウントで Schema App タグを構成する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Schema App タグ構成ガイド | クライアントサイドタグ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -947,6 +947,9 @@
       <a href="/ja/client-side-tags/spotify-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Spotify Pixel</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/sprinklr-universal-pixel-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Sprinklr</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/stirista-vig-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Stirista VIG</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1702,6 +1705,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/spotify-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-pixel-tag">Spotify Pixel</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/sprinklr-universal-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sprinklr-universal-pixel-tag">Sprinklr</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/stirista-vig-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".stirista-vig-tag">Stirista VIG</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/taboola-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-cookie-matching-service-tag">Taboola Cookie Matching Service</a></li>
@@ -1859,47 +1864,50 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium iQタグ管理アカウントでスキーマアプリタグを構成する方法について説明します。
+      この記事では、Tealium iQ タグ管理アカウントで Schema App タグを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>スキーマアプリは、オーガニック検索の触媒であり、デジタルマーケターがスキーママークアップをウェブポートフォリオ全体に迅速かつ簡単に統合することで、オーガニック検索のパフォーマンス、生産性、利益性を向上させるように設計されています。スキーマアプリは、コードを書いたり、コピーしたり、貼り付けたりすることなく、スキーママークアップを大規模に採用し維持するための世界最先端のプラットフォームです。ページから情報を入力し、保存をクリックするだけで完了です。スキーマアプリでオーガニック検索の最前線に立ち続けましょう。</p>
-<h2 id="タグのヒント">タグのヒント</h2>
+  <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>アカウントIDとAPIキーは、アプリケーションのメニュー<strong>インテグレーション&gt; JavaScriptページ</strong>で見つけることができます。</li>
+<li>アカウントIDはアプリケーション内の <strong>Integrations &gt; JavaScript</strong> で見つけることができます。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>まず、タグマーケットプレイスに移動し、スキーマアプリタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しくはこちら）。</p>
-<p>タグを追加したら、以下の構成を行います：</p>
+<p>タグマーケットプレイスに行って新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>アカウントID</strong>：あなたのスキーマアプリアカウントID</li>
-<li><strong>APIキー</strong>：あなたのスキーマアプリAPIキー</li>
+<li><strong>Account ID</strong>: あなたの Schema App アカウントID。</li>
+<li><strong>Output Cache</strong>: 出力キャッシュを有効にします。デフォルト値は <code>False</code> です。</li>
 </ul>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
-<p>利用可能なカテゴリは以下の通りです：</p>
-<h3 id="スタンダード">スタンダード</h3>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>利用可能なカテゴリーは以下の通りです：</p>
+<h3 id="標準">標準</h3>
 <table>
 <thead>
 <tr>
 <th>変数</th>
+<th>タイプ</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>アカウントID</td>
-<td>(<code>account_id</code>)</td>
+<td><code>account_id</code></td>
+<td>文字列</td>
+<td>アカウントID。</td>
 </tr>
 <tr>
-<td>APIキー</td>
-<td>(<code>api_key</code>)</td>
+<td><code>output_cache</code></td>
+<td>ブール値</td>
+<td>出力キャッシュを有効にします。</td>
 </tr>
 <tr>
-<td>基本URL/APIエンドポイント</td>
-<td>(<code>base_url</code>)</td>
+<td><code>base_url</code></td>
+<td>文字列</td>
+<td>ベースURL/APIエンドポイント。</td>
 </tr>
 </tbody>
 </table>
@@ -1963,7 +1971,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年April月13日
+          <p>最終更新日 ::  2025年December月17日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1980,7 +1988,7 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%80%E3%83%BC%E3%83%89" href="javascript:void(0)">スタンダード</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
               </nav>
   </aside></nav>
 

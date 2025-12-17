@@ -271,17 +271,23 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIM and identity provider configuration</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/scim-api/get-scim-sync-logs-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-scim-sync-logs-api">GET SCIM Sync Logs</a></li>
+        <a href="/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GET User API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET Groups API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GET Users API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
+        <a href="/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">DELETE Group API</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".delete-user-api">DELETE User API</a></li></ul>
       </li>
@@ -366,7 +372,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>Use the DELETE method to remove an existing user:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DELETE /scim/v2/User/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DELETE /scim/v2/Users/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>If the user exists on multiple accounts, the user remains on the other accounts. If the user is removed from the only account they are on, the user remains without access to any accounts.</p>
 <h2 id="authentication">Authentication</h2>
 <p>The OAuth bearer token is used to authenticate all API calls, not the API key.</p>
@@ -423,7 +429,7 @@
 </tr>
 <tr>
 <td>405</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -437,14 +443,14 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 mr3">
   
   
-  <a href="/early-access/api/scim-api/put-user-api/"
+  <a href="/early-access/api/scim-api/delete-group-api/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"PUT User API "</title>
+      <title>"DELETE Group API "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>PUT User API</div>
+      <div>DELETE Group API</div>
     </section>
   </a>
   
@@ -476,7 +482,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 24, 2025 
+          <p>This page was last updated:  December 17, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -484,7 +490,20 @@ No</button>
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-operation-parameters" href="javascript:void(0)">DELETE operation parameters</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-curl-request" href="javascript:void(0)">Example cURL request</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-response" href="javascript:void(0)">Example response</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-messages" href="javascript:void(0)">Error messages</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>
