@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta property="og:title" content="Stitching merge rules" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.tealium.com/early-access/visitor-stitching/stitching-merge-rules/" />
+<meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
+<meta property="og:description" content="Stitching merge rules are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched." />
+<meta property="og:site_name" content="Tealium Docs" />
+    <title>Stitching merge rules | Visitor stitching | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta name="robots" content="index, follow">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/visitor-stitching/stitching-merge-rules/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "early-access",
+        reading_time  : "14",
+        site_language : "en",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dn-p" role="navigation">
+  <div class="flex flex-wrap items-center justify-start mw9">
+    <div class="ma0 pl15 dn-ns dib">
+      <button class="js-toggle f6 pa0 db bg-white bn" style="height: 20px;width: 20px;" data-target=".mobilenav"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 640 640"><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z" fill="#051838" /></svg>
+</button>
+    </div> 
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns relative" style="height: 40px;">
+      <a href="/"><svg width="100%" height="100%" viewBox="0 0 184 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.21 16.8411C19.1659 14.859 17.6239 13.2733 15.7516 13.2966C13.8571 13.3433 12.3592 14.9756 12.4033 16.9577C12.4473 18.9398 13.9893 20.5255 15.8617 20.5022C17.7341 20.4789 19.232 18.8232 19.21 16.8411Z" fill="black"/>
+<path d="M8.96654 19.8022C10.0239 19.1026 11.6319 19.8255 12.5571 21.4112C13.4823 22.9969 13.3722 24.8391 12.3148 25.5387C11.2575 26.2382 9.64941 25.5153 8.72424 23.9296C7.79906 22.3206 7.93123 20.4784 8.96654 19.8022Z" fill="black"/>
+<path d="M5.70632 23.8369C6.60947 23.4405 7.82101 24.3733 8.41577 25.889C9.01053 27.428 8.76822 28.9904 7.86507 29.3868C6.96192 29.7833 5.75038 28.8738 5.15562 27.3348C4.56086 25.7957 4.8252 24.2333 5.70632 23.8369Z" fill="black"/>
+<path d="M2.75444 26.9383C3.37123 26.6818 4.2964 27.6612 4.82508 29.1302C5.33172 30.5993 5.24361 31.9752 4.62682 32.2084C4.01004 32.4649 3.06283 31.4855 2.55619 30.0164C2.02752 28.5473 2.11563 27.1715 2.75444 26.9383Z" fill="black"/>
+<path d="M11.5428 7.51301C12.7323 7.88612 13.305 9.63504 12.8204 11.4073C12.3358 13.2028 10.948 14.3455 9.75853 13.9724C8.56902 13.5993 7.99629 11.8503 8.4809 10.0548C8.96552 8.28254 10.3533 7.13991 11.5428 7.51301Z" fill="black"/>
+<path d="M7.20295 3.40914C8.15016 3.68897 8.56869 5.20471 8.15016 6.7904C7.73162 8.39941 6.65225 9.47208 5.70504 9.19226C4.75784 8.91243 4.33931 7.42001 4.75784 5.78768C5.17637 4.20199 6.27777 3.12932 7.20295 3.40914Z" fill="black"/>
+<path d="M3.92133 0.261051C4.58217 0.400965 4.86853 1.75347 4.56014 3.29252C4.25175 4.80826 3.48077 5.92757 2.81992 5.78765C2.18111 5.64774 1.87272 4.29524 2.18111 2.75618C2.51153 1.21713 3.28251 0.121137 3.92133 0.261051Z" fill="black"/>
+<path d="M6.72493 19.2185C7.75881 19.1982 8.57477 17.9187 8.54743 16.3607C8.52009 14.8027 7.6598 13.5561 6.62592 13.5765C5.59203 13.5968 4.77607 14.8763 4.80341 16.4343C4.83075 17.9923 5.69105 19.2389 6.72493 19.2185Z" fill="black"/>
+<path d="M2.35735 21.0617C2.11505 19.6392 2.57764 18.3567 3.39267 18.1934C4.20771 18.0535 5.04478 19.0795 5.28708 20.5253C5.52939 21.9478 5.0668 23.2303 4.25177 23.3936C3.43673 23.5335 2.57764 22.4841 2.35735 21.0617Z" fill="black"/>
+<path d="M2.51225 23.8834C2.1598 22.6008 1.41085 21.7147 0.838118 21.9013C0.265389 22.0878 0.067137 23.2538 0.419586 24.5363C0.772034 25.8189 1.52099 26.705 2.09372 26.5184C2.68847 26.3552 2.8647 25.1659 2.51225 23.8834Z" fill="black"/>
+<path d="M5.0462 11.7102C5.02417 10.3111 4.36333 9.16844 3.59235 9.19176C2.82137 9.21508 2.22661 10.3577 2.24864 11.7568C2.27067 13.156 2.90948 14.2753 3.68046 14.2753C4.47347 14.252 5.09026 13.1093 5.0462 11.7102Z" fill="black"/>
+<path d="M2.26958 7.95631C2.24755 6.69708 1.71888 5.69436 1.10209 5.71768C0.485309 5.741 -0.0213358 6.76704 0.000692208 8.00294C0.0227203 9.26217 0.551393 10.2649 1.16818 10.2416C1.80699 10.2416 2.29161 9.21553 2.26958 7.95631Z" fill="black"/>
+<path d="M37.9314 12.7364H32.4023V22.8102H29.3184V12.7364H23.8555V10.0547H37.9314V12.7364Z" fill="black"/>
+<path d="M52.8005 22.8335H40.8613V10.0547H52.8005V12.7364H43.9453V15.1615H51.7652V17.7033H43.9453V20.2218H52.8005V22.8335Z" fill="black"/>
+<path d="M71.2185 22.8336H67.9363L66.7468 20.2452H59.4115L58.1999 22.8336H55.0059L61.1737 10.0781H64.9846L71.2185 22.8336ZM65.6454 17.89L63.1122 12.7598L60.5349 17.89H65.6454Z" fill="black"/>
+<path d="M84.0386 22.8335H73.1348V10.0547H76.2187V20.0119H84.0386V22.8335Z" fill="black"/>
+<path d="M89.6542 22.8335H86.5703V10.0547H89.6542V22.8335Z" fill="black"/>
+<path d="M107.429 17.4934C107.429 21.7142 105.557 23.0434 100.028 23.0434C94.4989 23.0434 92.8027 21.9007 92.8027 17.4934V10.0547H95.8206V17.2603C95.8206 19.9653 97.2965 20.2451 100.05 20.2451C102.627 20.2451 104.434 19.7787 104.434 17.2603V10.0547H107.451V17.4934H107.429Z" fill="black"/>
+<path d="M129.812 22.8336H126.53L125.054 12.923L121.287 22.8336H117.785L114.106 12.923L112.586 22.8336H109.414L111.529 10.0781H116.089L119.503 19.429L123.138 10.0781H127.653L129.812 22.8336Z" fill="black"/>
+<path d="M141.564 23.2372V10.0713H146.69C148.033 10.0713 149.208 10.3534 150.215 10.9177C151.234 11.4694 152.025 12.2405 152.589 13.2311C153.152 14.2217 153.434 15.3627 153.434 16.6543C153.434 17.9458 153.152 19.0868 152.589 20.0774C152.025 21.068 151.234 21.8454 150.215 22.4097C149.208 22.9614 148.033 23.2372 146.69 23.2372H141.564ZM142.895 22.0335H146.618C147.733 22.0335 148.698 21.8078 149.514 21.3564C150.341 20.8925 150.982 20.2592 151.438 19.4567C151.894 18.6417 152.121 17.7075 152.121 16.6543C152.121 15.5885 151.894 14.6543 151.438 13.8518C150.982 13.0493 150.341 12.4224 149.514 11.9709C148.698 11.507 147.733 11.275 146.618 11.275H142.895V22.0335Z" fill="black"/>
+<path d="M160.002 23.3313C159.09 23.3313 158.269 23.1181 157.538 22.6918C156.818 22.2529 156.249 21.6573 155.829 20.905C155.41 20.1401 155.2 19.2686 155.2 18.2906C155.2 17.3 155.41 16.4286 155.829 15.6762C156.249 14.9239 156.818 14.3346 157.538 13.9082C158.257 13.4819 159.078 13.2687 160.002 13.2687C160.937 13.2687 161.764 13.4819 162.484 13.9082C163.215 14.3346 163.784 14.9239 164.192 15.6762C164.612 16.4286 164.822 17.3 164.822 18.2906C164.822 19.2686 164.612 20.1401 164.192 20.905C163.784 21.6573 163.215 22.2529 162.484 22.6918C161.752 23.1181 160.925 23.3313 160.002 23.3313ZM160.002 22.1464C160.685 22.1464 161.291 21.9896 161.818 21.6761C162.346 21.3501 162.759 20.8987 163.059 20.3219C163.371 19.7326 163.527 19.0555 163.527 18.2906C163.527 17.5132 163.371 16.8361 163.059 16.2593C162.759 15.6825 162.346 15.2374 161.818 14.9239C161.291 14.5979 160.691 14.4349 160.02 14.4349C159.348 14.4349 158.749 14.5979 158.221 14.9239C157.694 15.2374 157.274 15.6825 156.962 16.2593C156.651 16.8361 156.495 17.5132 156.495 18.2906C156.495 19.0555 156.651 19.7326 156.962 20.3219C157.274 20.8987 157.694 21.3501 158.221 21.6761C158.749 21.9896 159.342 22.1464 160.002 22.1464Z" fill="black"/>
+<path d="M171.349 23.3313C170.414 23.3313 169.575 23.1181 168.831 22.6918C168.1 22.2529 167.524 21.6573 167.105 20.905C166.685 20.1401 166.475 19.2686 166.475 18.2906C166.475 17.3 166.685 16.4286 167.105 15.6762C167.524 14.9239 168.1 14.3346 168.831 13.9082C169.575 13.4819 170.414 13.2687 171.349 13.2687C172.152 13.2687 172.878 13.4317 173.525 13.7578C174.173 14.0838 174.682 14.5728 175.054 15.2248L174.101 15.9019C173.777 15.4004 173.375 15.0305 172.896 14.7922C172.416 14.554 171.895 14.4349 171.331 14.4349C170.66 14.4349 170.054 14.5979 169.515 14.9239C168.975 15.2374 168.549 15.6825 168.238 16.2593C167.926 16.8361 167.77 17.5132 167.77 18.2906C167.77 19.068 167.926 19.7451 168.238 20.3219C168.549 20.8987 168.975 21.3501 169.515 21.6761C170.054 21.9896 170.66 22.1464 171.331 22.1464C171.895 22.1464 172.416 22.0272 172.896 21.789C173.375 21.5507 173.777 21.1871 174.101 20.6981L175.054 21.3752C174.682 22.0147 174.173 22.5037 173.525 22.8423C172.878 23.1683 172.152 23.3313 171.349 23.3313Z" fill="black"/>
+<path d="M180.098 23.3313C179.319 23.3313 178.581 23.2184 177.886 22.9927C177.191 22.7545 176.645 22.4598 176.249 22.1087L176.825 21.0555C177.209 21.3564 177.7 21.6197 178.3 21.8454C178.899 22.0586 179.529 22.1652 180.188 22.1652C181.087 22.1652 181.735 22.021 182.13 21.7326C182.526 21.4316 182.724 21.0366 182.724 20.5476C182.724 20.184 182.61 19.9019 182.382 19.7012C182.166 19.4881 181.879 19.3313 181.519 19.231C181.159 19.1182 180.758 19.0241 180.314 18.9489C179.87 18.8737 179.427 18.7859 178.983 18.6856C178.551 18.5853 178.156 18.4411 177.796 18.253C177.436 18.0524 177.143 17.7828 176.915 17.4442C176.699 17.1057 176.591 16.6543 176.591 16.09C176.591 15.5508 176.735 15.0681 177.023 14.6418C177.311 14.2154 177.73 13.8831 178.282 13.6449C178.845 13.3941 179.529 13.2687 180.332 13.2687C180.943 13.2687 181.555 13.3565 182.166 13.5321C182.778 13.6951 183.281 13.9145 183.677 14.1904L183.12 15.2624C182.7 14.9615 182.25 14.7483 181.771 14.6229C181.291 14.485 180.811 14.4161 180.332 14.4161C179.481 14.4161 178.851 14.5728 178.444 14.8863C178.048 15.1872 177.85 15.5759 177.85 16.0524C177.85 16.4286 177.958 16.7232 178.174 16.9364C178.402 17.1496 178.695 17.3188 179.055 17.4442C179.427 17.5571 179.828 17.6511 180.26 17.7264C180.704 17.8016 181.141 17.8956 181.573 18.0085C182.016 18.1088 182.418 18.253 182.778 18.4411C183.149 18.6166 183.443 18.8737 183.659 19.2122C183.887 19.5382 184.001 19.9708 184.001 20.51C184.001 21.0868 183.845 21.5884 183.533 22.0147C183.233 22.4285 182.79 22.7545 182.202 22.9927C181.627 23.2184 180.925 23.3313 180.098 23.3313Z" fill="black"/>
+</svg>
+</a>
+    </div>
+    
+    <div class="dib center"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="/help/" class="dim link mid-gray">Help</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/visitor-stitching/stitching-merge-rules/" class="dim link mid-gray">日本語</a>
+        
+      
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+<nav class="w-100 relative bg-primary-color-light mobilenav overflow-auto dn dn-p" style="z-index:2000;height:100vh;width:100vw;">
+  <div class="flex justify-between mv3 pl15">
+    <button class="js-toggle f6 pa0 bg-white bn" style="height: 24px;" data-target=".mobilenav"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 640 640"><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" fill="#051838" /></svg>
+</button>
+    <ul class="list ma0 pa0">
+      <li class="f5 dib mr4">
+         <a href="/help/" class="dim link mid-gray">Help</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/visitor-stitching/stitching-merge-rules/" class="dim link mid-gray">日本語</a>
+        
+      
+      </li>
+      
+    </ul>
+  </div>
+  
+  <div class="bg-white sectionmenu vh-100" style="overflow-y:scroll;">
+      <ul class="list dib ph0 ma0 scrolling-touch tc"><li class="tl dib ma0 w-100">
+        <span class="f4 fw5 db ma0 w-100 pv2 ph4 text-color-primary">Early Access</span>
+      </li>
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/about/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>About Early Access</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/administration/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Administration</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/attributes-improvements/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Attributes Improvements</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/audiences/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Audiences</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/data-sources/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data sources</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/data-storage/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Data storage</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/log-streaming/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Log Streaming</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/server-side-connectors/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Server-Side Connectors</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/api/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Tealium API</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
+      <a href="/early-access/visitor-stitching/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  bg-secondary primary-color"><span>Visitor stitching</span></a>
+      </li>
+      
+      
+  
+
+
+</ul>
+
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4-ns">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-auto dn sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6 pb6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow-left.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="early-access">
+    <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">
+        
+        <a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Early Access</span></a>
+        
+        <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2">
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Early Access</a></li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-administration">Administration</a>
+        <ul class="pl2  ea-administration desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/administration/navigation-menu/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Navigation menu</a></li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".platform-permissions">Platform Permissions</a>
+        <ul class="pl2  platform-permissions desktopmenu animated fadeIn list  dn">
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/administration/platform-permissions/pii-account-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a></li></ul>
+      </li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">Attributes Improvements</a>
+        <ul class="pl2  attributes-improvements desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/attributes-improvements/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-enrichments-early-access">Manage enrichments</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-audiences">Audiences</a>
+        <ul class="pl2  ea-audiences desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">About audiences</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">Manage audiences</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-sources">Data sources</a>
+        <ul class="pl2  ea-data-sources desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/amazon-redshift-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".redshift-cloud-data-source-ea">Amazon Redshift</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/databricks-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".databricks-cloud-data-source-ea">Databricks</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-sources/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".bigquery-cloud-data-source-ea">Google BigQuery</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-data-storage">Data storage</a>
+        <ul class="pl2  ea-data-storage desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/data-storage/visitor-deletion-jobs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">Log Streaming</a>
+        <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">Connector error logging</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-server-side-connectors">Server-Side Connectors</a>
+        <ul class="pl2  ea-server-side-connectors desktopmenu animated fadeIn list  dn">
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/server-side-connectors/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-api">Tealium API</a>
+        <ul class="pl2  ea-api desktopmenu animated fadeIn list  dn">
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".scim-api">SCIM API</a>
+        <ul class="pl2  scim-api desktopmenu animated fadeIn list  dn">
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-scim-api">About SCIM</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIM and identity provider configuration</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POST User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-group-api">GET Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-user-api">GET User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET Groups API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GET Users API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">DELETE Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/delete-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-user-api">DELETE User API</a></li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".api-v3">Tealium API v3</a>
+        <ul class="pl2  api-v3 desktopmenu animated fadeIn list  dn">
+    <li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".iq-profiles-api">iQ Profiles API</a>
+        <ul class="pl2  iq-profiles-api desktopmenu animated fadeIn list  dn">
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-get-profile-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-variables-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a></li>
+    <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/api-v3/iq-profiles/iq-tag-templates-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a></li></ul>
+      </li></ul>
+      </li></ul>
+      </li>
+    <li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-visitor-stitching">Visitor stitching</a>
+        <ul class="pl2 bl b--primary bw1 ea-visitor-stitching desktopmenu animated fadeIn list ">
+    <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/visitor-stitching/stitching-merge-rules/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Stitching merge rules</a></li></ul>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph15 ph4-ns mid-gray mt0-ns w-100 pb6" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4-ns">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/">Early Access</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/visitor-stitching/">Visitor stitching</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt4 mt30-ns mb3">Stitching merge rules</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f5 f4-ns fw3 lh-copy">
+      Stitching merge rules are optional, per‑attribute rules that determine the final value of an attribute when two visitor profiles are stitched.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li>Tealium AudienceStream enabled</li>
+<li>Visitor stitching enabled</li>
+<li>Account admin permissions</li>
+</ul>
+<h2 id="how-stitching-merge-rules-work">How stitching merge rules work</h2>
+<p>Visitor stitching uses event replay to build a merged profile from historical events, but is subject to system limits such as the event retention period and a maximum of 1,500 events. When visitor profiles exceed these limits, older events may not be replayed during stitching, resulting in incomplete historical data for long-lived or high-volume profiles.</p>
+<p>Stitching merge rules address such cases by augmenting the stitching process with attribute‑specific logic that doesn&rsquo;t rely on event replay and produces the same durable, consistent outcome every time.</p>
+<p>Merge rules compare the attributes from two visitor profiles to determine the final attribute value, which is applied after historical events are replayed on the merged visitor profile. This ensures that your most important attributes retain their intended value even when historical event processing cannot include all past events.</p>
+<h3 id="when-merge-rules-are-applied">When merge rules are applied</h3>
+<p>Stitching merge rules are applied only when two visitors with prior activity are stitched. This is the scenario where event replay may discard older events and a rule is required to resolve the final attribute value.</p>
+<p>If either visitor in the merge does not have a previous visit, then stitching merge rules are not applied because event replay of the returning visitor determines the outcome.</p>
+<h2 id="identify-attributes-that-need-a-merge-rule">Identify attributes that need a merge rule</h2>
+<p>Not every attribute needs a stitching merge rule, so the first step is to determine which important attributes benefit most from a stitching merge rule. In general, stitching merge rules are used only for your most important attributes that track lifetime values and those related to data privacy and consent.</p>
+<p>The following categories of attributes are good candidates for stitching merge rules:</p>
+<ul>
+<li><strong>Consent status attributes</strong><br>
+Ensure the correct consent status persists even if the deciding consent event is older than the retention window or displaced by volume.</li>
+<li><strong>Lifetime metrics</strong><br>
+Maintain accurate counters, tallies, and accumulations.</li>
+<li><strong>CRM/file‑imported attributes</strong><br>
+Keep authoritative values imported from systems of record (for example, CRM).</li>
+</ul>
+<h3 id="analyze-enrichments">Analyze enrichments</h3>
+<p>After you identify an attribute that needs a stitching merge rule, the next step is to select the best one based on the logic of its enrichments.</p>
+<p>Selecting the appropriate merge rule requires understanding how the attribute is set by its enrichments. Choose a merge rule that applies the same decision logic so the stitched result aligns with the enrichment intent. Using a rule that differs from the intended enrichment logic can result in inconsistent data.</p>
+<p>For examples of stitching merge rules best suited for certain enrichments, see <a href="#definitions">Definitions</a>.</p>
+<h2 id="attribute-specific-merge-behavior">Attribute-specific merge behavior</h2>
+<h3 id="preloaded-attributes">Preloaded attributes</h3>
+<p>Preloaded attributes are system‑managed attributes that exist in all profiles where AudienceStream is enabled. When stitching merge rules are enabled, these attributes receive appropriate, replay‑consistent merge rules automatically and the selections are not editable. This maintains consistency with their built-in enrichments.</p>
+<p>For more information, see <a href="/server-side/attributes/preloaded/">Preloaded attributes</a>.</p>
+<h3 id="funnel">Funnel</h3>
+<p>The funnel attribute type supports only one stitching merge rule: <strong>Merge funnel</strong>.</p>
+<p>The <strong>Merge funnel</strong> rule combines the funnel steps from each visitor chronologically. If duplicate steps exist, the earlier occurring step is saved and the older one is removed.</p>
+<h3 id="tally-favorite">Tally favorite</h3>
+<p>A tally favorite can only use the <strong>Recalculate (Force)</strong> rule. A tally attribute generates a favorite attribute that contains the tally key with the highest value, so it always needs to be recalculated on the merged visitor.</p>
+<p>Tally attributes and their associated favorite attributes follow these behaviors:</p>
+<ul>
+<li>If the tally has a merge rule, the favorite attribute automatically uses the <strong>Recalculate (Force)</strong> rule so its value is recomputed on the stitched visitor after other merge rules run.</li>
+<li>If the tally has no merge rule, the favorite string automatically has no merge rule.</li>
+<li>If a merge rule is removed from the tally, the favorite attribute&rsquo;s merge rule is removed automatically.</li>
+</ul>
+<h3 id="timeline">Timeline</h3>
+<p>The timeline attribute type supports only one stitching merge rule: <strong>Merge timeline</strong>.</p>
+<p>The <strong>Merge timeline</strong> rule combines entries from each visitor in chronological order and trims the result to the newest 100 entries if the limit is exceeded.</p>
+<p>If the timeline attribute has an enrichment that expires entries older than <code>X</code> days, the merge rule expires entries older than <code>X</code> days from the time of the merge. If multiple enrichments expire entries, the merge rule uses the lowest value of <code>X</code>.</p>
+<h3 id="visitor-id">Visitor ID</h3>
+<p>When stitching merge rules are enabled, the <strong>Older</strong> rule is automatically applied to each visitor ID attribute. The <strong>Older</strong> rule for visitor ID attributes cannot be changed.</p>
+<h2 id="use-stitching-merge-rules">Use stitching merge rules</h2>
+<p>Before you can use stitching merge rules, you must enable the feature.</p>
+<p>To enable stitching merge rules on a profile:</p>
+<ol>
+<li>Go to <strong>Admin &gt; Server-Side Settings</strong>.</li>
+<li>Click the <strong>Stitching Merge Rules</strong> toggle to the on position.</li>
+<li>Click <strong>Save</strong>.</li>
+<li>Publish the profile.</li>
+</ol>
+<p>When stitching merge rules are enabled, a new setting is available in the attribute edit view. Enable the setting to apply a merge rule to the attribute, then select a merge rule from the list.</p>
+<figure><a class="slb" href="/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png"><img src="/images/server-side/merge-rules/attribute-stitching-merge-rule-checkbox-select.png"/>
+    </a>
+</figure>
+<h2 id="rules-available-by-attribute">Rules available by attribute</h2>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th style="text-align:center">Badge</th>
+<th style="text-align:center">Boolean</th>
+<th style="text-align:center">Date</th>
+<th style="text-align:center">Number</th>
+<th style="text-align:center">Set of Strings</th>
+<th style="text-align:center">String</th>
+<th style="text-align:center">Tally</th>
+<th style="text-align:center">Arrays</th>
+<th style="text-align:center">Funnel</th>
+<th style="text-align:center">Timeline</th>
+<th style="text-align:center">Visitor ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>And</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Or</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Min</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Newer</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td><strong>Older</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td><strong>Recalculate</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Recalculate (Force)</strong></td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Sum</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Union</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Union Sum</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Union Max</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Union Min</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Merge Funnel</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td><strong>Merge Timeline</strong></td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">–</td>
+</tr>
+</tbody>
+</table>
+<h2 id="definitions">Definitions</h2>
+<h3 id="and">And</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>And</strong></td>
+<td>(Badge) Set to <code>Assigned</code> only if both are <code>Assigned</code>.<br>(Boolean) Set to <code>true</code> only if both are <code>true</code>.</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br><img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-and-example.png" />
+<p>This example attribute is <code>true</code> for a visitor if all the visitor&rsquo;s online visits came from PPC. Based on these enrichments, the merged attribute is <code>true</code> only if both visitors have the attribute set to <code>true</code>. If either visitor has the attribute set to <code>false</code>, it means not all  the visitor&rsquo;s online visits were from PPC, so the merged attribute value is <code>false</code>. Use the <strong>And</strong> rule to achieve the correct merged value.</p>
+<p><strong>Badges</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Visitor A</th>
+<th>Visitor B</th>
+<th>Merged visitor with <strong>And</strong> rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Assigned</code></td>
+<td><code>Assigned</code></td>
+<td><code>Assigned</code></td>
+</tr>
+<tr>
+<td><code>Assigned</code></td>
+<td><code>Not Assigned</code></td>
+<td><code>Not Assigned</code></td>
+</tr>
+<tr>
+<td><code>Not Assigned</code></td>
+<td><code>Assigned</code></td>
+<td><code>Not Assigned</code></td>
+</tr>
+<tr>
+<td><code>Not Assigned</code></td>
+<td><code>Not Assigned</code></td>
+<td><code>Not Assigned</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Booleans</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Visitor A</th>
+<th>Visitor B</th>
+<th>Merged visitor with <strong>And</strong> rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>True</code></td>
+<td><code>True</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td><code>False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td>(unset)</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>True</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>(unset)</td>
+<td><code>True</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>(unset)</td>
+<td>(unset)</td>
+<td>(unset)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="or">Or</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Or</strong></td>
+<td>(Badge) Set to <code>Assigned</code> if either is <code>Assigned</code>.<br>(Boolean) Set to <code>true</code> if either is <code>true</code>.</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br><img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-or-example.png" />
+<p>This example badge is assigned if the visitor sees a one-time event, and the badge is never unassigned.</p>
+<p>Based on these enrichments, the merged badge is assigned if either visitor has registered, so the <strong>Or</strong> rule is the appropriate choice to determine the correct result.</p>
+<p><strong>Badges</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Visitor A</th>
+<th>Visitor B</th>
+<th>Merged visitor with <strong>Or</strong> rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Assigned</code></td>
+<td><code>Assigned</code></td>
+<td><code>Assigned</code></td>
+</tr>
+<tr>
+<td><code>Assigned</code></td>
+<td><code>Not Assigned</code></td>
+<td><code>Assigned</code></td>
+</tr>
+<tr>
+<td><code>Not Assigned</code></td>
+<td><code>Assigned</code></td>
+<td><code>Assigned</code></td>
+</tr>
+<tr>
+<td><code>Not Assigned</code></td>
+<td><code>Not Assigned</code></td>
+<td><code>Not Assigned</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Booleans</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Visitor A</th>
+<th>Visitor B</th>
+<th>Merged visitor with <strong>Or</strong> rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>True</code></td>
+<td><code>True</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td><code>False</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td>(unset)</td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>True</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>(unset)</td>
+<td><code>True</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>(unset)</td>
+<td>(unset)</td>
+<td>(unset)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="max">Max</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Max</strong></td>
+<td>(Number) Keep the higher value<br>(Date) Keep the later date.</td>
+<td><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-max-example.png" />
+<p>In this example, use the <strong>Max</strong> merge rule to select the more recent of the dates from the merged visitor profiles.</p>
+<p>Since this enrichment uses the current timestamp, the <strong>Newer</strong> rule produces the same result because a newer timestamp is always a larger value than an older timestamp.</p>
+<h3 id="min">Min</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Min</strong></td>
+<td>(Number) Keep the lower value<br>(Date) Keep the earlier date.</td>
+<td><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-min-example.png" />
+<p>In this example, use the <strong>Min</strong> merge rule to select the earlier of the two dates from the merged visitor profiles.</p>
+<p>Since this enrichment uses the current timestamp, the <strong>Older</strong> rule produces the same result because an older timestamp is always a lower value than a newer timestamp.</p>
+<h3 id="newer">Newer</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Newer</strong></td>
+<td>Keep the more recently updated value (including removed values)</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br> <img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date<br><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/set-of-strings.png" class="di v-mid"
+         alt="Set of Strings"
+         title="Set of Strings" width="16"/> Set of strings<br><img src="/images/server-side/string.png" class="di v-mid"
+         alt="String"
+         title="String" width="16"/> String<br><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-newer-example.png" />
+<p>The <strong>Newer</strong> rule chooses the attribute value, including a removed value, updated most recently. This rule is best for attributes with enrichments based on incoming event attributes (as opposed to other visitor attributes).</p>
+<p>The <strong>Newer</strong> rule is based on an internal timestamp set when an enrichment updates the value of an attribute. If the internal timestamp is not set for both attributes, the timestamps of the last visit for each visitor are used to determine which was set first.</p>
+<h3 id="older">Older</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Older</strong></td>
+<td>Keep the earlier updated value (including removed values)</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br> <img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date<br><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/set-of-strings.png" class="di v-mid"
+         alt="Set of Strings"
+         title="Set of Strings" width="16"/> Set of strings<br><img src="/images/server-side/string.png" class="di v-mid"
+         alt="String"
+         title="String" width="16"/> String<br><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-older-example.png" />
+<p>The <strong>Older</strong> rule chooses the attribute value, including a removed value, updated earlier. The <strong>Older</strong> rule is best for attributes with enrichments that only set a value if a value is not already set to ensure that only the first value for the visitor is saved.</p>
+<p>The <strong>Older</strong> rule is based on an internal timestamp set when an enrichment updates the value of an attribute. If the internal timestamp is not set for both attributes, the timestamps of the last visit for each visitor are used to determine which was set first.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If an attribute enrichment does not use a self-referencing rule to ensure it&rsquo;s only set once, then using the <strong>Older</strong> rule will not necessarily result in the earliest value set.</p>
+<h3 id="recalculate">Recalculate</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recalculate</strong></td>
+<td>Discard previous values and run enrichments on the final merged profile.</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br> <img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date<br><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/set-of-strings.png" class="di v-mid"
+         alt="Set of Strings"
+         title="Set of Strings" width="16"/> Set of strings<br><img src="/images/server-side/string.png" class="di v-mid"
+         alt="String"
+         title="String" width="16"/> String<br><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally<br><img src="/images/server-side/array-of-booleans.png" class="di fl"
+         alt="Array of Booleans"
+         title="Array of Booleans" width="16"/> Array of booleans<br><img src="/images/server-side/array-of-numbers.png" class="di fl"
+         alt="Array of Numbers"
+         title="Array of Numbers" width="16"/> Array of numbers<br><img src="/images/server-side/array-of-strings.png" class="di fl"
+         alt="Array of Strings"
+         title="Array of Strings" width="16"/> Array of strings</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Recalculate</strong> rule discards the initial merged value of the attribute and reruns the enrichments for the attribute. Discarding the initial merged value ensures that the recalculation starts with an unset value and the value is set only based on the enrichments.</p>
+<p>The <strong>Recalculate</strong> rule is best suited for attributes derived from other visitor or visit attributes, such as a number attribute that counts items in a set of strings. In these cases, the source attributes are resolved first, using other merge rules if configured, and the <strong>Recalculate</strong> rule then recomputes the derived value.</p>
+<p><strong>Rule behavior</strong>:</p>
+<ul>
+<li>If an enrichment is set to run on <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong>, it is run in the merge rule only if the event leading to the merge also caused a <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong>.</li>
+<li>Enrichment rule conditions that use event attributes are evaluated based on the event that caused the merge.</li>
+<li>Enrichment rule conditions with the <strong>Has Changed</strong> operator evaluate to <code>true</code> if this attribute has changed compared to <em>either</em> of the visitor profiles being merged.</li>
+</ul>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-recalculate-example.png" />
+<p>In this example, the attribute value is derived from another visitor attribute, <code>Orders Timeline</code>. If the <code>Orders Timeline</code> attribute has its own merge rule (<strong>Merge timeline</strong>), that rule runs before this number attribute is evaluated by the <strong>Recalculate</strong> rule.</p>
+<h3 id="recalculate-force">Recalculate (Force)</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recalculate</strong> (Force)</td>
+<td>Discard previous values and run enrichments on the final merged profile and force some conditions to <code>true</code>.</td>
+<td><img src="/images/server-side/badge.png" class="di v-mid"
+         alt="Badge"
+         title="Badge" width="16"/> Badge<br> <img src="/images/server-side/boolean.png" class="di v-mid"
+         alt="Boolean"
+         title="Boolean" width="16"/> Boolean<br><img src="/images/server-side/date.png" class="di v-mid"
+         alt="Date"
+         title="Date" width="16"/> Date<br><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number<br><img src="/images/server-side/set-of-strings.png" class="di v-mid"
+         alt="Set of Strings"
+         title="Set of Strings" width="16"/> Set of strings<br><img src="/images/server-side/string.png" class="di v-mid"
+         alt="String"
+         title="String" width="16"/> String<br><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally<br><img src="/images/server-side/array-of-booleans.png" class="di fl"
+         alt="Array of Booleans"
+         title="Array of Booleans" width="16"/> Array of booleans<br><img src="/images/server-side/array-of-numbers.png" class="di fl"
+         alt="Array of Numbers"
+         title="Array of Numbers" width="16"/> Array of numbers<br><img src="/images/server-side/array-of-strings.png" class="di fl"
+         alt="Array of Strings"
+         title="Array of Strings" width="16"/> Array of strings</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Recalculate (Force)</strong> rule is the same as the <strong>Recalculate</strong> rule except that it forces several enrichment conditions to <code>true</code>. The <strong>Recalculate (Force)</strong> rule is best for attributes derived from the value of one or more other visitor or visit attributes that also use any of the <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong> conditions.</p>
+<p>Visitor stitching can occur at times that do not coincide with the <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong> conditions, so this rule forces those enrichments to run to ensure the correct value is set.</p>
+<p><strong>Rule behavior</strong>:</p>
+<ul>
+<li>If an enrichment is set to run on <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong>, it is forced to run in the merge rule even if the event leading to the merge did not cause a <strong>New Visitor</strong>, <strong>New Visit</strong>, or <strong>End of Visit</strong>.</li>
+<li>Enrichment rule conditions that use event attributes are forced to evaluate to <code>true</code>.</li>
+<li>Enrichment rule conditions with the <strong>Has Changed</strong> operator are forced to evaluate to <code>true</code>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<img src="/images/server-side/merge-rules/rule-recalculate-force-end-visit.png" />
+<p>In this example, the attribute is derived from another visitor attribute, <code>Lifetime visit count</code>, and assigns a badge when the visitor has made 10 or more visits. However, the enrichment is set to run on <code>Visit Ended</code>, which might not be true when the visitor stitching occurs, so using the <strong>Recalculate (Force)</strong> rule forces the enrichment to run anyway.</p>
+<p>If <code>Visit Ended</code> is not forced to evaluate to <code>true</code>, the badge remains unassigned until the end of the visit and the visitor might leave and then rejoin an audience based on this badge. This might be undesirable behavior if leaving or joining the audience causes connector actions to fire.</p>
+<h3 id="sum">Sum</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sum</strong></td>
+<td>Add values from both visitors.</td>
+<td><img src="/images/server-side/number.png" class="di v-mid"
+         alt="Number"
+         title="Number" width="16"/> Number</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Sum</strong> rule keeps the sum of the values of each number attribute. If one of the values is not set, the result is the other value that is set. If neither value is set, the merged value is also not set (as opposed to a value of <code>0</code>).</p>
+<img src="/images/server-side/merge-rules/rule-sum-example.png" />
+<p>In this example, if Visitor A spent $30 and Visitor B spent $60, then the merged visitor has spent $90.</p>
+<h3 id="union">Union</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Union</strong></td>
+<td>Combine values from both, preserving consistent order across arrays.</td>
+<td><img src="/images/server-side/set-of-strings.png" class="di v-mid"
+         alt="Set of Strings"
+         title="Set of Strings" width="16"/> Set of strings<br><img src="/images/server-side/array-of-booleans.png" class="di v-mid"
+         alt="Array of Booleans"
+         title="Array of Booleans" width="16"/> Array of booleans<br><img src="/images/server-side/array-of-numbers.png" class="di v-mid"
+         alt="Array of Numbers"
+         title="Array of Numbers" width="16"/> Array of numbers<br><img src="/images/server-side/array-of-strings.png" class="di v-mid"
+         alt="Array of Strings"
+         title="Array of Strings" width="16"/> Array of strings</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Union</strong> rule combines values from both attributes, preserving consistent order across arrays. The values in a set of strings are deduplicated.</p>
+<p><strong>Example: Set of strings</strong></p>
+<img src="/images/server-side/merge-rules/rule-union-set-example.png" />
+<p>In this example, the <strong>Union</strong> rule combines the entries and removes the duplicate entry for Wednesday because entries in a set of strings must be unique.</p>
+<p>Example of <strong>Union</strong> rule for a set of strings attribute:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-A:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Monday&#34;</span>, <span style="color:#e6db74">&#34;Wednesday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-B:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Friday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Merged:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Monday&#34;</span>, <span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Friday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Example: Array</strong></p>
+<img src="/images/server-side/merge-rules/rule-union-array-example.png" />
+<p>In this example, an array of strings attribute tracks the day of the week each time the visitor sees the order confirmation page. Unlike a set of strings attribute, the merged value of two arrays can contain duplicate values.</p>
+<p>Example of a <strong>Union</strong> rule for an array of strings attribute:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-Older:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Monday&#34;</span>, <span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Monday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-Active:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Friday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Merged:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Days of week viewed confirmation&#34;</span>: [<span style="color:#e6db74">&#34;Monday&#34;</span>, <span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Monday&#34;</span>, <span style="color:#e6db74">&#34;Wednesday&#34;</span>, <span style="color:#e6db74">&#34;Friday&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The merged attribute retains the order of the arrays from the original visitor profiles, with the older visitor entries first and the active visitor entries second.</p>
+<h3 id="union-maxminsum">Union Max/Min/Sum</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+<th>Supported data types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Union Max</strong></td>
+<td>Merge keys and keep the higher value for matching keys.</td>
+<td><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally</td>
+</tr>
+<tr>
+<td><strong>Union Min</strong></td>
+<td>Merge keys and keep the lower value for matching keys.</td>
+<td><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally</td>
+</tr>
+<tr>
+<td><strong>Union Sum</strong></td>
+<td>Merge keys and add values for matching keys.</td>
+<td><img src="/images/server-side/tally.png" class="di v-mid"
+         alt="Tally"
+         title="Tally" width="16"/> Tally</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Union Max/Min/Sum</strong> rules merge tally attributes where the values of any common keys are combined based on the specific rule (<strong>Max</strong>, <strong>Min</strong>, or <strong>Sum</strong>). The merged tally retains all keys that exist in one of the original attributes.</p>
+<p><strong>Example: Union Sum</strong></p>
+<img src="/images/server-side/merge-rules/rule-union-sum-example.png" />
+<p>In this example, the tally counts the different product categories the visitor has seen on product details pages. Use the <strong>Union Sum</strong> rule to merge the keys and add the values for matching keys.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-A:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Lifetime count of product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Accessories&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-B:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Lifetime count of product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Electronics&#34;</span>: <span style="color:#ae81ff">5</span>    
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Merged:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Lifetime count of product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Accessories&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Electronics&#34;</span>: <span style="color:#ae81ff">5</span>    
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>**Example: <strong>Union Max</strong></p>
+<img src="/images/server-side/merge-rules/rule-union-max-example.png" />
+<p>In this example, the tally stores the last date (in milliseconds since the Epoch) that a product category was seen. Use the <strong>Union Max</strong> rule to merge the keys and keep the most recent value for matching keys.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-A:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Dates of last seen product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Accessories&#34;</span>: <span style="color:#ae81ff">1702454863722</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">1733414869787</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">1731414884828</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Visitor-B:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Dates of last seen product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">1732424969356</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">1733414883367</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Electronics&#34;</span>: <span style="color:#ae81ff">1721357252812</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Merged:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Dates of last seen product categories&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Accessories&#34;</span>: <span style="color:#ae81ff">1702454863722</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Apparel&#34;</span>: <span style="color:#ae81ff">1733414869787</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Books&#34;</span>: <span style="color:#ae81ff">1733414883367</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Electronics&#34;</span>: <span style="color:#ae81ff">1721357252812</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dn-p">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  December 18, 2025 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-stitching-merge-rules-work" href="javascript:void(0)">How stitching merge rules work</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#when-merge-rules-are-applied" href="javascript:void(0)">When merge rules are applied</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#identify-attributes-that-need-a-merge-rule" href="javascript:void(0)">Identify attributes that need a merge rule</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#analyze-enrichments" href="javascript:void(0)">Analyze enrichments</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#attribute-specific-merge-behavior" href="javascript:void(0)">Attribute-specific merge behavior</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#preloaded-attributes" href="javascript:void(0)">Preloaded attributes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#funnel" href="javascript:void(0)">Funnel</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tally-favorite" href="javascript:void(0)">Tally favorite</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timeline" href="javascript:void(0)">Timeline</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id" href="javascript:void(0)">Visitor ID</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-stitching-merge-rules" href="javascript:void(0)">Use stitching merge rules</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rules-available-by-attribute" href="javascript:void(0)">Rules available by attribute</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#definitions" href="javascript:void(0)">Definitions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#and" href="javascript:void(0)">And</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#or" href="javascript:void(0)">Or</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#max" href="javascript:void(0)">Max</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#min" href="javascript:void(0)">Min</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#newer" href="javascript:void(0)">Newer</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#older" href="javascript:void(0)">Older</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#recalculate" href="javascript:void(0)">Recalculate</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#recalculate-force" href="javascript:void(0)">Recalculate (Force)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sum" href="javascript:void(0)">Sum</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#union" href="javascript:void(0)">Union</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#union-maxminsum" href="javascript:void(0)">Union Max/Min/Sum</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray dn db-ns" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 ">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
