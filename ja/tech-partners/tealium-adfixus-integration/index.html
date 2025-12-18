@@ -733,12 +733,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>AdFixusを使用すると、ビジネスはデータを所有し、個々のユーザーはプライバシーに重点を置いたソリューションで同意を制御します。AdFixusが特許を持つファーストパーティクッキープラットフォームは、ビジネスが視聴者の全体像を取り戻し、そのデータを既存のシステム全体で使用してパーソナライゼーション、分析、メディア最適化を改善することを可能にします。AdFixus IDをTealiumに取り込むことで、組織はAdFixusの特許を持つアイデンティティプラットフォームとTealiumデータを一緒に使用して、視聴者の完全なビュー（クロスドメインおよびマルチドメイン）を統一し、顧客にシームレスなエンドツーエンドの統一体験を提供することができます。</p>
+  <p>AdFixusを使用すると、企業は自社のデータを所有し、個人はプライバシーに焦点を当てたソリューションで同意を管理できます。AdFixusが特許を持つファーストパーティクッキープラットフォームは、企業が顧客の全体像を取り戻し、既存のシステムでそのデータを使用してパーソナライゼーション、分析、メディアの最適化を改善することを可能にします。TealiumにAdFixus IDを取り込むことで、組織はTealiumデータとともにAdFixusの特許を持つアイデンティティプラットフォームを活用し、顧客にシームレスなエンドツーエンドの統一体験を提供するために、オーディエンスの完全なビュー（クロスドメインおよびマルチドメイン）を統合できます。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li><strong>Tealium</strong>
 <ul>
-<li>以下のいずれかが必要です：
+<li>以下のうち少なくとも1つ:
 <ul>
 <li>iQタグ管理</li>
 <li>AudienceStream</li>
@@ -749,41 +749,41 @@
 </li>
 <li><strong>AdFixus</strong>
 <ul>
-<li>組織のウェブプロパティ/ドメインにAdFixusプラットフォームが実装されていること。</li>
+<li>組織のウェブプロパティ/ドメインに実装されたAdFixusプラットフォーム。</li>
 <li>アクティブなAdFixus組織ライセンスキー。</li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>AdFixus IDをiQタグ管理プラットフォームを通じてではなく、自社のデジタルプロパティを通じて実装します。このインストール方法により、ブラウザのカバレッジが完全に確保されます。</p>
-<p>AdFixus IDを組織のiQタグ管理データレイヤーに追加し、関連するタグにマッピングしたり、Tealiumのサーバーサイドプラットフォームに送信して取り込みとプロファイルのエンリッチメントを行うことができます。組織がiQタグ管理なしでAudienceStreamのみを使用している場合は、AdFixus IDをTealiumに渡し、適切な属性に割り当てます。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>iQタグ管理プラットフォームを通じてではなく、所有するデジタルプロパティを通じてAdFixus IDを実装します。このインストール方法は、完全なブラウザカバレッジを保証します。</p>
+<p>組織のiQタグ管理データレイヤーにAdFixus IDを追加し、関連するタグにマッピングするか、Tealiumのサーバーサイドプラットフォームに送信してプロファイルをエンリッチすることができます。組織がiQタグ管理を使用せずにAudienceStreamのみを使用する場合は、TealiumにAdFixus IDを渡し、適切な属性に割り当てます。</p>
 <h2 id="iqタグ管理の構成">iQタグ管理の構成</h2>
-<p>AdFixus IDをiQタグ管理に統合するには：</p>
+<p>iQタグ管理にAdFixus IDを統合するには：</p>
 <ol>
 <li>iQタグ管理インスタンスでAdFixus <a href="/ja/iq-tag-management/data-layer/manage-variables/#add-a-variable">データレイヤー変数</a>を作成します。
 <ul>
-<li>AdFixus IDを使用するTealiumアカウントプロファイルごとにこの変数を作成します。</li>
-<li>AdFixus IDはおそらくあなたのウェブサイトのクッキーに保存されているでしょう。詳細については、<a href="https://www.adfixus.com/contact">AdFixus実装チーム</a>にお問い合わせください。<figure><a class="slb" href="/images/tech-partners/adfixus-add-variable.png"><img src="/images/tech-partners/adfixus-add-variable.png"
+<li>AdFixus IDを使用するすべてのTealiumアカウントプロファイルでこの変数を作成します。</li>
+<li>お使いのウェブサイトのクッキーにAdFixus IDが保存される可能性があります。詳細については、<a href="https://www.adfixus.com/contact">AdFixus実装チーム</a>にお問い合わせください。<figure><a class="slb" href="/images/tech-partners/adfixus-add-variable.png"><img src="/images/tech-partners/adfixus-add-variable.png"
          alt="AdFixus - データレイヤー変数を追加"
          title="AdFixus - データレイヤー変数を追加"/>
     </a>
 </figure></li>
 </ul>
 </li>
-<li>AdFixus ID変数を送信するべき関連タグを特定し、<a href="/ja/iq-tag-management/data-mappings/manage/">データポイントをマッピング</a>します。
+<li>AdFixus ID変数を送信する必要がある関連タグを特定し、<a href="/ja/iq-tag-management/data-mappings/manage/">データポイントをマッピング</a>します。
 <ol>
-<li><strong>変数</strong>のドロップダウンリストからデータ変数を選択し、<strong>宛先を選択</strong>をクリックします。<figure><a class="slb" href="/images/tech-partners/adfixus-select-destination.png"><img src="/images/tech-partners/adfixus-select-destination.png"
-         alt="AdFixus - 宛先を選択"
-         title="AdFixus - 宛先を選択"/>
+<li><strong>変数</strong>ドロップダウンリストからデータ変数を選択し、<strong>選択先を選択</strong>をクリックします。<figure><a class="slb" href="/images/tech-partners/adfixus-select-destination.png"><img src="/images/tech-partners/adfixus-select-destination.png"
+         alt="AdFixus - 選択先を選択"
+         title="AdFixus - 選択先を選択"/>
     </a>
 </figure></li>
-<li><strong>カスタム宛先を追加</strong>をクリックし、<strong>カスタム宛先</strong>フィールドにAdFixus IDの予想される名前を入力し、<strong>+追加</strong>をクリックします。<figure><a class="slb" href="/images/tech-partners/adfixus-custom-destination.png"><img src="/images/tech-partners/adfixus-custom-destination.png"
-         alt="AdFixus - カスタム宛先"
-         title="AdFixus - カスタム宛先"/>
+<li><strong>カスタム選択先を追加</strong>をクリックし、<strong>カスタム選択先</strong>フィールドにAdFixus IDの予想される名前を入力し、<strong>+追加</strong>をクリックします。<figure><a class="slb" href="/images/tech-partners/adfixus-custom-destination.png"><img src="/images/tech-partners/adfixus-custom-destination.png"
+         alt="AdFixus - カスタム選択先"
+         title="AdFixus - カスタム選択先"/>
     </a>
 </figure>
 <ul>
-<li>AdFixus IDを使用するすべての新規または既存のタグに対してこのプロセスを繰り返します。</li>
+<li>新規または既存のタグがAdFixus IDを使用するたびにこのプロセスを繰り返します。</li>
 </ul>
 </li>
 </ol>
@@ -791,7 +791,7 @@
 <li>保存して公開します。</li>
 </ol>
 <h2 id="サーバーサイドの構成">サーバーサイドの構成</h2>
-<p>AdFixus IDをAudienceStreamとEventStreamに統合するには：</p>
+<p>AudienceStreamおよびEventStreamにAdFixus IDを統合するには：</p>
 <ol>
 <li>iQタグ管理も使用している場合は、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>を構成します。</li>
 </ol>
@@ -799,7 +799,7 @@
 <li>AdFixus IDは、<a href="/ja/server-side/attributes/about/">イベント属性</a>の下でユニバーサル変数として表示されます。</li>
 </ul>
 <ol>
-<li>iQタグ管理を使用していない場合は、AdFixus IDのために<a href="/ja/server-side/attributes/manage-attributes/#add-an-attribute">イベント属性を作成</a>します。
+<li>iQタグ管理を使用していない場合は、AdFixus IDの<a href="/ja/server-side/attributes/manage-es-attributes/#add-an-attribute">イベント属性を作成</a>します。
 <ol>
 <li><strong>イベント属性</strong>に移動し、<strong>+ 属性を追加</strong>をクリックします。</li>
 <li><strong>ユニバーサル変数</strong>を選択し、<strong>続行</strong>をクリックします。</li>
@@ -812,12 +812,12 @@
 <li><strong>完了</strong>をクリックします。
 <ul>
 <li>AdFixusからTealiumにさらにデータを送信する予定がある場合は、そのデータの属性も作成します。</li>
-<li>データセット内のすべての属性に対して<a href="/ja/server-side/event-specifications/manage/">イベント仕様</a>を作成することをお勧めします。</li>
+<li>データセットのすべての属性に対して<a href="/ja/server-side/event-specifications/manage/">イベント仕様</a>を作成することをお勧めします。</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>AdFixus IDのために<a href="/ja/server-side/attributes/manage-attributes/#add-an-attribute">訪問属性を作成</a>します。
+<li>AdFixus IDの<a href="/ja/server-side/attributes/manage-as-attributes/#add-an-attribute">訪問属性を作成</a>します。
 <ol>
 <li><strong>訪問/訪問属性</strong>に移動し、<strong>+ 属性を追加</strong>をクリックします。</li>
 <li><strong>訪問</strong>を選択し、<strong>続行</strong>をクリックします。</li>
@@ -829,7 +829,7 @@
 <li>属性名とその他の関連情報を入力します。</li>
 <li><strong>エンリッチメントを追加</strong>をクリックします。</li>
 <li>ステップ1または2で作成したAdFixus IDイベント属性を選択し、<strong>ルールを作成</strong>をクリックします。</li>
-<li>属性が<code>割り当てられている</code>かつ<code>等しくない（大文字小文字を無視）none</code>であることを確認するルールを作成します。<figure><a class="slb" href="/images/tech-partners/adfixus-attribute-ready.png"><img src="/images/tech-partners/adfixus-attribute-ready.png"
+<li>属性が<code>割り当てられている</code>かつ<code>none（大文字小文字を区別しない）と等しくない</code>場合のルールを作成します。<figure><a class="slb" href="/images/tech-partners/adfixus-attribute-ready.png"><img src="/images/tech-partners/adfixus-attribute-ready.png"
          alt="AdFixus - マッピングの準備ができた属性"
          title="AdFixus - マッピングの準備ができた属性"/>
     </a>
@@ -839,9 +839,9 @@
 <li>保存して公開します。</li>
 </ol>
 <p>AdFixus IDは、AudienceStreamコネクタのマッピング可能な属性として利用可能になり、関連する統合でマッピングできます。</p>
-<h2 id="ベンダーのドキュメンテーション">ベンダーのドキュメンテーション</h2>
+<h2 id="ベンダー文書">ベンダー文書</h2>
 <ul>
-<li><a href="https://www.adfixus.com/integrations/integration-tealium-audience-stream-cdp-and-adfixus">統合：Tealium AudienceStream CDPとAdFixus</a>。</li>
+<li><a href="https://www.adfixus.com/integrations/integration-tealium-audience-stream-cdp-and-adfixus">統合: Tealium AudienceStream CDPとAdFixus</a>.</li>
 </ul>
 
 </div>
@@ -903,7 +903,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2025年December月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -918,10 +918,10 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">iQタグ管理の構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">サーバーサイドの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ベンダーのドキュメンテーション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>
 

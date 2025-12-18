@@ -526,7 +526,9 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">Preloaded attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/attributes/manage-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-attributes">Manage attributes</a></li>
+        <a href="/server-side/attributes/manage-es-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-es-attributes">Manage event attributes</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">Manage visitor and visit attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">About enrichments</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -1023,8 +1025,7 @@
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If you need more than 500 attributes in a profile, contact your Customer Success Manager.</p>
 <h2 id="scope">Scope</h2>
-<p>Scope refers to how long an attribute persists in real-time.</p>
-<p>The following table lists supported scopes:</p>
+<p>Scope refers to how long an attribute persists in real-time. The following table lists supported scopes:</p>
 <table>
 <thead>
 <tr>
@@ -1037,12 +1038,12 @@
 <tr>
 <td>Event</td>
 <td>Attributes associated with individual events that describe the page, content, and real-time actions being taken by a customer. Examples: Page Name, Product Price, Event Name, Order Total, etc.</td>
-<td><strong>Attribute Sources</strong><br> Event attributes are sourced from the following values:<br> <ul><li><strong>Universal Variable</strong> <a href="/platforms/javascript/universal-data-object/">Universal Data Object</a></li><li><strong>Javascript Page Variable</strong> Global JavaScript variable (browser)</li><li><strong>HTML Metadata</strong> Metadata tag (browser)</li><li><strong>First-Party Cookie</strong> Browser cookie</li><li><strong>Querystring Parameter</strong> Current page&rsquo;s URL querystring (browser)</li></ul></td>
+<td><strong>Attribute Sources</strong><br> Event attributes are sourced from the following:<br> <ul><li><strong>Universal Variables</strong> <a href="/platforms/javascript/universal-data-object/">Universal Data Object</a></li><li><strong>Javascript Page Variables</strong> Global JavaScript variables (browser)</li><li><strong>HTML Metadata</strong> Metadata tag (browser)</li><li><strong>First-Party Cookies</strong> Browser cookie</li><li><strong>Querystring Parameters</strong> Current page&rsquo;s URL querystring (browser)</li></ul></td>
 </tr>
 <tr>
 <td>Visit</td>
 <td>Attributes about a particular visit (or session). Data persists for the length of the visit. Examples: Visit Duration, Browser Used, Referring URL, and Carted Products.</td>
-<td>These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. For more information, see <a href="#session-length">Session length</a>.</td>
+<td>These attributes represent visitor activity from the current session. Visit attributes persist for the length of the session. See <a href="/server-side/attributes/session-length/">Session Length</a> for more detail.</td>
 </tr>
 <tr>
 <td>Visitor</td>
@@ -1052,7 +1053,7 @@
 <tr>
 <td>Omnichannel</td>
 <td>For importing offline data through the Omnichannel service. This scope does not require a data type.</td>
-<td><a href="/server-side/data-sources/file-import/about/">Omnichannel</a> attributes are defined when you define your file imports.</td>
+<td>Omnichannel attributes are defined when you define your file imports. Omnichannel is a legacy scope and has been replaced with <a href="/server-side/data-sources/file-import/about/">File Import</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1080,11 +1081,11 @@
 </tr>
 <tr>
 <td><a href="/server-side/attributes/data-types/boolean/">Boolean</a></td>
-<td>Stores only one of two values: &rsquo;true&rsquo; and &lsquo;false&rsquo;. <a href="/server-side/attributes/data-types/boolean/">Boolean</a> can be used for indicating the status of a visitor action or visit.</td>
+<td>Stores only one of two values: &rsquo;true&rsquo; and &lsquo;false&rsquo;. Boolean can be used for indicating the status of a visitor action or visit.</td>
 </tr>
 <tr>
 <td><a href="/server-side/attributes/data-types/arrays/array-of-numbers/">Array of Numbers</a></td>
-<td>Stores multiple numeric values as an <a href="/server-side/attributes/data-types/arrays/array-of-numbers/">array</a>. The array may contain unique or duplicate numeric values.</td>
+<td>Stores multiple numeric values as an array. The array may contain unique or duplicate numeric values.</td>
 </tr>
 <tr>
 <td><a href="/server-side/attributes/data-types/arrays/arrays/">Array of Strings</a></td>
@@ -1217,7 +1218,7 @@
 </tbody>
 </table>
 <h2 id="attribute-ids">Attribute IDs</h2>
-<p>All event, visit, and visitor attribute have a unique attribute identifier. The value of this ID may influence the order in which enrichments run and may be required for more complex data source or visitor stitching configurations.</p>
+<p>All event, visit, and visitor attributes have a unique attribute identifier. The value of this ID may influence the order in which enrichments run and may be required for more complex data source or visitor stitching configurations.</p>
 <p>You can find the attribute ID next to the attribute name in the attribute list or within the expanded details.</p>
 <p><strong>Event Attributes</strong>
 <figure><a class="slb" href="/images/server-side/event-attribute-id.png"><img src="/images/server-side/event-attribute-id.png"
@@ -1225,8 +1226,8 @@
          title="Event Attribute ID location"/>
     </a>
 </figure></p>
-<p><strong>Visitor Attributes</strong>
-<figure><a class="slb" href="/images/server-side/visitor-attribute-id.png"><img src="/images/server-side/visitor-attribute-id.png"
+<p><strong>Visit/Visitor Attributes</strong>
+<figure><a class="slb" href="/images/server-side/attributes/attribute-details-slideout-id.png"><img src="/images/server-side/attributes/attribute-details-slideout-id.png"
          alt="Visitor Attribute ID location"
          title="Visitor Attribute ID location"/>
     </a>
@@ -1236,7 +1237,7 @@
 <h2 id="event-limits">Event limits</h2>
 <p>To protect both the Tealium platform and individual customer accounts, AudienceStream has a limit of 10,000 events per visit.</p>
 <p>If a visitor reaches 10,000 events in a single visit, the visitor is permanently banned. When a visitor is banned, the visitor profile is deleted and all future events for the visitor ID, or any IDs that stitch to it, are ignored in both AudienceStream and EventStream. In addition, log messages are written that include the account, profile, visitor ID, and an indication that a ban occurred.</p>
-<p>The ban is permanent, or until maintenance is performed by the Tealium Operations team to purge the banned visitors collection. If you believe a visitor has been banned incorrectly, or you have a visitor that needs to be removed from the banned list, please contact Tealium Support.</p>
+<p>The ban is permanent, or until maintenance is performed by the Tealium Operations team to purge the banned visitors collection. If you believe a visitor has been banned incorrectly, or you have a visitor that needs to be removed from the banned list, contact Tealium Support.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If a permanent visitor ban is removed and the visitor again exceeds the 10,000 events in a visit limit, another ban will occur.</p>
 <h2 id="event-attributes">Event attributes</h2>
 <table>
@@ -1260,7 +1261,7 @@
 </tr>
 <tr>
 <td><strong>Dates</strong></td>
-<td>Min: &ldquo;-292275055-05-16T16:47:04.192Z&rdquo; Max: &ldquo;+292278994-08-17T07:12:55.807Z&rdquo;</td>
+<td>Minimum: &ldquo;-292275055-05-16T16:47:04.192Z&rdquo; maximum: &ldquo;+292278994-08-17T07:12:55.807Z&rdquo;</td>
 <td></td>
 </tr>
 <tr>
@@ -1307,7 +1308,7 @@
 </tr>
 <tr>
 <td><strong>Dates</strong></td>
-<td>Min: &ldquo;-292275055-05-16T16:47:04.192Z&rdquo; Max: &ldquo;+292278994-08-17T07:12:55.807Z&rdquo;</td>
+<td>Minimum: &ldquo;-292275055-05-16T16:47:04.192Z&rdquo; Maximum: &ldquo;+292278994-08-17T07:12:55.807Z&rdquo;</td>
 <td></td>
 </tr>
 <tr>
@@ -1342,7 +1343,7 @@
          title="Imported Tealium iQ variables 2"/>
     </a>
 </figure></p>
-<p>These attributes only contain data if you use the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a> to gather that data.</p>
+<p>Imported attributes only contain data if you use the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a> to gather that data.</p>
 <p>You cannot enrich imported attributes directly. However, you can duplicate the imported attribute, enrich the duplicate attribute with the imported attribute&rsquo;s value, and then further enrich the duplicate attribute as needed.</p>
 <h4 id="troubleshooting">Troubleshooting</h4>
 <p>If variables from Tealium iQ do not appear in EventStream, verify that the Tealium iQ variables are in the Tealium iQ profile that corresponds to the server-side profile and that the variables have been saved and published. Make sure you refresh the EventStream page in the browser after publishing variable changes. If you need assistance with making Tealium iQ variables available in server-side, contact Tealium Support.</p>
@@ -1366,8 +1367,31 @@
 </li>
 </ul>
 <h2 id="preloaded-attributes">Preloaded attributes</h2>
-<p>AudienceStream and EventStream contain a set of preloaded visit and visitor attributes that are preconfigured with statistical information to help you determine useful information about each visitor or visit.</p>
+<p>AudienceStream and EventStream contain a set of preloaded event, visit, and visitor attributes that are preconfigured with statistical information to help you determine useful information about each visitor, visit, or event.</p>
+<figure><a class="slb" href="/images/server-side/attributes/preloaded-attribute-filter.png"><img src="/images/server-side/attributes/preloaded-attribute-filter.png"
+         alt="Preloaded attribute filter"
+         title="Preloaded attribute filter"/>
+    </a>
+</figure>
 <p>For more information about these attributes, see <a href="/server-side/attributes/preloaded/">Preloaded attributes</a>.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>Dependencies are all of the objects that are dependent on this attribute, such as:</p>
+<ul>
+<li>Attributes</li>
+<li>Audiences</li>
+<li>Segments</li>
+<li>Connectors</li>
+<li>Rules</li>
+<li>Predict</li>
+<li>Data sources</li>
+</ul>
+<p>You cannot delete an attribute if a dependency includes that attribute.</p>
+<p>To view an attribute&rsquo;s dependencies, click the attribute in the <strong>Attributes</strong> table and then click the <strong>Dependencies</strong> tab. To view a dependency&rsquo;s details, click <strong>Go To</strong>.</p>
+<figure><a class="slb" href="/images/server-side/ea-visitor-dependencies.png"><img src="/images/server-side/ea-visitor-dependencies.png"
+         alt="Visitor Attribute Dependencies"
+         title="Visitor Attribute Dependencies"/>
+    </a>
+</figure>
 
 </div>
 
@@ -1413,7 +1437,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  December 18, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1442,6 +1466,7 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#restricted-data" href="javascript:void(0)">Restricted data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rules" href="javascript:void(0)">Rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#preloaded-attributes" href="javascript:void(0)">Preloaded attributes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dependencies" href="javascript:void(0)">Dependencies</a></li>
               </nav>
   </aside></nav>
 
