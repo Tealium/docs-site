@@ -567,13 +567,11 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/timeline/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".server-side-timeline-attribute">タイムライン属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li>
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -583,7 +581,9 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/string/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-string-attribute">文字列属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">日付属性</a></li></ul>
+        <a href="/ja/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">日付属性</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">集計属性</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".data-layer-enrichment">データレイヤーのエンリッチメント</a>
@@ -756,7 +756,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".visitor-stitching">ビジターのスティッチング</a>
         <ul class="pl2  visitor-stitching desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">ビジタースティッチングについて</a></li>
+        <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">訪問スティッチングについて</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".anonymous-user-visitor-id-attributes">匿名ID、ユーザー識別子、訪問ID属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1064,8 +1064,8 @@
 <p>タイムライン属性は、暗号化および圧縮後のプロファイルの最大サイズ（400 KB）によっても制限されます。</p>
 <h2 id="属性データのキャプチャ">属性データのキャプチャ</h2>
 <p>イベントのタイムスタンプに加えて、イベントが発生したときに1つ以上の属性の値をキャプチャすることもできます。キャプチャされた属性値は、イベントが発生したときの詳細情報を提供します。数値と集計のみがキャプチャに有用な属性タイプです。なぜなら、これらの属性タイプのみがエンリッチメントを使用して集計できるからです。</p>
-<p>例えば、各購入の注文合計を追跡するために、購入タイムラインで <code>order_total</code> 属性をキャプチャします。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>最新の訪問プロファイルを <a href="/ja/server-side/trace/about/">Trace</a> で確認することでタイムラインを検証します。</p>
+<p>例えば、各購入の注文合計を追跡するために、購入タイムラインで属性 <code>order_total</code> をキャプチャします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>最新の訪問プロファイルを <a href="/ja/server-side/trace/about/">Trace</a> で確認してタイムラインを検証します。</p>
 <h2 id="エントリの有効期限">エントリの有効期限</h2>
 <p>タイムライン内のエントリは、構成された日数後に期限切れに構成することができます。この有効期限はタイムライン内のエントリにのみ適用され、タイムライン属性自体には適用されません。有効期限は、各訪問の開始時に評価されます。エントリが有効期限より古い場合、タイムラインから削除されます。</p>
 <p>タイムラインは数値との相性が良いです。なぜなら、数値エントリはタイムラインエントリに基づいてローリング合計またはローリング平均値を簡単に作成するために使用できるからです。</p>
@@ -1077,14 +1077,14 @@
 <p>必要以上にタイムライン内の情報を保存しないでください。タイムラインエントリの有効期限を構成します。</p>
 </li>
 <li>
-<p>特殊な使用例がない限り、他の属性をタイムラインに保存しないでください。ほとんどの属性タイプをタイムラインに保存することができますが、数値と集計のみが他のAudienceStream属性に対してエンリッチメントを使用して集計することができます。例えば、タイムライン内のエントリから数値の合計を取得するか、エントリから集計を集計することができます。他の属性タイプを保存することは可能ですが、保存した値を集計するためのエンリッチメントはありません。 <p class="note"><i class="fa fa-exclamation-triangle"></i>タイムラインエントリに他の属性を保存すると、訪問プロファイルのサイズが増加します。</p></p>
+<p>特殊な使用例がない限り、他の属性をタイムラインに保存しないでください。ほとんどの属性タイプをタイムラインに保存することができますが、数値と集計のみが他のAudienceStream属性にエンリッチメントできます。例えば、タイムライン内のエントリから数値の合計を取得することができますし、タイムライン内のエントリから集計を集約することができます。他の属性タイプを保存することは可能ですが、保存した値を集約するエンリッチメントはありません。 <p class="note"><i class="fa fa-exclamation-triangle"></i>タイムラインエントリに他の属性を保存すると、訪問プロファイルのサイズが増加します。</p></p>
 </li>
 <li>
 <p>タイムラインのエントリ数とタイムラインの総数を最小限に抑えることができます。それらを戦略的に使用してください。</p>
 <ul>
 <li>タイムライン属性を使用してイベントを効率的にカウントするには、対象イベントが発生したときに訪問数を増やし、訪問の終わりに訪問数をタイムラインに保存します。</li>
 <li>訪問の始めに全体のカウントを取得するには、タイムライン属性内の訪問を合計するために合計エンリッチメントを使用し、それを数値属性に保存します。その後、訪問中にこの数値を増やして完全に最新の状態を保ちます。</li>
-<li>同じ期間に複数の数値を保存する場合は、それらを単一のタイムラインに保存します。</li>
+<li>同じ期間に複数の数値を保存する場合は、それらをすべて単一のタイムラインに保存します。</li>
 </ul>
 </li>
 </ul>
@@ -1101,8 +1101,8 @@
 <p>エントリに属性値をキャプチャするには、ドロップダウンリストから属性を選択し、<strong>属性の追加</strong>をクリックします。追加された属性はキャプチャされた属性として表示されます。エントリにキャプチャする各属性についてこの手順を繰り返します。</p>
 <h4 id="例">例</h4>
 <p><strong>属性名</strong>: 過去60日間の注文<br>
-<strong>キャプチャされた属性</strong>: <code>order_subtotal</code> および <code>order_total</code></p>
-<p><strong>例 JSON データ</strong>:</p>
+<strong>キャプチャされた属性:</strong> <code>order_subtotal</code> および <code>order_total</code></p>
+<p><strong>例 JSONデータ</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Orders Last 60 Days&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> [
 </span></span><span style="display:flex;"><span>  {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;timestamp&#34;</span> : <span style="color:#ae81ff">1576862494000</span>,
@@ -1128,20 +1128,20 @@
 </span></span><span style="display:flex;"><span>]
 </span></span></code></pre></div><h3 id="タイムラインイベントの有効期限の構成">タイムラインイベントの有効期限の構成</h3>
 <p>このエンリッチメントを使用して、エントリが記録されてからの日数に基づいてタイムラインからエントリを削除するタイミングを決定します。有効期限構成より古い各エントリは、自動的にタイムラインから削除されます。タイムラインエントリの有効期限は、訪問の開始時に評価されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>有効期限はタイムライン自体には適用されず、その内のエントリにのみ適用されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>有効期限はタイムライン自体には適用されず、その内部のエントリにのみ適用されます。</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/ja/server-side/attributes/data-types/tally/"
+  <a href="/ja/server-side/attributes/data-types/badge/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>テリー属性</div>
+      <div>バッジ属性</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"テリー属性"</title>
+      <title>"バッジ属性"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1153,11 +1153,11 @@
   <a href="/ja/server-side/attributes/data-types/boolean/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ブール属性 "</title>
+      <title>"ブーリアン属性 "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>ブール属性</div>
+      <div>ブーリアン属性</div>
     </section>
   </a>
   
@@ -1189,7 +1189,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年June月12日
+          <p>最終更新日 ::  2026年January月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

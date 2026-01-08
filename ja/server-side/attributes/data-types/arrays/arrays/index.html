@@ -567,13 +567,11 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/timeline/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-timeline-attribute">タイムライン属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li>
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -583,7 +581,9 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/string/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-string-attribute">文字列属性</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">日付属性</a></li></ul>
+        <a href="/ja/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">日付属性</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">集計属性</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".data-layer-enrichment">データレイヤーのエンリッチメント</a>
@@ -756,7 +756,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".visitor-stitching">ビジターのスティッチング</a>
         <ul class="pl2  visitor-stitching desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">ビジタースティッチングについて</a></li>
+        <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">訪問スティッチングについて</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".anonymous-user-visitor-id-attributes">匿名ID、ユーザー識別子、訪問ID属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1059,8 +1059,8 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="エンリッチメント">エンリッチメント</h2>
-<p>文字列の配列属性は、テキスト値のリストを保存します。</p>
-<p>文字列の配列は次のスコープで利用可能です：イベント、訪問、訪問。</p>
+<p>文字列の配列属性は、テキスト値のリストを格納します。</p>
+<p>文字列の配列は、次のスコープで利用可能です：イベント、訪問、訪問。</p>
 <figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.24.29-pm.png"
          alt="array of strings"
          title="array of strings"/>
@@ -1068,74 +1068,74 @@
 </figure>
 <h3 id="文字列の追加">文字列の追加</h3>
 <p>このエンリッチメントは、文字列属性の値を配列に追加します。追加される属性は、文字列、iQ変数、またはオムニチャネル属性のみです。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Pants&quot;]</code></li>
-<li><strong>エンリッチメント</strong>： <code>&quot;Shirts&quot;</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;Pants&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>: <code>&quot;Shirts&quot;</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code></li>
 </ul>
 <h3 id="文字列の配列の追加">文字列の配列の追加</h3>
 <p>このエンリッチメントは、別の配列からすべての値を配列に追加します。追加される属性は、文字列の配列またはiQ変数のみです。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Pants&quot;]</code></li>
-<li><strong>エンリッチメント</strong>： <code>[&quot;Shirts&quot;, &quot;Shoes&quot;]</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;Pants&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>: <code>[&quot;Shirts&quot;, &quot;Shoes&quot;]</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Pants&quot;, &quot;Shirts&quot;, &quot;Shoes&quot;]</code></li>
 </ul>
-<h3 id="二つの配列間の差分">二つの配列間の差分</h3>
-<p>このエンリッチメントは、二つの配列を入力として取り、最初の配列にはあるが二つ目の配列にはないすべての値を含む新しい配列を返します。この例では、<code>Wishlist Products</code>から<code>Purchased Products</code>にも存在しない値が結果の配列に追加されます。</p>
-<p><strong>属性名</strong>： <code> Unpurchased Products</code></p>
+<h3 id="二つの配列の違い">二つの配列の違い</h3>
+<p>このエンリッチメントは、二つの配列を入力として受け取り、最初の配列にはあるが二番目の配列にはないすべての値を含む新しい配列を返します。この例では、<code>Wishlist Products</code> の値で <code>Purchased Products</code> にはないものが結果の配列に追加されます。</p>
+<p><strong>属性名</strong>: <code>未購入商品</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[]</code></li>
-<li><strong>エンリッチメント</strong>：<br>
-差分：Wishlist Products  <code>[&quot;Pants&quot;, &quot;Shirt&quot;, &quot;Shoes&quot;, &quot;Belt&quot;]</code> と Purchased Products <code>[&quot;Pants&quot;, &quot;Shirt&quot;]</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Shoes&quot;, &quot;Belt&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[]</code></li>
+<li><strong>エンリッチされた値</strong>:<br>
+違い: Wishlist Products  <code>[&quot;Pants&quot;, &quot;Shirt&quot;, &quot;Shoes&quot;, &quot;Belt&quot;]</code> と Purchased Products <code>[&quot;Pants&quot;, &quot;Shirt&quot;]</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Shoes&quot;, &quot;Belt&quot;]</code></li>
 </ul>
-<p>この例は、結果の属性値が置き換えられ、追加されず、最初の配列の重複した値が削除されることを示しています。</p>
+<p>この例は、結果の属性値が置き換えられ、追加されず、最初の配列の繰り返し値が削除されることを示しています。</p>
 <ul>
-<li><strong>開始値</strong>： <code>[7, 8, 9]</code></li>
-<li><strong>エンリッチメント</strong>：  差分：Some Numbers <code>[1, 3, 1, 2, 3]</code> と Some Other Numbers <code>[3]</code></li>
-<li><strong>結果の値</strong>： <code>[1, 1, 2]</code></li>
+<li><strong>初期値</strong>: <code>[7, 8, 9]</code></li>
+<li><strong>エンリッチされた値</strong>:  違い: Some Numbers <code>[1, 3, 1, 2, 3]</code> と Some Other Numbers <code>[3]</code></li>
+<li><strong>結果の値</strong>: <code>[1, 1, 2]</code></li>
 </ul>
 <h3 id="リセット">リセット</h3>
 <p>このエンリッチメントは、配列からすべての値を削除します。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Shoes&quot;, &quot;Belt&quot;]</code></li>
-<li><strong>エンリッチメント</strong>：</li>
-<li><strong>結果の値</strong>： (削除済み)</li>
+<li><strong>初期値</strong>: <code>[&quot;Shoes&quot;, &quot;Belt&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>:</li>
+<li><strong>結果の値</strong>: (削除されました)</li>
 </ul>
 <h3 id="小文字化">小文字化</h3>
 <p>このエンリッチメントは、配列内のすべての値を小文字にします。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Shoes&quot;, &quot;BELT&quot;]</code></li>
-<li><strong>エンリッチメント</strong>：</li>
-<li><strong>結果の値</strong>： <code>[&quot;shoes&quot;, &quot;belt&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;Shoes&quot;, &quot;BELT&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>:</li>
+<li><strong>結果の値</strong>: <code>[&quot;shoes&quot;, &quot;belt&quot;]</code></li>
 </ul>
 <h3 id="文字列のセットに構成">文字列のセットに構成</h3>
-<p>文字列の配列を文字列のセットに構成します。このエンリッチメントは、配列内のすべての値を置き換えます。</p>
-<p><strong>属性名</strong>： <code>Active Browser Types</code></p>
+<p>文字列の配列を文字列のセットに構成します。このエンリッチメントは配列内のすべての値を置き換えます。</p>
+<p><strong>属性名</strong>: <code>アクティブブラウザタイプ</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;IE&quot;]</code></li>
-<li><strong>エンリッチメント</strong>： <code>[&quot;Chrome&quot; &quot;FireFox&quot;, &quot;Opera&quot;]</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Chrome&quot; &quot;FireFox&quot;, &quot;Opera&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;IE&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>: <code>[&quot;Chrome&quot;, &quot;FireFox&quot;, &quot;Opera&quot;]</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Chrome&quot;, &quot;FireFox&quot;, &quot;Opera&quot;]</code></li>
 </ul>
 <h3 id="文字列のセットの追加">文字列のセットの追加</h3>
-<p>文字列のセットを文字列の配列に追加します。このエンリッチメントは、配列内の既存の値を保持するため、結果の値には重複した項目が存在する可能性があります。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<p>文字列のセットを文字列配列に追加します。このエンリッチメントは既存の値を保持するため、結果の値に重複するアイテムが存在する場合があります。</p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Pants&quot;]</code></li>
-<li><strong>エンリッチメント</strong>： <code>[&quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Pants&quot;, &quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;Pants&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>: <code>[&quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Pants&quot;, &quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
 </ul>
-<h3 id="配列から文字列の削除">配列から文字列の削除</h3>
-<p>削除する文字列の最初、最後、またはすべてのインスタンスを指定します。このエンリッチメントは、削除対象として選択された項目のすべてのインスタンスを配列から削除します。</p>
-<p><strong>属性名</strong>： <code>product_name</code></p>
+<h3 id="配列から文字列を削除">配列から文字列を削除</h3>
+<p>削除する文字列の最初、最後、またはすべてのインスタンスを指定します。このエンリッチメントは、選択されたアイテムのすべてのインスタンスを配列から削除します。</p>
+<p><strong>属性名</strong>: <code>product_name</code></p>
 <ul>
-<li><strong>開始値</strong>： <code>[&quot;Pants&quot;, &quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
-<li><strong>エンリッチメント</strong>： <code>&quot;Pants&quot;</code></li>
-<li><strong>結果の値</strong>： <code>[&quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
+<li><strong>初期値</strong>: <code>[&quot;Pants&quot;, &quot;Pants&quot;, &quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
+<li><strong>エンリッチされた値</strong>: <code>&quot;Pants&quot;</code></li>
+<li><strong>結果の値</strong>: <code>[&quot;Shoes&quot;, &quot;Ties&quot;]</code></li>
 </ul>
 
 </div>
@@ -1182,7 +1182,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月5日
+          <p>最終更新日 ::  2026年January月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1199,12 +1199,12 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">エンリッチメント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">文字列の追加</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">文字列の配列の追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%8C%E3%81%A4%E3%81%AE%E9%85%8D%E5%88%97%E9%96%93%E3%81%AE%E5%B7%AE%E5%88%86" href="javascript:void(0)">二つの配列間の差分</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%8C%E3%81%A4%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E9%81%95%E3%81%84" href="javascript:void(0)">二つの配列の違い</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">リセット</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B0%8F%E6%96%87%E5%AD%97%E5%8C%96" href="javascript:void(0)">小文字化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%AB%E6%A7%8B%E6%88%90" href="javascript:void(0)">文字列のセットに構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">文字列のセットの追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">配列から文字列の削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%96%87%E5%AD%97%E5%88%97%E3%82%92%E5%89%8A%E9%99%A4" href="javascript:void(0)">配列から文字列を削除</a></li>
               </nav>
   </aside></nav>
 

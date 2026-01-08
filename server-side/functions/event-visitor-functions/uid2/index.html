@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Use a function to generate a UID2" />
+    <meta property="og:title" content="Generate a UID2 with a visitor function" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/functions/event-visitor-functions/uid2/" />
 <meta property="og:image" content="https://docs.tealium.com/images/integrations/thetradedesk.jpg" />
-<meta property="og:description" content="This article describes how to use a visitor function to generate a UID2 for a user and save it in the visitor profile." />
+<meta property="og:description" content="Learn how to use a visitor function to generate a UID2 for a user and save it in the visitor profile." />
 <meta property="og:site_name" content="Tealium Docs" />
-    <title>Use a function to generate a UID2 | Event and visitor functions | Tealium Docs</title>
+    <title>Generate a UID2 with a visitor function | Event and visitor functions | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1008,7 +1008,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Use a function to generate a UID2</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Generate a UID2 with a visitor function</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1016,69 +1016,77 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to use a visitor function to generate a UID2 for a user and save it in the visitor profile.
+      Learn how to use a visitor function to generate a UID2 for a user and save it in the visitor profile.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Unified ID 2.0 (UID2) is an open source ID framework created by <a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>, which can be used instead of third-party cookies. UID2 is a deterministic user identifier based on a user&rsquo;s Personally Identifiable Information (PII), such as an email address, and the UID is hashed and encrypted to create a UID2 that is returned in the response to a UID2 request. For more information, see <a href="https://unifiedid.com/docs/intro">The Trade Desk UID2 documentation</a>.</p>
-<p>A UID2 can be used in <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk connector</a> and other supported outbound connectors.</p>
-<h2 id="generate-uid2-for-a-visitor-profile">Generate UID2 for a visitor profile</h2>
-<p>We recommend using a visitor function to generate the UID2. Trigger the function when the visitor has PII but does not have a UID2 assigned. For more information about visitor functions, see <a href="/server-side/functions/event-visitor-functions/about/">About event and visitor functions</a>.</p>
-<p>The visitor function does the following:</p>
-<ul>
-<li>Generates a UID2 if the visitor does not have one assigned.</li>
-<li>Sends an event containing the UID2 and <code>tealium_visitor_id</code> to Tealium Collect.</li>
-</ul>
-<p>The AudienceStream attribute and visitor attribute are enriched by the event sent from the function.</p>
+  <h2 id="how-uid2-works">How UID2 works</h2>
+<p>Unified ID 2.0 (UID2) is an open source ID framework from <a href="https://www.thetradedesk.com/us/about-us/industry-initiatives/unified-id-solution-2-0#technical-documentation">The Trade Desk</a>. UID2 replaces third-party cookies with a deterministic user identifier based on personally identifiable information (PII), such as an email address or phone number. The identifier is hashed and encrypted to create a UID2, which is returned in response to a UID2 request. For more information, see <a href="https://unifiedid.com/docs/intro">The Trade Desk: UID2 documentation</a>.</p>
+<p>A UID2 is supported in <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk connector</a> and other outbound connectors.</p>
+<h2 id="create-a-visitor-function">Create a visitor function</h2>
+<p>We recommend that you use a visitor function to generate a UID2 for each visitor who has PII but no UID2. The function creates the UID2, sends it with the <code>tealium_visitor_id</code> to Tealium Collect, and updates the visitor’s profile.</p>
+<p>For details about visitor functions, see <a href="/server-side/functions/event-visitor-functions/about/">About event and visitor functions</a>.</p>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>Before you create a visitor function to generate a UID2, do the following:</p>
+<p>Before you create a visitor function to generate a UID2:</p>
 <ul>
-<li>Create a UID2 event spec with attributes for the data that is received from The Trade Desk (<code>uid_identifier</code>, <code>uid2</code>, <code>uid_timestamp</code>). The function uses this event spec to send an event to Tealium Collect. For example:<br>
+<li><strong>Define UID2 event spec</strong>: Create a UID2 event spec with attributes for the data received from The Trade Desk (<code>uid_identifier</code>, <code>uid2</code>, <code>uid_timestamp</code>). The function uses this event spec to send an event to Tealium Collect. For more information, see <a href="/server-side/event-specifications/manage/">Manage event specifications</a> and <a href="/server-side/attributes/enrichments/">About enrichments</a>.<br>
 <figure><a class="slb" href="/images/server-side/functions-uid2_event_spec.png"><img src="/images/server-side/functions-uid2_event_spec.png"
-         alt="Example event specification"
-         title="Example event specification"/>
-    </a>
-</figure></li>
-<li>Choose a PII attribute or attributes to identify your users. UID2 currently supports a phone number, an email address identifier, or both. The example code below gives priority to the UID generated by the email address over the one generated by the phone number.</li>
-<li>Create a visitor attribute to store the UID2. Add an enrichment to enrich this visitor attribute with the value of the event UID2 attribute. For more information, see <a href="/server-side/attributes/about/">Using Attributes</a> and <a href="/server-side/attributes/enrichments/">About enrichments</a>.</li>
-<li>Create an audience for identified visitors (visitors that have an email address, phone number, or other identifier assigned) that do not have a UID2 assigned. For example:<br>
+           alt="Example event specification"
+           title="Example event specification"/>
+      </a>
+  </figure></li>
+<li><strong>Select PII attributes</strong>: Choose a PII attribute or attributes to identify users. UID2 version 3 supports a phone number, an email address, or both. Version 2 supports either a phone number or an email address.</li>
+<li><strong>Create UID2 visitor attribute</strong>: Create a visitor attribute to store the UID2. Add an enrichment to update this visitor attribute with the value of the event UID2 attribute. For more information, see <a href="/server-side/attributes/about/">Using Attributes</a> and <a href="/server-side/attributes/enrichments/">About enrichments</a>.</li>
+<li><strong>Build identified audience</strong>: Create an audience for identified visitors (those with an email address, phone number, or other identifier) who do not have a UID2.<br>
 <figure><a class="slb" href="/images/server-side/uid2-function-trigger-example.png"><img src="/images/server-side/uid2-function-trigger-example.png"
-         alt="uid2-function-trigger-example.png"
-         title="uid2-function-trigger-example.png"/>
-    </a>
-</figure><br>
+           alt="uid2-function-trigger-example.png"
+           title="uid2-function-trigger-example.png"/>
+      </a>
+  </figure><br>
 For more information, see <a href="/server-side/audiences/manage/#create-an-audience">Create an audience</a>.</li>
 </ul>
-<h2 id="uid2-generator-function">UID2 generator function</h2>
-<p>When you create your function, do the following:</p>
+<h3 id="configure-the-visitor-function">Configure the visitor function</h3>
+<p>To configure the visitor function:</p>
 <ol>
 <li>For the trigger, select <strong>Processed Visitor</strong>.</li>
-<li>For <strong>Audience</strong>, select the audience you created for identified visitors that do not have a UID2 assigned. Leave <strong>Trigger On</strong> set to the default value, which is <code>Joined Audience</code>.<br>
-Delete the default code for a processed visitor function, then copy and paste the example code to generate a UID2 shown in <a href="#example-code">Example code</a>. Modify the example code as needed.</li>
+<li>For <strong>Audience</strong>, select the audience created for identified visitors without a UID2.</li>
+<li>For <strong>Trigger On</strong>, select <code>Joined Audience</code>.</li>
+<li>Replace the default code with the <a href="#example-code">example code</a>.</li>
+<li>Modify the example code as needed. (<code>TODO</code> comments in the code mark required changes.)</li>
 </ol>
-<h3 id="example-code">Example code</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This example code is only a guide for setting up a function to assign a UID2 to visitors and <strong>cannot be used without modification</strong>. Look for comments in the code with <code>TODO</code> for the lines that must be modified for your configuration.</p>
-<p>This example uses both the email address and phone number as the user identifiers, but can be adapted to use other user identifiers. Attribute IDs are used to get the value of the email and phone attributes. Update the attribute IDs with the correct values for the attributes you&rsquo;re using.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>;
+<h2 id="example-code">Example code</h2>
+<h3 id="version-3">Version 3</h3>
+<p>Version 3 supports multiple identifiers, such as email addresses and phone numbers, in a single request. Update the attribute IDs in the code to match your data. The code prioritizes the email UID, but you can change this as needed. The <code>track()</code> method runs only if the returned UID does not match the existing visitor UID.</p>
+<p>The Trade Desk configuration attributes (<code>api_key</code>, <code>secret</code>) and the UID2 attribute ID are grouped in the <code>ttd_config</code> object at the start of the script.</p>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genHash</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">SHA256</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>);
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">validateEmail</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">email</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> String(<span style="color:#a6e22e">email</span>).<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">match</span>(
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">/^(([^&lt;&gt;()[\]\\.,;:\s@&#34;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&#34;]+)*)|.(&#34;.+&#34;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/</span>
 </span></span><span style="display:flex;"><span>    );
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//TODO: Update the following Trade Desk configuration attributes.
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: Update the following Trade Desk configuration attributes.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ttd_config</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">api_key</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;TTD_API_KEY&#39;</span>, <span style="color:#75715e">// TODO: Change TTD_API_KEY to your TTD API Key.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">secret</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;UID2_SECRET&#39;</span> <span style="color:#75715e">// TODO: Change UID2_SECRET to your TTD UID2 secret.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  };
-</span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: Update the following Tealium configuration attributes as needed.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_config</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>,
@@ -1086,23 +1094,20 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DATA_SOURCE_KEY&#39;</span>, <span style="color:#75715e">// TODO: Change DATA_SOURCE_KEY to your Tealium Data Source key.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">email_hashed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// TODO: If your email is already hashed, set this to true.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">phone_hashed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// TODO: If your phone is already hashed, set this to true.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">email_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;EMAIL_ATTRIBUTE_ID&#39;</span>, <span style="color:#75715e">// TODO: Change the attribute_number to point to the populated attribute with the visitor&#39;s email
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">phone_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;PHONE_ATTRIBUTE_ID&#39;</span>, <span style="color:#75715e">// TODO: Change the attribute_number to point to the populated attribute with the visitor&#39;s phone
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">current_uid2_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT_UID2_ATTRIBUTE_ID&#39;</span> <span style="color:#75715e">// TODO: Change the attribute_number to point to the populated attribute with the visitor&#39;s UID2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">email_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;EMAIL_ATTRIBUTE_ID&#39;</span>, <span style="color:#75715e">// TODO: Change to the attribute with the visitor&#39;s email.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">phone_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;PHONE_ATTRIBUTE_ID&#39;</span>, <span style="color:#75715e">// TODO: Change to the attribute with the visitor&#39;s phone.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">current_uid2_attr_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT_UID2_ATTRIBUTE_ID&#39;</span> <span style="color:#75715e">// TODO: Change to the attribute with the visitor&#39;s UID2.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  };
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_account</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_account</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">account</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_profile</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_profile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">profile</span>;
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">email_attr_id</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">phone</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">phone_attr_id</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">current_uid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">current_uid2_attr_id</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">email_hash</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">email</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">email_hashed</span>) {
@@ -1114,27 +1119,22 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">email_hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">phone_hash</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">phone</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone_hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">phone_hashed</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">phone</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">genHash</span>(<span style="color:#a6e22e">phone</span>);
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">email_hash</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">phone_hash</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Must provide at least one identity: email or phone.&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Provide at least one identity: email or phone.&#39;</span>);
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://prod.uidapi.com/v3/identity/map&#39;</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">ttd_config</span>.<span style="color:#a6e22e">secret</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hexRef</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789abcdef&#34;</span>;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomBytes</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">bytes</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">buf</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">hexRef</span>.<span style="color:#a6e22e">charAt</span>(Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">hexRef</span>.<span style="color:#a6e22e">length</span>));
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">buf</span>;
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">writeBigUint64BE</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
@@ -1142,7 +1142,6 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">padding</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">buf</span>;
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomBytes</span>(<span style="color:#ae81ff">12</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomBytes</span>(<span style="color:#ae81ff">8</span>);
@@ -1163,14 +1162,12 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ciphertext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encryptedBody</span>.<span style="color:#a6e22e">ciphertext</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authTag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>.<span style="color:#a6e22e">mac</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">algo</span>.<span style="color:#a6e22e">AES</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">ivBuf</span>, <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">ciphertext</span>).<span style="color:#a6e22e">toString</span>();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">enveloped</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ciphertext</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">authTag</span>;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">timestamp</span>, <span style="color:#ae81ff">16</span>),
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nonce</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">nonce</span>, <span style="color:#ae81ff">16</span>),
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">enveloped</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">enveloped</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>)
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypt</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">24</span>));
@@ -1182,24 +1179,19 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>
 </span></span><span style="display:flex;"><span>    }).<span style="color:#a6e22e">toString</span>();
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">16</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">developed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">32</span>);
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">timestamp</span>, <span style="color:#ae81ff">16</span>),
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nonce</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">nonce</span>, <span style="color:#ae81ff">16</span>),
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">developed</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">developed</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Utf8</span>))
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> {};
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">email_hash</span>) <span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">email_hash</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">email_hash</span>];
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">phone_hash</span>) <span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">phone_hash</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">phone_hash</span>];
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">timestamp</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">enveloped</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">payload</span>);
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">enveloped</span>,
@@ -1207,27 +1199,14 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ttd_config</span>.<span style="color:#a6e22e">api_key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  });
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">200</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** response **********&#39;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(body)  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;\n********** decrypted **********&#39;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;timeStamp:&#39;, data.timestamp)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;nonce:&#39;, data.nonce)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;response:&#39;, JSON.stringify(data.developed))
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;\n&#39;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// TODO: UID from email will take precedence. Modify as needed.
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// UID from email takes precedence. Modify as needed.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uid_email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>.<span style="color:#a6e22e">body</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">email_hash</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">u</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uid_phone</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>.<span style="color:#a6e22e">body</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">phone_hash</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">u</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uid2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uid_email</span> <span style="color:#f92672">??</span> <span style="color:#a6e22e">uid_phone</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(&#39;new uid:&#39; + uid2);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(&#39;current uid:&#39; + current_uid);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealium event is generated only if retreived UID does not match existing visitor UID
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tealium event is generated only if retrieved UID does not match existing visitor UID
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">uid2</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">uid2</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">current_uid</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">event_data</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UID2_event_data&#34;</span>,
@@ -1235,7 +1214,7 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">uid</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">uid2</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">uid_timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>)
 </span></span><span style="display:flex;"><span>      };
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// This is the step that sends the event_data object to Tealium for processing.
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Send the event_data object to Tealium for processing.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event_data</span>, <span style="color:#a6e22e">tealium_config</span>)
 </span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
 </span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
@@ -1243,13 +1222,235 @@ Delete the default code for a processed visitor function, then copy and paste th
 </span></span><span style="display:flex;"><span>          }
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// console.log(&#34;existing uid. no tealium track call.&#34;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">`UID2 fetch failed: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<p>The version three example returns a hashed UID2 for the email attribute in the following JSON structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;body&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_hash&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;u&#34;</span>: <span style="color:#e6db74">&#34;AdvIvSiaum0P5s3X/7X8h8sz+OhF2IG8DNbEnkWSbYM=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;p&#34;</span>: <span style="color:#e6db74">&#34;EObwtHBUqDNZR33LNSMdtt5cafsYFuGmuY4ZLenlue4=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;r&#34;</span>: <span style="color:#ae81ff">1735689600000</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;u&#34;</span>: <span style="color:#e6db74">&#34;IbW4n6LIvtDj/8fCESlU0QG9K/fH63UdcTkJpAG8fIQ=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;p&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;r&#34;</span>: <span style="color:#ae81ff">1735862400000</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;phone_hash&#34;</span>: []
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="version-2">Version 2</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>UID2 version 2 is deprecated on June 30, 2026. Update any existing UID2 version 2 functions to version 3.</p>
+<p>The version 2 example uses email addresses as the user identifier. Adapt it to use a different identifier, such as a phone number. An attribute ID is used to get the value of the email attribute. Update the attribute ID with the correct value for your attribute.</p>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view code
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genHash</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">SHA256</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">validateEmail</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">email</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> String(<span style="color:#a6e22e">email</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">toLowerCase</span>()
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">match</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">/^(([^&lt;&gt;()[\]\\.,;:\s@&#34;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&#34;]+)*)|.(&#34;.+&#34;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/</span>
+</span></span><span style="display:flex;"><span>      );
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tealium_config</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;DATA_SOURCE_KEY&#39;</span>, <span style="color:#75715e">// TODO: Change DATA_SOURCE_KEY to your Tealium Data Source key.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">email_hashed</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> <span style="color:#75715e">// TODO: If your email is already hashed, set this to true.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_account</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_account</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">account</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_profile</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;CURRENT&#39;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">tealium_profile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">profile</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: Change the attribute_number to point to the attribute with the visitor&#39;s email
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">getAttributeValueById</span>(<span style="color:#e6db74">&#39;ATTRIBUTE_ID&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tealium_vid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">tealium_config</span>.<span style="color:#a6e22e">email_hashed</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">validateEmail</span>(<span style="color:#a6e22e">email</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Email attribute is not a valid email&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">genHash</span>(<span style="color:#a6e22e">email</span>)
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hashed_email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO: Update the following variables with your TTD UID2 credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">api_key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TTD_API_KEY&#39;</span> <span style="color:#75715e">// TODO: Change TTD_API_KEY to your TTD API Key.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UID2_SECRET&#39;</span> <span style="color:#75715e">// TODO: Change UID2_SECRET to your TTD UID2 secret.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://prod.uidapi.com/v2/identity/map&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">secret</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hexRef</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789abcdef&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomBytes</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">bytes</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">buf</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">hexRef</span>.<span style="color:#a6e22e">charAt</span>(Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">hexRef</span>.<span style="color:#a6e22e">length</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">buf</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">writeBigUint64BE</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">padding</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;0&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">padding</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">buf</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomBytes</span>(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomBytes</span>(<span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">millisec</span> <span style="color:#f92672">=</span> Date.<span style="color:#a6e22e">now</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writeBigUint64BE</span>(<span style="color:#a6e22e">millisec</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Utf8</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">payload</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ivBuf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">iv</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encryptedBody</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">encrypt</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">body</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">key</span>,
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">iv</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ivBuf</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ciphertext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encryptedBody</span>.<span style="color:#a6e22e">ciphertext</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authTag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>.<span style="color:#a6e22e">mac</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">algo</span>.<span style="color:#a6e22e">AES</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">ivBuf</span>, <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">ciphertext</span>).<span style="color:#a6e22e">toString</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">enveloped</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ciphertext</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">authTag</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">timestamp</span>, <span style="color:#ae81ff">16</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nonce</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">nonce</span>, <span style="color:#ae81ff">16</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">enveloped</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">enveloped</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypt</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iv</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">24</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ciphertext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">24</span>, <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tag</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">encryptedBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">lib</span>.<span style="color:#a6e22e">CipherParams</span>({ <span style="color:#a6e22e">ciphertext</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ciphertext</span> })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrypted</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">AES</span>.<span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">encryptedBody</span>, <span style="color:#a6e22e">key</span>, 
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">iv</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">iv</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">mode</span>.<span style="color:#a6e22e">GCM</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">padding</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">pad</span>.<span style="color:#a6e22e">NoPadding</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ).<span style="color:#a6e22e">toString</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timestamp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">developed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypted</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">timestamp</span>, <span style="color:#ae81ff">16</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nonce</span><span style="color:#f92672">:</span> parseInt(<span style="color:#a6e22e">nonce</span>, <span style="color:#ae81ff">16</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">developed</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Hex</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">developed</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#a6e22e">CryptoES</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Utf8</span>))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email_hash</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">hashed_email</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">timestamp</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">enveloped</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">encrypt</span>(<span style="color:#a6e22e">payload</span>)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">enveloped</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">api_key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decrypt</span>(<span style="color:#a6e22e">body</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This event spec is sent to Tealium at the end of the function. Make sure that the attributes in the event spec you created match the attributes in event_data.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">event_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;UID2_event_data&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tealium_visitor_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">tealium_vid</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">uid</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">developed</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">mapped</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">advertising_id</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">uid_timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span>)
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Send the event_data object to Tealium for processing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event_data</span>.<span style="color:#a6e22e">uid</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">event_data</span>, <span style="color:#a6e22e">tealium_config</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Could not generate advertising ID&#34;</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;UID2 fetch failed&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">response</span>))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<p>The version two example returns a hashed UID2 for the email attribute in the following JSON structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;body&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mapped&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;identifier&#34;</span>: <span style="color:#e6db74">&#34;EObwtHBUqDNZR33LNSMdtt5cafsYFuGmuY4ZLenlue4=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;advertising_id&#34;</span>: <span style="color:#e6db74">&#34;AdvIvSiaum0P5s3X/7X8h8sz+OhF2IG8DNbEnkWSbYM=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;bucket_id&#34;</span>: <span style="color:#e6db74">&#34;a30od4mNRd&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;identifier&#34;</span>: <span style="color:#e6db74">&#34;Rx8SW4ZyKqbPypXmswDNuq0SPxStFXBTG/yvPns/2NQ=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;advertising_id&#34;</span>: <span style="color:#e6db74">&#34;IbW4n6LIvtDj/8fCESlU0QG9K/fH63UdcTkJpAG8fIQ=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;bucket_id&#34;</span>: <span style="color:#e6db74">&#34;ad1ANEmVZ&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 
@@ -1310,7 +1511,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 3, 2025 
+          <p>This page was last updated:  December 30, 2025 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1324,10 +1525,13 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-uid2-for-a-visitor-profile" href="javascript:void(0)">Generate UID2 for a visitor profile</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-uid2-works" href="javascript:void(0)">How UID2 works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-visitor-function" href="javascript:void(0)">Create a visitor function</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid2-generator-function" href="javascript:void(0)">UID2 generator function</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-code" href="javascript:void(0)">Example code</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-visitor-function" href="javascript:void(0)">Configure the visitor function</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-code" href="javascript:void(0)">Example code</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#version-3" href="javascript:void(0)">Version 3</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#version-2" href="javascript:void(0)">Version 2</a></li>
               </nav>
   </aside></nav>
 

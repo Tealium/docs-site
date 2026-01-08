@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -410,7 +410,7 @@
 <p>クラウドデータソースは、クラウドデータウェアハウスまたはデータベースを Tealium にリンクし、データベースの行をイベントとしてインポートすることができます。</p>
 <p>詳細については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Google BigQuery データソースは、Google BigQuery のすべてのデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従って Google BigQuery データタイプをマッピングしてください：</p>
+<p>Google BigQuery データソースは、すべての Google BigQuery データタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従って Google BigQuery データタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -451,28 +451,40 @@
 </table>
 <p>詳細については、<a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types">Google BigQuery: データタイプ</a>を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Tealium は OAuth 2.0 フローを使用して Google と認証します。このプロセスには、サービスアカウントと秘密鍵ファイルが必要です。進む前に、Google でサービスアカウントを作成し、公開/秘密鍵ペアを作成してください。</p>
+<p>Tealium は OAuth 2.0 フローを使用して Google と認証します。このプロセスにはサービスアカウントとプライベートキーファイルが必要です。</p>
+<p>サービスアカウントには以下の BigQuery IAM ロールが必要です：</p>
+<ul>
+<li><a href="https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.dataViewer">BigQuery Data Viewer</a></li>
+<li><a href="https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.jobUser">BigQuery Job User</a></li>
+</ul>
+<p>公開/秘密キーペアを生成するには：</p>
+<ol>
+<li><strong>Google Cloud &gt; サービスアカウント</strong>に移動し、プロジェクトを選択するか、新しく作成します。</li>
+<li>サービスアカウントを選択するか、新しく作成し、<strong>キー</strong>タブに移動して<strong>キーを追加 &gt; 新しいキーを作成</strong>を選択します。</li>
+<li><strong>JSON</strong>オプションを選択し、<strong>作成</strong>をクリックします。
+プライベートキーが生成され、マシンにダウンロードされます。</li>
+</ol>
 <p>新しい接続を構成するには、次の接続詳細を入力します：</p>
 <ul>
-<li><strong>データセット</strong>: 指定されたプロジェクト内のデータセットの名前。プロジェクト名は含めないでください。</li>
-<li><strong>プロジェクトID</strong>: Google Cloud プロジェクトのプロジェクトID。</li>
-<li><strong>サービスアカウントのメールアドレス</strong>: サービスアカウントに固有の生成されたメールアドレス。</li>
-<li><strong>JSONキーファイル</strong>: サービスアカウント用に生成された秘密鍵ファイルをアップロードします。</li>
+<li><strong>データセット</strong>: 指定されたプロジェクト内のデータセットの名前。プロジェクト名は含めません。</li>
+<li><strong>プロジェクト ID</strong>: Google Cloud プロジェクトのプロジェクト ID。</li>
+<li><strong>サービスアカウントのメールアドレス</strong>: サービスアカウントの生成されたメールアドレス。</li>
+<li><strong>キーファイル</strong>: サービスアカウント用に生成されたプライベートキーファイルをアップロードするか、以前にアップロードされたキーファイルを選択します。</li>
 </ul>
 <p>Google BigQuery に接続した後、<strong>データ選択</strong>リストからテーブルまたはビューを選択します。</p>
 <p>詳細については、<a href="https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount">Google for Developers: サーバー間アプリケーション用の OAuth 2.0 の使用</a>を参照してください。</p>
 <h2 id="クエリモード">クエリモード</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><strong>Timestamp</strong> を使用するモードでは、選択されたタイムスタンプ列は <code>TIMESTAMP</code> タイプでなければなりません。</p>
+<p><strong>Timestamp</strong>を使用するモードでは、選択されたタイムスタンプ列は <code>TIMESTAMP</code>タイプでなければなりません。</p>
 <p>詳細については、<a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#timestamp_type">Google BigQuery: TIMESTAMP</a>を参照してください。</p>
-<p><strong>Incrementing</strong> を使用するモードでは、追加される各行に対して値が増加する数値列を選択する必要があります。<code>FLOAT</code> や <code>DECIMAL</code> ではなく、<code>INT64</code> のような整数タイプを使用してください。</p>
+<p><strong>Incrementing</strong>を使用するモードでは、追加される各行に対して値が増加する数値列を選択する必要があります。<code>FLOAT</code>や<code>DECIMAL</code>ではなく、<code>INT64</code>のような整数タイプを使用してください。</p>
 <p>詳細については、<a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#numeric_types">Google BigQuery: 数値タイプ</a>を参照してください。</p>
 <h2 id="where句">WHERE句</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><code>WHERE</code> 句は複数のテーブルからのサブクエリをサポートしていません。複数の Google BigQuery テーブルからデータをインポートするには、Google BigQuery でビューを作成し、データソース構成でそのビューを選択してください。</p>
+<p><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数の Google BigQuery テーブルからデータをインポートするには、Google BigQuery でビューを作成し、データソース構成でそのビューを選択します。</p>
 <h2 id="struct列のインポート">STRUCT列のインポート</h2>
-<p>BigQuery の <code>STRUCT</code> 列は Tealium に直接インポートすることはできません。<code>STRUCT</code> 列からデータをインポートするには、<code>STRUCT</code> フィールドを個別の列にフラット化するビューを作成してください。</p>
-<p>たとえば、次のように <code>STRUCT</code> で定義された住所があるかもしれません：</p>
+<p>BigQueryの<code>STRUCT</code>列は直接 Tealium にインポートすることはできません。<code>STRUCT</code>列からデータをインポートするには、<code>STRUCT</code>フィールドを個別の列にフラット化するビューを作成します。</p>
+<p>たとえば、次のように<code>STRUCT</code>で定義された住所があるかもしれません：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>shipping_address STRUCT<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>  street STRING,
 </span></span><span style="display:flex;"><span>  city STRING,
@@ -489,7 +501,7 @@
 </span></span><span style="display:flex;"><span>  shipping_address.postal_code <span style="color:#66d9ef">AS</span> postal_code
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
 </span></span><span style="display:flex;"><span>  ecommerce.orders;  
-</span></span></code></pre></div><p>フラット化された <code>STRUCT</code> 列は、他のサポートされているデータタイプのようにインポートおよびマッピングすることができます。</p>
+</span></span></code></pre></div><p>フラット化された<code>STRUCT</code>列は、他のサポートされているデータタイプのようにインポートおよびマッピングすることができます。</p>
 
 </div>
 
@@ -535,7 +547,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月29日
+          <p>最終更新日 ::  2026年January月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
