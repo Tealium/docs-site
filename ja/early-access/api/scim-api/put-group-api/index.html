@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -236,6 +236,8 @@
         <a href="/ja/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/patch-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-group-api">PATCH グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -434,7 +436,7 @@
 <td><code>id</code></td>
 <td>URLパラメータ</td>
 <td>必須</td>
-<td>ユーザーの一意の識別子。この値は REST API 呼び出しの一部として送信されます。</td>
+<td>グループの一意の識別子。この値は REST API 呼び出しの一部として送信されます。</td>
 </tr>
 <tr>
 <td><code>displayName</code></td>
@@ -484,7 +486,7 @@
         <span style="font-weight:bold;">
         
     	
-    	Expand to view code snippet
+    	コードスニペットを表示するには展開してください
     	
     	</span>
     </div>
@@ -530,7 +532,7 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;userName must be a valid email address.&quot;</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Group name (%very long name with symbols%) can not include any special characters, be longer than 63 characters.&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -547,6 +549,10 @@
 <tr>
 <td>405</td>
 <td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;409&quot;,&quot;scimType&quot;: &quot;uniqueness&quot;,&quot;detail&quot;: &quot;Group name 'grouptest' already exists in account accounttest.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -614,7 +620,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月17日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

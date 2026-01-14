@@ -476,6 +476,9 @@
       <a href="/server-side-connectors/google-sheets-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Sheets</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-vertex-commerce-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI Search</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/heap-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Heap</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1151,6 +1154,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-vertex-commerce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-commerce-connector">Google Vertex AI Search</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/heap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".heap-connector">Heap</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/hubspot-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a></li>
@@ -1480,21 +1485,32 @@
 <li>Request <code>ads_management</code> permission in your Facebook app. The <code>ads_management</code> permission allows your app to both read and manage the Ads account it owns, or has been granted access to, by the Ad account owner. For more information, see <a href="https://developers.facebook.com/docs/facebook-login/permissions/#reference-ads_management">Facebook: Permission Reference</a>.</li>
 </ol>
 <p>To get more app resources, such as a better rate limit, request Ads Management <strong>Standard Access</strong>. For more information, see <a href="https://developers.facebook.com/docs/marketing-api/access/">Facebook: Access and Authentication</a>.</p>
-<h2 id="api-information">API Information</h2>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Facebook Graph API - Marketing API</li>
-<li>API Version: v22.0</li>
+<li>API Version: v24.0</li>
 <li>API Endpoint: <code>https://graph.facebook.com</code></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 10000</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>App ID</strong>: (Required) The Facebook App ID you want to connect.</li>
+<li><strong>App Secret</strong>: (Required) The App Secret of the Facebook App you want to connect.</li>
+<li><strong>Ad Account ID</strong>: (Required) The Facebook Ads Account ID you want to manage. For more information about your Facebook ad account ID, see <a href="https://www.facebook.com/help/1492627900875762">Facebook: Find your Facebook ad account ID number</a></li>
+</ul>
+<p>This connection will generally expire within 60 days, causing unpredictable results for all Facebook Ad actions.</p>
+<p>Reestablish the connection at any point by clicking <strong>Establish Connection/Connected</strong>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Before clicking the <strong>Establish Connection</strong> button, ensure that you are signed into Facebook with the account that is linked with the Ad Account ID that is being used. If this is not the case issues, can arise with the token that is generated.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1521,22 +1537,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>App ID</strong><br>
-(Required) The Facebook App ID you want to connect.</li>
-<li><strong>App Secret</strong><br>
-(Required) The App Secret of the Facebook App you want to connect.</li>
-<li><strong>Ad Account ID</strong><br>
-(Required) The Facebook Ads Account ID you want to manage. For more information about your Facebook ad account ID, see <a href="https://www.facebook.com/help/1492627900875762">Facebook: Find your Facebook ad account ID number</a></li>
-</ul>
-<p>This connection will generally expire within 60 days, causing unpredictable results for all Facebook Ad actions.</p>
-<p>Reestablish the connection at any point by clicking <strong>Establish Connection/Connected</strong>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Before clicking the <strong>Establish Connection</strong> button, ensure that you are signed into Facebook with the account that is linked with the Ad Account ID that is being used. If this is not the case issues, can arise with the token that is generated.</p>
-<h2 id="actions">Actions</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="add-user-to-custom-audience">Add User to Custom Audience</h3>
 <p>Four types of identifiers are supported: emails, phone numbers, user or app IDs, and secondary IDs. Multiple secondary identifiers are supported. If you specify a <strong>Facebook User ID</strong>, you must also provide a <strong>Facebook App ID</strong>. Only one email or phone number is supported. If multiple identifiers are specified, they are selected in the order listed above. For example, if both email and phone number are specified, the email will be chosen unless it has no value.</p>
@@ -1544,8 +1545,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1641,8 +1642,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1737,8 +1738,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1820,24 +1821,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="using-the-facebook-audiences-customer-provided-credentials-connector">Using the Facebook Audiences Customer-Provided Credentials Connector</h2>
-<h3 id="create-a-visitor-id-attribute">Create a Visitor ID Attribute</h3>
-<p>The Facebook Audiences Customer-Provided Credentials connector requires at least one Visitor ID attribute with the ability to be passed through to Facebook Audiences.</p>
+<h2 id="using-the-facebook-audiences-customer-provided-credentials-connector">Using the Facebook Audiences Customer-Provided Credentials connector</h2>
+<h3 id="create-a-visitor-id-attribute">Create a visitor ID attribute</h3>
+<p>The Facebook Audiences Customer-Provided Credentials connector requires at least one visitor ID attribute with the ability to be passed through to Facebook Audiences.</p>
 <p>Use the following resources to set up a Visitor ID attribute:</p>
 <ul>
 <li><a href="/server-side/visitor-stitching/visitor-id-attribute/">Setting up a Visitor ID attribute</a></li>
 <li><a href="https://developers.facebook.com/docs/marketing-api/audiences-api">Facebook Marketing API</a></li>
 </ul>
-<h3 id="define-an-audience">Define an Audience</h3>
-<p>Your account may have several Visitor ID attributes defined. In this case, it is important to create a visitor-scoped attribute of the Boolean data type and named <code>Known Visitor</code> to check for the existence of any of the Visitor IDs. Using this attribute ensures that the audience only contains visitors with an assigned Visitor ID that can be passed to Facebook. You cannot target an unknown visitor.</p>
+<h3 id="define-an-audience">Define an audience</h3>
+<p>Your account may have several visitor ID attributes defined. In this case, it is important to create a visitor-scoped attribute of the boolean data type and named <code>Known Visitor</code> to check for the existence of any of the visitor IDs. Using this attribute ensures that the audience only contains visitors with an assigned visitor ID that can be passed to Facebook. You cannot target an unknown visitor.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector also has required ID parameters, such as email, phone, app, or user IDs. At least one of these IDs is required. Including these IDs in your audience filter helps avoid connector errors.</p>
-<p>Use the following example to <a href="/server-side/audiences/manage/">create an audience filter</a> of visitors that have a &ldquo;Known Visitor&rdquo; Boolean data type set to <code>true</code>. You can add the badge and Boolean attributes in advance or add them when creating the filter.</p>
+<p>Use the following example to <a href="/server-side/audiences/manage/">create an audience filter</a> of visitors that have a &ldquo;Known Visitor&rdquo; boolean data type set to <code>true</code>. You can add the badge and boolean attributes in advance or add them when creating the filter.</p>
 <figure><a class="slb" href="/images/server-side-connectors/edit-audience-shoe-fan.png"><img src="/images/server-side-connectors/edit-audience-shoe-fan.png"
          alt="Edit Audience Shoe Fan"
          title="Edit Audience Shoe Fan"/>
     </a>
 </figure>
-<h3 id="connect-tealium-to-your-facebook-audiences-account">Connect Tealium to Your Facebook Audiences Account</h3>
+<h3 id="connect-tealium-to-your-facebook-audiences-account">Connect Tealium to your Facebook Audiences account</h3>
 <p>You will need the account ID to configure the connector with your Facebook Audiences account.</p>
 <p>Use the following steps to get your Facebook Audiences account ID:</p>
 <ol>
@@ -1860,7 +1861,7 @@
 <p>Click <strong>Establish Connection</strong> to verify the connection.</p>
 </li>
 </ol>
-<h3 id="create-custom-audience">Create Custom Audience</h3>
+<h3 id="create-custom-audience">Create custom audience</h3>
 <p>Now that you are connected to your Facebook Audiences account, it&rsquo;s time to create a Custom Audience. You will need to create your first Custom Audience on the Facebook site to accept the terms and conditions before you are able to create a Custom Audience with the connector.</p>
 <p>Use the following steps to create a custom audience:</p>
 <ol>
@@ -1877,7 +1878,7 @@ The <code>customer_file_source</code> parameter supports the following values:
 </ol>
 <p>On the Facebook Audiences site, you have the option to create audiences based on a customer list, website traffic, or app activity. For this example, create your audience based on a customer list.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>To use your custom audience, it must contain a minimum of 20 entries. If your audience has been created successfully, a small check icon displays beside the button.</p>
-<h3 id="specify-connector-actions">Specify Connector Actions</h3>
+<h3 id="specify-connector-actions">Specify connector actions</h3>
 <p>You must now specify the actions you want the connector to take.</p>
 <p>Use the following steps to specify actions for the connector:</p>
 <ol>
@@ -1890,7 +1891,7 @@ The <code>customer_file_source</code> parameter supports the following values:
 </figure></li>
 <li>Click <strong>+ Create Action</strong>.</li>
 </ol>
-<h3 id="configure-connector-actions">Configure Connector Actions</h3>
+<h3 id="configure-connector-actions">Configure connector actions</h3>
 <p>Use the following steps to configure actions for the connector:</p>
 <ol>
 <li>From the <strong>Audience</strong> menu, select the <strong>Shoe-Fans</strong> audience you created earlier.<br>
@@ -1986,7 +1987,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  January 12, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2001,21 +2002,20 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-custom-audience" href="javascript:void(0)">Add User to Custom Audience</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-custom-audience" href="javascript:void(0)">Remove User from Custom Audience</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-out-user-from-all-custom-audiences" href="javascript:void(0)">Opt Out User from All Custom Audiences</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-facebook-audiences-customer-provided-credentials-connector" href="javascript:void(0)">Using the Facebook Audiences Customer-Provided Credentials Connector</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-visitor-id-attribute" href="javascript:void(0)">Create a Visitor ID Attribute</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#define-an-audience" href="javascript:void(0)">Define an Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connect-tealium-to-your-facebook-audiences-account" href="javascript:void(0)">Connect Tealium to Your Facebook Audiences Account</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-custom-audience" href="javascript:void(0)">Create Custom Audience</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#specify-connector-actions" href="javascript:void(0)">Specify Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-connector-actions" href="javascript:void(0)">Configure Connector Actions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-facebook-audiences-customer-provided-credentials-connector" href="javascript:void(0)">Using the Facebook Audiences Customer-Provided Credentials connector</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-visitor-id-attribute" href="javascript:void(0)">Create a visitor ID attribute</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#define-an-audience" href="javascript:void(0)">Define an audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connect-tealium-to-your-facebook-audiences-account" href="javascript:void(0)">Connect Tealium to your Facebook Audiences account</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-custom-audience" href="javascript:void(0)">Create custom audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#specify-connector-actions" href="javascript:void(0)">Specify connector actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-connector-actions" href="javascript:void(0)">Configure connector actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#testing" href="javascript:void(0)">Testing</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faq" href="javascript:void(0)">FAQ</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#why-cant-i-see-my-audiences-in-the-audiencestream-drop-down-list" href="javascript:void(0)">Why can’t I see my audiences in the AudienceStream drop-down list?</a></li>

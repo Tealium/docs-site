@@ -270,6 +270,10 @@
         <a href="/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET Groups API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GET Users API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/patch-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-group-api">PATCH Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".put-group-api">PUT Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -386,7 +390,7 @@
 <td><code>id</code></td>
 <td>URL-parameter</td>
 <td>Required</td>
-<td>The unique identifier for the user. This value is sent as part of the REST API call.</td>
+<td>The unique identifier for the group. This value is sent as part of the REST API call.</td>
 </tr>
 <tr>
 <td><code>displayName</code></td>
@@ -482,7 +486,7 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;userName must be a valid email address.&quot;</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Group name (%very long name with symbols%) can not include any special characters, be longer than 63 characters.&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -499,6 +503,10 @@
 <tr>
 <td>405</td>
 <td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;409&quot;,&quot;scimType&quot;: &quot;uniqueness&quot;,&quot;detail&quot;: &quot;Group name 'grouptest' already exists in account accounttest.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -527,14 +535,14 @@
 </div><div class="w-50 mr3">
   
   
-  <a href="/early-access/api/scim-api/get-users-api/"
+  <a href="/early-access/api/scim-api/patch-user-api/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"GET Users API "</title>
+      <title>"PATCH User API "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>GET Users API</div>
+      <div>PATCH User API</div>
     </section>
   </a>
   
@@ -566,7 +574,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2025 
+          <p>This page was last updated:  January 12, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

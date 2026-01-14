@@ -1054,7 +1054,7 @@
 <li><a href="/ja/server-side/data-sources/file-import/about/">ファイルインポートデータソース</a>の処理（AWS S3を除く）。</li>
 </ul>
 <p>外部システムが承認されたIPアドレスのリストにのみアクセスを制限している場合、以下のすべてのIPアドレスを許可リストに追加する必要があります：</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuthコール、サーバーサイドインターフェースからのテスト接続、Snowflake Streamingコネクタ、SFTP接続、およびファイルインポートデータソースのテスト接続（AWS S3を除く）では、データは<code>us-west-1</code>地域のIPアドレスから送信されます。これらの機能を有効にするためには、<code>us-west-1</code>地域のIPアドレスを許可リストに含めてください。<br><br>さらに、<strong>サーバーサイド構成</strong> &gt; <strong>地域</strong>の下で見つかる特定のサーバーサイドプロファイルに関連する地域のIPアドレスを含めてください。<br><br>OAuthコールとテスト接続中にはログイン情報のみが送信され、これらの操作中に顧客データは送信されません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuthコール、サーバーサイドインターフェースからのテスト接続、Snowflake Streamingコネクタ、SFTP接続、およびファイルインポートデータソースのテスト接続（AWS S3を除く）では、<code>us-west-1</code>地域のIPアドレスからデータが送信されます。これらの機能を有効にするためには、<code>us-west-1</code>地域のIPアドレスを許可リストに含めてください。<br><br>さらに、<strong>サーバーサイド構成</strong> &gt; <strong>地域</strong>の下で見つかる特定のサーバーサイドプロファイルに関連する地域のIPアドレスを含めてください。<br><br>OAuthコールとテスト接続中にはログイン情報のみが送信され、顧客データは送信されません。</p>
 <table>
 <thead>
 <tr>
@@ -1100,6 +1100,11 @@
 <td>東京, 日本</td>
 </tr>
 <tr>
+<td>3.1.110.78<br>13.213.156.181<br>13.213.213.34<br>13.229.167.61<br>52.77.131.77<br>52.221.89.137<br>54.151.174.143<br>54.251.195.112<br>54.254.212.72</td>
+<td><code>ap-southeast-1</code></td>
+<td>シンガポール</td>
+</tr>
+<tr>
 <td>3.25.4.61<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244<br>13.237.225.69<br>52.62.159.75<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
 <td><code>ap-southeast-2</code></td>
 <td>シドニー, オーストラリア</td>
@@ -1115,7 +1120,7 @@
 <p>プライベートクラウド環境を使用している場合は、サポートチームに連絡してアカウントに固有のIPアドレスを取得し、それを許可リストに追加してください。</p>
 <p><code>PC-HMT</code>環境を使用している場合は、52.36.206.227も許可リストに追加してください。</p>
 <h2 id="aws-s3">AWS S3</h2>
-<p>Tealium <a href="/ja/server-side/data-sources/file-import/about/">ファイルインポート</a>は、Tealiumが提供するS3バケットまたはお客様のS3バケットからファイルを取得することができます。お客様の会社のS3バケット（Tealiumが提供するS3バケットではない）からファイルを取得する場合、AWSバケットポリシーの許可リストには以下のVPCe ID（VPCエンドポイントID）と上記のIPアドレスを含める必要があります。</p>
+<p>Tealium <a href="/ja/server-side/data-sources/file-import/about/">ファイルインポート</a>は、TealiumのS3バケットまたはお客様のS3バケットからファイルを取得できます。お客様の会社のS3バケット（TealiumのS3バケットではない）からファイルを取得する場合、AWSバケットポリシーの許可リストには以下のVPCe ID（VPCエンドポイントID）と上記のIPアドレスが含まれている必要があります。</p>
 <p>AWSバケットポリシーについての詳細は、AWSドキュメントの以下の記事を参照してください：</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html">Amazon S3コンソールを使用してバケットポリシーを追加する</a></li>
@@ -1138,6 +1143,10 @@
 <td>ap-northeast-1 (東京)</td>
 </tr>
 <tr>
+<td>vpce-0703e4f94cb9fdf27</td>
+<td>ap-southeast-1 (シンガポール)</td>
+</tr>
+<tr>
 <td>vpce-0c7d746d995509e11</td>
 <td>ap-southeast-2 (シドニー)</td>
 </tr>
@@ -1148,6 +1157,10 @@
 <tr>
 <td>vpce-0e9f722cf43431023</td>
 <td>eu-west-1 (アイルランド)</td>
+</tr>
+<tr>
+<td>vpce-05d7e73f9198f3805</td>
+<td>me-central-1 (ドバイ)</td>
 </tr>
 <tr>
 <td>vpce-0a993429061ac314f</td>
@@ -1223,7 +1236,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月17日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
