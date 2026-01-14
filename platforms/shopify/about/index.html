@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -142,6 +142,10 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
+      <a href="/platforms/shopify/configure-shopify-marketplace/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Configure Shopify Markets</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
       <a href="/platforms/shopify/install/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Install Tealium app</span></a>
       </li>
       
@@ -182,6 +186,8 @@
         <a href="/platforms/shopify/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-tealium-shopify-app">About</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/shopify/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealium configuration</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/platforms/shopify/configure-shopify-marketplace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-shopify-markets-tealium-shopify-app">Configure Shopify Markets</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/shopify/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".install-tealium-shopify-app">Install Tealium app</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -237,6 +243,7 @@
 <li>Use Tealium iQ Tag Management with your Shopify site. The app loads Tealium assets, such as <code>utag.js</code> and <code>utag.data</code>, on each page of your site.</li>
 <li>Send Shopify event data to Tealium EventStream API Hub.</li>
 <li>Use a custom checkout pixel to send checkout data to EventStream.</li>
+<li>Use Shopify Markets to track events from multiple market regions with a single Shopify store.</li>
 </ul>
 <p>Some page events, such as Shopify <code>purchase</code> events, are handled differently because they are events that occur on pages managed by Shopify, instead of being managed by iQ Tag Management. The Tealium app sends data for these events to Tealium EventStream.</p>
 <h2 id="requirements">Requirements</h2>
@@ -246,7 +253,7 @@
 <li>Tealium EventStream, if you want to send Shopify event data to EventStream.</li>
 </ul>
 <h2 id="tracked-events">Tracked events</h2>
-<p>The standard data layer is included in the Tealium app and supports the following standard and custom events from Shopify:</p>
+<p>The standard data layer is included in the Tealium app and supports the following standard events from Shopify:</p>
 <table>
 <thead>
 <tr>
@@ -255,10 +262,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>carts_create</code></td>
-<td>A new cart was created.</td>
-</tr>
 <tr>
 <td><code>cart_add</code></td>
 <td>Items added to cart.</td>
@@ -272,33 +275,191 @@
 <td>Customer viewed cart.</td>
 </tr>
 <tr>
-<td><code>checkouts_create</code></td>
-<td>A new checkout was started.</td>
+<td><code>category_view</code></td>
+<td>Customer viewed a category.</td>
 </tr>
 <tr>
-<td><code>customers_create</code></td>
-<td>A new customer was created in Shopify (includes a visitor ID).</td>
+<td><code>checkout</code></td>
+<td>Customer started checkout.</td>
 </tr>
 <tr>
-<td><code>page_view</code></td>
-<td>The customer viewed a page.</td>
+<td><code>checkout_address_info_submitted</code></td>
+<td>Customer submitted checkout address information.</td>
+</tr>
+<tr>
+<td><code>page_view </code></td>
+<td>Customer viewed a page.</td>
 </tr>
 <tr>
 <td><code>product_view</code></td>
-<td>The customer viewed a product page.</td>
+<td>Customer viewed a product page.</td>
 </tr>
 <tr>
-<td><code>orders_create</code></td>
-<td>The customer completed a purchase (includes a visitor ID). This is a custom purchase event specific to Shopify.</td>
+<td><code>purchase</code></td>
+<td>Customer completed a purchase.</td>
 </tr>
 <tr>
-<td><code>refund_create</code></td>
-<td>A refund was processed in Shopify&rsquo;s customer management (includes a visitor ID).</td>
+<td><code>search</code></td>
+<td>Customer performed a search.</td>
 </tr>
 </tbody>
 </table>
 <p>For more information, see <a href="/platforms/shopify/data-layer-and-events/">Data layer and events</a>.</p>
 <p>Newsletter sign up events and discount events must be customized for each store.</p>
+<h3 id="web-pixel-extension-events">Web Pixel Extension events</h3>
+<table>
+<thead>
+<tr>
+<th>Shopify Event</th>
+<th>Tealium Event</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page_viewed</code></td>
+<td><code>page_view</code></td>
+<td>Any storefront page loads.</td>
+</tr>
+<tr>
+<td><code>product_viewed</code></td>
+<td><code>product_view</code></td>
+<td>Customer views a product detail page.</td>
+</tr>
+<tr>
+<td><code>collection_viewed</code></td>
+<td><code>category_view</code></td>
+<td>Customer views a collection/category page.</td>
+</tr>
+<tr>
+<td><code>cart_viewed</code></td>
+<td><code>cart_view</code></td>
+<td>Customer views the cart page.</td>
+</tr>
+<tr>
+<td><code>product_added_to_cart</code></td>
+<td><code>cart_add</code></td>
+<td>Customer adds item to cart.</td>
+</tr>
+<tr>
+<td><code>product_removed_from_cart</code></td>
+<td><code>cart_remove</code></td>
+<td>Customer removes item from cart.</td>
+</tr>
+<tr>
+<td><code>search_submitted</code></td>
+<td><code>search</code></td>
+<td>Customer performs a search query.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checkout-pixel-events">Checkout Pixel events</h3>
+<table>
+<thead>
+<tr>
+<th>Shopify Event</th>
+<th>Tealium Event</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>checkout_started</code></td>
+<td><code>checkout</code></td>
+<td>Customer initiates checkout process.</td>
+</tr>
+<tr>
+<td><code>checkout_address_info_submitted</code></td>
+<td><code>checkout_address_info_submitted</code></td>
+<td>Customer submits shipping address.</td>
+</tr>
+<tr>
+<td><code>checkout_completed</code></td>
+<td><code>purchase</code></td>
+<td>Order is successfully completed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="webhook-events">Webhook events</h2>
+<p>The following webhooks can be enabled for collecting data:</p>
+<table>
+<thead>
+<tr>
+<th>Webhook Topic</th>
+<th>Tealium Event</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CARTS_CREATE</code></td>
+<td><code>cart_create</code></td>
+<td>Brand new cart is created.</td>
+</tr>
+<tr>
+<td><code>CARTS_UPDATE</code></td>
+<td><code>cart_update</code></td>
+<td>Cart is modified (add/remove/quantity change).</td>
+</tr>
+<tr>
+<td><code>CHECKOUTS_CREATE</code></td>
+<td><code>checkouts_create</code></td>
+<td>Checkout session is initiated.</td>
+</tr>
+<tr>
+<td><code>ORDERS_CREATE</code></td>
+<td><code>purchase</code></td>
+<td>Order is completed and processed.</td>
+</tr>
+<tr>
+<td><code>REFUNDS_CREATE</code></td>
+<td><code>shopify_refund</code></td>
+<td>Refund is issued on an order.</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_CREATE</code></td>
+<td><code>Shopify New Customer</code></td>
+<td>New customer account created.</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE</code></td>
+<td><code>email_consent_change</code></td>
+<td>Email marketing opt-in/out changes.</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_MARKETING_CONSENT_UPDATE</code></td>
+<td><code>sms_consent_change</code></td>
+<td>SMS marketing opt-in/out changes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="systemgdpr-webhooks">System/GDPR webhooks</h3>
+<table>
+<thead>
+<tr>
+<th>Webhook Topic</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_UNINSTALLED</code></td>
+<td>Merchant uninstalls the app.</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_DATA_REQUEST</code></td>
+<td>GDPR data access request.</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_REDACT</code></td>
+<td>GDPR customer data deletion request.</td>
+</tr>
+<tr>
+<td><code>SHOP_REDACT</code></td>
+<td>GDPR shop data deletion request.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="checkout-tracking">Checkout tracking</h2>
 <p>Custom pixels are currently the best option for Shopify checkout tracking with Tealium iQ Tag Management. The installation process for the Tealium Shopify app includes the option to configure a custom pixel.</p>
 <p>For more information, see <a href="/platforms/shopify/install/#configure-the-checkout-pixel">Install the Tealium Shopify app</a>.</p>
@@ -347,7 +508,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2025 
+          <p>This page was last updated:  January 13, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -363,7 +524,11 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tracked-events" href="javascript:void(0)">Tracked events</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#checkout-tracking" href="javascript:void(0)">Checkout tracking</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web-pixel-extension-events" href="javascript:void(0)">Web Pixel Extension events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#checkout-pixel-events" href="javascript:void(0)">Checkout Pixel events</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-events" href="javascript:void(0)">Webhook events</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#systemgdpr-webhooks" href="javascript:void(0)">System/GDPR webhooks</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#checkout-tracking" href="javascript:void(0)">Checkout tracking</a></li>
               </nav>
   </aside></nav>
 

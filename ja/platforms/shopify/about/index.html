@@ -264,11 +264,13 @@
         
         <ul data-level="1" class="shopify desktopmenu animated fadeIn list pl0 mt2">
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/shopify/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-tealium-shopify-app">について</a></li>
+        <a href="/ja/platforms/shopify/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-tealium-shopify-app">概要</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/shopify/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealiumの構成</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/shopify/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".install-tealium-shopify-app">Tealiumアプリをインストールする</a></li>
+        <a href="/ja/platforms/shopify/configure-shopify-marketplace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-shopify-markets-tealium-shopify-app">Shopify Marketsの構成</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/shopify/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".install-tealium-shopify-app">Tealiumアプリのインストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/shopify/data-layer-and-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".variables-events-tealium-shopify-app">データレイヤーとイベント</a></li></ul></li></ul>
 </nav>
@@ -317,22 +319,22 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Shopifyアプリは現在、早期アクセス中で、現時点では一部のお客様のみが利用可能です。この機能を試してみたい場合は、アカウントマネージャーに早期アクセスについての情報をお問い合わせください。</p>
-<p>ShopifyマーケットプレイスのTealiumアプリを使用すると、以下のことが可能になります：</p>
+  <p>ShopifyマーケットプレイスのTealiumアプリを使用すると、以下のことができます：</p>
 <ul>
-<li>ShopifyサイトでTealium iQタグ管理を使用します。アプリは、サイトの各ページで<code>utag.js</code>や<code>utag.data</code>などのTealiumアセットをロードします。</li>
-<li>ShopifyのイベントデータをTealium EventStream API Hubに送信します。</li>
-<li>カスタムチェックアウトピクセルを使用して、チェックアウトデータをEventStreamに送信します。</li>
+<li>ShopifyサイトでTealium iQタグ管理を使用します。このアプリは、各ページに<code>utag.js</code>や<code>utag.data</code>などのTealiumアセットをロードします。</li>
+<li>ShopifyイベントデータをTealium EventStream API Hubに送信します。</li>
+<li>カスタムチェックアウトピクセルを使用して、EventStreamにチェックアウトデータを送信します。</li>
+<li>Shopify Marketsを使用して、単一のShopifyストアで複数の市場地域からのイベントを追跡します。</li>
 </ul>
-<p>Shopifyの<code>purchase</code>イベントなどの一部のページイベントは、iQタグ管理ではなくShopifyが管理するページで発生するイベントであるため、異なる方法で処理されます。Tealiumアプリは、これらのイベントのデータをTealium EventStreamに送信します。</p>
+<p>Shopifyの<code>purchase</code>イベントなど、一部のページイベントは、iQタグ管理ではなくShopifyによって管理されるページで発生するイベントであるため、異なる方法で処理されます。Tealiumアプリは、これらのイベントのデータをTealium EventStreamに送信します。</p>
 <h2 id="要件">要件</h2>
 <ul>
-<li>構成中にShopifyインスタンスへの管理者アクセス。</li>
+<li>構成中にShopifyインスタンスへの管理アクセス。</li>
 <li>Tealiumでデータソースを作成するためのTealiumアカウントとプロファイル情報。</li>
-<li>ShopifyのイベントデータをEventStreamに送信したい場合は、Tealium EventStream。</li>
+<li>ShopifyイベントデータをEventStreamに送信する場合はTealium EventStreamが必要です。</li>
 </ul>
-<h2 id="トラッキングされるイベント">トラッキングされるイベント</h2>
-<p>標準データレイヤーはTealiumアプリに含まれており、Shopifyからの以下の標準イベントとカスタムイベントをサポートしています：</p>
+<h2 id="追跡されるイベント">追跡されるイベント</h2>
+<p>Tealiumアプリには標準データレイヤーが含まれており、Shopifyからの以下の標準イベントをサポートしています：</p>
 <table>
 <thead>
 <tr>
@@ -342,51 +344,205 @@
 </thead>
 <tbody>
 <tr>
-<td><code>carts_create</code></td>
-<td>新しいカートが作成されました。</td>
-</tr>
-<tr>
 <td><code>cart_add</code></td>
-<td>カートにアイテムが追加されました。</td>
+<td>カートに商品を追加。</td>
 </tr>
 <tr>
 <td><code>cart_remove</code></td>
-<td>カートからアイテムが削除されました。</td>
+<td>カートから商品を削除。</td>
 </tr>
 <tr>
 <td><code>cart_view</code></td>
-<td>顧客がカートを閲覧しました。</td>
+<td>カートを閲覧した顧客。</td>
 </tr>
 <tr>
-<td><code>checkouts_create</code></td>
-<td>新しいチェックアウトが開始されました。</td>
+<td><code>category_view</code></td>
+<td>カテゴリを閲覧した顧客。</td>
 </tr>
 <tr>
-<td><code>customers_create</code></td>
-<td>Shopifyで新しい顧客が作成されました（ビジターIDを含む）。</td>
+<td><code>checkout</code></td>
+<td>チェックアウトを開始した顧客。</td>
 </tr>
 <tr>
-<td><code>page_view</code></td>
-<td>顧客がページを閲覧しました。</td>
+<td><code>checkout_address_info_submitted</code></td>
+<td>チェックアウトの住所情報を提出した顧客。</td>
+</tr>
+<tr>
+<td><code>page_view </code></td>
+<td>ページを閲覧した顧客。</td>
 </tr>
 <tr>
 <td><code>product_view</code></td>
-<td>顧客が商品ページを閲覧しました。</td>
+<td>商品ページを閲覧した顧客。</td>
 </tr>
 <tr>
-<td><code>orders_create</code></td>
-<td>顧客が購入を完了しました（ビジターIDを含む）。これはShopify特有のカスタム購入イベントです。</td>
+<td><code>purchase</code></td>
+<td>購入を完了した顧客。</td>
 </tr>
 <tr>
-<td><code>refund_create</code></td>
-<td>Shopifyの顧客管理で返金が処理されました（ビジターIDを含む）。</td>
+<td><code>search</code></td>
+<td>検索を実行した顧客。</td>
 </tr>
 </tbody>
 </table>
 <p>詳細については、<a href="/ja/platforms/shopify/data-layer-and-events/">データレイヤーとイベント</a>を参照してください。</p>
-<p>ニュースレターのサインアップイベントとディスカウントイベントは、各ストアでカスタマイズする必要があります。</p>
-<h2 id="チェックアウトのトラッキング">チェックアウトのトラッキング</h2>
-<p>現在、カスタムピクセルはShopifyのチェックアウトトラッキングにTealium iQタグ管理を使用する最良のオプションです。Tealium Shopifyアプリのインストールプロセスには、カスタムピクセルの構成オプションが含まれています。</p>
+<p>ニュースレターのサインアップイベントや割引イベントは、各店舗でカスタマイズする必要があります。</p>
+<h3 id="web-pixel-extensionイベント">Web Pixel Extensionイベント</h3>
+<table>
+<thead>
+<tr>
+<th>Shopifyイベント</th>
+<th>Tealiumイベント</th>
+<th>トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page_viewed</code></td>
+<td><code>page_view</code></td>
+<td>任意のストアフロントページがロードされる。</td>
+</tr>
+<tr>
+<td><code>product_viewed</code></td>
+<td><code>product_view</code></td>
+<td>顧客が商品詳細ページを閲覧する。</td>
+</tr>
+<tr>
+<td><code>collection_viewed</code></td>
+<td><code>category_view</code></td>
+<td>顧客がコレクション/カテゴリページを閲覧する。</td>
+</tr>
+<tr>
+<td><code>cart_viewed</code></td>
+<td><code>cart_view</code></td>
+<td>顧客がカートページを閲覧する。</td>
+</tr>
+<tr>
+<td><code>product_added_to_cart</code></td>
+<td><code>cart_add</code></td>
+<td>顧客が商品をカートに追加する。</td>
+</tr>
+<tr>
+<td><code>product_removed_from_cart</code></td>
+<td><code>cart_remove</code></td>
+<td>顧客がカートから商品を削除する。</td>
+</tr>
+<tr>
+<td><code>search_submitted</code></td>
+<td><code>search</code></td>
+<td>顧客が検索クエリを実行する。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="チェックアウトピクセルイベント">チェックアウトピクセルイベント</h3>
+<table>
+<thead>
+<tr>
+<th>Shopifyイベント</th>
+<th>Tealiumイベント</th>
+<th>トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>checkout_started</code></td>
+<td><code>checkout</code></td>
+<td>顧客がチェックアウトプロセスを開始する。</td>
+</tr>
+<tr>
+<td><code>checkout_address_info_submitted</code></td>
+<td><code>checkout_address_info_submitted</code></td>
+<td>顧客が配送先住所を提出する。</td>
+</tr>
+<tr>
+<td><code>checkout_completed</code></td>
+<td><code>purchase</code></td>
+<td>注文が成功裏に完了する。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="webhookイベント">Webhookイベント</h2>
+<p>次のwebhookを有効にしてデータを収集することができます：</p>
+<table>
+<thead>
+<tr>
+<th>Webhookトピック</th>
+<th>Tealiumイベント</th>
+<th>トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CARTS_CREATE</code></td>
+<td><code>cart_create</code></td>
+<td>新しいカートが作成される。</td>
+</tr>
+<tr>
+<td><code>CARTS_UPDATE</code></td>
+<td><code>cart_update</code></td>
+<td>カートが変更される（追加/削除/数量変更）。</td>
+</tr>
+<tr>
+<td><code>CHECKOUTS_CREATE</code></td>
+<td><code>checkouts_create</code></td>
+<td>チェックアウトセッションが開始される。</td>
+</tr>
+<tr>
+<td><code>ORDERS_CREATE</code></td>
+<td><code>purchase</code></td>
+<td>注文が完了し処理される。</td>
+</tr>
+<tr>
+<td><code>REFUNDS_CREATE</code></td>
+<td><code>shopify_refund</code></td>
+<td>注文に対して払い戻しが行われる。</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_CREATE</code></td>
+<td><code>Shopify New Customer</code></td>
+<td>新しい顧客アカウントが作成される。</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_EMAIL_MARKETING_CONSENT_UPDATE</code></td>
+<td><code>email_consent_change</code></td>
+<td>メールマーケティングのオプトイン/オプトアウトが変更される。</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_MARKETING_CONSENT_UPDATE</code></td>
+<td><code>sms_consent_change</code></td>
+<td>SMSマーケティングのオプトイン/オプトアウトが変更される。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="システムgdpr-webhooks">システム/GDPR webhooks</h3>
+<table>
+<thead>
+<tr>
+<th>Webhookトピック</th>
+<th>トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_UNINSTALLED</code></td>
+<td>マーチャントがアプリをアンインストールする。</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_DATA_REQUEST</code></td>
+<td>GDPRデータアクセスリクエスト。</td>
+</tr>
+<tr>
+<td><code>CUSTOMERS_REDACT</code></td>
+<td>GDPR顧客データ削除リクエスト。</td>
+</tr>
+<tr>
+<td><code>SHOP_REDACT</code></td>
+<td>GDPRショップデータ削除リクエスト。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="チェックアウト追跡">チェックアウト追跡</h2>
+<p>現在、Tealium iQタグ管理でShopifyチェックアウトを追跡するための最良のオプションはカスタムピクセルです。Tealium Shopifyアプリのインストールプロセスには、カスタムピクセルを構成するオプションが含まれています。</p>
 <p>詳細については、<a href="/ja/platforms/shopify/install/#configure-the-checkout-pixel">Tealium Shopifyアプリのインストール</a>を参照してください。</p>
 
 </div>
@@ -433,7 +589,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月26日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -448,8 +604,12 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">トラッキングされるイベント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">チェックアウトのトラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E8%B7%A1%E3%81%95%E3%82%8C%E3%82%8B%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">追跡されるイベント</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#web-pixel-extension%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">Web Pixel Extensionイベント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">チェックアウトピクセルイベント</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">Webhookイベント</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0gdpr-webhooks" href="javascript:void(0)">システム/GDPR webhooks</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">チェックアウト追跡</a></li>
               </nav>
   </aside></nav>
 

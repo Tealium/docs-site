@@ -1021,21 +1021,20 @@
 <p>Connectors that support batching contain batch-based parameter logic. Requests are queued until one of the following three thresholds is met:</p>
 <ul>
 <li>Number of requests</li>
-<li>Time since oldest request:</li>
+<li>Time since oldest request</li>
 <li>Size of requests</li>
 </ul>
 <p>When the maximum threshold value is reached, the connector sends the batch. These thresholds operate on an OR basis, meaning that any one of them will trigger a batch send.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you publish a profile, the connector batch queues are processed regardless of whether the batch limits have been reached.</p>
-<h2 id="batching-components">Batching components</h2>
+<h2 id="batch-components">Batch components</h2>
 <p>The above threshold values are not the only factors that affect how requests are batched to the vendor. Tealium components operate in parallel for scale with more than one component forming its own batch at the same time.</p>
-<h3 id="example">Example</h3>
 <p>For this example, consider a connector action that is batched with the following thresholds (values for example purposes only):</p>
 <ul>
 <li>Maximum requests = 100</li>
 <li>Maximum time = 1 minute</li>
 <li>Maximum Size = 10 MB</li>
 </ul>
-<h4 id="single-component">Single component</h4>
+<h3 id="single-component">Single component</h3>
 <p>In this example, the Tealium connector has a single batching component. It receives a constant flow of incoming data at 150 requests per minute and the size of 150 requests is less than 10MB.</p>
 <p>In this case, the <strong>Maximum requests</strong> parameter would be triggered regularly to send the batched data, because threshold is reached before either of the other two parameters are triggered.</p>
 <figure><a class="slb" href="/images/server-side/single-component-batching.png"><img src="/images/server-side/single-component-batching.png"
@@ -1043,7 +1042,7 @@
          title="single component batching"/>
     </a>
 </figure>
-<h4 id="multiple-components">Multiple components</h4>
+<h3 id="multiple-components">Multiple components</h3>
 <p>In reality, Tealium connectors have multiple batching components. In this example, there are two batching components with the same incoming flow of data (150 requests per minute). The requests are equally distributed between the two components. Because each component monitors its batch independently, the flow of data into each component is now only 75 requests per minute. This data flow is not high enough to trigger the <strong>Maximum requests</strong> threshold. In this case, the data flow would first trigger the <strong>Maximum time</strong> threshold instead. We still see regular calls to the vendor API, but with each containing only 75 records.</p>
 <figure><a class="slb" href="/images/server-side/multiple-component-batching.png"><img src="/images/server-side/multiple-component-batching.png"
          alt="multiple component batching"
@@ -1051,6 +1050,7 @@
     </a>
 </figure>
 <p>In real-world scenarios, there are more than one or two components in a Tealium connector. Tealium scales the number of batching components up and down to meet demand.</p>
+<h3 id="event-order">Event order</h3>
 <p>Due to parallel data flows, events may not be triggered to downstream connectors in the same order as they were received. For example, if a visitor received event A and then event B, it is possible that event B could be sent to the vendor in the first batch of data and event A could be sent later an a separate batch. If the order of events is important to your use case, pass along a sequence number or event timestamp in the connector payload and reconstruct the original order in the vendor system.</p>
 
 </div>
@@ -1112,7 +1112,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 26, 2024 
+          <p>This page was last updated:  January 8, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1126,8 +1126,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batching-components" href="javascript:void(0)">Batching components</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example" href="javascript:void(0)">Example</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-components" href="javascript:void(0)">Batch components</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#single-component" href="javascript:void(0)">Single component</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#multiple-components" href="javascript:void(0)">Multiple components</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-order" href="javascript:void(0)">Event order</a></li>
               </nav>
   </aside></nav>
 

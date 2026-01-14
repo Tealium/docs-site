@@ -476,6 +476,9 @@
       <a href="/server-side-connectors/google-sheets-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Sheets</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-vertex-commerce-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI Search</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/heap-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Heap</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1151,6 +1154,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-vertex-commerce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-commerce-connector">Google Vertex AI Search</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/heap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".heap-connector">Heap</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/hubspot-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a></li>
@@ -1470,16 +1475,16 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Facebook Graph API - Marketing API</li>
-<li>API Version: v22.0</li>
+<li>API Version: v24.0</li>
 <li>API Endpoint: <code>https://graph.facebook.com</code></li>
-<li>Documentation: <a href="https://developers.facebook.com/docs/marketing-api/using-the-api/">FaceBook Marketing API</a></li>
+<li>Documentation: <a href="https://developers.facebook.com/docs/marketing-api/">Facebook Marketing API</a></li>
 </ul>
 <h2 id="batch-limits">Batch limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 10000</li>
 <li>Max time since oldest request: 10 minutes</li>
@@ -1502,7 +1507,7 @@
 </li>
 </ul>
 <p>Before you can use this connector and build a custom audience in Facebook, you must agree to the <a href="https://www.facebook.com/ads/manage/customaudiences/tos.php">Facebook Custom Audience Terms</a>.</p>
-<h3 id="create-custom-audience">Create Custom Audience</h3>
+<h3 id="create-custom-audience">Create custom audience</h3>
 <p>You must create your first custom audience on the Facebook site to accept the terms and conditions before you are able to create a custom audience through the connector.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>To use your custom audience, it must contain a minimum of 20 entries. If your audience has been created successfully, a small check icon is displayed beside the button.</p>
 <p>Click <strong>Create Custom Audience</strong>, then configure the following settings:</p>
@@ -1529,9 +1534,9 @@
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -1552,13 +1557,15 @@
 </tr>
 </tbody>
 </table>
+<p>Enter a name for the action and select the action type.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="add-user-to-custom-audience">Add User to Custom Audience</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1641,8 +1648,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1737,8 +1744,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1818,7 +1825,7 @@
 </table>
 <h2 id="using-the-facebook-audiences-connector">Using the Facebook Audiences connector</h2>
 <h3 id="create-a-visitor-id">Create a visitor ID</h3>
-<p>The Facebook Audiences connector requires at least one Visitor ID attribute with the ability to be passed through to Facebook Audiences.</p>
+<p>The Facebook Audiences connector requires at least one visitor ID attribute with the ability to be passed through to Facebook Audiences.</p>
 <p>Use the following resources to set up a visitor ID attribute:</p>
 <ul>
 <li><a href="/server-side/visitor-stitching/visitor-id-attribute/">Setting up a Visitor ID attribute</a></li>
@@ -1914,7 +1921,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 8, 2025 
+          <p>This page was last updated:  January 12, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1928,10 +1935,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-custom-audience" href="javascript:void(0)">Create Custom Audience</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-custom-audience" href="javascript:void(0)">Create custom audience</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-custom-audience" href="javascript:void(0)">Add User to Custom Audience</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-custom-audience" href="javascript:void(0)">Remove User from Custom Audience</a></li>

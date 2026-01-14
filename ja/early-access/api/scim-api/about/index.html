@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/api/scim-api/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="SCIMプロビジョニングを使用して、あなたのIDプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。" />
+<meta property="og:description" content="SCIMプロビジョニングを使用して、アイデンティティプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>SCIM APIについて | SCIM API | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -236,6 +236,8 @@
         <a href="/ja/early-access/api/scim-api/get-groups-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-groups-api">GET グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GETユーザーAPI</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api/scim-api/patch-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-group-api">PATCH グループ API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH ユーザー API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -406,20 +408,20 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      SCIMプロビジョニングを使用して、あなたのIDプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。
+      SCIMプロビジョニングを使用して、アイデンティティプロバイダからTealiumアカウントにユーザーを同期する方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>クロスドメインアイデンティティ管理（SCIM）は、クラウドアプリケーション間でユーザーアカウントの作成、更新、削除を自動化し、簡素化するための標準です。</p>
-<p>SCIMプロビジョニングを使用して、IDプロバイダ（IdP）からTealiumに自動的にユーザーを同期します。SCIMはオンボーディング中に適切なアクセス権を持つユーザーを作成し、IDプロバイダでユーザーがデプロビジョニングされたときにTealiumアクセスを削除することで、一貫したオフボーディングを保証し、不正アクセスを防ぎます。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>System for Cross-domain Identity Management（SCIM）は、クラウドアプリケーション間でユーザーアカウントの作成、更新、削除を自動化し、簡素化する標準です。</p>
+<p>SCIMプロビジョニングを使用して、アイデンティティプロバイダ（IdP）からTealiumに自動的にユーザーを同期します。SCIMはオンボーディング中に適切なアクセス権を持つユーザーを作成し、アイデンティティプロバイダでユーザーがデプロビジョニングされたときにTealiumアクセスを削除することで、一貫したオフボーディングを保証し、不正アクセスを防ぎます。</p>
 <p>IdPでSCIMプロビジョニングコネクタを使用するか、直接SCIM APIを呼び出します。</p>
 <h2 id="認証">認証</h2>
 <p>TealiumのSCIM統合は、アプリケーションとの認証に長期間有効なベアラートークンを使用します。このベアラートークンをOAuthベアラートークンとして使用して、ユーザープロビジョニングアプリケーションを構成します。</p>
 <p>すべてのSCIM API呼び出しは、このベアラートークンで認証されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーとベアラートークンは、それを生成したユーザーにリンクされています。必要なTealium権限を持つ専用のサービスユーザーを使用してください。サービスユーザーは、人物にリンクされていないリソースを管理するために使用されるユーザーアカウントです。このアプローチは、通常のユーザーアカウントが利用できなくなった場合のアクセス問題を防ぎます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>APIキーとベアラートークンは、それを生成したユーザーにリンクされています。必要なTealium権限を持つ専用のサービスユーザーを使用してください。サービスユーザーは、リソースを管理するために使用される人物にリンクされていないユーザーアカウントです。このアプローチは、通常のユーザーアカウントが利用できなくなった場合のアクセス問題を防ぎます。</p>
 <p>ベアラートークンを生成するには：</p>
 <ol>
 <li>専用のサービスユーザーとしてTealiumにログインします。</li>
@@ -442,9 +444,9 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scope&#34;</span>:<span style="color:#e6db74">&#34;profile email&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>トークンは90日後に期限切れになります。必要に応じてトークンを再生成してください。</p>
-<p>トークンの生成や権限についての質問がある場合は、Tealiumサポートに連絡してください。</p>
+<p>トークンの生成や権限に関する質問がある場合は、Tealiumサポートに連絡してください。</p>
 <h2 id="エンドポイントと権限">エンドポイントと権限</h2>
-<p>TealiumのSCIM実装は、以下のHTTPメソッドをサポートしています：</p>
+<p>TealiumのSCIM実装は、次のHTTPメソッドをサポートしています：</p>
 <table>
 <thead>
 <tr>
@@ -461,7 +463,7 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td>ユーザーの詳細、グループの詳細を取得するか、ユーザーやグループのリストを取得します。</td>
+<td>ユーザーの詳細、グループの詳細を取得するか、ユーザーやグループのリストを表示します。</td>
 <td>すべてのアカウントユーザー</td>
 </tr>
 <tr>
@@ -474,9 +476,14 @@
 <td>ユーザーまたはグループを削除します。</td>
 <td>ユーザー管理者またはアカウント管理者</td>
 </tr>
+<tr>
+<td><code>PATCH</code></td>
+<td>ユーザーまたはグループを部分的に更新します。</td>
+<td>ユーザー管理者またはアカウント管理者</td>
+</tr>
 </tbody>
 </table>
-<!--  `PATCH`   ユーザーまたはグループを部分的に更新します。              ユーザー管理者またはアカウント管理者 -->
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -521,7 +528,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月17日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -535,7 +542,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A8%E6%A8%A9%E9%99%90" href="javascript:void(0)">エンドポイントと権限</a></li>
               </nav>

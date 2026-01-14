@@ -491,6 +491,9 @@
       <a href="/ja/server-side-connectors/google-sheets-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Sheets</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/google-vertex-commerce-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI Search</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/heap-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Heap</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1335,6 +1338,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/google-vertex-commerce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-commerce-connector">Google Vertex AI Search</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/heap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".heap-connector">Heap</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/hubspot-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a></li>
@@ -1764,17 +1769,35 @@
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Facebook Graph API - WhatsApp Business API</li>
-<li>APIバージョン：v13.0</li>
+<li>APIバージョン：v25.0</li>
 <li>APIエンドポイント：<code>https://graph.facebook.com</code></li>
 <li>ドキュメント：<a href="https://developers.facebook.com/docs/whatsapp/cloud-api">WhatsApp Business Platform Cloud API</a></li>
 </ul>
-<h2 id="コネクタアクション">コネクタアクション</h2>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>アクセストークン</strong>：（必須）Facebookシステムユーザーのアクセストークン。<p class="tip"><i class="fa fa-info-circle"></i>コネクタをアクセストークンを使用して認証する場合、ビジネスシステムユーザーのアクセストークンを使用することをお勧めします。ユーザーアクセストークンとは異なり、頻繁に期限切れになり、数時間ごとに再生成が必要なのに対し、ビジネスシステムユーザートークンは有効期限が長く（通常は最大60日）、より安定した信頼性の高い認証方法を提供します。ビジネスシステムユーザーアクセストークンを取得するには、Facebookビジネスマネージャーでシステムユーザーを作成し、必要なアセットと権限を割り当て、その後Facebookアプリダッシュボードでトークンを生成する必要があります。詳細な手順については、<a href="https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#system-user-access-token">WhatsApp: WhatsApp Business Platform用システムユーザーアクセストークンの取得</a>を参照してください。</p></li>
+</ul>
+<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
+<h2 id="メッセージタイプ">メッセージタイプ</h2>
+<p>WhatsApp Business APIでは、主に以下の2種類のメッセージタイプがあります：</p>
+<ul>
+<li>
+<p><strong>テンプレートメッセージ</strong>はWhatsAppによって事前に承認されており、アラート、更新情報、再エンゲージメントメッセージなど、ビジネスからの会話を開始するために設計されています。これらのメッセージには変数を含めることができ、ビジネスから24時間以内に連絡がなかったユーザーにメッセージを送る場合に必要です。</p>
+</li>
+<li>
+<p><strong>テキストベースのメッセージ</strong>はセッションベースであり、24時間のウィンドウ内でユーザーからのメッセージに応答するためにのみ使用できます。これらはダイナミックな会話コンテンツに対してより大きな柔軟性を提供しますが、勧誘のためには使用できません。</p>
+</li>
+</ul>
+<p>24時間のウィンドウ外で会話を開始する場合や通知を送信する場合はテンプレートメッセージを使用し、ユーザーとのアクティブなセッション中にリアルタイムのやり取りを維持するためにテキストベースのメッセージを使用します。</p>
+<p>テンプレートメッセージを送信する前に、テンプレートを作成する必要があります。詳細については、<a href="https://www.facebook.com/business/help/2055875911147364">WhatsApp: WhatsApp Businessアカウント用メッセージテンプレートの作成</a>を参照してください。</p>
 <table>
 <thead>
 <tr>
-<th><strong>アクション名</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>アクション名</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -1790,36 +1813,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
-<ul>
-<li><strong>アクセストークン</strong><br>
-(必須) Facebookシステムユーザーのアクセストークン。<p class="tip"><i class="fa fa-info-circle"></i>コネクタをアクセストークンで認証する場合、ビジネスシステムユーザーのアクセストークンの使用を推奨します。ユーザーアクセストークンとは異なり、頻繁に期限切れになり、数時間ごとに再生成が必要なのに対し、ビジネスシステムユーザートークンは有効期限が長く（通常は最大60日）、より安定した信頼性の高い認証方法を提供します。ビジネスシステムユーザーアクセストークンを取得するには、Facebookビジネスマネージャーでシステムユーザーを作成し、必要なアセットと権限を割り当て、その後Facebookアプリダッシュボードでトークンを生成する必要があります。詳細な手順については、<a href="https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#system-user-access-token">WhatsApp: WhatsApp Business Platform用システムユーザーアクセストークンの取得</a>を参照してください。</p></li>
-</ul>
-<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="メッセージタイプ">メッセージタイプ</h2>
-<p>WhatsApp Business APIでは、主に以下の2種類のメッセージタイプがあります：</p>
-<ul>
-<li>
-<p><strong>テンプレートメッセージ</strong>はWhatsAppによって事前に承認されており、アラート、更新情報、再エンゲージメントメッセージなど、ビジネスからの会話を開始するために設計されています。これらのメッセージには変数を含めることができ、過去24時間以内にビジネスに連絡していないユーザーにメッセージを送る場合に必要です。</p>
-</li>
-<li>
-<p><strong>テキストベースのメッセージ</strong>はセッションベースであり、24時間のウィンドウ内でユーザーが開始したメッセージに対応してのみ使用できます。これにより、ダイナミックな会話コンテンツに対してより大きな柔軟性が提供されますが、勧誘のためには使用できません。</p>
-</li>
-</ul>
-<p>24時間のウィンドウ外で会話を開始するか通知を送る場合はテンプレートメッセージを使用し、ユーザーとのアクティブなセッション中にリアルタイムのやり取りを維持するためにテキストベースのメッセージを使用します。</p>
-<p>テンプレートメッセージを送信する前に、テンプレートを作成する必要があります。詳細については、<a href="https://www.facebook.com/business/help/2055875911147364">WhatsApp: WhatsAppビジネスアカウント用メッセージテンプレートの作成</a>を参照してください。</p>
-<h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>コネクタアクションの構成を続けるには、<strong>続行</strong>をクリックします。アクションの名前を入力し、アクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション--テキストメッセージを送信">アクション — テキストメッセージを送信</h3>
+<h3 id="テキストメッセージを送信">テキストメッセージを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -1841,13 +1843,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--メッセージテンプレートを送信">アクション — メッセージテンプレートを送信</h3>
+<h3 id="メッセージテンプレートを送信">メッセージテンプレートを送信</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -1861,11 +1863,11 @@
 </tr>
 <tr>
 <td>メッセージテンプレート</td>
-<td>メッセージテンプレートを提供します。使用例については、<a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates">WhatsApp: メッセージテンプレートの送信</a>を参照してください。<br> テンプレートは有効なJSONオブジェクト形式を期待します。<br> <strong>メッセージテンプレート変数</strong>セクションで指定されたテンプレート変数を使用することができます。詳細については <a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a> を参照してください。</td>
+<td>メッセージテンプレートを提供します。使用例については、<a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates">WhatsApp: メッセージテンプレートの送信</a>を参照してください。<br> テンプレートは有効なJSONオブジェクト形式を期待します。<br> <strong>メッセージテンプレート変数</strong>セクションで指定されたテンプレート変数を使用することができます。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
 </tr>
 <tr>
 <td>メッセージテンプレート変数</td>
-<td><strong>メッセージテンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細については <a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a> を参照してください。<br> ドット表記（例：<code>items.name</code>）でネストされたテンプレート変数を名前付けします。<br> ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td><strong>メッセージテンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。<br> ドット表記（例：<code>items.name</code>）でネストされたテンプレート変数を名前付けします。<br> ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 </tbody>
 </table>
@@ -1929,7 +1931,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月2日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1944,12 +1946,10 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">メッセージタイプ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — テキストメッセージを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — メッセージテンプレートを送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">テキストメッセージを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">メッセージテンプレートを送信</a></li>
               </nav>
   </aside></nav>
 

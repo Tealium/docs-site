@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -142,6 +142,10 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
+      <a href="/platforms/shopify/configure-shopify-marketplace/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Configure Shopify Markets</span></a>
+      </li>
+      
+      <li  class="tl dib ma0 w-100">
       <a href="/platforms/shopify/install/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Install Tealium app</span></a>
       </li>
       
@@ -182,6 +186,8 @@
         <a href="/platforms/shopify/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tealium-shopify-app">About</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/shopify/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealium configuration</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/platforms/shopify/configure-shopify-marketplace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-shopify-markets-tealium-shopify-app">Configure Shopify Markets</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/shopify/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".install-tealium-shopify-app">Install Tealium app</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -239,17 +245,17 @@
 <li>A data layer <code>restock</code> variable</li>
 </ul>
 <p>For information about these configuration tasks, see <a href="/platforms/shopify/tealium-shopify-configuration/">Tealium configuration</a>.</p>
-<h2 id="install-the-tealium-app">Install the Tealium app</h2>
+<h2 id="installation">Installation</h2>
 <p>The following sections provide instructions for installing the Tealium App in Shopify, enabling the Shopify theme, and configuring the Checkout Pixel.</p>
-<h3 id="install-the-tealium-app-1">Install the Tealium app</h3>
+<h3 id="install-the-tealium-app">Install the Tealium app</h3>
 <ol>
-<li>In Shopify, under <strong>Apps</strong>, search and select the <strong>Tealium</strong> app.</li>
+<li>In Shopify under <strong>Apps</strong>, select the <strong>Tealium</strong> app.</li>
 <li>On the <strong>Config</strong> tab, enter your <strong>Account</strong>, <strong>Profile</strong>, and <strong>Environment</strong> information.<br>
-Environment would typically be <code>prod</code>, <code>dev</code>, or <code>qa</code>.</li>
+Environment values are <code>prod</code>, <code>dev</code>, or <code>qa</code>.</li>
 <li>Select a <strong>Checkout Tracking</strong> option:
 <ul>
 <li><strong>Client Side Only</strong>: Select this option if you only have Tealium iQ Tag Management.</li>
-<li><strong>Client and Server Side</strong>: Select this option if you will be using Shopify Webhooks to send data to EventStream.</li>
+<li><strong>Client and Server Side</strong>: Select this option if you use Shopify Webhooks to send data to EventStream.</li>
 </ul>
 </li>
 <li>If you selected <strong>Client and Server Side</strong>, do the following:
@@ -259,32 +265,24 @@ Environment would typically be <code>prod</code>, <code>dev</code>, or <code>qa<
 <li>In Shopify, paste the data source key into the <strong>Server Side Data Source ID</strong> field.</li>
 </ol>
 </li>
-<li>If you are using First-Party Domains, enter your domain name.</li>
-<li>Click <strong>Submit</strong> when you have finished the configuration.
-Webhooks are immediately created.</li>
+<li>Click <strong>Submit</strong> when you have finished the configuration. Webhooks are immediately created.</li>
 </ol>
 <h3 id="enable-the-shopify-theme">Enable the Shopify theme</h3>
 <p>Use the following steps to enable the Shopify theme:</p>
 <ol>
-<li>In Shopify, on the <strong>Theme Extension</strong> tab, click <strong>Enable</strong>.<br>
-This loads the Tealium library, <code>utag.js</code>, as well as the standard data layer for Shopify events, and opens the <strong>Theme Manager</strong>.</li>
-<li>In the <strong>Theme Manager</strong>, toggle <strong>Tealium Settings</strong> on.</li>
-<li>To enable debugging, click the down arrow next for <strong>Tealium Settings</strong>, then do the following:
-<ol>
-<li>Click <strong>Enabled</strong>.</li>
-<li>Enter the Environment (<code>prod</code>, <code>dev</code>, or <code>qa</code>).</li>
-</ol>
-</li>
+<li>In Shopify, go to <strong>Online Store &gt; Themes &gt; Customize</strong>.</li>
+<li>Click <strong>App Embeds</strong> and enable the Tealium extension.<br>
+This loads the Tealium library <code>utag.js</code> and the standard data layer for Shopify events.</li>
+<li>Set <strong>Tealium Settings</strong> to <code>On</code>.</li>
+<li>Click <strong>Save</strong>.</li>
 </ol>
 <h3 id="configure-the-checkout-pixel">Configure the checkout pixel</h3>
 <p>The Tealium app uses a custom checkout pixel to send checkout event data to EventStream. If you do not have EventStream enabled, you do not need to configure the checkout pixel.</p>
 <p>Use the following steps to configure the Checkout Pixel:</p>
 <ol>
-<li>On the <strong>Checkout Install</strong> tab, copy the example code shown.</li>
 <li>In <strong>Shopify Admin</strong>, go to <strong>Settings &gt; Customer Events</strong>.<br>
-You will see the Tealium pixel that the Tealium app has installed. The checkout pixel must be added manually</li>
+You will see the Tealium pixel that the Tealium app has installed. The checkout pixel must be added manually.</li>
 <li>Click <strong>Add Custom Pixel</strong> and enter <code>Tealium Checkout</code> for the <strong>Pixel Name</strong>.</li>
-<li>Click <strong>Add pixel</strong>.</li>
 <li>Under <strong>Customer Privacy</strong>, the recommended options are as follows:
 <ul>
 <li><strong>Permission</strong>: select <strong>Analytics</strong>.</li>
@@ -293,7 +291,7 @@ This may change depending on the data your store is collecting in Tealium.</li>
 </ul>
 </li>
 <li>Delete the example code shown in the <strong>Code</strong> box.</li>
-<li>Paste the code copied from the <strong>Checkout Install</strong> tab into the <strong>Code</strong> box.</li>
+<li>Paste the code copied from the <strong>Customer Events</strong> tab into the <strong>Code</strong> box.</li>
 <li>Click <strong>Save</strong>.</li>
 <li>Click <strong>Connect</strong>.</li>
 </ol>
@@ -366,11 +364,11 @@ This may change depending on the data your store is collecting in Tealium.</li>
 </tr>
 <tr>
 <td>Publish Locations</td>
-<td><code>Dev</code> for testing<br><code>Prod</code> when testing is complete</td>
+<td><ul><li><code>Dev</code> for testing</li><li><code>Prod</code> when testing is complete</li></ul></td>
 </tr>
 <tr>
 <td>Purpose Group</td>
-<td>The purpose group created for Shopify</td>
+<td>The purpose group created for Shopify.</td>
 </tr>
 </tbody>
 </table>
@@ -384,14 +382,74 @@ This may change depending on the data your store is collecting in Tealium.</li>
 This automatically sets <code>utagdb=true</code>, which enables verbose output and loads the Tealium <code>dev</code> environment version.</li>
 <li>To see the additional output, open the browser console.</li>
 </ol>
-<p>This debug mode applies only to the client-side. It cannot be used to validate server-side data collection.</p>
-<p>Debugging of webhooks and events sent to EventStream can be done using the Live Events page in EventStream. The page being tested will need to be reloaded to see the events. This works on the whole site, including checkout. For more information, see <a href="/server-side/live-events-feeds/about-live-events/">About Live Events</a>.</p>
-<h2 id="uninstall-the-tealium-shopify-app-app">Uninstall the Tealium Shopify app App</h2>
+<p>Debug mode applies only to the client-side. It cannot be used to validate server-side data collection.</p>
+<p>Debugging of webhooks and events sent to EventStream can be done using the Live Events page in EventStream. The page being tested needs to be reloaded to see the events. This works on the whole site, including checkout. For more information, see <a href="/server-side/live-events-feeds/about-live-events/">About Live Events</a>.</p>
+<ol>
+<li>In <strong>Shopify Admin</strong>, go to <strong>Online Store &gt; Themes &gt; Customize &gt; App embeds</strong>.</li>
+<li>Enable debugging in the Tealium extension settings and click <strong>Save</strong>.</li>
+<li>Reload your website and check the browser console to see detailed debugging information.</li>
+</ol>
+<h2 id="server-events-management">Server events management</h2>
+<p>The <strong>Server Events</strong> tab lets you select which Shopify webhooks are registered for server-side tracking. Enable or disable individual webhooks based on your tracking requirements:</p>
+<table>
+<thead>
+<tr>
+<th>Tealium Event</th>
+<th>Shopify Webhook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cart_update</td>
+<td>CARTS_UPDATE</td>
+</tr>
+<tr>
+<td>cart_create</td>
+<td>CARTS_CREATE</td>
+</tr>
+<tr>
+<td>checkouts_create</td>
+<td>CHECKOUTS_CREATE</td>
+</tr>
+<tr>
+<td>purchase</td>
+<td>ORDERS_CREATE</td>
+</tr>
+<tr>
+<td>shopify_refund</td>
+<td>REFUNDS_CREATE</td>
+</tr>
+<tr>
+<td>Shopify New Customer</td>
+<td>CUSTOMERS_CREATE</td>
+</tr>
+<tr>
+<td>sms_consent_change</td>
+<td>CUSTOMERS_MARKETING_CONSENT_CREATE</td>
+</tr>
+<tr>
+<td>email_consent_change</td>
+<td>CUSTOMERS_EMAIL_MARKETING_CONSENT_CREATE</td>
+</tr>
+</tbody>
+</table>
+<p>Selected webhooks are automatically registered with Shopify and configured to send data to Tealium EventStream.</p>
+<h2 id="split-cookie-mode">Split cookie mode</h2>
+<p>Split cookie mode provides more transparency about cookies by writing individual cookies instead of a single combined <code>utag_main</code> cookie. Split cookie settings are available if <code>utag.js</code> version 4.50 or higher is detected.</p>
+<p>To split the combined cookie into individual cookies, use the following steps:</p>
+<ol>
+<li>Click <strong>Detect utag.js Version</strong> to check your <code>utag.js</code> version.</li>
+<li>Select the <strong>Enable split cookie mode</strong> checkbox.</li>
+<li>Select which cookie values to keep in the <code>utag_main</code> cookie. Unchecked values are written as individual cookies with the <code>utag_main_</code> prefix.<br>
+The <code>ses_id</code>, <code>_st</code>, and <code>_ss</code> cookies are required and marked with red badges to prevent visitor/session count inflation.</li>
+<li>Click <strong>Save Cookie settings</strong>.</li>
+</ol>
+<h2 id="uninstall-the-tealium-shopify-app">Uninstall the Tealium Shopify app</h2>
 <p>To remove the Tealium app from Shopify, use the following steps:</p>
 <ol>
-<li>In Shopify, go to <strong>Visit Settings &gt; Custom data</strong>,</li>
+<li>In Shopify, go to <strong>Visit Settings &gt; Custom data</strong>.</li>
 <li>In the list, click <strong>Tealium</strong>, which will be near the bottom of the list.<br>
-The Tealium meta fields will be listed.</li>
+The Tealium metadata fields will be listed.</li>
 <li>Scroll down in the list of fields and click <strong>Delete</strong>.</li>
 </ol>
 
@@ -415,14 +473,14 @@ The Tealium meta fields will be listed.</li>
 </div><div class="w-50 mr3">
   
   
-  <a href="/platforms/shopify/tealium-shopify-configuration/"
+  <a href="/platforms/shopify/configure-shopify-marketplace/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Tealium configuration "</title>
+      <title>"Configure Shopify Markets "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Tealium configuration</div>
+      <div>Configure Shopify Markets</div>
     </section>
   </a>
   
@@ -454,7 +512,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 4, 2025 
+          <p>This page was last updated:  January 13, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -468,14 +526,16 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install-the-tealium-app" href="javascript:void(0)">Install the Tealium app</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#installation" href="javascript:void(0)">Installation</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install-the-tealium-app" href="javascript:void(0)">Install the Tealium app</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-the-shopify-theme" href="javascript:void(0)">Enable the Shopify theme</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-checkout-pixel" href="javascript:void(0)">Configure the checkout pixel</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#privacy-and-consent" href="javascript:void(0)">Privacy and consent</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-client-side-consent-integrations" href="javascript:void(0)">Configure client-side consent integrations</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validate-your-installation" href="javascript:void(0)">Validate your installation</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uninstall-the-tealium-shopify-app-app" href="javascript:void(0)">Uninstall the Tealium Shopify app App</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-events-management" href="javascript:void(0)">Server events management</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#split-cookie-mode" href="javascript:void(0)">Split cookie mode</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uninstall-the-tealium-shopify-app" href="javascript:void(0)">Uninstall the Tealium Shopify app</a></li>
               </nav>
   </aside></nav>
 

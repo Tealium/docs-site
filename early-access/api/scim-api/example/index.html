@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "4",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -271,6 +271,10 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/get-users-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".get-users-api">GET Users API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/patch-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-group-api">PATCH Group API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/early-access/api/scim-api/patch-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".patch-user-api">PATCH User API</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT Group API</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT User API</a></li>
@@ -364,50 +368,35 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Use the SCIM to automatically:</p>
+  <p>Use the SCIM API to automatically:</p>
 <ul>
-<li>Provision and Deprovision Users
+<li>Provision and deprovision users
 <ul>
-<li>View, Create, and Delete users</li>
+<li>View, create, and delete users</li>
 <li>Remove users (deactivate SCIM identity)</li>
 <li>Re-add users (reactivate SCIM identity)</li>
 </ul>
 </li>
-<li>Update Users and Groups
+<li>Update users and groups
 <ul>
-<li>Update Users</li>
-<li>View, Create, Update, andDelete groups</li>
+<li>Update users</li>
+<li>View, create, update, and delete groups</li>
 </ul>
 </li>
 </ul>
 <p>When SCIM is enabled for Tealium, user memberships are synced between Tealium and an identity provider.</p>
-<p>The internal Tealium group SCIM API implements part of the RFC7644 protocol.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li><a href="/administration/admin-roles/">Account admin or user admin</a> permissions.</li>
-<li>Long-lived bearer token. for more information on how to generate the bearer token, see <a href="/early-access/api/scim-api/about/#authentication">Authentication</a>.</li>
+<li>Long-lived bearer token. For more information on how to generate the bearer token, see <a href="/early-access/api/scim-api/about/#authentication">Authentication</a>.</li>
 </ul>
-<!--
-### How to configure Tealium SCIM
-
-GA METHOD
-
-To generate a bearer token, perform the following steps:
-
-1. From the admin menu, select **SSO (Single Sign-On)**.
-1. Select **Generate a SCIM token**.
-1. For configuration of your identity provider, save the:
-   * Token from the **Your SCIM token** field.
-   * URL from the **SCIM API endpoint URL** field.
-
--->
 <h2 id="configure-an-identity-provider">Configure an identity provider</h2>
-<p>You can configure <!-- one of--> the following identity provider<!--s-->:</p>
+<p>You can configure the following identity providers:</p>
 <ul>
 <li>Microsoft Entra ID (formerly Azure Active Directory)</li>
+<li>Okta</li>
 </ul>
-<!-- * Okta -->
-<p>We can guarantee compatibility with this provider. However, other IdPs may require additional configuration or tuning. For further guidance, contact your identity provider and Tealium Support to validate compatibility.</p>
+<p>These providers are fully compatible. However, other IdPs may require additional configuration or tuning. For further guidance, contact your identity provider and Tealium Support to validate compatibility.</p>
 <h2 id="configure-microsoft-entra-id">Configure Microsoft Entra ID</h2>
 <p>The SAML application created for <a href="https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/view-applications-portal">Azure Active Directory</a> during SSO setup must be configured for SCIM.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must configure SCIM provisioning exactly as detailed in the following instructions. If misconfigured, you will encounter issues with user provisioning and sign in. If you have any trouble or questions with any step, contact Tealium support.</p>
@@ -425,13 +414,13 @@ To generate a bearer token, perform the following steps:
 <li>In your app, click the <strong>Provisioning</strong> tab and click <strong>Connect your application</strong>.</li>
 <li>Under <strong>Admin Credentials</strong>, enter the following values:
 <ul>
-<li>In the <strong>Tenant URL</strong> field, enter the SCIM API endpoint URL from Tealium: <code>https://developer.tealiumapis.com/scim/v2?aadOptscim062020</code></li>
+<li>In the <strong>Tenant URL</strong> field, enter the SCIM API endpoint URL from Tealium: <code>https://developer.tealiumapis.com/scim/v2?aadOptscim062020</code>. The <code>aadOptscim062020</code> flag enables group management specifically for Microsoft Entra ID.</li>
 <li>In the <strong>Secret Token</strong> field, enter your SCIM bearer token from Tealium.</li>
 </ul>
 </li>
 <li>Click <strong>Test Connection</strong>. A success message appears.</li>
 <li>Click <strong>Create</strong>.</li>
-<li>Click <strong>Get Started</strong> and then click <strong>Start provisioning</strong></li>
+<li>Click <strong>Get Started</strong> and then click <strong>Start provisioning</strong>.</li>
 </ol>
 <h3 id="configure-user-assignments">Configure user assignments</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>SCIM group provisioning is not currently supported in Early Access.</p>
@@ -522,64 +511,47 @@ To generate a bearer token, perform the following steps:
 <li>Go to <strong>Provisioning</strong> and click <strong>Start provisioning</strong>.</li>
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>Provisioning usually starts within a few minutes, but may take up to 40 minutes for the first sync.</p>
-<!-- ## Configure Okta
-
-To configure Okta for SCIM, use the following steps:
-
-1. Log in to Okta.
-1. In the upper-right corner, click **Admin**. The button is not visible from the **Admin** area.
-1. Go to  **Applications > Applications** tab
-1. Click **Browse App Catalog**.
-1. Select *SCIM 2.0 Test App (OAuth Bearer Token)** and click **Add Integration**.
-1. Click **Next** and **Done** to skip general settings and sign-on options.
-1. Under the **Provisioning** tab, click **Configure API integration**.
-1. Click **Enable API integration**.
-    * Under **Base URL**, paste the URL you copied from **SCIM API endpoint URL** on the Tealium SCIM configuration page: `https://developer.tealiumapis.com/scim/v2/`
-    * Under **OAuth Bearer Token**, paste the SCIM bearer token you copied from Your SCIM token on the Tealium SCIM configuration page.
-    * To verify the configuration, click **Test API Credentials**.
-1. Click **Save**.
-
-### Configure provisioning
-
-1. Under the **Provisioning** tab, click **To App**.
-1. Under the **Provisioning to App** section, click **Edit**.
-1. Select the **Enable** checkbox for **Create Users**, **Update User Attributes**, and **Deactivate Users**.
-1. Click **Save**.
-
-### Update attribute mappings
-
-1. Under **Provisioning > Settings**, click **To App**.
-1. Scroll down to the **Attribute Mappings** section and remove everything but `givenName` and `familyName`.
-1. Remove the mapping for each unnecessary attribute by clicking the x next to the row. 
-1. Under **Provisioning > Settings**, click **To Okta**.
-1. Remove everything but `givenName` and `familyName` by clicking the `x` next to each row.
-1. In the **Provisioning** tab, click **To App** under **Settings**.
-1. Under the **Attribute Mappings** section, click **Go to Profile Editor**.
-1. Remove all the attributes but `givenName` and `familyName` by clicking the `x` next to each row.
-
-## User access
-
-During the synchronization process, all new users:
-
-* Receive Tealium accounts.
-* Are welcomed to their identity provider groups with an invitation email.
-    * You can bypass email confirmation with a verified domain.
-
-During provisioning:
-
-* Both primary and secondary emails are considered when checking whether a Tealium user account exists.
-* Duplicate usernames are handled by adding suffix `1` when creating the user. For example, if `test_user` already exists, `test_user1` is used. If `test_user1` already exists, Tealium increments the suffix to find an unused username. If no unused username is found after 4 tries, a random string is attached to the username. -->
-<!-- On subsequent visits, new and existing users can access identity provider groups either:
-
-* Through the identity provider’s dashboard.
-* By visiting links directly. -->
+<h2 id="configure-okta">Configure Okta</h2>
+<p>To configure Okta for SCIM:</p>
+<ol>
+<li>Log in to Okta.</li>
+<li>Go to  <strong>Applications &gt; Applications</strong>.</li>
+<li>Click <strong>Browse App Catalog</strong>.</li>
+<li>Select <strong>SCIM 2.0 Test App (OAuth Bearer Token)</strong> and click <strong>Add Integration</strong>.</li>
+<li>Click <strong>Next</strong> and <strong>Done</strong> to skip the <strong>General Settings</strong> and <strong>Sign-On Options</strong> pages.</li>
+</ol>
+<h3 id="connect-to-tealium-scim-api">Connect to Tealium SCIM API</h3>
+<ol>
+<li>On the <strong>SCIM Application</strong> screen, click the <strong>Provisioning</strong> tab.</li>
+<li>Click <strong>Configure API integration</strong>.</li>
+<li>Enable the <strong>Enable API integration</strong> checkbox.</li>
+<li>Enter the following information:
+<ul>
+<li>Under <strong>Base URL</strong>, paste the URL you copied from <strong>SCIM API endpoint URL</strong> on the Tealium SCIM configuration page: <code>https://developer.tealiumapis.com/scim/v2/</code></li>
+<li>Under <strong>OAuth Bearer Token</strong>, paste the SCIM bearer token you copied from <strong>Your SCIM token</strong> on the Tealium SCIM configuration page.</li>
+<li>To verify the configuration, click <strong>Test API Credentials</strong>.</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<h3 id="configure-provisioning-settings">Configure provisioning settings</h3>
+<ol>
+<li>Under the <strong>Provisioning</strong> tab, scroll down to <strong>Settings</strong> and click <strong>To App</strong>.</li>
+<li>Under the <strong>Provisioning to App</strong> section, click <strong>Edit</strong>.</li>
+<li>Enable the <strong>Enable</strong> checkbox for <strong>Create Users</strong>, <strong>Update User Attributes</strong>, and <strong>Deactivate Users</strong>.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<h2 id="user-access">User access</h2>
+<p>During the synchronization process, all new users receive Tealium accounts and are welcomed to their identity provider groups with an invitation email. You can bypass email confirmation with a verified domain.</p>
+<p>During provisioning, both primary and secondary emails are considered when checking whether a Tealium user account exists. Duplicate usernames are handled by adding suffix <code>1</code> when creating the user. For example, if <code>test_user</code> already exists, <code>test_user1</code> is used. If <code>test_user1</code> already exists, Tealium increments the suffix to find an unused username. If no unused username is found after 4 tries, a random string is attached to the username.</p>
+<p>On subsequent visits, new and existing users can access identity provider groups either through the identity provider’s dashboard or by visiting links directly.</p>
 <h2 id="remove-access">Remove access</h2>
 <p>Remove or deactivate a user on the identity provider to remove their access.</p>
-<p>After the identity provider performs a sync based on its configured schedule, the user&rsquo;s membership is revoked and they lose access.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Removing or deactivating a user on the identity provider does not delete the Tealium user account. The Tealium user account will be deactivated, and it can be reactivated by re-adding the user to the identity provider.</p>
+<p>After the identity provider performs a sync based on its configured schedule, the identity provider revokes the user&rsquo;s membership and they lose access.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Removing or deactivating a user on the identity provider does not delete the Tealium user account. The Tealium user account is deactivated, and it can be reactivated by re-adding the user to the identity provider.</p>
 <h2 id="reactivate-access">Reactivate access</h2>
 <p>After a user is removed or deactivated through SCIM, reactivate that user by adding them to the SCIM identity provider.</p>
-<p>After the identity provider performs a sync based on its configured schedule, the user&rsquo;s SCIM identity is reactivated and their group memberships are restored.</p>
+<p>After the identity provider performs a sync based on its configured schedule, the identity provider reactivates the user&rsquo;s SCIM identity and restores their group memberships.</p>
 
 </div>
 
@@ -640,7 +612,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2025 
+          <p>This page was last updated:  January 12, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -663,7 +635,11 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-groups" href="javascript:void(0)">Assign groups</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-users" href="javascript:void(0)">Assign users</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-final-settings-and-start-provisioning" href="javascript:void(0)">Configure final settings and start provisioning</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-access" href="javascript:void(0)">Remove access</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-okta" href="javascript:void(0)">Configure Okta</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connect-to-tealium-scim-api" href="javascript:void(0)">Connect to Tealium SCIM API</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-provisioning-settings" href="javascript:void(0)">Configure provisioning settings</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-access" href="javascript:void(0)">User access</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-access" href="javascript:void(0)">Remove access</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reactivate-access" href="javascript:void(0)">Reactivate access</a></li>
               </nav>
   </aside></nav>

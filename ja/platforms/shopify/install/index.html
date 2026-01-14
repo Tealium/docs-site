@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/shopify/install/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealium Shopifyアプリのインストールについて説明します。" />
+<meta property="og:description" content="この記事では、ShopifyでTealiumアプリをインストールする方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ShopifyでTealiumアプリをインストールする | Tealium Shopifyアプリ | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -264,11 +264,13 @@
         
         <ul data-level="1" class="shopify desktopmenu animated fadeIn list pl0 mt2">
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/shopify/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tealium-shopify-app">について</a></li>
+        <a href="/ja/platforms/shopify/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tealium-shopify-app">概要</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/shopify/tealium-shopify-configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-shopify-configuration">Tealiumの構成</a></li>
+    <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/shopify/configure-shopify-marketplace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-shopify-markets-tealium-shopify-app">Shopify Marketsの構成</a></li>
     <li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/shopify/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".install-tealium-shopify-app">Tealiumアプリをインストールする</a></li>
+        <a href="/ja/platforms/shopify/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".install-tealium-shopify-app">Tealiumアプリのインストール</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/shopify/data-layer-and-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".variables-events-tealium-shopify-app">データレイヤーとイベント</a></li></ul></li></ul>
 </nav>
@@ -311,90 +313,82 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium Shopifyアプリのインストールについて説明します。
+      この記事では、ShopifyでTealiumアプリをインストールする方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium Shopifyアプリをインストールし、構成する前に、Tealiumで以下の構成を行ってください：</p>
+  <p>Tealium Shopifyアプリをインストールして構成する前に、Tealiumで以下を構成してください：</p>
 <ul>
 <li>Tealium HTTP APIデータソース</li>
 <li>イベント仕様</li>
-<li>データレイヤー <code>restock</code> 変数</li>
+<li>データレイヤー<code>restock</code>変数</li>
 </ul>
 <p>これらの構成タスクについての情報は、<a href="/ja/platforms/shopify/tealium-shopify-configuration/">Tealium構成</a>を参照してください。</p>
-<h2 id="tealiumアプリをインストールする">Tealiumアプリをインストールする</h2>
-<p>以下のセクションでは、ShopifyでTealiumアプリをインストールし、Shopifyテーマを有効にし、Checkout Pixelを構成する手順を提供します。</p>
-<h3 id="tealiumアプリをインストールする-1">Tealiumアプリをインストールする</h3>
+<h2 id="インストール">インストール</h2>
+<p>以下のセクションでは、ShopifyでTealiumアプリをインストールし、Shopifyテーマを有効にし、チェックアウトピクセルを構成する手順を提供します。</p>
+<h3 id="tealiumアプリのインストール">Tealiumアプリのインストール</h3>
 <ol>
-<li>Shopifyで、<strong>Apps</strong>の下で<strong>Tealium</strong>アプリを検索し、選択します。</li>
-<li><strong>Config</strong>タブで、<strong>Account</strong>、<strong>Profile</strong>、<strong>Environment</strong>情報を入力します。<br>
-Environmentは通常、<code>prod</code>、<code>dev</code>、<code>qa</code>のいずれかになります。</li>
-<li><strong>Checkout Tracking</strong>オプションを選択します：
+<li>Shopifyの<strong>アプリ</strong>の下で、<strong>Tealium</strong>アプリを選択します。</li>
+<li><strong>構成</strong>タブで、<strong>アカウント</strong>、<strong>プロファイル</strong>、<strong>環境</strong>情報を入力します。
+環境値は<code>prod</code>、<code>dev</code>、または<code>qa</code>です。</li>
+<li><strong>チェックアウトトラッキング</strong>オプションを選択します：
 <ul>
-<li><strong>Client Side Only</strong>：Tealium iQ Tag Managementのみを使用している場合は、このオプションを選択します。</li>
-<li><strong>Client and Server Side</strong>：Shopify Webhooksを使用してEventStreamにデータを送信する場合は、このオプションを選択します。</li>
+<li><strong>クライアントサイドのみ</strong>：Tealium iQタグ管理のみをお持ちの場合は、このオプションを選択します。</li>
+<li><strong>クライアントとサーバーサイド</strong>：Shopify Webhooksを使用してEventStreamにデータを送信する場合は、このオプションを選択します。</li>
 </ul>
 </li>
-<li><strong>Client and Server Side</strong>を選択した場合は、以下の手順を実行します：
+<li><strong>クライアントとサーバーサイド</strong>を選択した場合、以下を行います：
 <ol>
-<li>Tealiumで、<strong>Server-Side &gt; Data Sources</strong>に移動し、Shopify用に作成したデータソースを選択します。</li>
-<li>選択したデータソースの<strong>Data Source Key</strong>をコピーします。</li>
-<li>Shopifyで、データソースキーを<strong>Server Side Data Source ID</strong>フィールドに貼り付けます。</li>
+<li>Tealiumで<strong>サーバーサイド &gt; データソース</strong>に移動し、Shopify用に作成したデータソースを選択します。</li>
+<li>選択したデータソースの<strong>データソースキー</strong>をコピーします。</li>
+<li>Shopifyで、データソースキーを<strong>サーバーサイドデータソースID</strong>フィールドに貼り付けます。</li>
 </ol>
 </li>
-<li>First-Party Domainsを使用している場合は、ドメイン名を入力します。</li>
-<li>構成が完了したら<strong>Submit</strong>をクリックします。
-Webhooksはすぐに作成されます。</li>
+<li>構成が完了したら<strong>送信</strong>をクリックします。Webhooksは即座に作成されます。</li>
 </ol>
-<h3 id="shopifyテーマを有効にする">Shopifyテーマを有効にする</h3>
+<h3 id="shopifyテーマの有効化">Shopifyテーマの有効化</h3>
 <p>Shopifyテーマを有効にするには、以下の手順を使用します：</p>
 <ol>
-<li>Shopifyで、<strong>Theme Extension</strong>タブで<strong>Enable</strong>をクリックします。<br>
-これにより、Tealiumライブラリ<code>utag.js</code>とShopifyイベントの標準データレイヤーがロードされ、<strong>Theme Manager</strong>が開きます。</li>
-<li><strong>Theme Manager</strong>で、<strong>Tealium Settings</strong>をオンにします。</li>
-<li>デバッグを有効にするには、<strong>Tealium Settings</strong>の隣の下矢印をクリックし、次の操作を行います：
-<ol>
-<li><strong>Enabled</strong>をクリックします。</li>
-<li>Environment（<code>prod</code>、<code>dev</code>、<code>qa</code>）を入力します。</li>
+<li>Shopifyで<strong>オンラインストア &gt; テーマ &gt; カスタマイズ</strong>に移動します。</li>
+<li><strong>アプリ埋め込み</strong>をクリックしてTealium拡張機能を有効にします。
+これにより、Tealiumライブラリ<code>utag.js</code>とShopifyイベントの標準データレイヤーが読み込まれます。</li>
+<li><strong>Tealium構成</strong>を<code>オン</code>に構成します。</li>
+<li><strong>保存</strong>をクリックします。</li>
 </ol>
-</li>
-</ol>
-<h3 id="checkout-pixelを構成する">Checkout Pixelを構成する</h3>
-<p>Tealiumアプリは、カスタムチェックアウトピクセルを使用して、チェックアウトイベントデータをEventStreamに送信します。EventStreamが有効になっていない場合、チェックアウトピクセルを構成する必要はありません。</p>
-<p>Checkout Pixelを構成するには、以下の手順を使用します：</p>
+<h3 id="チェックアウトピクセルの構成">チェックアウトピクセルの構成</h3>
+<p>Tealiumアプリはカスタムチェックアウトピクセルを使用して、チェックアウトイベントデータをEventStreamに送信します。EventStreamが有効になっていない場合は、チェックアウトピクセルを構成する必要はありません。</p>
+<p>チェックアウトピクセルを構成するには、以下の手順を使用します：</p>
 <ol>
-<li><strong>Checkout Install</strong>タブで、表示されるサンプルコードをコピーします。</li>
-<li><strong>Shopify Admin</strong>で、<strong>Settings &gt; Customer Events</strong>に移動します。<br>
-TealiumアプリがインストールしたTealiumピクセルが表示されます。チェックアウトピクセルは手動で追加する必要があります</li>
-<li><strong>Add Custom Pixel</strong>をクリックし、<strong>Pixel Name</strong>に<code>Tealium Checkout</code>を入力します。</li>
-<li><strong>Add pixel</strong>をクリックします。</li>
-<li><strong>Customer Privacy</strong>の下では、推奨されるオプションは次のとおりです：
+<li><strong>Shopify管理</strong>で、<strong>構成 &gt; 顧客イベント</strong>に移動します。
+TealiumアプリによってインストールされたTealiumピクセルが表示されます。チェックアウトピクセルは手動で追加する必要があります。</li>
+<li><strong>カスタムピクセルの追加</strong>をクリックし、<strong>ピクセル名</strong>に<code>Tealium Checkout</code>を入力します。</li>
+<li><strong>顧客プライバシー</strong>の下で、推奨されるオプションは次のとおりです：
 <ul>
-<li><strong>Permission</strong>：<strong>Analytics</strong>を選択します。</li>
-<li><strong>Data sale</strong>：<strong>Data collected does not qualify as data sale</strong>を選択します。<br>
-これは、Tealiumで収集しているデータによって変わる可能性があります。</li>
+<li><strong>許可</strong>：<strong>アナリティクス</strong>を選択します。</li>
+<li><strong>データ販売</strong>：<strong>データ収集はデータ販売に該当しない</strong>を選択します。
+これはTealiumで収集しているデータによって変更される場合があります。</li>
 </ul>
 </li>
-<li><strong>Code</strong>ボックスに表示されるサンプルコードを削除します。</li>
-<li><strong>Checkout Install</strong>タブからコピーしたコードを<strong>Code</strong>ボックスに貼り付けます。</li>
-<li><strong>Save</strong>をクリックします。</li>
-<li><strong>Connect</strong>をクリックします。</li>
+<li><strong>コード</strong>ボックスに表示されている例示コードを削除します。</li>
+<li><strong>顧客イベント</strong>タブからコピーしたコードを<strong>コード</strong>ボックスに貼り付けます。</li>
+<li><strong>保存</strong>をクリックします。</li>
+<li><strong>接続</strong>をクリックします。</li>
 </ol>
 <h2 id="プライバシーと同意">プライバシーと同意</h2>
-<p>Tealiumアプリは、<a href="https://shopify.dev/docs/api/customer-privacy">Shopify Customer Privacy API</a>を利用した同意統合のためのカスタムテンプレートを使用します。このセクションでは、Shopifyとの同意管理とプライバシーについての推奨アプローチの構成方法を示します。</p>
-<p>詳細については、<a href="/ja/consent/client-side/consent-integrations/about/">Tealium: Consent Integrations</a>を参照してください。</p>
-<p>Tealium Shopifyアプリは、組み込みのShopifyクッキーバナーとShopifyプライバシープラットフォームを使用することができます。Tealium iQ Consent Integrationsを使用して、サードパーティのバナーや他の同意管理プラットフォームを構成します。</p>
-<h3 id="tealium同意統合を構成する">Tealium同意統合を構成する</h3>
-<p>Tealium同意統合の構成は以下の通りです：</p>
+<p>Tealiumアプリは、<a href="https://shopify.dev/docs/api/customer-privacy">Shopify Customer Privacy API</a>を使用するカスタムテンプレートを使用して同意統合を行います。このセクションでは、Shopifyでの同意管理とプライバシーの推奨アプローチの構成方法を示します。</p>
+<p>詳細については、<a href="/ja/consent/client-side/consent-integrations/about/">同意統合について</a>を参照してください。</p>
+<p>Tealium Shopifyアプリは、組み込みのShopifyクッキーバナーとShopifyプライバシープラットフォームを使用できます。サードパーティのバナーや他の同意管理プラットフォームを構成するためにクライアントサイドの同意統合を使用します。</p>
+<h3 id="クライアントサイドの同意統合の構成">クライアントサイドの同意統合の構成</h3>
+<p>クライアントサイドの同意統合の構成は、以下を含みます：</p>
 <ul>
-<li>目的グループと目的を作成する</li>
-<li>タグを目的にマッピングする</li>
-<li>Shopifyのための同意統合を追加する</li>
+<li>目的グループと目的の作成</li>
+<li>目的にタグをマッピング</li>
+<li>Shopifyのための同意統合の追加</li>
 </ul>
-<h4 id="目的グループと目的を作成する">目的グループと目的を作成する</h4>
-<p>Shopifyのための同意統合を追加するには、目的グループと1つ以上の目的を作成します。作成する各目的には名前とキーが必要です。名前はShopifyの同意カテゴリの1つに対応する必要があります。以下の表はShopifyの同意目的のキーと名前を示しています：</p>
+<h4 id="目的グループと目的の作成">目的グループと目的の作成</h4>
+<p>Shopifyのための同意統合を追加するには、目的グループと1つ以上の目的を作成します。作成する各目的には、名前とキーが必要です。名前はShopifyの同意カテゴリのいずれかに対応する必要があります。以下の表は、Shopify同意目的のキーと名前を示しています：</p>
 <table>
 <thead>
 <tr>
@@ -421,10 +415,10 @@ TealiumアプリがインストールしたTealiumピクセルが表示されま
 </tr>
 </tbody>
 </table>
-<p>各タグに対して、<strong>Map</strong>ドロップダウンメニューを選択し、タグに最も適した目的を割り当てる前に、適切なTealium iQ目的を割り当てます。</p>
-<p>目的グループと目的を作成する方法についての詳細は、<a href="/ja/consent/client-side/consent-integrations/manage/#add-a-purpose-group">Add a purpose group</a>を参照してください。</p>
-<h4 id="カスタム同意統合を追加する">カスタム同意統合を追加する</h4>
-<p>Shopifyのカスタム統合を構成する際には、以下の構成を使用します：</p>
+<p>異なる目的にタグをマッピングする前に、適切なTealium iQ目的を割り当てます。各タグについて、<strong>マップ</strong>ドロップダウンメニューを選択し、タグに最も適切な目的を割り当てます。</p>
+<p>目的グループと目的の作成についての詳細は、<a href="/ja/consent/client-side/consent-integrations/manage/#add-a-purpose-group">目的グループの追加</a>を参照してください。</p>
+<h4 id="カスタム同意統合の追加">カスタム同意統合の追加</h4>
+<p>Shopifyのためのカスタム統合を構成する際には、以下の構成を使用します：</p>
 <table>
 <thead>
 <tr>
@@ -446,38 +440,98 @@ TealiumアプリがインストールしたTealiumピクセルが表示されま
 <td><code>_tracking_consent</code></td>
 </tr>
 <tr>
-<td>Enforcement Rule</td>
+<td>施行ルール</td>
 <td>デフォルトを使用</td>
 </tr>
 <tr>
-<td>Publish Locations</td>
-<td>テストのための<code>Dev</code><br>テストが完了したら<code>Prod</code></td>
+<td>公開場所</td>
+<td><ul><li><code>Dev</code>でテスト</li><li>テスト完了時に<code>Prod</code></li></ul></td>
 </tr>
 <tr>
-<td>Purpose Group</td>
-<td>Shopify用に作成した目的グループ</td>
+<td>目的グループ</td>
+<td>Shopifyのために作成した目的グループ。</td>
 </tr>
 </tbody>
 </table>
-<p>カスタム同意統合を追加する方法についての詳細は、<a href="/ja/consent/client-side/consent-integrations/manage/#add-an-integration">Add an integration</a>を参照してください。</p>
-<h2 id="インストールを検証する">インストールを検証する</h2>
-<p>Shopify Custom PixelsはiFrameサンドボックスで実行され、ほとんどのタグモニタリングプラグインと互換性がないため、Tealium Universal Tag Debuggerを含む。このセクションでは、手動でデバッグモードを実装する方法について説明します。</p>
-<p>このデバッグモードを有効にするには、以下の手順を実行します：</p>
+<p>カスタム同意統合の追加についての詳細は、<a href="/ja/consent/client-side/consent-integrations/manage/#add-an-integration">統合の追加</a>を参照してください。</p>
+<h2 id="インストールの検証">インストールの検証</h2>
+<p>ShopifyカスタムピクセルはiFrameサンドボックスで動作するため、Tealium Universal Tag Debuggerを含むほとんどのタグモニタリングプラグインは互換性がありません。このセクションでは、デバッグモードを手動で実装する方法について情報を提供します。</p>
+<p>このデバッグモードを有効にするには、次の手順に従います：</p>
 <ol>
 <li>テストしているページに<code>tealium_debug</code>という名前のクッキーを追加します。</li>
-<li>クッキーの値を<code>dev</code>に構成します。<br>
-これにより、<code>utagdb=true</code>が自動的に構成され、詳細な出力が有効になり、Tealiumの<code>dev</code>環境バージョンがロードされます。</li>
-<li>追加の出力を表示するには、ブラウザのコンソールを開きます。</li>
+<li>クッキーの値を<code>dev</code>に構成します。
+これにより自動的に<code>utagdb=true</code>が構成され、詳細な出力が有効になり、Tealiumの<code>dev</code>環境バージョンが読み込まれます。</li>
+<li>追加の出力を確認するには、ブラウザのコンソールを開きます。</li>
 </ol>
-<p>このデバッグモードはクライアントサイドにのみ適用されます。サーバーサイドのデータ収集の検証には使用できません。</p>
-<p>WebhooksとEventStreamに送信されるイベントのデバッグは、EventStreamのLive Eventsページを使用して行うことができます。テストしているページをリロードする必要があります。これは、チェックアウトを含む全サイトで動作します。詳細については、<a href="/ja/server-side/live-events-feeds/about-live-events/">About Live Events</a>を参照してください。</p>
-<h2 id="tealium-shopifyアプリをアンインストールする">Tealium Shopifyアプリをアンインストールする</h2>
+<p>デバッグモードはクライアントサイドにのみ適用されます。サーバーサイドのデータ収集を検証するためには使用できません。</p>
+<p>WebhooksやEventStreamに送信されたイベントのデバッグは、EventStreamのLive Eventsページを使用して行うことができます。テスト中のページをリロードする必要があります。これはチェックアウトを含むサイト全体で機能します。詳細については、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Eventsについて</a>を参照してください。</p>
+<ol>
+<li><strong>Shopify管理</strong>で、<strong>オンラインストア &gt; テーマ &gt; カスタマイズ &gt; アプリ埋め込み</strong>に移動します。</li>
+<li>Tealium拡張機能の構成でデバッグを有効にし、<strong>保存</strong>をクリックします。</li>
+<li>ウェブサイトをリロードし、ブラウザのコンソールを確認して詳細なデバッグ情報を確認します。</li>
+</ol>
+<h2 id="サーバーイベント管理">サーバーイベント管理</h2>
+<p><strong>サーバーイベント</strong>タブでは、サーバーサイドトラッキングのために登録されるShopify webhooksを選択できます。トラッキング要件に基づいて個々のwebhooksを有効または無効にします：</p>
+<table>
+<thead>
+<tr>
+<th>Tealiumイベント</th>
+<th>Shopify Webhook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cart_update</td>
+<td>CARTS_UPDATE</td>
+</tr>
+<tr>
+<td>cart_create</td>
+<td>CARTS_CREATE</td>
+</tr>
+<tr>
+<td>checkouts_create</td>
+<td>CHECKOUTS_CREATE</td>
+</tr>
+<tr>
+<td>purchase</td>
+<td>ORDERS_CREATE</td>
+</tr>
+<tr>
+<td>shopify_refund</td>
+<td>REFUNDS_CREATE</td>
+</tr>
+<tr>
+<td>Shopify新規顧客</td>
+<td>CUSTOMERS_CREATE</td>
+</tr>
+<tr>
+<td>sms同意変更</td>
+<td>CUSTOMERS_MARKETING_CONSENT_CREATE</td>
+</tr>
+<tr>
+<td>email同意変更</td>
+<td>CUSTOMERS_EMAIL_MARKETING_CONSENT_CREATE</td>
+</tr>
+</tbody>
+</table>
+<p>選択したwebhooksは自動的にShopifyに登録され、Tealium EventStreamにデータを送信するように構成されます。</p>
+<h2 id="スプリットクッキーモード">スプリットクッキーモード</h2>
+<p>スプリットクッキーモードは、個々のクッキーとして書き込むことでクッキーについての透明性を高めます。<code>utag.js</code>バージョン4.50以上が検出された場合にのみ、スプリットクッキー構成が利用可能です。</p>
+<p>統合されたクッキーを個々のクッキーに分割するには、以下の手順を使用します：</p>
+<ol>
+<li><strong>utag.jsバージョンの検出</strong>をクリックして<code>utag.js</code>バージョンを確認します。</li>
+<li><strong>スプリットクッキーモードを有効にする</strong>チェックボックスを選択します。</li>
+<li><code>utag_main</code>クッキーに保持するクッキー値を選択します。チェックされていない値は<code>utag_main_</code>プレフィックスで個々のクッキーとして書き込まれます。
+<code>ses_id</code>、<code>_st</code>、<code>_ss</code>クッキーは必須であり、訪問/セッション数のインフレを防ぐために赤いバッジが付けられています。</li>
+<li><strong>クッキー構成を保存</strong>をクリックします。</li>
+</ol>
+<h2 id="tealium-shopifyアプリのアンインストール">Tealium Shopifyアプリのアンインストール</h2>
 <p>ShopifyからTealiumアプリを削除するには、以下の手順を使用します：</p>
 <ol>
-<li>Shopifyで、<strong>Visit Settings &gt; Custom data</strong>に移動します。</li>
-<li>リストで、リストの下部近くにある<strong>Tealium</strong>をクリックします。<br>
-Tealiumのメタフィールドがリストされます。</li>
-<li>フィールドのリストを下にスクロールし、<strong>Delete</strong>をクリックします。</li>
+<li>Shopifyで、<strong>構成 &gt; カスタムデータ</strong>にアクセスします。</li>
+<li>リストの中で、リストの下の方にある<strong>Tealium</strong>をクリックします。<br>
+Tealiumのメタデータフィールドがリストされます。</li>
+<li>フィールドリストを下にスクロールし、<strong>削除</strong>をクリックします。</li>
 </ol>
 
 </div>
@@ -500,14 +554,14 @@ Tealiumのメタフィールドがリストされます。</li>
 </div><div class="w-50 mr3">
   
   
-  <a href="/ja/platforms/shopify/tealium-shopify-configuration/"
+  <a href="/ja/platforms/shopify/configure-shopify-marketplace/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Tealiumの構成 "</title>
+      <title>"Shopify Marketsの構成 "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Tealiumの構成</div>
+      <div>Shopify Marketsの構成</div>
     </section>
   </a>
   
@@ -539,7 +593,7 @@ Tealiumのメタフィールドがリストされます。</li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -553,14 +607,16 @@ Tealiumのメタフィールドがリストされます。</li>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealiumアプリをインストールする</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealiumアプリをインストールする</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#shopify%E3%83%86%E3%83%BC%E3%83%9E%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">Shopifyテーマを有効にする</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#checkout-pixel%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Checkout Pixelを構成する</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">Tealiumアプリのインストール</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#shopify%E3%83%86%E3%83%BC%E3%83%9E%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">Shopifyテーマの有効化</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">チェックアウトピクセルの構成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%81%A8%E5%90%8C%E6%84%8F" href="javascript:void(0)">プライバシーと同意</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E5%90%8C%E6%84%8F%E7%B5%B1%E5%90%88%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealium同意統合を構成する</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%92%E6%A4%9C%E8%A8%BC%E3%81%99%E3%82%8B" href="javascript:void(0)">インストールを検証する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-shopify%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealium Shopifyアプリをアンインストールする</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E5%90%8C%E6%84%8F%E7%B5%B1%E5%90%88%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">クライアントサイドの同意統合の構成</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">インストールの検証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86" href="javascript:void(0)">サーバーイベント管理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%97%E3%83%AA%E3%83%83%E3%83%88%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">スプリットクッキーモード</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-shopify%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">Tealium Shopifyアプリのアンインストール</a></li>
               </nav>
   </aside></nav>
 

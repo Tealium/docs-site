@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/batched-actions/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealiumコネクタとバッチ処理アクションの動作について説明します。" />
+<meta property="og:description" content="この記事では、Tealiumコネクターでのバッチ処理アクションの動作について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>バッチ処理アクション | コネクター | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -1040,46 +1040,48 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealiumコネクタとバッチ処理アクションの動作について説明します。
+      この記事では、Tealiumコネクターでのバッチ処理アクションの動作について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>多くのコネクタはバッチベースのアクションをサポートしています。バッチ処理アクションを使用すると、システムはコネクタのリクエストをバッチに蓄積し、そのバッチ全体に対して一度だけベンダーを呼び出します。バッチ処理アクションを使用すると、ベンダーシステムへの負荷が軽減され、ベンダーAPIのレート制限内に収まるのに役立ちます。</p>
-<p>バッチングをサポートするコネクタには、バッチベースのパラメータロジックが含まれています。リクエストは、以下の3つの閾値のいずれかが満たされるまでキューに入れられます：</p>
+  <p>多くのコネクターはバッチベースのアクションをサポートしています。バッチ処理アクションを使用すると、システムはコネクターリクエストをバッチに蓄積し、その後ベンダーに対して一括して呼び出します。バッチ処理アクションを使用することで、ベンダーシステムへの負荷が軽減され、ベンダーAPIのレート制限内に収まるのに役立ちます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/trace/about/">Trace</a>を使用する場合、バッチ処理は無視されます。</p>
+<p>バッチ処理をサポートするコネクターには、バッチベースのパラメータロジックが含まれています。リクエストは、以下のいずれかの閾値が満たされるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの数</li>
-<li>最も古いリクエストからの時間：</li>
+<li>最も古いリクエストからの経過時間</li>
 <li>リクエストのサイズ</li>
 </ul>
-<p>最大閾値が達成されると、コネクタはバッチを送信します。これらの閾値はORベースで動作し、いずれか一つがバッチ送信をトリガーします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイルを公開すると、バッチ制限が達成されているかどうかに関係なく、コネクタのバッチキューが処理されます。</p>
-<h2 id="バッチングコンポーネント">バッチングコンポーネント</h2>
-<p>上記の閾値だけがベンダーへのリクエストのバッチング方法に影響を与えるわけではありません。Tealiumのコンポーネントは、複数のコンポーネントが同時に自身のバッチを形成することで、スケールのために並行して動作します。</p>
-<h3 id="例">例</h3>
-<p>あなたのコネクタアクションは以下の閾値でバッチ化されます：</p>
+<p>最大閾値に達すると、コネクターはバッチを送信します。これらの閾値はORベースで動作し、いずれか一つがバッチ送信をトリガーします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>プロファイルを公開すると、バッチ制限に達していなくてもコネクターバッチキューが処理されます。</p>
+<h2 id="バッチコンポーネント">バッチコンポーネント</h2>
+<p>上記の閾値は、ベンダーへのリクエストがどのようにバッチ処理されるかに影響を与える唯一の要因ではありません。Tealiumのコンポーネントは並列で動作し、複数のコンポーネントが同時に独自のバッチを形成します。</p>
+<p>この例では、以下の閾値でバッチ処理されるコネクターアクションを考えます（値は例示目的のみ）：</p>
 <ul>
 <li>最大リクエスト数 = 100</li>
 <li>最大時間 = 1分</li>
 <li>最大サイズ = 10 MB</li>
 </ul>
-<h4 id="単一コンポーネント">単一コンポーネント</h4>
-<p>この例では、Tealiumコネクタは単一のバッチングコンポーネントを持っています。それは毎分150リクエストの一定のデータ流入を受け取り、150リクエストのサイズは10MB未満です。</p>
-<p>この場合、<strong>最大リクエスト数</strong>パラメータは、他の2つのパラメータがトリガーされる前に閾値が達成されるため、定期的にバッチ化されたデータを送信するためにトリガーされます。</p>
+<h3 id="単一コンポーネント">単一コンポーネント</h3>
+<p>この例では、Tealiumコネクターには単一のバッチングコンポーネントがあります。このコンポーネントは、1分間に150リクエストの一定のデータ流入を受け、150リクエストのサイズは10MB未満です。</p>
+<p>この場合、<strong>最大リクエスト数</strong>のパラメータが定期的にバッチデータの送信をトリガーします。なぜなら、他の2つのパラメータがトリガーされる前に閾値に達するからです。</p>
 <figure><a class="slb" href="/images/server-side/single-component-batching.png"><img src="/images/server-side/single-component-batching.png"
-         alt="単一コンポーネントのバッチング"
-         title="単一コンポーネントのバッチング"/>
+         alt="single component batching"
+         title="single component batching"/>
     </a>
 </figure>
-<h4 id="複数のコンポーネント">複数のコンポーネント</h4>
-<p>実際には、Tealiumコネクタには複数のバッチングコンポーネントがあります。この例では、同じデータ流入（毎分150リクエスト）を持つ2つのバッチングコンポーネントがあります。リクエストは2つのコンポーネント間で均等に分散されます。各コンポーネントは自身のバッチを独立して監視するため、各コンポーネントへのデータ流入は現在毎分75リクエストだけです。このデータ流量は<strong>最大リクエスト数</strong>閾値をトリガーするのに十分高くありません。この場合、データ流量は最初に<strong>最大時間</strong>閾値をトリガーします。それでもベンダーAPIへの定期的な呼び出しを見ることができますが、それぞれには75レコードだけが含まれます。</p>
+<h3 id="複数コンポーネント">複数コンポーネント</h3>
+<p>実際には、Tealiumコネクターには複数のバッチングコンポーネントがあります。この例では、2つのバッチングコンポーネントが同じデータ流入（1分間に150リクエスト）を持っています。リクエストは2つのコンポーネント間で均等に分配されます。各コンポーネントが独立してバッチを監視するため、各コンポーネントへのデータ流入は1分間に75リクエストになります。このデータ流入は<strong>最大リクエスト数</strong>の閾値をトリガーするには十分ではありません。この場合、最初に<strong>最大時間</strong>の閾値がトリガーされるでしょう。それでも定期的にベンダーAPIへの呼び出しが行われますが、各呼び出しには75レコードのみが含まれます。</p>
 <figure><a class="slb" href="/images/server-side/multiple-component-batching.png"><img src="/images/server-side/multiple-component-batching.png"
-         alt="複数コンポーネントのバッチング"
-         title="複数コンポーネントのバッチング"/>
+         alt="multiple component batching"
+         title="multiple component batching"/>
     </a>
 </figure>
-<p>実際のシナリオでは、Tealiumコネクタには1つまたは2つ以上のコンポーネントがあります。Tealiumは、需要に応じてバッチングコンポーネントの数を増減させます。</p>
+<p>実際のシナリオでは、Tealiumコネクターには1つや2つ以上のコンポーネントがあります。需要に応じてバッチングコンポーネントの数を増減します。</p>
+<h3 id="イベントの順序">イベントの順序</h3>
+<p>並列データフローのため、イベントは受信された順序と同じ順序で下流のコネクターにトリガーされない場合があります。たとえば、訪問がイベントAを受け取り、その後イベントBを受け取った場合、イベントBが最初のデータバッチでベンダーに送信され、イベントAが別のバッチで後に送信される可能性があります。イベントの順序が使用ケースにとって重要な場合は、コネクターペイロードにシーケンス番号またはイベントタイムスタンプを渡し、ベンダーシステムで元の順序を再構築してください。</p>
 
 </div>
 
@@ -1140,7 +1142,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2026年January月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1154,8 +1156,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88" href="javascript:void(0)">バッチングコンポーネント</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88" href="javascript:void(0)">バッチコンポーネント</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8D%98%E4%B8%80%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88" href="javascript:void(0)">単一コンポーネント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88" href="javascript:void(0)">複数コンポーネント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%A0%86%E5%BA%8F" href="javascript:void(0)">イベントの順序</a></li>
               </nav>
   </aside></nav>
 
