@@ -1776,16 +1776,22 @@
 <li><code>tealium_random</code> のような一意の値を含む属性をタグの <code>match_id</code> 変数にマッピングしてください。コネクタで同じ値を使用して、Googleがエンリッチメントするコンバージョンを識別できるようにします。</li>
 <li>非購入コンバージョンの場合、Floodlight <code>gtag.js</code> タグで <code>ordinal</code> に一意の値を含む属性をマッピングしてください。例えば、<code>tealium_random</code>。</li>
 </ul>
+<h3 id="権限">権限</h3>
+<ul>
+<li>任意のソース（例えばバルクシート、Search Ads 360 API、またはCampaign Manager 360 API）からコンバージョンをアップロードするには、コンバージョンをアップロードするサブマネージャーアカウントで編集アクセスが必要です。詳細については、<a href="https://support.google.com/searchads/answer/1409946">Google: ユーザー権限についての役割の割り当て</a>を参照してください。</li>
+<li>共有Floodlight構成では、コンバージョンをアップロードする各子サブマネージャーアカウントで編集アクセスが必要です。親サブマネージャーやアップロードしていない子サブマネージャーへのアクセスは必要ありません。詳細については、<a href="https://support.google.com/sa360/answer/13400844">Google: Floodlight指示を編集する</a>を参照してください。</li>
+<li>クリックIDを使用してコンバージョンを追跡する場合、そのクリックIDを生成したサブマネージャーで編集アクセスが必要です。編集できないサブマネージャーからのクリックIDを使用する場合、アップロードは失敗します。詳細については、<a href="https://support.google.com/sa360/answer/13607450">Google: ダウンロードしたバルクシートを編集する</a>を参照してください。</li>
+</ul>
 <h2 id="api情報">API情報</h2>
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Google Campaign Manager 360 API</li>
 <li>APIバージョン：v4</li>
 <li>APIエンドポイント：<code>https://dfareporting.googleapis.com/dfareporting</code></li>
-<li>ドキュメント：<a href="https://developers.google.com/doubleclick-advertisers/guides/conversions_ec">Google: Campaign Manager 360 API - Enhanced Conversions</a></li>
+<li>ドキュメント：<a href="https://developers.google.com/doubleclick-advertisers/guides/conversions_ec">Google: Campaign Manager 360 API - エンハンスドコンバージョン</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並行処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチ処理アクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：1000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -1793,21 +1799,29 @@
 </ul>
 <p>さらに、コネクタはクライアントサイドのコンバージョンがGoogleにインデックスされるのを待ってから2時間の遅延を持ってバッチコンバージョンを送信します。</p>
 <h2 id="トレース">トレース</h2>
-<p>Tealiumの<a href="/ja/server-side/trace/about/">Trace</a>機能は、リアルタイムデバッグを可能にするために構成されたバッチ処理と遅延をバイパスします。Googleによるクライアントサイドのコンバージョンのインデックス作成は即時ではないため、このコネクタを使用してTraceを使用すると<code>404 Not Found</code>エラーが発生します。</p>
+<p>Tealiumの<a href="/ja/server-side/trace/about/">Trace</a>機能は、リアルタイムデバッグを可能にするために構成されたバッチ処理と遅延をバイパスします。クライアントサイドのコンバージョンのGoogleインデックスは即時ではないため、このコネクタを使用してTraceを使用すると<code>404 Not Found</code>エラーが発生することがあります。</p>
 <h2 id="piiマッピングの制限">PIIマッピングの制限</h2>
-<p>Floodlight (<code>gtag.js</code>) タグをこのコネクタで使用する際は、PIIデータに関する以下の制限を守ってください：</p>
+<p>Floodlight (<code>gtag.js</code>) タグをこのコネクタで使用する際は、以下のPIIデータに関する制限を守ってください：</p>
 <ul>
-<li>コネクタが機能するためにはPIIデータを送信する必要があります。コネクタがGoogleに接続する際にPIIデータが含まれていない場合、コネクタはPIIが欠落しているエラーを生成し、Googleにデータを送信しません。PIIデータには、少なくとも以下のいずれかが含まれている必要があります：
+<li>コネクタが機能するためにはPIIデータを送信する必要があります。コネクタがGoogleに接続する際にPIIデータが含まれていない場合、コネクタはPIIが欠落しているエラーを生成し、Googleにデータを送信しません。PIIデータには少なくとも以下のいずれかが含まれている必要があります：
 <ul>
 <li>メールアドレス</li>
 <li>電話番号</li>
 <li>すべての住所情報（名、姓、住所、市町村、州、郵便番号、国コード）</li>
 </ul>
 </li>
-<li>PIIデータは、Floodlight (<code>gtag.js</code>) タグまたはGoogle SA360 エンハンスドコンバージョンコネクタを通じて送信しますが、両方ではありません。両方にPIIをマッピングすると、コネクタで<code>conversion already enhanced</code>エラーが発生します。</li>
-<li>コネクタエラーを避けるために、PIIが必要なイベントフィードやイベント仕様に条件を追加することで、PIIのないコンバージョンを制限することをお勧めします。</li>
+<li>PIIデータをFloodlight (<code>gtag.js</code>) タグまたはGoogle SA360 エンハンスドコンバージョンコネクタのいずれかを通じて送信してくださいが、両方ではないでください。両方でPIIをマッピングすると、コネクタで<code>conversion already enhanced</code>エラーが発生します。</li>
+<li>コネクタエラーを避けるために、PIIが必要なイベントフィードまたはイベント仕様に条件を追加することをお勧めします。</li>
 </ul>
-<h2 id="コネクタアクション">コネクタアクション</h2>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレースにアクセスして新しいコネクタを追加してください。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタを追加する際には、ベンダーのデータプラットフォームポリシーを受け入れる必要があります。</p>
+<p>コネクタを追加した後、次の構成を構成してください：</p>
+<ul>
+<li><strong>FloodlightプロファイルID</strong>：Campaign Manager 360アカウントに<code>api@tealium.com</code>ユーザーを追加した後に提供されるFloodlightプロファイルID。</li>
+</ul>
+<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックしてください。</p>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -1824,18 +1838,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレースに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">Connectorsについて</a>の記事を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタを追加する際、ベンダーのデータプラットフォームポリシーを受け入れる必要があります。</p>
-<p>コネクタを追加した後、次の構成を構成します：</p>
-<ul>
-<li><strong>FloodlightプロファイルID</strong> - Campaign Manager 360に<code>api@tealium.com</code>ユーザーを追加した後に提供されるFloodlightプロファイルIDです。</li>
-</ul>
-<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
-<p>コネクタアクションの構成を続けるために<strong>続行</strong>をクリックします。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>コネクタアクションの構成を続けるには、<strong>続行</strong>をクリックしてください。アクションの名前を入力し、次にアクションタイプを選択してください。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション--コンバージョンを送信">アクション — コンバージョンを送信</h3>
+<h3 id="コンバージョンを送信">コンバージョンを送信</h3>
 <h4 id="変換データ">変換データ</h4>
 <p>必要なパラメーター：</p>
 <table>
@@ -1848,31 +1853,31 @@
 <tbody>
 <tr>
 <td>Floodlight構成ID</td>
-<td>(必須) この変換のFloodlight構成ID。</td>
+<td>(必須) この変換のFloodlight構成IDです。</td>
 </tr>
 <tr>
 <td>FloodlightアクティビティID</td>
-<td>(必須) この変換のFloodlightアクティビティID。</td>
+<td>(必須) この変換のFloodlightアクティビティIDです。</td>
 </tr>
 <tr>
 <td>マッチID</td>
-<td>(必須) Googleがクライアント側のFloodlightイベントとコネクターエンリッチメント変換コールをマッチさせるために使用する、広告主が作成した一意のイベント識別子。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用します。</td>
+<td>(必須) Googleがクライアント側のFloodlightイベントとコネクターエンリッチメント変換コールをマッチさせるために使用する、広告主が作成した一意のイベント識別子です。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用してください。</td>
 </tr>
 <tr>
 <td>オーディナル</td>
-<td>(必須) 変換の序数。同じユーザーと日に対して同じ値（例：<code>1</code>）を各イベントに渡すことで、変換の重複を排除するために使用できます。重複排除を無効にするには、購入イベントの場合は<code>order_id</code>、非購入イベントの場合は<code>tealium_random</code>などの一意の値を使用します。トランザクションIDがタグで使用されている場合は、その値を含む属性をマッピングします。</td>
+<td>(必須) 変換の序数です。同じユーザーと日に対して同じ値（例：<code>1</code>）を各イベントに渡すことで、変換の重複を排除するために使用できます。重複排除を無効にするには、購入イベントの場合は<code>order_id</code>、非購入イベントの場合は<code>tealium_random</code>などの一意の値を使用してください。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用してください。タグでトランザクションIDが使用されている場合は、その値を含む属性をマッピングしてください。</td>
 </tr>
 <tr>
 <td>タイムスタンプマイクロ秒</td>
-<td>変換のタイムスタンプ（Unixエポックマイクロ秒）。提供されていない場合、コネクターが自動的に生成します。Tealiumの日付属性（ミリ秒で保存）をマッピングする場合、コネクターは値をマイクロ秒に変換してからGoogleに送信します。値はクライアント側の変換のGoogle記録タイムスタンプから1分以内である必要があります。</td>
+<td>変換のタイムスタンプで、Unixエポックマイクロ秒です。提供されていない場合、コネクターが自動的に生成します。Tealiumの日付属性（ミリ秒で保存）をマッピングする場合、コネクターは値をマイクロ秒に変換してからGoogleに送信します。値はクライアント側の変換のGoogle記録タイムスタンプから1分以内である必要があります。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>(必須) 変換の数量。配列をマッピングする場合、コネクターは配列内の値を合計します。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用します。値を更新する場合は除きます。</td>
+<td>(必須) 変換の数量です。配列をマッピングする場合、コネクターは配列内の値を合計します。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用してください。値を更新する場合を除きます。</td>
 </tr>
 <tr>
 <td>値</td>
-<td>(必須) 変換の値。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用します。値を更新する場合は除きます。</td>
+<td>(必須) 変換の値です。このコネクターとFloodlightの<code>gtag.js</code>タグの両方で同じ属性値を使用してください。値を更新する場合を除きます。</td>
 </tr>
 <tr>
 <td>プロファイルID</td>
@@ -1890,59 +1895,59 @@
 <tbody>
 <tr>
 <td>メールアドレス（既にSHA256ハッシュ化済み）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供します。</td>
+<td>すでに空白トリム、小文字化、SHA256ハッシュ化されたメールアドレスを提供してください。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>プレーンテキストのメールアドレスを提供し、コネクターが空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>プレーンテキストのメールアドレスを提供し、コネクターがこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>電話番号（既にSHA256ハッシュ化済み）</td>
-<td>すでに空白トリムおよびSHA256ハッシュ化された電話番号を提供します。</td>
+<td>すでに空白トリムおよびSHA256ハッシュ化された電話番号を提供してください。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの電話番号を提供し、コネクターが空白トリムおよびハッシュ化します。</td>
+<td>プレーンテキストの電話番号を提供し、コネクターがこの値を空白トリムし、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：名（既にSHA256ハッシュ化済み）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された名を提供します。</td>
+<td>すでに空白トリム、小文字化、SHA256ハッシュ化された名を提供してください。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの名を提供し、コネクターが空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>プレーンテキストの名を提供し、コネクターがこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（既にSHA256ハッシュ化済み）</td>
-<td>すでに空白トリム、小文字化、SHA256ハッシュ化された姓を提供します。</td>
+<td>すでに空白トリム、小文字化、SHA256ハッシュ化された姓を提供してください。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの姓を提供し、コネクターが空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>プレーンテキストの姓を提供し、コネクターがこの値を空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：住所（既にSHA256ハッシュ化済み）</td>
-<td>特殊文字を含まない、すでに空白トリム、小文字化、SHA256ハッシュ化された住所を提供します。</td>
+<td>特殊文字を含まない、すでに空白トリム、小文字化、SHA256ハッシュ化された住所を提供してください。</td>
 </tr>
 <tr>
 <td>住所情報：住所（SHA256ハッシュを適用）</td>
-<td>プレーンテキストの住所を提供し、コネクターがすべての特殊文字を削除し、空白トリム、小文字化、SHA256ハッシュを使用してこの値をハッシュ化します。</td>
+<td>プレーンテキストの住所を提供し、コネクターがすべての特殊文字を削除し、空白トリム、小文字化し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：市区町村</td>
-<td>ユーザーの住所の市区町村。</td>
+<td>ユーザーの住所の市区町村です。</td>
 </tr>
 <tr>
 <td>住所情報：州</td>
-<td>ユーザーの住所の州コード。</td>
+<td>ユーザーの住所の州コードです。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
-<td>ユーザーの住所の郵便番号。</td>
+<td>ユーザーの住所の郵便番号です。</td>
 </tr>
 <tr>
 <td>住所情報：国コード</td>
-<td>ユーザーの住所の2文字国コード（ISO 3166-1 alpha-2形式）。</td>
+<td>ユーザーの住所の2文字の国コードで、ISO 3166-1 alpha-2形式です。</td>
 </tr>
 </tbody>
 </table>
@@ -1956,11 +1961,11 @@
 </thead>
 <tbody>
 <tr>
-<td>カスタム変数値</td>
+<td>カスタム変数の値</td>
 <td><ul><li>カスタム値の配列。</li><li>各値は50文字を超えてはなりません。</li></ul></td>
 </tr>
 <tr>
-<td>カスタム変数タイプ</td>
+<td>カスタム変数のタイプ</td>
 <td><ul><li>“U1”から“U100”までのパターンに一致する文字列の配列。このパターンに一致しない文字列は除外されます。</li></ul></td>
 </tr>
 </tbody>
@@ -1978,8 +1983,8 @@
 <thead>
 <tr>
 <th></th>
-<th style="text-align:center"><strong>Google SA360 Enhanced Conversions Connector</strong></th>
-<th style="text-align:center"><strong>Floodlight (gtag.js) tag</strong></th>
+<th style="text-align:center">Google SA360 Enhanced Conversions Connector</th>
+<th style="text-align:center">Floodlight (gtag.js) tag</th>
 </tr>
 </thead>
 <tbody>
@@ -2090,7 +2095,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月17日
+          <p>最終更新日 ::  2026年January月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2105,14 +2110,14 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%A9%E9%99%90" href="javascript:void(0)">権限</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9" href="javascript:void(0)">トレース</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pii%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">PIIマッピングの制限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — コンバージョンを送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">コンバージョンを送信</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラブルシューティング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#google%E5%B1%9E%E6%80%A7%E3%81%AE%E7%89%B9%E5%AE%9A" href="javascript:void(0)">Google属性の特定</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
