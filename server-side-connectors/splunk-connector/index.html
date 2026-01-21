@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "13",
+        reading_time  : "15",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1479,21 +1479,9 @@
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Splunk token</strong>
-<ul>
-<li>The HTTP Event Collector token. Create a token at <strong>Settings &gt; Data Inputs &gt; HTTP Event Collector</strong>.</li>
-</ul>
-</li>
-<li><strong>Host</strong>
-<ul>
-<li>The Splunk instance that runs HTTP Event Collector. For example, <code>https://hec.example.com</code>.</li>
-</ul>
-</li>
-<li><strong>Port</strong>
-<ul>
-<li>(Optional) The HTTP Event Collector port number.</li>
-</ul>
-</li>
+<li><strong>Splunk token</strong>: The HTTP Event Collector token. Create a token at <strong>Settings &gt; Data Inputs &gt; HTTP Event Collector</strong>.</li>
+<li><strong>Host</strong>: The Splunk instance that runs HTTP Event Collector. For example, <code>https://hec.example.com</code>.</li>
+<li><strong>Port</strong>: (Optional) The HTTP Event Collector port number.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -1527,6 +1515,11 @@
 </tr>
 <tr>
 <td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Event</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
@@ -1599,8 +1592,8 @@
 </tbody>
 </table>
 <h3 id="send-entire-event-data-batch">Send Entire Event Data (Batch)</h3>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
 <li>Max time since oldest request: 60 minutes</li>
@@ -1708,17 +1701,17 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="send-custom-event-data-batch">Send Custom Event Data (Batch)</h3>
-<h4 id="batch-limits-1">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<h4 id="batch-limits-1">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
 <li>Max time since oldest request: 60 minutes</li>
@@ -1778,11 +1771,11 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
@@ -1790,48 +1783,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="send-log-event">Send Log Event</h3>
-<h4 id="metadata-4">Metadata</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Splunk request channel</td>
-<td>Channel identifier when the indexer acknowledgment is enabled.</td>
-</tr>
-<tr>
-<td>Time</td>
-<td>The event time.</td>
-</tr>
-<tr>
-<td>Host</td>
-<td>The host value to assign to the event data.</td>
-</tr>
-<tr>
-<td>Source</td>
-<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
-</tr>
-<tr>
-<td>Source type</td>
-<td>The source type value to assign to the event data.</td>
-</tr>
-<tr>
-<td>Index</td>
-<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
-</tr>
-<tr>
-<td>Custom Fields</td>
-<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
-<h4 id="metadata-5">Metadata</h4>
+<h4 id="metadata-4">Metadata</h4>
 <table>
 <thead>
 <tr>
@@ -1883,14 +1836,14 @@
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data (Batch)</h3>
-<h4 id="batch-limits-2">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<h4 id="batch-limits-2">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 10 MB</li>
 </ul>
-<h4 id="metadata-6">Metadata</h4>
+<h4 id="metadata-5">Metadata</h4>
 <table>
 <thead>
 <tr>
@@ -1942,7 +1895,7 @@
 </tbody>
 </table>
 <h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
-<h4 id="metadata-7">Metadata</h4>
+<h4 id="metadata-6">Metadata</h4>
 <table>
 <thead>
 <tr>
@@ -1996,23 +1949,23 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="send-custom-visitor-data-batch">Send Custom Visitor Data (Batch)</h3>
-<h4 id="batch-limits-3">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<h4 id="batch-limits-3">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 10 MB</li>
 </ul>
-<h4 id="metadata-8">Metadata</h4>
+<h4 id="metadata-7">Metadata</h4>
 <table>
 <thead>
 <tr>
@@ -2066,15 +2019,118 @@
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes.</td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Templates</td>
-<td>Provide templates to be referenced in message data. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
 <td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. Default is <code>15</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="metadata-8">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data-4">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Message Definition</td>
+<td>Provide values to construct message data. For template support, reference the template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>(Optional) Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</li><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td><ul><li>(Optional) Provide templates to be referenced in either URL, URL Parameter, Header, or Body Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-log-event">Send Entire Log Event</h3>
+<h4 id="metadata-9">Metadata</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk request channel</td>
+<td>Channel identifier when the indexer acknowledgment is enabled.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>The event time.</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The host value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>The source value to assign to the event data. For example, if you&rsquo;re sending data from an app you&rsquo;re developing, set this key to the name of the app.</td>
+</tr>
+<tr>
+<td>Source type</td>
+<td>The source type value to assign to the event data.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The name of the index used to index the event data. The index you specify here must be in the list of allowed indexes if the token has the indexes parameter set.</td>
+</tr>
+<tr>
+<td>Custom Fields</td>
+<td>The fields key isn&rsquo;t applicable to raw data. This key specifies a JSON object that contains a flat (not nested) list of explicit custom fields to be defined at index time. Requests containing the <code>fields</code> property must be sent to the <code>/collector/event</code> endpoint, or else they aren&rsquo;t indexed. For more information, see <a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.4/get-data-with-http-event-collector/automate-indexed-field-extractions-with-http-event-collector">Splunk Enterprise: Automate indexed field extractions with HTTP Event Collector</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -2138,7 +2194,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 5, 2025 
+          <p>This page was last updated:  January 21, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2158,11 +2214,12 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-batch" href="javascript:void(0)">Send Entire Event Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data-batch" href="javascript:void(0)">Send Custom Event Data (Batch)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-batch" href="javascript:void(0)">Send Custom Visitor Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-log-event" href="javascript:void(0)">Send Entire Log Event</a></li>
               </nav>
   </aside></nav>
 
