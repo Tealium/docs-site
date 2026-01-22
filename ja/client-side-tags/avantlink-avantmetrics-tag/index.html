@@ -770,6 +770,9 @@
       <a href="/ja/client-side-tags/optimizely-sync-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Sync（廃止）</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/optimizely-web-experimentation-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Web 実験</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/optimizely-synchronous-implementation/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely 同期実装</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1593,6 +1596,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-sync-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-sync-tag">Optimizely Sync（廃止）</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/optimizely-web-experimentation-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-web-experimentation-tag">Optimizely Web 実験</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-synchronous-implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-synchronous-implementation">Optimizely 同期実装</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-asynchronous-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-asynchronous-tag">Optimizely 非同期</a></li>
@@ -1882,15 +1887,110 @@
 <div class="prose nested-links" id="prose">
   <p>この記事では、AvantLink AvantMetrics タグの構成方法について説明します。</p>
 <h2 id="タグの構成">タグの構成</h2>
-<p>タグマーケットプレイスに移動して新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
-<p>タグを追加する際には、以下の構成を行います：</p>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグを追加する際には、以下の構成を構成します：</p>
 <ul>
-<li><strong>Merchant Site ID</strong>: マーチャントサイトID。</li>
+<li><strong>サイト ID</strong>: マーチャントサイトのID。</li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
 <p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
+<p>利用可能なカテゴリーは以下の通りです：</p>
+<h3 id="標準">標準</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ/値</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>site_id</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">サイトID。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>new_customer</code></td>
+<td style="text-align:left">ブール</td>
+<td style="text-align:left">新規顧客かどうか。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-コマース">E-コマース</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ/値</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>order_id</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">注文ID（<code>_corder</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>amount</code></td>
+<td style="text-align:left">数値</td>
+<td style="text-align:left">注文の小計額（<code>_csubtotal</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">通貨（<code>_ccurrency</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>state</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">州（<code>_cstate</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>country</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">国（<code>_ccountry</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecc</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">クーポンコード（<code>_cpromo</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tax</code></td>
+<td style="text-align:left">数値</td>
+<td style="text-align:left">課税額（<code>_ctax</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>shipping</code></td>
+<td style="text-align:left">数値</td>
+<td style="text-align:left">配送料（<code>_cship</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>parent_sku</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">親SKU ID（<code>_cprod</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>variant_sku</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">バリアントSKU ID（<code>_csku</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>price</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">SKU価格（<code>_cprice</code>を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>qty</code></td>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">SKU数量（<code>_cquan</code>を上書き）。</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1951,7 +2051,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月16日
+          <p>最終更新日 ::  2026年January月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1968,6 +2068,8 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">E-コマース</a></li>
               </nav>
   </aside></nav>
 

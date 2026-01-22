@@ -770,6 +770,9 @@
       <a href="/ja/client-side-tags/optimizely-sync-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Sync（廃止）</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/client-side-tags/optimizely-web-experimentation-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Web 実験</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/client-side-tags/optimizely-synchronous-implementation/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely 同期実装</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1593,6 +1596,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-sync-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-sync-tag">Optimizely Sync（廃止）</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/optimizely-web-experimentation-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-web-experimentation-tag">Optimizely Web 実験</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-synchronous-implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-synchronous-implementation">Optimizely 同期実装</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/optimizely-asynchronous-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-asynchronous-tag">Optimizely 非同期</a></li>
@@ -1881,144 +1886,194 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="レガシー-trackback-タグからの移行">レガシー Trackback タグからの移行</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Trackback タグは現在非推奨となり、新しいコンバージョン トラッキング バージョンに置き換えられ、タグ マーケットプレイスではもはや提供されていません。新しいコンバージョン トラッキング タグを追加する前に、Trackback タグのインスタンスを無効にすることを確認してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Trackback タグは現在非推奨となり、新しいコンバージョン トラッキング バージョンに置き換えられ、タグマーケットプレイスではもはや提供されていません。新しいコンバージョン トラッキング タグを追加する前に、すべての Trackback タグのインスタンスを無効にしてください。</p>
 <h2 id="タグの構成">タグの構成</h2>
-<p>まず、タグ マーケットプレイスにアクセスし、プロファイルに TradeDoubler コンバージョン トラッキング タグを追加します（<a href="/ja/iq-tag-management/tags/manage/#add-a-tag">タグの追加</a>を参照）。</p>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
 <p>タグを追加した後、以下の構成を構成します：</p>
 <ul>
 <li>
-<p><strong>タイトル</strong>: デフォルトは <code>Tradedoubler Conversion Tracking</code> です。お好みでカスタム名に置き換えることができます。</p>
-</li>
-<li>
-<p><strong>タグタイプ</strong>: (必須) 読み込むタグのタイプを選択します。</p>
+<p><strong>タグタイプ</strong>：（必須）ロードしたいタグのタイプを選択します。</p>
 <ul>
-<li>セール: <code>tbs.tradedoubler.com</code> にホストされているセールス トラッキング ピクセルを読み込みます。</li>
-<li>リード: <code>tbl.tradedoubler.com</code> にホストされているリード トラッキング ピクセルを読み込みます。</li>
-<li>プロダクト: 製品レベルのトラッキング ピクセルを読み込みます。</li>
+<li><code>Sale</code>：<code>tbs.tradedoubler.com</code> にホストされている販売トラッキングピクセルをロードします。</li>
+<li><code>Lead</code>：<code>tbl.tradedoubler.com</code> にホストされているリードトラッキングピクセルをロードします。</li>
+<li><code>Product</code>：製品レベルのトラッキングピクセルをロードします。</li>
 </ul>
 </li>
 <li>
-<p><strong>組織 ID</strong>: (必須) TradeDoubler によって提供された数値の組織 ID。このフィールドは、タグタイプがセールまたはリードに構成されている場合にのみ適用されます。</p>
+<p><strong>組織 ID</strong>：（必須）TradeDoubler によって提供される数値の組織 ID。このフィールドは <strong>タグタイプ</strong> が <code>Sale</code> または <code>Lead</code> に構成されている場合のみ適用されます。</p>
 </li>
 <li>
-<p><strong>イベント ID</strong>: (必須) トラックしたいセール/リード イベントに割り当てられた数値識別子。このフィールドは、タグタイプがセールまたはリードに構成されている場合にのみ適用されます。この値をデータ マッピングを介して構成する場合は、このフィールドを空白のままにする必要があります。</p>
+<p><strong>イベント ID</strong>：（必須）追跡したい販売/リードイベントに割り当てられた数値識別子。このフィールドは <strong>タグタイプ</strong> が <code>Sale</code> または <code>Lead</code> に構成されている場合のみ適用されます。この値をデータマッピングを通じて構成する場合は、このフィールドを空白のままにする必要があります。</p>
+</li>
+<li>
+<p><strong>トラッキング同意</strong>：トラッキング同意を有効または無効にします。このフィールドを上書きするためのマッピングを使用します。</p>
 </li>
 </ul>
-<h2 id="ロード-ルール">ロード ルール</h2>
-<p><a href="/ja/iq-tag-management/load-rules/about/">ロード ルール</a>は、このタグのインスタンスをいつ、どこでロードするかを決定します。<strong>すべてのページでロード</strong> ルールがデフォルトのルールです。特定のページでこのタグをロードしたい場合は、関連する条件を持つ新しいルールを作成します。</p>
+<h2 id="ロードルール">ロードルール</h2>
+<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、このタグのインスタンスをいつ、どこでロードするかを決定します。<strong>すべてのページでロード</strong>ルールがデフォルトのルールです。特定のページでこのタグをロードしたい場合は、関連する条件を持つ新しいルールを作成します。</p>
 <h3 id="ベストプラクティス">ベストプラクティス</h3>
 <ul>
-<li>セールス タグは、セール完了後に表示される確認ページに配置する必要があります。</li>
-<li>リード タグは、サイト訪問がサインアップまたは登録できるページに配置する必要があります。</li>
-<li>プロダクト タグは、製品や製品カテゴリーとの訪問のインタラクションを追跡したいページに配置する必要があります。</li>
+<li>販売完了後に表示される確認ページに販売タグを配置します。</li>
+<li>サイト訪問がサインアップまたは登録できるページにリードタグを配置します。</li>
+<li>製品と製品カテゴリの訪問のインタラクションを追跡したいページに製品タグを配置します。</li>
 </ul>
-<h2 id="データ-マッピング">データ マッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データ レイヤー変数</a>からベンダー タグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データ マッピング</a>を参照してください。</p>
-<p>Tradedoubler Conversion Tracking タグの宛先変数は、そのデータ マッピング タブに組み込まれています。</p>
-<h3 id="標準タブ">標準タブ</h3>
+<h2 id="データマッピング">データマッピング</h2>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>Tradedoubler コンバージョン トラッキング タグの宛先変数は、そのデータマッピングタブに組み込まれています。</p>
+<h3 id="標準">標準</h3>
 <table>
 <thead>
 <tr>
-<th>タグ宛先</th>
-<th>説明</th>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>組織 ID</td>
-<td>TradeDoubler によって提供される組織識別子</td>
+<td style="text-align:left"><code>tracking_consent</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">訪問がトラッキング同意を与えたかどうか。</td>
 </tr>
 <tr>
-<td>イベント ID</td>
-<td>トラックしたいリード/セール イベントに割り当てられた数値識別子。これは TradeDoubler によって提供されます</td>
+<td style="text-align:left"><code>organization</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">組織 ID。</td>
 </tr>
 <tr>
-<td>タグタイプ</td>
-<td>ページ上で読み込まれる Tradedoubler ピクセルのタイプ。マップされた変数は次のいずれかの値を含む必要があります：<code>lead</code>, <code>sale</code>, <code>product</code></td>
+<td style="text-align:left"><code>programId</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">プログラム ID。</td>
 </tr>
 <tr>
-<td>Tradedoubler ユニーク トラッキング ID</td>
-<td>リダイレクト ページのクッキーとセッション変数に構成された <code>tduid</code> パラメータ値</td>
+<td style="text-align:left"><code>tdevent</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">イベント ID。</td>
 </tr>
 <tr>
-<td>チェックサム</td>
-<td>詐欺を検出するためのチェックサム値</td>
+<td style="text-align:left"><code>tagtype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">タグタイプ。</td>
 </tr>
 <tr>
-<td>ハッシュ化されたメールアドレス</td>
-<td>顧客のメールアドレスのハッシュ</td>
+<td style="text-align:left"><code>tduid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Tradedoubler 固有のトラッキング ID。</td>
 </tr>
 <tr>
-<td>ID タイプ</td>
-<td>ユーザー ID タイプを表すブール値。マップされた変数は次のいずれかを含む必要があります：<ul><li><code>0</code> ユーザーのメールアドレスを使用する場合</li><li><code>1</code> 内部ユーザー ID を使用する場合 </li></ul></td>
+<td style="text-align:left"><code>chksum</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">チェックサム。</td>
 </tr>
 <tr>
-<td>バウチャーコード</td>
-<td>トランザクションのバウチャーコード</td>
+<td style="text-align:left"><code>extid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">SHA-256 ハッシュを使用したメールアドレス。</td>
 </tr>
 <tr>
-<td>有効期限 [YYYY-MM-DD]</td>
-<td>トランザクションが自動的に承認され、変更または拒否できなくなる日付。</td>
+<td style="text-align:left"><code>exttype</code></td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">ID タイプ。可能な値は <code>0</code> または <code>1</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>voucher</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">バウチャーコード。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>validOn</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">有効日。<code>YYYY-MM-DD</code> 形式を使用します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>validOn</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><code>YYYY-MM-DD</code> 形式の検証日。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cdt</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><code>extid</code> と <code>exttype</code> の親。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cdt</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">TradeDoubler 固有のフィールドで、<code>extid</code> と <code>exttype</code> と一緒に使用します。TradeDoubler の実装で提供された正確な値と形式を使用してください。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fallback_url</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">フォールバック URL。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>program</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">コンバージョン トラッキング タグが特定のアフィリエイトプログラムに関連しているかどうか。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="e-commerce">E-commerce</h3>
-<p>Tradedoubler Conversion Tracking タグは E-commerce を有効にしているため、デフォルトの <a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a> マッピングを自動的に使用します。拡張マッピングを上書きしたい場合や、拡張機能で提供されていない E-commerce 変数が必要な場合を除き、このカテゴリでの手動マッピングは通常必要ありません。</p>
+<h3 id="eコマース">Eコマース</h3>
+<p>Tradedoubler コンバージョン トラッキング タグは Eコマース対応であり、デフォルトの <a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">Eコマース拡張機能</a> マッピングを自動的に使用します。拡張機能のマッピングを上書きしたい場合や、拡張機能で提供されていない Eコマース変数が必要な場合を除き、このカテゴリでの手動マッピングは通常必要ありません。</p>
 <table>
 <thead>
 <tr>
-<th>宛先</th>
-<th>説明</th>
-<th>E-Commerce Extension 変数</th>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>オーダー ID</td>
-<td>最終オーダーに割り当てられた一意の識別子</td>
-<td><code>_corder</code></td>
+<td style="text-align:left"><code>order_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">注文 ID（<code>_corder</code> を上書き）。</td>
 </tr>
 <tr>
-<td>小計</td>
-<td>最終オーダーの小計金額</td>
-<td><code>_csubtotal</code></td>
+<td style="text-align:left"><code>order_subtotal</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">小計（<code>_csubtotal</code> を上書き）。</td>
 </tr>
 <tr>
-<td>通貨</td>
-<td>支払いに使用される通貨</td>
-<td><code>_ccurrency</code></td>
+<td style="text-align:left"><code>order_currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">通貨（<code>_ccurrency</code> を上書き）。</td>
 </tr>
 <tr>
-<td>製品 ID リスト</td>
-<td>製品配列内の各製品の一意の識別子</td>
-<td><code>_cprod</code></td>
+<td style="text-align:left"><code>order_promo_code</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">プロモコード（<code>_cpromo</code> を上書き）。</td>
 </tr>
 <tr>
-<td>製品 SKU リスト</td>
-<td>製品配列内の各製品の名前</td>
-<td><code>_csku</code></td>
+<td style="text-align:left"><code>product_id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">製品 ID のリスト（<code>_cprod</code> を上書き）。</td>
 </tr>
 <tr>
-<td>数量リスト</td>
-<td>製品配列内の各製品の数量</td>
-<td><code>_cquan</code></td>
+<td style="text-align:left"><code>product_sku</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">SKU のリスト（<code>_csku</code> を上書き）。</td>
 </tr>
 <tr>
-<td>価格リスト</td>
-<td>製品配列内の各製品の単価</td>
-<td><code>_cprice</code></td>
+<td style="text-align:left"><code>product_quantity</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">数量のリスト（<code>_cquan</code> を上書き）。</td>
 </tr>
 <tr>
-<td>製品グループ ID リスト</td>
-<td>製品カテゴリ識別子の配列</td>
-<td>NA</td>
+<td style="text-align:left"><code>product_unit_price</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">価格のリスト（<code>_cprice</code> を上書き）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gr</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">製品グループ ID のリスト。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="ベンダー文書">ベンダー文書</h2>
 <ul>
-<li><a href="http://dev.tradedoubler.com/tracking/advertiser/">コンバージョン トラッキング</a></li>
-<li><a href="http://dev.tradedoubler.com/">開発者リソース</a></li>
+<li><a href="http://dev.tradedoubler.com/tracking/advertiser/">TradeDoubler: コンバージョン トラッキング</a></li>
+<li><a href="http://dev.tradedoubler.com/">TradeDoubler: 開発者リソース</a></li>
 </ul>
 
 </div>
@@ -2080,7 +2135,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2017年September月27日
+          <p>最終更新日 ::  2026年January月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2096,11 +2151,11 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC-trackback-%E3%82%BF%E3%82%B0%E3%81%8B%E3%82%89%E3%81%AE%E7%A7%BB%E8%A1%8C" href="javascript:void(0)">レガシー Trackback タグからの移行</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89-%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロード ルール</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9" href="javascript:void(0)">ベストプラクティス</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF-%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データ マッピング</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E3%82%BF%E3%83%96" href="javascript:void(0)">標準タブ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-commerce</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>

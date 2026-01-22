@@ -770,6 +770,9 @@
       <a href="/client-side-tags/optimizely-synchronous-implementation/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Synchronous Implementation</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/optimizely-web-experimentation-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Web Experimentation</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/oracle-cx-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Oracle CX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1548,6 +1551,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/optimizely-synchronous-implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-synchronous-implementation">Optimizely Synchronous Implementation</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/optimizely-web-experimentation-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-web-experimentation-tag">Optimizely Web Experimentation</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/oracle-cx-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-cx-tag">Oracle CX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/orbee-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".Orbee-tag">Orbee</a></li>
@@ -1807,15 +1812,110 @@
 <div class="prose nested-links" id="prose">
   <p>This article describes how to set up the AvantLink AvantMetrics tag.</p>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>Go to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>Merchant Site ID</strong>: The merchant site ID.</li>
+<li><strong>Site ID</strong>: The merchant site ID.</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<p>Load the tag on all pages or set conditions for when your tag loads. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
+<p>The available categories are:</p>
+<h3 id="standard">Standard</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type/Values</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>site_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Site ID.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>new_customer</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Whether this is a new customer.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-commerce">E-Commerce</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type/Values</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>order_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Order ID (Overrides <code>_corder</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>amount</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">The order subtotal amount (Overrides <code>_csubtotal</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Currency (Overrides <code>_ccurrency</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>state</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">State (Overrides <code>_cstate</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>country</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Country (Overrides <code>_ccountry</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecc</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Coupon code (Overrides <code>_cpromo</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tax</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Amount of tax charged (Overrides <code>_ctax</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>shipping</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Amount of shipping fees charged (Overrides <code>_cship</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>parent_sku</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Parent SKU IDs (Overrides <code>_cprod</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>variant_sku</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Variant SKU IDs (Overrides <code>_csku</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>price</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">SKU prices (Overrides <code>_cprice</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>qty</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">SKU quantities (Overrides <code>_cquan</code>).</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1876,7 +1976,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 14, 2026 
+          <p>This page was last updated:  January 21, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1893,6 +1993,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
               </nav>
   </aside></nav>
 

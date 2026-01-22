@@ -1777,6 +1777,8 @@
 <li><strong>Assume Role: ARN</strong>
 <ul>
 <li>（必須）引き受けるロールのAmazonリソースネーム（ARN）を提供します。例：<code>arn:aws:iam::222222222222:role/myrole</code>。</li>
+<li>信頼ポリシーはTealiumルートアカウント（<code>arn:aws:iam::757913464184:root</code>）を外部ID条件付きで許可する必要があります。</li>
+<li>IAMロール名には理想的には「TealiumFirehose」プレフィックスを含めるべきです。</li>
 <li>詳細については、<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS: IAMロールへの切り替え</a>を参照してください。</li>
 </ul>
 </li>
@@ -1847,7 +1849,7 @@
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加されるサフィックスで、デリミタとして使用されます。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用します。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
 </tr>
 <tr>
 <td>属性名の印刷</td>
@@ -1882,15 +1884,15 @@
 <tbody>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用されます。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用します。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
 </tr>
 <tr>
 <td>メッセージテンプレート変数</td>
-<td><ul><li>オプション。</li><li>テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li></td>
+<td><ul><li>（オプション）テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>例えば、<code>items.name</code>のようにドット表記でネストされたテンプレート変数を名前付けします。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li></td>
 </tr>
 <tr>
 <td>メッセージテンプレート</td>
-<td><ul><li>オプション。</li><li><code>URL</code>、<code>URL</code>パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。</li><li>例：<code>{{SomeTemplateName}}</code>。</ul></li></td>
+<td><ul><li>（オプション）<code>URL</code>、<code>URL</code>パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。</li><li>例：<code>{{SomeTemplateName}}</code>。</ul></li></td>
 </tr>
 </tbody>
 </table>
@@ -1910,7 +1912,7 @@
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用されます。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用します。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
 </tr>
 <tr>
 <td>現在の訪問データの含有</td>
@@ -1953,15 +1955,15 @@
 <tbody>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用されます。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用します。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
 </tr>
 <tr>
 <td>メッセージテンプレート変数</td>
-<td><ul><li>オプション。</li><li>テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name</code>。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li></td>
+<td><ul><li>（オプション）テンプレートにデータ入力としてテンプレート変数を提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>例えば、<code>items.name</code>のようにドット表記でネストされたテンプレート変数を名前付けします。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</ul></li></td>
 </tr>
 <tr>
 <td>メッセージテンプレート</td>
-<td><ul><li>オプション。</li><li><code>URL</code>、<code>URL</code>パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、サポートされるフィールドに名前で二重中括弧で注入されます。</li><li>例：<code>{{SomeTemplateName}}</code>。</ul></li></td>
+<td><ul><li>（オプション）<code>URL</code>、<code>URL</code>パラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します</li><li>詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。</li><li>例：<code>{{SomeTemplateName}}</code>。</ul></li></td>
 </tr>
 </tbody>
 </table>
@@ -1981,7 +1983,7 @@
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用されます。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスで、デリミタとして使用します。</li><li>デフォルトは<code>Newline</code>です。</ul></li></td>
 </tr>
 <tr>
 <td>属性名の印刷</td>
@@ -2049,7 +2051,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2026年January月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

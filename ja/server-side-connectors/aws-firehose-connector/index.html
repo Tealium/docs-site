@@ -1768,8 +1768,8 @@
   <h2 id="必要条件">必要条件</h2>
 <ul>
 <li>AWS アカウント。</li>
-<li>必須: <strong>firehose:PutRecord</strong> 権限。</li>
-<li>任意: <strong>firehose:ListDeliveryStreams</strong> 権限。</li>
+<li>（必須）<strong>firehose:PutRecord</strong> 権限。</li>
+<li>（オプション）<strong>firehose:ListDeliveryStreams</strong> 権限。</li>
 <li>データを送信するデリバリーストリーム。</li>
 </ul>
 <h2 id="サポートされるアクション">サポートされるアクション</h2>
@@ -1777,8 +1777,8 @@
 <thead>
 <tr>
 <th style="text-align:left"><strong>アクション名</strong></th>
-<th style="text-align:left"><strong>オーディエンスに対するトリガー</strong></th>
-<th style="text-align:left"><strong>ストリームに対するトリガー</strong></th>
+<th style="text-align:left"><strong>オーディエンスにトリガー</strong></th>
+<th style="text-align:left"><strong>ストリームにトリガー</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -1822,22 +1822,22 @@
 <p><strong>構成タブ</strong>で、コネクタインスタンスのタイトルを提供します。</p>
 </li>
 <li>
-<p>IAM ユーザーのアクセスキーとシークレットキーを提供します。<p class="note"><i class="fa fa-exclamation-triangle"></i>IAM ユーザーインスタンスに添付されたポリシーステートメントには、<strong>firehose:PutRecord</strong> 権限が含まれている必要があります。Firehose のポリシーの詳細については、<a href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html">AWS: Amazon Data Firehose でのアクセス制御</a>を参照してください。</p></p>
+<p>IAM ユーザーのアクセスキーとシークレットキーを提供します。<p class="note"><i class="fa fa-exclamation-triangle"></i>IAM ユーザーインスタンスに添付されたポリシーステートメントには <strong>firehose:PutRecord</strong> 権限が含まれている必要があり、Tealium のルートアカウント (<code>arn:aws:iam::757913464184:root</code>) に External ID 条件で許可されている必要があります。Firehose のポリシーの詳細については、<a href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html">AWS: Amazon Data Firehose でのアクセス制御</a>を参照してください。</p></p>
 </li>
 <li>
 <p>API コールを行いたいリージョンを選択します。</p>
 </li>
 <li>
-<p><strong>Assume Role Parameters</strong>: 必要な権限が IAM ユーザーに構成されていない場合のみ必要です。詳細については、<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">IAM ロールへの切り替え</a>を参照してください。</p>
+<p><strong>Assume Role Parameters</strong>: 必要な権限が IAM ユーザーに構成されていない場合のみ必要です。IAM ロール名には <code>TealiumFirehose</code> プレフィックスが含まれている必要があります。詳細については、<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS: IAM ロールへの切り替え</a>を参照してください。</p>
+</li>
+</ol>
 <ul>
-<li><strong>ARN</strong>: 必須。アサインされたロールを引き受けるための Amazon リソース名。</li>
-<li><strong>Session NameRequired</strong>: 必須。引き受けたロールセッションの一意の識別子。</li>
-<li><strong>External ID</strong>: 任意。第三者が顧客のアカウントでロールを引き受ける際に使用する一意の識別子。詳細については、<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS: 第三者所有の AWS アカウントへのアクセス</a>を参照してください。</li>
+<li><strong>ARN</strong>: (必須) ロールを引き受けるために割り当てられた Amazon リソース名。</li>
+<li><strong>セッション名</strong>: (必須) 引き受けたロールセッションの一意の識別子。</li>
+<li><strong>External ID</strong>: (オプション) 第三者が顧客のアカウントでロールを引き受ける際に使用する一意の識別子。詳細については、<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS: 第三者所有の AWS アカウントへのアクセス</a>を参照してください。</li>
 </ul>
-</li>
-<li>
-<p><strong>Test Connection</strong> をクリックして、提供された認証情報で API 接続性を確認します。</p>
-</li>
+<ol>
+<li><strong>Test Connection</strong> をクリックして、提供された認証情報で API 接続性を確認します。</li>
 </ol>
 <h2 id="アクション構成パラメータとオプション">アクション構成：パラメータとオプション</h2>
 <p><strong>Next</strong> をクリックするか、<strong>Actions</strong> タブに移動します。ここでアクションのトリガー構成を行います。</p>
@@ -1854,15 +1854,15 @@
 <tbody>
 <tr>
 <td>デリバリーストリーム</td>
-<td>必須。データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
+<td>(必須) データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td>訪問データに個々のレコードを識別するために追加する値を選択します。</td>
+<td>訪問データの個々のレコードを識別するために追加する値を選択します。</td>
 </tr>
 <tr>
 <td>属性名の表示</td>
-<td>このオプションを選択すると、メッセージペイロード内の各イベントデータ属性の名前が表示されます。</td>
+<td>メッセージペイロード内の各イベントデータ属性の名前を表示するオプションを選択します。</td>
 </tr>
 </tbody>
 </table>
@@ -1897,11 +1897,11 @@
 <tbody>
 <tr>
 <td>デリバリーストリーム</td>
-<td>必須。データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
+<td>(必須) データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td>訪問データに個々のレコードを識別するために追加する値を選択します。</td>
+<td>訪問データの個々のレコードを識別するために追加する値を選択します。</td>
 </tr>
 <tr>
 <td>現在の訪問データを含む</td>
@@ -1913,7 +1913,7 @@
 </tr>
 <tr>
 <td>属性名の表示</td>
-<td>このオプションを選択すると、メッセージペイロード内の各訪問データ属性の名前が表示されます。</td>
+<td>メッセージペイロード内の各訪問データ属性の名前を表示するオプションを選択します。</td>
 </tr>
 </tbody>
 </table>
@@ -1948,15 +1948,15 @@
 <tbody>
 <tr>
 <td>デリバリーストリーム</td>
-<td>必須。データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
+<td>(必須) データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。</td>
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td>訪問データに個々のレコードを識別するために追加する値を選択します。</td>
+<td>訪問データの個々のレコードを識別するために追加する値を選択します。</td>
 </tr>
 <tr>
 <td>メッセージデータ</td>
-<td>必須。カスタムメッセージ本体を構築します。属性を名前にマッピングする単純な1レベルのJSON形式を使用するか、二重中括弧で囲まれたテンプレート名を参照し、「カスタムメッセージ定義」オプションを選択します。</td>
+<td>(必須) カスタムメッセージ本体を構築します。属性を単一レベルの JSON 形式で名前にマッピングするか、二重中括弧で囲まれたテンプレート名を参照し、<strong>カスタムメッセージ定義</strong> オプションを選択します。</td>
 </tr>
 <tr>
 <td>メッセージテンプレート変数</td>
@@ -1964,7 +1964,7 @@
 </tr>
 <tr>
 <td>メッセージテンプレート</td>
-<td>レンダリングに使用する1つ以上のテンプレートを提供します。通常、メッセージデータを構築するために単一のテンプレートが使用されます。構文と拡張についての詳細は、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
+<td>レンダリングに使用する1つ以上のテンプレートを提供します。通常、単一のテンプレートがメッセージデータの構築に使用されます。構文と拡張についての詳細は、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
@@ -2006,11 +2006,11 @@
 <tbody>
 <tr>
 <td>デリバリーストリーム</td>
-<td>データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。Amazon Kinesis Data Firehose デリバリーストリームには制限があります。詳細については、<a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">AWS: Amazon Data Firehose の制限</a>を参照してください。</td>
+<td>データを送信するデリバリーストリームを選択します。利用可能なストリームを確認するには、<code>firehose:ListDeliveryStreams</code> 権限が必要です。Amazon Kinesis Data Firehose デリバリーストリームには制限があります。詳細については、<a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">AWS: Amazon Data Firehose のクォータ</a>を参照してください。</td>
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td>各レコードの最後に追加されるサフィックスで、区切り文字として使用されます。デフォルト: 改行 (\n)</td>
+<td>各レコードの最後に追加されるサフィックスで、区切り文字として使用されます。デフォルト：改行 (\n)</td>
 </tr>
 </tbody>
 </table>
@@ -2029,13 +2029,13 @@
 </tr>
 <tr>
 <td>メッセージテンプレート</td>
-<td>レンダリングに使用する1つ以上のテンプレートを提供します。通常、メッセージデータを構築するために単一のテンプレートが使用されます。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
+<td>レンダリングに使用する1つ以上のテンプレートを提供します。通常、単一のテンプレートがメッセージデータの構築に使用されます。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="アクションデリバリーストリームへのイベントデータ送信バッチ処理">アクション：デリバリーストリームへのイベントデータ送信（バッチ処理）</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するかプロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：500</li>
 <li>最古のリクエストからの最大時間：10分</li>
@@ -2132,7 +2132,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2026年January月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

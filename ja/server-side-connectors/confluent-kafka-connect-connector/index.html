@@ -1765,7 +1765,16 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="コネクタアクション">コネクタアクション</h2>
+  <h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を行います：</p>
+<ul>
+<li><strong>API キー</strong>：（必須）Confluent API キー。</li>
+<li><strong>API シークレット</strong>：（必須）Confluent API シークレット。</li>
+<li><strong>ブートストラップサーバー</strong>：（必須）Confluent ブートストラップサーバー。プロトコルやパスは含めないでください。例えば、<code>https://confluent.bootstrap.server:443</code> は <code>confluent.bootstrap.server</code> としてください。</li>
+<li><strong>クラスター ID</strong>：（必須）Kafka クラスター ID。</li>
+</ul>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -1776,53 +1785,44 @@
 </thead>
 <tbody>
 <tr>
-<td>すべてのイベントデータを送信</td>
+<td>全イベントデータ送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>カスタムイベントデータを送信</td>
+<td>カスタムイベントデータ送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 <tr>
-<td>すべての訪問データを送信</td>
+<td>全訪問データ送信</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>カスタム訪問データを送信</td>
+<td>カスタム訪問データ送信</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>ログイベントを送信</td>
+<td>ログイベント送信</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>全ログイベント送信</td>
 <td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
-<ul>
-<li><strong>API キー</strong><br>
-(必須) Confluent API キー。</li>
-<li><strong>API シークレット</strong><br>
-(必須) Confluent API シークレット。</li>
-<li><strong>ブートストラップサーバー</strong><br>
-(必須) Confluent ブートストラップサーバー。プロトコルやパスは含めないでください。例えば、<code>https://confluent.bootstrap.server:443</code> は <code>confluent.bootstrap.server</code> としてください。</li>
-<li><strong>クラスター ID</strong><br>
-(必須) Kafka クラスター ID。</li>
-</ul>
-<h2 id="アクション">アクション</h2>
-<p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>アクションの名前を入力し、アクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="すべてのイベントデータを送信">すべてのイベントデータを送信</h3>
+<h3 id="全イベントデータ送信">全イベントデータ送信</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：100</li>
+<li>最大リクエスト数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：10 MB</li>
 </ul>
@@ -1845,11 +1845,11 @@
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+<td>データ配信の形式を指定します。可能な値：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキー値ペアのセット。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
@@ -1861,19 +1861,23 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
 </tr>
 <tr>
 <td>属性名の印刷</td>
-<td>デフォルトでは、属性 ID がキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
+<td>デフォルトでは、属性IDがキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
+</tr>
+<tr>
+<td>ストリーミングモードの有効化</td>
+<td>このオプションを有効にすると、イベントをバッチ処理せずにすぐに送信します。このオプションを無効にすると、上記のバッチ制限に従ってイベントがバッチ処理されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
+<h3 id="カスタムイベントデータ送信">カスタムイベントデータ送信</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：100</li>
+<li>最大リクエスト数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：10 MB</li>
 </ul>
@@ -1896,11 +1900,11 @@
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+<td>データ配信の形式を指定します。可能な値：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキー値ペアのセット。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
@@ -1923,23 +1927,27 @@
 <tbody>
 <tr>
 <td>テンプレート変数</td>
-<td>テンプレートにデータ入力としてテンプレート変数を提供します。<br>詳細および使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code><br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td>テンプレートにデータ入力としてテンプレート変数を提供します。<br>詳細情報と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code><br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して挿入されます。例：<code>{{SomeTemplateName}}</code>。</td>
+<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前で二重中括弧を使用して注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
+</tr>
+<tr>
+<td>ストリーミングモードの有効化</td>
+<td>このオプションを有効にすると、イベントをバッチ処理せずにすぐに送信します。このオプションを無効にすると、上記のバッチ制限に従ってイベントがバッチ処理されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="すべての訪問データを送信">すべての訪問データを送信</h3>
+<h3 id="全訪問データ送信">全訪問データ送信</h3>
 <h4 id="バッチ制限-2">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：100</li>
+<li>最大リクエスト数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：10 MB</li>
 </ul>
@@ -1962,11 +1970,11 @@
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+<td>データ配信の形式を指定します。可能な値：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
-<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキー値ペアのセット。</td>
 </tr>
 <tr>
 <td>メッセージキー</td>
@@ -1978,7 +1986,7 @@
 </tr>
 <tr>
 <td>属性名の印刷</td>
-<td>デフォルトでは、属性 ID がキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
+<td>デフォルトでは、属性IDがキー名として使用されます。代わりに属性名をキー名として使用する場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード内のキー名も更新されます。</td>
 </tr>
 <tr>
 <td>現在の訪問データを訪問データに含める</td>
@@ -1990,15 +1998,15 @@
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチアクションが送信される頻度を指定するための有効期限 (TTL) を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。1分から60分の間で値を入力します。デフォルト値は60分です。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタム訪問データを送信">カスタム訪問データを送信</h3>
+<h3 id="カスタム訪問データ送信">カスタム訪問データ送信</h3>
 <h4 id="バッチ制限-3">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：100</li>
+<li>最大リクエスト数：100</li>
 <li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：10 MB</li>
 </ul>
@@ -2012,16 +2020,16 @@
 </thead>
 <tbody>
 <tr>
-<td>トピック ID</td>
-<td>トピックを選択するか、トピック ID を入力します。</td>
+<td>トピックID</td>
+<td>トピックを選択するか、トピックIDを入力してください。</td>
 </tr>
 <tr>
-<td>パーティション ID</td>
-<td>パーティション ID を選択します。</td>
+<td>パーティションID</td>
+<td>パーティションIDを選択してください。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+<td>データ配信の形式を指定してください。可能な値: <code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
@@ -2029,11 +2037,11 @@
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealium はこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定してください。データ形式として <code>BINARY</code> を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC 形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC形式のトピックタイムスタンプ。例: <code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -2048,15 +2056,15 @@
 <tbody>
 <tr>
 <td>テンプレート変数</td>
-<td>テンプレートにデータ入力としてテンプレート変数を提供します。<br>詳細と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code><br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+<td>テンプレートにデータ入力としてテンプレート変数を提供してください。<br>詳細と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>例: <code>items.name.</code> のようにドット表記でネストされたテンプレート変数を名前付けしてください。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>テンプレートは、サポートされるフィールドに名前とダブルカーリーブレースで注入されます。例：<code>{{SomeTemplateName}}</code>。</td>
+<td>メッセージデータで参照されるテンプレートを提供してください。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>例: <code>{{SomeTemplateName}}</code> のように、サポートされるフィールドに名前でテンプレートが注入されます。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
-<td>バッチアクションが送信される頻度を指定するために、有効期限（TTL）を構成します。1分から60分の間で値を入力してください。デフォルト値は60分です。</td>
+<td>バッチアクションが送信される頻度を指定するために、有効期限（TTL）を構成してください。<code>1</code>から<code>60</code>分の間で値を入力してください。デフォルト値は <code>60</code> 分です。</td>
 </tr>
 </tbody>
 </table>
@@ -2072,15 +2080,15 @@
 <tbody>
 <tr>
 <td>トピックID</td>
-<td>トピックを選択するか、トピックIDを入力します。</td>
+<td>トピックを選択するか、トピックIDを入力してください。</td>
 </tr>
 <tr>
 <td>パーティションID</td>
-<td>パーティションIDを選択します。</td>
+<td>パーティションIDを選択してください。</td>
 </tr>
 <tr>
 <td>データ形式</td>
-<td>データ配信の形式を指定します：<code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+<td>データ配信の形式を指定してください。可能な値: <code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
 </tr>
 <tr>
 <td>ヘッダー</td>
@@ -2088,11 +2096,66 @@
 </tr>
 <tr>
 <td>メッセージキー</td>
-<td>生のメッセージキーを指定します。データ形式として <code>BINARY</code> を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+<td>生のメッセージキーを指定してください。データ形式として <code>BINARY</code> を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
 </tr>
 <tr>
 <td>タイムスタンプ</td>
-<td>ISO 8601 UTC形式のトピックタイムスタンプ。例：<code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+<td>ISO 8601 UTC形式のトピックタイムスタンプ。例: <code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="メッセージデータ-2">メッセージデータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>テンプレート変数</td>
+<td>テンプレートにデータ入力としてテンプレート変数を提供してください。<br>詳細と使用例については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。<br>例: <code>items.name.</code> のようにドット表記でネストされたテンプレート変数を名前付けしてください。<br>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</td>
+</tr>
+<tr>
+<td>テンプレート</td>
+<td>メッセージデータで参照されるテンプレートを提供してください。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。<br>例: <code>{{SomeTemplateName}}</code> のように、サポートされるフィールドに名前でテンプレートが注入されます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="全ログイベントの送信">全ログイベントの送信</h3>
+<h4 id="パラメータ-5">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>トピックID</td>
+<td>トピックを選択するか、トピックIDを入力してください。</td>
+</tr>
+<tr>
+<td>パーティションID</td>
+<td>パーティションIDを選択してください。</td>
+</tr>
+<tr>
+<td>データ形式</td>
+<td>データ配信の形式を指定してください。可能な値: <code>JSON</code>、<code>STRING</code>、または <code>BINARY</code>。</td>
+</tr>
+<tr>
+<td>ヘッダー</td>
+<td>オプションのパラメータ。ヘッダーのプロパティと値をリストするキーと値のペアのセットです。</td>
+</tr>
+<tr>
+<td>メッセージキー</td>
+<td>生のメッセージキーを指定してください。データ形式として <code>BINARY</code> を選択した場合、Tealiumはこの値をエンコードして送信します。</td>
+</tr>
+<tr>
+<td>タイムスタンプ</td>
+<td>ISO 8601 UTC形式のトピックタイムスタンプ。例: <code>YYYY-MM-DDThh:mm:ssZ</code>。タイムスタンプが提供されていない場合、現在のタイムスタンプが使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -2156,7 +2219,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月5日
+          <p>最終更新日 ::  2026年January月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2170,14 +2233,14 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべてのイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべての訪問データを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データを送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1" href="javascript:void(0)">全イベントデータ送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータ送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1" href="javascript:void(0)">全訪問データ送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データ送信</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">ログイベントの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">全ログイベントの送信</a></li>
               </nav>
   </aside></nav>
 

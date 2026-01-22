@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -768,6 +768,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/optimizely-synchronous-implementation/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Synchronous Implementation</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/optimizely-web-experimentation-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Web Experimentation</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/oracle-cx-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Oracle CX</span></a>
@@ -1548,6 +1551,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/optimizely-synchronous-implementation/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-synchronous-implementation">Optimizely Synchronous Implementation</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/optimizely-web-experimentation-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-web-experimentation-tag">Optimizely Web Experimentation</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/oracle-cx-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".oracle-cx-tag">Oracle CX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/orbee-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".Orbee-tag">Orbee</a></li>
@@ -1805,149 +1810,199 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="migrating-from-the-legacy-trackback-tag">Migrating from the legacy Trackback Tag</h2>
+  <h2 id="migrating-from-the-legacy-trackback-tag">Migrating from the legacy Trackback tag</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The Trackback Tag is now deprecated in favor of the new Conversion Tracking version and no longer offered in the tag marketplace. Be sure to deactivate any Trackback Tag instances before adding the new Conversion Tracking Tag.</p>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the Tradedoubler Conversion Tracking Tag to your profile (See <a href="/iq-tag-management/tags/manage/#add-a-tag">Add a tag</a>).</p>
-<p>After adding the Tag, configure the below settings:</p>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Go to the tag marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>After adding the tag, configure the following settings:</p>
 <ul>
 <li>
-<p><strong>Title</strong>: The default is <code>Tradedoubler Conversion Tracking</code>. You may replace it with a custom name of choice.</p>
-</li>
-<li>
-<p><strong>Tag Type</strong>: (Required) Choose the type of Tag you want to load.</p>
+<p><strong>Tag Type</strong>: (Required) Choose the type of tag you want to load.</p>
 <ul>
-<li>Sale: Loads the Sales tracking pixel hosted on <code>tbs.tradedoubler.com</code>.</li>
-<li>Lead: Loads the Leads tracking pixel hosted on <code>tbl.tradedoubler.com</code>.</li>
-<li>Product: Loads the product level tracking pixel</li>
+<li><code>Sale</code>: Loads the Sales tracking pixel hosted on <code>tbs.tradedoubler.com</code>.</li>
+<li><code>Lead</code>: Loads the Leads tracking pixel hosted on <code>tbl.tradedoubler.com</code>.</li>
+<li><code>Product</code>: Loads the product level tracking pixel.</li>
 </ul>
 </li>
 <li>
-<p><strong>Organization ID</strong>: (Required) The numeric organization ID provided by TradeDoubler. This field applies only if the Tag Type is set to Sales or Lead.</p>
+<p><strong>Organization ID</strong>: (Required) The numeric organization ID provided by TradeDoubler. This field applies only if <strong>Tag Type</strong> is set to <code>Sale</code> or <code>Lead</code>.</p>
 </li>
 <li>
-<p><strong>Event ID</strong>: (Required) The numeric identifier assigned to the sale/lead event you want to track. This field applies only if the Tag Type is set to Sales or Lead. If you prefer to set this value through Data Mappings, you must leave this field blank.</p>
+<p><strong>Event ID</strong>: (Required) The numeric identifier assigned to the sale/lead event you want to track. This field applies only if <strong>Tag Type</strong> is set to <code>Sale</code> or <code>Lead</code>. If you prefer to set this value through data mappings, you must leave this field blank.</p>
+</li>
+<li>
+<p><strong>Tracking Consent</strong>: Enable or disable tracking consent. Use mappings to override this field, including the mode</p>
 </li>
 </ul>
-<h2 id="load-rules">Load Rules</h2>
+<h2 id="load-rules">Load rules</h2>
 <p><a href="/iq-tag-management/load-rules/about/">Load Rules</a> determine when and where to load an instance of this Tag. The <strong>Load on All Pages</strong> rule is the default Rule. If you prefer to load this Tag on a specific page, create a new rule with the relevant conditions.</p>
-<h3 id="best-practices">Best Practices</h3>
+<h3 id="best-practices">Best practices</h3>
 <ul>
-<li>The Sales Tag should be placed on the confirmation page, one that appears post completion of a sale.</li>
-<li>The Lead Tag should be placed on pages that allow site visitors to sign-up or register.</li>
-<li>The Product Tag should be placed on a page where you want to track visitor interactions with products and product categories.</li>
+<li>Place the sale tag on the confirmation page, one that appears post completion of a sale.</li>
+<li>Place the lead tag on pages that allow site visitors to sign-up or register.</li>
+<li>Place the product tag on a page where you want to track visitor interactions with products and product categories.</li>
 </ul>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">Data Layer Variable</a> to the corresponding destination variable of the vendor Tag. For instructions on how to map a Variable to a Tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">Data Layer Variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a Variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The destination variables for the Tradedoubler Conversion Tracking Tag are built into its Data Mapping tab.</p>
-<h3 id="standard-tab">Standard Tab</h3>
+<h3 id="standard">Standard</h3>
 <table>
 <thead>
 <tr>
-<th>Tag Destination</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Organization ID</td>
-<td>Organization identifier provided by Tradedoubler</td>
+<td style="text-align:left"><code>tracking_consent</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Whether the visitor has given tracking consent.</td>
 </tr>
 <tr>
-<td>Event ID</td>
-<td>The numeric identifier assigned to the lead/sale event you want to track. This is provided by Tradedoubler</td>
+<td style="text-align:left"><code>organization</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Organization ID.</td>
 </tr>
 <tr>
-<td>Tag Type</td>
-<td>The type of Tradedoubler pixel you are loading on the page. Mapped variable must contain one of the following values: <code>lead</code>, <code>sale</code> or <code>product</code></td>
+<td style="text-align:left"><code>programId</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Program ID.</td>
 </tr>
 <tr>
-<td>Tradedoubler Unique Tracking ID</td>
-<td>The <code>tduid</code> parameter value that was set in a cookie and session variable on the redirect page</td>
+<td style="text-align:left"><code>tdevent</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Event ID.</td>
 </tr>
 <tr>
-<td>Checksum</td>
-<td>The checksum value to help detect fraud</td>
+<td style="text-align:left"><code>tagtype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Tag type.</td>
 </tr>
 <tr>
-<td>Hashed Email Address</td>
-<td>Hash of the customer&rsquo;s email address</td>
+<td style="text-align:left"><code>tduid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Tradedoubler unique tracking ID.</td>
 </tr>
 <tr>
-<td>ID Type</td>
-<td>Boolean value representing the user ID type. Mapped variable must contain: <ul><li><code>0</code> if using user&rsquo;s email address</li><li><code>1</code> if using an internal user id </li></ul></td>
+<td style="text-align:left"><code>chksum</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Checksum.</td>
 </tr>
 <tr>
-<td>Voucher Code</td>
-<td>Voucher code of the transaction</td>
+<td style="text-align:left"><code>extid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Email address using SHA-256 hash.</td>
 </tr>
 <tr>
-<td>Valid On [YYYY-MM-DD]</td>
-<td>The date by which a transaction will be automatically approved and can no longer be modified or declined.</td>
+<td style="text-align:left"><code>exttype</code></td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">ID type. Possible values are <code>0</code> or <code>1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>voucher</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Voucher code.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>validOn</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Valid on. Uses <code>YYYY-MM-DD</code> format</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>validOn</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Validation date in <code>YYYY-MM-DD</code> format.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cdt</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Parent of <code>extid</code> and <code>exttype</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cdt</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">TradeDoubler-specific field used with <code>extid</code> and <code>exttype</code>. Use the exact value and format provided in your TradeDoubler implementation.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fallback_url</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Fallback URL.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>program</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Whether the conversion tracking tag is associated with a specific affiliate program.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="e-commerce">E-commerce</h3>
 <p>Because the Tradedoubler Conversion Tracking Tag is e-commerce enabled, it will automatically use the default <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a> mappings. Manually mapping in this category is generally not needed unless:</p>
 <ul>
-<li>you want to override any extension mappings</li>
-<li>an e-commerce variable you want is not offered in the extension</li>
+<li>You want to override any extension mappings.</li>
+<li>An e-commerce variable you want is not offered in the extension.</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Destination</th>
-<th>Description</th>
-<th>E-Commerce Extension Variable</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Order ID</td>
-<td>Unique identifier assigned to the final order</td>
-<td><code>_corder</code></td>
+<td style="text-align:left"><code>order_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Order ID (overrides <code>_corder</code>).</td>
 </tr>
 <tr>
-<td>Sub Total</td>
-<td>Sub total amount of the final order</td>
-<td><code>_csubtotal</code></td>
+<td style="text-align:left"><code>order_subtotal</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Subtotal (overrides <code>_csubtotal</code>).</td>
 </tr>
 <tr>
-<td>Currency</td>
-<td>Currency used in the payment</td>
-<td><code>_ccurrency</code></td>
+<td style="text-align:left"><code>order_currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Currency (overrides <code>_ccurrency</code>).</td>
 </tr>
 <tr>
-<td>List of Product IDs</td>
-<td>Unique identifier of each product in the product array</td>
-<td><code>_cprod</code></td>
+<td style="text-align:left"><code>order_promo_code</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Promo code (overrides <code>_cpromo</code>).</td>
 </tr>
 <tr>
-<td>List of Product SKUs</td>
-<td>Name of each product in the product array</td>
-<td><code>_csku</code></td>
+<td style="text-align:left"><code>product_id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of product IDs (overrides <code>_cprod</code>).</td>
 </tr>
 <tr>
-<td>List of Quantities</td>
-<td>Quantity of each product in the product array</td>
-<td><code>_cquan</code></td>
+<td style="text-align:left"><code>product_sku</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of SKUs (overrides <code>_csku</code>).</td>
 </tr>
 <tr>
-<td>List of Prices</td>
-<td>Unit price of each product in the product array</td>
-<td><code>_cprice</code></td>
+<td style="text-align:left"><code>product_quantity</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of quantities (overrides <code>_cquan</code>).</td>
 </tr>
 <tr>
-<td>List of Product Group IDs</td>
-<td>Array of product category identifiers</td>
-<td>NA</td>
+<td style="text-align:left"><code>product_unit_price</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of prices (overrides <code>_cprice</code>).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gr</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of product group IDs.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="vendor-documentation">Vendor Documentation</h2>
+<h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
-<li><a href="http://dev.tradedoubler.com/tracking/advertiser/">Conversion Tracking</a></li>
-<li><a href="http://dev.tradedoubler.com/">Developer Resources</a></li>
+<li><a href="http://dev.tradedoubler.com/tracking/advertiser/">TradeDoubler: Conversion Tracking</a></li>
+<li><a href="http://dev.tradedoubler.com/">TradeDoubler: Developer Resources</a></li>
 </ul>
 
 </div>
@@ -2009,7 +2064,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 27, 2017 
+          <p>This page was last updated:  January 21, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2023,14 +2078,14 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrating-from-the-legacy-trackback-tag" href="javascript:void(0)">Migrating from the legacy Trackback Tag</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load Rules</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best Practices</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard-tab" href="javascript:void(0)">Standard Tab</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrating-from-the-legacy-trackback-tag" href="javascript:void(0)">Migrating from the legacy Trackback tag</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-commerce</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor Documentation</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
               </nav>
   </aside></nav>
 
