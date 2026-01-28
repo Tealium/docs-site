@@ -1486,7 +1486,7 @@
 <li>Select <strong>Authorize Tealium Connection</strong>, and click <strong>Continue</strong> to enable <strong>Tealium</strong>.</li>
 </ol>
 <p>If you do not see the option to toggle a partner integration, contact your Tealium Account Manager for support.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The Facebook Pixel tag automatically hashes user data. This pixel functionality cannot be changed.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Facebook Pixel tag automatically hashes user data. This functionality cannot be changed. If you are converting Facebook Pixel tag data or other data that is already hashed, enable the <strong>User Data is already hashed</strong> option to avoid hashing the data twice.</p>
 <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -1554,7 +1554,7 @@
 <p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an <code>Event ID</code> if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
 <p>The connector follows this order of operations:</p>
 <ul>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer. This value supersedes anything mapped in <code>Event ID</code>. For example, <code>fb_event_id_ViewContent_30</code>.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated and the value is found in the data layer, this value supersedes anything mapped in <code>Event ID</code>. For example, <code>fb_event_id_ViewContent_30</code>.</li>
 <li>If <strong>Automatic Deduplication</strong> is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used. For example, <code>fb_event_id_ViewContent</code>.</li>
 <li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <code>Event ID</code> is used, if it is populated.</li>
 </ul>
@@ -1816,7 +1816,7 @@
 </tr>
 <tr>
 <td style="text-align:left">User Data is already hashed</td>
-<td style="text-align:left">The Facebook Conversions connector requires the Facebook Pixel tag, which automatically hashes user data. This pixel functionality cannot be changed. Select this option to avoid hashing the data again.</td>
+<td style="text-align:left">For web events, the Facebook Conversions connector uses the Facebook Pixel tag, which automatically hashes user data. This pixel functionality cannot be changed. Select this option to avoid hashing the data again. However, if the data is coming unhashed from other sources, such as Tealium Collect, do not select this option.</td>
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
@@ -1824,7 +1824,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Content Name</td>
-<td style="text-align:left">The name of the page or product associated with the event.  The connector automatically maps this parameter when it appears in the event. For example, <code>lettuce</code>.</td>
+<td style="text-align:left">The name of the page or product associated with the event. The connector automatically maps this parameter when it appears in the event. For example, <code>lettuce</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Number of Items</td>
@@ -1968,7 +1968,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Install Referrer</td>
-<td style="text-align:left">Third party install referrer, currently available for Android only. For more information, see <a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">Campaign Measurement</a>.</td>
+<td style="text-align:left">Third-party install referrer, currently available for Android only. For more information, see <a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">Campaign Measurement</a>.</td>
 </tr>
 <tr>
 <td style="text-align:left">Installer Package</td>
@@ -2094,7 +2094,7 @@
 </tbody>
 </table>
 <h4 id="custom-data">Custom Data</h4>
-<p>Map custom data either as plain test values or using a JSON template by referencing the template name in the format: <code>{{template_name}}</code>.</p>
+<p>Map custom data either as plain text values or using a JSON template by referencing the template name in the format: <code>{{template_name}}</code>.</p>
 <table>
 <thead>
 <tr>
@@ -2331,8 +2331,7 @@
 </tbody>
 </table>
 <h2 id="setup">Setup</h2>
-<p>There are several options available to setup and manage the Tealium server-side API partner integration with Facebook.
-You have several options to set up and manage the Tealium server-side API partner integration with Facebook.</p>
+<p>You have several options to set up and manage the Tealium server-side API partner integration with Facebook.</p>
 <ul>
 <li><a href="https://www.facebook.com/events_manager2/partner_integrations/tealium"><strong>The Facebook Partner Integration Gallery</strong></a><br>
 <figure><a class="slb" href="/images/server-side-connectors/facebook-partner-integration-gallery.png"><img src="/images/server-side-connectors/facebook-partner-integration-gallery.png"
@@ -2440,7 +2439,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 12, 2026 
+          <p>This page was last updated:  January 26, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1476,7 +1476,7 @@
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector is not currently available in the Connector Marketplace. Using The Trade Desk Third-Party Data connector requires support from both Tealium and The Trade Desk account managers. To use this connector, contact your Tealium account manager.</p>
-<h2 id="api-information">API Information</h2>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: The Trade Desk API</li>
@@ -1489,32 +1489,15 @@
 </li>
 <li>Documentation: <a href="https://partner.thetradedesk.com/v3/portal/data/doc/post-data-thirdparty">The Trade Desk API</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 10000</li>
 <li>Max time since oldest request: 30 minutes</li>
 <li>Max size of requests: 2 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Upload 3rd Party Data</td>
-<td>✓</td>
-<td>✗</td>
-</tr>
-</tbody>
-</table>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Secret Key</strong>: (Required) The secret key.</li>
@@ -1547,7 +1530,7 @@
 </tr>
 <tr>
 <td>Parent Element ID</td>
-<td>(Required) The Provider Element ID value from the parent segment in the taxonomy. This parameter establishes the hierarchical structure of your taxonomy. This value cannot be changed after you create it. All data providers use the <code>ROOT</code> base element of the taxonomy.</td>
+<td>(Required) The provider element ID value from the parent segment in the taxonomy. This parameter establishes the hierarchical structure of your taxonomy. This value cannot be changed after you create it. All data providers use the <code>ROOT</code> base element of the taxonomy.</td>
 </tr>
 <tr>
 <td>Display Name</td>
@@ -1619,6 +1602,27 @@
 </tbody>
 </table>
 <h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upload 3rd Party Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Delete Third Party Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="upload-3rd-party-data">Upload 3rd Party Data</h3>
@@ -1626,8 +1630,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1638,12 +1642,12 @@
 </tbody>
 </table>
 <h4 id="ids">IDs</h4>
-<p>At least one ID is required, but you can provide multiple IDs in the same request. The Trade Desk supports the following IDs:</p>
+<p>At least one ID parameter is required. Multiple IDs may be included in the same request. The Trade Desk supports the following IDs:</p>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1689,8 +1693,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1700,11 +1704,79 @@
 </tr>
 <tr>
 <td>TTL in Minutes</td>
-<td>(Required) Time to live (TTL) is the amount of time (in minutes) during which this user is to remain active relative to the <code>TimeStampUtc</code> value. When the TTL has expired, the user is no longer be used for targeting. The maximum TTL is 259200 minutes (180 days).</td>
+<td>(Required) Time to live (TTL) is the amount of time (in minutes) during which this user is to remain active relative to the <code>TimeStampUtc</code> value. When the TTL has expired, the user is no longer used for targeting. The maximum TTL is 259200 minutes (180 days).</td>
 </tr>
 <tr>
 <td>Timestamp</td>
 <td>The timestamp of when a user is eligible for a segment. If not specified, the timestamp is assigned based on the time when the data is processed. This timestamp is used to determine a user&rsquo;s recency for targeting and bid adjustments.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-third-party-data">Delete Third Party Data</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Provider ID</td>
+<td>Required. The provider ID supplied to you by your Technical Account Manager.</td>
+</tr>
+<tr>
+<td>Request Type</td>
+<td><ul><li><strong>Opt-out</strong>: The Trade Desk will opt out the ID from your data segments by setting its TTL value to <code>0</code>, thereby limiting its targeting in your campaigns.</li><li><strong>Delete</strong>: The Trade Desk deletes the ID from your datasets, including data segments and <code>REDS</code> feeds.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ids-1">IDs</h4>
+<p>At least one ID parameter is required. Multiple IDs may be included in the same request. The Trade Desk supports the following IDs:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TDID</td>
+<td>The Trade Desk 36-character GUID (including dashes) for this user.</td>
+</tr>
+<tr>
+<td>DAID</td>
+<td>The raw device ID for this user sent in 36-character GUID format (including dashes). Use iOS IDFA or Android AAID.</td>
+</tr>
+<tr>
+<td>UID2Token (already SHA256 hashed)</td>
+<td>The user&rsquo;s Unified ID 2.0, already SHA256 hashed.</td>
+</tr>
+<tr>
+<td>UID2Token (apply SHA256 hash)</td>
+<td>The user&rsquo;s Unified ID 2.0, to which a SHA256 hash is applied.</td>
+</tr>
+<tr>
+<td>UID2</td>
+<td>The user&rsquo;s Unified ID 2.0 as a 44-character base64-encoded SHA-256 string. For more information, see <a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Desk Partner Portal: PII Normalization and Hash Encoding</a> and <a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">Unified IDs</a>.</td>
+</tr>
+<tr>
+<td>EUIDToken (already SHA256 hashed)</td>
+<td>The user&rsquo;s European Unified ID, already SHA256 hashed.</td>
+</tr>
+<tr>
+<td>EUIDToken (apply SHA256 hash)</td>
+<td>The user&rsquo;s European Unified ID, to which a SHA256 hash is applied</td>
+</tr>
+<tr>
+<td>EUID</td>
+<td>The user&rsquo;s European Unified ID as a 44-character base64-encoded SHA-256 string. For more information, see <a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataPiiNormalization">The Trade Desk Partner Portal: PII Normalization and Hash Encoding</a>. EUID offers user transparency and privacy controls designed to meet market requirements in Europe and the UK, and it requires the same normalization and encoding of email addresses as UID2. For more information, see <a href="https://partner.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">The Trade Desk Partner Portal: Unified IDs</a>.</td>
+</tr>
+<tr>
+<td>RampID</td>
+<td>The 49-character or 70-character RampID (previously known as IdentityLink). This must be a RampID from LiveRamp that is mapped specifically for The Trade Desk. For more information, see <a href="https://sidecar.readme.io/docs/getting-started">LiveRamp: LiveRamp&rsquo;s Sidecar</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1768,7 +1840,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 19, 2025 
+          <p>This page was last updated:  January 27, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1782,9 +1854,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#admin-configuration" href="javascript:void(0)">Admin configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generate-authentication-token" href="javascript:void(0)">Generate authentication token</a></li>
@@ -1792,6 +1863,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-rate-to-segment" href="javascript:void(0)">Assign rate to segment</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upload-3rd-party-data" href="javascript:void(0)">Upload 3rd Party Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-third-party-data" href="javascript:void(0)">Delete Third Party Data</a></li>
               </nav>
   </aside></nav>
 

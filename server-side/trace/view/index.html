@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1062,7 +1062,7 @@
 <td><img src="/images/server-side/trace-icon-get-code-replay.png" 
          alt="trace-icon-get-code-replay"
          title="trace-icon-get-code-replay"/></td>
-<td>Get code to replay events generates a curl command for each event. You can run the curl commands in a terminal window to replay an event in trace without having to recreate the configuration steps on the web page.  <ul><li>To replay a single event, copy and paste the matching curl command in the terminal window and press <strong>Enter</strong> to run the command.</li><li>To replay multiple events, click <strong>Download Bash Script</strong> to download the .sh file. Use the terminal window to run the .sh script.</li></ul></td>
+<td>Get code to replay events generates a curl command for each event. Run the <code>curl</code> commands in a terminal window to replay an event in trace without having to recreate the configuration steps on the web page.  <ul><li>To replay a single event, copy and paste the matching curl command in the terminal window and press <strong>Enter</strong> to run the command.</li><li>To replay multiple events, click <strong>Download Bash Script</strong> to download the .sh file. Use the terminal window to run the .sh script.</li></ul></td>
 </tr>
 <tr>
 <td><img src="/images/server-side/trace-icon-exit-race.png" 
@@ -1073,14 +1073,14 @@
 </tbody>
 </table>
 <h2 id="view-event-details">View event details</h2>
-<p>The following image shows the parts of the trace interface. The <strong>Trace Log</strong> is a real-time scrolling summary of actions, events, and audiences. The <strong>Overview Panel</strong> displays a snapshot of the detailed activity. <strong>Search</strong> can be used to find specific attributes in the list of visitor and visitor-scoped attributes. The attributes in the list are grouped by data type (Numbers, Dates, and so on). <strong>Filters</strong> can be used to filter these attributes.</p>
+<p>The following image shows the parts of the trace interface. The <strong>Trace Log</strong> is a real-time scrolling summary of actions, events, and audiences. The <strong>Overview Panel</strong> displays a snapshot of the detailed activity. <strong>Search</strong> can be used to find specific attributes in the list of visitor and visitor-scoped attributes. The attributes in the list are grouped by data type (numbers, dates, and so on). <strong>Filters</strong> can be used to filter these attributes.</p>
 <figure><a class="slb" href="/images/server-side/trace-log-sections.png"><img src="/images/server-side/trace-log-sections.png"
          alt="trace-log-sections"
          title="trace-log-sections"/>
     </a>
 </figure>
 <h3 id="filters">Filters</h3>
-<p>Filtering lets you determine if the attributes and the configurations tied to them are functioning properly. Using filters, you can choose how to view the attributes and their values. You can filter attributes by Label (if you have added labels for attributes) or by Type, where Type is one of the following</p>
+<p>Filtering lets you determine if the attributes and the configurations tied to them are functioning properly. Using filters, you can choose how to view the attributes and their values. Filter attributes by label (if you have added labels for attributes) or by Type, where Type is one of the following</p>
 <ul>
 <li><strong>All</strong><br>
 Shows all attribute types and values set up in your AudienceStream profile.</li>
@@ -1091,7 +1091,142 @@ Shows only the modified, or enriched, attributes.</li>
 </ul>
 <h2 id="trace-log">Trace log</h2>
 <p>In the trace log, clickable text is blue, other text is gray. The timestamp adjacent to the log entry displays the time of the log entry. To view the details of an event, click the blue event text to slide out a detailed view of the event.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>You can minimize the trace window to continue the process while moving on to other feature of the UI.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>You can minimize the trace window to continue the process while moving on to other features of the UI.</p>
+<p>The following table describes the meanings of various trace events:</p>
+<table>
+<thead>
+<tr>
+<th>Trace event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actions Without Cooldown Group: No Actions Triggered</td>
+<td>No vendor actions were triggered after checking cooldown groups.</td>
+</tr>
+<tr>
+<td>Actions Without Cooldown Group: <code>x</code> Actions Triggered / <code>x</code> Actions Suppressed / <code>x</code> Actions Delayed</td>
+<td>Shows the number of vendor actions triggered, suppressed, or delayed after checking cooldown groups.</td>
+</tr>
+<tr>
+<td>Activation Blocked</td>
+<td>The action was blocked by consent orchestration.</td>
+</tr>
+<tr>
+<td>AudienceStream Processing Blocked</td>
+<td>Consent orchestration blocked event processing.</td>
+</tr>
+<tr>
+<td>Audience Joined</td>
+<td>The visitor joined an audience after a profile update.</td>
+</tr>
+<tr>
+<td>Audience Left</td>
+<td>The visitor left an audience after a profile update.</td>
+</tr>
+<tr>
+<td>Consent Orchestration Active</td>
+<td>Consent orchestration is enabled for this account.</td>
+</tr>
+<tr>
+<td>Consent Orchestration Exemptions Triggered</td>
+<td>The action was exempted from consent orchestration.</td>
+</tr>
+<tr>
+<td>Cooldown Group <code>group_name</code>: <code>x</code> Actions Triggered</td>
+<td>After audience changes, cooldown groups are checked and actions are triggered as needed.</td>
+</tr>
+<tr>
+<td>Data Record Import Failed</td>
+<td>An imported data record failed to process.</td>
+</tr>
+<tr>
+<td>Debug</td>
+<td>Debug information from processing.</td>
+</tr>
+<tr>
+<td>Enriched Visitor Profile</td>
+<td>The visitor profile was updated with new attribute values.</td>
+</tr>
+<tr>
+<td>Event Processing Blocked</td>
+<td>The event was blocked from processing.</td>
+</tr>
+<tr>
+<td>Function Blocked</td>
+<td>Consent orchestration blocked the function.</td>
+</tr>
+<tr>
+<td>Imported Data Record</td>
+<td>An imported data record was processed.</td>
+</tr>
+<tr>
+<td>Log Streaming: x Actions Triggered</td>
+<td>An action was triggered in EventStream log streaming.</td>
+</tr>
+<tr>
+<td>Log Streaming Action Processed (<code>x</code> Actions Processed / <code>x</code> Actions Failed)</td>
+<td>Shows the number of actions triggered and failed in EventStream log streaming.</td>
+</tr>
+<tr>
+<td>New Visitor</td>
+<td>A new visitor profile was created in AudienceStream.</td>
+</tr>
+<tr>
+<td>Received Data Record</td>
+<td>A data record was received for processing.</td>
+</tr>
+<tr>
+<td>Received (Known/Unknown) Event: <code>event_name</code></td>
+<td>An event was received and identified by type.</td>
+</tr>
+<tr>
+<td>Received event with specification: <code>event_name</code></td>
+<td>An event was received that matches a custom event specification.</td>
+</tr>
+<tr>
+<td>Returning Visitor</td>
+<td>An existing visitor profile was updated in AudienceStream.</td>
+</tr>
+<tr>
+<td>Trace Has Stopped Due to Max Events</td>
+<td>The trace stopped after reaching the maximum number of events in 12 hours.</td>
+</tr>
+<tr>
+<td>Trace Started</td>
+<td>A new trace session has started.</td>
+</tr>
+<tr>
+<td>Visitor Did Not Join Or Leave Any Audience</td>
+<td>The visitor profile update did not cause any audience changes.</td>
+</tr>
+<tr>
+<td>Visitor Session Ended</td>
+<td>The visitor session ended due to inactivity.</td>
+</tr>
+<tr>
+<td>Visitor Stitched</td>
+<td>The visitor profile was merged with another profile based on stitching rules.</td>
+</tr>
+<tr>
+<td>Visit Started</td>
+<td>A new visitor session has started.</td>
+</tr>
+<tr>
+<td><code>x</code> Actions Processed / <code>x</code> Actions Failed</td>
+<td>Shows the number of actions triggered and failed.</td>
+</tr>
+<tr>
+<td><code>x</code> Feed(s) Matched</td>
+<td>Shows the number of EventStream feeds the event matched.</td>
+</tr>
+<tr>
+<td><code>x</code> Functions Triggered and <code>x</code> Functions Failed</td>
+<td>Shows the number of functions triggered and failed.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1137,7 +1272,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 25, 2025 
+          <p>This page was last updated:  January 28, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
