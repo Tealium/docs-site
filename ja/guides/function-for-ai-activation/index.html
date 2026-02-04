@@ -273,24 +273,24 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>このガイドでは、外部AIモデルをTealiumの関数と統合してリアルタイムでアクティベーションするための概念とコンポーネントについて説明します。モデルエンドポイントに安全に接続し、イベントデータと訪問データを使用してAI予測を呼び出し、モデルの出力で訪問プロファイルを豊かにし、これらの洞察を利用して下流のアクションを推進する方法を学びます。また、タイムアウトの管理、非同期応答の処理、一般的な統合問題の解決方法についても説明します。</p>
+  <p>このガイドでは、外部AIモデルをTealiumの関数と統合してリアルタイムでアクティベーションするための概念とコンポーネントについて説明します。モデルエンドポイントに安全に接続し、イベントデータと訪問データを使用してAIの予測を呼び出し、モデルの出力で訪問プロファイルを豊かにし、これらの洞察を利用して下流のアクションを推進する方法を学びます。また、タイムアウトの管理、非同期応答の処理、一般的な統合問題の解決方法についても説明します。</p>
 <h2 id="動作原理">動作原理</h2>
-<p>外部AIモデルを呼び出すために関数を使用します。これには、顧客離脱リスク、詐欺検出、傾向スコアリング、次の最適アクションの推奨などのタスクが含まれます。関数はイベントデータと訪問プロファイル属性を収集し、ペイロードを構築してモデルエンドポイントに送信し、予測を受け取り、アクティベーションのために訪問プロファイルを更新します。</p>
+<p>機能を使用して、顧客離脱リスク、詐欺検出、傾向スコアリング、次の最適アクションの推奨などのタスクのために外部AIモデルを呼び出します。この機能はイベントデータと訪問プロファイル属性を収集し、ペイロードを構築してモデルエンドポイントに送信し、予測を受け取り、アクティベーションのために訪問プロファイルを更新します。</p>
 <p>リアルタイムモデル推論とアクティベーションのためのデータフローには、以下のステップが含まれます：</p>
 <ol>
-<li><strong>顧客のアクション</strong>：ユーザーがアクションを実行します（例：商品を見る、カートに追加する、フォームを送信する）。</li>
-<li><strong>関数トリガー</strong>：構成されたトリガーに基づいてイベントまたは訪問関数が発火し、予測（スコア、分類、推奨）を返します。</li>
-<li><strong>イベントを収集</strong>：関数は予測データをTealium Collectに<code>track()</code>メソッドを通じて送信します。</li>
+<li><strong>顧客アクション</strong>：ユーザーがアクションを実行します（例：商品を見る、カートに追加する、フォームを送信する）。</li>
+<li><strong>機能トリガー</strong>：構成されたトリガーに基づいてイベントまたは訪問機能が発火し、予測（スコア、分類、推奨）を返します。</li>
+<li><strong>イベントを収集する</strong>：機能は予測データを <code>track()</code> メソッドを通じてTealium Collectに送信します。</li>
 <li><strong>エンリッチメント処理</strong>：構成されたエンリッチメントが予測値を訪問プロファイル属性に書き込みます。</li>
-<li><strong>下流のアクティベーション</strong>：オーディエンスが評価し、更新されたプロファイル属性に基づいてコネクタが発火します。</li>
+<li><strong>下流のアクティベーション</strong>：更新されたプロファイル属性に基づいてオーディエンスが評価され、コネクタが発火します。</li>
 </ol>
-<p>関数は直接訪問プロファイルを変更することはできないため、予測はTealium Collectを通じてプロファイルに書き込まれる必要があります。</p>
-<p><code>track()</code>メソッドはイベントをTealium Collectに送信します。これらのイベント属性値を訪問プロファイル属性に書き込むためにエンリッチメントを構成する必要があります。</p>
-<h3 id="関数の種類">関数の種類</h3>
+<p>機能は直接訪問プロファイルを変更することはできないため、予測はTealium Collectを通じてプロファイルに書き込まれる必要があります。</p>
+<p><code>track()</code> メソッドはイベントをTealium Collectに送信します。これらのイベント属性値を訪問プロファイル属性に書き込むためにエンリッチメントを構成する必要があります。</p>
+<h3 id="機能の種類">機能の種類</h3>
 <table>
 <thead>
 <tr>
-<th>関数の種類</th>
+<th>機能の種類</th>
 <th>トリガー</th>
 <th>シグネチャ</th>
 <th>使用例</th>
@@ -298,30 +298,30 @@
 </thead>
 <tbody>
 <tr>
-<td>イベント関数</td>
+<td>イベント機能</td>
 <td>特定のイベントが処理された後に発火</td>
 <td><code>{ event, helper }</code></td>
 <td>即時のイベントコンテキストに基づいてスコアリング（例：商品閲覧時の商品推薦）</td>
 </tr>
 <tr>
-<td>訪問関数</td>
+<td>訪問機能</td>
 <td>訪問プロファイルが更新された後に発火</td>
 <td><code>{ visitor, visit, helper }</code></td>
 <td>蓄積されたプロファイルデータに基づいてスコアリング（例：エンゲージメント履歴に基づく顧客離脱予測）</td>
 </tr>
 </tbody>
 </table>
-<p>リアルタイムの推論とアクティベーションのために外部AIモデルを呼び出す関数を使用することには、いくつかの利点があります：</p>
+<p>リアルタイム推論とアクティベーションのために外部AIモデルを呼び出すことで、以下のような複数の利点があります：</p>
 <ul>
-<li>訪問の行動からリアルタイムで顧客の離脱リスクを検出します。</li>
+<li>訪問の行動からリアルタイムで顧客離脱リスクを検出します。</li>
 <li>高リスク訪問を特定することでリテンションキャンペーンのターゲティングを改善します。</li>
-<li>AIに基づいた予測を使用してセグメンテーションによるパーソナライズされた体験をサポートします。</li>
+<li>AIに基づく予測を使用してセグメンテーションによるパーソナライズされた体験をサポートします。</li>
 <li>モデル駆動の洞察でプロファイルをエンリッチすることで、下流のアクティベーションの精度を向上させます。</li>
 <li>タイムリーな分析と対応のための高スループットデータストリームを処理します。</li>
 <li>マーケティング、アナリティクス、コンプライアンスのワークフローのデータ品質を向上させます。</li>
 </ul>
 <h3 id="前提条件">前提条件</h3>
-<p>AIモデルを呼び出す関数を作成する前に、以下のものを用意してください：</p>
+<p>AIモデルを呼び出すための機能を作成する前に、以下のものを用意してください：</p>
 <ul>
 <li>REST APIエンドポイントにデプロイされた訓練済みのMLモデル、例えばSnowflake Cortex、Databricks Model Serving、AWS SageMaker、Google Vertex AI、Azure ML、Hugging Face Inference Endpoints、または任意のHTTPSエンドポイント。</li>
 <li>モデルエンドポイントのAPI認証情報、例えばAPIキー、ベアラートークン、またはJWT。</li>
@@ -332,12 +332,12 @@
 <h2 id="aiに基づく顧客離脱リスク分析のための主要コンポーネント">AIに基づく顧客離脱リスク分析のための主要コンポーネント</h2>
 <ul>
 <li>
-<p><strong>データ変換関数</strong><br>
-受信イベントデータを評価し、正規表現を適用して離脱リスクに関連する行動を特定します。</p>
+<p><strong>データ変換機能</strong><br>
+受信イベントデータを評価し、正規表現を適用して顧客離脱リスクに関連する行動を特定します。</p>
 </li>
 <li>
 <p><strong>派生属性</strong><br>
-イベントデータから顧客離脱リスクスコアを計算します。関数は各イベントにこの値を構成します。</p>
+イベントデータから顧客離脱リスクスコアを計算します。この機能は各イベントに対してこの値を構成します。</p>
 </li>
 <li>
 <p><strong>AudienceStreamイベントフィルター</strong><br>
@@ -345,11 +345,11 @@
 </li>
 <li>
 <p><strong>イベントフィード</strong><br>
-高リスクとされたイベントをさらなる処理のためにコネクタ、保存、または他の関数にストリーミングします。</p>
+高リスクとフラグ付けされたイベントをさらなる処理のためにコネクタ、保存、または他の機能にストリーミングします。</p>
 </li>
 <li>
-<p><strong>外部モデル呼び出し関数</strong><br>
-エンリッチされたイベントまたはプロファイルデータを外部AIモデルエンドポイントに送信して、高度な顧客離脱予測を行います。</p>
+<p><strong>外部モデル呼び出し機能</strong><br>
+エンリッチされたイベントまたはプロファイルデータを外部AIモデルエンドポイントに送信して高度な顧客離脱予測を行います。</p>
 </li>
 <li>
 <p><strong>エンリッチメント</strong><br>
@@ -361,23 +361,23 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 <ul>
 <li>Tealiumの要件
 <ul>
-<li>AudienceStreamが有効になっていること</li>
-<li>Tealium Functionsが有効になっていること</li>
-<li><code>track()</code>イベントを受信するためのデータソースが構成されていること</li>
-<li>予測属性を訪問プロファイルに書き込むためのエンリッチメントが構成されていること</li>
+<li>AudienceStreamが有効</li>
+<li>Tealium Functionsが有効</li>
+<li><code>track()</code> イベントを受信するためのデータソースが構成されている</li>
+<li>予測属性を訪問プロファイルに書き込むためのエンリッチメント</li>
 </ul>
 </li>
 <li>モデルエンドポイントの要件
 <ul>
-<li>HTTPSプロトコルを使用すること</li>
-<li>10秒以内に応答すること。リアルタイムのパーソナライゼーションのために、応答時間は500ミリ秒未満を推奨します。</li>
-<li>ベアラートークン、APIキー、またはヘッダーベースの認証を使用すること</li>
-<li>JSON形式で応答すること。</li>
+<li>HTTPSプロトコルを使用する</li>
+<li>10秒以内に応答する。リアルタイムパーソナライゼーションのために、応答時間は500ミリ秒未満を推奨します。</li>
+<li>ベアラートークン、APIキー、またはヘッダーベースの認証を使用する</li>
+<li>JSON形式で応答する。</li>
 </ul>
 </li>
 </ul>
-<h2 id="ステップ1-関数の作成">ステップ1: 関数の作成</h2>
-<p>イベント関数または訪問関数を使用してAIアクティベーションロジックを実装できます。スコアリングのタイミングと使用可能なデータに最適な関数の種類を選択します。</p>
+<h2 id="ステップ1-機能を作成する">ステップ1: 機能を作成する</h2>
+<p>イベント機能または訪問機能を使用してAIアクティベーションロジックを実装できます。使用ケースとスコアリング時の利用可能なデータに最も適した機能タイプを選択します。</p>
 <h3 id="コード参照">コード参照</h3>
 <table>
 <thead>
@@ -421,19 +421,19 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </tr>
 </tbody>
 </table>
-<h3 id="プラットフォーム固有の注意点">プラットフォーム固有の注意点</h3>
+<h3 id="プラットフォーム固有の注意事項">プラットフォーム固有の注意事項</h3>
 <p>以下のコード例は一般的なREST APIパターンを示しています。実際の実装はプラットフォームによって異なります：</p>
 <table>
 <thead>
 <tr>
 <th>プラットフォーム</th>
-<th>注意点</th>
+<th>注意事項</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Snowflake Cortex</td>
-<td>Cortex関数はSnowflake SQL APIを使用してSQLステートメントを通じて呼び出されます。JWT認証が必要です。</td>
+<td>Cortex機能は、Snowflake SQL APIを使用してSQLステートメントを通じて呼び出されます。JWT認証が必要です。</td>
 </tr>
 <tr>
 <td>Databricks Model Serving</td>
@@ -445,7 +445,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </tr>
 <tr>
 <td>Hugging Face</td>
-<td>推論エンドポイントはベアラートークン認証を使用します。応答形式はモデルのタイプによって異なります。</td>
+<td>推論エンドポイントはベアラートークン認証を使用します。レスポンス形式はモデルタイプに依存します。</td>
 </tr>
 <tr>
 <td>GCP Vertex</td>
@@ -457,9 +457,9 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </tr>
 </tbody>
 </table>
-<p>リクエスト/レスポンスの形式と認証要件については、プラットフォームのAPIドキュメントを参照してください。</p>
+<p>プラットフォームのAPIドキュメントを参照して、リクエスト/レスポンス形式と認証要件について確認してください。</p>
 <h3 id="イベント関数の例">イベント関数の例</h3>
-<p>次の例は、イベント関数から外部モデルAPIを呼び出す方法を示しています。ペイロードの構造とレスポンスの解析を、モデルのAPIに合わせて適応させてください。</p>
+<p>次の例は、イベント関数から外部モデルAPIを呼び出す方法を示しています。ペイロードの構造とレスポンスの解析を、あなたのモデルのAPIに合わせて調整してください。</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -475,7 +475,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
     <div class="expand-content pa2" style="display: none;">
         <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. イベントデータから特徴ペイロードを組み立てる
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// これをモデルの期待する入力形式に合わせて適応させてください
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// これをあなたのモデルが期待する入力形式に合わせて調整してください
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">product_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span>.<span style="color:#a6e22e">product_id</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">category</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span>.<span style="color:#a6e22e">product_category</span>,
@@ -498,8 +498,8 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 3. Tealium Collectに予測を送信する
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 属性名をモデルのレスポンスに合わせて適応させてください
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 3. 予測をTealium Collectに送信する
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 属性名をあなたのモデルのレスポンスに合わせて調整してください
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">track</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;model_prediction&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">prediction_score</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">score</span>,
@@ -553,8 +553,8 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 訪問関数ではグローバル変数を使用してルーティングする
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// イベントが正しいプロファイルに紐付けられるように visitor_id を含める
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 訪問関数の場合、ルーティングにグローバル変数を使用する
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// イベントが正しいプロファイルに繋がるようにvisitor_idを含める
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">track</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;churn_prediction&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_visitor_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">visitor</span>.<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">visitor_id</span>,
@@ -571,7 +571,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </div>
 </div>
 <h3 id="モデル応答の遅延処理">モデル応答の遅延処理</h3>
-<p>モデルの推論に10秒以上かかる場合は、非同期パターンを使用します。関数はリクエストを送信してすぐに終了します。処理が完了すると、モデルはTealiumにコールバックします。</p>
+<p>モデル推論に10秒以上かかる場合は、非同期パターンを使用します。関数はリクエストを送信してすぐに終了します。処理が完了すると、モデルはTealiumにコールバックします。</p>
 <ol>
 <li>関数は訪問データとコールバックURLをモデルエンドポイントに送信します</li>
 <li>モデルエンドポイントは直ちに202 Acceptedを返します</li>
@@ -605,7 +605,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback_url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#39;TEALIUM_CALLBACK_URL&#39;</span>),
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback_datasource</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#39;DATASOURCE_KEY&#39;</span>)
 </span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 応答を待たずに発火 - don&#39;t await the response
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 応答を待たずに発火 - レスポンスを待たない
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fetch</span>(
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#39;MODEL_ENDPOINT_URL&#39;</span>),
 </span></span><span style="display:flex;"><span>    {
@@ -617,7 +617,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">payload</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ).<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;リクエスト失敗:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 関数はすぐに終了 - モデルが準備ができたらコールバックします
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 関数はすぐに終了 - モデルが準備でき次第コールバックする
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
 </span></span></code></pre></div>
     </div>
@@ -634,9 +634,9 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
   &#34;churn_risk_tier&#34;: &#34;high&#34;,
   &#34;model_version&#34;: &#34;v2.1&#34;
 }
-</code></pre><p><code>tealium_visitor_id</code>を含めることで、予測が正しい訪問プロファイルに紐付けられることを保証します。ステップ3で説明されているように、これらの属性をプロファイルに書き込むためにエンリッチメントを構成します。</p>
+</code></pre><p><code>tealium_visitor_id</code>を含めることで、予測が正しい訪問プロファイルに繋がることが保証されます。ステップ3で説明されているように、これらの属性をプロファイルに書き込むためのエンリッチメントを構成します。</p>
 <h3 id="タイムアウト処理">タイムアウト処理</h3>
-<p><code>fetch()</code> APIはネットワーク障害時にのみエラーを返し、4xx/5xxのレスポンスではエラーを返しません。モデルエンドポイントが遅い場合に関数がハングアップするのを防ぐために、タイムアウトを強制するために <code>AbortController</code> を使用します：</p>
+<p><code>fetch()</code> APIは、ネットワーク障害時にのみエラーを返し、4xx/5xxのレスポンスではエラーを返しません。モデルエンドポイントが遅い場合に関数がハングアップするのを防ぐために、タイムアウトを強制するために<code>AbortController</code>を使用します：</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -672,7 +672,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;AbortError&#39;</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;リクエストがタイムアウトしました&#39;</span>);
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Fetchエラー:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;フェッチエラー:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
@@ -682,7 +682,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 <h2 id="ステップ2-mlプラットフォームの認証情報を構成する">ステップ2: MLプラットフォームの認証情報を構成する</h2>
 <p>Tealium関数でモデルAPIの認証情報と構成を安全にアクセスするために保存します。</p>
 <h3 id="mlプラットフォームの認証トークンを追加する">MLプラットフォームの認証トークンを追加する</h3>
-<p>Tealiumプラットフォームの関数にAPI認証情報を保存するには、認証トークンを追加します。この例では、APIキーまたはトークンエンドポイントURLを <code>model_api_token</code> として保存します。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/authentication/">認証を追加する</a>を参照してください。</p>
+<p>Tealiumプラットフォーム上の関数にAPI認証情報を保存するために、認証トークンを追加します。この例では、APIキーまたはトークンエンドポイントURLを<code>model_api_token</code>として保存します。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/authentication/">認証を追加する</a>を参照してください。</p>
 <p>関数でトークンを次のコードで取得します：</p>
 <pre tabindex="0"><code>    {
       method: &#39;POST&#39;,
@@ -692,12 +692,12 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
       },
       body: JSON.stringify(payload)
     }
-</code></pre><h3 id="mlプラットフォームのグローバル変数を追加する">MLプラットフォームのグローバル変数を追加する</h3>
-<p>関数のための構成情報、例えばモデルエンドポイントURLや名前をグローバル変数として保存します。この例では、モデルエンドポイントURLを <code>MODEL_ENDPOINT_URL</code> として保存します。詳細については、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/">グローバル変数を管理する</a>を参照してください。</p>
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>認証トークンはHTTPリクエスト内の関数からのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。</p>
+<h3 id="mlプラットフォームのグローバル変数を追加する">MLプラットフォームのグローバル変数を追加する</h3>
+<p>関数のための構成情報、例えばモデルエンドポイントURLや名前をグローバル変数として保存します。この例では、モデルエンドポイントURLを<code>MODEL_ENDPOINT_URL</code>として保存します。詳細については、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/">グローバル変数を管理する</a>を参照してください。</p>
 <p>関数で変数を次のコードで取得します：</p>
 <pre tabindex="0"><code>  const response = await fetch(
     helper.getGlobalVariable(&#39;MODEL_ENDPOINT_URL&#39;),
-    {
 ...
     }
   );
@@ -706,7 +706,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 <h3 id="チャーンスコアプロファイル属性の作成">チャーンスコアプロファイル属性の作成</h3>
 <p>訪問プロファイルにモデル予測を保存する属性を作成します。この例では、<code>churn_score</code> 数値属性を作成します。</p>
 <p>詳細については、<a href="/ja/server-side/attributes/manage-as-attributes/#create-an-attribute">属性の作成</a>を参照してください。</p>
-<p>作成した属性にイベントから訪問プロファイルへモデル予測を書き込むためのエンリッチメントを追加します。エンリッチメントがないと、予測は訪問プロファイルに表示されません。この例では、<code>tealium_event</code> が <code>model_prediction</code>（またはあなたのイベント名）と等しい場合に、<code>track()</code> コールから <code>prediction_score</code> イベント属性を <code>churn_score</code> 訪問属性に書き込むエンリッチメントを作成します。</p>
+<p>作成した属性にイベントから訪問プロファイルへモデル予測を書き込むためのエンリッチメントを追加します。エンリッチメントがないと、予測は訪問プロファイルに表示されません。この例では、<code>tealium_event</code> が <code>model_prediction</code>（またはあなたのイベント名）の場合に、<code>track()</code> コールから <code>prediction_score</code> イベント属性を <code>churn_score</code> 訪問属性に書き込むエンリッチメントを作成します。</p>
 <div class="mv3 pv2 ph4 ba br2 b--light-gray">
   <div class="boolean-logic-container">
       <div class="condition-group">
@@ -717,8 +717,8 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
   </div>
 </div>
 <p>詳細については、<a href="/ja/server-side/attributes/manage-enrichments/add-enrichment/">エンリッチメントの追加</a>を参照してください。</p>
-<h2 id="ステップ-4-高リスクチャーンオーディエンスの活性化">ステップ 4: 高リスクチャーンオーディエンスの活性化</h2>
-<p>予測属性を使用してオーディエンスを構築し、チャーンリスクに基づいてアクションをトリガーします。</p>
+<h2 id="ステップ-4-高リスクのチャーンオーディエンスをアクティブ化">ステップ 4: 高リスクのチャーンオーディエンスをアクティブ化</h2>
+<p>予測属性を使用してオーディエンスを構築し、チャーンリスクに対するアクションをトリガーします。</p>
 <h3 id="チャーンリスクオーディエンスの作成">チャーンリスクオーディエンスの作成</h3>
 <p>予測属性に基づいてオーディエンスを作成します。この例では、<code>churn_score</code> が <code>0.7</code> より大きい訪問のために <code>High Churn Risk</code> オーディエンスを作成します。</p>
 <div class="mv3 pv2 ph4 ba br2 b--light-gray">
@@ -732,7 +732,7 @@ AIモデルの予測を訪問プロファイル属性に書き込み、アクテ
 </div>
 <p>詳細については、<a href="/ja/server-side/audiences/manage/#create-an-audience">オーディエンスの作成</a>を参照してください。</p>
 <h3 id="コネクタの構成">コネクタの構成</h3>
-<p>オーディエンスにコネクタアクションを添付して、予測値に基づいて活性化します。この例では、高リスクチャーンのためのリテンションメールをトリガーしたり、購買意向に基づいてユーザーをリマーケティングオーディエンスに追加することができます。</p>
+<p>オーディエンスにコネクタアクションを添付して、予測値に基づいてアクティブ化します。この例では、高リスクのチャーンに対してリテンションメールをトリガーしたり、購買意向に基づいてユーザーをリマーケティングオーディエンスに追加することができます。</p>
 <p>詳細については、<a href="/ja/server-side/connectors/add/">コネクタの追加</a>を参照してください。</p>
 <h2 id="デバッグ">デバッグ</h2>
 <h3 id="ログの表示">ログの表示</h3>
@@ -751,7 +751,7 @@ console.log(&#39;Result:&#39;, JSON.stringify(result));
 </thead>
 <tbody>
 <tr>
-<td>関数がタイムアウトする</td>
+<td>関数がタイムアウト</td>
 <td>モデルが10秒以内に応答することを確認します。専用またはプロビジョニングされたエンドポイントを使用します。平均モデル応答時間に応じて非同期モデル呼び出しを検討してください。</td>
 </tr>
 <tr>
@@ -760,7 +760,7 @@ console.log(&#39;Result:&#39;, JSON.stringify(result));
 </tr>
 <tr>
 <td>認証エラー</td>
-<td><strong>Auth Tokens</strong> のトークン値を確認します。トークンの有効期限をチェックします。</td>
+<td><strong>Auth Tokens</strong> でトークン値を確認します。トークンの有効期限をチェックします。</td>
 </tr>
 <tr>
 <td><code>track()</code> が実行されない</td>
@@ -832,7 +832,7 @@ console.log(&#39;Result:&#39;, JSON.stringify(result));
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月16日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -847,13 +847,13 @@ console.log(&#39;Result:&#39;, JSON.stringify(result));
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%96%A2%E6%95%B0%E3%81%AE%E7%A8%AE%E9%A1%9E" href="javascript:void(0)">関数の種類</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A9%9F%E8%83%BD%E3%81%AE%E7%A8%AE%E9%A1%9E" href="javascript:void(0)">機能の種類</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E9%A1%A7%E5%AE%A2%E9%9B%A2%E8%84%B1%E3%83%AA%E3%82%B9%E3%82%AF%E5%88%86%E6%9E%90%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E4%B8%BB%E8%A6%81%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88" href="javascript:void(0)">AIに基づく顧客離脱リスク分析のための主要コンポーネント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ステップ1: 関数の作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E6%A9%9F%E8%83%BD%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: 機能を作成する</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%BC%E3%83%89%E5%8F%82%E7%85%A7" href="javascript:void(0)">コード参照</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E5%9B%BA%E6%9C%89%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9" href="javascript:void(0)">プラットフォーム固有の注意点</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E5%9B%BA%E6%9C%89%E3%81%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85" href="javascript:void(0)">プラットフォーム固有の注意事項</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%96%A2%E6%95%B0%E3%81%AE%E4%BE%8B" href="javascript:void(0)">イベント関数の例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E9%96%A2%E6%95%B0%E3%81%AE%E4%BE%8B" href="javascript:void(0)">訪問関数の例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%83%87%E3%83%AB%E5%BF%9C%E7%AD%94%E3%81%AE%E9%81%85%E5%BB%B6%E5%87%A6%E7%90%86" href="javascript:void(0)">モデル応答の遅延処理</a></li>
@@ -865,7 +865,7 @@ console.log(&#39;Result:&#39;, JSON.stringify(result));
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ml%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E5%A4%89%E6%95%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">MLプラットフォームのグローバル変数を追加する</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973-%E8%A8%AA%E5%95%8F%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%81%E3%83%A3%E3%83%BC%E3%83%B3%E3%82%B9%E3%82%B3%E3%82%A2%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ3: 訪問プロファイルにチャーンスコアを追加する</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%83%A3%E3%83%BC%E3%83%B3%E3%82%B9%E3%82%B3%E3%82%A2%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%B1%9E%E6%80%A7%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">チャーンスコアプロファイル属性の作成</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-4-%E9%AB%98%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%83%B3%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E6%B4%BB%E6%80%A7%E5%8C%96" href="javascript:void(0)">ステップ 4: 高リスクチャーンオーディエンスの活性化</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-4-%E9%AB%98%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%AE%E3%83%81%E3%83%A3%E3%83%BC%E3%83%B3%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E5%8C%96" href="javascript:void(0)">ステップ 4: 高リスクのチャーンオーディエンスをアクティブ化</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%81%E3%83%A3%E3%83%BC%E3%83%B3%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">チャーンリスクオーディエンスの作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">コネクタの構成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0" href="javascript:void(0)">デバッグ</a></li>

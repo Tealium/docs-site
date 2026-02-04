@@ -536,11 +536,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">事前読み込みされた属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">AudienceStream属性の管理</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-es-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-es-attributes">EventStream属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-attributes">属性の管理</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">訪問と訪問属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">エンリッチメントについて</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -823,7 +823,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v2-function-examples">関数の例（V2）</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">機能例 (V3)</a></li>
+        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1060,8 +1060,8 @@
 <figure><a class="slb" href="/images/server-side/functions-editor-advanced-tab.png"><img src="/images/server-side/functions-editor-advanced-tab.png"/>
     </a>
 </figure>
-<p>例えば、<code>firebase_cloud_messaging</code>という名前のアクセストークンで認証を作成した場合、そのトークンは<code>helper.getAuth('firebase_cloud_messaging')</code>を使用して機能内でアクセスできます。この機能は、認証されたエンドポイントへのリクエスト時に認証ヘッダーを構成するために一般的に使用されます。</p>
-<p>例:</p>
+<p>認証トークンはHTTPリクエスト内の機能からのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。これは、トークンへの不正アクセスを防ぐための制限です。</p>
+<p>例えば、<code>firebase_cloud_messaging</code>という名前のアクセストークンで認証を作成した場合、HTTPリクエストを使用して機能内でそのトークンにアクセスするには、<code>helper.getAuth('firebase_cloud_messaging')</code>を使用します。この機能は、認証されたエンドポイントへのリクエストを行う際に認証ヘッダーを構成するために一般的に使用されます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;</span>,
@@ -1071,10 +1071,12 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>),
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
 </span></span><span style="display:flex;"><span>      },
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span><span style="color:#a6e22e">body</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>HTTPリクエストの外では、認証トークンはUUIDプレースホルダーに置き換えられます。例えば、次の宣言はHTTPリクエストの外で行われるため、プレースホルダーが返されます：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>);
 </span></span></code></pre></div><h2 id="サポートされている認証タイプ">サポートされている認証タイプ</h2>
 <p>認証を追加する手順は、選択した認証によって異なります。次のセクションでは、Facebook、Google、APIキー、およびUID 2.0認証を追加するための指示を提供します。</p>
 <p>OAauth 2.0認証の追加については、<a href="/ja/server-side/functions/event-visitor-functions/oauth2-authentication/">OAauth 2.0認証を追加する</a>を参照してください。</p>
@@ -1085,8 +1087,8 @@
 <li>Facebook広告アカウントにログインします。</li>
 <li><strong>認証を割り当てる</strong>をクリックします。</li>
 <li><strong>+認証を追加</strong>をクリックし、<strong>Facebook認証</strong>を選択して<strong>続行</strong>をクリックします。</li>
-<li><strong>名前</strong>を入力し、<strong>Facebookに接続</strong>をクリックします。
-認証トークンは<strong>ユーザートークン</strong>で返されます。</li>
+<li><strong>名前</strong>を入力し、<strong>Facebookに接続</strong>をクリックします。<br>
+認証トークンが<strong>ユーザートークン</strong>で返されます。</li>
 <li><strong>追加</strong>をクリックします。</li>
 </ol>
 <h3 id="google認証">Google認証</h3>
@@ -1095,8 +1097,8 @@
 <li>機能を作成した後、<strong>詳細</strong>タブをクリックします。</li>
 <li><strong>認証を割り当てる</strong>をクリックします。</li>
 <li><strong>+認証を追加</strong>をクリックし、<strong>Google認証</strong>を選択して<strong>続行</strong>をクリックします。</li>
-<li><strong>名前</strong>と<strong>開発者トークン</strong>の名前を入力し、<strong>Googleに接続</strong>をクリックします。
-認証トークンは<strong>ユーザートークン</strong>で返されます。</li>
+<li><strong>名前</strong>と<strong>開発者トークン</strong>の名前を入力し、<strong>Googleに接続</strong>をクリックします。<br>
+認証トークンが<strong>ユーザートークン</strong>で返されます。</li>
 <li><strong>追加</strong>をクリックします。</li>
 </ol>
 <h3 id="apiキー認証">APIキー認証</h3>
@@ -1105,11 +1107,11 @@
 <li>機能を作成した後、<strong>詳細</strong>タブをクリックします。</li>
 <li><strong>認証を割り当てる</strong>をクリックします。</li>
 <li><strong>+認証を追加</strong>をクリックし、<strong>APIキー</strong>を選択して<strong>続行</strong>をクリックします。</li>
-<li>トークンの<strong>名前</strong>を入力し、<strong>次へ</strong>をクリックします。
+<li>トークンのための<strong>名前</strong>を入力し、<strong>次へ</strong>をクリックします。<br>
 指定された<strong>名前</strong>に基づいて機能のための一意のアクセストークン名が生成されます。</li>
-<li><strong>APIキー</strong>を入力します。保存して公開すると、APIキーは難読化され、表示されなくなります。</li>
+<li><strong>APIキー</strong>を入力します。保存して公開した後、APIキーは難読化され、表示されなくなります。</li>
 <li>[オプション] ホワイトリストにホスト名を入力します。</li>
-<li>追加のホスト名をホワイトリストに追加するには、<strong>+ホスト名を追加</strong>をクリックし、名前を入力します。</li>
+<li>追加のホスト名をホワイトリストに追加するには、<strong>+ ホスト名を追加</strong>をクリックし、名前を入力します。</li>
 <li><strong>追加</strong>をクリックします。</li>
 <li><strong>完了</strong>をクリックします。</li>
 </ol>
@@ -1120,7 +1122,7 @@
 <p><strong>詳細タブ</strong>で、<strong>認証を割り当てる</strong>をクリックします。</p>
 </li>
 <li>
-<p>削除する認証のメニューで、<strong>削除</strong>をクリックします。
+<p>削除する認証のメニューで、<strong>削除</strong>をクリックします。<br>
 認証が機能またはコネクタに割り当てられている場合、割り当てられている機能またはコネクタのリストが表示されるメッセージが表示されます。<strong>閉じる</strong>をクリックします。</p>
 <figure><a class="slb" href="/images/server-side/functionsauthdelete.png"><img src="/images/server-side/functionsauthdelete.png"
                alt="FunctionsAuthDelete.png"
@@ -1154,11 +1156,11 @@
   <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"機能例 (V3) "</title>
+      <title>"関数の例 (V3) "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>機能例 (V3)</div>
+      <div>関数の例 (V3)</div>
     </section>
   </a>
   
@@ -1190,7 +1192,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月31日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

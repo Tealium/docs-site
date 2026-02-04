@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/consent/client-side/consent-integrations/supported-vendors/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealium iQ Consent IntegrationsでサポートされているCMPについて説明し、Consent Integrationsの構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。" />
+<meta property="og:description" content="この記事では、クライアントサイドの同意統合でサポートされているCMPについて説明し、同意統合の構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>サポートされているベンダー統合 | コンセント統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "consent",
-        reading_time  : "12",
+        reading_time  : "15",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -401,26 +401,26 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium iQ Consent IntegrationsでサポートされているCMPについて説明し、Consent Integrationsの構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。
+      この記事では、クライアントサイドの同意統合でサポートされているCMPについて説明し、同意統合の構成を完了するために必要なベンダー固有の情報を簡単に収集する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>Tealium iQ Consent Integrationsは、様々な同意管理プラットフォーム（CMP）との統合をサポートしています。サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェースまたはウェブページから、関連するベンダー固有の情報にアクセスできます。このドキュメントを信頼性が高くユーザーフレンドリーに保つために、このセクションではウェブページからベンダー固有の情報を取得する手順のみをカバーしています。各パートナーCMPのユーザーインターフェースでベンダーIDと目的を取得する手順については、各CMPのドキュメントを参照してください。</p>
-<p>ウェブページから関連情報を取得するには、以下の手順に従ってください：</p>
+<p>クライアントサイドの同意統合は、さまざまな同意管理プラットフォーム（CMP）との統合をサポートしています。サポートされている同意管理プラットフォーム（CMP）のユーザーインターフェースまたはウェブページから、関連するベンダー固有の情報にアクセスできます。このドキュメントを信頼性が高くユーザーフレンドリーに保つために、このセクションではウェブページからベンダー固有の情報を取得する手順のみをカバーしています。各パートナーCMPのユーザーインターフェースでベンダーIDと目的を取得する手順については、それぞれのCMPのドキュメントを参照してください。</p>
+<p>ウェブページから関連情報を取得するには、次の手順に従ってください：</p>
 <ol>
 <li>CMPが実装されているウェブサイトを訪問します。</li>
 <li>すべてのトラッキングを受け入れます。</li>
 <li>開発者ツールのJavaScriptコンソールを開きます。</li>
 <li>下記のコードスニペットからCMP固有のコードを開発者ツールのJavaScriptコンソールに貼り付けます。</li>
-<li>表示された<strong>ベンダーID</strong>、<strong>目的キー</strong>、および<strong>目的名</strong>をあなたのConsent Integrationに入力します。</li>
+<li>表示された<strong>ベンダーID</strong>、<strong>目的キー</strong>、および<strong>目的名</strong>をあなたの同意統合に入力します。</li>
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>同意決定を更新した後、最新の解釈を確認するためにコードを再度貼り付けてください。</p>
 <h2 id="統合固有の指示とコードスニペット">統合固有の指示とコードスニペット</h2>
 <h3 id="cookiebot">Cookiebot</h3>
-<p><a href="https://www.cookiebot.com/">cookiebot.com</a>またはあなたのウェブサイトでこのスニペットをテストし、<a href="#how-it-works">仕組みセクション</a>の指示に従って互換性を確認し、統合に必要な情報を取得してください。</p>
+<p><a href="https://www.cookiebot.com/">cookiebot.com</a> またはあなたのウェブサイトでこのスニペットをテストし、<a href="#how-it-works">仕組みセクション</a>の指示に従って互換性を確認し、統合に必要な情報を取得します。</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -474,7 +474,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 同意されたベンダー/目的の配列を返す必要があります - これらはTealium iQの目的と正確に一致する必要があります
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>(<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">consentDecision</span> <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// データの販売/共有が許可されているかどうかを判断するために、空でないオプトアウトクッキーを非常に単純にチェックします
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// データを売却/共有するタグが許可されているかどうかを判断するために、空でないオプトアウトクッキーを非常に単純にチェックします
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">necessary</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">consentDecision</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#39;necessary&#39;</span>) <span style="color:#75715e">// クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
@@ -514,9 +514,9 @@
 </div>
 </div>
 <h3 id="didomi">Didomi</h3>
-<p><a href="https://didomi.io">Didomi.io</a>または<a href="#how-it-works">上記の手順に従って</a>あなたのウェブサイトでこのスニペットをテストして、互換性を確認し、統合に必要な情報を取得してください。</p>
+<p><a href="https://didomi.io">Didomi.io</a>またはあなたのウェブサイトでこのスニペットをテストし、<a href="#how-it-works">上記の指示に従って</a>互換性を確認し、統合に必要な情報を取得してください。</p>
 <p>Didomi統合は、<strong>ベンダー</strong>を<strong>目的</strong>として使用します。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>現在のDidomiとの統合では、暗黙の同意された目的やベンダーは返されません。これは当時利用可能な唯一のオプションでした。古いバージョンを使用している顧客をサポートし、新しいアプローチを可能にする更新が行われるまで、この統合は無条件に<code>always_consented</code>という目的キーをアウトバウンドの同意決定に追加します。これは暗黙のトリガーを可能にするための回避策として機能します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>現在のDidomiとの統合では、暗黙の同意された目的やベンダーは返されません。これは当時利用可能な唯一のオプションでした。古いバージョンを使用している顧客をサポートし、新しいアプローチを可能にするアップデートが行われるまで、この統合は無条件に<code>always_consented</code>という目的キーをアウトバウンドの同意決定に追加します。これは暗黙のトリガーを可能にするための回避策として機能します。</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -525,7 +525,7 @@
         <span style="font-weight:bold;">
         
     	
-    	コードスニペットを表示する
+    	コードスニペットを表示するには展開
     	
     	</span>
     </div>
@@ -745,8 +745,8 @@
 </div>
 </div>
 <h3 id="onetrust">OneTrust</h3>
-<p>このスニペットを <a href="https://onetrust.com">https://onetrust.com</a> または <a href="#how-it-works">上記の指示に従って</a> あなたのウェブサイトでテストして、互換性を確認し、統合に必要な情報を取得してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OneTrustは構成をプレビューするためのテストモードを提供しており、ベンダーIDに <code>-test</code> を追加することでアクティブになります。統合を簡素化するために、OneTrust Consent IntegrationsはベンダーIDから <code>-test</code> 接尾辞を削除します。シームレスな統合のために、ページで <code>-test</code> 接尾辞を使用している場合でも、Tealium iQ Consent Integrations UIで統合を構成する際には <code>-test</code> を除いたベンダーIDを入力してください。Tealium iQ UIとアクティブな統合間でベンダーIDが一致しない場合、Tealium iQタグ管理はページ上でクッキーを構成したりタグをトリガーしたりすることができません。</p>
+<p><a href="https://onetrust.com">https://onetrust.com</a> またはあなたのウェブサイトでこのスニペットをテストし、<a href="#how-it-works">上記の指示に従って</a>互換性を確認し、統合に必要な情報を取得してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>OneTrustは構成をプレビューするためのテストモードを提供しており、ベンダーIDに <code>-test</code> を追加することでアクティブ化されます。統合を簡素化するために、OneTrustの同意統合はベンダーIDから <code>-test</code> 接尾辞を削除します。シームレスな統合のために、ページで <code>-test</code> 接尾辞を使用している場合でも、統合の構成時に同意統合UIにベンダーIDを <code>-test</code> なしで入力してください。Tealium iQ UIとアクティブな統合間でベンダーIDが一致しない場合、Tealium iQタグ管理はページ上でクッキーを構成したりタグをトリガーしたりすることができません。</p>
 <p>OneTrustは <code>cmpAddCallbackToTriggerRecheck</code> を通じてコールバック関数をサポートしています。これにより、Tealium iQはポーリングなしで同意状態の変更に関するリアルタイムの更新を受け取ることができます。詳細については、<a href="/ja/consent/client-side/consent-integrations/custom-cmp/">カスタムCMP統合</a>を参照してください。</p>
 
 <div class="pv2">
@@ -823,7 +823,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// treat things we don&#39;t understand as implicit
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> window.<span style="color:#a6e22e">OneTrust</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> window.<span style="color:#a6e22e">OneTrust</span>.<span style="color:#a6e22e">IsAlertBoxClosed</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;function&#34;</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">OneTrust</span>.<span style="color:#a6e22e">IsAlertBoxClosed</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> window.<span style="color:#a6e22e">OneTrust</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> window.<span style="color:#a6e22e">OneTrust</span>.<span style="color:#a6e22e">IsAlertBoxClosed</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;function&#34;</span> <span style="color:#a6e22e">and</span> window.<span style="color:#a6e22e">OneTrust</span>.<span style="color:#a6e22e">IsAlertBoxClosed</span>();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToLookupObject</span>(<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// convert from array of objects to object for easier lookups
@@ -867,16 +867,68 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">         jQuery v1.9.1 (c) 2005, 2012
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">         jQuery Foundation, Inc. jquery.org/license.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">        */</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><p>var f = /[object (Boolean|Number|String|Function|Array|Date|RegExp|Arguments)]/; function g(a) { return null == a ? String(a) : (a = f.exec(Object.prototype.toString.call(Object(a)))) ? a[1].toLowerCase() : &ldquo;object&rdquo; } function m(a, b) { return Object.prototype.hasOwnProperty.call(Object(a), b) } function n(a) { if (!a || &ldquo;object&rdquo; != g(a) || a.nodeType || a == a.window) return !1; try { if (a.constructor &amp;&amp; !m(a, &ldquo;constructor&rdquo;) &amp;&amp; !m(a.constructor.prototype, &ldquo;isPrototypeOf&rdquo;)) return !1 } catch (c) { return !1 } for (var b in a); return void 0 === b || m(a, b) }; function p(a, b) { var c = {}, d = c; a = a.split(&quot;.&quot;); for (var e = 0; e &lt; a.length - 1; e++)d = d[a[e]] = {}; d[a[a.length - 1]] = b; return c } function q(a, b) { var c = !a._clear, d; for (d in a) if (m(a, d)) { var e = a[d]; &ldquo;array&rdquo; === g(e) &amp;&amp; c ? (&ldquo;array&rdquo; === g(b[d]) || (b[d] = []), q(e, b[d])) : n(e) &amp;&amp; c ? (n(b[d]) || (b[d] = {}), q(e, b[d])) : b[d] = e } delete b._clear };/* Copyright 2012 Google Inc. All rights reserved. */
+function r(a, b, c) {
+b = void 0 === b ? {} : b; &ldquo;function&rdquo; === typeof b ? b = { listener: b, listenToPast: void 0 === c ? !1 : c, processNow: !0, commandProcessors: {} } : b = { listener: b.listener || function () { }, listenToPast: b.listenToPast || !1, processNow: void 0 === b.processNow ? !0 : b.processNow, commandProcessors: b.commandProcessors || {} }; this.a = a; this.l = b.listener; this.j = b.listenToPast; this.g = this.i = !1; this.c = {}; this.f = []; this.b = b.commandProcessors; this.h = u(this); var d = this.a.push, e = this; this.a.push = function () {
+var k = [].slice.call(arguments,
+0), l = d.apply(e.a, k); v(e, k); return l
+}; b.processNow &amp;&amp; this.process()
+} r.prototype.process = function () { this.registerProcessor(&ldquo;set&rdquo;, function () { var c = {}; 1 === arguments.length &amp;&amp; &ldquo;object&rdquo; === g(arguments[0]) ? c = arguments[0] : 2 === arguments.length &amp;&amp; &ldquo;string&rdquo; === g(arguments[0]) &amp;&amp; (c = p(arguments[0], arguments[1])); return c }); this.i = !0; for (var a = this.a.length, b = 0; b &lt; a; b++)v(this, [this.a[b]], !this.j) }; r.prototype.get = function (a) { var b = this.c; a = a.split(&quot;.&quot;); for (var c = 0; c &lt; a.length; c++) { if (void 0 === b[a[c]]) return; b = b[a[c]] } return b };
+r.prototype.flatten = function () { this.a.splice(0, this.a.length); this.a[0] = {}; q(this.c, this.a[0]) }; r.prototype.registerProcessor = function (a, b) { a in this.b || (this.b[a] = []); this.b[a].push(b) };
+function v(a, b, c) {
+c = void 0 === c ? !1 : c; if (a.i &amp;&amp; (a.f.push.apply(a.f, b), !a.g)) for (; 0 &lt; a.f.length;) {
+b = a.f.shift(); if (&ldquo;array&rdquo; === g(b)) a: { var d = a.c; g(b[0]); for (var e = b[0].split(&quot;.&quot;), k = e.pop(), l = b.slice(1), h = 0; h &lt; e.length; h++) { if (void 0 === d[e[h]]) break a; d = d[e[h]] } try { d[k].apply(d, l) } catch (w) { } } else if (&ldquo;arguments&rdquo; === g(b)) { e = a; k = []; l = b[0]; if (e.b[l]) for (d = e.b[l].length, h = 0; h &lt; d; h++)k.push(e.b[l][h].apply(e.h, [].slice.call(b, 1))); a.f.push.apply(a.f, k) } else if (&ldquo;function&rdquo; == typeof b) try { b.call(a.h) } catch (w) { } else if (n(b)) for (var t in b) q(p(t,
+b[t]), a.c); else continue; c || (a.g = !0, a.l(a.c, b), a.g = !1)
+}
+} r.prototype.registerProcessor = r.prototype.registerProcessor; r.prototype.flatten = r.prototype.flatten; r.prototype.get = r.prototype.get; r.prototype.process = r.prototype.process; window.DataLayerHelper = r; function u(a) { return { set: function (b, c) { q(p(b, c), a.c) }, get: function (b) { return a.get(b) } } };
+})();
+function listener(model, message) {
+// メッセージがプッシュされました。
+// ヘルパーがそれをモデルにマージしました。
+// これでメッセージと更新されたモデルを使用して何かを行います。
+if ([&ldquo;OneTrustGroupsUpdated&rdquo;, &ldquo;OneTrustLoaded&rdquo;].indexOf(message.event) !== -1) {
+triggerRecheck()
+}
+}
+window.dataLayer = window.dataLayer || [];
+const helper = new DataLayerHelper(window.dataLayer, { listener: listener });
+var oldWrapper = window.OptanonWrapper || function () { }
+window.OptanonWrapper = function () {
+oldWrapper();
+triggerRecheck();
+}
+return true;
+}
+function cmpCheckForTiqConsent(cmpRawOutput, tiqGroupName) {
+// 理解できないものはオプトアウトとして扱います
+if (cmpCheckForWellFormedDecision(cmpRawOutput) !== true) return false;
+tiqGroupName = tiqGroupName || &ldquo;tiq-group-name-missing&rdquo;;
+var allowedGroups = cmpConvertResponseToGroupList(cmpRawOutput);
+return allowedGroups.indexOf(tiqGroupName) !== -1;
+}
+})(window);</p>
+<p>/*
+// デバッグ/開発出力 - コンソールに貼り付けるか、カスタム統合の開発中に全体のテンプレートをアンコメントして貼り付けます
+function outputDebuggingInfo () {
+var outputString = <code>${tealiumCmpIntegration.cmpCheckIfOptInModel() ? 'Opt-in' : 'Opt-out'} Model Checks: - id:                 ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()} - well-formed:        ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())} - explicit:           ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())} - using callback:     ${typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === 'function'} - consented purposes: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))} </code>
+console.log(outputString);
+}
+// コールバック関数を使用してデバッグ中にコンソールへの投稿を避け、コールバック関数自体のテストを可能にします
+if (typeof tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck === &lsquo;function&rsquo;) {
+tealiumCmpIntegration.cmpAddCallbackToTriggerRecheck(outputDebuggingInfo)
+}
+outputDebuggingInfo();
+*/</p>
+
     </div>
 </div>
 </div>
-<h3 id="オプトアウトクッキー--gpc">オプトアウトクッキー + GPC</h3>
-<p>この統合は、CCPA/CPRAなどの非常にシンプルなオプトアウトモデルをサポートすることを目的としています。<strong>Vendor ID</strong> フィールドは、オプトアウトクッキーのクッキー名として解釈され、大文字と小文字が区別されます。このクッキーが任意の値で見つかった場合、または <a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">グローバルプライバシーコントロール（GPC）</a> のオプトアウトシグナルが見つかった場合、ユーザーはオプトアウトしたと見なされます。</p>
-<p>統合で使用される<strong>目的キー</strong>とデフォルトの<strong>目的グループ</strong>に含まれるものは以下の通りです：</p>
+<h3 id="opt-out-cookie--gpc">Opt-out Cookie + GPC</h3>
+<p>この統合は、CCPA/CPRAなどの非常にシンプルなオプトアウトモデルをサポートすることを目的としています。<strong>Vendor ID</strong> フィールドはオプトアウトクッキーのクッキー名として解釈され、大文字と小文字が区別されます。このクッキーが任意の値で見つかった場合、または <a href="/ja/consent/client-side/consent-management/global-privacy-control/about/">Global Privacy Control (GPC)</a> のオプトアウトシグナルが見つかった場合、ユーザーはオプトアウトしたと見なされます。</p>
+<p>統合で使用される<strong>Purpose Keys</strong>とデフォルトの<strong>Purpose Group</strong>に含まれるものは以下の通りです：</p>
 <ul>
-<li><code>no-selling</code> - ユーザーのオプトアウトシグナルに関係なく許可するタグ。これらのタグはデータを販売/共有しないか、法務チームなどによって厳密に必要とされています。</li>
-<li><code>yes-selling</code> - 適用される規制やポリシーにより、ユーザーがオプトアウトした後の追跡が禁止されているため、オプトアウトユーザーに対してブロックするタグです。</li>
+<li><code>no-selling</code> - ユーザーのオプトアウトシグナルに関係なく許可するタグ。これらのタグはデータを販売/共有しないか、法務チームなどが厳密に必要と見なしています。</li>
+<li><code>yes-selling</code> - オプトアウトユーザーのためにブロックするタグ。適用される規制やポリシーがユーザーがオプトアウトした後の追跡を禁止しているためです。</li>
 </ul>
 <h3 id="trustarc">TrustArc</h3>
 <p>このスニペットを <a href="https://trustarc.com/">trustarc.com</a> またはあなたのウェブサイトでテストし、<a href="#how-it-works">操作方法セクション</a> の指示に従って互換性を確認し、統合に必要な情報を取得してください。</p>
@@ -893,13 +945,12 @@
     	</span>
     </div>
     <div class="expand-content pa2" style="display: none;">
-        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trustarc</span> (window) {
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trustarcIntegration</span> (window) {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP specific functionality and labels
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;TrustArc&#39;</span>
-</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;trustarc-1.0.3&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;trustarc-1.0.4&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span>
@@ -911,19 +962,26 @@
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToLookupObject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToLookupObject</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">modeCookieValue</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">truste</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span>(<span style="color:#e6db74">&#39;notice_behavior&#39;</span>)) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;expressed|eu&#39;</span> <span style="color:#75715e">// default to strict EU rules if no cookie
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">modeCookieValue</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;expressed&#39;</span>) <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">preferredButNewMethod</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">truste</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">eu</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">eu</span>.<span style="color:#a6e22e">bindMap</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">eu</span>.<span style="color:#a6e22e">bindMap</span>.<span style="color:#a6e22e">consentModel</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">preferredButNewMethod</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">preferredButNewMethod</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;none&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">preferredButNewMethod</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;opt-out&#39;</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">modeCookieValue</span> <span style="color:#f92672">=</span> ((window.<span style="color:#a6e22e">truste</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span>(<span style="color:#e6db74">&#39;notice_behavior&#39;</span>)) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;expressed|eu&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">modeCookieValue</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;expressed&#39;</span>) <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">trustArcMap</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Required&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Functional&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Personalization/Advertising&#39;</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>window.<span style="color:#a6e22e">truste</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">typeof</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;function&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>window.<span style="color:#a6e22e">truste</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">typeof</span> window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;function&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookieValue</span> <span style="color:#f92672">=</span>  window.<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">readCookie</span>(<span style="color:#a6e22e">truste</span>.<span style="color:#a6e22e">eu</span>.<span style="color:#a6e22e">COOKIE_GDPR_PREF_NAME</span>) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;0,&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if we&#39;re in the opt-out model and it&#39;s an implicit decision, we should allow all tags to fire
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">map</span> <span style="color:#f92672">=</span> (window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">keys</span>(window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>[Object.<span style="color:#a6e22e">keys</span>(window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>)[<span style="color:#ae81ff">0</span>]]) <span style="color:#f92672">||</span> {}
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckIfOptInModel</span>() <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>() <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cookieValue</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">map</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;,&#39;</span>) <span style="color:#75715e">// all purpose keys that have been added in the UI are returned as consented
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    } 
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cookieValue</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">trustArcMap</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;,&#39;</span>) 
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cookie</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookieValue</span>
@@ -931,13 +989,11 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// just return whatever Vendor ID is expected be active to short-circuit the ID-based double check for now
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> (window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">keys</span>(window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;(Vendor ID check disabled)&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">&amp;&amp;</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">keys</span>(window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">map</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;(Vendor ID check disabled for this integration)&#39;</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// treat things we don&#39;t understand as an opt-out
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;object&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;object&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">cmpRawOutput</span>.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>  }
@@ -956,12 +1012,6 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">extraSplit</span>.<span style="color:#a6e22e">push</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">extraSplit</span>, <span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;|&#39;</span>))
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">trustArcMap</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Required&#39;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Functional&#39;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Personalization/Advertising&#39;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> {}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extraSplit</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">key</span>) =&gt; {
@@ -976,12 +1026,11 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">permittedPurposesWithNames</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToLookupObject</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">keysOrValues</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;keys&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Object[<span style="color:#a6e22e">keysOrValues</span>](<span style="color:#a6e22e">permittedPurposesWithNames</span>) <span style="color:#75715e">// keys are IDs, values are names
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Object[<span style="color:#a6e22e">keysOrValues</span>](<span style="color:#a6e22e">permittedPurposesWithNames</span>) 
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">tiqGroupName</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// treat things we don&#39;t understand as an opt-out
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;tiq-group-name-missing&#39;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allowedGroups</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
@@ -989,27 +1038,27 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>})(window)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Debugging / development output - uncomment this code and paste the integration into the console on your test pages each time you make a change to your consent state to test without publishing
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">outputString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`CMP Found: </span><span style="color:#e6db74">${</span>window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">${</span>window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckIfOptInModel</span>() <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Opt-in&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Opt-out&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> Model)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Checks:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - id:          </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentLookupKey</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - well-formed: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>())<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - explicit:    </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>())<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - group list:  </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToGroupList</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>()))<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - name lookup: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToLookupObject</span>(<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>()), <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">6</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckIfOptInModel</span>() <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>() <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;(All purposes are consented in opt-out mode with an implicit decision, but the full purpose list can\&#39;t be shown in this debug output for technical reasons.)&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    `</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">outputString</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Debugging - uncomment this code and paste the integration into the console on your test pages each time you make a change to your consent state to test without publishing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">var outputString = `CMP Found: ${window.tealiumCmpIntegration.cmpName} (${window.tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Checks:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      - well-formed: ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      - explicit:    ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      - group list:  ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      - name lookup: ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToLookupObject(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()), null, 6)}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    `
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">console.log(outputString)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span></code></pre></div>
     </div>
 </div>
 </div>
 <h3 id="usercentrics">Usercentrics</h3>
-<p>このスニペットをあなたのウェブサイトでテストし、<a href="#how-it-works">操作方法</a>セクションの指示に従って互換性を確認し、統合に必要な情報を取得してください。
-Usercentricsの統合では、<strong>Vendors</strong>を<strong>Purposes</strong>として使用します。</p>
+<p>このスニペットをあなたのウェブサイトでテストし、<a href="#how-it-works">How it works</a> セクションの指示に従って互換性を確認し、統合に必要な情報を取得してください。
+Usercentricsの統合では、<strong>Vendors</strong> を <strong>Purposes</strong> として使用します。</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -1116,7 +1165,7 @@ Usercentricsの統合では、<strong>Vendors</strong>を<strong>Purposes</stron
 </div>
 </div>
 <h3 id="カスタム統合テンプレート">カスタム統合テンプレート</h3>
-<p>カスタム統合テンプレートについての詳細とその使用方法については、<a href="/ja/consent/client-side/consent-integrations/custom-cmp/">カスタム統合</a>を参照してください。</p>
+<p>カスタム統合テンプレートについての詳細とその使用方法については、<a href="/ja/consent/client-side/consent-integrations/custom-cmp/">Custom integration</a>を参照してください。</p>
 
 </div>
 
@@ -1177,7 +1226,7 @@ Usercentricsの統合では、<strong>Vendors</strong>を<strong>Purposes</stron
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月4日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1197,7 +1246,7 @@ Usercentricsの統合では、<strong>Vendors</strong>を<strong>Purposes</stron
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#didomi" href="javascript:void(0)">Didomi</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%AB%E3%83%BC%E3%83%A0" href="javascript:void(0)">デジタルコントロールルーム</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#onetrust" href="javascript:void(0)">OneTrust</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%97%E3%83%88%E3%82%A2%E3%82%A6%E3%83%88%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC--gpc" href="javascript:void(0)">オプトアウトクッキー &#43; GPC</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#opt-out-cookie--gpc" href="javascript:void(0)">Opt-out Cookie &#43; GPC</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#trustarc" href="javascript:void(0)">TrustArc</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usercentrics" href="javascript:void(0)">Usercentrics</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E7%B5%B1%E5%90%88%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">カスタム統合テンプレート</a></li>

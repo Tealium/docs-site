@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="イベントおよび訪問機能の例 (V3)" />
+    <meta property="og:title" content="イベントおよび訪問関数の例 (V3)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/functions/event-visitor-functions/v3-function-examples/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、V3イベントおよび訪問機能のためのサンプルコードを提供します。" />
+<meta property="og:description" content="この記事では、V3イベントおよび訪問関数のサンプルコードを提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>イベントおよび訪問機能の例 (V3) | イベントとビジター関数 | Tealiumドキュメント</title>
+    <title>イベントおよび訪問関数の例 (V3) | イベントとビジター関数 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -536,11 +536,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">事前読み込みされた属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">AudienceStream属性の管理</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-es-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-es-attributes">EventStream属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-attributes">属性の管理</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">訪問と訪問属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">エンリッチメントについて</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -823,7 +823,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v2-function-examples">関数の例（V2）</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".v3-event-visitor-function-examples">機能例 (V3)</a></li>
+        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1040,7 +1040,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">イベントおよび訪問機能の例 (V3)</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">イベントおよび訪問関数の例 (V3)</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1048,14 +1048,14 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、V3イベントおよび訪問機能のためのサンプルコードを提供します。
+      この記事では、V3イベントおよび訪問関数のサンプルコードを提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="http-getを使用してイベントデータを送信">HTTP GETを使用してイベントデータを送信</h2>
-<p>次の例は、イベントデータをクエリ文字列パラメータとしてエンドポイントにHTTP GETリクエストを行う方法を示しています。</p>
+<p>次の例は、クエリ文字列パラメータとしてイベントデータを含むエンドポイントにHTTP GETリクエストを行う方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">event</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event</span>));
 </span></span><span style="display:flex;"><span>
@@ -1070,7 +1070,7 @@
 </span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>)); 
 </span></span><span style="display:flex;"><span>})
 </span></span></code></pre></div><h2 id="http-postを使用して訪問データを送信">HTTP POSTを使用して訪問データを送信</h2>
-<p>次の例は、訪問プロファイルデータをリクエストボディJSONに含めてエンドポイントにHTTP POSTリクエストを行う方法を示しています。</p>
+<p>次の例は、リクエストボディJSONに訪問プロファイルデータを含むエンドポイントにHTTP POSTリクエストを行う方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">visitor</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visitor</span>));
 </span></span><span style="display:flex;"><span>
@@ -1092,9 +1092,9 @@
 </span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
 </span></span><span style="display:flex;"><span>})
 </span></span></code></pre></div><h2 id="http-getを使用して訪問データを送信">HTTP GETを使用して訪問データを送信</h2>
-<p>次の例は、訪問プロファイルデータをクエリ文字列パラメータとしてエンドポイントにHTTP GETリクエストを行う方法を示しています。</p>
+<p>次の例は、クエリ文字列パラメータとして訪問プロファイルデータを含むエンドポイントにHTTP GETリクエストを行う方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">visit</span> }) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visit</span>)); <span style="color:#75715e">// notice separate visit property
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">visit</span>)); <span style="color:#75715e">// 別の訪問プロパティに注意
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetch</span>(encodeURI(<span style="color:#e6db74">`https://webhook.site/87bb160f-475a-4258-b117-693bb2378a4d?param=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">visit</span>.<span style="color:#a6e22e">creation_ts</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>))
 </span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
@@ -1107,7 +1107,7 @@
 </span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
 </span></span><span style="display:flex;"><span>})
 </span></span></code></pre></div><h2 id="tealium-collect-http-apiにイベントを送信">Tealium Collect HTTP APIにイベントを送信</h2>
-<p>次の例は、データを取得し、Tealium Collectにイベントを送信する方法を示しています。</p>
+<p>次の例は、データをフェッチしてTealium Collectにイベントを送信する方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchQuery</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">pathname</span>, <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">search_query</span> });
 </span></span><span style="display:flex;"><span>    
@@ -1134,7 +1134,7 @@
 </span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
 </span></span><span style="display:flex;"><span>})
 </span></span></code></pre></div><h2 id="サービスプロバイダーへの呼び出しに認証アクセストークンを使用">サービスプロバイダーへの呼び出しに認証アクセストークンを使用</h2>
-<p>この例では、OAuth 2.0認証を使用してGoogle Firebase Cloud MessagingへのAPI呼び出しを行います。関数にOAuth2.0認証を追加すると作成されるアクセストークンは、<code>helper.getAuth()</code>へのパラメータとして渡されます。次の図は、この例の関数のアクセストークンを示しています：
+<p>この例では、OAuth 2.0認証を使用してGoogle Firebase Cloud MessagingへのAPI呼び出しを行います。認証トークンは、関数にOAuth2.0認証を追加するときに作成され、<code>helper.getAuth()</code>のパラメータとして渡されます。次の図は、この例の関数のアクセストークンを示しています：
 <figure><a class="slb" href="/images/server-side/functions-editor-advanced-tab.png"><img src="/images/server-side/functions-editor-advanced-tab.png"/>
     </a>
 </figure></p>
@@ -1175,8 +1175,9 @@
 </div>
 </div>
 
+<p class="note"><i class="fa fa-exclamation-triangle"></i>認証トークンは、HTTPリクエスト内の関数でのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。</p>
 <h2 id="グローバル変数の値を取得">グローバル変数の値を取得</h2>
-<p>次のコード例は、<code>helper.getGlobalVariable()</code>を使用してグローバル変数<code>Cloud_function_URL</code>を取得し、このURLを使用してGoogle cloud functionを呼び出す方法を示しています。</p>
+<p>次のコード例は、<code>helper.getGlobalVariable()</code>を使用してグローバル変数<code>Cloud_function_URL</code>を取得し、このURLを使用してGoogleクラウド関数を呼び出す方法を示しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cfunction_url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#34;Cloud_function_URL&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">headers</span> <span style="color:#f92672">=</span> {
@@ -1184,17 +1185,17 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;mute-http-exceptions&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// code to populate body parameter goes here
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ここにbodyパラメータを構成するコードを記述
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">cfunction_url</span>, {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">headers</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">body</span>
 </span></span><span style="display:flex;"><span>        });
-</span></span></code></pre></div><p>イベントまたは訪問機能用のグローバル変数を追加する方法については、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/#add-a-global-variable-for-event-or-visitor-functions">グローバル変数を追加する</a>を参照してください。</p>
+</span></span></code></pre></div><p>イベントまたは訪問関数用のグローバル変数を追加する方法については、<a href="/ja/server-side/functions/manage-functions/manage-global-variables/#add-a-global-variable-for-event-or-visitor-functions">グローバル変数を追加する</a>を参照してください。</p>
 <h2 id="属性idによる属性名または属性値の取得">属性IDによる属性名または属性値の取得</h2>
-<p>属性名は変更されることがあり、コードが属性名を参照している場合に問題を引き起こす可能性があります。属性名が変更された場合でも、属性IDは変更されません。属性名の変更による問題を避けるために、<code>event</code>、<code>visitor</code>、および<code>visit</code>オブジェクトが提供する<code>getAttrNameById()</code>および<code>getAttrValueByID()</code>メソッドを使用して属性をIDで参照することができます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>getAttrValueByID()</code>メソッドの使用は控えめに行うことをお勧めします。この方法は、イベントまたは訪問オブジェクトのプロパティを再帰的に検索して値を見つけ出します。イベントまたは訪問オブジェクトが複雑な場合、この操作は関数呼び出しの計算時間を増加させる可能性があります。</p>
+<p>属性名は変更されることがあり、コードが名前で属性を参照すると問題が発生することがあります。属性名が変更されても、属性IDは変更されません。属性名の変更による問題を避けるために、<code>event</code>、<code>visitor</code>、<code>visit</code>オブジェクトが提供する<code>getAttrNameById()</code>および<code>getAttrValueByID()</code>メソッドを使用して属性をIDで参照することができます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>getAttrValueByID()</code>メソッドは控えめに使用することをお勧めします。この方法では、イベントまたは訪問オブジェクトのプロパティを再帰的に検索して値を見つけます。イベントまたは訪問オブジェクトが複雑な場合、この操作により関数呼び出しの計算時間が増加する可能性があります。</p>
 <p>関数に<code>getAttrNameById()</code>または<code>getAttrValueByID()</code>を追加すると、コード補完機能が使用する属性IDを選択するのに役立ちます。たとえば、コードエディタに次のように入力すると、開き括弧を入力すると、コード補完機能が属性と関連するIDのリストを表示します：<figure><a class="slb" href="/images/server-side/functions-code-completion-attr-name.png"><img src="/images/server-side/functions-code-completion-attr-name.png"
          alt="code completion attribute name"
          title="code completion attribute name"/>
@@ -1261,7 +1262,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月31日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

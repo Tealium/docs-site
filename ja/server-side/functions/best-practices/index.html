@@ -536,11 +536,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">事前読み込みされた属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">AudienceStream属性の管理</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-es-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-es-attributes">EventStream属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-attributes">属性の管理</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">訪問と訪問属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">エンリッチメントについて</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -823,7 +823,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v2-function-examples">関数の例（V2）</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">機能例 (V3)</a></li>
+        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1049,30 +1049,30 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="実行時間を決定するためのテストを実行する">実行時間を決定するためのテストを実行する</h2>
-<p>データ変換関数の実行時間は150ミリ秒に制限されています。イベントと訪問の関数は、実行時間が10秒に制限されています。</p>
-<p>関数の実行時間に影響を与える要素は多くあります。関数が許された時間内に実行できるかを確認するためには、予想されるイベントペイロードで複数のテストを実行します。</p>
+<p>データ変換関数は実行時間が150ミリ秒に制限されています。イベントと訪問関数は実行時間が10秒に制限されています。</p>
+<p>関数の実行時間に影響を与える要因は多くあります。関数が許可された時間内に実行できるかを確認するために、予想されるイベントペイロードで複数のテストを実行してください。</p>
 <h2 id="ユニバーサルデータオブジェクトudoを正規化する">ユニバーサルデータオブジェクト（UDO）を正規化する</h2>
-<p>データレイヤーには、イベントが発生したページに関する基本情報が含まれています。UDOは、特定のイベントタイプの情報を含むより動的な構造で、これはイベントのサイズが変動する可能性があることを意味します。推奨される最大イベントサイズは50KBです。データをコンパクトに保つために、冗長なデータエントリを削除します。同じデータが複数のフィールド（例えば、データレイヤーとUDO）に存在する場合、それはUDOからの削除候補です。特定のイベントタイプに必要ないデータの塊も、イベントUDOからの削除候補です。</p>
+<p>データレイヤーには、イベントが発生したページに関する基本情報が含まれています。UDOは、特定のイベントタイプの情報を含むより動的な構造です。これは、イベントのサイズが異なる可能性があることを意味します。推奨される最大イベントサイズは50KBです。データをコンパクトに保つために、冗長なデータエントリを削除してください。同じデータが複数のフィールド（例えば、データレイヤーとUDOで）に存在する場合、それはUDOからの削除の候補です。特定のイベントタイプに必要ないデータチャンクも、イベントUDOからの削除の候補です。</p>
 <h2 id="標準モジュールの部分的なインポートを使用する">標準モジュールの部分的なインポートを使用する</h2>
-<p>実行環境は、CryptoESを含む部分的なインポートをサポートする標準モジュールを提供します。</p>
-<p>モジュール全体をインポートするのではなく、必要な機能だけをインポートします。例えば：</p>
+<p>実行環境は、部分的なインポートをサポートする標準モジュールを提供しています。これにはCryptoESが含まれます。</p>
+<p>モジュール全体をインポートするのではなく、必要な機能のみをインポートしてください。例えば：</p>
 <pre tabindex="0"><code>import { MD5 } from &#39;crypto-es/lib/md5.js&#39;;
-</code></pre><h2 id="デバッグ用のログメッセージの使用を避ける">デバッグ用のログメッセージの使用を避ける</h2>
-<p>関数を本番環境に公開する前に、デバッグ目的で使用される<code>console.log</code>メッセージを削除またはコメントアウトします。</p>
-<p>例えば、ログに全イベントを送るために<code>JSON.stringify</code>を使用するのを避けます。代わりに、次の例のように特定の変数のログメッセージを使用します：</p>
+</code></pre><h2 id="デバッグログメッセージの使用を避ける">デバッグログメッセージの使用を避ける</h2>
+<p>本番環境に関数を公開する前に、デバッグ目的で使用される <code>console.log</code> メッセージを削除またはコメントアウトしてください。</p>
+<p>例えば、イベント全体をログに送信するために <code>JSON.stringify</code> の使用を避けてください。次の例に示すように、特定の変数のログメッセージを使用してください：</p>
 <pre tabindex="0"><code>console.log(event.data.udo.property_to_track);
-</code></pre><h2 id="flatten組み込みモジュールを使用する">flatten()組み込みモジュールを使用する</h2>
-<p>組み込みの<code>flatten()</code>モジュールは、任意のネストされたオブジェクトをフラット化するために使用できます。これは、データ変換関数に特に有用です。変換関数は、オブジェクトの配列やネストされたオブジェクトなどのネストされたデータ構造を扱うことができますが、入力イベントをフラット化する必要があります。</p>
+</code></pre><h2 id="組み込みの-flatten-モジュールを使用する">組み込みの <code>flatten()</code> モジュールを使用する</h2>
+<p>組み込みの <code>flatten()</code> モジュールは、任意のネストされたオブジェクトをフラット化するために使用できます。これは、データ変換関数に特に有用です。変換関数は、オブジェクトの配列やネストされたオブジェクトなど、ネストされたデータ構造を扱うことができますが、イベントがネストされたデータ構造を含まないようにフラット化する必要があります。</p>
 <h2 id="javascriptの最適化を使用する">JavaScriptの最適化を使用する</h2>
-<p>配列やオブジェクトのプロパティを反復処理するなど、集中的なタスクにはJavaScriptの最適化を使用します。</p>
-<h3 id="配列の反復処理の例">配列の反復処理の例</h3>
+<p>配列やオブジェクトのプロパティを反復処理するなど、集中的なタスクにはJavaScriptの最適化を使用してください。</p>
+<h3 id="配列を反復処理する例">配列を反復処理する例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arrayLength</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">length</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arrayLength</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arrayItem</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>[<span style="color:#a6e22e">i</span>];
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="オブジェクトのプロパティの反復処理の例">オブジェクトのプロパティの反復処理の例</h3>
+</span></span></code></pre></div><h3 id="オブジェクトのプロパティを反復処理する例">オブジェクトのプロパティを反復処理する例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span> };
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keys</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">getOwnPropertyNames</span>(<span style="color:#a6e22e">obj</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keysLength</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">keys</span>.<span style="color:#a6e22e">length</span>;
@@ -1081,7 +1081,27 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keyName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">keys</span>[<span style="color:#a6e22e">i</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">keyName</span>];
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="httpリクエスト内でのみ認証トークンを参照する">HTTPリクエスト内でのみ認証トークンを参照する</h2>
+<p>認証トークンは、関数がHTTPリクエストのコンテキスト内で実行される場合にのみ利用可能です。HTTPリクエストの外で認証トークンを参照すると、システムはトークンをUUIDプレースホルダーに置き換えます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 正しい: HTTPリクエストハンドラ内でのアクセストークン
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;</span>,
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span><span style="color:#a6e22e">body</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 不正確: HTTPリクエストハンドラの外でのアクセストークン
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>); <span style="color:#75715e">// これはUUIDプレースホルダーに置き換えられます
+</span></span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 mr3">
@@ -1126,7 +1146,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1143,11 +1163,12 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B" href="javascript:void(0)">実行時間を決定するためのテストを実行する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88udo%E3%82%92%E6%AD%A3%E8%A6%8F%E5%8C%96%E3%81%99%E3%82%8B" href="javascript:void(0)">ユニバーサルデータオブジェクト（UDO）を正規化する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E9%83%A8%E5%88%86%E7%9A%84%E3%81%AA%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">標準モジュールの部分的なインポートを使用する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E7%94%A8%E3%81%AE%E3%83%AD%E3%82%B0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%92%E9%81%BF%E3%81%91%E3%82%8B" href="javascript:void(0)">デバッグ用のログメッセージの使用を避ける</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#flatten%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">flatten()組み込みモジュールを使用する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%AD%E3%82%B0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%92%E9%81%BF%E3%81%91%E3%82%8B" href="javascript:void(0)">デバッグログメッセージの使用を避ける</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE-flatten-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">組み込みの flatten() モジュールを使用する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E3%81%AE%E6%9C%80%E9%81%A9%E5%8C%96%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">JavaScriptの最適化を使用する</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E3%81%AE%E5%8F%8D%E5%BE%A9%E5%87%A6%E7%90%86%E3%81%AE%E4%BE%8B" href="javascript:void(0)">配列の反復処理の例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%AE%E5%8F%8D%E5%BE%A9%E5%87%A6%E7%90%86%E3%81%AE%E4%BE%8B" href="javascript:void(0)">オブジェクトのプロパティの反復処理の例</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E3%82%92%E5%8F%8D%E5%BE%A9%E5%87%A6%E7%90%86%E3%81%99%E3%82%8B%E4%BE%8B" href="javascript:void(0)">配列を反復処理する例</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%8F%8D%E5%BE%A9%E5%87%A6%E7%90%86%E3%81%99%E3%82%8B%E4%BE%8B" href="javascript:void(0)">オブジェクトのプロパティを反復処理する例</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%86%85%E3%81%A7%E3%81%AE%E3%81%BF%E8%AA%8D%E8%A8%BC%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B" href="javascript:void(0)">HTTPリクエスト内でのみ認証トークンを参照する</a></li>
               </nav>
   </aside></nav>
 

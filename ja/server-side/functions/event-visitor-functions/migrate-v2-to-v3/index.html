@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/functions/event-visitor-functions/migrate-v2-to-v3/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="新しいイベントとビジター関数は**Action V3**ランタイムを使用します。**Action V2**ランタイムを使用する既存の関数は**Action V3**ランタイムに移行する必要があります。この記事では、移行プロセスについて説明します。" />
+<meta property="og:description" content="新しいイベントと訪問関数は**Action V3**ランタイムを使用します。**Action V2**ランタイムを使用している既存の関数は、**Action V3**ランタイムに移行する必要があります。この記事では、移行プロセスに関する情報を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>V2関数をV3ランタイムに移行する | イベントとビジター関数 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -536,11 +536,11 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">事前読み込みされた属性</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">AudienceStream属性の管理</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-es-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-es-attributes">EventStream属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-attributes">属性の管理</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-as-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-as-attributes">訪問と訪問属性の管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">エンリッチメントについて</a></li>
     <li class="relative w-100 fw8 f5 ">
@@ -823,7 +823,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v2-function-examples">関数の例（V2）</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">機能例 (V3)</a></li>
+        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1048,22 +1048,22 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      新しいイベントとビジター関数は<strong>Action V3</strong>ランタイムを使用します。<strong>Action V2</strong>ランタイムを使用する既存の関数は<strong>Action V3</strong>ランタイムに移行する必要があります。この記事では、移行プロセスについて説明します。
+      新しいイベントと訪問関数は<strong>Action V3</strong>ランタイムを使用します。<strong>Action V2</strong>ランタイムを使用している既存の関数は、<strong>Action V3</strong>ランタイムに移行する必要があります。この記事では、移行プロセスに関する情報を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="v3とv2の関数の違い">V3とV2の関数の違い</h2>
-<p>V3ランタイムを使用するイベントとビジター関数は、V2関数と以下のように異なります：</p>
+  <h2 id="v3とv2関数の違い">V3とV2関数の違い</h2>
+<p>V3ランタイムを使用するイベントと訪問関数は、以下のようにV2関数と異なります：</p>
 <ul>
-<li><strong>パラメータと名前付きエクスポート</strong> – 入力データは名前付きエクスポートではなく、パラメータとして提供されます。
+<li><strong>パラメータと名前付きエクスポート</strong> – 入力データはパラメータとして提供され、名前付きエクスポートではありません。
 <ul>
-<li>イベント関数には二つのパラメータがあります：<code>event</code>と<code>helper</code>。</li>
-<li>ビジター関数には三つのパラメータがあります：<code>visitor</code>、<code>visit</code>、そして<code>helper</code>。</li>
+<li>イベント関数には<code>event</code>と<code>helper</code>の2つのパラメータがあります。</li>
+<li>訪問関数には<code>visitor</code>、<code>visit</code>、<code>helper</code>の3つのパラメータがあります。</li>
 </ul>
 </li>
-<li><strong>ヘルパー関数</strong> – <code>helper</code>オブジェクトは認証トークンIDを取得したり、グローバル変数を取得するために使用されます。
+<li><strong>ヘルパー関数</strong> – <code>helper</code>オブジェクトは、認証トークンIDを取得したり、グローバル変数を取得するために使用されます。
 <ul>
 <li><code>auth.get()</code>は<code>helper.getAuth()</code>に置き換えられました。</li>
 <li><code>store.get()</code>は<code>helper.getGlobalVariable()</code>に置き換えられました。</li>
@@ -1071,13 +1071,13 @@
 </li>
 <li><strong>イベントの収集</strong>
 <ul>
-<li><code>tealium.sendCollectEvent()</code>は、名前付きパラメータを使用する<code>track()</code>に置き換えられました。</li>
+<li><code>tealium.sendCollectEvent()</code>は<code>track()</code>に置き換えられ、名前付きパラメータを使用します。</li>
 </ul>
 </li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>データ変換関数は<strong>Transformation V0</strong>ランタイムを使用し、V3ランタイムのリリースには影響を受けません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データ変換関数は<strong>Transformation V0</strong>ランタイムを使用し、V3ランタイムのリリースによって影響を受けません。</p>
 <h3 id="v2関数の例">V2関数の例</h3>
-<p>以下のコード例は、イベントを収集エンドポイントに送信するV2イベント関数と、このイベント関数のV3バージョンを示しています。</p>
+<p>以下のコード例は、収集エンドポイントにイベントを送信するV2イベント関数と、このイベント関数のV3バージョンを示しています。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -1142,21 +1142,21 @@
 </div>
 
 <h2 id="v3関数を作成する">V3関数を作成する</h2>
-<p>イベント関数またはビジター関数をV3に移行するには、移行する関数のタイプに応じてV3イベント関数またはビジター関数を作成します。詳細については、<a href="/ja/server-side/functions/manage-functions/create-function/">関数を作成する</a>を参照してください。次に以下の手順を実行します：</p>
+<p>イベントまたは訪問関数をV3に移行するには、移行する関数のタイプに応じてV3イベントまたは訪問関数を作成します。詳細については、<a href="/ja/server-side/functions/manage-functions/create-function/">関数を作成する</a>を参照してください。次に、次のことを行います：</p>
 <ol>
 <li>
-<p>コードエディタで、V3関数のデフォルトコードをすべて削除し、次のイベントまたはビジターコードを追加します。これは空の関数です。<br>
-次のステップで関数コードを追加し、コードを修正します。
+<p>コードエディタでV3関数のデフォルトコードをすべて削除し、次のイベントまたは訪問コードを追加します。これは空の関数です。
+次のステップで関数コードを追加し、コードを変更します。
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="Event function" title="Event function">
+  <div class="tab-content"><div class="tab-pane" data-lang="イベント関数" title="イベント関数">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span> }) =&gt; {  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Visitor function" title="Visitor function">
+<div class="tab-pane" data-lang="訪問関数" title="訪問関数">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span> }) =&gt; {  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>});
@@ -1167,17 +1167,17 @@
 </p>
 </li>
 <li>
-<p>V2関数からコードをコピーします。以下に示す関数の最初の行から始めます：</p>
+<p>V2関数のコードを、以下に示す関数の最初の行の後からコピーします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span>) =&gt; {
-</span></span></code></pre></div><p>そして関数の最後の行の上で終わります：</p>
+</span></span></code></pre></div><p>そして、関数の最後の行の上で終了します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>})();
 </span></span></code></pre></div></li>
 <li>
-<p>コピーしたコードを空のV3関数に貼り付けます。<code>activate</code>行と終了行<code>});</code>の間に貼り付けます。</p>
+<p>コピーしたコードを空のV3関数に貼り付けます。<code>activate</code>行と終了行<code>});</code>の間です。</p>
 </li>
 </ol>
 <h2 id="関数コードを更新する">関数コードを更新する</h2>
-<p>関数がライブラリやヘルパー関数を使用している場合、またはTealium Collectにイベントを送信している場合、空の関数にコピーしたコードは、以下のセクションで説明するように修正する必要があります。</p>
+<p>関数がライブラリやヘルパー関数を使用している場合、またはTealium Collectにイベントを送信している場合、空の関数にコピーされたコードは、以下のセクションで説明するように変更する必要があります。</p>
 <h3 id="tealium-collectにイベントを送信する">Tealium Collectにイベントを送信する</h3>
 <p>例の関数は<code>tealium.sendCollectEvent()</code>を使用しています。この呼び出しは<code>track()</code>呼び出しに置き換える必要があります。以下の例は、V2の<code>tealium.sendCollectEvent()</code>呼び出しとV3の<code>track()</code>呼び出しを示しています。</p>
 
@@ -1213,9 +1213,9 @@
 </div>
 </div>
 
-<p><code>track()</code>呼び出しで、<code>'abc123'</code>をあなたのデータソースキーに置き換えます。</p>
-<h3 id="ライブラリを使用する">ライブラリを使用する</h3>
-<p>V2関数がライブラリ（例：CrytpoES）を使用している場合、<code>activate</code>行の前にインポート行を追加します。</p>
+<p><code>track()</code>呼び出しでは、<code>'abc123'</code>をデータソースキーに置き換えます。</p>
+<h3 id="ライブラリの使用">ライブラリの使用</h3>
+<p>V2関数がライブラリ、例えばCrytpoESを使用している場合、<code>activate</code>行の前にインポート行を追加します。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -1236,10 +1236,10 @@
 </div>
 
 <h3 id="認証トークンとグローバル変数">認証トークンとグローバル変数</h3>
-<p>V2関数が認証トークンやグローバル変数を使用している場合、V3関数の<code>activate</code>行の関数パラメータに<code>helper</code>を追加します。例えば：</p>
+<p>V2関数が認証トークンまたはグローバル変数を使用している場合、V3関数の<code>activate</code>行に<code>helper</code>を関数パラメータに追加します。例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>V2コードの<code>auth.get()</code>のすべてのインスタンスを<code>helper.getAuth()</code>に置き換えます。例えば：</p>
+</span></span></code></pre></div><p>V2コード内の<code>auth.get()</code>のすべてのインスタンスを<code>helper.getAuth()</code>に置き換えます。例えば：</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -1258,6 +1258,7 @@
 </div>
 </div>
 
+<p class="note"><i class="fa fa-exclamation-triangle"></i>認証トークンはHTTPリクエスト内の関数によってのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。</p>
 <p><code>store.get()</code>のすべてのインスタンスを<code>helper.getGlobalVariable()</code>に置き換えます。例えば：</p>
 
 <div class="code-tabs">
@@ -1337,7 +1338,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2026年February月4日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1351,12 +1352,12 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#v3%E3%81%A8v2%E3%81%AE%E9%96%A2%E6%95%B0%E3%81%AE%E9%81%95%E3%81%84" href="javascript:void(0)">V3とV2の関数の違い</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#v3%E3%81%A8v2%E9%96%A2%E6%95%B0%E3%81%AE%E9%81%95%E3%81%84" href="javascript:void(0)">V3とV2関数の違い</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#v2%E9%96%A2%E6%95%B0%E3%81%AE%E4%BE%8B" href="javascript:void(0)">V2関数の例</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#v3%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">V3関数を作成する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">関数コードを更新する</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect%E3%81%AB%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">Tealium Collectにイベントを送信する</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B" href="javascript:void(0)">ライブラリを使用する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">ライブラリの使用</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%A8%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E5%A4%89%E6%95%B0" href="javascript:void(0)">認証トークンとグローバル変数</a></li>
               </nav>
   </aside></nav>
