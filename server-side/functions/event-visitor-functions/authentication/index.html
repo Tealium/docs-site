@@ -1030,8 +1030,8 @@
 <figure><a class="slb" href="/images/server-side/functions-editor-advanced-tab.png"><img src="/images/server-side/functions-editor-advanced-tab.png"/>
     </a>
 </figure>
-<p>For example, if you create an authentication with an access token named <code>firebase_cloud_messaging</code>, access that token in your function using <code>helper.getAuth('firebase_cloud_messaging')</code>. This feature is commonly used to set authorization headers when making requests to authenticated endpoints.</p>
-<p>Example:</p>
+<p>Authentication tokens can only be referenced by a function within an HTTP request. If you try to reference the token outside of an HTTP request, the token is replaced by a UUID placeholder. This restriction is to prevent unauthorized access to the token.</p>
+<p>For example, if you create an authentication with an access token named <code>firebase_cloud_messaging</code>, access that token in your function through an HTTP request using <code>helper.getAuth('firebase_cloud_messaging')</code>. This feature is commonly used to set authorization headers when making requests to authenticated endpoints:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;https://fcm.googleapis.com/v1/projects/YOURPROJECT/messages:send&#34;</span>,
@@ -1045,6 +1045,8 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Outside of an HTTP request, the authentication token is replaced by a UUID placeholder. For example, the following declaration will return the placeholder because it is not within an HTTP request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;firebase_cloud_messaging&#39;</span>);
 </span></span></code></pre></div><h2 id="supported-authentication-types">Supported authentication types</h2>
 <p>The steps for adding an authentication vary depending on the authentication selected. The following sections provide instructions for adding Facebook, Google, API Key, and UID 2.0 authentication.</p>
 <p>For information on adding OAauth 2.0 authentication, see <a href="/server-side/functions/event-visitor-functions/oauth2-authentication/">Add OAuth 2.0 authentication</a>.</p>
@@ -1160,7 +1162,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 31, 2025 
+          <p>This page was last updated:  February 3, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

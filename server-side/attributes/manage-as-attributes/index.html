@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1027,7 +1027,7 @@
 <p>The table of attributes contains the following information:</p>
 <ul>
 <li><strong>Name</strong>: The name of the attribute.</li>
-<li><strong>Last Update</strong> When the attribute was last updated. If the attribute has never been updated, the value in this column is blank.</li>
+<li><strong>Last Update</strong>: When the attribute was last updated. If the attribute has never been updated, the value in this column is blank.</li>
 <li><strong>Notes</strong>: Any notes about the attribute.</li>
 <li><strong>Labels</strong>: Labels assigned to the attribute.</li>
 <li><strong>Dependencies</strong>: The number of items that depend on this attribute.</li>
@@ -1051,11 +1051,11 @@
 </figure>
 <p>The attribute details page contains two tabs:</p>
 <ul>
-<li><strong>Enrichments</strong>: Lists all the enrichments, and enrichment rules, for this attribute. Enrichments customize an attribute&rsquo;s value. For more about enrichments, see (<a href="/server-side/attributes/enrichments/">About enrichments</a>).</li>
-<li><strong>Dependencies</strong>: Lists all items that are dependent on this attribute (for example: audiences, segments, rules, attributes, connectors, data sources, and Predict). You cannot delete an attribute if there are any dependencies on that attribute. To view a dependency’s details, click <strong>Go To</strong>.</li>
+<li><strong>Enrichments</strong>: Lists all the enrichments, and enrichment rules, for this attribute. Enrichments customize an attribute&rsquo;s value. For more about enrichments, see <a href="/server-side/attributes/enrichments/">About enrichments</a>.</li>
+<li><strong>Dependencies</strong>: Lists all items that are dependent on this attribute (for example: other attributes, audiences, segments, rules, connectors, data sources, and Predict models). You cannot delete an attribute if any dependencies exist for that attribute. To view a dependency’s details, click <strong>Go To</strong>.</li>
 </ul>
 <h2 id="create-an-attribute">Create an attribute</h2>
-<p>The process of adding visit or visitor attributes is similar. The following steps show how to add an audience attribute:</p>
+<p>The process of adding visit or visitor attributes is similar. The following steps show how to add a visit or visitor attribute:</p>
 <ol>
 <li>Go to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong>.<br>
 You can optionally use the filters on the left to narrow your view.</li>
@@ -1095,14 +1095,14 @@ This step requires AudienceDB to be enabled in the profile.</li>
 <h3 id="bulk-edit-attributes">Bulk edit attributes</h3>
 <p>Use the following steps to edit label assignments, restricted data status, or inclusion in AudienceDB for an attribute:</p>
 <ol>
-<li>Select the checkboxes next to the attributes you want to delete.</li>
+<li>Select the checkboxes next to the attributes you want to edit.</li>
 <li>Under <strong>Assign Labels</strong>, or under <strong>More actions</strong> and <strong>Mark as Restricted Data</strong> and <strong>Send to AudienceDB</strong>, click the bulk action you want to do.
 <ul>
 <li>If you select <strong>Assign Labels</strong>, select the labels to assign to the selected attributes, or deselect the labels to unassign from the attributes.</li>
 </ul>
 </li>
 </ol>
-<h2 id="duplicate-an-attribute">Duplicate an Attribute</h2>
+<h2 id="duplicate-an-attribute">Duplicate an attribute</h2>
 <p>Use the following steps to duplicate an attribute:</p>
 <ol>
 <li>Click the attribute you want to duplicate and then click <strong>Duplicate</strong>.<br>
@@ -1115,7 +1115,34 @@ This step requires AudienceDB to be enabled in the profile.</li>
 <li>Save and publish your profile to apply the changes.</li>
 </ol>
 <h2 id="delete-an-attribute">Delete an attribute</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/server-side/attributes/preloaded/">Preloaded attributes</a> cannot be deleted.<br><br>Attributes with dependencies cannot be deleted. You must remove the attribute from all dependencies.</p>
+<p>Before deleting an attribute, review its dependencies and the potential impact across your configuration and external systems. Deleting an attribute is a permanent action that may cause data loss, integration failures, or reporting inconsistencies.</p>
+<p><strong>General rules</strong></p>
+<ul>
+<li>You cannot delete an attribute if it is still referenced by any dependencies.</li>
+<li>You cannot recover deleted attributes or their data.</li>
+<li>You cannot delete <a href="/server-side/attributes/preloaded/">preloaded attributes</a>.</li>
+</ul>
+<p><strong>Required steps before deleting</strong></p>
+<ol>
+<li>Open the attribute details and review the <strong>Dependencies</strong> tab.</li>
+<li>For each dependency (enrichments, rules, audiences, segments, connectors, data sources, Predict models), update or remove references to the attribute.</li>
+<li>Check for any external systems that may use the attribute (CRM, marketing automation, CDW). Update or disable those references as needed.</li>
+<li>Once all dependencies are cleared, return to the attribute and delete it.</li>
+</ol>
+<h3 id="impact-by-area">Impact by area</h3>
+<p><strong>Connectors</strong><br>
+The attribute is removed from connector data mappings. This can break integrations or cause incomplete data to be sent to external systems.</p>
+<p><strong>APIs and exports</strong><br>
+Any API endpoints, exports, or scheduled jobs that reference the deleted attribute fail or return incomplete data. For example, the deleted attribute is no longer collected by the Moments API endpoint. However, data related to the attribute remains in Moments API engine caches until it expires (after a new visit or the 30-day retention window ends) or it is explicitly purged.</p>
+<p><strong>DataAccess</strong><br>
+The attribute is removed from EventStore, AudienceStore, EventDB, and AudienceDB. External systems may still reference the attribute even if it appears to have no dependencies in the UI. This can lead to unexpected data loss or integration failures.</p>
+<p><strong>Visitor profiles</strong><br>
+The attribute data is deleted from a visitor profile the next time that visitor triggers an event. Until then, the data remains in their profile.  <p class="tip"><i class="fa fa-info-circle"></i>Deleting a visitor ID attribute does not undo previous stitching for that ID. If you no longer use a visitor ID, disable its enrichments and remove any file import mappings. This keeps the ID available for lookup, but no new values are set and no new stitching with the visitor ID will happen.</p></p>
+<p><strong>Reporting and analytics</strong><br>
+Historical reports for connectors, DataAccess, data collection, functions, and insights may show gaps or inconsistencies if deleted attributes were used in calculations or filters.</p>
+<p><strong>Visitor Lookup and Trace</strong><br>
+The attribute no longer appears in visitor lookup tools or traces after the visitor&rsquo;s next event. You cannot view or debug historical data related to that attribute.</p>
+<h3 id="delete-a-single-attribute">Delete a single attribute</h3>
 <p>Use the following steps to delete an attribute:</p>
 <ol>
 <li>Click the attribute you want to delete.</li>
@@ -1125,18 +1152,18 @@ This step requires AudienceDB to be enabled in the profile.</li>
                title="Delete Attribute"/>
           </a>
       </figure><br>
-If the attribute you attempt to delete is currently in use by a rule, an enrichment, or an audience, the following message is displayed:<br>
+If the attribute you attempt to delete is in use by a rule, an enrichment, or an audience, the following message is displayed:<br>
 <figure><a class="slb" href="/images/server-side/attributes/error-delete-attribute-with-dependencies.png"><img src="/images/server-side/attributes/error-delete-attribute-with-dependencies.png"
                alt="Attribute still has dependencies"
                title="Attribute still has dependencies"/>
           </a>
       </figure><br>
-To delete the attribute, remove it from any listed dependencies and try again.</li>
+To delete the attribute, remove it from any listed dependencies (other attributes, audiences, segments, rules, connectors, data sources, and Predict models) and try again.</li>
 <li>In the <strong>Delete Attribute</strong> dialog, click <strong>Delete</strong> to delete the attribute.</li>
 <li>Save and publish your profile to apply the changes.</li>
 </ol>
 <h3 id="bulk-delete-attributes">Bulk delete attributes</h3>
-<p>Use the following steps to delete (or remove) an attribute:</p>
+<p>Use the following steps to delete attributes:</p>
 <ol>
 <li>Select the checkboxes next to the attributes you want to delete.</li>
 <li>Click <strong>Delete</strong>.
@@ -1147,7 +1174,8 @@ If one or more attributes you attempt to delete are currently in use by a rule, 
           </a>
       </figure>
 To delete attributes with dependencies, remove them from any listed dependencies and try again.</li>
-<li>Click confirm to delete the attributes without dependencies.</li>
+<li>To delete the attributes without dependencies, click <strong>Confirm</strong>.</li>
+<li>Save and publish your profile to apply the changes.</li>
 </ol>
 
 </div>
@@ -1209,7 +1237,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 18, 2025 
+          <p>This page was last updated:  February 2, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1227,9 +1255,11 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-an-attribute" href="javascript:void(0)">Create an attribute</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-an-attribute" href="javascript:void(0)">Edit an attribute</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#bulk-edit-attributes" href="javascript:void(0)">Bulk edit attributes</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#duplicate-an-attribute" href="javascript:void(0)">Duplicate an Attribute</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#duplicate-an-attribute" href="javascript:void(0)">Duplicate an attribute</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-an-attribute" href="javascript:void(0)">Delete an attribute</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#bulk-delete-attributes" href="javascript:void(0)">Bulk delete attributes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#impact-by-area" href="javascript:void(0)">Impact by area</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-a-single-attribute" href="javascript:void(0)">Delete a single attribute</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#bulk-delete-attributes" href="javascript:void(0)">Bulk delete attributes</a></li>
               </nav>
   </aside></nav>
 

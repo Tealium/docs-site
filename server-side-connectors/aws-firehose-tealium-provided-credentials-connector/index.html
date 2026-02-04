@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -219,6 +219,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon AWS SQS</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/amazon-bedrock-ai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon Bedrock AI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/amazon-connect-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon Connect</span></a>
@@ -984,6 +987,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-bedrock-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-bedrock-ai-connector">Amazon Bedrock AI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Connect</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li>
@@ -1479,30 +1484,95 @@
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Region</strong>
+<li><strong>Region</strong>: (Required) Select a region.</li>
+<li><strong>Assume Role: ARN</strong>: (Required) Provide Amazon Resource Name (ARN) of the role to assume. For example, <code>arn:aws:iam::222222222222:role/myrole</code>.
 <ul>
-<li>(Required) Select a region</li>
-</ul>
-</li>
-<li><strong>Assume Role: ARN</strong>
-<ul>
-<li>(Required) Provide Amazon Resource Name (ARN) of the role to assume. For example, <code>arn:aws:iam::222222222222:role/myrole</code>.</li>
-<li>The trust policy should allow the Tealium root account (<code>arn:aws:iam::757913464184:root</code>) with an External ID condition.</li>
-<li>The IAM role name should ideally include the “TealiumFirehose” prefix.</li>
+<li>Ensure that the trust policy allows the Tealium root account (<code>arn:aws:iam::757913464184:root</code>) with an External ID condition.</li>
+<li>We recommend including <code>TealiumFirehose</code> as a prefix in the IAM role name.</li>
 <li>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS: Switch to an IAM Role</a></li>
 </ul>
 </li>
-<li><strong>Assume Role: Session Name</strong>
+<li><strong>Assume Role: Session Name</strong>: Provide the session name of the role to assume.</li>
+<li><strong>Assume Role: External ID</strong>: (Optional) Provide an external identifier.
 <ul>
-<li>Provide the session name of the role to assume.</li>
-</ul>
-</li>
-<li><strong>Assume Role: External ID</strong>
-<ul>
-<li>(Optional) Provide an external identifier.</li>
 <li>For more information, see: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS: Access to AWS accounts owned by third parties</a></li>
 </ul>
 </li>
+</ul>
+<h3 id="add-tealium-role-to-aws-account">Add Tealium role to AWS account</h3>
+<p>Use the Tealium main AWS account ID, <code>757913464184</code>, as the principal and require an External ID condition. The following is an example trust policy to add to the <strong>Trust</strong> relationships tab of the IAM role in your AWS account. Replace <code>EXTERNAL_ID</code> with the exact value you configure in <strong>Assume Role: External ID</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;AWS&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::757913464184:root&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;sts:ExternalId&#34;</span>: <span style="color:#e6db74">&#34;EXTERNAL_ID&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="private-cloud-trust-policy">Private cloud trust policy</h4>
+<p>For private cloud customers, Tealium uses a different AWS account ID: <code>111879511226</code>. The following is an example trust policy to add to the <strong>Trust</strong> relationships tab of the IAM role in your AWS account. Replace <code>EXTERNAL_ID</code> with the exact value you configure in <strong>Assume Role: External ID</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;AWS&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::111879511226:root&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;sts:ExternalId&#34;</span>: <span style="color:#e6db74">&#34;EXTERNAL_ID&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="iam-permissions-policy">IAM permissions policy</h3>
+<p>The following is a least‑privilege, single‑stream permissions policy that works with the preceding trust policies.</p>
+<p>In the <code>Resource</code> field, replace the following placeholders:</p>
+<ul>
+<li><code>REGION</code>: Your AWS region (for example, <code>us-west-2</code>).</li>
+<li><code>ACCOUNT_ID</code>: Your AWS account ID.</li>
+<li><code>MY_FIREHOSE_STREAM</code>: The Firehose delivery stream name you want Tealium to write to.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AllowListingDeliveryStreams&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;firehose:ListDeliveryStreams&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;firehose:DescribeDeliveryStream&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AllowWritingToSpecificDeliveryStream&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;firehose:PutRecord&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;firehose:PutRecordBatch&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/MY_FIREHOSE_STREAM&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Attach this policy to the same IAM role whose trust policy is set to trust the Tealium account with an External ID (for private cloud: <code>arn:aws:iam::111879511226:root</code>, for all others <code>arn:aws:iam::757913464184:root</code>).</p>
+<p>If you need Tealium to send to multiple delivery streams, do one of the following:</p>
+<ul>
+<li>Add additional ARNs as an array to <code>Resource</code> under <code>AllowWritingToSpecificDeliveryStream</code>.</li>
+<li>Use a pattern-based ARN (for example, all Tealium streams prefixed <code>tealium-</code>) if that fits the naming convention.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -1541,7 +1611,7 @@
 </tr>
 </tbody>
 </table>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-event-data-to-delivery-stream">Send Event Data to Delivery Stream</h3>
 <h4 id="parameters">Parameters</h4>
@@ -1761,7 +1831,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 21, 2026 
+          <p>This page was last updated:  February 3, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1776,7 +1846,9 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-tealium-role-to-aws-account" href="javascript:void(0)">Add Tealium role to AWS account</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iam-permissions-policy" href="javascript:void(0)">IAM permissions policy</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-data-to-delivery-stream" href="javascript:void(0)">Send Event Data to Delivery Stream</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-customized-data-to-delivery-stream-advanced" href="javascript:void(0)">Send Customized Data to Delivery Stream (Advanced)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-to-delivery-stream" href="javascript:void(0)">Send Visitor Data to Delivery Stream</a></li>

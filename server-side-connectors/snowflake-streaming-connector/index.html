@@ -221,6 +221,9 @@
       <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon AWS SQS</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/amazon-bedrock-ai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon Bedrock AI</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/amazon-connect-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amazon Connect</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -984,6 +987,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/amazon-bedrock-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-bedrock-ai-connector">Amazon Bedrock AI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-connect-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Connect</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amazon-eventbridge-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amazon-eventbridge-connector">Amazon EventBridge</a></li>
@@ -1475,57 +1480,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor SDK:</p>
 <ul>
 <li>Snowflake Ingest SDK Version: 4.3.0</li>
 </ul>
-<h2 id="actions">Actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Send Custom Event Data</td>
-<td>✗</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Send Entire Event Data</td>
-<td>✗</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Send Custom Visitor Data</td>
-<td>✓</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Send Entire Visitor Data</td>
-<td>✓</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Send Entire Log Event</td>
-<td>✗</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Send Log Event</td>
-<td>✗</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="how-it-works">How it works</h2>
 <p>The Snowflake Streaming connector leverages the powerful Snowflake Snowpipe Streaming feature to enable near real-time importing of event and visitor data directly into Snowflake staging tables, enabling immediate availability for processing and analytics with data latency under 10 seconds. Send either the entire dataset or specific attributes to the staging table, ensuring customizable data integration tailored to business needs.</p>
 <p>Using Snowpipe Streaming creates a streamlined pathway to enhance data accessibility and analytical capabilities within Snowflake while decreasing latency and costs. By removing third party integrations and using the Snowpipe Streaming serverless compute model, the Snowflake Streaming connector provides a cost effective, secure connection.</p>
-<p>The Snowflake Streaming connector enables you to unlock a number of use cases, including:</p>
+<p>The Snowflake Streaming connector unlocks a number of use cases, including:</p>
 <ul>
 <li>Identity: Populate and activate identity graphs using cleansed, normalized, real-time identity data.</li>
 <li>Insights: Improve and activate differentiated intelligence with rich, high quality, integrated data.</li>
@@ -1533,7 +1496,7 @@
 <li>Consent: Ensure insights and activation always respect customer privacy and preferences.</li>
 </ul>
 <h3 id="staging-tables">Staging tables</h3>
-<p>The staging table in Snowflake that is intended to received data from Tealium must contain specific columns depending on the selected connector action.</p>
+<p>The staging table in Snowflake that is intended to receive data from Tealium must contain specific columns depending on the selected connector action.</p>
 <p>When using either <strong>Send Entire Event Data</strong> or <strong>Send Entire Visitor Data</strong> actions, the staging table must have a <code>VARIANT</code> column to receive the dataset and a column to receive the timestamp. The timestamp column must support the timestamp data format that is sent.</p>
 <p>When using either <strong>Send Custom Event Data</strong> or <strong>Send Custom Visitor Data</strong>, the staging table must have a column for each data type. Each data attribute must be assigned to a column. Ensure that each attribute is an accepted Snowflake data type and that the column is formatted properly to receive this data type. To map a timestamp, a separate timestamp column must be added.</p>
 <p>For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>.</p>
@@ -1598,7 +1561,7 @@
 <li>A default column value that is not <code>NULL</code></li>
 </ul>
 <h3 id="ip-addresses-to-allow">IP addresses to allow</h3>
-<p>Snowflake has strict rules about which systems it accepts requests from. You will need to add the <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses</a> to your Snowflake allow list.</p>
+<p>Snowflake has strict rules about which systems it accepts requests from. Add the <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses</a> to your Snowflake allow list.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must add the <code>us-west-1</code> and the server-side profile region addresses to your allowlist. If you do not add these addresses to your allowlist, you will see errors when you try to fetch data. Tealium uses the <code>us-west-1</code> IP addresses during connector configuration.</p>
 <h2 id="best-practices">Best practices</h2>
 <p>We recommend the following Snowflake table configurations for the Snowflake Streaming connector:</p>
@@ -1608,42 +1571,30 @@
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Concurrent writing of tables by more than one feed or audience may result in performance errors.</p>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Username</strong><br>
-The Snowflake account username. Must either have <code>OWNERSHIP</code> or <code>INSERT</code> rights to the Snowflake table that is receiving the data.</p>
-</li>
-<li>
-<p><strong>Role</strong><br>
-Access control role to use for the session.</p>
-</li>
-<li>
-<p><strong>Account identifier</strong><br>
-Account identifier is used to construct your account URL in the following format: <code>ACCOUNT_IDENTIFIER.snowflakecomputing.com.</code><br>
-If your account identifier contains underscores, use the dashed format instead:</p>
+<li><strong>Authentication Type</strong>: Select the authentication type for the connection. Possible values are: <code>Private key</code> or <code>Public key</code>.</li>
+<li><strong>User Name</strong>:  The Snowflake account username. Must either have <code>OWNERSHIP</code> or <code>INSERT</code> rights to the Snowflake table that is receiving the data.</li>
+<li><strong>Role</strong>: Access control role to use for the session.</li>
+<li><strong>Account identifier</strong>: Account identifier is used to construct your account URL in the following format: <code>ACCOUNT_IDENTIFIER.snowflakecomputing.com.</code> If your account identifier contains underscores, use the dashed format instead:
 <ul>
 <li>URL with underscores: <code>https://acme-marketing_test_account.snowflakecomputing.com</code></li>
 <li>URL with dashes: <code>https://acme-marketing-test-account.snowflakecomputing.com</code></li>
 </ul>
 </li>
+<li>For private key authentication:
+<ul>
 <li>
-<p><strong>Private Key</strong><br>
-The customer-generated private key. Supports both encrypted and unencrypted private keys. For instructions on generating the Snowflake private key, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-the-private-key">Snowflake: Key-pair authentication and key-pair rotation</a>. <p class="note"><i class="fa fa-exclamation-triangle"></i>If the private key is encrypted, you must provide the Private Key Passphrase.</p></p>
+<p><strong>Private Key</strong>: The customer-generated private key. Supports both encrypted and unencrypted private keys. For instructions on generating the Snowflake private key, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-the-private-key">Snowflake: Key-pair authentication and key-pair rotation</a>. <p class="note"><i class="fa fa-exclamation-triangle"></i>If the private key is encrypted, you must provide the Private Key Passphrase.</p></p>
 </li>
 <li>
-<p><strong>Private Key Passphrase</strong><br>
-The encrypted private key passphrase for use with an encrypted private key. Do not assign a value if the private key is unencrypted.</p>
+<p><strong>Private Key Passphrase</strong>: The encrypted private key passphrase for use with an encrypted private key. Do not assign a value if the private key is unencrypted.</p>
 </li>
 <li>
-<p><strong>Enable Snowpipe Streaming for Iceberg Tables</strong><br>
-Enable this option if your target table in Snowflake is a managed Iceberg table.</p>
-</li>
-</ul>
-<p>To complete the connector authentication, use the following steps to alter the above user with public key details in Snowflake:</p>
+<p>To use the private key:</p>
 <ol>
-<li>Generate a public key in Snowflake. For information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-a-public-key">Generate a Public Key</a>.</li>
+<li>Generate a public key in Snowflake. For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-a-public-key">Generate a Public Key</a>.</li>
 <li>Assign the public key to the above user by using an <code>ALTER USER</code> command in Snowflake. Only owners of users or users with SECURITYADMIN roles or higher can alter a user. For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">Assign the public key to a Snowflake user</a>.<br>
 To successfully assign the public key to the user, ensure the following:
 <ul>
@@ -1653,8 +1604,68 @@ To successfully assign the public key to the user, ensure the following:
 </li>
 <li>Run the query to update the user with the new public key.</li>
 </ol>
+</li>
+</ul>
+</li>
+<li>For public key authentication:
+<ul>
+<li><strong>Key Algorithm</strong>: Select an algorithm to generate the key pair, then click <strong>Generate</strong>. A key fingerprint appears below. Click <strong>Regenerate</strong> to generate a new key. <code>RSA-2048</code>, <code>RSA-3072</code>, or <code>RSA-4096</code> are supported.</li>
+<li>To use the public key:
+<ol>
+<li>Click <strong>Download Public Key</strong> to download your public key below.</li>
+<li>Copy the key from the file.</li>
+<li>Execute the following query on your Snowflake instance:<br>
+<code>ALTER USER [your username] SET RSA_PUBLIC_KEY = [your public key from the file].</code></li>
+<li>Click <strong>Done</strong> to create the new connection.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>Enable Snowpipe Streaming for Iceberg Tables</strong>: Enable this option if your target table in Snowflake is a managed Iceberg table.</li>
+</ul>
 <p class="tip"><i class="fa fa-info-circle"></i>Snowflake supports public and private key rotations. For more information, see <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-rotation">Configuring key-pair rotation</a>.</p>
-<h2 id="actions-1">Actions</h2>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Custom Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Event Data</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Custom Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Entire Visitor Data</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Entire Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
 <p>The following section lists the supported parameters for each action.</p>
 <h3 id="send-custom-event-data">Send Custom Event Data</h3>
 <h4 id="parameters">Parameters</h4>
@@ -1716,7 +1727,7 @@ To successfully assign the public key to the user, ensure the following:
 </tr>
 <tr>
 <td>Timestamp Attribute</td>
-<td>(Optional) The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+<td>(Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
 </tr>
 <tr>
 <td>Additional Event Data</td>
@@ -1780,7 +1791,7 @@ To successfully assign the public key to the user, ensure the following:
 </tr>
 <tr>
 <td>Include Current Visit Data</td>
-<td>Selecting this option will include both visitor data and current visit data in the data sent to Snowflake.</td>
+<td>Selecting this option includes both visitor data and current visit data in the data sent to Snowflake.</td>
 </tr>
 <tr>
 <td>Timestamp</td>
@@ -1788,7 +1799,7 @@ To successfully assign the public key to the user, ensure the following:
 </tr>
 <tr>
 <td>Timestamp Attribute</td>
-<td>(Optional) The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, we will send the current timestamp.</td>
+<td>(Optional) By default, the connector sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. For more information, see <a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: Supported Java data types</a>. If an attribute is assigned and produces an empty value, the connector sends the current timestamp.</td>
 </tr>
 <tr>
 <td>Include Current Visit Data with Visitor Data</td>
@@ -1878,7 +1889,7 @@ To successfully assign the public key to the user, ensure the following:
 <li>Enter the following information:
 <ul>
 <li><strong>Database Name</strong><br>
-(Required) The Snowflake data base name for the table.</li>
+(Required) The Snowflake database name for the table.</li>
 <li><strong>Schema Name</strong><br>
 (Required) The name of the schema used in the table.</li>
 <li><strong>Table Name</strong><br>
@@ -1950,7 +1961,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 10, 2025 
+          <p>This page was last updated:  February 3, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1964,8 +1975,7 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#staging-tables" href="javascript:void(0)">Staging tables</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
