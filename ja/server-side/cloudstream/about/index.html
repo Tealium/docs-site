@@ -456,7 +456,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".cloudstream">クラウドストリーム</a>
         <ul class="pl2 bl b--primary bw1 cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">について</a></li>
+        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">この記事について</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">データソース</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1048,32 +1048,32 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>CloudStreamは、Tealiumにデータを保存またはロードすることなく、データクラウドから直接顧客データを活用するセグメントビルダーです。主にバッチマーケティングリストとウェアハウスの活用を目的として設計されており、データクラウドからセグメントを作成・管理し、サポートされているコネクタを使用してそれらを活用することができます。</p>
-<p>これにより、以下の方法でオーバーヘッドが削減されます：</p>
+  <p>CloudStreamは、Tealiumにデータを保存またはロードすることなく、データクラウドから直接顧客データを活用するセグメントビルダーです。主にバッチマーケティングリストやウェアハウスの活用を目的として設計されており、データクラウドからセグメントを作成・管理し、サポートされているコネクタを使用してそれらを活用することができます。</p>
+<p>これにより、以下のようなオーバーヘッドが削減されます：</p>
 <ul>
-<li>データの複製または同期にかかるコストがない。</li>
-<li>データ複製および同期からのエラーを排除。</li>
+<li>データの複製や同期にかかるコストがない。</li>
+<li>データの複製や同期から生じるエラーを排除。</li>
 <li>よりシンプルなデータガバナンス。</li>
 <li>データ管理の負担を軽減。</li>
 </ul>
 <h2 id="要件">要件</h2>
 <ul>
-<li>データソースへのアクセス（アカウントおよびテーブル権限が必要）。</li>
+<li>データソースへのアクセス（アカウントおよびテーブルの権限が必要）。</li>
 <li>活用先の認証情報（メール、SMS、広告プラットフォームなど）。</li>
 <li>データ移動およびコンプライアンスポリシーの確認。
 <ul>
-<li>データ転送、処理、保護に関する規制ガイドラインの遵守を確認します。DatabricksやSnowflakeのようなプラットフォームを通じてデータを活用する際に、プライバシーとセキュリティを維持するためのポリシーを確認してください。</li>
+<li>データの転送、処理、保護に関する規制ガイドラインの遵守を確認してください。DatabricksやSnowflakeのようなプラットフォームを通じてデータを活用する際に、プライバシーとセキュリティを維持するためのポリシーを確認してください。</li>
 </ul>
 </li>
 </ul>
 <h2 id="動作原理">動作原理</h2>
 <p>CloudStreamはデータクラウドに直接接続し、Tealiumにデータを移動または保存することなく顧客データを活用します。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_workflow.png"><img src="/images/early-access/cloudstream/cloudstream_workflow.png"
-         alt="CloudStreamワークフロー図"
-         title="CloudStreamワークフロー図"/>
+         alt="CloudStreamのワークフロー図"
+         title="CloudStreamのワークフロー図"/>
     </a>
 </figure>
-<p>専用のサーバーサイドプロファイルで、データクラウド内のテーブルまたはビューに接続するデータソースを定義し、その列をクラウド属性にマッピングします。データの属性をさらに処理するためにエンリッチメントを追加することができます。また、平均値やその他の計算で追加のクラウド属性をエンリッチすることもできます。これらの属性を使用して、特定の基準を満たすユーザーやエンティティのグループであるセグメントを構築します。最後に、コネクタを通じて選択した宛先にこれらのセグメントを送信して活用します。</p>
+<p>専用のサーバーサイドプロファイルで、データクラウドのテーブルまたはビューに接続するデータソースを定義し、その列をクラウド属性にマッピングします。データの属性をさらに処理するためにエンリッチメントを追加することができます。また、平均値やその他の計算で追加のクラウド属性をエンリッチすることもできます。これらの属性を使用して、特定の基準を満たすユーザーやエンティティのグループであるセグメントを構築します。最後に、コネクタを通じて選択した宛先にこれらのセグメントを送信して活用します。</p>
 <p>CloudStreamは専用のCloudStreamプロファイルを使用し、ワークフローを整理し、他のTealium製品とは別に保持します。</p>
 <h3 id="専用プロファイル">専用プロファイル</h3>
 <p>CloudStreamは、他のプラットフォームプロファイルとは別の専用のサーバーサイドプロファイルを使用します。この分離により、大規模なデータセットや複雑なセグメントの属性、セグメント、ルール、コネクタを管理することができ、AudienceStreamやEventStreamのワークフローに影響を与えることなく操作できます。</p>
@@ -1086,16 +1086,16 @@
 </figure>
 <p>CloudStreamデータサプライチェーンダッシュボードには、以下の情報が表示されます：</p>
 <ul>
-<li>構成されたクラウドデータソースの数。</li>
+<li>構成されているクラウドデータソースの数。</li>
 <li>受信したデータレコードの数。</li>
 <li>適用されたエンリッチメントの数。</li>
 <li>アクティブなセグメントの数。</li>
-<li>トリガーされた関数およびコネクタアクションの数。</li>
+<li>トリガーされた関数とコネクタアクションの数。</li>
 <li>構成されたコネクタの数。</li>
 </ul>
 <p>テーブルには、プロファイルで構成されたクラウドデータソース、セグメント、および宛先（コネクタおよび関数）がリストされています。</p>
 <h3 id="データソース">データソース</h3>
-<p>データソースは、SnowflakeやDatabricksなどのデータクラウドへの定義済み接続です。CloudStreamはこれらのデータソースに接続してセグメントを取得および活用し、Tealiumにデータを保存することなく操作します。これにより、既存のデータインフラストラクチャの力を活用して、クラウドから直接大規模なデータセットを扱うことができます。</p>
+<p>データソースは、SnowflakeやDatabricksなどのデータクラウドへの定義済み接続です。CloudStreamはこれらのデータソースに接続してセグメントを取得し、Tealiumにデータを保存することなく活用します。これにより、既存のデータインフラストラクチャの力を活用して、クラウドから直接大規模なデータセットを扱うことができます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_datasource_summary.png"><img src="/images/early-access/cloudstream/cloudstream_datasource_summary.png"
          alt="CloudStreamデータソースの概要"
          title="CloudStreamデータソースの概要"/>
@@ -1103,10 +1103,16 @@
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>プロファイルで最大10個のデータソースに接続できます。</p>
 <p>CloudStreamデータソースは、データクラウドに保存されているデータと直接連携するように設計されています。データはデータクラウドに残り、コネクタを通じて活用するために一時的にインポートされるだけで、Tealiumには保存されません。</p>
-<p>各データソースは一度に1つのビューまたはテーブルに接続できます。データクラウドから複数のテーブルまたはビューに接続する必要がある場合は、各テーブルまたはビューに対して別のデータソースを構成します。</p>
-<p>複数のテーブルのデータをCloudStreamがセグメントで読み取れるデータレコードに結合したい場合は、データクラウド内でテーブルまたはビューを単一のテーブルまたはビューに結合し、その結合されたテーブルをセグメントデータソースとして使用する必要があります。</p>
+<p>各データソースは一度に1つのビューまたはテーブルに接続できます。データクラウドから複数のテーブルやビューに接続する必要がある場合は、各テーブルやビューに対して別のデータソースを構成してください。</p>
+<p>複数のテーブルのデータをCloudStreamがセグメントで読み取れるデータレコードに結合したい場合は、データクラウド内でテーブルやビューを1つのテーブルやビューに結合し、その結合したテーブルをセグメントのデータソースとして使用する必要があります。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStreamはクラウドデータソースのみをサポートしています。</p>
-<p>詳細については、<a href="/ja/server-side/cloudstream/datasources/">CloudStreamデータソースの管理</a>を参照してください。</p>
+<p>クラウドデータソースについての詳細は、次の記事を参照してください：</p>
+<ul>
+<li><a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a><br>
+データソースの機能についての一般情報、サポートされているデータタイプ、制限、SQLクエリ、クエリモード、処理情報、データマッピングなど。</li>
+<li><a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a><br>
+データソース接続の作成、構成、マッピングに関する情報および構成のテスト方法についての説明。</li>
+</ul>
 <h3 id="クラウド属性">クラウド属性</h3>
 <p>クラウド属性は、CloudStreamでデータソースを作成する際に定義されます。データクラウドのテーブルに接続すると、CloudStreamはそのテーブルの列を分析し、データタイプを決定して対応するクラウド属性を生成します。データソースの構成プロセス中にこれらの属性マッピングを確認および調整して、活用ニーズに合わせて調整することができます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloud_attributes.png"><img src="/images/early-access/cloudstream/cloud_attributes.png"
@@ -1118,7 +1124,7 @@
 <p class="tip"><i class="fa fa-info-circle"></i>プロファイルで500以上の属性が必要な場合は、カスタマーサクセスマネージャーに連絡してください。</p>
 <p>詳細については、<a href="/ja/server-side/cloudstream/attributes/">クラウド属性</a>を参照してください。</p>
 <h3 id="セグメント">セグメント</h3>
-<p>セグメントは、データソースで定義されたクラウド属性に基づいて一連の条件を満たすユーザーやエンティティのグループです。CloudStreamのセグメントはシステムに永続化されず、データがデータクラウドからインポートされ、コネクタを通じて活用される際にリアルタイムで動的に評価されます。</p>
+<p>セグメントは、データソースで定義されたクラウド属性に基づいて一連の条件を満たすユーザーやエンティティのグループです。CloudStreamのセグメントはシステムに永続的に保存されず、データがデータクラウドからインポートされ、コネクタを通じて活用される際にリアルタイムで動的に評価されます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_details.png"><img src="/images/early-access/cloudstream/cloudstream_segment_details.png"
          alt="CloudStreamセグメントの詳細"
          title="CloudStreamセグメントの詳細"/>
@@ -1126,28 +1132,28 @@
 </figure>
 <p>詳細については、<a href="/ja/server-side/cloudstream/segments/">CloudStreamセグメントの管理</a>を参照してください。</p>
 <h4 id="複数のデータソースを持つセグメント">複数のデータソースを持つセグメント</h4>
-<p>CloudStream内で複数のデータソースを直接結合することはできません。しかし、高価値の顧客や高い潜在顧客を特定するなど、共有目的を持つセグメントに複数のデータソースを組み合わせたい場合があります。</p>
-<p>たとえば、見込み客のテーブルと試乗をした人々のテーブルから車の購入の高い潜在顧客を見つけるための単一のセグメントを作成したい場合、まずこれらのデータソースを含むセグメントを作成します。次に、見込み客に対してフィルターを構成し、OR条件を使用し、試乗参加者に別のフィルターを構成します。</p>
+<p>CloudStream内で複数のデータソースを直接結合することはできません。しかし、高価値顧客や高ポテンシャルの見込み客を特定するなど、共有目的を持つセグメントに複数のデータソースを組み合わせたい場合があります。</p>
+<p>たとえば、見込み客のテーブルと試乗をした人々のテーブルから、車の購入の高ポテンシャルな見込み客を見つけるための単一のセグメントを作成したい場合、まずこれらのデータソースを含むセグメントを作成します。次に、見込み客に対してフィルタを構成し、OR条件を使用し、試乗参加者に別のフィルタを構成します。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_combined_segment_details.png"><img src="/images/early-access/cloudstream/cloudstream_combined_segment_details.png"
          alt="CloudStream組み合わせセグメントの詳細"
          title="CloudStream組み合わせセグメントの詳細"/>
     </a>
 </figure>
 <h3 id="アクティベーション">アクティベーション</h3>
-<p>アクティベーションは、セグメントをマーケティング、分析、広告プラットフォームに配信するプロセスです。アクティベーションはコネクタアクションまたは関数を通じて構成できます。詳細については、<a href="/ja/server-side/connectors/add/">コネクタを追加する</a>および<a href="/ja/server-side/functions/data-record-functions/data-record-functions/">データレコード機能について</a>を参照してください。</p>
+<p>アクティベーションは、マーケティング、分析、広告プラットフォームへのセグメントの配信プロセスです。コネクタアクションまたは関数を通じてアクティベーションを構成できます。詳細については、<a href="/ja/server-side/connectors/add/">コネクタを追加する</a> および <a href="/ja/server-side/functions/data-record-functions/data-record-functions/">データレコード機能について</a> を参照してください。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_segment_path.png"><img src="/images/early-access/cloudstream/cloudstream_segment_path.png"
-         alt="CloudStreamセグメントパス"
-         title="CloudStreamセグメントパス"/>
+         alt="CloudStream segment path"
+         title="CloudStream segment path"/>
     </a>
 </figure>
-<p>セグメントを複数のコネクタアクションまたは関数に出力することができます。ただし、構成された各アクティベーションは選択されたデータソースからのデータのみを使用できます。追加のデータソースからデータをアクティベーションを通じて活用したい場合は、各データソースに対して別のアクションまたは関数を構成します。</p>
+<p>セグメントを複数のコネクタアクションまたは関数に出力できます。ただし、構成された各アクティベーションは、選択されたデータソースからのデータのみを使用できます。追加のデータソースからアクティベーションを通じてデータをアクティベートしたい場合は、各データソースごとに別のアクションまたは関数を構成してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStreamコネクタと関数を有効にするには、<strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に移動し、<strong>CloudStreamコネクタを有効にする</strong>を<code>On</code>に構成し、<strong>保存</strong>をクリックします。</p>
 <h2 id="比較">比較</h2>
 <p>CloudStream、EventStream、AudienceStreamの主な違いは以下の通りです：</p>
 <table>
 <thead>
 <tr>
-<th>特徴</th>
+<th>機能</th>
 <th>CloudStream</th>
 <th>EventStream / AudienceStream</th>
 </tr>
@@ -1160,23 +1166,23 @@
 </tr>
 <tr>
 <td>データ保存</td>
-<td>Tealiumにデータは保存されない</td>
-<td>Tealiumにデータがロードおよび保存される（訪問プロファイルおよびDataAccess）</td>
+<td>Tealium内にデータは保存されない</td>
+<td>Tealium内にデータがロードおよび保存される（訪問プロファイルおよびDataAccess）</td>
 </tr>
 <tr>
 <td>セグメントの持続性</td>
-<td>動的、持続されない</td>
+<td>動的で持続されない</td>
 <td>訪問プロファイルに持続される</td>
 </tr>
 <tr>
 <td>アクティベーション</td>
-<td>AudienceStreamコネクタと機能</td>
-<td>AudienceStreamおよびEventStreamコネクタと機能</td>
+<td>AudienceStreamコネクタと関数</td>
+<td>AudienceStreamおよびEventStreamコネクタと関数</td>
 </tr>
 <tr>
 <td>コネクタアクション</td>
 <td>各データソースごとに別々</td>
-<td>アクションごとに複数のデータソース</td>
+<td>アクションごとに複数のデータソース。</td>
 </tr>
 <tr>
 <td>主な使用事例</td>
@@ -1230,7 +1236,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月24日
+          <p>最終更新日 ::  2026年February月9日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

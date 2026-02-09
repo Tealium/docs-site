@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -449,8 +449,6 @@
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1134,6 +1132,104 @@
 </tr>
 </tbody>
 </table>
+<h2 id="test-configuration">Test configuration</h2>
+<p>We recommend that you test the data source and query before enabling data sources, segments, or activations. However, running a test may activate segments, trigger enabled actions, or affect downstream systems. To prevent unintended results, disable connectors and functions, limit test records, and coordinate with recipients.</p>
+<p>To test your data source configuration, use the following steps:</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_configuration.png"><img src="/images/early-access/cloudstream/cloudstream_test_configuration.png"
+         alt="Cloud test configuration"
+         title="Cloud test configuration"/>
+    </a>
+</figure>
+<ol>
+<li>Locate your data source in the Data Sources screen and click the edit icon.</li>
+<li>Click the action button in the upper-right corner of a data source window, and then click <strong>End-to-end Testing</strong>.</li>
+<li>Select how you want to receive the output:
+<ul>
+<li><strong>New Trace Session</strong>: The output is displayed in a new trace session with up to 10 records. This option is best for confirming end-to-end verification and log details.</li>
+<li><strong>Existing Trace Session</strong>: The output is displayed in a trace session you have already started. Enter the <strong>Trace ID</strong> and click <strong>Join Trace</strong>.</li>
+<li><strong>Direct Output</strong>: The raw results from the output is displayed on the screen. No trace ID will be added to the data records and trace will not be available. This option is best for quickly confirming the query and attribute mapping.</li>
+</ul>
+</li>
+<li>Select the number of rows to process for the test. The maximum number of rows is 10.</li>
+<li>Under <strong>Test Query</strong>, select the columns from the table to include in the test. Click the <strong>X</strong> in a column to remove it from the list. You must select at least one column.</li>
+<li>Under <strong>From Table</strong>, select the table you want to query. The <strong>Select Columns</strong> box will update with the table’s columns.</li>
+<li>Under <strong>Where</strong>, enter the SQL query to perform on the table.</li>
+<li>Click <strong>Check Query</strong> to validate the SQL and verify that required fields are set.</li>
+<li>The results will appear in a table under the <strong>Query Result Preview</strong> tab: <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
+         alt="Cloud test check query"
+         title="Cloud test check query"/>
+    </a>
+</figure></li>
+<li>Click <strong>Start Test</strong> to start the configuration test.</li>
+</ol>
+<p>The right sidebar will display a progress bar that estimates the amount of time to finish the test and status messages to let you know if the test has encountered any errors.</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_output.png"><img src="/images/early-access/cloudstream/cloudstream_test_output.png"
+         alt="Cloud test output"
+         title="Cloud test output"/>
+    </a>
+</figure>
+<p>When the test is complete, the results are displayed.</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_results.png"><img src="/images/early-access/cloudstream/cloudstream_test_results.png"
+         alt="Cloud test results"
+         title="Cloud test results"/>
+    </a>
+</figure>
+<ul>
+<li>If you want to watch the test run in a trace, click <strong>Join Trace</strong>.</li>
+<li>If the test fails, you can do the following:
+<ul>
+<li>Click <strong>Edit Test Configuration</strong> to change the configuration settings.</li>
+<li>Click <strong>Retry Test</strong> to run the current configuration again.</li>
+</ul>
+</li>
+</ul>
+<h2 id="set-processing-start">Set processing start</h2>
+<p>Data sources track the date or incrementing value position where querying begins in your cloud data view or table. You can reset or manually set that position to control where in the view or table to start querying.</p>
+<p>For example, suppose a recent mailing list activation contained an error and processed 100 records, and now the current incrementing position is 342. To reprocess those records after correcting the email activation, set the start point to 242. When you restart the data source, it queries records starting from that position and sends the corrected email.</p>
+<p>You can only manage the start point if the following conditions are true:</p>
+<ul>
+<li>The current profile is published.</li>
+<li>The query mode is <strong>Timestamp + Incrementing (Recommended)</strong>, <strong>Timestamp</strong>, or <strong>Incrementing</strong>. You cannot manage the start point for <strong>Full Resync</strong> query mode.</li>
+<li>The data source is stopped.
+<ul>
+<li>If the data source status is running, scheduled, or failed, you cannot edit the start point. Only information about the current start point is available.</li>
+<li>If the status is initializing, inactive, or there is a connection error, the start point is not available.</li>
+</ul>
+</li>
+</ul>
+<p>To manage the start point for the data source, use the following steps:</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/manage_offset.png"><img src="/images/early-access/cloudstream/manage_offset.png"
+         alt="manage offset"
+         title="manage offset"/>
+    </a>
+</figure>
+<ol>
+<li>Locate your data source in the <strong>Data Sources</strong> screen and click the edit icon.</li>
+<li>Click the action button in the upper-right corner of the data source details window and then click <strong>Set Processing Start</strong>.</li>
+<li>The start point methods available are <strong>Processing Start Timestamp</strong> and <strong>Incrementing Start Point</strong>. Your query mode determines which start points are available.</li>
+<li>Under <strong>Timestamp Column</strong>, select the column in the table that represents the timestamp.</li>
+<li>Under <strong>New Timestamp</strong>, select a date and time to use as a starting position when importing the data.
+<ul>
+<li>The new timestamp must be a past time and date. It cannot be a future date and time.</li>
+<li>The current timestamp field displays the currently used starting position.</li>
+</ul>
+</li>
+<li>Under <strong>Incrementing column</strong>, select the column that represents the incrementing value for each row added to the table.</li>
+<li>Under <strong>New Increment</strong>, enter a number to use to set the start point when importing the data.
+<ul>
+<li>The new start point must be a positive integer.</li>
+<li>The current start point field displays the currently used starting position to use as a start point.</li>
+</ul>
+</li>
+</ol>
+<p>Click <strong>Validate Processing Start Changes</strong> to preview the data that will be imported from the new start point. The table shows sample rows. It also provides an estimate of how many rows will be processed after you adjust the start point.</p>
+<figure><a class="slb" href="/images/early-access/cloudstream/validate_offset.png"><img src="/images/early-access/cloudstream/validate_offset.png"
+         alt="validate offset"
+         title="validate offset"/>
+    </a>
+</figure>
+<p>Click <strong>Done</strong> to confirm the new start point settings. Click <strong>Cancel</strong> to discard your changes.
+Restart the data source after changing the start point.</p>
 
 </div>
 
@@ -1194,7 +1290,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 27, 2025 
+          <p>This page was last updated:  February 6, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1218,6 +1314,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#processed-rows-and-errors" href="javascript:void(0)">Processed rows and errors</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#statuses" href="javascript:void(0)">Statuses</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test-configuration" href="javascript:void(0)">Test configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-processing-start" href="javascript:void(0)">Set processing start</a></li>
               </nav>
   </aside></nav>
 

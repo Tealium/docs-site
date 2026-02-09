@@ -456,7 +456,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".cloudstream">クラウドストリーム</a>
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
+        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">この記事について</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">データソース</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1054,13 +1054,13 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStream機能を有効にするには、<strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に進み、<strong>CloudStreamコネクタを有効にする</strong>を<code>On</code>に構成し、<strong>保存</strong>をクリックします。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStream機能を有効にするには、<strong>管理メニュー</strong> &gt; <strong>サーバーサイド構成</strong> &gt; <strong>CloudStreamコネクタ</strong>に移動し、<strong>CloudStreamコネクタを有効にする</strong>を<code>On</code>に構成し、<strong>保存</strong>をクリックします。</p>
 <h2 id="動作原理">動作原理</h2>
-<p>CloudStreamの機能はCloudStreamデータパイプライン内で動作し、クラウドデータソースから問い合わせたデータレコードにアクセスできます。CloudStreamプロファイル内の機能を使用して、他のシステムからデータを取得したり、データを増強したり、他のエンドポイントにデータを送信したりします。</p>
-<p>CloudStream機能の追加と管理は、以下の例外を除いて他の機能の管理と同じです：</p>
+<p>CloudStreamの機能はCloudStreamデータパイプライン内で動作し、クラウドデータソースから照会されたデータレコードにアクセスできます。CloudStreamプロファイル内の機能を使用して、他のシステムからデータを取得したり、データを増強したり、他のエンドポイントにデータを送信したりします。</p>
+<p>CloudStream機能の追加と管理は、他の機能の管理と同じですが、以下の例外があります：</p>
 <ul>
-<li>機能を作成する際に、対象者やイベントを選択する代わりに、<a href="/ja/server-side/cloudstream/datasources/">クラウドデータソース</a>と<a href="/ja/server-side/cloudstream/segments/">セグメント</a>を選択します。</li>
-<li>各CloudStream機能は一つのデータソースからのデータのみを使用できます。追加のデータソースからデータを活用したい場合は、それぞれに対して別の機能を構成します。</li>
+<li>機能を作成する際に、対象者やイベントを選択する代わりに、<a href="/ja/server-side/cloudstream/about/">クラウドデータソース</a>と<a href="/ja/server-side/cloudstream/about/">セグメント</a>を選択します。</li>
+<li>各CloudStream機能は、一つのデータソースからのデータのみを使用できます。追加のデータソースからデータをアクティブにする場合は、それぞれに対して別の機能を構成します。</li>
 <li>セグメントに複数のデータソースからマッピングされた属性が含まれている場合、選択したデータソースの属性のみが機能で利用可能です。</li>
 </ul>
 <p>機能についての詳細は、<a href="/ja/server-side/functions/about/">関数について</a>を参照してください。</p>
@@ -1072,13 +1072,13 @@
 <p>このパイプラインの時点で機能を使用して、データレコードを他のシステムに送信します。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この時点でのCloudStreamデータパイプラインでは、<code>dataRecord</code>オブジェクトの変更はシステムの他の部分には影響しません。</p>
 <h2 id="ランタイムバージョン">ランタイムバージョン</h2>
-<p>現在のランタイムバージョンは<a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントおよび訪問機能V3</a>と同じですが、以下の変更が含まれています：</p>
+<p>現在のランタイムバージョンは<a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">event and visitor functions V3</a>と同じですが、以下の変更が含まれています：</p>
 <ul>
 <li><code>track</code>ライブラリが削除されました。</li>
 <li>データレコードを新しいイベントとしてTealiumに送り返すことはできません。</li>
 </ul>
-<h2 id="activate-関数">activate() 関数</h2>
-<p>データレコード機能を作成すると、関数コードエディタの<strong>コード</strong>タブにデフォルトコードが表示されます：</p>
+<h2 id="activate関数">activate()関数</h2>
+<p>データレコード機能を作成すると、関数コードエディタの<strong>コード</strong>タブにデフォルトのコードが表示されます：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_function_details.png"><img src="/images/early-access/cloudstream/cloudstream_function_details.png"/>
     </a>
 </figure>
@@ -1086,8 +1086,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">dataRecord</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
 </span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>データレコード機能には<a href="#data-record-object"><code>dataRecordオブジェクト</code></a>と<code>helper</code>オブジェクトがあります。</p>
-<p><code>helper</code>パラメータは、認証を取得するための<code>helper.getAuth()</code>とグローバル変数を取得するための<code>helper.getGlobalVariable()</code>を提供します。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントおよび訪問関数 V3</a>を参照してください。</p>
+</span></span></code></pre></div><p>データレコード機能には<a href="#data-record-object"><code>dataRecord object</code></a>と<code>helper</code>オブジェクトがあります。</p>
+<p><code>helper</code>パラメータは<code>helper.getAuth()</code>と<code>helper.getGlobalVariable()</code>を提供して、認証を取得し、グローバル変数を取得します。詳細については、<a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/">イベントおよび訪問関数 V3</a>を参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>認証トークンはHTTPリクエスト内の関数からのみ参照できます。HTTPリクエストの外でトークンを参照しようとすると、トークンはUUIDプレースホルダーに置き換えられます。</p>
 <h3 id="データレコードオブジェクト">データレコードオブジェクト</h3>
 <p><code>dataRecord</code>オブジェクトはCloudStream機能で利用可能で、次のプロパティを含んでいます：</p>
@@ -1108,7 +1108,7 @@
 <tr>
 <td><code>data</code></td>
 <td>object</td>
-<td>クラウドデータソースから問い合わせたデータレコード、<code>dataRecord.data.udo</code>で参照。</td>
+<td>クラウドデータソースから照会されたデータレコード、<code>dataRecord.data.udo</code>で参照されます。</td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
@@ -1118,7 +1118,7 @@
 <tr>
 <td><code>post_time</code></td>
 <td>number</td>
-<td>データレコードが問い合わせられた時のタイムスタンプ。</td>
+<td>データレコードが照会された時のタイムスタンプ。</td>
 </tr>
 <tr>
 <td><code>profile</code></td>
@@ -1208,7 +1208,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年February月4日
+          <p>最終更新日 ::  2026年February月9日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1225,7 +1225,7 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">トリガー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">ランタイムバージョン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate-%E9%96%A2%E6%95%B0" href="javascript:void(0)">activate() 関数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate%E9%96%A2%E6%95%B0" href="javascript:void(0)">activate()関数</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">データレコードオブジェクト</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               </nav>
