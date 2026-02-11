@@ -647,6 +647,9 @@
       <a href="/server-side-connectors/onesignal-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OneSignal</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/optimizely-data-platform-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Data Platform</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1271,6 +1274,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
@@ -1495,12 +1500,12 @@
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Google Campaign Manager 360 API</li>
-<li>API Version: v4</li>
+<li>API Version: v5</li>
 <li>API Endpoint: <code>https://www.googleapis.com/dfareporting/</code></li>
 <li>Documentation: <a href="https://developers.google.com/doubleclick-advertisers/rest/v4">Campaign Manager 360 API</a></li>
 </ul>
 <h3 id="batch-limits">Batch limits</h3>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 1000</li>
 <li>Max time since oldest request: 60 minutes</li>
@@ -1767,6 +1772,41 @@ Use of the mapping destinations in this section supersede any mappings in the <s
 </tr>
 </tbody>
 </table>
+<h4 id="cart-data">Cart Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merchant ID</td>
+<td>The Merchant Center ID where the items are uploaded. Providing the Merchant Center ID reduces ambiguity in identifying accurate offer details.</td>
+</tr>
+<tr>
+<td>Merchant Feed Label</td>
+<td>The feed labels associated with the feed where your items are uploaded.</td>
+</tr>
+<tr>
+<td>Merchant Feed Language</td>
+<td>The language associated with the feed where the items are uploaded. Use ISO 639-1 language codes.</td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>(Required) The shopping ID of the item. Must be equal to the Merchant Center product identifier.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>(Required) Number of items sold.</td>
+</tr>
+<tr>
+<td>Unit Price</td>
+<td>(Required) Unit price excluding tax, shipping, and any transaction level discounts. Interpreted in CM360 Floodlight config parent advertiser currency code.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
 <li><a href="https://developers.google.com/doubleclick-advertisers/getting_started">Campaign Manager 360 API: Get Started</a></li>
@@ -1833,7 +1873,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 16, 2025 
+          <p>This page was last updated:  February 10, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

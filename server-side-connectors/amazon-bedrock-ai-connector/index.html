@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "12",
+        reading_time  : "15",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -645,6 +645,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/onesignal-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OneSignal</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/optimizely-data-platform-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Data Platform</span></a>
@@ -1271,6 +1274,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
@@ -1480,8 +1485,11 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="create-roles-and-permissions-in-aws-bedrock">Create roles and permissions in AWS Bedrock</h2>
-<p>Tealium requires a connection to Amazon Bedrock in your AWS account to use Bedrock models and resources from your server-side connector. You have two options for authenticating the connection:</p>
+  <h2 id="supported-models">Supported models</h2>
+<p>The Amazon Bedrock AI connector supports a wide range of foundation models. For the current list of supported models, see <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html">Amazon Bedrock: Supported foundation models in Amazon Bedrock</a>.</p>
+<p>Some Bedrock models require provisioned throughput and cannot be invoked using on-demand inference. If you encounter an on-demand throughput error, use a model that supports <code>ON_DEMAND</code> inference or provide a provisioned throughput or inference profile ARN in the configuration list.</p>
+<h2 id="create-iam-roles-and-permissions">Create IAM roles and permissions</h2>
+<p>Tealium requires IAM roles and permissions in your AWS account to connect to Amazon Bedrock from your server-side connector. You have two options for authenticating the connection:</p>
 <ul>
 <li><a href="#access-key-and-secret-credentials">Provide an Access Key and Access Secret</a>.</li>
 <li><a href="#sts-credentials">Provide STS credentials</a>.</li>
@@ -1537,8 +1545,12 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><h3 id="attach-policies">Attach policies</h3>
 <p>In the AWS Management Console, enter the necessary policies for the connector actions you are using. The following policies are required for each connector action:</p>
-<p><strong>Send Data to Bedrock AI Prompt</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+<p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend that you limit permissions to the specific ARNs of flows and Lambda functions you require.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Send Data to Bedrock AI Model" title="Send Data to Bedrock AI Model">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
@@ -1559,8 +1571,10 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>Send Data to Bedrock AI Managed Prompt</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Send Data to Bedrock AI Managed Prompt" title="Send Data to Bedrock AI Managed Prompt">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
@@ -1573,7 +1587,10 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>Send Data to Bedrock AI Flow</strong></p>
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Send Data to Bedrock AI Flow" title="Send Data to Bedrock AI Flow">
+  <p>If you are using Lambda:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
@@ -1583,11 +1600,38 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;bedrock:InvokeFlow&#34;</span>
 </span></span><span style="display:flex;"><span>      ],
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:bedrock:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:flow/*&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:bedrock:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:flow/&lt;flow_id&gt;/alias/&lt;alias_name&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;LambdaInvokeFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:InvokeFunction&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:&lt;FUNCTION_NAME&gt;&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>To enter and attach the policies:</p>
+</span></span></code></pre></div><p>If you are not using Lambda:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;BedrockFlowInvoke&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;bedrock:InvokeFlow&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:bedrock:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:flow/&lt;flow_id&gt;/alias/&lt;alias_name&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<p>To enter and attach the policies:</p>
 <ol>
 <li>In the AWS console, go to <strong>IAM &gt; Policies</strong>.</li>
 <li>Click <strong>Create policy</strong>.</li>
@@ -1633,6 +1677,7 @@
 <li>Clearly instruct the model to return only valid JSON with no explanations, no markdown, no code fences, and no extra text before or after the JSON.</li>
 <li>Define the exact JSON structure you expect (field names, required keys, and value types) so the output can be parsed safely.</li>
 <li>Instruct the model to return Tealium fields explicitly (for example, <code>tealium_account</code>, <code>tealium_profile</code>, <code>tealium_visitor_id</code>, <code>tealium_event</code>).</li>
+<li>If you need to reference a specific attribute in the prompt, map that attribute to a vendor parameter. For example, map <code>Last product viewed</code> to <code>last_product_viewed</code> and reference it in the prompt as <code>{{last_product_viewed}}</code>.</li>
 <li>Avoid vague instructions. Write deterministic prompts so that repeated calls produce the same JSON schema.</li>
 <li>For best results, include a line such as: &ldquo;Return a single JSON object only, with no prose, no backticks, and no additional formatting.&rdquo;</li>
 </ul>
@@ -1655,6 +1700,8 @@ Return a single JSON object only, with this exact structure:
 
 Visitor data:
 {{visitor_json}}
+
+Pay particular attention to the value of {{last_product_viewed}}.
 </code></pre><p>The response will resemble the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metrics&#34;</span>: {
@@ -1678,7 +1725,8 @@ Visitor data:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;totalTokens&#34;</span>: <span style="color:#ae81ff">8876</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="amazon-bedrock-flows">Amazon Bedrock Flows</h2>
+</span></span></code></pre></div><p>The connector accepts the response and sends the JSON event object to the Tealium Collect API endpoint.</p>
+<h2 id="amazon-bedrock-flows">Amazon Bedrock Flows</h2>
 <p>Amazon Bedrock Flows are multi-step AI orchestrations that combine prompts, knowledge bases, Lambda functions, conditional logic, and external data into a single reusable workflow. A flow defines how input data moves through prompts, enrichment steps, business logic, and final output to turn complex AI decisioning into a single API endpoint.</p>
 <p>To use the <strong>Send Data to Bedrock Flow</strong> action, create a flow in Amazon Bedrock that accepts input from Tealium, processes it through your AI steps, and sends the results back to Tealium through a Lambda function.</p>
 <p>The sections below describe the required and optional components of a flow.</p>
@@ -1689,7 +1737,6 @@ Visitor data:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;services-example&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;ai&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;1234567890abc&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;visitor_ai_score&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;visitor_profile&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lifetime_value&#34;</span>: <span style="color:#e6db74">&#34;1200&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;total_orders&#34;</span>: <span style="color:#ae81ff">5</span>,
@@ -1697,14 +1744,37 @@ Visitor data:
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Inside your flow, reference fields using <code>$.data.attribute_name</code>. Based on the previous example:</p>
-<ul>
-<li><code>$.data.tealium_account</code></li>
-<li><code>$.data.tealium_profile</code></li>
-<li><code>$.data.tealium_visitor_id</code></li>
-<li><code>$.data.tealium_event</code></li>
-<li><code>$.data.visitor_profile.lifetime_value</code></li>
-<li><code>$.data.visitor_profile.total_orders</code></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Tealium Attribute</th>
+<th>Bedrock Reference</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tealium_account</code></td>
+<td><code>$.data.tealium_account</code> or <code>{{tealium_account}}</code></td>
+<td><code>services-example</code></td>
+</tr>
+<tr>
+<td><code>tealium_profile</code></td>
+<td><code>$.data.tealium_profile</code> or <code>{{tealium_profile}}</code></td>
+<td><code>ai</code></td>
+</tr>
+<tr>
+<td><code>tealium_visitor_id</code></td>
+<td><code>$.data.tealium_visitor_id</code> or <code>{{tealium_visitor_id}}</code></td>
+<td><code>1234567890abc</code></td>
+</tr>
+<tr>
+<td><code>visitor_profile</code></td>
+<td><code>$.data.visitor_profile.lifetime_value</code></td>
+<td><code>&quot;visitor_profile&quot;: {&quot;lifetime_value&quot;: &quot;1200&quot;,&quot;total_orders&quot;: 5,...}</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="step-2---map-data-into-a-prompt-node-required">Step 2 - Map data into a prompt node (Required)</h3>
 <p>Next, add a prompt node to generate AI output (such as a score, recommendation, or decision).</p>
 <p>Inside the prompt node:</p>
@@ -1717,7 +1787,7 @@ Visitor data:
 <p>For an example, see the <a href="#prompt-example">Prompt example</a> section above.</p>
 <h3 id="step-3---optional-add-knowledge-base-retrieval">Step 3 - (Optional) Add knowledge base retrieval</h3>
 <p>Amazon Bedrock Knowledge Bases let you connect your AI workflows to external data sources, such as Amazon S3, Amazon Redshift, or Amazon OpenSearch Service. A knowledge base stores and indexes your documents, making them available for retrieval and grounding during prompt execution. When you add a knowledge base node to your flow, the model can use relevant information from your data to generate more accurate and context-aware responses. This step is optional, but it is valuable for personalization, recommendations, or contextual decisioning.</p>
-<p>After you connect the knowledgebase, you can pass knowledge base results into your prompt using fields like <code>{{$.kbResults}}</code>.</p>
+<p>After you connect the knowledge base, you can pass knowledge base results into your prompt using fields like <code>{{$.kbResults}}</code>.</p>
 <p>For more information on knowledge bases, see <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html">Amazon Bedrock: Retrieve data and generate AI responses with Amazon Bedrock Knowledge Bases</a>.</p>
 <p>For more information on creating a knowledge base, see <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html">Amazon Bedrock: Create a knowledge base by connecting to a data source in Amazon Bedrock Knowledge Bases</a>.</p>
 <h3 id="step-4---add-a-lambda-node-to-send-results-back-to-tealium-required-for-tealium-integration">Step 4 - Add a Lambda node to send results back to Tealium (Required for Tealium Integration)</h3>
@@ -1740,7 +1810,7 @@ Visitor data:
 <p>Use <a href="#lambda-example">our provided Lambda example</a> or build your own.</p>
 <h3 id="step-5---add-a-flow-output-node">Step 5 - Add a flow output node</h3>
 <p>Although Tealium does not process the flow’s API response, an output node is required to complete the flow.</p>
-<p>Connecting your Lambda output to the <code>FlowOutputNode</code> doesn’t affect Tealium processing, but helps you verify the flow works with the following tools:</p>
+<p>Connecting your Lambda output to the <code>FlowOutputNode</code> doesn’t affect Tealium processing, but helps you verify that the flow works with the following tools:</p>
 <ul>
 <li>Debug in the Bedrock console.</li>
 <li>View errors from the Lambda function.</li>
@@ -1748,80 +1818,82 @@ Visitor data:
 <li>View output in Tealium using Trace.</li>
 </ul>
 <h4 id="lambda-example">Lambda example</h4>
-<p>The following is a Lambda example for accepting prompt output, parsing the JSON, and sending that data to the Tealium Collect endpoint for enrichment and activation in Tealium.</p>
-<p>It includes fallbacks to account for various data structures. Rewrite yours as needed.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">COLLECT_URL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">COLLECT_URL</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;https://collect.tealiumiq.com/event&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ---- Robust extractor for Bedrock Flow Lambda wrapper ----
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractInputByName</span>(<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">name</span>) {
+<p>The following is a Lambda example for accepting prompt output, parsing the JSON, and sending that data to the Tealium Collect endpoint for enrichment and activation in Tealium. It includes fallbacks to account for various data structures. Rewrite yours as needed.</p>
+<p>The account and profile must be configured to accept server-side events with the specified data source.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This example requires Node.js version 18.x or later as the runtime environment.</p>
+
+<div class="pv2">
+<div class="expand ba pa2 b--black-20 pv3">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+        <span style="font-weight:bold;">
+        
+    	
+    	Expand to view Lambda code
+    	
+    	</span>
+    </div>
+    <div class="expand-content pa2" style="display: none;">
+        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">COLLECT_URL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">COLLECT_URL</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;https://collect.tealiumiq.com/event&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractInputByName</span>(<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">name</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">node</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">inputs</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (Array.<span style="color:#a6e22e">isArray</span>(<span style="color:#a6e22e">arr</span>)) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hit</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">i</span> =&gt; <span style="color:#a6e22e">i</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">name</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hit</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span>;      <span style="color:#75715e">// expected: codeHookInput (STRING)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hit</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span>); <span style="color:#75715e">// if wired as Object by mistake
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hit</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hit</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">hit</span>.<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">undefined</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractJsonStringFromEvent</span>(<span style="color:#a6e22e">event</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Standard pin
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fromStandardPin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractInputByName</span>(<span style="color:#a6e22e">event</span>, <span style="color:#e6db74">&#34;codeHookInput&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fromStandardPin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractInputByName</span>(<span style="color:#a6e22e">event</span>, <span style="color:#e6db74">&#34;codeHookInput&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">fromStandardPin</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fromStandardPin</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// First STRING input as fallback
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">anyString</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">node</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">inputs</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">find</span><span style="color:#f92672">?</span>.(<span style="color:#a6e22e">i</span> =&gt; <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>)<span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">anyString</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">node</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">inputs</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">find</span><span style="color:#f92672">?</span>.(<span style="color:#a6e22e">i</span> =&gt; <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>)<span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">anyString</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">anyString</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Legacy fallbacks (other shapes)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">codeHookInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">codeHookInput</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">codeHookInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">codeHookInput</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.document <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">event</span>.document;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">doc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">fields</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">content</span><span style="color:#f92672">?</span>.document;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">doc</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">doc</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">event</span>;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Could not find JSON string in event&#34;</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ----------------------------------------------------------
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>) =&gt; {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jsonStr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractJsonStringFromEvent</span>(<span style="color:#a6e22e">event</span>); <span style="color:#75715e">// raw JSON string from Prompt
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Validate syntax (no double-stringify)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">jsonStr</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Validate required fields
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jsonStr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractJsonStringFromEvent</span>(<span style="color:#a6e22e">event</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">jsonStr</span>);  <span style="color:#75715e">// Fixed: store parsed result
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">required</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;tealium_account&#34;</span>, <span style="color:#e6db74">&#34;tealium_profile&#34;</span>, <span style="color:#e6db74">&#34;tealium_visitor_id&#34;</span>];
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">required</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hasOwnProperty</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#a6e22e">key</span>)) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Missing required field &#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; in model output`</span>);
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">COLLECT_URL</span>, {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span> },
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">jsonStr</span>
 </span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">ok</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">txt</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">text</span>().<span style="color:#66d9ef">catch</span>(() =&gt; <span style="color:#e6db74">&#34;&#34;</span>);
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Collect failed </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">jsonStr</span>;
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Shim error:&#34;</span>, <span style="color:#a6e22e">err</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">ok</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> String(<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">message</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">err</span>) });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h2 id="actions">Actions</h2>
+</span></span></code></pre></div>
+    </div>
+</div>
+</div>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
 <th>Action Name</th>
 <th>AudienceStream</th>
 <th>EventStream</th>
+<th>Response Method</th>
+<th>Best For</th>
 </tr>
 </thead>
 <tbody>
@@ -1829,20 +1901,25 @@ Visitor data:
 <td>Send Prompt to Bedrock AI Model</td>
 <td>✓</td>
 <td>✗</td>
+<td>Synchronous through connector</td>
+<td>Simple, single-model calls</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Managed Prompt</td>
 <td>✓</td>
 <td>✗</td>
+<td>Synchronous through connector</td>
+<td>Reusable prompts, versioning</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Workflow</td>
 <td>✓</td>
 <td>✗</td>
+<td>Asynchronous through Lambda</td>
+<td>Multi-step orchestration, KB retrieval</td>
 </tr>
 </tbody>
 </table>
-<p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-prompt-to-bedrock-ai-model">Send Prompt to Bedrock AI Model</h3>
 <h4 id="parameters">Parameters</h4>
@@ -1911,7 +1988,7 @@ Visitor data:
 </tr>
 </tbody>
 </table>
-<h3 id="send-data-to-bedrock-ai-workflow">Send Data to Bedrock AI Workflow</h3>
+<h3 id="send-data-to-bedrock-ai-flow">Send Data to Bedrock AI Flow</h3>
 <table>
 <thead>
 <tr>
@@ -1938,6 +2015,57 @@ Visitor data:
 </tr>
 </tbody>
 </table>
+<h2 id="common-errors-and-troubleshooting">Common errors and troubleshooting</h2>
+<p>The following are some common error codes and resolutions:</p>
+<h3 id="common-aws-error-codes">Common AWS error codes:</h3>
+<ul>
+<li>
+<p><strong><code>AccessDeniedException</code> or <code>NotAuthorized</code></strong><br>
+Your IAM user or role doesn’t have the required permissions (for example, <code>bedrock:InvokeModel</code>, <code>bedrock:RenderPrompt</code>, <code>bedrock:InvokeFlow</code>, <code>bedrock:ListFoundationModels</code>).<br>
+To solve this, update the IAM policy attached to the role or access keys to include the needed Bedrock actions on the correct resources.</p>
+</li>
+<li>
+<p><strong><code>InvalidClientTokenId</code>, <code>UnrecognizedClientException</code>, or <code>ExpiredTokenException</code></strong><br>
+The configured access keys or STS session are invalid or expired.<br>
+To solve this, rotate and re‑enter credentials in the connector, or verify the STS role and external ID are correct and not expired.</p>
+</li>
+<li>
+<p><strong><code>OptInRequired</code> or <code>FTUFormNotFilled</code></strong><br>
+The AWS account is not fully enabled for Bedrock or for a specific model (for example, Anthropic).<br>
+To solve this, complete the required Bedrock enablement steps and any model‑specific forms or Marketplace subscriptions in the AWS console.</p>
+</li>
+</ul>
+<p>If you see any of these errors, resolve the IAM or account setup in AWS first. Retrying the connector action alone will not succeed until permissions are corrected.</p>
+<h3 id="common-errors-from-bedrock-api-calls">Common errors from Bedrock API calls</h3>
+<p>The following errors mean the request reached Bedrock, but the service or model could not complete it successfully.</p>
+<ul>
+<li>
+<p><strong><code>ValidationException</code> or <code>ValidationError</code></strong><br>
+The request body or parameters are invalid for the target model or API (for example, wrong model ID, unsupported parameters, input too large).<br>
+To solve this, verify the model ID / prompt ARN / flow ARN, ensure the request body matches the model’s expected schema, and reduce prompt size or max tokens if needed.</p>
+</li>
+<li>
+<p><strong><code>ResourceNotFound</code> or <code>ResourceNotFoundException</code></strong><br>
+The specified model, prompt version, or Flow alias ARN does not exist or is not available in that region.<br>
+To solve this, double‑check ARNs and region in the connector configuration against the values shown in the Bedrock console.</p>
+</li>
+<li>
+<p><strong><code>ThrottlingException</code> or <code>ServiceQuotaExceededException</code></strong><br>
+Your calls exceed Bedrock quotas (for example, TPS or token limits).<br>
+To solve this, reduce call frequency or request a quota increase in AWS.</p>
+</li>
+<li>
+<p><strong><code>ServiceUnavailable</code>, <code>InternalFailure</code>, or <code>InternalServerException</code></strong><br>
+Temporary or internal errors within Bedrock.<br>
+To solve this, if errors persist, check the AWS Service Health Dashboard or open an AWS Support case.</p>
+</li>
+<li>
+<p><strong><code>ModelErrorException</code>, <code>ModelNotReadyException</code>, or <code>ModelTimeoutException</code></strong> (prompt or managed prompt flows)<br>
+The model failed, is still warming up, or took too long to respond.<br>
+To solve this, wait and retry, simplify the prompt or reduce token usage, and confirm the model or provisioned throughput is fully active.</p>
+</li>
+</ul>
+<p>For all of these errors, Tealium displays the original AWS error message from Bedrock so you can match it against AWS documentation when you are troubleshooting.</p>
 
 </div>
 
@@ -1998,7 +2126,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 4, 2026 
+          <p>This page was last updated:  February 9, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2012,7 +2140,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-roles-and-permissions-in-aws-bedrock" href="javascript:void(0)">Create roles and permissions in AWS Bedrock</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-models" href="javascript:void(0)">Supported models</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-iam-roles-and-permissions" href="javascript:void(0)">Create IAM roles and permissions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#access-key-and-secret-credentials" href="javascript:void(0)">Access key and secret credentials</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sts-credentials" href="javascript:void(0)">STS credentials</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#attach-policies" href="javascript:void(0)">Attach policies</a></li>
@@ -2028,7 +2157,10 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-prompt-to-bedrock-ai-model" href="javascript:void(0)">Send Prompt to Bedrock AI Model</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-managed-prompt" href="javascript:void(0)">Send Data to Bedrock AI Managed Prompt</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-workflow" href="javascript:void(0)">Send Data to Bedrock AI Workflow</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-flow" href="javascript:void(0)">Send Data to Bedrock AI Flow</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-errors-and-troubleshooting" href="javascript:void(0)">Common errors and troubleshooting</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-aws-error-codes" href="javascript:void(0)">Common AWS error codes:</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-errors-from-bedrock-api-calls" href="javascript:void(0)">Common errors from Bedrock API calls</a></li>
               </nav>
   </aside></nav>
 

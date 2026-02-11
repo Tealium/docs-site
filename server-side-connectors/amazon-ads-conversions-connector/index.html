@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -645,6 +645,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/onesignal-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OneSignal</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/optimizely-data-platform-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Data Platform</span></a>
@@ -1271,6 +1274,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
@@ -1480,7 +1485,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Amazon Ads API</li>
@@ -1489,49 +1494,24 @@
 <li>Documentation: <a href="https://advertising.amazon.com/API/docs/en-us/dsp-conversion-builder">Amazon API</a></li>
 <li>Tag Documentation: <a href="/client-side-tags/amazon-advertising-tag/">Amazon Advertising Tag</a></li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Send Conversion</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="connector-tips">Connector tips</h2>
 <p>We recommend a hybrid setup using both a tag and a connector. This configuration ensures maximum data resilience, improves event matching with server-side signals, and maintains data flow continuity while retaining real-time client-side signals.</p>
-<h2 id="configure-settings">Configure Settings</h2>
+<h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>API Base URL</strong>:<br>
-(Required) Select your API Base URL.</li>
-<li><strong>Amazon Advertiser ID</strong>:<br>
-(Required) Enter your Amazon Advertising account ID.</li>
+<li><strong>API Base URL</strong>: (Required) Select your API Base URL.</li>
+<li><strong>Amazon Advertiser ID</strong>: (Required) Enter your Amazon Advertising account ID.</li>
 </ul>
 <h3 id="create-a-conversion-definition">Create a conversion definition</h3>
 <p>To create a conversion definition, click <strong>Create Conversion Definition</strong> and provide the following information:</p>
 <ul>
-<li><strong>Advertising Profile</strong>:<br>
-(Required) Select an advertising profile for this conversion.</li>
-<li><strong>Conversion Definition Name</strong>:<br>
-(Required) The name of the conversion definition.</li>
-<li><strong>Source Type</strong>:<br>
-(Required) Select the source type of the conversion. The following types are available: <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</li>
-<li><strong>Conversion Type</strong>:<br>
-(Required) Select the type of conversion. The following types are available: <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, and <code>WEBSITE</code>.</li>
-<li><strong>Counting Method</strong>:<br>
-(Required) Select the method used to determine whether to use all or only the first conversion event per user ingested within a 24 hour window for a conversion definition. The following methods are available: <code>EVERY</code> and <code>FIRST</code>.</li>
-<li><strong>Conversion Value</strong>:<br>
-(Optional) The value of the conversion. The default value is <code>1</code> and can be overridden through mapping in the <strong>Send Conversion</strong> action.</li>
+<li><strong>Advertising Profile</strong>: (Required) Select an advertising profile for this conversion.</li>
+<li><strong>Conversion Definition Name</strong>: (Required) The name of the conversion definition.</li>
+<li><strong>Source Type</strong>: (Required) Select the source type of the conversion. The following types are available: <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</li>
+<li><strong>Conversion Type</strong>: (Required) Select the type of conversion. The following types are available: <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, and <code>WEBSITE</code>.</li>
+<li><strong>Counting Method</strong>: (Required) Select the method used to determine whether to use all or only the first conversion event per user ingested within a 24 hour window for a conversion definition. The following methods are available: <code>EVERY</code> and <code>FIRST</code>.</li>
+<li><strong>Conversion Value</strong>: (Optional) The value of the conversion. The default value is <code>1</code> and can be overridden through mapping in the <strong>Send Conversion</strong> action.</li>
 </ul>
 <p>To save the conversion definition, click <strong>Done</strong>.</p>
 <p>Be sure to accept the terms and conditions, either in the Ads data manager console on the conversions page or by using the Terms API (<code>POST /adm/terms</code>).</p>
@@ -1546,11 +1526,11 @@
 </figure>
 <p>For example, a checkout event from a tag with UID of <code>170</code> would send the following attribute value:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_checkout_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_checkout_170&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>A page view event from the same tag would send the following attribute and value:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_pageView_170&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;amazon_event_id_pageView_170&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Use a separate action for each type of event. Map the event-specific event ID attribute to <code>Event ID</code> with the matching event name mapped to <code>Event Name</code>. For example:</p>
 <table>
@@ -1575,17 +1555,38 @@
 <p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event ID attribute. You are no longer required to add an <code>Event ID</code> if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
 <p>The connector follows this order of operations:</p>
 <ul>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer (for example: <code>amazon_event_id_checkout_32</code>), this value supersedes anything mapped in <code>Event ID</code>.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer (for example: <code>amazon_event_id_checkout_170</code>), this value supersedes anything mapped in <code>Event ID</code>.</li>
 <li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <code>Event ID</code> is used, if it is populated.</li>
 </ul>
-<h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Conversion</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Conversion (deprecated)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--send-conversion">Action — Send Conversion</h3>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h3 id="send-conversion">Send Conversion</h3>
+<h4 id="batch-imits">Batch imits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
-<li>Max number of requests: 100</li>
+<li>Max number of requests: 500</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 1 MB</li>
 </ul>
@@ -1593,58 +1594,70 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Conversion Definition</td>
-<td>Select a conversion definition or click <strong>Create Definition</strong> to create a new definition.</td>
+<td>Conversion Type</td>
+<td>Select the conversion type of the imported event. Possible values are <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>MOBILE_APP_FIRST_START</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</td>
+</tr>
+<tr>
+<td>Conversion Source</td>
+<td>Select the conversion source of the imported event. Possible values are <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, <code>WEBSITE</code>, and <code>MEASUREMENT_PARTNER</code>.</td>
 </tr>
 </tbody>
 </table>
-<h5 id="conversion-data">Conversion Data</h5>
+<h4 id="conversion-data">Conversion Data</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Name</td>
+<td>(Required) The name of the imported event. For example, Website Purchase, Newsletter Signup, etc.</td>
+</tr>
+<tr>
 <td>Country Code</td>
-<td>(Required) The country where the user performing the event is located, in ISO 3166-1 alpha-2 format.</td>
+<td>(Required) ISO 3166-1 alpha-2 country code indicating where the user performing the event was located.</td>
 </tr>
 <tr>
-<td>Conversion Time</td>
-<td>The timestamp of the conversion in ISO format (<code>YYYY-MM-DDThh:mm:ssTZD</code>). If not mapped, the connector uses the event time.</td>
+<td>Dataset Name</td>
+<td>Event Dataset Name to which this event should be added. Must be a 1–100 character string beginning with a letter and may then contain only letters, digits, underscores, or hyphens.</td>
 </tr>
 <tr>
-<td>Conversion Value</td>
-<td>The value of the conversion.</td>
+<td>Event Time</td>
+<td>The timestamp of the conversion in ISO format (<code>YYYY-MM-DDThh:mm:ssTZD</code>). If not mapped, the connector use the event time.</td>
 </tr>
 <tr>
-<td>Currency</td>
-<td>The currency in ISO 4217 format. Only applicable for the <code>OFF_AMAZON_PURCHASES</code> conversion type.</td>
+<td>Value</td>
+<td>The value of the event.</td>
+</tr>
+<tr>
+<td>Currency Code</td>
+<td>Currency in ISO-4217 format. Only applicable for the <code>OFF_AMAZON_PURCHASES</code> conversion type.</td>
 </tr>
 <tr>
 <td>Units Sold</td>
 <td>The number of items purchased. Only applicable for the <code>OFF_AMAZON_PURCHASES</code> conversion type.</td>
 </tr>
 <tr>
-<td>Dedupe ID</td>
-<td>If you are tracking conversions in both the tag and the connector, specify a deduplication ID. The value should match for both events.</td>
+<td>Data Processing Options</td>
+<td>A flag for signaling how an event is processed. Events marked for limited data use are not processed. For example, <code>LIMITED_DATA_USE</code></td>
 </tr>
 </tbody>
 </table>
-<h5 id="user-data">User Data</h5>
+<h4 id="user-data">User Data</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1714,7 +1727,50 @@
 </tr>
 <tr>
 <td>MAID</td>
-<td>Mobile Identifier. Valid values are <code>MAID</code>, <code>ADID</code>, <code>IDFA</code>, and <code>FIREADID</code>.</td>
+<td>Mobile Identifier. Possible values are <code>MAID</code>, <code>ADID</code>, <code>IDFA</code>, and <code>FIREADID</code>.</td>
+</tr>
+<tr>
+<td>Ramp ID</td>
+<td>The LiveRamp identifier.</td>
+</tr>
+<tr>
+<td>Match ID</td>
+<td>A generic match identifier type that Amazon supports as a user identity key.</td>
+</tr>
+<tr>
+<td>Custom Data</td>
+<td>Map custom data associated with the conversion event.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="consent">Consent</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Ad Storage</td>
+<td>Indicates whether the user granted consent to Amazon to store and access advertising identifiers. Possible values are <code>GRANTED</code> or <code>DENIED</code>.</td>
+</tr>
+<tr>
+<td>Amazon User Data</td>
+<td>Indicates whether the user granted consent to Amazon to use their user data for ads. Possible values are <code>GRANTED</code> or <code>DENIED</code>.</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>The IP address of the user.</td>
+</tr>
+<tr>
+<td>GPP String</td>
+<td>The GPP consent string.</td>
+</tr>
+<tr>
+<td>TCF String</td>
+<td>The GDPR consent string using IAB (Interactive Advertising Bureau).</td>
 </tr>
 </tbody>
 </table>
@@ -1722,8 +1778,181 @@
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic Deduplication</td>
+<td>Enter the <strong>Tealium iQ Tag ID</strong> and Tealium automatically looks for this Event ID sent from Tealium iQ.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mapping-overrides">Mapping Overrides</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Advertiser ID</td>
+<td>The unique identifier for the advertiser.</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>The base URL for the Amazon Ads API.</td>
+</tr>
+</tbody>
+</table>
+<p>For more information about formatting and normalization requirements, see <a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">Format audience file for hashing</a>.</p>
+<h3 id="send-conversion-deprecated">Send Conversion (deprecated)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This action is now deprecated and can no longer be added. For the current action, see <a href="#send-conversion">Send Conversion</a>.</p>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Definition</td>
+<td>Select a conversion definition or click <strong>Create Definition</strong> to create a new definition.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="conversion-data-1">Conversion Data</h5>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Country Code</td>
+<td>(Required) The country where the user performing the event is located, in ISO 3166-1 alpha-2 format.</td>
+</tr>
+<tr>
+<td>Conversion Time</td>
+<td>The timestamp of the conversion in ISO format (<code>YYYY-MM-DDThh:mm:ssTZD</code>). If not mapped, the connector uses the event time.</td>
+</tr>
+<tr>
+<td>Conversion Value</td>
+<td>The value of the conversion.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>The currency in ISO 4217 format. Only applicable for the <code>OFF_AMAZON_PURCHASES</code> conversion type.</td>
+</tr>
+<tr>
+<td>Units Sold</td>
+<td>The number of items purchased. Only applicable for the <code>OFF_AMAZON_PURCHASES</code> conversion type.</td>
+</tr>
+<tr>
+<td>Dedupe ID</td>
+<td>If you are tracking conversions in both the tag and the connector, specify a deduplication ID. The value should match for both events.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-data-1">User Data</h5>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email (already SHA256 hashed)</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Email (apply SHA256 hash)</td>
+<td>Provide a plain text email and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone (already SHA256 hashed)</td>
+<td>Provide a phone number that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone (apply SHA256 hash)</td>
+<td>Provide a plain text phone number and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>First Name (already SHA256 hashed)</td>
+<td>Provide a first name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>First Name (apply SHA256 hash)</td>
+<td>Provide a plain text first name and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Last Name (already SHA256 hashed)</td>
+<td>Provide a last name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Last Name (apply SHA256 hash)</td>
+<td>Provide a plain text last name and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address (already SHA256 hashed)</td>
+<td>Provide an address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address (apply SHA256 hash)</td>
+<td>Provide a plain text address and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>City (already SHA256 hashed)</td>
+<td>Provide a city that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>City (apply SHA256 hash)</td>
+<td>Provide a plain text city and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>State (already SHA256 hashed)</td>
+<td>Provide a state that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>State (apply SHA256 hash)</td>
+<td>Provide a plain text state and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Postal Code (already SHA256 hashed)</td>
+<td>Provide a postal code that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Postal Code (apply SHA256 hash)</td>
+<td>Provide a plain text postal code and the connector trims whitespace, lowercases, and hashes this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>MAID</td>
+<td>Mobile Identifier. Possible values are <code>MAID</code>, <code>ADID</code>, <code>IDFA</code>, and <code>FIREADID</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="automatic-deduplication-2">Automatic Deduplication</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1737,12 +1966,12 @@
 </tr>
 </tbody>
 </table>
-<h4 id="mapping-overrides">Mapping Overrides</h4>
+<h4 id="mapping-overrides-1">Mapping Overrides</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1821,7 +2050,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 3, 2025 
+          <p>This page was last updated:  February 10, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1835,15 +2064,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-tips" href="javascript:void(0)">Connector tips</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-conversion-definition" href="javascript:void(0)">Create a conversion definition</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-conversion" href="javascript:void(0)">Action — Send Conversion</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion" href="javascript:void(0)">Send Conversion</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-deprecated" href="javascript:void(0)">Send Conversion (deprecated)</a></li>
               </nav>
   </aside></nav>
 
