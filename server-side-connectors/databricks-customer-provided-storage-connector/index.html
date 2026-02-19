@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "20",
+        reading_time  : "21",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -548,7 +548,7 @@
       <a href="/server-side-connectors/linkedin-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>LinkedIn Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>LinkedIn Matched Audiences</span></a>
+      <a href="/server-side-connectors/linkedin-matched-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>LinkedIn Matched Audiences</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/listrak-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Listrak</span></a>
@@ -890,6 +890,9 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1208,7 +1211,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a></li>
+        <a href="/server-side-connectors/linkedin-matched-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector">LinkedIn Matched Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/listrak-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1436,6 +1439,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a></li>
@@ -1535,6 +1540,16 @@
 <td>Send Custom Visitor Data (Batch)</td>
 <td>✓</td>
 <td>✗</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Entire Log Event</td>
+<td>✗</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
@@ -2253,6 +2268,90 @@
 </tr>
 </tbody>
 </table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="parameters-8">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Select the cloud bucket or container from which Databricks pulls the data.</td>
+</tr>
+<tr>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Event Parameters</td>
+<td>Map the parameters to the columns of the table. You must map at least one parameter.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-entire-log-event">Send Entire Log Event</h3>
+<h4 id="parameters-9">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud bucket</td>
+<td>Choose the cloud bucket/container from which Databricks pulls the data.</td>
+</tr>
+<tr>
+<td>Databricks Catalog</td>
+<td>Select the Databricks catalog or provide a custom value.</td>
+</tr>
+<tr>
+<td>Databricks Schema</td>
+<td>Select the Databricks schema or provide a custom value.</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>Volume where the files will be exported.</td>
+</tr>
+<tr>
+<td>Files path</td>
+<td>Path where the files will be exported. Do not change this value if you want the files to be dropped in the root of the volume.</td>
+</tr>
+<tr>
+<td>Databricks Table</td>
+<td>Select the Databricks table or provide a custom value.</td>
+</tr>
+<tr>
+<td>Column to record the payload</td>
+<td>Select the <code>VARIANT</code> column to record the payload.</td>
+</tr>
+<tr>
+<td>Column to record the Timestamp</td>
+<td>Select the column to record the timestamp.</td>
+</tr>
+<tr>
+<td>Timestamp Attribute</td>
+<td>The default sends the current timestamp for the action. Select an attribute to assign as the timestamp if you want to send a different format. If an attribute is assigned and produces an empty value, we  send the current timestamp.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -2313,7 +2412,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  February 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2351,6 +2450,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data-batch" href="javascript:void(0)">Send Custom Event Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-batch" href="javascript:void(0)">Send Custom Visitor Data (Batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-log-event" href="javascript:void(0)">Send Entire Log Event</a></li>
               </nav>
   </aside></nav>
 
