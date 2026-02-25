@@ -479,6 +479,9 @@
       <a href="/server-side-connectors/google-sheets-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Sheets</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-vertex-ai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-vertex-commerce-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI Search</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1165,6 +1168,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-vertex-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-ai-connector">Google Vertex AI</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-vertex-commerce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-commerce-connector">Google Vertex AI Search</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/heap-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".heap-connector">Heap</a></li>
@@ -1490,7 +1495,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: TikTok HTTP API</li>
@@ -1498,46 +1503,26 @@
 <li>API Endpoint: <code>https://business-api.tiktok.com/open_api/v1.3/event/track/</code></li>
 <li>Documentation: <a href="https://business-api.tiktok.com/portal/docs?id=1771101303285761">TikTok Events 2.0</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Maximum number of requests: 50</li>
 <li>Maximum time since oldest request: 5 minutes</li>
 <li>Maximum size of requests: 1 MB</li>
 </ul>
-<h2 id="connector-actions">Connector actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Send Track Event</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
-<p>Use the Track endpoint to report App, Web, Offline, or CRM events.</p>
-<h2 id="configure-settings">Configure settings</h2>
+<h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Access Token</strong><br>
-The Access Token that is configured in TikTok.</li>
-<li><strong>Pixel ID</strong><br>
-If a TikTok pixel is already integrated for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the <code>pixel_code</code>. Create one pixel per website.</li>
+<li><strong>Access Token</strong>: The Access Token that is configured in TikTok.</li>
+<li><strong>Pixel ID</strong>: If a TikTok pixel is already integrated for the website, use the existing pixel code. Log in to your TikTok Ads Manager account to find the <code>pixel_code</code>. Create one pixel per website.</li>
 </ul>
 <h2 id="deduplication">Deduplication</h2>
 <p>To configure this connector to receive event IDs from the TikTok Pixel tag in your Tealium iQ Tag Management account, look for event attributes using the following naming convention:</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_&lt;TIKTOK_EVENT&gt;_&lt;TAG_UID&gt;
 </code></pre><p>For example, an event from a tag with a UID of <code>174</code> sends the following attribute:</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">tiktok_event_id_Checkout_174
-</code></pre><p>Find your tag&rsquo;s UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
+</code></pre><p>Find your tag UID in the Tealium iQ <strong>Tags</strong> table or the tag details screen:</p>
 <figure><a class="slb" href="/images/server-side-connectors/tiktok-pixel-uid.png"><img src="/images/server-side-connectors/tiktok-pixel-uid.png"
          alt="TikTok Pixel UID"
          title="TikTok Pixel UID"/>
@@ -1568,25 +1553,42 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <p>If multiple events with the same event source ID (<code>event_source_id</code>), event type (for example, <code>AddToCart</code>), and event ID (<code>event_id</code>) are received, TikTok uses the first event and discards any later events received within forty-eight hours of the first event.</p>
 <p>If a later event is received within five minutes of the first event, TikTok merges its data into the first event. For example, if the first event does not include user email (<code>user.email</code>) but a later duplicate event (received within five minutes) contains this information, TikTok merges the email data into the first event.</p>
 <h2 id="actions">Actions</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Track Event</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>Use the Track endpoint to report App, Web, Offline, or CRM events.</p>
+<p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-track-event">Send Track Event</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Event Source</td>
-<td>Select the event source.<ul><li>WEB</li><li>APP</li><li>OFFLINE</li><li>CRM</li></ul></td>
+<td>Select the event source. Possible values are: <ul><li><code>WEB</code></li><li><code>APP</code></li><li><code>OFFLINE</code></li><li><code>CRM</code></li></ul></td>
 </tr>
 <tr>
 <td>Event Type</td>
-<td>The conversion event name.<ul><li>Achieve a Level</li><li>Add Payment Information</li><li>Add to Cart</li><li>Add to Wishlist</li><li>Check Out</li><li>Click Button</li><li>Complete Payment</li><li>Complete Registration</li><li>Complete the Tutorial</li><li>Contact</li><li>Create a Group</li><li>Create a Role</li><li>Custom</li><li>Download</li><li>Generate a Lead</li><li>Initiate Checkout</li><li>Install the App</li><li>In-app AD Click</li><li>In-app AD Impression</li><li>Join a Group</li><li>Launch the App</li><li>Load an Application</li><li>Loan is Approved</li><li>Loan is Disbursed</li><li>Log in Successfully</li><li>Place an Order</li><li>Purchase</li><li>Rate</li><li>Search</li><li>Spend Credits</li><li>Start the Trial</li><li>Submit Form</li><li>Subscribe</li><li>Unlock an Achievement</li><li>View Content</li></ul></td>
+<td>The conversion event name. Possible values are: <ul><li><code>Achieve a Level</code></li><li><code>Add Payment Information</code></li><li><code>Add to Cart</code></li><li><code>Add to Wishlist</code></li><li><code>Check Out</code></li><li><code>Click Button</code></li><li><code>Complete Payment</code></li><li><code>Complete Registration</code></li><li><code>Complete the Tutorial</code></li><li><code>Contact</code></li><li><code>Create a Group</code></li><li><code>Create a Role</code></li><li><code>Custom</code></li><li><code>Download</code></li><li><code>Generate a Lead</code></li><li><code>Initiate Checkout</code></li><li><code>Install the App</code></li><li><code>In-app AD Click</code></li><li><code>In-app AD Impression</code></li><li><code>Join a Group</code></li><li><code>Launch the App</code></li><li><code>Load an Application</code></li><li><code>Loan is Approved</code></li><li><code>Loan is Disbursed</code></li><li><code>Log in Successfully</code></li><li><code>Place an Order</code></li><li><code>Purchase</code></li><li><code>Rate</code></li><li><code>Search</code></li><li><code>Spend Credits</code></li><li><code>Start the Trial</code></li><li><code>Submit Form</code></li><li><code>Subscribe</code></li><li><code>Unlock an Achievement</code></li><li><code>View Content</code></li></ul></td>
 </tr>
 <tr>
 <td>Event Source ID</td>
@@ -1594,11 +1596,11 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>Event Time</td>
-<td>(Required) Timestamp when the event took place with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If you do not provide a timestamp, the connector uses the current timestamp.</td>
+<td>(Required) The timestamp when the event took place in Unix epoch format, measured in seconds. If you do not provide a timestamp, the connector uses the current timestamp.</td>
 </tr>
 <tr>
 <td>Custom Event Name</td>
-<td>Required when choosing <strong>Custom</strong> from the <strong>Event Type</strong> drop-down.</td>
+<td>The custom event name. Required when choosing <strong>Custom</strong> from the <strong>Event Type</strong> drop-down.</td>
 </tr>
 <tr>
 <td>Pixel ID Override</td>
@@ -1610,7 +1612,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>Event ID</td>
-<td>Any hashed ID that can identify a unique user or session. For example, <code>SessionID_RandomNumber</code>. If you set <a href="/client-side-tags/tiktok-pixel-tag/">Generate Event ID in the TikTok Pixel tag</a> to <code>true</code>, this ID will be automatically generated for every TikTok tracking event.</td>
+<td>Any hashed ID that can identify a unique user or session. For example, <code>SessionID_RandomNumber</code>. If you set <a href="/client-side-tags/tiktok-pixel-tag/">Generate Event ID in the TikTok Pixel tag</a> to <code>true</code>, this ID is automatically generated for every TikTok tracking event.</td>
 </tr>
 <tr>
 <td>Limited Data Use</td>
@@ -1618,7 +1620,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>Test Event Code</td>
-<td>Send test events that will not be included in production data from TikTok Events Manager (<code>TTEM</code>). Retrieve the <code>test_event_code</code> from the <code>Test Events</code> Tab in <code>TTEM</code>.</td>
+<td>Send test events to exclude them from production data in TikTok Events Manager (<code>TTEM</code>). Retrieve the <code>test_event_code</code> in the <code>Test Events</code> tab of <code>TTEM</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1626,8 +1628,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1669,8 +1671,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1688,8 +1690,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1715,7 +1717,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>User Agent</td>
-<td>The non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>. Unless you disable automapping, this parameter will be automapped to the <strong>User Agent</strong> of the visitor.</td>
+<td>The non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>. Unless you disable automapping, this parameter is automapped to the <strong>User Agent</strong> of the visitor.</td>
 </tr>
 <tr>
 <td>IDFA</td>
@@ -1747,8 +1749,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1758,7 +1760,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>Currency</td>
-<td>3 character ISO 4217 code. For example, <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</td>
+<td>Three-character ISO 4217 code. For example, <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</td>
 </tr>
 <tr>
 <td>Value</td>
@@ -1786,8 +1788,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1833,8 +1835,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1876,7 +1878,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 </tr>
 <tr>
 <td>User Score</td>
-<td>Represents the relative value of this potential customer to advertiser. For example, <code>50</code>.</td>
+<td>Represents the relative value of this potential customer to the advertiser. For example, <code>50</code>.</td>
 </tr>
 <tr>
 <td>Preferred Number of Stops</td>
@@ -1888,8 +1890,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1939,8 +1941,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1974,8 +1976,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1997,8 +1999,8 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -2016,14 +2018,14 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Disable Automapping</td>
-<td>If automapping is disabled, any automatically mapped parameters will not be sent to the vendor by default.</td>
+<td>If automapping is disabled, any automatically mapped parameters are not sent to the vendor by default.</td>
 </tr>
 </tbody>
 </table>
@@ -2032,7 +2034,7 @@ If a TikTok pixel is already integrated for the website, use the existing pixel 
 <li>TikTok Click ID (<code>ttclid</code>)</li>
 <li>User Agent</li>
 </ul>
-<p>To disable automapping, set <strong>Disable Automapping</strong> to <code>true</code>. Any automatically mapped parameters will not be sent to the vendor.</p>
+<p>To disable automapping, set <strong>Disable Automapping</strong> to <code>true</code>. Any automatically mapped parameters are not sent to the vendor.</p>
 <h4 id="custom-events">Custom events</h4>
 <p>To select a custom event for this connector:</p>
 <ol>
@@ -2099,7 +2101,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 29, 2025 
+          <p>This page was last updated:  February 23, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2113,10 +2115,9 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication" href="javascript:void(0)">Deduplication</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>

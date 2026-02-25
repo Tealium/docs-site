@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "15",
+        reading_time  : "16",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -477,6 +477,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-sheets-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Sheets</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-vertex-ai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-vertex-commerce-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Vertex AI Search</span></a>
@@ -1164,6 +1167,8 @@
         <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-vertex-ai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-ai-connector">Google Vertex AI</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-vertex-commerce-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-vertex-commerce-connector">Google Vertex AI Search</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1905,21 +1910,21 @@ Pay particular attention to the value of {{last_product_viewed}}.
 <tr>
 <td>Send Prompt to Bedrock AI Model</td>
 <td>✓</td>
-<td>✗</td>
+<td>✓</td>
 <td>Synchronous through connector</td>
 <td>Simple, single-model calls</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Managed Prompt</td>
 <td>✓</td>
-<td>✗</td>
+<td>✓</td>
 <td>Synchronous through connector</td>
 <td>Reusable prompts, versioning</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Workflow</td>
 <td>✓</td>
-<td>✗</td>
+<td>✓</td>
 <td>Asynchronous through Lambda</td>
 <td>Multi-step orchestration, KB retrieval</td>
 </tr>
@@ -1942,15 +1947,19 @@ Pay particular attention to the value of {{last_product_viewed}}.
 </tr>
 <tr>
 <td>Prompt Parameters</td>
-<td>Map parameters to a placeholder to replace in the prompt. The connector will make available the default variables <code>{{tealium_account}}</code>, <code>{{tealium_profile}}</code>, and <code>{{tealium_visitor_id}}</code>. These can be overwritten with mapping.</td>
+<td>Map parameters to a placeholder to replace in the prompt. By default, the connector has access to <code>{{tealium_account}}</code>, <code>{{tealium_profile}}</code>, and <code>{{tealium_visitor_id}}</code>. These can be overwritten with mapping.</td>
 </tr>
 <tr>
 <td>Add Visitor Profile</td>
-<td>Whether to allow the visitor profile in the prompt template as variable <code>{{visitor_profile}}</code>.</td>
+<td>(Only audience actions) Whether to allow the visitor profile for use in the prompt template as the variable <code>{{visitor_profile}}</code>.</td>
 </tr>
 <tr>
 <td>Add Current Visit</td>
-<td>Whether to allow current visit data in the <code>{{visitor_profile}}</code> object.</td>
+<td>(Only audience actions) Whether to include current visit data in the <code>{{visitor_profile}}</code> object.</td>
+</tr>
+<tr>
+<td>Add Event Payload</td>
+<td>(Only event actions) Whether to allow the event payload for use in the prompt template as the variable <code>{{event_payload}}</code>.</td>
 </tr>
 <tr>
 <td>Prompt</td>
@@ -1977,15 +1986,19 @@ Pay particular attention to the value of {{last_product_viewed}}.
 </tr>
 <tr>
 <td>Prompt Data</td>
-<td><ul><li>Tealium will pass mapped attributes into prompt when invoking it.</li><li>The connector includes the variables <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in the prompt. These can be overwritten with mapping.</li><li>Write the prompt to clearly instruct the model to return only valid JSON, with no explanations, no markdown, no code fences, and no additional text before or after the JSON.</li><li>You must author the prompt to include instructions for the model to return <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in the JSON.</li><li>Avoid ambiguous phrasing. Write deterministic prompts so the output can be parsed reliably.</li><li>For best results, include a direct instruction such as: &ldquo;Return a single JSON object only, with no prose, no backticks, and no extra formatting.&quot;</li></ul></td>
+<td><ul><li>Tealium passes mapped attributes into the prompt when invoking it.</li><li>The connector includes the variables <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in the prompt. These can be overwritten with mapping.</li><li>Write the prompt to clearly instruct the model to return only valid JSON, with no explanations, no markdown, no code fences, and no additional text before or after the JSON.</li><li>You must author the prompt to include instructions for the model to return <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in the JSON.</li><li>Avoid ambiguous phrasing. Write deterministic prompts so the output can be parsed reliably.</li><li>For best results, include a direct instruction such as: &ldquo;Return a single JSON object only, with no prose, no backticks, and no extra formatting.&quot;</li></ul></td>
 </tr>
 <tr>
 <td>Add Visitor Profile</td>
-<td>Whether to allow the visitor profile in the prompt variables as <code>visitor_profile</code>.</td>
+<td>(Only audience actions) Whether to allow the visitor profile for use in the prompt template as the variable <code>{{visitor_profile}}</code>.</td>
 </tr>
 <tr>
 <td>Add Current Visit</td>
-<td>Whether to allow current visit data in the <code>visitor_profile</code> object.</td>
+<td>(Only audience actions) Whether to include current visit data in the <code>{{visitor_profile}}</code> object.</td>
+</tr>
+<tr>
+<td>Add Event Payload</td>
+<td>(Only event actions) Whether to allow the event payload for use in the prompt template as the variable <code>{{event_payload}}</code>.</td>
 </tr>
 <tr>
 <td>Debug Mode</td>
@@ -2008,20 +2021,24 @@ Pay particular attention to the value of {{last_product_viewed}}.
 </tr>
 <tr>
 <td>Flow Data</td>
-<td><ul><li>You can change which Flow Version that alias points to in AWS without updating this connector.</li><li>The connector sends your mapped fields to the Flow as a JSON object named document.</li><li>Inside your Flow, you can reference these fields using <code>$.data.&lt;fieldName&gt;</code> in Prompt, Lambda, or other nodes.</li><li>By default, <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> are included automatically, and can be overwritten through field mappings if needed.</li><li>Your flow must include a <code>FlowOutputNode</code>, but Tealium does not use its output.</li><li>Use Lambda to send data back into Tealium through the Collect endpoint.</li><li>We recommend wiring the Lambda output into the <code>FlowOutputNode</code> to see success/error information when testing the flow in the Bedrock console.</li></ul></td>
+<td><ul><li>Change which Flow Version that alias points to in AWS without updating this connector.</li><li>The connector sends your mapped fields to the Flow as a JSON object named document.</li><li>Inside your Flow, reference these fields using <code>$.data.&lt;fieldName&gt;</code> in Prompt, Lambda, or other nodes.</li><li>By default, <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> are included automatically, and can be overwritten through field mappings if needed.</li><li>Your flow must include a <code>FlowOutputNode</code>, but Tealium does not use its output.</li><li>Use Lambda to send data back into Tealium through the Collect endpoint.</li><li>We recommend wiring the Lambda output into the <code>FlowOutputNode</code> to see success/error information when testing the flow in the Bedrock console.</li></ul></td>
 </tr>
 <tr>
 <td>Add Visitor Profile</td>
-<td>Whether to allow the full visitor profile to be added to the Flow input as a <code>visitor_profile</code> JSON object.</td>
+<td>(Only audience actions) Whether to include the full visitor profile in the Flow input as a <code>visitor_profile</code> JSON object.</td>
 </tr>
 <tr>
 <td>Add Current Visit</td>
-<td>Whether to allow attributes from the current visit to be merged into the same <code>visitor_profile</code> object.</td>
+<td>(Only audience actions) Whether to include the current visit data in the <code>visitor_profile</code> JSON object.</td>
+</tr>
+<tr>
+<td>Add Event Payload</td>
+<td>(Only event actions) Whether to include the event payload in the Flow input as the <code>event_payload</code> JSON object.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="common-errors-and-troubleshooting">Common errors and troubleshooting</h2>
-<p>The following are some common error codes and resolutions:</p>
+<p>The following are common error codes and resolutions:</p>
 <h3 id="common-aws-error-codes">Common AWS error codes:</h3>
 <ul>
 <li>
@@ -2131,7 +2148,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 9, 2026 
+          <p>This page was last updated:  February 24, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

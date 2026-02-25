@@ -328,53 +328,65 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><a href="/server-side/trace/manage/">Trace</a> is a testing and inspection tool for your Tealium EventStream and Tealium AudienceStream configuration. Use Trace to capture a visitor workflow and watch how events and customer data is processed in real-time.</p>
+  <p><a href="/server-side/trace/manage/">Trace</a> is a testing and inspection tool for your Tealium EventStream and Tealium AudienceStream configuration. Use a trace to capture a visitor workflow and watch how events and customer data is processed in real-time.</p>
 <h2 id="mobile-trace-tool">Mobile Trace Tool</h2>
-<h3 id="supported-platforms">Supported Platforms</h3>
+<h3 id="supported-platforms">Supported platforms</h3>
 <p>The following platforms support the Mobile Trace Tool:</p>
 <ul>
 <li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
 <li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Do not add Trace to bulk events.<br>Do not add Trace as a permanent parameter to monitor production data.</p>
-<h3 id="how-it-works">How it Works</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Do not add a trace to bulk events.<br>Do not add a trace as a permanent parameter to monitor production data.</p>
+<h3 id="how-it-works">How it works</h3>
 <p>The Mobile Trace Tool enhances the trace feature by providing a QR code that is scannable by your device, enabling you to quickly view events coming from the Tealium Mobile SDKs.</p>
-<p>After clicking <strong>Start Trace</strong> in the tool, once per Customer Data Hub session, a QR code is automatically injected into the main browser window each time you start a new trace.</p>
-<p>QR codes are generated for each platform (<a href="/platforms/android-kotlin/">Android</a> or <a href="/platforms/ios-swift/">iOS</a>).  After you scan the appropriate QR code with the appropriate mobile device&rsquo;s camera, click the link from the QR code to start the app and pass trace parameters to the Tealium SDK.  The Tealium SDK recevies the trace ID (along with other parameters) and inserts the trace ID into the data layer for the current session</p>
+<p>After clicking <strong>Start Trace</strong> in the tool, once per Tealium platform session, a QR code is automatically injected into the main browser window each time you start a new trace.</p>
+<p>QR codes are generated for each platform (<a href="/platforms/android-kotlin/">Android</a> or <a href="/platforms/ios-swift/">iOS</a>). After you scan the appropriate QR code with your mobile device&rsquo;s camera, click the link from the QR code to start the app and pass trace parameters to the Tealium SDK. The Tealium SDK receives the trace ID (along with other parameters) and inserts the trace ID into the data layer for the current session.</p>
 <p>All subsequent events are recorded in the trace session until you end the session or leave the trace.</p>
 <p>The following diagram illustrates how it works:</p>
-<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-overview.png"><img src="/images/platforms/getting-started-mobile/trace-tool-overview.png" width="850" height="750"/>
-    </a><figcaption><p>Trace Tool Overview</p>
-        </figcaption>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-overview.png"><img src="/images/platforms/getting-started-mobile/trace-tool-overview.png"
+         alt="Trace Tool Overview"
+         title="Trace Tool Overview" width="850" height="750"/>
+    </a>
 </figure>
 <h3 id="install">Install</h3>
-<p>To use this tool, install the <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools browser extension</a> for your browser.</p>
-<p>In the <strong>Add by URL</strong> textfield, enter the URL: <a href="https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json">https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json</a></p>
-<p>After installation has completed, launch the Mobile Trace Tool icon from the Tealium Tools extension.</p>
-<h3 id="url-schemes">URL Schemes</h3>
+<p>To use this tool:</p>
+<ol>
+<li>Install the <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools browser extension</a> for your browser.</li>
+<li>After installation has completed, open the Tealium Tools extension.</li>
+<li>Click the <strong>Tool Catalogue</strong> tab.</li>
+<li>Click <strong>Mobile Trace Tool</strong>.</li>
+</ol>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/mobile-trace-tool.png"><img src="/images/platforms/getting-started-mobile/mobile-trace-tool.png"
+         alt="Mobile Trace Tool"
+         title="Mobile Trace Tool"/>
+    </a>
+</figure>
+<h3 id="url-schemes">URL schemes</h3>
 <p>To use the Mobile Trace Tool, determine which URLs are handled by your mobile apps to configure the URL schemes.</p>
 <p>The QR code trace feature launches your app from a URL and listens for a specific query parameter. To launch your app directly from a URL, your app must have registered itself to handle specific domains.</p>
 <p>Typically, most apps already handle specific URLs. For example, if your website domain is <a href="https://mycompany.com">https://mycompany.com</a>, your app registers itself as a handler for this domain and, if your app is installed on a user&rsquo;s device, the user is prompted to launch the link in your app instead of within a browser.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Some apps register custom URL schemes instead of <code>http</code> or <code>https</code>, for example <code>mycompanyapp://</code>. These also work with the Mobile Trace Tool.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Some apps register custom URL schemes such as <code>mycompanyapp://</code> instead of <code>http</code> or <code>https</code>. These also work with the Mobile Trace Tool.</p>
 <p>Once you have established which URL schemes launch your app, enter these into the input fields in the Mobile Trace Tool. The tool supports different schemes for Android and iOS if necessary, but are usually the same for both platforms.</p>
-<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool.png"><img src="/images/platforms/getting-started-mobile/trace-tool.png" width="350" height="400"/>
-    </a><figcaption><p>Trace Tool</p>
-        </figcaption>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool.png"><img src="/images/platforms/getting-started-mobile/trace-tool.png"
+         alt="Trace Tool"
+         title="Trace Tool" width="350" height="400"/>
+    </a>
 </figure>
 <p>Click <strong>Save</strong> next to each URL scheme to store the setting in the browser&rsquo;s <code>localStorage</code>. Click the blue pencil icon to edit the URL schemes as needed.</p>
-<h3 id="start-trace">Start Trace</h3>
-<p>Before starting a trace, verify that you are in the server-side Tealium Customer Data Hub. Click <strong>Start Trace</strong> in the Mobile Trace Tool to start a new trace and add the Mobile Trace QR codes into the trace window.</p>
-<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-start.png"><img src="/images/platforms/getting-started-mobile/trace-tool-start.png" width="350" height="400"/>
-    </a><figcaption><p>Trace Tool Start</p>
-        </figcaption>
+<h3 id="start-a-trace">Start a trace</h3>
+<p>Before starting a trace, verify that you are in the Tealium server-side platform. Click <strong>Start Trace</strong> in the Mobile Trace Tool to start a new trace and add the Mobile Trace QR codes into the trace window.</p>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-tool-start.png"><img src="/images/platforms/getting-started-mobile/trace-tool-start.png"
+         alt="Trace Tool Start"
+         title="Trace Tool Start" width="350" height="400"/>
+    </a>
 </figure>
 <p>After starting a trace, close the Tealium Tools UI as it&rsquo;s not required for the rest of your session.</p>
-<p>Subsequent traces are started directly from Customer Data Hub and the QR code automatically refreshes each time a new trace starts. Scan the QR code with your device&rsquo;s camera, and click the link to launch your app and automatically begin tracing. Any Tealium events generated by your app after joining the trace are recorded in your trace session.</p>
+<p>Subsequent traces are started directly from Tealium and the QR code automatically refreshes each time a new trace starts. Scan the QR code with your device&rsquo;s camera, and click the link to launch your app and automatically begin tracing. Any Tealium events generated by your app after joining the trace are recorded in your trace session.</p>
 <figure><a class="slb" href="/images/platforms/getting-started-mobile/trace-qr-code.png"><img src="/images/platforms/getting-started-mobile/trace-qr-code.png" width="750" height="400"/>
     </a><figcaption><p>Trace QR Code</p>
         </figcaption>
 </figure>
-<h3 id="leave-trace">Leave Trace</h3>
+<h3 id="leave-trace">Leave trace</h3>
 <p>If you leave a trace session without ending it, you are able to rejoin the same trace from a different device without losing the history of that trace session.</p>
 <p>To leave a trace:</p>
 <ol>
@@ -393,24 +405,24 @@
 <p>Use the Charles Web Debugging Proxy to start a trace from an application using the Mobile SDK and the Tealium Collect tag.</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
-<li>Charles Proxy</li>
-<li><a href="/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub account</a></li>
+<li><a href="https://www.charlesproxy.com">Charles Proxy</a></li>
+<li><a href="/server-side/getting-started/intro-cdh/">Tealium server-side account</a></li>
 </ul>
 <h3 id="setup">Setup</h3>
-<p>To set up your mobile device to proxy traffic on your computer to Charles on your computer, follow the instructions for <a href="/platforms/android-kotlin/charles-proxy-android">Android</a> or <a href="/platforms/ios-swift/charles-proxy-iosdevice">iOS</a> device.</p>
-<h3 id="using-a-rewrite">Using a Rewrite</h3>
+<p>To set up your mobile device to proxy traffic through Charles on your computer, follow the instructions for <a href="/platforms/android-kotlin/charles-proxy-android">Android</a> or <a href="/platforms/ios-swift/charles-proxy-iosdevice">iOS</a> device.</p>
+<h3 id="using-a-rewrite">Using a rewrite</h3>
 <p>Run your application using Charles as the proxy and filter the network traffic for <code>teal</code>. Right-click the request and select <strong>Copy URL</strong>.</p>
-<p>From the Charles menu select <strong>Tools &gt; Rewrite</strong> to open the <strong>Rewrite Settings</strong> dialog.</p>
+<p>From the Charles menu, select <strong>Tools &gt; Rewrite</strong> to open the <strong>Rewrite Settings</strong> dialog.</p>
 <p>To add a location:</p>
 <ol>
 <li>
-<p>Select the <strong>Enable Rewrite</strong> checkbox and click the <strong>Add</strong> button below the Location list.</p>
+<p>Select the <strong>Enable Rewrite</strong> checkbox and click <strong>Add</strong> below the <strong>Location</strong> list.</p>
 </li>
 <li>
-<p>Set the <strong>Name</strong> field to <code>Add Trace ID</code> and click <strong>Add</strong> to add a location.</p>
+<p>Enter <code>Add Trace ID</code> in the <strong>Name</strong> field and click <strong>Add</strong> to add a location.</p>
 </li>
 <li>
-<p>Fill out the location fields and set the <strong>Host</strong> field to the Collect tag URL.</p>
+<p>Enter the necessary information in the location fields and enter the Collect tag URL in <strong>Host</strong>.</p>
    <p class="tip"><i class="fa fa-info-circle"></i>If you click outside of the <strong>Edit Location</strong> dialog box, Charles automatically determines the additional URL components.</p>
 </li>
 <li>
@@ -419,16 +431,16 @@
 </ol>
 <p>To add an action:</p>
 <ol>
-<li>Click the <strong>Add</strong> button below the Action list and set <strong>Type</strong> to <code>Body</code> from the drop-down menu.</li>
+<li>Click <strong>Add</strong> below the <strong>Action</strong> list and set <strong>Type</strong> to <code>Body</code> from the list.</li>
 <li>In the <strong>Where</strong> section, select the <strong>Request</strong> checkbox.</li>
 <li>In the <strong>Match</strong> section, set <strong>Value</strong> to <code>&quot;data&quot;:{</code> and select the <strong>Match whole value</strong> checkbox.</li>
 <li>In the <strong>Replace</strong> section, set <strong>Value</strong> to <code>&quot;data&quot;:{&quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;,</code> and select the <strong>Replace first</strong> checkbox.</li>
 <li>Click <strong>OK</strong> and <strong>Apply</strong> changes.</li>
 </ol>
-<p>After completing the steps, browse your application and view the requests in the AudienceStream or EventStream trace session. To run another trace, launch Charles and edit the existing rewrite rule to change the <code>12345</code> trace ID value.</p>
+<p>After completing the steps, browse your application and view the requests in the AudienceStream or EventStream trace session. To run another trace, launch Charles and edit the existing rewrite rule to change the <code>TRACE_ID</code> placeholder to your new trace ID value.</p>
 <h2 id="manual">Manual</h2>
-<p>If you are in development mode using an emulator, or do not want to use Charles, then another option is to add and leave a trace manually with native code.</p>
-<h3 id="start-trace-manual">Start Trace (Manual)</h3>
+<p>If you are in development mode using an emulator, or do not want to use Charles, you can add and leave a trace manually with native code.</p>
+<h3 id="start-a-trace-manual">Start a trace (Manual)</h3>
 <p>To start and run a trace manually, add the trace ID to the volatile data within your native code.</p>
 
 <div class="code-tabs">
@@ -448,8 +460,8 @@
 </div>
 </div>
 
-<h3 id="end-trace-manual">End Trace (Manual)</h3>
-<p>To end a trace manually and simulate any &ldquo;end of visit&rdquo; enrichments, add the following track to the optional data anywhere within the app:</p>
+<h3 id="end-a-trace-manual">End a trace (Manual)</h3>
+<p>To end a trace manually and simulate any &ldquo;End of Visit&rdquo; enrichments, add the following track to the optional data anywhere within the app:</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -526,7 +538,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 5, 2020 
+          <p>This page was last updated:  February 23, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -541,20 +553,20 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#mobile-trace-tool" href="javascript:void(0)">Mobile Trace Tool</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-platforms" href="javascript:void(0)">Supported Platforms</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it Works</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-platforms" href="javascript:void(0)">Supported platforms</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install" href="javascript:void(0)">Install</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#url-schemes" href="javascript:void(0)">URL Schemes</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#start-trace" href="javascript:void(0)">Start Trace</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#leave-trace" href="javascript:void(0)">Leave Trace</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#url-schemes" href="javascript:void(0)">URL schemes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#start-a-trace" href="javascript:void(0)">Start a trace</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#leave-trace" href="javascript:void(0)">Leave trace</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#end-of-visit-audiencestream" href="javascript:void(0)">End of Visit (AudienceStream)</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#charles-proxy" href="javascript:void(0)">Charles Proxy</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#setup" href="javascript:void(0)">Setup</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-a-rewrite" href="javascript:void(0)">Using a Rewrite</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-a-rewrite" href="javascript:void(0)">Using a rewrite</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manual" href="javascript:void(0)">Manual</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#start-trace-manual" href="javascript:void(0)">Start Trace (Manual)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#end-trace-manual" href="javascript:void(0)">End Trace (Manual)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#start-a-trace-manual" href="javascript:void(0)">Start a trace (Manual)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#end-a-trace-manual" href="javascript:void(0)">End a trace (Manual)</a></li>
               </nav>
   </aside></nav>
 
