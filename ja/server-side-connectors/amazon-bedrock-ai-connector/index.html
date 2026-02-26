@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -1787,7 +1787,7 @@
 <div class="prose nested-links" id="prose">
   <h2 id="サポートされているモデル">サポートされているモデル</h2>
 <p>Amazon Bedrock AI コネクタは、多くの基盤モデルをサポートしています。現在サポートされているモデルのリストについては、<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html">Amazon Bedrock: Amazon Bedrockでサポートされている基盤モデル</a>を参照してください。</p>
-<p>一部のBedrockモデルはプロビジョニングされたスループットが必要であり、オンデマンド推論を使用して呼び出すことはできません。オンデマンドスループットエラーが発生した場合は、<code>ON_DEMAND</code> 推論をサポートするモデルを使用するか、構成リストにプロビジョニングされたスループットまたは推論プロファイルARNを提供してください。</p>
+<p>一部のBedrockモデルは、プロビジョニングされたスループットが必要であり、オンデマンド推論を使用して呼び出すことはできません。オンデマンドスループットエラーが発生した場合は、<code>ON_DEMAND</code> 推論をサポートするモデルを使用するか、構成リストにプロビジョニングされたスループットまたは推論プロファイルARNを提供してください。</p>
 <h2 id="iam-ロールと権限の作成">IAM ロールと権限の作成</h2>
 <p>Tealiumは、サーバーサイドコネクタからAmazon Bedrockに接続するために、AWSアカウント内のIAMロールと権限が必要です。接続の認証には2つのオプションがあります：</p>
 <ul>
@@ -1797,14 +1797,14 @@
 <h3 id="アクセスキーとシークレットクレデンシャル">アクセスキーとシークレットクレデンシャル</h3>
 <p>AWSアクセスキーとシークレットを作成するには：</p>
 <ol>
-<li>AWS管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
-<li><strong>ユーザー</strong> をクリックし、<strong>ユーザーを追加</strong> をクリックします。</li>
+<li>AWSマネジメントコンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスに移動します。</li>
+<li><strong>ユーザー</strong>をクリックし、<strong>ユーザーを追加</strong>をクリックします。</li>
 <li>ユーザー名を入力します。例：<code>TealiumBedrockUser</code>。</li>
 <li>ユーザーにポリシーをアタッチします。詳細については、<a href="#attach-policies">ポリシーをアタッチする</a>を参照してください。</li>
 <li>キーを作成します。
 <ul>
-<li><strong>セキュリティ認証情報</strong> タブに移動し、<strong>アクセスキーの作成</strong> をクリックします。</li>
-<li><strong>アクセスキーID</strong> と <strong>シークレットアクセスキー</strong> をコピーし、安全に保存します。</li>
+<li><strong>セキュリティ認証情報</strong>タブに移動し、<strong>アクセスキーの作成</strong>をクリックします。</li>
+<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存します。</li>
 </ul>
 </li>
 </ol>
@@ -1844,7 +1844,7 @@
 </span></span><span style="display:flex;"><span>      ]
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><h3 id="ポリシーをアタッチする">ポリシーをアタッチする</h3>
-<p>AWS管理コンソールで、コネクタのアクションに必要なポリシーを入力します。各コネクタアクションには次のポリシーが必要です：</p>
+<p>AWSマネジメントコンソールで、コネクタのアクションに必要なポリシーを入力します。各コネクタアクションには次のポリシーが必要です：</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>必要なフローやLambda関数の特定のARNに対してのみ権限を制限することをお勧めします。</p>
 
 <div class="code-tabs">
@@ -1933,19 +1933,19 @@
 
 <p>ポリシーを入力してアタッチするには：</p>
 <ol>
-<li>AWSコンソールで <strong>IAM &gt; ポリシー</strong> に移動します。</li>
-<li><strong>ポリシーの作成</strong> をクリックします。</li>
-<li>ポリシーエディタで <strong>JSON</strong> タブを選択します。</li>
+<li>AWSコンソールで、<strong>IAM &gt; ポリシー</strong>に移動します。</li>
+<li><strong>ポリシーの作成</strong>をクリックします。</li>
+<li>ポリシーエディタで、<strong>JSON</strong>タブを選択します。</li>
 <li>エディタにコネクタアクションのポリシーを貼り付けます。</li>
 <li>任意の検証警告を解決し、<strong>次へ</strong> をクリックします。</li>
 <li>ポリシー名（例：<code>TealiumCustomAccessPolicy</code>）とオプションの説明を入力します。</li>
-<li><strong>ポリシーの作成</strong> をクリックします。</li>
-<li><strong>ロール</strong> に移動します。</li>
+<li><strong>ポリシーの作成</strong>をクリックします。</li>
+<li><strong>ロール</strong>に移動します。</li>
 <li>変更したいロール名をクリックします。</li>
-<li><strong>権限</strong> タブで <strong>権限の追加 &gt; ポリシーのアタッチ</strong> をクリックします。</li>
+<li><strong>権限</strong>タブで、<strong>権限の追加 &gt; ポリシーのアタッチ</strong>をクリックします。</li>
 <li>検索ボックスに新しいカスタムポリシーの名前を入力します。</li>
 <li>そのポリシーのボックスを選択します。</li>
-<li><strong>ポリシーのアタッチ</strong> をクリックします。</li>
+<li><strong>ポリシーのアタッチ</strong>をクリックします。</li>
 </ol>
 <h2 id="構成">構成</h2>
 <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
@@ -2028,7 +2028,7 @@
 <h2 id="amazon-bedrockフロー">Amazon Bedrockフロー</h2>
 <p>Amazon Bedrockフローは、プロンプト、ナレッジベース、Lambda関数、条件ロジック、外部データを組み合わせた複数ステップのAIオーケストレーションです。フローは、複雑なAI意思決定を単一のAPIエンドポイントに変換するために、入力データがプロンプト、エンリッチメントステップ、ビジネスロジック、最終出力を通過する方法を定義します。</p>
 <p><strong>Send Data to Bedrock Flow</strong>アクションを使用するには、Tealiumから入力を受け取り、AIステップを処理して、Lambda関数を通じてTealiumに結果を送り返すAmazon Bedrockフローを作成します。</p>
-<p>以下のセクションでは、フローの必須およびオプションのコンポーネントについて説明します。</p>
+<p>以下のセクションでは、フローの必須コンポーネントとオプションコンポーネントについて説明します。</p>
 <h3 id="ステップ1---フロー入力の定義">ステップ1 - フロー入力の定義</h3>
 <p>すべてのフローは入力ノードから始まります。このノードは、Tealiumがフローに送信するJSONドキュメントを表します。</p>
 <p>Tealiumは、次の例に似た形式でマップされた属性を送信します：</p>
@@ -2054,17 +2054,17 @@
 <tbody>
 <tr>
 <td><code>tealium_account</code></td>
-<td><code>$.data.tealium_account</code> または <code>{{tealium_account}}</code></td>
+<td><code>$.data.tealium_account</code>または<code>{{tealium_account}}</code></td>
 <td><code>services-example</code></td>
 </tr>
 <tr>
 <td><code>tealium_profile</code></td>
-<td><code>$.data.tealium_profile</code> または <code>{{tealium_profile}}</code></td>
+<td><code>$.data.tealium_profile</code>または<code>{{tealium_profile}}</code></td>
 <td><code>ai</code></td>
 </tr>
 <tr>
 <td><code>tealium_visitor_id</code></td>
-<td><code>$.data.tealium_visitor_id</code> または <code>{{tealium_visitor_id}}</code></td>
+<td><code>$.data.tealium_visitor_id</code>または<code>{{tealium_visitor_id}}</code></td>
 <td><code>1234567890abc</code></td>
 </tr>
 <tr>
@@ -2085,7 +2085,7 @@
 </ol>
 <p>例については、上記の<a href="#prompt-example">プロンプト例</a>セクションを参照してください。</p>
 <h3 id="ステップ3---オプションナレッジベースの取得を追加">ステップ3 - （オプション）ナレッジベースの取得を追加</h3>
-<p>Amazon Bedrockナレッジベースを使用すると、AIワークフローをAmazon S3、Amazon Redshift、またはAmazon OpenSearch Serviceなどの外部データソースに接続できます。ナレッジベースはドキュメントを保存およびインデックス化し、プロンプト実行中の取得および接地に使用できるようにします。このステップはオプションですが、パーソナライゼーション、推奨事項、またはコンテキストに基づく意思決定には価値があります。</p>
+<p>Amazon Bedrockナレッジベースを使用すると、AIワークフローをAmazon S3、Amazon Redshift、またはAmazon OpenSearch Serviceなどの外部データソースに接続できます。ナレッジベースはドキュメントを保存およびインデックス化し、プロンプト実行中の取得および接地に使用できるようにします。このステップはオプションですが、パーソナライゼーション、レコメンデーション、またはコンテキストに基づいた意思決定には価値があります。</p>
 <p>ナレッジベースを接続した後、<code>{{$.kbResults}}</code>のようなフィールドを使用して、ナレッジベースの結果をプロンプトに渡すことができます。</p>
 <p>ナレッジベースに関する詳細は、<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html">Amazon Bedrock: Retrieve data and generate AI responses with Amazon Bedrock Knowledge Bases</a>を参照してください。</p>
 <p>ナレッジベースの作成に関する詳細は、<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html">Amazon Bedrock: Create a knowledge base by connecting to a data source in Amazon Bedrock Knowledge Bases</a>を参照してください。</p>
@@ -2106,10 +2106,10 @@
 </ul>
 </li>
 </ul>
-<p><a href="#lambda-example">提供されたLambda例</a>を使用するか、独自のものを構築してください。</p>
+<p><a href="#lambda-example">提供されたLambdaの例</a>を使用するか、独自のものを構築してください。</p>
 <h3 id="ステップ5---フロー出力ノードを追加">ステップ5 - フロー出力ノードを追加</h3>
 <p>TealiumはフローのAPIレスポンスを処理しませんが、出力ノードはフローを完了するために必要です。</p>
-<p>Lambda出力を<code>FlowOutputNode</code>に接続することはTealiumの処理には影響しませんが、次のツールを使用してフローが機能していることを確認するのに役立ちます：</p>
+<p>Lambda出力を<code>FlowOutputNode</code>に接続することはTealiumの処理に影響を与えませんが、次のツールを使用してフローが機能していることを確認するのに役立ちます：</p>
 <ul>
 <li>Bedrockコンソールでのデバッグ。</li>
 <li>Lambda関数からのエラーの表示。</li>

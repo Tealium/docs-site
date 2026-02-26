@@ -475,7 +475,7 @@ GDPRおよびCCPAの同意ステータスを保持する日数を構成します
 <p><strong>システム定義の属性の上書きを防ぐ</strong></p>
 <p>(<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2025-10-22"><code>utag.js</code> 4.54</a>で新規導入)</p>
 <p><code>true</code>に構成すると、この構成は受信データが<code>tealium_visitor_id</code>などの<code>tealium_</code>で始まるシステム定義の属性を上書きするのをブロックします。</p>
-<p><code>utag.js</code>のバージョン4.52および4.53では、この保護はデフォルトで有効になっており、一部のモバイルWebビュー環境で問題を引き起こしました。バージョン4.54では、保護はオプトインになり、完全な制御が可能です。</p>
+<p><code>utag.js</code>のバージョン4.52および4.53では、この保護はデフォルトで有効になっており、一部のモバイルWebビュー環境で問題が発生していました。バージョン4.54では、保護はオプトインになり、完全な制御が可能です。</p>
 <p>（デフォルト：<code>false</code>）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">disable_tealium_attribute_override</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="dom_complete"><code>dom_complete</code></h3>
@@ -512,7 +512,7 @@ DOM Readyではなく、<a href="https://developer.mozilla.org/en-US/docs/Web/Ev
 </span></span></code></pre></div><h3 id="lowermeta"><code>lowermeta</code></h3>
 <p><strong>メタタグデータを小文字にする（レガシー）</strong><br>
 すべてのメタデータ変数名と値を小文字にします。<code>utag.js</code>の4.2xより前のバージョンの動作を再現します。（デフォルト：<code>false</code>）</p>
-<p>メタタグの例：</p>
+<p>例のメタタグ：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;iQ Tag Management&#34;</span> <span style="color:#a6e22e">property</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Article:Section&#34;</span>&gt;
 </span></span></code></pre></div><p>結果の値：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span>[<span style="color:#e6db74">&#39;meta.article:section&#39;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;iq tag management&#34;</span>
@@ -520,8 +520,8 @@ DOM Readyではなく、<a href="https://developer.mozilla.org/en-US/docs/Web/Ev
 </span></span></code></pre></div><h3 id="lowerqp"><code>lowerqp</code></h3>
 <p><strong>クエリ文字列パラメータ名と値を小文字にする（レガシー）</strong><br>
 すべてのクエリ文字列変数名と値を小文字にします。これは、<code>utag.js</code> バージョン4.2x以前の動作を再現します。（デフォルト：<code>false</code>）</p>
-<p>例のクエリ文字列パラメータ：<code>&amp;RefId=Abc123</code>
-結果の値：<code>utag.data['qp.refid']=&quot;abc123&quot;</code></p>
+<p>例えばクエリ文字列パラメータ： <code>&amp;RefId=Abc123</code>
+結果の値： <code>utag.data['qp.refid']=&quot;abc123&quot;</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">lowerqp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="noload"><code>noload</code></h3>
 <p><strong>すべての操作を停止</strong><br>
