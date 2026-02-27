@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "8",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1064,11 +1064,54 @@ To unify data across sources, map a column from your data source to a visitor ID
 <li><strong>Visit length</strong>: A visit started by a cloud data source event lasts for 60 seconds.</li>
 <li><strong>Visitor ID mapping</strong>: If you map an AudienceStream visitor ID attribute in your cloud data source configuration, the visitor ID is set directly to the value of the column you choose without the need for an enrichment.</li>
 </ul>
+<h2 id="scheduling">Scheduling</h2>
+<p>The <strong>Processing Settings</strong> section controls how and when your cloud data source imports new data. You can enable or disable processing and configure the frequency at which data is imported. Each import processes data in batches of 1,000 rows.</p>
+<h3 id="frequency">Frequency</h3>
+<p>Select how often to import data:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Near Real-Time</strong></td>
+<td>Fetches data every 2 seconds. Ideal for low-latency use cases.</td>
+</tr>
+<tr>
+<td><strong>Hourly</strong></td>
+<td>Runs at the beginning of every hour.</td>
+</tr>
+<tr>
+<td><strong>Daily</strong></td>
+<td>Runs once per day at the hour of the day you set (UTC).</td>
+</tr>
+<tr>
+<td><strong>Weekly</strong></td>
+<td>Runs once per week at the day and hour you set (UTC).</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Fetching data with high frequency (near real-time or hourly) may lead to increased costs and system strain in your data warehouse.</p>
+<h2 id="batch-size">Batch size</h2>
+<p>The cloud data sources import data in batches, with a default of 1,000 rows per batch. This limit applies to the size of each batch, not the total number of rows processed in an import. Each scheduled import continues processing until all available rows are ingested, regardless of how many batches are required.</p>
+<p>Select from one of the following batch options:</p>
+<ul>
+<li><strong>Default</strong>: 1,000 records per batch.</li>
+<li><strong>Custom</strong>: Create custom batches of over 1,000 records.</li>
+<li><strong>No limit</strong>: Create a batch with no limit to process all available data.</li>
+</ul>
+<p>Optimizing the query batch size for your use case can have the following benefits:</p>
+<ul>
+<li><strong>Reduced compute costs</strong>: Lowers computational expenses within your external data warehouses and databases.</li>
+<li><strong>Improved data integrity</strong>: Prevents the system from retrieving repeated records that can result from repeated timestamps.</li>
+</ul>
+<p>Your cloud provider may calculate billing based on the number of queries or the size of queries.</p>
+<p>This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
 <h2 id="rate-limits">Rate limits</h2>
 <p>Imports from cloud data sources are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a>.</p>
-<h2 id="batch-size">Batch size</h2>
-<p>The cloud data sources import data in batches, with a maximum of 1,000 rows per batch. This limit applies to the size of each batch, not the total number of rows processed in an import run. Each scheduled import continues processing until all available rows are ingested, regardless of how many batches are required.</p>
-<p>This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
 <h2 id="tables">Tables</h2>
 <p>Each cloud data source supports importing data from one table or view. To import data from multiple tables, create a view in your cloud database and select the view in the data source configuration.</p>
 <h2 id="data-types">Data types</h2>
@@ -1213,37 +1256,6 @@ The data source fetches rows 1-1000 and marks the maximum timestamp of <code>01A
 <h2 id="sql-query">SQL Query</h2>
 <p>In the cloud data source <strong>Query Configuration</strong>, select the columns you want to import. To add conditions for the import beyond the query mode, use the SQL <code>WHERE</code> clause. This option adds a <code>WHERE</code> statement to your query. The <code>WHERE</code> statement must use valid SQL syntax.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple tables, create a view in your cloud database and select the view in the data source configuration.</p>
-<h2 id="scheduling">Scheduling</h2>
-<p>The <strong>Processing Settings</strong> section controls how and when your cloud data source imports new data. You can enable or disable processing and configure the frequency at which data is imported. Each import processes data in batches of 1,000 rows.</p>
-<h3 id="frequency">Frequency</h3>
-<p>Select how often to import data:</p>
-<table>
-<thead>
-<tr>
-<th><strong>Option</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Near Real-Time</strong></td>
-<td>Fetches data every 2 seconds. Ideal for low-latency use cases.</td>
-</tr>
-<tr>
-<td><strong>Hourly</strong></td>
-<td>Runs at the beginning of every hour.</td>
-</tr>
-<tr>
-<td><strong>Daily</strong></td>
-<td>Runs once per day at the hour of the day you set (UTC).</td>
-</tr>
-<tr>
-<td><strong>Weekly</strong></td>
-<td>Runs once per week at the day and hour you set (UTC).</td>
-</tr>
-</tbody>
-</table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Fetching data with high frequency (near real-time or hourly) may lead to increased costs and system strain in your data warehouse.</p>
 <h2 id="column-mapping">Column mapping</h2>
 <p>The column mapping configuration determines the event attributes that correspond to each column in the cloud database table.</p>
 <p>Column names are often different from the attribute names in your Tealium account, so this mapping ensures that the data is imported properly. For example, if your table uses the column name <code>postalCode</code> but the event attribute in Tealium is <code>customer_zip</code>, create a mapping to associate these fields.</p>
@@ -1306,7 +1318,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 10, 2025 
+          <p>This page was last updated:  February 27, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1324,8 +1336,10 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-vendors" href="javascript:void(0)">Supported vendors</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-processing" href="javascript:void(0)">Event processing</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scheduling" href="javascript:void(0)">Scheduling</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tables" href="javascript:void(0)">Tables</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-modes" href="javascript:void(0)">Query modes</a></li>
@@ -1335,9 +1349,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#incrementing" href="javascript:void(0)">Incrementing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode-example" href="javascript:void(0)">Query mode example</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-query" href="javascript:void(0)">SQL Query</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scheduling" href="javascript:void(0)">Scheduling</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id-mapping" href="javascript:void(0)">Visitor ID mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP addresses to allow</a></li>
               </nav>

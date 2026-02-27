@@ -1058,7 +1058,7 @@
 <div class="prose nested-links" id="prose">
   <p>クラウドデータソースの構成に関する一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Google BigQuery データソースは、すべての Google BigQuery データタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従って Google BigQuery データタイプをマッピングしてください：</p>
+<p>Google BigQuery データソースは、Google BigQuery のすべてのデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従って Google BigQuery データタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -1108,7 +1108,7 @@
 <p>公開/秘密鍵ペアを生成するには：</p>
 <ol>
 <li><strong>Google Cloud &gt; サービスアカウント</strong>に移動し、プロジェクトを選択するか、新しく作成します。</li>
-<li>サービスアカウントを選択するか、新しく作成し、<strong>キー</strong>タブに移動して<strong>キーを追加 &gt; 新しいキーを作成</strong>を選択します。</li>
+<li>サービスアカウントを選択するか、新しく作成し、<strong>キー</strong>タブに移動して<strong>キーの追加 &gt; 新しいキーの作成</strong>を選択します。</li>
 <li><strong>JSON</strong>オプションを選択し、<strong>作成</strong>をクリックします。
 秘密鍵が生成され、マシンにダウンロードされます。</li>
 </ol>
@@ -1121,11 +1121,13 @@
 </ul>
 <p>Google BigQueryに接続した後、<strong>データ選択</strong>リストからテーブルまたはビューを選択します。</p>
 <p>詳細については、<a href="https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount">Google for Developers: サーバー間アプリケーション用のOAuth 2.0の使用</a>を参照してください。</p>
+<h2 id="クエリバッチサイズ">クエリバッチサイズ</h2>
+<p>デフォルトのクエリバッチサイズは、バッチあたり1,000レコードです。デフォルトからクエリバッチサイズを変更するには追加の権限が必要です。クエリサイズ制限を変更する権限を付与するには、<strong>Google Cloud console &gt; IAMメニュー &gt; 適切なサービスアカウントを選択 &gt; アクセスを許可 &gt; BigQuery Read Session User Roleを追加</strong>に移動します。たとえば、<code>BigQuery Read Session User (roles/bigquery.readSessionUser)</code>を入力します。詳細については、<a href="https://docs.cloud.google.com/bigquery/docs/access-control">Google: BigQuery IAMロールと権限</a>および<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h2 id="クエリモード">クエリモード</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <p><strong>Timestamp</strong>を使用するモードでは、選択されたタイムスタンプ列は<code>TIMESTAMP</code>タイプでなければなりません。</p>
 <p>詳細については、<a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#timestamp_type">Google BigQuery: TIMESTAMP</a>を参照してください。</p>
-<p><strong>Incrementing</strong>を使用するモードでは、選択された数値列は、追加されるたびに値が増加する必要があります。<code>FLOAT</code>や<code>DECIMAL</code>ではなく、<code>INT64</code>のような整数タイプを使用してください。</p>
+<p><strong>Incrementing</strong>を使用するモードでは、追加される各行に対して値が増加する数値列を選択する必要があります。<code>FLOAT</code>や<code>DECIMAL</code>ではなく、<code>INT64</code>のような整数タイプを使用してください。</p>
 <p>詳細については、<a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#numeric_types">Google BigQuery: 数値タイプ</a>を参照してください。</p>
 <h2 id="where句">WHERE句</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
@@ -1195,7 +1197,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年February月25日
+          <p>最終更新日 ::  2026年February月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1211,6 +1213,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8E%A5%E7%B6%9A%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">接続の作成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%90%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%BA" href="javascript:void(0)">クエリバッチサイズ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where%E5%8F%A5" href="javascript:void(0)">WHERE句</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#struct%E5%88%97%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">STRUCT列のインポート</a></li>
