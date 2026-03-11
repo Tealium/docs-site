@@ -698,6 +698,9 @@
       <a href="/server-side-connectors/pinterest-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Pinterest Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/podscribe-s2s-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Podscribe S2S</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>PulsePoint NPI List</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1313,6 +1316,8 @@
         <a href="/server-side-connectors/pinterest-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pinterest-audiences-connector">Pinterest Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/pinterest-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pinterest-conversions-connector">Pinterest Conversions</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/podscribe-s2s-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".podscribe-s2s-connector">Podscribe S2S</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -2145,7 +2150,7 @@
 </tr>
 <tr>
 <td>Query</td>
-<td>Specify the raw statement to pass into the <code>SQL</code> attribute. Only <strong><code>INSERT</code></strong> or <strong><code>UPDATE</code></strong> statements are allowed. Surround the attribute name that must be replaced with curly braces <code>{{ }}</code>. For more information, see <a href="#query-example">Query example</a>.</td>
+<td>Specify the raw statement to pass into the <code>SQL</code> attribute. Only <code>INSERT</code>, <code>UPDATE</code>, or <code>MERGE</code> statements are allowed. Add <code>:</code> before the attribute name to reference the variable. For more information, see <a href="#query-example">Query example</a>.</td>
 </tr>
 <tr>
 <td>Batch Time To Live</td>
@@ -2153,14 +2158,40 @@
 </tr>
 </tbody>
 </table>
-<h5 id="query-example">Query example</h5>
-<p>If you added a mapping in the <strong>Query Parameters</strong> section such as <code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code>, then you reference that parameter using <code>{{MY_BOOLEAN_PARAM}}</code> in the query.</p>
+<h4 id="query-example">Query example</h4>
+<p>If you add a mapping in the <strong>Query Parameters</strong> section such as <code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code>, reference that parameter using <code>:MY_BOOLEAN_PARAM</code> in the query.</p>
 <p>Example query where the following query parameters have been mapped: <code>MY_STRING_PARAM</code>, <code>MY_BOOLEAN_PARAM</code>, <code>ANOTHER_PARAM</code>, <code>MY_PARAM</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> redshift_table (key1,key2) <span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;{{MY_STRING_PARAM}}&#39;</span>, <span style="color:#960050;background-color:#1e0010">{{</span>MY_BOOLEAN_PARAM<span style="color:#960050;background-color:#1e0010">}}</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table <span style="color:#66d9ef">SET</span> key1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{{MY_STRING_PARAM}}&#39;</span>, key2 <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{{</span>MY_BOOLEAN_PARAM<span style="color:#960050;background-color:#1e0010">}}</span> <span style="color:#66d9ef">WHERE</span> key3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{{ANOTHER_PARAM}}&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table <span style="color:#66d9ef">SET</span> key2 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">SELECT</span> new_key2 <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.key1 <span style="color:#f92672">=</span> redshift_table.key1)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">EXISTS</span> (<span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.key1 <span style="color:#66d9ef">LIKE</span> <span style="color:#f92672">%</span><span style="color:#960050;background-color:#1e0010">{{</span>MY_PARAM<span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#f92672">%</span>);
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> redshift_table
+</span></span><span style="display:flex;"><span>  (key1, key2) <span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;:MY_STRING_PARAM&#39;</span>, :MY_BOOLEAN_PARAM);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table <span style="color:#66d9ef">SET</span>
+</span></span><span style="display:flex;"><span>  key1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;:MY_STRING_PARAM&#39;</span>,
+</span></span><span style="display:flex;"><span>  key2 <span style="color:#f92672">=</span> :MY_BOOLEAN_PARAM
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>  key3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;:ANOTHER_PARAM&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> redshift_table
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SET</span> key2 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">SELECT</span> new_key2 <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.key1 <span style="color:#f92672">=</span> redshift_table.key1)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">EXISTS</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">FROM</span> source_table <span style="color:#66d9ef">WHERE</span> source_table.key1 <span style="color:#66d9ef">LIKE</span> <span style="color:#f92672">%</span>:MY_PARAM<span style="color:#f92672">%</span>);
+</span></span></code></pre></div><h4 id="debug">Debug</h4>
+<p>If Tealium returns successful responses but data does not appear in Redshift, the SQL statement may be rejected by Redshift after it is accepted by Tealium.</p>
+<p>To investigate:</p>
+<ol>
+<li>Run a <a href="/server-side/trace/about/">trace</a> and note the ID from the response body of a successful call.</li>
+<li>Use the <a href="https://docs.aws.amazon.com/redshift-data/latest/APIReference/API_DescribeStatement.html">Amazon Redshift Data API</a> to check the details of the SQL statement.</li>
+</ol>
+<p>Send the following request, replacing the <code>Id</code> value with the ID from your trace:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">POST</span> / <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">redshift-data.us-east-1.amazonaws.com</span>
+</span></span><span style="display:flex;"><span>X-Amz-Target<span style="color:#f92672">:</span> <span style="color:#ae81ff">RedshiftData.DescribeStatement</span>
+</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/x-amz-json-1.1</span>
+</span></span><span style="display:flex;"><span>Authorization<span style="color:#f92672">:</span> <span style="color:#ae81ff">AUTHORIZATION_HEADER</span>
+</span></span><span style="display:flex;"><span>X-Amz-Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">TIMESTAMP</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;Id&#34;: &#34;37eb2735-b467-4852-884b-0f536970bf7e&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The response includes the statement status and any error message returned by Redshift.</p>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -2220,7 +2251,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 5, 2025 
+          <p>This page was last updated:  March 11, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

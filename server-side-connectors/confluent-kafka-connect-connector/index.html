@@ -698,6 +698,9 @@
       <a href="/server-side-connectors/pinterest-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Pinterest Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/podscribe-s2s-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Podscribe S2S</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>PulsePoint NPI List</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1314,6 +1317,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/pinterest-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pinterest-conversions-connector">Pinterest Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/podscribe-s2s-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".podscribe-s2s-connector">Podscribe S2S</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a></li>
@@ -1495,14 +1500,26 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="configuration">Configuration</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Confluent REST Proxy for Kafka</li>
+<li>API Version: v3</li>
+<li>API Endpoint: <code>https://github.com/confluentinc/kafka-rest</code></li>
+</ul>
+<h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>API Key</strong>: (Required) The Confluent API Key.</li>
-<li><strong>API Secret</strong>: (Required) The Confluent API Secret.</li>
-<li><strong>Bootstrap Server</strong>: (Required) The Confluent Bootstrap Server. Do not include the protocol or path. For example, <code>https://confluent.bootstrap.server:443</code> should be <code>confluent.bootstrap.server</code>.</li>
-<li><strong>Cluster ID</strong>: (Required) The Kafka Cluster ID.</li>
+<li><strong>API Key</strong>: (Required) Your Confluent Cloud API key.</li>
+<li><strong>API Secret</strong>: (Required) Your Confluent Cloud API secret.</li>
+<li><strong>Bootstrap Server</strong>: (Required) The hostname of your Confluent Cloud Kafka REST endpoint, without the protocol or port. For example, if your endpoint is <code>https://pkc-12345.us-west4.gcp.confluent.cloud:443</code>, enter <code>pkc-12345.us-west4.gcp.confluent.cloud</code>.</li>
+<li><strong>Cluster ID</strong>: (Required) Your Confluent Cloud cluster ID (for example, <code>lkc-12345</code>).</li>
+</ul>
+<p>For more information on these settings, see:</p>
+<ul>
+<li><a href="https://docs.confluent.io/cloud/current/security/authenticate/workload-identities/service-accounts/api-keys/overview.html">Confluent Cloud: Use API Keys to Authenticate to Confluent Cloud</a></li>
+<li><a href="https://docs.confluent.io/cloud/current/clusters/cluster-faq.html#how-do-i-view-cluster-details-with-ccloud-console-short">Confluent Cloud Clusters: How do I view cluster details with Cloud Console?</a></li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -1549,7 +1566,7 @@
 <p>Enter a name for the action and select the action type.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-entire-event-data">Send Entire Event Data</h3>
-<h4 id="batch-limits">Batch Limits</h4>
+<h4 id="batch-limits">Batch limits</h4>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100</li>
@@ -1604,7 +1621,7 @@
 </tbody>
 </table>
 <h3 id="send-custom-event-data">Send Custom Event Data</h3>
-<h4 id="batch-limits-1">Batch Limits</h4>
+<h4 id="batch-limits-1">Batch limits</h4>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100</li>
@@ -1674,7 +1691,7 @@
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data">Send Entire Visitor Data</h3>
-<h4 id="batch-limits-2">Batch Limits</h4>
+<h4 id="batch-limits-2">Batch limits</h4>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100</li>
@@ -1733,7 +1750,7 @@
 </tbody>
 </table>
 <h3 id="send-custom-visitor-data">Send Custom Visitor Data</h3>
-<h4 id="batch-limits-3">Batch Limits</h4>
+<h4 id="batch-limits-3">Batch limits</h4>
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100</li>
@@ -1949,7 +1966,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 21, 2026 
+          <p>This page was last updated:  March 11, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1963,7 +1980,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
