@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -392,6 +392,7 @@
 </tr>
 </tbody>
 </table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Built-in groups (Standard User, Account Admins, User Admins, Privacy Admins, Technical Admins, Profile Admins) cannot be deleted. Attempts to delete built-in groups return an HTTP 400 error. For more information, see <a href="/early-access/api/scim-api/about/#built-in-group-protection">Built-in group protection</a>.</p>
 <h3 id="example-curl-request">Example cURL request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request DELETE <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/scim/v2/Groups/9d379d2c-2601-42d8-842c-579dc3c58612&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Accept: application/scim+json&#39;</span> <span style="color:#ae81ff">\
@@ -411,7 +412,11 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Invalid ID format.&quot;</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Invalid ID format.&quot;}</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Group {uuid} is a built-in group which is ineligible for deletion.&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -495,7 +500,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 17, 2025 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

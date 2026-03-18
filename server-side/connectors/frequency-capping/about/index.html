@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/connectors/frequency-capping/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to use Action Frequency Capping and Prioritization features in AudienceStream to control and prioritize action triggers." />
+<meta property="og:description" content="This article describes how to use action frequency capping and prioritization to control when actions trigger and which actions take priority." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Action frequency capping and prioritization | Frequency capping | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -1018,41 +1018,55 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to use Action Frequency Capping and Prioritization features in AudienceStream to control and prioritize action triggers.
+      This article describes how to use action frequency capping and prioritization to control when actions trigger and which actions take priority.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>By default, actions in AudienceStream fire as soon as their conditions are met. Depending on your connector choice, the actions configured fire when a user joins or leaves an audience or when a user is in the audience at the beginning or end of the visit.</p>
-<p>The following options give you control over the timing of connectors.</p>
-<h2 id="action-frequency-capping">Action Frequency Capping</h2>
-<p>Lets you prevent actions from triggering too close together by prioritizing which actions to trigger relative to one another while ensuring that the most important action still triggers.</p>
+<p>By default, actions trigger as soon as their conditions evaluate to true. Depending on the connector configuration, actions can trigger when a user joins or leaves an audience, or when a user is in an audience at the beginning or end of a visit.</p>
+<p>Frequency capping helps control how often actions can trigger. Use it to prevent actions from triggering too frequently or competing with each other. When multiple actions qualify at the same time, prioritization ensures that only the most important action triggers.</p>
+<p>Frequency capping is available only for audience-based connector actions. It does not apply to event-only actions.</p>
 <h2 id="prioritization">Prioritization</h2>
-<p>AudienceStream separately provides an option to set delays to prevent individual actions from triggering immediately. You can optionally configure delays in combination with a cooldown.</p>
-<p>The highest priority number specified becomes the highest priority. For example, a priority of <code>2</code> is higher than a priority of <code>1</code>. All non-capped actions trigger independently without delay and are not affected by the cooldown.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If two actions in the same cooldown group have the same priority, only one of them will trigger. If you need both actions to trigger, use separate cooldown groups.</p>
-<h2 id="cooldown-with-frequency-capping">Cooldown with Frequency Capping</h2>
-<p>When visitors qualify for numerous actions, such as emails, you can control the triggering by restricting the frequency of actions within a specific time period and then decide which actions to trigger and which to ignore. This will avoid spamming.</p>
-<p>Cooldown only applies when an action is enabled for <strong>Frequency Cap</strong> and the connector configuration is assigned an action priority number. The action priority number dictates which actions to trigger in the event that several actions in the same cooldown are fulfilled simultaneously.</p>
-<h2 id="frequency-cap-on">Frequency Cap On</h2>
-<p>When the <strong>Frequency Cap</strong> is toggled to <strong>On</strong>, the highest priority action in a cooldown group is triggered. No actions in the same cooldown group trigger for the rest of the cooldown period and they will not trigger automatically when the cooldown period expires.</p>
-<h2 id="frequency-cap-off">Frequency Cap Off</h2>
-<p>Action does not qualify for cooldown and, therefore, will trigger as and when the triggering condition/event occurs.</p>
-<h2 id="workflow">Workflow</h2>
-<p>The following steps summarize frequency capping and prioritization the workflow:</p>
+<p>Assign a priority number to frequency-capped actions and optionally configure delays.</p>
+<p>The action with the highest priority number runs first. For example, a priority of <code>2</code> is higher than a priority of <code>1</code>.</p>
+<p>Actions without frequency capping enabled trigger independently and are not affected by cooldown groups.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If two actions in the same cooldown group have the same priority, only one action triggers. If both actions must trigger, assign them to different cooldown groups.</p>
+<h2 id="cooldown-with-frequency-capping">Cooldown with frequency capping</h2>
+<p>Cooldown groups limit how frequently actions in the same group can trigger.</p>
+<p>When a visitor qualifies for multiple actions in the same cooldown group, the system compares their priority numbers and triggers the highest-priority eligible action. After the selected action triggers, a cooldown period begins for that group.</p>
+<p>During the cooldown period, other frequency-capped actions in the same cooldown group are suppressed. Suppressed actions are not queued to run when the cooldown expires. They trigger only if their conditions evaluate to true again after the cooldown period ends.</p>
+<p>If frequency capping is disabled, the action does not participate in cooldown behavior and triggers whenever its conditions evaluate to true.</p>
+<h2 id="how-actions-are-evaluated">How actions are evaluated</h2>
+<p>The following diagram shows how actions are evaluated when you enable frequency capping and prioritization.</p>
+<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/action-priority-workflow.png"><img src="/images/server-side/connectors/frequency-capping/action-priority-workflow.png"
+         alt="Frequency capping and prioritization workflow"
+         title="Frequency capping and prioritization workflow"/>
+    </a>
+</figure>
+<p>The workflow operates as follows:</p>
 <ol>
-<li>AudienceStream evaluates the conditions for all actions in a cooldown group.</li>
-<li>If only one action condition is true, AudienceStream instantly triggers that action.</li>
-<li>If more conditions are true simultaneously, AudienceStream evaluates their action priorities and then triggers only the highest priority action.</li>
-<li>During the cooldown hours configured for the group, no actions in that group trigger.</li>
-<li>When frequency capping is in progress, non-capped actions are not affected by the cooldown and trigger independently without being throttled.</li>
-<li>If an action has a delay set, the delay is respected.</li>
-<li>The cooldown starts after the delayed action triggers. For example, if the action is set with a two hour delay, it will not trigger until after the delay.</li>
-<li>If a higher priority action triggers before the delay time configured is met, the cooldown takes effect and suppresses the delayed action.</li>
-<li>When the cooldown expires, AudienceStream reevaluates the conditions and starts over from Step 2.</li>
+<li>The system evaluates the conditions for all actions in a cooldown group.</li>
+<li>If only one action condition is true, that action triggers.</li>
+<li>If multiple actions qualify at the same time, the system evaluates their priority numbers and selects the highest-priority action.</li>
+<li>If the selected action has a delay configured, the system waits for the delay period.</li>
+<li>After the delay expires, the action triggers and the visitor enters the cooldown period for that group.</li>
+<li>If a higher priority action triggers before the configured delay expires, the cooldown takes effect and suppresses the delayed action.</li>
+<li>During the cooldown period, other frequency-capped actions in the same group are suppressed.</li>
+<li>When frequency capping is in progress, non-capped actions are not affected by the cooldown and trigger independently.</li>
+<li>When the cooldown expires, the system reevaluates the visitor conditions and starts over from Step 2.</li>
 </ol>
+<h2 id="disabled-actions-or-connectors-during-cooldown">Disabled actions or connectors during cooldown</h2>
+<p>Cooldown is tracked at the visitor level for each cooldown group.</p>
+<p>If a visitor enters a cooldown period and the action or connector that triggered the cooldown is later disabled, the cooldown continues until it expires.</p>
+<p>During the cooldown period:</p>
+<ul>
+<li>Other frequency-capped actions in the same cooldown group remain suppressed.</li>
+<li>Actions in different cooldown groups are unaffected.</li>
+<li>Actions without frequency capping continue to trigger normally.</li>
+</ul>
+<p>When the cooldown expires, the system reevaluates the visitor against the current action configuration.</p>
 
 </div>
 
@@ -1098,7 +1112,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 25, 2025 
+          <p>This page was last updated:  March 16, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1113,12 +1127,10 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-frequency-capping" href="javascript:void(0)">Action Frequency Capping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prioritization" href="javascript:void(0)">Prioritization</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cooldown-with-frequency-capping" href="javascript:void(0)">Cooldown with Frequency Capping</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency-cap-on" href="javascript:void(0)">Frequency Cap On</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency-cap-off" href="javascript:void(0)">Frequency Cap Off</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#workflow" href="javascript:void(0)">Workflow</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cooldown-with-frequency-capping" href="javascript:void(0)">Cooldown with frequency capping</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-actions-are-evaluated" href="javascript:void(0)">How actions are evaluated</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#disabled-actions-or-connectors-during-cooldown" href="javascript:void(0)">Disabled actions or connectors during cooldown</a></li>
               </nav>
   </aside></nav>
 

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -896,7 +896,7 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX (Deprecated)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
@@ -1449,7 +1449,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+        <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector-deprecated">Yahoo DataX (Deprecated)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1500,8 +1500,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Epsilon is the leader in outcome-based marketing with a rich 50-year heritage in helping marketers anticipate, activate, and prove measurable business outcomes. Use the Epsilon Event API to pass information to Epsilon regarding what customers view and purchase on your website.</p>
-<h2 id="connector-actions">Connector actions</h2>
+  <p>Epsilon is a marketing services provider. Use the Epsilon Event API to pass information to Epsilon regarding what customers view and purchase on your website.</p>
+<h2 id="configure-settings">Configure settings</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Company ID</strong>: Company ID (<code>dtm_cid</code>) to identify your calls.</li>
+<li><strong>Secondary Company ID</strong>: Separate identifier (<code>dtm_cmagic</code>) to confirm company ID.</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1523,21 +1530,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Company ID</strong><br>
-Company ID (<code>dtm_cid</code>) to identify your calls.</li>
-<li><strong>Secondary Company ID</strong><br>
-Separate identifier (<code>dtm_cmagic</code>) to confirm company ID.</li>
-</ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
-<h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--send-browsing-event">Action — Send Browsing Event</h3>
-<h4 id="parameters">Parameters</h4>
+<h3 id="send-browsing-event">Send Browsing Event</h3>
+<h4 id="event-data">Event Data</h4>
 <table>
 <thead>
 <tr>
@@ -1547,89 +1543,97 @@ Separate identifier (<code>dtm_cmagic</code>) to confirm company ID.</li>
 </thead>
 <tbody>
 <tr>
-<td>Form ID</td>
-<td>(Required)</td>
+<td>Form ID (<code>dtm_fid</code>)</td>
+<td>(Required) The form ID for the browsing event.</td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required)</td>
+<td>URL (<code>dtmc_loc</code>)</td>
+<td>(Required) URL of the page the user is viewing.</td>
 </tr>
 <tr>
-<td>IP Address</td>
-<td>(Required)</td>
+<td>IP Address (<code>dtm_user_ip</code>)</td>
+<td>(Required) IP address of the user.</td>
 </tr>
 <tr>
-<td>Cookie ID</td>
-<td>(Required)</td>
+<td>Cookie ID (<code>dtm_cookie_id</code>)</td>
+<td>(Required) Unique ID for the user.</td>
 </tr>
 <tr>
-<td>Promo ID</td>
-<td></td>
+<td>Promo ID (<code>dtm_promo_id</code>)</td>
+<td>Value that identifies the page type or promotion context.</td>
 </tr>
 <tr>
-<td>Brand</td>
-<td></td>
+<td>Brand (<code>dtmc_brand</code>)</td>
+<td>Brand associated with the product or content viewed.</td>
 </tr>
 <tr>
-<td>Canonical URL</td>
-<td></td>
+<td>Canonical URL (<code>dtmc_canonical_url</code>)</td>
+<td>Canonical URL for the page being viewed.</td>
 </tr>
 <tr>
-<td>Category</td>
-<td></td>
+<td>Category (<code>dtmc_category</code>)</td>
+<td>Primary product or content category.</td>
 </tr>
 <tr>
-<td>Customer ID</td>
-<td></td>
+<td>Customer ID (<code>dtm_user_id</code>)</td>
+<td>Unique identifier for the known customer (for example, CRM ID or loyalty ID).</td>
 </tr>
 <tr>
-<td>Department</td>
-<td></td>
+<td>Department (<code>dtmc_department</code>)</td>
+<td>Department or line of business associated with the product (for example, <code>Electronics</code>, <code>Home</code>).</td>
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td></td>
+<td>Plain-text email address to be SHA256 hashed before sending to Epsilon.</td>
 </tr>
 <tr>
 <td>Email (already SHA256 hashed)</td>
-<td></td>
+<td>Email address already hashed with SHA256; sent to Epsilon as provided.</td>
 </tr>
 <tr>
-<td>GDPR consent</td>
-<td></td>
+<td>GDPR consent (<code>dtmc_tcf_string</code>)</td>
+<td>IAB TCF consent string that represents the visitor’s GDPR consent state.</td>
 </tr>
 <tr>
-<td>Manufacturer Model Part Number</td>
-<td></td>
+<td>Manufacturer Model Part Number (<code>dtmc_mpn</code>)</td>
+<td>Manufacturer’s model or part number for the product.</td>
 </tr>
 <tr>
-<td>Manufacturer UPC</td>
-<td></td>
+<td>Manufacturer UPC (<code>dtmc_upc</code>)</td>
+<td>Manufacturer’s UPC for the product.</td>
 </tr>
 <tr>
-<td>Product ID</td>
-<td></td>
+<td>Product ID (<code>dtmc_product_id</code>)</td>
+<td>Unique identifier for the product being viewed.</td>
 </tr>
 <tr>
-<td>Referring URL</td>
-<td></td>
+<td>Referring URL (<code>dtm_referrer</code>)</td>
+<td>URL of the page that referred the visitor to the current page.</td>
 </tr>
 <tr>
-<td>Subcategory</td>
-<td></td>
+<td>Subcategory (<code>dtmc_sub_category</code>)</td>
+<td>Subcategory for the product or content (for example, <code>Shoes</code> within <code>Apparel</code>).</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td></td>
+<td>User Agent (<code>dtm_user_agent</code>)</td>
+<td>Browser user agent string from the visitor’s device.</td>
 </tr>
 <tr>
 <td>Cachebuster</td>
-<td></td>
+<td>Random or timestamp value used to prevent response caching.</td>
+</tr>
+<tr>
+<td>GPP String</td>
+<td>(Required) The Global Privacy Platform (GPP) consent string.</td>
+</tr>
+<tr>
+<td>Custom Query Parameters</td>
+<td>Custom values to add as query string parameters to the base URL.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action--send-transaction-event">Action — Send Transaction Event</h3>
-<h4 id="parameters-1">Parameters</h4>
+<h3 id="send-transaction-event">Send Transaction Event</h3>
+<h4 id="event-data-1">Event Data</h4>
 <table>
 <thead>
 <tr>
@@ -1639,120 +1643,150 @@ Separate identifier (<code>dtm_cmagic</code>) to confirm company ID.</li>
 </thead>
 <tbody>
 <tr>
-<td>Form ID</td>
-<td>(Required)</td>
+<td>Form ID (<code>dtm_fid</code>)</td>
+<td>(Required) The form ID for the transaction event.</td>
 </tr>
 <tr>
-<td>URL</td>
-<td>(Required)</td>
+<td>URL (<code>dtmc_loc</code>)</td>
+<td>(Required) The URL of the page where the transaction occurs (for example, a confirmation page).</td>
 </tr>
 <tr>
-<td>IP Address</td>
-<td>(Required)</td>
+<td>IP Address (<code>dtm_user_ip</code>)</td>
+<td>(Required) The IP address of the user.</td>
 </tr>
 <tr>
-<td>Cookie ID</td>
-<td>(Required)</td>
+<td>Cookie ID (<code>dtm_cookie_id</code>)</td>
+<td>(Required) The advertiser-supplied cookie ID used to identify the user.</td>
 </tr>
 <tr>
-<td>Promo ID</td>
-<td></td>
+<td>Promo ID (<code>dtm_promo_id</code>)</td>
+<td>A value that identifies the page type or promotion associated with the transaction.</td>
 </tr>
 <tr>
-<td>Brand</td>
-<td></td>
+<td>Brand (<code>dtmc_brand</code>)</td>
+<td>The brand associated with the purchased products.</td>
 </tr>
 <tr>
-<td>Canonical URL</td>
-<td></td>
+<td>Canonical URL (<code>dtmc_canonical_url</code>)</td>
+<td>The canonical URL for the transaction page.</td>
 </tr>
 <tr>
-<td>Category</td>
-<td></td>
+<td>Category (<code>dtmc_category</code>)</td>
+<td>The primary product or content category.</td>
 </tr>
 <tr>
-<td>Customer ID</td>
-<td></td>
+<td>Customer ID (<code>dtm_user_id</code>)</td>
+<td>The unique identifier for the known customer (for example, CRM ID or loyalty ID).</td>
 </tr>
 <tr>
-<td>Department</td>
-<td></td>
+<td>Department (<code>dtmc_department</code>)</td>
+<td>The department or line of business associated with the products.</td>
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td></td>
+<td>Plain-text email address to be SHA256 hashed before sending to Epsilon.</td>
 </tr>
 <tr>
 <td>Email (already SHA256 hashed)</td>
-<td></td>
+<td>Email address already hashed with SHA256; sent to Epsilon as provided.</td>
 </tr>
 <tr>
-<td>GDPR consent</td>
-<td></td>
+<td>GDPR consent (<code>dtmc_tcf_string</code>)</td>
+<td>The IAB TCF consent string that represents the visitor’s GDPR consent state.</td>
 </tr>
 <tr>
-<td>Manufacturer Model Part Number</td>
-<td></td>
+<td>Manufacturer Model Part Number (<code>dtmc_mpn</code>)</td>
+<td>The manufacturer’s model or part number for the product.</td>
 </tr>
 <tr>
-<td>Manufacturer UPC</td>
-<td></td>
+<td>Manufacturer UPC (<code>dtmc_upc</code>)</td>
+<td>The manufacturer’s UPC for the product.</td>
 </tr>
 <tr>
-<td>Product ID</td>
-<td></td>
+<td>Product ID (<code>dtmc_product_id</code>)</td>
+<td>The unique identifier for the purchased product.</td>
 </tr>
 <tr>
-<td>Referring URL</td>
-<td></td>
+<td>Referring URL (<code>dtm_referrer</code>)</td>
+<td>The URL that referred the visitor to the transaction page.</td>
 </tr>
 <tr>
-<td>Subcategory</td>
-<td></td>
+<td>Subcategory (<code>dtmc_sub_category</code>)</td>
+<td>The product or content subcategory.</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td></td>
+<td>User Agent (<code>dtm_user_agent</code>)</td>
+<td>The browser user agent string from the visitor’s device.</td>
 </tr>
 <tr>
 <td>Cachebuster</td>
-<td></td>
+<td>Random or timestamp value used to prevent response caching.</td>
 </tr>
 <tr>
-<td>Transaction ID</td>
-<td></td>
+<td>GPP String</td>
+<td>(Required) The Global Privacy Platform (GPP) consent string.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="transaction-data">Transaction Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction ID (<code>dtmc_transaction_id</code>)</td>
+<td>The advertiser’s unique identifier for each conversion.</td>
 </tr>
 <tr>
-<td>Order Subtotal</td>
-<td></td>
+<td>Order Subtotal (<code>dtm_conv_val</code>)</td>
+<td>The total price for all items purchased. Do not include tax or shipping costs.</td>
 </tr>
 <tr>
-<td>Conversion Type</td>
-<td></td>
+<td>Conversion Type (<code>dtmc_conv_type</code>)</td>
+<td>Used to differentiate between types of online purchases, such as delivery or pickup.</td>
 </tr>
 <tr>
-<td>Currency Code</td>
-<td></td>
+<td>Currency Code (<code>dtm_conv_curr</code>)</td>
+<td>The ISO 4217 currency code (for example, EUR or USD).</td>
 </tr>
 <tr>
-<td>Store Location</td>
-<td></td>
+<td>Store Location (<code>dtmc_conv_store_location</code>)</td>
+<td>The store location for pickup type conversions.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="item-data">Item Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Item IDs</td>
-<td></td>
+<td>Array of item IDs in the transaction.</td>
 </tr>
 <tr>
 <td>Item Prices</td>
-<td></td>
+<td>Array of item prices in the transaction.</td>
 </tr>
 <tr>
 <td>Item Quantities</td>
-<td></td>
+<td>Array of item quantities in the transaction.</td>
 </tr>
 <tr>
 <td>Item Discounts</td>
-<td></td>
+<td>Array of item discounts in the transaction.</td>
+</tr>
+<tr>
+<td>Custom Query Parameters</td>
+<td>Custom values to add as query string parameters to the base URL.</td>
 </tr>
 </tbody>
 </table>
@@ -1816,7 +1850,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 16, 2022 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1830,11 +1864,10 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action settings — parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-browsing-event" href="javascript:void(0)">Action — Send Browsing Event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--send-transaction-event" href="javascript:void(0)">Action — Send Transaction Event</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-browsing-event" href="javascript:void(0)">Send Browsing Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-transaction-event" href="javascript:void(0)">Send Transaction Event</a></li>
               </nav>
   </aside></nav>
 

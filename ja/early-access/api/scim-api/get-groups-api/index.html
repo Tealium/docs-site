@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -440,22 +440,23 @@
 <td><code>startIndex</code></td>
 <td>数値</td>
 <td>任意</td>
-<td>インデックス内で最初に返すレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。</td>
+<td>インデックスで最初に返すレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。</td>
 </tr>
 <tr>
 <td><code>filter</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>ユーザー名に基づいてユーザーをフィルタリングします。同等の値を見つけるために <code>eq</code> 演算子を使用します。</td>
+<td><code>displayName</code> に基づいてグループをフィルタリングします。同等の値を見つけるために <code>eq</code> 演算子を使用します。例：<code>filter=displayName eq &quot;Standard User&quot;</code>。</td>
 </tr>
 <tr>
 <td><code>excludedAttributes</code></td>
 <td>文字列</td>
 <td>任意</td>
-<td>応答から除外する属性のカンマ区切りリスト。許可される値は <code>members</code>, <code>externalId</code>, <code>meta</code>, <code>meta.location</code>, <code>meta.resourceType</code> です。</td>
+<td>レスポンスから除外する属性のカンマ区切りリスト。許可される値は <code>members</code>, <code>externalId</code>, <code>meta</code>, <code>meta.location</code>, <code>meta.resourceType</code> です。</td>
 </tr>
 </tbody>
 </table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>「Standard User」、「Account Admins」、「User Admins」、「Privacy Admins」、「Technical Admins」、「Profile Admins」などの組み込みグループがレスポンスに含まれます。<code>id</code> フィールドは各グループの安定した識別子です。詳細については、<a href="/ja/early-access/api/scim-api/about/#groups">グループ</a>を参照してください。</p>
 <h3 id="curl-リクエストの例">cURL リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">&#39;https://developer.tealiumapis.com/scim/v2/Groups&#39;</span>
@@ -477,7 +478,7 @@
         <span style="font-weight:bold;">
         
     	
-    	コードスニペットを表示するには展開してください
+    	コードスニペットを表示するには展開
     	
     	</span>
     </div>
@@ -650,7 +651,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月14日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

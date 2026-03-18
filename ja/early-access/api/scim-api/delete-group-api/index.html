@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -416,7 +416,7 @@
 <p>既存のグループを削除するにはDELETEメソッドを使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DELETE /scim/v2/Groups/<span style="color:#f92672">{</span>id<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="認証">認証</h2>
-<p>すべてのAPI呼び出しにはOAuthベアラートークンを使用して認証します。APIキーではありません。</p>
+<p>すべてのAPI呼び出しにはOAuthベアラートークンが使用され、APIキーは使用されません。</p>
 <p>詳細については、<a href="/ja/early-access/api/scim-api/about/#authentication">認証</a>を参照してください。</p>
 <h2 id="delete操作のパラメータ">DELETE操作のパラメータ</h2>
 <p>このコマンドは以下のパラメータを取ります：</p>
@@ -438,6 +438,7 @@
 </tr>
 </tbody>
 </table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>組み込みグループ（標準ユーザー、アカウント管理者、ユーザー管理者、プライバシー管理者、技術管理者、プロファイル管理者）は削除できません。組み込みグループの削除を試みるとHTTP 400エラーが返されます。詳細については、<a href="/ja/early-access/api/scim-api/about/#built-in-group-protection">組み込みグループ保護</a>を参照してください。</p>
 <h3 id="curlリクエストの例">cURLリクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request DELETE <span style="color:#e6db74">&#39;https://developer.tealiumapis.com/scim/v2/Groups/9d379d2c-2601-42d8-842c-579dc3c58612&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Accept: application/scim+json&#39;</span> <span style="color:#ae81ff">\
@@ -457,7 +458,11 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;IDの形式が無効です。&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;ID形式が無効です。&quot;}</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;グループ{uuid}は削除できない組み込みグループです。&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -526,7 +531,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月17日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

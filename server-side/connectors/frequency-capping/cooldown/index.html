@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1024,62 +1024,81 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="add-a-new-cooldown-group">Add a new cooldown group</h2>
-<p>When you add a new cooldown group, the group is available to all frequency capped actions in your profile.</p>
-<p>Use the following steps to add a new cooldown group:</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Cooldown</strong>.<br>
-<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/server-side-admin-menu-manage-cooldown.png"><img src="/images/server-side/connectors/frequency-capping/server-side-admin-menu-manage-cooldown.png"
-               alt="Manage Cooldown"
-               title="Manage Cooldown"/>
-          </a>
-      </figure></li>
-<li>Click <strong>+ Add Cooldown Group</strong>.</li>
-<li>Click the <strong>Color</strong> drop-down list and select a color to display for this group.<br>
-<figure><a class="slb" href="/images/server-side/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png"><img src="/images/server-side/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png"
-               alt="Adding a New Cooldown Group"
-               title="Adding a New Cooldown Group"/>
-          </a>
-      </figure></li>
-<li>In the <strong>Name</strong> field, enter a unique name to identify this group.</li>
-<li>In the <strong>Duration</strong> drop-down list, enter a custom number (in hours) or select <strong>6</strong>, <strong>12</strong>, <strong>24</strong>, or <strong>48</strong> hours.<br>
-The number of hours will determine the wait time between triggering eligible actions.</li>
-<li>Click <strong>Save</strong> to confirm.</li>
-</ol>
-<h2 id="using-the-default-cooldown-group">Using the default cooldown group</h2>
-<figure><a class="slb" href="/images/server-side/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png"><img src="/images/server-side/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png"
-         alt="Default Cooldown Group"
-         title="Default Cooldown Group"/>
+  <p>Cooldown groups define how frequency-capped actions interact with each other.</p>
+<p>Actions assigned to the same cooldown group share a cooldown period. When one action in the group triggers, other actions in that group are temporarily suppressed.</p>
+<h2 id="add-a-new-cooldown-group">Add a new cooldown group</h2>
+<p>When you create a cooldown group, it becomes available to all frequency-capped actions in your profile.</p>
+<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png"><img src="/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencyandcapping-adding-a-new-cooldown-group.png"
+         alt="Adding a new cooldown group"
+         title="Adding a new cooldown group"/>
     </a>
 </figure>
-<p>The default cooldown group applies to frequency capped actions when no other cooldown is configured in your profile. You can edit the color and duration settings for the default cooldown group and apply it to selected frequency capped actions but you cannot edit the name.</p>
-<h2 id="apply-a-cooldown-group-to-a-connector-action">Apply a cooldown group to a connector action</h2>
-<p>This section describes how to apply a cooldown group to a connector action. You may apply a cooldown group to one or more frequency capped actions in the same connector.</p>
-<p>Use the following steps to apply a cooldown group to a connector action:</p>
+<p>To create a cooldown group:</p>
 <ol>
-<li>In the sidebar, navigate to <strong>AudienceStream &gt; Audience Connectors</strong>.</li>
-<li>Click <strong>My Connectors</strong>.</li>
-<li>Click a connector to expand the details and click <strong>Edit</strong>.<br>
-<figure><a class="slb" href="/images/server-side/whiteui-audiencestream-actionfrequencycappingandprioritization-apply-cooldown-group-to-connector.png"><img src="/images/server-side/whiteui-audiencestream-actionfrequencycappingandprioritization-apply-cooldown-group-to-connector.png"
-               alt="Apply Cooldown Group to Connector"
-               title="Apply Cooldown Group to Connector"/>
-          </a>
-      </figure></li>
-<li>Click the <strong>Actions</strong> tab and use the drop-down list to select the action for which you want to apply frequency capping.</li>
-<li>Click <strong>+ Create Action</strong>.</li>
-<li>Scroll down to <strong>Frequency Cap</strong> and click <strong>On</strong>.</li>
-<li>Under <strong>Action Priority</strong>, use the up or down arrow to assign a number as the action priority.</li>
+<li>In the admin menu, click <strong>Manage Cooldown</strong>.</li>
+<li>Click <strong>Add New</strong>.</li>
+<li>In the <strong>Group Name</strong> field, enter a unique name to identify this group.</li>
+<li>From the <strong>Color</strong> drop-down list, select a color used to identify the group.</li>
+<li>In <strong>Wait Time Between Actions (Hours)</strong>, enter a custom value (in hours) or select <strong>6</strong>, <strong>12</strong>, <strong>24</strong>, or <strong>48</strong> hours.
+This value determines how long the system waits before another action in the same group can trigger.</li>
+<li>Click <strong>Save Changes</strong>.</li>
 </ol>
-<p class="tip"><i class="fa fa-info-circle"></i>Do not set this value to zero or a negative number. Assign the priorities in increments of 10 instead of consecutive numbers. This makes it easier to insert a new action later without having to update the priority values for other actions.</p>
+<h2 id="using-the-default-cooldown-group">Using the default cooldown group</h2>
+<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png"><img src="/images/server-side/connectors/frequency-capping/whiteui-tiq-actionfrequencycappingandprioritization-default-cooldown-group.png"
+         alt="Default cooldown group"
+         title="Default cooldown group"/>
+    </a>
+</figure>
+<p>The default cooldown group applies to frequency-capped actions when no other cooldown is configured in your profile. You can modify the color and duration settings of the default group, but you cannot change its name.</p>
+<h2 id="choosing-cooldown-groups">Choosing cooldown groups</h2>
+<p>Use cooldown groups to define how actions should interact.</p>
+<p>Assign actions to the same cooldown group when they need to share the same frequency limit.</p>
+<p>For example, if several promotional campaigns should send no more than one message within 24 hours, assign those actions to the same cooldown group to enforce that limit.</p>
+<p>When a visitor qualifies for multiple actions in that group, the system selects the highest-priority action and suppresses the others during the cooldown period.</p>
+<p>Use different cooldown groups when actions should operate independently. Common scenarios include:</p>
+<ul>
+<li>Different communication channels, such as email, SMS, or push notifications.</li>
+<li>Different business purposes, such as transactional and marketing messages.</li>
+<li>Situations where multiple actions should be able to trigger within the same time window without competing with each other.</li>
+</ul>
+<h2 id="apply-a-cooldown-group-to-a-connector-action">Apply a cooldown group to a connector action</h2>
+<p>You can apply a cooldown group to one or more frequency-capped actions in the same connector.</p>
+<p>To apply a cooldown group to an existing action:</p>
 <ol>
-<li>Under <strong>Action Cooldown Group</strong>, use the drop-down list to select a group.<br>
-<figure><a class="slb" href="/images/server-side/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png"><img src="/images/server-side/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png"
-               alt="Select Action Cooldown Group for Connector"
-               title="Select Action Cooldown Group for Connector"/>
+<li>
+<p>In the sidebar, go to <strong>Connectors &gt; Overview</strong>.</p>
+</li>
+<li>
+<p>Click a connector to expand its details.</p>
+</li>
+<li>
+<p>Select the <strong>Actions</strong> tab and choose the action to configure.
+The action must use visitor data and an audience source.</p>
+</li>
+<li>
+<p>Click the <strong>Source</strong> tab.</p>
+</li>
+<li>
+<p>Scroll to <strong>Frequency Cap</strong> and turn it on.</p>
+</li>
+<li>
+<p>Under <strong>Action Priority</strong>, use the up or down arrow to assign a priority number.</p>
+   <p class="tip"><i class="fa fa-info-circle"></i>Do not set this value to zero or a negative number. Assign the priorities in increments of 10 instead of consecutive numbers. This makes it easier to insert a new action later without having to update the priority values for other actions.</p>
+</li>
+<li>
+<p>Under <strong>Action Cooldown Group</strong>, select the cooldown group.<br>
+<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png"><img src="/images/server-side/connectors/frequency-capping/whiteui-audiencestream-actionfrequencycappingandprioritization-select-action-cooldown-group-for-connector.png"
+               alt="Select action cooldown group for connector"
+               title="Select action cooldown group for connector"/>
           </a>
-      </figure></li>
-<li>Click <strong>Save</strong>.</li>
-<li>Save and Publish your profile.</li>
+      </figure></p>
+</li>
+<li>
+<p>Click <strong>Done</strong>.</p>
+</li>
+<li>
+<p>Save and publish your profile.</p>
+</li>
 </ol>
 
 </div>
@@ -1141,7 +1160,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 27, 2024 
+          <p>This page was last updated:  March 16, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1157,6 +1176,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-new-cooldown-group" href="javascript:void(0)">Add a new cooldown group</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-default-cooldown-group" href="javascript:void(0)">Using the default cooldown group</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#choosing-cooldown-groups" href="javascript:void(0)">Choosing cooldown groups</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#apply-a-cooldown-group-to-a-connector-action" href="javascript:void(0)">Apply a cooldown group to a connector action</a></li>
               </nav>
   </aside></nav>

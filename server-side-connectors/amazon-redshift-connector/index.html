@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "12",
+        reading_time  : "14",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -896,7 +896,7 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX (Deprecated)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
@@ -1449,7 +1449,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+        <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector-deprecated">Yahoo DataX (Deprecated)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1500,7 +1500,18 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="configuration">Configuration</h2>
+  <h2 id="working-with-large-visitor-profiles">Working with large visitor profiles</h2>
+<p>The <a href="#send-entire-visitor-data-micro-batch"><strong>Send Entire Visitor Data</strong> actions</a> embed the full visitor JSON into each SQL INSERT statement. The Redshift Data API enforces a 100 kB limit per SQL statement, so if your visitor profiles exceed this limit, the connector action fails with the error: <code>ValidationException: Query string size exceeds 100 kB</code>.</p>
+<p>To avoid this issue, follow these guidelines:</p>
+<ul>
+<li><strong>Use Send Entire Visitor Data for small visitor profiles.</strong><br>
+Visitor profiles larger than a few kilobytes increase the risk of exceeding the limit. Use this action if your visitor profiles are well under the 100 kB limit. Use the <a href="/server-side/audiences/visitor-lookup-tool/">visitor lookup tool</a> to fetch full profiles and evaluate their size.</li>
+<li><strong>Send mapped attributes instead of the entire profile.</strong><br>
+Use a <a href="#send-custom-visitor-data-micro-batch"><strong>Send Custom Visitor Data</strong></a> action to select only the attributes you need, rather than sending the full visitor JSON.</li>
+<li><strong>Use S3 and Redshift for bulk or historical loads.</strong><br>
+For large visitor JSON payloads or one-off bulk uploads, send visitor data to the <a href="/server-side-connectors/amazon-s3-connector/">S3 connector</a>, then load data into Redshift using the COPY command. For more information, see <a href="https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html">Amazon Redshift: Using the COPY command to load from Amazon S3</a>.</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
@@ -1762,12 +1773,12 @@
 <td>✗</td>
 </tr>
 <tr>
-<td>Send Entire Event Data (Micro-batch)</td>
+<td>Send Custom Visitor Data (Micro-batch)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Send Entire Event Data (Micro-batch)</td>
+<td>Send Custom Visitor Data (Batch)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -1872,6 +1883,7 @@
 <li>Max time since oldest request: 16 minutes</li>
 </ul>
 <h4 id="parameters-2">Parameters</h4>
+<p>Map attributes to columns of the table.</p>
 <table>
 <thead>
 <tr>
@@ -1888,17 +1900,6 @@
 <td>Table</td>
 <td>Provide the table name you want to connect to.</td>
 </tr>
-</tbody>
-</table>
-<h4 id="custom-parameters">Custom Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>Batch Time To Live</td>
 <td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>16</code> minutes. The default value is <code>5</code> minutes.</td>
@@ -1913,6 +1914,7 @@
 <li>Max time since oldest request: 60 minutes</li>
 </ul>
 <h4 id="parameters-3">Parameters</h4>
+<p>Map attributes to columns of the table.</p>
 <table>
 <thead>
 <tr>
@@ -1929,17 +1931,6 @@
 <td>Table</td>
 <td>Provide the table name you want to connect to.</td>
 </tr>
-</tbody>
-</table>
-<h4 id="custom-parameters-1">Custom Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>Batch Time To Live</td>
 <td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>15</code> and <code>60</code> minutes. The default value is <code>30</code> minutes.</td>
@@ -1947,6 +1938,8 @@
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data-micro-batch">Send Entire Visitor Data (Micro-batch)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Redshift Data API limits SQL statements to 100 kB. If visitor JSON payloads exceed this limit, the connector action fails.<br>
+For guidelines on avoiding this issue, see <a href="#working-with-large-visitor-profiles">Working with large visitor profiles</a>.</p>
 <h4 id="batch-limits-4">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -1993,6 +1986,8 @@
 </tbody>
 </table>
 <h3 id="send-entire-visitor-data-batch">Send Entire Visitor Data (Batch)</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Redshift Data API limits SQL statements to 100 kB. If visitor JSON payloads exceed this limit, the connector action fails.<br>
+For guidelines on avoiding this issue, see <a href="#working-with-large-visitor-profiles">Working with large visitor profiles</a>.</p>
 <h4 id="batch-limits-5">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -2038,7 +2033,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="send-entire-event-data-micro-batch-1">Send Entire Event Data (Micro-batch)</h3>
+<h3 id="send-custom-visitor-data-micro-batch">Send Custom Visitor Data (Micro-batch)</h3>
 <h4 id="batch-limits-6">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -2046,6 +2041,7 @@
 <li>Max time since oldest request: 16 minutes</li>
 </ul>
 <h4 id="parameters-6">Parameters</h4>
+<p>Map attributes to columns of the table.</p>
 <table>
 <thead>
 <tr>
@@ -2062,24 +2058,13 @@
 <td>Table</td>
 <td>Provide the table name you want to connect to.</td>
 </tr>
-</tbody>
-</table>
-<h4 id="custom-parameters-2">Custom Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>Batch Time To Live</td>
 <td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>16</code> minutes. The default value is <code>5</code> minutes.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="send-entire-event-data-micro-batch-2">Send Entire Event Data (Micro-batch)</h3>
+<h3 id="send-custom-visitor-data-batch">Send Custom Visitor Data (Batch)</h3>
 <h4 id="batch-limits-7">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -2087,6 +2072,7 @@
 <li>Max time since oldest request: 60 minutes</li>
 </ul>
 <h4 id="parameters-7">Parameters</h4>
+<p>Map attributes to columns of the table.</p>
 <table>
 <thead>
 <tr>
@@ -2103,17 +2089,6 @@
 <td>Table</td>
 <td>Provide the table name you want to connect to.</td>
 </tr>
-</tbody>
-</table>
-<h4 id="custom-parameters-3">Custom Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>Batch Time To Live</td>
 <td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>15</code> and <code>60</code> minutes. The default value is <code>15</code> minutes.</td>
@@ -2251,7 +2226,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 11, 2026 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2265,7 +2240,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-large-visitor-profiles" href="javascript:void(0)">Working with large visitor profiles</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-connection-to-aws-redshift" href="javascript:void(0)">Create a connection to AWS Redshift</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-micro-batch" href="javascript:void(0)">Send Entire Event Data (Micro-batch)</a></li>
@@ -2274,8 +2250,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data-batch" href="javascript:void(0)">Send Custom Event Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-micro-batch" href="javascript:void(0)">Send Entire Visitor Data (Micro-batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data-batch" href="javascript:void(0)">Send Entire Visitor Data (Batch)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-micro-batch" href="javascript:void(0)">Send Entire Event Data (Micro-batch)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data-micro-batch" href="javascript:void(0)">Send Entire Event Data (Micro-batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-micro-batch" href="javascript:void(0)">Send Custom Visitor Data (Micro-batch)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data-batch" href="javascript:void(0)">Send Custom Visitor Data (Batch)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#execute-custom-statement-batch" href="javascript:void(0)">Execute custom statement (Batch)</a></li>
               </nav>
   </aside></nav>

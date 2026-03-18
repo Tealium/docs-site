@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -406,15 +406,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Databricks Delta Sharing クラウドデータソースは現在アーリーアクセス中で、選ばれた顧客のみが利用可能です。Databricks Delta Sharing の利用を開始するには、Tealiumのカスタマーサクセスマネージャーに連絡してください。</p>
-<p>クラウドデータソースの構成の一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Databricks Delta Sharing クラウドデータソースは現在アーリーアクセス中で、選ばれた顧客のみが利用可能です。Databricks Delta Sharing を始めるには、Tealium サポートに連絡してください。</p>
+<p>クラウドデータソースの構成に関する一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</p>
 <h2 id="動作原理">動作原理</h2>
-<p>Databricks Delta Sharing クラウドデータソースは、Databricks間でデータ資産を安全に共有するDatabricks-to-Databricks共有プロトコルを使用します。</p>
-<p>このプロトコルでは、あなたが提供者であり、Tealiumが受信者です。Databricksで共有を作成し、それらの共有にTealiumがアクセスできるように許可します。共有は、読み取り専用のテーブルと資産のコレクションです。</p>
-<p>DatabricksでTealiumへの安全な接続を、Tealium共有識別子（メタストアID）を使用して構成します。データベースのユーザー名、パスワード、またはアクセストークンはDatabricksを離れることはありません。</p>
-<p><a href="/ja/server-side/cloudstream/about/">CloudStream</a>と一緒に使用すると、データパイプラインはゼロコピーです。データはDatabricks環境内に留まり、アクティベーションのためにオンデマンドでアクセスされます。</p>
+<p>Databricks Delta Sharing クラウドデータソースは、Databricks 間でデータ資産を安全に共有する Databricks-to-Databricks 共有プロトコルを使用します。</p>
+<p>このプロトコルでは、あなたが提供者であり、Tealium が受信者です。Databricks で共有を作成し、それらの共有に対して Tealium へのアクセスを許可します。共有は読み取り専用のテーブルや資産のコレクションです。</p>
+<p>Databricks で Tealium 共有識別子（メタストア ID）を使用して Tealium への安全な接続を構成します。データベースのユーザー名、パスワード、アクセストークンは Databricks を離れることはありません。</p>
+<p><a href="/ja/server-side/cloudstream/about/">CloudStream</a> と一緒に使用する場合、データパイプラインはゼロコピーです。データは Databricks 環境内に留まり、オンデマンドでアクティベーションのためにアクセスされます。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Databricks Delta Sharing データソースは、すべてのDatabricksデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってDatabricksデータタイプをマッピングしてください：</p>
+<p>Databricks Delta Sharing データソースは、すべての Databricks データタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従って Databricks データタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -449,40 +449,45 @@
 </tr>
 </tbody>
 </table>
-<p>詳細については、Databricks: データタイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>)を参照してください。</p>
+<p>詳細については、Databricks: データタイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>) を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Delta Sharingを構成するためには、ユーザーはDatabricks Unity Catalogの以下の権限が必要です：<code>CREATE RECIPIENT</code>, <code>CREATE SHARE</code>, <code>USE CATALOG</code>, <code>USE SCHEMA</code>, および <code>SELECT</code>。メタストア管理者はこれらの権限を既に持っています。</p>
-<p>Databricks Delta Sharingとの接続を作成するには、Databricksで次の手順を完了してください：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Delta Sharing を構成するためには、ユーザーは Databricks Unity Catalog の <code>CREATE RECIPIENT</code>, <code>CREATE SHARE</code>, <code>USE CATALOG</code>, <code>USE SCHEMA</code>, <code>SELECT</code> の権限が必要です。メタストア管理者はこれらの権限を既に持っています。</p>
+<p>Databricks Delta Sharing との接続を作成するには、Databricks で次の手順を完了します：</p>
 <ol>
-<li>データを共有したいDatabricks Unity CatalogメタストアでDelta Sharingを有効にします。
-詳細については、Databricks: メタストアでDelta Sharingを有効にする (<a href="https://docs.databricks.com/aws/en/delta-sharing/set-up#enable">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/set-up#enable">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/set-up#enable">GCP</a>) を参照してください。</li>
-<li>Tealiumと共有する予定のテーブル、ビュー、またはカタログで共有を作成します。
-詳細については、Databricks: Delta Sharingの共有の作成と管理 (<a href="https://docs.databricks.com/aws/en/delta-sharing/create-share">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/create-share">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/create-share">GCP</a>) を参照してください。</li>
-<li>受信者を作成します。Tealium受信者を作成するために必要なTealium <code>metastore_id</code>については、Tealiumのカスタマーサクセスマネージャーに連絡してください。
-詳細については、Databricks: Delta Sharingのデータ受信者の作成と管理 (Databricks-to-Databricks共有) (<a href="https://docs.databricks.com/aws/en/delta-sharing/create-recipient">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/create-recipient">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/create-recipient">GCP</a>) を参照してください。</li>
-<li>Tealiumに1つ以上の共有へのアクセスを許可します。
-詳細については、Databricks: Delta Sharingデータ共有へのアクセスの管理 (提供者用) (<a href="https://docs.databricks.com/aws/en/delta-sharing/grant-access">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/grant-access">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/grant-access">GCP</a>) を参照してください。</li>
-<li>再利用可能な接続を作成するために、Tealiumのカスタマーサクセスマネージャーに連絡してください。</li>
+<li>データを共有したいメタストアが含まれている Databricks Unity Catalog で Delta Sharing を有効にします。
+詳細については、Databricks: メタストアでの Delta Sharing の有効化 (<a href="https://docs.databricks.com/aws/en/delta-sharing/set-up#enable">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/set-up#enable">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/set-up#enable">GCP</a>) を参照してください。</li>
+<li>Tealium と共有する予定のテーブル、ビュー、またはカタログで共有を作成します。
+詳細については、Databricks: Delta Sharing の共有の作成と管理 (<a href="https://docs.databricks.com/aws/en/delta-sharing/create-share">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/create-share">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/create-share">GCP</a>) を参照してください。</li>
+<li>受信者を作成します。Tealium 受信者を作成するために必要な <code>metastore_id</code> を取得するには、Tealium サポートに連絡してください。
+詳細については、Databricks: Delta Sharing のデータ受信者の作成と管理 (Databricks-to-Databricks 共有) (<a href="https://docs.databricks.com/aws/en/delta-sharing/create-recipient">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/create-recipient">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/create-recipient">GCP</a>) を参照してください。</li>
+<li>Tealium に一つ以上の共有へのアクセスを許可します。
+詳細については、Databricks: Delta Sharing データ共有へのアクセスの管理 (提供者用) (<a href="https://docs.databricks.com/aws/en/delta-sharing/grant-access">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/grant-access">Azure</a>, <a href="https://docs.databricks.com/gcp/en/delta-sharing/grant-access">GCP</a>) を参照してください。</li>
+<li>Tealium サポートに連絡して、接続を作成してもらいます。接続を作成するためには、Tealium サポートがあなたの Databricks ワークスペース名を必要とします。</li>
 </ol>
-<p>Databricks Delta Sharingに接続した後、<strong>Table Selection</strong>リストからデータソーステーブルを選択します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>マルチテーブルジョインはサポートされていません。同じ機能を実現するには、Databricksビューを使用します。詳細については、Databricks: ビューの作成と管理 (<a href="https://docs.databricks.com/aws/en/views/create-views">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/create-views">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-view">GCP</a>) を参照してください。</p>
+<p>Tealium で Databricks Delta Sharing クラウドデータソースを作成するための次の手順を完了します：</p>
+<ol>
+<li>Tealium サポートが接続を作成した後、Tealium で Databricks Delta Sharing クラウドデータソースを作成します。詳細については、<a href="/ja/server-side/data-sources/cloud-data/manage/">クラウドデータソースの管理</a>を参照してください。</li>
+<li><strong>接続の確立</strong>をクリックします。Databricks への Delta Sharing 接続の確立には最大で2-3分かかる場合があります。</li>
+<li>Databricks Delta Sharing に接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>マルチテーブル結合はサポートされていません。同じ機能を実現するには、Databricks ビューを使用します。詳細については、Databricks: ビューの作成と管理 (<a href="https://docs.databricks.com/aws/en/views/create-views">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/create-views">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-view">GCP</a>) を参照してください。</p>
 <h2 id="クエリモード">クエリモード</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p>Databricks Delta Sharingについては、次の要件に注意してください：</p>
+<p>Databricks Delta Sharing の場合、以下の要件に注意してください：</p>
 <ul>
-<li><strong>Timestamp + Incrementing</strong> および <strong>Timestamp</strong> モード：選択されたタイムスタンプ列は <code>TIMESTAMP</code> タイプでなければなりません。
-詳細については、Databricks: TIMESTAMPタイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type">GCP</a>) を参照してください。</li>
-<li><strong>Incrementing</strong> モード：選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</li>
+<li><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モード：選択されたタイムスタンプ列は <code>TIMESTAMP</code> タイプでなければなりません。
+詳細については、Databricks: TIMESTAMP タイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type">GCP</a>) を参照してください。</li>
+<li><strong>インクリメント</strong>モード：選択された数値列は、追加される各行に対して値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>詳細については、Databricks <code>CREATE TABLE</code> (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>) を参照してください。</p>
-<h2 id="where句">WHERE句</h2>
+<h2 id="where-句">WHERE 句</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><code>WHERE</code> 句は複数のテーブルからのサブクエリをサポートしていません。複数のDatabricksテーブルからデータをインポートするには、Databricksでビューを作成し、データソース構成でビューを選択します。</p>
+<p><code>WHERE</code> 句は複数のテーブルからのサブクエリをサポートしていません。複数の Databricks テーブルからデータをインポートするには、Databricks でビューを作成し、データソース構成でビューを選択します。</p>
 <p>詳細については、Databricks: ビューとは何か？ (<a href="https://docs.databricks.com/aws/en/views/">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>, <a href="https://docs.databricks.com/gcp/en/views/">GCP</a>) を参照してください。</p>
-<h2 id="ipアクセスリスト">IPアクセスリスト</h2>
-<p>DatabricksワークスペースがIPアドレスによって制限されている場合は、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
-<p>詳細については、Databricks: IPアクセスリストの管理 (<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>, <a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>) を参照してください。</p>
+<h2 id="ip-アクセスリスト">IP アクセスリスト</h2>
+<p>Databricks ワークスペースが IP アドレスによって制限されている場合は、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IP アドレス</a> を Databricks の IP アクセスリストに追加してください。</p>
+<p>詳細については、Databricks: IP アクセスリストの管理 (<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>, <a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>) を参照してください。</p>
 
 </div>
 
@@ -528,7 +533,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年March月11日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -546,8 +551,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8E%A5%E7%B6%9A%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">接続の作成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where%E5%8F%A5" href="javascript:void(0)">WHERE句</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">IPアクセスリスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where-%E5%8F%A5" href="javascript:void(0)">WHERE 句</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">IP アクセスリスト</a></li>
               </nav>
   </aside></nav>
 

@@ -1024,7 +1024,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This section provides a usage example using a sample scenario. In this scenario, it is assumed that your profile has two cooldown groups and one connector with four actions.</p>
+  <p>This example shows two cooldown groups and one connector containing four actions.</p>
 <table>
 <thead>
 <tr>
@@ -1069,22 +1069,28 @@
 <p>In this scenario, cooldown periods are applied to the actions as follows:</p>
 <ul>
 <li>
-<p><strong>Cooldown Group 1</strong></p>
+<p><strong>Group 1</strong></p>
 <ul>
 <li>If Action A evaluates to true before Action B, only Action A triggers.</li>
-<li>The 48-hour cooldown starts, during which time neither Action A or B trigger.</li>
-<li>If Action B evaluates to true before Action A, only Action B triggers after the 2 hours configured as an additional delay.</li>
-<li>The 48-hour cooldown starts, during which time neither Action A or B trigger.</li>
-<li>If Actions A and B are both true at the same time, only Action A triggers because it is assigned the highest priority number.</li>
-<li>The 48-hour cooldown starts, during which time neither Action A or B trigger.</li>
+<li>The 48-hour cooldown starts, during which neither Action A nor B trigger.</li>
+<li>If Action B evaluates to true before Action A, only Action B triggers after the configured 2-hour delay.</li>
+<li>The 48-hour cooldown then starts, during which neither Action A nor B trigger.</li>
+<li>If Actions A and B evaluate to true at the same time, only Action A triggers because it has the highest priority number.</li>
+<li>During the cooldown period, both actions are suppressed.</li>
+<li>Suppressed actions are not queued to run when the cooldown expires. They trigger only if their conditions evaluate to true again after the cooldown ends.</li>
 </ul>
 </li>
 <li>
-<p><strong>Default Cooldown</strong></p>
+<p><strong>Default</strong></p>
 <ul>
-<li>When Action C evaluates to true, it is triggered instantly.</li>
-<li>The 24-hour cooldown starts, during which time Action C will not trigger again.</li>
-<li>Action D triggers immediately after its condition is met and is not throttled by any cooldown.</li>
+<li>When Action C evaluates to true, it triggers immediately.</li>
+<li>The 24-hour cooldown starts, during which Action C does not trigger again.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Cooldown</strong></p>
+<ul>
+<li>Action D triggers immediately whenever its condition evaluates to true because it is not assigned to a cooldown group.</li>
 </ul>
 </li>
 </ul>
@@ -1133,7 +1139,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 22, 2025 
+          <p>This page was last updated:  March 16, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

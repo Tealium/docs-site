@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side-connectors/the-trade-desk-first-party-data-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/integrations/thetradedesk.jpg" />
-<meta property="og:description" content="This article describes how to set up the The Trade Desk First Party Data connector." />
+<meta property="og:description" content="This article describes how to set up The Trade Desk First Party Data connector." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>The Trade Desk First Party Data connector setup guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -896,7 +896,7 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX (Deprecated)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
@@ -1449,7 +1449,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+        <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector-deprecated">Yahoo DataX (Deprecated)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1494,13 +1494,19 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to set up the The Trade Desk First Party Data connector.
+      This article describes how to set up The Trade Desk First Party Data connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Agency Secret Key</strong>: The secret key provided to you by The Trade Desk.</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1517,16 +1523,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Agency Secret Key</strong></li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action settings - Parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-first-party-advertiser-data">Action - Send First Party Advertiser Data</h3>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="send-first-party-advertiser-data">Send First Party Advertiser Data</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Use either the <code>TDID</code> parameter or the <code>UID2</code> parameter, not both. Setting a value for both <code>TDID</code> and <code>UID2</code> can cause connector errors.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -1539,39 +1538,65 @@
 <tbody>
 <tr>
 <td>Data Center Region</td>
-<td><ul><li>(Required) Select data center geographically closest to where user data comes from.</li></ul></td>
+<td>(Required) Select the data center geographically closest to where user data comes from.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="advertiser-columns">Advertiser Columns</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Advertiser ID</td>
-<td><ul><li>(Required) Advertiser ID</li><li>Available types are <code>DAID</code>, <code>TDID</code>, <code>UID2</code>, <code>EUID</code>, <code>IDL</code> (<code>RampID</code>), <code>ID5</code>, and <code>netID</code>. Only one ID is required.</li></ul></td>
-</tr>
-<tr>
-<td>Trade Desk ID (TDID)</td>
-<td><ul><li>Trade Desk ID (<code>TDID</code>)</li></ul></td>
+<td>(Required) Advertiser ID. Available types are <code>DAID</code>, <code>TDID</code>, <code>UID2</code>, <code>EUID</code>, <code>IDL</code> (<code>RampID</code>), <code>ID5</code>, and <code>netID</code>. Only one ID is required.</td>
 </tr>
 <tr>
 <td>Device Advertising ID (DAID)</td>
-<td><ul><li>Device Advertising ID (<code>DAID</code>)</li></ul></td>
+<td>Device Advertising ID (<code>DAID</code>)</td>
+</tr>
+<tr>
+<td>Trade Desk ID (TDID)</td>
+<td>Trade Desk ID (<code>TDID</code>)</td>
 </tr>
 <tr>
 <td>Unified ID (UID2 already hashed)</td>
-<td><ul><li>Unified ID ( <code>UID2</code> )</li><li>If already hashed, use <strong>Already SHA256 Hashed</strong> option. Provide a value which has been whitespace trimmed, lowercased and hashed using SHA256 hash. </li><li>For more information, see <a href="/server-side/functions/event-visitor-functions/uid2/">Use a function to generate a UID2</a>.</li></ul></td>
+<td>Unified ID (<code>UID2</code>). If already hashed, use the <strong>Already SHA256 Hashed</strong> option and provide a value that has been whitespace trimmed, lowercased, and hashed using SHA256. For more information, see <a href="/server-side/functions/event-visitor-functions/uid2/">Use a function to generate a UID2</a>.</td>
+</tr>
+<tr>
+<td>UID2 Token (encrypted advertising token)</td>
+<td>The encrypted UID2 advertising token. This token is case-sensitive.</td>
 </tr>
 <tr>
 <td>Identity Link (IDL)</td>
-<td><ul><li>Identity Link ( <code>IDL</code> )</li></ul></td>
+<td>Identity Link (<code>IDL</code>)</td>
 </tr>
+</tbody>
+</table>
+<h4 id="data-columns">Data Columns</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Override TTL in Minutes</td>
-<td><ul><li>Override time to live (<code>ttl</code>), in minutes</li><li>The maximum <code>ttl</code> is 259200 minutes (180 days)</li></ul></td>
+<td>Override time to live (<code>ttl</code>), in minutes. The maximum <code>ttl</code> is 259200 minutes (180 days).</td>
 </tr>
 <tr>
 <td>Override Timestamp</td>
-<td><ul><li>Override timestamp</li></ul></td>
+<td>Override timestamp</td>
 </tr>
 <tr>
 <td>Data Name</td>
-<td><ul><li>(Required) Data Name</li></ul></td>
+<td>(Required) Data Name</td>
 </tr>
 </tbody>
 </table>
@@ -1635,7 +1660,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1649,10 +1674,9 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action settings - Parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-first-party-advertiser-data" href="javascript:void(0)">Action - Send First Party Advertiser Data</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-first-party-advertiser-data" href="javascript:void(0)">Send First Party Advertiser Data</a></li>
               </nav>
   </aside></nav>
 

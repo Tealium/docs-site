@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2  ea-log-streaming desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -438,9 +438,9 @@
 </tr>
 <tr>
 <td><code>displayName</code></td>
-<td>オブジェクト</td>
+<td>文字列</td>
 <td>必須</td>
-<td>グループの名前。</td>
+<td>グループの名前。文字、数字、およびスペースのみを使用してください。名前は 63 文字を超えることはできません。</td>
 </tr>
 <tr>
 <td><code>members</code></td>
@@ -450,6 +450,7 @@
 </tr>
 </tbody>
 </table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>組み込みグループの名前は変更できず、カスタムグループは組み込みグループと同じ名前を持つことはできません。詳細については、<a href="/ja/early-access/api/scim-api/about/">SCIM APIについて</a>を参照してください。</p>
 <h3 id="curl-リクエストの例">cURL リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X PUT <span style="color:#e6db74">&#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>-H <span style="color:#e6db74">&#34;Content-Type: application/scim+json&#34;</span> <span style="color:#ae81ff">\
@@ -519,7 +520,7 @@
 </div>
 </div>
 <h3 id="エラーメッセージ">エラーメッセージ</h3>
-<p>このエンドポイントの潜在的なエラーメッセージ：</p>
+<p>このエンドポイントに関する潜在的なエラーメッセージ：</p>
 <table>
 <thead>
 <tr>
@@ -530,31 +531,39 @@
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;Group name (%very long name with symbols%) can not include any special characters, be longer than 63 characters.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;グループ名 (%very long name with symbols%) に特殊文字を含めることはできず、63文字を超えることはできません。&quot;}</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;400&quot;,&quot;scimType&quot;: &quot;invalidValue&quot;,&quot;detail&quot;: &quot;組み込みグループ 'Standard User' の名前を変更することはできません。組み込みグループの名前は変更不可です。&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
-<td><code>{&quot;returnCode&quot; : 1401 , &quot;message&quot; : &quot;Authentication failed.&quot;}</code></td>
+<td><code>{&quot;returnCode&quot; : 1401 , &quot;message&quot; : &quot;認証に失敗しました。&quot;}</code></td>
 </tr>
 <tr>
 <td>403</td>
-<td><code>{&quot;schemas&quot;: [ &quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;403&quot;,&quot;scimType&quot;: null,&quot;detail&quot;: &quot;Missing X-Tealium-Account header.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [ &quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;403&quot;,&quot;scimType&quot;: null,&quot;detail&quot;: &quot;X-Tealium-Account ヘッダーがありません。&quot;}</code></td>
 </tr>
 <tr>
 <td>404</td>
-<td><code> {&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;404&quot;,&quot;scimType&quot;: &quot;noTarget&quot;,&quot;detail&quot;: &quot;Group not found in account {ACCOUNT}.&quot;}</code></td>
+<td><code> {&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;404&quot;,&quot;scimType&quot;: &quot;noTarget&quot;,&quot;detail&quot;: &quot;アカウント {ACCOUNT} にグループが見つかりません。&quot;}</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;404&quot;,&quot;scimType&quot;: &quot;noTarget&quot;,&quot;detail&quot;: &quot;アカウント {ACCOUNT} にユーザー UUID {uuid} が見つかりません。&quot;}</code></td>
 </tr>
 <tr>
 <td>405</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;Method is not allowed on this endpoint. Allowed methods: GET, PUT, DELETE, PATCH.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;405&quot;,&quot;scimType&quot;: &quot;invalidMethod&quot;,&quot;detail&quot;: &quot;このエンドポイントでは許可されていない方法です。許可されている方法：GET, PUT, DELETE, PATCH.&quot;}</code></td>
 </tr>
 <tr>
 <td>409</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;409&quot;,&quot;scimType&quot;: &quot;uniqueness&quot;,&quot;detail&quot;: &quot;Group name 'grouptest' already exists in account accounttest.&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;409&quot;,&quot;scimType&quot;: &quot;uniqueness&quot;,&quot;detail&quot;: &quot;アカウント accounttest に 'grouptest' というグループ名が既に存在します。&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;500&quot;,&quot;scimType&quot;: &quot;internalServerError&quot;,&quot;detail&quot;: &quot;Error processing json for extension - account {ACCOUNT}&quot;}</code></td>
+<td><code>{&quot;schemas&quot;: [&quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;],&quot;status&quot;: &quot;500&quot;,&quot;scimType&quot;: &quot;internalServerError&quot;,&quot;detail&quot;: &quot;拡張機能の json 処理中にエラーが発生しました - アカウント {ACCOUNT}&quot;}</code></td>
 </tr>
 </tbody>
 </table>
@@ -618,7 +627,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月14日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

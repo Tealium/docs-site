@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -435,6 +435,97 @@
 </tr>
 </tbody>
 </table>
+<h2 id="built-in-groups">Built-in groups</h2>
+<p>The SCIM API exposes built-in groups that align with the <a href="/administration/admin-roles/">Tealium system admin roles</a>.</p>
+<p>The following built-in groups are available with the SCIM <code>/Groups</code> endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Group name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account Admins</td>
+<td>Full account administration privileges</td>
+</tr>
+<tr>
+<td>User Admins</td>
+<td>User management privileges</td>
+</tr>
+<tr>
+<td>Privacy Admins</td>
+<td>Privacy and consent management privileges</td>
+</tr>
+<tr>
+<td>Technical Admins</td>
+<td>Technical and integration privileges</td>
+</tr>
+<tr>
+<td>Profile Admins</td>
+<td>Profile-level administration privileges</td>
+</tr>
+<tr>
+<td>Standard User</td>
+<td>Basic read-only access (alias for Account Viewers)</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>Standard User</code> group is an alias for the internal <code>Account Viewers</code> group. Both groups share the same UUID. Filtering on <code>displayName eq &quot;Standard User&quot;</code> matches this group, but filtering on <code>Account Viewers</code> returns zero results.</p>
+<h3 id="inherited-groups">Inherited groups</h3>
+<p>Adding a user to certain admin groups automatically grants membership in inherited groups:</p>
+<table>
+<thead>
+<tr>
+<th>Add to Group</th>
+<th>Automatically Added To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account Admins</td>
+<td>User Admins, Privacy Admins, Technical Admins, Profile Admins + PII access</td>
+</tr>
+<tr>
+<td>User Admins</td>
+<td>Technical Admins + PII access</td>
+</tr>
+<tr>
+<td>Privacy Admins</td>
+<td>User Admins, Technical Admins and PII access</td>
+</tr>
+<tr>
+<td>Technical Admins</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>Profile Admins</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>Standard User</td>
+<td>(none)</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Membership in Account Admins, User Admins, or Privacy Admins automatically grants membership in internal PII groups (PII Admins/PII Viewers). For security purposes, these internal groups are not visible with the SCIM API.</p>
+<h3 id="group-removal-behavior">Group removal behavior</h3>
+<p>Removing a user from an admin group automatically removes them from inherited groups:</p>
+<ul>
+<li><strong>Account Admins</strong>: Removes from User Admins, Privacy Admins, Technical Admins, Profile Admins, and revokes PII access</li>
+<li><strong>User Admins</strong>: Removes from Technical Admins and revokes PII access</li>
+<li><strong>Privacy Admins</strong>: Removes from User Admins, Technical Admins, and revokes PII access</li>
+<li><strong>Technical Admins</strong>: No automatic removal</li>
+<li><strong>Profile Admins</strong>: No automatic removal</li>
+</ul>
+<h3 id="built-in-group-protection">Built-in group protection</h3>
+<p>Built-in groups have the following restrictions:</p>
+<ul>
+<li>Cannot be renamed with SCIM PATCH operations.</li>
+<li>Cannot be deleted with SCIM DELETE operations.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Creating or updating a custom group with a <code>displayName</code> that matches a built-in group returns an HTTP 400 error.</p>
 
 </div>
 
@@ -480,7 +571,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 12, 2026 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -497,6 +588,10 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#authentication" href="javascript:void(0)">Authentication</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#endpoints-and-permissions" href="javascript:void(0)">Endpoints and permissions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#built-in-groups" href="javascript:void(0)">Built-in groups</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#inherited-groups" href="javascript:void(0)">Inherited groups</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#group-removal-behavior" href="javascript:void(0)">Group removal behavior</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#built-in-group-protection" href="javascript:void(0)">Built-in group protection</a></li>
               </nav>
   </aside></nav>
 

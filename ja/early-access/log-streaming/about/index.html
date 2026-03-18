@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="コネクターエラーロギング" />
+    <meta property="og:title" content="コネクターエラーログ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/early-access/log-streaming/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、コネクターアクションのエラーロギングに関するアーリーアクセス実装について説明します。" />
+<meta property="og:description" content="この記事では、コネクターアクションのエラーログについてのアーリーアクセス実装を説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>コネクターエラーロギング | ログストリーミング | Tealiumドキュメント</title>
+    <title>コネクターエラーログ | ログストリーミング | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "4",
+        reading_time  : "6",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -223,7 +223,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scim-and-identity-provider-example">SCIMとIDプロバイダーの構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POST グループ API</a></li>
+        <a href="/ja/early-access/api/scim-api/post-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-group-api">POSTグループAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api/scim-api/post-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".post-user-api">POSTユーザーAPI</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -332,7 +332,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-log-streaming">ログストリーミング</a>
         <ul class="pl2 bl b--primary bw1 ea-log-streaming desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-log-streaming">コネクターエラーロギング</a></li></ul>
+        <a href="/ja/early-access/log-streaming/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-log-streaming">コネクターエラーログ</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes-improvements">属性の改善</a>
@@ -392,7 +392,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">コネクターエラーロギング</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">コネクターエラーログ</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -400,15 +400,15 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、コネクターアクションのエラーロギングに関するアーリーアクセス実装について説明します。
+      この記事では、コネクターアクションのエラーログについてのアーリーアクセス実装を説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>コネクターエラーロギングはアーリーアクセス中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
-<h2 id="動作方法">動作方法</h2>
-<p>コネクターエラーロギング機能はJSON形式のエラーログを生成し、お好みのログ管理ベンダーに送信します。ベンダーとアラートを構成することで、コネクターの問題を迅速に検出し解決することができ、中断やデータ損失を防ぐのに役立ちます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>コネクターエラーログはアーリーアクセス中であり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
+<h2 id="動作原理">動作原理</h2>
+<p>コネクターエラーログ機能は、JSON形式のエラーログを生成し、お好みのログ管理ベンダーに送信します。ベンダーでアラートを構成することで、コネクターの問題を迅速に検出し解決することができ、中断やデータ損失を防ぐのに役立ちます。</p>
 <h2 id="構成">構成</h2>
 <p>カスタマーサクセスマネージャーに以下の情報を提供してください：</p>
 <ul>
@@ -418,21 +418,22 @@
 <h2 id="宛先コネクター">宛先コネクター</h2>
 <p>以下のコネクターアクションを使用して、コネクターエラーログを送信します：</p>
 <ul>
-<li><a href="/ja/server-side-connectors/aws-firehose-connector/">Amazon Firehose</a> - アクション：ログイベントをデリバリーストリームに送信</li>
-<li><a href="/ja/server-side-connectors/aws-firehose-connector/">Amazon Firehose (Tealium Provided Credentials)</a> - アクション：ログイベントをデリバリーストリームに送信</li>
-<li><a href="/ja/server-side-connectors/amazon-s3-connector/">Amazon S3</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/confluent-kafka-connect-connector/">Confluent Kafka Connect</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/ftp-connector/">File Transfer Protocol (FTP, SFTP, FTPS)</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/google-cloud-storage-connector/">Google Cloud Storage</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/google-cloud-pubsub-connector-service-account/">Google Pub/Sub</a> - アクション：トピックにログイベントを送信</li>
-<li><a href="/ja/server-side-connectors/datadog-connector/">Datadog</a> - アクション：ログイベントを送信</li>
-<li><a href="/ja/server-side-connectors/new-relic-connector/">New Relic</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/microsoft-fabric-eventhouse-connector/">Microsoft Fabric Eventhouse</a> - アクション：ログイベントを送信、アクション：ログイベント全体を送信</li>
-<li><a href="/ja/server-side-connectors/webhook-jdbc/">Webhook JDBC</a> - アクション：ログイベントを送信</li>
+<li><a href="/ja/server-side-connectors/aws-firehose-connector/">Amazon Firehose</a></li>
+<li><a href="/ja/server-side-connectors/aws-firehose-connector/">Amazon Firehose (Tealium Provided Credentials)</a></li>
+<li><a href="/ja/server-side-connectors/amazon-s3-connector/">Amazon S3</a></li>
+<li><a href="/ja/server-side-connectors/confluent-kafka-connect-connector/">Confluent Kafka Connect</a></li>
+<li><a href="/ja/server-side-connectors/datadog-connector/">Datadog</a></li>
+<li><a href="/ja/server-side-connectors/ftp-connector/">File Transfer Protocol (FTP, SFTP, FTPS)</a></li>
+<li><a href="/ja/server-side-connectors/google-bigquery-connector/">Google BigQuery</a></li>
+<li><a href="/ja/server-side-connectors/google-cloud-storage-connector/">Google Cloud Storage</a></li>
+<li><a href="/ja/server-side-connectors/google-cloud-pubsub-connector-service-account/">Google Pub/Sub</a></li>
+<li><a href="/ja/server-side-connectors/microsoft-fabric-eventhouse-connector/">Microsoft Fabric Eventhouse</a></li>
+<li><a href="/ja/server-side-connectors/new-relic-connector/">New Relic</a></li>
+<li><a href="/ja/server-side-connectors/webhook-jdbc/">Webhook JDBC</a></li>
 </ul>
-<p>これらのコネクターはそれぞれ、ベンダーにログストリーミング活動を送信する専用のアクションを持っています。</p>
+<p>これらのコネクターは、ベンダーへのログストリーミング活動を送信するための専用アクションを持っています。</p>
 <h3 id="例示ログ">例示ログ</h3>
-<p>ログエントリのJSONペイロードは以下のようになります：</p>
+<p>ログエントリのJSONペイロードは以下の構造を持っています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;resourceLogs&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
@@ -708,7 +709,133 @@
 </span></span><span style="display:flex;"><span>                },
 </span></span><span style="display:flex;"><span>                {
 </span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;2024-12-03T19:26:44.920978481Z&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;timestamp&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;5be887275efa4ea08137f3ea8b253e59&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;visitorId&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>              ]
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;severityNumber&#34;</span>: <span style="color:#ae81ff">17</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;severityText&#34;</span>: <span style="color:#e6db74">&#34;ERROR&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;attributes&#34;</span>: [
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;webhook&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;connectorType&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;404 Not Found&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;http.0.response.body&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;Error: received non-successful http response status = 404&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.error.0.message&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;e71684df-90e6-4c4d-8cb2-695da67402a0&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;groupId&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;368&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.executionTimeMs&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.error.0.count&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;FAILURE&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.status&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;API Error&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.code.name&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;404&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;http.0.response.statusCode&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.code.id&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;send_events&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;actionType&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;226&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;http.0.executionTimeMs&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;EVENT&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;streamType&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.errorsCount&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;An error occurred communicating with the vendor&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;result.failure.code.description&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
 </span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;2024-12-03T19:26:44.921+0000&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;recordSendDateTime&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;intValue&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;actionsCount&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;LOG_LEVEL_ERROR&#34;</span>
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;dimension&#34;</span>
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;value&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;stringValue&#34;</span>: <span style="color:#e6db74">&#34;2024-12-03T19:26:44.920978481Z&#34;</span>
 </span></span><span style="display:flex;"><span>                  },
 </span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;key&#34;</span>: <span style="color:#e6db74">&#34;timestamp&#34;</span>
 </span></span><span style="display:flex;"><span>                },
@@ -726,268 +853,186 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><pre tabindex="0"><code>{
-  &#34;stringValue&#34;: &#34;2024-12-03T19:26:44.920978952Z&#34;
+</span></span></code></pre></div><p>{
+&ldquo;stringValue&rdquo;: &ldquo;2024-12-03T19:26:44.920978952Z&rdquo;
 },
-&#34;key&#34;: &#34;timestamp&#34;
-},
-{
-  &#34;value&#34;: {
-    &#34;stringValue&#34;: &#34;765dcbbd51e9417e80f76162b656ca65&#34;
-  },
-  &#34;key&#34;: &#34;visitorId&#34;
-}
-]
+&ldquo;key&rdquo;: &ldquo;timestamp&rdquo;
 },
 {
-  &#34;severityNumber&#34;: 17,
-  &#34;severityText&#34;: &#34;ERROR&#34;,
-  &#34;attributes&#34;: [
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;webhook&#34;
-      },
-      &#34;key&#34;: &#34;connectorType&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;404 Not Found&#34;
-      },
-      &#34;key&#34;: &#34;http.0.response.body&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;Error: received non-successful http response status = 404&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.error.0.message&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;e71684df-90e6-4c4d-8cb2-695da67402a0&#34;
-      },
-      &#34;key&#34;: &#34;groupId&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;368&#34;
-      },
-      &#34;key&#34;: &#34;result.executionTimeMs&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;1&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.error.0.count&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;FAILURE&#34;
-      },
-      &#34;key&#34;: &#34;result.status&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;API Error&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.code.name&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;404&#34;
-      },
-      &#34;key&#34;: &#34;http.0.response.statusCode&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;1&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.code.id&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;send_events&#34;
-      },
-      &#34;key&#34;: &#34;actionType&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;226&#34;
-      },
-      &#34;key&#34;: &#34;http.0.executionTimeMs&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;EVENT&#34;
-      },
-      &#34;key&#34;: &#34;streamType&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;1&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.errorsCount&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;An error occurred communicating with the vendor&#34;
-      },
-      &#34;key&#34;: &#34;result.failure.code.description&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;2024-12-03T19:26:44.921+0000&#34;
-      },
-      &#34;key&#34;: &#34;recordSendDateTime&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;intValue&#34;: &#34;1&#34;
-      },
-      &#34;key&#34;: &#34;actionsCount&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;LOG_LEVEL_ERROR&#34;
-      },
-      &#34;key&#34;: &#34;dimension&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;2024-12-03T19:26:44.920978082Z&#34;
-      },
-      &#34;key&#34;: &#34;timestamp&#34;
-    },
-    {
-      &#34;value&#34;: {
-        &#34;stringValue&#34;: &#34;e3213ebd8e444418aed0d41f9eaa0b0f&#34;
-      },
-      &#34;key&#34;: &#34;visitorId&#34;
-    }
-  ]
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;765dcbbd51e9417e80f76162b656ca65&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;visitorId&rdquo;
+}
+]
+},
+{
+&ldquo;severityNumber&rdquo;: 17,
+&ldquo;severityText&rdquo;: &ldquo;ERROR&rdquo;,
+&ldquo;attributes&rdquo;: [
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;webhook&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;connectorType&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;404 Not Found&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;http.0.response.body&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;Error: received non-successful http response status = 404&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.error.0.message&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;e71684df-90e6-4c4d-8cb2-695da67402a0&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;groupId&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;368&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.executionTimeMs&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;1&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.error.0.count&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;FAILURE&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.status&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;API Error&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.code.name&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;404&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;http.0.response.statusCode&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;1&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.code.id&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;send_events&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;actionType&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;226&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;http.0.executionTimeMs&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;EVENT&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;streamType&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;1&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.errorsCount&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;An error occurred communicating with the vendor&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;result.failure.code.description&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;2024-12-03T19:26:44.921+0000&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;recordSendDateTime&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;intValue&rdquo;: &ldquo;1&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;actionsCount&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;LOG_LEVEL_ERROR&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;dimension&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;2024-12-03T19:26:44.920978082Z&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;timestamp&rdquo;
+},
+{
+&ldquo;value&rdquo;: {
+&ldquo;stringValue&rdquo;: &ldquo;e3213ebd8e444418aed0d41f9eaa0b0f&rdquo;
+},
+&ldquo;key&rdquo;: &ldquo;visitorId&rdquo;
 }
 ]
 }
 ]
 }
+]
 }
-</code></pre><h2 id="コネクターログパラメータ">コネクターログパラメータ</h2>
-<p>以下の表は、コネクターエラーログファイルで利用可能なすべてのパラメータをリストしています：</p>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>logger</code></td>
-<td>イベント、エラー、情報を記録するために使用されるロギングユーティリティのインスタンス。</td>
-</tr>
-<tr>
-<td><code>account</code></td>
-<td>送信先コネクタが構成されているアカウント。</td>
-</tr>
-<tr>
-<td><code>profile</code></td>
-<td>送信先コネクタが構成されているプロファイル。</td>
-</tr>
-<tr>
-<td><code>customId</code></td>
-<td>コネクタのアクションID。アクションIDを見つけるには、<strong>コネクタ</strong>テーブルでコネクタをクリックし、アクションをクリックし、最後に<strong>詳細</strong>をクリックします。</td>
-</tr>
-<tr>
-<td><code>severityNumber</code></td>
-<td>ログメッセージの重大度レベル。</td>
-</tr>
-<tr>
-<td><code>severityText</code></td>
-<td>ログイベントの重大度レベルのテキスト説明。</td>
-</tr>
-<tr>
-<td><code>connectorType</code></td>
-<td>コネクタのベンダー名。</td>
-</tr>
-<tr>
-<td><code>groupId</code></td>
-<td>この識別子は、特定のアクションまたはエンティティに関連するログをグループ化するために使用されます。これにより、特定のコネクタアクションまたはコネクタに関連するログを一意に識別し、追跡することができます。</td>
-</tr>
-<tr>
-<td><code>result.executionTimeMs</code></td>
-<td>特定のコネクタアクションの実行にかかった時間（ミリ秒）。この値は、コネクタアクションのパフォーマンスに関する洞察を提供します。</td>
-</tr>
-<tr>
-<td><code>result.status</code></td>
-<td>与えられたコネクタアクションの実行結果を示します。コネクタアクションの最終状態を分類し、「SUCCESS」または「FAILURE」などの値を持つことができます。</td>
-</tr>
-<tr>
-<td><code>result.failure.code.name</code></td>
-<td>コネクタアクションの実行中に遭遇した失敗の性質を説明する特定のエラーコードの名前。このエラーコード名は、コネクタアクションの実行中に発生するエラーの種類を特定し、分類するのに役立つ高レベルの説明を提供します。</td>
-</tr>
-<tr>
-<td><code>result.failure.code.id</code></td>
-<td>コネクタアクションの実行中に遭遇した特定の失敗コードタイプの一意の識別子。この識別子は、異なるタイプのエラーをログ記録および分析するためのより構造化された標準化された方法を提供するために使用されます。</td>
-</tr>
-<tr>
-<td><code>actionType</code></td>
-<td>コネクタの実行中に行われたアクションのタイプ。ログに記録されているアクションの性質を分類し、どのような具体的な操作が行われたかを示します。</td>
-</tr>
-<tr>
-<td><code>streamType</code></td>
-<td>アクションがイベントコネクタアクションか訪問コネクタアクションかを示します。可能な値は <code>EVENT</code> または <code>VISITOR</code> です。</td>
-</tr>
-<tr>
-<td><code>result.failure.errorsCount</code></td>
-<td>失敗に終わったコネクタアクションの実行中に遭遇した個々のエラーの総数。</td>
-</tr>
-<tr>
-<td><code>result.failure.code.description</code></td>
-<td>コネクタアクションの実行中に遭遇した特定のエラーに関連する説明メッセージ。</td>
-</tr>
-<tr>
-<td><code>recordSendDateTime</code></td>
-<td>特定のログレコードが送信または転送された日時。</td>
-</tr>
-<tr>
-<td><code>actionsCount</code></td>
-<td>特定のログイベント中に実行または開始されたアクションの総数。</td>
-</tr>
-<tr>
-<td><code>dimension</code></td>
-<td>ログエントリの特定の側面またはカテゴリを指定するために提出者によって提供される文字列値。dimensionフィールドは一般的に技術的な目的で使用され、メッセージをログの送信先に送る前にエージェントによって記入されます。</td>
-</tr>
-<tr>
-<td><code>timestamp</code></td>
-<td>ログイベントが発生した時間。</td>
-</tr>
-<tr>
-<td><code>visitorId</code></td>
-<td>ログされたアクションを実行した訪問の <code>tealium_visitor_id</code>。バッチアクションおよびコネクタの場合、バッチからの訪問IDが1つだけ参照されます。</td>
-</tr>
-<tr>
-<td><code>http.0.response.body</code></td>
-<td>リクエストから受け取ったHTTPレスポンスの本体。</td>
-</tr>
-<tr>
-<td><code>result.failure.error.0.message</code></td>
-<td>Tealiumのシステム内でアクションの実行中に遭遇した特定の失敗を説明するエラーメッセージ。このフィールドは、発生したエラーに関する詳細を特にキャプチャし、問題の診断と対処に役立つ説明を提供します。</td>
-</tr>
-<tr>
-<td><code>http.0.response.statusCode</code></td>
-<td>コネクタアクションの一環として行われたHTTPリクエストから受け取ったレスポンスのHTTPステータスコード。たとえば、成功したリクエストの場合は <code>200</code>、&ldquo;Not Found&quot;エラーの場合は <code>404</code>、内部サーバーエラーの場合は <code>500</code> です。</td>
-</tr>
-<tr>
-<td><code>http.0.executionTimeMs</code></td>
-<td>コネクタアクション中にHTTPリクエストが実行され、レスポンスを受け取るのにかかった時間（ミリ秒）。</td>
-</tr>
-<tr>
-<td><code>result.failure.error.0.count</code></td>
-<td>コネクタアクションの実行中に発生した特定のエラータイプの回数。</td>
-</tr>
-</tbody>
-</table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>パラメータ名に含まれる数字（例：<code>http.0.executionTimeMs</code>）は、コネクタへのHTTP呼び出しのシーケンスをゼロから始めて表します。複数のHTTP呼び出しが発生する場合、各リクエストで数字が増加し、ログ内の異なる呼び出しからのパラメータを区別します。たとえば、<code>http.0.executionTimeMs</code>は最初の呼び出し、<code>http.1.executionTimeMs</code>は2回目の呼び出し、<code>http.2.executionTimeMs</code>は3回目の呼び出しに対応します。</p>
+]
+}</p>
+<pre tabindex="0"><code>## コネクターログパラメータ
 
+以下の表は、コネクターエラーログファイルで利用可能なすべてのパラメータをリストしています：
+
+| パラメータ | 説明 |
+| ---- |---- |
+| `logger` | イベント、エラー、情報を記録するために使用されるロギングユーティリティのインスタンス。 |
+| `account` | 送信先コネクタが構成されているアカウント。 |
+| `profile` | 送信先コネクタが構成されているプロファイル。 |
+| `customId` | コネクタのアクションID。アクションIDを見つけるには、**コネクタ**テーブルでコネクタをクリックし、次にアクションをクリックし、最後に**詳細**をクリックします。 |
+| `severityNumber` | ログメッセージの重大度レベル。|
+| `severityText` | ログイベントの重大度レベルのテキスト説明。 |
+| `connectorType` | コネクタのベンダー名。 |
+| `groupId` | この識別子は、特定のアクションまたはエンティティに関連するログをまとめるために使用されます。これにより、特定のコネクタアクションまたはコネクタに関連するログを一意に識別し、追跡することができます。 |
+| `result.executionTimeMs`  | 特定のコネクタアクションの実行にかかった時間（ミリ秒）。この値は、コネクタアクションのパフォーマンスに関する洞察を提供します。 |
+| `result.status` | 与えられたコネクタアクションの実行結果を示します。コネクタアクションの最終状態を分類し、「SUCCESS」または「FAILURE」などの値を持つことができます。 |
+| `result.failure.code.name` | コネクタアクションの実行中に遭遇した失敗の性質を説明する特定のエラーコードの名前。このエラーコード名は、問題の概要を提供し、コネクタアクションの実行中に発生するエラーの種類を特定し、分類するのに役立ちます。 |
+| `result.failure.code.id` | コネクタアクションの実行中に遭遇した特定の失敗コードタイプの一意の識別子。この識別子は、異なるタイプのエラーをログ記録および分析するためのより構造化された標準化された方法を提供するために使用されます。 |
+| `actionType` | コネクタの実行中に行われたアクションのタイプ。ログに記録されているアクションの性質を分類し、どのような具体的な操作が行われたかを示します。 |
+| `streamType` | アクションがイベントコネクタアクションか訪問コネクタアクションかを示します。可能な値は `EVENT` または `VISITOR` です。 |
+| `result.failure.errorsCount` | 失敗に終わったコネクタアクションの実行中に遭遇した個々のエラーの総数。 |
+| `result.failure.code.description`  | コネクタアクションの実行中に遭遇した特定のエラーに関連する説明メッセージ。 |
+| `recordSendDateTime`  | 特定のログレコードが送信または伝送された日時。 |
+| `actionsCount`  | 特定のログイベント中に実行または開始されたアクションの総数。 |
+| `dimension`  | ログエントリの特定の側面またはカテゴリを指定するために提出者によって提供される文字列値。dimensionフィールドは一般的に技術的な目的で使用され、エージェントによってログの送信先にメッセージを送る前に記入されます。 |
+| `timestamp`  | ログイベントが発生した時間。 |
+| `visitorId`  | ログされたアクションを実行した訪問の `tealium_visitor_id`。バッチアクションおよびコネクタの場合、バッチからの訪問IDが1つだけ参照されます。 |
+| `http.0.response.body` | リクエストから受け取ったHTTPレスポンスの本文。 |
+| `result.failure.error.0.message`| Tealiumのシステム内でアクションの実行中に遭遇した特定の失敗を説明するエラーメッセージ。このフィールドは、発生したエラーに関する詳細を特にキャプチャし、問題の診断と対処に役立つ説明を提供します。 |
+| `http.0.response.statusCode`  | コネクタアクションの一環として行われたHTTPリクエストから受け取ったレスポンスのHTTPステータスコード。たとえば、成功したリクエストの場合は `200`、&#34;Not Found&#34;エラーの場合は `404`、内部サーバーエラーの場合は `500` です。 |
+| `http.0.executionTimeMs` | コネクタアクション中にHTTPリクエストが実行され、レスポンスを受け取るのにかかった時間（ミリ秒単位）。 |
+| `result.failure.error.0.count` | コネクタアクションの実行中に発生した特定のエラータイプの回数。 |
+
+&lt;p class=&#34;note&#34;&gt;&lt;i class=&#34;fa fa-exclamation-triangle&#34;&gt;&lt;/i&gt;パラメータ名に含まれる数字（例：&lt;code&gt;http.0.executionTimeMs&lt;/code&gt;）は、コネクタへのHTTP呼び出しのシーケンスをゼロから始めて表します。複数のHTTP呼び出しが発生する場合、各リクエストで数字が増加し、ログ内の異なる呼び出しからのパラメータを区別します。たとえば、&lt;code&gt;http.0.executionTimeMs&lt;/code&gt;は最初の呼び出し、&lt;code&gt;http.1.executionTimeMs&lt;/code&gt;は2回目の呼び出し、&lt;code&gt;http.2.executionTimeMs&lt;/code&gt;は3回目の呼び出しに対応します。&lt;/p&gt;
+</code></pre>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"></div>
@@ -1017,7 +1062,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月22日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1031,11 +1076,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9B%E5%85%88%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">宛先コネクター</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B%E7%A4%BA%E3%83%AD%E3%82%B0" href="javascript:void(0)">例示ログ</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC%E3%83%AD%E3%82%B0%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">コネクターログパラメータ</a></li>
               </nav>
   </aside></nav>
 

@@ -896,7 +896,7 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX (Deprecated)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
@@ -1449,7 +1449,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+        <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector-deprecated">Yahoo DataX (Deprecated)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1501,10 +1501,10 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The Trade Desk (TTD) Real-Time Conversion Events server-side connector enables seamless integration of your conversion event data from Tealium into your TTD instance to track attribution and assist in retargeting.</p>
+<p>The Trade Desk (TTD) Real-Time Conversion Events server-side connector sends conversion event data from Tealium into your TTD instance to track attribution and assist in retargeting.</p>
 <p>Enhance this connector with other integrations from the Tealium and The Trade Desk partnership. Use the Unified ID 2.0 (UID2) or European Unified ID (EUID) Function to generate and assign universal user identifiers before sending the event data. Optionally, implement the TTD Universal Pixel in Tealium iQ Tag Management to capture a comprehensive view of the user’s behavior in real time.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>We strongly recommend working with your assigned TTD representative to ensure that all necessary parameters have been generated and are available.</p>
-<h2 id="api-information">API Information</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Work with your assigned TTD representative to ensure that all necessary parameters have been generated and are available.</p>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: The Trade Desk API</li>
@@ -1512,25 +1512,8 @@
 <li>API Endpoint: <code>https://insight.adsrvr.org</code></li>
 <li>Documentation: <a href="https://partner.thetradedesk.com/v3/portal/data/doc/DataConversionEventsApi">The Trade Desk API</a></li>
 </ul>
-<h2 id="actions">Actions</h2>
-<table>
-<thead>
-<tr>
-<th>Action name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Send Conversion Event</td>
-<td>✗</td>
-<td>✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>The Trade Desk Real-Time Conversion connector supports Event Mapping and URL Mapping tracking. When configuring the connector, set the following parameters depending on your approach:</p>
 <ul>
 <li><strong>URL Mapping</strong> - In this approach, the URL of the page visited by the user is assigned within TTD platform as the basis for retargeting and conversion measurement.
@@ -1559,8 +1542,25 @@ Required, if <strong>Pixel ID</strong> is not provided. The platform ID of the e
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If you provide an <strong>Advertiser ID</strong> and not a <strong>Universal Pixel ID</strong>, the connector request returns an error.
 We also recommend that you avoid populating every parameter in the <strong>Configuration Window</strong> and provide only values for the chosen approach. For example, you should not provide both an <strong>Advertiser ID</strong> and a <strong>Merchant ID</strong>. Instead, enter only the configuration setting required by the tracking methodology.</p>
-<h2 id="actions-1">Actions</h2>
-<p>The following section lists the supported parameters for each action.</p>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Conversion Event</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-conversion-event">Send Conversion Event</h3>
 <p>Ensure that the event has been appropriately defined within your TTD instance or you may encounter 402 errors from TTD.</p>
 <h4 id="parameters">Parameters</h4>
@@ -1590,6 +1590,10 @@ We also recommend that you avoid populating every parameter in the <strong>Confi
 <tr>
 <td>UID2</td>
 <td>The user&rsquo;s Unified ID 2.0 as a 44-character base64-encoded SHA-256 string. For more information, see <a href="/server-side/functions/event-visitor-functions/uid2/">Generate a UID2 with a visitor function</a> and <a href="https://api.thetradedesk.com/v3/portal/data/doc/UnifiedIDs">TTD: Unified IDs</a>.</td>
+</tr>
+<tr>
+<td>UID2 Token (encrypted advertising token)</td>
+<td>The encrypted UID2 advertising token. This token is case-sensitive.</td>
 </tr>
 <tr>
 <td>EUID</td>
@@ -1668,23 +1672,23 @@ We also recommend that you avoid populating every parameter in the <strong>Confi
 </thead>
 <tbody>
 <tr>
-<td><code>Item Code</code></td>
+<td>Item Code</td>
 <td>(Required) The item identifier, such as SKU numbers.</td>
 </tr>
 <tr>
-<td><code>name</code></td>
+<td>Name (<code>name</code>)</td>
 <td>The name associated with the item code.</td>
 </tr>
 <tr>
-<td><code>qty</code></td>
+<td>Quantity (<code>qty</code>)</td>
 <td>The number of items in the order for the item code.</td>
 </tr>
 <tr>
-<td><code>price</code></td>
+<td>Price (<code>price</code>)</td>
 <td>The unit price of the item.</td>
 </tr>
 <tr>
-<td><code>cat</code></td>
+<td>Category (<code>cat</code>)</td>
 <td>The item category ID. Note: The Real-Time Conversion Events API uses the provided value in all cases except when a merchant has a product catalog with the specified item code in it, but with a different category ID. In this case, the product catalog category ID is used.</td>
 </tr>
 </tbody>
@@ -1775,7 +1779,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 14, 2025 
+          <p>This page was last updated:  March 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1790,8 +1794,7 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>

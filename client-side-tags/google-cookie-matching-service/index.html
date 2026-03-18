@@ -632,6 +632,9 @@
       <a href="/client-side-tags/linkshare-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>LinkShare</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/client-side-tags/liveclicker-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Liveclicker</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/client-side-tags/liveintent-tag/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>LiveIntent</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1474,6 +1477,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/linkshare-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkshare-tag-basic-configuration">LinkShare</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/liveclicker-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".liveclicker-tag">Liveclicker</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/liveintent-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".liveintent-tag">LiveIntent</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/liveperson-liveengage-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".liveperson-liveengage-20-tag-setup-guide">LivePerson LiveEngage 2.0</a></li>
@@ -1660,7 +1665,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/schema-app-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".schema-app-tag">Schema App</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/selligent-target-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".selligent--target tag">Selligent Target</a></li>
+        <a href="/client-side-tags/selligent-target-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".selligent-target-tag">Selligent Target</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/selligent-webtracker-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".selligent-webtracker-tag">Selligent Webtracker</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1841,12 +1846,12 @@
 <ul>
 <li>Use mappings to override the standard configuration.</li>
 <li>If left blank, the Tealium account and Tealium profile are automatically populated.</li>
-<li>In allowed regions, sends the following server-side attribute back to Tealium: <code>google_gid</code>.</li>
-<li>For more information, see the <a href="https://developers.google.com/ad-exchange/rtb/cookie-guide">Google Cookie Matching</a> documentation.</li>
+<li>In allowed regions, this tag sends the server-side attribute <code>google_gid</code> back to Tealium.</li>
 <li>Use <a href="/consent/client-side/consent-management/about/">consent management</a> or your CMP integration to ensure that the tag runs only when the visitor has granted consent for Advertising or equivalent categories.</li>
 <li>Map <code>process_consent</code> to the value <code>T</code> only when consent has been obtained.</li>
-<li>You may still pass <code>gdpr=1</code> and <code>gdpr_consent</code> for record-keeping, but Google ignores these settings for the Tealium <code>google_nid</code> since Tealium is not a GVL vendor.</li>
+<li>If you do not follow the IAB Transparency and Consent Framework (TCF) and are mapping <code>process_consent</code>, you must omit <code>gdpr</code> and <code>gdpr_consent</code> because Google ignores <code>process_consent</code> when those parameters are present. For more information, see <a href="https://developers.google.com/authorized-buyers/rtb/cookie-guide#match-tag-url-parameters">Google: Match Tag URL Parameters</a>.</li>
 </ul>
+<p>For more information, see the <a href="https://developers.google.com/ad-exchange/rtb/cookie-guide">Google Cookie Matching</a> documentation.</p>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>Go to the tag marketplace to add a new tag. For more information about how to add a tag, see <a href="/iq-tag-management/tags/manage/">Manage tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
@@ -1891,7 +1896,7 @@
 </tr>
 <tr>
 <td><code>process_consent</code></td>
-<td>If you are not using a consent management platform with IAB support, map this parameter to the value <code>T</code> only if the end user has given consent.</td>
+<td>Indicates that consent has been obtained from the end user. Map to <code>T</code> when the end user has given consent. If you do not follow the IAB Transparency and Consent Framework (TCF), do not include <code>gdpr</code> or <code>gdpr_consent</code>, because Google ignores <code>process_consent</code> when those parameters are present. For more information, see <a href="https://developers.google.com/authorized-buyers/rtb/cookie-guide#match-tag-url-parameters">Google: Match Tag URL Parameters</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1955,7 +1960,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  March 13, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

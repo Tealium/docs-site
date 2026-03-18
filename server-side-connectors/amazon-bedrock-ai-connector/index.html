@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side-connectors/amazon-bedrock-ai-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to set up the Amazon Bedrock AI connector." />
+<meta property="og:description" content="Set up the Amazon Bedrock AI connector to send Tealium event and visitor data to foundation models, managed prompts, or multi-step Bedrock workflows for real-time enrichment." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Amazon Bedrock AI Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "16",
+        reading_time  : "17",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -896,7 +896,7 @@
       <a href="/server-side-connectors/yahoo-datax-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX v2</span></a>
+      <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo DataX (Deprecated)</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Yahoo Pixel API</span></a>
@@ -1449,7 +1449,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/yahoo-datax-v2-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-v2-connector">Yahoo DataX v2</a></li>
+        <a href="/server-side-connectors/yahoo-datax-connector-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector-deprecated">Yahoo DataX (Deprecated)</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-pixel-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-pixel-api-connector">Yahoo Pixel API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1494,7 +1494,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to set up the Amazon Bedrock AI connector.
+      Set up the Amazon Bedrock AI connector to send Tealium event and visitor data to foundation models, managed prompts, or multi-step Bedrock workflows for real-time enrichment.
     </p>
   
 </div>
@@ -1604,7 +1604,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Send Data to Bedrock AI Flow" title="Send Data to Bedrock AI Flow">
+<div class="tab-pane" data-lang="Send Data to Bedrock AI Workflow" title="Send Data to Bedrock AI Workflow">
   <p>If you are using Lambda:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -1648,19 +1648,12 @@
 
 <p>To enter and attach the policies:</p>
 <ol>
-<li>In the AWS console, go to <strong>IAM &gt; Policies</strong>.</li>
-<li>Click <strong>Create policy</strong>.</li>
-<li>In the policy editor, select the <strong>JSON</strong> tab.</li>
-<li>Paste the policy for your connector action into the editor.</li>
-<li>Resolve any validation warnings, then click <strong>Next</strong>.</li>
-<li>Give it a policy name (for example, <code>TealiumCustomAccessPolicy</code>) and optional description.</li>
-<li>Click <strong>Create policy</strong>.</li>
-<li>Go to <strong>Roles</strong>.</li>
-<li>Click the role name you want to modify.</li>
-<li>On the <strong>Permissions</strong> tab, click <strong>Add permissions &gt; Attach policies</strong></li>
-<li>In the search box, enter the name of your new custom policy.</li>
-<li>Select the box next to that policy.</li>
-<li>Click <strong>Attach policies</strong>.</li>
+<li>In the AWS console, go to <strong>IAM &gt; Policies</strong> and click <strong>Create policy</strong>.</li>
+<li>In the policy editor, select the <strong>JSON</strong> tab, paste the policy for your connector action, resolve any validation warnings, and click <strong>Next</strong>.</li>
+<li>Enter a policy name (for example, <code>TealiumCustomAccessPolicy</code>) and optional description, then click <strong>Create policy</strong>.</li>
+<li>Go to <strong>IAM &gt; Roles</strong> and select the role you want to modify.</li>
+<li>On the <strong>Permissions</strong> tab, click <strong>Add permissions &gt; Attach policies</strong>.</li>
+<li>Search for your custom policy, select it, and click <strong>Attach policies</strong>.</li>
 </ol>
 <h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
@@ -1907,8 +1900,6 @@ Pay particular attention to the value of {{last_product_viewed}}.
 <th>Action Name</th>
 <th>AudienceStream</th>
 <th>EventStream</th>
-<th>Response Method</th>
-<th>Best For</th>
 </tr>
 </thead>
 <tbody>
@@ -1916,27 +1907,21 @@ Pay particular attention to the value of {{last_product_viewed}}.
 <td>Send Prompt to Bedrock AI Model</td>
 <td>✓</td>
 <td>✓</td>
-<td>Synchronous through connector</td>
-<td>Simple, single-model calls</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Managed Prompt</td>
 <td>✓</td>
 <td>✓</td>
-<td>Synchronous through connector</td>
-<td>Reusable prompts, versioning</td>
 </tr>
 <tr>
 <td>Send Data to Bedrock AI Workflow</td>
 <td>✓</td>
 <td>✓</td>
-<td>Asynchronous through Lambda</td>
-<td>Multi-step orchestration, KB retrieval</td>
 </tr>
 </tbody>
 </table>
-<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-prompt-to-bedrock-ai-model">Send Prompt to Bedrock AI Model</h3>
+<p>Use <strong>Send Prompt to Bedrock AI Model</strong> when you need a simple, single-model call that returns a response synchronously through the connector.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1948,7 +1933,7 @@ Pay particular attention to the value of {{last_product_viewed}}.
 <tbody>
 <tr>
 <td>Model ID or Inference Profile ARN</td>
-<td>Select the Amazon Bedrock model or enter an inference profile ARN to use for generating the AI response.</td>
+<td>Select an Amazon Bedrock model to use on-demand inference, or manually enter a Provisioned Throughput model ARN or inference profile ARN.<br>Only models that support on-demand inference and text input/output are shown.<br>If the model you want does not appear, verify that the model is enabled in your AWS account and region and that it supports on-demand inference.<br><br><br>If using Provisioned Throughput, enter the full model ARN (for example: <code>arn:aws:bedrock:region:account-id:provisioned-model/...</code>).<br>Inference profile ARNs may also be used if configured in your AWS account.<br>Model availability and supported inference types are determined by your AWS account permissions and region configuration.</td>
 </tr>
 <tr>
 <td>Prompt Parameters</td>
@@ -1976,7 +1961,36 @@ Pay particular attention to the value of {{last_product_viewed}}.
 </tr>
 </tbody>
 </table>
+<h4 id="inference-parameters">Inference Parameters</h4>
+<p>For more information, see <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_InferenceConfiguration.html">Amazon Bedrock API Reference: InferenceConfiguration</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxTokens</code></td>
+<td>Maximum number of tokens the model may generate in its response. Lower values produce shorter outputs and help reduce latency, cost, and throttling risk.</td>
+</tr>
+<tr>
+<td><code>temperature</code></td>
+<td>Controls randomness in the output. Lower values (such as <code>0.2</code>) make responses more deterministic and higher values (such as <code>0.8</code>) produce more creative and varied results.</td>
+</tr>
+<tr>
+<td><code>topP</code></td>
+<td>Nucleus sampling parameter that limits token selection to the smallest set whose cumulative probability exceeds this value. Lower values make output more focused; higher values allow more diversity.</td>
+</tr>
+<tr>
+<td><code>stopSequences</code></td>
+<td>One or more strings that cause the model to stop generating when encountered. Useful for truncating responses or enforcing structured output boundaries.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="send-data-to-bedrock-ai-managed-prompt">Send Data to Bedrock AI Managed Prompt</h3>
+<p>Use <strong>Send Data to Bedrock AI Managed Prompt</strong> when you want a reusable, versioned call to a prompt that returns a response synchronously through the connector.</p>
 <table>
 <thead>
 <tr>
@@ -2011,7 +2025,8 @@ Pay particular attention to the value of {{last_product_viewed}}.
 </tr>
 </tbody>
 </table>
-<h3 id="send-data-to-bedrock-ai-flow">Send Data to Bedrock AI Flow</h3>
+<h3 id="send-data-to-bedrock-ai-workflow">Send Data to Bedrock AI Workflow</h3>
+<p>Use <strong>Send Data to Bedrock AI Workflow</strong> when you need multi-step orchestration or knowledge base retrieval that runs asynchronously through Lambda.</p>
 <table>
 <thead>
 <tr>
@@ -2153,7 +2168,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 24, 2026 
+          <p>This page was last updated:  March 18, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2184,7 +2199,7 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-prompt-to-bedrock-ai-model" href="javascript:void(0)">Send Prompt to Bedrock AI Model</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-managed-prompt" href="javascript:void(0)">Send Data to Bedrock AI Managed Prompt</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-flow" href="javascript:void(0)">Send Data to Bedrock AI Flow</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-data-to-bedrock-ai-workflow" href="javascript:void(0)">Send Data to Bedrock AI Workflow</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-errors-and-troubleshooting" href="javascript:void(0)">Common errors and troubleshooting</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-aws-error-codes" href="javascript:void(0)">Common AWS error codes:</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-errors-from-bedrock-api-calls" href="javascript:void(0)">Common errors from Bedrock API calls</a></li>

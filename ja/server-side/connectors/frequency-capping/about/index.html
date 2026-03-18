@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="アクションの頻度制限と優先順位付け" />
+    <meta property="og:title" content="アクションの頻度制限と優先順位" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/connectors/frequency-capping/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、AudienceStreamでアクションのトリガーを制御し優先するためのアクション頻度制限と優先順位付け機能の使用方法について説明します。" />
+<meta property="og:description" content="この記事では、アクションのトリガー時期と優先アクションの制御方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>アクションの頻度制限と優先順位付け | 頻度制限 | Tealiumドキュメント</title>
+    <title>アクションの頻度制限と優先順位 | 頻度制限 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -1042,7 +1042,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">アクションの頻度制限と優先順位付け</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">アクションの頻度制限と優先順位</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1050,41 +1050,55 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、AudienceStreamでアクションのトリガーを制御し優先するためのアクション頻度制限と優先順位付け機能の使用方法について説明します。
+      この記事では、アクションのトリガー時期と優先アクションの制御方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="仕組み">仕組み</h2>
-<p>デフォルトでは、AudienceStreamのアクションはその条件が満たされるとすぐに発火します。コネクタの選択により、ユーザーがオーディエンスに参加したり、オーディエンスから離れたり、訪問の開始または終了時にオーディエンスにいるときに構成されたアクションが発火します。</p>
-<p>以下のオプションにより、コネクタのタイミングを制御することができます。</p>
-<h2 id="アクションの頻度制限">アクションの頻度制限</h2>
-<p>アクションがあまりにも近い間隔でトリガーされるのを防ぐために、どのアクションを相対的にトリガーするかを優先し、最も重要なアクションがまだトリガーされることを確認することができます。</p>
+  <h2 id="動作原理">動作原理</h2>
+<p>デフォルトでは、アクションはその条件が真と評価されるとすぐにトリガーされます。コネクタの構成によっては、ユーザーがオーディエンスに参加または離脱したとき、または訪問の開始または終了時にオーディエンス内にいるときにアクションがトリガーされることがあります。</p>
+<p>頻度制限は、アクションがトリガーされる頻度を制御するのに役立ちます。アクションが頻繁にトリガーされるのを防ぐために使用します。複数のアクションが同時に条件を満たす場合、優先順位付けにより、最も重要なアクションのみがトリガーされます。</p>
+<p>頻度制限は、オーディエンスベースのコネクタアクションにのみ利用可能です。イベントのみのアクションには適用されません。</p>
 <h2 id="優先順位付け">優先順位付け</h2>
-<p>AudienceStreamは、個々のアクションがすぐにトリガーされるのを防ぐための遅延構成のオプションを別途提供しています。遅延をクールダウンと組み合わせて構成することもできます。</p>
-<p>指定された最高の優先順位の数が最高の優先順位となります。例えば、<code>2</code>の優先順位は<code>1</code>の優先順位よりも高いです。すべての非制限アクションは遅延なしで独立してトリガーされ、クールダウンの影響を受けません。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>同じクールダウングループ内の2つのアクションが同じ優先順位を持っている場合、そのうちの1つだけがトリガーされます。両方のアクションをトリガーする必要がある場合は、別々のクールダウングループを使用してください。</p>
-<h2 id="頻度制限とクールダウン">頻度制限とクールダウン</h2>
-<p>訪問が多数のアクション（例えば、メール）に該当する場合、特定の時間内のアクションの頻度を制限し、どのアクションをトリガーし、どのアクションを無視するかを決定することで、トリガーを制御することができます。これによりスパムを避けることができます。</p>
-<p>クールダウンは、アクションが<strong>頻度制限</strong>に構成され、コネクタの構成にアクションの優先順位番号が割り当てられている場合にのみ適用されます。アクションの優先順位番号は、同じクールダウン内で複数のアクションが同時に満たされた場合に、どのアクションをトリガーするかを決定します。</p>
-<h2 id="頻度制限オン">頻度制限オン</h2>
-<p><strong>頻度制限</strong>が<strong>オン</strong>に切り替えられると、クールダウングループ内の最高優先順位のアクションがトリガーされます。同じクールダウングループ内の他のアクションは、クールダウン期間中はトリガーされず、クールダウン期間が終了しても自動的にはトリガーされません。</p>
-<h2 id="頻度制限オフ">頻度制限オフ</h2>
-<p>アクションはクールダウンの対象とならず、トリガー条件/イベントが発生したときにトリガーされます。</p>
-<h2 id="ワークフロー">ワークフロー</h2>
-<p>以下の手順は、頻度制限と優先順位付けのワークフローをまとめたものです：</p>
+<p>頻度制限が構成されたアクションに優先順位番号を割り当て、オプションで遅延を構成します。</p>
+<p>優先順位番号が最も高いアクションが最初に実行されます。例えば、優先順位が <code>2</code> の場合は、優先順位が <code>1</code> よりも高いです。</p>
+<p>頻度制限が有効になっていないアクションは独立してトリガーされ、クールダウングループの影響を受けません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>同じクールダウングループ内の2つのアクションが同じ優先順位を持つ場合、1つのアクションのみがトリガーされます。両方のアクションをトリガーする必要がある場合は、異なるクールダウングループに割り当ててください。</p>
+<h2 id="頻度制限付きのクールダウン">頻度制限付きのクールダウン</h2>
+<p>クールダウングループは、同じグループ内のアクションがトリガーされる頻度を制限します。</p>
+<p>訪問が同じクールダウングループ内の複数のアクションの条件を満たす場合、システムはそれらの優先順位番号を比較し、最も優先度の高い適格なアクションをトリガーします。選択されたアクションがトリガーされると、そのグループのクールダウン期間が始まります。</p>
+<p>クールダウン期間中、同じクールダウングループ内の他の頻度制限付きアクションは抑制されます。抑制されたアクションは、クールダウンが終了したときに実行待ち行列に入れられることはありません。クールダウン期間が終了した後、その条件が再び真と評価された場合にのみトリガーされます。</p>
+<p>頻度制限が無効の場合、アクションはクールダウンの動作に参加せず、その条件が真と評価されるたびにトリガーされます。</p>
+<h2 id="アクションの評価方法">アクションの評価方法</h2>
+<p>次の図は、頻度制限と優先順位付けを有効にした場合のアクションの評価方法を示しています。</p>
+<figure><a class="slb" href="/images/server-side/connectors/frequency-capping/action-priority-workflow.png"><img src="/images/server-side/connectors/frequency-capping/action-priority-workflow.png"
+         alt="頻度制限と優先順位付けのワークフロー"
+         title="頻度制限と優先順位付けのワークフロー"/>
+    </a>
+</figure>
+<p>ワークフローは以下の通りです：</p>
 <ol>
-<li>AudienceStreamは、クールダウングループ内のすべてのアクションの条件を評価します。</li>
-<li>アクションの条件が1つだけ真である場合、AudienceStreamはそのアクションを即座にトリガーします。</li>
-<li>複数の条件が同時に真である場合、AudienceStreamはそれらのアクションの優先順位を評価し、最高優先順位のアクションのみをトリガーします。</li>
-<li>グループに構成されたクールダウン時間中、そのグループ内のアクションはトリガーされません。</li>
-<li>頻度制限が進行中の場合、非制限アクションはクールダウンの影響を受けず、スロットリングされることなく独立してトリガーされます。</li>
-<li>アクションに遅延が構成されている場合、その遅延は尊重されます。</li>
-<li>遅延アクションがトリガーされた後にクールダウンが開始されます。例えば、アクションに2時間の遅延が構成されている場合、遅延後までトリガーされません。</li>
-<li>高優先順位のアクションが構成された遅延時間を満たす前にトリガーされる場合、クールダウンが発生し、遅延アクションは抑制されます。</li>
-<li>クールダウンが終了すると、AudienceStreamは条件を再評価し、ステップ2から再開します。</li>
+<li>システムはクールダウングループ内のすべてのアクションの条件を評価します。</li>
+<li>1つのアクション条件のみが真である場合、そのアクションがトリガーされます。</li>
+<li>複数のアクションが同時に条件を満たす場合、システムはそれらの優先順位番号を評価し、最も優先度の高いアクションを選択します。</li>
+<li>選択されたアクションに遅延が構成されている場合、システムは遅延期間を待ちます。</li>
+<li>遅延期間が経過すると、アクションがトリガーされ、訪問はそのグループのクールダウン期間に入ります。</li>
+<li>構成された遅延が経過する前に優先度の高いアクションがトリガーされると、クールダウンが発生し、遅延されたアクションが抑制されます。</li>
+<li>クールダウン期間中、同じグループ内の他の頻度制限付きアクションは抑制されます。</li>
+<li>頻度制限が進行中の場合、非キャップアクションはクールダウンの影響を受けずに独立してトリガーされます。</li>
+<li>クールダウンが経過すると、システムは訪問の条件を再評価し、ステップ2から再開します。</li>
 </ol>
+<h2 id="クールダウン中のアクションまたはコネクタの無効化">クールダウン中のアクションまたはコネクタの無効化</h2>
+<p>クールダウンは、各クールダウングループについて訪問レベルで追跡されます。</p>
+<p>訪問がクールダウン期間に入り、クールダウンをトリガーしたアクションまたはコネクタが後で無効にされた場合でも、クールダウンは期間が経過するまで続きます。</p>
+<p>クールダウン期間中：</p>
+<ul>
+<li>同じクールダウングループ内の他の頻度制限付きアクションは抑制されたままです。</li>
+<li>異なるクールダウングループのアクションは影響を受けません。</li>
+<li>頻度制限がないアクションは通常どおりトリガーされ続けます。</li>
+</ul>
+<p>クールダウンが経過すると、システムは現在のアクション構成に対して訪問を再評価します。</p>
 
 </div>
 
@@ -1130,7 +1144,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年August月20日
+          <p>最終更新日 ::  2026年March月18日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1144,13 +1158,11 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%A0%BB%E5%BA%A6%E5%88%B6%E9%99%90" href="javascript:void(0)">アクションの頻度制限</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%84%AA%E5%85%88%E9%A0%86%E4%BD%8D%E4%BB%98%E3%81%91" href="javascript:void(0)">優先順位付け</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6%E5%88%B6%E9%99%90%E3%81%A8%E3%82%AF%E3%83%BC%E3%83%AB%E3%83%80%E3%82%A6%E3%83%B3" href="javascript:void(0)">頻度制限とクールダウン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6%E5%88%B6%E9%99%90%E3%82%AA%E3%83%B3" href="javascript:void(0)">頻度制限オン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6%E5%88%B6%E9%99%90%E3%82%AA%E3%83%95" href="javascript:void(0)">頻度制限オフ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">ワークフロー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A0%BB%E5%BA%A6%E5%88%B6%E9%99%90%E4%BB%98%E3%81%8D%E3%81%AE%E3%82%AF%E3%83%BC%E3%83%AB%E3%83%80%E3%82%A6%E3%83%B3" href="javascript:void(0)">頻度制限付きのクールダウン</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%A9%95%E4%BE%A1%E6%96%B9%E6%B3%95" href="javascript:void(0)">アクションの評価方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%BC%E3%83%AB%E3%83%80%E3%82%A6%E3%83%B3%E4%B8%AD%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%BE%E3%81%9F%E3%81%AF%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E7%84%A1%E5%8A%B9%E5%8C%96" href="javascript:void(0)">クールダウン中のアクションまたはコネクタの無効化</a></li>
               </nav>
   </aside></nav>
 
