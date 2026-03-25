@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Nextdoor Connector Setup Guide" />
+    <meta property="og:title" content="Nextdoor Conversions Connector Setup Guide" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side-connectors/nextdoor-connector/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to set up the Nextdoor connector." />
+<meta property="og:description" content="This article describes how to set up the Nextdoor Conversions connector." />
 <meta property="og:site_name" content="Tealium Docs" />
-    <title>Nextdoor Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Nextdoor Conversions Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -641,7 +641,7 @@
       <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>New Relic Mobile Crash Tracking</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/nextdoor-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nextdoor</span></a>
+      <a href="/server-side-connectors/nextdoor-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nextdoor Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/nine-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Nine Audience Match</span></a>
@@ -937,7 +937,6 @@
   </ul>
   <ul class="list pa0" data-nav-section="server-side-connectors">
     <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">
-        
         <a href="/server-side-connectors/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Server-Side Connectors</span></a>
         </li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1279,7 +1278,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a></li>
     <li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/nextdoor-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".nextdoor-connector">Nextdoor</a></li>
+        <a href="/server-side-connectors/nextdoor-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".nextdoor-connector">Nextdoor Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/nine-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nine-audience-match-connector">Nine Audience Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1486,7 +1485,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Nextdoor Connector Setup Guide</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Nextdoor Conversions Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1494,7 +1493,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to set up the Nextdoor connector.
+      This article describes how to set up the Nextdoor Conversions connector.
     </p>
   
 </div>
@@ -1553,7 +1552,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="conversion-event-parameters">Conversion Event Parameters</h4>
+<h4 id="conversion-event">Conversion Event</h4>
 <table>
 <thead>
 <tr>
@@ -1568,7 +1567,7 @@
 </tr>
 <tr>
 <td>Data Source ID</td>
-<td>Nextdoor Ads Manager data source ID. <strong>Data Source ID</strong> or <strong>Client ID</strong> is required.</td>
+<td>Nextdoor Ads Manager data source ID. <strong>Data Source ID</strong> or <strong>Client ID</strong> is required. This allows Nextdoor to deduplicate events for an advertiser that sends events through both the Conversions API and the pixel.</td>
 </tr>
 <tr>
 <td>Partner ID</td>
@@ -1695,6 +1694,18 @@
 <td>Provide a plain text country code and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash using <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> format.</td>
 </tr>
 <tr>
+<td>Gender (already SHA256 hashed)</td>
+<td>Provide a gender that has already been SHA256 hashed. Use the lowercase initial: f for female, m for male, or n for non-binary. Leave empty if you prefer not to say.</td>
+</tr>
+<tr>
+<td>Gender (apply SHA256 hash)</td>
+<td>Provide a plain text gender and the connector whitespace trims, lowercases, and hashes this value using SHA256 hash. Use the lowercase initial: f for female, m for male, or n for non-binary. Leave empty if you prefer not to say.</td>
+</tr>
+<tr>
+<td>Pixel ID</td>
+<td>Nextdoor Pixel ID. This allows Nextdoor to deduplicate events for an advertiser that sends events through both the Conversions API and the pixel.</td>
+</tr>
+<tr>
 <td>Click ID</td>
 <td>This is the same as the <code>ndclid</code> parameter attached to the clickthrough URL.</td>
 </tr>
@@ -1705,6 +1716,10 @@
 <tr>
 <td>Client User Agent</td>
 <td>The unhashed browser user agent corresponding to the event. This parameter is required for website events shared using the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api">Conversions API</a>. Sending both the <strong>Client IP Address</strong> and <strong>User Agent</strong> parameters for all of the events may help improve event matching and ad delivery for campaigns. Note that this information is automatically added to events sent through the browser, but must be manually configured for events sent through the server.</td>
+</tr>
+<tr>
+<td>Data Source ID</td>
+<td>Nextdoor Ads Manager data source ID. <strong>Data Source ID</strong> or <strong>Client ID</strong> is required. This allows Nextdoor to deduplicate events for an advertiser that sends events through both the Conversions API and the pixel.</td>
 </tr>
 <tr>
 <td>Delivery Optimization</td>
@@ -1853,7 +1868,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 6, 2026 
+          <p>This page was last updated:  March 24, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

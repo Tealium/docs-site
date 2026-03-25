@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -242,7 +242,6 @@
   </ul>
   <ul class="list pa0" data-nav-section="server-side">
     <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">
-        
         <a href="/server-side/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Server-Side CDH</span></a>
         
         <ul data-level="1" class="server-side desktopmenu animated fadeIn list pl0 mt2">
@@ -1124,6 +1123,38 @@
 </tr>
 </tbody>
 </table>
+<h3 id="visitor-tables-views-and-normalized-views">Visitor tables, views, and normalized views</h3>
+<p>AudienceDB exposes visitor data as a table, a view, and a normalized view. Each one serves a different purpose.</p>
+<table>
+<thead>
+<tr>
+<th>Table/View Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitors</code> (table)</td>
+<td>Contains all historical rows for each visitor, including every state change. Column names use attributes IDs (for example, <code>badge_30</code>, <code>flag_5052</code>). Use this table for auditing and change-over-time queries.</td>
+</tr>
+<tr>
+<td><code>visitors_view</code> (view)</td>
+<td>Contains the latest state only (one row per visitor). Column names use attribute IDs and names (for example, <code>visitor - badge - VIP (13)</code>). Use this view for current-state reporting.</td>
+</tr>
+<tr>
+<td><code>visitors_view_normalized</code> (normalized view)</td>
+<td>Contains the same rows as <code>visitors_view</code>, but column names omit the attribute ID (for example, <code>visitor - badge - VIP</code>). Use this view with BI tools and for stable dashboards where column names must remain consistent.</td>
+</tr>
+<tr>
+<td><code>visitor_replaces</code> (table)</td>
+<td>Contains all versions of stitched visitor ID mappings, including replaced IDs. Use this table for complete stitching history.</td>
+</tr>
+<tr>
+<td><code>visitor_replaces_view</code> (view)</td>
+<td>Contains only the latest, non-replaced visitor IDs. Use this view to resolve visitor IDs to their current profiles.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="sample-database-structures">Sample database structures</h2>
 <p>The following sections provide sample structure examples for each view to assist in determining what is unique about each view and how the view differs from other views.</p>
 <h3 id="visit-arrays">Visit arrays</h3>
@@ -1245,8 +1276,8 @@ c97a0a0c9dfc4cb58e23dbfdb98528cddc8a989c9d65f0e6fd89ffdc5e82c727 | 015c662062aa0
 </table>
 <p>In this table:</p>
 <ul>
-<li>Visitor1 and Visitor2 are stitched into Visitor 3.</li>
-<li>Visitor 4 and Visitor 5 are stitched into Visitor 6.</li>
+<li>Visitor1 and Visitor2 are stitched into Visitor3.</li>
+<li>Visitor4 and Visitor5 are stitched into Visitor6.</li>
 </ul>
 <p>The above information can be used to join the <code>visitors</code> table to the <code>visits</code> table or the EventDB tables, if needed.</p>
 <p>To join events from EventDB to AudienceDB:</p>
@@ -1262,7 +1293,7 @@ c97a0a0c9dfc4cb58e23dbfdb98528cddc8a989c9d65f0e6fd89ffdc5e82c727 | 015c662062aa0
 </span></span></code></pre></div><ul>
 <li>This example accounts for visitor IDs in <code>events_all_events</code> being in <code>visitors</code> OR <code>visitor_replaces</code>.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Visitors attributed to single event sessions will not be stored in the visitors table.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Visitors attributed to single event sessions are not stored in the visitors table.</p>
 <h2 id="additional-resources">Additional resources</h2>
 <ul>
 <li><a href="https://docs.aws.amazon.com/redshift/latest/dg/c_designing-queries-best-practices.html">(Amazon Redshift™) Best Practices for Designing Queries</a>.</li>
@@ -1328,7 +1359,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  March 20, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1346,7 +1377,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventdb-and-audiencedb-diagram" href="javascript:void(0)">EventDB and AudienceDB diagram</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#attributes-and-column-names" href="javascript:void(0)">Attributes and column names</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencedb-tables" href="javascript:void(0)">AudienceDB tables</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sample-database-structures" href="javascript:void(0)">Sample database structures</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-tables-views-and-normalized-views" href="javascript:void(0)">Visitor tables, views, and normalized views</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sample-database-structures" href="javascript:void(0)">Sample database structures</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-arrays" href="javascript:void(0)">Visit arrays</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-lists" href="javascript:void(0)">Visit lists</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visit-tallies" href="javascript:void(0)">Visit tallies</a></li>

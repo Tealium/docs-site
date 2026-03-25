@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "guides",
-        reading_time  : "10",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -205,7 +205,6 @@
   </ul>
   <ul class="list pa0" data-nav-section="guides">
     <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">
-        
         <a href="/guides/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Guides</span></a>
         </li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -280,7 +279,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This guide covers the concepts and components involved in integrating external AI models with Tealium functions for real-time activation. You will learn how to securely connect to model endpoints, invoke AI predictions using event and visitor data, enrich visitor profiles with model outputs, and use these insights to drive downstream actions. The guide also explains how to manage timeouts, handle asynchronous responses, and resolve common integration issues.</p>
+  <p>This guide explains how to integrate external AI models with Tealium functions for real-time activation. Connect securely to model endpoints, invoke AI predictions using event and visitor data, and enrich visitor profiles with model outputs. It also covers asynchronous responses and common integration issues.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Use functions to call external AI models for tasks such as churn risk, fraud detection, propensity scoring, or next-best-action recommendations. The function collects event data and visitor profile attributes, builds a payload, sends it to your model endpoint, receives a prediction, and updates the visitor profile for activation.</p>
 <p>The data flow for real-time model inference and activation includes the following steps:</p>
@@ -589,7 +588,7 @@ Writes AI model predictions to visitor profile attributes for activation and seg
 </ol>
 <h4 id="create-an-http-api-data-source-for-the-model-callback">Create an HTTP API data source for the model callback</h4>
 <p>Create an HTTP API data source for receiving model callbacks. For more information, see <a href="/server-side/data-sources/create-data-source/">Create a data source</a>.</p>
-<h3 id="timeout-function-code">Timeout function code</h3>
+<h3 id="async-function-code">Async function code</h3>
 <p>Use the following function code:</p>
 
 <div class="pv2">
@@ -642,50 +641,6 @@ Writes AI model predictions to visitor profile attributes for activation and seg
   &#34;model_version&#34;: &#34;v2.1&#34;
 }
 </code></pre><p>Including <code>tealium_visitor_id</code> ensures the prediction stitches to the correct visitor profile. Configure enrichments as described in Step 3 to write these attributes to the profile.</p>
-<h3 id="timeout-handling">Timeout handling</h3>
-<p>The <code>fetch()</code> API only returns errors on network failures, not on 4xx/5xx responses. To prevent functions from hanging when model endpoints are slow, use an <code>AbortController</code> to enforce timeouts:</p>
-
-<div class="pv2">
-<div class="expand ba pa2 b--black-20 pv3">
-    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fas fa-chevron-down' : 'fas fa-chevron-right';});});">
-        <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
-        <span style="font-weight:bold;">
-        
-    	
-    	Expand to view code
-    	
-    	</span>
-    </div>
-    <div class="expand-content pa2" style="display: none;">
-        <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">controller</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AbortController</span>();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timeoutId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">abort</span>(), <span style="color:#ae81ff">8000</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#39;model_api_token&#39;</span>),
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">payload</span>),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">signal</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">signal</span>
-</span></span><span style="display:flex;"><span>  });
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Model API error:&#39;</span>, <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;AbortError&#39;</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Request timed out&#39;</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Fetch error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-    </div>
-</div>
-</div>
 <h2 id="step-2-configure-credentials-for-the-ml-platform">Step 2: Configure credentials for the ML platform</h2>
 <p>Store your model API credentials and configuration in Tealium functions for secure access.</p>
 <h3 id="add-authentication-tokens-for-the-ml-platform">Add authentication tokens for the ML platform</h3>
@@ -840,7 +795,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 18, 2026 
+          <p>This page was last updated:  March 19, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -865,9 +820,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-function-example" href="javascript:void(0)">Event function example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-function-example" href="javascript:void(0)">Visitor function example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#slow-model-response-handling" href="javascript:void(0)">Slow model response handling</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timeout-function-code" href="javascript:void(0)">Timeout function code</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#async-function-code" href="javascript:void(0)">Async function code</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#model-callback-payload" href="javascript:void(0)">Model callback payload</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timeout-handling" href="javascript:void(0)">Timeout handling</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-configure-credentials-for-the-ml-platform" href="javascript:void(0)">Step 2: Configure credentials for the ML platform</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-authentication-tokens-for-the-ml-platform" href="javascript:void(0)">Add authentication tokens for the ML platform</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-global-variables-for-the-ml-platform" href="javascript:void(0)">Add global variables for the ML platform</a></li>

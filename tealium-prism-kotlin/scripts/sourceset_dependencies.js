@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":lifecycle/debug":[],":lifecycle/main":[],":lifecycle/release":[],":core/debug":[],":core/main":[],":core/release":[],":momentsapi/debug":[],":momentsapi/main":[],":momentsapi/release":[]}'

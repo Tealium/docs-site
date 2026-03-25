@@ -1141,7 +1141,6 @@
   </ul>
   <ul class="list pa0" data-nav-section="client-side-tags">
     <li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2">
-        
         <a href="/client-side-tags/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Client-Side Tags</span></a>
         </li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1863,7 +1862,7 @@
 <li>
 <p>Use mapping to:</p>
 <ul>
-<li>Toggle <code>trackSingle</code> (<code>true</code> by default)</li>
+<li>Toggle <code>trackSingle</code> (<code>false</code> by default) — when enabled, sends events only to explicitly mapped pixel IDs using <code>fbq('trackSingle')</code>; when disabled, broadcasts events to all initialized pixel IDs using <code>fbq('track')</code></li>
 <li>Toggle <code>disablePushState</code> (<code>false</code> by default)</li>
 <li>Dynamically set the tag configurations</li>
 <li>Override the E-Commerce extension values</li>
@@ -1935,6 +1934,7 @@
 <li>For example: <code>&quot;fb_event_id_Purchase_32&quot; : &quot;028b2ade7478...&quot;</code></li>
 </ul>
 </li>
+<li><strong>Auto Page View Event</strong>: Set to <code>True</code> to automatically track Page View events.</li>
 </ul>
 <h2 id="event-mapping">Event mapping</h2>
 <p>Facebook Pixel events are configured through data mappings by selecting a variable that maps to an event and entering a trigger. The trigger initiates the event when the variable is equal to a specific value, as demonstrated in the following use case.</p>
@@ -1998,49 +1998,49 @@
 <td><code>autoConfig</code></td>
 <td>Toggle Automatic Configuration</td>
 <td>Boolean</td>
-<td><ul><li>Toggle automatic configuration.</li></ul></td>
+<td><ul><li>Enable or disable automatic configuration.</li></ul></td>
 </tr>
 <tr>
 <td><code>auto_page_view</code></td>
 <td>Toggle Automatic PageView</td>
 <td>Boolean</td>
-<td><ul><li>Toggle to enable or disable automatic PageView tracking, which triggers a PageView event with a page load.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td><ul><li>Enable or disable automatic PageView tracking, which triggers a PageView event with a page load.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>advanced_matching</code></td>
 <td>Toggle Advanced Matching</td>
 <td>Boolean</td>
-<td><ul><li>Toggle to enable or disable collection of Advanced Matching data.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td><ul><li>Enable or disable collection of Advanced Matching data.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>generate_event_id</code></td>
 <td>Generate Event IDs</td>
 <td>Boolean</td>
-<td><ul><li>Toggle to enable or disable generation of unique Event IDs for each Facebook tracking event.</li><li>You must also enable <strong>Generate Event ID</strong> in the tag configuration page to enable generating an <code>event_id</code> .</li><li>Requires the most recent version of the <code>utag.js</code> file to generate the IDs.</li><li>Default value is <code>false</code>.</li></ul></td>
+<td><ul><li>Enable or disable generation of unique Event IDs for each Facebook tracking event.</li><li>You must also enable <strong>Generate Event ID</strong> in the tag configuration page to enable generating an <code>event_id</code> .</li><li>Requires the most recent version of the <code>utag.js</code> file to generate the IDs.</li><li>Default value is <code>false</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>calc_items</code></td>
 <td>Automatically Calculate Number of Items</td>
 <td>Boolean</td>
-<td><ul><li>Toggle to control whether to automatically determine the number of items for an event.</li><li>Uses the data mapped to Product Quantities to determine the number.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td><ul><li>Enable or disable automatic determination of the number of items for an event.</li><li>Uses the data mapped to Product Quantities to determine the number.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>track_single</code></td>
 <td>Toggle trackSingle Usage</td>
 <td>Boolean</td>
-<td><ul><li>Enable or disable the use of <code>trackSingle</code> for Facebook tracking tracking events.</li><li>Default value is <code>true</code>.</li><li>If set to <code>false</code>, the value <code>track</code> is used for all Facebook tracking calls.</li></ul></td>
+<td><ul><li>Enable or disable the use of <code>trackSingle</code> for Facebook tracking events.</li><li>Default value is <code>false</code>.</li><li>When set to <code>true</code>, uses <code>fbq('trackSingle')</code> to send events only to explicitly mapped pixel IDs.</li><li>When set to <code>false</code>, uses <code>fbq('track')</code> to broadcast events to all initialized pixel IDs. Use this setting for multi-pixel setups to prevent duplicate events.</li></ul></td>
 </tr>
 <tr>
 <td><code>disablePushState</code></td>
 <td>Toggle disablePushState Usage</td>
 <td>Boolean</td>
-<td><ul><li>Toggles the <code>disablePushState</code> setting, which controls whether or not to prevent the triggering of multiple PageViews on the same page (for Single Page Apps).</li></ul></td>
+<td><ul><li>Enable or disable the <code>disablePushState</code> setting, which controls whether or not to prevent the triggering of multiple PageViews on the same page (for Single Page Apps).</li></ul></td>
 </tr>
 <tr>
 <td><code>useContentsObject</code></td>
 <td>Toggle Use Contents Object</td>
 <td>Boolean</td>
-<td><ul><li>Toggle to build and send the Facebook Pixel contents array (array of objects like <code>{id, quantity, item_price}</code>) for applicable events instead of relying only on <code>content_ids</code>.</li><li>Default value is <code>false</code>.</li></ul></td>
+<td><ul><li>Enable or disable building and sending the Facebook Pixel contents array (array of objects like <code>{id, quantity, item_price}</code>) for applicable events instead of relying only on <code>content_ids</code>.</li><li>Default value is <code>false</code>.</li></ul></td>
 </tr>
 <tr>
 <td><code>event_id</code></td>
@@ -3090,7 +3090,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 26, 2026 
+          <p>This page was last updated:  March 18, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
