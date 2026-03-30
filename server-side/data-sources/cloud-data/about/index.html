@@ -154,11 +154,7 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/server-side/event-specifications/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Event specifications</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
-      <a href="/server-side/live-events-feeds/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Live Events and feeds</span></a>
+      <a href="/server-side/event-health/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Event health</span></a>
       </li>
       
       <li  class="tl dib ma0 w-100">
@@ -502,20 +498,18 @@
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".event-specifications">Event specifications</a>
-        <ul class="pl2  event-specifications desktopmenu animated fadeIn list  dn">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".event-health">Event health</a>
+        <ul class="pl2  event-health desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/event-specifications/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-specifications">About event specifications</a></li>
+        <a href="/server-side/event-health/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-health">About event health</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/event-specifications/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-event-specifications">Manage event specs</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".live-events-feeds">Live Events and feeds</a>
-        <ul class="pl2  live-events-feeds desktopmenu animated fadeIn list  dn">
+        <a href="/server-side/event-health/event-specs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-specifications">Event specs</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/live-events-feeds/about-live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-live-events">About Live Events</a></li>
+        <a href="/server-side/event-health/manage-event-specifications/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-event-specifications">Manage event specs</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/live-events-feeds/about-event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-feeds">About event feeds</a></li></ul>
+        <a href="/server-side/event-health/event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-feeds">Event feeds</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/event-health/live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-live-events">Live events</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes">Attributes</a>
@@ -1188,9 +1182,8 @@ A numeric column that increments in value for every row added. A recommended def
 <p>This mode provides the highest reliability for ensuring that all rows are imported as intended.</p>
 <h3 id="timestamp">Timestamp</h3>
 <p>This mode uses a timestamp column to import new or updated rows.</p>
-<p>Rows are imported if they have a newer timestamp than the previous import.</p>
+<p>Rows are imported only if they have a newer timestamp than the previous import. If you attempt to import rows with the same timestamp, rows with duplicate timestamps may not be imported.</p>
 <p>Use this mode if your table has a timestamp column set on every insert or update operation.</p>
-<p>Be aware that if the number of rows with the same timestamp exceeds the <a href="#batch-size">batch size</a>, then some rows are not imported.</p>
 <h3 id="incrementing">Incrementing</h3>
 <p>This mode uses an incrementing column to import rows.</p>
 <p>Rows are imported if they have a larger increment value than the last imported row. Rows with an increment value less than or equal to the maximum value from the previous import are skipped. This mode does not detect modifications to existing rows.</p>
@@ -1317,7 +1310,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 27, 2026 
+          <p>This page was last updated:  March 26, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

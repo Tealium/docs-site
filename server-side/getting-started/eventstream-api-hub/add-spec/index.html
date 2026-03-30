@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -154,11 +154,7 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/server-side/event-specifications/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Event specifications</span></a>
-      </li>
-      
-      <li  class="tl dib ma0 w-100">
-      <a href="/server-side/live-events-feeds/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Live Events and feeds</span></a>
+      <a href="/server-side/event-health/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Event health</span></a>
       </li>
       
       <li  class="tl dib ma0 w-100">
@@ -502,20 +498,18 @@
       </li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".event-specifications">Event specifications</a>
-        <ul class="pl2  event-specifications desktopmenu animated fadeIn list  dn">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".event-health">Event health</a>
+        <ul class="pl2  event-health desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/event-specifications/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-specifications">About event specifications</a></li>
+        <a href="/server-side/event-health/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-health">About event health</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/event-specifications/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-event-specifications">Manage event specs</a></li></ul>
-      </li>
-    <li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".live-events-feeds">Live Events and feeds</a>
-        <ul class="pl2  live-events-feeds desktopmenu animated fadeIn list  dn">
+        <a href="/server-side/event-health/event-specs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-specifications">Event specs</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/live-events-feeds/about-live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-live-events">About Live Events</a></li>
+        <a href="/server-side/event-health/manage-event-specifications/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-event-specifications">Manage event specs</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/live-events-feeds/about-event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-feeds">About event feeds</a></li></ul>
+        <a href="/server-side/event-health/event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-feeds">Event feeds</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/event-health/live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-live-events">Live events</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".attributes">Attributes</a>
@@ -1023,28 +1017,19 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Live Events detects events that match a marketplace specification and provide a preview of the specification to make it easy to add without leaving the screen.</p>
-<p>In addition, unknown events (those that do not match a marketplace spec) can be created as custom specifications directly from the event details view. When doing this, the event attributes from the event are automatically included in the <strong>Add Event Specification</strong> form.</p>
+  <p>Live Events detects unknown events, and you can create a custom specification directly from the event details view. When doing this, the event attributes from the event are automatically included in the <strong>Add Event Specification</strong> window.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Any event specification, whether custom or from the marketplace, can be created from the event details view on the <strong>Live Events</strong> screen. In this example, you&rsquo;ll pick up where we left off with the <code>search</code> event.</p>
 <p>Here&rsquo;s how it works:</p>
 <ol>
-<li>With an event detail in view, the following options could be available (depending on the event):
+<li>With an event detail in view, click <strong>Create Event Specification</strong>
 <ul>
-<li><strong>Preview Spec</strong><br>
-This option appears when the event is a recognized marketplace specification. Click this button to show the attributes expected by the specification and validates them against the current event data.</li>
-<li><strong>Create Event Specification</strong><br>
-This option appears when the event is not recognized. Click this button to open a dialog to create a custom event specification based on the attributes detected in the current event.</li>
+<li>The event specification is pre-populated with the event’s attributes.</li>
+<li>A confirmation dialog is displayed that lists all unknown attributes in the event. Click <strong>Exclude unknown attributes</strong> to exclude these attributes from the new event specification.</li>
 </ul>
 </li>
-<li>For the <code>search</code> event, click <strong>Preview Spec</strong>. Notice that the test event would be invalid due to the missing required attributes: <code>search_keyword</code> and <code>search_results</code>. But that&rsquo;s OK. We&rsquo;ll adjust the event tracking later.</li>
-<li>Click <strong>Create Event Specification</strong> to open the dialog to add this specification. The full specification appears, and you can enter notes or add additional attributes (although you cannot edit existing attributes).<br>
-<figure><a class="slb" href="/images/server-side/getting-started-eventstream-add-event-spec.png"><img src="/images/server-side/getting-started-eventstream-add-event-spec.png"
-             alt="Add Event Spec"
-             title="Add Event Spec" width="463" height="378"/>
-        </a>
-    </figure></li>
-<li>Click <strong>Finish</strong>.</li>
+<li>Under <strong>Rule</strong>, enter the event name to use for the event specification. For example, <code>search</code>.</li>
+<li>Click <strong>Create</strong>.</li>
 </ol>
 <p>Now that you have an event specification created, you can observe data quality on the <strong>Live Events</strong> screen.</p>
 <p>The next tutorial demonstrates how data validation works.</p>
@@ -1108,7 +1093,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 13, 2024 
+          <p>This page was last updated:  March 30, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
