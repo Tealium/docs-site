@@ -404,6 +404,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/databricks/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Databricks</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/amazon-redshift/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Redshift</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Google BigQuery</a></li></ul>
@@ -446,6 +448,8 @@
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1084,16 +1088,13 @@ Your private key is generated and downloaded to your machine.</li>
 <p>For more information, see <a href="https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount">Google for Developers: Using OAuth 2.0 for Server to Server Applications</a>.</p>
 <h2 id="query-batch-size">Query batch size</h2>
 <p>The default query batch size is 1,000 records per batch. Changing the query batch size from the default may require additional permissions. To grant permissions to change the query size limit, go to <strong>Google Cloud console &gt; IAM menu &gt; Select the appropriate service account &gt; Grant Access &gt; Add BigQuery Read Session User Role</strong>. For example, enter <code>BigQuery Read Session User (roles/bigquery.readSessionUser)</code>. For more information, see <a href="https://docs.cloud.google.com/bigquery/docs/access-control">Google: BigQuery IAM roles and permissions</a> and <a href="/server-side/data-sources/cloud-data/about/">About cloud data sources</a>.</p>
-<h2 id="query-mode">Query mode</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-modes">Query modes</a>.</p>
-<p>For modes that use <strong>Timestamp</strong>, the selected timestamp column must be the type <code>TIMESTAMP</code>.</p>
+<h2 id="query-configurations">Query configurations</h2>
+<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-configurations">Query configurations</a>.</p>
+<p>For query modes that use <strong>Timestamp</strong>, the selected timestamp column must be the type <code>TIMESTAMP</code>.</p>
 <p>For more information, see <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#timestamp_type">Google BigQuery: TIMESTAMP</a>.</p>
-<p>For modes that use <strong>Incrementing</strong>, the selected numeric column must increment in value for every row added. Use whole number types, such as <code>INT64</code> instead of <code>FLOAT</code> or <code>DECIMAL</code>.</p>
+<p>For query modes that use <strong>Incrementing</strong>, the selected numeric column must increment in value for every row added. Use whole number types, such as <code>INT64</code> instead of <code>FLOAT</code> or <code>DECIMAL</code>.</p>
 <p>For more information, see <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#numeric_types">Google BigQuery: Numeric types</a>.</p>
-<h2 id="where-clause">WHERE clause</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#sql-query">SQL Query</a>.</p>
-<p>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple Google BigQuery tables, create a view in Google BigQuery and select the view in the data source configuration.</p>
-<h2 id="importing-struct-columns">Importing STRUCT columns</h2>
+<h3 id="importing-struct-columns">Importing STRUCT columns</h3>
 <p>BigQuery <code>STRUCT</code> columns cannot be imported directly into Tealium. To import data from a <code>STRUCT</code> column, create a view with the <code>STRUCT</code> fields flattened into separate columns.</p>
 <p>For example, you might have addresses defined as a <code>STRUCT</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>shipping_address STRUCT<span style="color:#f92672">&lt;</span>
@@ -1158,7 +1159,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 27, 2026 
+          <p>This page was last updated:  April 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1175,9 +1176,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-connection" href="javascript:void(0)">Create a connection</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-batch-size" href="javascript:void(0)">Query batch size</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode" href="javascript:void(0)">Query mode</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where-clause" href="javascript:void(0)">WHERE clause</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#importing-struct-columns" href="javascript:void(0)">Importing STRUCT columns</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-configurations" href="javascript:void(0)">Query configurations</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#importing-struct-columns" href="javascript:void(0)">Importing STRUCT columns</a></li>
               </nav>
   </aside></nav>
 

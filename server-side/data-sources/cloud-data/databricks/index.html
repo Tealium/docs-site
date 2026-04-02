@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -404,6 +404,8 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/databricks/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Databricks</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/amazon-redshift/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Redshift</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google BigQuery</a></li></ul>
@@ -446,6 +448,8 @@
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1055,7 +1059,6 @@
 </tbody>
 </table>
 <p>For more information, see Databricks: Data Types (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>).</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Multitable join is not currently supported. You can achieve the same functionality with a Databricks view. For more information, see Databricks: Create and Manage Views (<a href="https://docs.databricks.com/aws/en/views/create-views">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/create-views">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-view">GCP</a>).</p>
 <h2 id="create-a-connection">Create a connection</h2>
 <p>Tealium uses a service principal to access your Databricks compute resource. Before you proceed, you must create a service principal in Databricks and generate an OAuth secret. For more information, see <a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: Authorize access with a service principal using OAuth</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Databricks personal access tokens (PAT) are not supported. For more information, see Databricks: Authenticate with Databricks personal access token (legacy) (<a href="https://docs.databricks.com/aws/en/dev-tools/auth/pat">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat">Azure</a>, <a href="https://docs.databricks.com/gcp/en/dev-tools/auth/pat">GCP</a>).</p>
@@ -1076,20 +1079,16 @@
 </ul>
 <p>For more information, see Databricks: Compute settings (<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>, <a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>).</p>
 <p>After you connect to Databricks, select the data source table from the <strong>Table Selection</strong> list.</p>
-<h2 id="query-mode">Query mode</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-modes">Query modes</a>.</p>
+<h2 id="query-configurations">Query configurations</h2>
+<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-configurations">Query configurations</a>.</p>
 <p>For Databricks, note the following requirements:</p>
 <ul>
-<li><strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> modes: The selected timestamp column must be the type <code>TIMESTAMP</code>.<br>
+<li><strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> query modes: The selected timestamp column must be the type <code>TIMESTAMP</code>.<br>
 For more information, see Databricks: TIMESTAMP type (<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type">GCP</a>).</li>
-<li><strong>Incrementing</strong> mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:</li>
+<li><strong>Incrementing</strong> query mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>For more information, see Databricks <code>CREATE TABLE</code> (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>).</p>
-<h2 id="where-clause">WHERE clause</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#sql-query">SQL Query</a>.</p>
-<p>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple Databricks tables, create a view in Databricks and select the view in the data source configuration.</p>
-<p>For more information, see Databricks: What is a view? (<a href="https://docs.databricks.com/aws/en/views/">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>, <a href="https://docs.databricks.com/gcp/en/views/">GCP</a>).</p>
 <h2 id="ip-access-list">IP access list</h2>
 <p>If your Databricks workspace is restricted by IP addresses, add the <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses</a> to your Databricks IP access list.</p>
 <p>For more information, see Databricks: Manage IP access list (<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>, <a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>).</p>
@@ -1099,13 +1098,13 @@ For more information, see Databricks: TIMESTAMP type (<a href="https://docs.data
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side/data-sources/cloud-data/snowflake/"
+  <a href="/server-side/data-sources/cloud-data/amazon-redshift/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Snowflake</div>
+      <div>Amazon Redshift</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Snowflake"</title>
+      <title>"Amazon Redshift"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1153,7 +1152,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 20, 2026 
+          <p>This page was last updated:  April 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1169,8 +1168,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-connection" href="javascript:void(0)">Create a connection</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode" href="javascript:void(0)">Query mode</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where-clause" href="javascript:void(0)">WHERE clause</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-configurations" href="javascript:void(0)">Query configurations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-access-list" href="javascript:void(0)">IP access list</a></li>
               </nav>
   </aside></nav>

@@ -404,6 +404,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/databricks/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Databricks</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/amazon-redshift/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Redshift</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google BigQuery</a></li></ul>
@@ -446,6 +448,8 @@
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">About</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1026,7 +1030,7 @@
 <p>The configuration for cloud data sources is nearly the same for every vendor. For an overview, see <a href="/server-side/data-sources/cloud-data/manage/">Manage a cloud data source</a>.</p>
 <p>For vendor-specific configuration details, see the following:</p>
 <ul>
-<li><a href="/early-access/data-sources/amazon-redshift-cloud-data-source/">Amazon Redshift</a></li>
+<li><a href="/server-side/data-sources/cloud-data/amazon-redshift/">Amazon Redshift</a></li>
 <li><a href="/server-side/data-sources/cloud-data/databricks/">Databricks</a></li>
 <li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/">Google BigQuery</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake/">Snowflake</a></li>
@@ -1035,9 +1039,11 @@
 <p>A cloud data source connects your cloud data warehouse or database to Tealium, so you can import data as events for processing. The process involves several key components:</p>
 <ul>
 <li><strong>Connection</strong>:<br>
-Set up a secure reusable connection to your cloud data source by providing the necessary credentials and authentication details. Once connected, select the specific table or view you want to import data from.</li>
-<li><strong>Data source configuration</strong>:<br>
-Choose which columns to import from your table or view. Select a query mode to control how new or updated rows are detected—using a timestamp column, an incrementing column, or both. You can further refine the imported data by adding a SQL <code>WHERE</code> clause to filter rows.</li>
+Set up a secure reusable connection to your cloud data source by providing the necessary credentials and authentication details.</li>
+<li><strong>Processing</strong>:<br>
+Configure the data processing frequency and batch size.</li>
+<li><strong>Query configuration</strong>:
+Select from a Basic or Advanced query configuration. Basic lets you select the columns to import from your default schema and refine that data using a SQL <code>WHERE</code> clause. Advanced lets you join multiple tables and use advanced SQL commands to have full control over your data processing. In either configuration, use the query modes to control how new or updated rows are detected—using a timestamp column, an incrementing column, or both.</li>
 <li><strong>Column mapping</strong>:<br>
 Map the columns from your cloud database to Tealium event attributes. This ensures that data from your source is correctly assigned to the appropriate attributes in Tealium.</li>
 <li><strong>Visitor ID mapping</strong>:<br>
@@ -1057,7 +1063,7 @@ To unify data across sources, map a column from your data source to a visitor ID
 <li><strong>Visit length</strong>: A visit started by a cloud data source event lasts for 60 seconds.</li>
 <li><strong>Visitor ID mapping</strong>: If you map an AudienceStream visitor ID attribute in your cloud data source configuration, the visitor ID is set directly to the value of the column you choose without the need for an enrichment.</li>
 </ul>
-<h2 id="scheduling">Scheduling</h2>
+<h3 id="scheduling">Scheduling</h3>
 <p>The <strong>Processing Settings</strong> section controls how and when your cloud data source imports new data. You can enable or disable processing and configure the frequency at which data is imported. Each import processes data in batches of 1,000 rows.</p>
 <h3 id="frequency">Frequency</h3>
 <p>Select how often to import data:</p>
@@ -1088,7 +1094,7 @@ To unify data across sources, map a column from your data source to a visitor ID
 </tbody>
 </table>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Fetching data with high frequency (near real-time or hourly) may lead to increased costs and system strain in your data warehouse.</p>
-<h2 id="batch-size">Batch size</h2>
+<h3 id="batch-size">Batch size</h3>
 <p>The cloud data sources import data in batches, with a default of 1,000 rows per batch. This limit applies to the size of each batch, not the total number of rows processed in an import. Each scheduled import continues processing until all available rows are ingested, regardless of how many batches are required.</p>
 <p>Select from one of the following batch options:</p>
 <ul>
@@ -1103,11 +1109,15 @@ To unify data across sources, map a column from your data source to a visitor ID
 </ul>
 <p>Your cloud provider may calculate billing based on the number of queries or the size of queries.</p>
 <p>This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
-<h2 id="rate-limits">Rate limits</h2>
+<h3 id="rate-limits">Rate limits</h3>
 <p>Imports from cloud data sources are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a>.</p>
-<h2 id="tables">Tables</h2>
-<p>Each cloud data source supports importing data from one table or view. To import data from multiple tables, create a view in your cloud database and select the view in the data source configuration.</p>
-<h2 id="data-types">Data types</h2>
+<h2 id="query-configurations">Query configurations</h2>
+<p>Tealium data sources support two configurations to process data: basic and advanced.</p>
+<ul>
+<li>Basic mode: Your data is imported using the default schema you specify in the data source configuration. You can process data from only one table or view. Optionally include a SQL <code>WHERE</code> clause to import only those records that match your custom condition.</li>
+<li>Advanced mode: You can select one or more tables to join using an advanced SQL editor. The tables can be from multiple schemas. The SQL editor supports advanced SQL commands, such as <code>CAST</code> and <code>JOIN</code>.</li>
+</ul>
+<h3 id="data-types">Data types</h3>
 <p>The cloud data source supports all data types. In general, use the following data type mappings to ensure data is imported correctly:</p>
 <table>
 <thead>
@@ -1145,12 +1155,12 @@ To unify data across sources, map a column from your data source to a visitor ID
 </table>
 <p>For more vendor-specific data types, see:</p>
 <ul>
-<li><a href="/early-access/data-sources/amazon-redshift-cloud-data-source/#data-types">Amazon Redshift</a></li>
+<li><a href="/server-side/data-sources/cloud-data/amazon-redshift/#data-types">Amazon Redshift</a></li>
 <li><a href="/server-side/data-sources/cloud-data/databricks/#data-types">Databricks</a></li>
 <li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/#data-types">Google BigQuery</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake/#data-types">Snowflake</a></li>
 </ul>
-<h2 id="query-modes">Query modes</h2>
+<h3 id="query-modes">Query modes</h3>
 <p>The cloud data source supports the following three query modes to control how data is imported from your table or view:</p>
 <ul>
 <li>Timestamp + Incrementing</li>
@@ -1158,7 +1168,7 @@ To unify data across sources, map a column from your data source to a visitor ID
 <li>Incrementing</li>
 </ul>
 <p>Each mode uses a timestamp column, an increment column, or both to determine which rows to import.</p>
-<h3 id="requirements-for-columns">Requirements for columns</h3>
+<h4 id="requirements-for-columns">Requirements for columns</h4>
 <p>To ensure a query mode works effectively, you must have one or both of the following:</p>
 <ul>
 <li><strong>Timestamp column</strong><br>
@@ -1170,10 +1180,10 @@ A numeric column that increments in value for every row added. A recommended def
 </ul>
 <p>For vendor-specific requirements, see:</p>
 <ul>
-<li><a href="/early-access/data-sources/amazon-redshift-cloud-data-source/#query-mode">Amazon Redshift</a></li>
-<li><a href="/server-side/data-sources/cloud-data/databricks/#query-mode">Databricks</a></li>
-<li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/#query-mode">Google BigQuery</a></li>
-<li><a href="/server-side/data-sources/cloud-data/snowflake/#query-mode">Snowflake</a></li>
+<li><a href="/server-side/data-sources/cloud-data/amazon-redshift/#query-configurations">Amazon Redshift</a></li>
+<li><a href="/server-side/data-sources/cloud-data/databricks/#query-configurations">Databricks</a></li>
+<li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/#query-configurations">Google BigQuery</a></li>
+<li><a href="/server-side/data-sources/cloud-data/snowflake/#query-configurations">Snowflake</a></li>
 </ul>
 <p>Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see <a href="#query-mode-example">Query mode example</a>.</p>
 <h3 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h3>
@@ -1245,16 +1255,13 @@ The data source fetches rows 1-1000 and marks the maximum incrementing value of 
 <li><strong>Timestamp</strong> (<code>modification_time</code> in the example):<br>
 The data source fetches rows 1-1000 and marks the maximum timestamp of <code>01Apr 13:00</code>. On the next import, rows with a timestamp greater than <code>01Apr 13:00</code> are imported. In this case, row <code>1001</code> is skipped because it has the same timestamp value that was fetched in the previous batch of data.</li>
 </ul>
-<h2 id="sql-query">SQL Query</h2>
-<p>In the cloud data source <strong>Query Configuration</strong>, select the columns you want to import. To add conditions for the import beyond the query mode, use the SQL <code>WHERE</code> clause. This option adds a <code>WHERE</code> statement to your query. The <code>WHERE</code> statement must use valid SQL syntax.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple tables, create a view in your cloud database and select the view in the data source configuration.</p>
 <h2 id="column-mapping">Column mapping</h2>
 <p>The column mapping configuration determines the event attributes that correspond to each column in the cloud database table.</p>
 <p>Column names are often different from the attribute names in your Tealium account, so this mapping ensures that the data is imported properly. For example, if your table uses the column name <code>postalCode</code> but the event attribute in Tealium is <code>customer_zip</code>, create a mapping to associate these fields.</p>
 <p>For information about mapping cloud data types to Tealium data types, see the <a href="#data-types">Data Types</a> section.</p>
 <p>For vendor-specific data types, see the following:</p>
 <ul>
-<li><a href="/early-access/data-sources/amazon-redshift-cloud-data-source/#data-types">Amazon Redshift</a></li>
+<li><a href="/server-side/data-sources/cloud-data/amazon-redshift/#data-types">Amazon Redshift</a></li>
 <li><a href="/server-side/data-sources/cloud-data/databricks/#data-types">Databricks</a></li>
 <li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/#data-types">Google BigQuery</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake/#data-types">Snowflake</a></li>
@@ -1310,7 +1317,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 26, 2026 
+          <p>This page was last updated:  April 2, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1328,20 +1335,18 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-vendors" href="javascript:void(0)">Supported vendors</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-processing" href="javascript:void(0)">Event processing</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scheduling" href="javascript:void(0)">Scheduling</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scheduling" href="javascript:void(0)">Scheduling</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#frequency" href="javascript:void(0)">Frequency</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tables" href="javascript:void(0)">Tables</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-configurations" href="javascript:void(0)">Query configurations</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-modes" href="javascript:void(0)">Query modes</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements-for-columns" href="javascript:void(0)">Requirements for columns</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timestamp--incrementing-recommended" href="javascript:void(0)">Timestamp &#43; Incrementing (Recommended)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timestamp" href="javascript:void(0)">Timestamp</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#incrementing" href="javascript:void(0)">Incrementing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode-example" href="javascript:void(0)">Query mode example</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-query" href="javascript:void(0)">SQL Query</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id-mapping" href="javascript:void(0)">Visitor ID mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP addresses to allow</a></li>
               </nav>

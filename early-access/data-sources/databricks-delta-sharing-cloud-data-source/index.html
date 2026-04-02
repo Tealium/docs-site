@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -232,8 +232,6 @@
     <li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".ea-data-sources">Data sources</a>
         <ul class="pl2 bl b--primary bw1 ea-data-sources desktopmenu animated fadeIn list ">
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/early-access/data-sources/amazon-redshift-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".redshift-cloud-data-source-ea">Amazon Redshift</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/data-sources/databricks-delta-sharing-cloud-data-source/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".databricks-delta-sharing-cloud-data-source-ea">Databricks Delta Sharing</a></li></ul>
       </li>
@@ -437,45 +435,24 @@ For more information, see Databricks: Manage access to Delta Sharing data shares
 <ol>
 <li>After Tealium Support creates the connection for you, create a Databricks Delta Sharing cloud data source in Tealium. For more information, see <a href="/server-side/data-sources/cloud-data/manage/">Manage a cloud data source</a>.</li>
 <li>Click <strong>Establish Connection</strong>. Establishing the Delta Sharing connection to Databricks may take up to 2-3 minutes.</li>
-<li>After you connect to Databricks Delta Sharing, select the data source table from the <strong>Table Selection</strong> list.</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Multitable join is not supported. You can achieve the same functionality with a Databricks view. For more information, see Databricks: Create and Manage Views (<a href="https://docs.databricks.com/aws/en/views/create-views">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/create-views">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-view">GCP</a>).</p>
-<h2 id="query-mode">Query mode</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-modes">Query modes</a>.</p>
+<h2 id="query-configurations">Query configurations</h2>
+<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#query-configurations">Query configurations</a>.</p>
 <p>For Databricks Delta Sharing, note the following requirements:</p>
 <ul>
-<li><strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> modes: The selected timestamp column must be the type <code>TIMESTAMP</code>.<br>
+<li><strong>Timestamp + Incrementing</strong> and <strong>Timestamp</strong> query modes: The selected timestamp column must be the type <code>TIMESTAMP</code>.<br>
 For more information, see Databricks: TIMESTAMP type (<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type">GCP</a>).</li>
-<li><strong>Incrementing</strong> mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:</li>
+<li><strong>Incrementing</strong> query mode: The selected numeric column must increment in value for every row added. A recommended definition for an auto-increment column is:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>For more information, see Databricks <code>CREATE TABLE</code> (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>).</p>
-<h2 id="where-clause">WHERE clause</h2>
-<p>For a general overview, see <a href="/server-side/data-sources/cloud-data/about/#sql-query">SQL Query</a>.</p>
-<p>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple Databricks tables, create a view in Databricks and select the view in the data source configuration.</p>
-<p>For more information, see Databricks: What is a view? (<a href="https://docs.databricks.com/aws/en/views/">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>, <a href="https://docs.databricks.com/gcp/en/views/">GCP</a>).</p>
 <h2 id="ip-access-list">IP access list</h2>
 <p>If your Databricks workspace is restricted by IP addresses, add the <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses</a> to your Databricks IP access list.</p>
 <p>For more information, see Databricks: Manage IP access list (<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>, <a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>).</p>
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 mr3">
-  
-  
-  <a href="/early-access/data-sources/amazon-redshift-cloud-data-source/"
-    class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
-    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Amazon Redshift "</title>
-      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-    </svg>
-   <section class="tr pl3">
-      <div>Amazon Redshift</div>
-    </section>
-  </a>
-  
-
-</div></div>
+<div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"></div>
 
 
 
@@ -502,7 +479,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 18, 2026 
+          <p>This page was last updated:  April 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -519,8 +496,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-connection" href="javascript:void(0)">Create a connection</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode" href="javascript:void(0)">Query mode</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where-clause" href="javascript:void(0)">WHERE clause</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-configurations" href="javascript:void(0)">Query configurations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-access-list" href="javascript:void(0)">IP access list</a></li>
               </nav>
   </aside></nav>

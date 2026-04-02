@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -404,6 +404,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/databricks/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Databricks</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/cloud-data/amazon-redshift/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Redshift</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google BigQuery</a></li></ul>
@@ -446,6 +448,8 @@
         <ul class="pl2 bl b--primary bw1 cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">About</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1066,8 +1070,11 @@
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>You can connect to up to 10 data sources in a profile.</p>
 <p>CloudStream data sources are designed to work directly with data stored in a data cloud. Data remains in the data cloud and is only temporarily imported for activation through connectors, without being stored in Tealium.</p>
-<p>Each data source can connect to a single view or table at a time. If you need to connect to multiple tables or views from a data cloud, configure a separate data source for each table or view.</p>
-<p>If you want to combine data from multiple tables into data records that CloudStream can read in a segment, you need to join the tables or views in the data cloud into a single table or view and then use that joined table as the segment data source.</p>
+<p>Tealium data sources support two configurations to process data: basic and advanced.</p>
+<ul>
+<li>Basic: Your data is imported using the default schema you specify in the data source configuration. You can process data from only one table or view.</li>
+<li>Advanced: You can select one or more tables to join using an advanced SQL editor. The tables can be from multiple schemas.</li>
+</ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStream only supports cloud data sources.</p>
 <p>For more information about cloud data sources, refer to the following articles:</p>
 <ul>
@@ -1160,13 +1167,13 @@ Information about creating a data source connection, configuration, and mapping 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side/cloudstream/attributes/"
+  <a href="/server-side/cloudstream/datasources/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Cloud attributes</div>
+      <div>Data sources</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Cloud attributes"</title>
+      <title>"Data sources"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1199,7 +1206,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 9, 2026 
+          <p>This page was last updated:  April 2, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

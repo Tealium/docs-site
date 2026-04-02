@@ -185,7 +185,7 @@
       <a href="/ja/platforms/cordova/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Cordova 2.x</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/platforms/flutter/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Flutter 2.x</span></a>
+      <a href="/ja/platforms/flutter/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Flutter 3.x</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/platforms/ios-swift/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>iOS (Swift) 2.x</span></a>
@@ -335,7 +335,7 @@
 </tr>
 <tr>
 <td><code>addRemoteCommandForInstance()</code></td>
-<td>特定のTealiumインスタンス用にリモートコマンドマネージャーにリモートコマンドを追加します</td>
+<td>特定のTealiumインスタンスのために、リモートコマンドマネージャーにリモートコマンドを追加します</td>
 </tr>
 <tr>
 <td><code>getPersistentData()</code></td>
@@ -363,7 +363,7 @@
 </tr>
 <tr>
 <td><code>initializeWithConsentManager()</code></td>
-<td>同意管理を有効にしてTealiumインスタンスを初期化します</td>
+<td>Tealiumインスタンスを初期化し、同意管理を有効にします</td>
 </tr>
 <tr>
 <td><code>removePersistentData()</code></td>
@@ -378,8 +378,8 @@
 <td>リモートコマンドマネージャーからリモートコマンドを削除します</td>
 </tr>
 <tr>
-<td><code>removeRemoteCommandForInstanceName()</code></td>
-<td>特定のTealiumインスタンス用にリモートコマンドマネージャーからリモートコマンドを削除します</td>
+<td><code>removeRemoteCommandForInstance()</code></td>
+<td>特定のTealiumインスタンスのリモートコマンドマネージャーからリモートコマンドを削除します</td>
 </tr>
 <tr>
 <td><code>removeVolatileData()</code></td>
@@ -425,12 +425,12 @@
 </table>
 <h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
 <p>リモートコマンドマネージャーにリモートコマンドを追加します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>commandID<span style="color:#f92672">,</span> description<span style="color:#f92672">,</span> callback<span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.addRemoteCommand(commandID, description, callback);
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -451,27 +451,27 @@
 <tr>
 <td><code>callback</code></td>
 <td><code>Function </code></td>
-<td>リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキーと値のペアのペイロードを返します。</td>
+<td>リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。</td>
 <td>(例を参照)</td>
 </tr>
 </tbody>
 </table>
 <p>例:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;firebase&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Firebase Remote Command&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">(</span>payload<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.addRemoteCommand(<span style="color:#e6db74">&#34;firebase&#34;</span>, <span style="color:#e6db74">&#34;Firebase Remote Command&#34;</span>, (payload) {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  var eventName <span style="color:#f92672">=</span> payload<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;firebase_event_name&#34;</span><span style="color:#f92672">];</span>
-</span></span><span style="display:flex;"><span>  var eventProperties <span style="color:#f92672">=</span> payload<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;firebase_event_properties&#34;</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> eventName <span style="color:#f92672">=</span> payload[<span style="color:#e6db74">&#34;firebase_event_name&#34;</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> eventProperties <span style="color:#f92672">=</span> payload[<span style="color:#e6db74">&#34;firebase_event_properties&#34;</span>];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  analytics<span style="color:#f92672">.</span><span style="color:#a6e22e">logEvent</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> eventName<span style="color:#f92672">,</span> parameters<span style="color:#f92672">:</span> eventProperties<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">});</span>
+</span></span><span style="display:flex;"><span>  analytics.logEvent(name: eventName, parameters: eventProperties);
+</span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="addremotecommandforinstance"><code>addRemoteCommandForInstance()</code></h3>
-<p>特定のTealiumインスタンス用にリモートコマンドマネージャーにリモートコマンドを追加します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommandForInstance</span><span style="color:#f92672">(</span>instanceName<span style="color:#f92672">,</span> commandID<span style="color:#f92672">,</span> description<span style="color:#f92672">,</span> callback<span style="color:#f92672">);</span>
+<p>特定のTealiumインスタンスのために、リモートコマンドマネージャーにリモートコマンドを追加します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.addRemoteCommandForInstance(instanceName, commandID, description, callback);
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -498,28 +498,28 @@
 <tr>
 <td><code>callback</code></td>
 <td><code>Function </code></td>
-<td>リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキーと値のペアのペイロードを返します。</td>
+<td>リモートコマンドからの応答を受け取った後に実行するコールバック関数。コールバックはタグマッピングからのキー値ペアのペイロードを返します。</td>
 <td>(例を参照)</td>
 </tr>
 </tbody>
 </table>
 <p>例:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">addRemoteCommand</span>(<span style="color:#e6db74">&#34;instance-2&#34;</span>, <span style="color:#e6db74">&#34;verify_email&#34;</span>, <span style="color:#e6db74">&#34;Verify User Email&#34;</span>, (<span style="color:#a6e22e">user</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.addRemoteCommandForInstance(<span style="color:#e6db74">&#34;instance-2&#34;</span>, <span style="color:#e6db74">&#34;verify_email&#34;</span>, <span style="color:#e6db74">&#34;Verify User Email&#34;</span>, (user) {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#39;Howdy, ${user.name}!&#39;</span>);
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#39;We sent the verification link to ${user.email}.&#39;</span>);
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#39;Howdy, </span><span style="color:#e6db74">${</span>user.name<span style="color:#e6db74">}</span><span style="color:#e6db74">!&#39;</span>);
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#39;We sent the verification link to </span><span style="color:#e6db74">${</span>user.email<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#39;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Send data to email service to send email to user
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// ...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
 </span></span></code></pre></div><h3 id="getpersistentdata"><code>getPersistentData()</code></h3>
 <p>永続データを取得します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">getPersistentData</span><span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.getPersistentData(key)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -535,12 +535,12 @@
 </table>
 <h3 id="getpersistentdataforinstance"><code>getPersistentDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの永続データを取得します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">getPersistentDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.getPersistentDataForInstance(instance, key)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -562,12 +562,12 @@
 </table>
 <h3 id="getvolatiledata"><code>getVolatileData()</code></h3>
 <p>揮発性データを取得します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">getVolatileData</span><span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.getVolatileData(key)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -583,12 +583,12 @@
 </table>
 <h3 id="getvolatiledataforinstance"><code>getVolatileDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの揮発性データを取得します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">getVolatileDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.getVolatileDataForInstance(instance, key)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -610,14 +610,14 @@
 </table>
 <h3 id="initialize"><code>initialize()</code></h3>
 <p>Tealiumインスタンスを初期化します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>account<span style="color:#f92672">,</span> profile<span style="color:#f92672">,</span> environment<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               iosDataSource<span style="color:#f92672">,</span> androidDataSource<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               instance<span style="color:#f92672">,</span> isLifecycleEnabled<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.initialize(account, profile, environment,
+</span></span><span style="display:flex;"><span>               iosDataSource, androidDataSource,
+</span></span><span style="display:flex;"><span>               instance, isLifecycleEnabled)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -644,13 +644,13 @@
 <tr>
 <td><code>iosDataSource</code></td>
 <td><code>String</code></td>
-<td>(オプション) データソースキー  (ない場合は<code>null</code>に構成)</td>
+<td>(オプション) データソースキー  (ない場合は<code>null</code>を構成)</td>
 <td><code>&quot;abc123&quot;</code></td>
 </tr>
 <tr>
 <td><code>androidDataSource</code></td>
 <td><code>String</code></td>
-<td>(オプション) Androidデータソースキー (ない場合は<code>null</code>に構成)</td>
+<td>(オプション) Androidデータソースキー (ない場合は<code>null</code>を構成)</td>
 <td><code>null</code></td>
 </tr>
 <tr>
@@ -661,21 +661,21 @@
 </tr>
 <tr>
 <td><code>isLifecycleEnabled</code></td>
-<td><code>Boolean</code></td>
+<td><code>bool</code></td>
 <td>(オプション) ライフサイクル追跡イベントを有効にする (デフォルト: <code>true</code>)</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 </tbody>
 </table>
 <h3 id="initializecustom"><code>initializeCustom()</code></h3>
 <p>Tealiumインスタンスをすべてのオプションで初期化します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">initializeCustom</span><span style="color:#f92672">(</span>account<span style="color:#f92672">,</span> profile<span style="color:#f92672">,</span> environment<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               iosDataSource<span style="color:#f92672">,</span> androidDataSource<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               instance<span style="color:#f92672">,</span> isLifecycleEnabled<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               overridePublishSettingsUrl<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               overrideTagManagementUrl<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               enableVdataCollectEndpointUrl<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               enableConsentManager<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.initializeCustom(account, profile, environment,
+</span></span><span style="display:flex;"><span>               iosDataSource, androidDataSource,
+</span></span><span style="display:flex;"><span>               instance, isLifecycleEnabled,
+</span></span><span style="display:flex;"><span>               overridePublishSettingsUrl,
+</span></span><span style="display:flex;"><span>               overrideTagManagementUrl,
+</span></span><span style="display:flex;"><span>               enableVdataCollectEndpointUrl,
+</span></span><span style="display:flex;"><span>               enableConsentManager)
 </span></span></code></pre></div><p>このメソッド呼び出しには以下の追加パラメータが含まれます：</p>
 <table>
 <thead>
@@ -708,7 +708,7 @@
 <tr>
 <td><code>iosDataSource</code></td>
 <td><code>String</code></td>
-<td>(オプション) データソースキー  (ない場合は <code>null</code>)</td>
+<td>(オプション) データソースキー (ない場合は <code>null</code>)</td>
 <td><code>&quot;abc123&quot;</code></td>
 </tr>
 <tr>
@@ -720,14 +720,14 @@
 <tr>
 <td><code>instance</code></td>
 <td><code>String</code></td>
-<td>(オプション) Tealiumのインスタンス名 (デフォルト: <code>&quot;main&quot;</code>)</td>
+<td>(オプション) Tealiumインスタンス名 (デフォルト: <code>&quot;main&quot;</code>)</td>
 <td><code>&quot;main&quot;</code></td>
 </tr>
 <tr>
 <td><code>isLifecycleEnabled</code></td>
-<td><code>Boolean</code></td>
+<td><code>bool</code></td>
 <td>(オプション) ライフサイクル追跡イベントを有効にする (デフォルト: <code>true</code>)</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 <tr>
 <td><code>overridePublishSettingsUrl</code></td>
@@ -744,22 +744,22 @@
 <tr>
 <td><code>enableVdataCollectEndpointUrl</code></td>
 <td><code>String</code></td>
-<td>データエンドポイント間で切り替え (<code>true</code> はデータをCollectエンドポイントURLに送信するネイティブAndroidおよびiOSライブラリのデフォルト。<code>false</code> は古い <code>vdata</code> エンドポイントにデータを送信 (ない場合は <code>null</code>))</td>
+<td>データエンドポイント間で切り替え (<code>true</code> はデフォルトで、ネイティブのAndroidおよびiOSライブラリがデータをCollectエンドポイントURLに送信します。<code>false</code> は古い <code>vdata</code> エンドポイントにデータを送信します (ない場合は <code>null</code>))</td>
 <td></td>
 </tr>
 <tr>
 <td><code>enableConsentManager</code></td>
-<td><code>Boolean</code></td>
+<td><code>bool</code></td>
 <td>同意管理を有効にする (有効: <code>true</code>, 無効: <code>false</code>)</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 </tbody>
 </table>
 <h3 id="initializewithconsentmanager"><code>initializeWithConsentManager()</code></h3>
 <p>Tealiumインスタンスを初期化し、同意管理を有効にします。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">initializeWithConsentManager</span><span style="color:#f92672">(</span>account<span style="color:#f92672">,</span> profile<span style="color:#f92672">,</span> environment<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               iosDataSource<span style="color:#f92672">,</span> androidDataSource<span style="color:#f92672">,</span>
-</span></span><span style="display:flex;"><span>               instance<span style="color:#f92672">,</span> isLifecycleEnabled<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.initializeWithConsentManager(account, profile, environment,
+</span></span><span style="display:flex;"><span>               iosDataSource, androidDataSource,
+</span></span><span style="display:flex;"><span>               instance, isLifecycleEnabled)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -791,7 +791,7 @@
 <tr>
 <td><code>iosDataSource</code></td>
 <td><code>String</code></td>
-<td>(オプション) データソースキー  (ない場合は <code>null</code>)</td>
+<td>(オプション) データソースキー (ない場合は <code>null</code>)</td>
 <td><code>&quot;abc123&quot;</code></td>
 </tr>
 <tr>
@@ -803,20 +803,20 @@
 <tr>
 <td><code>instance</code></td>
 <td><code>String</code></td>
-<td>(オプション) Tealiumのインスタンス名 (デフォルト: <code>&quot;main&quot;</code>)</td>
+<td>(オプション) Tealiumインスタンス名 (デフォルト: <code>&quot;main&quot;</code>)</td>
 <td><code>&quot;main&quot;</code></td>
 </tr>
 <tr>
 <td><code>isLifecycleEnabled</code></td>
-<td><code>Boolean</code></td>
+<td><code>bool</code></td>
 <td>(オプション) ライフサイクル追跡イベントを有効にする (デフォルト: <code>true</code>)</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 </tbody>
 </table>
 <h3 id="removepersistentdata"><code>removePersistentData()</code></h3>
 <p>永続データを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removePersistentData</span><span style="color:#f92672">(</span>keys<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removePersistentData(keys)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -837,7 +837,7 @@
 </table>
 <h3 id="removepersistentdataforinstance"><code>removePersistentDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの永続データを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removePersistentDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> keys<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removePersistentDataForInstance(instance, keys)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -864,7 +864,7 @@
 </table>
 <h3 id="removeremotecommand"><code>removeRemoteCommand()</code></h3>
 <p>リモートコマンドマネージャーからリモートコマンドを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeRemoteCommand</span><span style="color:#f92672">(</span>commandID<span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeRemoteCommand(commandID);
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -884,10 +884,10 @@
 </tbody>
 </table>
 <p>例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeRemoteCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;firebase&#34;</span><span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeRemoteCommand(<span style="color:#e6db74">&#34;firebase&#34;</span>);
 </span></span></code></pre></div><h3 id="removeremotecommandforinstance"><code>removeRemoteCommandForInstance()</code></h3>
 <p>特定のTealiumインスタンスのリモートコマンドマネージャーからリモートコマンドを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeRemoteCommandForInstance</span><span style="color:#f92672">(</span>instanceName<span style="color:#f92672">,</span> commandID<span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeRemoteCommandForInstance(instanceName, commandID);
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -912,10 +912,10 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeRemoteCommandForInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;instance-2&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;firebase&#34;</span><span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeRemoteCommandForInstance(<span style="color:#e6db74">&#34;instance-2&#34;</span>, <span style="color:#e6db74">&#34;firebase&#34;</span>);
 </span></span></code></pre></div><h3 id="removevolatiledata"><code>removeVolatileData()</code></h3>
 <p>揮発性データを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeVolatileData</span><span style="color:#f92672">(</span>keys<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeVolatileData(keys)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -930,13 +930,13 @@
 <td><code>keys</code></td>
 <td><code>List&lt;String&gt;</code></td>
 <td>文字列キー名のリスト</td>
-<td><code>[&quot;volatile_var&quot;, &quot;volatile_var&quot;]</code></td>
+<td><code>[&quot;volatile_var1&quot;, &quot;volatile_var2&quot;]</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="removevolatiledataforinstance"><code>removeVolatileDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの揮発性データを削除します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">removeVolatileDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> keys<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.removeVolatileDataForInstance(instance, keys)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -957,13 +957,13 @@
 <td><code>keys</code></td>
 <td><code>List&lt;String&gt;</code></td>
 <td>文字列キー名のリスト</td>
-<td><code>[&quot;volatile_var&quot;, &quot;volatile_var&quot;]</code></td>
+<td><code>[&quot;volatile_var1&quot;, &quot;volatile_var2&quot;]</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="setpersistentdata"><code>setPersistentData()</code></h3>
 <p>永続データを構成します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">setPersistentData</span><span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.setPersistentData(data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -984,7 +984,7 @@
 </table>
 <h3 id="setpersistentdataforinstance"><code>setPersistentDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの永続データを構成します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">setPersistentDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.setPersistentDataForInstance(instance, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1011,7 +1011,7 @@
 </table>
 <h3 id="setvolatiledata"><code>setVolatileData()</code></h3>
 <p>揮発性データを構成します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolatileData</span><span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.setVolatileData(data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1032,7 +1032,7 @@
 </table>
 <h3 id="setvolatiledataforinstance"><code>setVolatileDataForInstance()</code></h3>
 <p>特定のTealiumインスタンスの揮発性データを構成します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">setVolatileDataForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.setVolatileDataForInstance(instance, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1052,14 +1052,14 @@
 <tr>
 <td><code>data</code></td>
 <td><code>Map&lt;String, dynamic&gt;</code></td>
-<td>キーと値のペアとしての揮発性データ</td>
+<td>キーと値のペアとしての揮癲性データ</td>
 <td><code>{&quot;key1&quot;: &quot;value1&quot;}</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="trackevent"><code>trackEvent()</code></h3>
 <p>ビュー以外のイベントを追跡します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span>eventName<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.trackEvent(eventName, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1086,7 +1086,7 @@
 </table>
 <h3 id="trackeventforinstance"><code>trackEventForInstance()</code></h3>
 <p>特定のTealiumインスタンスのビュー以外のイベントを追跡します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">trackEventForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> eventName<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.trackEventForInstance(instance, eventName, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1119,7 +1119,7 @@
 </table>
 <h3 id="trackview"><code>trackView()</code></h3>
 <p>画面ビューを追跡します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">trackView</span><span style="color:#f92672">(</span>viewName<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.trackView(viewName, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -1146,12 +1146,12 @@
 </table>
 <h3 id="trackviewforinstance"><code>trackViewForInstance()</code></h3>
 <p>特定のTealiumインスタンスのための画面ビューを追跡します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">trackViewForInstance</span><span style="color:#f92672">(</span>instance<span style="color:#f92672">,</span> viewName<span style="color:#f92672">,</span> data<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Tealium.trackViewForInstance(instance, viewName, data)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>タイプ</th>
+<th>型</th>
 <th>説明</th>
 <th>例</th>
 </tr>
@@ -1167,7 +1167,7 @@
 <td><code>viewName</code></td>
 <td><code>String</code></td>
 <td>ビューを識別する名前</td>
-<td><code>&quot;Event button click&quot;</code></td>
+<td><code>&quot;View screen&quot;</code></td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -1222,7 +1222,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年March月30日
+          <p>最終更新日 ::  2026年March月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

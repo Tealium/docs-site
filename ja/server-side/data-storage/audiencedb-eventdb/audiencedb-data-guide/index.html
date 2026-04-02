@@ -416,6 +416,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-sources/cloud-data/databricks/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Databricks</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/cloud-data/amazon-redshift/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Amazon Redshift</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-sources/cloud-data/snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Snowflake</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google BigQuery</a></li></ul>
@@ -1187,24 +1189,56 @@
 </tr>
 </tbody>
 </table>
+<h3 id="訪問テーブルビューおよび正規化ビュー-1">訪問テーブル、ビュー、および正規化ビュー</h3>
+<p>AudienceDBは訪問データをテーブル、ビュー、および正規化ビューとして公開します。それぞれは異なる目的を持っています。</p>
+<table>
+<thead>
+<tr>
+<th>テーブル/ビュー名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitors</code> (テーブル)</td>
+<td>各訪問のすべての履歴行を含み、すべての状態変更を含みます。列名は属性IDを使用します（例：<code>badge_30</code>, <code>flag_5052</code>）。このテーブルは監査および時間経過による変更のクエリに使用します。</td>
+</tr>
+<tr>
+<td><code>visitors_view</code> (ビュー)</td>
+<td>最新の状態のみを含みます（訪問ごとに1行）。列名は属性IDと名前を使用します（例：<code>visitor - badge - VIP (13)</code>）。このビューは現在の状態のレポートに使用します。</td>
+</tr>
+<tr>
+<td><code>visitors_view_normalized</code> (正規化ビュー)</td>
+<td><code>visitors_view</code>と同じ行を含みますが、列名は属性IDを省略します（例：<code>visitor - badge - VIP</code>）。このビューはBIツールや、列名が一貫している必要がある安定したダッシュボードに使用します。</td>
+</tr>
+<tr>
+<td><code>visitor_replaces</code> (テーブル)</td>
+<td>ステッチされた訪問IDマッピングのすべてのバージョンを含み、置換されたIDも含みます。このテーブルは完全なステッチ履歴に使用します。</td>
+</tr>
+<tr>
+<td><code>visitor_replaces_view</code> (ビュー)</td>
+<td>置換されていない最新の訪問IDのみを含みます。このビューは訪問IDを現在のプロファイルに解決するために使用します。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="サンプルデータベース構造">サンプルデータベース構造</h2>
 <p>以下のセクションでは、各ビューのサンプル構造例を提供し、各ビューが何がユニークであり、他のビューとどのように異なるかを判断するのに役立ちます。</p>
 <h3 id="訪問配列">訪問配列</h3>
 <p>以下の例は、<code>visit_arrays</code>テーブルの基本的なフォーマットを示しています：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl"> visit_id                          | index | updated                 | visit_array_421
  ----------------------------------+--------------------------------------------------------------------------
- 13e1a63890793caa346f90607a76c1c98 | 0     | 2018-05-17 01:03:30.344 | Smartphone
- 13e1a63890793caa346f90607a76c1c98 | 1     | 2018-05-17 01:03:30.344 | Phone Charger
- 13e1a63890793caa346f90607a76c1c98 | 2     | 2018-05-17 01:03:30.344 | Smartphone Case
+ 13e1a63890793caa346f90607a76c1c98 | 0     | 2018-05-17 01:03:30.344 | スマートフォン
+ 13e1a63890793caa346f90607a76c1c98 | 1     | 2018-05-17 01:03:30.344 | フォンチャージャー
+ 13e1a63890793caa346f90607a76c1c98 | 2     | 2018-05-17 01:03:30.344 | スマートフォンケース
 </code></pre><h3 id="訪問リスト">訪問リスト</h3>
 <p>以下の例は、<code>visit_lists</code>テーブルの基本的なフォーマットを示しています：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">myexample=# select visit_id, updated, visit_list_284 from visit_lists;
 
  visit_id                          | updated                 | visit_list_284
  ----------------------------------+-------------------------------------------------------------------------
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Cell Phones &amp; Accessories
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Computers and Tablets
- 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | Office Supplies
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | 携帯電話 &amp; アクセサリ
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | コンピュータとタブレット
+ 13e1a63890793caa346f90607a76c1c98 | 2018-04-22 12:50:20.471 | オフィス用品
 </code></pre><h3 id="訪問数の集計">訪問数の集計</h3>
 <p>以下の例は、<code>visitor_tallies</code> テーブルの基本的なフォーマットを示しています：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">myexample=# select visit_id, updated, visit_tally_5144_key, visit_tally_5144_value from visit_tallies;
@@ -1361,7 +1395,7 @@ e1e5dd5e58bc97056f8340e242205e1ec2ab0a88c94c890563399f55828638f7 | 2017-09-09 14
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年March月30日
+          <p>最終更新日 ::  2026年March月31日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1380,6 +1414,7 @@ e1e5dd5e58bc97056f8340e242205e1ec2ab0a88c94c890563399f55828638f7 | 2017-09-09 14
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B1%9E%E6%80%A7%E3%81%A8%E5%88%97%E5%90%8D" href="javascript:void(0)">属性と列名</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencedb%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB" href="javascript:void(0)">AudienceDBテーブル</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%83%93%E3%83%A5%E3%83%BC%E3%81%8A%E3%82%88%E3%81%B3%E6%AD%A3%E8%A6%8F%E5%8C%96%E3%83%93%E3%83%A5%E3%83%BC" href="javascript:void(0)">訪問テーブル、ビュー、および正規化ビュー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%83%93%E3%83%A5%E3%83%BC%E3%81%8A%E3%82%88%E3%81%B3%E6%AD%A3%E8%A6%8F%E5%8C%96%E3%83%93%E3%83%A5%E3%83%BC" href="javascript:void(0)">訪問テーブル、ビュー、および正規化ビュー</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E6%A7%8B%E9%80%A0" href="javascript:void(0)">サンプルデータベース構造</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E9%85%8D%E5%88%97" href="javascript:void(0)">訪問配列</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">訪問リスト</a></li>
