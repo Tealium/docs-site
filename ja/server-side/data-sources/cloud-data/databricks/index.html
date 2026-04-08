@@ -459,7 +459,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".cloudstream">クラウドストリーム</a>
         <ul class="pl2  cloudstream desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">この記事について</a></li>
+        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">データソース</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1095,43 +1095,38 @@
 </tbody>
 </table>
 <p>詳細については、Databricks: データタイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-datatypes">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-datatypes">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-datatypes">GCP</a>)を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>マルチテーブル結合は現在サポートされていません。同じ機能はDatabricksビューで実現できます。詳細については、Databricks: ビューの作成と管理 (<a href="https://docs.databricks.com/aws/en/views/create-views">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/create-views">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-view">GCP</a>)を参照してください。</p>
 <h2 id="接続の作成">接続の作成</h2>
-<p>Tealiumはサービスプリンシパルを使用してDatabricksコンピュートリソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを認証する</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Databricks個人アクセストークン（PAT）はサポートされていません。詳細については、Databricks: Databricks個人アクセストークンで認証する（レガシー） (<a href="https://docs.databricks.com/aws/en/dev-tools/auth/pat">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat">Azure</a>, <a href="https://docs.databricks.com/gcp/en/dev-tools/auth/pat">GCP</a>)を参照してください。</p>
+<p>Tealiumはサービスプリンシパルを使用してDatabricksの計算リソースにアクセスします。進む前に、Databricksでサービスプリンシパルを作成し、OAuthシークレットを生成する必要があります。詳細については、<a href="https://docs.databricks.com/aws/en/dev-tools/auth/oauth-m2m">Databricks: OAuthを使用してサービスプリンシパルでアクセスを認証する</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Databricksの個人アクセストークン（PAT）はサポートされていません。詳細については、Databricks: Databricks個人アクセストークンで認証する（レガシー） (<a href="https://docs.databricks.com/aws/en/dev-tools/auth/pat">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/dev-tools/auth/pat">Azure</a>, <a href="https://docs.databricks.com/gcp/en/dev-tools/auth/pat">GCP</a>)を参照してください。</p>
 <p>新しい接続を構成するには、次の接続詳細を入力します：</p>
 <ul>
-<li><strong>ホスト名</strong>: Databricksコンピュートリソースのホスト名。例：
+<li><strong>ホスト名</strong>: Databricks計算リソースのホスト名。例：
 <ul>
 <li>AWS: <code>MY_ACCOUNT.cloud.databricks.com</code></li>
 <li>Azure: <code>MY_ACCOUNT.azuredatabricks.net</code></li>
 <li>GCP: <code>MY_ACCOUNT.gcp.databricks.com</code></li>
 </ul>
 </li>
-<li><strong>HTTPパス</strong>: コンピュートリソースへのHTTPパス。例：<code>/sql/1.0/warehouses/3fbc78304284503a</code>。HTTPパスを見つけるには、Databricksで<strong>SQL Warehouses</strong>画面に移動し、テーブルが配置されている倉庫を選択し、<strong>接続詳細</strong>をクリックします。</li>
+<li><strong>HTTPパス</strong>: 計算リソースへのHTTPパス。例：<code>/sql/1.0/warehouses/3fbc78304284503a</code>。HTTPパスを見つけるには、Databricksで<strong>SQLウェアハウス</strong>画面に移動し、テーブルが配置されているウェアハウスを選択し、<strong>接続詳細</strong>をクリックします。</li>
 <li><strong>カタログ</strong>: この接続のカタログ名。</li>
 <li><strong>スキーマ</strong>: この接続のスキーマ名。</li>
 <li><strong>OAuthクライアントID</strong>: サービスプリンシパルのUUIDまたはアプリケーションID。</li>
 <li><strong>OAuthクライアントシークレット</strong>: サービスプリンシパルが生成したシークレット。</li>
 </ul>
-<p>詳細については、Databricks: コンピュート構成 (<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>, <a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>)を参照してください。</p>
+<p>詳細については、Databricks: 計算構成 (<a href="https://docs.databricks.com/aws/en/integrations/jdbc/compute">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/integrations/jdbc/compute">Azure</a>, <a href="https://docs.databricks.com/gcp/en/integrations/jdbc/compute">GCP</a>)を参照してください。</p>
 <p>Databricksに接続した後、<strong>テーブル選択</strong>リストからデータソーステーブルを選択します。</p>
-<h2 id="クエリモード">クエリモード</h2>
+<h2 id="クエリ構成">クエリ構成</h2>
 <p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p>Databricksについては、次の要件に注意してください：</p>
+<p>Databricksについては、以下の要件に注意してください：</p>
 <ul>
-<li><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>モード：選択されたタイムスタンプ列は<code>TIMESTAMP</code>タイプでなければなりません。
+<li><strong>タイムスタンプ + インクリメント</strong>および<strong>タイムスタンプ</strong>クエリモード：選択されたタイムスタンプ列は<code>TIMESTAMP</code>タイプでなければなりません。
 詳細については、Databricks: TIMESTAMPタイプ (<a href="https://docs.databricks.com/aws/en/sql/language-manual/data-types/timestamp-type">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/data-types/timestamp-type">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/data-types/timestamp-type">GCP</a>)を参照してください。</li>
-<li><strong>インクリメント</strong>モード：選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</li>
+<li><strong>インクリメント</strong>クエリモード：選択された数値列は、追加されるたびに値が増加する必要があります。自動インクリメント列の推奨定義は次のとおりです：</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 BIGINT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">IDENTITY</span> (<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">WITH</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>詳細については、Databricks <code>CREATE TABLE</code> (<a href="https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-using">Azure</a>, <a href="https://docs.databricks.com/gcp/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using">GCP</a>)を参照してください。</p>
-<h2 id="where句">WHERE句</h2>
-<p>一般的な概要については、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
-<p><code>WHERE</code>句は複数のテーブルからのサブクエリをサポートしていません。複数のDatabricksテーブルからデータをインポートするには、Databricksでビューを作成し、データソース構成でビューを選択します。</p>
-<p>詳細については、Databricks: ビューとは何か？ (<a href="https://docs.databricks.com/aws/en/views/">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/views/">Azure</a>, <a href="https://docs.databricks.com/gcp/en/views/">GCP</a>)を参照してください。</p>
 <h2 id="ipアクセスリスト">IPアクセスリスト</h2>
-<p>DatabricksワークスペースがIPアドレスによって制限されている場合は、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
+<p>DatabricksワークスペースがIPアドレスによって制限されている場合、<a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>をDatabricksのIPアクセスリストに追加してください。</p>
 <p>詳細については、Databricks: IPアクセスリストの管理 (<a href="https://docs.databricks.com/aws/en/security/network/front-end/ip-access-list">AWS</a>, <a href="https://learn.microsoft.com/en-us/azure/databricks/security/network/front-end/ip-access-list">Azure</a>, <a href="https://docs.databricks.com/gcp/en/security/network/front-end/ip-access-list">GCP</a>)を参照してください。</p>
 
 </div>
@@ -1193,7 +1188,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月20日
+          <p>最終更新日 ::  2026年April月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1209,8 +1204,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8E%A5%E7%B6%9A%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">接続の作成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#where%E5%8F%A5" href="javascript:void(0)">WHERE句</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E6%A7%8B%E6%88%90" href="javascript:void(0)">クエリ構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">IPアクセスリスト</a></li>
               </nav>
   </aside></nav>

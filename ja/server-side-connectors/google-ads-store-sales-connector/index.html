@@ -749,7 +749,7 @@
       <a href="/ja/server-side-connectors/quantcast-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Quantcast Audiences</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Reddit コンバージョン</span></a>
+      <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Reddit Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/reddit-custom-audiences-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Redditカスタムオーディエンス</span></a>
@@ -957,6 +957,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/viant-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Viant</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/viant-vdp-conversion-api/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Viant VDP変換API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/vkontakte-ads-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>VKontakte広告</span></a>
@@ -1524,7 +1527,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit コンバージョン</a></li>
+        <a href="/ja/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Redditカスタムオーディエンス</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1663,6 +1666,8 @@
         <a href="/ja/server-side-connectors/veritonic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".veritonic-connector">Veritonic</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/viant-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".viant-connector">Viant</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/viant-vdp-conversion-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".viant-vdp-conversion-api">Viant VDP変換API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte広告</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1809,12 +1814,12 @@
 <tbody>
 <tr>
 <td>トランザクションのアップロード</td>
-<td>✗</td>
+<td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
 <td>複数識別子でのトランザクションのアップロード</td>
-<td>✗</td>
+<td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
@@ -1836,7 +1841,7 @@
 <h4 id="バッチ制限">バッチ制限</h4>
 <p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数: 100000</li>
+<li>最大リクエスト数: 100000</li>
 <li>最古のリクエストからの最大時間: 60分</li>
 <li>リクエストの最大サイズ: 40 MB</li>
 </ul>
@@ -1866,15 +1871,15 @@
 <tbody>
 <tr>
 <td>住所情報: 国コード</td>
-<td>ユーザーの住所にある国のコードを ISO 3166-1 alpha-2 形式の2文字で指定します。</td>
+<td>ユーザーの住所の国コードを ISO 3166-1 alpha-2 形式の2文字で指定します。</td>
 </tr>
 <tr>
 <td>住所情報: 名 (既に SHA256 ハッシュ化済み)</td>
-<td>ユーザーの名前を既に空白トリム、小文字化、SHA256 ハッシュ化したものを提供します。</td>
+<td>ユーザーの名を既に空白トリム、小文字化、SHA256 ハッシュ化したものを提供します。</td>
 </tr>
 <tr>
 <td>住所情報: 名 (SHA256 ハッシュを適用)</td>
-<td>ユーザーの名前をプレーンテキストで提供し、コネクタがこの値を空白トリム、小文字化し、SHA256 ハッシュを適用します。</td>
+<td>ユーザーの名をプレーンテキストで提供し、コネクタがこの値を空白トリム、小文字化し、SHA256 ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>住所情報: 姓 (既に SHA256 ハッシュ化済み)</td>
@@ -1941,7 +1946,7 @@
 </tr>
 <tr>
 <td>カスタムキー</td>
-<td>トランザクションに適用可能な店舗売上のカスタム変数キーの名前。後でカスタムセグメンテーションやレポーティングに使用できます。</td>
+<td>トランザクションに適用可能な店舗売上のカスタム変数キーの名前。後でカスタムセグメンテーションのレポートで使用するために定義されたキーです。</td>
 </tr>
 <tr>
 <td>カスタム値</td>
@@ -1953,7 +1958,7 @@
 </tr>
 <tr>
 <td>商品 ID</td>
-<td>商品のユニークな識別子。Merchant Center 商品 ID または GTIN（グローバルトレードアイテムナンバー）のいずれかです。</td>
+<td>商品のユニークな識別子。Merchant Center の商品 ID または GTIN (グローバルトレードアイテムナンバー) のいずれかです。</td>
 </tr>
 <tr>
 <td>数量</td>
@@ -1961,11 +1966,11 @@
 </tr>
 <tr>
 <td>国コード</td>
-<td>フィードにアップロードされた商品に関連する国の Common Locale Data Repository (CLDR) 領土コード。</td>
+<td>フィードにアップロードされた商品に関連する国の Common Locale Data Repository (CLDR) 領域コード。</td>
 </tr>
 <tr>
 <td>言語コード</td>
-<td>フィードにアップロードされた商品に関連する言語の ISO 639-1 コード。</td>
+<td>フィードにアップロードされた商品に関連する言語の ISO 639-1 コード</td>
 </tr>
 <tr>
 <td>マーチャント ID</td>
@@ -1974,7 +1979,7 @@
 </tbody>
 </table>
 <h5 id="同意">同意</h5>
-<p>デフォルトでは、コネクタは <code>adUserData</code> および <code>adPersonalization</code> の同意に対して <code>GRANTED</code> の値を送信します。デフォルトを上書きするには、関連する EventStream 属性を <code>Ad User Data Consent</code> および/または <code>Ad Personalization Consent</code> にマッピングし、値を <code>DENIED</code> に構成します。</p>
+<p>コネクタはデフォルトで <code>adUserData</code> と <code>adPersonalization</code> の同意に <code>GRANTED</code> の値を送信します。デフォルトを上書きするには、関連する EventStream 属性を <code>Ad User Data Consent</code> および/または <code>Ad Personalization Consent</code> にマップし、値を <code>DENIED</code> に構成します。</p>
 <table>
 <thead>
 <tr>
@@ -1984,12 +1989,12 @@
 </thead>
 <tbody>
 <tr>
-<td>広告ユーザーデータの同意</td>
-<td>広告ユーザーデータに関する同意。デフォルト値は <code>GRANTED</code> です。有効な値は <code>GRANTED</code> と <code>DENIED</code> です。</td>
+<td>Ad User Data Consent</td>
+<td>広告ユーザーデータの同意。デフォルト値は <code>GRANTED</code> です。有効な値は <code>GRANTED</code> と <code>DENIED</code> です。</td>
 </tr>
 <tr>
-<td>広告パーソナライゼーションの同意</td>
-<td>広告パーソナライゼーションに関する同意。デフォルト値は <code>GRANTED</code> です。有効な値は <code>GRANTED</code> と <code>DENIED</code> です。</td>
+<td>Ad Personalization Consent</td>
+<td>広告パーソナライゼーションの同意。デフォルト値は <code>GRANTED</code> です。有効な値は <code>GRANTED</code> と <code>DENIED</code> です。</td>
 </tr>
 </tbody>
 </table>
@@ -1997,7 +2002,7 @@
 <h4 id="バッチ制限-1">バッチ制限</h4>
 <p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数: 33000</li>
+<li>最大リクエスト数: 33000</li>
 <li>最古のリクエストからの最大時間: 60分</li>
 <li>リクエストの最大サイズ: 40 MB</li>
 </ul>
@@ -2031,19 +2036,19 @@
 </tr>
 <tr>
 <td>住所情報：名（既にSHA256ハッシュ化済み）</td>
-<td>ユーザーの名を既に空白トリム、小文字化、SHA256ハッシュ化したものを提供します。</td>
+<td>ユーザーの名を既に空白トリム、小文字化、SHA256ハッシュ化した状態で提供します。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>ユーザーの名のプレーンテキストを提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
+<td>ユーザーの名をプレーンテキストで提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（既にSHA256ハッシュ化済み）</td>
-<td>ユーザーの姓を既に空白トリム、小文字化、SHA256ハッシュ化したものを提供します。</td>
+<td>ユーザーの姓を既に空白トリム、小文字化、SHA256ハッシュ化した状態で提供します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>ユーザーの姓のプレーンテキストを提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
+<td>ユーザーの姓をプレーンテキストで提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
@@ -2051,19 +2056,19 @@
 </tr>
 <tr>
 <td>電子メールアドレス（既にSHA256ハッシュ化済み）</td>
-<td>ユーザーの電子メールアドレスを既に空白トリム、小文字化、SHA256ハッシュ化したものを提供します。</td>
+<td>ユーザーの電子メールアドレスを既に空白トリム、小文字化、SHA256ハッシュ化した状態で提供します。</td>
 </tr>
 <tr>
 <td>電子メールアドレス（SHA256ハッシュを適用）</td>
-<td>ユーザーの電子メールアドレスのプレーンテキストを提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
+<td>ユーザーの電子メールアドレスをプレーンテキストで提供し、コネクタが空白トリム、小文字化、SHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>電話番号（既にSHA256ハッシュ化済み）</td>
-<td>ユーザーの電話番号を既に空白トリム、SHA256ハッシュ化したものを提供します。</td>
+<td>ユーザーの電話番号を既に空白トリム、SHA256ハッシュ化した状態で提供します。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>ユーザーの電話番号のプレーンテキストを提供し、コネクタが空白トリム、SHA256ハッシュを適用します。</td>
+<td>ユーザーの電話番号をプレーンテキストで提供し、コネクタが空白トリム、SHA256ハッシュを適用します。</td>
 </tr>
 <tr>
 <td>第三者ユーザーID</td>
@@ -2090,11 +2095,11 @@
 </tr>
 <tr>
 <td>通貨コード</td>
-<td>（必須）取引通貨コードをISO 4217の3文字形式で表します。</td>
+<td>（必須）取引通貨コードをISO 4217の3文字形式で。</td>
 </tr>
 <tr>
 <td>取引アップロード比率</td>
-<td>（必須）顧客に関連付けられた全体の売上に対してアップロードされた売上の比率。この値は0から1の間でなければならず（0を除く）、例えば顧客に関連付けられた売上の半分をアップロードする場合、この値は0.5になります。</td>
+<td>（必須）顧客に関連付けられた全体の売上に対してアップロードされた売上の比率。この値は0から1の間でなければならず（0を除く）、例えば顧客に関連付け可能な売上の半分をアップロードする場合、この値は0.5になります。</td>
 </tr>
 <tr>
 <td>取引注文ID</td>
@@ -2118,15 +2123,15 @@
 </tr>
 <tr>
 <td>数量</td>
-<td>売れた商品の数。構成されていない場合、デフォルトは1です。</td>
+<td>販売された商品の数。構成されていない場合、デフォルトは1です。</td>
 </tr>
 <tr>
 <td>国コード</td>
-<td>フィードがアップロードされた国に関連するCommon Locale Data Repository (CLDR)の地域コード。</td>
+<td>フィードにアップロードされたアイテムに関連する国のCommon Locale Data Repository (CLDR)領土コード。</td>
 </tr>
 <tr>
 <td>言語コード</td>
-<td>フィードがアップロードされた言語に関連するISO 639-1コード。</td>
+<td>フィードにアップロードされたアイテムに関連する言語のISO 639-1コード</td>
 </tr>
 <tr>
 <td>マーチャントID</td>
@@ -2214,7 +2219,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月10日
+          <p>最終更新日 ::  2026年April月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

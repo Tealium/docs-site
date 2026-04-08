@@ -459,7 +459,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 expanded primary-color" data-target=".cloudstream">クラウドストリーム</a>
         <ul class="pl2 bl b--primary bw1 cloudstream desktopmenu animated fadeIn list ">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">この記事について</a></li>
+        <a href="/ja/server-side/cloudstream/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-cloudstream">について</a></li>
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/cloudstream/datasources/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-cloud-datasources">データソース</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1052,19 +1052,18 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p>データソースは、SnowflakeやDatabricksなどのデータクラウドへの定義済み接続です。CloudStreamはこれらのデータソースに接続してセグメントを取得し、Tealiumにデータを保存することなくアクティベーションします。これにより、既存のデータインフラの力を活用しながら、クラウドから直接大規模なデータセットを扱うことができます。</p>
+<p>データソースは、SnowflakeやDatabricksなどのデータクラウドへの定義済み接続です。CloudStreamはこれらのデータソースに接続してセグメントを取得し、Tealiumにデータを保存せずにアクティベーションします。これにより、既存のデータインフラの力を活用しながら、クラウドから直接大規模なデータセットを扱うことができます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_datasource_summary.png"><img src="/images/early-access/cloudstream/cloudstream_datasource_summary.png"
          alt="CloudStreamデータソースの概要"
          title="CloudStreamデータソースの概要"/>
     </a>
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>プロファイルで最大10個のデータソースに接続できます。</p>
-<p>CloudStreamデータソースは、データクラウドに保存されているデータと直接連携して動作します。データはデータクラウドに残り、コネクタを通じて一時的にインポートされるだけで、Tealiumには保存されません。</p>
-<p>各データソースは一度に1つのビューまたはテーブルに接続できます。データクラウドから複数のテーブルやビューに接続する必要がある場合は、テーブルやビューごとに別のデータソースを構成してください。</p>
+<p>CloudStreamデータソースは、データクラウドに保存されているデータと直接連携するように設計されています。データはデータクラウドに残り、コネクタを通じて一時的にインポートされるだけで、Tealiumには保存されません。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>CloudStreamはクラウドデータソースのみをサポートしています。</p>
 <p>クラウドデータソースについての詳細は、<a href="/ja/server-side/data-sources/cloud-data/about/">クラウドデータソースについて</a>を参照してください。</p>
 <h2 id="構成のテスト">構成のテスト</h2>
-<p>データソース、セグメント、またはアクティベーションを有効にする前に、データソースとクエリをテストすることをお勧めします。ただし、テストを実行すると、セグメントがアクティブ化されたり、有効なアクションがトリガーされたり、下流システムに影響を与える可能性があります。意図しない結果を防ぐために、コネクタと機能を無効にし、テストレコードを制限し、受信者と調整してください。</p>
+<p>データソース、セグメント、またはアクティベーションを有効にする前に、データソースとクエリをテストすることをお勧めします。ただし、テストを実行すると、セグメントがアクティブ化され、有効なアクションがトリガーされ、下流のシステムに影響を与える可能性があります。意図しない結果を防ぐために、コネクタと機能を無効にし、テストレコードを制限し、受信者と調整してください。</p>
 <p>データソース構成をテストするには、次の手順を使用します：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_configuration.png"><img src="/images/early-access/cloudstream/cloudstream_test_configuration.png"
          alt="クラウドテスト構成"
@@ -1073,26 +1072,25 @@
 </figure>
 <ol>
 <li>データソースウィンドウの右上隅にあるアクションボタンをクリックし、<strong>エンドツーエンドテスト</strong>をクリックします。</li>
-<li>出力を受け取る方法を選択します
+<li>出力を受け取る方法を選択します：
 <ul>
 <li><strong>新しいトレースセッション</strong>：出力は最大10レコードの新しいトレースセッションで表示されます。このオプションは、エンドツーエンドの検証とログの詳細を確認するのに最適です。</li>
-<li><strong>既存のトレースセッション</strong>：出力はすでに開始しているトレースセッションで表示されます。<strong>トレースID</strong>を入力し、<strong>トレースに参加</strong>をクリックします。</li>
-<li><strong>ダイレクト出力</strong>：出力の生の結果が画面に表示されます。データレコードにトレースIDは追加されず、トレースは利用できません。このオプションは、クエリと属性マッピングをすばやく確認するのに最適です。</li>
+<li><strong>既存のトレースセッション</strong>：すでに開始しているトレースセッションで出力が表示されます。<strong>トレースID</strong>を入力し、<strong>トレースに参加</strong>をクリックします。</li>
+<li><strong>ダイレクト出力</strong>：生の結果が画面に表示されます。データレコードにトレースIDは追加されず、トレースは利用できません。このオプションは、クエリと属性マッピングをすばやく確認するのに最適です。</li>
 </ul>
 </li>
 <li>テストのために処理する行数を選択します。最大行数は10です。</li>
 <li><strong>テストクエリ</strong>の下で、テストに含めるテーブルのカラムを選択します。リストからカラムを削除するには、カラムの<strong>X</strong>をクリックします。少なくとも1つのカラムを選択する必要があります。</li>
 <li><strong>From Table</strong>の下で、クエリを実行するテーブルを選択します。<strong>Select Columns</strong>ボックスは、テーブルのカラムで更新されます。</li>
 <li><strong>Where</strong>の下で、テーブルに対して実行するSQLクエリを入力します。</li>
-<li><strong>Check Query</strong>をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。</li>
-<li>結果は<strong>Query Result Preview</strong>タブの下のテーブルに表示されます：<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
+<li><strong>Check Query</strong>をクリックしてSQLを検証し、必要なフィールドが構成されていることを確認します。結果は<strong>Query Result Preview</strong>タブの下のテーブルに表示されます：<figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_check_query.png"><img src="/images/early-access/cloudstream/cloudstream_test_check_query.png"
          alt="クラウドテストチェッククエリ"
          title="クラウドテストチェッククエリ"/>
     </a>
 </figure></li>
 <li><strong>Start Test</strong>をクリックして構成テストを開始します。</li>
 </ol>
-<p>右サイドバーには、テストの完了までの時間と、テストがエラーに遭遇した場合のステータスメッセージを表示する進行状況バーが表示されます。</p>
+<p>右サイドバーには、テストの完了までの時間を推定するプログレスバーと、テストがエラーに遭遇した場合に知らせるステータスメッセージが表示されます。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_test_output.png"><img src="/images/early-access/cloudstream/cloudstream_test_output.png"
          alt="クラウドテスト出力"
          title="クラウドテスト出力"/>
@@ -1105,59 +1103,59 @@
     </a>
 </figure>
 <ul>
-<li>テストの実行をトレースで見たい場合は、<strong>トレースに参加</strong>をクリックします。</li>
-<li>テストが失敗した場合、次のことができます：
+<li>テストの実行をトレースで見たい場合は、<strong>Join Trace</strong>をクリックします。</li>
+<li>テストが失敗した場合は、次のことができます：
 <ul>
-<li><strong>テスト構成の編集</strong>をクリックして構成を変更します。</li>
-<li><strong>テストの再試行</strong>をクリックして現在の構成を再度実行します。</li>
+<li><strong>Edit Test Configuration</strong>をクリックして構成を変更します。</li>
+<li><strong>Retry Test</strong>をクリックして現在の構成を再実行します。</li>
 </ul>
 </li>
 </ul>
 <h2 id="オフセットの管理">オフセットの管理</h2>
-<p>データソースは、クエリが開始される日付または増分値の位置を追跡します。オフセットを使用すると、クエリを開始するビューまたはテーブルの位置をリセットまたは手動で構成して制御できます。</p>
+<p>データソースは、クエリが開始される日付または増分値の位置を追跡します。オフセットをリセットまたは手動で構成することで、ビューまたはテーブルのどこからクエリを開始するかを制御できます。</p>
 <p>たとえば、最近のメーリングリストのアクティベーションにエラーが含まれており、100レコードが処理された場合、現在の増分オフセットは342です。メールアクティベーションを修正した後、これらのレコードを再処理するには、オフセットを242に構成します。データソースを再起動すると、その位置からレコードのクエリが開始され、修正されたメールが送信されます。</p>
 <p>次の条件が真の場合にのみ、オフセットを管理できます：</p>
 <ul>
 <li>現在のプロファイルが公開されています。</li>
-<li>クエリモードが<strong>タイムスタンプ + 増分（推奨）</strong>、<strong>タイムスタンプ</strong>、または<strong>増分</strong>です。<strong>完全な再同期</strong>クエリモードでは、オフセットを管理できません。</li>
+<li>クエリモードが<strong>Timestamp + Incrementing (推奨)</strong>、<strong>Timestamp</strong>、または<strong>Incrementing</strong>です。<strong>Full Resync</strong>クエリモードではオフセットを管理できません。</li>
 <li>データソースが停止しています。
 <ul>
-<li>データソースの状態が実行中、スケジュールされている、または失敗している場合、オフセットを編集することはできません。現在のオフセットに関する情報のみが利用可能です。</li>
+<li>データソースの状態が実行中、スケジュールされている、または失敗している場合は、オフセットを編集できません。現在のオフセットに関する情報のみが利用可能です。</li>
 <li>状態が初期化中、非アクティブ、または接続エラーがある場合、オフセットは利用できません。</li>
 </ul>
 </li>
 </ul>
 <p>データソースのオフセットを管理するには、次の手順を使用します：</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/manage_offset.png"><img src="/images/early-access/cloudstream/manage_offset.png"
-         alt="オフセットの管理"
-         title="オフセットの管理"/>
+         alt="オフセット管理スクリーンショット"
+         title="オフセット管理スクリーンショット"/>
     </a>
 </figure>
 <ol>
-<li>データソースの詳細ウィンドウの右上隅にあるアクションボタンをクリックし、<strong>オフセットの管理</strong>をクリックします。</li>
-<li>利用可能なオフセット方法は<strong>タイムスタンプ</strong>と<strong>増分列</strong>です。クエリモードによって利用可能なオフセットが決まります。</li>
-<li><strong>タイムスタンプ列</strong>の下で、タイムスタンプを表すテーブルのカラムを選択します。</li>
-<li><strong>新しいタイムスタンプ</strong>の下で、データをインポートする際にタイムスタンプからオフセットする日付と時間を選択します。
+<li>データソースの詳細ウィンドウの右上隅にあるアクションボタンをクリックし、<strong>Manage Offset</strong>をクリックします。</li>
+<li>利用可能なオフセット方法は<strong>Timestamp</strong>と<strong>Incrementing Column</strong>です。クエリモードによって利用可能なオフセットが決まります。</li>
+<li><strong>Timestamp Column</strong>の下で、タイムスタンプを表すテーブルのカラムを選択します。</li>
+<li><strong>New Timestamp</strong>の下で、データをインポートする際にタイムスタンプからオフセットする日付と時間を選択します。
 <ul>
 <li>新しいタイムスタンプは過去の日時でなければなりません。未来の日時は使用できません。</li>
 <li>現在のタイムスタンプフィールドには、現在使用されているオフセットが表示されます。</li>
 </ul>
 </li>
-<li><strong>増分列</strong>の下で、テーブルに追加される各行の増分値を表すカラムを選択します。</li>
-<li><strong>新しい増分</strong>の下で、データをインポートする際にIDからオフセットする数値を入力します。
+<li><strong>Incrementing column</strong>の下で、テーブルに追加される各行の増分値を表すカラムを選択します。</li>
+<li><strong>New Increment</strong>の下で、データをインポートする際にIDからオフセットする数値を入力します。
 <ul>
 <li>新しいオフセットIDは正の整数でなければなりません。</li>
 <li>現在のオフセットIDフィールドには、オフセットとして使用される現在の数値が表示されます。</li>
 </ul>
 </li>
 </ol>
-<p><strong>オフセット変更の検証</strong>をクリックして、新しいオフセット位置からインポートされるデータのプレビューを表示します。テーブルにはサンプル行が表示され、オフセットを調整した後に処理される行数の見積もりも提供されます。</p>
+<p><strong>Validate Offset Changes</strong>をクリックして、新しいオフセット位置からインポートされるデータのプレビューを表示します。テーブルはサンプル行を表示し、オフセットを調整した後に処理される行数の見積もりも提供します。</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/validate_offset.png"><img src="/images/early-access/cloudstream/validate_offset.png"
          alt="オフセットの検証"
          title="オフセットの検証"/>
     </a>
 </figure>
-<p><strong>完了</strong>をクリックして新しいオフセット構成を確認します。<strong>キャンセル</strong>をクリックして変更を破棄します。</p>
+<p><strong>Done</strong>をクリックして新しいオフセット構成を確認します。<strong>Cancel</strong>をクリックして変更を破棄します。</p>
 <p>オフセットを変更した後、データソースを再起動します。</p>
 
 </div>
@@ -1183,11 +1181,11 @@
   <a href="/ja/server-side/cloudstream/about/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"この記事について "</title>
+      <title>"について "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>この記事について</div>
+      <div>について</div>
     </section>
   </a>
   
@@ -1219,7 +1217,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月24日
+          <p>最終更新日 ::  2026年April月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
