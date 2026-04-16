@@ -552,6 +552,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/add-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-enrichment">エンリッチメントの追加</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichment-rules">属性エンリッチメントルールについて</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-usage-examples">使用例</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -630,6 +632,8 @@
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/cloudstream-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-cloudstream-integration">CloudStreamとの統合</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1054,7 +1058,7 @@
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Moments APIをアカウントで有効にするには、アカウントマネージャーに連絡してください。</p>
 <h2 id="エンジンの作成">エンジンの作成</h2>
 <p class="tip"><i class="fa fa-info-circle"></i>エンジン属性を選択する前に、プロファイルの変更が公開されていることを確認してください。</p>
-<p>エンジンを作成するには、次の手順を完了します：</p>
+<p>エンジンを作成するには、以下の手順を完了してください：</p>
 <ol>
 <li>
 <p><strong>AudienceStream &gt; Moments API</strong> に移動し、<strong>+ New Engine</strong> をクリックします。</p>
@@ -1063,7 +1067,7 @@
 <p><strong>Details</strong> 画面で、以下のエンジン詳細を構成します：</p>
 <ul>
 <li><strong>Name</strong>: エンジンの名前を入力します。</li>
-<li><strong>Enable Engine</strong>: エンジンをオンまたはオフに切り替えます。デフォルトではエンジンエンドポイントはオフです。エンジンを有効にし、訪問がアクティブなセッションを記録し、システムでイベントを生成した後、訪問のデータが利用可能になります。</li>
+<li><strong>Enable Engine</strong>: エンジンをオンまたはオフに切り替えます。エンジンエンドポイントはデフォルトでオフです。エンジンを有効にし、訪問がアクティブなセッションを記録し、システムでイベントを生成した後、訪問のデータが利用可能になります。</li>
 <li><strong>Domain Allow List</strong>: このエンドポイントを使用できるドメインを指定します。詳細については、<a href="/ja/server-side/moments-api/about/#domain-allow-list">About Moments API &gt; Domain allow list</a>を参照してください。</li>
 </ul>
 </li>
@@ -1071,7 +1075,7 @@
 <p><strong>Next</strong> をクリックします。</p>
 </li>
 <li>
-<p><strong>Response</strong> 画面で、エンジンに含めるオーディエンス、バッジ、および属性を選択します。<strong>Example Response</strong> パネルを使用して選択を確認できます。<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Select all current and future audiences</strong> 機能を使用する場合、オーディエンスが後で削除されたとしても、エンジンデータを消去するかデータが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。</p></p>
+<p><strong>Response</strong> 画面で、エンジンに含めるオーディエンス、バッジ、および属性を選択します。<strong>Example Response</strong> パネルを使用して選択を確認します。<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Select all current and future audiences</strong> 機能を使用する場合、オーディエンスが後で削除された場合でも、エンジンデータを消去するか、データが期限切れになるまでMoments APIエンジンに含まれ続ける可能性があります。</p></p>
 </li>
 <li>
 <p>ペイロードでオーディエンスと訪問属性のID（UID）または名前を使用するかどうかを選択します。大きなレスポンスでIDの代わりにオーディエンス、バッジ、および属性の名前を使用すると、ペイロードサイズに影響を与える可能性があります。</p>
@@ -1086,10 +1090,10 @@
 <p><strong>Done</strong> をクリックします。エンジンを作成した後、プロファイルを公開する必要はありません。</p>
 </li>
 </ol>
-<p>エンジンが有効になり、訪問がアクティブなセッションを持っている場合、訪問データが収集されます。</p>
+<p>訪問データは、エンジンが有効になり、訪問がアクティブなセッションを持っている後に収集されます。</p>
 <h2 id="エンジンの編集">エンジンの編集</h2>
 <p>エンジンを編集するには、Moments API画面に移動し、更新したいエンジンをクリックします。<strong>Edit Engine</strong> 画面から、エンジンの詳細とレスポンス構成を更新し、エンジンデータを消去し、必要に応じてエンジンをオンまたはオフに切り替えることができます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>エンジンを編集した後、プロファイルを公開する必要はありません。構成変更を保存してから5分後にMoments APIエンジンの変更が利用可能になります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>エンジンを編集した後、プロファイルを公開する必要はありません。Moments APIエンジンの変更は、構成変更を保存してから5分後に利用可能になります。</p>
 <h2 id="データの消去">データの消去</h2>
 <p>ユーザーがAudienceStreamのオーディエンス、バッジ、属性を削除または名前を変更すると、エンジンでも使用されている場合、エンドポイントのレスポンスに予期しない結果が生じる可能性があります。このような場合、エンジンデータの消去を検討することが望ましいかもしれません。データの消去についての詳細は、<a href="/ja/server-side/moments-api/about/#purge-data">About Moments API &gt; Purge Data</a>を参照してください。</p>
 <p>必要に応じてエンジンデータを消去するための2つの方法がMoments APIにはあります：</p>
@@ -1158,7 +1162,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年February月27日
+          <p>最終更新日 ::  2026年April月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

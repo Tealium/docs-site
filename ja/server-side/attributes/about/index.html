@@ -552,6 +552,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/add-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-enrichment">エンリッチメントの追加</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichment-rules">属性エンリッチメントルールについて</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-usage-examples">使用例</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -630,6 +632,8 @@
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/cloudstream-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-cloudstream-integration">CloudStreamとの統合</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1051,8 +1055,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>属性は実装の基盤であり、お客様の行動やブランドとのやり取りを定義するために使用されます。属性は訪問、訪問のセッション、および収集されたイベントのプロパティを定義します。属性の一般的な例には、メールアドレス、会員ID、製品カテゴリ、最終訪問日、アクティブブラウザーなどがあります。</p>
-<p>各プロファイルには最大500の訪問属性と訪問属性を含めることができます。現在の属性の合計は、<strong>訪問/訪問属性</strong>画面で確認できます：</p>
+  <p>属性は実装の基盤であり、顧客の行動やブランドとのやり取りを定義するために使用されます。属性は訪問、訪問のセッション、および収集されたイベントのプロパティを定義します。属性の一般的な例には、メールアドレス、会員ID、製品カテゴリ、最終訪問日、アクティブブラウザーなどがあります。</p>
+<p>各プロファイルには、最大500の訪問属性と訪問属性を含めることができます。現在の属性の合計は、<strong>訪問/訪問属性</strong>画面で確認できます：</p>
 <figure><a class="slb" href="/images/server-side/attributes/count-of-attributes.png"><img src="/images/server-side/attributes/count-of-attributes.png"
          alt="属性の数の位置"
          title="属性の数の位置"/>
@@ -1073,7 +1077,7 @@
 <tr>
 <td>イベント</td>
 <td>個々のイベントに関連付けられた属性で、ページ、コンテンツ、および顧客がリアルタイムで行っているアクションを説明します。例：ページ名、製品価格、イベント名、注文合計など。</td>
-<td><strong>属性ソース</strong><br> イベント属性は以下から取得されます：<br> <ul><li><strong>ユニバーサル変数</strong> <a href="/ja/platforms/javascript/universal-data-object/">Universal Data Object</a></li><li><strong>Javascriptページ変数</strong> グローバルJavaScript変数（ブラウザ）</li><li><strong>HTMLメタデータ</strong> メタデータタグ（ブラウザ）</li><li><strong>ファーストパーティクッキー</strong> ブラウザクッキー</li><li><strong>クエリストリングパラメータ</strong> 現在のページのURLクエリストリング（ブラウザ）</li></ul></td>
+<td><strong>属性ソース</strong><br> イベント属性は以下から取得されます：<br> <ul><li><strong>ユニバーサル変数</strong> <a href="/ja/platforms/javascript/universal-data-object/">ユニバーサルデータオブジェクト</a></li><li><strong>Javascriptページ変数</strong> グローバルJavaScript変数（ブラウザ）</li><li><strong>HTMLメタデータ</strong> メタデータタグ（ブラウザ）</li><li><strong>ファーストパーティクッキー</strong> ブラウザクッキー</li><li><strong>クエリ文字列パラメータ</strong> 現在のページのURLクエリ文字列（ブラウザ）</li></ul></td>
 </tr>
 <tr>
 <td>訪問</td>
@@ -1093,7 +1097,7 @@
 </tbody>
 </table>
 <h3 id="セッションの長さ">セッションの長さ</h3>
-<p>セッションの長さは、訪問が非アクティブになった後に訪問が終了するタイミングを決定します。新しいイベントがない場合、訪問がセッションの長さに達すると訪問は終了し、AudienceStreamは訪問の終了処理を行います。訪問からの次のイベントが新しい訪問を開始します。AudienceStreamでは、イベント活動に関係なく、訪問の最大長は24時間です。</p>
+<p>セッションの長さは、訪問が非アクティブになった後にいつ終了するかを決定します。訪問がセッションの長さに達し、新しいイベントがない場合、訪問は終了し、AudienceStreamは訪問の終了処理を行います。訪問からの次のイベントが新しい訪問を開始します。AudienceStreamでは、イベント活動に関わらず、訪問の最大長は24時間です。</p>
 <p>詳細については、<a href="/ja/server-side/attributes/session-length/">サーバーサイドセッションの長さ</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
 <p>属性は、基本的な数値からより強力な集計やバッジまで、さまざまなタイプがあります。データタイプは、属性値が格納される形式を決定します。</p>
@@ -1107,56 +1111,56 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/number/">Number</a></td>
+<td><a href="/ja/server-side/attributes/data-types/number/">数値</a></td>
 <td>注文合計、生涯イベント数、最後の訪問からの日数などの数値を格納します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/string/">String</a></td>
-<td>名前/姓、住所、お気に入りの製品、ページ名などのテキスト値を格納します。</td>
+<td><a href="/ja/server-side/attributes/data-types/string/">文字列</a></td>
+<td>名前、住所、お気に入りの製品、ページ名などのテキスト値を格納します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/boolean/">Boolean</a></td>
-<td>&rsquo;true&rsquo; と &lsquo;false&rsquo; のいずれかの値のみを格納します。訪問のアクションまたは訪問の状態を示すために使用できます。</td>
+<td><a href="/ja/server-side/attributes/data-types/boolean/">ブール値</a></td>
+<td>&rsquo;true&rsquo; または &lsquo;false&rsquo; のいずれかの値のみを格納します。ブール値は、訪問のアクションまたは訪問の状態を示すために使用できます。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/arrays/array-of-numbers/">Array of Numbers</a></td>
-<td>数値を配列として格納します。配列には一意または重複する数値が含まれる場合があります。</td>
+<td><a href="/ja/server-side/attributes/data-types/arrays/array-of-numbers/">数値の配列</a></td>
+<td>複数の数値を配列として格納します。配列には一意または重複する数値が含まれる場合があります。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/arrays/arrays/">Array of Strings</a></td>
-<td>文字列値を配列として格納します。配列には一意または重複する文字列値が含まれる場合があります。</td>
+<td><a href="/ja/server-side/attributes/data-types/arrays/arrays/">文字列の配列</a></td>
+<td>複数の文字列値を配列として格納します。配列には一意または重複する文字列値が含まれる場合があります。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/arrays/array-of-booleans/">Array of Booleans</a></td>
+<td><a href="/ja/server-side/attributes/data-types/arrays/array-of-booleans/">ブール値の配列</a></td>
 <td>複数のブール値を配列として格納します。配列には一意または重複するブール値が含まれる場合があります。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/tally/">Tally</a></td>
-<td>1つ以上のキー値ペアを格納します。</td>
+<td><a href="/ja/server-side/attributes/data-types/tally/">集計</a></td>
+<td>一つ以上のキー値ペアを格納します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/set-of-strings/">Set of Strings</a></td>
+<td><a href="/ja/server-side/attributes/data-types/set-of-strings/">文字列のセット</a></td>
 <td>一意の文字列値のコレクションをセットとして格納します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/date/">Date</a></td>
+<td><a href="/ja/server-side/attributes/data-types/date/">日付</a></td>
 <td>イベントの日付、訪問イベント、または特定の訪問の日付を格納します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/funnel/">Funnel</a></td>
+<td><a href="/ja/server-side/attributes/data-types/funnel/">ファネル</a></td>
 <td>複数ステップのイベントの各ステップの状態を追跡します。例えば、支払いファネルや登録などです。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/timeline/">Timeline</a></td>
+<td><a href="/ja/server-side/attributes/data-types/timeline/">タイムライン</a></td>
 <td>時間範囲内の訪問アクションのすべての発生を記録します。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/attributes/data-types/badge/">Badge</a></td>
-<td>特定の基準または閲覧行動を満たす訪問に視覚的なマークやシンボルを割り当てます。</td>
+<td><a href="/ja/server-side/attributes/data-types/badge/">バッジ</a></td>
+<td>特定の基準または閲覧行動を満たす訪問に視覚的なマークまたはシンボルを割り当てます。</td>
 </tr>
 <tr>
-<td><a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID</a></td>
-<td>訪問のユニークな特徴をそのセカンダリ識別子として格納します。</td>
+<td><a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">訪問ID</a></td>
+<td>訪問のユニークな特徴をその二次識別子として格納します。</td>
 </tr>
 </tbody>
 </table>
@@ -1173,106 +1177,88 @@
 </thead>
 <tbody>
 <tr>
-<td>Number</td>
+<td>数値</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>String</td>
+<td>文字列</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Boolean</td>
+<td>ブール値</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Array of Numbers</td>
+<td>数値の配列</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Array of Strings</td>
+<td>文字列の配列</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Array of Booleans</td>
+<td>ブール値の配列</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Tally</td>
+<td>集計</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 </tr>
 <tr>
-<td>Set of Strings</td>
+<td>文字列のセット</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 </tr>
 <tr>
-<td>Date</td>
+<td>日付</td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
 <tr>
-<td>Funnel</td>
+<td>ファネル</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 </tr>
 <tr>
-<td>Timeline</td>
+<td>タイムライン</td>
 <td>✔</td>
 <td>✔</td>
 <td></td>
 </tr>
 <tr>
-<td>Badge</td>
+<td>バッジ</td>
 <td>✔</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Visitor ID</td>
+<td>訪問ID</td>
 <td>✔</td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="依存関係">依存関係</h2>
-<p>依存関係は、この属性に依存するすべてのオブジェクトです。例えば：</p>
-<ul>
-<li>属性</li>
-<li>オーディエンス</li>
-<li>セグメント</li>
-<li>コネクタ</li>
-<li>ルール</li>
-<li>予測</li>
-<li>データソース</li>
-</ul>
-<p>属性に依存する依存関係がある場合、その属性を削除することはできません。</p>
-<p>属性の依存関係を表示するには、<strong>属性</strong>テーブルで属性をクリックし、次に<strong>依存関係</strong>タブをクリックします。依存関係の詳細を表示するには、<strong>Go To</strong>をクリックします。</p>
-<figure><a class="slb" href="/images/server-side/ea-visitor-dependencies.png"><img src="/images/server-side/ea-visitor-dependencies.png"
-         alt="訪問属性の依存関係"
-         title="訪問属性の依存関係"/>
-    </a>
-</figure>
 <h2 id="属性id">属性ID</h2>
-<p>すべてのイベント、訪問、および訪問属性には一意の属性識別子があります。このIDの値はエンリッチメントの実行順序に影響を与える可能性があり、より複雑なデータソースまたは訪問のスティッチング構成に必要になる場合があります。</p>
-<p>属性IDは属性リストの属性名の隣または詳細が展開された内部で見つけることができます。</p>
+<p>すべてのイベント、訪問、訪問属性には一意の属性識別子があります。このIDの値は、エンリッチメントが実行される順序に影響を与える場合があり、より複雑なデータソースまたは訪問のスティッチング構成に必要な場合があります。</p>
+<p>属性IDは、属性リストの属性名の隣または詳細が展開された内部で見つけることができます。</p>
 <p><strong>イベント属性</strong>
 <figure><a class="slb" href="/images/server-side/event-attribute-id.png"><img src="/images/server-side/event-attribute-id.png"
          alt="イベント属性IDの位置"
@@ -1288,29 +1274,29 @@
 <h2 id="サイズ制限">サイズ制限</h2>
 <p>EventStreamおよびAudienceStreamのほとんどの属性には、保存容量の制限があり、その制限を超えた場合の特定の動作があります。訪問プロファイル全体には、圧縮および暗号化された400 KBの制限があります。</p>
 <h2 id="イベント制限">イベント制限</h2>
-<p>Tealiumプラットフォームと個々の顧客アカウントの両方を保護するために、AudienceStreamは訪問あたりのイベント数に10,000の制限を設けています。</p>
-<p>訪問が単一の訪問で10,000のイベントに達した場合、その訪問は永久に禁止されます。訪問が禁止されると、訪問プロファイルは削除され、その訪問IDまたはそれにスティッチするIDのすべての将来のイベントは、AudienceStreamおよびEventStreamの両方で無視されます。さらに、アカウント、プロファイル、訪問ID、および禁止が発生したことを示すログメッセージが記録されます。</p>
+<p>Tealiumプラットフォームと個々の顧客アカウントの両方を保護するために、AudienceStreamには訪問あたり10,000イベントの制限があります。</p>
+<p>訪問が単一の訪問で10,000イベントに達すると、その訪問は永久に禁止されます。訪問が禁止されると、訪問プロファイルは削除され、その訪問IDまたはそれにスティッチするIDのすべての将来のイベントは、AudienceStreamおよびEventStreamの両方で無視されます。また、アカウント、プロファイル、訪問ID、および禁止が発生したことを示すログメッセージが記録されます。</p>
 <p>禁止は永久的ですが、Tealiumオペレーションチームによるメンテナンスが行われ、禁止された訪問のコレクションが削除されるまで続きます。訪問が誤って禁止されたと思われる場合や、禁止リストから削除する必要がある訪問がいる場合は、Tealiumサポートに連絡してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>永久的な訪問禁止が解除され、訪問が再び訪問あたりの10,000イベントの制限を超えた場合、別の禁止が発生します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>永久的な訪問禁止が解除され、訪問が再び訪問あたりの10,000イベントの制限を超えると、別の禁止が発生します。</p>
 <h2 id="イベント属性">イベント属性</h2>
 <table>
 <thead>
 <tr>
 <th>属性</th>
 <th>保存容量の制限</th>
-<th>制限超過時の挙動</th>
+<th>制限を超えた場合の動作</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>文字列</strong></td>
 <td>1,500文字</td>
-<td>制限を超える場合、1,500文字に切り捨てられます。</td>
+<td>制限を超える場合、文字列は1,500文字に切り詰められます。</td>
 </tr>
 <tr>
 <td><strong>任意のタイプの配列</strong></td>
 <td>30,000エントリ</td>
-<td>属性が制限を超えて構成または更新された場合、30,000エントリにトリミングされて構成されます。</td>
+<td>属性が構成または更新されて制限を超える場合、属性は30,000エントリに切り詰められて構成されます。</td>
 </tr>
 <tr>
 <td><strong>日付</strong></td>
@@ -1319,7 +1305,7 @@
 </tr>
 <tr>
 <td><strong>数値</strong></td>
-<td><code>java.lang.Number</code>で表され、精度は動的です。</td>
+<td><code>java.lang.Number</code>で表され、動的な精度があります。</td>
 <td></td>
 </tr>
 </tbody>
@@ -1342,22 +1328,22 @@
 <tr>
 <td><strong>タイムライン</strong></td>
 <td>100エントリ</td>
-<td>制限に達すると最も古いエントリが破棄されます（先入れ先出し）。例えば、タイムラインに100エントリがあり、新しいエントリが追加された場合、最初のエントリが削除されます。</td>
+<td>制限に達した場合、最も古いエントリが破棄されます（先入れ先出し）。例えば、タイムラインに100エントリが含まれていて新しいエントリが追加された場合、最初のエントリが削除されます。</td>
 </tr>
 <tr>
 <td><strong>集計</strong></td>
 <td>30,000エントリ</td>
-<td>属性が制限を超えて構成または更新された場合、30,000エントリにトリミングされて構成されます。</td>
+<td>属性が構成または更新されて制限を超える場合、属性は30,000エントリにトリミングされ構成されます。</td>
 </tr>
 <tr>
 <td><strong>任意のタイプの配列</strong></td>
 <td>30,000エントリ</td>
-<td>属性が制限を超えて構成または更新された場合、30,000エントリにトリミングされて構成されます。</td>
+<td>属性が構成または更新されて制限を超える場合、属性は30,000エントリにトリミングされ構成されます。</td>
 </tr>
 <tr>
 <td><strong>文字列のセット</strong></td>
 <td>30,000エントリ</td>
-<td>属性が制限を超えて構成または更新された場合、30,000エントリにトリミングされて構成されます。</td>
+<td>属性が構成または更新されて制限を超える場合、属性は30,000エントリにトリミングされ構成されます。</td>
 </tr>
 <tr>
 <td><strong>日付</strong></td>
@@ -1365,8 +1351,8 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>数値</strong></td>
-<td><code>java.lang.Number</code>で表され、精度は動的です。</td>
+<td><strong>数字</strong></td>
+<td><code>java.lang.Number</code>で表され、動的な精度があります。</td>
 <td></td>
 </tr>
 <tr>
@@ -1382,9 +1368,9 @@
 </tbody>
 </table>
 <p>*制限はありませんが、属性は暗号化および圧縮後のプロファイルの最大サイズ（400 KB）によって制限されます。</p>
-<h2 id="クライアント側とサーバー側の接続">クライアント側とサーバー側の接続</h2>
+<h2 id="クライアントサイドとサーバーサイドの接続">クライアントサイドとサーバーサイドの接続</h2>
 <h3 id="iqタグ管理から属性をインポート">iQタグ管理から属性をインポート</h3>
-<p>インポートされた属性は、対応するTealium iQプロファイルで元々作成された変数です。Tealium iQの変数は、イベントスコープの属性として自動的にサーバーサイドプロファイルにエクスポートされます。これらの属性は<strong>Any</strong>データタイプを使用します。Tealium iQで変数を変更し（<strong>prod</strong>に公開すると）、変更はEventStreamの対応する属性に即座に適用されます。</p>
+<p>インポートされた属性は、対応するTealium iQプロファイルで元々作成された変数です。Tealium iQの変数は、イベントスコープの属性として同名のサーバーサイドプロファイルに自動的にエクスポートされます。これらの属性は<strong>Any</strong>データタイプを使用します。Tealium iQで変数を変更し（<strong>prod</strong>に公開すると）、変更はEventStreamの対応する属性に即座に適用されます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>インポートされた属性は編集できません。それらを管理するにはTealium iQを使用する必要があります。</p>
 <p><figure><a class="slb" href="/images/server-side/imported-tealium-iq-variables1.png"><img src="/images/server-side/imported-tealium-iq-variables1.png"
          alt="Imported Tealium iQ variables 1"
@@ -1396,24 +1382,24 @@
          title="Imported Tealium iQ variables 2"/>
     </a>
 </figure></p>
-<p>インポートされた属性は、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>を使用してそのデータを収集する場合にのみデータを含みます。</p>
-<p>インポートされた属性を直接エンリッチすることはできません。しかし、インポートされた属性を複製し、複製された属性をインポートされた属性の値で豊かにし、さらに必要に応じて複製された属性をエンリッチすることができます。</p>
+<p>インポートされた属性は、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>を使用してそのデータを収集する場合にのみデータを含みます。</p>
+<p>インポートされた属性を直接エンリッチすることはできません。ただし、インポートされた属性を複製し、複製された属性にインポートされた属性の値を豊かにし、さらに必要に応じて複製された属性をエンリッチすることができます。</p>
 <h4 id="トラブルシューティング">トラブルシューティング</h4>
-<p>Tealium iQの変数がEventStreamに表示されない場合は、Tealium iQの変数がサーバーサイドプロファイルに対応するTealium iQプロファイルにあること、変数が保存および公開されていることを確認してください。変数の変更を公開した後、ブラウザでEventStreamページを更新してください。サーバーサイドでTealium iQの変数を利用可能にするための支援が必要な場合は、Tealiumサポートに連絡してください。</p>
-<h3 id="iqタグ管理に属性をエクスポート">iQタグ管理に属性をエクスポート</h3>
+<p>Tealium iQの変数がEventStreamに表示されない場合は、Tealium iQの変数がサーバーサイドプロファイルに対応するTealium iQプロファイルにあること、変数が保存および公開されていることを確認してください。変数の変更を公開した後にEventStreamページをブラウザで更新してください。サーバーサイドでTealium iQ変数を利用可能にするための支援が必要な場合は、Tealiumサポートに連絡してください。</p>
+<h3 id="iqタグ管理への属性のエクスポート">iQタグ管理への属性のエクスポート</h3>
 <p>サーバーサイドの属性をiQタグ管理の変数として利用可能にするには、Data Layer Enrichmentを使用します。</p>
 <p>詳細については、<a href="/ja/server-side/attributes/data-layer-enrichment/about/">データレイヤーエンリッチメントについて</a>を参照してください。</p>
 <h2 id="制限されたデータ">制限されたデータ</h2>
-<p>このプロパティは、システム外に送信すべきではないデータを含む属性を識別するために使用されます。例えば、第三者の<a href="/ja/server-side/connectors/about/">Connectors</a>や<a href="/ja/server-side/data-storage/about/">DataAccess</a>などです。<a href="/ja/server-side/attributes/restricted-data/">Restricted Data</a>についてもっと学びましょう。</p>
+<p>このプロパティは、システム外に送信すべきではないデータを含む属性を識別するために使用されます。例えば、第三者の<a href="/ja/server-side/connectors/about/">Connectors</a>や<a href="/ja/server-side/data-storage/about/">DataAccess</a>などです。<a href="/ja/server-side/attributes/restricted-data/">制限されたデータ</a>についてもっと学びましょう。</p>
 <h2 id="ルール">ルール</h2>
-<p>ルールは、エンリッチメントをトリガーするための追加ロジックを提供します。</p>
+<p>ルールは、エンリッチメントをトリガーするための追加のロジックを提供します。ルールの動作と使用時の詳細については、<a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/">エンリッチメントルールについて</a>を参照してください。</p>
 <ul>
 <li>
-<p>事前定義されたルールを適用するには、ドロップダウンリストから選択し、<strong>Add Rule</strong>をクリックします。<br>
+<p>事前定義されたルールを適用するには、ドロップダウンリストから選択し、<strong>ルール追加</strong>をクリックします。<br>
 <p class="tip"><i class="fa fa-info-circle"></i>エンリッチメントダイアログボックスを通じて新しいルールを作成すると、自動的にエンリッチメントに適用されます。</p></p>
 </li>
 <li>
-<p>新しいルールを適用するには、<strong>Create Rule</strong>をクリックします。<br>
+<p>新しいルールを適用するには、<strong>ルール作成</strong>をクリックします。<br>
 <figure><a class="slb" href="/images/server-side/whiteui-using-attributes-rules.png"><img src="/images/server-side/whiteui-using-attributes-rules.png"/>
           </a>
       </figure></p>
@@ -1426,12 +1412,25 @@
          title="Preloaded attribute filter"/>
     </a>
 </figure>
-<figure><a class="slb" href="/images/server-side/attributes/preloaded-attribute.png"><img src="/images/server-side/attributes/preloaded-attribute.png"
-         alt="Preloaded attribute"
-         title="Preloaded attribute"/>
+<p>これらの属性についての詳細は、<a href="/ja/server-side/attributes/preloaded/">プリロードされた属性</a>を参照してください。</p>
+<h2 id="依存関係">依存関係</h2>
+<p>依存関係には、この属性に依存するすべてのオブジェクトが含まれます。例えば：</p>
+<ul>
+<li>属性</li>
+<li>オーディエンス</li>
+<li>セグメント</li>
+<li>コネクタ</li>
+<li>ルール</li>
+<li>予測</li>
+<li>データソース</li>
+</ul>
+<p>属性に依存する依存関係がある場合、その属性を削除することはできません。</p>
+<p>属性の依存関係を表示するには、<strong>属性</strong>テーブルで属性をクリックし、次に<strong>依存関係</strong>タブをクリックします。依存関係の詳細を表示するには、<strong>移動</strong>をクリックします。</p>
+<figure><a class="slb" href="/images/server-side/ea-visitor-dependencies.png"><img src="/images/server-side/ea-visitor-dependencies.png"
+         alt="Visitor Attribute Dependencies"
+         title="Visitor Attribute Dependencies"/>
     </a>
 </figure>
-<p>これらの属性についての詳細は、<a href="/ja/server-side/attributes/preloaded/">Preloaded attributes</a>を参照してください。</p>
 
 </div>
 
@@ -1492,7 +1491,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年December月18日
+          <p>最終更新日 ::  2026年April月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1510,18 +1509,18 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%95%B7%E3%81%95" href="javascript:void(0)">セッションの長さ</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E3%83%9E%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%82%B9" href="javascript:void(0)">スコープとデータタイプのマトリックス</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82" href="javascript:void(0)">依存関係</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B1%9E%E6%80%A7id" href="javascript:void(0)">属性ID</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B1%9E%E6%80%A7id" href="javascript:void(0)">属性ID</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%82%A4%E3%82%BA%E5%88%B6%E9%99%90" href="javascript:void(0)">サイズ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">イベント制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%B1%9E%E6%80%A7" href="javascript:void(0)">イベント属性</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E8%A8%AA%E5%95%8F%E5%B1%9E%E6%80%A7" href="javascript:void(0)">訪問/訪問属性</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%81%B4%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">クライアント側とサーバー側の接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">クライアントサイドとサーバーサイドの接続</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%81%8B%E3%82%89%E5%B1%9E%E6%80%A7%E3%82%92%E3%82%A4%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">iQタグ管理から属性をインポート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%81%AB%E5%B1%9E%E6%80%A7%E3%82%92%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">iQタグ管理に属性をエクスポート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%81%B8%E3%81%AE%E5%B1%9E%E6%80%A7%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">iQタグ管理への属性のエクスポート</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%B6%E9%99%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">制限されたデータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E3%81%95%E3%82%8C%E3%81%9F%E5%B1%9E%E6%80%A7" href="javascript:void(0)">プリロードされた属性</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82" href="javascript:void(0)">依存関係</a></li>
               </nav>
   </aside></nav>
 

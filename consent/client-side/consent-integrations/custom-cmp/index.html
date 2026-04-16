@@ -430,34 +430,6 @@
 <li>Edit the newly created template. For details, see <a href="/iq-tag-management/templates/manage/">Manage templates</a>.</li>
 <li>Publish the template to a development or test environment to verify that everything works as expected, and then follow your normal testing and publishing flow.</li>
 </ol>
-<h2 id="develop-debug-and-validate-custom-integrations">Develop, debug, and validate custom integrations</h2>
-<p>To create your custom CMP integration, edit the <a href="#custom-integration-template">custom template</a> below to meet your CMP requirements. See the comments in the custom template for a working example.</p>
-<h3 id="develop-and-debug-before-publish">Develop and debug before publish</h3>
-<p>Complete the following steps to debug during development:</p>
-<ol>
-<li>Uncomment the <strong>Debugging</strong> block at the end of the <a href="#custom-integration-template">custom template</a>.</li>
-<li>Paste the template into the console of a website running the CMP you want to support.</li>
-<li>The debugging code block outputs the consent decision.</li>
-<li>Customize your decision and paste the template again to see the newly interpreted consent decision.</li>
-<li>When you are satisfied with your template, comment out the debugging block again before pasting and publishing it to Tealium iQ.</li>
-</ol>
-<p>You can also find the debugging snippet by saving your profile and <a href="/iq-tag-management/templates/manage/">editing the template</a>.</p>
-<h3 id="validate-after-publish">Validate after publish</h3>
-<p>There are two ways to debug and validate your template after publishing: using debug mode or using the <code>window.tealiumCmpOutput</code> object.</p>
-<h4 id="using-debug-mode">Using debug mode</h4>
-<p>To use <a href="/platforms/javascript/debugging/">debug mode</a>:</p>
-<ul>
-<li>Set the <code>utagdb</code> cookie to <code>true</code> with <code>document.cookie = &quot;utagdb=true&quot;</code> in the console.</li>
-<li>Set your console filter to see only the relevant output (the suggested filter is in the debug output).</li>
-<li>Test different options to make sure things work as expected.</li>
-</ul>
-<h4 id="using-the-windowtealiumcmpoutput-object">Using the <code>window.tealiumCmpOutput</code> object</h4>
-<p>To use the <code>window.tealiumCmpOutput</code> object:</p>
-<ul>
-<li>Paste the commented out debugging code block at the bottom of the template into the console to output only your decision and related output.</li>
-<li>If needed, you can also call the functions in the template individually or access the other useful properties of this object.</li>
-</ul>
-<p>For more detailed debugging tips for prebuilt and custom integrations, see <a href="/consent/client-side/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>.</p>
 <h2 id="integration-functions">Integration functions</h2>
 <p>The CMP-specific component of the integration is defined using the <code>window.tealiumCmpIntegration</code> object.</p>
 <p>The <code>window.tealiumCmpIntegration</code> object consists of a name <code>.cmpName</code>, version <code>.cmpIntegrationVersion</code>, and the following functions:</p>
@@ -484,6 +456,7 @@
 <p><code>.cmpConvertResponseToGroupList</code> - converts the raw decision into a simple array of allowed purpose keys for downstream enforcement. Returns an array of consented purpose keys.</p>
 </li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The purpose keys returned by <code>cmpConvertResponseToGroupList</code> must exactly match the purpose names configured in the consent integration. The <strong>Vendor ID</strong> field in the Tealium iQ UI is used by the template to identify the relevant CMP cookie or identifier. Ensure this value matches the cookie name or identifier in your CMP use cases. It is case-sensitive.</p>
 <h3 id="monitor-and-trigger-consent-updates">Monitor and trigger consent updates</h3>
 <ul>
 <li>
@@ -492,7 +465,7 @@
 </li>
 </ul>
 <h2 id="custom-integration-template">Custom integration template</h2>
-<p>The following is a blank template to help you get started with your own custom integration. The template includes a debugging snippet at the end of the template that you can use to debug and validate your consent integration.</p>
+<p>To create your custom CMP integration, edit the blank template below to meet your CMP requirements. See the comments in the template for a working example. The template includes a debugging snippet at the end of the template that you can use to debug and validate your consent integration.</p>
 
 <div class="pv2">
 <div class="expand ba pa2 b--black-20 pv3">
@@ -516,8 +489,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * The (case-sensitive) name of the opt-out cookie is taken from the &#39;Vendor ID&#39; field in the UI.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * For more, see https://docs.tealium.com/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * For more, see https://docs.tealium.com/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * (The above integration was simplified for this example - the GPC logic was removed)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>
@@ -676,6 +649,33 @@
     </div>
 </div>
 </div>
+<h2 id="develop-and-debug-before-publishing">Develop and debug before publishing</h2>
+<p>To create your custom CMP integration, edit the <a href="#custom-integration-template">custom integration template</a> to meet your CMP requirements. See the comments in the custom template for a working example.</p>
+<p>Complete the following steps to debug during development:</p>
+<ol>
+<li>Uncomment the <strong>Debugging</strong> block at the end of the <a href="#custom-integration-template">custom integration template</a>.</li>
+<li>Paste the template into the console of a website running the CMP you want to support.</li>
+<li>The debugging code block outputs the consent decision.</li>
+<li>Customize your decision and paste the template again to see the newly interpreted consent decision.</li>
+<li>When you are satisfied with your template, comment out the debugging block again before pasting and publishing it to Tealium iQ.</li>
+</ol>
+<p>You can also find the debugging snippet by saving your profile and <a href="/iq-tag-management/templates/manage/">editing the template</a>.</p>
+<h2 id="validate-after-publish">Validate after publish</h2>
+<p>There are two ways to debug and validate your template after publishing: using debug mode or using the <code>window.tealiumCmpOutput</code> object.</p>
+<h3 id="using-debug-mode">Using debug mode</h3>
+<p>To use <a href="/platforms/javascript/debugging/">debug mode</a>:</p>
+<ul>
+<li>Set the <code>utagdb</code> cookie to <code>true</code> with <code>document.cookie = &quot;utagdb=true&quot;</code> in the console.</li>
+<li>Set your console filter to see only the relevant output (the suggested filter is in the debug output).</li>
+<li>Test different options to make sure things work as expected.</li>
+</ul>
+<h3 id="using-the-windowtealiumcmpoutput-object">Using the <code>window.tealiumCmpOutput</code> object</h3>
+<p>To use the <code>window.tealiumCmpOutput</code> object:</p>
+<ul>
+<li>Paste the commented out debugging code block at the bottom of the template into the console to output only your decision and related output.</li>
+<li>If needed, you can also call the functions in the template individually or access the other useful properties of this object.</li>
+</ul>
+<p>For more detailed debugging tips for prebuilt and custom integrations, see <a href="/consent/client-side/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>.</p>
 
 </div>
 
@@ -736,7 +736,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 4, 2025 
+          <p>This page was last updated:  April 16, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -751,15 +751,16 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#develop-debug-and-validate-custom-integrations" href="javascript:void(0)">Develop, debug, and validate custom integrations</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#develop-and-debug-before-publish" href="javascript:void(0)">Develop and debug before publish</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validate-after-publish" href="javascript:void(0)">Validate after publish</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#integration-functions" href="javascript:void(0)">Integration functions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#integration-functions" href="javascript:void(0)">Integration functions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#determine-operating-mode" href="javascript:void(0)">Determine operating mode</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fetch-decision" href="javascript:void(0)">Fetch decision</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validate-and-standardize-the-decision" href="javascript:void(0)">Validate and standardize the decision</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#monitor-and-trigger-consent-updates" href="javascript:void(0)">Monitor and trigger consent updates</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-integration-template" href="javascript:void(0)">Custom integration template</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#develop-and-debug-before-publishing" href="javascript:void(0)">Develop and debug before publishing</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validate-after-publish" href="javascript:void(0)">Validate after publish</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-debug-mode" href="javascript:void(0)">Using debug mode</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-windowtealiumcmpoutput-object" href="javascript:void(0)">Using the window.tealiumCmpOutput object</a></li>
               </nav>
   </aside></nav>
 

@@ -1507,10 +1507,10 @@
   <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>API Name: Amazon Ads API</li>
-<li>API Version: v1.0</li>
+<li>API Name: Amazon Ads Events API</li>
+<li>API Version: v1</li>
 <li>API Endpoint: <code>https://advertising-api.amazon.com</code></li>
-<li>Documentation: <a href="https://advertising.amazon.com/API/docs/en-us/dsp-conversion-builder">Amazon API</a></li>
+<li>Documentation: <a href="https://advertising.amazon.com/API/docs/en-us/guides/events/events">Amazon Ads Events API</a></li>
 <li>Tag Documentation: <a href="/client-side-tags/amazon-advertising-tag/">Amazon Advertising Tag</a></li>
 </ul>
 <h2 id="connector-tips">Connector tips</h2>
@@ -1522,18 +1522,6 @@
 <li><strong>API Base URL</strong>: (Required) Select your API Base URL.</li>
 <li><strong>Amazon Advertiser ID</strong>: (Required) Enter your Amazon Advertising account ID.</li>
 </ul>
-<h3 id="create-a-conversion-definition">Create a conversion definition</h3>
-<p>To create a conversion definition, click <strong>Create Conversion Definition</strong> and provide the following information:</p>
-<ul>
-<li><strong>Advertising Profile</strong>: (Required) Select an advertising profile for this conversion.</li>
-<li><strong>Conversion Definition Name</strong>: (Required) The name of the conversion definition.</li>
-<li><strong>Source Type</strong>: (Required) Select the source type of the conversion. The following types are available: <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</li>
-<li><strong>Conversion Type</strong>: (Required) Select the type of conversion. The following types are available: <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, and <code>WEBSITE</code>.</li>
-<li><strong>Counting Method</strong>: (Required) Select the method used to determine whether to use all or only the first conversion event per user ingested within a 24 hour window for a conversion definition. The following methods are available: <code>EVERY</code> and <code>FIRST</code>.</li>
-<li><strong>Conversion Value</strong>: (Optional) The value of the conversion. The default value is <code>1</code> and can be overridden through mapping in the <strong>Send Conversion</strong> action.</li>
-</ul>
-<p>To save the conversion definition, click <strong>Done</strong>.</p>
-<p>Be sure to accept the terms and conditions, either in the Ads data manager console on the conversions page or by using the Terms API (<code>POST /adm/terms</code>).</p>
 <h2 id="deduplication-for-web-events">Deduplication for web events</h2>
 <p>To configure this connector to deduplicate events from the Amazon Ads Server tag, use the event IDs sent as event attributes with the following naming convention:</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">amazon_event_id_{EVENT_NAME}_{TAG_UID}
@@ -1834,6 +1822,26 @@
 <p>For more information about formatting and normalization requirements, see <a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">Format audience file for hashing</a>.</p>
 <h3 id="send-conversion-deprecated">Send Conversion (deprecated)</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This action is now deprecated and can no longer be added. For the current action, see <a href="#send-conversion">Send Conversion</a>.</p>
+<h4 id="api-information-1">API information</h4>
+<p>This action uses the following vendor API:</p>
+<ul>
+<li>API Name: Amazon Ads API</li>
+<li>API Version: v1.0</li>
+<li>API Endpoint: <code>https://advertising-api.amazon.com</code></li>
+<li>Documentation: <a href="https://advertising.amazon.com/API/docs/en-us/dsp-conversion-builder">Amazon API</a></li>
+</ul>
+<h4 id="create-a-conversion-definition">Create a conversion definition</h4>
+<p>To create a conversion definition, click <strong>Create Conversion Definition</strong> and provide the following information:</p>
+<ul>
+<li><strong>Advertising Profile</strong>: (Required) Select an advertising profile for this conversion.</li>
+<li><strong>Conversion Definition Name</strong>: (Required) The name of the conversion definition.</li>
+<li><strong>Source Type</strong>: (Required) Select the source type of the conversion. The following types are available: <code>ADD_TO_SHOPPING_CART</code>, <code>APPLICATION</code>, <code>CHECKOUT</code>, <code>CONTACT</code>, <code>LEAD</code>, <code>OFF_AMAZON_PURCHASES</code>, <code>PAGE_VIEW</code>, <code>SEARCH</code>, <code>SIGN_UP</code>, <code>SUBSCRIBE</code>, and <code>OTHER</code>.</li>
+<li><strong>Conversion Type</strong>: (Required) Select the type of conversion. The following types are available: <code>ANDROID</code>, <code>FIRE_TV</code>, <code>IOS</code>, <code>OFFLINE</code>, and <code>WEBSITE</code>.</li>
+<li><strong>Counting Method</strong>: (Required) Select the method used to determine whether to use all or only the first conversion event per user ingested within a 24 hour window for a conversion definition. The following methods are available: <code>EVERY</code> and <code>FIRST</code>.</li>
+<li><strong>Conversion Value</strong>: (Optional) The value of the conversion. The default value is <code>1</code> and can be overridden through mapping in the <strong>Send Conversion</strong> action.</li>
+</ul>
+<p>To save the conversion definition, click <strong>Done</strong>.</p>
+<p>Be sure to accept the terms and conditions, either in the Ads data manager console on the conversions page or by using the Terms API (<code>POST /adm/terms</code>).</p>
 <h4 id="batch-limits-1">Batch limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -2073,7 +2081,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 10, 2026 
+          <p>This page was last updated:  April 14, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2090,8 +2098,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-tips" href="javascript:void(0)">Connector tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-conversion-definition" href="javascript:void(0)">Create a conversion definition</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-for-web-events" href="javascript:void(0)">Deduplication for web events</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#automatic-deduplication" href="javascript:void(0)">Automatic deduplication</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion" href="javascript:void(0)">Send Conversion</a></li>

@@ -552,6 +552,8 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/add-enrichment/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".server-side-add-enrichment">エンリッチメントの追加</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichment-rules">属性エンリッチメントルールについて</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/manage-enrichments/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-usage-examples">使用例</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -630,6 +632,8 @@
         <a href="/ja/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">エンドポイント</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">iQタグ管理での実装</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/moments-api/cloudstream-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-cloudstream-integration">CloudStreamとの統合</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1057,8 +1061,8 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>エンリッチメントは、属性の値をカスタマイズするために追加されます。エンリッチしたい属性を見つけて、以下の手順を完了してください：</p>
-<p>左のナビゲーションバーから <strong>AudienceStream &gt; 訪問/訪問属性</strong> に移動して、属性を表示します。左側の利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。</p>
+  <p>エンリッチメントは、属性の値をカスタマイズするために追加されます。エンリッチメントを追加したい属性を見つけ、以下の手順を完了してください：</p>
+<p>左のナビゲーションバーから <strong>AudienceStream &gt; Visitor / Visit Attributes</strong> に移動して、属性を表示します。左側の利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックしてその詳細を表示します。</p>
 <figure><a class="slb" href="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"><img src="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"
          alt="Using Attributes_View and Manage Attributes.png"
          title="Using Attributes_View and Manage Attributes.png"/>
@@ -1066,21 +1070,21 @@
 </figure>
 <ol>
 <li>
-<p><strong>属性を追加</strong> ダイアログで、<strong>エンリッチメントを追加</strong> をクリックし、希望するエンリッチメントを選択します。</p>
+<p><strong>Add Attribute</strong> ダイアログで、<strong>Add Enrichment</strong> をクリックし、追加したいエンリッチメントを選択します。</p>
 </li>
 <li>
 <p>エンリッチメントの種類によって構成が異なります。
-以下のエンリッチメントの詳細を参照してください。</p>
+追加情報については、以下のエンリッチメントの詳細を参照してください。</p>
 </li>
 <li>
 <p>エンリッチメントをトリガーする <strong>WHEN</strong> を選択します。これにより、エンリッチメントのタイミングが制御されます。</p>
 <ul>
-<li><strong>新規訪問</strong> – 訪問がサイトに初めて来たときに発生します。</li>
-<li><strong>新規訪問</strong> – 訪問が新たに訪問したときに発生します。</li>
-<li><strong>任意のイベント</strong> – 任意のイベントが発生したときに発生します。</li>
-<li><strong>訪問終了</strong> – 次の無活動時間に基づいて訪問が終了したときに発生します：
+<li><strong>New Visitor</strong> – 訪問がサイトに初めて来たときに発生します。</li>
+<li><strong>New Visit</strong> – 訪問が新たに訪問したときに発生します。</li>
+<li><strong>Any Event</strong> – 任意のイベントが発生したときに発生します。</li>
+<li><strong>Visit Ended</strong> – 訪問が終了したときに発生します。以下の非活動時間に基づきます：
 <ul>
-<li>Webセッション：30分（1イベントのみ受信した場合は10分）</li>
+<li>Webセッション：30分（イベントが1つだけ受信された場合は10分[/ja/server-side/visitor-stitching/single-event-visitor/]）</li>
 <li>モバイルアプリセッション：2分</li>
 <li>オムニチャネルセッション：1分</li>
 </ul>
@@ -1088,10 +1092,10 @@
 </ul>
 </li>
 <li>
-<p>既存の <strong>ルール</strong> 条件を選択するか、新しいルールを作成します。</p>
+<p>既存の <strong>Rule</strong> 条件を選択するか、新しいルールを作成します。詳細については、<a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/">エンリッチメントルールについて</a>を参照してください。</p>
 </li>
 <li>
-<p><strong>完了</strong> をクリックします。</p>
+<p><strong>Finish</strong> をクリックします。</p>
 </li>
 <li>
 <p>プロファイルを保存して公開し、変更を適用します。</p>
@@ -1103,13 +1107,13 @@
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/ja/server-side/attributes/manage-enrichments/usage-examples/"
+  <a href="/ja/server-side/attributes/manage-enrichments/about-enrichment-rules/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>使用例</div>
+      <div>属性エンリッチメントルールについて</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"使用例"</title>
+      <title>"属性エンリッチメントルールについて"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1142,7 +1146,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年September月11日
+          <p>最終更新日 ::  2026年April月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

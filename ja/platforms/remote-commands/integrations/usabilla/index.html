@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/remote-commands/integrations/usabilla/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="AndroidおよびSwift/iOSにおけるUsabillaのTealiumリモートコマンド統合です。" />
+<meta property="og:description" content="AndroidおよびSwift/iOSのUsabillaに対するTealiumリモートコマンド統合。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>リモートコマンド：Usabilla | 統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -348,7 +348,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      AndroidおよびSwift/iOSにおけるUsabillaのTealiumリモートコマンド統合です。
+      AndroidおよびSwift/iOSのUsabillaに対するTealiumリモートコマンド統合。
     </p>
   
 </div>
@@ -356,96 +356,90 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li>Usabilla アプリ ID および フォーム ID</li>
-<li>これらのモバイル ライブラリのうちのいずれか:
+<li>UsabillaのアプリIDとフォームID</li>
+<li>以下のいずれかのモバイルライブラリ：
 <ul>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0 以降)</li>
-<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (5.9.0 以降 (Usabilla 1.0.0 以降用) または 5.9.0 以前 (旧バージョン用))</li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android-Java</a> (Usabilla 1.0.0+の場合は5.9.0+、それ以前のバージョンの場合は&lt;5.9.0)</li>
 <li><a href="/ja/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul>
 </li>
-<li>これらのリモート コマンド統合のいずれか:
+<li>以下のいずれかのリモートコマンド統合：
 <ul>
-<li><a href="/ja/platforms/remote-commands/integrations/usabilla/#json-template">Usabilla Remote Command JSON File</a> (Android-Kotlin 1.0.0 以降または iOS-Swift 2.1.0 以降が必要)</li>
-<li>Usabillaリモートコマンドタグ（Tealium iQ Tag Management）</li>
+<li><a href="/ja/platforms/remote-commands/integrations/usabilla/#json-template">Usabilla Remote Command JSON File</a> (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)</li>
+<li>Tealium iQ Tag ManagementのUsabilla Remote Commandタグ</li>
 </ul>
 </li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>Usabilla 統合は、これらのアイテムを使用します:</p>
+<h2 id="動作原理">動作原理</h2>
+<p>Usabilla統合は3つのアイテムを使用します：</p>
 <ol>
-<li>Usabilla ネイティブ SDK</li>
-<li>Usabilla メソッドをラップするリモート コマンド モジュール</li>
-<li>イベント トラッキングをネイティブ Usabilla コールに翻訳する、JSON 構成ファイルまたは Remote Command タグのいずれか</li>
+<li>UsabillaネイティブSDK</li>
+<li>Usabillaメソッドをラップするリモートコマンドモジュール</li>
+<li>イベントトラッキングをネイティブのUsabillaコールに変換するJSON構成ファイルまたはRemote Commandタグ</li>
 </ol>
-<p>Usabillaリモートコマンドモジュールをアプリに追加すると、必要なUsabillaライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャのインストールを使用している場合、Usabilla SDKを個別にインストールする必要はありません。</p>
-<p>リモート コマンド オプションは、次の 2 つがあります: A JSON 構成ファイル、または、マッピングを構成するための iQ タグ管理の使用。A JSON 構成ファイルは、リモートでホスティングするか、またはアプリ内でローカルでホスティングするかのいずれでも、ベンダー統合の推奨オプションです。iQ タグ管理を使用する場合は、ベンダー統合用のリモート コマンド タグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>の詳細は、こちらから参照してください。</p>
+<p>アプリにUsabillaリモートコマンドモジュールを追加すると、必要なUsabillaライブラリが自動的にインストールされビルドされます。依存関係マネージャーのインストールを使用している場合、Usabilla SDKを別途インストールする必要はありません。</p>
+<p>リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQ Tag Managementを使用してマッピングを構成します。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルが推奨されます。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。<a href="/ja/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合についての詳細</a>を学びましょう。</p>
 <h2 id="インストール">インストール</h2>
 <h3 id="依存関係マネージャ">依存関係マネージャ</h3>
-<p>次の依存関係マネージャのいずれかをインストールに使用することをお勧めします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iOS（Objective-C）ライブラリを使用している場合は、手動インストール方法を使用してください。CocoaPodsおよびCarthageオプションは、Tealium iOS（Swift）ライブラリを使用している場合にのみ使用可能です。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
-  <p>Swift Package Manager を使用して iOS の Facebook リモート コマンドをインストールするには:</p>
-<ol>
-<li>Xcode プロジェクトで、次のように選択します: <strong>[File] &gt; [Add Package&hellip;]&gt; [Add Package Dependency]</strong>。</li>
-<li>レポジトリの URL として「https://github.com/tealium/tealium-ios-usabilla-remote-command」と入力します。</li>
-<li>バージョンルールを構成します。通常は <code>Up to next major</code> が推奨されます。現在の <code>TealiumUsabilla</code> バージョンがリストに表示されない場合は、Swift パッケージ キャッシュをリセットします。</li>
-<li>インストールする <code>TealiumUsabilla</code> モジュールを選択し、モジュールをインストールするアプリ ターゲットを選択します。</li>
+  <ol>
+<li>Xcodeプロジェクトで、<strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>を選択します。</li>
+<li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-ios-usabilla-remote-command</code>。</li>
+<li>バージョンルールを構成します。通常は<code>Up to next major</code>が推奨されます。現在の<code>TealiumUsabilla</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールする<code>TealiumUsabilla</code>モジュールを選択し、そのモジュールをインストールするアプリターゲットを選択します。</li>
 </ol>
-<p>プロジェクトにアプリ ターゲットが複数あり、複数のアプリ ターゲットで <code>TealiumUsabilla</code> モジュールが必要な場合は、 <strong>[Frameworks, Libraries, and Embedded Content] (フレームワーク、ライブラリ、埋め込みコンテンツ)</strong> セクションにそれらを手動で追加する必要があります。</p>
-<p>追加のアプリ ターゲットに <code>TealiumUsabilla</code> をインストールするには:</p>
+<p>プロジェクトに複数のアプリターゲットがあり、<code>TealiumUsabilla</code>モジュールを複数のアプリターゲットに追加する必要がある場合は、<strong>Frameworks, Libraries, and Embedded Content</strong>セクションで手動で追加する必要があります。</p>
+<p><code>TealiumUsabilla</code>を追加のアプリターゲットにインストールするには：</p>
 <ol>
-<li><strong>プロジェクト ナビゲーター</strong>で Xcode プロジェクトを選択します。</li>
-<li>Xcode プロジェクトにおいて、 <strong>[TARGETS] (ターゲット)</strong> セクションでアプリ ターゲットを選択します。</li>
-<li><strong>[General] &gt; [Frameworks, Libraries &amp; Embedded Content]</strong> に進み、 <code>TealiumUsabilla</code> モジュールを選択して、アプリ ターゲットに追加します。</li>
+<li><strong>Project Navigator</strong>でXcodeプロジェクトを選択します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションの下にあるアプリターゲットを選択します。</li>
+<li><strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong>に移動し、<code>TealiumUsabilla</code>モジュールをアプリターゲットに追加します。</li>
 </ol>
-<p>Tealium Swift ライブラリからの追加のモジュールを追加するは、 <a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a> の手順に従います。</p>
+<p>Tealium Swiftライブラリから追加のモジュールを追加するには、<a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a>の指示に従ってください。</p>
 </div>
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>CocoaPodsを使用してiOSのUsabillaリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><code>tealium-swift</code>と<code>pod &quot;Usabilla&quot;</code>がPodfileに既に存在する場合は削除します。<code>tealium-swift</code>の依存関係は<code>TealiumUsabilla</code>フレームワークに既に含まれています。</p>
+<p>Podfileから<code>tealium-swift</code>と<code>pod &quot;Usabilla&quot;</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumUsabilla</code>フレームワークに含まれています。</p>
 </li>
 <li>
-<p>次の依存関係をPodfileに追加します。</p>
-</li>
-</ol>
+<p>Podfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumUsabilla&#34;</span>
-</span></span></code></pre></div><p><code>TealiumUsabilla</code>ポッドには以下の<code>TealiumSwift</code>依存関係が含まれています。</p>
+</span></span></code></pre></div><p><code>TealiumUsabilla</code>ポッドには次の<code>TealiumSwift</code>依存関係が含まれています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumDelegate&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
-</span></span></code></pre></div><ol start="3">
-<li>モジュール<code>TealiumSwift</code>および<code>TealiumUsabilla</code>を、<code>TealiumHelper</code>ファイル、<code>Tealium</code>クラスにアクセスするその他のファイル、またはUsabillaリモートコマンドにインポートします。</li>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>TealiumHelper</code>ファイルおよび<code>Tealium</code>クラスまたはUsabillaリモートコマンドにアクセスする他のファイルで<code>TealiumSwift</code>および<code>TealiumUsabilla</code>モジュールをインポートします。</p>
+</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>Carthageを使用してiOSのUsabillaリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><code>tealium-swift</code>をCartfileから削除します。<code>tealium-swift</code>の依存関係は<code>TealiumUsabilla</code>フレームワークに既に含まれています。</p>
+<p>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係はすでに<code>TealiumUsabilla</code>フレームワークに含まれています。</p>
 </li>
 <li>
-<p>以下の行がCartfileに存在する場合は、その行を削除します。</p>
-</li>
-</ol>
+<p>Cartfileに存在する場合は次の行を削除します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;usabilla/usabilla-u4a-ios-swift-sdk&#34;</span>
-</span></span></code></pre></div><ol start="3">
-<li>次の依存関係をCartfileに追加します。</li>
-</ol>
+</span></span></code></pre></div></li>
+<li>
+<p>Cartfileに次の依存関係を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-usabilla-remote-command&#34;</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK（バージョン1.6.5以降）では、<code>TealiumDelegate</code>モジュールがインストールに含まれている必要があります。</p>
+</span></span></code></pre></div></li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium for Swift SDK (バージョン1.6.5+)は、インストール時に<code>TealiumDelegate</code>モジュールが含まれている必要があります。</p>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>Mavenを使用してAndroidのUsabillaリモートコマンドをインストールするには：</p>
-<ol>
+  <ol>
 <li>
-<p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> または <a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a> をインストールして、Tealium Maven URL を、プロジェクトのトップレベル <code>build.gradle</code> ファイルに追加します (まだ済んでいない場合)。</p>
+<p>まだ行っていない場合は、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、プロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
@@ -456,64 +450,128 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
-<p>アプリプロジェクトの<code>build.gradle</code>ファイルに次の依存関係を追加して、Tealium-Usabillaリモートコマンドをインポートします。</p>
-</li>
-</ol>
+<p>アプリプロジェクトの<code>build.gradle</code>ファイルに次の依存関係を追加して、Tealium-Usabillaリモートコマンドをインポートします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>      implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:usabilla:1.0.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 </div>
 </div>
 
-<h3 id="手動による手順ios">手動による手順（iOS）</h3>
-<p>Usabilla リモート コマンドを手動でインストールするには、 <a href="/ja/platforms/ios-swift/">Tealium for Swift</a> ライブラリがインストールされている必要があります。iOSプロジェクトのUsabillaリモートコマンドをインストールするには：</p>
+<h3 id="手動インストール">手動インストール</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Usabillaリモートコマンドの手動インストールには、<a href="/ja/platforms/ios-swift/">Tealium for Swift</a>ライブラリがインストールされている必要があります。iOSプロジェクトのUsabillaリモートコマンドをインストールするには：</p>
 <ol>
 <li>
-<p><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>をまだインストールしていない場合はインストールします。</p>
+<p>まだ行っていない場合は、<a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>をインストールします。</p>
 </li>
 <li>
-<p><a href="https://github.com/tealium/tealium-ios-usabilla-remote-command">Tealium iOS Usabillaリモートコマンド</a>レポジトリをクローンして、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
+<p><a href="https://github.com/tealium/tealium-ios-usabilla-remote-command">Tealium iOS Usabillaリモートコマンド</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</p>
 </li>
 <li>
-<p>ディスパッチャーとして <code>Dispatchers.RemoteCommands</code> を追加します</p>
-</li>
-<li>
-<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> 構成フラッグを <code>true</code>に構成します</p>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します。</p>
 </li>
 </ol>
+</div>
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Usabillaリモートコマンドの手動インストールには、<a href="/ja/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/ja/platforms/android-java/install/">Tealium for Android (Java)</a>がインストールされている必要があります。</p>
+<p>AndroidプロジェクトのBranchリモートコマンドをインストールするには：</p>
+<ol>
+<li>
+<p>プロジェクトルートの<code>build.gradle</code>ファイルに<code>flatDir</code>を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        flatDir <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            dirs <span style="color:#e6db74">&#39;libs&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>に<code>tealium-usabilla.aar</code>を追加します。</p>
+</li>
+<li>
+<p><code>build.gradle</code>ファイルにTealiumライブラリの依存関係を追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      implementation<span style="color:#f92672">(</span>name:<span style="color:#e6db74">&#39;tealium-usabilla&#39;</span><span style="color:#f92672">,</span> ext:<span style="color:#e6db74">&#39;aar&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+</div>
+</div>
+</div>
+
 <h2 id="初期化">初期化</h2>
-<p>すべてのTealiumライブラリでは、初期化時にUsabillaリモートコマンドを登録する必要があります。</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>Tealium の Android (Kotlin) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
+<p>すべてのTealiumライブラリにおいて、初期化時にUsabillaリモートコマンドを登録する必要があります。</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>TealiumのiOS（Swift）ライブラリ用にJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドを使用するために必要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> usabilla = UsabillaRemoteCommand() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let usabilla = UsabillaRemoteCommand(type: .local(file: &#34;usabilla&#34;))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let usabilla = UsabillaRemoteCommand(type: .remote(url: &#34;https://some.domain.com/usabilla.json&#34;))</span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(usabilla)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>TealiumのAndroid（Kotlin）ライブラリ用にJSON構成ファイルまたはリモートコマンドタグでリモートコマンドを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands, <span style="color:#a6e22e">Dispatchers</span>.TagManagement));
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(usabilla, filename = <span style="color:#e6db74">&#34;usabilla.json&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Usabilla SDKで使用可能な追加（オプション）の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">初期化パラメータ</a>は次のとおりです。</p>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webviewタグ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(usabilla);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ローカルJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(usabilla, filename = &#34;usabilla.json&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// リモートJSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(usabilla, remoteUrl = &#34;https://some.domain.com/usabilla.json&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Usabilla SDKのための追加（オプショナル）<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">初期化パラメータ</a>が利用可能です：</p>
 <ul>
-<li><code>usabillaHttpClient = null</code>
-<code>HttpClient</code>オブジェクトをオーバーライドします。これにより、SDKによって実行されるすべての接続を処理するカスタムクライアントを挿入できます。カスタムHTTPクライアントの詳細については、<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">こちら</a>を参照してください。</li>
-<li><code>usabillaReadyCallback = null</code>
-初期化プロセスが終了したときの通信に使用されるコールバックである、<code>UsabillaReadyCallback</code>オブジェクトをオーバーライドします。</li>
-<li><code>autoFragmentManager = false</code>
-<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">パッシブフィードバック</a>（デフォルトで有効）を無効にします。パッシブフィードバックを実行するには、Androidの<code>FragmentManager</code>を最新の状態に保ち、<code>android.app.Application.ActivityLifecycleCallbacks</code>を使用して監視する必要があります。</li>
-<li><code>autoFeedbackHandler = false</code>
-パッシブおよび<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">キャンペーン</a>フィードバックフォームと、送信または却下された自動削除フォームのイベントトラッキングの処理を無効にします（デフォルトで有効）。2つの<code>android.content.BroadcastReceiver</code>が登録され、パッシブおよびキャンペーンの両方の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">フィードバックフォームクロージャ</a>を処理するUsabillaイベントを待ち受けます。</li>
+<li><code>usabillaHttpClient = null</code><br>
+<code>HttpClient</code>オブジェクトをオーバーライドし、SDKによって実行されるすべての接続を処理するカスタムクライアントを注入する可能性を提供します。<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">カスタムHTTPクライアント</a>についてもっと学びましょう。</li>
+<li><code>usabillaReadyCallback = null</code><br>
+<code>UsabillaReadyCallback</code>オブジェクトをオーバーライドし、初期化プロセスが終了したときに通信するコールバックです。</li>
+<li><code>autoFragmentManager = false</code><br>
+<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">パッシブフィードバック</a>を無効にします（デフォルトでは有効）。パッシブフィードバックは、Androidの<code>FragmentManager</code>を最新の状態に保ち、<code>android.app.Application.ActivityLifecycleCallbacks</code>を使用して監視する必要があります。</li>
+<li><code>autoFeedbackHandler = false</code><br>
+パッシブおよび<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">キャンペーン</a>フィードバックフォームのイベントトラッキングの処理を無効にし、送信または却下されたフォームを自動的に削除する機能を無効にします（デフォルトでは有効）。二つの<code>android.content.BroadcastReceiver</code>が登録され、パッシブおよびキャンペーン<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">フィードバックフォームのクロージャ</a>を処理するUsabillaイベントをリッスンします。</li>
 </ul>
-<p>次の例は、オプションのパラメータの使用方法を示しています。</p>
+<p>オプショナルパラメータの使用例を以下に示します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config,
 </span></span><span style="display:flex;"><span>        usabillaHttpClient = <span style="color:#66d9ef">null</span>,
 </span></span><span style="display:flex;"><span>        usabillaReadyCallback = <span style="color:#66d9ef">null</span>,
@@ -521,67 +579,25 @@
 </span></span><span style="display:flex;"><span>        autoFeedbackHandler = <span style="color:#66d9ef">false</span>);
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>  remoteCommands<span style="color:#f92672">?.</span>add(usabilla);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Usabilla SDKで使用可能な追加（オプション）の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">初期化パラメータ</a>は次のとおりです。</p>
-<ul>
-<li><code>usabillaHttpClient = null</code>
-<code>HttpClient</code>オブジェクトをオーバーライドします。これにより、SDKによって実行されるすべての接続を処理するカスタムクライアントを挿入できます。カスタムHTTPクライアントの詳細については、<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">こちら</a>を参照してください。</li>
-<li><code>usabillaReadyCallback = null</code>
-初期化プロセスが終了したときの通信に使用されるコールバックである、<code>UsabillaReadyCallback</code>オブジェクトをオーバーライドします。</li>
-<li><code>autoFragmentManager = false</code>
-<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">パッシブフィードバック</a>（デフォルトで有効）を無効にします。パッシブフィードバックを実行するには、Androidの<code>FragmentManager</code>を最新の状態に保ち、<code>android.app.Application.ActivityLifecycleCallbacks</code>を使用して監視する必要があります。</li>
-<li><code>autoFeedbackHandler = false</code>
-パッシブおよび<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">キャンペーン</a>フィードバックフォームと、送信または却下された自動削除フォームのイベントトラッキングの処理を無効にします（デフォルトで有効）。2つの<code>android.content.BroadcastReceiver</code>が登録され、パッシブおよびキャンペーンの両方の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">フィードバックフォームクロージャ</a>を処理するUsabillaイベントを待ち受けます。</li>
-</ul>
-<p>次の例は、オプションのパラメータの使用方法を示しています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config,
-</span></span><span style="display:flex;"><span>        usabillaHttpClient = <span style="color:#66d9ef">null</span>,
-</span></span><span style="display:flex;"><span>        usabillaReadyCallback = <span style="color:#66d9ef">null</span>,
-</span></span><span style="display:flex;"><span>        autoFragmentManager = <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>        autoFeedbackHandler = <span style="color:#66d9ef">false</span>);
-</span></span></code></pre></div>
-</div>
-</div>
-</div>
-
-<h3 id="android-java">Android (Java)</h3>
-<p>Tealium の Android (Java) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>Android 向けの JSON Remote Command ファイル機能は、Kotlin SDK でのみ利用できます。</p>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
+<div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
+  <p>AndroidのJSONリモートコマンドファイル機能はKotlin SDKでのみ利用可能です。TealiumのAndroid（Java）ライブラリ用にリモートコマンドタグを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>RemoteCommand usabilla <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsabillaRemoteCommand<span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>usabilla<span style="color:#f92672">);</span>
-</span></span></code></pre></div><p>Usabilla SDKで使用可能な追加（オプション）の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">初期化パラメータ</a>は次のとおりです。</p>
+</span></span></code></pre></div><p>Usabilla SDKのための追加（オプショナル）<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">初期化パラメータ</a>が利用可能です：</p>
 <ul>
-<li><code>usabillaHttpClient = null</code>
-<code>HttpClient</code>オブジェクトをオーバーライドします。これにより、SDKによって実行されるすべての接続を処理するカスタムクライアントを挿入できます。カスタムHTTPクライアントの詳細については、<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">こちら</a>を参照してください。</li>
-<li><code>usabillaReadyCallback = null</code>
-初期化プロセスが終了したときの通信に使用されるコールバックである、<code>UsabillaReadyCallback</code>オブジェクトをオーバーライドします。</li>
-<li><code>autoFragmentManager = false</code>
-<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">パッシブフィードバック</a>（デフォルトで有効）を無効にします。パッシブフィードバックを実行するには、Androidの<code>FragmentManager</code>を最新の状態に保ち、<code>android.app.Application.ActivityLifecycleCallbacks</code>を使用して監視する必要があります。</li>
-<li><code>autoFeedbackHandler = false</code>
-パッシブおよび<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">キャンペーン</a>フィードバックフォームと、送信または却下された自動削除フォームのイベントトラッキングの処理を無効にします（デフォルトで有効）。2つの<code>android.content.BroadcastReceiver</code>が登録され、パッシブおよびキャンペーンの両方の<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">フィードバックフォームクロージャ</a>を処理するUsabillaイベントを待ち受けます。</li>
+<li><code>usabillaHttpClient = null</code><br>
+<code>HttpClient</code>オブジェクトをオーバーライドし、SDKによって実行されるすべての接続を処理するカスタムクライアントを注入する可能性を提供します。<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">カスタムHTTPクライアント</a>についてもっと学びましょう。</li>
+<li><code>usabillaReadyCallback = null</code><br>
+<code>UsabillaReadyCallback</code>オブジェクトをオーバーライドし、初期化プロセスが終了したときに通信するコールバックです。</li>
+<li><code>autoFragmentManager = false</code><br>
+<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">パッシブフィードバック</a>を無効にします（デフォルトでは有効）。パッシブフィードバックは、Androidの<code>FragmentManager</code>を最新の状態に保ち、<code>android.app.Application.ActivityLifecycleCallbacks</code>を使用して監視する必要があります。</li>
+<li><code>autoFeedbackHandler = false</code><br>
+パッシブおよび<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">キャンペーン</a>フィードバックフォームのイベントトラッキングの処理を無効にし、送信または却下されたフォームを自動的に削除する機能を無効にします（デフォルトでは有効）。二つの<code>android.content.BroadcastReceiver</code>が登録され、パッシブおよびキャンペーン<a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">フィードバックフォームのクロージャ</a>を処理するUsabillaイベントをリッスンします。</li>
 </ul>
-<p>次の例は、オプションのパラメータの使用方法を示しています。</p>
+<p>オプショナルパラメータの使用例を以下に示します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>RemoteCommand usabilla <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UsabillaRemoteCommand<span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>        usabillaHttpClient <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>        usabillaReadyCallback <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span>
@@ -592,54 +608,8 @@
 </div>
 </div>
 
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>Tealium の Android (Java) ライブラリ用の JSON 構成ファイルまたはリモート コマンド タグを用いてリモート コマンドを初期化します。</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>以下のコードは、ローカル ファイル オプションを使用して、JSON Remote Commands 機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> usabilla = UsabillaRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;usabilla&#34;</span>))
-</span></span><span style="display:flex;"><span>	remoteCommands.add(usabilla)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>以下のコードは、Remote Command タグ機能とともに用いるために設計されています。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,<span style="color:#960050;background-color:#1e0010">˜˜</span>
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> usabilla = UsabillaRemoteCommand()
-</span></span><span style="display:flex;"><span>	remoteCommands.add(usabilla)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-</div>
-</div>
-
-<h2 id="json-テンプレート">JSON テンプレート</h2>
-<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON 構成ファイル</a>を使用してリモート コマンドを構成しようとする場合は、まず、以下のテンプレートを参照します。テンプレートには、標準的な E コマースのインストールに用いられる共通マッピングが含まれます。必要に応じて、マッピングを編集します。</p>
+<h2 id="jsonテンプレート">JSONテンプレート</h2>
+<p><a href="/ja/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用してリモートコマンドを構成する場合は、以下のテンプレートを参照してください。このテンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;appId&#34;</span>: <span style="color:#e6db74">&#34;YOUR_APP_ID&#34;</span>,
@@ -663,10 +633,10 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;reset&#34;</span>: <span style="color:#e6db74">&#34;resetcampaigndata&#34;</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="トラッキング">トラッキング</h2>
-<p>イベントは、読み込みが成功および失敗したフォームに加え、パッシブフィードバックフォームとキャンペーンフィードバックフォームの両方について自動的に追跡されます。</p>
+</span></span></code></pre></div><h2 id="トラック">トラック</h2>
+<p>成功および失敗したフォームのロード、およびパッシブおよびキャンペーンフィードバックフォームの両方について、イベントは自動的にトラッキングされます。</p>
 <h2 id="サポートされているメソッド">サポートされているメソッド</h2>
-<p>Usabillaメソッドまたはプロパティは、以下のTealiumコマンドを使用することによって、Usabillaリモートコマンドタグのデータマッピングを使用してトリガーされます。</p>
+<p>Usabillaの各メソッドまたはプロパティにコマンドをマッピングします。Usabillaのメソッドまたはプロパティをトリガーするには、指定された形式で対応するコマンドを渡します。</p>
 <table>
 <thead>
 <tr>
@@ -717,15 +687,15 @@
 </tr>
 </tbody>
 </table>
-<p class="tip"><i class="fa fa-info-circle"></i>Usabilla SDKはTealium SDKと統合されているので、対応するタグ構成があれば任意のネイティブUsabilla機能をトリガーできます。</p>
-<h3 id="sdkのセットアップ">SDKのセットアップ</h3>
+<p class="tip"><i class="fa fa-info-circle"></i>Usabilla SDKはTealium SDKと統合されているため、対応するタグ構成を与えることで、任意のネイティブUsabilla機能をトリガーすることができます。</p>
+<h3 id="sdkセットアップ">SDKセットアップ</h3>
 <h4 id="初期化-1">初期化</h4>
 <p>Usabilla SDKは起動時に自動的に初期化されます。Usabilla APIキーはタグ構成で構成されます。</p>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaメソッド</th>
+<th>Usabilla メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -735,7 +705,7 @@
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：SDKの初期セットアップ</p>
+<p>Usabilla 開発者ガイド: SDKの初期構成</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#initialization">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">Android</a></li>
@@ -745,7 +715,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaプロパティ</th>
+<th>Usabilla プロパティ</th>
 </tr>
 </thead>
 <tbody>
@@ -759,27 +729,27 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>debugEnabled</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>debugEnabled</code> (必須)</td>
+<td>Bool</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：SDKの初期セットアップ</p>
+<p>Usabilla 開発者ガイド: SDKの初期構成</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#debugmode">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#debug-mode">Android</a></li>
 </ul>
-<h4 id="キャンペーン切り替え">キャンペーン切り替え</h4>
+<h4 id="キャンペーンの切り替え">キャンペーンの切り替え</h4>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">リモートコマンド</th>
-<th style="text-align:left">Usabillaプロパティ</th>
+<th style="text-align:left">Usabilla プロパティ</th>
 </tr>
 </thead>
 <tbody>
@@ -793,28 +763,28 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>canDisplayCampaigns</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>canDisplayCampaigns</code> (必須)</td>
+<td>Bool</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：キャンペーン切り替え</p>
+<p>Usabilla 開発者ガイド: キャンペーンの切り替え</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#campaign-toggling">iOS</a></li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>キャンペーン切り替えはAndroidでは使用できません</p>
-<h3 id="ターゲット構成オプション">ターゲット構成オプション</h3>
-<h4 id="イベントの送信">イベントの送信</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Androidではキャンペーンの切り替えは利用できません</p>
+<h3 id="ターゲティングオプション">ターゲティングオプション</h3>
+<h4 id="イベント送信">イベント送信</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaメソッド</th>
+<th>Usabilla メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -828,17 +798,17 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>event</code> (required)</td>
-<td>文字列</td>
+<td><code>event</code> (必須)</td>
+<td>String</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：ターゲット構成オプション</p>
+<p>Usabilla 開発者ガイド: ターゲティングオプション</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#targeting-options">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#targeting-options">Android</a></li>
@@ -848,7 +818,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaプロパティ</th>
+<th>Usabilla プロパティ</th>
 </tr>
 </thead>
 <tbody>
@@ -862,17 +832,17 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>custom.###</code>（必須）</td>
-<td>文字列</td>
+<td><code>custom.###</code> (必須)</td>
+<td>String</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：カスタム変数の構成</p>
+<p>Usabilla 開発者ガイド: カスタム変数の構成</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#custom-variables">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-variables">Android</a></li>
@@ -883,7 +853,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaメソッド</th>
+<th>Usabilla メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -897,24 +867,24 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 <th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>formId</code> (required)</td>
-<td>文字列</td>
+<td><code>formId</code> (必須)</td>
+<td>String</td>
 <td></td>
 </tr>
 <tr>
-<td><code>fragmentId</code> (Android only)</td>
-<td>整数</td>
+<td><code>fragmentId</code> (Androidのみ)</td>
+<td>Integer</td>
 <td><code>R.id.activity_main</code></td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：フィードバックフォームの読み込み</p>
+<p>Usabilla 開発者ガイド: フィードバックフォームの読み込み</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#loading-a-form">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#loading-a-form">Android</a></li>
@@ -924,7 +894,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaメソッド</th>
+<th>Usabilla メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -938,17 +908,17 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>formIds</code> (required)</td>
-<td>[文字列]</td>
+<td><code>formIds</code> (必須)</td>
+<td>[String]</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：フィードバックフォームの事前読み込み</p>
+<p>Usabilla 開発者ガイド: フィードバックフォームの事前読み込み</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#preloading-a-form">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#preloading-a-form">Android</a></li>
@@ -958,7 +928,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaメソッド</th>
+<th>Usabilla メソッド</th>
 </tr>
 </thead>
 <tbody>
@@ -968,17 +938,17 @@
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：キャッシュされたフォームの削除</p>
+<p>Usabilla 開発者ガイド: キャッシュされたフォームの削除</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#preloading-a-form">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#reset-passive-forms">Android</a></li>
 </ul>
-<h4 id="自動的に却下">自動的に却下</h4>
+<h4 id="自動的に閉じる">自動的に閉じる</h4>
 <table>
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaプロパティ</th>
+<th>Usabilla プロパティ</th>
 </tr>
 </thead>
 <tbody>
@@ -992,17 +962,17 @@
 <thead>
 <tr>
 <th>パラメータ</th>
-<th>型</th>
+<th>タイプ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>dismissAutomatically</code> (required)</td>
-<td>ブーリアン</td>
+<td><code>dismissAutomatically</code> (必須)</td>
+<td>Bool</td>
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：手動による却下</p>
+<p>Usabilla 開発者ガイド: 手動で閉じる処理</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#handle-manual-dismiss">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#dismissing-forms">Android</a></li>
@@ -1012,7 +982,7 @@
 <thead>
 <tr>
 <th>リモートコマンド</th>
-<th>Usabillaプロパティ</th>
+<th>Usabilla プロパティ</th>
 </tr>
 </thead>
 <tbody>
@@ -1022,7 +992,7 @@
 </tr>
 </tbody>
 </table>
-<p>Usabilla Developer Guide：すべてのキャンペーンのリセット</p>
+<p>Usabilla 開発者ガイド: すべてのキャンペーンのリセット</p>
 <ul>
 <li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#resetting-all-campaigns">iOS</a></li>
 <li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#reset-campaigns-data">Android</a></li>
@@ -1072,7 +1042,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2026年April月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1087,19 +1057,16 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3" href="javascript:void(0)">依存関係マネージャ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%81%AB%E3%82%88%E3%82%8B%E6%89%8B%E9%A0%86ios" href="javascript:void(0)">手動による手順（iOS）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">手動インストール</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-kotlin" href="javascript:void(0)">Android (Kotlin)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#android-java" href="javascript:void(0)">Android (Java)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ios-swift" href="javascript:void(0)">iOS (Swift)</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json-%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSON テンプレート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラッキング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF" href="javascript:void(0)">トラック</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E6%A7%8B%E6%88%90%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ターゲット構成オプション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKセットアップ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ターゲティングオプション</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E5%A4%89%E6%95%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">カスタム変数の構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" href="javascript:void(0)">フォーム</a></li>
               </nav>

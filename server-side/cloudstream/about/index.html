@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -449,8 +449,6 @@
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-cloudstream">About</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/cloudstream/datasources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-datasources">Data sources</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloud-attributes">Cloud attributes</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/cloudstream/segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-cloudstream-segments">Segments</a></li></ul>
@@ -536,6 +534,8 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/manage-enrichments/add-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-enrichment">Add an enrichment</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/attributes/manage-enrichments/about-enrichment-rules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichment-rules">About enrichment rules</a></li>
+    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/manage-enrichments/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-usage-examples">Usage examples</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
@@ -614,6 +614,8 @@
         <a href="/server-side/moments-api/endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-endpoint">Endpoint</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/moments-api/iq-implementation-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-implementation">Implementation with iQ Tag Management</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/moments-api/cloudstream-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-cloudstream-integration">Integration with CloudStream</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/moments-api/insights/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".moments-api-insights">Insights</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1083,6 +1085,14 @@ General information about data source features, such as supported data types, li
 <li><a href="/server-side/data-sources/cloud-data/manage/">Manage a cloud data source</a><br>
 Information about creating a data source connection, configuration, and mapping as well as instructions on how to test your configuration.</li>
 </ul>
+<h3 id="moments-api-integration">Moments API integration</h3>
+<p>CloudStream supports a direct integration with <a href="/server-side/moments-api/about/">Moments API</a>, a composable API that lets you retrieve high-performance data for real-time visitor personalization.</p>
+<p>Configuring the Moments API integration requires two steps:</p>
+<ol>
+<li><strong>Cloud data source</strong>: Configure the Moments API integration directly from the cloud data source configuration in your CloudStream profile. Map a cloud data source column label to the cloud attribute you want to call from a Moments API engine.</li>
+<li><strong>Moments API</strong>: Choose from cloud data source(s) with the Moments API integration enabled and then select the corresponding CloudStream segments to use in the engine response.</li>
+</ol>
+<p>For more information about integrating CloudStream with Moments API, see <a href="/server-side/moments-api/cloudstream-integration/">Moments API and CloudStream integration guide</a>.</p>
 <h3 id="cloud-attributes">Cloud attributes</h3>
 <p>Cloud attributes are defined when you create a data source in CloudStream. As you connect to a table in your data cloud, CloudStream analyzes the table’s columns, determines their data types, and generates corresponding cloud attributes. You can review and adjust these attribute mappings during the data source setup process to ensure they align with your activation needs.</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloud_attributes.png"><img src="/images/early-access/cloudstream/cloud_attributes.png"
@@ -1167,13 +1177,13 @@ Information about creating a data source connection, configuration, and mapping 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side/cloudstream/datasources/"
+  <a href="/server-side/cloudstream/attributes/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Data sources</div>
+      <div>Cloud attributes</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Data sources"</title>
+      <title>"Cloud attributes"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1206,7 +1216,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 2, 2026 
+          <p>This page was last updated:  April 13, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1225,6 +1235,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dedicated-profile" href="javascript:void(0)">Dedicated profile</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-supply-chain-dashboard" href="javascript:void(0)">Data supply chain dashboard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-sources" href="javascript:void(0)">Data sources</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#moments-api-integration" href="javascript:void(0)">Moments API integration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cloud-attributes" href="javascript:void(0)">Cloud attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#segments" href="javascript:void(0)">Segments</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activations" href="javascript:void(0)">Activations</a></li>

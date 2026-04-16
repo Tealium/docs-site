@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "platforms",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -287,12 +287,12 @@
 <ul>
 <li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
 <li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for FullStory 1.0.0+ or &lt;5.9.0 for previous versions)</li>
-<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a> (2.18.0+)</li>
 </ul>
 </li>
 <li>One of the following remote command integrations:
 <ul>
-<li><a href="/platforms/remote-commands/integrations/fullstory/#json-template">FullStory Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
+<li><a href="/platforms/remote-commands/integrations/fullstory/#json-template">FullStory Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.18.0+)</li>
 <li><a href="/client-side-tags/fullstory-tag/">FullStory Remote Command tag</a> in Tealium iQ Tag Management</li>
 </ul>
 </li>
@@ -338,14 +338,13 @@
   <p>To install FullStory remote commands for iOS using CocoaPods:</p>
 <ol>
 <li>Remove <code>tealium-swift</code> if it already exists your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumFullstory</code> framework.</li>
-<li>Add the following dependency to your Podfile:</li>
-</ol>
+<li>Add the following dependency to your Podfile:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumFullstory&#34;</span>
-</span></span></code></pre></div><p>The <code>TealiumFullstory</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+</span></span></code></pre></div>The <code>TealiumFullstory</code> pod includes the following <code>TealiumSwift</code> dependencies:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
-</span></span></code></pre></div><ol start="3">
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
+</span></span></code></pre></div></li>
 <li>Import the modules <code>TealiumSwift</code> and <code>TealiumFullstory</code> into your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the FullStory Remote Command.</li>
 </ol>
 </div>
@@ -354,41 +353,42 @@
 <ol>
 <li>Remove <code>tealium-swift</code> from your Cartfile. The dependency for
 <code>tealium-swift</code> is already included in the <code>TealiumFullstory</code> framework.</li>
-<li>Add the following dependency to your Cartfile:</li>
-</ol>
+<li>Add the following dependency to your Cartfile:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-fullstory-remote-command&#34;</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
   <p>To install FullStory remote commands for Android using Maven:</p>
 <ol>
 <li>Install <a href="/platforms/android-kotlin/install/">Tealium for Android
-(Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</li>
-</ol>
+(Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>repositories <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>mavenCentral<span style="color:#f92672">()</span>
-</span></span><span style="display:flex;"><span>maven <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>url <span style="color:#e6db74">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+</span></span><span style="display:flex;"><span>    repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        maven <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            url <span style="color:#e6db74">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        maven <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            url <span style="color:#e6db74">&#34;https://maven.fullstory.com&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ol start="2">
+</span></span></code></pre></div></li>
 <li>Import both the FullStory SDK and Tealium-FullStory remote commands by
 adding the following dependencies in your app project&rsquo;s <code>build.gradle</code>
-file:</li>
-</ol>
+file:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:fullstory:1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>    implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:fullstory:1.1.0&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ol start="3">
+</span></span></code></pre></div></li>
 <li>Add the FullStory gradle plugin to your App/Module <code>build.gradle</code>. Replace <code>&lt;PLUGIN PROPERTIES&gt;</code> with <a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Data-Capture#01F5E7XFMG19SNYS77NYETKDMQ">available
-properties</a>:</li>
-</ol>
+properties</a>:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>fullstory <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>PLUGIN PROPERTIES<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span>PLUGIN PROPERTIES<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></li>
+</ol>
 </div>
 </div>
 </div>
@@ -407,7 +407,7 @@ SDK</a>, if you haven&rsquo;t already done so.</li>
 initialize.</p>
 <h3 id="android-kotlin">Android (Kotlin)</h3>
 <p>Initialize remote commands with a JSON configuration file or the Remote
-Command tag for Tealium&rsquo;s Android (Java) library.</p>
+Command tag for Tealium&rsquo;s Android (Kotlin) library.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -415,35 +415,32 @@ Command tag for Tealium&rsquo;s Android (Java) library.</p>
   <p>The following code is designed for use with the JSON Remote Commands
 feature, using the local file option:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Environment</span>.DEV,
+</span></span><span style="display:flex;"><span>    dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initialize FullStory Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand, filename = 
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-fullstory.json&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize FullStory Remote Command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand, filename = <span style="color:#e6db74">&#34;tealium-fullstory.json&#34;</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Environment</span>.DEV,
-</span></span><span style="display:flex;"><span>dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Environment</span>.DEV,
+</span></span><span style="display:flex;"><span>    dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initialize FullStory Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Initialize FullStory Remote Command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
@@ -459,12 +456,10 @@ feature, using the local file option:</p>
 </div>
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> 
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>FullstoryRemoteCommand fullstory <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FullstoryRemoteCommand<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>FullStoryRemoteCommand fullstory <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FullStoryRemoteCommand<span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// register the command
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>fullstory<span style="color:#f92672">);</span>
@@ -482,21 +477,20 @@ feature, using the local file option:</p>
   <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span> profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span> environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span> dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span> optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>    environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>    dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
+</span></span><span style="display:flex;"><span>    options: <span style="color:#66d9ef">nil</span>)
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, 
 </span></span><span style="display:flex;"><span>Dispatchers.RemoteCommands]
 </span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand(type: .local(file: 
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;fullstory&#34;</span>))
-</span></span><span style="display:flex;"><span>remoteCommands.add(fullstory)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;fullstory&#34;</span>))
+</span></span><span style="display:flex;"><span>    remoteCommands.add(fullstory)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
@@ -504,20 +498,20 @@ feature, using the local file option:</p>
   <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span> profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span> environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,<span style="color:#960050;background-color:#1e0010">˜˜</span>
-</span></span><span style="display:flex;"><span> dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span> optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>    environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>    dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
+</span></span><span style="display:flex;"><span>    options: <span style="color:#66d9ef">nil</span>)
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, 
 </span></span><span style="display:flex;"><span>Dispatchers.RemoteCommands]
 </span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand()
-</span></span><span style="display:flex;"><span>remoteCommands.add(fullstory)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand()
+</span></span><span style="display:flex;"><span>    remoteCommands.add(fullstory)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
@@ -558,15 +552,39 @@ feature, using the local file option:</p>
 <tbody>
 <tr>
 <td><code>logevent</code></td>
-<td><code>logEvent()</code></td>
+<td><code>FS.event()</code></td>
 </tr>
 <tr>
 <td><code>identify</code></td>
-<td><code>identifyUser()</code></td>
+<td><code>FS.identify()</code></td>
 </tr>
 <tr>
 <td><code>setuservariables</code></td>
-<td><code>setUserData()</code></td>
+<td><code>FS.setUserVars()</code></td>
+</tr>
+<tr>
+<td><code>shutdown</code></td>
+<td><code>FS.shutdown()</code></td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td><code>FS.restart()</code></td>
+</tr>
+<tr>
+<td><code>consent</code></td>
+<td><code>FS.consent()</code></td>
+</tr>
+<tr>
+<td><code>anonymize</code></td>
+<td><code>FS.anonymize()</code></td>
+</tr>
+<tr>
+<td><code>resetidletimer</code></td>
+<td><code>FS.resetIdleTimer()</code></td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td><code>FS.log()</code></td>
 </tr>
 </tbody>
 </table>
@@ -576,8 +594,7 @@ feature, using the local file option:</p>
 <p>The FullStory SDK is initialized automatically upon launch.</p>
 <p>FullStory Developer Guide: Initial SDK Setup</p>
 <ul>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Data-Capture">Android</a></li>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Data-Capture">iOS</a></li>
+<li><a href="https://developer.fullstory.com/mobile/getting-started/">Mobile getting started</a></li>
 </ul>
 <h3 id="log-event">Log event</h3>
 <table>
@@ -590,7 +607,7 @@ feature, using the local file option:</p>
 <tbody>
 <tr>
 <td><code>logevent</code></td>
-<td><code>event</code></td>
+<td><code>FS.event()</code></td>
 </tr>
 </tbody>
 </table>
@@ -603,19 +620,19 @@ feature, using the local file option:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>eventName</code> (required)</td>
+<td><code>event_name</code> (required)</td>
 <td>String</td>
 </tr>
 <tr>
-<td><code>eventData</code></td>
+<td><code>event</code></td>
 <td>Map</td>
 </tr>
 </tbody>
 </table>
 <p>FullStory Developer Guide: Log Event</p>
 <ul>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory">Android</a></li>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory">iOS</a></li>
+<li><a href="https://developer.fullstory.com/mobile/android/capture-events/analytics-events/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/capture-events/analytics-events/">iOS</a></li>
 </ul>
 <h3 id="identify">Identify</h3>
 <table>
@@ -628,7 +645,7 @@ feature, using the local file option:</p>
 <tbody>
 <tr>
 <td><code>identify</code></td>
-<td><code>identifyUser</code></td>
+<td><code>FS.identify()</code></td>
 </tr>
 </tbody>
 </table>
@@ -641,19 +658,19 @@ feature, using the local file option:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>id</code> (required)</td>
+<td><code>uid</code> (required)</td>
 <td>String</td>
 </tr>
 <tr>
-<td><code>data</code></td>
+<td><code>user_variables</code></td>
 <td>Map</td>
 </tr>
 </tbody>
 </table>
 <p>FullStory Developer Guide: Identify</p>
 <ul>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020828113-FS-identify-Identifying-users">Android</a></li>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020828113-FS-identify-Identifying-users">iOS</a></li>
+<li><a href="https://developer.fullstory.com/mobile/android/identification/identify-users/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/identification/identify-users/">iOS</a></li>
 </ul>
 <h3 id="set-user-variables">Set user variables</h3>
 <table>
@@ -665,8 +682,8 @@ feature, using the local file option:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>setuservariables </code></td>
-<td><code>setUserData</code></td>
+<td><code>setuservariables</code></td>
+<td><code>FS.setUserVars()</code></td>
 </tr>
 </tbody>
 </table>
@@ -679,16 +696,192 @@ feature, using the local file option:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>data</code> (required)</td>
+<td><code>user_variables</code> (required)</td>
 <td>Map</td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>data</code> parameter takes an object of key-value pairs, where keys are <code>strings</code> and the values are suffixed with the data type (for example: <code>_str</code>, <code>_int</code>, <code>_bool</code>). For more information, see <a href="https://help.fullstory.com/hc/en-us/articles/4446290296599-Setting-custom-API-properties">FullStory&rsquo;s Setting-custom API properties documentation</a></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>user_variables</code> parameter takes an object of key-value pairs, where keys are <code>strings</code> and the values are suffixed with the data type (for example: <code>_str</code>, <code>_int</code>, <code>_bool</code>). For more information, see <a href="https://developer.fullstory.com/mobile/user-identification/set-user-properties/">Setting custom API properties</a></p>
 <p>FullStory Developer Guide: Set User Variables</p>
 <ul>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623294-FS-setUserVars-API-Capturing-custom-user-properties">Android</a></li>
-<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623294-FS-setUserVars-API-Capturing-custom-user-properties">iOS</a></li>
+<li><a href="https://developer.fullstory.com/mobile/android/identification/set-user-properties/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/identification/set-user-properties/">iOS</a></li>
+</ul>
+<h3 id="shutdown">Shutdown</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shutdown</code></td>
+<td><code>FS.shutdown()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Stops the FullStory recording. Use <code>restart</code> to resume recording after a shutdown.</p>
+<p>FullStory Developer Guide: Shutdown</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/fullcapture/capture-data/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/fullcapture/capture-data/">iOS</a></li>
+</ul>
+<h3 id="restart">Restart</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>restart</code></td>
+<td><code>FS.restart()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Resumes FullStory recording after <code>shutdown</code> stops it.</p>
+<p>FullStory Developer Guide: Restart</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/fullcapture/capture-data/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/fullcapture/capture-data/">iOS</a></li>
+</ul>
+<h3 id="consent">Consent</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>consent</code></td>
+<td><code>FS.consent()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>consent_granted</code> (required)</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<p>Grants or revokes user consent for FullStory session recording.</p>
+<p>FullStory Developer Guide: Consent</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/fullcapture/user-consent/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/fullcapture/user-consent/">iOS</a></li>
+</ul>
+<h3 id="anonymize">Anonymize</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anonymize</code></td>
+<td><code>FS.anonymize()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Anonymizes the current user session, removing any previously set user identification.</p>
+<p>FullStory Developer Guide: Anonymize</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/identification/anonymize-users/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/identification/anonymize-users/">iOS</a></li>
+</ul>
+<h3 id="reset-idle-timer">Reset idle timer</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resetidletimer</code></td>
+<td><code>FS.resetIdleTimer()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Resets the FullStory idle timeout timer, extending the current session.</p>
+<p>FullStory Developer Guide: Reset Idle Timer</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/fullcapture/reset-idle-timer/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/fullcapture/reset-idle-timer/">iOS</a></li>
+</ul>
+<h3 id="log">Log</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>FullStory Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log</code></td>
+<td><code>FS.log()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log_level</code> (required)</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>log_message</code> (required)</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+<p>Logs a message at the specified level. Accepted <code>log_level</code> values differ by platform:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Accepted values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android</td>
+<td><code>log</code>, <code>error</code>, <code>warn</code>/<code>warning</code>, <code>info</code>, <code>debug</code></td>
+</tr>
+<tr>
+<td>iOS</td>
+<td><code>assert</code>, <code>error</code>, <code>warning</code>, <code>info</code>, <code>debug</code></td>
+</tr>
+</tbody>
+</table>
+<p>FullStory Developer Guide: Log</p>
+<ul>
+<li><a href="https://developer.fullstory.com/mobile/android/fullcapture/logging/">Android</a></li>
+<li><a href="https://developer.fullstory.com/mobile/ios/fullcapture/logging/">iOS</a></li>
 </ul>
 
 </div>
@@ -750,7 +943,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 7, 2024 
+          <p>This page was last updated:  April 15, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -779,6 +972,12 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#log-event" href="javascript:void(0)">Log event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#identify" href="javascript:void(0)">Identify</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-user-variables" href="javascript:void(0)">Set user variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#shutdown" href="javascript:void(0)">Shutdown</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#restart" href="javascript:void(0)">Restart</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent" href="javascript:void(0)">Consent</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#anonymize" href="javascript:void(0)">Anonymize</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reset-idle-timer" href="javascript:void(0)">Reset idle timer</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#log" href="javascript:void(0)">Log</a></li>
               </nav>
   </aside></nav>
 
