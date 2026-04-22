@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -249,6 +249,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/amplitude-identify-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amplitude Identify</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/anthropic-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Anthropic</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/appcues-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Appcues</span></a>
@@ -462,6 +465,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-cloud-storage-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Cloud Storage</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-data-manager-api-migration-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Data Manager API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Display &amp; Video 360 Customer Match</span></a>
@@ -1021,6 +1027,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-identify-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-identify-connector">Amplitude Identify</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/anthropic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Anthropic</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/appcues-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appcues-connector">Appcues</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/appsflyer-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appsflyer-app-events-connector">AppsFlyer App Events</a></li>
@@ -1162,6 +1170,8 @@
         <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-cloud-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-storage-connector">Google Cloud Storage</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-data-manager-api-migration-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google Data Manager API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1504,14 +1514,18 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API information</h2>
-<p>This connector uses the following vendor API:</p>
+  <h2 id="migrate-to-google-data-manager-api-actions">Migrate to Google Data Manager API actions</h2>
+<p>The following actions use an older Google Ads API:</p>
 <ul>
-<li>API Name: Google Ads API</li>
-<li>API Version: v18</li>
-<li>API Endpoint: <code>https://googleads.googleapis.com/</code></li>
-<li>Documentation: <a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
+<li>Add User to Remarketing List</li>
+<li>Remove User from Remarketing List</li>
 </ul>
+<p>Use the following replacement actions, which are based on the Google Data Manager API:</p>
+<ul>
+<li>Add User to List (Data Manager API)</li>
+<li>Remove User from List (Data Manager API)</li>
+</ul>
+<p>For more information, see the <a href="/server-side-connectors/google-data-manager-api-migration-guide/">Google Data Manager API migration guide</a>.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
@@ -1556,21 +1570,31 @@
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th style="text-align:center">AudienceStream</th>
+<th style="text-align:center">EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Add User to List (Data Manager API)</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Remove User from List (Data Manager API)</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
 <td>Add User to Remarketing List</td>
-<td>✓</td>
-<td>✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
 </tr>
 <tr>
 <td>Remove User from Remarketing List</td>
-<td>✓</td>
-<td>✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
 </tr>
 </tbody>
 </table>
@@ -1582,11 +1606,22 @@
 <li>Hashed with SHA-256</li>
 </ul>
 <p>You can map attributes that are already normalized and hashed or you can allow the connector to normalize and hash them for you. Select the appropriate mapping for your scenario.</p>
-<p>The required user identifier is based on the user list type selected. The user List type can be one of the following:</p>
+<p>The required user identifier is based on the user list type selected. The user list type can be one of the following:</p>
+<ul>
+<li>Google Ads API:
 <ul>
 <li><code>CONTACT_INFO</code></li>
 <li><code>CRM_ID</code></li>
 <li><code>MOBILE_ADVERTISING_ID</code></li>
+</ul>
+</li>
+<li>Google Data Manager API:
+<ul>
+<li><code>CONTACT_ID</code></li>
+<li><code>MOBILE_ID</code></li>
+<li><code>USER_ID</code></li>
+</ul>
+</li>
 </ul>
 <p>The following user identifier fields are supported:</p>
 <table>
@@ -1598,28 +1633,100 @@
 </thead>
 <tbody>
 <tr>
-<td><code>CONTACT_INFO</code></td>
+<td><code>CONTACT_INFO</code> (Google Ads API)</td>
 <td>Provide hashed email, hashed phone number, or address information. All address information fields listed below are required for this user data type.<ul><li><strong>Address Info: Country Code</strong>: 2-letter country code, in ISO 3166-1 alpha-2 format, of the user&rsquo;s address.</li><li><strong>Address Info: First Name (already SHA256 hashed)</strong>: Provide a first name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: First Name (apply SHA256 hash)</strong>: Provide a plain text first name and the connector hashes this value using SHA256 hash.</li><li><strong>Address Info: Last Name (already SHA256 hashed)</strong>: Provide a last name that has been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Address Info: Last Name (apply SHA256 hash)</strong>: Provide a plain text last name and the connector hashes this value using the SHA256 hash.</li><li><strong>Address Info: Postal Code</strong>: Provide a postal code of the user&rsquo;s address.</li><li><strong>Email Address (already SHA256 hashed)</strong>: Provide an email address or array of email addresses that have been whitespace trimmed, lowercased, and SHA256 hashed.</li><li><strong>Email Address (apply SHA256 hash)</strong>: Provide a plain text email address or array of email addresses and the connector hashes these values using the SHA256 hash.</li><li><strong>Phone Number (already SHA256 hashed)</strong>: Provide a phone number or array of phone numbers that have been whitespace trimmed and SHA256 hashed.</li><li><strong>Phone Number (apply SHA256 hash)</strong>: Provide a plain text phone number or array of phone numbers and the connector hashes the values using the SHA256 hash.</li></ul></td>
 </tr>
 <tr>
-<td><code>CRM_ID</code></td>
+<td><code>CRM_ID</code> (Google Ads API)</td>
 <td><ul><li><strong>User ID</strong>: (Required) Advertiser-assigned user ID for customer match upload.</li></ul></td>
 </tr>
 <tr>
-<td><code>MOBILE_ADVERTISING_ID</code></td>
+<td><code>MOBILE_ADVERTISING_ID</code> (Google Ads API)</td>
 <td><ul><li><strong>Mobile ID</strong>: (Required) Mobile device ID (advertising ID/IDFA).</li></ul></td>
+</tr>
+<tr>
+<td><code>CONTACT_ID</code> (Data Manager API)</td>
+<td><strong>Contact info</strong>: Email address, phone number, and address.</td>
+</tr>
+<tr>
+<td><code>MOBILE_ID</code> (Data Manager API)</td>
+<td><strong>Mobile ID</strong>: Mobile device ID.</td>
+</tr>
+<tr>
+<td><code>USER_ID</code> (Data Manager API)</td>
+<td><strong>User ID</strong>: First-party identifier.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This connector can use batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h3 id="add-user-to-list-data-manager-api">Add User to List (Data Manager API)</h3>
+<h4 id="api-information">API Information</h4>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Google Data Manager API</li>
+<li>API Version: v1</li>
+<li>API Endpoint: <code>https://datamanager.googleapis.com</code></li>
+<li>Documentation: <a href="https://developers.google.com/data-manager/api/reference/rest">Google Data Manager API</a></li>
+</ul>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 10,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 40 MB</li>
+</ul>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User List</td>
+<td>Select a user list from the Data Manager API. For more information, see: <a href="https://developers.google.com/data-manager/api/devguides/audiences/google-ads/customer-match">Data Manager API: Customer match overview</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-identifier">User Identifier</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer ID Override</td>
+<td>(Optional) Provide a Customer ID to override the Customer ID in the connector configuration. If using this option you must also use the User List ID Override.</td>
+</tr>
+<tr>
+<td>User List ID Override</td>
+<td>(Optional) Provide a User List ID to override the user list in the Required Section. This field lets you use event attributes to populate the User List ID. This is required if using Customer ID Override. The value must be the list ID, such as <code>9310271231</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remove-user-from-list-data-manager-api">Remove User from List (Data Manager API)</h3>
+<p>For mapping options, see <a href="#add-user-to-list-data-manager-api">Add User to List (Data Manager API)</a>.</p>
+<h3 id="add-user-to-remarketing-list-deprecated">Add User to Remarketing List (Deprecated)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This connector action can use batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 33,000</li>
 <li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 40 MB</li>
 </ul>
-<h3 id="add-user-to-remarketing-list-non-batched-or-batched">Add User to Remarketing List (Non-Batched or Batched)</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="api-information-1">API information</h4>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Google Ads API</li>
+<li>API Version: v18</li>
+<li>API Endpoint: <code>https://googleads.googleapis.com/</code></li>
+<li>Documentation: <a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1648,34 +1755,8 @@
 </table>
 <h4 id="consent">Consent</h4>
 <p>When using the <strong>Add User to Remarketing List</strong> action, the connector sends values of <code>GRANTED</code> for the <code>adUserData</code> and <code>adPersonalization</code> parameters. To prevent non-consented visitors from being added to lists, create an audience with rules that check visitor profile consent status. Then use the <strong>Remove from Remarketing List</strong> action to remove visitors that have not given consent from lists.</p>
-<h3 id="remove-user-from-remarketing-list-non-batched-or-batched">Remove User from Remarketing List (Non-Batched or Batched)</h3>
-<h4 id="parameters-1">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Remarketing List</td>
-<td>Select a remarketing user list. For more information, see <a href="https://developers.google.com/google-ads/api/docs/remarketing/overview">Google Ads: Remarketing and Audience Targeting</a>. Available options contain only user lists of first-party CRM data type.</td>
-</tr>
-<tr>
-<td>Customer ID Override</td>
-<td>(Optional) Provide a customer ID to override the customer ID in the connector configuration. If using this option, you must also enter a <strong>User List ID Override</strong>.</td>
-</tr>
-<tr>
-<td>Manager Customer ID Override</td>
-<td>(Optional) Provide a Manager Customer ID if using a <strong>Customer ID Override</strong> and accessing a client customer.</td>
-</tr>
-<tr>
-<td>User List ID Override</td>
-<td>(Optional) Provide a user list resource name (list ID and type) to override the user list. This field lets you use EventStream variables to populate the user list ID. This is required if using a <strong>Customer ID Override</strong>. The value should be in the following format <code>ID:TYPE</code>, for example <code>123456:CONTACT_INFO</code>.</td>
-</tr>
-</tbody>
-</table>
+<h3 id="remove-user-from-remarketing-list-deprecated">Remove User from Remarketing List (Deprecated)</h3>
+<p>For mapping options, see <a href="#add-user-to-remarketing-list-deprecated">Add User to Remarketing List</a>.</p>
 
 </div>
 
@@ -1736,7 +1817,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 16, 2026 
+          <p>This page was last updated:  April 22, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1750,13 +1831,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrate-to-google-data-manager-api-actions" href="javascript:void(0)">Migrate to Google Data Manager API actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-user-list" href="javascript:void(0)">Create user list</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-identifiers" href="javascript:void(0)">User Identifiers</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-remarketing-list-non-batched-or-batched" href="javascript:void(0)">Add User to Remarketing List (Non-Batched or Batched)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-remarketing-list-non-batched-or-batched" href="javascript:void(0)">Remove User from Remarketing List (Non-Batched or Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-list-data-manager-api" href="javascript:void(0)">Add User to List (Data Manager API)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-list-data-manager-api" href="javascript:void(0)">Remove User from List (Data Manager API)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-user-to-remarketing-list-deprecated" href="javascript:void(0)">Add User to Remarketing List (Deprecated)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-user-from-remarketing-list-deprecated" href="javascript:void(0)">Remove User from Remarketing List (Deprecated)</a></li>
               </nav>
   </aside></nav>
 

@@ -391,7 +391,7 @@ A tag in iQ Tag Management that offers configuration options for the vendor&rsqu
 </ul>
 <p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
 <h3 id="examples">Examples</h3>
-<p>The Remote Command tag is configurable in Tealium iQ Tag Management, through a JSON file in your app, or JSON file on a remote server.  Once the remote command is configured and the module is installed in your app, add the following lines to the initialization:</p>
+<p>Configure the Remote Command tag in Tealium iQ Tag Management. You can also use a JSON file in your app or on a remote server. After configuration, register the remote command by using <a href="/platforms/ios-swift/api/tealium-config/#addremotecommand"><code>addRemoteCommand()</code></a> on <code>TealiumConfig</code>. Complete registration before you initialize <code>Tealium</code>:</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -399,73 +399,78 @@ A tag in iQ Tag Management that offers configuration options for the vendor&rsqu
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                    		dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>?.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>) { response <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>) { response <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    remoteCommands.add(remoteCommand)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>config.addRemoteCommand(remoteCommand)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config)
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Local JSON File" title="Local JSON File">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                    		dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>?.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>, type: .local(file: <span style="color:#e6db74">&#34;FILENAME&#34;</span>)) { response <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>, type: .local(file: <span style="color:#e6db74">&#34;FILENAME&#34;</span>)) { response <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    remoteCommands.add(remoteCommand)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>config.addRemoteCommand(remoteCommand)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config)
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Remote Hosted JSON" title="Remote Hosted JSON">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                     		environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                    		dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] response <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>?.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>, type: .remote(url: <span style="color:#e6db74">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;</span>)) { response <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#e6db74">&#34;display&#34;</span>, description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>, type: .remote(url: <span style="color:#e6db74">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;</span>)) { response <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    remoteCommands.add(remoteCommand)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>config.addRemoteCommand(remoteCommand)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config)
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
 
-<p>After the JSON file has been configured and either added to your app or hosted on a server, learn about the different <a href="/platforms/remote-commands/how-it-works/#load-options">JSON load options</a>.</p>
-<h2 id="data-layer">Data Layer</h2>
+<h3 id="add-a-remote-command-after-initialization">Add a remote command after initialization</h3>
+<p>Add remote commands after you initialize <code>Tealium</code> by using the <code>tealium.remoteCommands</code> manager. When possible, add remote commands in <code>TealiumConfig</code> to ensure they receive all events. By default, <code>webview</code> commands initialize on load, so adding them later via <code>tealium.remoteCommands</code> may cause them to miss initialization.</p>
+<p>If you need to add a remote command after <code>Tealium</code> is initialized, use this pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium = Tealium(config: config)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> remoteCommand = RemoteCommand(
+</span></span><span style="display:flex;"><span>    commandId: <span style="color:#e6db74">&#34;display&#34;</span>,
+</span></span><span style="display:flex;"><span>    description: <span style="color:#e6db74">&#34;Display Prompt&#34;</span>,
+</span></span><span style="display:flex;"><span>    type: .remote(url: <span style="color:#e6db74">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;</span>)) { response <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> payload = response.payload <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Use response payload: </span><span style="color:#e6db74">\(</span>payload<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>tealium?.remoteCommands.add(remoteCommand)
+</span></span></code></pre></div><h2 id="data-layer">Data Layer</h2>
 <p>No additional variables are introduced by this module.</p>
 <h2 id="api-reference">API Reference</h2>
 <h3 id="init"><code>init()</code></h3>
@@ -633,7 +638,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  April 17, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -655,6 +660,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#carthage" href="javascript:void(0)">Carthage</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remote-command-options" href="javascript:void(0)">Remote Command Options</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-remote-command-after-initialization" href="javascript:void(0)">Add a remote command after initialization</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer" href="javascript:void(0)">Data Layer</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-reference" href="javascript:void(0)">API Reference</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#init" href="javascript:void(0)">init()</a></li>

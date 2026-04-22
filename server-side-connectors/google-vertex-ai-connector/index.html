@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "9",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -249,6 +249,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/amplitude-identify-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Amplitude Identify</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/anthropic-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Anthropic</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/appcues-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Appcues</span></a>
@@ -462,6 +465,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-cloud-storage-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Cloud Storage</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/google-data-manager-api-migration-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Data Manager API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Display &amp; Video 360 Customer Match</span></a>
@@ -1021,6 +1027,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/amplitude-identify-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".amplitude-identify-connector">Amplitude Identify</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/anthropic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Anthropic</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/appcues-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appcues-connector">Appcues</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/appsflyer-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".appsflyer-app-events-connector">AppsFlyer App Events</a></li>
@@ -1162,6 +1170,8 @@
         <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-cloud-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-storage-connector">Google Cloud Storage</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/google-data-manager-api-migration-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google Data Manager API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1504,104 +1514,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see <a href="/guides/ai-connectors-and-functions/">AI connectors and Tealium functions</a>.</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>For an overview of how AI connectors work and guidance on when to use an AI connector or Tealium functions, see <a href="/guides/ai-connectors-and-functions/">AI connectors and Tealium functions</a>.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>This connector invokes a Google Vertex AI model with your custom prompt and mapped Tealium data, then sends the response as a JSON event to Tealium Collect for real-time enrichment.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The Google Vertex AI connector should be used for targeted, high-value interactions rather than high-volume events. Excessive usage may result in rate limits or increased API costs in your Google Vertex AI account and add to your inbound Tealium event volume.</p>
-<h3 id="prompts">Prompts</h3>
-<p>The prompt sends context data to the model, asks a specific question, and defines the expected response.</p>
-<p><strong>Context data</strong><br>
-The model must have context data to evaluate your request. Configure the connector action to use event data or visitor data, then reference this data object in your prompt:</p>
-<ul>
-<li>Event data: <code>{{event_payload}}</code></li>
-<li>Visitor data: <code>{{visitor_profile}}</code></li>
-</ul>
-<p>For example, include this as the first line of your prompt:</p>
-<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a customer event:
-{{event_payload}}
-</code></pre><p><strong>Question</strong><br>
-You must ask the model to evaluate the context data and generate a value. Ask for one or more specific values and be clear what you&rsquo;re asking for.</p>
-<p>For example, this prompt asks for one of three values:</p>
-<pre tabindex="0"><code class="language-wrap" data-lang="wrap">Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
-</code></pre><p>In addition, you must instruct the model how to respond in a specific JSON format, so it can be sent to your account as a valid event.</p>
-<p>For example, this part of the prompt specifies the exact JSON format and references Tealium variables using curly braces:</p>
-<pre tabindex="0"><code class="language-wrap" data-lang="wrap">Return only a single JSON object on one line with the following structure: 
-{
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;vertexai_response&#34;,
-  &#34;vertexai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
-}
-</code></pre><p class="tip"><i class="fa fa-info-circle"></i>Set a value for <code>tealium_event</code> that&rsquo;s unique to this connector and name the response attribute specific to this prompt. This makes it easy to create event feeds or rules that match these events.</p>
-<h3 id="response-event">Response event</h3>
-<p>This connector parses the response from the Google Vertex AI model. If it&rsquo;s a valid JSON object with the required Tealium parameters, the connector sends it back to your account as an incoming event.</p>
-<p>To capture these events, create enrichment rules or event feeds that match the events generated by the Google Vertex AI responses. For example, this rule captures sentiment events:</p>
-<div class="mv3 pv2 ph4 ba br2 b--light-gray">
-  <div class="boolean-logic-container">
-      <div class="condition-group">
-        <span class="input">tealium_event</span>
-        <span class="operator">EQUALS</span>
-        <span class="filter">vertexai_response</span>
-      </div>
-      <div class="fw8 mv2">AND</div>
-      <div class="condition-group">
-        <span class="input">vertexai_review_sentiment</span>
-        <span class="operator">IS POPULATED</span>
-        
-      </div>
-  </div>
-</div>
-<h3 id="example-event-trigger">Example: Event trigger</h3>
-<p>In this example, the customer has just submitted a product review and the prompt asks the model to evaluate the sentiment.</p>
-<p><strong>Example prompt</strong>:</p>
-<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a customer&#39;s product review:
-{{event_payload}}
-
-Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
-
-Return only a single JSON object on one line with the following structure: 
-{
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;vertexai_response&#34;,
-  &#34;vertexai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
-}
-</code></pre><p><strong>Example response event</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;vertexai_response&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;vertexai_review_sentiment&#34;</span>: <span style="color:#e6db74">&#34;satisfied&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="example-audience-trigger">Example: Audience trigger</h3>
-<p>In this example, the customer joined an audience named &ldquo;Frequent Browser, No Purchases&rdquo; and the prompt asks the model to evaluate the customer&rsquo;s intent.</p>
-<p><strong>Example prompt</strong>:</p>
-<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a retail visitor:
-{{visitor_profile}}
-
-Based on the customer data provided, classify their likely intent as: &#34;bargain hunting&#34;, &#34;product comparison&#34;, &#34;researching for later&#34;, or &#34;not interested&#34;. If data is missing, make a best effort guess.
-
-Return only a single JSON object on one line with the following structure: 
-{
-  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
-  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
-  &#34;tealium_event&#34;:  &#34;vertexai_response&#34;,
-  &#34;vertexai_intent&#34;: &#34;&lt;customer intent&gt;&#34;
-}
-</code></pre><p><strong>Example response event</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;vertexai_response&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;vertexai_intent&#34;</span>: <span style="color:#e6db74">&#34;bargain hunting&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="testing">Testing</h2>
-<p>Before activating the Google Vertex AI connector in production, enable <strong>Debug Mode</strong> in the connector mappings and test your setup with trace to validate your configuration and prompt behavior. In debug mode, the connector executes the Vertex AI request, but logs the result without sending the response event back to your account. In the trace tool, inspect the full request and response in real time, verify the generated output, and ensure that the trigger conditions and attribute mappings are working as expected. This helps catch errors and optimize prompts before incurring production costs or affecting live data.</p>
+<p>This connector invokes an AI model with your custom prompt and mapped Tealium data, then sends the response as a JSON event back to Tealium Collect for real-time enrichment.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The connector should be used for targeted, high-value interactions rather than high-volume events. Excessive usage may result in rate limits or increased API costs in your vendor account and add to your inbound Tealium event volume.</p>
 <h2 id="usage-and-cost-considerations">Usage and cost considerations</h2>
 <p>Before activating the Google Vertex AI connector, review your Google Cloud quotas and limits. The connector can generate a high volume of requests depending on your event and audience triggers, which may result in unexpected usage or overage costs.</p>
 <p>For more information, see <a href="https://docs.cloud.google.com/vertex-ai/docs/quotas">Google: Vertex AI quotas and limits</a>.</p>
@@ -1646,15 +1562,15 @@ Avoid attaching the connector to high‑volume, low‑value events (such as page
 <thead>
 <tr>
 <th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
+<th style="text-align:center">AudienceStream</th>
+<th style="text-align:center">EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Send Prompt to Vertex AI</td>
-<td>✓</td>
-<td>✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
 </tr>
 </tbody>
 </table>
@@ -1700,7 +1616,7 @@ Avoid attaching the connector to high‑volume, low‑value events (such as page
 </tr>
 <tr>
 <td>Prompt</td>
-<td><ul><li>Enter the prompt that will be sent to the selected Vertex AI model. Use the guidelines below to ensure consistent and machine-readable output:</li><li>Use double curly braces to reference mapped parameters, for example: <code>{{tealium_account}}</code>, <code>{{visitor_id}}</code>, <code>{{event_value}}</code>.</li><li>When using a visitor action, use <code>{{visitor_profile}}</code> to include the visitor profile in the prompt after first enabling the <strong>Add Visitor Profile</strong> checkbox.</li><li>Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.</li><li>Define the JSON fields and structure you expect in the response.</li><li>Explicitly instruct the model to return <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in its response in order for the connector to correctly parse and forward the response to the Collect endpoint.</li><li>The connector will include <code>response_mime_type</code>: <code>application/json</code> in the request to force the model to return JSON.</li><li>For more information and examples, refer to the Tealium documentation for this connector.</li></ul></td>
+<td><ul><li>Enter the prompt to send to the selected Vertex AI model. Use the guidelines below to ensure consistent and machine-readable output:</li><li>Use double curly braces to reference mapped parameters, for example: <code>{{tealium_account}}</code>, <code>{{visitor_id}}</code>, <code>{{event_value}}</code>.</li><li>When using a visitor action, use <code>{{visitor_profile}}</code> to include the visitor profile in the prompt after first enabling the <strong>Add Visitor Profile</strong> checkbox.</li><li>Avoid ambiguous phrasing; prompts should be deterministic so the output can be parsed reliably.</li><li>Define the JSON fields and structure you expect in the response.</li><li>Explicitly instruct the model to return <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_visitor_id</code> in its response in order for the connector to correctly parse and forward the response to the Collect endpoint.</li><li>The connector will include <code>response_mime_type</code>: <code>application/json</code> in the request to force the model to return JSON.</li><li>For more information and examples, refer to the Tealium documentation for this connector.</li></ul></td>
 </tr>
 <tr>
 <td>Debug Mode</td>
@@ -1795,7 +1711,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 1, 2026 
+          <p>This page was last updated:  April 22, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1810,11 +1726,6 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prompts" href="javascript:void(0)">Prompts</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#response-event" href="javascript:void(0)">Response event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-event-trigger" href="javascript:void(0)">Example: Event trigger</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-audience-trigger" href="javascript:void(0)">Example: Audience trigger</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#testing" href="javascript:void(0)">Testing</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usage-and-cost-considerations" href="javascript:void(0)">Usage and cost considerations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>

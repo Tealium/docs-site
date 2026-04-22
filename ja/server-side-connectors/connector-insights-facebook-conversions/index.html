@@ -476,6 +476,9 @@
       <a href="/ja/server-side-connectors/google-cloud-storage-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Cloud Storage</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/google-data-manager-api-migration-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Data Manager API</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/google-dv-360-customer-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Google Display &amp; Video 360 カスタマーマッチ</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1034,6 +1037,9 @@
       <a href="/ja/server-side-connectors/acoustic-transact-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>アコースティックトランザクト</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/anthropic-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>アンスロピック</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/epsilon-event-api-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>イプシロンイベントAPI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1344,6 +1350,8 @@
         <a href="/ja/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-cloud-storage-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-cloud-storage-connector">Google Cloud Storage</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/google-data-manager-api-migration-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Google Data Manager API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-dv-360-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 カスタマーマッチ</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1717,6 +1725,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/acoustic-transact-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".acoustic-transact-connector">アコースティックトランザクト</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/anthropic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アンスロピック</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/epsilon-event-api-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".epsilon-event-api-connector">イプシロンイベントAPI</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/insider-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".insider-connector">インサイダー</a></li>
@@ -1795,30 +1805,30 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="概要">概要</h2>
-<p>Facebookコンバージョンコネクターインサイトは、Metaとの統合であり、Tealiumに以下のデータ品質レポートを提供します：</p>
+<p>Facebookコンバージョンコネクターインサイトは、Metaとの統合であり、以下のデータ品質レポートをTealiumに取り込みます：</p>
 <ul>
 <li><a href="#event-match-quality-emq">イベントマッチ品質（EMQ）</a>：MetaユーザーにイベントをマッチングするためのConversions API統合の効果を評価するレポート。</li>
 <li><a href="#offline-data-quality-odq">オフラインデータ品質（ODQ）</a>：オフラインイベントがMetaの広告要件とどの程度整合しているかを評価するレポート。</li>
 </ul>
 <p>コネクターインサイトにアクセスするには：</p>
-<p><strong>EventStream &gt; Connectors</strong> に移動し、Facebookコンバージョンコネクターを見つけて、<strong>Insights</strong> をクリックします。</p>
+<p><strong>Connectors</strong>に移動し、Facebookコンバージョンコネクターを見つけて、<strong>Insights</strong>をクリックします。</p>
 <figure><a class="slb" href="/images/server-side-connectors/connector-insights-btn.png"><img src="/images/server-side-connectors/connector-insights-btn.png"
          alt="Connector Insights button"
          title="Connector Insights button"/>
     </a>
 </figure>
-<p>インサイトは、構成されたコネクターの <strong>Pixel ID</strong> に基づいています。これはサマリースクリーンに表示されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>コネクター構成ではなく、コネクターアクションでマップされたパラメータとして <strong>Pixel ID</strong> が動的に構成されている場合、Metaからインサイトを取得することはできず、スコアは表示されません。</p>
+<p>インサイトは、構成されたコネクターの<strong>Pixel ID</strong>または<strong>Dataset ID</strong>に基づいています。これはサマリースクリーンに表示されます。識別子が静的値として構成されている場合、サマリースクリーンに表示され、メトリクスは自動的に読み込まれます。動的属性を使用する場合は、必要なDataset IDまたはPixel IDを入力し、<strong>Retrieve Metrics</strong>をクリックしてインサイトデータを取得します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Pixel ID</strong>がコネクター構成ではなくコネクターアクションのマップされたパラメータとして動的に構成されている場合、Metaからインサイトを取得することはできず、スコアは表示されません。</p>
 <h2 id="イベントマッチ品質emq">イベントマッチ品質（EMQ）</h2>
-<p>イベントマッチ品質（EMQ）インサイトは、Metaが受け取る各コンバージョンイベントタイプと、各タイプに送信された顧客情報パラメータのマッチ率に対してスコアを提供します。</p>
+<p>イベントマッチ品質（EMQ）インサイトは、Metaが受け取る各コンバージョンイベントタイプのスコアと、各タイプに送信された顧客情報パラメータのマッチ率を提供します。</p>
 <h3 id="イベントタイプの概要">イベントタイプの概要</h3>
 <p>イベントサマリーテーブルは以下を示します：</p>
 <ul>
 <li><strong>イベント名</strong>：Metaによって収集されたイベントタイプ。</li>
-<li><strong>イベントマッチ品質</strong>：イベントタイプのイベントマッチ品質スコアで、1から10のスケールです。</li>
+<li><strong>イベントマッチ品質</strong>：イベントタイプのイベントマッチ品質スコア（1から10のスケール）。</li>
 <li><strong>診断</strong>：問題が検出された場合、診断の名前。</li>
 </ul>
-<p>EMQスコアは、それらのイベントの顧客情報が既存のMetaユーザーとどれだけよく一致しているかを示します。診断は、イベントマッチ品質に関してMetaが特定した既知の問題を示します。</p>
+<p>EMQスコアは、それらのイベントの顧客情報が既存のMetaユーザーとどれだけよく一致しているかを示します。診断は、イベントマッチ品質にMetaが特定した既知の問題を示します。</p>
 <p>イベントをクリックすると、イベントマッチ品質の顧客情報の詳細が表示されます。</p>
 <figure><a class="slb" href="/images/server-side-connectors/facebook-api-insights-events.png"><img src="/images/server-side-connectors/facebook-api-insights-events.png"
          alt="Facebook API Insights Events"
@@ -1834,25 +1844,25 @@
     </a>
 </figure>
 <h3 id="emqスコア">EMQスコア</h3>
-<p>EMQは1から10までのスコアで、サーバーイベントがMetaのユーザーとどれだけよく一致しているかを反映します。イベントは、イベントに送信された顧客情報パラメータに基づいてマッチングされ、スコアはコネクターで構成されたPixel IDに対して計算されます。スコアが高いほど、コンバージョンの最適化と広告の帰属が改善されます。</p>
+<p>EMQは1から10までのスコアで、サーバーイベントがMetaのユーザーとどれだけよく一致しているかを反映します。イベントに送信された顧客情報パラメータに基づいてイベントがマッチされ、コネクターで構成されたPixel IDのスコアが計算されます。スコアが高いほど、コンバージョンの最適化と広告の帰属が改善されます。</p>
 <p>EMQスコアを向上させるには、できるだけ多くの顧客情報パラメータを含め、マッチの可能性が高いものを優先してください。例えば：</p>
 <ul>
 <li>ハッシュ化されたメールアドレス</li>
 <li>クライアントIPアドレス / クライアントユーザーエージェント</li>
 <li>ハッシュ化された電話番号</li>
 </ul>
-<p>これらのパラメータやその他のデータマッピングを<a href="/ja/server-side-connectors/facebook-conversions-connector/">Facebook Conversionsコネクター</a>で追加してください。</p>
-<p>MetaはEMQスコアを6.0以上を維持することを推奨しています。詳細については、<a href="https://www.facebook.com/business/help/308855623839366?id=818859032317965">Metaビジネスヘルプセンター：Conversions APIのベストプラクティス</a>を参照してください。</p>
+<p>これらのパラメータとその他のデータマッピングを<a href="/ja/server-side-connectors/facebook-conversions-connector/">Facebook Conversionsコネクター</a>で追加します。</p>
+<p>MetaはEMQスコアを6.0以上維持することを推奨しています。詳細については、<a href="https://www.facebook.com/business/help/308855623839366?id=818859032317965">Metaビジネスヘルプセンター：Conversions APIのベストプラクティス</a>を参照してください。</p>
 <h4 id="診断">診断</h4>
 <p>Metaがイベントマッチ品質に問題を検出した場合、顧客情報の概要に診断エラーが表示されます。可能なスコアの増加が表示される場合があり、問題が解決された場合のイベントマッチ品質スコアの潜在的な改善を示します。</p>
-<p>たとえば、検出された問題が<strong>常に同じマッチ</strong>である場合、これはMetaが特定のイベントタイプのすべてのイベントに対して同じマッチキー値を受け取っていることを示します。これは通常、統合が誤って構成されており、Metaのイベントに一致させるためのユニークな識別子（メールアドレスや電話番号など）を送信していないことを意味します。この問題を解決するには、このイベントタイプに対してユニークなマッチキーを送信するようにしてください。</p>
+<p>たとえば、検出された問題は<strong>Always Same Match</strong>であり、これはMetaが特定のイベントタイプのすべてのイベントで同じマッチキー値を受け取っていることを示します。これは通常、統合が誤って構成されており、Metaのイベントに一致させるための一意の識別子（メールアドレスや電話番号など）が送信されていないことを意味します。この問題を解決するには、このイベントタイプのために一意のマッチキーを送信するようにしてください。</p>
 <h2 id="オフラインデータ品質odq">オフラインデータ品質（ODQ）</h2>
 <p>オフラインデータ品質（ODQ）インサイトは、オフラインイベントタイプの複合スコアと各イベントタイプの詳細なデータ品質スコアを提供します。スコアは、オフラインイベントがMetaの広告要件とどれだけ整合しているかを示します。</p>
 <h3 id="オフラインイベントの概要">オフラインイベントの概要</h3>
 <p>オフラインイベントの概要テーブルは以下を示します：</p>
 <ul>
 <li><strong>イベント名</strong>：Metaによって収集されたオフラインイベントタイプ（通常はファイルインポートから）。</li>
-<li><strong>複合スコア</strong>：オフラインイベントデータ品質の全体的なスコアで、1から10のスケールです。</li>
+<li><strong>複合スコア</strong>：オフラインイベントデータ品質の全体的なスコア（1から10のスケール）。</li>
 <li><strong>推奨事項</strong>：該当する場合、スコアを改善するための推奨事項。</li>
 </ul>
 <p>各イベントタイプには、1から10までのイベントマッチ品質スコアがあります。このスコアは、それらのイベントの顧客情報が既存のMetaユーザーとどれだけよく一致しているかを示します。</p>
@@ -1869,7 +1879,7 @@
 <li><strong>頻度スコア</strong>：過去14日間にオフラインイベントが受信される頻度を示す1から10までのスコア。Metaは、最低でも毎日、可能であれば毎時間オフラインイベントを送信することを推奨しています。</li>
 <li><strong>新鮮度スコア</strong>：過去28日間のデータの現在性を示す1から10までのスコア。Metaは、発生から3日以内にオフラインイベントを送信することを推奨しています。</li>
 </ul>
-<p>各スコアには、<strong>推奨事項</strong>の列があり、スコアを改善する方法を示します。</p>
+<p>各スコアについて、<strong>推奨事項</strong>の列がスコアを改善する方法を示します。</p>
 <figure><a class="slb" href="/images/server-side-connectors/fb-offline-data-quality-details-match-frequency-freshness.png"><img src="/images/server-side-connectors/fb-offline-data-quality-details-match-frequency-freshness.png"
          alt="Facebook API Insights Events"
          title="Facebook API Insights Events"/>
@@ -1936,7 +1946,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年January月8日
+          <p>最終更新日 ::  2026年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

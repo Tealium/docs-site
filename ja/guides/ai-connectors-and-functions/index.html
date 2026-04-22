@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/guides/ai-connectors-and-functions/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="AIコネクタとTealium機能の動作についての概要と、LLMアクティベーションにAIコネクタを使用するタイミングや独自のモデルを呼び出すためにTealium機能を使用するタイミングについてのガイダンス。" />
+<meta property="og:description" content="AIコネクタとTealium機能の動作についての概要と、LLMアクティベーション用のAIコネクタまたは独自のモデルを呼び出すためのTealium機能の使用時期についてのガイダンス。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>AIコネクタとTealium機能の概要 | ガイド | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "guides",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -143,6 +143,9 @@
       <a href="/ja/guides/chatgpt-apps/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>ChatGPT アプリ</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/guides/eventdb-audiencedb-queries-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>EventDBおよびAudienceDBクエリ</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/guides/vip-badge-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>VIPバッジ</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -168,6 +171,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/guides/supported-consent-integration/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>同意統合</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/ja/guides/conversion-apis/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>変換API</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/guides/abandonment-strategy/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>放棄戦略</span></a>
@@ -213,6 +219,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/chatgpt-apps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ChatGPT アプリ</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/eventdb-audiencedb-queries-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventdb-audiencedb-queries-guide">EventDBおよびAudienceDBクエリ</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/vip-badge-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">VIPバッジ</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/exclude-offline-purchasers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".exclude-offline-purchasers">オフライン購入者を除外</a></li>
@@ -230,6 +238,8 @@
         <a href="/ja/guides/lifetime-value/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ライフタイムバリュー</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/supported-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">同意統合</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/guides/conversion-apis/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".conversion-apis">変換API</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/guides/abandonment-strategy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">放棄戦略</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -272,7 +282,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      AIコネクタとTealium機能の動作についての概要と、LLMアクティベーションにAIコネクタを使用するタイミングや独自のモデルを呼び出すためにTealium機能を使用するタイミングについてのガイダンス。
+      AIコネクタとTealium機能の動作についての概要と、LLMアクティベーション用のAIコネクタまたは独自のモデルを呼び出すためのTealium機能の使用時期についてのガイダンス。
     </p>
   
 </div>
@@ -280,13 +290,14 @@
 <div class="prose nested-links" id="prose">
   <p>Tealiumは、リアルタイムデータワークフローにAIモデルを統合するための2つのアプローチをサポートしています：</p>
 <ul>
-<li><strong>AIコネクタ</strong>：サポートされている大規模言語モデル（LLM）プロバイダーとのプロンプトベースのインタラクションを統合します。</li>
+<li><strong>AIコネクタ</strong>：プロンプトベースのインタラクションのためにサポートされている大規模言語モデル（LLM）プロバイダーと統合します。</li>
 <li><strong>Tealium機能</strong>：独自のモデルを呼び出すか、カスタムエンドポイントを呼び出します。</li>
 </ul>
-<p>このガイドを使用して、各アプローチの動作と使用するタイミングを理解してください。</p>
-<h2 id="aiコネクタの動作方法">AIコネクタの動作方法</h2>
-<p>AIコネクタは、サポートされているプロバイダー（OpenAI、Amazon Bedrock、Google Vertex AI）のホストされたLLM APIと統合し、構造化されたJSONを返すプロンプトベースのインタラクションが必要です。すべてのサポートされているプロバイダーで一貫したプロンプト、応答、およびアクティベーションパターンに従います。</p>
-<p>AIコネクタを使用するには、プロバイダーの認証資格情報と、プロンプトテンプレートと含めるTealiumデータを定義する少なくとも1つの構成済みアクションが必要です。</p>
+<p>このガイドを使用して、各アプローチの動作と使用時期を理解してください。</p>
+<h2 id="aiコネクタ">AIコネクタ</h2>
+<h3 id="動作方法">動作方法</h3>
+<p>AIコネクタは、サポートされているプロバイダーのホストされたLLM APIと統合し、構造化されたJSONを返すプロンプトベースのインタラクションが必要です。これらは、サポートされているすべてのプロバイダー間で一貫したプロンプト、応答、およびアクティベーションパターンに従います。</p>
+<p>AIコネクタを使用するには、プロバイダーの認証資格情報と、プロンプトとTealiumデータをAIモデルに送信するように定義された少なくとも1つの構成済みアクションが必要です。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>AIコネクタはLLMアクティベーションのみを目的として設計されています。数値スコアや表形式の予測を返す従来の機械学習モデルを呼び出すためには、Tealium機能を使用してください。</p>
 <h3 id="データフロー">データフロー</h3>
 <figure class="tc"><a class="slb" href="/images/guides/ai-connectors-flow.png"><img src="/images/guides/ai-connectors-flow.png"
@@ -296,107 +307,222 @@
 </figure>
 <ol>
 <li><strong>トリガーが発火</strong>：イベントまたはオーディエンスの変更がコネクタアクションをトリガーします。</li>
-<li><strong>プロンプト送信</strong>：コネクタはプロンプトとTealiumデータをAIモデルエンドポイントに送信します。</li>
-<li><strong>応答受信</strong>：モデルはJSONオブジェクトを返します。</li>
+<li><strong>プロンプト送信</strong>：コネクタはプロンプトとTealiumデータをAIモデルのエンドポイントに送信します。</li>
+<li><strong>応答受信</strong>：モデルは要求された値を生成し、JSONオブジェクトを返します。</li>
 <li><strong>イベント取り込み</strong>：コネクタは応答をTealium Collectに転送します。</li>
 <li><strong>プロファイルが豊かに</strong>：エンリッチメントルールは応答値を訪問プロファイル属性に書き込みます。</li>
 <li><strong>オーディエンスがアクティブ化</strong>：オーディエンスルールが更新された属性を評価し、下流のコネクタが発火します。</li>
 </ol>
 <h3 id="プロンプト">プロンプト</h3>
-<p>コネクタアクションが発火すると、構成したテンプレートとTealiumデータを使用してプロンプトを構築します。</p>
-<p>イベントデータまたは訪問データをプロンプトに含めるには、変数 <code>{{event_payload}}</code> と <code>{{visitor_profile}}</code> を参照してください。コネクタアクション構成で<strong>イベントペイロード追加</strong>または<strong>訪問プロファイル追加</strong>を有効にすると、これらの変数を使用できます。オーディエンスアクションの場合、<strong>現在の訪問追加</strong>を有効にして、訪問プロファイルオブジェクト内に現在の訪問データを含めることもできます。</p>
-<p>プロンプトはモデルに以下を伝えます：</p>
-<ul>
-<li>評価するデータ</li>
-<li>回答する質問</li>
-<li>応答で使用する形式</li>
-</ul>
-<h3 id="応答">応答</h3>
-<p>AIコネクタはモデルの応答を解析し、JSONオブジェクトを抽出します。応答には、必要なTealiumルーティングパラメータ（<code>tealium_account</code>、<code>tealium_profile</code>、<code>tealium_visitor_id</code>）と1つ以上の出力値が含まれている必要があります。</p>
-<h3 id="アクティベーション">アクティベーション</h3>
-<p>モデルが有効なJSONオブジェクトを返すと、コネクタはそれをTealium Collectにイベントとして転送します。その後、エンリッチメントルールが応答値を訪問プロファイル属性に書き込みます。そこから、オーディエンスと下流のコネクタがエンリッチされたプロファイルに基づいてアクティブ化されます。</p>
-<h2 id="サポートされているaiコネクタ">サポートされているAIコネクタ</h2>
-<p>以下のAIコネクタが利用可能です：</p>
+<p>プロンプトは、モデルに評価するコンテキストデータを指示し、特定の質問をし、期待される応答を定義します。ベンダーコネクタによっては、応答出力について特定の指示を含める必要がある場合もある場合もありません。詳細については、特定のコネクタの指示を参照してください。</p>
+<h4 id="コンテキストデータ">コンテキストデータ</h4>
+<p>プロンプトのコンテキストに特定の属性またはイベント全体または訪問データオブジェクトを含めることができます。</p>
+<p>特定の属性を含めるには、コネクタアクションでそれらをマップし、プロンプトでそれらを参照します。たとえば、<code>product_review</code>をマップする場合、プロンプトで<code>{{product_review}}</code>を参照できます。</p>
+<p>プロンプトにデータオブジェクト全体を含めるには、コネクタアクション構成で<strong>イベントペイロード追加</strong>または<strong>訪問プロファイル追加</strong>を有効にし、プロンプトで<code>{{event_payload}}</code>または<code>{{visitor_profile}}</code>を参照します。</p>
+<p>オーディエンスアクションの場合、訪問プロファイルオブジェクト内の現在の訪問データを含めるために<strong>現在の訪問追加</strong>も有効にすることができます。</p>
+<p><strong>重要</strong><br>
+コネクタがコンテキストデータに関するプロンプト指示を必要とする場合、それをプロンプトの最初の行に含めます。たとえば：</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">顧客イベントを説明するJSONオブジェクトを受け取ります：
+{{event_payload}}
+</code></pre><p>コネクタが応答形式に関するプロンプト指示を必要とする場合、プロンプトの最後にそれを含めます。たとえば：</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">次の構造で1行に1つのJSONオブジェクトのみを返します：
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+}
+</code></pre><h4 id="質問">質問</h4>
+<p>プロンプトは、モデルにデータを評価する方法を伝え、1つ以上の特定の値を生成するように依頼します。</p>
+<p>たとえば、このプロンプトは、顧客のレビューの感情を表すテキスト値を生成するように依頼します：</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">提供された製品レビューイベントに基づいて、顧客の感情を「不満足」、「中立」、または「満足」として分類します。
+</code></pre><h3 id="応答イベント">応答イベント</h3>
+<p>コネクタはAI応答を解析し、JSONオブジェクトを抽出し、イベントとしてTealium Collectに送り返します。</p>
+<p>応答イベントの例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_review_sentiment&#34;</span>: <span style="color:#e6db74">&#34;satisfied&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="例">例</h3>
+<h4 id="イベントトリガー">イベントトリガー</h4>
+<p>この例では、顧客が製品レビューを提出したばかりで、プロンプトはモデルに感情を評価するように依頼します。</p>
+<p><strong>例のプロンプト</strong>：</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">顧客の製品レビューを説明するJSONオブジェクトを受け取ります：
+{{event_payload}}
+
+提供された製品レビューイベントに基づいて、顧客の感情を「不満足」、「中立」、または「満足」として分類します。
+
+次の構造で1行に1つのJSONオブジェクトのみを返します：
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+}
+</code></pre><p><strong>例の応答イベント</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_review_sentiment&#34;</span>: <span style="color:#e6db74">&#34;satisfied&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="オーディエンストリガー">オーディエンストリガー</h4>
+<p>この例では、顧客が「頻繁なブラウザ、購入なし」というオーディエンスに参加し、プロンプトはモデルに顧客の意図を評価するように依頼します。</p>
+<p><strong>例のプロンプト</strong>：</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">小売り訪問を説明するJSONオブジェクトを受け取ります：
+{{visitor_profile}}
+
+提供された顧客データに基づいて、彼らのおそらくのショッピング意図を「掘り出し物探し」、「製品比較」、「後での調査」、または「興味なし」として分類します。データが不足している場合は、最善の推測を行います。
+
+次の構造で1行に1つのJSONオブジェクトのみを返します：
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_shopping_intent&#34;: &#34;&lt;customer shopping intent&gt;&#34;
+}
+</code></pre><p><strong>例の応答イベント</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_shopping_intent&#34;</span>: <span style="color:#e6db74">&#34;bargain hunting&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="アクティベーション">アクティベーション</h3>
+<p>モデルが有効なJSONオブジェクトを返すと、コネクタはそれをTealium Collectに受信イベントとして転送します。その後、エンリッチメントルールは応答値を訪問プロファイル属性に書き込みます。そこから、オーディエンスと下流のコネクタは、豊かにされたプロファイルに基づいてアクティブ化されます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i><code>tealium_event</code>にコネクタ固有の値を構成し、使用ケースに特有の応答属性を命名することで、これらのイベントに一致するイベントフィードやルールを簡単に作成できます。</p>
+<p>AI応答イベントアクティベーションのための例のルール：</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">ai_response</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">ai_review_sentiment</span>
+        <span class="operator">IS POPULATED</span>
+        
+      </div>
+  </div>
+</div>
+<h3 id="テスト">テスト</h3>
+<p>本番環境でAIコネクタをアクティブ化する前に、コネクタマッピングで<strong>デバッグモード</strong>を有効にし、トレースを使用して構成とプロンプトの動作を検証します。デバッグモードを使用すると、本番コストを発生させたり、ライブデータに影響を与えたりする前に、エラーをキャッチし、プロンプトを最適化するのに役立ちます。</p>
+<p>デバッグモードでは、コネクタはAIリクエストを実行しますが、応答イベントをアカウントに送り返すことなく結果を記録します。トレースツールを使用して、完全なリクエストと応答を検査し、生成された出力を確認し、トリガー条件と属性マッピングが正しく機能していることを確認します。</p>
+<h3 id="サポートされているベンダー">サポートされているベンダー</h3>
+<p>認証、モデル選択、プロンプト要件、およびアクションパラメーターなどの構成詳細は、各コネクターに固有です。</p>
+<p>以下のAIコネクターが利用可能です：</p>
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+
+
+
+
 <table>
-<thead>
-<tr>
-<th>コネクタ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/ja/server-side-connectors/openai-connector/">OpenAI</a></td>
-<td>OpenAI APIを使用して、イベントまたは訪問データでGPTモデルを呼び出します。</td>
-</tr>
-<tr>
-<td><a href="/ja/server-side-connectors/amazon-bedrock-ai-connector/">Amazon Bedrock AI</a></td>
-<td>AWS Bedrockを通じて基盤モデルと管理されたプロンプトを呼び出します。</td>
-</tr>
-<tr>
-<td><a href="/ja/server-side-connectors/google-vertex-ai-connector/">Google Vertex AI</a></td>
-<td>イベントデータでVertex AIモデルを呼び出し、リアルタイムでエンリッチメントを行います。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>コネクター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
 </table>
-<p>各コネクタは上記で説明した同じプロンプト、応答、およびアクティベーションパターンに従います。認証、モデル選択、アクションパラメータなどの構成詳細は、各コネクタに固有です。</p>
-<h2 id="ai用tealium機能の動作方法">AI用Tealium機能の動作方法</h2>
-<p>Tealium機能は、独自のモデル（IYOM）を呼び出すためのコードベースのアプローチを提供します。事前に構成されたコネクタを使用する代わりに、イベントまたは訪問機能から直接任意のモデルエンドポイントを呼び出すためにJavaScriptを書きます。使用例には、数値スコアを返す従来の機械学習モデル、専用のAIコネクタがないプラットフォームでホストされているLLM、およびSnowflake Cortex、Databricks Model Serving、またはAmazon SageMakerなどのデータプラットフォーム上のエンドポイントが含まれます。</p>
-<p>Tealium機能は、イベント機能（イベント処理後にトリガーされる）と訪問機能（訪問プロファイル更新後にトリガーされる）の両方をサポートし、即時のイベントコンテキストまたは蓄積された訪問履歴のいずれかをスコアリングすることができます。</p>
-<p>機能が発火すると、次のステップに従います：</p>
+
+
+<h2 id="aiのための関数">AIのための関数</h2>
+<h3 id="仕組み">仕組み</h3>
+<p>Tealiumの関数は、独自のモデル（IYOM）を呼び出すためのコードベースのアプローチを提供します。事前に構成されたコネクターを使用する代わりに、イベントまたは訪問関数から直接任意のモデルエンドポイントを呼び出すためにJavaScriptを記述します。使用例には、数値スコアを返す従来の機械学習モデル、専用のAIコネクターを持たないプラットフォームでホストされているLLM、Snowflake Cortex、Databricks Model Serving、またはAmazon SageMakerなどのデータプラットフォーム上のエンドポイントが含まれます。</p>
+<p>Tealiumの関数は、イベント関数（イベント処理後にトリガーされる）と訪問関数（訪問プロファイルの更新後にトリガーされる）の両方をサポートし、即時のイベントコンテキストまたは蓄積された訪問履歴のいずれかをスコアリングすることができます。</p>
+<p>関数が発火すると、以下のステップに従います：</p>
 <ol>
 <li>イベント属性または訪問プロファイルデータを収集します。</li>
 <li>モデルエンドポイント用のリクエストペイロードを構築します。</li>
 <li><code>fetch()</code>を使用してエンドポイントを呼び出します。</li>
-<li>応答を解析します。</li>
+<li>レスポンスを解析します。</li>
 <li><code>track()</code>を使用して予測をTealium Collectに送信します。</li>
-<li>エンリッチメントが予測値を訪問プロファイルに書き込みます。</li>
+<li>エンリッチメントが訪問プロファイルに予測値を書き込みます。</li>
 </ol>
-<p>機能は訪問プロファイルを直接変更することはできないため、予測はTealium Collectを通じてプロファイルに書き込まれる必要があります。</p>
-<p>機能は同期および非同期のモデル呼び出しをサポートしています。10秒以内に応答するモデルの場合は、標準の<code>await</code>パターンを使用します。遅いモデルの場合は、ファイアアンドフォーゲットパターンを使用します。機能はリクエストを送信し、すぐに終了します。その後、モデルが推論を完了すると、結果をコールバックURLにPOSTします。</p>
-<p>実装の詳細については、<a href="/ja/guides/function-for-ai-activation/">AIアクティベーション用の機能を作成する</a>を参照してください。</p>
-<h2 id="aiコネクタとtealium機能の選択">AIコネクタとTealium機能の選択</h2>
-<h3 id="aiコネクタを使用する場合">AIコネクタを使用する場合</h3>
+<p>関数は直接訪問プロファイルを変更することはできないため、予測はTealium Collectを通じて流れ、エンリッチメントを通じてプロファイルに書き込まれる必要があります。</p>
+<p>関数は同期および非同期のモデル呼び出しをサポートしています。10秒以内に応答するモデルの場合は、標準の<code>await</code>パターンを使用します。遅いモデルの場合は、ファイア・アンド・フォーゲットパターンを使用します。関数はリクエストを送信し、すぐに終了します。その後、モデルが推論を完了したときに、結果をコールバックURLにPOSTします。</p>
+<p>実装の詳細については、<a href="/ja/guides/function-for-ai-activation/">AIアクティベーションのための関数を作成する</a>を参照してください。</p>
+<h2 id="コネクターと関数の選択">コネクターと関数の選択</h2>
+<h3 id="aiコネクターを使用する場合">AIコネクターを使用する場合</h3>
 <ul>
-<li>プロンプトベースの推論のために大規模言語モデルを呼び出す場合。</li>
-<li>使用例がサポートされているプロバイダーのいずれかに該当する場合：OpenAI、Amazon Bedrock、またはGoogle Vertex AI。</li>
-<li>プロンプトがイベントまたは訪問データを入力として一貫したテンプレートを使用している場合。</li>
+<li>プロンプトベースの推論のために大規模な言語モデルを呼び出す場合。</li>
+<li>サポートされているAIプロバイダーのいずれかに使用例がマッピングされている場合。</li>
+<li>イベントまたは訪問データを入力として使用する一貫したテンプレートをプロンプトに使用する場合。</li>
 <li>モデルがTealiumイベントとして直接転送できる構造化されたJSONを返す場合。</li>
-<li>Tealium UIを通じてコードを書かずに統合を構成したい場合。</li>
-<li>使用例がページビューなどの高ボリューム、低価値のイベントではなく、ターゲット指定された高価値のイベントやオーディエンスで構成されている場合。</li>
+<li>コードを書かずにTealium UIを通じて統合を構成したい場合。</li>
+<li>ページビューなどの高ボリュームで低価値のイベントではなく、ターゲット指定された高価値のイベントやオーディエンスで構成される使用例の場合。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>AIコネクタは、分類ラベル、信頼値、または事前に定義されたリストからの識別子など、構造化された予測可能なJSON出力を返す使用例を対象として設計されています。長文コンテンツやメディア生成が必要な使用例の場合は、本番環境に移行する前に組織のAIガバナンスプロセスに沿ってください。</p>
-<h3 id="tealium機能を使用する場合">Tealium機能を使用する場合</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>AIコネクターは、分類ラベル、信頼値、または事前に定義されたリストからの識別子など、構造化された予測可能なJSON出力を返す使用例に設計されています。長文コンテンツやメディア生成には適していません。自由形式の出力が必要な使用例の場合は、本番環境に移行する前に組織のAIガバナンスプロセスに沿ってください。</p>
+<h3 id="tealium関数を使用する場合">Tealium関数を使用する場合</h3>
 <ul>
 <li>数値スコアまたは表形式の予測を返す従来の機械学習モデルを呼び出す必要がある場合。</li>
-<li>モデルが専用のAIコネクタがないプラットフォームでホストされている場合。</li>
-<li>ペイロードがモデルに送信する前にカスタムロジック、データ変換、またはPIIフィルタリングを必要とする場合。</li>
+<li>専用のAIコネクターを持たないプラットフォームでモデルがホストされている場合。</li>
+<li>モデルに送信する前にカスタムロジック、データ変換、またはPIIフィルタリングが必要な場合。</li>
 <li>非同期モデル応答またはカスタムネットワーク構成を処理する必要がある場合。</li>
 </ul>
-<p>モデルにデータを送信する前にPIIを削除またはトークン化する必要がある場合は、Tealium機能を使用してカスタムフィルタリングを適用し、承認されたフィールドのみをエンドポイントに送信してください。</p>
-<h3 id="比較">比較</h3>
+<p>モデルにデータを送信する前にPIIを削除またはトークン化する必要がある場合は、Tealium関数を使用してカスタムフィルタリングを適用し、承認されたフィールドのみをエンドポイントに送信します。</p>
+<h2 id="比較概要">比較概要</h2>
 <table>
 <thead>
 <tr>
 <th>考慮事項</th>
-<th>AIコネクタ</th>
-<th>Tealium機能</th>
+<th>AIコネクター</th>
+<th>Tealium関数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>セットアップ</td>
+<td>構成</td>
 <td>UIを通じて構成</td>
 <td>JavaScriptコードを書く</td>
 </tr>
 <tr>
 <td>サポートされているモデルタイプ</td>
 <td>LLMのみ</td>
-<td>伝統的なMLを含むあらゆるMLまたはAIモデル</td>
+<td>伝統的なMLを含む任意のMLまたはAIモデル</td>
 </tr>
 <tr>
 <td>サポートされているプロバイダー</td>
-<td>OpenAI、Amazon Bedrock、Google Vertex AI</td>
+<td><a href="#supported-vendors">サポートされているベンダー</a>を参照</td>
 <td>任意のHTTPSエンドポイント</td>
 </tr>
 <tr>
@@ -406,8 +532,8 @@
 </tr>
 <tr>
 <td>認証</td>
-<td>コネクタ構成で管理</td>
-<td>Tealium機能内の認証トークンとして保存</td>
+<td>コネクター構成で管理</td>
+<td>Tealium関数内の認証トークンとして保存</td>
 </tr>
 <tr>
 <td>ペイロード構造</td>
@@ -416,8 +542,8 @@
 </tr>
 <tr>
 <td>モデル呼び出し前のPIIフィルタリング</td>
-<td>プラットフォームレベルのみ（同意カテゴリと制限された属性）。コネクタ内にカスタム前処理コードはなし</td>
-<td>JavaScriptでモデルを呼び出す前に完全にカスタマイズ可能なフィルタリングと変換</td>
+<td>プラットフォームレベルのみ（同意カテゴリと制限された属性）。コネクター内にカスタム前処理コードはない</td>
+<td>JavaScriptでのモデル呼び出し前の完全にカスタマイズ可能なフィルタリングと変換</td>
 </tr>
 <tr>
 <td>レスポンス処理</td>
@@ -427,65 +553,58 @@
 <tr>
 <td>非同期サポート</td>
 <td>限定的。Bedrock AIワークフローアクションはLambdaコールバックを通じて非同期応答をサポート</td>
-<td>Tealium Collectへのモデルコールバックとファイア・アンド・フォーゲットパターンを通じてサポート</td>
+<td>ファイア・アンド・フォーゲットパターンとTealium Collectへのモデルコールバックを通じてサポート</td>
 </tr>
 </tbody>
 </table>
 <h2 id="一般的な使用例">一般的な使用例</h2>
-<p>以下の表は、一般的なAI使用例とそれぞれの推奨統合アプローチをリストしています。</p>
+<p>以下の表は、一般的なAI使用例と各使用例に推奨される統合アプローチをリストしています。</p>
 <table>
 <thead>
 <tr>
 <th>使用例</th>
 <th>説明</th>
-<th>推奨アプローチ</th>
+<th>推奨されるアプローチ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>感情分析</td>
-<td>顧客のフィードバックやレビューイベントを肯定的、中立的、または否定的に分類。</td>
-<td>AIコネクタ</td>
+<td>顧客のフィードバックやレビューイベントを肯定的、中立的、または否定的に分類します。</td>
+<td>AIコネクター</td>
 </tr>
 <tr>
 <td>意図分類</td>
-<td>閲覧または購入履歴に基づいて顧客の意図を特定。</td>
-<td>AIコネクタ</td>
+<td>閲覧または購入履歴に基づいて顧客の可能性のある意図を特定します。</td>
+<td>AIコネクター</td>
 </tr>
 <tr>
-<td>次善の行動（プレイブック選択）</td>
-<td>訪問のコンテキストに基づいて承認されたアクションまたはオファーの中から選択。</td>
-<td>AIコネクタ</td>
+<td>次の最適なアクション（プレイブック選択）</td>
+<td>訪問のコンテキストに基づいて承認されたアクションまたはオファーの有限セットから選択します。</td>
+<td>AIコネクター</td>
 </tr>
 <tr>
 <td>傾向スコアリング</td>
-<td>訓練された機械学習モデルを使用して、コンバージョン、離脱、または高価値アクションの可能性を予測。</td>
-<td>Tealium機能</td>
+<td>訓練された機械学習モデルを使用して、コンバージョン、離脱、または高価値アクションの可能性を予測します。</td>
+<td>Tealium関数</td>
 </tr>
 <tr>
-<td>次善の行動（スコア最適化）</td>
-<td>候補アクションを数値モデルでスコアリングし、最も高いスコアを選択。</td>
-<td>Tealium機能</td>
+<td>次の最適なアクション（スコア最適化）</td>
+<td>数値モデルを使用して候補アクションのセットをスコアリングし、最も高いスコアのものを選択します。</td>
+<td>Tealium関数</td>
 </tr>
 <tr>
 <td>フィーチャーストアルックアップ</td>
-<td>データプラットフォームから事前計算されたスコアまたはフィーチャーを取得してアクティベーション。</td>
-<td>Tealium機能</td>
+<td>アクティベーションのためにデータプラットフォームから事前に計算されたスコアまたはフィーチャーを取得します。</td>
+<td>Tealium関数</td>
 </tr>
 <tr>
 <td>カスタムエンドポイント推論</td>
-<td>専用AIコネクタのないプラットフォームでホストされているモデルを呼び出し。</td>
-<td>Tealium機能</td>
+<td>専用のAIコネクターを持たないプラットフォームでホストされているモデルを呼び出します。</td>
+<td>Tealium関数</td>
 </tr>
 </tbody>
 </table>
-<h2 id="リソース">リソース</h2>
-<ul>
-<li><a href="/ja/server-side-connectors/openai-connector/">OpenAIコネクタ構成ガイド</a></li>
-<li><a href="/ja/server-side-connectors/amazon-bedrock-ai-connector/">Amazon Bedrock AIコネクタ構成ガイド</a></li>
-<li><a href="/ja/server-side-connectors/google-vertex-ai-connector/">Google Vertex AI構成ガイド</a></li>
-<li><a href="/ja/guides/function-for-ai-activation/">AIアクティベーション用の関数を作成</a></li>
-</ul>
 
 </div>
 
@@ -546,7 +665,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月8日
+          <p>最終更新日 ::  2026年April月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -560,19 +679,22 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">AIコネクタの動作方法</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">データフロー</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF" href="javascript:void(0)">AIコネクタ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">データフロー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88" href="javascript:void(0)">プロンプト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%9C%E7%AD%94" href="javascript:void(0)">応答</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%9C%E7%AD%94%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">応答イベント</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクティベーション</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8Bai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF" href="javascript:void(0)">サポートされているAIコネクタ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E7%94%A8tealium%E6%A9%9F%E8%83%BD%E3%81%AE%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">AI用Tealium機能の動作方法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%A8tealium%E6%A9%9F%E8%83%BD%E3%81%AE%E9%81%B8%E6%8A%9E" href="javascript:void(0)">AIコネクタとTealium機能の選択</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" href="javascript:void(0)">AIコネクタを使用する場合</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E6%A9%9F%E8%83%BD%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" href="javascript:void(0)">Tealium機能を使用する場合</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%AF%94%E8%BC%83" href="javascript:void(0)">比較</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">一般的な使用例</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9" href="javascript:void(0)">リソース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88" href="javascript:void(0)">テスト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC" href="javascript:void(0)">サポートされているベンダー</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E9%96%A2%E6%95%B0" href="javascript:void(0)">AIのための関数</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%A8%E9%96%A2%E6%95%B0%E3%81%AE%E9%81%B8%E6%8A%9E" href="javascript:void(0)">コネクターと関数の選択</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" href="javascript:void(0)">AIコネクターを使用する場合</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88" href="javascript:void(0)">Tealium関数を使用する場合</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%AF%94%E8%BC%83%E6%A6%82%E8%A6%81" href="javascript:void(0)">比較概要</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">一般的な使用例</a></li>
               </nav>
   </aside></nav>
 

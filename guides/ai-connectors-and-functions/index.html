@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "guides",
-        reading_time  : "6",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -161,6 +161,9 @@
       <a href="/guides/supported-consent-integration/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Consent integration</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/guides/conversion-apis/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Conversion APIs</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/guides/customer-spending-levels-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Customer spending levels</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -168,6 +171,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/guides/discount-shopper-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Discount shopper</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/guides/eventdb-audiencedb-queries-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>EventDB and AudienceDB queries</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/guides/exclude-offline-purchasers/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Exclude offline purchasers</span></a>
@@ -229,11 +235,15 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/guides/supported-consent-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Consent integration</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/conversion-apis/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".conversion-apis">Conversion APIs</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/guides/customer-spending-levels-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".customer-spending-levels-guide">Customer spending levels</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/guides/two-stage-pii-detection/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Detect PII with two-stage validation</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/guides/discount-shopper-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".discount-shopper-guide">Discount shopper</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/eventdb-audiencedb-queries-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventdb-audiencedb-queries-guide">EventDB and AudienceDB queries</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/guides/exclude-offline-purchasers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".exclude-offline-purchasers">Exclude offline purchasers</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -290,9 +300,10 @@
 <li><strong>Tealium functions</strong>: Invoke your own model or call custom endpoints.</li>
 </ul>
 <p>Use this guide to understand how each approach works and when to use each one.</p>
-<h2 id="how-ai-connectors-work">How AI connectors work</h2>
-<p>AI connectors integrate with hosted LLM APIs from supported providers (OpenAI, Amazon Bedrock, and Google Vertex AI) and require prompt-based interactions that return structured JSON. They follow a consistent prompt, response, and activation pattern across all supported providers.</p>
-<p>To use an AI connector, you need authentication credentials for your provider and at least one configured action that defines the prompt template and the Tealium data to include.</p>
+<h2 id="ai-connectors">AI connectors</h2>
+<h3 id="how-it-works">How it works</h3>
+<p>AI connectors integrate with hosted LLM APIs from supported providers and require prompt-based interactions that return structured JSON. They follow a consistent prompt, response, and activation pattern across all supported providers.</p>
+<p>To use an AI connector, you need authentication credentials for your provider and at least one configured action that defines a prompt and the Tealium data to send to the AI model.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>AI connectors are designed for LLM activation only. They are not intended for invoking traditional machine learning models that return numeric scores or tabular predictions. For those use cases, use Tealium functions.</p>
 <h3 id="data-flow">Data flow</h3>
 <figure class="tc"><a class="slb" href="/images/guides/ai-connectors-flow.png"><img src="/images/guides/ai-connectors-flow.png"
@@ -301,52 +312,202 @@
     </a>
 </figure>
 <ol>
-<li><strong>Trigger fires</strong>: An event or audience change triggers the connector action.</li>
+<li><strong>Trigger fires</strong>: An event or audience change triggers a connector action.</li>
 <li><strong>Prompt sent</strong>: The connector sends your prompt and Tealium data to the AI model endpoint.</li>
-<li><strong>Response received</strong>: The model returns a JSON object.</li>
+<li><strong>Response received</strong>: The model generates the requested values and returns a JSON object.</li>
 <li><strong>Event ingested</strong>: The connector forwards the response to Tealium Collect.</li>
 <li><strong>Profile enriched</strong>: Enrichment rules write the response values to visitor profile attributes.</li>
 <li><strong>Audiences activate</strong>: Audience rules evaluate the updated attributes and downstream connectors fire.</li>
 </ol>
-<h3 id="prompt">Prompt</h3>
-<p>When a connector action fires, it constructs a prompt using your template and the Tealium data you configured.</p>
-<p>To include event or visitor data in the prompt, reference the variables <code>{{event_payload}}</code> and <code>{{visitor_profile}}</code>. Enable <strong>Add Event Payload</strong> or <strong>Add Visitor Profile</strong> in the connector action settings to make these variables available. For audience actions, you can also enable <strong>Add Current Visit</strong> to include current visit data within the visitor profile object.</p>
-<p>The prompt tells the model:</p>
-<ul>
-<li>What data to evaluate</li>
-<li>What question to answer</li>
-<li>What format to use in the response</li>
-</ul>
-<h3 id="response">Response</h3>
-<p>The AI connector parses the model response and extracts a JSON object. The response must include the required Tealium routing parameters (<code>tealium_account</code>, <code>tealium_profile</code>, <code>tealium_visitor_id</code>) and one or more output values.</p>
-<h3 id="activation">Activation</h3>
+<h3 id="prompts">Prompts</h3>
+<p>The prompt instructs the model about the context data to evaluate, asks a specific question, and defines the expected response. Depending on the vendor connector, you may or may not need to include specific instructions about the response output. See the specific connector instructions for details.</p>
+<h4 id="context-data">Context data</h4>
+<p>You can include specific attributes or the entire event or visitor data object as context in the prompt.</p>
+<p>To include specific attributes, map them in the connector action then reference them in the prompt. For example, if you map <code>product_review</code>, you can reference <code>{{product_review}}</code> in your prompt.</p>
+<p>To include entire data objects in the prompt, enable <strong>Add Event Payload</strong> or <strong>Add Visitor Profile</strong> in the connector action settings, then reference <code>{{event_payload}}</code> or <code>{{visitor_profile}}</code> in your prompt.</p>
+<p>For audience actions, you can also enable <strong>Add Current Visit</strong> to include current visit data within the visitor profile object.</p>
+<p><strong>Important</strong><br>
+If the connector requires prompt instructions about the context data, include it as the first line of your prompt. For example:</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a customer event:
+{{event_payload}}
+</code></pre><p>If the connector requires prompt instructions about the response format, include it at the end of the prompt. For example:</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">Return only a single JSON object on one line with the following structure: 
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+}
+</code></pre><h4 id="question">Question</h4>
+<p>Your prompt tells the model how to evaluate the data and asks to generate one or more specific values.</p>
+<p>For example, this prompt asks to generate a text value representing the sentiment of the customer&rsquo;s review:</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
+</code></pre><h3 id="response-event">Response event</h3>
+<p>The connector parses the AI response and extracts a JSON object, which is sent back to Tealium Collect as an event.</p>
+<p>Example response event:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_review_sentiment&#34;</span>: <span style="color:#e6db74">&#34;satisfied&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="examples">Examples</h3>
+<h4 id="event-trigger">Event trigger</h4>
+<p>In this example, the customer has just submitted a product review and the prompt asks the model to evaluate the sentiment.</p>
+<p><strong>Example prompt</strong>:</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a customer&#39;s product review:
+{{event_payload}}
+
+Based on the provided product review event, classify the customer&#39;s sentiment as one of: &#34;dissatisfied&#34;, &#34;neutral&#34;, or &#34;satisfied&#34;.
+
+Return only a single JSON object on one line with the following structure: 
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_review_sentiment&#34;: &#34;&lt;customer review sentiment&gt;&#34;
+}
+</code></pre><p><strong>Example response event</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_review_sentiment&#34;</span>: <span style="color:#e6db74">&#34;satisfied&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="audience-trigger">Audience trigger</h4>
+<p>In this example, the customer joined an audience named &ldquo;Frequent Browser, No Purchases&rdquo; and the prompt asks the model to evaluate the customer&rsquo;s intent.</p>
+<p><strong>Example prompt</strong>:</p>
+<pre tabindex="0"><code class="language-wrap" data-lang="wrap">You receive a JSON object describing a retail visitor:
+{{visitor_profile}}
+
+Based on the customer data provided, classify their likely shopping intent as: &#34;bargain hunting&#34;, &#34;product comparison&#34;, &#34;researching for later&#34;, or &#34;not interested&#34;. If data is missing, make a best effort guess.
+
+Return only a single JSON object on one line with the following structure: 
+{
+  &#34;tealium_account&#34;: &#34;{{tealium_account}}&#34;,
+  &#34;tealium_profile&#34;: &#34;{{tealium_profile}}&#34;,
+  &#34;tealium_visitor_id&#34;: &#34;{{tealium_visitor_id}}&#34;,
+  &#34;tealium_event&#34;:  &#34;ai_response&#34;,
+  &#34;ai_shopping_intent&#34;: &#34;&lt;customer shopping intent&gt;&#34;
+}
+</code></pre><p><strong>Example response event</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;383...05d&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;ai_response&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ai_shopping_intent&#34;</span>: <span style="color:#e6db74">&#34;bargain hunting&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="activation">Activation</h3>
 <p>If the model returns a valid JSON object, the connector forwards it to Tealium Collect as an inbound event. Enrichment rules then write the response values to visitor profile attributes. From there, audiences and downstream connectors activate based on the enriched profile.</p>
-<h2 id="supported-ai-connectors">Supported AI connectors</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>Setting a value for <code>tealium_event</code> that&rsquo;s unique to the connector and naming the response attribute specific to the use case makes it easy to create event feeds or rules that match these events.</p>
+<p>Example rule for AI response event activation:</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">ai_response</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">ai_review_sentiment</span>
+        <span class="operator">IS POPULATED</span>
+        
+      </div>
+  </div>
+</div>
+<h3 id="test">Test</h3>
+<p>Before activating an AI connector in production, enable <strong>Debug Mode</strong> in the connector mappings and test your setup with trace to validate your configuration and prompt behavior. Using debug mode helps catch errors and optimize prompts before incurring production costs or affecting live data.</p>
+<p>In debug mode, the connector executes the AI request but logs the result without sending the response event back to your account. Use the trace tool to inspect the full request and response, verify the generated output, and ensure that the trigger conditions and attribute mappings are working as expected.</p>
+<h3 id="supported-vendors">Supported vendors</h3>
+<p>Configuration details such as authentication, model selection, prompt requirements, and action parameters are specific to each connector.</p>
 <p>The following AI connectors are available:</p>
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+
+
+
+
+
 <table>
-<thead>
-<tr>
-<th>Connector</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/server-side-connectors/openai-connector/">OpenAI</a></td>
-<td>Invoke GPT models with event or visitor data using the OpenAI API.</td>
-</tr>
-<tr>
-<td><a href="/server-side-connectors/amazon-bedrock-ai-connector/">Amazon Bedrock AI</a></td>
-<td>Invoke foundation models and managed prompts through AWS Bedrock.</td>
-</tr>
-<tr>
-<td><a href="/server-side-connectors/google-vertex-ai-connector/">Google Vertex AI</a></td>
-<td>Invoke Vertex AI models with event data for real-time enrichment.</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Connector</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><a href="/server-side-connectors/amazon-bedrock-ai-connector/">Amazon Bedrock AI</a></td>
+      <td>Set up the Amazon Bedrock AI connector to send Tealium event and visitor data to foundation models, managed prompts, or multi-step Bedrock workflows for real-time enrichment.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/server-side-connectors/anthropic-connector/">Anthropic</a></td>
+      <td>Set up the Anthropic connector to send a prompt with Tealium event or visitor data and return model responses for real-time enrichment.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/server-side-connectors/google-vertex-ai-connector/">Google Vertex AI</a></td>
+      <td>Set up the Google Vertex AI connector to invoke Vertex AI models with Tealium event data and return model responses for real-time visitor enrichment.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/server-side-connectors/google-vertex-commerce-connector/">Google Vertex AI Search</a></td>
+      <td>Set up this connector to send Tealium event data to Google Vertex AI Search for personalized and intuitive shopping experiences.</td>
+    </tr>
+    
+    <tr>
+      <td><a href="/server-side-connectors/openai-connector/">OpenAI</a></td>
+      <td>Set up the OpenAI connector to send a prompt with Tealium event or visitor data and return model responses for real-time enrichment.</td>
+    </tr>
+    
+  </tbody>
 </table>
-<p>Each connector follows the same prompt, response, and activation pattern described above. Configuration details such as authentication, model selection, and action parameters are specific to each connector.</p>
-<h2 id="how-tealium-functions-work-for-ai">How Tealium functions work for AI</h2>
+
+
+<h2 id="functions-for-ai">Functions for AI</h2>
+<h3 id="how-it-works-1">How it works</h3>
 <p>Tealium functions provide a code-based approach for invoking your own model (IYOM). Instead of using a preconfigured connector, you write JavaScript to call any model endpoint directly from an event or visitor function. Use cases include traditional machine learning models returning numeric scores, LLMs hosted on platforms without a dedicated AI connector, and endpoints on data platforms such as Snowflake Cortex, Databricks Model Serving, or Amazon SageMaker.</p>
 <p>Tealium functions support both event functions (triggered after an event is processed) and visitor functions (triggered after a visitor profile updates), allowing you to score either immediate event context or accumulated visitor history.</p>
 <p>When a function fires, it follows these steps:</p>
@@ -361,11 +522,11 @@
 <p>Because functions cannot directly modify visitor profiles, predictions must flow through Tealium Collect and be written to the profile through enrichments.</p>
 <p>Functions support both synchronous and asynchronous model invocation. For models that respond within 10 seconds, use a standard <code>await</code> pattern. For slower models, use a fire-and-forget pattern. The function sends the request and exits immediately. The model then POSTs the result to a callback URL when inference completes.</p>
 <p>For implementation details, see <a href="/guides/function-for-ai-activation/">Create a function for AI activation</a>.</p>
-<h2 id="choosing-between-ai-connectors-and-tealium-functions">Choosing between AI connectors and Tealium functions</h2>
+<h2 id="choosing-between-connectors-and-functions">Choosing between connectors and functions</h2>
 <h3 id="use-an-ai-connector-when">Use an AI connector when</h3>
 <ul>
 <li>You are invoking a large language model for prompt-based inference.</li>
-<li>Your use case maps to one of the supported providers: OpenAI, Amazon Bedrock, or Google Vertex AI.</li>
+<li>Your use case maps to one of the supported AI providers.</li>
 <li>Your prompt uses a consistent template with event or visitor data as input.</li>
 <li>The model returns structured JSON that can be forwarded directly as a Tealium event.</li>
 <li>You want to configure the integration through the Tealium UI without writing code.</li>
@@ -380,7 +541,7 @@
 <li>You need to handle asynchronous model responses or custom network configuration.</li>
 </ul>
 <p>When you must remove or tokenize PII before sending data to a model, use Tealium functions to apply custom filtering and send only the approved fields to the endpoint.</p>
-<h3 id="comparison">Comparison</h3>
+<h2 id="comparison-summary">Comparison summary</h2>
 <table>
 <thead>
 <tr>
@@ -402,7 +563,7 @@
 </tr>
 <tr>
 <td>Supported providers</td>
-<td>OpenAI, Amazon Bedrock, Google Vertex AI</td>
+<td>See <a href="#supported-vendors">Supported vendors</a></td>
 <td>Any HTTPS endpoint</td>
 </tr>
 <tr>
@@ -485,13 +646,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="resources">Resources</h2>
-<ul>
-<li><a href="/server-side-connectors/openai-connector/">OpenAI Connector Setup Guide</a></li>
-<li><a href="/server-side-connectors/amazon-bedrock-ai-connector/">Amazon Bedrock AI Connector Setup Guide</a></li>
-<li><a href="/server-side-connectors/google-vertex-ai-connector/">Google Vertex AI Setup Guide</a></li>
-<li><a href="/guides/function-for-ai-activation/">Create a function for AI activation</a></li>
-</ul>
 
 </div>
 
@@ -552,7 +706,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 1, 2026 
+          <p>This page was last updated:  April 22, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -566,19 +720,22 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-ai-connectors-work" href="javascript:void(0)">How AI connectors work</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-flow" href="javascript:void(0)">Data flow</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prompt" href="javascript:void(0)">Prompt</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#response" href="javascript:void(0)">Response</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ai-connectors" href="javascript:void(0)">AI connectors</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-flow" href="javascript:void(0)">Data flow</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prompts" href="javascript:void(0)">Prompts</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#response-event" href="javascript:void(0)">Response event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activation" href="javascript:void(0)">Activation</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-ai-connectors" href="javascript:void(0)">Supported AI connectors</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-tealium-functions-work-for-ai" href="javascript:void(0)">How Tealium functions work for AI</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#choosing-between-ai-connectors-and-tealium-functions" href="javascript:void(0)">Choosing between AI connectors and Tealium functions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#test" href="javascript:void(0)">Test</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-vendors" href="javascript:void(0)">Supported vendors</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#functions-for-ai" href="javascript:void(0)">Functions for AI</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#choosing-between-connectors-and-functions" href="javascript:void(0)">Choosing between connectors and functions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-an-ai-connector-when" href="javascript:void(0)">Use an AI connector when</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-tealium-functions-when" href="javascript:void(0)">Use Tealium functions when</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#comparison" href="javascript:void(0)">Comparison</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-use-cases" href="javascript:void(0)">Common use cases</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#resources" href="javascript:void(0)">Resources</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#comparison-summary" href="javascript:void(0)">Comparison summary</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#common-use-cases" href="javascript:void(0)">Common use cases</a></li>
               </nav>
   </aside></nav>
 
