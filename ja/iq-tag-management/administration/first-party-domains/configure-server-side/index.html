@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/iq-tag-management/administration/first-party-domains/configure-server-side/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealiumのサーバーサイドデータ収集のためのファーストパーティドメインを構成する方法について説明します。" />
+<meta property="og:description" content="この記事では、Tealiumのサーバーサイドデータ収集用にファーストパーティドメインを構成する方法について説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>サーバーサイドデータ収集の構成 | ファーストパーティドメイン | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -350,7 +350,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium汎用タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li>
+        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -605,7 +605,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/configure-client-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-client-side-delivery">クライアントサイド配信の構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント設定の更新</a></li>
+        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント構成の更新</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">ファーストパーティドメインの管理</a></li></ul>
       </li>
@@ -714,49 +714,49 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealiumのサーバーサイドデータ収集のためのファーストパーティドメインを構成する方法について説明します。
+      この記事では、Tealiumのサーバーサイドデータ収集用にファーストパーティドメインを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドデータ収集では、ドメイン証明書は構成時に選択した地域のTealiumエンドポイントに構成され、保存されます。選択した地域がプロファイルの地域と異なる場合、イベントと訪問のデータはファーストパーティドメイン地域で収集され、プロファイルの構成地域に転送されます。</p>
-<p>Tealiumのサーバーサイドデータ収集のためのファーストパーティドメインを構成するには、以下の手順を使用します：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドデータ収集のため、ドメイン証明書は構成時に選択したリージョンのTealiumエンドポイントに構成され保存されます。選択したリージョンがプロファイルのリージョンと異なる場合、イベントおよび訪問データはファーストパーティドメインリージョンで収集され、プロファイル用に構成されたリージョンに転送されます。</p>
+<p>Tealiumのサーバーサイドデータ収集用にファーストパーティドメインを構成するには、以下の手順に従ってください：</p>
 <ol>
-<li>管理メニューで、<strong>First-Party Domains</strong>をクリックします。</li>
-<li><strong>Server-Side Data Collection/DLE</strong>の下で、<strong>Configure Certificate</strong>をクリックします。</li>
-<li>ほとんどのCollectトラフィックが発生する地域を選択します。</li>
+<li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックします。</li>
+<li><strong>サーバーサイドデータ収集/DLE</strong>の下で、<strong>証明書の構成</strong>をクリックします。</li>
+<li>ほとんどのCollectトラフィックが発生するリージョンを選択します。</li>
 <li>次のいずれかを選択します：
 <ul>
-<li><strong>Generate Certificate</strong> – Tealiumが証明書を生成し、管理します。</li>
-<li><strong>Provide Certificate</strong> – 自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#provide-your-own-domain-certificates">Provide your own domain certificates</a>を参照してください。</li>
+<li><strong>Tealium管理証明書</strong>：Tealiumが証明書を生成および管理します。</li>
+<li><strong>ユーザー提供証明書</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">自分の証明書を管理する</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>Provide Certificate</strong>を選択した場合、以下のファイルをアップロードします：
+<li><strong>ユーザー提供証明書</strong>を選択した場合、以下のファイルをアップロードします：
 <ul>
 <li>証明書（必須）</li>
-<li>プライベートキー（必須）</li>
+<li>私有キー（必須）</li>
 <li>証明書チェーン（オプション）</li>
 </ul>
 </li>
-<li>ドメイン所有権を検証するための次の方法のいずれかを選択します：
+<li>ドメイン所有権を検証するための以下の方法のいずれかを選択します：
 <ul>
-<li><strong>DNS Validation</strong></li>
-<li><strong>Email Validation</strong></li>
+<li><strong>DNS検証</strong></li>
+<li><strong>メール検証</strong></li>
 </ul>
 </li>
-<li><strong>Add Domains</strong>セクションで、サブドメイン名を入力します。<code>https://</code>と終了スラッシュを省略します。
-例えば、<code>collect.example.com</code>または<code>cdp.example.com</code>。</li>
-<li>別のドメインを追加するには、<strong>+ Add Domain</strong>をクリックします。<br>
-ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトのサブドメインを入力します。</li>
-<li><strong>I Agree</strong>をクリックして、提供されたドメインの証明書をTealiumが管理することを許可し、これらのドメインを所有し管理していることを認証し、<strong>Save</strong>をクリックします。
+<li><strong>ドメイン追加</strong>セクションで、<code>https://</code>と終わりのスラッシュを省略したサブドメイン名を入力します。
+例：<code>collect.example.com</code>または<code>cdp.example.com</code>。</li>
+<li>別のドメインを追加するには、<strong>+ ドメイン追加</strong>をクリックします。
+ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトに対してサブドメインを入力します。</li>
+<li>Tealiumに提供したドメインの証明書管理を許可し、これらのドメインを所有および管理していることを認証するために、<strong>同意する</strong>をクリックし、次に<strong>保存</strong>をクリックします。
 <ul>
-<li><strong>DNS validation</strong> – 検証に使用される一時的なAレコード（各ドメインに1つ）が表示されます：<figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-server-side.png"><img src="/images/guides/iq/fpd-dns-confirm-server-side.png"
+<li><strong>DNS検証</strong>：検証用の一時的なAレコード（各ドメインについて1つ）が表示されます：<figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-server-side.png"><img src="/images/guides/iq/fpd-dns-confirm-server-side.png"
          alt="fpd-dns-confirm-server-side"
          title="fpd-dns-confirm-server-side"/>
     </a>
 </figure> これらの一時的なAレコードをDNS構成に追加します。</li>
-<li><strong>Email validation</strong> – 次のメッセージが表示されます：
+<li><strong>メール検証</strong>：次のメッセージが表示されます：
 <figure><a class="slb" href="/images/iq-tag-management/generated-email-confirm.png"><img src="/images/iq-tag-management/generated-email-confirm.png"
          alt="generated-email-confirm"
          title="generated-email-confirm"/>
@@ -764,14 +764,13 @@
 </figure></li>
 </ul>
 </li>
-<li>検証方法に応じて、次のプロセスを完了します：
+<li>検証方法に従ってプロセスを完了します：
 <ul>
 <li>
-<p><strong>DNS validation</strong>: 検証AレコードをDNS構成に追加し、検証プロセスが完了した後（これには数時間かかることがあります）、ドメインの永続的なAレコードが表示されます。これらの永続的なAレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証Aレコードと永続的なAレコードが含まれている必要があります。検証レコードは、証明書にドメインを追加したり、証明書を自動更新したりするときに使用されます。</p></p>
+<p><strong>DNS検証</strong>：DNS構成に検証Aレコードを追加し、検証プロセスが完了するまで待ちます（数時間かかる場合があります）。その後、ドメインの永続的なAレコードが表示されます。これらの永続的なAレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証Aレコードと永続的なAレコードが含まれている必要があります。検証レコードは、証明書にドメインを追加する際や証明書の自動更新に使用されます。</p></p>
 </li>
 <li>
-<p><strong>Email validation</strong>: Amazon Web Servicesからメール（各ドメインに1つのメッセージ）が届き、72時間で期限切れになる検証トークンが含まれています。検証プロセスを完了するには、各ドメインのメールメッセージに返信する必要があります。<br>
-メールが届かなかった場合やトークンが期限切れになった場合は、<strong>First-Party Domains Overview</strong>画面のServer-Sideメニューで<strong>Resend Email</strong>をクリックします。<figure><a class="slb" href="/images/guides/iq/fpd-serverside-menu-resend-email.png"><img src="/images/guides/iq/fpd-serverside-menu-resend-email.png"
+<p><strong>メール検証</strong>：Amazon Web Servicesから（各ドメインについて1通のメッセージで）72時間で期限切れになる検証トークンが含まれたメールを受け取ります。検証プロセスを完了するには、各ドメインのメールメッセージに応答する必要があります。メールが届かない場合やトークンが期限切れになった場合は、<strong>First-Party Domains Overview</strong>画面のサーバーサイドメニューに<strong>メール再送</strong>ボタンが別途用意されています。<figure><a class="slb" href="/images/guides/iq/fpd-serverside-menu-resend-email.png"><img src="/images/guides/iq/fpd-serverside-menu-resend-email.png"
          alt="fpd-serverside-menu-resend-email"
          title="fpd-serverside-menu-resend-email"/>
     </a>
@@ -780,11 +779,24 @@
 </ul>
 </li>
 </ol>
-<h2 id="検証の確認">検証の確認</h2>
-<p>ドメインの検証は72時間以内に行われる必要があります。検証期間が経過した場合は、同じドメインの新しい証明書をリクエストします。DNS検証レコードは、同じドメインの後続のリクエストで同じです。</p>
-<p>ドメイン情報が検証されている間、次のメッセージが表示されます：</p>
-<p><code>ドメイン情報の検証をお待ちください。これには時間がかかりません。</code></p>
-<p><strong>First-Party Domains Overview</strong>のドメインステータスが<strong>Issued</strong>に変更されると、ドメインは使用準備が整います。ドメインステータスが<strong>Issued</strong>に変更された後、Tealium Collectでファーストパーティドメインを使用するためにエンドポイント構成を更新する必要があります。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">Update endpoint configurations</a>を参照してください。</p>
+<h2 id="検証確認">検証確認</h2>
+<p>ドメイン検証は72時間以内に行う必要があります。検証期間が経過した場合は、同じドメインに対して新しい証明書をリクエストしてください。DNS検証レコードは、同じドメインの後続のリクエストに対して同じです。</p>
+<p>ドメイン情報が検証中である間、次のメッセージが表示されます：</p>
+<blockquote>
+<p>検証待ち。各ドメインに必要なDNSレコードを追加し、DNSの伝播を待ってください。</p>
+</blockquote>
+<p>または</p>
+<blockquote>
+<p>検証待ち。各ドメインに送信された検証メールを確認するか、必要に応じてメールを再送してください。</p>
+</blockquote>
+<p><strong>First-Party Domains Overview</strong>でドメインのステータスが<strong>発行済み</strong>に更新されると、ドメインは使用準備が整います。その後、Tealium Collectでファーストパーティドメインを使用するためにエンドポイント構成を更新する必要があります。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">エンドポイント構成の更新</a>を参照してください。</p>
+<h2 id="検証失敗">検証失敗</h2>
+<p>検証に失敗すると、ドメインのステータスが<strong>失敗</strong>に変更され、失敗の詳細が記載されたメッセージが表示されます：</p>
+<blockquote>
+<p>ドメインにAmazonがDNSの証明機関として含まれていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。影響を受けるドメインはドメイン管理で確認できます。</p>
+</blockquote>
+<p>このメッセージが表示された場合は、DNS構成にAmazonをCAAレコードに追加し、ドメインの検証を再試行し、証明書を再生成してください。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">ファーストパーティドメインについて</a>を参照してください。</p>
 
 </div>
 
@@ -845,7 +857,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年July月22日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -859,7 +871,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC%E3%81%AE%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">検証の確認</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">検証確認</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC%E5%A4%B1%E6%95%97" href="javascript:void(0)">検証失敗</a></li>
               </nav>
   </aside></nav>
 

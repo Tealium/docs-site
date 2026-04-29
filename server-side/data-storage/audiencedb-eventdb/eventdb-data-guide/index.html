@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/server-side/data-storage/audiencedb-eventdb/eventdb-data-guide/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes the data available within the Tealium DataAccess EventDB." />
+<meta property="og:description" content="This guide describes the data available in EventDB, including built-in columns, cookie variables, tag execution data, and performance timing metrics." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>EventDB data guide | AudienceDB and EventDB | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "9",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1011,29 +1011,669 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes the data available within the Tealium DataAccess EventDB.
+      This guide describes the data available in EventDB, including built-in columns, cookie variables, tag execution data, and performance timing metrics.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Contact your account manager to activate EventDB for the appropriate profiles in your account. For information on configuring the attributes stored in EventDB, see <a href="/server-side/data-storage/audiencedb-eventdb/configure/">Configure AudienceDB and EventDB</a>.</p>
-<p>When EventDB is enabled, the view of the schema contains the titles you apply to the filtered streams in EventStream, as follows:</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Contact your account manager to activate EventDB for the appropriate profiles in your account. For information about configuring the attributes stored in EventDB, see <a href="/server-side/data-storage/audiencedb-eventdb/configure/">Configure AudienceDB and EventDB</a>.</p>
+<p>EventDB stores event-level data captured by the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a> or other Collect library. EventDB uses <a href="/server-side/data-storage/audiencestore-eventstore/about/">EventStore</a> as its data source and loads that data into Amazon Redshift for SQL-based querying.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>EventDB loads data from EventStore in the following steps:</p>
 <ol>
-<li>The <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a> (or other Collect library) sends event data to the Customer Data Hub where it&rsquo;s captured in Tealium&rsquo;s Amazon S3 bucket. At this stage, the data is flattened JSON.</li>
-<li>When the S3 bucket reaches a size of 100 MB (uncompressed) or after 1 hour has elapsed, whichever comes first, the data is compressed and prepared for Redshift.</li>
-<li>After the data is compressed, it is copied and imported into the Redshift database for your account.</li>
+<li>The Tealium Collect tag sends event data to EventStore, where it&rsquo;s stored in an Amazon S3 bucket as flattened JSON.</li>
+<li>When the S3 bucket reaches a size of 100 MB uncompressed or after one hour has elapsed, whichever comes first, the system compresses the data and prepares it for Redshift.</li>
+<li>After compression, the system copies and imports the data into the Redshift database for your account.</li>
 </ol>
-<p>The database organization is aligned to your account and streams:</p>
+<p>New data is stored in EventDB within 30 to 90 minutes, depending on the load for the Redshift cluster.</p>
+<h2 id="event-feeds-and-tables">Event feeds and tables</h2>
+<p>Each event feed is stored in the Redshift schema <code>ACCOUNT__PROFILE</code>, where <code>ACCOUNT__PROFILE</code> is your Tealium account and profile separated by a double underscore, for example <code>mycompany__main</code>. Within that schema, each <a href="/server-side/event-health/event-feeds/">event feed</a> has:</p>
 <ul>
-<li>A database for each account/profile (<code>ACCOUNT__PROFILE</code>)</li>
-<li>Two tables for each Filtered Stream
+<li>A base table named <code>events__{event-feed-id}</code></li>
+<li>A view with descriptive column names: <code>events_view__{feed-name}__{event-feed-id}</code></li>
+</ul>
+<p>The event feed ID is the identifier for the feed in EventStream. To find the feed ID, go to <strong>Live Events</strong>, click the feed, and inspect the URL.</p>
+<figure><a class="slb" href="/images/server-side/eventstore-id-in-url-highlighted.png"><img src="/images/server-side/eventstore-id-in-url-highlighted.png"
+         alt="Event feed ID in the EventStream URL"
+         title="Event feed ID in the EventStream URL"/>
+    </a>
+</figure>
+<p>For example, for a feed named &ldquo;Conversions&rdquo; with ID <code>7f78639b-34c2-4f8e-a575-d132c1008c80</code> in the schema <code>mycompany__main</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Table type</th>
+<th>Full table reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base table</td>
+<td><code>mycompany__main.events__7f78639b_34c2_4f8e_a575_d132c1008c80</code></td>
+</tr>
+<tr>
+<td>View</td>
+<td><code>mycompany__main.events_view__conversions__7f78639b_34c2_4f8e_a575_d132c1008c80</code></td>
+</tr>
+</tbody>
+</table>
+<p>The All Events feed uses fixed names instead of a feed ID:</p>
+<table>
+<thead>
+<tr>
+<th>Table type</th>
+<th>Full table reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base table</td>
+<td><code>mycompany__main.events__all_events</code></td>
+</tr>
+<tr>
+<td>View</td>
+<td><code>mycompany__main.events_view__all_events__all_events</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="column-naming-conventions">Column naming conventions</h2>
+<p>EventDB provides two ways to access the same data. The base table uses short, prefixed column names such as <code>pageurl_full_url</code> and <code>firstpartycookies_utag_main_ses_id</code>. The view uses descriptive column names such as <code>event - page url - full_url</code> and <code>event - first party cookies - utag_main_ses_id</code>.</p>
+<p>This guide documents the base table column names. The following prefixes indicate the category of data:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Data category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(none)</em></td>
+<td>Built-in columns</td>
+</tr>
+<tr>
+<td><code>dom_</code></td>
+<td>DOM variables captured from the page</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_</code></td>
+<td>First-party cookie values</td>
+</tr>
+<tr>
+<td><code>js_</code></td>
+<td>JavaScript variables from the page</td>
+</tr>
+<tr>
+<td><code>meta_</code></td>
+<td>Page metadata</td>
+</tr>
+<tr>
+<td><code>pageurl_</code></td>
+<td>Page URL components</td>
+</tr>
+<tr>
+<td><code>referrerurl_</code></td>
+<td>Referrer URL components</td>
+</tr>
+<tr>
+<td><code>tags_</code></td>
+<td>Tag execution data</td>
+</tr>
+<tr>
+<td><code>udo_</code></td>
+<td>Data layer variables</td>
+</tr>
+</tbody>
+</table>
+<p>Not all prefixes appear in every EventDB table. The following columns are always included:</p>
 <ul>
-<li>Raw data attribute column names (<code>ACCOUNT__PROFILE.events_STREAM</code>)</li>
-<li>Customer Data Hub attribute column names (<code>ACCOUNT__PROFILE.events_view_STREAM</code>)</li>
+<li>DOM attributes (<code>dom_</code>)</li>
+<li>Preloaded Tealium event attributes (<code>udo_tealium_*</code>, <code>udo_ut_*</code>)</li>
+<li>Tag execution data (<code>tags_</code>)</li>
+<li>First-party cookie values (<code>firstpartycookies_</code>)</li>
+<li>Page URL and referrer URL components (<code>pageurl_</code>, <code>referrerurl_</code>)</li>
 </ul>
-</li>
+<p>The following columns only appear if the corresponding event attributes are enabled for EventDB:</p>
+<ul>
+<li>JavaScript variables (<code>js_</code>)</li>
+<li>Page metadata (<code>meta_</code>)</li>
+<li>Custom data layer variables (<code>udo_</code>) — only present if the variables exist in your data layer</li>
 </ul>
+<p>For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/configure/">Configure AudienceDB and EventDB</a>.</p>
+<h2 id="built-in-columns">Built-in columns</h2>
+<p>The Tealium Collect tag sends several predefined variables alongside the event data, as described in the following sections.</p>
+<h3 id="default-columns">Default columns</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitorid</code></td>
+<td>The unique ID of the visitor.</td>
+</tr>
+<tr>
+<td><code>eventid</code></td>
+<td>An alphanumeric identifier unique to the event.</td>
+</tr>
+<tr>
+<td><code>eventtime</code></td>
+<td>The event timestamp stored as a UTC datetime in Amazon Redshift (for example, <code>2024-08-01 00:00:02</code>). This differs from the epoch millisecond representation in EventStore.</td>
+</tr>
+<tr>
+<td><code>useragent</code></td>
+<td>The user-agent header for the client.</td>
+</tr>
+<tr>
+<td><code>clientip</code></td>
+<td>The IP address of the client. Requires the <strong>Enable Visitor IP Attribute</strong> setting to be enabled in <a href="/server-side/administration/account-settings/#general-settings">server-side account settings</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dom-variables">DOM variables</h3>
+<p>DOM data from the page appears as columns prefixed with <code>dom_</code>. DOM attributes are always sent to EventDB and cannot be excluded. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/configure/">Configure AudienceDB and EventDB</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dom_domain</code></td>
+<td>Domain of the site.</td>
+</tr>
+<tr>
+<td><code>dom_pathname</code></td>
+<td>Pathname of the URL.</td>
+</tr>
+<tr>
+<td><code>dom_query_string</code></td>
+<td>Querystring portion of the URL, captured directly from the DOM (<code>document.location.search</code>).</td>
+</tr>
+<tr>
+<td><code>dom_url</code></td>
+<td>The full URL of the HTML document.</td>
+</tr>
+<tr>
+<td><code>dom_title</code></td>
+<td>Title of the HTML document.</td>
+</tr>
+<tr>
+<td><code>dom_viewport_width</code></td>
+<td>Device screen width.</td>
+</tr>
+<tr>
+<td><code>dom_viewport_height</code></td>
+<td>Device screen height.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="page-url-variables">Page URL variables</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageurl_scheme</code></td>
+<td>The URI protocol, such as <code>http</code> or <code>https</code>.</td>
+</tr>
+<tr>
+<td><code>pageurl_domain</code></td>
+<td>Domain of the site.</td>
+</tr>
+<tr>
+<td><code>pageurl_path</code></td>
+<td>Pathname of the URL.</td>
+</tr>
+<tr>
+<td><code>pageurl_querystring</code></td>
+<td>Querystring portion of the URL, parsed from the full page URL.</td>
+</tr>
+<tr>
+<td><code>pageurl_query_params_KEY</code></td>
+<td>For each querystring parameter, a column containing the parameter value, where <code>KEY</code> is the parameter name.</td>
+</tr>
+<tr>
+<td><code>pageurl_full_url</code></td>
+<td>The full URL of the page.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="referrer-url-variables">Referrer URL variables</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>referrerurl_scheme</code></td>
+<td>The URI protocol of the referring URL.</td>
+</tr>
+<tr>
+<td><code>referrerurl_domain</code></td>
+<td>Domain of the referring site.</td>
+</tr>
+<tr>
+<td><code>referrerurl_path</code></td>
+<td>Pathname of the referring URL.</td>
+</tr>
+<tr>
+<td><code>referrerurl_querystring</code></td>
+<td>Querystring portion of the referring URL following the <code>?</code> character.</td>
+</tr>
+<tr>
+<td><code>referrerurl_query_params_KEY</code></td>
+<td>For each referring URL querystring parameter, a column containing the parameter value, where <code>KEY</code> is the parameter name.</td>
+</tr>
+<tr>
+<td><code>referrerurl_full_url</code></td>
+<td>The full URL of the referring page.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="first-party-cookie-variables">First-party cookie variables</h3>
+<p>First-party cookie values use columns prefixed with <code>firstpartycookies_</code>. EventDB captures values from all browser cookies, not just <code>utag_main</code>. The column name reflects the cookie name and key. For example, <code>firstpartycookies_utag_main_ses_id</code> corresponds to the <code>ses_id</code> key in the <code>utag_main</code> cookie.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firstpartycookies_utag_main_ses_id</code></td>
+<td>A unique identifier for the session.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__st</code></td>
+<td>The time at which the current visitor session expires, in milliseconds.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_v_id</code></td>
+<td>The visitor ID.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__ss</code></td>
+<td>A flag indicating the start of a session. Values are <code>0</code> or <code>1</code>.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__pn</code></td>
+<td>The page number within the current session. Increments on each page load.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__sn</code></td>
+<td>The session count for this visitor.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__se</code></td>
+<td>The number of events during the current session.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_region</code></td>
+<td>The AudienceStream region where the visit session data is kept, collected from the HTTP response header.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_group</code></td>
+<td>A random number used with the <strong>Sample Size</strong> setting in the Tealium Collect tag to determine which events are sampled.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_visit</code></td>
+<td>(Legacy) The number of sessions for which the Collect tag has fired. Starts at <code>1</code> for the first visit.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_event</code></td>
+<td>(Legacy) The number of events for which the Collect tag has fired. Starts at <code>1</code> for the first page view of a visit.</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_COOKIENAME</code></td>
+<td>A cookie value, where <code>COOKIENAME</code> is the cookie name. For example, the <code>_ga</code> cookie appears as <code>firstpartycookies__ga</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="javascript-variables">JavaScript variables</h3>
+<p>JavaScript variables from the page appear as columns prefixed with <code>js_</code>. The exact column names depend on the variables available on your site. Check your EventDB schema or <a href="/server-side/event-health/live-events/">Live Events</a> to confirm naming.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>js_VARIABLE</code></td>
+<td>A JavaScript variable from the page.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, <code>js_screen_availheight</code> captures the available screen height, and <code>js__tealplc_libraryversion</code> captures the Tealium Private Label Cloud library version.</p>
+<h3 id="meta-variables">Meta variables</h3>
+<p>HTML metadata from the page appears as columns prefixed with <code>meta_</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta_VARIABLE</code></td>
+<td>An HTML meta tag value, where <code>VARIABLE</code> is the meta tag name.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, <code>meta_description</code> captures the page meta description, and <code>meta_og_title</code> captures the Open Graph title.</p>
+<h3 id="tags-executed">Tags executed</h3>
+<p>Each tag that fires on an event generates a column in the following format:</p>
+<pre tabindex="0"><code>tags_PROFILE_TAGID_executed
+</code></pre><p><code>PROFILE</code> is the Tealium iQ profile name and <code>TAGID</code> is the numeric ID of the tag. The value is <code>true</code> when the tag executed on the event, and <code>(null)</code> when it did not.</p>
+<p>For example, <code>tags_platform_3_executed</code> indicates that tag <code>3</code> in the <code>platform</code> profile executed on the event.</p>
+<h3 id="data-layer-udo-variables">Data layer (UDO) variables</h3>
+<p>Data layer variables sent with the event use columns prefixed with <code>udo_</code>. For example, a data layer variable named <code>page_name</code> maps to <code>udo_page_name</code>. The maximum character length for any single value is 255 characters.</p>
+<p>The Tealium Collect tag also sends several built-in variables in the <code>udo_</code> namespace:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>udo_tealium_event</code></td>
+<td>The name of the event, such as <code>view</code> or <code>link</code>.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_event_type</code></td>
+<td>The type of tracking call, such as <code>view</code> or <code>link</code>.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_name</code></td>
+<td>The Collect library, such as <code>utag.js</code>.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_version</code></td>
+<td>The <code>utag.js</code> version number.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_datasource</code></td>
+<td>The data source identifier for the Collect tag.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_random</code></td>
+<td>A random number generated for the event.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_id</code></td>
+<td>The unique identifier for the session.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_number</code></td>
+<td>The session count for this visitor.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_event_number</code></td>
+<td>The number of events in the current session.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_epoch</code></td>
+<td>The Unix epoch timestamp of the event.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_utc</code></td>
+<td>The UTC timestamp of the event.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_local</code></td>
+<td>The local timestamp of the event.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_account</code></td>
+<td>The Tealium account.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_profile</code></td>
+<td>The Tealium iQ profile name.</td>
+</tr>
+<tr>
+<td><code>udo_tealium_environment</code></td>
+<td>The publish environment, such as <code>prod</code>.</td>
+</tr>
+<tr>
+<td><code>udo_ut_account</code></td>
+<td>The Tealium iQ account. Earlier equivalent of <code>udo_tealium_account</code>.</td>
+</tr>
+<tr>
+<td><code>udo_ut_profile</code></td>
+<td>The Tealium iQ profile. Earlier equivalent of <code>udo_tealium_profile</code>.</td>
+</tr>
+<tr>
+<td><code>udo_ut_env</code></td>
+<td>The publish environment associated with the <code>utag.js</code> file. Earlier equivalent of <code>udo_tealium_environment</code>.</td>
+</tr>
+<tr>
+<td><code>udo_ut_event</code></td>
+<td>The event type, such as <code>view</code>. Earlier equivalent of <code>udo_tealium_event</code>.</td>
+</tr>
+<tr>
+<td><code>udo_ut_domain</code></td>
+<td>The top-level domain of the page.</td>
+</tr>
+<tr>
+<td><code>udo_ut_version</code></td>
+<td>The <code>utag.js</code> version and publish timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-timing-variables">Performance timing variables</h3>
+<p>Browser performance timing metrics appear as columns prefixed with <code>udo_timing_</code>. These metrics provide Real User Monitoring (RUM) data about page load performance.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>udo_timing_domain</code></td>
+<td>The domain where the timing data was collected.</td>
+</tr>
+<tr>
+<td><code>udo_timing_timestamp</code></td>
+<td>The date and time when the timing data was collected, in epoch time.</td>
+</tr>
+<tr>
+<td><code>udo_timing_dns</code></td>
+<td>DNS lookup time.</td>
+</tr>
+<tr>
+<td><code>udo_timing_connect</code></td>
+<td>Connection time.</td>
+</tr>
+<tr>
+<td><code>udo_timing_time_to_first_byte</code></td>
+<td>Time to first byte from the server.</td>
+</tr>
+<tr>
+<td><code>udo_timing_dom_loading_to_interactive</code></td>
+<td>Time from DOM loading to DOM interactive state.</td>
+</tr>
+<tr>
+<td><code>udo_timing_dom_interactive_to_complete</code></td>
+<td>Time from DOM interactive to DOM complete state.</td>
+</tr>
+<tr>
+<td><code>udo_timing_load</code></td>
+<td>Page load event duration.</td>
+</tr>
+<tr>
+<td><code>udo_timing_front_end</code></td>
+<td>Front-end rendering time.</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_response</code></td>
+<td>Time from fetch start to response start.</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_complete</code></td>
+<td>Time from fetch start to DOM complete.</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_interactive</code></td>
+<td>Time from fetch start to DOM interactive.</td>
+</tr>
+<tr>
+<td><code>udo_timing_pathname</code></td>
+<td>The pathname where the timing data was collected.</td>
+</tr>
+<tr>
+<td><code>udo_timing_query_string</code></td>
+<td>The query string in the URL where the timing data was collected.</td>
+</tr>
+<tr>
+<td><code>udo_timing_response</code></td>
+<td>Server response time.</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If the value of a timing column equals zero, no timing information was captured. Ignore zero values when reporting or averaging.</p>
+<h2 id="data-retention">Data retention</h2>
+<p>EventDB data remains available in Amazon Redshift for the length of time specified in your contract. When an event record reaches its expiration date, it&rsquo;s automatically purged. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/about/">About AudienceDB and EventDB</a>.</p>
+<h2 id="calculate-visitor-timezone">Calculate visitor timezone</h2>
+<p>EventDB doesn&rsquo;t store the timezone for a visitor directly. To calculate the timezone, compare <code>eventtime</code> with <code>firstpartycookies_utag_main_ses_id</code> on the row where <code>firstpartycookies_utag_main__ss</code> equals <code>1</code>, which marks the start of the session. Because <code>eventtime</code> is a UTC datetime and <code>firstpartycookies_utag_main_ses_id</code> is an epoch millisecond value, convert <code>firstpartycookies_utag_main_ses_id</code> to a UTC datetime before comparing. The difference between the two values represents the visitor&rsquo;s UTC offset.</p>
+<h2 id="sample-row">Sample row</h2>
+<p>The following shows a representative subset of columns from a single EventDB row:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Sample value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitorid</code></td>
+<td><code>e9a2771b641f48009921b3a783db4c84</code></td>
+</tr>
+<tr>
+<td><code>eventid</code></td>
+<td><code>9ec23b59-2540-4a38-8ad0-2a1ec5d6016a</code></td>
+</tr>
+<tr>
+<td><code>eventtime</code></td>
+<td><code>2024-08-01 00:00:02</code></td>
+</tr>
+<tr>
+<td><code>dom_title</code></td>
+<td><code>countryroadgroup | main</code></td>
+</tr>
+<tr>
+<td><code>pageurl_scheme</code></td>
+<td><code>https</code></td>
+</tr>
+<tr>
+<td><code>pageurl_domain</code></td>
+<td><code>my.tealiumiq.com</code></td>
+</tr>
+<tr>
+<td><code>pageurl_path</code></td>
+<td><code>/tms</code></td>
+</tr>
+<tr>
+<td><code>pageurl_full_url</code></td>
+<td><code>https://my.tealiumiq.com/tms</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_scheme</code></td>
+<td><code>https</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_domain</code></td>
+<td><code>my.tealiumiq.com</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_path</code></td>
+<td><code>/tms</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_ses_id</code></td>
+<td><code>1722465600428</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__pn</code></td>
+<td><code>7</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__sn</code></td>
+<td><code>199</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__ss</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>tags_platform_3_executed</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_event</code></td>
+<td><code>profile_publish_status</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_name</code></td>
+<td><code>utag.js</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_version</code></td>
+<td><code>4.48.0</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_datasource</code></td>
+<td><code>ujitge</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_random</code></td>
+<td><code>8550613331015047</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_id</code></td>
+<td><code>1722465600428</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_number</code></td>
+<td><code>199</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_event_number</code></td>
+<td><code>398</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_environment</code></td>
+<td><code>prod</code></td>
+</tr>
+<tr>
+<td><code>udo_user_type</code></td>
+<td><code>client</code></td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The sample includes account-specific data layer variables such as <code>udo_user_type</code> alongside built-in columns. The data layer variables in your EventDB tables depend on your implementation.</p>
 
 </div>
 
@@ -1094,7 +1734,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 20, 2024 
+          <p>This page was last updated:  April 29, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1106,7 +1746,27 @@ No</button>
 
 
 
-  </nav>
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-feeds-and-tables" href="javascript:void(0)">Event feeds and tables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-naming-conventions" href="javascript:void(0)">Column naming conventions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#built-in-columns" href="javascript:void(0)">Built-in columns</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#default-columns" href="javascript:void(0)">Default columns</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom-variables" href="javascript:void(0)">DOM variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#page-url-variables" href="javascript:void(0)">Page URL variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#referrer-url-variables" href="javascript:void(0)">Referrer URL variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#first-party-cookie-variables" href="javascript:void(0)">First-party cookie variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-variables" href="javascript:void(0)">JavaScript variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#meta-variables" href="javascript:void(0)">Meta variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tags-executed" href="javascript:void(0)">Tags executed</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-udo-variables" href="javascript:void(0)">Data layer (UDO) variables</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#performance-timing-variables" href="javascript:void(0)">Performance timing variables</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-retention" href="javascript:void(0)">Data retention</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#calculate-visitor-timezone" href="javascript:void(0)">Calculate visitor timezone</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sample-row" href="javascript:void(0)">Sample row</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

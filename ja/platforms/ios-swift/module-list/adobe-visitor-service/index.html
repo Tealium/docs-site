@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/ios-swift/module-list/adobe-visitor-service/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="各ユーザーの中央クロスデバイス訪問IDを提供します。" />
+<meta property="og:description" content="各ユーザーに対してクロスデバイスの訪問IDを提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>AdobeVisitorServiceモジュール | モジュール | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -384,48 +384,48 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      各ユーザーの中央クロスデバイス訪問IDを提供します。
+      各ユーザーに対してクロスデバイスの訪問IDを提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Adobe Visitor Serviceモジュールは、AdobeのREST APIと直接インターフェースを提供し、訪問のExperience Cloud ID (ECID)を取得し維持します。</p>
-<p><a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/">AdobeVisitorService</a>モジュールについて詳しく知る。</p>
+  <p>Adobe Visitor Serviceモジュールは、訪問のExperience Cloud ID（ECID）を取得および維持するためにAdobeのREST APIと直接連携します。</p>
+<p><a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/">AdobeVisitorService</a>モジュールについてもっと学びましょう。</p>
 <h2 id="要件">要件</h2>
 <ul>
-<li><a href="/ja/platforms/ios-swift/">Tealium for Swift</a> (2.0.0+)</li>
+<li><a href="/ja/platforms/ios-swift/">Tealium for Swift</a> (2.0.0以上)</li>
 <li>有効なAdobeアカウントとAdobe組織ID</li>
-<li><a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api">TealiumAdobeVisitorAPI GitHub Repo</a></li>
+<li><a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api">TealiumAdobeVisitorAPI GitHubリポジトリ</a></li>
 </ul>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
 <p>Tealiumライブラリとベストプラクティスの実装に慣れるために、iOS用の<a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api/tree/main/VisitorAPIExample">AdobeVisitorServiceモジュールサンプルアプリ</a>を探索してください。</p>
 <h2 id="インストール">インストール</h2>
-<p>AdobeVisitorServiceモジュールは、Tealium SDKを初期化する際に構成され、リモート構成機能はありません。</p>
-<p>このモジュールは<code>DispatchValidator</code>として機能し、Adobe組織IDなしでの呼び出しを防ぎます。Adobe APIからECIDを取得しようとしますが、5回の失敗後、データ損失を避けるためにECIDなしでの呼び出しが許可されます。データの送信は、有効なECIDを持つことよりも優先されます。</p>
-<p>ECIDが取得できない可能性のある原因は次のとおりです：</p>
+<p>AdobeVisitorServiceモジュールはTealium SDKの初期化時に構成され、リモート構成機能はありません。</p>
+<p>このモジュールは<code>DispatchValidator</code>として機能し、Adobe組織IDなしでは送信が阻止されます。Adobe APIからECIDを取得しようと試みますが、5回の失敗後は、データ損失を避けるためにECIDなしでの続行が許可されます。有効なECIDを持つことよりもデータ送信が優先されます。</p>
+<p>ECIDが取得できなかった可能性のある原因は以下の通りです：</p>
 <ul>
-<li>無効なレスポンス、つまりレスポンスは受信されましたが、有効なECIDを含んでいませんでした。</li>
-<li>レスポンスがありませんでした。</li>
-<li>Adobe組織IDが無効でした。</li>
+<li>無効な応答、例えば応答は受け取ったが有効なECIDを含んでいなかった。</li>
+<li>応答がなかった。</li>
+<li>Adobe組織IDが無効だった。</li>
 </ul>
 <h3 id="carthage">Carthage</h3>
-<p>CarthageでAdobeServiceモジュールをインストールするには、以下をcartfileに追加します：</p>
+<p>CarthageでAdobeServiceモジュールをインストールするには、次の内容をcartfileに追加してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-swift-adobe-visitor-api&#34;</span>
-</span></span></code></pre></div><p>iOSのCarthageインストールについて<a href="/ja/platforms/ios-swift/install/#carthage">詳しく知る</a>。</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/ios-swift/install/#carthage">iOSのCarthageインストール</a>についてもっと学びましょう。</p>
 <h3 id="cocoapods">CocoaPods</h3>
-<p>CocoaPodsでAdobeVisitorモジュールをインストールするには、以下のpodをpodfileに追加します：</p>
+<p>CocoaPodsでAdobeVisitorモジュールをインストールするには、次のpodをpodfileに追加してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;TealiumAdobeVisitorAPI&#39;</span>
-</span></span></code></pre></div><p><a href="/ja/platforms/ios-swift/install/#cocoapods">iOSのCocoaPodsインストール</a>について詳しく知る。</p>
-<h3 id="swift-package-manager-推奨">Swift Package Manager (推奨)</h3>
-<p>Swift Package Managerは、Tealium Swiftライブラリをインストールする推奨の方法です：</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/ios-swift/install/#cocoapods">iOSのCocoaPodsインストール</a>についてもっと学びましょう。</p>
+<h3 id="swift-package-manager推奨">Swift Package Manager（推奨）</h3>
+<p>Swift Package ManagerはTealium Swiftライブラリをインストールする推奨方法です：</p>
 <ol>
-<li>Xcodeプロジェクトで、<strong>File &gt; Add Package Dependencies</strong>を選択します。</li>
+<li>Xcodeプロジェクトで<strong>File &gt; Add Package Dependencies</strong>を選択します。</li>
 <li>リポジトリURLを入力します：<code>https://github.com/Tealium/tealium-swift-adobe-visitor-api</code>。</li>
-<li>バージョンルールを構成します。デフォルトの<code>&quot;Up to next major&quot;</code>が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
-<li>インストールするモジュールのリストから<code>TealiumAdobeVisitorAPI</code>モジュールを選択します。Xcodeプロジェクトの<strong>Frameworks and Libraries</strong>の各アプリターゲットにモジュールを追加します。</li>
+<li>バージョンルールを構成します。デフォルトの「Up to next major」が推奨されます。現在のTealium Swiftライブラリバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットしてください。</li>
+<li>インストールするモジュールのリストから<code>TealiumAdobeVisitorAPI</code>モジュールを選択します。Xcodeプロジェクトの<strong>Frameworks and Libraries</strong>の下にあるアプリターゲットごとにモジュールを追加します。</li>
 </ol>
-<p><a href="https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended">iOSのSwift Package Managerインストール</a>について詳しく知る。</p>
+<p><a href="https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended">iOSのSwift Package Managerインストール</a>についてもっと学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumAdobeVisitorAPI</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
@@ -438,8 +438,9 @@
 </span></span><span style="display:flex;"><span>    Collectors.AdobeVisitor]
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.Collect]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium = Tealium(config: config)
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメンテーションを確認し、必要なコレクターを正しく指定する方法を理解してください。</p>
-<p><a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">iOSのSwift Package Managerインストール</a>について詳しく知る。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメントを確認して、必要なコレクターを正しく指定する方法を理解してください。</p>
+<p><a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">iOSのSwift Package Managerインストール</a>についてもっと学びましょう。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>既知の訪問IDをリンクするか認証状態を構成するには、<a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state">既知の訪問IDと認証状態を構成する</a>を参照してください。</p>
 
 </div>
 
@@ -500,7 +501,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -519,7 +520,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#carthage" href="javascript:void(0)">Carthage</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cocoapods" href="javascript:void(0)">CocoaPods</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift-package-manager-%E6%8E%A8%E5%A5%A8" href="javascript:void(0)">Swift Package Manager (推奨)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#swift-package-manager%E6%8E%A8%E5%A5%A8" href="javascript:void(0)">Swift Package Manager（推奨）</a></li>
               </nav>
   </aside></nav>
 

@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/javascript/debugging/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="トラッキングコールのデバッグの基本を学びましょう。" />
+<meta property="og:description" content="トラッキングコールのデバッグの基本を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>デバッグ | JavaScript用Tealium (utag.js) | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -336,65 +336,65 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      トラッキングコールのデバッグの基本を学びましょう。
+      トラッキングコールのデバッグの基本を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>関数<code>utag.view()</code>と<code>utag.link()</code>は、それぞれページビューとイベントを追跡するために使用されます。この記事では、これらの関数がどのように、いつ呼び出され、どのようなデータが処理されているかをデバッグする方法を示します。</p>
+  <p>関数 <code>utag.view()</code> と <code>utag.link()</code> は、それぞれページビューとイベントをトラッキングするために使用されます。この記事では、これらの関数をデバッグして、いつ、どのように呼び出され、どのようなデータが処理されているかを確認する方法を示します。</p>
 <h2 id="デバッグモード">デバッグモード</h2>
-<p>デバッグモードを有効にするには、ブラウザの開発者コンソールを開き、以下のコマンドを実行します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">cookie</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utagdb=true&#34;</span>;
+<p>デバッグモードを有効にするには、ブラウザの開発者コンソールを開き、次のコマンドを実行します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">cookie</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utagdb=true; path=/&#34;</span>;
 </span></span></code></pre></div><p>このクッキーはデバッグモードをオンにし、コンソールに有用な出力を生成します。</p>
 <figure><a class="slb" href="/images/platforms/javascript/console-output.png"><img src="/images/platforms/javascript/console-output.png"
          alt="コンソール出力"
          title="コンソール出力" width="1000" height="500"/>
     </a>
 </figure>
-<p>デバッグモードが有効になると、トラッキングコールが発生したときにコンソールにログステートメントが表示されます。これらのステートメントをコンソール出力で探してみてください：</p>
+<p>デバッグモードが有効になると、トラッキングコールが発生するときにコンソールにログステートメントが表示されます。これらのステートメントをコンソール出力で探します：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">trigger: view
 trigger: link
-</code></pre><p>以下の例は、イベントが追跡された後のコンソールでの表示方法を示しています：</p>
+</code></pre><p>次の例は、イベントがトラッキングされた後のコンソールの様子を示しています：</p>
 <figure><a class="slb" href="/images/platforms/javascript/debugging-console-utag-link.png"><img src="/images/platforms/javascript/debugging-console-utag-link.png"
          alt="デバッグコンソール utag.link"
          title="デバッグコンソール utag.link" width="492" height="322"/>
     </a>
 </figure>
-<p><code>trigger:view</code>または<code>trigger:link</code>の後の行をクリックして、イベントデータオブジェクトを展開または折りたたみます。</p>
+<p><code>trigger:view</code> または <code>trigger:link</code> の後の行をクリックして、イベントデータオブジェクトの展開と折りたたみを行います。</p>
 <h2 id="ブレークポイント">ブレークポイント</h2>
-<p>より深いデバッグのために、<code>utag.js</code>にブレークポイントを構成して、トラッキングコールが発生したときにコードを一時停止すると便利です。ブレークポイントを使用して、トラッキングデータオブジェクトを調査したり、コールがどこから発生したかを確認するためのスタックトレースを調査します。</p>
-<p>Chrome DevToolsを使用してブレークポイントを構成する方法は以下の通りです：</p>
+<p>より深いデバッグのためには、<code>utag.js</code> にブレークポイントを構成して、トラッキングコールが発生したときにコードを一時停止すると便利です。ブレークポイントを使用して、トラッキングデータオブジェクトを調査したり、コールが発生した場所を確認するためにスタックトレースを調査します。</p>
+<p>Chrome DevToolsを使用してブレークポイントを構成するには：</p>
 <ol>
-<li>DevToolsを開き、<strong>Sources</strong>タブに移動し、ファイル<code>utag.js</code>を開きます。</li>
-<li><code>return this.track(</code>という行を見つけて、その行番号をクリックしてブレークポイントを構成します：<br>
+<li>DevToolsを開き、<strong>Sources</strong> タブに移動して、ファイル <code>utag.js</code> を開きます。</li>
+<li><code>return this.track(</code> という行を見つけて、行番号をクリックしてブレークポイントを構成します：<br>
 <figure><a class="slb" href="/images/platforms/javascript/debugging-utag-code.png"><img src="/images/platforms/javascript/debugging-utag-code.png"
-               alt="utagブレークポイント"
-               title="utagブレークポイント" width="385" height="63"/>
+               alt="utag ブレークポイント"
+               title="utag ブレークポイント" width="385" height="63"/>
           </a>
       </figure></li>
 <li>メインウィンドウに戻り、トラッキングコールをトリガーするアクションを実行します。トラッキングコールが実行されると、コードはブレークポイントで一時停止します。</li>
-<li>右パネルで<strong>Watch</strong>ペインを展開し、**+**記号をクリックしてウォッチ式を追加します。<code>a</code>と入力し、<strong>Enter</strong>をクリックしてこの変数のウォッチ式を追加します。</li>
-<li>パラメータ<code>a</code>に含まれるオブジェクトを展開して、トラッキングコールに渡されたデータを表示します。このデータは、拡張機能、ロードルール、データマッピングで利用可能です。</li>
-<li>右パネルで<strong>Call Stack</strong>ペインを展開して、トラッキングコールがどこから発生したかを確認します。</li>
+<li>右パネルで、<strong>Watch</strong> パネルを展開し、<strong>+</strong> サインをクリックしてウォッチ式を追加します。<code>a</code> と入力して <strong>Enter</strong> をクリックし、この変数のウォッチ式を追加します。</li>
+<li>パラメータ <code>a</code> に含まれるオブジェクトを展開して、トラッキングコールに渡されたデータを表示します。このデータは拡張機能、ロードルール、データマッピングで利用可能です。</li>
+<li>右パネルで、<strong>Call Stack</strong> パネルを展開して、トラッキングコールがどこから発生したかを確認します。</li>
 </ol>
-<p>以下は、<code>utag.link()</code>コールの位置を探す例です：</p>
+<p>次に、<code>utag.link()</code> コールの場所を探す例を示します：</p>
 <figure><a class="slb" href="/images/platforms/javascript/utag-link-call-stack.png"><img src="/images/platforms/javascript/utag-link-call-stack.png"
-         alt="utag linkコールスタック"
-         title="utag linkコールスタック" width="1120" height="622"/>
+         alt="utag link コールスタック"
+         title="utag link コールスタック" width="1120" height="622"/>
     </a>
 </figure>
-<p>この例は、<code>utag.link()</code>コールをデバッグするために<code>utag.js</code>に構成されたブレークポイントを示しています。項目(2)をクリックすると、ソースコード内で行われる<code>utag.link()</code>コールが表示されます。</p>
-<p>これで、以下の3つのことをデバッグすることができました：</p>
+<p>この例は、<code>utag.link()</code> コールをデバッグするために設置された <code>utag.js</code> のブレークポイントを示しています。項目 (2) をクリックすると、ソースコード内で行われた <code>utag.link()</code> コールが表示されます（左側）。</p>
+<p>これで、次の三つのことをデバッグすることができました：</p>
 <ul>
-<li>ブレークポイントがヒットしたか？もしヒットしたなら、その関数は正しくトリガーされるように構成されています。</li>
-<li>ブレークポイントがヒットしたので、<code>utag.view()</code>または<code>utag.link()</code>が呼び出されたときにどのようなデータが送信されたかを確認することができました。</li>
-<li><code>utag.view()</code>または<code>utag.link()</code>コールの実際の構成を確認することができました。</li>
+<li>ブレークポイントがヒットしたかどうか。もしヒットした場合、関数が正しくトリガーされるように構成されています。</li>
+<li>ブレークポイントがヒットしたので、<code>utag.view()</code> または <code>utag.link()</code> が呼び出されたときにどのようなデータが送信されたかを確認することができました。</li>
+<li><code>utag.view()</code> または <code>utag.link()</code> の実際の構成を確認することができました。</li>
 </ul>
-<p>これは、特定のイベントがトリガーされたときに正しいデータが渡されない場合に役立ちます。関数で送信されるデータが間違っている可能性があります。</p>
-<p>詳細については、<a href="https://developer.chrome.com/docs/devtools/javascript/reference/">Chrome DevTools: JavaScript debugging</a>を参照してください。</p>
+<p>特定のイベントがトリガーされたときに正しいデータが渡されていない場合、この情報は役立ちます。関数に渡されるデータが間違っている可能性があります。</p>
+<p>詳細については、<a href="https://developer.chrome.com/docs/devtools/javascript/reference/">Chrome DevTools: JavaScript debugging</a> を参照してください。</p>
 <h2 id="コンソール出力">コンソール出力</h2>
-<p>以下の表は、コンソールに表示される重要なデバッグステートメントの一部を説明しています。あなたのサイトのデバッグ出力は、<code>utag.js</code>のバージョンや特定の構成により、若干異なる場合があります。</p>
+<p>次の表は、コンソールに表示される重要なデバッグステートメントのいくつかを説明しています。あなたのサイトのデバッグ出力は、<code>utag.js</code>のバージョンや特定の構成によって若干異なる場合があります。</p>
 <table>
 <thead>
 <tr>
@@ -405,39 +405,39 @@ trigger: link
 <tbody>
 <tr>
 <td><code>Pre-INIT</code></td>
-<td><strong>Pre Loader</strong>にスコープされた拡張機能が実行されます。</td>
+<td><strong>Pre Loader</strong> にスコープされた拡張機能が実行されます。</td>
 </tr>
 <tr>
 <td><code>PINIT</code></td>
-<td><strong>Before Load Rules</strong>にスコープされた拡張機能が実行され、ロードルールが評価され、タグがロードされます。</td>
+<td><strong>Before Load Rules</strong> にスコープされた拡張機能が実行され、ロードルールが評価され、タグがロードされます。</td>
 </tr>
 <tr>
 <td><code>utag.loader.RD</code></td>
-<td>ページからデータレイヤー変数が読み取られます（[data layer variable types](/ja/iq-tag-management/data-layer/data-layer-variables/を参照）。</td>
+<td>ページからデータレイヤー変数が読み取られます（<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">data layer variable types</a>を参照）。</td>
 </tr>
 <tr>
 <td><code>utag.loader.INIT</code></td>
-<td><strong>After Load Rules</strong>にスコープされた拡張機能が実行され、タグがロードされます。</td>
+<td><strong>After Load Rules</strong> にスコープされた拡張機能が実行され、タグがロードされます。</td>
 </tr>
 <tr>
 <td><code>All Tags EXTENSIONS</code></td>
-<td><strong>After Load Rules</strong>にスコープされた拡張機能が実行されます。</td>
+<td><strong>After Load Rules</strong> にスコープされた拡張機能が実行されます。</td>
 </tr>
 <tr>
 <td><code>utag.loader.INIT: waiting &lt;UID&gt;</code></td>
-<td>タグ（UID）がDOM Readyでロードされるように構成され、キューに追加されます。</td>
+<td>タグ (UID) が DOM Ready でロードされるように構成され、キューに追加されます。</td>
 </tr>
 <tr>
 <td><code>READY:utag.cfg.readywait</code></td>
-<td>DOM Readyが発生し、<code>PINIT</code>が実行されます。</td>
+<td>DOM Ready が発生し、<code>PINIT</code> が実行されます。</td>
 </tr>
 <tr>
 <td><code>READY:utag.cfg.wq</code></td>
-<td>DOM Readyが発生し、キューに入れられたタグが処理されます。</td>
+<td>DOM Ready が発生し、キューに入れられたタグが処理されます。</td>
 </tr>
 <tr>
 <td><code>WQ: #</code></td>
-<td>DOM Readyを待つキューに入れられたタグの数。</td>
+<td>DOM Ready を待っているタグのキュー内の数です。</td>
 </tr>
 <tr>
 <td><code>Attach to head</code></td>
@@ -445,23 +445,23 @@ trigger: link
 </tr>
 <tr>
 <td><code>utag.loader.LOAD &lt;UID&gt;</code></td>
-<td>タグ（UID）がページにロードされました。</td>
+<td>タグ (UID) がページ上でロードされました。</td>
 </tr>
 <tr>
 <td><code>Sending: &lt;UID&gt;</code></td>
-<td>タグ（UID）がベンダーへのコールをトリガーしています。</td>
+<td>タグ (UID) がベンダーへのコールをトリガーしています。</td>
 </tr>
 <tr>
 <td><code>trigger:view</code></td>
-<td><code>utag.view()</code>が呼び出されました。</td>
+<td><code>utag.view()</code> が呼び出されました。</td>
 </tr>
 <tr>
 <td><code>trigger:link</code></td>
-<td><code>utag.link()</code>が呼び出されました。</td>
+<td><code>utag.link()</code> が呼び出されました。</td>
 </tr>
 <tr>
 <td><code>trigger:called before tags loaded</code></td>
-<td>タグがページにロードされる前にトラッキングコールが発生しました。トラッキングコールはキューに入れられ、タグのロード後に実行されます。</td>
+<td>タグがページ上でロードされる前にトラッキングコールが発生しました。トラッキングコールはキューに入れられ、タグがロードされた後に実行されます。</td>
 </tr>
 <tr>
 <td><code>utag.handler.INIT</code></td>
@@ -529,7 +529,7 @@ trigger: link
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月8日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

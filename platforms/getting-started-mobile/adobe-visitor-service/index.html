@@ -352,10 +352,10 @@
 <p>Migration from the Adobe SDK to the Tealium module is seamless. If your app currently relies on the Adobe SDK to manage the ECID, we recommend having a transition period during which the Adobe SDK is present in the app alongside the Tealium SDK. If the visitor has an existing Adobe ECID, pass it to the Tealium module through the <code>config.adobeVisitorExistingEcid</code> property. If the property is set during initialization, then the existing ECID is used. If the property is not set, the Tealium module retrieves a new one from the Adobe API.</p>
 <h3 id="tracking-different-visitors-on-the-same-device">Tracking different visitors on the same device</h3>
 <p>If you detect different visitor accounts in your app, reset the ECID to ensure each visitor is tracked separately by calling <code>tealium.adobeVisitor?.resetVisitor()</code>. This resets the current ECID and a new one is automatically requested from the Adobe API.</p>
-<h3 id="set-your-own-visitor-id-and-authentication-state">Set your own visitor ID and authentication state</h3>
-<p>There are several methods for <a href="#passing-your-own-visitor-id">passing your own visitor ID</a> to the Visitor API so that the ID service matches the anonymous ECID to a known ID.</p>
-<h4 id="set-a-known-visitor-id">Set a known visitor ID</h4>
-<p>If you know the visitor&rsquo;s ID and authentication state when you initialize, use the configuration property <code>adobeVisitorDataProviderId</code> which sets the visitor&rsquo;s known ID when the module starts:</p>
+<h3 id="set-a-known-visitor-id-and-authentication-state">Set a known visitor ID and authentication state</h3>
+<p>Use the <code>adobeVisitorCustomVisitorId</code>, <code>adobeVisitorDataProviderId</code>, and <code>adobeVisitorAuthState</code> config properties only if all three values are known at the start of the app session. Set <code>adobeVisitorAuthState</code> only when you also set <code>adobeVisitorCustomVisitorId</code>.</p>
+<p>If the visitor&rsquo;s ID is not known at initialization (for example, before the user logs in), omit these properties and call <code>linkEcidToKnownIdentifier</code> once the ID becomes available.</p>
+<p>If all values are known at initialization, set them on the <code>TealiumConfig</code> object when the module starts:</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -373,14 +373,14 @@
 </div>
 <div class="tab-pane" data-lang="React Native" title="React Native">
   <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorDataProviderId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// Data provider ID for this type of visitor ID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorAuthState</span> <span style="color:#f92672">=</span> .<span style="color:#a6e22e">authenticated</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorAuthState</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">authenticated</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorCustomVisitorId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Flutter" title="Flutter">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorDataProviderId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// Data provider ID for this type of visitor ID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorAuthState</span> <span style="color:#f92672">=</span> .<span style="color:#a6e22e">authenticated</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorCustomVisitorId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>config.adobeVisitorDataProviderId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// Data provider ID for this type of visitor ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>config.adobeVisitorAuthState <span style="color:#f92672">=</span> AuthState.authenticated
+</span></span><span style="display:flex;"><span>config.adobeVisitorCustomVisitorId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
 </span></span></code></pre></div>
 </div>
 </div>
@@ -406,7 +406,7 @@
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Flutter" title="Flutter">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">linkEcidToKnownIdentifier</span>(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">unknown</span>)
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>TealiumAdobeVisitor.linkEcidToKnownIdentifier(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, AuthState.unknown)
 </span></span></code></pre></div>
 </div>
 </div>
@@ -665,7 +665,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  April 28, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -685,7 +685,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq-tag-management" href="javascript:void(0)">Tealium iQ Tag Management</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migrating-from-adobe-sdk-to-tealium-sdk" href="javascript:void(0)">Migrating from Adobe SDK to Tealium SDK</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tracking-different-visitors-on-the-same-device" href="javascript:void(0)">Tracking different visitors on the same device</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-your-own-visitor-id-and-authentication-state" href="javascript:void(0)">Set your own visitor ID and authentication state</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-a-known-visitor-id-and-authentication-state" href="javascript:void(0)">Set a known visitor ID and authentication state</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#troubleshooting" href="javascript:void(0)">Troubleshooting</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer" href="javascript:void(0)">Data Layer</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#url-decoration" href="javascript:void(0)">URL Decoration</a></li>

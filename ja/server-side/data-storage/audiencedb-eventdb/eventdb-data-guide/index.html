@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/data-storage/audiencedb-eventdb/eventdb-data-guide/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、Tealium DataAccess EventDB内で利用可能なデータについて説明します。" />
+<meta property="og:description" content="このガイドでは、EventDBで利用可能なデータについて説明します。これには、組み込みの列、クッキー変数、タグ実行データ、およびパフォーマンスタイミングメトリクスが含まれます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>EventDBデータガイド | AudienceDBとEventDB | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -913,7 +913,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/trace/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-traces">トレースの管理</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/trace/view/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-trace">トレースを表示</a></li></ul>
+        <a href="/ja/server-side/trace/view/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-trace">トレースを表示する</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".insights">Tealium Insights</a>
@@ -1049,29 +1049,669 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、Tealium DataAccess EventDB内で利用可能なデータについて説明します。
+      このガイドでは、EventDBで利用可能なデータについて説明します。これには、組み込みの列、クッキー変数、タグ実行データ、およびパフォーマンスタイミングメトリクスが含まれます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>EventDBをアカウント内の適切なプロファイルで有効にするには、アカウントマネージャーに連絡してください。EventDBに保存される属性の構成方法については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/configure/">AudienceDBとEventDBの構成</a>を参照してください。</p>
-<p>EventDBが有効になると、スキーマのビューには、EventStreamでフィルタリングされたストリームに適用したタイトルが含まれます：</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>EventDBをアカウントの適切なプロファイルで有効にするには、アカウントマネージャーに連絡してください。EventDBに格納される属性を構成する方法については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/configure/">AudienceDBおよびEventDBの構成</a>を参照してください。</p>
+<p>EventDBは、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>または他のCollectライブラリによってキャプチャされたイベントレベルのデータを保存します。EventDBは<a href="/ja/server-side/data-storage/audiencestore-eventstore/about/">EventStore</a>をデータソースとして使用し、そのデータをAmazon RedshiftにロードしてSQLベースのクエリを実行します。</p>
+<h2 id="動作方法">動作方法</h2>
+<p>EventDBは、以下のステップでEventStoreからデータをロードします：</p>
 <ol>
-<li><a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>（または他のCollectライブラリ）がイベントデータをCustomer Data Hubに送信し、TealiumのAmazon S3バケットでキャプチャされます。この段階では、データはフラット化されたJSONです。</li>
-<li>S3バケットが100 MB（非圧縮）に達するか、1時間が経過すると、いずれか早い方が先に来た場合、データは圧縮され、Redshiftの準備が整います。</li>
-<li>データが圧縮された後、それはあなたのアカウントのためのRedshiftデータベースにコピーされ、インポートされます。</li>
+<li>Tealium CollectタグがイベントデータをEventStoreに送信し、そこでデータはフラット化されたJSONとしてAmazon S3バケットに保存されます。</li>
+<li>S3バケットが100MBの非圧縮サイズに達するか、または1時間が経過すると、どちらか早い方で、システムはデータを圧縮してRedshiftの準備を行います。</li>
+<li>圧縮後、システムはデータをコピーしてあなたのアカウントのRedshiftデータベースにインポートします。</li>
 </ol>
-<p>データベースの組織は、あなたのアカウントとストリームに合わせて整列されています：</p>
+<p>新しいデータは、Redshiftクラスターの負荷に応じて、30分から90分以内にEventDBに保存されます。</p>
+<h2 id="イベントフィードとテーブル">イベントフィードとテーブル</h2>
+<p>各イベントフィードはRedshiftスキーマ <code>ACCOUNT__PROFILE</code> に保存されます。ここで <code>ACCOUNT__PROFILE</code> は、例えば <code>mycompany__main</code> のように、Tealiumアカウントとプロファイルがダブルアンダースコアで区切られたものです。そのスキーマ内で、各<a href="/ja/server-side/event-health/event-feeds/">イベントフィード</a>は：</p>
 <ul>
-<li>各アカウント/プロファイルのデータベース（<code>ACCOUNT__PROFILE</code>）</li>
-<li>フィルタリングされたストリームごとに2つのテーブル
+<li>基本テーブル名：<code>events__{event-feed-id}</code></li>
+<li>説明的な列名を持つビュー：<code>events_view__{feed-name}__{event-feed-id}</code></li>
+</ul>
+<p>イベントフィードIDはEventStreamでのフィードの識別子です。フィードIDを見つけるには、<strong>Live Events</strong>に行き、フィードをクリックし、URLを調べます。</p>
+<figure><a class="slb" href="/images/server-side/eventstore-id-in-url-highlighted.png"><img src="/images/server-side/eventstore-id-in-url-highlighted.png"
+         alt="EventStream URL内のイベントフィードID"
+         title="EventStream URL内のイベントフィードID"/>
+    </a>
+</figure>
+<p>たとえば、「Conversions」という名前のフィードでIDが <code>7f78639b-34c2-4f8e-a575-d132c1008c80</code> の場合、スキーマ <code>mycompany__main</code> では：</p>
+<table>
+<thead>
+<tr>
+<th>テーブルタイプ</th>
+<th>完全なテーブル参照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本テーブル</td>
+<td><code>mycompany__main.events__7f78639b_34c2_4f8e_a575_d132c1008c80</code></td>
+</tr>
+<tr>
+<td>ビュー</td>
+<td><code>mycompany__main.events_view__conversions__7f78639b_34c2_4f8e_a575_d132c1008c80</code></td>
+</tr>
+</tbody>
+</table>
+<p>All EventsフィードはフィードIDの代わりに固定名を使用します：</p>
+<table>
+<thead>
+<tr>
+<th>テーブルタイプ</th>
+<th>完全なテーブル参照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本テーブル</td>
+<td><code>mycompany__main.events__all_events</code></td>
+</tr>
+<tr>
+<td>ビュー</td>
+<td><code>mycompany__main.events_view__all_events__all_events</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="列命名規則">列命名規則</h2>
+<p>EventDBは同じデータにアクセスするための2つの方法を提供します。基本テーブルは <code>pageurl_full_url</code> や <code>firstpartycookies_utag_main_ses_id</code> のような短い、接頭辞付きの列名を使用します。ビューは <code>event - page url - full_url</code> や <code>event - first party cookies - utag_main_ses_id</code> のような説明的な列名を使用します。</p>
+<p>このガイドでは基本テーブルの列名を文書化しています。以下の接頭辞はデータのカテゴリを示します：</p>
+<table>
+<thead>
+<tr>
+<th>接頭辞</th>
+<th>データカテゴリ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(なし)</em></td>
+<td>組み込みの列</td>
+</tr>
+<tr>
+<td><code>dom_</code></td>
+<td>ページからキャプチャされたDOM変数</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_</code></td>
+<td>第一者クッキーの値</td>
+</tr>
+<tr>
+<td><code>js_</code></td>
+<td>ページのJavaScript変数</td>
+</tr>
+<tr>
+<td><code>meta_</code></td>
+<td>ページのメタデータ</td>
+</tr>
+<tr>
+<td><code>pageurl_</code></td>
+<td>ページURLのコンポーネント</td>
+</tr>
+<tr>
+<td><code>referrerurl_</code></td>
+<td>リファラーURLのコンポーネント</td>
+</tr>
+<tr>
+<td><code>tags_</code></td>
+<td>タグ実行データ</td>
+</tr>
+<tr>
+<td><code>udo_</code></td>
+<td>データレイヤー変数</td>
+</tr>
+</tbody>
+</table>
+<p>すべての接頭辞がすべてのEventDBテーブルに現れるわけではありません。以下の列は常に含まれます：</p>
 <ul>
-<li>生のデータ属性列名（<code>ACCOUNT__PROFILE.events_STREAM</code>）</li>
-<li>Customer Data Hub属性列名（<code>ACCOUNT__PROFILE.events_view_STREAM</code>）</li>
+<li>DOM属性 (<code>dom_</code>)</li>
+<li>プリロードされたTealiumイベント属性 (<code>udo_tealium_*</code>, <code>udo_ut_*</code>)</li>
+<li>タグ実行データ (<code>tags_</code>)</li>
+<li>第一者クッキーの値 (<code>firstpartycookies_</code>)</li>
+<li>ページURLおよびリファラーURLのコンポーネント (<code>pageurl_</code>, <code>referrerurl_</code>)</li>
 </ul>
-</li>
+<p>以下の列は、対応するイベント属性がEventDBで有効になっている場合にのみ表示されます：</p>
+<ul>
+<li>JavaScript変数 (<code>js_</code>)</li>
+<li>ページのメタデータ (<code>meta_</code>)</li>
+<li>カスタムデータレイヤー変数 (<code>udo_</code>) — データレイヤーに変数が存在する場合のみ存在</li>
 </ul>
+<p>詳細については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/configure/">AudienceDBおよびEventDBの構成</a>を参照してください。</p>
+<h2 id="組み込みの列">組み込みの列</h2>
+<p>Tealium Collectタグは、以下のセクションで説明されているように、イベントデータと一緒にいくつかの事前定義された変数を送信します。</p>
+<h3 id="デフォルトの列">デフォルトの列</h3>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitorid</code></td>
+<td>訪問の一意のIDです。</td>
+</tr>
+<tr>
+<td><code>eventid</code></td>
+<td>イベントに固有の英数字識別子です。</td>
+</tr>
+<tr>
+<td><code>eventtime</code></td>
+<td>イベントのタイムスタンプがUTC日時としてAmazon Redshiftに保存されます（例：<code>2024-08-01 00:00:02</code>）。これはEventStoreのエポックミリ秒表現とは異なります。</td>
+</tr>
+<tr>
+<td><code>useragent</code></td>
+<td>クライアントのユーザーエージェントヘッダーです。</td>
+</tr>
+<tr>
+<td><code>clientip</code></td>
+<td>クライアントのIPアドレスです。<a href="/ja/server-side/administration/account-settings/#general-settings">サーバーサイドアカウント構成</a>で<strong>訪問IP属性を有効にする</strong>構成が必要です。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dom変数">DOM変数</h3>
+<p>ページのDOMデータは、<code>dom_</code>で始まる列として現れます。DOM属性は常にEventDBに送信され、除外することはできません。詳細については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/configure/">AudienceDBおよびEventDBの構成</a>を参照してください。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dom_domain</code></td>
+<td>サイトのドメインです。</td>
+</tr>
+<tr>
+<td><code>dom_pathname</code></td>
+<td>URLのパス名です。</td>
+</tr>
+<tr>
+<td><code>dom_query_string</code></td>
+<td>URLのクエリ文字列部分で、DOMから直接キャプチャされます（<code>document.location.search</code>）。</td>
+</tr>
+<tr>
+<td><code>dom_url</code></td>
+<td>HTMLドキュメントの完全なURLです。</td>
+</tr>
+<tr>
+<td><code>dom_title</code></td>
+<td>HTMLドキュメントのタイトルです。</td>
+</tr>
+<tr>
+<td><code>dom_viewport_width</code></td>
+<td>デバイスの画面幅です。</td>
+</tr>
+<tr>
+<td><code>dom_viewport_height</code></td>
+<td>デバイスの画面高さです。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ページurl変数">ページURL変数</h3>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageurl_scheme</code></td>
+<td>URIプロトコル、例えば <code>http</code> や <code>https</code> です。</td>
+</tr>
+<tr>
+<td><code>pageurl_domain</code></td>
+<td>サイトのドメインです。</td>
+</tr>
+<tr>
+<td><code>pageurl_path</code></td>
+<td>URLのパス名です。</td>
+</tr>
+<tr>
+<td><code>pageurl_querystring</code></td>
+<td>ページの完全なURLから解析されたURLのクエリ文字列部分です。</td>
+</tr>
+<tr>
+<td><code>pageurl_query_params_KEY</code></td>
+<td>各クエリ文字列パラメータに対して、パラメータ名が <code>KEY</code> であるパラメータ値を含む列です。</td>
+</tr>
+<tr>
+<td><code>pageurl_full_url</code></td>
+<td>ページの完全なURLです。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="リファラーurl変数">リファラーURL変数</h3>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>referrerurl_scheme</code></td>
+<td>参照元URLのURIプロトコルです。</td>
+</tr>
+<tr>
+<td><code>referrerurl_domain</code></td>
+<td>参照元サイトのドメインです。</td>
+</tr>
+<tr>
+<td><code>referrerurl_path</code></td>
+<td>参照元URLのパス名です。</td>
+</tr>
+<tr>
+<td><code>referrerurl_querystring</code></td>
+<td><code>?</code> 文字に続く参照元URLのクエリ文字列部分です。</td>
+</tr>
+<tr>
+<td><code>referrerurl_query_params_KEY</code></td>
+<td>各参照元URLクエリ文字列パラメータに対して、パラメータ名が <code>KEY</code> であるパラメータ値を含む列です。</td>
+</tr>
+<tr>
+<td><code>referrerurl_full_url</code></td>
+<td>参照元ページの完全なURLです。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ファーストパーティクッキー変数">ファーストパーティクッキー変数</h3>
+<p>ファーストパーティクッキーの値は、<code>firstpartycookies_</code>で始まる列名を使用します。EventDBは<code>utag_main</code>だけでなく、すべてのブラウザクッキーから値を取得します。列名はクッキー名とキーを反映しています。例えば、<code>firstpartycookies_utag_main_ses_id</code>は<code>utag_main</code>クッキーの<code>ses_id</code>キーに対応します。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firstpartycookies_utag_main_ses_id</code></td>
+<td>セッションの一意の識別子です。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__st</code></td>
+<td>現在の訪問セッションが終了する時刻（ミリ秒単位）。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_v_id</code></td>
+<td>訪問ID。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__ss</code></td>
+<td>セッション開始を示すフラグ。値は<code>0</code>または<code>1</code>です。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__pn</code></td>
+<td>現在のセッション内のページ番号。ページを読み込むたびに増加します。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__sn</code></td>
+<td>この訪問のセッション数。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__se</code></td>
+<td>現在のセッション中のイベント数。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_region</code></td>
+<td>訪問セッションデータが保持されるAudienceStream地域。HTTPレスポンスヘッダーから収集されます。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_group</code></td>
+<td>Tealium Collectタグの<strong>サンプルサイズ</strong>構成で、どのイベントがサンプリングされるかを決定するために使用されるランダムな数値。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_visit</code></td>
+<td>（レガシー）Collectタグが発火したセッション数。最初の訪問で<code>1</code>から始まります。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_dc_event</code></td>
+<td>（レガシー）Collectタグが発火したイベント数。訪問の最初のページビューで<code>1</code>から始まります。</td>
+</tr>
+<tr>
+<td><code>firstpartycookies_COOKIENAME</code></td>
+<td>クッキー値。<code>COOKIENAME</code>はクッキー名です。例えば、<code>_ga</code>クッキーは<code>firstpartycookies__ga</code>として表示されます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="javascript変数">JavaScript変数</h3>
+<p>ページのJavaScript変数は、<code>js_</code>で始まる列名として表示されます。サイトに存在する変数に応じて正確な列名が異なります。EventDBスキーマまたは<a href="/ja/server-side/event-health/live-events/">Live Events</a>を確認して命名を確認してください。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>js_VARIABLE</code></td>
+<td>ページのJavaScript変数。</td>
+</tr>
+</tbody>
+</table>
+<p>例えば、<code>js_screen_availheight</code>は利用可能な画面の高さをキャプチャし、<code>js__tealplc_libraryversion</code>はTealium Private Label Cloudライブラリのバージョンをキャプチャします。</p>
+<h3 id="メタ変数">メタ変数</h3>
+<p>ページのHTMLメタデータは、<code>meta_</code>で始まる列名として表示されます。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta_VARIABLE</code></td>
+<td>HTMLメタタグの値。<code>VARIABLE</code>はメタタグ名です。</td>
+</tr>
+</tbody>
+</table>
+<p>例えば、<code>meta_description</code>はページのメタ説明をキャプチャし、<code>meta_og_title</code>はOpen Graphタイトルをキャプチャします。</p>
+<h3 id="実行されたタグ">実行されたタグ</h3>
+<p>イベントで発火する各タグは、次の形式で列を生成します：</p>
+<pre tabindex="0"><code>tags_PROFILE_TAGID_executed
+</code></pre><p><code>PROFILE</code>はTealium iQプロファイル名、<code>TAGID</code>はタグの数値IDです。イベントでタグが実行された場合は<code>true</code>、実行されなかった場合は<code>(null)</code>となります。</p>
+<p>例えば、<code>tags_platform_3_executed</code>は、<code>platform</code>プロファイルのタグ<code>3</code>がイベントで実行されたことを示します。</p>
+<h3 id="データレイヤーudo変数">データレイヤー（UDO）変数</h3>
+<p>イベントで送信されるデータレイヤー変数は、<code>udo_</code>で始まる列名を使用します。例えば、データレイヤー変数<code>page_name</code>は<code>udo_page_name</code>にマッピングされます。任意の単一値の最大文字数は255文字です。</p>
+<p>Tealium Collectタグは、<code>udo_</code>名前空間でいくつかの組み込み変数も送信します：</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>udo_tealium_event</code></td>
+<td>イベントの名前、例えば<code>view</code>や<code>link</code>。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_event_type</code></td>
+<td>トラッキングコールのタイプ、例えば<code>view</code>や<code>link</code>。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_name</code></td>
+<td>Collectライブラリ、例えば<code>utag.js</code>。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_version</code></td>
+<td><code>utag.js</code>のバージョン番号。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_datasource</code></td>
+<td>Collectタグのデータソース識別子。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_random</code></td>
+<td>イベントのために生成されたランダムな数値。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_id</code></td>
+<td>セッションの一意の識別子。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_number</code></td>
+<td>この訪問のセッション数。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_event_number</code></td>
+<td>現在のセッションのイベント数。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_epoch</code></td>
+<td>イベントのUnixエポックタイムスタンプ。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_utc</code></td>
+<td>イベントのUTCタイムスタンプ。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_timestamp_local</code></td>
+<td>イベントのローカルタイムスタンプ。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_account</code></td>
+<td>Tealiumアカウント。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_profile</code></td>
+<td>Tealium iQプロファイル名。</td>
+</tr>
+<tr>
+<td><code>udo_tealium_environment</code></td>
+<td>公開環境、例えば<code>prod</code>。</td>
+</tr>
+<tr>
+<td><code>udo_ut_account</code></td>
+<td>Tealium iQアカウント。<code>udo_tealium_account</code>の以前の同等物。</td>
+</tr>
+<tr>
+<td><code>udo_ut_profile</code></td>
+<td>Tealium iQプロファイル。<code>udo_tealium_profile</code>の以前の同等物。</td>
+</tr>
+<tr>
+<td><code>udo_ut_env</code></td>
+<td><code>utag.js</code>ファイルに関連する公開環境。<code>udo_tealium_environment</code>の以前の同等物。</td>
+</tr>
+<tr>
+<td><code>udo_ut_event</code></td>
+<td>イベントタイプ、例えば<code>view</code>。<code>udo_tealium_event</code>の以前の同等物。</td>
+</tr>
+<tr>
+<td><code>udo_ut_domain</code></td>
+<td>ページのトップレベルドメイン。</td>
+</tr>
+<tr>
+<td><code>udo_ut_version</code></td>
+<td><code>utag.js</code>のバージョンと公開タイムスタンプ。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="パフォーマンスタイミング変数">パフォーマンスタイミング変数</h3>
+<p>ブラウザのパフォーマンスタイミング指標は、<code>udo_timing_</code>で始まる列名として表示されます。これらの指標は、ページのロードパフォーマンスに関するリアルユーザーモニタリング（RUM）データを提供します。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>udo_timing_domain</code></td>
+<td>タイミングデータが収集されたドメイン。</td>
+</tr>
+<tr>
+<td><code>udo_timing_timestamp</code></td>
+<td>タイミングデータが収集された日時（エポック時間）。</td>
+</tr>
+<tr>
+<td><code>udo_timing_dns</code></td>
+<td>DNSルックアップ時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_connect</code></td>
+<td>接続時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_time_to_first_byte</code></td>
+<td>サーバーから最初のバイトまでの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_dom_loading_to_interactive</code></td>
+<td>DOMローディングからDOMインタラクティブ状態までの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_dom_interactive_to_complete</code></td>
+<td>DOMインタラクティブからDOM完了状態までの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_load</code></td>
+<td>ページロードイベントの期間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_front_end</code></td>
+<td>フロントエンドのレンダリング時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_response</code></td>
+<td>フェッチ開始からレスポンス開始までの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_complete</code></td>
+<td>フェッチ開始からDOM完了までの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_fetch_to_interactive</code></td>
+<td>フェッチ開始からDOMインタラクティブまでの時間。</td>
+</tr>
+<tr>
+<td><code>udo_timing_pathname</code></td>
+<td>タイミングデータが収集されたパス名。</td>
+</tr>
+<tr>
+<td><code>udo_timing_query_string</code></td>
+<td>タイミングデータが収集されたURLのクエリ文字列。</td>
+</tr>
+<tr>
+<td><code>udo_timing_response</code></td>
+<td>サーバー応答時間。</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>タイミング列の値がゼロの場合、タイミング情報はキャプチャされませんでした。報告や平均化の際にゼロ値を無視してください。</p>
+<h2 id="データ保持">データ保持</h2>
+<p>EventDBのデータは、契約で指定された期間、Amazon Redshiftで利用可能です。イベントレコードが有効期限に達すると、自動的に削除されます。詳細については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/about/">About AudienceDB and EventDB</a>を参照してください。</p>
+<h2 id="訪問のタイムゾーンの計算">訪問のタイムゾーンの計算</h2>
+<p>EventDBは訪問のタイムゾーンを直接保存しません。タイムゾーンを計算するには、<code>firstpartycookies_utag_main__ss</code>が<code>1</code>に等しい行で<code>eventtime</code>と<code>firstpartycookies_utag_main_ses_id</code>を比較します。これはセッションの開始を示します。<code>eventtime</code>はUTCの日時であり、<code>firstpartycookies_utag_main_ses_id</code>はエポックミリ秒値であるため、比較する前に<code>firstpartycookies_utag_main_ses_id</code>をUTCの日時に変換します。両者の差は訪問のUTCオフセットを表します。</p>
+<h2 id="サンプル行">サンプル行</h2>
+<p>以下は、EventDBの単一行からの代表的な列のサブセットを示しています：</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>サンプル値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitorid</code></td>
+<td><code>e9a2771b641f48009921b3a783db4c84</code></td>
+</tr>
+<tr>
+<td><code>eventid</code></td>
+<td><code>9ec23b59-2540-4a38-8ad0-2a1ec5d6016a</code></td>
+</tr>
+<tr>
+<td><code>eventtime</code></td>
+<td><code>2024-08-01 00:00:02</code></td>
+</tr>
+<tr>
+<td><code>dom_title</code></td>
+<td><code>countryroadgroup | main</code></td>
+</tr>
+<tr>
+<td><code>pageurl_scheme</code></td>
+<td><code>https</code></td>
+</tr>
+<tr>
+<td><code>pageurl_domain</code></td>
+<td><code>my.tealiumiq.com</code></td>
+</tr>
+<tr>
+<td><code>pageurl_path</code></td>
+<td><code>/tms</code></td>
+</tr>
+<tr>
+<td><code>pageurl_full_url</code></td>
+<td><code>https://my.tealiumiq.com/tms</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_scheme</code></td>
+<td><code>https</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_domain</code></td>
+<td><code>my.tealiumiq.com</code></td>
+</tr>
+<tr>
+<td><code>referrerurl_path</code></td>
+<td><code>/tms</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main_ses_id</code></td>
+<td><code>1722465600428</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__pn</code></td>
+<td><code>7</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__sn</code></td>
+<td><code>199</code></td>
+</tr>
+<tr>
+<td><code>firstpartycookies_utag_main__ss</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>tags_platform_3_executed</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_event</code></td>
+<td><code>profile_publish_status</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_name</code></td>
+<td><code>utag.js</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_library_version</code></td>
+<td><code>4.48.0</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_datasource</code></td>
+<td><code>ujitge</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_random</code></td>
+<td><code>8550613331015047</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_id</code></td>
+<td><code>1722465600428</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_number</code></td>
+<td><code>199</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_session_event_number</code></td>
+<td><code>398</code></td>
+</tr>
+<tr>
+<td><code>udo_tealium_environment</code></td>
+<td><code>prod</code></td>
+</tr>
+<tr>
+<td><code>udo_user_type</code></td>
+<td><code>client</code></td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このサンプルには、<code>udo_user_type</code> などのアカウント固有のデータレイヤー変数と組み込み列が含まれています。EventDBテーブルのデータレイヤー変数は、実装に依存します。</p>
 
 </div>
 
@@ -1132,7 +1772,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1144,7 +1784,27 @@
 
 
 
-  </nav>
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89%E3%81%A8%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB" href="javascript:void(0)">イベントフィードとテーブル</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87" href="javascript:void(0)">列命名規則</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE%E5%88%97" href="javascript:void(0)">組み込みの列</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E5%88%97" href="javascript:void(0)">デフォルトの列</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom%E5%A4%89%E6%95%B0" href="javascript:void(0)">DOM変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9A%E3%83%BC%E3%82%B8url%E5%A4%89%E6%95%B0" href="javascript:void(0)">ページURL変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%95%E3%82%A1%E3%83%A9%E3%83%BCurl%E5%A4%89%E6%95%B0" href="javascript:void(0)">リファラーURL変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E5%A4%89%E6%95%B0" href="javascript:void(0)">ファーストパーティクッキー変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript%E5%A4%89%E6%95%B0" href="javascript:void(0)">JavaScript変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%82%BF%E5%A4%89%E6%95%B0" href="javascript:void(0)">メタ変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A1%8C%E3%81%95%E3%82%8C%E3%81%9F%E3%82%BF%E3%82%B0" href="javascript:void(0)">実行されたタグ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BCudo%E5%A4%89%E6%95%B0" href="javascript:void(0)">データレイヤー（UDO）変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E5%A4%89%E6%95%B0" href="javascript:void(0)">パフォーマンスタイミング変数</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E4%BF%9D%E6%8C%81" href="javascript:void(0)">データ保持</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E8%A8%88%E7%AE%97" href="javascript:void(0)">訪問のタイムゾーンの計算</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E8%A1%8C" href="javascript:void(0)">サンプル行</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

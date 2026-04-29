@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Manage First-Party-Domains" />
+    <meta property="og:title" content="Manage First-Party Domains" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/iq-tag-management/administration/first-party-domains/manage/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
 <meta property="og:description" content="This article provides information about adding domains to a certificate, removing domains, and viewing contact information for domains." />
 <meta property="og:site_name" content="Tealium Docs" />
-    <title>Manage First-Party-Domains | First-party domains | Tealium Docs</title>
+    <title>Manage First-Party Domains | First-party domains | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "1",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -598,7 +598,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">Update endpoint configurations</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-first-party-domains">Manage First-Party-Domains</a></li></ul>
+        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-first-party-domains">Manage First-Party Domains</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".linking-to-github">Linking to GitHub</a>
@@ -693,7 +693,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">Manage First-Party-Domains</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">Manage First-Party Domains</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -707,7 +707,67 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="add-a-domain-to-a-certificate">Add a domain to a certificate</h2>
+  <h2 id="configure-first-party-domains">Configure first-party domains</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>For server-side data collection, the domain certificates are configured and stored in the Tealium endpoint in the region you select during configuration. If the selected region is different from the region for the profile, the event and visitor data is collected in the first-party domain region and forwarded to the region configured for the profile.</p>
+<p>Use the following steps to configure first-party domains:</p>
+<ol>
+<li>In the admin menu, click <strong>First-Party Domains</strong>.</li>
+<li>Under <strong>Server-Side Data Collection/DLE</strong> or <strong>Client-Side Delivery</strong>, click <strong>Configure Certificate</strong>.</li>
+<li>Select the region in which most of your data collection occurs.</li>
+<li>Select one of the following:
+<ul>
+<li><strong>Tealium-managed Certificate</strong>: Tealium generates and manages the certificates.</li>
+<li><strong>User-provided Certificate</strong>: Provide your own certificate files. For information about the requirements and format for certificate files, see <a href="/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">Manage your own certificates</a>.</li>
+</ul>
+</li>
+<li>If you selected <strong>User-provided Certificate</strong>, upload the following files:
+<ul>
+<li>Certificate (Required)</li>
+<li>Private Key (Required)</li>
+<li>Certificate Chain (Optional)</li>
+</ul>
+</li>
+<li>Select one of the following methods to validate domain ownership:
+<ul>
+<li><strong>DNS Validation</strong></li>
+<li><strong>Email Validation</strong></li>
+</ul>
+</li>
+<li>In the <strong>Add Domains</strong> section, enter a subdomain name, omitting <code>https://</code> and the ending slash.
+For example, <code>collect.example.com</code> or <code>cdp.example.com</code>.</li>
+<li>To add another domain, click <strong>+ Add Domain</strong>.<br>
+First-party domains apply to all profiles in your account. Enter a subdomain for each site managed by this account.</li>
+</ol>
+<h3 id="validation-confirmation">Validation confirmation</h3>
+<p>Click <strong>I Agree</strong> to give Tealium permission to manage certificates for the provided domains and to certify you own and manage these domains, then click <strong>Save</strong>.</p>
+<hr>
+<h4 id="dns-validation"><strong>DNS validation</strong></h4>
+<p>The following message appears when you choose DNS validation:</p>
+<blockquote>
+<p>Pending validation. Add the required DNS records for each domain, then wait for DNS to propagate.</p>
+</blockquote>
+<p>The temporary A or CNAME records (one for each domain) used for validation are displayed. Add these temporary A or CNAME records to your DNS configuration.</p>
+<p>After you add the validation A or CNAME records to your DNS configuration and the validation process is completed (this can take several hours), the permanent A or CNAME records for your domains are displayed. Add these permanent A or CNAME records to your DNS configuration.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Your final DNS configuration must include the validation and permanent A or CNAME records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
+<hr>
+<h4 id="email-validation"><strong>Email validation</strong></h4>
+<p>The following message appears when you choose email validation:</p>
+<blockquote>
+<p>Pending validation. Confirm the validation email sent for each domain, or resend the email if needed.</p>
+</blockquote>
+<p>You will receive an email from Amazon Web Services (one message for each domain) containing a validation token that expires in 72 hours. To complete the validation process, you must respond to the email message for each domain. If you did not receive the email or if the token has expired, a separate <strong>Resend Email</strong> button is available.</p>
+<hr>
+<p>When the domain status in the <strong>First-Party Domains Overview</strong> changes to <strong>Issued</strong>, your domains are ready to use.</p>
+<p>Validation must occur within 72 hours. If the validation period expires, request a new certificate for the same subdomain. The DNS validation records are the same for subsequent requests of the same subdomain.</p>
+<p>After the domain status changes to <strong>Issued</strong>, you must update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/">Update endpoint configurations</a>.</p>
+<h3 id="validation-failure">Validation failure</h3>
+<p>If validation fails, the domain status changes to <strong>Failed</strong> and a message appears with details about the failure:</p>
+<blockquote>
+<p>We couldn’t create your certificate because your domains do not include Amazon as a certificate authority in DNS. Add Amazon in CAA records in DNS, then Retry. See affected domains in Manage Domains.</p>
+</blockquote>
+<p>If you see this message, add Amazon in CAA records in your DNS configuration, then click <strong>Retry</strong> to validate the domain and generate the certificate again.</p>
+<p>For more information, see <a href="/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">About first-party domains</a>.</p>
+<h2 id="add-a-domain-to-a-certificate">Add a domain to a certificate</h2>
 <p>To add domains to a certificate, use the following steps:</p>
 <ol>
 <li>In the admin menu, click <strong>First-Party Domains</strong>, then select a domain.</li>
@@ -746,7 +806,24 @@ When the domain status changes to <strong>Issued</strong>, your domains are read
 <li>Click the remove icon for the domain.</li>
 </ol>
 <h2 id="view-contact-information-for-a-domain">View contact information for a domain</h2>
-<p>To view the contact information for a domain, navigate to <strong>First-Party Domains</strong>, click on a domain, then click <strong>View Contact Info</strong>.</p>
+<p>To view the contact information for a domain, go to <strong>First-Party Domains</strong>, click a domain, then click <strong>View Contact Info</strong>.</p>
+<h2 id="certificate-expiration">Certificate expiration</h2>
+<h3 id="user-provided">User-provided</h3>
+<p>When a user-provided certificate is nearing expiration or has expired, a message appears with details about the expiration:</p>
+<blockquote>
+<p>Certificate expiring soon. Renew this certificate with your certificate authority, then upload the new certificate and private key before the expiration date.</p>
+</blockquote>
+<blockquote>
+<p>Certificate expired. Renew this certificate with your certificate authority, then upload the new certificate and private key to restore First‑Party Domains.</p>
+</blockquote>
+<p>To avoid service disruption, you must request a new certificate for the same subdomain before the expiration date. The DNS validation records are the same for subsequent requests of the same subdomain.</p>
+<p>In the message, click <strong>Provide Certificate</strong> to upload the certificate. The new certificate replaces the previous one. If the previous certificate has not expired, there should be no downtime. If the previous certificate has expired, there may be a few hours delay while the certificate propagates to DNS servers.</p>
+<h3 id="tealium-managed">Tealium-managed</h3>
+<p>Usually when a Tealium-managed certificate expires, it is immediately replaced with a new certificate. However, you may see the following message:</p>
+<blockquote>
+<p>Certificate expired. Auto‑renewal failed because DNS records changed. Restore the validation records for each domain (see View DNS Records), then Retry to issue a new certificate.</p>
+</blockquote>
+<p>This message appears because the DNS records for the domain were changed, which caused the auto-renewal process to fail. To resolve this issue, restore the validation records for each domain, then click <strong>Retry</strong> to issue a new certificate.</p>
 
 </div>
 
@@ -792,7 +869,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 25, 2023 
+          <p>This page was last updated:  April 29, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -806,9 +883,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-domain-to-a-certificate" href="javascript:void(0)">Add a domain to a certificate</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-first-party-domains" href="javascript:void(0)">Configure first-party domains</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation-confirmation" href="javascript:void(0)">Validation confirmation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation-failure" href="javascript:void(0)">Validation failure</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-domain-to-a-certificate" href="javascript:void(0)">Add a domain to a certificate</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-a-domain" href="javascript:void(0)">Remove a domain</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#view-contact-information-for-a-domain" href="javascript:void(0)">View contact information for a domain</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#certificate-expiration" href="javascript:void(0)">Certificate expiration</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-provided" href="javascript:void(0)">User-provided</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-managed" href="javascript:void(0)">Tealium-managed</a></li>
               </nav>
   </aside></nav>
 

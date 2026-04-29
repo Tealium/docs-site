@@ -330,12 +330,12 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium for Flutterを使用すると、Tealiumモバイルライブラリ（iOS、Android）を使用してTealium Flutterプラグイン用Adobe訪問サービスモジュールをインストールできます。</p>
+  <p>Tealium for Flutterは、Tealiumモバイルライブラリ（iOS、Android）を使用して、Tealium Flutterプラグイン用のAdobe訪問サービスモジュールをインストールすることができます。</p>
 <h2 id="動作原理">動作原理</h2>
 <p>Tealiumモバイルライブラリは、以下の方法のいずれかを使用してFlutterアプリケーションに統合されます：</p>
 <ul>
 <li>Dartパッケージ（推奨）</li>
-<li><a href="https://github.com/Tealium/tealium-flutter">GitHub</a>を使用した手動でのインストール</li>
+<li><a href="https://github.com/Tealium/tealium-flutter">GitHub</a>を使用して手動で</li>
 </ul>
 <h2 id="必要条件">必要条件</h2>
 <ul>
@@ -354,19 +354,27 @@
 </span></span></code></pre></div></li>
 </ol>
 <h2 id="初期化">初期化</h2>
-<p>Tealium Flutter統合のメインを初期化する前に、Adobe訪問サービスモジュールを構成します。</p>
+<p>メインのTealium Flutter統合を初期化する前に、Adobe訪問サービスモジュールを構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> adobeVisitorConfig <span style="color:#f92672">=</span> AdobeVisitorConfig(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ADOBE-ORG-ID&#34;</span>,
 </span></span><span style="display:flex;"><span>    adobeVisitorRetries: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>    adobeVisitorAuthState: AuthState.authenticated,
-</span></span><span style="display:flex;"><span>    adobeVisitorExistingEcid: <span style="color:#e6db74">&#34;EXISTING-ECID&#34;</span>,        <span style="color:#75715e">// オプション
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    adobeVisitorDataProviderId: <span style="color:#e6db74">&#34;DATA-PROVIDER-ID&#34;</span>,   <span style="color:#75715e">// オプション
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    adobeVisitorCustomVisitorId: <span style="color:#e6db74">&#34;CUSTOM-VISITOR-ID&#34;</span>, <span style="color:#75715e">// オプション
+</span></span><span style="display:flex;"><span>    adobeVisitorExistingEcid: <span style="color:#e6db74">&#34;EXISTING-ECID&#34;</span>,  <span style="color:#75715e">// オプション
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>TealiumAdobeVisitor.configure(adobeVisitorConfig);
+</span></span></code></pre></div><p><code>adobeVisitorCustomVisitorId</code>、<code>adobeVisitorDataProviderId</code>、<code>adobeVisitorAuthState</code>のプロパティは、アプリセッションの開始時にすべての値がわかっている場合にのみ構成します。<code>adobeVisitorAuthState</code>は、<code>adobeVisitorCustomVisitorId</code>を構成するときにのみ構成します。初期化時に訪問のIDが不明な場合（例えば、ログイン前など）、これらのプロパティを省略し、IDが利用可能になったら<a href="#linkecidtoknownidentifierknownid-adobedataproviderid-authstate"><code>linkEcidToKnownIdentifier</code></a>を呼び出します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> adobeVisitorConfig <span style="color:#f92672">=</span> AdobeVisitorConfig(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ADOBE-ORG-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    adobeVisitorRetries: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    adobeVisitorExistingEcid: <span style="color:#e6db74">&#34;EXISTING-ECID&#34;</span>,
+</span></span><span style="display:flex;"><span>    adobeVisitorDataProviderId: <span style="color:#e6db74">&#34;DATA-PROVIDER-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    adobeVisitorCustomVisitorId: <span style="color:#e6db74">&#34;CUSTOM-VISITOR-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    adobeVisitorAuthState: AuthState.authenticated,
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TealiumAdobeVisitor.configure(adobeVisitorConfig);
 </span></span></code></pre></div><h2 id="apiリファレンス">APIリファレンス</h2>
-<p>Adobe訪問サービスモジュールとTealium Flutter統合のメインが両方初期化された後、既存のAdobe訪問をリンクできます。</p>
+<p>Adobe訪問サービスモジュールとメインのTealium Flutter統合が両方初期化された後、既存のAdobe訪問をリンクすることができます。</p>
 <h3 id="linkecidtoknownidentifierknownid-adobedataproviderid-authstate"><code>linkEcidToKnownIdentifier(knownId, adobeDataProviderId, authState)</code></h3>
 <p>既存のExperience Cloud ID（ECID）を既知の識別子にリンクします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> visitor <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> TealiumAdobeVisitor.linkEcidToKnownIdentifier(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, AuthState.unknown);
@@ -448,7 +456,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年March月31日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

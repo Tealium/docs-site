@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/iq-tag-management/administration/first-party-domains/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、ファーストパーティドメイン、構成されたドメインの検証プロセス、およびドメイン証明書の要件についての概要を提供します。" />
+<meta property="og:description" content="この記事では、ファーストパーティドメイン機能、構成されたドメインの検証プロセス、およびドメイン証明書の要件について概説します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ファーストパーティドメインについて | ファーストパーティドメイン | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -350,7 +350,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium汎用タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li>
+        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -605,7 +605,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/configure-client-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-client-side-delivery">クライアントサイド配信の構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント設定の更新</a></li>
+        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント構成の更新</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">ファーストパーティドメインの管理</a></li></ul>
       </li>
@@ -714,36 +714,41 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、ファーストパーティドメイン、構成されたドメインの検証プロセス、およびドメイン証明書の要件についての概要を提供します。
+      この記事では、ファーストパーティドメイン機能、構成されたドメインの検証プロセス、およびドメイン証明書の要件について概説します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ファーストパーティドメインを使用すると、Tealiumのサービスはファーストパーティのリクエストを使用できるようになり、広告ブロッカーや類似の技術によって引き起こされるデータ損失を減らすことができます。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>ファーストパーティドメインをアカウントで有効にするには、Tealiumのアカウントマネージャーに連絡してください。</p>
-<p>ファーストパーティドメインとは、ユーザーが訪問しているウェブサイトをホストしているドメインです。サードパーティドメインとは、現在のウェブサイトのドメインと一致しない任意のドメインを指します。</p>
-<p>Tealium Customer Data Hubで提供されるサービスは、デフォルトでTealiumのドメイン上でホストされています。例えば、Tealium iQタグ管理のJavaScriptファイルは<code>tags.tiqcdn.com</code>サブドメインから提供され、Tealium EventStream API Hubのデータ収集エンドポイントは<code>collect.tealiumiq.com</code>サブドメインを使用します。これらのTealiumサブドメインはサードパーティドメインと見なされます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ファーストパーティドメインは主にWebユースケースをサポートしており、モバイルのVisitor Serviceはサポートしていません。Web以外のユースケースでファーストパーティVisitor Serviceのサポートが必要な場合は、アカウントマネージャーに連絡してカスタムCNAMEの構成を検討してください。ファーストパーティドメインはTealiumのGoogle Tag ManagerやAdobe Launchとの統合をサポートしていません。</p>
+  <p>ファーストパーティドメインの構成により、Tealiumのサービスはファーストパーティリクエストを使用できるようになり、広告ブロッカーや類似技術によるデータ損失を減らすことができます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>ファーストパーティドメイン機能をアカウントで有効にするには、Tealiumアカウントマネージャーに連絡してください。</p>
+<p>ファーストパーティドメインとは、ユーザーが訪問しているウェブサイトをホストしているドメインです。サードパーティドメインとは、現在のウェブサイトのドメインと一致しないすべてのドメインを指します。</p>
+<p>Tealiumのサーバーサイドで提供されるサービスは、デフォルトでTealiumのドメインにホストされています。例えば、Tealium iQタグ管理のJavaScriptファイルは<code>tags.tiqcdn.com</code>サブドメインから提供され、Tealium EventStream API Hubのデータ収集エンドポイントは<code>collect.tealiumiq.com</code>サブドメインを使用します。これらのTealiumサブドメインはサードパーティドメインと見なされます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファーストパーティドメインは主にWebユースケースをサポートしており、モバイル用ビジターサービスはサポートしていません。非Webユースケースでファーストパーティビジターサービスのサポートが必要な場合は、アカウントマネージャーに連絡してカスタムCNAMEの構成を検討してください。ファーストパーティドメインはTealiumのGoogleタグマネージャーやAdobe Launchの統合をサポートしていません。</p>
 <h2 id="仕組み">仕組み</h2>
-<p><code>tags.tiqcdn.com</code>サブドメインのファーストパーティドメインを構成すると、TealiumはDNSデータベースに追加する必要があるCNAMEレコードを提供します。CNAMEレコードは、あるドメイン名を別のドメイン名にマッピングするエイリアスです。例えば、<code>www.example.com</code>のウェブサイトの場合、TealiumはiQタグ管理のファイルを提供するために<code>tags.example.com</code>をTealium CDNにポイントするCNAMEレコードを提供します。</p>
-<p><code>collect.tealiumiq.com</code>サブドメインの場合、TealiumはDNS構成に追加する必要があるAレコードを提供します。Aレコードはサブドメイン名をドメインのIPアドレスにマッピングします。ファーストパーティドメイン用に構成された各サブドメインには、2つのIPアドレスが提供され、これらのAレコードはDNSサーバーの負荷分散に使用されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトに対してサブドメインを入力してください。</p>
+<p><code>tags.tiqcdn.com</code>サブドメインのファーストパーティドメインを構成すると、TealiumはDNSデータベースに追加する必要があるCNAMEレコードを提供します。CNAMEレコードは、あるドメイン名を別のドメイン名にマッピングするエイリアスです。例えば、<code>www.example.com</code>のウェブサイトの場合、Tealiumは<code>tags.example.com</code>のCNAMEレコードを提供し、それがTealium CDNにポイントしてiQタグ管理のファイルを提供します。</p>
+<p><code>collect.tealiumiq.com</code>サブドメインの場合、TealiumはDNS構成に追加する必要があるAレコードを提供します。Aレコードはサブドメイン名をドメインのIPアドレスにマッピングします。ファーストパーティドメイン用に構成された各サブドメインに対して2つのIPアドレスが提供され、これらのAレコードはDNSサーバーの負荷分散に使用されます。</p>
+<p>ユーザーのブラウザとウェブサイト間のトラフィックが暗号化されていることを確認するために、ファーストパーティドメインにはSSL/TLS証明書が必要です。Tealiumに証明書の管理を任せることも、自分で証明書を管理することも選択できます。Tealiumが証明書を管理することを許可するためには、DNS構成にCAAレコード（証明書機関（CA）がドメイン用の証明書を発行できることを指定するDNSレコード）が必要です。</p>
 <p>DNS構成の更新についての詳細は、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">エンドポイント構成の更新</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ファーストパーティドメインを使用する場合、最新バージョンの<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>を使用していることを確認してください。</p>
-<h3 id="ドメイン証明書の管理">ドメイン証明書の管理</h3>
-<p>ファーストパーティドメインを構成する際の重要な部分は、ドメインのSSL/TLS証明書の管理です。これらは公開キー証明書であり、指定されたドメインを所有していることを確認し、HTTPS上でのウェブサイトの暗号化を検証します。Tealiumは証明書の管理を行うことができ、これには証明書の有効期限が切れる前の自動更新が含まれます。また、自分で証明書をインポートして管理することもできます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>自分で証明書を管理する場合、証明書が有効期限切れになる前に更新する責任があります。</p>
-<h4 id="tealiumが管理する証明書">Tealiumが管理する証明書</h4>
-<p>TealiumはAWSを使用してドメイン証明書を生成します。Tealiumに証明書を生成させるためには、DNS構成に以下のいずれかのCertificate Authority Authorization (CAA)レコードを含める必要があります：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファーストパーティドメインを使用する場合、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>の最新バージョンを使用していることを確認してください。</p>
+<h2 id="ドメイン証明書の管理">ドメイン証明書の管理</h2>
+<p>ファーストパーティドメインを構成する際の重要な部分は、ドメインのSSL/TLS証明書の管理です。これらは公開キー証明書であり、指定されたドメインを所有していることを確認し、HTTPS上でのウェブサイトの暗号化を検証します。Tealiumは証明書を管理することができ、これには証明書の有効期限前の自動更新が含まれます。また、自分で証明書をインポートして管理することもできます。</p>
+<p>DNSエントリを編集するアクセス権があるか、ドメイン管理者に送信されるメールメッセージを受信するアクセス権が必要です。</p>
+<h3 id="tealiumが管理する証明書">Tealiumが管理する証明書</h3>
+<p>TealiumはAmazon Web Services（AWS）を使用してドメイン証明書をプロビジョニングし、自動的に更新します。このオプションは標準的なセキュリティおよびコンプライアンス要件を満たし、運用上の負担を軽減します。</p>
+<p>Tealiumが証明書を生成するためには、DNS構成に次のいずれかのCertificate Authority Authorization（CAA）レコードが含まれている必要があります：</p>
 <ul>
 <li><code>amazon.com</code></li>
 <li><code>amazontrust.com</code></li>
 <li><code>awstrust.com</code></li>
 <li><code>amazonaws.com</code></li>
 </ul>
-<p>Tealiumが管理する証明書を使用するには、DNSエントリを編集するアクセス権、またはドメイン管理者に送信されるメールメッセージを受信するアクセス権が必要です。</p>
-<h4 id="自分で管理する証明書">自分で管理する証明書</h4>
-<p>自分で証明書を使用する場合、次のSSL/TLS証明書ファイルにアクセスする必要があります：</p>
+<p>例えば、Amazonが<code>example.com</code>ドメインの証明書を発行することを許可するために、次のCAAレコードを追加します：</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">example.com. CAA 0 issue &#34;amazon.com&#34;
+</code></pre><h3 id="ユーザー提供の証明書">ユーザー提供の証明書</h3>
+<p>自分でドメイン証明書を提供し、同じレベルの暗号化とセキュリティを維持しながら管理します。このオプションは、証明書所有に関する内部ポリシー、カスタム証明書機関、または集中化された証明書ライフサイクル管理を満たすために通常使用されます。</p>
+<p>自分の証明書を使用するためには、次のSSL/TLS証明書ファイルにアクセスする必要があります：</p>
 <ul>
 <li>PEMエンコードされた証明書</li>
 <li>PEMエンコードされた、暗号化されていないプライベートキー</li>
@@ -753,44 +758,75 @@
 <p>証明書ファイルは次の要件を満たす必要があります：</p>
 <ul>
 <li>使用される同じ地域からインポートされる必要があります。</li>
-<li>ファイルサイズの最大は2048ビットです。</li>
+<li>最大ファイルサイズは2048ビットです。</li>
 <li>パスワードで保護されていてはなりません。</li>
 <li>複数の証明書ファイルがチェーンされている場合、チェーンファイルが必要です。</li>
 </ul>
-<p>証明書の要件についての詳細は、AWSの<a href="https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-prerequisites.html">証明書のインポートの前提条件</a>に関する情報を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>証明書を更新するときは、<strong>証明書のリセット</strong>を選択して証明書をアップロードしてください。新しい証明書が以前のものに置き換わります。以前の証明書がまだ有効であれば、ダウンタイムは発生しません。以前の証明書が有効期限切れの場合、証明書がDNSサーバーに伝播するまで数時間の遅延が発生する可能性があります。</p>
-<h3 id="証明書ごとのドメインの制限">証明書ごとのドメインの制限</h3>
-<p>証明書ごとのドメインの最大数は、ファーストパーティドメインにサインアップするときに決定されます。<strong>ファーストパーティドメインの概要</strong>画面では、構成されたドメインの数と<a href="/ja/iq-tag-management/administration/first-party-domains/configure-server-side/">サーバーサイドデータ収集</a>および<a href="/ja/iq-tag-management/administration/first-party-domains/configure-client-side/">クライアントサイド配信</a>の証明書ごとの最大ドメイン数が表示されます。次の例では、ドメインは構成されておらず、<strong>サーバーサイドデータ収集</strong>および<strong>サーバーサイド配信</strong>の最大ドメイン数は10です（0/10ドメイン構成済み）。</p>
+<p>証明書要件についての詳細は、<a href="https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-prerequisites.html">AWS: 証明書のインポートの前提条件</a>を参照してください。</p>
+<p>ドメインの証明書を発行するために選択した証明書機関（CA）を許可するCAAレコードをDNSに構成することを確認してください。</p>
+<h4 id="ユーザー提供の証明書の更新">ユーザー提供の証明書の更新</h4>
+<p>証明書が有効期限切れになる前に更新する責任があります。証明書を更新するときは、<strong>Reimport Certificate</strong>をクリックして証明書をアップロードします。新しい証明書が以前のものに置き換わります。以前の証明書がまだ有効であれば、ダウンタイムは発生しません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>以前の証明書が有効期限切れの場合、証明書がDNSサーバーに伝播するまで数時間の遅延が発生する可能性があります。</p>
+<h3 id="証明書管理方法の比較">証明書管理方法の比較</h3>
+<table>
+<thead>
+<tr>
+<th>証明書管理オプション</th>
+<th>利点</th>
+<th>欠点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tealiumが管理する証明書</strong></td>
+<td><ul><li>自動プロビジョニングおよび更新</li><li>証明書ライフサイクル管理が不要</li><li>有効期限切れの証明書によるアウトエージのリスクが低減</li><li>管理されたセキュリティベストプラクティス</li><li>展開までの時間が短縮</li></ul></td>
+<td><ul><li>証明書機関（CA）または証明書ポリシーに対するカスタマイズ/コントロールが少ない</li></ul></td>
+</tr>
+<tr>
+<td><strong>ユーザー提供の証明書</strong></td>
+<td><ul><li>証明書機関（CA）の選択に完全なコントロール</li><li>内部PKI基準に沿っている</li><li>特定の規制業界で必要</li><li>適用可能な場合、拡張検証（EV）または組織固有のポリシーを有効にする</li><li>組織内での集中化された証明書ガバナンス</li></ul></td>
+<td><ul><li>手動での更新が必要</li><li>証明書が有効期限切れの場合のダウンタイムのリスク</li><li>セキュリティおよびマーケティング/アナリティクスチーム間の運用調整</li><li>追加のメンテナンス負担</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h2 id="証明書ごとのドメイン数の制限">証明書ごとのドメイン数の制限</h2>
+<p>ファーストパーティドメインにサインアップするときに証明書ごとのドメイン数の最大数が決定されます。<strong>ファーストパーティドメイン概要</strong>画面では、構成されているドメイン数と<strong>サーバーサイドデータ収集</strong>および<strong>クライアントサイド配信</strong>の証明書ごとの最大ドメイン数が表示されます。次の例では、ドメインは構成されておらず、<strong>サーバーサイドデータ収集</strong>および<strong>サーバーサイド配信</strong>の最大ドメイン数は10です（0/10ドメイン構成済み）。</p>
 <figure><a class="slb" href="/images/guides/iq/fpd-landing-page.png"><img src="/images/guides/iq/fpd-landing-page.png"
          alt="FPD landing page"
          title="FPD landing page"/>
     </a>
 </figure>
-<h3 id="ファーストパーティドメインとtapid">ファーストパーティドメインとTAPID</h3>
-<p>TAPIDはHTTP専用のブラウザクッキーです。元々はクロスドメイン識別を容易にするために設計され、Tealium AudienceStreamの<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/#anonymous-id">匿名ID</a>を格納します。</p>
-<p>ファーストパーティドメインを使用すると、TAPIDクッキーはHTTP専用のブラウザクッキーのままですが、Tealiumのサードパーティドメインではなく、ウェブサイトをホストするファーストパーティドメインに割り当てられます。したがって、ファーストパーティドメインはTAPIDクッキーのクロスドメイントラッキング機能を失わせます。</p>
-<p>詳細については、<a href="/ja/server-side/visitor-stitching/tapid/">TAPIDクッキーについて</a>を参照してください。</p>
+<h2 id="ファーストパーティドメインとtapid">ファーストパーティドメインとTAPID</h2>
+<p>TAPIDはHTTP専用のブラウザクッキーです。元々はクロスドメイン識別を容易にするために設計され、Tealium AudienceStreamの<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/#anonymous-id">匿名ID</a>を保存します。</p>
+<p>ファーストパーティドメインを使用する場合、TAPIDクッキーはHTTP専用のブラウザクッキーのままですが、Tealiumのサードパーティドメインではなく、あなたのウェブサイトをホストするファーストパーティドメインに割り当てられます。したがって、ファーストパーティドメインはTAPIDクッキーのクロスドメイン追跡機能を失わせます。</p>
+<p>詳細については、<a href="/ja/server-side/visitor-stitching/tapid/">TAPIDクッキーについて</a>をご覧ください。</p>
 <h2 id="ドメイン所有権の検証">ドメイン所有権の検証</h2>
-<p>Tealiumがあなたのサイトの証明書を発行する前に、リクエスト内のすべてのドメインを所有または管理していることを証明する必要があります。所有権を証明する方法には、DNS検証またはメール検証があります。</p>
-<p>通常、プロセスが速いため、DNS検証を推奨しますが、組織内で管理メールにアクセスできる人を見つけるのが難しい場合もあります。ただし、ドメインのDNSデータベースを編修する権限がない場合は、メール検証を使用する必要があります。</p>
-<h4 id="dns検証">DNS検証</h4>
-<p>DNS検証方法を使用するには、DNS構成を編集するアクセス権が必要です。製造運用チームまたはドメイン登録およびSSL/TLS証明書の担当者と協力する必要があります。</p>
-<p>ドメインを追加した後、Tealiumはリクエストされた各ドメインの検証レコードを表示します。これらのレコードをDNS構成に追加する必要があります。次の例は、1つのドメインの検証CNAMEレコードを示しています：</p>
+<p>Tealiumがあなたのサイトに証明書を発行する前に、リクエストに含まれるすべてのドメインを所有または管理していることを証明する必要があります。所有権を証明する方法には、DNS検証またはメール検証があります。</p>
+<p>証明書が元々DNSまたはメール検証で構成されていた場合、再試行も同じ方法を使用します。Amazonが検証方法のデータを提供しない場合、再試行にはDNS検証を使用します。</p>
+<p>DNS検証を推奨します。通常、プロセスが速く、組織内で管理メールにアクセスできる人を見つけるのが難しい場合があるためです。ただし、ドメインのDNSデータベースを編集する権限がない場合は、メール検証を使用する必要があります。</p>
+<h3 id="dns検証">DNS検証</h3>
+<p>DNS検証方法を使用するには、DNS構成を編集するアクセス権が必要です。製品運用チームまたはドメイン登録およびSSL/TLS証明書を担当する人と協力する必要があります。</p>
+<p>ドメインを追加した後、Tealiumはリクエストされた各ドメインの検証レコードを表示します。これをDNS構成に追加する必要があります。以下の例は、あるドメインの検証CNAMEレコードを示しています：</p>
 <figure><a class="slb" href="/images/guides/iq/fpd-validation-record-example.png"><img src="/images/guides/iq/fpd-validation-record-example.png"
          alt="fpd-validation-record-example"
          title="fpd-validation-record-example"/>
     </a>
 </figure>
-<p>検証には最大24時間かかることがありますが、通常はもっと早く完了します。検証が完了すると、Tealiumは永続的なDNSレコードを表示します。これらのレコードを次のようにDNS構成に追加する必要があります：</p>
+<p>検証には最大24時間かかることがありますが、通常はもっと早く完了します。検証が完了すると、Tealiumは永続的なDNSレコードを表示します。これを次のようにDNS構成に追加する必要があります：</p>
 <ul>
-<li>配信サブドメインのCNAMEレコード。
+<li>配信サブドメインのためのCNAMEレコードが表示されます。
 これらのレコードを<code>tags.tiqcdn.com</code>の特定のパスの代わりに使用します。</li>
-<li>収集サブドメインのAレコード。
-これらのレコードを<code>collect.tealiumiq.com</code>お及び<code>visitor-service.tealiumiq.com</code>（Collectタグのユースケース用）の特定のパスの代わりに使用します。</li>
+<li>収集サブドメインのためのAレコードが表示されます。
+これらのレコードを<code>collect.tealiumiq.com</code>および<code>visitor-service.tealiumiq.com</code>（Collectタグの使用例のため）の特定のパスの代わりに使用します。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>検証レコードと永続的なレコードの両方をDNS構成に保持してください。これらのレコードは、ドメインを証明書に追加するため、および証明書の自動更新のために必要です。</p>
-<h4 id="メール検証">メール検証</h4>
-<p>Eメール検証を使用するには、リクエストしたドメインごとにWHOISデータベースに記載されている連絡先アドレスのいずれかでメールメッセージを受信できる必要があります。メッセージを受信するメールアドレスには以下が含まれます：</p>
+<p>アカウントのすべてのドメインに対して一つの検証方法を使用することを推奨します。方法を混在させると、検証を再試行する際に次のエラーが発生する可能性があります：</p>
+<blockquote>
+<p><code>既存の証明書における検証方法が不明確です。</code></p>
+</blockquote>
+<p>このエラーが表示された場合は、ファーストパーティドメインを単一の方法を使用するように再構成してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>検証レコードと永続的レコードをDNS構成に保持してください。これらのレコードは、ドメインを証明書に追加し、証明書の自動更新に必要です。</p>
+<h3 id="メール検証">メール検証</h3>
+<p>メール検証を使用するには、リクエストされた各ドメインのWHOISデータベースに記載されている連絡先アドレスのいずれかでメールメッセージを受信できる必要があります。メッセージを受け取るメールアドレスには、以下が含まれます：</p>
 <ul>
 <li><code>administrator@your_domain</code></li>
 <li><code>hostmaster@your_domain</code></li>
@@ -799,16 +835,7 @@
 <li><code>webmaster@your_domain</code></li>
 <li><code>admin@your_domain</code></li>
 </ul>
-<p>Amazon Web Servicesから（ドメインごとに1通のメッセージで）検証トークンが含まれたメールが送信されます。このトークンは72時間で期限切れになります。メールが届かない場合やトークンが期限切れになった場合は、メイン画面に戻って<strong>メールを再送信</strong>をクリックしてください。検証プロセスを完了するには、各ドメインに対してメールメッセージに返信する必要があります。</p>
-<h2 id="ドメインの状態">ドメインの状態</h2>
-<p><strong>ファーストパーティドメイン概要</strong>画面に記載されているドメインは、以下のいずれかの状態を持つことができます：</p>
-<ul>
-<li><strong>発行済み</strong>：すべてのドメインが検証され、証明書は期限切れでも間もなく期限切れになることもありません。</li>
-<li><strong>期限切れ</strong>：証明書が期限切れです。</li>
-<li><strong>検証待ち</strong>：証明書に添付された1つ以上のドメインが検証されていません。</li>
-<li><strong>間もなく期限切れ</strong>：証明書が間もなく期限切れになり、更新が必要です。</li>
-</ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>自分で証明書を管理しており、証明書を更新した場合は、ドメインを再構成する必要がないように<strong>証明書をリセット</strong>オプションを使用してください。前の証明書がまだ有効であれば、ダウンタイムは発生しません。新しい証明書が前のものに取って代わります。</p>
+<p>Amazon Web Servicesから（各ドメインごとに1通のメッセージで）検証トークンが含まれたメールを受け取ります。トークンの有効期限は72時間です。メールを受け取らなかった場合やトークンが期限切れになった場合は、メイン画面に戻って<strong>メールを再送信</strong>をクリックしてください。各ドメインに対してメールメッセージに返信する必要があります。</p>
 
 </div>
 
@@ -854,7 +881,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年March月14日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -869,11 +896,15 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">ドメイン証明書の管理</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%94%E3%81%A8%E3%81%AE%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">証明書ごとのドメインの制限</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">ドメイン証明書の管理</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%81%8C%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E8%A8%BC%E6%98%8E%E6%9B%B8" href="javascript:void(0)">Tealiumが管理する証明書</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%8F%90%E4%BE%9B%E3%81%AE%E8%A8%BC%E6%98%8E%E6%9B%B8" href="javascript:void(0)">ユーザー提供の証明書</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AE%E6%AF%94%E8%BC%83" href="javascript:void(0)">証明書管理方法の比較</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%94%E3%81%A8%E3%81%AE%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E6%95%B0%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">証明書ごとのドメイン数の制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%A8tapid" href="javascript:void(0)">ファーストパーティドメインとTAPID</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E6%89%80%E6%9C%89%E6%A8%A9%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">ドメイン所有権の検証</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E7%8A%B6%E6%85%8B" href="javascript:void(0)">ドメインの状態</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E6%89%80%E6%9C%89%E6%A8%A9%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">ドメイン所有権の検証</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dns%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">DNS検証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A1%E3%83%BC%E3%83%AB%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">メール検証</a></li>
               </nav>
   </aside></nav>
 

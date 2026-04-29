@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/android-kotlin/module-list/adobe-visitor-service/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="各ユーザーに対して中央のクロスデバイス訪問IDを提供します。" />
+<meta property="og:description" content="各ユーザーに対してクロスデバイス訪問IDを提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>AdobeVisitorServiceモジュール | モジュール | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -380,32 +380,32 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      各ユーザーに対して中央のクロスデバイス訪問IDを提供します。
+      各ユーザーに対してクロスデバイス訪問IDを提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Adobe Visitor Serviceモジュールは、AdobeのREST APIと直接インターフェースを提供し、訪問のExperience Cloud ID (ECID)を取得し維持します。</p>
-<p><a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/">AdobeVisitorService</a>モジュールについて詳しく学びましょう。</p>
+  <p>Adobe Visitor Serviceモジュールは、訪問のExperience Cloud ID（ECID）を取得および維持するためにAdobeのREST APIと直接連携します。</p>
+<p><a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/">AdobeVisitorService</a>モジュールについてもっと学びましょう。</p>
 <h2 id="要件">要件</h2>
 <ul>
 <li><a href="/ja/platforms/android-kotlin/">Tealium Kotlin for Android</a></li>
 <li>有効なAdobeアカウントとAdobe組織ID</li>
 </ul>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
-<p>Android向けの<a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">AdobeVisitorServiceモジュールのサンプルアプリ</a>を探索して、Tealiumライブラリとベストプラクティスの実装についての知識を深めましょう。</p>
+<p>Android用の<a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">AdobeVisitorServiceモジュールサンプルアプリ</a>を探索して、Tealiumライブラリとベストプラクティスの実装についての知識を深めましょう。</p>
 <h2 id="インストール">インストール</h2>
-<p>AdobeVisitorServiceモジュールは、Tealium SDKを初期化する際に構成され、リモート構成機能はありません。</p>
-<p>このモジュールは<code>DispatchValidator</code>として機能し、Adobe組織IDなしでの呼び出しを防ぎます。Adobe APIからECIDを取得しようとしますが、5回の失敗後は、データ損失を避けるためにECIDなしでの呼び出しを許可します。データの送信は、有効なECIDを持つことよりも優先されます。</p>
-<p>ECIDが取得できない可能性のある原因は次のとおりです：</p>
+<p>AdobeVisitorServiceモジュールはTealium SDKの初期化時に構成され、リモート構成機能はありません。</p>
+<p>このモジュールは<code>DispatchValidator</code>として機能し、Adobe組織IDなしでは送信が阻止されます。Adobe APIからECIDを取得しようとしますが、5回の失敗後は、データ損失を避けるためにECIDなしでの続行が許可されます。データ送信は有効なECIDを持つことよりも優先されます。</p>
+<p>ECIDが取得できなかった可能性のある原因は以下の通りです：</p>
 <ul>
-<li>無効な応答、つまり応答が受信されたが有効なECIDを含まなかった。</li>
+<li>無効な応答、例えば応答は受け取ったが有効なECIDを含んでいなかった。</li>
 <li>応答がなかった。</li>
 <li>Adobe組織IDが無効だった。</li>
 </ul>
 <h3 id="maven">Maven</h3>
-<p>Tealium Maven Repoを追加：http://maven.tealiumiq.com/releases/</p>
+<p>Tealium Mavenリポジトリを追加：http://maven.tealiumiq.com/releases/</p>
 <p>依存関係を追加：<code>com.tealium:kotlin-adobe-visitor</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> com.tealium.adobe.api.AdobeAuthState
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> com.tealium.adobe.api.AdobeVisitor
@@ -425,7 +425,8 @@
 </span></span><span style="display:flex;"><span>  config.adobeVisitorOrgId = <span style="color:#a6e22e">BuildConfig</span>.ADOBE_ORG_ID
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  tealium = <span style="color:#a6e22e">Tealium</span>.create(<span style="color:#a6e22e">BuildConfig</span>.TEALIUM_INSTANCE, config)
-</span></span></code></pre></div>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>既知の訪問IDをリンクするか認証状態を構成するには、<a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/#set-a-known-visitor-id-and-authentication-state">既知の訪問IDと認証状態を構成する</a>を参照してください。</p>
+
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -485,7 +486,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

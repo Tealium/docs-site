@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/iq-tag-management/administration/first-party-domains/manage/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、証明書にドメインを追加する方法、ドメインを削除する方法、ドメインの連絡先情報を表示する方法について説明します。" />
+<meta property="og:description" content="この記事では、証明書へのドメインの追加、ドメインの削除、およびドメインの連絡先情報の表示についての情報を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>ファーストパーティドメインの管理 | ファーストパーティドメイン | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -350,7 +350,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealium汎用タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li>
+        <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container タグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -605,7 +605,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/configure-client-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-client-side-delivery">クライアントサイド配信の構成</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント設定の更新</a></li>
+        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント構成の更新</a></li>
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-first-party-domains">ファーストパーティドメインの管理</a></li></ul>
       </li>
@@ -714,52 +714,129 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、証明書にドメインを追加する方法、ドメインを削除する方法、ドメインの連絡先情報を表示する方法について説明します。
+      この記事では、証明書へのドメインの追加、ドメインの削除、およびドメインの連絡先情報の表示についての情報を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="証明書にドメインを追加する">証明書にドメインを追加する</h2>
-<p>証明書にドメインを追加するには、次の手順を使用します：</p>
+  <h2 id="ファーストパーティドメインの構成">ファーストパーティドメインの構成</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドデータ収集の場合、ドメイン証明書は構成時に選択したリージョンのTealiumエンドポイントに構成され、保存されます。選択したリージョンがプロファイルのリージョンと異なる場合、イベントおよび訪問データはファーストパーティドメインリージョンで収集され、プロファイル用に構成されたリージョンに転送されます。</p>
+<p>ファーストパーティドメインを構成するには、以下の手順に従ってください：</p>
 <ol>
-<li>管理メニューで、<strong>First-Party Domains</strong>をクリックし、ドメインを選択します。</li>
-<li><strong>Manage Domains</strong>をクリックし、<strong>Edit Domains</strong>をクリックします。</li>
-<li><strong>+ Add Domain</strong>をクリックします。<br>
-ドメインのリストに空の行が追加されます。アカウントの最大ドメイン数に達すると、<strong>+ Add Domain</strong>は無効になります。<br>
-<figure><a class="slb" href="/images/iq-tag-management/empty-domain-row-added.png"><img src="/images/iq-tag-management/empty-domain-row-added.png"
-             alt="empty domain row added"
-             title="empty domain row added"/>
-        </a>
-    </figure></li>
-<li>新しいドメインのURLを入力し、<strong>Save</strong>をクリックします。<br>
-証明書が更新されると、応答は検証方法とドメインタイプ（クライアントサイドまたはサーバーサイド）により異なります。
+<li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックします。</li>
+<li><strong>サーバーサイドデータ収集/DLE</strong>または<strong>クライアントサイド配信</strong>の下で、<strong>証明書の構成</strong>をクリックします。</li>
+<li>ほとんどのデータ収集が行われるリージョンを選択します。</li>
+<li>次のいずれかを選択します：
 <ul>
-<li><strong>DNS Validation</strong>:<br>
-<figure><a class="slb" href="/images/iq-tag-management/domains-updated.png"><img src="/images/iq-tag-management/domains-updated.png"
-             alt="domains updated"
-             title="domains updated"/>
+<li><strong>Tealium管理証明書</strong>：Tealiumが証明書を生成および管理します。</li>
+<li><strong>ユーザー提供証明書</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">自分の証明書を管理する</a>を参照してください。</li>
+</ul>
+</li>
+<li><strong>ユーザー提供証明書</strong>を選択した場合、以下のファイルをアップロードします：
+<ul>
+<li>証明書（必須）</li>
+<li>プライベートキー（必須）</li>
+<li>証明書チェーン（オプション）</li>
+</ul>
+</li>
+<li>ドメイン所有権の検証方法を以下から選択します：
+<ul>
+<li><strong>DNS検証</strong></li>
+<li><strong>メール検証</strong></li>
+</ul>
+</li>
+<li><strong>ドメインの追加</strong>セクションで、<code>https://</code>と終わりのスラッシュを省略したサブドメイン名を入力します。
+例：<code>collect.example.com</code>または<code>cdp.example.com</code>。</li>
+<li>別のドメインを追加するには、<strong>+ ドメインを追加</strong>をクリックします。
+ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトに対してサブドメインを入力します。</li>
+</ol>
+<h3 id="検証の確認">検証の確認</h3>
+<p><strong>同意する</strong>をクリックして、提供されたドメインの証明書を管理するためのTealiumの許可を与え、これらのドメインを所有および管理していることを証明し、次に<strong>保存</strong>をクリックします。</p>
+<hr>
+<h4 id="dns検証"><strong>DNS検証</strong></h4>
+<p>DNS検証を選択した場合、次のメッセージが表示されます：</p>
+<blockquote>
+<p>検証待ち。各ドメインに必要なDNSレコードを追加し、DNSの伝播を待ってください。</p>
+</blockquote>
+<p>検証に使用される一時的なAまたはCNAMEレコード（各ドメインにつき1つ）が表示されます。これらの一時的なAまたはCNAMEレコードをDNS構成に追加します。</p>
+<p>DNS構成に検証用のAまたはCNAMEレコードを追加し、検証プロセスが完了すると（数時間かかる場合があります）、ドメインの永続的なAまたはCNAMEレコードが表示されます。これらの永続的なAまたはCNAMEレコードをDNS構成に追加します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>最終的なDNS構成には、検証用および永続的なAまたはCNAMEレコードが含まれている必要があります。検証レコードは、証明書にドメインを追加する際および証明書の自動更新に使用されます。</p>
+<hr>
+<h4 id="メール検証"><strong>メール検証</strong></h4>
+<p>メール検証を選択した場合、次のメッセージが表示されます：</p>
+<blockquote>
+<p>検証待ち。各ドメインに送信された検証メールを確認するか、必要に応じてメールを再送してください。</p>
+</blockquote>
+<p>Amazon Web Servicesから（各ドメインにつき1通のメッセージで）72時間で期限切れになる検証トークンが含まれたメールを受け取ります。検証プロセスを完了するには、各ドメインのメールメッセージに応答する必要があります。メールが届かなかった場合やトークンが期限切れになった場合は、<strong>メールを再送</strong>ボタンが別途用意されています。</p>
+<hr>
+<p><strong>ファーストパーティドメイン概要</strong>のドメインステータスが<strong>発行済み</strong>に変わると、ドメインは使用準備が整います。</p>
+<p>検証は72時間以内に行う必要があります。検証期間が経過した場合は、同じサブドメインに対して新しい証明書をリクエストしてください。DNS検証レコードは、同じサブドメインの後続のリクエストで同じです。</p>
+<p>ドメインステータスが<strong>発行済み</strong>に変わった後は、Tealium iQタグ管理でファーストパーティドメインを使用するためにエンドポイント構成を更新する必要があります。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">エンドポイント構成の更新</a>を参照してください。</p>
+<h3 id="検証失敗">検証失敗</h3>
+<p>検証に失敗すると、ドメインステータスが<strong>失敗</strong>に変わり、失敗の詳細が記載されたメッセージが表示されます：</p>
+<blockquote>
+<p>ドメインにAmazonを証明機関として含めていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。管理ドメインで影響を受けるドメインを確認してください。</p>
+</blockquote>
+<p>このメッセージが表示された場合は、DNS構成にAmazonをCAAレコードに追加し、ドメインの検証を再試行して証明書を再生成してください。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">ファーストパーティドメインについて</a>を参照してください。</p>
+<h2 id="証明書にドメインを追加する">証明書にドメインを追加する</h2>
+<p>証明書にドメインを追加するには、以下の手順に従ってください：</p>
+<ol>
+<li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックし、ドメインを選択します。</li>
+<li><strong>ドメインの管理</strong>をクリックし、<strong>ドメインの編集</strong>をクリックします。</li>
+<li><strong>+ ドメインを追加</strong>をクリックします。
+リストに空の行が追加されます。アカウントのドメインの最大数に達すると、<strong>+ ドメインを追加</strong>は無効になります。
+<figure><a class="slb" href="/images/iq-tag-management/empty-domain-row-added.png"><img src="/images/iq-tag-management/empty-domain-row-added.png"
+             alt="空のドメイン行が追加されました"
+             title="空のドメイン行が追加されました"/>
         </a>
     </figure></li>
-<li><strong>Email Validation</strong>:<br>
-<figure><a class="slb" href="/images/iq-tag-management/domains-updated-email-validation.png"><img src="/images/iq-tag-management/domains-updated-email-validation.png"
-             alt="domains updated email validation"
-             title="domains updated email validation"/>
+<li>新しいドメインのURLを入力し、<strong>保存</strong>をクリックします。
+証明書が更新されると、応答は検証方法とドメインタイプ（クライアントサイドまたはサーバーサイド）によって異なります。
+<ul>
+<li><strong>DNS検証</strong>：
+<figure><a class="slb" href="/images/iq-tag-management/domains-updated.png"><img src="/images/iq-tag-management/domains-updated.png"
+             alt="ドメインが更新されました"
+             title="ドメインが更新されました"/>
         </a>
-    </figure><br>
-ドメインのステータスが<strong>Issued</strong>に変更されると、ドメインは使用準備が整います。</li>
+    </figure></li>
+<li><strong>メール検証</strong>：
+<figure><a class="slb" href="/images/iq-tag-management/domains-updated-email-validation.png"><img src="/images/iq-tag-management/domains-updated-email-validation.png"
+             alt="メール検証でドメインが更新されました"
+             title="メール検証でドメインが更新されました"/>
+        </a>
+    </figure>
+ドメインステータスが<strong>発行済み</strong>に変わると、ドメインは使用準備が整います。</li>
 </ul>
 </li>
 </ol>
 <h2 id="ドメインを削除する">ドメインを削除する</h2>
-<p>ドメインを削除するには、次の手順を使用します：</p>
+<p>ドメインを削除するには、以下の手順に従ってください：</p>
 <ol>
-<li>管理メニューで、<strong>First-Party Domains</strong>をクリックし、ドメインを選択します。</li>
-<li><strong>Manage Domains</strong>をクリックし、<strong>Edit Domains</strong>をクリックします。</li>
+<li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックし、ドメインを選択します。</li>
+<li><strong>ドメインの管理</strong>をクリックし、<strong>ドメインの編集</strong>をクリックします。</li>
 <li>ドメインの削除アイコンをクリックします。</li>
 </ol>
 <h2 id="ドメインの連絡先情報を表示する">ドメインの連絡先情報を表示する</h2>
-<p>ドメインの連絡先情報を表示するには、<strong>First-Party Domains</strong>に移動し、ドメインをクリックしてから<strong>View Contact Info</strong>をクリックします。</p>
+<p>ドメインの連絡先情報を表示するには、<strong>ファーストパーティドメイン</strong>に移動し、ドメインをクリックしてから<strong>連絡先情報を表示</strong>をクリックします。</p>
+<h2 id="証明書の有効期限">証明書の有効期限</h2>
+<h3 id="ユーザー提供">ユーザー提供</h3>
+<p>ユーザー提供の証明書が有効期限が近づいている場合や有効期限が切れた場合、有効期限に関する詳細が記載されたメッセージが表示されます：</p>
+<blockquote>
+<p>証明書の有効期限が近づいています。証明機関でこの証明書を更新し、有効期限前に新しい証明書とプライベートキーをアップロードしてください。</p>
+</blockquote>
+<blockquote>
+<p>証明書の有効期限が切れました。証明機関でこの証明書を更新し、ファーストパーティドメインを復元するために新しい証明書とプライベートキーをアップロードしてください。</p>
+</blockquote>
+<p>サービスの中断を避けるために、有効期限前に同じサブドメインの新しい証明書をリクエストする必要があります。DNS検証レコードは、同じサブドメインの後続のリクエストで同じです。</p>
+<p>メッセージで<strong>証明書を提供</strong>をクリックして証明書をアップロードします。新しい証明書は以前のものに置き換わります。以前の証明書がまだ有効期限が切れていない場合、ダウンタイムは発生しません。以前の証明書が有効期限が切れている場合は、証明書がDNSサーバーに伝播するまで数時間の遅延が発生する場合があります。</p>
+<h3 id="tealium管理の証明書">Tealium管理の証明書</h3>
+<p>通常、Tealium管理の証明書が期限切れになると、すぐに新しい証明書に置き換えられます。しかし、以下のメッセージが表示されることがあります：</p>
+<blockquote>
+<p>証明書が期限切れです。DNSレコードが変更されたため、自動更新に失敗しました。各ドメインの検証レコードを復元してください（「DNSレコードを表示」を参照）、その後、「再試行」をクリックして新しい証明書を発行してください。</p>
+</blockquote>
+<p>このメッセージは、ドメインのDNSレコードが変更されたために自動更新プロセスが失敗したことを示しています。この問題を解決するには、各ドメインの検証レコードを復元し、<strong>再試行</strong>をクリックして新しい証明書を発行してください。</p>
 
 </div>
 
@@ -769,11 +846,11 @@
   <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/"
     class="w-100 justify-start inline-flex items-center ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"エンドポイント設定の更新 "</title>
+      <title>"エンドポイント構成の更新 "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>エンドポイント設定の更新</div>
+      <div>エンドポイント構成の更新</div>
     </section>
   </a>
   
@@ -805,7 +882,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -819,9 +896,15 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AB%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">証明書にドメインを追加する</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ファーストパーティドメインの構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC%E3%81%AE%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">検証の確認</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC%E5%A4%B1%E6%95%97" href="javascript:void(0)">検証失敗</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AB%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B" href="javascript:void(0)">証明書にドメインを追加する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B" href="javascript:void(0)">ドメインを削除する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E9%80%A3%E7%B5%A1%E5%85%88%E6%83%85%E5%A0%B1%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B" href="javascript:void(0)">ドメインの連絡先情報を表示する</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90" href="javascript:void(0)">証明書の有効期限</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%8F%90%E4%BE%9B" href="javascript:void(0)">ユーザー提供</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E7%AE%A1%E7%90%86%E3%81%AE%E8%A8%BC%E6%98%8E%E6%9B%B8" href="javascript:void(0)">Tealium管理の証明書</a></li>
               </nav>
   </aside></nav>
 

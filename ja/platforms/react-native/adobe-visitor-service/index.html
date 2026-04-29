@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/react-native/adobe-visitor-service/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="React Native用のTealium Adobe Visitor Serviceモジュールのインストール方法を学びます。" />
+<meta property="og:description" content="React Native用Tealium Adobe Visitor Serviceモジュールのインストール方法を学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>Adobe Visitor Serviceモジュール | React Native用Tealium | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -318,93 +318,101 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      React Native用のTealium Adobe Visitor Serviceモジュールのインストール方法を学びます。
+      React Native用Tealium Adobe Visitor Serviceモジュールのインストール方法を学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium for React Nativeは、React NativeアプリケーションでTealiumのモバイルライブラリ（iOS、Android）を使用することを可能にします。</p>
-<h2 id="仕組み">仕組み</h2>
+  <p>Tealium for React Nativeは、React NativeアプリケーションでTealiumのモバイルライブラリ（iOS、Android）を使用できます。</p>
+<h2 id="動作原理">動作原理</h2>
 <p>Tealiumのモバイルライブラリは、以下の2つの方法のいずれかを使用してReact Nativeアプリケーションに統合されます：</p>
 <ul>
 <li>NPMパッケージ（推奨）</li>
-<li>手動で<a href="https://github.com/Tealium/tealium-react-native">GitHub</a>から</li>
+<li><a href="https://github.com/Tealium/tealium-react-native">GitHub</a>を使用して手動で</li>
 </ul>
-<h2 id="必要条件">必要条件</h2>
+<h2 id="要件">要件</h2>
 <ul>
 <li>ネイティブビルド環境へのアクセス</li>
 <li><a href="/ja/platforms/react-native/">Tealium for React Native 2.2.0+</a></li>
-<li><a href="https://github.com/Tealium/tealium-react-native">React Native 0.63+</a>とツールのインストール</li>
+<li><a href="https://github.com/Tealium/tealium-react-native">React Native 0.63+</a> およびツールがインストールされていること</li>
 <li><a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/">Tealium iQ Mobile Profile</a></li>
-<li><a href="https://developer.android.com/studio/">Android Studio</a>または<a href="https://developer.apple.com/xcode/">Xcode</a></li>
-<li><a href="/ja/platforms/android-kotlin/">Tealium for Android</a>または<a href="/ja/platforms/ios-swift/">Tealium for iOS</a></li>
+<li><a href="https://developer.android.com/studio/">Android Studio</a> または <a href="https://developer.apple.com/xcode/">Xcode</a></li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android</a> または <a href="/ja/platforms/ios-swift/">Tealium for iOS</a></li>
 </ul>
-<h2 id="インストール-npmyarn">インストール (NPM/YARN)</h2>
-<p>React Native用のTealium Adobe VisitorモジュールをNPMでインストールするには：</p>
+<h2 id="インストールnpmyarn">インストール（NPM/YARN）</h2>
+<p>React Native用Tealium Adobe VisitorモジュールをNPMでインストールするには：</p>
 <ol>
 <li>
-<p>メインの<code>tealium-react-native</code>ライブラリのインストール手順を<a href="/ja/platforms/react-native/install/">こちら</a>で確認し、少なくともバージョン2.2.0以上をインストールしていることを確認します。</p>
+<p>こちらの<a href="/ja/platforms/react-native/install/">メイン <code>tealium-react-native</code> ライブラリのインストール手順</a>に従ってください。少なくともバージョン2.2.0以上をインストールしていることを確認してください。</p>
 </li>
 <li>
 <p>React Nativeプロジェクトのルートに移動します。</p>
 </li>
 <li>
-<p>以下のコマンドで<code>tealium-react-native-adobe-visitor</code>パッケージをダウンロードしてインストールします：</p>
+<p>次のコマンドで <code>tealium-react-native-adobe-visitor</code> パッケージをダウンロードしてインストールします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn install tealium-react-native-adobe-visitor
 </span></span></code></pre></div></li>
 </ol>
 <h2 id="javascript">JavaScript</h2>
-<p>アプリに関連するクラスをインポートするには、以下のようにします：</p>
+<p>アプリに関連するクラスをインポートするには、次のようにします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumAdobeVisitor</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-native-adobe-visitor&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">TealiumAdobeVisitorConfig</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-native-adobe-visitor/common&#39;</span>;
 </span></span></code></pre></div><h2 id="初期化">初期化</h2>
 <p>メインのTealium React Native統合を初期化する前に、Adobe Visitorモジュールを構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">adobeVisitorConfig</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">TealiumAdobeVisitorConfig</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorOrgId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ADOBE-ORG-ID&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorExistingEcid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorRetries</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorAuthState</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">authenticated</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorDataProviderId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorCustomVisitorId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorExistingEcid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,  <span style="color:#75715e">// オプション
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">configure</span>(<span style="color:#a6e22e">adobeVisitorConfig</span>);
+</span></span></code></pre></div><p>アプリセッションの開始時にすべての値がわかっている場合のみ、<code>adobeVisitorCustomVisitorId</code>、<code>adobeVisitorDataProviderId</code>、<code>adobeVisitorAuthState</code>プロパティを構成します。<code>adobeVisitorAuthState</code>は、<code>adobeVisitorCustomVisitorId</code>を構成するときにのみ構成します。初期化時に訪問のIDが不明な場合（例えば、ログイン前など）、これらのプロパティを省略し、IDが利用可能になったら<a href="#linkecidtoknownidentifierid-providerid-authstate-callback"><code>linkEcidToKnownIdentifier</code></a>を呼び出します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">adobeVisitorConfig</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">TealiumAdobeVisitorConfig</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorOrgId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ADOBE-ORG-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorRetries</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorExistingEcid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorDataProviderId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;DATA-PROVIDER-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorCustomVisitorId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CUSTOM-VISITOR-ID&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adobeVisitorAuthState</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">authenticated</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">configure</span>(<span style="color:#a6e22e">adobeVisitorConfig</span>);
 </span></span></code></pre></div><h2 id="apiリファレンス">APIリファレンス</h2>
-<p>Adobe VisitorモジュールとメインのTealium React Native統合が両方とも初期化された後、既存のAdobeビジターをリンクすることができます。</p>
+<p>Adobe VisitorモジュールとメインのTealium React Native統合が両方初期化された後、既存のAdobe訪問をリンクできます。</p>
 <h3 id="linkecidtoknownidentifierid-providerid-authstate-callback"><code>linkEcidToKnownIdentifier(id, providerId, authState, callback)</code></h3>
 <p>既存のECIDを既知の識別子にリンクします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">linkEcidToKnownIdentifier</span>(<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">providerId</span>, <span style="color:#a6e22e">authState</span>, <span style="color:#a6e22e">value</span> =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;AdobeVisitor Data: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">value</span>))
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="getadobevisitorcallback"><code>getAdobeVisitor(callback)</code></h3>
-<p>現在のAdobeビジター情報を取得します</p>
+<p>現在のAdobe訪問情報を取得します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">getAdobeVisitor</span>(<span style="color:#a6e22e">value</span> =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Current Adobe Visitor: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">value</span>))
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="decorateurlurl-callback"><code>decorateUrl(url, callback)</code></h3>
-<p>URLをECIDビジターデータで装飾します。</p>
+<p>URLをECID訪問データで装飾します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">decorateUrl</span>((<span style="color:#e6db74">&#34;https://tealium.com&#34;</span>, <span style="color:#a6e22e">value</span> =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Decorated URL: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>);
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="geturlparameterscallback"><code>getUrlParameters(callback)</code></h3>
-<p>URLに追加するためのAdobe Visitor URLパラメータを取得します。</p>
+<p>URLに追加するためのAdobe訪問URLパラメータを取得します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">getUrlParameters</span>(<span style="color:#a6e22e">value</span> =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Adobe Visitor was null&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">value</span>)) {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Result: key = adobe_mc
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 結果: key = adobe_mc
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">//         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// デモンストレーション目的のみ; アプリでURLを装飾してからウェブビューを起動するメソッドを呼び出します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Retrieved URL Parameters: &#34;</span>, <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>[<span style="color:#a6e22e">key</span>]);
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="resetvisitor"><code>resetVisitor()</code></h3>
-<p>現在のビジターをリセットします。</p>
+<p>現在の訪問をリセットします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">resetVisitor</span>();
 </span></span></code></pre></div>
 </div>
@@ -466,7 +474,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -480,9 +488,9 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB-npmyarn" href="javascript:void(0)">インストール (NPM/YARN)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%ABnpmyarn" href="javascript:void(0)">インストール（NPM/YARN）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript" href="javascript:void(0)">JavaScript</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9" href="javascript:void(0)">APIリファレンス</a></li>

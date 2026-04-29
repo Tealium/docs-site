@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/platforms/javascript/track/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="ユーザー活動の追跡用の関数について学びます。" />
+<meta property="og:description" content="ユーザー活動を追跡するための機能について学びます。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>トラッキング | JavaScript用Tealium (utag.js) | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -336,18 +336,18 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      ユーザー活動の追跡用の関数について学びます。
+      ユーザー活動を追跡するための機能について学びます。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="ページビューの追跡">ページビューの追跡</h2>
-<p><a href="/ja/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> 関数は、ページビュー、仮想ページビュー、Ajaxページフローを追跡します。この関数を呼び出すと、構成したベンダータグ内の対応するページ追跡機能がトリガーされます。<code>utag.js</code>は、ページの読み込み時に自動的にこの関数をトリガーします。</p>
-<p><code>utag.view()</code>は、ユーザーがサイトをナビゲートしてもURLが更新されないAjaxページフローでよく使用されます。例えば、シングルページのチェックアウトやシングルページアプリケーションなどです。</p>
-<p>初期ページの読み込み時に宣言されるUniversal Data Object (UDO)、<code>utag_data</code>は、これらの呼び出しで再利用されません。新しいデータオブジェクトをこの関数に明示的に渡す必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ベストプラクティスとして、重要なページビューイベントを識別するために変数<a href="#tealium-event"><code>tealium_event</code></a>を使用し、ページテンプレートを一意に識別するために<code>page_type</code>を使用します。</p>
-<p>以下の例は、&ldquo;Product Quick View&quot;ビューを追跡します：</p>
+  <h2 id="ビューの追跡">ビューの追跡</h2>
+<p><a href="/ja/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> 関数は、ページビュー、仮想ページビュー、およびAjaxページフローを追跡します。この関数を呼び出すと、構成されたベンダータグ内の対応するページ追跡機能がトリガーされます。<code>utag.js</code>は、ページがロードされるたびに自動的にこの関数をトリガーします。</p>
+<p><code>utag.view()</code>は、ユーザーがサイトをナビゲートする際にURLがリフレッシュされないAjaxページフローで一般的に使用されます。例えば、シングルページチェックアウトやシングルページアプリケーションなどです。</p>
+<p>最初のページロード時に宣言されたユニバーサルデータオブジェクト（UDO）、<code>utag_data</code>は、これらの呼び出しで再利用されません。新しいデータオブジェクトをこの関数に明示的に渡す必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>重要なページビューイベントを識別するために変数<a href="#tealium-event"><code>tealium_event</code></a>を使用し、ページテンプレートを一意に識別するために<code>page_type</code>を使用することがベストプラクティスです。</p>
+<p>以下の例では、「商品クイックビュー」ビューを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product_view&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;page_type&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product_quick_view&#34;</span>,
@@ -356,8 +356,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_name&#34;</span> <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;Lucky Shirt&#34;</span>]
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
-<p><a href="/ja/platforms/javascript/api/tracking-functions/#utag-link"><code>utag.link()</code></a> 関数は、非ページビュー、ページのインタラクション、その他の動的なページイベントなどのイベントを追跡します。イベント追跡は、訪問がページ内で行うインタラクションに関する情報を収集します。ページビュー追跡が訪問のナビゲーションパスに関する情報を収集するのに対し、イベント追跡はナビゲーションステップの間に訪問が何を行ったかを監視します。</p>
-<p>以下の例は、&ldquo;Add to Cart&quot;イベントを追跡します：</p>
+<p><a href="/ja/platforms/javascript/api/tracking-functions/#utag-link"><code>utag.link()</code></a> 関数は、ページビュー以外のイベント、ページ内のインタラクション、その他の動的ページイベントを追跡します。イベント追跡は、訪問のページ内でのインタラクションに関する情報を収集します。ページビュー追跡が訪問のナビゲーションパスに関する情報を収集するのに対し、イベント追跡はナビゲーションステップの間に訪問が行うことを監視します。</p>
+<p>以下の例では、「カートに追加」イベントを追跡します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_event&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart_add&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_id&#34;</span>       <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;12345&#34;</span>],
@@ -366,8 +366,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;product_price&#34;</span>    <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;12.99&#34;</span>]
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h2 id="tealium_event"><code>tealium_event</code></h2>
-<p>追跡する各種のインタラクションを一意に識別するために、予約変数<code>tealium_event</code>を使用します。この変数は、Tealium iQ内でロードルール、拡張機能、データマッピングを構成するために参照されます。その他のイベントデータには、自由に選んだ変数名を使用します。</p>
-<p>推奨される<code>tealium_event</code>の値には、以下のようなものがありますが、これに限定されるものではありません：</p>
+<p>追跡される各タイプのインタラクションを一意に識別するために、予約変数<code>tealium_event</code>を使用します。この変数は、Tealium iQ全体でロードルール、拡張機能、およびデータマッピングを構成するために参照されます。他のすべてのイベントデータには、お好みの追加変数名を使用します。</p>
+<p><code>tealium_event</code>の値の提案には、以下が含まれますが、これに限定されません：</p>
 <table>
 <thead>
 <tr>
@@ -398,7 +398,7 @@
 </tr>
 <tr>
 <td><code>cart_view</code></td>
-<td>ショッピングカートの表示</td>
+<td>ショッピングカートを表示</td>
 </tr>
 <tr>
 <td><code>purchase</code></td>
@@ -418,43 +418,42 @@
 </tr>
 <tr>
 <td><code>social_share</code></td>
-<td>ソーシャルサイトでのリンク共有</td>
+<td>ソーシャルサイトでリンクを共有</td>
 </tr>
 </tbody>
 </table>
-<p class="tip"><i class="fa fa-info-circle"></i><a href="/ja/iq-tag-management/extensions/extensions-list/tealium-events-extension/">Tealium Events extension</a>を使用して、より標準的なイベントを構成します。</p>
-<p>以下の例は、追跡呼び出しにイベントに関連する追加情報を追加します：</p>
+<p>以下の例では、追跡コールに関連する追加情報を追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tealium_event&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;social_share&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;social_network&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;LinkedIn&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;shared_link&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://tealium.com/&#34;</span>
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p><a href="/ja/platforms/getting-started-web/data-layer/an-introduction-to-the-data-layer/">データレイヤーとTealiumイベント</a>について詳しく学びましょう。</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/getting-started-web/data-layer/an-introduction-to-the-data-layer/">データレイヤーとTealiumイベントについての詳細</a>を学びましょう。</p>
 <h2 id="実装オプション">実装オプション</h2>
-<p>ページビュー追跡が追跡されるページについてのコンテキストを提供するためにデータレイヤーオブジェクトを必要とするのと同様に、イベント追跡も追跡呼び出しにデータレイヤーオブジェクトを含める必要があります。追跡呼び出しのデータオブジェクトにイベントに関連する変数を含めます。</p>
-<p>以下のセクションでは、Tealiumのイベント追跡をウェブサイトに実装するためのアプローチについて説明します。</p>
+<p>ページビュー追跡が追跡されるページについてのコンテキストを提供するデータレイヤーオブジェクトを必要とするように、イベント追跡も追跡コールに含まれるデータレイヤーオブジェクトが必要です。追跡コールのデータオブジェクトにイベントに関連する変数を含めます。</p>
+<p>次のセクションでは、Tealiumのイベント追跡をウェブサイトに実装する方法について説明します。</p>
 <h3 id="jqueryとhtml5">jQueryとHTML5</h3>
-<p><a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/"> jQuery Extension</a>を使用して、クリック、展開、選択などのページ内の基本的なインタラクションを追跡します。HTML5の<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">data attributes</a>を使用して、追跡要素の情報プロパティを実装します。<a href="https://en.wikipedia.org/wiki/Semantic_HTML">semantic HTML</a>を持つウェブページが必要です。</p>
+<p><a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">ジェイクエリ拡張</a>を使用して、クリック、展開、選択などのページ内の基本的なインタラクションを追跡します。追跡される要素の情報プロパティを実装するためにHTML5 <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">データ属性</a>を使用します。<a href="https://en.wikipedia.org/wiki/Semantic_HTML">セマンティックHTML</a>を使用したウェブページが必要です。</p>
 <ul>
-<li>リンククリック、ボタンクリック、フォームフィールドのインタラクションに最適。</li>
-<li>Ajaxページフロー、フォームの送信には推奨されません。</li>
+<li>リンククリック、ボタンクリック、フォームフィールドのインタラクションに最適です。</li>
+<li>Ajaxページフローやフォーム送信には推奨されません。</li>
 </ul>
-<p>データ属性を持つ要素は、ページコード内で以下のように表示されるかもしれません：</p>
+<p>データ属性を持つ要素は、ページコードで次のように表示されるかもしれません：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/logout&#34;</span> <span style="color:#a6e22e">data-click_name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sign Out&#34;</span> <span style="color:#a6e22e">data-click_category</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;header&#34;</span>&gt;Log out&lt;/<span style="color:#f92672">a</span>&gt; 
-</span></span></code></pre></div><p>jQuery Extensionでこのリンクのクリックを追跡し、&ldquo;JS Code&quot;オプションを使用して関連するイベントデータを構成するために、これらの属性を参照します。</p>
+</span></span></code></pre></div><p>このリンクをクリックして追跡し、関連するイベントデータを構成するために、ジェイクエリ拡張でこれらの属性を参照します。</p>
 <ul>
 <li>特定のデータ属性を持つ要素を識別するためにセレクタを使用します。例えば、<code>a[data-click_name]</code>。</li>
 <li>&ldquo;JS Code&quot;オプションを使用して、クリックされた要素のデータ属性を参照する変数を構成します。例えば、<code>$(this).data('click_name')</code>。</li>
 </ul>
 <h3 id="ページコード">ページコード</h3>
-<p>ページコードは、動的なページコンテンツのリフレッシュ、Ajaxページ、モーダルフォームの送信、またはクライアントのウェブサーバーにリクエスト/レスポンスを行ってページに既に存在しない追加データを取得する必要があるイベントの追跡に使用されます。</p>
+<p>ページコードは、動的ページコンテンツのリフレッシュ、Ajaxページ、モーダルフォームの送信、またはクライアントのウェブサーバーにラウンドトリップリクエスト/レスポンスを必要とするイベントを追跡するために使用されます。</p>
 <ul>
-<li>モーダルフォーム、商品のクイックビュー、シングルページウェブサイト、非商品ページからのカートへの追加に最適。</li>
+<li>モーダルフォーム、商品クイックビュー、シングルページウェブサイト、非商品ページからのカート追加に最適です。</li>
 <li>リンク追跡には推奨されません。</li>
 </ul>
 <h3 id="ビデオ追跡">ビデオ追跡</h3>
-<p>ビデオ追跡は、ビデオプラットフォームAPIの仕様に合わせたカスタムソリューションのコーディングを必要とすることがよくあります。</p>
-<p>Tealiumの現在のソリューションについては、<a href="/ja/iq-tag-management/events/event-types/youtube-event/">YouTube Video Tracking Setup Guide</a>を参照してください。</p>
+<p>ビデオ追跡は、ビデオプラットフォームAPIの仕様に合わせたカスタムソリューションコーディングをしばしば必要とします。</p>
+<p>Tealiumの現在のソリューションについては、<a href="/ja/iq-tag-management/events/event-types/youtube-event/">YouTubeビデオ追跡セットアップガイド</a>で詳しく学びましょう。</p>
 <h3 id="シングルページアプリケーション">シングルページアプリケーション</h3>
 <p><a href="/ja/platforms/javascript/single-page-applications/">シングルページアプリケーション</a>のビューとイベントの追跡について学びましょう。</p>
 
@@ -517,7 +516,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月8日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -531,7 +530,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">ページビューの追跡</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">ビューの追跡</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E8%B7%A1" href="javascript:void(0)">イベントの追跡</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium_event" href="javascript:void(0)">tealium_event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A3%85%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">実装オプション</a></li>

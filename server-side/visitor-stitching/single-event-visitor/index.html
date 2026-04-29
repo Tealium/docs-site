@@ -1012,24 +1012,27 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>A single event visitor occurs when Tealium receives a real-time event from a new visitor to your website or mobile app without any further interaction.</p>
-<p>A single event visitor meets all of the following conditions:</p>
+<p>A single event visitor occurs when Tealium receives one real-time event from a new visitor to your website or mobile app, with no additional activity during the visit.</p>
+<p>A visitor is considered a single event visitor if all the following are true:</p>
 <ul>
-<li><strong>Only 1 event received</strong><br>
-Only one event received by the end of the first visit.</li>
+<li><strong>Only one event received</strong><br>
+Exactly one event is received during the visit.</li>
 <li><strong>No visitor stitching</strong><br>
-The single event does not result in visitor stitching.</li>
+The event does not trigger visitor stitching.</li>
 <li><strong>No badges assigned</strong><br>
-No badges were assigned during the visit.</li>
-<li><strong>Not file import</strong><br>
-The event is not from a file import.</li>
+No badges are assigned during the visit.</li>
+<li><strong>Not from file import</strong><br>
+The event is not generated from a file import.</li>
 </ul>
 <h2 id="audiencestream">AudienceStream</h2>
-<p>Single event visitors are not persisted in AudienceStream, are not passed to AudienceStore, and are not stored in AudienceDB. If a single event visitor returns for a new session, it will be treated as a new visitor in AudienceStream.</p>
+<p>Single event visitors are persisted in AudienceStream, passed to AudienceStore, and stored in AudienceDB.</p>
+<p>If the visitor returns in a new session, they are recognized as a returning visitor.</p>
 <h2 id="eventstore-and-eventdb">EventStore and EventDB</h2>
-<p>Single event visitors are not persisted, so EventStore and EventDB will contain records that do not have a matching record in AudienceStore and AudienceDB.</p>
+<p>Events from single event visitors are stored in EventStore and EventDB, with corresponding records in AudienceStore and AudienceDB.</p>
 <h2 id="visit-length">Visit length</h2>
-<p>Even though the default session length for a visit is 30 minutes, a single event visit will be ended after 10 minutes if a second event has not occurred. This shortened visit length occurs regardless if it is the first visit. For more information, see <a href="/server-side/attributes/about/#session-length">Session length</a>.</p>
+<p>The default session length is 30 minutes. However, a single event visit ends after 10 minutes if no additional events occur.</p>
+<p>This applies even for a visitor’s first visit.</p>
+<p>For more information, see <a href="/server-side/attributes/about/#session-length">Session length</a>.</p>
 
 </div>
 
@@ -1075,7 +1078,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 23, 2024 
+          <p>This page was last updated:  April 29, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

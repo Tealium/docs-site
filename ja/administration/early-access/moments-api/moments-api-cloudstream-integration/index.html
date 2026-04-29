@@ -474,7 +474,7 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="動作原理">動作原理</h2>
-<p>Moments APIはCloudStreamとの直接統合をサポートしており、SnowflakeやDatabricksなどのクラウドデータソースからCloudStreamセグメントに基づいて訪問データをリアルタイムで取得し、リアルタイムのパーソナライゼーションを作成できます。</p>
+<p>Moments APIはCloudStreamとの直接統合をサポートしており、データクラウドから直接データを使用してリアルタイムのパーソナライゼーションを作成できます。SnowflakeやDatabricksなどのクラウドデータソースを基にしたCloudStreamセグメントから訪問データを取得します。</p>
 <p>この統合は、データクラウドとリアルタイムAPIレスポンスの間に橋をかけ、データウェアハウスのスケールとMoments APIの低遅延パフォーマンスを組み合わせたパーソナライゼーションシナリオを実現します。</p>
 <p>統合には、CloudStreamプロファイルとMoments APIの両方での構成が必要です。</p>
 <h2 id="前提条件">前提条件</h2>
@@ -486,9 +486,9 @@
 <h2 id="ステップ1-クラウドデータソースの構成">ステップ1: クラウドデータソースの構成</h2>
 <p>CloudStreamプロファイルで、Moments APIと連携する各クラウドデータソースを構成します：</p>
 <ol>
-<li>CloudStreamプロファイルで<strong>Sources &gt; Data Sources</strong>に移動します。</li>
+<li>CloudStreamプロファイルの<strong>Sources &gt; Data Sources</strong>に移動します。</li>
 <li>新しいクラウドデータソースを作成するか、既存のものを編集します。</li>
-<li>データソース構成で<strong>Moments API Integration</strong>セクションに移動します。</li>
+<li>データソース構成の<strong>Moments API Integration</strong>セクションに移動します。</li>
 <li><strong>Moments API Integration</strong>を有効にします。</li>
 <li>各レコードに対して一意の識別子を含むクラウドデータソースの列を選択します。
 <ul>
@@ -501,17 +501,17 @@
 </ol>
 <p>クラウドデータソースは、Moments APIエンジンのソースとして利用可能になりました。</p>
 <h2 id="ステップ2-cloudstreamセグメントの作成">ステップ2: CloudStreamセグメントの作成</h2>
-<p>Moments APIを通じて利用可能にしたいオーディエンスを定義するCloudStreamセグメントを作成します：</p>
+<p>Moments APIを通じて利用可能にしたいオーディエンスを定義するCloudStreamプロファイルでセグメントを作成します：</p>
 <ol>
-<li>CloudStreamプロファイルで<strong>Audience</strong>に移動します。</li>
+<li>CloudStreamプロファイルの<strong>Audience</strong>に移動します。</li>
 <li>データソースのクラウド属性を使用してセグメントを作成します。</li>
 <li>Moments APIで使用するセグメントを保存して有効にします。</li>
 </ol>
-<p>これらのセグメントは、Moments APIエンジンを構成する際に選択できます。</p>
+<p>これらのセグメントは、Moments APIエンジンを構成する際に選択可能です。</p>
 <h2 id="ステップ3-moments-apiエンジンの構成">ステップ3: Moments APIエンジンの構成</h2>
 <p>Moments API構成で、APIレスポンスに含めたいCloudStreamデータソースとセグメントを追加します：</p>
 <ol>
-<li>CloudStreamプロファイルで<strong>CloudStream &gt; Moments API</strong>に移動します。</li>
+<li>CloudStreamプロファイルの<strong>CloudStream &gt; Moments API</strong>に移動します。</li>
 <li>新しいエンジンを作成するか、既存のものを編集します。</li>
 <li><strong>Details</strong>画面で、エンジン名、有効状態、ドメイン許可リストを構成します。</li>
 <li><strong>Next</strong>をクリックします。</li>
@@ -523,9 +523,9 @@
 </ul>
 </li>
 <li><strong>Next</strong>をクリックします。</li>
-<li><strong>Response</strong>画面で、CloudStreamセグメントが<strong>Example Response</strong>のオーディエンスとして表示されていることを確認します。
+<li><strong>Response</strong>画面で、CloudStreamセグメントが<strong>Example Response</strong>のオーディエンスとして表示されることを確認します。
 <ul>
-<li>必要に応じて追加のCloudStream属性を選択できます。サポートされているデータタイプ：数値、文字列、ブール値、日付。</li>
+<li>必要に応じて追加のCloudStream属性を選択できます。サポートされるデータタイプ：数値、文字列、ブール値、日付。</li>
 <li>レスポンスペイロードの属性でIDまたは名前を使用するか選択します。</li>
 </ul>
 </li>
@@ -550,7 +550,7 @@
 <tr>
 <td><code>momentsApiId</code></td>
 <td>String<br>Path parameter</td>
-<td>ステップ1で選択した列のクラウド属性の値です。特殊文字はエンコードする必要があります。</td>
+<td>クラウドデータソースのMoments API統合で構成されたクラウド属性の値。これはステップ1で選択した列の属性の値です。特殊文字はエンコードする必要があります。</td>
 </tr>
 <tr>
 <td></td>
@@ -594,7 +594,7 @@
 <li><strong>安定した識別子を選択する</strong>：セッション間で持続する安定した、一意の識別子を含む列を選択します（例：顧客IDまたはメールハッシュ）。</li>
 <li><strong>suppressNotFoundでテストする</strong>：テスト中は<code>suppressNotFound=true</code>を使用して、データソースに訪問が見つからない場合のHTTP 404レスポンスを避けます。</li>
 <li><strong>セグメントメンバーシップを監視する</strong>：Moments APIレスポンスで期待する訪問集団を捉えるようにCloudStreamセグメントが構成されていることを確認します。</li>
-<li><strong>更新を調整する</strong>：クラウドデータソースの構成変更がMoments APIレスポンスに影響を与える可能性があるため、両システム間で更新を調整します。</li>
+<li><strong>更新を調整する</strong>：クラウドデータソースの構成変更がMoments APIレスポンスに影響を与える可能性があります。両システム間で更新を調整します。</li>
 </ul>
 <h2 id="関連ドキュメント">関連ドキュメント</h2>
 <ul>
@@ -635,7 +635,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年April月29日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

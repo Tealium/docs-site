@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/iq-tag-management/administration/first-party-domains/configure-client-side/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="This article describes how to configure First-Party Domains for Tealium iQ Tag Management client-side delivery." />
+<meta property="og:description" content="This article describes how to configure first-party domains for Tealium iQ Tag Management client-side delivery." />
 <meta property="og:site_name" content="Tealium Docs" />
     <title>Configure client-side delivery | First-party domains | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
@@ -598,7 +598,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">Update endpoint configurations</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Manage First-Party-Domains</a></li></ul>
+        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Manage First-Party Domains</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".linking-to-github">Linking to GitHub</a>
@@ -701,22 +701,22 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      This article describes how to configure First-Party Domains for Tealium iQ Tag Management client-side delivery.
+      This article describes how to configure first-party domains for Tealium iQ Tag Management client-side delivery.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Use the following steps to configure First-Party Domains for Tealium iQ Tag Management client-side delivery:</p>
+  <p>Use the following steps to configure first-party domains for Tealium iQ Tag Management client-side delivery:</p>
 <ol>
 <li>In the admin menu, click <strong>First-Party Domains</strong>.</li>
-<li>Under <strong>Client-Side Delivery</strong>, click <strong>Configure Certificate</strong> and select one of the following:
+<li>Under <strong>Client-Side Delivery Certificate</strong>, click <strong>Configure Certificate</strong> and select one of the following:
 <ul>
-<li><strong>Generate Certificate</strong> – Tealium generates and manages the certificates.</li>
-<li><strong>Provide Certificate</strong> – Provide your own certificate files. For information about the requirements and format for certificate files, see <a href="/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">Manage your own certificates</a>.</li>
+<li><strong>Tealium-managed Certificate</strong>: Tealium generates and manages the certificates.</li>
+<li><strong>User-provided Certificate</strong>: Provide your own certificate files. For information about the requirements and format for certificate files, see <a href="/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">Manage your own certificates</a>.</li>
 </ul>
 </li>
-<li>If you selected, <strong>Provide Certificate</strong>, upload the following files:
+<li>If you selected <strong>User-provided Certificate</strong>, upload the following files:
 <ul>
 <li>Certificate (Required)</li>
 <li>Private Key (Required)</li>
@@ -734,12 +734,12 @@ For example, <code>tags.example.com</code>.</li>
 <li>To add another domain, click <strong>+ Add Domain</strong>.<br>
 First-party domains apply to all profiles in your account. Enter a subdomain for each site managed by this account.</li>
 <li>Click <strong>I Agree</strong> to give Tealium permission to manage certificates for the provided subdomains and to certify you own and manage these subdomains, then click <strong>Save</strong>.<br>
-After you save your configuration,
+After you save your configuration:
 <ul>
-<li><strong>DNS validation</strong> – The screen is updated to display the temporary CNAME records (one for each subdomain) that are used for validation. Add these temporary CNAME records to your DNS configuration. <figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-gen-temp.png"><img src="/images/guides/iq/fpd-dns-confirm-gen-temp.png"/>
+<li><strong>DNS validation</strong>: The screen displays the temporary CNAME records (one for each subdomain) that are used for validation. Add these temporary CNAME records to your DNS configuration. <figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-gen-temp.png"><img src="/images/guides/iq/fpd-dns-confirm-gen-temp.png"/>
     </a>
 </figure></li>
-<li><strong>Email validation</strong> – The following message is displayed:
+<li><strong>Email validation</strong>: The following message is displayed:
 <figure><a class="slb" href="/images/guides/iq/fpd-save-clientside-email-validation.png"><img src="/images/guides/iq/fpd-save-clientside-email-validation.png"
          alt="fpd-save-clientside-email-validation"
          title="fpd-save-clientside-email-validation"/>
@@ -753,8 +753,7 @@ After you save your configuration,
 <p><strong>DNS validation</strong>: After you have added the validation CNAME records to your DNS configuration and the validation process is completed (this can take several hours), the permanent CNAME records for your subdomains are displayed. Add these permanent CNAME records to your DNS configuration. <p class="note"><i class="fa fa-exclamation-triangle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add subdomains to a certificate and for auto-renewal of the certificate.</p></p>
 </li>
 <li>
-<p><strong>Email validation</strong>: You will receive email from Amazon Web Services (one message for each subdomain) containing a validation token that expires in 72 hours. To complete the validation process, you must respond to the email message for each subdomain.
-If you did not receive the email or if the token has expired, in the Client-Side menu on the <strong>First-Party Domains Overview</strong> screen, click <strong>Resend Email</strong>.<figure><a class="slb" href="/images/guides/iq/fpd-clientside-menu-resend-email.png"><img src="/images/guides/iq/fpd-clientside-menu-resend-email.png"
+<p><strong>Email validation</strong>: You will receive an email from Amazon Web Services (one message for each subdomain) containing a validation token that expires in 72 hours. To complete the validation process, you must respond to the email message for each subdomain. If you did not receive the email or if the token has expired, a separate <strong>Resend Email</strong> button is available in the Client-Side menu on the <strong>First-Party Domains Overview</strong> screen.<figure><a class="slb" href="/images/guides/iq/fpd-clientside-menu-resend-email.png"><img src="/images/guides/iq/fpd-clientside-menu-resend-email.png"
          alt="fpd-clientside-menu-resend-email"
          title="fpd-clientside-menu-resend-email"/>
     </a>
@@ -763,12 +762,25 @@ If you did not receive the email or if the token has expired, in the Client-Side
 </ul>
 </li>
 </ol>
-<h2 id="validation-confirmation">Validation Confirmation</h2>
+<h2 id="validation-confirmation">Validation confirmation</h2>
 <p>The following message is displayed while your subdomain information is being validated:</p>
-<p><code>Please wait while domain information is validated. This won't take long.</code></p>
-<p>When the domain status in the <strong>First-Party Domains Overview</strong> is changed to <strong>Issued</strong>, your domains are ready to use.</p>
+<blockquote>
+<p>Pending validation. Add the required DNS records for each domain, then wait for DNS to propagate.</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>Pending validation. Confirm the validation email sent for each domain, or resend the email if needed.</p>
+</blockquote>
+<p>When the domain status in the <strong>First-Party Domains Overview</strong> changes to <strong>Issued</strong>, your domains are ready to use.</p>
 <p>Validation must occur within 72 hours. If the validation period expires, request a new certificate for the same subdomain. The DNS validation records are the same for subsequent requests of the same subdomain.</p>
-<p>After the domain status is changed to <strong>Issued</strong>, you need to update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/">Update endpoint configurations</a>.</p>
+<p>After the domain status changes to <strong>Issued</strong>, you must update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/">Update endpoint configurations</a>.</p>
+<h2 id="validation-failure">Validation failure</h2>
+<p>If validation fails, the domain status changes to <strong>Failed</strong> and a message appears with details about the failure:</p>
+<blockquote>
+<p>We couldn’t create your certificate because your domains do not include Amazon as a certificate authority in DNS. Add Amazon in CAA records in DNS, then Retry. See affected domains in Manage Domains.</p>
+</blockquote>
+<p>If you see this message, add Amazon in CAA records in your DNS configuration, then click <strong>Retry</strong> to validate the domain and generate the certificate again.</p>
+<p>For more information, see <a href="/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">About first-party domains</a>.</p>
 
 </div>
 
@@ -829,7 +841,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 10, 2025 
+          <p>This page was last updated:  April 29, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -843,7 +855,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation-confirmation" href="javascript:void(0)">Validation Confirmation</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation-confirmation" href="javascript:void(0)">Validation confirmation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation-failure" href="javascript:void(0)">Validation failure</a></li>
               </nav>
   </aside></nav>
 

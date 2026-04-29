@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -598,7 +598,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">Update endpoint configurations</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Manage First-Party-Domains</a></li></ul>
+        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Manage First-Party Domains</a></li></ul>
       </li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".linking-to-github">Linking to GitHub</a>
@@ -711,6 +711,10 @@
 <li><code>&lt;img src=&quot;https://</code></li>
 <li><code>document.write(&quot;&lt;img src=&quot; ... &quot;&gt;&quot;);</code></li>
 </ul>
+<p>For example, a vendor might provide a snippet like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://ads.example.net/track?src=1234567&amp;type=abcde123&amp;cat=fghij456&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span>&gt;
+</span></span></code></pre></div><p>To configure this pixel, extract the <code>src</code> URL and enter it in the <strong>Pixel URL</strong> field:</p>
+<p><code>http://ads.example.net/track?src=1234567&amp;type=abcde123&amp;cat=fghij456</code></p>
 <h3 id="iframe">Iframe</h3>
 <p>Iframe tag code snippets usually contain one of the following:</p>
 <ul>
@@ -718,6 +722,10 @@
 <li><code>&lt;iframe src=&quot;https://</code></li>
 <li><code>document.write(&quot;&lt;iframe src=&quot; ... &quot;&gt;&lt;/iframe&quot;);</code></li>
 </ul>
+<p>For example, a vendor might provide a snippet like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://ads.example.net/track?src=1234567&amp;type=abcde123&amp;cat=fghij456&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</span></span></code></pre></div><p>To configure this pixel, extract the <code>src</code> URL and enter it in the <strong>Pixel URL</strong> field:</p>
+<p><code>http://ads.example.net/track?src=1234567&amp;type=abcde123&amp;cat=fghij456</code></p>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>First, go to the tag marketplace and add the Tealium Pixel Container to your profile.</p>
 <figure><a class="slb" href="/images/iq-tag-management/tags/tealium_pixel_container_tag.png"><img src="/images/iq-tag-management/tags/tealium_pixel_container_tag.png"
@@ -729,8 +737,8 @@
 <ul>
 <li><strong>Title</strong>: The default is <code>Tealium Pixel (or Iframe) Container</code>. You may replace it with a custom name of choice.</li>
 <li><strong>Type</strong>: Select the type of tag.</li>
-<li><strong>Auto Cache Bust:</strong> When enabled, the parameter <code>_rnd</code> is be appended to each pixel URL with a randomly generated value.</li>
-<li><strong>Cache Bust Name</strong>: (Optional) Specify a custom name for the cache bust parameter.</li>
+<li><strong>Auto Cache Bust:</strong> When enabled, a randomly generated value is appended to each pixel URL as a query parameter. This value prevents browsers and ad servers from serving a cached version of the pixel. For example, if your pixel URL is <code>https://ads.example.net/track?src=1234567</code>, the tag fires it as: <code>https://ads.example.net/track?src=1234567&amp;_rnd=0.7351829476</code></li>
+<li><strong>Cache Bust Name</strong>: (Optional) Specify a custom name for the cache bust parameter instead of the default <code>_rnd</code>. For example, entering <code>ord</code> causes the tag to fire: <code>https://ads.example.net/track?src=1234567&amp;ord=0.7351829476</code></li>
 <li><strong>Pixel 1-8</strong>: The URL of each pixel to load. Ensure that each URL begins with <code>http://</code>, <code>https://</code>, or <code>//</code>.</li>
 <li><strong>Pixel 1-8 Title</strong>: Provide a title for each pixel.</li>
 </ul>
@@ -808,7 +816,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 24, 2025 
+          <p>This page was last updated:  April 24, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
