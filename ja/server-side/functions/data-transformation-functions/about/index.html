@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="データ変換関数について" />
+    <meta property="og:title" content="データ変換機能について" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/functions/data-transformation-functions/about/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、データ変換関数の概要を提供します。" />
+<meta property="og:description" content="この記事では、データ変換機能の概要を説明します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
-    <title>データ変換関数について | データ変換関数 | Tealiumドキュメント</title>
+    <title>データ変換機能について | データ変換関数 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -791,7 +791,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/environment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-execution-env-rate-limits">環境と制限</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディタ</a></li>
+        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディター</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-use-apis-libraries">APIとライブラリ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -844,7 +844,7 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-data-transformation-functions">データ変換について</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
+        <a href="/ja/server-side/functions/data-transformation-functions/event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/transforms-flatten-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-flatten-library">ネストされたオブジェクトのフラット化</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1041,7 +1041,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt4 mt30-ns mb3">データ変換関数について</h1>
+<h1 class="lh-title mt4 mt30-ns mb3">データ変換機能について</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -1049,69 +1049,89 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、データ変換関数の概要を提供します。
+      この記事では、データ変換機能の概要を説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>データ変換関数は、データソースからイベントが収集された後、イベントが処理される前に呼び出され、以下のようなさまざまな目的で使用できます：</p>
+  <p>データ変換機能は、データがTealiumシステムに入力された時点で実行されますが、データが処理される前に行われます。変換機能は、以下を含むさまざまな目的に役立ちます：</p>
 <ul>
-<li>関数に渡されるイベントオブジェクトをフラット化する。</li>
+<li>関数に渡されたイベントオブジェクトをフラット化する。</li>
 <li>電話番号やメールアドレスなどの機密データを削除する。</li>
-<li>イベントオブジェクト内の変数を変更する。例えば、変数を小文字に変更することができます。</li>
-<li>他の値に基づいてイベントオブジェクト内の変数を入力する。</li>
-<li>変数の名前を変更する。これは、値を別の変数に割り当てて元の変数を削除することで行われます。</li>
+<li>イベントオブジェクト内の変数を変更する（例：変数を小文字に変更する）。</li>
+<li>他の値に基づいてイベントオブジェクト内の変数を構成する。</li>
+<li>変数の名前を変更し、値を別の変数に割り当てて元の変数を削除する。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>現在、データ変換関数はファイルインポートイベントをサポートしていません。</p>
-<h2 id="データ変換関数への入力">データ変換関数への入力</h2>
-<p>データ変換関数は、Tealium Collectからのイベントデータを含む<code>event</code>という1つの入力パラメータを持っています。<code>event</code>パラメータは、イベントを記述するいくつかのプロパティとネストされたオブジェクトを含むメタデータオブジェクトです。実際のイベントデータは<code>event.data.udo</code>オブジェクトで参照されます。詳細については、<a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/">Event Input Parameter</a>を参照してください。</p>
-<p>また、Tealiumモジュールは、データ変換関数用の<code>flatten()</code>ユーティリティをエクスポートします。これは、ネストされたオブジェクトをネストがない新しいオブジェクトに変換します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファイルインポートイベントはデータ変換機能ではサポートされていません。</p>
+<h2 id="データ変換機能への入力">データ変換機能への入力</h2>
+<p>データ変換機能は、データのソースに応じて以下の入力パラメータのいずれかを持ちます：</p>
+<ul>
+<li><code>event</code>: Tealium Collectからのイベントデータオブジェクト。詳細については、<a href="/ja/server-side/functions/data-transformation-functions/event-parameter/">イベントパラメータ</a>を参照してください。</li>
+<li><code>dataRecord</code>: クラウドデータソースからのデータレコード。詳細については、<a href="/ja/server-side/functions/data-record-functions/data-record-functions/#data-record-object">データレコードオブジェクト</a>を参照してください。</li>
+</ul>
+<p class="tip"><i class="fa fa-info-circle"></i>Tealiumモジュールは、データ変換機能用に<code>flatten()</code>ユーティリティをエクスポートしており、ネストされたオブジェクトをネストなしの新しいオブジェクトに変換します。</p>
 <h2 id="カスタムトリガー">カスタムトリガー</h2>
-<p>データ変換関数は、関数のカスタムトリガーに基づいて呼び出されます。カスタムトリガーは、関数を実行するタイミングを指定するために作成するルールです。条件は<code>event</code>パラメータの任意のプロパティに基づくことができますが、通常はデータソースキー、データソースプラットフォーム、および<code>tealium_event</code>属性に基づいています。<code>event</code>パラメータについての詳細は、<a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/">Event Parameter</a>を参照してください。</p>
-<p>カスタムトリガールールは、<a href="/ja/iq-tag-management/load-rules/about/">load rules</a>に似ており、ブール論理を使用してルール内の条件を組み合わせます。例えば、次のルールでは、特定のデータソース(<code>r2rbm8</code>)から<code>purchase</code>イベントが来たときに関数がトリガーされます。</p>
-<figure><a class="slb" href="/images/server-side/transfm-conditions-example.png"><img src="/images/server-side/transfm-conditions-example.png"
-         alt="transfm-conditions-example.png"
-         title="transfm-conditions-example.png"/>
-    </a>
-</figure>
-<p>条件は、<code>event</code>パラメータオブジェクト内のプロパティを指定するセレクタ、比較演算子、比較値に基づいています。セレクタはJSONPath式（<a href="https://github.com/json-path/JsonPath">JSONPath</a>を参照）であり、<code>event</code>内の任意のプロパティを参照できます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントは1つの関数のみをトリガーできます。イベントが複数の関数トリガーと一致する場合、最も古い<strong>Date Modified</strong>を持つ関数のみがトリガーされます。</p>
-<p>データ変換関数とカスタムトリガーの作成については、<a href="/ja/server-side/functions/manage-functions/create-function/">Create a function</a>を参照してください。</p>
-<p>データ変換関数の例については、<a href="/ja/server-side/functions/data-transformation-functions/functions-transforms-example-code/">Example Code</a>を参照してください。</p>
+<p>データ変換機能は、関数のカスタムトリガーに基づいて呼び出されます。カスタムトリガーは、関数を実行するタイミングを指定するために作成するルールです。カスタムトリガールールはロードルールに似ており、ルール内の条件を組み合わせるためにブール論理を使用します。</p>
+<p>例えば、以下のルールでは、特定のデータソース（<code>r2rbm8</code>）からの<code>purchase</code>イベントが来たときに関数がトリガーされます。</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">$.dataSourceId</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">r2rbm8</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div>
+<p>条件は、入力データオブジェクトのプロパティセレクタ、比較演算子、および比較値に基づいています。セレクタはJSONPath式です（<a href="https://github.com/json-path/JsonPath">JSONPath</a>を参照）し、オブジェクト内の任意のプロパティを参照できます。</p>
+<p>データ変換機能とカスタムトリガーの作成についての情報は、<a href="/ja/server-side/functions/manage-functions/create-function/">関数の作成</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントまたはデータレコードは1つの関数のみをトリガーできます。入力データが複数のトリガールールに一致する場合、最も古い<strong>変更日</strong>の関数がトリガーされます。</p>
+<h3 id="イベント用">イベント用</h3>
+<p>Tealium Collectからのイベントの場合、カスタムトリガー条件は<code>event</code>パラメータの任意のプロパティに基づくことができますが、通常はデータソースキー、データソースプラットフォーム、および<code>tealium_event</code>属性に基づいています。</p>
+<p><code>event</code>パラメータについての詳細は、<a href="/ja/server-side/functions/data-transformation-functions/event-parameter/">イベントパラメータ</a>を参照してください。</p>
+<h3 id="データレコード用">データレコード用</h3>
+<p>クラウドデータソースからのイベントの場合、カスタムトリガー条件は<code>dataRecord</code>パラメータの任意のプロパティに基づくことができますが、データソースキー(<code>$.dataSourceId</code>)に基づく条件を含める必要があります。</p>
+<p><code>dataRecord</code>パラメータについての詳細は、<a href="/ja/server-side/functions/data-record-functions/data-record-functions/#data-record-object">データレコードオブジェクト</a>を参照してください。</p>
 <h3 id="ルールの制限">ルールの制限</h3>
 <ul>
-<li><strong>Selector</strong>と<strong>Value</strong>フィールドは128文字に制限されています。</li>
-<li>正規表現演算子は利用できません。</li>
-<li>ルールのサイズは10KBに制限されています。</li>
-<li>ORブロックの数は10に制限されています。</li>
-<li>ANDブロック内の条件の数は10に制限されています。</li>
+<li><strong>セレクタ</strong>および<strong>値</strong>フィールドは128文字に制限されます。</li>
+<li>正規表現演算子は使用できません。</li>
+<li>ルールのサイズは10 KBに制限されます。</li>
+<li>ORブロックの数は10に制限されます。</li>
+<li>ANDブロック内の条件数は10に制限されます。</li>
 </ul>
-<h2 id="デフォルトの関数コード">デフォルトの関数コード</h2>
-<p>データ変換関数を作成すると、<strong>Code</strong>タブにデフォルトのコードが表示されます。デフォルトのコードは<code>flatten</code>ライブラリをインポートし、<code>transform(event)</code>を呼び出します。ここで、<code>event</code>パラメータは、着信イベントのメタデータオブジェクトで、着信<code>event</code>オブジェクトをフラット化します。必要に応じてデフォルトの<code>transform()</code>コードを変更し、<code>event.data.udo</code>オブジェクト内のイベント属性を変更します。</p>
+<h2 id="デフォルト関数コード">デフォルト関数コード</h2>
+<p>データ変換機能を作成すると、<strong>コード</strong>タブにデフォルトコードが表示されます。デフォルトコードは<code>flatten</code>ライブラリをインポートし、<code>transform(event)</code>を呼び出します。ここで<code>event</code>パラメータは入力イベントのメタデータオブジェクトであり、入力された<code>event</code>オブジェクトをフラット化します。必要に応じてデフォルトの<code>transform()</code>コードを変更して、<code>event.data.udo</code>オブジェクト内のイベント属性を変更します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">flatten</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/util/flatten&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;transform&#34; function allows you to access event and apply changes
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;transform&#34; function lets you access event and apply changes
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">transform</span>((<span style="color:#a6e22e">event</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// changes are applied via mutation of the original event
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// changes are applied through the mutation of the original event
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">flatten</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>));
 </span></span><span style="display:flex;"><span>})
-</span></span></code></pre></div><h2 id="既存の関数のカスタムトリガーへの変換">既存の関数のカスタムトリガーへの変換</h2>
-<p>カスタムトリガーは、データ変換関数の初期リリース後に導入されました。カスタムトリガーが導入される前に存在していたデータ変換関数については、以下のような条件が自動的に作成されます：</p>
+</span></span></code></pre></div><p>データ変換機能の例については、<a href="/ja/server-side/functions/data-transformation-functions/functions-transforms-example-code/">例コード</a>を参照してください。</p>
+<h2 id="既存の関数をカスタムトリガーに変換">既存の関数をカスタムトリガーに変換</h2>
+<p>カスタムトリガーは、データ変換機能の初期リリース後に導入されました。カスタムトリガーが導入される前に存在していたデータ変換機能については、以下のような条件が自動的に作成されます：</p>
 <figure><a class="slb" href="/images/server-side/transfm-conversion-edit-cond.png"><img src="/images/server-side/transfm-conversion-edit-cond.png"
          alt="transfm-conversion-edit-cond.png"
          title="transfm-conversion-edit-cond.png"/>
     </a>
 </figure>
-<p>この新しい条件は、データソースIDを指定し、それを関数に関連付けられたデータソースのIDに構成します。関数は、データソースからのすべてのイベントに対してトリガーされます。より具体的なイベントに対して関数をトリガーするように、この条件を編集することができます。</p>
+<p>この新しい条件は、関数に関連付けられたデータソースのIDに構成されたデータソースIDを指定します。データソースからのすべてのイベントに対して関数がトリガーされます。この条件を編集して、より具体的なイベントに対して関数をトリガーすることができます。</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/"
+  <a href="/ja/server-side/functions/data-transformation-functions/event-parameter/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>イベントパラメータ</div>
@@ -1150,7 +1170,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月7日
+          <p>最終更新日 ::  2026年May月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1164,11 +1184,13 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E6%8F%9B%E9%96%A2%E6%95%B0%E3%81%B8%E3%81%AE%E5%85%A5%E5%8A%9B" href="javascript:void(0)">データ変換関数への入力</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%A4%89%E6%8F%9B%E6%A9%9F%E8%83%BD%E3%81%B8%E3%81%AE%E5%85%A5%E5%8A%9B" href="javascript:void(0)">データ変換機能への入力</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">カスタムトリガー</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">ルールの制限</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">デフォルトの関数コード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A2%E5%AD%98%E3%81%AE%E9%96%A2%E6%95%B0%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B" href="javascript:void(0)">既存の関数のカスタムトリガーへの変換</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E7%94%A8" href="javascript:void(0)">イベント用</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E7%94%A8" href="javascript:void(0)">データレコード用</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">ルールの制限</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">デフォルト関数コード</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A2%E5%AD%98%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%AB%E5%A4%89%E6%8F%9B" href="javascript:void(0)">既存の関数をカスタムトリガーに変換</a></li>
               </nav>
   </aside></nav>
 

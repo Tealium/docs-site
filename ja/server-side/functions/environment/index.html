@@ -791,7 +791,7 @@
     <li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/environment/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".functions-execution-env-rate-limits">環境と制限</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディタ</a></li>
+        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディター</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-use-apis-libraries">APIとライブラリ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -844,7 +844,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-transformation-functions">データ変換について</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
+        <a href="/ja/server-side/functions/data-transformation-functions/event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/transforms-flatten-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-flatten-library">ネストされたオブジェクトのフラット化</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1055,14 +1055,14 @@
 <ul>
 <li>関数は、<a href="/ja/server-side/functions/modules/">関数用APIとライブラリ</a>に記載されているライブラリを除き、サードパーティのライブラリを使用することはできません。</li>
 <li>関数は最大32 MBのメモリを使用できます。
-32 MBを超えると、ログに次のエラーが記録されます：<br>
+関数が32 MBを超えて使用しようとすると、ログに次のエラーが記録されます：<br>
 <code>Exception 400 BAD REQUEST - OutOfMemoryError: memory limit 32 mb is exceeded.</code></li>
 <li>関数の最大サイズは64 KBで、これは約1500行のコードに相当します。
 64 KBを超える関数は、サイズが縮小されるまで保存できません。</li>
 <li>関数のログメッセージは以下のように制限されます：
 <ul>
-<li><strong>アカウントごとの関数ごとの制限</strong>：1分間に5 MBのログメッセージ。この制限に達すると、関数のログ記録が1分間制限されます。関数が制限されている間、情報メッセージはログに記録されません。エラーと警告メッセージは引き続きログに記録されます。完全なログ記録は1分後に再開されます。</li>
-<li><strong>すべての関数のアカウント制限</strong>：1分間に50 MBのログメッセージ。現在、ログ記録は制限されません。この制限を超えると、Tealiumはログメッセージの数を制限するよう要求する場合があります。</li>
+<li><strong>アカウントごとの関数ごとの制限</strong>：1分間に5 MBのログメッセージ。この制限に達すると、関数のログ記録が1分間スロットルされます。関数がスロットルされると、情報メッセージはログに記録されません。エラーメッセージと警告メッセージは引き続きログに記録されます。完全なログ記録は1分後に再開されます。</li>
+<li><strong>すべての関数のアカウント制限</strong>：1分間に50 MBのログメッセージ。現在、ログ記録はスロットルされません。この制限を超えると、Tealiumはログメッセージの数を制限するよう要求する場合があります。</li>
 </ul>
 </li>
 </ul>
@@ -1083,9 +1083,9 @@
 <p>関数のランタイムバージョンは、コードエディタの<strong>コード</strong>タブに表示されます。以下のように表示されます：<figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
     </a>
 </figure></p>
-<p>ランタイムバージョンは新機能を提供するために更新される場合があります。新しいランタイムバージョンが利用可能になると、<strong>関数概要</strong>ページに次のようなメッセージが表示されます：<figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
-         alt="新しいランタイムバージョンが利用可能であり、その名前と更新の概要が含まれているアラートメッセージです。"
-         title="新しいランタイムバージョンが利用可能であり、その名前と更新の概要が含まれているアラートメッセージです。"/>
+<p>ランタイムバージョンは新機能を提供するために更新されることがあります。新しいランタイムバージョンが利用可能になると、<strong>関数概要</strong>ページに次のようなメッセージが表示されます：<figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
+         alt="新しいランタイムバージョンが利用可能であり、その名前と更新の概要が含まれるアラートメッセージです。"
+         title="新しいランタイムバージョンが利用可能であり、その名前と更新の概要が含まれるアラートメッセージです。"/>
     </a>
 </figure></p>
 <p>Tealiumが新しいランタイムバージョンをリリースするにつれて、古いバージョンは非推奨となり、最終的には廃止されます。ランタイムバージョンが非推奨または廃止された場合、<strong>関数概要</strong>画面および関数の<strong>コード</strong>タブにメッセージが表示されます。</p>
@@ -1098,14 +1098,14 @@
 関数が150ミリ秒の実行時間を超えると、ログに次のエラーが記録されます：<br>
 <code>Invocation timeout limit of 150 milliseconds is exceeded</code></li>
 </ul>
-<p>これらの実行制限はアカウントと地域に基づいています。ある地域のアカウントのすべての関数の実行時間と呼び出し回数の合計は、これらの制限を超えることはできません。</p>
-<p>いずれかの制限を超えると、関数の実行は一時的に停止されます（制限されます）。次のメッセージが<strong>関数概要</strong>に表示され、制限された関数の横に黄色の警告アイコンが表示されます：</p>
+<p>これらの実行制限はアカウントと地域に基づいています。ある地域のアカウント内のすべての関数の実行時間と呼び出し回数の合計は、これらの制限を超えることはできません。</p>
+<p>いずれかの制限を超えると、関数の実行は一時的に停止（スロットル）されます。次のメッセージが<strong>関数概要</strong>に表示され、スロットルされた関数の横に黄色の警告アイコンが表示されます：</p>
 <figure><a class="slb" href="/images/server-side/throttle-msg.png"><img src="/images/server-side/throttle-msg.png"
-         alt="過去24時間で、プロファイルの一部の関数がレート制限に達し、制限されています。"
-         title="過去24時間で、プロファイルの一部の関数がレート制限に達し、制限されています。"/>
+         alt="過去24時間で、プロファイルの一部の関数がレート制限に達し、スロットルされています。"
+         title="過去24時間で、プロファイルの一部の関数がレート制限に達し、スロットルされています。"/>
     </a>
 </figure>
-<p>制限された関数の詳細を表示する方法については、<a href="/ja/server-side/functions/manage-functions/view-function-statistics/">関数の統計を表示する</a>を参照してください。</p>
+<p>スロットルされた関数の詳細を表示する方法については、<a href="/ja/server-side/functions/manage-functions/view-function-statistics/">関数の統計を表示する</a>を参照してください。</p>
 <h2 id="イベントビジターおよびデータレコード関数の実行時間制限">イベント、ビジター、およびデータレコード関数の実行時間制限</h2>
 <p>イベント、ビジター、およびデータレコード関数には以下の実行制限があります：</p>
 <ul>
@@ -1116,17 +1116,17 @@
 <code>Exception 504 - Invocation timeout limit of 10000 milliseconds is exceeded.</code></li>
 </ul>
 <h2 id="トレース制限">トレース制限</h2>
-<p>トレースで関数をテストする場合、関数の呼び出しは1分間に15回に制限されます。</p>
+<p>トレースで関数をテストする場合、関数呼び出しは1分間に15回に制限されます。</p>
 <h2 id="実行レートと実行時間例1">実行レートと実行時間：例1</h2>
-<p>この例では、外部APIと通信する関数が呼び出し1回あたり約100 msかかると仮定します。また、このアカウントに構成されている関数が1つだけであり、この関数の平均実行レートが1秒あたり1000回の呼び出しであると仮定します。</p>
-<p>1分間の時間枠内での実行レートと実行時間は次の通りです：</p>
+<p>この例では、外部APIと通信する関数が呼び出し1回あたり約100 msかかると仮定します。また、このアカウントには1つの関数のみが構成されており、この関数の平均実行レートは1秒あたり1000回の呼び出しと仮定します。</p>
+<p>1分間の時間枠内での実行レートと実行時間は次のとおりです：</p>
 <p>実行レート = 1000 * 60 * 1分 = <strong>1分間に60,000回の呼び出しの実行レート</strong></p>
 <p>実行時間 = 1000回の呼び出し/秒 * 100 ms / 1000 = 100分 = <strong>1分間に1.66時間の実行時間</strong></p>
 <p>この場合、実行レートと実行時間はどちらも制限以下です。</p>
 <h2 id="実行レートと実行時間例2">実行レートと実行時間：例2</h2>
-<p>この例では、外部APIのパフォーマンスが一時的に低下し、関数の実行時間が呼び出し1回あたり800 msになると仮定します。つまり、実行時間は8倍に増加します。</p>
+<p>この例では、外部APIのパフォーマンスが一時的に低下し、関数の実行時間が呼び出し1回あたり800 msになると仮定します。これは実行時間が8倍に増加することを意味します。</p>
 <p>実行時間 = (1000呼び出し/秒 * 100 ms / 1000) * 8 = 800分 = <strong>1分間に13.28時間の実行時間</strong>。</p>
-<p>この場合の実行時間は1分間に13.28時間であり、8時間/分の最大値を超えています。関数の呼び出しは制限される可能性があります。</p>
+<p>この場合の実行時間は1分間に13.28時間であり、1分間に8時間の最大値を超えています。関数の呼び出しはスロットルされる可能性があります。</p>
 
 </div>
 
@@ -1136,10 +1136,10 @@
   <a href="/ja/server-side/functions/code-editor/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>関数コードエディタ</div>
+      <div>関数コードエディター</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"関数コードエディタ"</title>
+      <title>"関数コードエディター"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1187,7 +1187,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月31日
+          <p>最終更新日 ::  2026年May月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

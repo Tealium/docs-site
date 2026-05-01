@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.tealium.com/ja/server-side/functions/manage-functions/create-function/" />
 <meta property="og:image" content="https://docs.tealium.com/images/icons/tealium_logo_icon.png" />
-<meta property="og:description" content="この記事では、データ変換関数およびイベントまたは訪問関数を作成するための指示を提供します。" />
+<meta property="og:description" content="この記事では、データ変換関数およびイベントまたは訪問関数を作成するための手順を提供します。" />
 <meta property="og:site_name" content="Tealiumドキュメント" />
     <title>関数を作成する | 関数の管理 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
@@ -791,7 +791,7 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/environment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-execution-env-rate-limits">環境と制限</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディタ</a></li>
+        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディター</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-use-apis-libraries">APIとライブラリ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -844,7 +844,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-transformation-functions">データ変換について</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
+        <a href="/ja/server-side/functions/data-transformation-functions/event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/functions/data-transformation-functions/transforms-flatten-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-flatten-library">ネストされたオブジェクトのフラット化</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1049,7 +1049,7 @@
 
   
     <p class="f5 f4-ns fw3 lh-copy">
-      この記事では、データ変換関数およびイベントまたは訪問関数を作成するための指示を提供します。
+      この記事では、データ変換関数およびイベントまたは訪問関数を作成するための手順を提供します。
     </p>
   
 </div>
@@ -1070,7 +1070,7 @@
 <li><strong>+ OR</strong>をクリックして<code>OR</code>条件のブロックを追加します。
 <code>OR</code>条件ブロックの数は<code>10</code>に制限されます。</li>
 <li><strong>続行</strong>をクリックします。
-コメント付きの例示コードが表示されます。このコードを変更するか、自分の関数コードに置き換えることができます。</li>
+コメント付きの例示コードが表示されます。このコードを修正するか、自分の関数コードに置き換えることができます。</li>
 <li>関数をテストした後、<strong>構成</strong>タブに移動し、<strong>ステータス</strong>をONに変更して<strong>完了</strong>をクリックします。
 関数のテストに関する詳細は、<a href="/ja/server-side/functions/manage-functions/test-functions/">関数のテスト</a>を参照してください。</li>
 <li>保存して公開します。</li>
@@ -1078,11 +1078,40 @@
 <p>関数は保存して公開するまで保存されず、トリガーすることはできません。後で関数を編集する場合は、変更が有効になるように保存して公開することを確認してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>データ変換関数を作成して保存して公開した後、変更が有効になるまで最大300秒かかることがあります。</p>
 <h3 id="データ変換関数の条件の例">データ変換関数の条件の例</h3>
-<p>購入額が1000ドル以上で、カートに個人用電子製品が含まれているユーザー向けのキャンペーンを実行する場合、以下の条件を使用できます：</p>
-<figure><a class="slb" href="/images/server-side/trigger-conditions-create-edit.png"><img src="/images/server-side/trigger-conditions-create-edit.png"/>
-    </a><figcaption><p>trigger-conditions-create-edit.png</p>
-        </figcaption>
-</figure>
+<p>購入が1000ドル以上で、カートに個人用電子製品が含まれているユーザー向けのキャンペーンを実行する場合、以下の条件を使用できます：</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">$.dataSourceId</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">aq68ur</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.campaign</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">cdfc5a72</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.product[?(@.category == &#34;Personal Electronics&#34;)]</span>
+        <span class="operator">IS NOT EMPTY</span>
+        
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.order_total</span>
+        <span class="operator">GREATER THAN</span>
+        <span class="filter">1000</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div>
 <h2 id="イベント訪問またはデータレコード関数を作成する">イベント、訪問、またはデータレコード関数を作成する</h2>
 <ol>
 <li><strong>+ 関数を追加</strong>をクリックします。</li>
@@ -1096,10 +1125,7 @@
 </ul>
 </li>
 <li><strong>続行</strong>をクリックします。
-<ul>
-<li>コメント付きの例示コードが表示されます。このコードを変更するか、自分の関数コードに置き換えることができます。</li>
-</ul>
-</li>
+コメント付きの例示コードが表示されます。このコードを修正するか、自分の関数コードに置き換えることができます。</li>
 <li>関数をテストした後、<strong>構成</strong>タブに移動し、<strong>ステータス</strong>をONに変更して<strong>完了</strong>をクリックします。
 <ul>
 <li>関数のテストに関する詳細は、<a href="/ja/server-side/functions/manage-functions/test-functions/">関数のテスト</a>を参照してください。</li>
@@ -1153,7 +1179,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月24日
+          <p>最終更新日 ::  2026年May月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

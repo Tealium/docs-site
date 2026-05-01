@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -820,7 +820,7 @@
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-transformation-functions">About data transformations</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">Event parameter</a></li>
+        <a href="/server-side/functions/data-transformation-functions/event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">Event parameter</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/data-transformation-functions/functions-transforms-example-code/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-transforms-example-code">Example code</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1022,26 +1022,58 @@
 <p>Functions in CloudStream run within the CloudStream data pipeline and have access to the queried data records from your cloud data sources. Use functions within a CloudStream profile to retrieve data from other systems, augment your data, or send data to other endpoints.</p>
 <p>Adding and managing CloudStream functions is the same as managing other functions, with the following exceptions:</p>
 <ul>
-<li>When creating a function, instead of selecting an audience or an event, you select a <a href="/server-side/cloudstream/about/">cloud data source</a> and a <a href="/server-side/cloudstream/about/">segment</a>.</li>
+<li>When creating a custom action function, instead of selecting an audience or an event, you select a <a href="/server-side/data-sources/cloud-data/about/">cloud data source</a> and a <a href="/server-side/cloudstream/segments/">segment</a>.</li>
 <li>Each CloudStream function can only use data from one data source. If you want to activate data from additional data sources, configure a separate function for each one.</li>
 <li>If a segment contains attributes mapped from multiple data sources, only the attributes from the selected data source are available in the function.</li>
 </ul>
-<p>For more about functions, see <a href="/server-side/functions/about/">About functions</a>.</p>
 <h2 id="triggers">Triggers</h2>
-<p>CloudStream data record functions are triggered after the data record has been processed, as shown in the following CloudStream data pipeline diagram:</p>
+<p>Data record functions execute before and after the data record is processed.</p>
+<h3 id="transformations">Transformations</h3>
+<p>Transformation functions execute before the data record is processed, as shown in the following data pipeline diagram:</p>
+<figure><a class="slb" href="/images/server-side/transformations-data-record-pipeline.png"><img src="/images/server-side/transformations-data-record-pipeline.png"/>
+    </a>
+</figure>
+<p>Use functions at this point in the pipeline to transform the <a href="#data-record-object">data record object</a> and its values before it&rsquo;s processed.</p>
+<p>For more information, see <a href="/server-side/functions/data-transformation-functions/about/">About data transformation functions</a>.</p>
+<h3 id="custom-actions">Custom actions</h3>
+<p>Custom action functions execute after the data record is processed, as shown in the following data pipeline diagram:</p>
 <figure><a class="slb" href="/images/server-side/functions-data-record-pipeline.png"><img src="/images/server-side/functions-data-record-pipeline.png"/>
     </a>
 </figure>
 <p>Use functions at this point in the pipeline as activations to send the data record to other systems.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>At this point in the CloudStream data pipeline, modifications to the <code>dataRecord</code> object have no effect on other parts of the system.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>At this point in the data pipeline, modifications to the <code>dataRecord</code> object have no effect on other parts of the system.</p>
 <h2 id="runtime-version">Runtime version</h2>
-<p>The current runtime version is the same as <a href="/server-side/functions/event-visitor-functions/event-visitor-v3/">event and visitor functions V3</a>, but includes the following changes:</p>
+<p>The runtime version for data record transformation functions is the same as for event data, but includes the following changes:</p>
+<ul>
+<li>The <code>crypto-es</code> library is removed and replaced with <a href="/server-side/functions/modules/#crypto"><code>tealium/crypto</code></a>.</li>
+</ul>
+<p>The runtime version for custom actions is the same as <a href="/server-side/functions/event-visitor-functions/event-visitor-v3/">event and visitor functions V3</a>, but includes the following changes:</p>
 <ul>
 <li>The <code>track</code> library has been removed.</li>
 <li>The data record cannot be sent back to Tealium as a new event.</li>
 </ul>
-<h2 id="activate-function">activate() function</h2>
-<p>When you create a data record function, the default code is shown in the <strong>Code</strong> tab of the functions code editor:</p>
+<h2 id="transform-function">transform() function</h2>
+<p>When you create a transformation data record function, the <code>$.dataSourceId</code> field must be used as a condition for the trigger rule. Use this condition to reference the data source key from a cloud data source.</p>
+<p>Example:
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">$.dataSourceId</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">aq68ur</span>
+      </div>
+  </div>
+</div></p>
+<p>After you select a cloud data source and set the trigger rule, the following default code appears in the <strong>Code</strong> tab of the functions code editor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">flatten</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/util/flatten/v2&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;transform&#34; function allows you to access data record and apply changes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">transform</span>((<span style="color:#a6e22e">dataRecord</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// change are applied via the mutation of the original record
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">flatten</span>(<span style="color:#a6e22e">dataRecord</span>), <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 id="activate-function">activate() function</h2>
+<p>When you create a custom action data record function, the default code is shown in the <strong>Code</strong> tab of the functions code editor:</p>
 <figure><a class="slb" href="/images/early-access/cloudstream/cloudstream_function_details.png"><img src="/images/early-access/cloudstream/cloudstream_function_details.png"/>
     </a>
 </figure>
@@ -1052,8 +1084,9 @@
 </span></span></code></pre></div><p>Data record functions have a <a href="#data-record-object"><code>dataRecord object</code></a> and <code>helper</code> object.</p>
 <p>The <code>helper</code> parameter provides <code>helper.getAuth()</code> and <code>helper.getGlobalVariable()</code> for getting authorization and retrieving global variables. For more information, see <a href="/server-side/functions/event-visitor-functions/event-visitor-v3/#helper-object">Helper object</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Authentication tokens can only be referenced by a function within an HTTP request. If you try to reference the token outside of an HTTP request, the token is replaced by a UUID placeholder.</p>
-<h3 id="data-record-object">Data record object</h3>
-<p>The <code>dataRecord</code> object is available for CloudStream functions and contains the following properties:</p>
+<h2 id="data-record-object">Data record object</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>For transformation functions used with Tealium Collect, see <a href="/server-side/functions/data-transformation-functions/event-parameter/">Event parameter</a>.</p>
+<p>The <code>dataRecord</code> object is available for CloudStream functions and cloud data sources and contains the following properties:</p>
 <table>
 <thead>
 <tr>
@@ -1113,8 +1146,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;event_id&#34;</span>: <span style="color:#e6db74">&#34;cf8bd406-787b-4fe9-8b45-7782e6663708&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;post_time&#34;</span>: <span style="color:#ae81ff">1753774131897</span>,
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="example">Example</h3>
-<p>This is an example CloudStream function that uses the Tealium Crypto library to hash an email address attribute (<code>CDW_Column3_EmailAddress</code>) from the data record and then send the data record to a webhook.</p>
+</span></span></code></pre></div><h2 id="example">Example</h2>
+<p>This is an example data record function that uses the Tealium Crypto library to hash an email address attribute (<code>CDW_Column3_EmailAddress</code>) from the data record and then send the data record to a webhook.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">C</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium/crypto&#34;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">send</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">data</span>) =&gt; {
@@ -1171,7 +1204,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 9, 2026 
+          <p>This page was last updated:  May 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1187,9 +1220,12 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#triggers" href="javascript:void(0)">Triggers</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#runtime-version" href="javascript:void(0)">Runtime version</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#transformations" href="javascript:void(0)">Transformations</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-actions" href="javascript:void(0)">Custom actions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#runtime-version" href="javascript:void(0)">Runtime version</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#transform-function" href="javascript:void(0)">transform() function</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate-function" href="javascript:void(0)">activate() function</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-record-object" href="javascript:void(0)">Data record object</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-record-object" href="javascript:void(0)">Data record object</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example" href="javascript:void(0)">Example</a></li>
               </nav>
   </aside></nav>

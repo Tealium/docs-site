@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -820,7 +820,7 @@
     <li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-data-transformation-functions">About data transformations</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">Event parameter</a></li>
+        <a href="/server-side/functions/data-transformation-functions/event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">Event parameter</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/data-transformation-functions/functions-transforms-example-code/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-transforms-example-code">Example code</a></li>
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1017,30 +1017,49 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Data transformation functions are invoked after an event is collected from the data source and before the event is processed and can be used for a variety of purposes, including the following:</p>
+  <p>Data transformation functions execute when data enters the Tealium system but before the data is processed. Transformation fucntions are useful for a variety of purposes, including the following:</p>
 <ul>
 <li>Flattening the event object passed to the function.</li>
 <li>Removing sensitive data, such as a phone number or an email address.</li>
-<li>Modifying variables in the event object. For example, you can change variables to lower-case.</li>
+<li>Modifying variables in the event object, such as changing variables to lowercase.</li>
 <li>Populating variables in the event object based on other values.</li>
-<li>Renaming variables, which is done by assigning the value to a different variable and deleting the original variable.</li>
+<li>Renaming variables by assigning the value to a different variable and deleting the original variable.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>File import events are not currently supported for data transformation functions.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>File import events are not supported with data transformation functions.</p>
 <h2 id="input-to-a-data-transformation-function">Input to a data transformation function</h2>
-<p>Data transformation functions have one input parameter, <code>event</code>, which contains the event data from Tealium Collect. The <code>event</code> parameter is a metadata object that contains several properties and nested objects describing the event. The actual event data is referenced in the <code>event.data.udo</code> object. For more information, see <a href="/server-side/functions/data-transformation-functions/transforms-event-parameter/">Event Input Parameter</a></p>
-<p>In addition, the Tealium module exports the <code>flatten()</code> utility for data transformation functions, which converts a nested object into a new object with no nesting.</p>
+<p>Data transformation functions have one of the following input parameters depending on the source of the data:</p>
+<ul>
+<li><code>event</code>: An event data object from Tealium Collect. For more information, see <a href="/server-side/functions/data-transformation-functions/event-parameter/">Event parameter</a>.</li>
+<li><code>dataRecord</code>: A data record from a cloud data source. For more information, see <a href="/server-side/functions/data-record-functions/data-record-functions/#data-record-object">Data record object</a>.</li>
+</ul>
+<p class="tip"><i class="fa fa-info-circle"></i>The Tealium module exports the <code>flatten()</code> utility for data transformation functions, which converts a nested object into a new object with no nesting.</p>
 <h2 id="custom-triggers">Custom triggers</h2>
-<p>Data transformation functions are invoked based on the custom trigger for the function. A custom trigger is a rule you create to specify when to execute a function. The conditions can be based on any property of the <code>event</code> parameter, but are commonly based on the data source key, data source platform, and the <code>tealium_event</code> attribute. For more information on the <code>event</code> parameter, see <a href="/server-side/functions/data-transformation-functions/transforms-event-parameter/">Event Parameter</a>.</p>
-<p>Custom trigger rules are similar to <a href="/iq-tag-management/load-rules/about/">load rules</a> and use boolean logic to combine conditions in a rule. For example, in the following rule, the function is triggered when a <code>purchase</code> event comes from a specific data source (<code>r2rbm8</code>).</p>
-<figure><a class="slb" href="/images/server-side/transfm-conditions-example.png"><img src="/images/server-side/transfm-conditions-example.png"
-         alt="transfm-conditions-example.png"
-         title="transfm-conditions-example.png"/>
-    </a>
-</figure>
-<p>A condition is based on a selector that specifies a property in the <code>event</code> parameter object, a comparison operator, and a comparison value. A selector is a JSONPath expression (see <a href="https://github.com/json-path/JsonPath">JSONPath</a>) and can reference any property in <code>event</code>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>An event can trigger only one function. If an event matches more than one function trigger, the function with the oldest <strong>Date Modified</strong> is the only function that is triggered.</p>
+<p>Data transformation functions are invoked based on the custom trigger for the function. A custom trigger is a rule you create to specify when to execute a function. Custom trigger rules are similar to load rules and use boolean logic to combine conditions in a rule.</p>
+<p>For example, in the following rule, the function is triggered when a <code>purchase</code> event comes from a specific data source (<code>r2rbm8</code>).</p>
+<div class="mv3 pv2 ph4 ba br2 b--light-gray">
+  <div class="boolean-logic-container">
+      <div class="condition-group">
+        <span class="input">$.dataSourceId</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">r2rbm8</span>
+      </div>
+      <div class="fw8 mv2">AND</div>
+      <div class="condition-group">
+        <span class="input">$.data.udo.tealium_event</span>
+        <span class="operator">EQUALS</span>
+        <span class="filter">purchase</span>
+      </div>
+  </div>
+</div>
+<p>A condition is based on a property selector of the incoming data object, a comparison operator, and a comparison value. The selector is a JSONPath expression (see <a href="https://github.com/json-path/JsonPath">JSONPath</a>) and can reference any property in the object.</p>
 <p>For information on creating a data transformation function and a custom trigger, see <a href="/server-side/functions/manage-functions/create-function/">Create a function</a>.</p>
-<p>For examples of data transformation functions, see <a href="/server-side/functions/data-transformation-functions/functions-transforms-example-code/">Example Code</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>An event or data record can trigger only one function. If the incoming data matches more than one trigger rule, the function with the oldest <strong>Date Modified</strong> is triggered.</p>
+<h3 id="for-events">For events</h3>
+<p>For events coming from Tealium Collect, custom trigger conditions can be based on any property of the <code>event</code> parameter, but are commonly based on the data source key, data source platform, and the <code>tealium_event</code> attribute.</p>
+<p>For more information about the <code>event</code> parameter, see <a href="/server-side/functions/data-transformation-functions/event-parameter/">Event parameter</a>.</p>
+<h3 id="for-data-records">For data records</h3>
+<p>For events coming from a cloud data source, custom trigger conditions can be based on any property of the <code>dataRecord</code> parameter, but must include a condition based on the data source key (<code>$.dataSourceId</code>).</p>
+<p>For more information about the <code>dataRecord</code> parameter, see <a href="/server-side/functions/data-record-functions/data-record-functions/#data-record-object">Data record object</a>.</p>
 <h3 id="rule-limitations">Rule limitations</h3>
 <ul>
 <li><strong>Selector</strong> and <strong>Value</strong> fields are limited to 128 characters.</li>
@@ -1059,21 +1078,22 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">flatten</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>));
 </span></span><span style="display:flex;"><span>})
-</span></span></code></pre></div><h2 id="conversion-of-existing-functions-to-custom-triggers">Conversion of existing functions to custom triggers</h2>
+</span></span></code></pre></div><p>For examples of data transformation functions, see <a href="/server-side/functions/data-transformation-functions/functions-transforms-example-code/">Example Code</a>.</p>
+<h2 id="conversion-of-existing-functions-to-custom-triggers">Conversion of existing functions to custom triggers</h2>
 <p>Custom triggers were introduced after the initial release of data transformation functions. For any data transformation functions that existed before custom triggers were introduced, a condition similar to the following is automatically created:</p>
 <figure><a class="slb" href="/images/server-side/transfm-conversion-edit-cond.png"><img src="/images/server-side/transfm-conversion-edit-cond.png"
          alt="transfm-conversion-edit-cond.png"
          title="transfm-conversion-edit-cond.png"/>
     </a>
 </figure>
-<p>This new condition specifies the data source ID, which is set to the ID of the data source associated with the function. The function is triggered for every event from the data source. You can edit this condition to trigger the function for more specific events.</p>
+<p>This new condition specifies the data source ID set to the ID of the data source associated with the function. The function is triggered for every event from the data source. You can edit this condition to trigger the function for more specific events.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
 
   
-  <a href="/server-side/functions/data-transformation-functions/transforms-event-parameter/"
+  <a href="/server-side/functions/data-transformation-functions/event-parameter/"
     class="w-100 justify-end inline-flex items-center ba b--black-10 br3 pa3">
     <section class="tl pr3">
       <div>Event parameter</div>
@@ -1112,7 +1132,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 6, 2025 
+          <p>This page was last updated:  May 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1128,7 +1148,9 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#input-to-a-data-transformation-function" href="javascript:void(0)">Input to a data transformation function</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-triggers" href="javascript:void(0)">Custom triggers</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rule-limitations" href="javascript:void(0)">Rule limitations</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#for-events" href="javascript:void(0)">For events</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#for-data-records" href="javascript:void(0)">For data records</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rule-limitations" href="javascript:void(0)">Rule limitations</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#default-function-code" href="javascript:void(0)">Default function code</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversion-of-existing-functions-to-custom-triggers" href="javascript:void(0)">Conversion of existing functions to custom triggers</a></li>
               </nav>
