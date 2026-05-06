@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "6",
+        reading_time  : "7",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1523,48 +1523,20 @@
 <p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see Batched Actions. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 100,000</li>
-<li>Max time since oldest request: 10 minutes</li>
+<li>Max time since oldest request: 60 minutes</li>
 <li>Max size of requests: 100 MB</li>
 </ul>
 <h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Tenant ID</strong>
-<ul>
-<li>The unique identifier for your Azure Active Directory instance, representing your organization.</li>
-</ul>
-</li>
-<li><strong>Authentication type</strong>
-<ul>
-<li>Select the authentication type. Available options are: Client credentials, Authorization Code flow (SSO) and Shared Access Signature (SAS).</li>
-</ul>
-</li>
-<li><strong>Client ID</strong>
-<ul>
-<li>The unique identifier assigned to your application registered in Azure Active Directory.</li>
-</ul>
-</li>
-<li><strong>Client Secret</strong>
-<ul>
-<li>The string that acts like a password, used by the application to authenticate with Azure Active Directory.</li>
-</ul>
-</li>
-<li><strong>Shared Access Signature</strong>
-<ul>
-<li>Provide the special set of query parameters that indicate how the resources may be accessed by Tealium.</li>
-</ul>
-</li>
-<li><strong>Storage account name</strong>
-<ul>
-<li>The unique name of your Azure Storage account, used to access storage services like Blob, File, Queue, and Table storage.</li>
-</ul>
-</li>
-<li><strong>API version</strong>
-<ul>
-<li>The API version compatible with your Azure Storage instance. The default version is <code>2025-01-05</code>.</li>
-</ul>
-</li>
+<li><strong>Tenant ID</strong>: The unique identifier for your Azure Active Directory instance, representing your organization.</li>
+<li><strong>Authentication type</strong>: Select the authentication type. Available options are: Client credentials, Authorization Code flow (SSO), and Shared Access Signature (SAS).</li>
+<li><strong>Client ID</strong>: The unique identifier assigned to your application registered in Azure Active Directory.</li>
+<li><strong>Client Secret</strong>: The string that acts like a password, used by the application to authenticate with Azure Active Directory.</li>
+<li><strong>Shared Access Signature</strong>: Provide the special set of query parameters that indicate how the resources may be accessed by Tealium.</li>
+<li><strong>Storage account name</strong>: The unique name of your Azure Storage account, used to access storage services like Blob, File, Queue, and Table storage.</li>
+<li><strong>API version</strong>: The API version compatible with your Azure Storage instance. By default: 2025-01-05.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <table>
@@ -1596,10 +1568,18 @@
 <td style="text-align:center">✓</td>
 <td style="text-align:center">✗</td>
 </tr>
+<tr>
+<td>Send Entire Log Event</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Send Log Event</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
 </tbody>
 </table>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
-<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-entire-event-data">Send Entire Event Data</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -1620,7 +1600,7 @@
 </tr>
 <tr>
 <td>File Blob Suffix</td>
-<td>If you want to dynamically add a suffix to the file name, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1628,11 +1608,15 @@
 </tr>
 <tr>
 <td>Overwrite Existing Blob</td>
-<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
+<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect any updates to attribute names.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1656,7 +1640,7 @@
 </tr>
 <tr>
 <td>File Blob Suffix</td>
-<td>If you want to dynamically add a suffix to the file name, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1664,7 +1648,11 @@
 </tr>
 <tr>
 <td>Overwrite Existing Blob</td>
-<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
+<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1707,7 +1695,7 @@
 </tr>
 <tr>
 <td>File Blob Suffix</td>
-<td>If you want to dynamically add a suffix to the file name, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they are separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1715,15 +1703,19 @@
 </tr>
 <tr>
 <td>Overwrite Existing Blob</td>
-<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
+<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names will reflect the update if the attribute names are updated.</td>
+<td>By default, the attribute keys are used. If you want to use the attribute names as keys instead, enable this checkbox. Consider that the payload names reflect any updates to attribute names.</td>
 </tr>
 <tr>
 <td>Include Current Visit Data with Visitor Data</td>
 <td>Select this option to include current visit data with visitor data.</td>
+</tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
 </tr>
 </tbody>
 </table>
@@ -1747,7 +1739,7 @@
 </tr>
 <tr>
 <td>File Blob Suffix</td>
-<td>If you want to dynamically add a suffix to the file name, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
+<td>If you want to dynamically add a suffix to the filename, for example, an attribute with the current timestamp, select it here. If multiple suffix values are provided, they will be separated by an underscore character.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
@@ -1755,11 +1747,11 @@
 </tr>
 <tr>
 <td>Overwrite Existing Blob</td>
-<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data will be appended instead. When appending the data, each block will consist of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
+<td>If the Blob object already exists, overwrite it with the current data. If unchecked, the data is appended instead. When appending the data, each block consists of a group of <code>JSON</code> objects containing the payload with the data being forwarded from Tealium.</td>
 </tr>
 <tr>
 <td>Message Data</td>
-<td><ul><li>Provide values to construct message data.</li><li>Template Support: reference template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs will be ignored if the template is used.</li></ul></td>
+<td><ul><li>Provide values to construct message data.</li><li>Template Support: reference template name to generate message data from the template. If using a template, map it to Custom Message Definition. Any other key-value pairs are ignored if the template is used.</li></ul></td>
 </tr>
 <tr>
 <td>Template Variables</td>
@@ -1769,8 +1761,40 @@
 <td>Templates</td>
 <td><ul><li>Provide templates to be referenced in the Message Data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</li><li>Templates are injected by name with double curly braces into supported fields, For example, <code>{{SomeTemplateName}}</code>.</li></ul></td>
 </tr>
+<tr>
+<td>Batch Time To Live</td>
+<td>Set the time to live (TTL) to specify how often batch actions are sent. Enter a value between <code>1</code> and <code>60</code> minutes. The default value is <code>10</code> minutes.</td>
+</tr>
 </tbody>
 </table>
+<h3 id="send-entire-log-event">Send Entire Log Event</h3>
+<p>Send connector error logs to this vendor. For more information, see <a href="/administration/early-access/log-streaming/about/">Connector error logging</a>.</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container</td>
+<td>Select the container where you want to create the objects. This container represents the top-level storage unit within an account that organizes a set of blobs, similar to folders in a file system.</td>
+</tr>
+<tr>
+<td>Blob Path</td>
+<td>Specify the path to the Blob object where you want the data to be appended.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Suffix added to the end of each record to be used as a delimiter. Default: Comma with newline (<code>,\n</code>). Newline (<code>\n</code>). No Delimiter.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<p>See <a href="#send-entire-log_event">Send Entire Log Event</a> for shared mapping options.</p>
+<p>For information about resource, HTTP, result, and other log event attributes, see <a href="/administration/early-access/log-streaming/about/#connector-log-parameters">Connector log parameters</a>.</p>
 
 </div>
 
@@ -1831,7 +1855,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  May 1, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1852,6 +1876,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-log-event" href="javascript:void(0)">Send Entire Log Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               </nav>
   </aside></nav>
 

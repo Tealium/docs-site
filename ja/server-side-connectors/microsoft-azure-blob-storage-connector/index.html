@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -1813,48 +1813,20 @@
 <p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、バッチアクションを参照してください。リクエストは、次のいずれかのしきい値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：100,000</li>
-<li>最古のリクエストからの最大時間：10分</li>
+<li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：100 MB</li>
 </ul>
 <h2 id="構成">構成</h2>
 <p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>テナント ID</strong>
-<ul>
-<li>組織を表す Azure Active Directory インスタンスの一意の識別子。</li>
-</ul>
-</li>
-<li><strong>認証タイプ</strong>
-<ul>
-<li>認証タイプを選択します。利用可能なオプションは、クライアント資格情報、認証コードフロー（SSO）、共有アクセス署名（SAS）です。</li>
-</ul>
-</li>
-<li><strong>クライアント ID</strong>
-<ul>
-<li>Azure Active Directory に登録されたアプリケーションに割り当てられた一意の識別子。</li>
-</ul>
-</li>
-<li><strong>クライアント シークレット</strong>
-<ul>
-<li>アプリケーションが Azure Active Directory で認証するために使用するパスワードのような文字列。</li>
-</ul>
-</li>
-<li><strong>共有アクセス署名</strong>
-<ul>
-<li>リソースが Tealium によってどのようにアクセスされるかを示す特別なクエリパラメーターのセットを提供します。</li>
-</ul>
-</li>
-<li><strong>保存アカウント名</strong>
-<ul>
-<li>Blob、File、Queue、Table 保存などの保存サービスにアクセスするために使用される Azure Storage アカウントの一意の名前。</li>
-</ul>
-</li>
-<li><strong>API バージョン</strong>
-<ul>
-<li>Azure Storage インスタンスと互換性のある API バージョン。デフォルトバージョンは <code>2025-01-05</code> です。</li>
-</ul>
-</li>
+<li><strong>テナント ID</strong>：組織を表す Azure Active Directory インスタンスの一意の識別子。</li>
+<li><strong>認証タイプ</strong>：認証タイプを選択します。利用可能なオプションは、クライアント資格情報、認証コードフロー（SSO）、共有アクセス署名（SAS）です。</li>
+<li><strong>クライアント ID</strong>：Azure Active Directory に登録されたアプリケーションに割り当てられた一意の識別子。</li>
+<li><strong>クライアント シークレット</strong>：アプリケーションが Azure Active Directory で認証するために使用するパスワードのような文字列。</li>
+<li><strong>共有アクセス署名</strong>：Tealium によってリソースがどのようにアクセスされるかを示す特別なクエリパラメーターを提供します。</li>
+<li><strong>保存アカウント名</strong>：Blob、File、Queue、Table 保存などの保存サービスにアクセスするために使用される Azure Storage アカウントの一意の名前。</li>
+<li><strong>API バージョン</strong>：Azure Storage インスタンスと互換性のある API バージョン。デフォルト：2025-01-05。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -1867,157 +1839,38 @@
 </thead>
 <tbody>
 <tr>
-<td>すべてのイベントデータを送信</td>
+<td>全イベントデータの送信</td>
 <td style="text-align:center">✗</td>
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
-<td>カスタムイベントデータを送信</td>
+<td>カスタムイベントデータの送信</td>
 <td style="text-align:center">✗</td>
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
-<td>すべての訪問データを送信</td>
+<td>全訪問データの送信</td>
 <td style="text-align:center">✓</td>
 <td style="text-align:center">✗</td>
 </tr>
 <tr>
-<td>カスタム訪問データを送信</td>
+<td>カスタム訪問データの送信</td>
 <td style="text-align:center">✓</td>
 <td style="text-align:center">✗</td>
 </tr>
-</tbody>
-</table>
-<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメーターとオプションの構成方法について説明します。</p>
-<h3 id="すべてのイベントデータを送信">すべてのイベントデータを送信</h3>
-<h4 id="パラメーター">パラメーター</h4>
-<table>
-<thead>
 <tr>
-<th><strong>パラメーター</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>コンテナ</td>
-<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するトップレベルの保存ユニットで、ファイルシステムのフォルダーに似ています。</td>
+<td>全ログイベントの送信</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
 </tr>
 <tr>
-<td>Blob パス</td>
-<td>データを追加する Blob オブジェクトのパスを指定します。</td>
-</tr>
-<tr>
-<td>ファイル Blob サフィックス</td>
-<td>ファイル名に動的にサフィックスを追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数のサフィックス値が提供される場合、それらはアンダースコア文字で区切られます。</td>
-</tr>
-<tr>
-<td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミター。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
-</tr>
-<tr>
-<td>既存の Blob を上書き</td>
-<td>Blob オブジェクトが既に存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
-</tr>
-<tr>
-<td>属性名を印刷</td>
-<td>デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード名が更新を反映することに注意してください。</td>
+<td>ログイベントの送信</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
 </tr>
 </tbody>
 </table>
-<h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
-<h4 id="パラメーター-1">パラメーター</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメーター</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>コンテナ</td>
-<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するトップレベルの保存ユニットで、ファイルシステムのフォルダーに似ています。</td>
-</tr>
-<tr>
-<td>Blob パス</td>
-<td>データを追加する Blob オブジェクトのパスを指定します。</td>
-</tr>
-<tr>
-<td>ファイル Blob サフィックス</td>
-<td>ファイル名に動的にサフィックスを追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数のサフィックス値が提供される場合、それらはアンダースコア文字で区切られます。</td>
-</tr>
-<tr>
-<td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミター。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
-</tr>
-<tr>
-<td>既存の Blob を上書き</td>
-<td>Blob オブジェクトが既に存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="メッセージデータ">メッセージデータ</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメーター</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>テンプレート変数</td>
-<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細および使用例については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
-</tr>
-<tr>
-<td>テンプレート</td>
-<td><ul><li>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName}}</code> のように、サポートされるフィールドに名前で注入されます。</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="すべての訪問データを送信">すべての訪問データを送信</h3>
-<h4 id="パラメーター-2">パラメーター</h4>
-<table>
-<thead>
-<tr>
-<th><strong>パラメーター</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>コンテナ</td>
-<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するトップレベルの保存ユニットで、ファイルシステムのフォルダーに似ています。</td>
-</tr>
-<tr>
-<td>Blob パス</td>
-<td>データを追加する Blob オブジェクトのパスを指定します。</td>
-</tr>
-<tr>
-<td>ファイル Blob サフィックス</td>
-<td>ファイル名に動的にサフィックスを追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数のサフィックス値が提供される場合、それらはアンダースコア文字で区切られます。</td>
-</tr>
-<tr>
-<td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミター。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
-</tr>
-<tr>
-<td>既存の Blob を上書き</td>
-<td>Blob オブジェクトが既に存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
-</tr>
-<tr>
-<td>属性名を印刷</td>
-<td>デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。属性名が更新されると、ペイロード名が更新を反映することに注意してください。</td>
-</tr>
-<tr>
-<td>現在の訪問データを訪問データに含める</td>
-<td>現在の訪問データを訪問データに含めるオプションを選択します。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="カスタム訪問データを送信">カスタム訪問データを送信</h3>
+<h3 id="全イベントデータの送信">全イベントデータの送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -2029,7 +1882,146 @@
 <tbody>
 <tr>
 <td>コンテナ</td>
-<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の最上位の保存単位を表し、ファイルシステムのフォルダーのように一連のブロブを整理します。</td>
+<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するための最上位保存ユニットであり、ファイルシステムのフォルダーに似ています。</td>
+</tr>
+<tr>
+<td>Blob パス</td>
+<td>データを追加する Blob オブジェクトのパスを指定します。</td>
+</tr>
+<tr>
+<td>ファイル Blob 接尾辞</td>
+<td>ファイル名に動的に接尾辞を追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数の接尾辞値が提供される場合、それらはアンダースコア文字で区切られます。</td>
+</tr>
+<tr>
+<td>レコード接尾辞</td>
+<td><ul><li>各レコードの末尾に追加する接尾辞。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+</tr>
+<tr>
+<td>既存の Blob を上書き</td>
+<td>Blob オブジェクトがすでに存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
+</tr>
+<tr>
+<td>属性名の印刷</td>
+<td>デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。ペイロード名は属性名の更新を反映します。</td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。値は <code>1</code> から <code>60</code> 分の間で入力します。デフォルト値は <code>10</code> 分です。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="カスタムイベントデータの送信">カスタムイベントデータの送信</h3>
+<h4 id="パラメータ-1">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテナ</td>
+<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するための最上位保存ユニットであり、ファイルシステムのフォルダーに似ています。</td>
+</tr>
+<tr>
+<td>Blob パス</td>
+<td>データを追加する Blob オブジェクトのパスを指定します。</td>
+</tr>
+<tr>
+<td>ファイル Blob 接尾辞</td>
+<td>ファイル名に動的に接尾辞を追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数の接尾辞値が提供される場合、それらはアンダースコア文字で区切られます。</td>
+</tr>
+<tr>
+<td>レコード接尾辞</td>
+<td><ul><li>各レコードの末尾に追加する接尾辞。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+</tr>
+<tr>
+<td>既存の Blob を上書き</td>
+<td>Blob オブジェクトがすでに存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。値は <code>1</code> から <code>60</code> 分の間で入力します。デフォルト値は <code>10</code> 分です。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="メッセージデータ">メッセージデータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>テンプレート変数</td>
+<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細と使用例については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数に名前を付けます。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+</tr>
+<tr>
+<td>テンプレート</td>
+<td><ul><li>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName}}</code> のように、サポートされているフィールドに名前で注入されます。</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="全訪問データの送信">全訪問データの送信</h3>
+<h4 id="パラメータ-2">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテナ</td>
+<td>オブジェクトを作成するコンテナを選択します。このコンテナは、アカウント内の一連のブロブを整理するための最上位保存ユニットであり、ファイルシステムのフォルダーに似ています。</td>
+</tr>
+<tr>
+<td>Blob パス</td>
+<td>データを追加する Blob オブジェクトのパスを指定します。</td>
+</tr>
+<tr>
+<td>ファイル Blob 接尾辞</td>
+<td>ファイル名に動的に接尾辞を追加したい場合、たとえば現在のタイムスタンプを持つ属性をここで選択します。複数の接尾辞値が提供される場合、それらはアンダースコア文字で区切られます。</td>
+</tr>
+<tr>
+<td>レコード接尾辞</td>
+<td><ul><li>各レコードの末尾に追加する接尾辞。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+</tr>
+<tr>
+<td>既存の Blob を上書き</td>
+<td>Blob オブジェクトがすでに存在する場合、現在のデータで上書きします。チェックを外すと、データは追加されます。データを追加する場合、各ブロックは Tealium から転送されるデータを含む <code>JSON</code> オブジェクトのグループで構成されます。</td>
+</tr>
+<tr>
+<td>属性名の印刷</td>
+<td>デフォルトでは、属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にします。ペイロード名は属性名の更新を反映します。</td>
+</tr>
+<tr>
+<td>訪問データを訪問データに含める</td>
+<td>現在の訪問データを訪問データに含めるオプションを選択します。</td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。値は <code>1</code> から <code>60</code> 分の間で入力します。デフォルト値は <code>10</code> 分です。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="カスタム訪問データの送信">カスタム訪問データの送信</h3>
+<h4 id="パラメータ-3">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテナ</td>
+<td>オブジェクトを作成したいコンテナを選択します。このコンテナは、アカウント内の最上位の保存単位であり、ファイルシステムのフォルダーのように一連のブロブを整理します。</td>
 </tr>
 <tr>
 <td>ブロブパス</td>
@@ -2037,11 +2029,11 @@
 </tr>
 <tr>
 <td>ファイルブロブサフィックス</td>
-<td>ファイル名に動的にサフィックスを追加したい場合、例えば現在のタイムスタンプを持つ属性を選択します。複数のサフィックス値が提供される場合、それらはアンダースコア文字で区切られます。</td>
+<td>ファイル名に動的にサフィックスを追加したい場合、例えば現在のタイムスタンプの属性を選択します。複数のサフィックス値が提供される場合、それらはアンダースコア文字で区切られます。</td>
 </tr>
 <tr>
 <td>レコードサフィックス</td>
-<td><ul><li>各レコードの末尾に追加するサフィックスとしての区切り文字。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
+<td><ul><li>各レコードの末尾に追加するサフィックスとしてのデリミタ。</li><li>デフォルトは <code>Newline</code> です。</li><li>利用可能なオプションは <code>Newline</code> と <code>No Delimiter</code> です。</li></ul></td>
 </tr>
 <tr>
 <td>既存のブロブを上書き</td>
@@ -2049,18 +2041,50 @@
 </tr>
 <tr>
 <td>メッセージデータ</td>
-<td><ul><li>メッセージデータを構築するための値を提供します。</li><li>テンプレートサポート：テンプレート名を参照してテンプレートからメッセージデータを生成します。テンプレートを使用する場合、カスタムメッセージ定義にマッピングします。テンプレートが使用される場合、他のキーバリューペアは無視されます。</li></ul></td>
+<td><ul><li>メッセージデータを構築するための値を提供します。</li><li>テンプレートサポート：テンプレート名を参照してテンプレートからメッセージデータを生成します。テンプレートを使用する場合、カスタムメッセージ定義にマップします。テンプレートが使用される場合、他のキーバリューペアは無視されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート変数</td>
-<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細と使用例については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記でネストされたテンプレート変数を名前付けします。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td><ul><li><strong>テンプレート</strong>のデータ入力としてテンプレート変数を提供します。詳細と使用例については、<a href="/ja/server-side/connectors/templates/template-variables/">コネクターテンプレート変数</a>を参照してください。</li><li>ドット表記を使用してネストされたテンプレート変数を名前付けします。例：<code>items.name.</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td>テンプレート</td>
-<td><ul><li>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+<td><ul><li>メッセージデータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/templates/about/">コネクタテンプレートについて</a>を参照してください。</li><li>テンプレートは名前で二重中括弧によってサポートされるフィールドに注入されます。例：<code>{{SomeTemplateName}}</code>。</li></ul></td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成します。<code>1</code>から<code>60</code>分の間で値を入力します。デフォルト値は<code>10</code>分です。</td>
 </tr>
 </tbody>
 </table>
+<h3 id="ログイベント全体を送信">ログイベント全体を送信</h3>
+<p>このベンダーにコネクタエラーログを送信します。詳細については、<a href="/ja/administration/early-access/log-streaming/about/">コネクターエラーログ</a>を参照してください。</p>
+<h4 id="パラメータ-4">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンテナ</td>
+<td>オブジェクトを作成したいコンテナを選択します。このコンテナは、アカウント内の最上位の保存単位であり、ファイルシステムのフォルダーのように一連のブロブを整理します。</td>
+</tr>
+<tr>
+<td>ブロブパス</td>
+<td>データを追加したいBlobオブジェクトへのパスを指定します。</td>
+</tr>
+<tr>
+<td>レコードサフィックス</td>
+<td>各レコードの末尾に追加されるデリミタとして使用されるサフィックス。デフォルト：カンマと改行（<code>,\n</code>）。改行（<code>\n</code>）。デリミタなし。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ログイベントを送信">ログイベントを送信</h3>
+<p>共有マッピングオプションについては、<a href="#send-entire-log_event">ログイベント全体を送信</a>を参照してください。</p>
+<p>リソース、HTTP、結果、その他のログイベント属性についての情報は、<a href="/ja/administration/early-access/log-streaming/about/">コネクターエラーログ</a>を参照してください。</p>
 
 </div>
 
@@ -2121,7 +2145,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年May月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2138,10 +2162,12 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべてのイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">すべての訪問データを送信</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データを送信</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">全イベントデータの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムイベントデータの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">全訪問データの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタム訪問データの送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%85%A8%E4%BD%93%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">ログイベント全体を送信</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">ログイベントを送信</a></li>
               </nav>
   </aside></nav>
 
