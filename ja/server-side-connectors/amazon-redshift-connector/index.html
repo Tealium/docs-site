@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -791,7 +791,7 @@
       <a href="/ja/server-side-connectors/salesforce-email-studio-oauth2-exacttarget-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Salesforce Email Studio OAuth2（ExactTarget）</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side-connectors/salesforce-email-studio-connector-legacy/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Salesforce Email Studio（レガシー）</span></a>
+      <a href="/ja/server-side-connectors/salesforce-email-studio-connector-legacy/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Salesforce Email Studio（非推奨）</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/salesforce-interaction-studio-connector-setup-guide/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Salesforce Interaction Studio</span></a>
@@ -1564,7 +1564,7 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-email-studio-oauth2-exacttarget-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-oauth2-exacttarget-connector-setup-guide">Salesforce Email Studio OAuth2（ExactTarget）</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/salesforce-email-studio-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-connector-legacy">Salesforce Email Studio（レガシー）</a></li>
+        <a href="/ja/server-side-connectors/salesforce-email-studio-connector-legacy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-email-studio-connector-legacy">Salesforce Email Studio（非推奨）</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/salesforce-interaction-studio-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".salesforce-interaction-studio-connector-setup-guide">Salesforce Interaction Studio</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1810,42 +1810,42 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="大規模な訪問プロファイルの取り扱い">大規模な訪問プロファイルの取り扱い</h2>
-<p><a href="#send-entire-visitor-data-micro-batch"><strong>Send Entire Visitor Data</strong> アクション</a>は、各SQL INSERT文に訪問の完全なJSONを埋め込みます。Redshift Data APIはSQL文ごとに100kBの制限を課しているため、訪問プロファイルがこの制限を超えると、コネクタアクションは <code>ValidationException: Query string size exceeds 100 kB</code> のエラーで失敗します。</p>
+<p><a href="#send-entire-visitor-data-micro-batch"><strong>Send Entire Visitor Data</strong> アクション</a>は、各SQL INSERT文に訪問のJSON全体を埋め込みます。Redshift Data APIはSQL文ごとに100kBの制限を課しているため、訪問プロファイルがこの制限を超えると、コネクタアクションは <code>ValidationException: Query string size exceeds 100 kB</code> のエラーで失敗します。</p>
 <p>この問題を避けるために、以下のガイドラインに従ってください：</p>
 <ul>
 <li><strong>小規模な訪問プロファイルにはSend Entire Visitor Dataを使用します。</strong><br>
-数キロバイトを超える訪問プロファイルは制限を超えるリスクが高まります。訪問プロファイルが100kBの制限を大幅に下回る場合にこのアクションを使用してください。<a href="/ja/server-side/audiences/visitor-lookup-tool/">訪問検索ツール</a>を使用して完全なプロファイルを取得し、そのサイズを評価してください。</li>
+数キロバイトを超える訪問プロファイルは、制限を超えるリスクが高まります。訪問プロファイルが100kBの制限を大幅に下回る場合にこのアクションを使用してください。<a href="/ja/server-side/audiences/visitor-lookup-tool/">訪問検索ツール</a>を使用して、プロファイルの全体を取得し、そのサイズを評価してください。</li>
 <li><strong>プロファイル全体ではなく、マッピングされた属性を送信します。</strong><br>
-<a href="#send-custom-visitor-data-micro-batch"><strong>Send Custom Visitor Data</strong></a> アクションを使用して、必要な属性のみを選択し、訪問の完全なJSONを送信するのではなく、必要な属性のみを送信してください。</li>
+<a href="#send-custom-visitor-data-micro-batch"><strong>Send Custom Visitor Data</strong></a> アクションを使用して、必要な属性のみを選択し、訪問のJSON全体を送信するのではなく、選択した属性のみを送信してください。</li>
 <li><strong>S3およびRedshiftを使用して、大量または履歴データをロードします。</strong><br>
 大規模な訪問JSONペイロードや一度限りの大量アップロードの場合、訪問データを <a href="/ja/server-side-connectors/amazon-s3-connector/">S3コネクタ</a> に送信し、COPYコマンドを使用してRedshiftにデータをロードしてください。詳細については、<a href="https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html">Amazon Redshift: Amazon S3からのCOPYコマンドを使用したロード</a>を参照してください。</li>
 <li><strong>大規模なペイロードにはWebhook (JDBC) コネクタを使用します。</strong>
-<a href="/ja/server-side-connectors/webhook-jdbc/">Webhook (JDBC) コネクタ</a>はJDBCを介して直接Redshiftに接続し、Redshift Data APIの100kB制限を回避します。訪問プロファイルが100kBを超える場合はこのオプションを使用してください。</li>
+<a href="/ja/server-side-connectors/webhook-jdbc/">Webhook (JDBC) コネクタ</a>はJDBCを介して直接Redshiftに接続し、Redshift Data APIの100kB制限を回避します。訪問プロファイルが100kBを超える場合は、このオプションを使用してください。</li>
 </ul>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加した後、以下の構成を構成します：</p>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、次の構成を構成します：</p>
 <ul>
 <li><strong>認証タイプ</strong>
 <ul>
 <li>認証タイプを選択します：
 <ul>
 <li><strong>STS</strong>：次のフィールドが必要です <strong>Assume Role: ARN</strong>, <strong>Assume Role: Session Name</strong>。詳細については、<a href="#sts-credentials">STS credentials</a>を参照してください。</li>
-<li><strong>Access Key</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> および <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">Access Key and Secret credentials</a>を参照してください。</li>
+<li><strong>Access Key</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> と <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">Access Key and Secret credentials</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><strong>STS - Assume Role: ARN</strong>
 <ul>
-<li>STS認証に必要です。アサインするロールのAmazonリソースネーム（ARN）を提供してください。</li>
+<li>STS認証に必要です。役割を引き受けるためのAmazonリソース名（ARN）を提供してください。</li>
 <li>例：<code>arn:aws:iam:222222222222:role/myrole</code>。</li>
 <li>詳細については、<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">AWS: IAMロールへの切り替え</a>を参照してください。</li>
 </ul>
 </li>
 <li><strong>STS - Assume Role: Session Name</strong>
 <ul>
-<li>STS認証に必要です。アサインするロールのセッション名を提供してください。</li>
+<li>STS認証に必要です。役割を引き受けるためのセッション名を提供してください。</li>
 <li>最小長2、最大長64。</li>
 </ul>
 </li>
@@ -1865,14 +1865,14 @@
 <li>Access Key認証に必要です。AWSシークレットアクセスキーを提供してください。</li>
 </ul>
 </li>
-<li><strong>リージョン</strong>
+<li><strong>地域</strong>
 <ul>
-<li>（必須）リージョンを選択してください。</li>
+<li>（必須）地域を選択してください。</li>
 </ul>
 </li>
 <li><strong>Secret Name</strong>
 <ul>
-<li>（オプション）AWS Secrets Managerメソッドを使用してRedshiftにアクセスする場合、Secret Nameを提供してください。Tealiumが動的にSecret ARNを使用してRedshift接続を行うことができます。</li>
+<li>（オプション）AWS Secrets Managerメソッドを使用してRedshiftにアクセスする場合、TealiumがRedshift接続に使用するSecret ARNを動的に引き出すためのSecret Nameを提供してください。</li>
 </ul>
 </li>
 <li><strong>Workgroup Name</strong>
@@ -1882,7 +1882,7 @@
 </li>
 <li><strong>Cluster Identifier</strong>
 <ul>
-<li><strong>Workgroup Name</strong>が提供されていない場合に必要です。Redshiftクラスターを使用している場合は、クラスター識別子を提供してください。</li>
+<li><strong>Workgroup Name</strong>が提videdされていない場合に必要です。Redshiftクラスターを使用している場合は、クラスター識別子を提供してください。</li>
 </ul>
 </li>
 <li><strong>Database Name</strong>
@@ -1892,7 +1892,7 @@
 </li>
 </ul>
 <h3 id="aws-redshiftへの接続を作成する">AWS Redshiftへの接続を作成する</h3>
-<p>Tealiumは、クラスター、ワークスペース、データベースのリストを表示し、イベントおよびオーディエンスデータをRedshiftテーブルにアップロードするために、AWS Redshiftインスタンスへの接続を必要とします。認証には2つのオプションがあります：</p>
+<p>TealiumはAWS Redshiftインスタンスへの接続が必要です。クラスター、ワークスペース、データベースのリストを表示し、イベントデータとオーディエンスデータをRedshiftテーブルにアップロードします。認証には2つのオプションがあります：</p>
 <ul>
 <li><a href="#access-key-and-secret-credentials">Access KeyとAccess Secretを提供する</a>。</li>
 <li><a href="#sts-credentials">STS認証情報を提供する</a>。</li>
@@ -1903,11 +1903,11 @@
 <li>AWS管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスにアクセスします。</li>
 <li><strong>ユーザー</strong>をクリックし、<strong>ユーザーを追加</strong>をクリックします。</li>
 <li>ユーザー名を入力します。例：<code>TealiumRedshiftUser</code>。</li>
-<li>ロールにポリシーをアタッチします。詳細については、<a href="#attach-policies">ポリシーのアタッチ</a>を参照してください。</li>
+<li>役割にポリシーをアタッチします。詳細については、<a href="#attach-policies">ポリシーのアタッチ</a>を参照してください。</li>
 <li>キーを作成します。
 <ul>
 <li><strong>セキュリティ認証情報</strong>タブに移動し、<strong>アクセスキーの作成</strong>をクリックします。</li>
-<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存してください。</li>
+<li><strong>アクセスキーID</strong>と<strong>シークレットアクセスキー</strong>をコピーし、安全に保存します。</li>
 </ul>
 </li>
 </ol>
@@ -1924,7 +1924,7 @@
 <li>信頼ポリシーを作成します。
 <ul>
 <li><strong>信頼関係</strong>タブに移動し、<strong>信頼関係の編集</strong>をクリックします。</li>
-<li>作成したロールを使用するために特定の外部IDを許可する信頼ポリシーがあることを確認し、Tealiumの本番アカウントIDが<code>757913464184</code>であることを確認します。</li>
+<li>作成したロールを使用する特定の外部IDが許可されていることを確認し、Tealiumの本番アカウントIDが<code>757913464184</code>であることを確認します。</li>
 <li>Tealiumへの接続に使用する<code>EXTERNAL_ID</code>値を構成します。IDは256文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -1949,7 +1949,7 @@
 <h4 id="ポリシーのアタッチ">ポリシーのアタッチ</h4>
 <p>ポリシーをアタッチするには：</p>
 <ol>
-<li><strong>権限</strong>タブで、<strong>既存のポリシーを直接アタッチ</strong>をクリックします。
+<li><strong>権限</strong>タブで<strong>既存のポリシーを直接アタッチ</strong>をクリックします。
 <ol>
 <li>
 <p>フルアクセス</p>
@@ -2098,13 +2098,23 @@
 <td style="text-align:center">✓</td>
 <td style="text-align:center">✓</td>
 </tr>
+<tr>
+<td>全ログイベントデータ送信（マイクロバッチ）</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>ログイベントデータ送信（マイクロバッチ）</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
 </tbody>
 </table>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="全イベントデータ送信マイクロバッチ">全イベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2113,8 +2123,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2146,7 +2156,7 @@
 </table>
 <h3 id="全イベントデータ送信バッチ">全イベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2155,8 +2165,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2188,7 +2198,7 @@
 </table>
 <h3 id="カスタムイベントデータ送信マイクロバッチ">カスタムイベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-2">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2198,8 +2208,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2219,7 +2229,7 @@
 </table>
 <h3 id="カスタムイベントデータ送信バッチ">カスタムイベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-3">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2229,8 +2239,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2250,9 +2260,9 @@
 </table>
 <h3 id="全訪問データの送信マイクロバッチ">全訪問データの送信（マイクロバッチ）</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Redshift Data APIはSQLステートメントを100 kBに制限しています。訪問のJSONペイロードがこの制限を超えると、コネクタアクションが失敗します。
-この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大きな訪問プロファイルの取り扱い</a>を参照してください。</p>
+この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大規模な訪問プロファイルの取り扱い</a>を参照してください。</p>
 <h4 id="バッチ制限-4">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2261,8 +2271,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2288,7 +2298,7 @@
 </tr>
 <tr>
 <td>属性名を印刷</td>
-<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。</td>
+<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名が更新を反映することに注意してください。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
@@ -2298,9 +2308,9 @@
 </table>
 <h3 id="全訪問データの送信バッチ">全訪問データの送信（バッチ）</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Redshift Data APIはSQLステートメントを100 kBに制限しています。訪問のJSONペイロードがこの制限を超えると、コネクタアクションが失敗します。
-この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大きな訪問プロファイルの取り扱い</a>を参照してください。</p>
+この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大規模な訪問プロファイルの取り扱い</a>を参照してください。</p>
 <h4 id="バッチ制限-5">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2309,8 +2319,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2336,7 +2346,7 @@
 </tr>
 <tr>
 <td>属性名を印刷</td>
-<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名も更新されることに注意してください。</td>
+<td>デフォルトでは属性キーが使用されます。代わりに属性名をキーとして使用したい場合は、このチェックボックスを有効にしてください。属性名が更新されるとペイロード名が更新を反映することに注意してください。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
@@ -2346,7 +2356,7 @@
 </table>
 <h3 id="カスタム訪問データの送信マイクロバッチ">カスタム訪問データの送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-6">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2356,8 +2366,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2377,7 +2387,7 @@
 </table>
 <h3 id="カスタム訪問データの送信バッチ">カスタム訪問データの送信（バッチ）</h3>
 <h4 id="バッチ制限-7">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2387,8 +2397,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2408,7 +2418,7 @@
 </table>
 <h3 id="カスタムステートメントの実行バッチ">カスタムステートメントの実行（バッチ）</h3>
 <h4 id="バッチ制限-8">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：40</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2417,8 +2427,8 @@
 <table>
 <thead>
 <tr>
-<th><strong>パラメータ</strong></th>
-<th><strong>説明</strong></th>
+<th>パラメータ</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
@@ -2445,7 +2455,7 @@
 </tbody>
 </table>
 <h4 id="クエリ例">クエリ例</h4>
-<p><strong>クエリパラメータ</strong>セクションで<code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code>というマッピングを追加した場合、クエリ内でそのパラメータを<code>:MY_BOOLEAN_PARAM</code>を使用して参照します。</p>
+<p><strong>クエリパラメータ</strong>セクションでマッピングを追加した場合、例えば<code>my_boolean_tealium_attribute = MY_BOOLEAN_PARAM</code>とした場合、クエリ内でそのパラメータを<code>:MY_BOOLEAN_PARAM</code>を使用して参照します。</p>
 <p>クエリの例では、次のクエリパラメータがマッピングされています：<code>MY_STRING_PARAM</code>, <code>MY_BOOLEAN_PARAM</code>, <code>ANOTHER_PARAM</code>, <code>MY_PARAM</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> redshift_table
 </span></span><span style="display:flex;"><span>  (key1, key2) <span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;:MY_STRING_PARAM&#39;</span>, :MY_BOOLEAN_PARAM);
@@ -2465,7 +2475,7 @@
 <li><a href="/ja/server-side/trace/about/">トレース</a>を実行し、成功した呼び出しのレスポンスボディからIDをメモします。</li>
 <li><a href="https://docs.aws.amazon.com/redshift-data/latest/APIReference/API_DescribeStatement.html">Amazon Redshift Data API</a>を使用して、SQLステートメントの詳細を確認します。</li>
 </ol>
-<p>次のリクエストを送信し、<code>Id</code>値をトレースからのIDに置き換えます：</p>
+<p>トレースからのID値を置き換えて、次のリクエストを送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">POST</span> / <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 </span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">redshift-data.us-east-1.amazonaws.com</span>
 </span></span><span style="display:flex;"><span>X-Amz-Target<span style="color:#f92672">:</span> <span style="color:#ae81ff">RedshiftData.DescribeStatement</span>
@@ -2477,6 +2487,90 @@
 </span></span><span style="display:flex;"><span>    &#34;Id&#34;: &#34;37eb2735-b467-4852-884b-0f536970bf7e&#34;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>レスポンスにはステートメントのステータスとRedshiftによって返されたエラーメッセージが含まれます。</p>
+<h3 id="全ログイベントの送信マイクロバッチ">全ログイベントの送信（マイクロバッチ）</h3>
+<h4 id="バッチ制限-9">バッチ制限</h4>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<ul>
+<li>最大リクエスト数：50</li>
+<li>最古のリクエストからの最大時間：16分</li>
+</ul>
+<h4 id="パラメータ-9">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スキーマ</td>
+<td>接続したいスキーマ名を指定してください。</td>
+</tr>
+<tr>
+<td>テーブル</td>
+<td>接続したいテーブル名を指定してください。</td>
+</tr>
+<tr>
+<td>ペイロードを記録する列</td>
+<td>ペイロードを記録するために<code>SUPER</code>列を選択してください。</td>
+</tr>
+<tr>
+<td>タイムスタンプを記録する列</td>
+<td>タイムスタンプを記録する列を選択してください。テーブルに<code>timestamp</code>列が<code>default sysdate</code>に構成されている場合は不要です。</td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成してください。<code>1</code>分から<code>16</code>分の間で値を入力してください。デフォルト値は<code>5</code>分です。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ログイベント送信マイクロバッチ">ログイベント送信（マイクロバッチ）</h3>
+<h4 id="バッチ制限-10">バッチ制限</h4>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<ul>
+<li>最大リクエスト数：50</li>
+<li>最古のリクエストからの最大時間：16分</li>
+</ul>
+<h4 id="パラメータ-10">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スキーマ</td>
+<td>接続したいスキーマ名を指定してください。</td>
+</tr>
+<tr>
+<td>テーブル</td>
+<td>接続したいテーブル名を指定してください。</td>
+</tr>
+<tr>
+<td>ログイベントリソース属性</td>
+<td>テレメトリが記録されるエンティティに関する情報をキャプチャするフィールドです。</td>
+</tr>
+<tr>
+<td>ログイベントHTTP属性</td>
+<td>ログシステム内のHTTPリクエストとレスポンスを記録するフィールドです。<code>http</code>配列全体を単一の列にマッピングするには、<code>http</code>属性をマッピングしてください。</td>
+</tr>
+<tr>
+<td>ログイベント結果属性</td>
+<td>操作の結果を記録するフィールドで、成功したかエラーが発生したかを詳細に説明します。</td>
+</tr>
+<tr>
+<td>ログイベントその他の属性</td>
+<td>ログイベントに関する追加のメタデータを提供するフィールドです。</td>
+</tr>
+<tr>
+<td>バッチの有効期限</td>
+<td>バッチアクションが送信される頻度を指定するための有効期限（TTL）を構成してください。<code>1</code>分から<code>16</code>分の間で値を入力してください。デフォルト値は<code>5</code>分です。</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -2537,7 +2631,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年May月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2564,6 +2658,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%83%90%E3%83%83%E3%83%81" href="javascript:void(0)">カスタム訪問データの送信（マイクロバッチ）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E9%80%81%E4%BF%A1%E3%83%90%E3%83%83%E3%83%81" href="javascript:void(0)">カスタム訪問データの送信（バッチ）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B9%E3%83%86%E3%83%BC%E3%83%88%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C%E3%83%90%E3%83%83%E3%83%81" href="javascript:void(0)">カスタムステートメントの実行（バッチ）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%A8%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%83%90%E3%83%83%E3%83%81" href="javascript:void(0)">全ログイベントの送信（マイクロバッチ）</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E9%80%81%E4%BF%A1%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%83%90%E3%83%83%E3%83%81" href="javascript:void(0)">ログイベント送信（マイクロバッチ）</a></li>
               </nav>
   </aside></nav>
 

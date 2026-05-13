@@ -722,14 +722,14 @@
 <div class="prose nested-links" id="prose">
   <p>Tealium iQタグ管理のクライアントサイド配信用にファーストパーティドメインを構成するには、以下の手順に従ってください：</p>
 <ol>
-<li>管理メニューで<strong>ファーストパーティドメイン</strong>をクリックします。</li>
+<li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックします。</li>
 <li><strong>クライアントサイド配信証明書</strong>の下で、<strong>証明書の構成</strong>をクリックし、以下のいずれかを選択します：
 <ul>
-<li><strong>Tealium管理証明書</strong>：Tealiumが証明書を生成および管理します。</li>
-<li><strong>ユーザー提供証明書</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">自分の証明書を管理する</a>を参照してください。</li>
+<li><strong>Tealium管理</strong>：Tealiumが証明書を生成および管理します。</li>
+<li><strong>自己管理</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#self-managed-certificates">自己管理証明書</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>ユーザー提供証明書</strong>を選択した場合、以下のファイルをアップロードします：
+<li><strong>自己管理</strong>を選択した場合、以下のファイルをアップロードします：
 <ul>
 <li>証明書（必須）</li>
 <li>プライベートキー（必須）</li>
@@ -742,11 +742,11 @@
 <li><strong>メール検証</strong></li>
 </ul>
 </li>
-<li><strong>ドメイン追加</strong>セクションで、<code>https://</code>と末尾のスラッシュを省略したサブドメイン名を入力します。
+<li><strong>ドメイン追加</strong>セクションで、サブドメイン名を入力し、<code>https://</code>と末尾のスラッシュを省略します。
 例：<code>tags.example.com</code>。</li>
-<li>別のドメインを追加するには、<strong>+ ドメインを追加</strong>をクリックします。
+<li>別のドメインを追加するには、<strong>+ ドメイン追加</strong>をクリックします。
 ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトに対してサブドメインを入力します。</li>
-<li>提供したサブドメインの証明書を管理するためにTealiumに許可を与え、これらのサブドメインを所有および管理していることを認証するために<strong>同意する</strong>をクリックし、次に<strong>保存</strong>をクリックします。
+<li>提供されたサブドメインの証明書管理をTealiumに許可し、これらのサブドメインを所有および管理していることを認証するために、<strong>同意する</strong>をクリックし、次に<strong>保存</strong>をクリックします。
 構成を保存した後：
 <ul>
 <li><strong>DNS検証</strong>：画面には検証用の一時的なCNAMEレコード（各サブドメインごとに1つ）が表示されます。これらの一時的なCNAMEレコードをDNS構成に追加します。<figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-gen-temp.png"><img src="/images/guides/iq/fpd-dns-confirm-gen-temp.png"/>
@@ -763,10 +763,10 @@
 <li>検証方法に従ってプロセスを完了します：
 <ul>
 <li>
-<p><strong>DNS検証</strong>：DNS構成に検証CNAMEレコードを追加し、検証プロセスが完了するまで待ちます（数時間かかることがあります）。その後、サブドメインの永続的なCNAMEレコードが表示されます。これらの永続的なCNAMEレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証レコードと永続的なレコードが含まれている必要があります。検証レコードは、証明書にサブドメインを追加するときや証明書の自動更新の際に使用されます。</p></p>
+<p><strong>DNS検証</strong>：DNS構成に検証CNAMEレコードを追加し、検証プロセスが完了するのを待ちます（数時間かかることがあります）。その後、サブドメインの永続的なCNAMEレコードが表示されます。これらの永続的なCNAMEレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証レコードと永続的なレコードが含まれている必要があります。検証レコードは、証明書にサブドメインを追加するときや証明書の自動更新の際に使用されます。</p></p>
 </li>
 <li>
-<p><strong>メール検証</strong>：Amazon Web Servicesから各サブドメインに対して1通のメールが送信され、72時間で期限切れになる検証トークンが含まれます。検証プロセスを完了するには、各サブドメインに対するメールメッセージに返信する必要があります。メールが届かなかった場合やトークンが期限切れになった場合は、<strong>First-Party Domains Overview</strong>画面のクライアントサイドメニューに<strong>メールを再送</strong>ボタンがあります。<figure><a class="slb" href="/images/guides/iq/fpd-clientside-menu-resend-email.png"><img src="/images/guides/iq/fpd-clientside-menu-resend-email.png"
+<p><strong>メール検証</strong>：Amazon Web Servicesから（各サブドメインごとに1通のメッセージで）検証トークンが含まれたメールが送信されます。このトークンは72時間で期限切れになります。検証プロセスを完了するには、各サブドメインのメールメッセージに返信する必要があります。メールが届かなかった場合やトークンが期限切れになった場合は、<strong>クライアントサイド</strong>メニューの<strong>ファーストパーティドメイン概要</strong>画面で<strong>メール再送</strong>ボタンが別途用意されています。<figure><a class="slb" href="/images/guides/iq/fpd-clientside-menu-resend-email.png"><img src="/images/guides/iq/fpd-clientside-menu-resend-email.png"
          alt="fpd-clientside-menu-resend-email"
          title="fpd-clientside-menu-resend-email"/>
     </a>
@@ -784,15 +784,15 @@
 <blockquote>
 <p>検証待ち。各ドメインに送信された検証メールを確認するか、必要に応じてメールを再送してください。</p>
 </blockquote>
-<p><strong>First-Party Domains Overview</strong>でドメインの状態が<strong>発行済み</strong>に変わると、ドメインは使用準備が整います。</p>
+<p><strong>ファーストパーティドメイン概要</strong>でドメインの状態が<strong>発行済み</strong>に変わると、ドメインは使用準備が整います。</p>
 <p>検証は72時間以内に行う必要があります。検証期間が経過した場合は、同じサブドメインに対して新しい証明書をリクエストしてください。DNS検証レコードは、同じサブドメインの後続のリクエストに対して同じです。</p>
 <p>ドメインの状態が<strong>発行済み</strong>に変わった後は、Tealium iQタグ管理でファーストパーティドメインを使用するためにエンドポイント構成を更新する必要があります。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">エンドポイント構成の更新</a>を参照してください。</p>
 <h2 id="検証失敗">検証失敗</h2>
 <p>検証に失敗すると、ドメインの状態が<strong>失敗</strong>に変わり、失敗の詳細が記載されたメッセージが表示されます：</p>
 <blockquote>
-<p>ドメインがDNSにAmazonを証明機関として含めていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。影響を受けるドメインはドメイン管理で確認できます。</p>
+<p>ドメインにAmazonを証明機関として含めていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。影響を受けるドメインはドメイン管理で確認してください。</p>
 </blockquote>
-<p>このメッセージが表示された場合は、DNS構成にAmazonをCAAレコードに追加し、ドメインを検証して証明書を再生成するために<strong>再試行</strong>をクリックしてください。</p>
+<p>このメッセージが表示された場合は、DNS構成にAmazonをCAAレコードに追加し、<strong>再試行</strong>をクリックしてドメインの検証を再度行い、証明書を再生成してください。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">ファーストパーティドメインについて</a>を参照してください。</p>
 
 </div>
@@ -854,7 +854,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月29日
+          <p>最終更新日 ::  2026年May月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

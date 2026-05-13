@@ -720,7 +720,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドデータ収集のため、ドメイン証明書は構成時に選択したリージョンのTealiumエンドポイントに構成され保存されます。選択したリージョンがプロファイルのリージョンと異なる場合、イベントおよび訪問データはファーストパーティドメインリージョンで収集され、プロファイル用に構成されたリージョンに転送されます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドデータ収集のために、ドメイン証明書は構成時に選択したリージョンのTealiumエンドポイントに構成され、保存されます。選択したリージョンがプロファイルのリージョンと異なる場合、イベントおよび訪問データはファーストパーティドメインリージョンで収集され、プロファイル用に構成されたリージョンに転送されます。</p>
 <p>Tealiumのサーバーサイドデータ収集用にファーストパーティドメインを構成するには、以下の手順に従ってください：</p>
 <ol>
 <li>管理メニューで、<strong>ファーストパーティドメイン</strong>をクリックします。</li>
@@ -728,30 +728,30 @@
 <li>ほとんどのCollectトラフィックが発生するリージョンを選択します。</li>
 <li>次のいずれかを選択します：
 <ul>
-<li><strong>Tealium管理証明書</strong>：Tealiumが証明書を生成および管理します。</li>
-<li><strong>ユーザー提供証明書</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">自分の証明書を管理する</a>を参照してください。</li>
+<li><strong>Tealium管理</strong>：Tealiumが証明書を生成および管理します。</li>
+<li><strong>自己管理</strong>：自分の証明書ファイルを提供します。証明書ファイルの要件と形式については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#self-managed-certificates">自己管理証明書</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>ユーザー提供証明書</strong>を選択した場合、以下のファイルをアップロードします：
+<li><strong>自己管理</strong>を選択した場合、以下のファイルをアップロードします：
 <ul>
 <li>証明書（必須）</li>
-<li>私有キー（必須）</li>
+<li>秘密鍵（必須）</li>
 <li>証明書チェーン（オプション）</li>
 </ul>
 </li>
-<li>ドメイン所有権を検証するための以下の方法のいずれかを選択します：
+<li>ドメイン所有権の検証方法を以下から選択します：
 <ul>
 <li><strong>DNS検証</strong></li>
 <li><strong>メール検証</strong></li>
 </ul>
 </li>
-<li><strong>ドメイン追加</strong>セクションで、<code>https://</code>と終わりのスラッシュを省略したサブドメイン名を入力します。
+<li><strong>ドメインの追加</strong>セクションで、<code>https://</code>と末尾のスラッシュを省略したサブドメイン名を入力します。
 例：<code>collect.example.com</code>または<code>cdp.example.com</code>。</li>
-<li>別のドメインを追加するには、<strong>+ ドメイン追加</strong>をクリックします。
+<li>別のドメインを追加するには、<strong>+ ドメインを追加</strong>をクリックします。
 ファーストパーティドメインはアカウント内のすべてのプロファイルに適用されます。このアカウントで管理される各サイトに対してサブドメインを入力します。</li>
-<li>Tealiumに提供したドメインの証明書管理を許可し、これらのドメインを所有および管理していることを認証するために、<strong>同意する</strong>をクリックし、次に<strong>保存</strong>をクリックします。
+<li>提供されたドメインの証明書を管理するためのTealiumの許可を与え、これらのドメインを所有および管理していることを認証するために<strong>同意する</strong>をクリックし、次に<strong>保存</strong>をクリックします。
 <ul>
-<li><strong>DNS検証</strong>：検証用の一時的なAレコード（各ドメインについて1つ）が表示されます：<figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-server-side.png"><img src="/images/guides/iq/fpd-dns-confirm-server-side.png"
+<li><strong>DNS検証</strong>：検証に使用される一時的なAレコード（各ドメインについて1つ）が表示されます：<figure><a class="slb" href="/images/guides/iq/fpd-dns-confirm-server-side.png"><img src="/images/guides/iq/fpd-dns-confirm-server-side.png"
          alt="fpd-dns-confirm-server-side"
          title="fpd-dns-confirm-server-side"/>
     </a>
@@ -767,10 +767,10 @@
 <li>検証方法に従ってプロセスを完了します：
 <ul>
 <li>
-<p><strong>DNS検証</strong>：DNS構成に検証Aレコードを追加し、検証プロセスが完了するまで待ちます（数時間かかる場合があります）。その後、ドメインの永続的なAレコードが表示されます。これらの永続的なAレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証Aレコードと永続的なAレコードが含まれている必要があります。検証レコードは、証明書にドメインを追加する際や証明書の自動更新に使用されます。</p></p>
+<p><strong>DNS検証</strong>：DNS構成に検証Aレコードを追加し、検証プロセスが完了するまで待ちます（数時間かかることがあります）。その後、ドメインの永続的なAレコードが表示されます。これらの永続的なAレコードをDNS構成に追加します。<p class="note"><i class="fa fa-exclamation-triangle"></i>DNS構成には、検証Aレコードと永続的なAレコードが含まれている必要があります。検証レコードは、証明書にドメインを追加するときや証明書の自動更新に使用されます。</p></p>
 </li>
 <li>
-<p><strong>メール検証</strong>：Amazon Web Servicesから（各ドメインについて1通のメッセージで）72時間で期限切れになる検証トークンが含まれたメールを受け取ります。検証プロセスを完了するには、各ドメインのメールメッセージに応答する必要があります。メールが届かない場合やトークンが期限切れになった場合は、<strong>First-Party Domains Overview</strong>画面のサーバーサイドメニューに<strong>メール再送</strong>ボタンが別途用意されています。<figure><a class="slb" href="/images/guides/iq/fpd-serverside-menu-resend-email.png"><img src="/images/guides/iq/fpd-serverside-menu-resend-email.png"
+<p><strong>メール検証</strong>：Amazon Web Servicesから各ドメインについて1通のメールが送信され、検証トークンが含まれています。このトークンは72時間で期限切れになります。検証プロセスを完了するには、各ドメインのメールメッセージに応答する必要があります。メールが届かない場合やトークンが期限切れになった場合は、<strong>First-Party Domains Overview</strong>画面のサーバーサイドメニューに<strong>メールを再送信</strong>ボタンがあります。<figure><a class="slb" href="/images/guides/iq/fpd-serverside-menu-resend-email.png"><img src="/images/guides/iq/fpd-serverside-menu-resend-email.png"
          alt="fpd-serverside-menu-resend-email"
          title="fpd-serverside-menu-resend-email"/>
     </a>
@@ -781,19 +781,19 @@
 </ol>
 <h2 id="検証確認">検証確認</h2>
 <p>ドメイン検証は72時間以内に行う必要があります。検証期間が経過した場合は、同じドメインに対して新しい証明書をリクエストしてください。DNS検証レコードは、同じドメインの後続のリクエストに対して同じです。</p>
-<p>ドメイン情報が検証中である間、次のメッセージが表示されます：</p>
+<p>ドメイン情報が検証中である間に表示されるメッセージは次のとおりです：</p>
 <blockquote>
-<p>検証待ち。各ドメインに必要なDNSレコードを追加し、DNSの伝播を待ってください。</p>
+<p>検証待ち。各ドメインに必要なDNSレコードを追加し、DNSの伝播を待ちます。</p>
 </blockquote>
 <p>または</p>
 <blockquote>
-<p>検証待ち。各ドメインに送信された検証メールを確認するか、必要に応じてメールを再送してください。</p>
+<p>検証待ち。各ドメインに送信された検証メールを確認するか、必要に応じてメールを再送信してください。</p>
 </blockquote>
 <p><strong>First-Party Domains Overview</strong>でドメインのステータスが<strong>発行済み</strong>に更新されると、ドメインは使用準備が整います。その後、Tealium Collectでファーストパーティドメインを使用するためにエンドポイント構成を更新する必要があります。詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/">エンドポイント構成の更新</a>を参照してください。</p>
 <h2 id="検証失敗">検証失敗</h2>
 <p>検証に失敗すると、ドメインのステータスが<strong>失敗</strong>に変更され、失敗の詳細が記載されたメッセージが表示されます：</p>
 <blockquote>
-<p>ドメインにAmazonがDNSの証明機関として含まれていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。影響を受けるドメインはドメイン管理で確認できます。</p>
+<p>ドメインにAmazonを証明機関として含めていないため、証明書を作成できませんでした。DNSにAmazonをCAAレコードに追加し、再試行してください。影響を受けるドメインはドメイン管理で確認できます。</p>
 </blockquote>
 <p>このメッセージが表示された場合は、DNS構成にAmazonをCAAレコードに追加し、ドメインの検証を再試行し、証明書を再生成してください。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/#tealium-managed-certificates">ファーストパーティドメインについて</a>を参照してください。</p>
@@ -857,7 +857,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月29日
+          <p>最終更新日 ::  2026年May月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

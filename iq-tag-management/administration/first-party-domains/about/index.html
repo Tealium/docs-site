@@ -733,7 +733,7 @@
 </ul>
 <p>For example, add the following CAA record to authorize Amazon to issue certificates for the <code>example.com</code> domain:</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">example.com. CAA 0 issue &#34;amazon.com&#34;
-</code></pre><h3 id="user-provided-certificates">User-provided certificates</h3>
+</code></pre><h3 id="self-managed-certificates">Self-managed certificates</h3>
 <p>You provide and manage your own domain certificates while maintaining the same level of encryption and security. This option is typically used to meet internal policies for certificate ownership, custom certificate authorities, or centralized certificate lifecycle management.</p>
 <p>To use your own certificates, you must have access to the following SSL/TLS certificate files:</p>
 <ul>
@@ -751,26 +751,26 @@
 </ul>
 <p>For more information about certificate requirements, see <a href="https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-prerequisites.html">AWS: Prerequisites for importing certificates</a>.</p>
 <p>Ensure that you set the appropriate CAA records in DNS to allow your chosen certificate authority (CA) to issue certificates for your domain.</p>
-<h4 id="renew-user-provided-certificates">Renew User-provided certificates</h4>
+<h4 id="renew-self-managed-certificates">Renew self-managed certificates</h4>
 <p>You are responsible for renewing the certificates before they expire. When you renew a certificate, click <strong>Reimport Certificate</strong> to upload the certificate. The new certificate replaces the previous one. If the previous certificate has not expired, there should be no downtime.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the previous certificate has expired, there may be a few hours delay while the certificate propagates to DNS servers.</p>
 <h3 id="comparison-of-certificate-management-methods">Comparison of certificate management methods</h3>
 <table>
 <thead>
 <tr>
-<th>Certificate Management Option</th>
+<th>Certificate management option</th>
 <th>Advantages</th>
 <th>Disadvantages</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Tealium-managed certificate</strong></td>
+<td><strong>Tealium-managed</strong></td>
 <td><ul><li>Automatic provisioning and renewal</li><li>No certificate lifecycle management required</li><li>Reduced risk of outages due to expired certificates</li><li>Managed security best practices</li><li>Faster time to deploy</li></ul></td>
 <td><ul><li>Less customization/control over certificate authority (CA) or certificate policy</li></ul></td>
 </tr>
 <tr>
-<td><strong>User-provided certificate</strong></td>
+<td><strong>Self-managed</strong></td>
 <td><ul><li>Full control over certificate authority (CA) selection</li><li>Aligns with internal PKI standards</li><li>Required for certain regulated industries</li><li>Enables extended validation (EV) or organization-specific policies (if applicable)</li><li>Centralized certificate governance within the organization</li></ul></td>
 <td><ul><li>Manual renewal required</li><li>Risk of downtime if certificate expires</li><li>Operational coordination between security and marketing/analytics teams</li><li>Additional maintenance overhead</li></ul></td>
 </tr>
@@ -830,7 +830,7 @@ Use these records in place of certain paths in <code>collect.tealiumiq.com</code
 <li><strong>Pending validation</strong>: One or more domains have not been validated.</li>
 <li><strong>Expiring soon</strong>: The certificate is nearing expiration and requires renewal (self-managed certificates only).</li>
 <li><strong>Expired</strong>: The certificate has expired.</li>
-<li><strong>Failed</strong>: The certificate has failed to issue. This can occur if validation has failed or if there is an issue with the uploaded certificate files. Check the error message, resolve the issue, and try again. If you are using Tealium-managed certificates, click <strong>Retry</strong> to reissue the certificate. If you are using your own certificates, click <strong>Provide Certificate</strong> to upload new files.</li>
+<li><strong>Failed</strong>: The certificate has failed to issue. This can occur if validation has failed or if there is an issue with the uploaded certificate files. Check the error message, resolve the issue, and try again. If you are using Tealium-managed certificates, click <strong>Retry</strong> to reissue the certificate. If you are using self-managed certificates, click <strong>Provide Certificate</strong> to upload new files.</li>
 <li><strong>Not configured</strong>: No domains have been configured for this side of the platform.</li>
 <li><strong>Validation timed out</strong>: Domain validation has timed out.</li>
 <li><strong>Revoked</strong>: The certificate has been revoked.</li>
@@ -880,7 +880,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 28, 2026 
+          <p>This page was last updated:  May 13, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -897,7 +897,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manage-domain-certificates" href="javascript:void(0)">Manage domain certificates</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-managed-certificates" href="javascript:void(0)">Tealium-managed certificates</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#user-provided-certificates" href="javascript:void(0)">User-provided certificates</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#self-managed-certificates" href="javascript:void(0)">Self-managed certificates</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#comparison-of-certificate-management-methods" href="javascript:void(0)">Comparison of certificate management methods</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#limits-on-domains-per-certificate" href="javascript:void(0)">Limits on domains per certificate</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#first-party-domains-and-tapid" href="javascript:void(0)">First-party domains and TAPID</a></li>
