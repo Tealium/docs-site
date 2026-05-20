@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1600,6 +1600,16 @@
 <td>✗</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Upsert into Custom Object (non-batched)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Upsert into Custom Object (batched)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
@@ -1896,6 +1906,105 @@
 </tr>
 </tbody>
 </table>
+<h3 id="upsert-into-custom-object-non-batched">Upsert into Custom Object (non-batched)</h3>
+<h4 id="parameters-12">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Object</td>
+<td>Select the custom object to perform an upsert.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lookup">Lookup</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lookup</td>
+<td>Data to lookup external ID.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-mapping">Data Mapping</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data mapping</td>
+<td>Data to modify when upserting records.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="upsert-into-custom-object-batched">Upsert into Custom Object (batched)</h3>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 1000</li>
+<li>Max time since oldest request: 5 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-13">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Object</td>
+<td>Select the custom object to perform an upsert.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lookup-1">Lookup</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lookup</td>
+<td>Data to lookup external ID.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-mapping-1">Data Mapping</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data mapping</td>
+<td>Data to modify when upserting records.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1956,7 +2065,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 15, 2026 
+          <p>This page was last updated:  May 20, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1984,6 +2093,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-contact-to-campaign" href="javascript:void(0)">Add Contact to Campaign</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-to-custom-apex" href="javascript:void(0)">Send Entire Visitor to Custom Apex</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-to-custom-apex" href="javascript:void(0)">Send Entire Event to Custom Apex</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-into-custom-object-non-batched" href="javascript:void(0)">Upsert into Custom Object (non-batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-into-custom-object-batched" href="javascript:void(0)">Upsert into Custom Object (batched)</a></li>
               </nav>
   </aside></nav>
 

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "9",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1121,7 +1121,7 @@ To unify data across sources, map a column from your data source to a visitor ID
 <li><strong>Improved data integrity</strong>: Prevents the system from retrieving repeated records that can result from repeated timestamps.</li>
 </ul>
 <p>Your cloud provider may calculate billing based on the number of queries or the size of queries.</p>
-<p>This behavior is important to consider when selecting a <a href="#query-modes">query mode</a>.</p>
+<p>This behavior is important to consider when selecting a <a href="#query-mode-batch-processing-behavior">query mode</a>.</p>
 <h3 id="rate-limits">Rate limits</h3>
 <p>Imports from cloud data sources are typically limited to 200 events per second per account, but may vary. Standard attribute size limits still apply. For more information, see <a href="/server-side/attributes/about/#size-limits">About attributes &gt; Size limits</a>.</p>
 <h2 id="query-configurations">Query configurations</h2>
@@ -1185,11 +1185,11 @@ To unify data across sources, map a column from your data source to a visitor ID
 <p>To ensure a query mode works effectively, you must have one or both of the following:</p>
 <ul>
 <li><strong>Timestamp column</strong><br>
-A timestamp column set to the current time when a row is added or modified.</li>
+A timestamp column set to the current time when a row is added or modified. If the timestamp column is not properly set, rows may never be read or may be read more than once.</li>
 <li><strong>Increment column</strong><br>
 A numeric column that increments in value for every row added. A recommended definition for an auto-increment column is:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>COL1 NUMBER AUTOINCREMENT <span style="color:#66d9ef">START</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">INCREMENT</span> <span style="color:#ae81ff">1</span>
-</span></span></code></pre></div></li>
+</span></span></code></pre></div>This definition results in an always ascending unique key as new rows are added. If there is not an always ascending unique key, rows may never be read or may be read more than once.</li>
 </ul>
 <p>For vendor-specific requirements, see:</p>
 <ul>
@@ -1198,29 +1198,54 @@ A numeric column that increments in value for every row added. A recommended def
 <li><a href="/server-side/data-sources/cloud-data/google-bigquery-cloud-data-source/#query-configurations">Google BigQuery</a></li>
 <li><a href="/server-side/data-sources/cloud-data/snowflake-cloud-data-source/#query-configurations">Snowflake</a></li>
 </ul>
-<p>Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see <a href="#query-mode-example">Query mode example</a>.</p>
-<h3 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h3>
+<p>Select a mode that aligns with the requirements of your use case. For an example of how these modes work, see <a href="#query-mode-batch-processing-behavior">Query mode batch processing behavior</a>.</p>
+<h4 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h4>
 <p>This mode uses both a timestamp column and an incrementing column to import new or modified rows.</p>
 <p>Rows are imported if they have a newer timestamp than the previous import, or the same timestamp with a higher increment value.</p>
 <p>This mode provides the highest reliability for ensuring that all rows are imported as intended.</p>
-<h3 id="timestamp">Timestamp</h3>
+<h4 id="timestamp">Timestamp</h4>
 <p>This mode uses a timestamp column to import new or updated rows.</p>
 <p>Rows are imported only if they have a newer timestamp than the previous import. If you attempt to import rows with the same timestamp, rows with duplicate timestamps may not be imported.</p>
 <p>Use this mode if your table has a timestamp column set on every insert or update operation.</p>
-<h3 id="incrementing">Incrementing</h3>
+<h4 id="incrementing">Incrementing</h4>
 <p>This mode uses an incrementing column to import rows.</p>
 <p>Rows are imported if they have a larger increment value than the last imported row. Rows with an increment value less than or equal to the maximum value from the previous import are skipped. This mode does not detect modifications to existing rows.</p>
 <p>Use this mode if your table does not have a timestamp column.</p>
 <p>If you maintain your own increment column, as opposed to using an auto-increment column, ensure that the values always increase.</p>
-<h3 id="query-mode-example">Query mode example</h3>
-<p>The following example shows how batch processing of rows and query modes work together.</p>
-<p>In the following table, <code>modification_time</code> is the timestamp column and <code>customer_id</code> is the incrementing column.</p>
+<h4 id="query-mode-batch-processing-behavior">Query mode batch processing behavior</h4>
+<p>Each query mode determines what boundary values the system records at the end of a batch. The next batch uses these recorded values to determine which rows to fetch.</p>
+<table>
+<thead>
+<tr>
+<th>Query mode</th>
+<th>Values recorded at batch boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timestamp + Incrementing</td>
+<td>Last timestamp value and last increment value</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Last timestamp value only</td>
+</tr>
+<tr>
+<td>Incrementing</td>
+<td>Last increment value only</td>
+</tr>
+</tbody>
+</table>
+<p>The following example shows how these batch boundaries affect which rows are imported in the next batch.</p>
+<p>In this example, a cloud data source fetches data in serial batches of 1,000 rows per scheduled run and continues until no records are returned. Depending on which query mode you use, row 1001 may or may not be imported.</p>
+<p>In the following table, <code>modification_time</code> is the timestamp column, <code>customer_id</code> is the incrementing column, and Batch indicates the batch that the rows are processed in.</p>
 <table>
 <thead>
 <tr>
 <th><code>customer_id</code></th>
 <th><code>modification_time</code></th>
 <th><code>customer_segment</code></th>
+<th>Batch</th>
 </tr>
 </thead>
 <tbody>
@@ -1228,46 +1253,95 @@ A numeric column that increments in value for every row added. A recommended def
 <td><code>1</code></td>
 <td><code>01Apr 13:00</code></td>
 <td><code>A</code></td>
+<td>A</td>
 </tr>
 <tr>
 <td><code>2</code></td>
 <td><code>01Apr 13:00</code></td>
 <td><code>B</code></td>
+<td>A</td>
 </tr>
 <tr>
 <td>&hellip;</td>
 <td>&hellip;</td>
 <td>&hellip;</td>
+<td>A</td>
 </tr>
 <tr>
 <td><code>1000</code></td>
 <td><code>01Apr 13:00</code></td>
 <td><code>D</code></td>
+<td>A</td>
 </tr>
 <tr>
 <td><code>1001</code></td>
 <td><code>01Apr 13:00</code></td>
 <td><code>E</code></td>
+<td>?</td>
 </tr>
 <tr>
 <td><code>1002</code></td>
 <td><code>02Apr 14:00</code></td>
 <td><code>A</code></td>
+<td>B</td>
 </tr>
 </tbody>
 </table>
-<p>The cloud data source fetches data 1,000 rows at a time and records the highest value found in the timestamp column, the incrementing column, or both columns, depending on the selected query mode.</p>
+<p>After processing Batch A (rows 1-1000), the system records the maximum values found depending on the selected query mode. The next batch uses these values to determine which rows to fetch.</p>
+<h4 id="timestamp--incrementing">Timestamp + Incrementing</h4>
+<p>Using the Timestamp + Incrementing mode successfully processes all rows with the following SQL queries:</p>
+<p><strong>Batch A</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> modification_time <span style="color:#f92672">&lt;</span> NOW()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> modification_time, customer_id <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>After Batch A finishes processing, the system records:</p>
 <ul>
-<li><strong>Timestamp + Incrementing</strong>:<br>
-The data source fetches rows 1-1000. The next time the data source fetches the data, it looks for rows where either<br>
-<code>modification_time</code> is <code>01Apr 13:00</code> and the <code>customer_id</code> is greater than <code>1000</code><br>
-or<br>
-<code>modification_time</code> is greater than <code>01Apr 13:00</code>.</li>
-<li><strong>Incrementing</strong>:<br>
-The data source fetches rows 1-1000 and marks the maximum incrementing value of <code>1000</code>. On the next import, rows 1-1000 are skipped even if they were modified since the first import. Only new rows that increment the incrementing column (<code>customer_id</code> in the example) are processed.</li>
-<li><strong>Timestamp</strong> (<code>modification_time</code> in the example):<br>
-The data source fetches rows 1-1000 and marks the maximum timestamp of <code>01Apr 13:00</code>. On the next import, rows with a timestamp greater than <code>01Apr 13:00</code> are imported. In this case, row <code>1001</code> is skipped because it has the same timestamp value that was fetched in the previous batch of data.</li>
+<li>Final batch timestamp: <code>01Apr 13:00</code></li>
+<li>Final batch ID: <code>1000</code></li>
 </ul>
+<p><strong>Batch B</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> modification_time <span style="color:#f92672">&lt;</span> NOW()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">AND</span> ((modification_time <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01Apr 13:00&#39;</span> <span style="color:#66d9ef">AND</span> customer_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">OR</span> modification_time <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;01Apr 13:00&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> modification_time, customer_id <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>Row 1001 is successfully imported because it has the same timestamp with a higher ID value. Row 1002 is imported because it has a newer timestamp.</p>
+<h4 id="incrementing-1">Incrementing</h4>
+<p>Using the Incrementing mode, rows added after each batch are processed, but modifications to existing rows may not be detected.</p>
+<p><strong>Batch A</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> customer_id <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>After Batch A finishes processing, the system records:</p>
+<ul>
+<li>Final batch ID: <code>1000</code></li>
+</ul>
+<p><strong>Batch B</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> customer_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> customer_id <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>Rows 1001 and 1002 are imported because they have higher ID values. However, if any rows from 1-1000 were modified after Batch A, those updates are not detected.</p>
+<h4 id="timestamp-modification_time-in-the-example">Timestamp (<code>modification_time</code> in the example)</h4>
+<p>Using the Timestamp mode results in missing rows.</p>
+<p><strong>Batch A</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> modification_time <span style="color:#f92672">&lt;</span> NOW()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> modification_time <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>After Batch A finishes processing, the system records:</p>
+<ul>
+<li>Final batch timestamp: <code>01Apr 13:00</code></li>
+</ul>
+<p><strong>Batch B</strong> query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> customers
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> modification_time <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;01Apr 13:00&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> modification_time <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><p>The system skips row 1001 because it has the same timestamp value as the previous batch boundary. Only row 1002 is imported.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When thousands of records share the same timestamp at a batch boundary, entire batches can be skipped. Records sharing the same timestamp is a common problem for bulk imports into the source data warehouse where many records are inserted or updated simultaneously.</p>
 <h2 id="column-mapping">Column mapping</h2>
 <p>The column mapping configuration determines the event attributes that correspond to each column in the cloud database table.</p>
 <p>Column names are often different from the attribute names in your Tealium account, so this mapping ensures that the data is imported properly. For example, if your table uses the column name <code>postalCode</code> but the event attribute in Tealium is <code>customer_zip</code>, create a mapping to associate these fields.</p>
@@ -1330,7 +1404,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 12, 2026 
+          <p>This page was last updated:  May 20, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1355,10 +1429,6 @@ No</button>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-configurations" href="javascript:void(0)">Query configurations</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-modes" href="javascript:void(0)">Query modes</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timestamp--incrementing-recommended" href="javascript:void(0)">Timestamp &#43; Incrementing (Recommended)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#timestamp" href="javascript:void(0)">Timestamp</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#incrementing" href="javascript:void(0)">Incrementing</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#query-mode-example" href="javascript:void(0)">Query mode example</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-id-mapping" href="javascript:void(0)">Visitor ID mapping</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP addresses to allow</a></li>

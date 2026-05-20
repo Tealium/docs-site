@@ -1811,13 +1811,26 @@
 <div class="prose nested-links" id="prose">
   <p>Selligent APIについての詳細は、<a href="https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/">Selligent Marketing Cloud API Explorer</a>をご覧ください。</p>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントがベンダーに順不同で到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数：2500</li>
+<li>最大リクエスト数：2500</li>
 <li>最古のリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：20 MB</li>
 </ul>
-<h2 id="コネクタアクション">コネクタアクション</h2>
+<h2 id="構成">構成</h2>
+<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
+<ul>
+<li><strong>サーバーURL</strong><br>
+あなたのSelligentベースURL。サーバーURLには<code>https</code>値を含めてください。例：<code>https://example.sIgnt.eu</code>。</li>
+<li><strong>組織</strong><br>
+あなたの組織。<strong>Selligent管理構成</strong>画面の右上隅にある組織と一致する必要があります。</li>
+<li><strong>APIキー</strong><br>
+<strong>Selligent管理構成</strong>から生成されます。</li>
+<li><strong>APIシークレット</strong><br>
+<strong>Selligent管理構成</strong>から生成されます。</li>
+</ul>
+<h2 id="アクション">アクション</h2>
 <table>
 <thead>
 <tr>
@@ -1859,26 +1872,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタの追加方法についての一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>の記事を参照してください。</p>
-<p>コネクタを追加した後、次の構成を構成します：</p>
-<ul>
-<li><strong>サーバーURL</strong><br>
-あなたのSelligentベースURL。サーバーURLには<code>https</code>値を含めてください。例：<code>https://example.sIgnt.eu</code>。</li>
-<li><strong>組織</strong><br>
-あなたの組織。<strong>Selligent管理構成</strong>画面の右上隅にある組織と一致する必要があります。</li>
-<li><strong>APIキー</strong><br>
-<strong>Selligent管理構成</strong>から生成されます。</li>
-<li><strong>APIシークレット</strong><br>
-<strong>Selligent管理構成</strong>から生成されます。</li>
-</ul>
-<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
-<p>コネクタアクションの構成を続けるには、<strong>続行</strong>をクリックします。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション--リストへのアップサート">アクション — リストへのアップサート</h3>
+<h3 id="リストへのアップサート">リストへのアップサート</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_LoadData</code></p>
-<p>このエンドポイントは、指定された組織の指定されたAPI名のリストにユーザーデータをロードします。これは、特定のリスト内でユーザーを登録または更新することに似ています。リストはオーディエンスに相当します。リストは、構成画面で入力された資格情報と組織に基づいて取得されます。</p>
+<p>このエンドポイントは、指定された組織の指定されたAPI名のリストにユーザーデータをロードします。これは、特定のリスト内でユーザーを登録または更新することに似ています。リストは、オーディエンスに相当します。リストは、構成画面で入力された資格情報と組織に基づいて取得されます。</p>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -1898,9 +1894,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--リストからの削除">アクション — リストからの削除</h3>
+<h3 id="リストからの削除">リストからの削除</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_DeleteData</code></p>
-<p>このエンドポイントは、指定された組織の指定されたAPI名のリストからデータを削除します。このアクションを使用してユーザーを削除し、特定のリストから登録を解除します。たとえば、誰かがオーディエンスを離れるときです。</p>
+<p>このエンドポイントは、指定された組織の指定されたAPI名のリストからデータを削除します。このアクションを使用して、ユーザーを削除し、特定のリストから登録を解除します。たとえば、誰かがオーディエンスを離れるときです。</p>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -1920,9 +1916,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--セグメントへの追加">アクション — セグメントへの追加</h3>
+<h3 id="セグメントへの追加">セグメントへの追加</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_LoadSegmentData</code></p>
-<p>このエンドポイントは、指定された組織の指定されたAPI名のリスト内の指定されたセグメントAPI名にデータをロードします。このアクションを使用して、リスト内のセグメントにユーザーデータをサブセットします。このアクションは、Selligentプラットフォーム内のリスト内のターゲット固定セグメントにユーザーを追加するために使用できます。</p>
+<p>このエンドポイントは、指定された組織の指定されたAPI名のリスト内のセグメントにデータをロードします。このアクションを使用して、リスト内のセグメントにユーザーデータをサブセットします。このアクションは、Selligentプラットフォーム内のリスト内のターゲット静的セグメントにユーザーを追加するために使用できます。</p>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -1938,7 +1934,7 @@
 </tr>
 <tr>
 <td>セグメント</td>
-<td>セグメントを選択します。ユーザーをそのセグメントに登録するために使用できる静的セグメントのみを提供します。</td>
+<td>セグメントを選択します。そのセグメントにユーザーを登録するために使用できる静的セグメントのみを提供します。</td>
 </tr>
 <tr>
 <td>データ</td>
@@ -1946,9 +1942,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--セグメントからの削除">アクション — セグメントからの削除</h3>
+<h3 id="セグメントからの削除">セグメントからの削除</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_DeleteSegmentData</code></p>
-<p>このエンドポイントは、指定された組織の指定されたAPI名のリスト内の指定されたセグメントAPI名からJSONを介してデータを削除します。このアクションを使用して、セグメントからユーザーを登録解除します。削除アクションはセグメントを削除しませんが、サポートされているセグメントからユーザーを削除します。</p>
+<p>このエンドポイントは、指定された組織の指定されたAPI名のリスト内のセグメントからJSONを介してデータを削除します。このアクションを使用して、セグメントからユーザーを登録解除します。削除アクションはセグメントを削除しませんが、サポートされているセグメントからユーザーを削除します。</p>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
 <thead>
@@ -1964,7 +1960,7 @@
 </tr>
 <tr>
 <td>セグメント</td>
-<td>Selligentマーケティングクラウドリスト内で作成された静的セグメントのみを提供し、セグメントからユーザーを削除します。</td>
+<td>Selligent Marketing Cloudリスト内で作成された静的セグメントのみを提供し、セグメントからユーザーを削除します。</td>
 </tr>
 <tr>
 <td>データ</td>
@@ -1972,9 +1968,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--カスタムジャーニーのトリガー">アクション — カスタムジャーニーのトリガー</h3>
+<h3 id="カスタムジャーニーのトリガー">カスタムジャーニーのトリガー</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Custom/Custom_TriggerEntryPoint</code></p>
-<p>このアクションは、カスタムジャーニーの特定の開始コンポーネントをトリガーします。このアクションを使用して、ユーザーをカスタムカスタマージャーニーに追加し、ユーザーを挿入するエントリーポイントステップを選択します。</p>
+<p>このアクションは、カスタムジャーニーの特定の開始コンポーネントをトリガーします。このアクションを使用して、ユーザーをカスタムカスタマージャーニーに追加し、ユーザーが挿入されるエントリーポイントステップを選択します。</p>
 <h4 id="パラメータ-4">パラメータ</h4>
 <table>
 <thead>
@@ -1986,7 +1982,7 @@
 <tbody>
 <tr>
 <td>ジャーニー</td>
-<td>Selligentカスタムジャーニーを選択します。このジャーニーは、Selligentプラットフォーム内で作成されたカスタマージャーニーに基づいて取得されます。<code>ジャーニー</code>は作成された<code>カスタム</code>タイプのカスタマージャーニーのみを返します。</td>
+<td>Selligentカスタムジャーニーを選択します。このジャーニーは、あなたのSelligentプラットフォーム内で作成されたカスタマージャーニーに基づいて取得されます。<code>ジャーニー</code>は、作成された<code>カスタム</code>タイプのカスタマージャーニーのみを返します。</td>
 </tr>
 <tr>
 <td>ジャーニーエントリーポイント</td>
@@ -1998,9 +1994,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="アクション--トランザクショナルメッセージのトリガー">アクション — トランザクショナルメッセージのトリガー</h3>
+<h3 id="トランザクショナルメッセージのトリガー">トランザクショナルメッセージのトリガー</h3>
 <p>APIエンドポイント: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Transactional/Transactional_Send</code></p>
-<p>このエンドポイントは、指定された組織の指定されたAPI名でトランザクショナルメッセージをトリガーするために使用できます。このアクションを使用して、指定された受信者にトランザクショナルメールを送信し、特定の言語指定で送信します。また、このアクションを使用して特定のジャーニーを開始することもできます。たとえば、Tealiumから直接メールを送信したい場合です。アクションは、Selligentプラットフォーム内で作成されたトランザクショナルジャーニーを通じてメッセージを送信します。このアクションは、トランザクショナルカスタマージャーニーがすでに作成されており、トランザクショナルジャーニーのためにユーザーにメッセージを送信するシナリオで使用できます。</p>
+<p>このエンドポイントは、指定された組織の指定されたAPI名でトランザクショナルメッセージをトリガーするために使用できます。このアクションを使用して、指定された受信者にトランザクショナルメールを送信し、特定の言語指定で送信します。また、特定のジャーニーを開始するためにこのアクションを使用することもできます。たとえば、Tealiumから直接メールを送信したい場合です。アクションは、Selligentプラットフォーム内で作成されたトランザクショナルジャーニーを通じてメッセージを送信します。このアクションは、トランザクショナルカスタマージャーニーがすでに作成されており、トランザクショナルジャーニーのためにユーザーにメッセージを送信するシナリオで使用できます。</p>
 <h4 id="パラメータ-5">パラメータ</h4>
 <table>
 <thead>
@@ -2016,11 +2012,19 @@
 </tr>
 <tr>
 <td>受信者</td>
-<td>必須。コンテンツを送信する受信者。</td>
+<td>(必須) コンテンツを送信する受信者。</td>
 </tr>
 <tr>
 <td>言語</td>
-<td>必須。メールを送信する言語。</td>
+<td>(必須) メールを送信する言語。</td>
+</tr>
+<tr>
+<td>Lookup</td>
+<td>Selligentが受信者を見つけるために使用するプロファイルフィールドを決定します。マッピングされていない場合、<code>lookup</code>フィールドはリクエストから省略され、Selligentはサーバーサイドのデフォルト<code>MASTER.MAIL</code>（メインのオーディエンスメールフィールド）を適用します。トランザクショナル構成が別のフィールドまたは関連プロファイルスコープで連絡先を識別する場合のみ、<code>SCOPE.FIELD</code>の形式で値をマッピングします。</td>
+</tr>
+<tr>
+<td>外部ID</td>
+<td>このメッセージ送信のためのオプションの外部ID。リクエストを追跡するために使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -2084,7 +2088,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年May月20日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2099,15 +2103,14 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%AA%E3%82%B9%E3%83%88%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88" href="javascript:void(0)">アクション — リストへのアップサート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">アクション — リストからの削除</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション — セグメントへの追加</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">アクション — セグメントからの削除</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%8B%E3%83%BC%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">アクション — カスタムジャーニーのトリガー</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">アクション — トランザクショナルメッセージのトリガー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88" href="javascript:void(0)">リストへのアップサート</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%B9%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">リストからの削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">セグメントへの追加</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">セグメントからの削除</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%8B%E3%83%BC%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">カスタムジャーニーのトリガー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">トランザクショナルメッセージのトリガー</a></li>
               </nav>
   </aside></nav>
 

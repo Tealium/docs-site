@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1520,14 +1520,27 @@
 
 <div class="prose nested-links" id="prose">
   <p>For more information about the Selligent APIs, see the <a href="https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/">Selligent Marketing Cloud API Explorer.</a></p>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 2500</li>
 <li>Max time since oldest request: 10 minutes</li>
 <li>Max size of requests: 20 MB</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Server URL</strong><br>
+Your Selligent base URL. Include the <code>https</code> value in your server URL.  For example, <code>https://example.sIgnt.eu</code>.</li>
+<li><strong>Organization</strong><br>
+Your organization. Must match the organization in the upper-right corner of the <strong>Selligent Admin Configuration</strong> screen.</li>
+<li><strong>API Key</strong><br>
+Generated from <strong>Selligent Admin Configuration</strong>.</li>
+<li><strong>API Secret</strong><br>
+Generated from <strong>Selligent Admin Configuration</strong>.</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1569,24 +1582,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>Server URL</strong><br>
-Your Selligent base URL. Include the <code>https</code> value in your server URL.  For example, <code>https://example.sIgnt.eu</code>.</li>
-<li><strong>Organization</strong><br>
-Your organization. Must match the organization in the upper-right corner of the <strong>Selligent Admin Configuration</strong> screen.</li>
-<li><strong>API Key</strong><br>
-Generated from <strong>Selligent Admin Configuration</strong>.</li>
-<li><strong>API Secret</strong><br>
-Generated from <strong>Selligent Admin Configuration</strong>.</li>
-</ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
-<h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action, and then select the action type from the drop-down menu.</p>
-<p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--upsert-to-list">Action — Upsert To List</h3>
+<h3 id="upsert-to-list">Upsert To List</h3>
 <p>API Endpoint: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_LoadData</code></p>
 <p>This endpoint loads user data into the list with the given API name in the given organization, similar to subscribing or updating a user within a specific list. Lists are comparable to audiences. The list is retrieved based on your credentials and organization inputted in the Configuration screen.</p>
 <h4 id="parameters">Parameters</h4>
@@ -1608,7 +1604,7 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action--delete-from-list">Action — Delete From List</h3>
+<h3 id="delete-from-list">Delete From List</h3>
 <p>API Endpoint: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_DeleteData</code></p>
 <p>This endpoint deletes data from the list with the given API name in the given organization. Use this action to remove a user and subsequently unsubscribe them from a given list. For example, when someone leaves an audience.</p>
 <h4 id="parameters-1">Parameters</h4>
@@ -1630,7 +1626,7 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action--add-to-segment">Action — Add to Segment</h3>
+<h3 id="add-to-segment">Add to Segment</h3>
 <p>API Endpoint: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_LoadSegmentData</code></p>
 <p>This endpoint loads data into the segment with the given Segment API name in the list with the given API name in the given organization. Use this action to subset user data into a segment within a list. This action can be used to add users to targeted static segments within lists within the Selligent Platform.</p>
 <h4 id="parameters-2">Parameters</h4>
@@ -1656,7 +1652,7 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action--delete-from-segment">Action — Delete from Segment</h3>
+<h3 id="delete-from-segment">Delete from Segment</h3>
 <p>API Endpoint: <code> https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Data/Data_DeleteSegmentData</code></p>
 <p>This endpoint deletes data through JSON from the segment with the given Segment API name in the list with the given API name in the given organization. Use this action to unsubscribe a user from a segment. The delete action does not delete the segment, but instead deletes the user from the supported segment.</p>
 <h4 id="parameters-3">Parameters</h4>
@@ -1682,7 +1678,7 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action--trigger-custom-journey">Action — Trigger Custom Journey</h3>
+<h3 id="trigger-custom-journey">Trigger Custom Journey</h3>
 <p>API Endpoint: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Custom/Custom_TriggerEntryPoint</code></p>
 <p>This action triggers a specific start component in the custom journey. Use this action to add a user to a custom Customer Journey and select an entry point step for the user to be inserted into.</p>
 <h4 id="parameters-4">Parameters</h4>
@@ -1708,7 +1704,7 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action--trigger-transactional-message">Action — Trigger Transactional Message</h3>
+<h3 id="trigger-transactional-message">Trigger Transactional Message</h3>
 <p>API Endpoint: <code>https://partners.slgnt.eu/Portal/Api/swagger/ui/index#!/Transactional/Transactional_Send</code></p>
 <p>This endpoint can be used to trigger the transactional message with the given API name in the given organization. Use this action to send a transactional email to a designated recipient and with a specific language designation. You can also use this action to kick off a particular journey. For example, if you want to send an email directly from Tealium. The action sends a message through the transactional journeys created within the Selligent platform. This action can be used in scenarios where a transactional customer journey is already created and for sending a message to the user for the transactional journey.</p>
 <h4 id="parameters-5">Parameters</h4>
@@ -1731,6 +1727,14 @@ Generated from <strong>Selligent Admin Configuration</strong>.</li>
 <tr>
 <td>Language</td>
 <td>(Required) The language in which the email should be sent.</td>
+</tr>
+<tr>
+<td>Lookup</td>
+<td>Determines which profile field Selligent uses to find the recipient. If left unmapped, the <code>lookup</code> field is omitted from the request and Selligent applies its server-side default <code>MASTER.MAIL</code> (the main audience email field). Map a value in the form <code>SCOPE.FIELD</code> only when your transactional setup identifies contacts by another field or related profile scope.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>Optional external ID for this message send. Used to track requests.</td>
 </tr>
 </tbody>
 </table>
@@ -1794,7 +1798,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  May 20, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1808,16 +1812,15 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--upsert-to-list" href="javascript:void(0)">Action — Upsert To List</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--delete-from-list" href="javascript:void(0)">Action — Delete From List</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--add-to-segment" href="javascript:void(0)">Action — Add to Segment</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--delete-from-segment" href="javascript:void(0)">Action — Delete from Segment</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--trigger-custom-journey" href="javascript:void(0)">Action — Trigger Custom Journey</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--trigger-transactional-message" href="javascript:void(0)">Action — Trigger Transactional Message</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-to-list" href="javascript:void(0)">Upsert To List</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-from-list" href="javascript:void(0)">Delete From List</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-to-segment" href="javascript:void(0)">Add to Segment</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-from-segment" href="javascript:void(0)">Delete from Segment</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#trigger-custom-journey" href="javascript:void(0)">Trigger Custom Journey</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#trigger-transactional-message" href="javascript:void(0)">Trigger Transactional Message</a></li>
               </nav>
   </aside></nav>
 

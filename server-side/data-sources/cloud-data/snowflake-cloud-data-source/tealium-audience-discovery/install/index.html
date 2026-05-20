@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1116,7 +1116,7 @@
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>The app can only read source data. It never modifies your tables.</p>
 <h3 id="enable-cortex-ai-optional">Enable Cortex AI (optional)</h3>
 <p>The app includes a Cortex mode that lets users describe audience segmentation rules in natural language. Cortex Analyst generates the SQL query automatically using your Snowflake semantic views.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature is disabled if you have not assigned a semantic view to the application.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature requires a semantic view assigned to the application.</p>
 <ol>
 <li>
 <p>Grant the Cortex AI database role.</p>
@@ -1143,12 +1143,12 @@
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;llama3.1-405b&#39;</span>),
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;snowflake-arctic&#39;</span>),
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;claude-3-5-sonnet&#39;</span>);
-</span></span></code></pre></div><p class="tip"><i class="fa fa-info-circle"></i>Only list models enabled in your Snowflake region. Test a model with <code>SELECT AI_COMPLETE(model =&gt; '&lt;model_name&gt;', prompt =&gt; 'Hello');</code></p>
+</span></span></code></pre></div><p class="tip"><i class="fa fa-info-circle"></i>Only list models enabled in your Snowflake region. To test a model, run <code>SELECT AI_COMPLETE(model =&gt; '&lt;model_name&gt;', prompt =&gt; 'Hello');</code></p>
 </li>
 </ol>
 <h3 id="enable-webhook-delivery-optional">Enable webhook delivery (optional)</h3>
-<p>The app can send audience data to external HTTP endpoints. This feature is disabled by default and requires administrator setup.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature is disabled if you have not configured a network rule and external access integration.</p>
+<p>The app can send audience data to external HTTP endpoints. The app disables this feature by default and requires administrator setup.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature requires a configured network rule and external access integration.</p>
 <ol>
 <li>
 <p>Create a network rule for your webhook host.</p>
@@ -1178,11 +1178,39 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.set_webhook_enabled(<span style="color:#66d9ef">FALSE</span>);
 </span></span></code></pre></div></li>
 </ol>
-<p>To send audience data, open an audience, click the three-dot menu, and select <strong>Send to Webhook</strong>. Enter the HTTPS webhook URL, optionally provide Basic Auth credentials, and click <strong>Send</strong>. Data is delivered as JSON in batches of 1,000 rows by default, up to 1,000,000 rows.</p>
+<p>To send audience data:</p>
+<ol>
+<li>Open an audience and click the three-dot menu.</li>
+<li>Select <strong>Send to Webhook</strong>.</li>
+<li>Enter the HTTPS webhook URL and, optionally, basic authentication credentials.</li>
+<li>Click <strong>Send</strong>. Data is delivered as JSON in batches of 1,000 rows by default, up to 1,000,000 rows.</li>
+</ol>
 <p>All deliveries are logged in <code>AUDIENCE_DISCOVERY_SCHEMA.WEBHOOK_LOG</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.AUDIENCE_DISCOVERY_SCHEMA.WEBHOOK_LOG
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> STARTED_AT <span style="color:#66d9ef">DESC</span>;
-</span></span></code></pre></div><h3 id="set-up-external-access-for-the-tealium-connector">Set up external access for the Tealium connector</h3>
+</span></span></code></pre></div><h3 id="set-up-user-access-to-the-tealium-application">Set up user access to the Tealium application</h3>
+<p>Grant Snowflake users access to the app by creating a dedicated role and assigning an application role to it.</p>
+<ol>
+<li>
+<p>Create a dedicated role for the application users.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ROLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> TEALIUM_APP_USER;
+</span></span></code></pre></div></li>
+<li>
+<p>Grant the <code>app_user</code> application role to the dedicated role.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> APPLICATION <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_APP.app_user <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_APP_USER;
+</span></span></code></pre></div><p>Choose the application role that matches the user&rsquo;s needs:</p>
+<ul>
+<li><code>app_user</code>: access to the app with the ability to create audiences</li>
+<li><code>app_admin</code>: access to the app, ability to create audiences, change app configuration, and access app objects in Snowsight</li>
+<li><code>app_viewer</code>: access to the app without the ability to create audiences</li>
+</ul>
+</li>
+<li>
+<p>Grant the dedicated role to the user who needs access to the app.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_APP_USER <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">USER</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">user</span><span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="set-up-external-access-for-the-tealium-connector">Set up external access for the Tealium connector</h3>
 <p>Each audience includes a <code>USERS_EXTERNAL</code> secure view for external consumers such as the Tealium Snowflake connector. The view automatically returns zero rows when an audience is deactivated and resumes when re-activated.</p>
 <ol>
 <li>
@@ -1288,24 +1316,24 @@
 <li>Does not store secrets in plain text. Authentication is handled through Snowflake&rsquo;s OAuth token mechanism in Snowpark Container Services (SPCS).</li>
 <li>Uses self-hosted fonts bundled into the container image at build time. No runtime requests are made to external servers.</li>
 </ul>
-<p>The optional webhook delivery feature, when explicitly enabled by an administrator with a network rule and external access integration, allows users to send audience data to a specified HTTPS endpoint. No outbound requests occur unless the administrator enables this feature and a user initiates a send.</p>
+<p>When an administrator enables the optional webhook delivery feature with a network rule and external access integration, users can send audience data to a specified HTTPS endpoint. No outbound requests occur unless the administrator enables this feature and a user initiates a send.</p>
 <h3 id="authentication">Authentication</h3>
 <p>All access requires Snowflake authentication. The web UI is served through a Snowflake ingress endpoint. There are no public unauthenticated endpoints.</p>
 <h3 id="objects-created">Objects created</h3>
 <p>The app creates the following objects in your Snowflake account.</p>
 <p><strong>Schemas:</strong></p>
 <ul>
-<li><code>MAIN_SCHEMA</code> — infrastructure</li>
-<li><code>AUDIENCE_DISCOVERY_SCHEMA</code> — metadata</li>
-<li><code>TEALIUM_EXTERNAL_ACCESS</code> — secure views for external access</li>
+<li><code>MAIN_SCHEMA</code>: infrastructure</li>
+<li><code>AUDIENCE_DISCOVERY_SCHEMA</code>: metadata</li>
+<li><code>TEALIUM_EXTERNAL_ACCESS</code>: secure views for external access</li>
 <li>One <code>AUD_*</code> schema per audience</li>
 </ul>
 <p><strong>Tables:</strong></p>
 <ul>
-<li><code>AUDIENCES</code> — audience metadata</li>
-<li><code>AVAILABLE_LLMS</code> — LLM configuration</li>
-<li><code>WEBHOOK_CONFIG</code> — feature flag</li>
-<li><code>WEBHOOK_LOG</code> — webhook delivery audit log</li>
+<li><code>AUDIENCES</code>: audience metadata</li>
+<li><code>AVAILABLE_LLMS</code>: LLM configuration</li>
+<li><code>WEBHOOK_CONFIG</code>: feature flag</li>
+<li><code>WEBHOOK_LOG</code>: webhook delivery audit log</li>
 <li>One <code>USERS</code> table per audience</li>
 </ul>
 <p><strong>Views:</strong></p>
@@ -1377,7 +1405,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 12, 2026 
+          <p>This page was last updated:  May 20, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1399,6 +1427,7 @@ No</button>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#grant-access-to-additional-databases" href="javascript:void(0)">Grant access to additional databases</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-cortex-ai-optional" href="javascript:void(0)">Enable Cortex AI (optional)</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-webhook-delivery-optional" href="javascript:void(0)">Enable webhook delivery (optional)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-up-user-access-to-the-tealium-application" href="javascript:void(0)">Set up user access to the Tealium application</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-up-external-access-for-the-tealium-connector" href="javascript:void(0)">Set up external access for the Tealium connector</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manage-the-service" href="javascript:void(0)">Manage the service</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#stop-the-service" href="javascript:void(0)">Stop the service</a></li>

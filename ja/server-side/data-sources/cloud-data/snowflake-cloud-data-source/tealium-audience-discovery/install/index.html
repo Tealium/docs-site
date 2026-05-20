@@ -1098,7 +1098,7 @@
 <ol>
 <li>
 <p>アプリ専用のコンピュートプールを作成します。</p>
-<p><code>CPU_X64_XS</code>（2 vCPU、8 GB）はほとんどのワークロードに適しています。大規模なオーディエンスや重い同時使用の場合は、<code>CPU_X64_S</code>（4 vCPU、16 GB）を使用してください。</p>
+<p><code>CPU_X64_XS</code>（2 vCPU、8 GB）はほとんどのワークロードに適しています。大規模なオーディエンスや重い同時使用の場合は<code>CPU_X64_S</code>（4 vCPU、16 GB）を使用してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> COMPUTE POOL <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> TEALIUM_AUDIENCE_DISCOVERY_POOL
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">FOR</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP
 </span></span><span style="display:flex;"><span>  MIN_NODES <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
@@ -1130,7 +1130,7 @@
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div></li>
 <li>
-<p>サービスの状態を確認します。状態が <code>READY</code> になるまで待ってから続行します。</p>
+<p>サービスの状態を確認します。状態が<code>READY</code>になるまで待ってから続行します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.check_service_status();
 </span></span></code></pre></div></li>
 <li>
@@ -1146,18 +1146,18 @@
 </ol>
 <h2 id="追加の構成">追加の構成</h2>
 <h3 id="追加のデータベースへのアクセスを許可する">追加のデータベースへのアクセスを許可する</h3>
-<p>アプリは、オーディエンスを構築したいすべてのデータベースへの読み取りアクセスが必要です。以下を追加の各データベースに対して繰り返します。</p>
+<p>アプリは、オーディエンスを構築したいすべてのデータベースからの読み取りアクセスが必要です。以下を各追加データベースに対して繰り返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">USAGE</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#f92672">&lt;</span>SOURCE_DATABASE<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">USAGE</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">ALL</span> SCHEMAS <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#f92672">&lt;</span>SOURCE_DATABASE<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">ALL</span> TABLES <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#f92672">&lt;</span>SOURCE_DATABASE<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">ALL</span> VIEWS <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#f92672">&lt;</span>SOURCE_DATABASE<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>アプリはソースデータを読み取るだけで、テーブルを変更することはありません。</p>
 <h3 id="cortex-aiの有効化オプション">Cortex AIの有効化（オプション）</h3>
-<p>アプリには、ユーザーが自然言語でオーディエンスセグメンテーションルールを記述できるCortexモードが含まれています。Cortex Analystは、Snowflakeのセマンティックビューを使用して自動的にSQLクエリを生成します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>アプリケーションにセマンティックビューが割り当てられていない場合、この機能は無効になります。</p>
+<p>アプリには、ユーザーが自然言語でオーディエンスセグメンテーションルールを記述できるCortexモードが含まれています。Cortex Analystは、Snowflakeのセマンティックビューを使用してSQLクエリを自動的に生成します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能には、アプリケーションに割り当てられたセマンティックビューが必要です。</p>
 <ol>
 <li>
-<p>Cortex AIデータベースロールを許可します。</p>
+<p>Cortex AIデータベースロールを付与します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#66d9ef">ROLE</span> SNOWFLAKE.CORTEX_USER <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span></code></pre></div></li>
 <li>
@@ -1168,7 +1168,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">ON</span> SEMANTIC <span style="color:#66d9ef">VIEW</span> <span style="color:#f92672">&lt;</span>SEMANTIC_VIEW_NAME<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span></code></pre></div></li>
 <li>
-<p>（オプション）利用可能な大規模言語モデル（LLMs）を構成します。モデルリストを管理するために、役割に <code>app_admin</code> を付与します。</p>
+<p>（オプション）利用可能な大規模言語モデル（LLMs）を構成します。モデルリストを管理するために、役割に<code>app_admin</code>を付与します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> APPLICATION <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_APP.app_admin <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">ROLE</span> <span style="color:#f92672">&lt;</span>ADMIN_ROLE<span style="color:#f92672">&gt;</span>;
 </span></span></code></pre></div><p>インストール中にシードされたデフォルトモデルを表示します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.AUDIENCE_DISCOVERY_SCHEMA.AVAILABLE_LLMS;
@@ -1181,15 +1181,15 @@
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;llama3.1-405b&#39;</span>),
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;snowflake-arctic&#39;</span>),
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#39;claude-3-5-sonnet&#39;</span>);
-</span></span></code></pre></div><p class="tip"><i class="fa fa-info-circle"></i>Snowflakeリージョンで有効になっているモデルのみをリストに含めます。モデルをテストするには、<code>SELECT AI_COMPLETE(model =&gt; '&lt;model_name&gt;', prompt =&gt; 'Hello');</code> を使用します。</p>
+</span></span></code></pre></div><p class="tip"><i class="fa fa-info-circle"></i>Snowflakeリージョンで有効になっているモデルのみをリストに含めてください。モデルをテストするには、<code>SELECT AI_COMPLETE(model =&gt; '&lt;model_name&gt;', prompt =&gt; 'Hello');</code>を実行します。</p>
 </li>
 </ol>
 <h3 id="webhook配信の有効化オプション">Webhook配信の有効化（オプション）</h3>
-<p>アプリは、オーディエンスデータを外部HTTPエンドポイントに送信することができます。この機能はデフォルトでは無効になっており、管理者の構成が必要です。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ネットワークルールと外部アクセス統合が構成されていない場合、この機能は無効です。</p>
+<p>アプリは、外部HTTPエンドポイントにオーディエンスデータを送信できます。この機能はデフォルトで無効になっており、管理者の構成が必要です。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能には、構成されたネットワークルールと外部アクセス統合が必要です。</p>
 <ol>
 <li>
-<p>Webhookホストのためのネットワークルールを作成します。</p>
+<p>Webhookホスト用のネットワークルールを作成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> NETWORK <span style="color:#66d9ef">RULE</span> webhook_egress_rule
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">TYPE</span> <span style="color:#f92672">=</span> HOST_PORT
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">MODE</span> <span style="color:#f92672">=</span> EGRESS
@@ -1206,29 +1206,57 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">USAGE</span> <span style="color:#66d9ef">ON</span> INTEGRATION webhook_external_access <span style="color:#66d9ef">TO</span> APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP;
 </span></span></code></pre></div></li>
 <li>
-<p>機能を有効にします。これにより、実行中のサービスに外部アクセス統合が自動的に添付されます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- デフォルトの統合名 WEBHOOK_EXTERNAL_ACCESS を使用します
+<p>機能を有効にします。これにより、外部アクセス統合が実行中のサービスに自動的に添付されます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- デフォルトの統合名WEBHOOK_EXTERNAL_ACCESSを使用します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.set_webhook_enabled(<span style="color:#66d9ef">TRUE</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- カスタム統合名を指定します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.set_webhook_enabled(<span style="color:#66d9ef">TRUE</span>, <span style="color:#e6db74">&#39;MY_CUSTOM_INTEGRATION&#39;</span>);
-</span></span></code></pre></div><p>後でWebhook配信を無効にする場合：</p>
+</span></span></code></pre></div><p>後でWebhook配信を無効にするには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.set_webhook_enabled(<span style="color:#66d9ef">FALSE</span>);
 </span></span></code></pre></div></li>
 </ol>
-<p>オーディエンスデータを送信するには、オーディエンスを開き、三点リーダーメニューをクリックし、<strong>Send to Webhook</strong>を選択します。HTTPS webhook URLを入力し、必要に応じてBasic認証資格情報を提供し、<strong>Send</strong>をクリックします。データはデフォルトで1,000行のバッチでJSON形式で配信され、最大1,000,000行までです。</p>
-<p>すべての配信は <code>AUDIENCE_DISCOVERY_SCHEMA.WEBHOOK_LOG</code> にログされます。</p>
+<p>オーディエンスデータを送信するには：</p>
+<ol>
+<li>オーディエンスを開き、三点リーダーメニューをクリックします。</li>
+<li><strong>Send to Webhook</strong>を選択します。</li>
+<li>HTTPS webhook URLを入力し、必要に応じて基本認証資格情報を入力します。</li>
+<li><strong>Send</strong>をクリックします。データはデフォルトで1,000行のバッチでJSON形式で配信され、最大1,000,000行までです。</li>
+</ol>
+<p>すべての配信は<code>AUDIENCE_DISCOVERY_SCHEMA.WEBHOOK_LOG</code>に記録されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.AUDIENCE_DISCOVERY_SCHEMA.WEBHOOK_LOG
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> STARTED_AT <span style="color:#66d9ef">DESC</span>;
-</span></span></code></pre></div><h3 id="tealiumコネクターの外部アクセスの構成">Tealiumコネクターの外部アクセスの構成</h3>
-<p>各オーディエンスには、Tealium Snowflakeコネクターなどの外部消費者向けに<code>USERS_EXTERNAL</code>セキュアビューが含まれています。このビューは、オーディエンスが非アクティブ化されたときに自動的にゼロ行を返し、再アクティブ化されたときに再開します。</p>
+</span></span></code></pre></div><h3 id="tealiumアプリケーションへのユーザーアクセスの構成">Tealiumアプリケーションへのユーザーアクセスの構成</h3>
+<p>Snowflakeユーザーにアプリへのアクセスを許可するために、専用のロールを作成し、そのロールにアプリケーションロールを割り当てます。</p>
 <ol>
 <li>
-<p>外部サービスアカウント用に専用のロールを作成します。</p>
+<p>アプリケーションユーザー用の専用ロールを作成します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ROLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> TEALIUM_APP_USER;
+</span></span></code></pre></div></li>
+<li>
+<p>専用ロールに<code>app_user</code>アプリケーションロールを付与します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> APPLICATION <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_APP.app_user <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_APP_USER;
+</span></span></code></pre></div><p>ユーザーのニーズに合わせてアプリケーションロールを選択します：</p>
+<ul>
+<li><code>app_user</code>: アプリへのアクセスとオーディエンスの作成が可能</li>
+<li><code>app_admin</code>: アプリへのアクセス、オーディエンスの作成、アプリ構成の変更、Snowsightでのアプリオブジェクトへのアクセスが可能</li>
+<li><code>app_viewer</code>: オーディエンスの作成機能なしでアプリへのアクセスが可能</li>
+</ul>
+</li>
+<li>
+<p>アプリへのアクセスが必要なユーザーに専用ロールを付与します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_APP_USER <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">USER</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">user</span><span style="color:#f92672">&gt;</span>;
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="tealiumコネクタの外部アクセスの構成">Tealiumコネクタの外部アクセスの構成</h3>
+<p>各オーディエンスには、Tealium Snowflakeコネクタなどの外部消費者用に<code>USERS_EXTERNAL</code>セキュアビューが含まれています。このビューは、オーディエンスが非アクティブ化されたときに自動的にゼロ行を返し、再アクティブ化されたときに再開します。</p>
+<ol>
+<li>
+<p>外部サービスアカウント用の専用ロールを作成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ROLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> TEALIUM_AUDIENCE_DISCOVERY_EXTERNAL_ROLE;
 </span></span></code></pre></div></li>
 <li>
-<p><code>app_external</code>アプリケーションロールを付与します。このロールはセキュアビューのみにアクセスを提供し、テーブルにはアクセスしません。</p>
+<p><code>app_external</code>アプリケーションロールを付与します。このロールはセキュアビューのみへのアクセスを提供し、テーブルへのアクセスは提供しません。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> APPLICATION <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_APP.app_external <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_EXTERNAL_ROLE;
 </span></span></code></pre></div></li>
 <li>
@@ -1240,7 +1268,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ROLE</span> TEALIUM_AUDIENCE_DISCOVERY_EXTERNAL_ROLE <span style="color:#66d9ef">TO</span> <span style="color:#66d9ef">USER</span> <span style="color:#f92672">&lt;</span>TEALIUM_SERVICE_USER<span style="color:#f92672">&gt;</span>;
 </span></span></code></pre></div></li>
 </ol>
-<p>Tealiumコネクターは次のクエリを使用してオーディエンスを照会します：</p>
+<p>Tealiumコネクタは次のようにオーディエンスをクエリします：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.<span style="color:#f92672">&lt;</span>AUDIENCE_SCHEMA<span style="color:#f92672">&gt;</span>.USERS_EXTERNAL;
 </span></span></code></pre></div><p>ロール制限を確認するために、テスト前にセカンダリロールを無効にします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>USE SECONDARY ROLES <span style="color:#66d9ef">NONE</span>;
@@ -1249,113 +1277,13 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- アクティブなオーディエンスのデータを返すべきです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.AUD_XXXXXXXXXXXXXXXX.USERS_EXTERNAL;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 権限不足で失敗するはずです
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 権限不足で失敗するべきです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> TEALIUM_AUDIENCE_DISCOVERY_APP.AUD_XXXXXXXXXXXXXXXX.USERS;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- 完了したらセカンダリロールを再有効化します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>USE SECONDARY ROLES <span style="color:#66d9ef">ALL</span>;
 </span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">ROLE</span> SYSADMIN;
-</span></span></code></pre></div><h2 id="サービスの管理">サービスの管理</h2>
-<p>アプリサービスのライフサイクルを管理するために、以下のストアドプロシージャを使用します。サービスを初めて作成するには、<a href="#set-up-the-service">サービスの構成</a>を参照してください。削除後に再作成するには、同じSQLを実行します。</p>
-<h3 id="サービスの停止">サービスの停止</h3>
-<p>サービスを削除せずに一時停止します。コンテナは停止しますが、サービス定義は保持されます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.stop_app_service();
-</span></span></code></pre></div><h3 id="サービスの再開">サービスの再開</h3>
-<p>以前に一時停止されたサービスを再開します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.resume_app_service();
-</span></span></code></pre></div><h3 id="サービスの更新">サービスの更新</h3>
-<p>アプリケーションのアップグレード後に新しいコンテナイメージを取り入れるために、サービス仕様を再適用します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.refresh_app_service(<span style="color:#e6db74">&#39;TEALIUM_AUDIENCE_DISCOVERY_WH&#39;</span>);
-</span></span></code></pre></div><h3 id="サービスの削除">サービスの削除</h3>
-<p>サービスを永久に削除します。再作成するには<code>create_app_service()</code>を使用します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.drop_app_service();
-</span></span></code></pre></div><h3 id="サービスの状態確認">サービスの状態確認</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.check_service_status();
-</span></span></code></pre></div><h3 id="サービスログの表示">サービスログの表示</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CALL</span> <span style="color:#66d9ef">SYSTEM</span><span style="color:#960050;background-color:#1e0010">$</span>GET_SERVICE_LOGS(<span style="color:#e6db74">&#39;TEALIUM_AUDIENCE_DISCOVERY_APP.main_schema.audience_discovery_service&#39;</span>, <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;audience-discovery-app&#39;</span>, <span style="color:#ae81ff">100</span>);
-</span></span></code></pre></div><h2 id="トラブルシューティング">トラブルシューティング</h2>
-<table>
-<thead>
-<tr>
-<th>問題</th>
-<th>解決策</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>サービスがまだ作成されていない</td>
-<td>コンピュートプールとウェアハウスを指定して<code>create_app_service()</code>を実行します。</td>
-</tr>
-<tr>
-<td>アプリケーションには専用のコンピュートプールが必要です</td>
-<td>プールは<code>FOR APPLICATION TEALIUM_AUDIENCE_DISCOVERY_APP</code>で作成する必要があります。</td>
-</tr>
-<tr>
-<td>コンピュートプールが存在しないか、認証されていない</td>
-<td><code>FOR APPLICATION</code>でプールを作成し、アプリに<code>USAGE</code>を付与します。</td>
-</tr>
-<tr>
-<td>ソースデータが表示されない</td>
-<td>ソースデータベースに対してアプリケーションに<code>USAGE</code>と<code>SELECT</code>を付与します。</td>
-</tr>
-<tr>
-<td>サービスの状態がPENDINGに固定されている</td>
-<td><code>DESCRIBE COMPUTE POOL &lt;pool&gt;</code>を実行し、状態が<code>ACTIVE</code>になるのを待ちます。</td>
-</tr>
-<tr>
-<td>エンドポイントにアクセスできない</td>
-<td><code>BIND SERVICE ENDPOINT</code>を付与してSnowsightを更新してみてください。</td>
-</tr>
-<tr>
-<td>Webhookの配信が有効になっていない</td>
-<td><code>CALL main_schema.set_webhook_enabled(TRUE)</code>を実行します。これにより、外部アクセス統合もサービスに接続されます。</td>
-</tr>
-<tr>
-<td>Webhook接続エラー</td>
-<td>ネットワークルール<code>VALUE_LIST</code>を更新して、webhookホストを含めます。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="セキュリティとデータ取扱い">セキュリティとデータ取扱い</h2>
-<h3 id="データ居住地">データ居住地</h3>
-<p>すべてのデータはSnowflakeアカウント内に残ります。アプリは：</p>
-<ul>
-<li>デフォルトでは外部ネットワークリクエストを行いません。唯一の組み込みHTTPコールは、同じSnowflakeインフラストラクチャ上のSnowflake Cortex Analyst REST APIへのものです。</li>
-<li>テレメトリ、アナリティクス、自動データ流出を含みません。</li>
-<li>クッキーを使用しません。</li>
-<li>平文でのシークレットの保存は行いません。認証はSnowpark Container Services (SPCS)のSnowflakeのOAuthトークンメカニズムを通じて処理されます。</li>
-<li>ビルド時にコンテナイメージにバンドルされた自己ホスト型フォントを使用します。実行時に外部サーバーへのリクエストは行われません。</li>
-</ul>
-<p>オプションのwebhook配信機能は、ネットワークルールと外部アクセス統合を持つ管理者が明示的に有効にした場合に限り、ユーザーが指定したHTTPSエンドポイントにオーディエンスデータを送信することを可能にします。管理者がこの機能を有効にし、ユーザーが送信を開始した場合にのみ、発信リクエストが発生します。</p>
-<h3 id="認証">認証</h3>
-<p>すべてのアクセスにはSnowflake認証が必要です。Web UIはSnowflakeのイングレスエンドポイントを通じて提供されます。公開されている非認証エンドポイントはありません。</p>
-<h3 id="作成されるオブジェクト">作成されるオブジェクト</h3>
-<p>アプリはSnowflakeアカウントに次のオブジェクトを作成します。</p>
-<p><strong>スキーマ：</strong></p>
-<ul>
-<li><code>MAIN_SCHEMA</code> — インフラ</li>
-<li><code>AUDIENCE_DISCOVERY_SCHEMA</code> — メタデータ</li>
-<li><code>TEALIUM_EXTERNAL_ACCESS</code> — 外部アクセス用のセキュアビュー</li>
-<li>オーディエンスごとに1つの<code>AUD_*</code>スキーマ</li>
-</ul>
-<p><strong>テーブル：</strong></p>
-<ul>
-<li><code>AUDIENCES</code> — オーディエンスメタデータ</li>
-<li><code>AVAILABLE_LLMS</code> — LLM構成</li>
-<li><code>WEBHOOK_CONFIG</code> — 機能フラグ</li>
-<li><code>WEBHOOK_LOG</code> — webhook配信監査ログ</li>
-<li>オーディエンスごとに1つの<code>USERS</code>テーブル</li>
-</ul>
-<p><strong>ビュー：</strong></p>
-<ul>
-<li>オーディエンスごとに1つの<code>USERS_EXTERNAL</code>セキュアビュー。オーディエンスが非アクティブ化されるとゼロ行を返し、再アクティブ化されると再開します。</li>
-</ul>
-<p><strong>プロシージャ：</strong> オーディエンスライフサイクルのサービス管理と所有者権限DDL実行者。</p>
-<p><strong>タスク：</strong> アクティブなオーディエンスごとに1つの<code>REFRESH_TASK</code>がスケジュールされたリフレッシュのためにあります。</p>
-<p><strong>サービス：</strong> コンテナ化されたアプリケーションを実行する<code>audience_discovery_service</code>。</p>
-<h3 id="データ保持">データ保持</h3>
-<p>オーディエンスメタデータ（名前、説明、構成、ユーザー数、タイムスタンプ）は<code>AUDIENCES</code>テーブルに無期限に保存されます。各オーディエンスバージョンは歴史的追跡のために別の行として保存されます。オーディエンスを削除すると、関連するすべてのデータ（メタデータ行およびオーディエンススキーマを含む）が削除されます。</p>
-
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dn-p flex justify-between flex-row-reverse"><div class="w-50 ml3">
@@ -1415,7 +1343,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年May月13日
+          <p>最終更新日 ::  2026年May月20日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1437,20 +1365,8 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8B" href="javascript:void(0)">追加のデータベースへのアクセスを許可する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cortex-ai%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">Cortex AIの有効化（オプション）</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook%E9%85%8D%E4%BF%A1%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">Webhook配信の有効化（オプション）</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E5%A4%96%E9%83%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Tealiumコネクターの外部アクセスの構成</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">サービスの管理</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%81%9C%E6%AD%A2" href="javascript:void(0)">サービスの停止</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%86%8D%E9%96%8B" href="javascript:void(0)">サービスの再開</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">サービスの更新</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4" href="javascript:void(0)">サービスの削除</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E7%8A%B6%E6%85%8B%E7%A2%BA%E8%AA%8D" href="javascript:void(0)">サービスの状態確認</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%AD%E3%82%B0%E3%81%AE%E8%A1%A8%E7%A4%BA" href="javascript:void(0)">サービスログの表示</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラブルシューティング</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E6%89%B1%E3%81%84" href="javascript:void(0)">セキュリティとデータ取扱い</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E5%B1%85%E4%BD%8F%E5%9C%B0" href="javascript:void(0)">データ居住地</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">認証</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">作成されるオブジェクト</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E4%BF%9D%E6%8C%81" href="javascript:void(0)">データ保持</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%B8%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Tealiumアプリケーションへのユーザーアクセスの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E5%A4%96%E9%83%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Tealiumコネクタの外部アクセスの構成</a></li>
               </nav>
   </aside></nav>
 
