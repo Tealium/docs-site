@@ -788,10 +788,10 @@
       <a href="/server-side-connectors/smartsurvey-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>SmartSurvey</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Audience Match</span></a>
+      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
+      <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Customer Lists</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/snowflake-streaming-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snowflake Streaming Connector</span></a>
@@ -1388,9 +1388,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-customer-lists-connector">Snapchat Customer Lists</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1526,57 +1526,15 @@
 <li>(Optional) <strong>firehose:ListDeliveryStreams</strong> permission.</li>
 <li>Delivery stream to send data to.</li>
 </ul>
-<h2 id="supported-actions">Supported actions</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>Trigger on Audience</strong></th>
-<th style="text-align:left"><strong>Trigger on Streams</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Send Event Data to Delivery Stream</td>
-<td style="text-align:left">✗</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Visitor Data to Delivery Stream</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Customized Data to Delivery Stream (Advanced)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Data for Connector Failures to Delivery Stream</td>
-<td style="text-align:left">✗</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Customized Data to Delivery Stream (Batched)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Event Data to Delivery Stream (Batched)</td>
-<td style="text-align:left">✗</td>
-<td style="text-align:left">✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Go to the Connector Marketplace and add a new AWS Firehose Connector. See the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>To configure your vendor, follow these steps:</p>
 <ol>
 <li>
 <p>In the <strong>Configure tab</strong>, provide a title for the connector instance.</p>
 </li>
 <li>
-<p>Provide your IAM user access and secret key. <p class="note"><i class="fa fa-exclamation-triangle"></i>The policy statement attached to your IAM user instance must include the <strong>firehose:PutRecord</strong> permission and allow the Tealium root account (<code>arn:aws:iam::757913464184:root</code>) with an External ID condition. For more details on policies for Firehose, see: <a href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html">AWS: Controlling access with Amazon Data Firehose</a>.</p></p>
+<p>Provide your IAM user access and secret key. <p class="note"><i class="fa fa-exclamation-triangle"></i>The policy statement attached to your IAM user instance must include the <strong>firehose:PutRecord</strong> permission and allow the Tealium root account (<code>arn:aws:iam::757913464184:root</code>) with an External ID condition. For more information about policies for Firehose, see: <a href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html">AWS: Controlling access with Amazon Data Firehose</a>.</p></p>
 </li>
 <li>
 <p>Select the region where you want to make the API calls.</p>
@@ -1593,10 +1551,50 @@
 <ol>
 <li>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</li>
 </ol>
-<h2 id="action-settings-parameters-and-options">Action Settings: Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions to trigger.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action-send-event-data-to-delivery-stream">Action: Send Event Data to Delivery Stream</h3>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th style="text-align:center">AudienceStream</th>
+<th style="text-align:center">EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send Event Data to Delivery Stream</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Send Visitor Data to Delivery Stream</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>Send Customized Data to Delivery Stream (Advanced)</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Send Log Event to Delivery Stream</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Send Customized Data to Delivery Stream (Batched)</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Send Event Data to Delivery Stream (Batched)</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table>
+<p>Enter a name for the action and select the action type from the drop-down menu. The following section describes how to set up parameters and options for each action.</p>
+<h3 id="send-event-data-to-delivery-stream">Send Event Data to Delivery Stream</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -1612,7 +1610,7 @@
 </tr>
 <tr>
 <td>Record Suffix</td>
-<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
@@ -1620,26 +1618,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="options-record-suffix">Options: Record Suffix</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Newline (<code>\\n)</code></td>
-<td style="text-align:left">Adds a return character to the end of the visitor data object.</td>
-</tr>
-<tr>
-<td style="text-align:left">No Delimiter</td>
-<td style="text-align:left">When selected, nothing is added to the visitor data object.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action-send-visitor-data-to-delivery-stream">Action: Send Visitor Data to Delivery Stream</h3>
+<h3 id="send-visitor-data-to-delivery-stream">Send Visitor Data to Delivery Stream</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -1655,7 +1634,7 @@
 </tr>
 <tr>
 <td>Record Suffix</td>
-<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
 </tr>
 <tr>
 <td>Include Current Visit Data</td>
@@ -1671,26 +1650,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="options-record-suffix-1">Options: Record Suffix</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Newline (<code>\\n</code>)</td>
-<td style="text-align:left">Adds a return character to the end of the visitor data object.</td>
-</tr>
-<tr>
-<td style="text-align:left">No Delimiter</td>
-<td style="text-align:left">When selected, nothing is added to the visitor data object.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action-send-customized-data-to-delivery-stream-advanced">Action: Send Customized Data to Delivery Stream (Advanced)</h3>
+<h3 id="send-customized-data-to-delivery-stream-advanced">Send Customized Data to Delivery Stream (Advanced)</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -1706,7 +1666,7 @@
 </tr>
 <tr>
 <td>Record Suffix</td>
-<td>Select a value to append to the visitor data for the purposes of identifying individual records.</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
 </tr>
 <tr>
 <td>Message Data</td>
@@ -1714,7 +1674,7 @@
 </tr>
 <tr>
 <td>Message Template Variables</td>
-<td>Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates.For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
+<td>Map attributes to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
 <tr>
 <td>Message Templates</td>
@@ -1722,33 +1682,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="options-record-suffix-2">Options: Record Suffix</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Newline (<code>\\n</code>)</td>
-<td style="text-align:left">Adds a return character to the end of the visitor data object.</td>
-</tr>
-<tr>
-<td style="text-align:left">No Delimiter</td>
-<td style="text-align:left">When selected, nothing is added to the visitor data object.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action-send-customized-data-to-delivery-stream-batched">Action: Send Customized Data to Delivery Stream (Batched)</h3>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Max number of requests: 500</li>
-<li>Max time since oldest request: 10 minutes</li>
-<li>Max size of requests: 4 MB</li>
-</ul>
+<h3 id="send-log-event-to-delivery-stream">Send Log Event to Delivery Stream</h3>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
@@ -1760,35 +1694,16 @@
 <tbody>
 <tr>
 <td>Delivery Stream</td>
-<td>Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted. There are limits on the Amazon Kinesis Data Firehose delivery stream. For more information, see <a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">AWS: Amazon Data Firehose Quota</a>.</td>
+<td>(Required) Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</td>
 </tr>
 <tr>
 <td>Record Suffix</td>
-<td>The suffix added to the end of each record to be used as a delimiter. Default: Newline (\n)</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h5 id="custom-message-definition">Custom Message Definition</h5>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Message Template Variables</td>
-<td>Map attributes to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
-</tr>
-<tr>
-<td>Message Templates</td>
-<td>Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action-send-event-data-to-delivery-stream-batched">Action: Send Event Data to Delivery Stream (Batched)</h3>
-<h4 id="batch-limits-1">Batch Limits</h4>
+<h3 id="send-customized-data-to-delivery-stream-batched">Send Customized Data to Delivery Stream (Batched)</h3>
+<h4 id="batch-limits">Batch limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 500</li>
@@ -1810,7 +1725,53 @@
 </tr>
 <tr>
 <td>Record Suffix</td>
-<td>The suffix added to the end of each record to be used as a delimiter. Default: Newline (\n)</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h4 id="message-data">Message Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message Template Variables</td>
+<td>Map attributes to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
+</tr>
+<tr>
+<td>Message Templates</td>
+<td>Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information, see <a href="/server-side/connectors/templates/about/">About connector templates</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-event-data-to-delivery-stream-batched">Send Event Data to Delivery Stream (Batched)</h3>
+<h4 id="batch-limits-1">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 4 MB</li>
+</ul>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted. There are limits on the Amazon Kinesis Data Firehose delivery stream. For more information, see <a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">AWS: Amazon Data Firehose Quota</a>.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>Select a value to append to each record as a delimiter.<br>Options:<ul><li><code>Newline (\n)</code> (default) - Adds a return character to the end of the record.</li><li><code>No Delimiter</code> - Nothing is added to the record.</li></ul></td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
@@ -1886,7 +1847,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 21, 2026 
+          <p>This page was last updated:  May 27, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1901,14 +1862,14 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-actions" href="javascript:void(0)">Supported actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings-parameters-and-options" href="javascript:void(0)">Action Settings: Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-send-event-data-to-delivery-stream" href="javascript:void(0)">Action: Send Event Data to Delivery Stream</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-send-visitor-data-to-delivery-stream" href="javascript:void(0)">Action: Send Visitor Data to Delivery Stream</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-send-customized-data-to-delivery-stream-advanced" href="javascript:void(0)">Action: Send Customized Data to Delivery Stream (Advanced)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-send-customized-data-to-delivery-stream-batched" href="javascript:void(0)">Action: Send Customized Data to Delivery Stream (Batched)</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-send-event-data-to-delivery-stream-batched" href="javascript:void(0)">Action: Send Event Data to Delivery Stream (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-data-to-delivery-stream" href="javascript:void(0)">Send Event Data to Delivery Stream</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-visitor-data-to-delivery-stream" href="javascript:void(0)">Send Visitor Data to Delivery Stream</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-customized-data-to-delivery-stream-advanced" href="javascript:void(0)">Send Customized Data to Delivery Stream (Advanced)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event-to-delivery-stream" href="javascript:void(0)">Send Log Event to Delivery Stream</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-customized-data-to-delivery-stream-batched" href="javascript:void(0)">Send Customized Data to Delivery Stream (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-data-to-delivery-stream-batched" href="javascript:void(0)">Send Event Data to Delivery Stream (Batched)</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor documentation</a></li>
               </nav>
   </aside></nav>

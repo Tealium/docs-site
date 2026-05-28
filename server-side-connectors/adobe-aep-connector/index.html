@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "28",
+        reading_time  : "30",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -788,10 +788,10 @@
       <a href="/server-side-connectors/smartsurvey-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>SmartSurvey</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Audience Match</span></a>
+      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
+      <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Customer Lists</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/snowflake-streaming-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snowflake Streaming Connector</span></a>
@@ -1388,9 +1388,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-customer-lists-connector">Snapchat Customer Lists</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1593,14 +1593,41 @@
 <li>API Endpoint: <code>https://server.adobedc.net/ee/v2/interact</code></li>
 <li>Documentation: <a href="https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/data-collection/interactive-data-collection.html?lang=en">Adobe Experience Platform API</a></li>
 </ul>
-<h2 id="batch-limits">Batch limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<h2 id="configuration">Configuration</h2>
+<p>Before you can configure the Adobe Experience Platform connector in Tealium, you need to complete the following steps to generate your credentials in the Adobe Developer Console.</p>
+<ol>
+<li>Create a new Adobe Developer Console project or use an existing project. See <a href="https://developer.adobe.com/developer-console/docs/guides/projects/">Projects Overview</a>.</li>
+<li>Add the services to the project that you want associated with the project credentials. See <a href="https://developer.adobe.com/developer-console/docs/guides/services/">Services Overview</a>.
+The following Adobe services are required to integrate with this connector:
 <ul>
-<li>Max number of requests: 6000 per second</li>
-<li>Max time since oldest request: 15 minutes</li>
-<li>Max size of requests: 64 KB</li>
+<li>Experience Platform API</li>
+<li>I/O Events</li>
 </ul>
-<h2 id="connector-actions">Connector Actions</h2>
+</li>
+<li>After you add the services to the project, you can access your project credentials. See <a href="https://developer.adobe.com/developer-console/docs/guides/credentials/">Credentials</a>. Navigate to your project overview and select <strong>OAuth Server-to-Server</strong> in the <strong>Credentials</strong> section.
+The following credentials are required for this connector:
+<ul>
+<li>Client ID (API Key)</li>
+<li>Client secret</li>
+<li>Organization ID</li>
+</ul>
+</li>
+<li>Note your credentials and return to Tealium to complete the connector configuration.</li>
+<li>In Tealium, navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</li>
+<li>After adding the connector, configure the following settings using the credentials that you generated in the previous steps:
+<ul>
+<li><strong>Client ID</strong><br>
+(Required) The Client ID.</li>
+<li><strong>Client Secret</strong><br>
+(Required) The Client Secret.</li>
+<li><strong>Organization ID</strong><br>
+(Required) The Organization ID.</li>
+<li><strong>Sandbox</strong><br>
+(Optional) If you want the API calls to refer to a different environment than the default one (prod), specify it in this field.</li>
+</ul>
+</li>
+</ol>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
@@ -1632,43 +1659,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Before you can configure the Adobe Experience Platform connector in Tealium, you need to complete the following steps to generate your credentials in the Adobe Developer Console.</p>
-<ol>
-<li>Create a new Adobe Developer Console project or use an existing project. See <a href="https://developer.adobe.com/developer-console/docs/guides/projects/">Projects Overview</a>.</li>
-<li>Add the services to the project that you want associated with the project credentials. See <a href="https://developer.adobe.com/developer-console/docs/guides/services/">Services Overview</a>.
-The following Adobe services are required to integrate with this connector:
-<ul>
-<li>Experience Platform API</li>
-<li>I/O Events</li>
-</ul>
-</li>
-<li>After you add the services to the project, you can access your project credentials. See <a href="https://developer.adobe.com/developer-console/docs/guides/credentials/">Credentials</a>. Navigate to your project overview and select <strong>OAuth Server-to-Server</strong> in the <strong>Credentials</strong> section.
-The following credentials are required for this connector:
-<ul>
-<li>Client ID (API Key)</li>
-<li>Client secret</li>
-<li>Organization ID</li>
-</ul>
-</li>
-<li>Note your credentials and return to Tealium to complete the connector configuration.</li>
-<li>In Tealium, navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</li>
-<li>After adding the connector, configure the following settings using the credentials that you generated in the previous steps:
-<ul>
-<li><strong>Client ID</strong><br>
-(Required) The Client ID.</li>
-<li><strong>Client Secret</strong><br>
-(Required) The Client Secret.</li>
-<li><strong>Organization ID</strong><br>
-(Required) The Organization ID.</li>
-<li><strong>Sandbox</strong><br>
-(Optional) If you want the API calls to refer to a different environment than the default one (prod), please specify it in the following field.</li>
-</ul>
-</li>
-</ol>
-<h2 id="actions">Actions</h2>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
-<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="send-event">Send Event</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -1685,7 +1675,7 @@ The following credentials are required for this connector:
 </tr>
 <tr>
 <td>XDM Schema</td>
-<td>The  Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see <a href="https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier">Generate a Datastream identifier</a>.</td>
+<td>The Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see <a href="https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier">Generate a Datastream identifier</a>.</td>
 </tr>
 <tr>
 <td>Identity Namespaces</td>
@@ -1696,8 +1686,12 @@ The following credentials are required for this connector:
 <td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.<br> Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>. If the parameter does not contain any identity namespaces, enter a dash (<code>-</code>).</td>
 </tr>
 <tr>
+<td>XDM Schema Template</td>
+<td>Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.<br>For more information, see <a href="https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/">Adobe Developer: Interact Endpoint</a>.</td>
+</tr>
+<tr>
 <td>Data</td>
-<td>Use this field to map a pre-existing JSON data layer object to an XDM schema. The sub-properties of the data object can be constructed in a way that maps to the data layer properties that you want to capture. The attribute is fully customizable.</td>
+<td>Use this field to map a preexisting JSON data layer object to an XDM schema. The sub-properties of the data object can be constructed in a way that maps to the data layer properties that you want to capture. The attribute is fully customizable.</td>
 </tr>
 <tr>
 <td>Template Variables</td>
@@ -1770,6 +1764,12 @@ The following credentials are required for this connector:
 </tbody>
 </table>
 <h3 id="send-event-batched">Send Event (Batched)</h3>
+<h4 id="batch-limits">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 6,000</li>
+<li>Max time since oldest request: 15 minutes</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -1785,15 +1785,19 @@ The following credentials are required for this connector:
 </tr>
 <tr>
 <td>XDM Schema</td>
-<td>The  Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see <a href="https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier">Generate a Datastream identifier</a>.</td>
+<td>The Experience Data Model (XDM) schema that will be used to send data through the datastream. Ensure the XDM schema is associated with the datastream you want to use. For more information about associating an XDM schema with a datastream, see <a href="https://developer.adobe.com/client-sdks/resources/user-guides/getting-started-with-platform/overview/#generate-a-datastream-identifier">Generate a Datastream identifier</a>.</td>
 </tr>
 <tr>
 <td>Identity Namespaces</td>
-<td>Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. <br> If the <strong>XDM Schema</strong> you select contains any kind of Map type attribute, use this parameter to select the identity namespaces you want to use in the mapping.<br>If the parameter does not contain any identity namespaces, enter a dash (<code>-</code>).</td>
+<td>Indicates what the identity relates to, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. <br> If the <strong>XDM Schema</strong> you select contains any kind of map type attribute, use this parameter to select the identity namespaces you want to use in the mapping.<br>If the parameter does not contain any identity namespaces, enter a dash (<code>-</code>).</td>
 </tr>
 <tr>
 <td>XDM Schema Parameters</td>
 <td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. You will need to provide a valid mapping in the drop-down list to the left-hand side.<br>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
+</tr>
+<tr>
+<td>XDM Schema Template</td>
+<td>Provide a JSON template for the XDM schema. The template should match the structure of your XDM schema, and you can use template variables within the JSON structure. If a value is provided in this field, the XDM Schema Parameters above are ignored.<br>For more information, see <a href="https://developer.adobe.com/data-collection-apis/docs/endpoints/interact/">Adobe Developer: Interact Endpoint</a>.</td>
 </tr>
 <tr>
 <td>Data</td>
@@ -1896,6 +1900,14 @@ The following credentials are required for this connector:
 <td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
 </tr>
 <tr>
+<td>Created At</td>
+<td>A timestamp marking the creation of the connection.</td>
+</tr>
+<tr>
+<td>Source Name</td>
+<td>(Optional) A name for your source. If this value is missing, the streaming message automatically adds the source ID from the streaming connection definition.</td>
+</tr>
+<tr>
 <td>Referer</td>
 <td>Identifies the full URL of the page or resource from which the event originated. Used by AEP to associate the interaction with the correct referring context. The default value is the browser&rsquo;s Referer header, if available, or the corresponding data layer property.</td>
 </tr>
@@ -1955,9 +1967,24 @@ The following credentials are required for this connector:
 <td>Custom Header Value CSV</td>
 <td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
 </tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.<br>For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="stream-record-data-batched">Stream Record Data (Batched)</h3>
+<h4 id="batch-limits-1">Batch limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 6,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
@@ -1977,11 +2004,19 @@ The following credentials are required for this connector:
 </tr>
 <tr>
 <td>Identity Namespaces</td>
-<td>This parameter indicates the context to which an identity relates, distinguishing different types of identity values, such as email addresses or numeric <code>CRM</code> IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. Select the namespaces that you want to map.<br>If the parameter does not contain any identity namespaces, enter a dash (<code>-</code>).</td>
+<td>This parameter indicates the context to which an identity relates, distinguishing different types of identity values, such as email addresses or numeric CRM IDs. When matching record data across profile fragments, Adobe Experience Platform uses the identity value and the namespace to merge profile data. Select the namespaces that you want to map.<br>If the parameter does not contain any identity namespaces, enter a dash (<code>-</code>).</td>
 </tr>
 <tr>
 <td>Body parameters</td>
 <td>Parameters associated with the XDM schema. Required attributes appear next to a lock icon and are read only. Provide a valid mapping in the drop-down list.<br>Note: The <code>identityMap</code> attribute requires that at least one of its namespaces has the property <code>primary</code> set to <code>true</code>.</td>
+</tr>
+<tr>
+<td>Created At</td>
+<td>A timestamp marking the creation of the connection.</td>
+</tr>
+<tr>
+<td>Source Name</td>
+<td>(Optional) A name for your source. If this value is missing, the streaming message automatically adds the source ID from the streaming connection definition.</td>
 </tr>
 <tr>
 <td>Referer</td>
@@ -2042,6 +2077,14 @@ The following credentials are required for this connector:
 <tr>
 <td>Custom Header Value CSV</td>
 <td>Provide a custom header value to send with the request. This value will correlate to the sequence of the custom header key.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for Templates. Name nested template variables with the dot notation. For example, <code>items.name</code>. Nested template variables are typically built from data layer list attributes. <br> For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in the Body parameters section. Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.<br>For more information and usage examples, see <a href="/server-side/connectors/templates/template-variables/">Connector template variables</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -2449,7 +2492,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  May 28, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2466,9 +2509,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-types" href="javascript:void(0)">Data types</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event" href="javascript:void(0)">Send Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event-batched" href="javascript:void(0)">Send Event (Batched)</a></li>

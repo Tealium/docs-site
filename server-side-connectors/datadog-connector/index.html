@@ -788,10 +788,10 @@
       <a href="/server-side-connectors/smartsurvey-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>SmartSurvey</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-audience-match-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Audience Match</span></a>
+      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
-      <a href="/server-side-connectors/snapchat-conversions-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Conversions</span></a>
+      <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snapchat Customer Lists</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/snowflake-streaming-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Snowflake Streaming Connector</span></a>
@@ -1388,9 +1388,9 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li>
-    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snapchat-customer-lists-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-customer-lists-connector">Snapchat Customer Lists</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -1553,14 +1553,16 @@ Set the Datadog host from which your Datadog API clients consume the APIs.</li>
 <td style="text-align:center">✗</td>
 <td style="text-align:center">✓</td>
 </tr>
+<tr>
+<td>Send Log Event</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✓</td>
+</tr>
 </tbody>
 </table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-event">Action - Send Event</h3>
+<h3 id="send-event">Send Event</h3>
 <h4 id="event-parameters">Event Parameters</h4>
 <p>Required parameters:</p>
 <table>
@@ -1617,7 +1619,7 @@ Set the Datadog host from which your Datadog API clients consume the APIs.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-log">Action - Send Log</h3>
+<h3 id="send-log">Send Log</h3>
 <h4 id="log-parameters">Log Parameters</h4>
 <p>Required Fields:</p>
 <table>
@@ -1679,7 +1681,7 @@ Set the Datadog host from which your Datadog API clients consume the APIs.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-log-batched">Action - Send Log (Batched)</h3>
+<h3 id="send-log-batched">Send Log (Batched)</h3>
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
@@ -1716,6 +1718,68 @@ Set the Datadog host from which your Datadog API clients consume the APIs.</li>
 </tbody>
 </table>
 <h4 id="log-message-parameters-1">Log Message Parameters</h4>
+<p>The message <a href="https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes">reserved attributes</a> of your log. By default, Datadog ingests the value of the message attribute as the body of the log entry. That value is then highlighted and displayed in the log stream, where it is indexed for full text search.</p>
+<p>The message is built based on the following format: <code>[TIMESTAMP] [SEVERITY] [SUBJECT] [CONTENT]</code>. To ignore this format, use the <strong>Message Override</strong> parameter.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message Override</td>
+<td>Map this attribute to pass the entire message. This would override the <code>message</code> attribute.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The timestamp of the log. If this field is not populated, the current timestamp is used in the message.</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>The severity of the log, used in the message.</td>
+</tr>
+<tr>
+<td>Subject</td>
+<td>The subject of the log, used in the message.</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>A shortened summary of the message body.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-log-event">Send Log Event</h3>
+<h4 id="log-parameters-2">Log Parameters</h4>
+<p>Required Fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DD Source</td>
+<td>The integration name associated with your log. When Datadog matches an integration name, it automatically installs the corresponding parsers and facets. For more information, see <a href="https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes">Datadog: Reserved attributes</a>.</td>
+</tr>
+<tr>
+<td>DD Tags</td>
+<td>The tags associated with your log.</td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>The originating hostname of the log.</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>The name of the application or service generating the log events. Used to switch from <code>Logs</code> to <code>APM</code>, so make sure you define the same value when you use both products. For more information, see <a href="https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes">Datadog: Reserved attributes</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="log-message-parameters-2">Log Message Parameters</h4>
 <p>The message <a href="https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes">reserved attributes</a> of your log. By default, Datadog ingests the value of the message attribute as the body of the log entry. That value is then highlighted and displayed in the log stream, where it is indexed for full text search.</p>
 <p>The message is built based on the following format: <code>[TIMESTAMP] [SEVERITY] [SUBJECT] [CONTENT]</code>. To ignore this format, use the <strong>Message Override</strong> parameter.</p>
 <table>
@@ -1808,7 +1872,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  May 27, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1824,10 +1888,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action settings - parameters and options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-event" href="javascript:void(0)">Action - Send Event</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-log" href="javascript:void(0)">Action - Send Log</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-log-batched" href="javascript:void(0)">Action - Send Log (Batched)</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-event" href="javascript:void(0)">Send Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log" href="javascript:void(0)">Send Log</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-batched" href="javascript:void(0)">Send Log (Batched)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-log-event" href="javascript:void(0)">Send Log Event</a></li>
               </nav>
   </aside></nav>
 
