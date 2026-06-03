@@ -60,7 +60,7 @@ curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b
 curl -X PATCH &#34;https://developer.tealiumapis.com/scim/v2/Groups/eb987394-b2b0-4a21-a1d8-7915a91e06b&#34; \
 -H &#34;Content-Type: application/scim&#43;json&#34; \
 -H &#34;Accept: application/scim&#43;json&#34; \
--d &#39;{{
+-d &#39;{
     &#34;schemas&#34;: [
         &#34;urn:ietf:params:scim:api:messages:2.0:PatchOp&#34;
     ],
