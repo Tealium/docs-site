@@ -1,0 +1,42 @@
+---
+title: ビジタープロファイルサンプラー
+description: この記事では、ビジターのデバイス、バッジ、オーディエンス活動の概要を提供するビジタープロファイルサンプラーの機能について説明します。
+url: https://docs.tealium.com/ja/server-side/audiences/visitor-profile-sampler/
+---
+ビジタープロファイルサンプラーを使用して、ビジターからのデバイス、バッジ、オーディエンス活動の概要を確認し、訪問とビジターデータの検証を支援し、オーディエンスに対する洞察を得ることができます。特定のバッジやオーディエンスを選択して、その項目に一致する訪問のサンプルから生のビジタープロファイルデータを表示します。
+
+サンプラーを使用するには、**Server-Side Tools &gt; Visitor Profile Sampler** に移動します。
+
+## 仕組み
+
+ビジタープロファイルサンプラーは、Visitor Profile Sampler画面に入力した後に発生するイベントに基づいてビジタープロファイルのサンプリングを開始します。画面が読み込まれると、サンプリングされたビジタープロファイルの数は時間とともに徐々に増えます。サマリーの数値は自動的に更新され、サンプリングされたデータを反映します。
+
+ ビジタープロファイルサンプラーは、ビジターデータを表示するためにビジターからのイベントを必要とします。 
+
+システムがビジタープロファイルデータをサンプリングすると、システムは**Summary**画面に以下のタイプのビジターデータを表示します：
+
+### ビジターのスティッチング分布
+
+サンプリングされたビジタープロファイルの総数と、既知のビジターID属性を使用してスティッチングされたビジターの数を表示します。
+ ![](/images/server-side/visitor-profile-sampler-visitor-stitching-distribution.jpg)
+
+### アクティブなプラットフォーム、アクティブなブラウザ、アクティブな訪問、平均訪問時間、訪問あたりのイベント数
+
+検出されたプラットフォームとブラウザを使用する訪問の割合、アクティブな訪問、訪問の平均時間、訪問あたりのイベント数を表示します。
+![](/images/server-side/visitor-profile-sampler-active-platforms-browsers-visits-visit-duration-events-per-visit.jpg)
+
+### バッジ
+
+各バッジを取得した訪問の数と割合のランク付けされたリスト。
+ ![](/images/server-side/visitor-profile-sampler-badges-view.jpg)
+
+### オーディエンス
+
+オーディエンスに所属する訪問の数と割合のランク付けされたリスト。
+![](/images/server-side/visitor-profile-sampler-audiences-view.jpg)
+
+## 生のビジターデータを表示する
+
+ビジタープロファイル分布チャートの任意のバー、バッジ、またはオーディエンスをクリックして、サマリーまたは生のJSONビューでビジタープロファイルのサンプルデータセットを表示します。
+
+![](/images/server-side/visitor-profile-summary.png)

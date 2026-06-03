@@ -683,6 +683,9 @@
       <a href="/ja/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/openai-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAIイベント</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/optimizely-dcp-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely DCP</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1492,6 +1495,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/openai-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".openai-events-connector-setup-guide">OpenAIイベント</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/optimizely-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-events-connector">Optimizely イベント</a></li>
@@ -1818,45 +1823,45 @@
 <li>ドキュメント：<a href="https://ads-api.reddit.com/docs/v3/">Reddit 広告 API</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
-<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このコネクタは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチ処理アクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：1000</li>
 <li>最古のリクエストからの最大時間：60分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動して、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタマーケットプレイスに移動して新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>アカウント ID</strong>
 <ul>
-<li>（必須）変換イベントが属する Reddit 広告アカウントの ID。</li>
-<li>Reddit 広告アカウント ID を見つけるには、Reddit 広告 UI の <strong>変換イベント &gt; ピクセル ID</strong> に移動します。</li>
-<li>Reddit 広告アカウントには、<code>adsread</code>、<code>history</code>、<code>adsconversions</code>、<code>adsleadgendownloader</code> の権限が必要です。</li>
+<li>（必須）変換イベントが属するReddit広告アカウントのIDです。</li>
+<li>Reddit広告アカウントIDを見つけるには、Reddit Ads UIで <strong>Conversions Events &gt; Pixel ID</strong> に移動します。</li>
+<li>Reddit広告アカウントは、<code>adsread</code>、<code>history</code>、<code>adsconversions</code>、<code>adsleadgendownloader</code> の権限を持っている必要があります。</li>
 <li>詳細については、<a href="https://ads-api.reddit.com/docs/v2/#section/Authentication">Reddit: 認証</a>を参照してください。</li>
 </ul>
 </li>
 <li><strong>変換アクセストークン</strong>
 <ul>
-<li>変換アクセストークンは、Reddit の変換 API に変換イベントデータを送信するための、期限のない安全なキーです。</li>
-<li>この簡単に生成できる、共有可能な長期間有効なアクセストークンは、ビジネス内の任意の広告アカウントの任意の管理者によって使用できます。</li>
-<li>Reddit は、変換 API 用の開発者アクセストークン / OAuth よりも変換アクセストークンの使用を推奨しています。</li>
+<li>変換アクセストークンは、変換イベントデータをReddit Conversions APIに送信するための、期限のない安全なキーです。</li>
+<li>あなたのビジネス内の任意の広告アカウントの管理者は、この簡単に生成され、共有可能で長期間有効なアクセストークンを使用できます。</li>
+<li>Redditは、Conversions APIのための開発者アクセストークン/ OAuthよりも変換アクセストークンの使用を推奨しています。</li>
 <li>詳細については、<a href="https://business.reddithelp.com/s/article/conversion-access-token">Reddit: 変換アクセストークン</a>を参照してください。</li>
-<li>変換アクセストークンを使用していない場合は、<strong>接続を確立</strong> ボタンを使用して OAuth 認証ワークフローを開始します。</li>
-<li>OAuth から変換アクセストークンに移行するには、変換アクセストークンフィールドにトークンを入力し、コネクタがそのトークンを OAuth トークンの代わりに使用します。</li>
+<li>変換アクセストークンを使用していない場合は、<strong>接続を確立</strong>ボタンを使用してOAuth認証ワークフローを開始します。</li>
+<li>OAuthから変換アクセストークンに移行するには、変換アクセストークンフィールドにトークンを入力し、コネクタはそのトークンをOAuthトークンの代わりに使用します。</li>
 </ul>
 </li>
 </ul>
 <h2 id="ウェブイベントの重複排除">ウェブイベントの重複排除</h2>
-<p>このコネクタを構成して、<a href="/ja/client-side-tags/reddit-pixel-tag/">Reddit Pixel タグ</a>からのイベントを重複排除するには、次の命名規則でイベント ID をイベント属性として送信します：</p>
+<p>このコネクタを構成して、<a href="/ja/client-side-tags/reddit-pixel-tag/">Reddit Pixelタグ</a>からのイベントを重複排除するには、次の命名規則でイベントIDをイベント属性として送信します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
-</code></pre><p>Tealium iQ の <strong>タグ</strong> テーブルまたはタグの詳細画面でタグの UID を見つけることができます：</p>
+</code></pre><p>タグのUIDは、Tealium iQの<strong>タグ</strong>テーブルまたはタグの詳細画面で見つけることができます：</p>
 <figure><a class="slb" href="/images/server-side-connectors/facebook-pixel-tag-uid.png"><img src="/images/server-side-connectors/facebook-pixel-tag-uid.png"
          alt="Facebook Pixel Tag UID"
          title="Facebook Pixel Tag UID"/>
     </a>
 </figure>
-<p>たとえば、UID が <code>168</code> のタグからの購入イベントは、次の属性値を送信します：</p>
+<p>たとえば、UIDが<code>168</code>のタグからの購入イベントは、次の属性値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_Purchase_168&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
@@ -1864,12 +1869,12 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_AddToCart_168&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>各タイプのイベントに対して別のアクションを使用します。イベント固有のイベント ID 属性を <code>Event ID</code> にマッピングし、一致するイベント名を <code>Event Name</code> にマッピングします。たとえば：</p>
+</span></span></code></pre></div><p>各タイプのイベントに対して別のアクションを使用します。イベント固有のイベントID属性を<code>Event ID</code>にマッピングし、一致するイベント名を<code>Event Name</code>にマッピングします。たとえば：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Tealium 属性</th>
-<th style="text-align:left">Reddit パラメータ</th>
+<th style="text-align:left">Tealium属性</th>
+<th style="text-align:left">Redditパラメータ</th>
 </tr>
 </thead>
 <tbody>
@@ -1883,14 +1888,14 @@
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>タグ UID なしで命名形式 <code>reddit_pixel_event_id_{REDDIT_EVENT}</code> を使用してイベント ID 属性のみを受け取っている場合は、タグを更新することをお勧めします。詳細については、<a href="/ja/client-side-tags/reddit-pixel-tag/">Reddit Pixel タグ構成ガイド</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>タグUIDなしで命名形式<code>reddit_pixel_event_id_{REDDIT_EVENT}</code>を使用してイベントID属性のみを受け取っている場合は、タグを更新することをお勧めします。詳細については、<a href="/ja/client-side-tags/reddit-pixel-tag/">Reddit Pixel タグ構成ガイド</a>を参照してください。</p>
 <h3 id="自動重複排除">自動重複排除</h3>
-<p><strong>自動重複排除</strong> 値が入力されている場合、コネクタは対応するイベント ID 属性を探します。このセクションが入力されており、Tealium iQ を使用している場合、<code>Event ID</code> をマッピングする必要はありません。ただし、Tealium iQ なしで EventStream を使用している場合は、次のアプローチが必要になる場合があります。</p>
+<p><strong>自動重複排除</strong>値が入力されている場合、コネクタは対応するイベントID属性を探します。このセクションが入力されていてTealium iQを使用している場合、<code>Event ID</code>をマッピングする必要はありません。ただし、Tealium iQを使用せずにEventStreamを使用している場合は、次のアプローチが必要になる場合があります。</p>
 <p>コネクタは次の操作順序に従います：</p>
 <ul>
-<li><strong>自動重複排除</strong> が入力され、データレイヤーでその値が見つかった場合、その値は <code>Event ID</code> にマッピングされたものよりも優先されます。たとえば、<code>reddit_pixel_event_id_Purchase_30</code>。</li>
-<li><strong>自動重複排除</strong> が入力されているが、タグ ID バージョンを見つけることができず、ID が付いていないレガシーバージョンを見つけることができた場合、その値が使用されます。たとえば、<code>reddit_pixel_event_id_Purchase</code>。</li>
-<li><strong>自動重複排除</strong> が入力されているが、値が見つからない場合は、<code>Event ID</code> が入力されている場合に使用されます。</li>
+<li><strong>自動重複排除</strong>が入力され、データレイヤーで値が見つかった場合、この値は<code>Event ID</code>にマッピングされたものよりも優先されます。たとえば、<code>reddit_pixel_event_id_Purchase_30</code>。</li>
+<li><strong>自動重複排除</strong>が入力されているが、タグIDバージョンを見つけることができず、IDが付いていないレガシーバージョンを見つけることができた場合、その値が使用されます。たとえば、<code>reddit_pixel_event_id_Purchase</code>。</li>
+<li><strong>自動重複排除</strong>が入力されているが、値が見つからない場合は、<code>Event ID</code>が入力されている場合に使用されます。</li>
 </ul>
 <h2 id="アクション">アクション</h2>
 <table>
@@ -1932,11 +1937,11 @@
 </tr>
 <tr>
 <td>カスタムイベントタイプ</td>
-<td>トラッキングタイプが <code>CUSTOM</code> に構成されている場合のカスタムイベント名。自由形式、大文字小文字を区別し、スペースを含む 64 文字まで。たとえば、<code>Promotion Event</code> と <code>PromotionEvent</code> は異なるイベントと見なされます。Reddit は、既存のイベントと一致しない値を構成することを推奨しています。</td>
+<td>トラッキングタイプが<code>CUSTOM</code>に構成されている場合のカスタムイベント名。自由形式、大文字小文字を区別し、スペースを含む64文字まで。たとえば、<code>Promotion Event</code>と<code>PromotionEvent</code>は異なるイベントとみなされます。Redditは、既存のイベントと一致しない値を構成することを推奨しています。</td>
 </tr>
 <tr>
 <td>イベントテスト</td>
-<td>Reddit テスト ID を提供することでテストを有効にします。</td>
+<td>Reddit Test IDを提供することでテストを有効にします。</td>
 </tr>
 </tbody>
 </table>
@@ -1951,11 +1956,11 @@
 <tbody>
 <tr>
 <td>イベント発生時</td>
-<td>変換イベントが発生したときの Unix エポックタイムスタンプ（ミリ秒単位）。デフォルトでは、コネクタは自動的に <code>tealium_timestamp_epoch</code> をマッピングします。</td>
+<td>変換イベントが発生したときのUnixエポックタイムスタンプ（ミリ秒単位）。デフォルトでは、コネクタは自動的に<code>tealium_timestamp_epoch</code>をマッピングします。</td>
 </tr>
 <tr>
-<td>変換 ID</td>
-<td>特定の変換イベントに対応する一意の変換 ID。変換 ID は重複排除に使用され、複数回送信された場合でも同じ変換イベントが複数回処理されるのを防ぎます。</td>
+<td>変換ID</td>
+<td>特定の変換イベントに対応する一意の変換ID。変換IDは重複排除に使用され、同じ変換イベントが複数回送信された場合に一度以上処理されるのを防ぎます。</td>
 </tr>
 <tr>
 <td>値</td>
@@ -1963,7 +1968,7 @@
 </tr>
 <tr>
 <td>通貨</td>
-<td>提供された値の通貨の 3 文字 ISO 4217 通貨コード。</td>
+<td>提供された値のための3文字のISO 4217通貨コード。</td>
 </tr>
 <tr>
 <td>アイテム数</td>
@@ -1983,7 +1988,7 @@
 <tbody>
 <tr>
 <td>Reddit クリック ID</td>
-<td>単一の広告クリックに関連付けられたReddit生成のID。</td>
+<td>単一の広告クリックに関連付けられたReddit生成のID。このフィールドのマッピングを構成しない限り、コネクタは <code>rdt_cid</code> クエリパラメータからこの値を自動的にマッピングします。</td>
 </tr>
 <tr>
 <td>メールアドレス</td>
@@ -1995,7 +2000,7 @@
 </tr>
 <tr>
 <td>IPアドレス</td>
-<td>コネクタはマップされたIPアドレスをSHA256でハッシュします。</td>
+<td>マッピングされたIPアドレスをSHA256でハッシュします。</td>
 </tr>
 <tr>
 <td>ユーザーエージェント</td>
@@ -2003,7 +2008,7 @@
 </tr>
 <tr>
 <td>外部ID</td>
-<td>(SHA256ハッシュを適用) 広告主が割り当てたユーザーの永続的な識別子（RedditクリックIDまたは追加の帰属信号を伴う必要があります）。コネクタはこの値を空白トリム、小文字化し、SHA256を使用してハッシュします。</td>
+<td>(SHA256ハッシュを適用) ユーザーに対して広告主が割り当てた永続的な識別子（RedditクリックIDまたは追加の帰属信号を伴う必要があります）。コネクタはこの値を空白トリム、小文字化し、SHA256を使用してハッシュします。</td>
 </tr>
 <tr>
 <td>IDFA</td>
@@ -2023,7 +2028,7 @@
 </tr>
 <tr>
 <td>UUID</td>
-<td>ドメイン上のファーストパーティピクセル <code>_rdt_uuid</code> クッキーからの値。全体の値またはUUID部分のみを使用します。</td>
+<td>ドメイン上のファーストパーティピクセル <code>_rdt_uuid</code> クッキーからの値。全体の値またはUUID部分のみを使用します。このフィールドのマッピングを構成しない限り、コネクタは <code>_rdt_uuid</code> クッキーからこの値を自動的にマッピングします。</td>
 </tr>
 </tbody>
 </table>
@@ -2069,7 +2074,7 @@
 </tr>
 <tr>
 <td>地域</td>
-<td>ユーザーの地域コード（ISO 3166-2標準）または国の接頭辞なしの地域コード。</td>
+<td>ユーザーの地域コード（ISO 3166-2標準）または国のプレフィックスなしの地域コード。</td>
 </tr>
 <tr>
 <td>アカウントIDオーバーライド</td>
@@ -2077,8 +2082,31 @@
 </tr>
 </tbody>
 </table>
-<h3 id="send-conversion-非推奨">Send Conversion (非推奨)</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>RedditはConversions API v3を導入したため、このアクションは非推奨となりました。既存のアクションマッピングを <strong>Send Conversion V3</strong> アクションに移行するために <strong>Copy Mappings to an Action</strong> の使用を推奨します。</p>
+<h4 id="自動マッピング無効化">自動マッピング無効化</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自動マッピング無効化</td>
+<td>有効にすると、コネクタはデフォルトで自動マッピングされた値をベンダーに送信しません。明示的なマッピングは引き続き適用されます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="コンバージョン送信非推奨">コンバージョン送信（非推奨）</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>RedditはConversions API v3を導入したため、このアクションは非推奨です。既存のアクションマッピングを<strong>Send Conversion V3</strong>アクションに移行するために、<strong>Copy Mappings to an Action</strong>の使用を推奨します。</p>
+<h4 id="api情報">API情報</h4>
+<p>このコネクタは次のベンダーAPIを使用します：</p>
+<ul>
+<li>API名：Reddit API</li>
+<li>APIバージョン：v2.0</li>
+<li>APIエンドポイント：<code>https://ads-api.reddit.com/api/v2.0</code></li>
+<li>ドキュメント：<a href="https://ads-api.reddit.com/docs/v2">Reddit API</a></li>
+</ul>
 
 </div>
 
@@ -2139,7 +2167,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年June月3日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2160,7 +2188,7 @@
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%87%AA%E5%8B%95%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4" href="javascript:void(0)">自動重複排除</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-v3" href="javascript:void(0)">Send Conversion V3</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-%E9%9D%9E%E6%8E%A8%E5%A5%A8" href="javascript:void(0)">Send Conversion (非推奨)</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E9%80%81%E4%BF%A1%E9%9D%9E%E6%8E%A8%E5%A5%A8" href="javascript:void(0)">コンバージョン送信（非推奨）</a></li>
               </nav>
   </aside></nav>
 

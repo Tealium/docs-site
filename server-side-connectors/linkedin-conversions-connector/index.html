@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "11",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -657,6 +657,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/openai-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI Events</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/optimizely-data-platform-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Data Platform</span></a>
@@ -1302,6 +1305,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/openai-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".openai-events-connector-setup-guide">OpenAI Events</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
@@ -1519,7 +1524,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser’s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API strengthens performance and decreases cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
+  <p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connection between marketing data from an advertiser&rsquo;s server and LinkedIn. With this integration, advertisers measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API strengthens performance and decreases cost per action with more complete attribution, improved reliability, and optimized delivery.</p>
 <h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -1591,14 +1596,15 @@
 <li>
 <p><strong>Different Conversions ID (regardless of Event ID)</strong></p>
 <ul>
-<li>LinkedIn considers the events to represent distinct conversions, one tracked  through the Insight Tag and one through CAPI. This setup avoids deduplication entirely and ensures full server-side attribution for CAPI events.</li>
+<li>LinkedIn considers the events to represent distinct conversions, one tracked through the Insight Tag and one through CAPI. This setup avoids deduplication entirely and ensures full server-side attribution for CAPI events.</li>
 <li>Use this configuration if you want CAPI to serve as your primary source of truth and maintain independent attribution for server-side conversions.</li>
 </ul>
 </li>
 </ul>
-<p>Each approach carries trade-offs in accuracy, visibility, and reporting alignment. CAPI-only tracking provides the most complete and future-ready implementation. Parallel tracking enables controlled testing and validation during migration. Deduplication mode minimizes double-counting but restricts server-side data visibility. Tealium supports all three methods and encourages advertisers to determine which option best reflects how they want LinkedIn to measure and attribute their conversions.</p>
+<p>Each approach carries trade-offs in accuracy, visibility, and reporting alignment. CAPI-only tracking provides the most complete implementation. Parallel tracking enables controlled testing and validation during migration. Deduplication mode minimizes double-counting but restricts server-side data visibility. Tealium supports all three methods and encourages advertisers to determine which option best reflects how they want LinkedIn to measure and attribute their conversions.</p>
 <h3 id="persist-the-linkedin-click-id">Persist the LinkedIn Click ID</h3>
 <p>If you are using the LinkedIn Insight Tag with this connector, persist the LinkedIn Click ID as a first-party cookie.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>By default, the connector reads <code>li_fat_id</code> from the querystring parameter automatically. Follow these steps only if you have disabled automapping or need to persist <code>li_fat_id</code> as a first-party cookie.</p>
 <ol>
 <li>Create a <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</li>
 <li>Add the querystring parameter <code>li_fat_id</code> to your data layer.</li>
@@ -1621,39 +1627,39 @@
 <tr>
 <th>Field / parameter</th>
 <th>Description</th>
-<th>Example and/or Type</th>
+<th>Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Account (<code>account</code>)</td>
-<td>The Sponsored Ad Account URN that this conversion resides under. This can be either specified in URL query parameter or in the request JSON body.</td>
-<td><code>urn:li:sponsoredAccount:1234567</code><br>URN</td>
+<td>The Sponsored Ad Account URN that this conversion resides under. Specify this value in the URL query parameter or in the request JSON body. For example, <code>urn:li:sponsoredAccount:1234567</code>.</td>
+<td>URN</td>
 </tr>
 <tr>
 <td>Name (<code>name</code>)</td>
-<td>Short name for this rule, which will be shown in the UI and in reports.</td>
-<td><code>Summer_Sale CRM Conversions</code> / string</td>
+<td>Short name for this rule, shown in the UI and in reports. For example, <code>Summer_Sale CRM Conversions</code>.</td>
+<td>String</td>
 </tr>
 <tr>
 <td>Enabled (<code>enabled</code>)</td>
-<td>Set to <code>true</code> or <code>false</code> to enable or disable this rule from matching conversions. The initial state can be either, but only rules that are enabled will trigger conversion events. The default value is <code>true</code>.</td>
-<td><code>true</code></td>
+<td>Set to <code>true</code> or <code>false</code> to enable or disable this rule from matching conversions. The initial state can be either, but only enabled rules trigger conversion events. The default value is <code>true</code>.</td>
+<td>Boolean</td>
 </tr>
 <tr>
 <td>Post Click attribution window size (<code>postClickAttributionWindowSize</code>)</td>
-<td>Conversion window timeframe (in days) of a member clicking on a LinkedIn Ad (a post-click conversion) within which conversions will be attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, or <code>90</code>. The default value is <code>30</code></td>
-<td><code>90</code> (integer)</td>
+<td>Conversion window timeframe (in days) of a member clicking on a LinkedIn Ad (a post-click conversion) within which conversions are attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, or <code>90</code>. The default value is <code>30</code></td>
+<td>Integer</td>
 </tr>
 <tr>
 <td>View Through Attribution Window Size (<code>viewThroughAttributionWindowSize</code>)</td>
-<td>Conversion window timeframe (in days) of a member seeing a LinkedIn ad (a view-through conversion) within which conversions will be attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, <code>90</code>, or <code>365</code>. 365 is a valid option only for the following types: <code>Submit Application</code>, <code>Purchase</code>, <code>Add to Cart</code>,<code> Qualified Lead and Lead</code>. The default value is <code>7</code></td>
-<td>7 (integer)</td>
+<td>Conversion window timeframe (in days) of a member seeing a LinkedIn ad (a view-through conversion) within which conversions are attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, <code>90</code>, or <code>365</code>. 365 is a valid option only for the following types: <code>Submit Application</code>, <code>Purchase</code>, <code>Add to Cart</code>,<code> Qualified Lead and Lead</code>. The default value is <code>7</code></td>
+<td>Integer</td>
 </tr>
 <tr>
 <td>Attribution Type (<code>attributionType</code>)<br>Parameter values:<ul><li><code>LAST_TOUCH_BY_CAMPAIGN</code></li><li><code>LAST_TOUCH_BY_CONVERSION</code></li></ul></td>
 <td>The model that describes how conversion actions are to be counted:<ul><li>Each Campaign: Conversion actions are counted once for each campaign to which they can be attributed (Default)</li><li>Last Campaign: (single campaign) Conversion actions are counted once for each Conversion with at least one associated campaign.</li></ul></td>
-<td>Drop-down supporting both of the values in the left section:<ul><li>Each campaign: For a conversion action associated with multiple campaigns, every campaign that has had an interaction in the conversion window will get credited with a conversion.</li><li>Last campaign: For a conversion action associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window will get credited with a conversion.</li></ul></td>
+<td>Drop-down supporting both of the values in the left section:<ul><li>Each campaign: For a conversion action associated with multiple campaigns, every campaign that has had an interaction in the conversion window gets credited with a conversion.</li><li>Last campaign: For a conversion action associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window gets credited with a conversion.</li></ul></td>
 </tr>
 <tr>
 <td>Type (<code>type</code>)</td>
@@ -1703,7 +1709,7 @@
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="batch-conversion-events">Batch Conversion Events</h3>
-<h4 id="batch-limits">Batch Limits</h4>
+<h4 id="batch-limits">Batch limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
 <ul>
 <li>Max number of requests: 1000</li>
@@ -1722,7 +1728,7 @@
 <tbody>
 <tr>
 <td>Conversion</td>
-<td>Select the conversion rule created through the API. Conversion ID can be provided as a custom text.</td>
+<td>Select the conversion rule created through the API or enter the conversion ID as custom text.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
@@ -1768,6 +1774,14 @@
 <td>External IDs</td>
 <td>A list of <code>externalIds</code>. An <code>externalId</code> contains an advertiser-provided identifier representing the user who triggered the conversion event. For more information, see <a href="https://learn.microsoft.com/en-us/linkedin/marketing/conversions/custom-matching-identifiers?view=li-lms-2025-03">LinkedIn: Custom Matching Identifiers</a>.</td>
 </tr>
+<tr>
+<td>Client IP Address (IPv4)</td>
+<td>Client IPv4 address sent unhashed to LinkedIn. Only valid IPv4 values are sent; IPv6 and invalid values are ignored.</td>
+</tr>
+<tr>
+<td>Google Advertising ID (GAID)</td>
+<td>Plain-text Google Advertising ID sent as a device identifier.</td>
+</tr>
 </tbody>
 </table>
 <h4 id="conversion-event-attributes">Conversion Event Attributes</h4>
@@ -1781,7 +1795,7 @@
 <tbody>
 <tr>
 <td>Conversion Time</td>
-<td>Epoch timestamp in milliseconds at which the conversion event happened. If not mapped, it will be initialized with the current timestamp.</td>
+<td>Epoch timestamp in milliseconds at which the conversion event happened. If not mapped, the connector uses the current timestamp.</td>
 </tr>
 <tr>
 <td>Conversion Amount</td>
@@ -1793,7 +1807,7 @@
 </tr>
 <tr>
 <td>Event ID</td>
-<td>The unique ID generated by advertisers to indicate each event. This field will be used for deduplication.</td>
+<td>The unique ID generated by advertisers to indicate each event. This field is used for deduplication.</td>
 </tr>
 </tbody>
 </table>
@@ -1814,6 +1828,22 @@
 <tr>
 <td>LinkedIn Insight Tag Conversion ID</td>
 <td>The LinkedIn Insight Tag Conversion ID to map the tag conversion ID to.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="disable-identifier-automapping">Disable Identifier Automapping</h4>
+<p>By default, the connector automatically maps Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the <code>li_fat_id</code> querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the <strong>Disable Identifier Automapping</strong> option to turn off automapping for all three identifiers.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disable Identifier Automapping</td>
+<td>When enabled, Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID are not automapped from the data layer.</td>
 </tr>
 </tbody>
 </table>
@@ -1877,7 +1907,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 20, 2026 
+          <p>This page was last updated:  June 2, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

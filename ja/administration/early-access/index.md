@@ -1,0 +1,56 @@
+---
+title: アーリーアクセス
+description: アーリーアクセスはベータ機能を紹介するプログラムです。
+url: https://docs.tealium.com/ja/administration/early-access/
+---
+
+![](/images/icons/icon-forward.svg)
+
+#### スタートガイド
+
+アーリーアクセスプログラムを通じてベータ機能にアクセスしましょう。
+
+
+
+
+![](/images/icons/icon-connector.svg)
+
+#### サーバーサイドコネクタ
+
+* [Databricks (AWS S3)]()
+
+
+
+![](/images/icons/icon-terminal.svg)
+
+#### Tealium API
+
+* [SCIM API]()
+* [Tealium API (v3)]()
+
+
+
+![](/images/icons/icon-globe.svg)
+
+#### オーディエンス
+
+* [オーディエンスについて]()
+* [オーディエンスの管理]()
+
+
+
+![](/images/icons/icon-cloud-up.svg)
+
+#### ログストリーミング
+
+* [ログストリーミングについて]()
+* [ログストリーミングの管理]()
+* [コネクタエラーロギング]()
+
+
+
+
+#### その他の機能
+
+* [スティッチングマージルール]()
+* [訪問削除ジョブ]()

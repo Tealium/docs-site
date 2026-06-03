@@ -659,6 +659,9 @@
       <a href="/server-side-connectors/openai-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
+      <a href="/server-side-connectors/openai-events-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>OpenAI Events</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
       <a href="/server-side-connectors/optimizely-data-platform-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Optimizely Data Platform</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
@@ -1302,6 +1305,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/openai-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">OpenAI</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/openai-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".openai-events-connector-setup-guide">OpenAI Events</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-dcp-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-dcp-connector">Optimizely DCP</a></li>
@@ -1548,8 +1553,8 @@
 </li>
 <li><strong>Conversion Access Token</strong>
 <ul>
-<li>A conversion access token is a non-expiring secure key that lets you send conversion event data to Reddit’s Conversions API.</li>
-<li>This easily generated, shareable, long-lived access token can be used by any administrator for any ad account within your business.</li>
+<li>A conversion access token is a non-expiring secure key that lets you send conversion event data to the Reddit Conversions API.</li>
+<li>Any administrator for any ad account within your business can use this easily generated, shareable, long-lived access token.</li>
 <li>Reddit recommends using a conversion access token over a developer access token / OAuth for Conversions API.</li>
 <li>For more information, see <a href="https://business.reddithelp.com/s/article/conversion-access-token">Reddit: Conversion Access Token</a>.</li>
 <li>If you aren&rsquo;t using a conversion access token, use the <strong>Establish Connection</strong> button to initiate the OAuth authentication workflow.</li>
@@ -1693,7 +1698,7 @@
 <tbody>
 <tr>
 <td>Reddit Click ID</td>
-<td>The Reddit-generated ID associated with a single ad click.</td>
+<td>The Reddit-generated ID associated with a single ad click. The connector automatically maps this value from the <code>rdt_cid</code> query parameter unless you configure a mapping for this field.</td>
 </tr>
 <tr>
 <td>Email Address</td>
@@ -1733,7 +1738,7 @@
 </tr>
 <tr>
 <td>UUID</td>
-<td>The value from the first-party pixel <code>_rdt_uuid</code> cookie on your domain. Use the full value or just the UUID portion.</td>
+<td>The value from the first-party pixel <code>_rdt_uuid</code> cookie on your domain. Use the full value or just the UUID portion. This value is not hashed. The connector automatically maps this value from the <code>_rdt_uuid</code> cookie unless you configure a mapping for this field.</td>
 </tr>
 </tbody>
 </table>
@@ -1787,6 +1792,21 @@
 </tr>
 </tbody>
 </table>
+<h4 id="disable-automapping">Disable Automapping</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disable Automapping</td>
+<td>When enabled, the connector does not send automapped values to the vendor by default. Explicit mappings are still applied.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="send-conversion-deprecated">Send Conversion (deprecated)</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Reddit launched Conversions API v3, so this action is deprecated. We recommend using <strong>Copy Mappings to an Action</strong> to migrate your existing action mappings to the <strong>Send Conversion V3</strong> action.</p>
 <h4 id="api-information-1">API information</h4>
@@ -1832,7 +1852,7 @@
 </tr>
 <tr>
 <td>Test Mode</td>
-<td>Set to <code>true</code> to test the API integration. No data will be posted to the account.</td>
+<td>Set to <code>true</code> to test the API integration. No data is posted to the account.</td>
 </tr>
 <tr>
 <td>Reddit Click ID</td>
@@ -2025,7 +2045,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  June 2, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
