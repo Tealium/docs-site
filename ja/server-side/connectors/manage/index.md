@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタを有効化または無効化するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. 有効化または無効化するコネクタの横にあるチェックボックスをクリックします。  
 同じステータスの複数のコネクタを選択することができます。選択したコネクタの数と取れるアクションが表示されるツールバーが表示されます。例：  
 ![](/images/server-side/connectors/activate-deactivate.png)
@@ -24,7 +24,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 アクションを有効化または無効化するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. コネクタをクリックし、**Actions** タブをクリックします。
 1. 有効化または無効化するアクションの横にあるチェックボックスをクリックします。  
 同じステータスの複数のアクションを選択することができます。選択したアクションの数と取れるアクションが表示されるツールバーが表示されます。例：  
@@ -36,7 +36,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 アクションのアクションタイプを変更するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. コネクタをクリックし、**Actions** タブをクリックします。
 1. アクションをクリックします。**Action Details** 画面が表示されます。
 1. 画面の右上隅にあるその他のアクションボタンをクリックし、**Change Action Type** をクリックします。
@@ -51,7 +51,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタと関連するアクションを複製するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. コネクタメニューをクリックし、**Duplicate** をクリックします。  
     ![](/images/server-side/connectors/duplicate-connector.png)  
     リストに新しい、同一のコネクタが表示されます。これには関連するアクションも含まれ、コネクタ名には **- copy** が追加されます。  
@@ -65,7 +65,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタを削除するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。  
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。  
 1. コネクタメニューをクリックし、**Delete** をクリックします。  
 コネクタに関連するアクションがある場合、コネクタのすべてのアクションを削除するかどうかを確認するプロンプトが表示されます。
 1. コネクタとすべてのアクションを削除するには **Delete** をクリックします。
@@ -76,7 +76,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタアクションを削除するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. その行をクリックしてコネクタを選択します。**Connector Details** 画面が表示されます。
 1. **Actions** タブをクリックします。
 1. 削除したいアクションのアクションメニューをクリックし、**Delete** を選択します。
@@ -107,7 +107,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタアクションに対して一括アクションを実行するには、以下の手順を実行します：
 
-1. **Server-side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-side &gt; Connect &gt; Connectors** に移動します。
 1. その行をクリックしてコネクタを選択します。**Connector Details** 画面が表示されます。
 1. **Actions** タブをクリックします。
 1. 変更または削除したい各アクションのボックスをクリックします。  
@@ -121,7 +121,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタのコネクタIDを取得するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. その行をクリックしてコネクタを選択します。  
 **Connector Details** 画面が表示され、コネクタ名の下にコネクタのUIDが表示されます。例：  
 ![](/images/server-side/connectors/get-uid.png)
@@ -131,7 +131,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/manage/
 
 コネクタアクションのアクションIDを取得するには、以下の手順を実行します：
 
-1. **Server-Side &gt; Connectors &gt; Overview** に移動します。
+1. **Server-Side &gt; Connect &gt; Connectors** に移動します。
 1. その行をクリックしてコネクタを選択します。
 1. **Connector Details** 画面で、**Actions** タブをクリックします。
 1. その行をクリックしてアクションを選択します。  

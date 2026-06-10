@@ -16,8 +16,8 @@ url: https://docs.tealium.com/ja/server-side/connectors/add/
 
 EventStreamまたはAudienceStreamコネクタを追加するには、以下のステップを使用します：
 
-1. **Server-Side &gt; Connectors &gt; Marketplace** に移動します。
-または、**Server-Side &gt; Connectors &gt; Overview** に移動し、**&#43; New Connector** をクリックします。
+1. **Server-Side &gt; Connect &gt; Marketplace** に移動します。
+または、**Server-Side &gt; Connect &gt; Connectors** に移動し、**&#43; New Connector** をクリックします。
 コネクタのリストはデフォルトでアルファベット順に並べられています。
 1. 必要に応じて以下の方法でコネクタのリストをフィルタリングします：
     * **Data Type** フィルタをクリックし、**Event** または **Visitor** を選択します。

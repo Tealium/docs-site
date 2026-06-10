@@ -24,7 +24,7 @@ Previously-generated global credentials can still be used, but cannot be regener
 
 Use the following steps to get database authentication credentials:
 
-1. Navigate to **DataAccess &gt; EventDB** or **DataAccess &gt; AudienceDB**.
+1. Navigate to **Store &gt; EventDB** or **Store &gt; AudienceDB**.
 1. Click **Get DB Connection Details**.
 1. Click **Regenerate DB Credentials**.  
 You need to regenerate credentials even if this is your first time getting credentials.  

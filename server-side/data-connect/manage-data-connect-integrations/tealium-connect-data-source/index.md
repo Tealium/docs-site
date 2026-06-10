@@ -11,7 +11,7 @@ We recommend setting one Tealium Connect data source per originating data source
 
 Complete the following steps to add a Tealium Connect data source:
 
-1. Navigate to **Sources &gt; Data Sources**.
+1. Navigate to **Connect &gt; Data Sources**.
 1. Click **&#43; Add Data Source**.
 1. From the **Select a Platform** screen, select **Tealium Connect**.
 1. In the **Name** field under **Summary**, enter a name and click **Continue**. 

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/ad
 ---
 To add a data source:
 
-1. Go to **Sources &gt; Data Sources** and click **&#43; Add Data Source**.  
+1. Go to **Connect &gt; Data Sources** and click **&#43; Add Data Source**.  
 The data source modal appears.
 1. In the **Categories** side panel, click **Developer Languages** and select **HTTP API**.  
     ![](/images/tutorials/eventstream-getting-started-data-source-http.png)

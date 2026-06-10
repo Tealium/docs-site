@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/snowflake-c
 
 ## Snowflakeデータソースを作成する
 
-1. Tealiumで**Sources &gt; Data Sources**に移動します。
+1. Tealiumで**Connect &gt; Data Sources**に移動します。
 1. **Add Data Source**をクリックします。
 1. **Data Cloud**の下で**Snowflake**を選択します。
 

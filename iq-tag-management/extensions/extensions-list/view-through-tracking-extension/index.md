@@ -115,7 +115,7 @@ Click **Update** to see the usage report, which displays the total number of rea
 
 Use the following steps to view Usage Reports in graphical format from the Data Supply Chain view:
 
-1. To view usage reports in a graphical format, go to **iQ Tag Management &gt; Data Supply Chain &gt; Usage Reports**.
+1. To view usage reports in a graphical format, go to **Analyze &gt; Usage**.
 1. View the following graphical representations of your track impressions:  
     ![](/images/iq-tag-management/view-through-usage-reporting-graphical-in-data-supply-chain.jpg)  
     * Total View-Through Tracking Writes

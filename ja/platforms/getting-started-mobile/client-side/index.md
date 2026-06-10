@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/platforms/getting-started-mobile/client-side/
 
 Tealium iQタグ管理は、ベンダータグの構成とビジネスロジックを`utag.js`という静的JavaScriptに保存するクライアントサイドソリューションです。訪問があなたのサイトを閲覧すると、このファイルがブラウザ（クライアントサイド）でロードされ、どのベンダータグをロードし、データをどのように送信するかを決定します。これらのファイルがブラウザによって取得されると、ネットワークトラフィックとページパフォーマンスを最適化するために、次のページビューに対してキャッシュされます。
 
-[how iQ Tag Management works]()について詳しく学びましょう。
+[how Tag Management works]()について詳しく学びましょう。
 
 
 ## モバイル

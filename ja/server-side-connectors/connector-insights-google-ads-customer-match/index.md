@@ -23,7 +23,7 @@ Google Ads カスタマーマッチインサイトは、コネクターアクシ
 
 ## コネクターインサイトの使用
 
-コネクターインサイトにアクセスするには、**AudienceStream &gt; Audience Connectors** に移動し、**Google Ads Customer Match (Tealium-Provided Credentials) Connector** コネクターを検索して **Insights** をクリックします。
+コネクターインサイトにアクセスするには、**Connect &gt; Audience Connectors** に移動し、**Google Ads Customer Match (Tealium-Provided Credentials) Connector** コネクターを検索して **Insights** をクリックします。
 
 ![](/images/server-side-connectors/connector-insights-btn.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Tealium iQ タグ管理
+title: Tag Management
 description: Tealium iQ タグ管理は、ページコードを編集することなくタグを管理するためのウェブインターフェースです。ウェブサイトのハードコードされたタグを単一のタグに置き換え、長い開発サイクルを必要とせずに簡単にタグを管理できます。
 url: https://docs.tealium.com/ja/iq-tag-management/
 ---

@@ -1,6 +1,6 @@
 ---
-title: Use Cyberduck to upload a file with FTP/SFTP or Amazon S3
-description: This article describes how to configure Cyberduck to upload a file with FTP/SFTP or Amazon S3.
+title: Use Cyberduck to upload a file with SFTP or Amazon S3
+description: This article describes how to configure Cyberduck to upload a file with SFTP or Amazon S3.
 url: https://docs.tealium.com/server-side/data-sources/file-import/file-transfer-service/cyberduck/
 ---
 1. Run Cyberduck.

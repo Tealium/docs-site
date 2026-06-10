@@ -1,6 +1,6 @@
 ---
 title: アーリーアクセス
-description: アーリーアクセスはベータ機能を紹介するプログラムです。
+description: アーリーアクセスはベータ機能を導入するためのプログラムです。
 url: https://docs.tealium.com/ja/administration/early-access/
 ---
 
@@ -36,6 +36,7 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 * [オーディエンスについて]()
 * [オーディエンスの管理]()
+* [オーディエンスダッシュボード]()
 
 
 
@@ -45,7 +46,7 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 * [ログストリーミングについて]()
 * [ログストリーミングの管理]()
-* [コネクタエラーロギング]()
+* [コネクタエラーログ]()
 
 
 

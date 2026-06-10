@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/usabilla
   * [Tealium for iOS-Swift](/ja/platforms/ios-swift/)
 * 以下のいずれかのリモートコマンド統合：
   * [Usabilla Remote Command JSON File](/ja/platforms/remote-commands/integrations/usabilla/#json-template) (Android-Kotlin 1.0.0&#43;またはiOS-Swift 2.1.0&#43;が必要)
-  * Tealium iQ Tag ManagementのUsabilla Remote Commandタグ
+  * Tealium Tag ManagementのUsabilla Remote Commandタグ
 
 ## 動作原理
 
@@ -24,7 +24,7 @@ Usabilla統合は3つのアイテムを使用します：
 
 アプリにUsabillaリモートコマンドモジュールを追加すると、必要なUsabillaライブラリが自動的にインストールされビルドされます。依存関係マネージャーのインストールを使用している場合、Usabilla SDKを別途インストールする必要はありません。
 
-リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQ Tag Managementを使用してマッピングを構成します。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルが推奨されます。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
+リモートコマンドオプションには2つあります：JSON構成ファイル、またはTag Managementを使用してマッピングを構成します。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルが推奨されます。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
 
 ## インストール
 

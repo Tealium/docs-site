@@ -63,7 +63,7 @@ The following table lists the callback method and callback formatting for Tealiu
 Use the following steps to add a cookie matching tag:
 
 1. Log into iQ Tag Management (TiQ).
-1. In the left sidebar, go to the **iQ Tag Management &gt; Tags**.
+1. In the left sidebar, go to the **Tag Management &gt; Tags**.
 1. Click **&#43; Add Tag**.
 1. In the left panel, click **Cookie Match**.  
 A list of available marketplace tags supporting the cookie matching service displays.  

@@ -11,7 +11,7 @@ Use favorite numbers to more efficiently explore Audience Discovery:
 * Highlight the column in the primary display related to that favorite by hovering over a favorite number.
 * Compare favorite numbers by clicking a favorite and pinning the results over the current display.
 
-To access favorite numbers, go to **AudienceStream &gt; Discover**. The **Favorite Numbers** section is directly under the main Audience Discovery chart.
+To access favorite numbers, go to **Activate &gt; Discover**. The **Favorite Numbers** section is directly under the main Audience Discovery chart.
 
 In the results for favorite numbers, only the attributes are updated. The filter is not updated.&lt;br&gt;
 When you click to zoom in on one column out of a multiple column favorite number, both the perspective and the filter are updated.

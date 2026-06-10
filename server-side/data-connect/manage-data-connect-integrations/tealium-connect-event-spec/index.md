@@ -9,7 +9,7 @@ For more information, see [Event Specifications]().
 
 Complete the following steps to add a custom event specification:
 
-1. Navigate to **EventStream &gt; Event Specs**.
+1. Navigate to **Validate &gt; Event Specs**.
 1. Click **&#43; Add Event Specification** and select **Add Custom Specification** from the drop down.
 1. Enter a name for the event.
 1. Select the attributes from the **Attributes** drop down lists that you want included in your specification.

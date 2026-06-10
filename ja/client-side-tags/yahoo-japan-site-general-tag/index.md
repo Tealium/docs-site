@@ -1,6 +1,6 @@
 ---
 title: Yahoo! Japanサイト一般タグセットアップガイド
-description: この記事では、Tealium iQ Tag ManagementアカウントでYahoo! Japanサイト一般タグを構成する方法について説明します。
+description: この記事では、Tealium Tag ManagementアカウントでYahoo! Japanサイト一般タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/yahoo-japan-site-general-tag/
 ---
 ## タグのヒント

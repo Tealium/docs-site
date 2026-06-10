@@ -58,4 +58,4 @@ After the AudienceStore connector is configured, the details page for the connec
 
 If AudienceStore is later disabled, the AudienceStore connector will also be disabled. If AudienceStore is enabled again, the AudienceStore connector must be manually enabled.
 
-After configuring an Audience connector, go to **DataAccess &gt; AudienceStore** to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see [View files]().
+After configuring an Audience connector, go to **Store &gt; AudienceStore** to view and download the JSON or CSV files. Each file contains visitor profile data (visitor and visit attributes). You can also use third-party tools to view the files. For more information, see [View files]().

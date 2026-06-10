@@ -49,14 +49,14 @@ For more information about connectors, see [About connectors]().
 
 ## View the connectors dashboard
 
-1. Go to **Data Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Connectors Dashboard**.
 
 ## Export a PDF
 
 Use the following steps to generate and download a PDF file:
 
-1. Go to **Data Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Connectors Dashboard**, then select the visual to export.
 1. Click the **Export** icon, as shown below, then select **Generate PDF**.
 ![](/images/server-side/connectors-dashboard-export-icon.png)  
@@ -73,7 +73,7 @@ To download the PDF later, use the following steps:
 
 Use the following steps to export visual data to a CSV file:
 
-1. Go to **Data Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Connectors Dashboard**.
 1. Select a visual, then click the visual menu and select **Export to CSV**.
 ![](/images/server-side/connectors-dashboard-export-csv.png)
@@ -94,7 +94,7 @@ Visual data can be filtered based on the value of the attributes used in the vis
 
 To add a filter to a visual, use the following steps:
 
-1. Go to **Data Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Connectors Dashboard**.
 1. Select a visual and click **Applied filters**.  
 ![](/images/server-side/connectors-dashboard-applied-filters.png)

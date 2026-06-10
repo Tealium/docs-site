@@ -15,8 +15,8 @@ The API returns a _File Status_ that details when the files imported and how the
 |created at| UTC timestamp| date and time when the file status was created (expressed in [UTC format with the designator &#39;Z&#39;](https://www.w3.org/TR/NOTE-datetime))|
 |file.name| string| Name of the file in question|
 |file.size| integer| File size in bytes|
-|file.source-type| string| Service used for uploading the file: FTP, SFTP, Tealium S3, and S3|
-|file.source-host| string| Name of the service&lt;br&gt; * Hosting account for FTP/SFTP&lt;br&gt; * Bucket name for S3/Tealium S3 |
+|file.source-type| string| Service used for uploading the file: SFTP, Tealium S3, and S3|
+|file.source-host| string| Name of the service&lt;br&gt; * Hosting account for SFTP&lt;br&gt; * Bucket name for S3/Tealium S3 |
 |line\_count| integer| Number of rows in the file|
 |status.state| string| Indicates the processing action on the file. Possible values are: **DOWNLOADING**, **DOWNLOADED**, **PROCESSING**, or **PROCESSED**.|
 |status.timestamp| UTC timestamp| date and time when the [status-state] was recorded (expressed in [UTC format with the designator &#39;Z&#39;](https://www.w3.org/TR/NOTE-datetime))|

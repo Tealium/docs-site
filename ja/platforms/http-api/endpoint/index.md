@@ -57,7 +57,7 @@ AudienceStreamは、以下の組み合わせを使用して訪問を追跡しま
 |---| ---|
 | 必須 | N/A |
 
-Tealium iQ Tag Managementを使用してAPIコールをサーバー間で送信し、匿名訪問プロファイルをエンリッチする場合、`tealium_visitor_id`の値は`utag_main_v_id`クッキーの値と一致する必要があります。utag.jsの組み込み変数についての詳細は、[JavaScript (Web) &gt; Data Layer]()を参照してください。
+Tealium Tag Managementを使用してAPIコールをサーバー間で送信し、匿名訪問プロファイルをエンリッチする場合、`tealium_visitor_id`の値は`utag_main_v_id`クッキーの値と一致する必要があります。utag.jsの組み込み変数についての詳細は、[JavaScript (Web) &gt; Data Layer]()を参照してください。
 
 Adobe LaunchまたはGoogle Tag Managerを使用している場合、値は**TEAL**クッキーの`v`部分と一致する必要があります。
 

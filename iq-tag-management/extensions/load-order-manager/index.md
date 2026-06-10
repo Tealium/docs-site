@@ -34,7 +34,7 @@ For more information, read about [order of operations]().
 
 Use the following steps to start using Load Order Manager:
 
-1. Go to **iQ Tag Management &gt; Tags** (or **Extensions**).
+1. Go to **Tag Management &gt; Tags** (or **Extensions**).
 1. In the list view, click **Edit Load Order**.  
 The Load Order Manager screen displays your tags and extensions, by scope, in execution order.
     * In the side panel, each scope displays the number of tags for that scope.  

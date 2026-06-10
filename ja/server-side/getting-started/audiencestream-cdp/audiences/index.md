@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 オーディエンスを作成するには、以下の手順に従ってください：
 
-1. **AudienceStream &gt; Audiences** に移動し、**&#43; Add Audience** をクリックします。
+1. **Activate &gt; Audiences** に移動し、**&#43; Add Audience** をクリックします。
 1. オーディエンスを一意に識別するための **Name** を入力します。例えば `VIP` とします。[DataAccess]()製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
 1. **Conditions** ドロップダウンを使用してフィルターを作成します：
     ```

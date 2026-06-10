@@ -282,7 +282,7 @@ teal.flattenObject = function(obj,new_obj){
 
 以下の手順に従って、データレイヤーコンバーターコードを追加します。
 
-1. 左のサイドバーで、**iQ Tag Management &gt; Extensions**に移動します。
+1. 左のサイドバーで、**Tag Management &gt; Extensions**に移動します。
 1. [JavaScriptコード拡張機能]()を追加します。
 1. **タイトル**フィールドに`Data Layer Converter`と入力します。
 1. **スコープ**フィールドで**Pre Loader**を選択します。
@@ -293,7 +293,7 @@ teal.flattenObject = function(obj,new_obj){
 
 以下の手順に従って、データレイヤーコンバーターをトリガーするコードを追加します。
 
-1. 左のサイドバーで、**iQ Tag Management &gt; Extensions**に移動します。
+1. 左のサイドバーで、**Tag Management &gt; Extensions**に移動します。
 1. [JavaScript拡張機能]()を追加します。
 1. **タイトル**フィールドに`Convert to utag_data`と入力します。
 1. **スコープ**フィールドで**Pre Loader**を選択します。

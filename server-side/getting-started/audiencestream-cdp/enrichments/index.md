@@ -27,7 +27,7 @@ Let&#39;s look at an example of a popular e-commerce visitor attribute called **
 
 To get started with adding this attribute, follow these steps:
 
-1. Navigate to **AudienceStream &gt; Attributes** and click **Add Attribute**.
+1. Navigate to **Transform &gt; Visitor/Visit Attributes** and click **Add Attribute**.
 1. Select the scope of **Visitor** and click **Continue**.
 1. Select the data type **Number** and click **Continue**.
 1. Enter the name of the attribute, `Lifetime Order Value`.

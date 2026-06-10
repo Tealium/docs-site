@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/troubleshooting/nav-timing-da
 
 EventDBでデータソースを宣言するには、以下の手順を実行します：
 
-1. **iQ Tag Management &gt; Data Layer**に移動します。
+1. **Tag Management &gt; Data Layer**に移動します。
 1. **Add Data Source**ドロップダウンメニューをクリックし、**Bulk Import Data Sources from CSV**を選択します。
 1. 以下をインターフェースに貼り付けます：
 

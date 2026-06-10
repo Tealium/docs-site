@@ -11,7 +11,7 @@ Ensure profile changes have been published before selecting engine attributes.
 
 To create an engine, complete the following steps:
 
-1. Go to **AudienceStream &gt; Moments API** and click **&#43; New Engine**.
+1. Go to **Activate &gt; Moments API** and click **&#43; New Engine**.
 1. In the **Details** screen, configure the following engine details:
     * **Name**: Enter a name for the engine.
     * **Enable Engine**: Toggle the engine on and off. The engine endpoint is off by default. Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system.

@@ -13,7 +13,7 @@ An enrichment is the use of custom logic to transform an attribute from a static
 
 To view enrichments:
 
-1. From the left navigation bar, go to **AudienceStream** **&amp;gt; Visitor / Visit Attributes** to view your attributes. ![](/images/server-side/attributes/visit-visitor-attributes-table.png)
+1. From the left navigation bar, go to **Transform &gt; Visitor / Visit Attributes** to view your attributes. ![](/images/server-side/attributes/visit-visitor-attributes-table.png)
 1. Click any attribute in the table to view that attribute&#39;s details. ![](/images/server-side/attributes/attribute-details-slideout.png)
 
 ## Add an enrichment

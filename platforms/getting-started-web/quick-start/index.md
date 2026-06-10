@@ -37,7 +37,7 @@ If you don&#39;t know your account and profile name, you can ask your Tealium ad
 
 #### Platform permissions
 
-For accounts using platform permissions, go to **iQ Tag Management &gt;  Manage Environments** to get the code snippet:
+For accounts using platform permissions, go to **Tag Management &gt; Manage Environments** to get the code snippet:
 
 1. In the client-side admin menu, click **Manage Environments**. The **Manage Environments** dialog is displayed.
 1. Click the edit icon for the environment you are using on your web site. The **Edit environment** screen is displayed.
@@ -48,7 +48,7 @@ For more information, see .
 
 #### Legacy permissions
 
-For accounts using legacy permissions, go to **iQ Tag Management &gt; Code Center** to get the code snippet:
+For accounts using legacy permissions, go to **Tag Management &gt; Code Center** to get the code snippet:
 
 1. In the admin menu, click **Code Center**.  
 The **Code Center** dialog is displayed.

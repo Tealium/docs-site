@@ -34,7 +34,7 @@ LinkedIn でコネクタを使用するには、サインインします。
 
 重複排除は、Insight Tag と CAPI から送信されたイベントを比較することで機能します。両方のソースが同じイベントを送信した場合、システムは1つだけを保持し、重複を破棄して正確なカウントを保証します。CAPI データを [LinkedIn Insight tag]() と組み合わせてキャンペーンのコンバージョンに完全な可視性を提供するために、両方のソースを通じて同じイベントを送信します。
 
-このコネクタアクションを構成して、iQ Tag Management アカウントの LinkedIn Insights タグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：
+このコネクタアクションを構成して、Tag Management アカウントの LinkedIn Insights タグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：
 
 ```none
 linkedin_event_id_{CONVERSION_ID}_{TAG_UID}

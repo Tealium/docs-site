@@ -16,11 +16,11 @@ The healthcare dashboard requires:
 
 To generate the healthcare dashboard:
 
-1. Go to **Server-Side &gt; Insights &gt; Templates**.
+1. Go to **Analyze &gt; Insights &gt; Templates**.
 1. Find the **Healthcare dashboard** template, and click **View Details**.
 1. Click **Generate Dashboard**.
 
-After generation, access the dashboard in **Insights &gt; Dashboards**.
+After generation, access the dashboard in **Analyze &gt; Insights &gt; Dashboards**.
 
 For more information about managing dashboards, see [Manage dashboards]().
 If you have trouble accessing or using the dashboard, contact your Tealium Account Manager.

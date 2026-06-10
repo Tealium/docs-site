@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 これが機能するためには、AudienceStreamが十分なデータを収集して適切なサンプルセットを提供できるように、メールアドレス属性の作成から時間を経過させる必要があります。以下の手順でメールアドレス属性を検証します。
 
-1. **AudienceStream &gt; Discover** (Audience Discovery)に移動します。
+1. **Activate &gt; Discover** (Audience Discovery)に移動します。
 1. **Perspective**をクリックし、ビジター文字列属性**Email Address**を選択します。
 1. **Live**ビューだけでなく、**Historic**ビューも調査する必要があります。
 

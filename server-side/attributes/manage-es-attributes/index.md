@@ -3,7 +3,7 @@ title: Manage event attributes
 description: This article describes how to manage event attributes.
 url: https://docs.tealium.com/server-side/attributes/manage-es-attributes/
 ---
-Go to **EventStream &gt; Event Attributes** to view your event attributes. Optionally filter your view by clicking on any of the available options on the left side of the table. Click an attribute to view its details.
+Go to **Govern &gt; Event Attributes** to view your event attributes. Optionally filter your view by clicking on any of the available options on the left side of the table. Click an attribute to view its details.
 
 ![](/images/server-side/ea-filter-es-attributes.png)
 

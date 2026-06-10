@@ -3,7 +3,7 @@ title: オーディエンスディスカバリーの管理
 description: この記事では、Audience Discoveryでオーディエンスフィルターを追加、編集、削除、表示する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/audiences/audience-discovery/manage/
 ---
-Audience Discoveryフィルターを管理するには、**AudienceStream &gt; Discover**に移動します。
+Audience Discoveryフィルターを管理するには、**Activate &gt; Discover**に移動します。
 
 ## オーディエンスフィルターの追加
 

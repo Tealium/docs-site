@@ -9,7 +9,7 @@ Since we now that the string attribute, **Email Address**, is working as expecte
 
 To create a visitor ID attribute:
 
-1. Navigate to **AudienceStream &gt; Visitor/Visit Attributes** and click **&#43; Add Attribute**.
+1. Navigate to **Transform &gt; Visitor/Visit Attributes** and click **&#43; Add Attribute**.
 1. Select the scope of **Visitor** and click **Continue**.
 1. Select the data type **Visitor ID** and click **Continue**.
 1. Enter the name of the attribute, `Email Address`.

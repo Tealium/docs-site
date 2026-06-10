@@ -1,5 +1,5 @@
 ---
-title: File Transfer Protocol (FTP, SFTP, FTPS) Connector Setup Guide
+title: File Transfer Protocol (SFTP, FTPS) Connector Setup Guide
 description: This article describes how to set up the File Transfer Protocol connector.
 url: https://docs.tealium.com/server-side-connectors/ftp-connector/
 ---
@@ -17,14 +17,12 @@ Go to the Connector Marketplace and add a new connector. For general instruction
 
 After adding the connector, configure the following settings:
 * **Connection type**: (Required) Specify the connection type.
-  * FTP
   * SFTP
   * FTPS
 * **Host**: (Required) Specify the remote host.
 * **Username**: (Required) Specify the username.
 * **Password**: (Required) Specify the user password.
 * **Port**: (Optional) Specify the port. If no port is specified, the following default ports will be used:
-    * FTP: 21
     * SFTP: 22
     * FTPS: 990
 

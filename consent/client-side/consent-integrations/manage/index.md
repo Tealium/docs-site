@@ -9,7 +9,7 @@ In the Tealium iQ Tag Management dashboard, the consent integrations screen prov
 
 Follow the steps below to add an integration:
 
-1. Go to **iQ Tag Management &gt; Consent Integrations**.
+1. Go to **Tag Management &gt; Consent Integrations**.
 1. Click **&#43; Add Integration** to open the integration configuration screen.
 
 ### Step 1: Configure integrations
@@ -66,7 +66,7 @@ To manage your purpose groups, go to **iQ Tag Management &gt; Consent Integratio
 
 Follow the steps below to add a purpose group:
 
-1. Go to **iQ Tag Management &gt; Consent Integrations**.
+1. Go to **Tag Management &gt; Consent Integrations**.
 1. Click **&#43; Add Purpose Group** to open the purpose group configuration modals.
 
 #### Step 1: Purpose group

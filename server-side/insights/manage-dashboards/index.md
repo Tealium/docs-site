@@ -9,7 +9,7 @@ To return to the **Dashboards** screen, click the Tealium logo.
 
 Use the following steps to generate a dashboard from a template:
 
-1. Go to **Insights &gt; Templates**.
+1. Go to **Analyze &gt; Insights &gt; Templates**.
 1. For the selected dashboard, click **View Details**.
 1. Click **Generate Dashboard**.
 1. When the dashboard has been generated, the following message is displayed:
@@ -20,14 +20,14 @@ Use the following steps to generate a dashboard from a template:
 
 Use the following steps to view a dashboard:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click on a dashboard.
 
 ## Delete a dashboard
 
 Use the following steps to delete a dashboard:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click the menu for the dashboard and select **Delete**.
 1. In the confirmation dialog, click **Delete**.    
 When the dash board has been deleted, the following message is displayed:  
@@ -38,7 +38,7 @@ When the dash board has been deleted, the following message is displayed:
 
 To delete a predefined dashboard and the associated analysis and datasets, use the following steps:
 
-1. Go to **Server-Side &gt; Insights &gt; Templates**.
+1. Go to **Analyze &gt; Insights &gt; Templates**.
 1. For the template of the dashboard you want to delete, click **View Details**.
 1. If you are using the associated datasets in custom dashboards, deselect **Do you also want to delete datasets used for this dashboard?**.
 1. Click **Delete**.  
@@ -48,7 +48,7 @@ The template will not be deleted. You can regenerate the dashboard later, if nee
 
 Use the following steps to email a PDF of a dashboard:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Select a dashboard.
 1. Click the **Scheduling** icon and select **Schedules**.  
 ![](/images/server-side/data-insights/data-insights-scheduling-icon.png)
@@ -76,7 +76,7 @@ In these options, `{PROFILE}` represents your profile name. For example, if your
 
 Follow these initial steps to share your custom dashboard:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Select a dashboard.
 1. Click the Share icon and click **Share dashboard**.
    ![](/images/server-side/data-insights/data-insights-share-icon.png)
@@ -104,7 +104,7 @@ Follow these initial steps to share your custom dashboard:
 
 To update the permission for an Author:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Select a dashboard.
 1. Click the **Share** icon and click **Share dashboard**.
 1. Go to the **Users &amp; Groups** tab.
@@ -115,7 +115,7 @@ To update the permission for an Author:
 
 To stop sharing a dashboard:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Select a dashboard.
 1. Click the **Share** icon and click **Share dashboard**.
 1. Go to the **Users &amp; Groups** tab.
@@ -127,7 +127,7 @@ If you have created custom dashboards, you may want to make them available in mu
 
 To export a custom dashboard, use the following steps:
 
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Export**.
 1. Click **Export** for the dashboard you want to export.  
 When the JSON file is ready, a success message is displayed.
@@ -137,7 +137,7 @@ When the JSON file is ready, a success message is displayed.
 After you have exported a custom dashboard, you can import the JSON file into other profiles, as follows:
 
 1. Switch to the profile in which you want to add the dashboard.
-1. Go to **Insights &gt; Dashboards**.
+1. Go to **Analyze &gt; Insights &gt; Dashboards**.
 1. Click **Import**.
 1. Enter the **Dashboard Name**.
 1. Click **Upload JSON File** and select the JSON file you want to upload, then click **Next**.

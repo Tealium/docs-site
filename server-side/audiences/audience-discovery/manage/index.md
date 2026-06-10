@@ -3,7 +3,7 @@ title: Manage Audience Discovery
 description: This article explains how to add, edit, delete, and view audience filters in Audience Discovery.
 url: https://docs.tealium.com/server-side/audiences/audience-discovery/manage/
 ---
-To manage Audience Discovery filters, navigate to **AudienceStream &gt; Discover**.
+To manage Audience Discovery filters, navigate to **Activate &gt; Discover**.
 
 ## Add an audience filter
 

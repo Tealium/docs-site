@@ -9,15 +9,15 @@ Tealium supports the following file transfer services for file import:
   * [AWS S3 bucket]()
   * [Tealium S3 bucket]()
 * [Microsoft Azure File/Blob Storage]()
-* [FTP/SFTP]()
+* [SFTP]()
 
 ## Upload and manage files using Cyberduck and Amazon CLI
 
-After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it&#39;s free and supports FTP/SFTP and Amazon S3.
+After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it&#39;s free and supports SFTP and Amazon S3.
 
 Use the following articles to get started uploading and managing your files:
 
-* [Upload a file with FTP/SFTP or Amazon S3 with Cyberduck]()
+* [Upload a file with SFTP or Amazon S3 with Cyberduck]()
 * [Upload and manage files using the Amazon Command Line Interface]()
 
 

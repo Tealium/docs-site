@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 イベントフィードを作成するには：
 
-1. **EventStream &gt; Live Events**に移動し、**&#43; Add Event Feed**をクリックします。  
+1. **Validate &gt; Live Events**に移動し、**&#43; Add Event Feed**をクリックします。  
 1. **Title**、**Notes**、および**Labels**を構成します。  
 今のところ**Event Data Storage**は無視してください。この構成は、あなたのアカウントが[DataAccess]()で有効になっていることが必要です。
 1. フィードの条件を構成します：

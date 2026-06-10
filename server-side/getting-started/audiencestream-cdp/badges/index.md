@@ -22,7 +22,7 @@ We will build on the previous attribute, Lifetime Order Value, to create a **VIP
 
 Follow these steps to create a badge:
 
-1. Navigate to **AudienceStream &amp;gt; Attributes** and click **Add Attribute**.
+1. Navigate to **Transform &gt; Visitor / Visit Attributes** and click **Add Attribute**.
 1. Select the scope of **Visitor** and click **Continue**.
 1. Select the data type **Badge** and click **Continue**.
 1. Enter the name of the attribute: `VIP`.

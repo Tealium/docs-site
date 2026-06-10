@@ -168,7 +168,7 @@ PII権限は、PIIデータを誰が閲覧できるか、および**制限デー
 | AudienceStore|アクセスなし、閲覧、閲覧＆編集、閲覧編集＆削除|
 | EventStore|アクセスなし、閲覧、閲覧＆編集、閲覧編集＆削除|
 
-\* Tealium Insightsの権限は、**Insights &gt; Manage Users**ページを通じてユーザー管理者によって構成できます。詳細については、[Tealium Insightsについて]()を参照してください。
+\* Tealium Insightsの権限は、**Analyze &gt; Insights &gt; QuickSight Users**ページを通じてユーザー管理者によって構成できます。詳細については、[Tealium Insightsについて]()を参照してください。
 
 #### Predict
 

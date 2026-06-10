@@ -60,7 +60,7 @@ Now that we are tracking how many times each destination is searched, we need to
 
 Create a set of strings attribute to store the top 3 countries for resorts browsed in visit with the following enrichment:
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes**.
+1. Go to **Transform &gt; Visitor / Visit Attributes**.
 1. Click **&#43; Add Attribute**.
 1. Select **Visit scope** and click **Continue**.
 1. Select **Set of Strings** data type.
@@ -98,7 +98,7 @@ We created a visit tally attribute **Countries of Resorts Browsed in Visit** to 
 
 To create a **Set of Strings** attribute:
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes**.
+1. Go to **Transform &gt; Visitor / Visit Attributes**.
 1. Click **&#43; Add Attribute**.
 1. Select **Visit scope** and click **Continue**.
 1. Select **Set of Strings** data type.
@@ -147,7 +147,7 @@ This ensures high-intent visitors receive targeted offers based on their behavio
 Now that you’ve implemented set of strings attributes for tracking, filtering, and activating visitor interactions, consider these next steps to extend your setup:
 
 * **Audit and monitor usage**  
-Use [Trace]() and the [Visitor Profile Sampler]() to verify how attributes are populated and used across sessions.
+Use [Trace]() and the [Live visitors]() to verify how attributes are populated and used across sessions.
 * **Expand to new channels**  
 Use your set of strings attributes in other connectors, such as SMS, display ads, or push notifications, to create cohesive cross-channel experiences.
 

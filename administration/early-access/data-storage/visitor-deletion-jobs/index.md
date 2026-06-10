@@ -19,7 +19,7 @@ When a visitor deletion job is enabled, it checks the S3 bucket every hour for a
 
 You can use the visitor deletion job interface to check the status and results of each CSV file that is processed. After a file is processed, a log file of the results can be downloaded from the interface for legal record-keeping and GDPR compliance auditing.
 
-You can also use the [visitor lookup tool]() or the [visitor lookup API]() to delete visitor records, but with those methods you can only delete one visitor at a time. A visitor deletion job lets you delete multiple visitors at once.
+You can also use [visitor search]() or the [visitor lookup API]() to delete visitor records, but with those methods you can only delete one visitor at a time. A visitor deletion job lets you delete multiple visitors at once.
 
  When a visitor record is deleted, it does not trigger the &#34;Left Audience&#34; action in connectors. Connector actions for audiences are executed only when rules are re-evaluated and a visitor&#39;s status transitions from being included in the audience to being excluded. 
 

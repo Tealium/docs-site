@@ -65,7 +65,7 @@ After you save and publish your changes to Prod, the new variables will be avail
 
 To add a visitor attribute to store the `ttd_uuid` value:
 
-1. Navigate to **AudienceStream &amp;gt; Attributes**.
+1. Navigate to **Transform &gt; Visitor / Visit Attributes**.
 1. Click **Add Attribute** and select **Visitor** scope, then **String** data type.
 1. Enter the name `Trade Desk User ID`.
 1. Click **Add Enrichment** and select **Set String**.

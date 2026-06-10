@@ -7,7 +7,7 @@ url: https://docs.tealium.com/iq-tag-management/extensions/manage/
 
 Use the following steps to add an extension:
 
-1. In the sidebar, navigate to **iQ Tag Management &gt; Extensions**.
+1. In the sidebar, navigate to **Tag Management &gt; Extensions**.
 1. Click **&#43; Add Extension**.
 1. Browse the extension categories using the multi-tab menu and click **&#43; Add** next to the extension you want to use.
 1. Enter a **Title** to identify the extension.
@@ -53,7 +53,7 @@ A copy of the original extension is added to the bottom of the extension list.
 
 To view the change history of an extension:
 
-1. In the sidebar, go to **iQ Tag Management &gt; Extensions**.
+1. In the sidebar, go to **Tag Management &gt; Extensions**.
 1. Click the extension you want to review. The extension details appear.
 1. Click **View Change History**.
 

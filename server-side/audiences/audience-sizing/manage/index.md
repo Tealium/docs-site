@@ -11,7 +11,7 @@ Due to the nature of the historic data being queried, only rules containing visi
 
 Use the following steps to set a date range and select the rule conditions for your job:
 
-1. In the sidebar, navigate to **AudienceStream &gt; Discover**.
+1. In the sidebar, navigate to **Activate &gt; Discover**.
 2. Click the **Audience Sizing** tab.
 3. Under **Historical Date Range**, use the calendar tool to select the start and end date for your date range.  
 The system only finds (discovers) visitors with activity between the dates chosen. Visitors that have not had activity within the specified date range or that were purged due to the [profile retention time]() are not searched.
@@ -62,7 +62,7 @@ At this point, the job is inactive as it is not yet linked to a connector action
 
 Now that the job has been linked to a connector, use the following steps to activate it:
 
-1. In the sidebar, navigate to **AudienceStream &gt; Audience Connectors**.
+1. In the sidebar, navigate to **Connect &gt; Audience Connectors**.
 1. Click the **Jobs** tab.
 1. Click your job to open it.
 1. Click **Start**.

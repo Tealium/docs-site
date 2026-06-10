@@ -9,7 +9,7 @@ To be successfully imported, the CSV files must be formatted correctly. For info
 
 ## 1. Add a file import data source
 
-  1. Navigate to **Sources &gt; Data Sources**.
+  1. Navigate to **Connect &gt; Data Sources**.
   1. Click **&#43; Add Data Source**.
   1. Under **Categories**, click **File Import** and select the **File Import** platform.
   1. In the **Name** field, enter a unique name related to the file type.

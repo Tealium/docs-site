@@ -78,7 +78,7 @@ Add the `ut.*` variables to your iQ configuration [using the data bundle]() name
 
 Local and session storage keys appear automatically in the data layer using `localStorage` and `sessionStorage` variables.
 
-To use these storage variables, navigate to **iQ Tag Management &gt; Data Layer &gt; &#43;Add Variable**. Select **UDO Variable** and enter in a source variable name. Use `ls.variable_name` for local storage and `ss.variable_name` for session storage.
+To use these storage variables, navigate to **Tag Management &gt; Data Layer &gt; &#43;Add Variable**. Select **UDO Variable** and enter in a source variable name. Use `ls.variable_name` for local storage and `ss.variable_name` for session storage.
 
 For more information about local and session storage variables, see [Data Layer Variables]().
 

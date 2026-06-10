@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 
 以下の手順を使用します：
 
-1. サイドバーで **AudienceStream &gt; Discover** に移動します。
+1. サイドバーで **Activate &gt; Discover** に移動します。
 1. **Audience Sizing** タブをクリックします。
 1. 過去7日間を表す日付範囲を選択します。
 1. 次のルールを選択または作成します：
@@ -64,7 +64,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/examples/
 * 最もエンゲージメントのあるマーケティングチャネル。
 * 彼らのクーポン使用頻度。
 
-1. サイドバーで **AudienceStream &gt; Discover** に移動します。
+1. サイドバーで **Activate &gt; Discover** に移動します。
 1. **Audience Sizing** タブをクリックします。
 1. 12月のホリデーシーズンを表す日付範囲を選択します（例：12月1日 - 12月31日）。
 1. 次のルールを選択または作成します：

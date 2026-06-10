@@ -27,7 +27,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 この属性を追加するための手順は以下の通りです：
 
-1. **AudienceStream &gt; Attributes** に移動し、**Add Attribute** をクリックします。
+1. **Transform &gt; Visitor / Visit Attributes** に移動し、**Add Attribute** をクリックします。
 1. スコープを **Visitor** に構成し、**Continue** をクリックします。
 1. データタイプ **Number** を選択し、**Continue** をクリックします。
 1. 属性の名前を `Lifetime Order Value` と入力します。

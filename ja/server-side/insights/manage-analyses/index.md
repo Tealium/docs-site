@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順で分析を作成します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. **New analysis**をクリックします。  
 利用可能なデータセットが表示されます。
 1. データセットを選択し、**USE IN ANALYSIS**をクリックします。
@@ -26,7 +26,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順で分析を公開します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. **File**をクリックし、**Publish**をクリックします。
 
@@ -36,7 +36,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順で分析を共有します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. **File**をクリックし、**Share**をクリックします。
 1. ユーザー名、グループ、またはメールアドレスを入力します。
@@ -48,7 +48,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順で分析にデータセットを追加します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. **Data**セクションのデータセットのドロップダウンリストを展開し、次の図に示すように**Add a new dataset**をクリックします：  
 ![](/images/server-side/data-insights/data-insights-add-dataset.png)
@@ -59,7 +59,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 ## フィルターの追加
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. フィルターアイコンをクリックします。  
 ![](/images/server-side/data-insights/data-insights-icon-bar.png) 
@@ -81,7 +81,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順でビジュアルのタイトルを変更します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. 変更したいビジュアルのタイトルをダブルクリックします。
 1. **Edit title**ウィンドウで、テキストボックスに新しいタイトルを入力し、**Save**をクリックします。
@@ -89,7 +89,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 ## ビジュアルのタイプの変更
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択し、変更するビジュアルを選択します。
 1. **Visuals**セクションの**CHANGE VISUAL TYPE**の下で、新しいビジュアルタイプを選択します。  
 ビジュアルタイプにホバーすると、そのビジュアルタイプに必要なフィールドが表示されます。
@@ -101,7 +101,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順で分析にビジュアルを追加します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. **Visuals**の下で**Add**をクリックします。
 1. [Create an analysis]()で説明されているように、フィールドとビジュアルを追加します。
@@ -111,7 +111,7 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 以下の手順でデータ集約を変更します：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択します。
 1. **Visuals**の下で、変更したいフィールドのメニューをクリックし、**Aggregate**の値を選択します。
 1. 公開されたダッシュボードを更新するには、**PUBLISH**をクリックします。
@@ -120,20 +120,20 @@ url: https://docs.tealium.com/ja/server-side/insights/manage-analyses/
 
 著者の役割を持つユーザーは、以下のように分析を印刷することができます：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択し、**File**をクリックし、**Print**をクリックします。  
 
 ## 分析のエクスポート
 
 著者の役割を持つユーザーは、以下のように分析をエクスポートすることができます：
 
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択し、**File**をクリックし、**Export as PDF**をクリックします。  
 PDFが準備できたとき、次のメッセージが表示されます：
 ![](/images/server-side/data-insights/data-insights-pdf-ready-msg.png) 
 1. エクスポートしたPDFをダウンロードするには、**DOWNLOAD**をクリックします。
 
 ## 分析のコピー
-1. **Insights &amp;gt; Dashboards**に移動し、**Analyses**をクリックします。
+1. **Analyze &gt; Analyze &gt; Insights &gt; Dashboards**に移動し、**Analyses**をクリックします。
 1. 分析を選択し、**File**をクリックし、**Save As Analysis**をクリックします。 
 1. 新しい分析のコピーの名前を入力し、**SAVE**をクリックします。

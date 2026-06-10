@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/partners-and-industries/tech-partners/tealium-b
 
 |統合タイプ| この統合から期待できること| 製品要件| セットアップガイド|
 |---| ---| ---| ---|
-|Braze Web SDK Tag|  Braze Web SDKを使用すると、次のことができます：&lt;ul&gt;&lt;li&gt;セッションデータを収集する&lt;/li&gt;&lt;li&gt;ユーザーを特定する（Tealium統合データレイヤーを使用）&lt;/li&gt;&lt;li&gt;ウェブ/モバイルブラウザー経由で購入やカスタムイベントを記録する。&lt;/li&gt;&lt;/ul&gt; Braze Web SDKを実装することで、ウェブとモバイルチャネルを通じてユーザーのより完全なビューを作成できます。また、Web SDKを使用して、アプリ内ウェブメッセージやウェブプッシュ通知を送信することでユーザーとのエンゲージメントを図ることができます。 |  Tealium iQ Tag Management |  [Braze Web SDK Tag セットアップガイド]() |
+|Braze Web SDK Tag|  Braze Web SDKを使用すると、次のことができます：&lt;ul&gt;&lt;li&gt;セッションデータを収集する&lt;/li&gt;&lt;li&gt;ユーザーを特定する（Tealium統合データレイヤーを使用）&lt;/li&gt;&lt;li&gt;ウェブ/モバイルブラウザー経由で購入やカスタムイベントを記録する。&lt;/li&gt;&lt;/ul&gt; Braze Web SDKを実装することで、ウェブとモバイルチャネルを通じてユーザーのより完全なビューを作成できます。また、Web SDKを使用して、アプリ内ウェブメッセージやウェブプッシュ通知を送信することでユーザーとのエンゲージメントを図ることができます。 |  Tealium Tag Management |  [Braze Web SDK Tag セットアップガイド]() |
 
 ## サーバーサイド統合
 
@@ -27,5 +27,5 @@ url: https://docs.tealium.com/ja/partners-and-industries/tech-partners/tealium-b
 
 |統合タイプ| この統合から期待できること| 製品要件| セットアップガイド|
 |---| ---| ---| ---|
-|Braze Remote Commands|  このBraze統合は、次のものを使用します：&lt;ul&gt;&lt;li&gt;**Native Braze SDK** - Brazeメソッドをラップするリモートコマンドモジュール。&lt;/li&gt;&lt;li&gt;**Braze Remote Command Tag** - イベントトラッキングをネイティブのBrazeコールに変換するタグ。&lt;/li&gt;&lt;/ul&gt; このソリューションは、Tag Managementの利便性を活用して、ベンダー固有のコードをアプリに追加することなくネイティブのBraze実装を構成します。アプリにBrazeリモートコマンドモジュールを追加すると、必要なBrazeライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャーのインストールを使用している場合、別途Braze SDKをインストールする必要はありません。 |  Tealium iQ Tag Management |  [Remote Command: Braze](https://docs.tealium.com/platforms/remote-commands/integrations/braze/) |
+|Braze Remote Commands|  このBraze統合は、次のものを使用します：&lt;ul&gt;&lt;li&gt;**Native Braze SDK** - Brazeメソッドをラップするリモートコマンドモジュール。&lt;/li&gt;&lt;li&gt;**Braze Remote Command Tag** - イベントトラッキングをネイティブのBrazeコールに変換するタグ。&lt;/li&gt;&lt;/ul&gt; このソリューションは、Tag Managementの利便性を活用して、ベンダー固有のコードをアプリに追加することなくネイティブのBraze実装を構成します。アプリにBrazeリモートコマンドモジュールを追加すると、必要なBrazeライブラリが自動的にインストールされ、ビルドされます。依存関係マネージャーのインストールを使用している場合、別途Braze SDKをインストールする必要はありません。 |  Tealium Tag Management |  [Remote Command: Braze](https://docs.tealium.com/platforms/remote-commands/integrations/braze/) |
 

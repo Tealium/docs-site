@@ -12,8 +12,8 @@ url: https://docs.tealium.com/api/v2/omnichannel-file-status/objects/
 | `created at` | UTC timestamp | The date and time when the file status was created, expressed in [UTC format with the designator &#39;Z&#39;](https://www.w3.org/TR/NOTE-datetime). |
 | `file.name` | string | The name of the file. |
 | `file.size` | number | The file size, in bytes. |
-| `file.source-type` | string | The service used for uploading the file: FTP, SFTP, Tealium S3, or S3. |
-| `file.source-host` | string | The name of the service.&lt;/br&gt;     * Hosting account for FTP/SFTP &lt;/br&gt;   * Bucket name for S3/Tealium S3 |
+| `file.source-type` | string | The service used for uploading the file: SFTP, Tealium S3, or S3. |
+| `file.source-host` | string | The name of the service.&lt;/br&gt;     * Hosting account for SFTP &lt;/br&gt;   * Bucket name for S3/Tealium S3 |
 | `line_count` | number | The number of rows in the file. |
 | `status.state` | string | Indicates the processing action on the file. Possible values are:&lt;/br&gt; * `DOWNLOADING`&lt;/br&gt; * `DOWNLOADED`&lt;/br&gt;   * `PROCESSING`&lt;/br&gt;   * `PROCESSED`&lt;/br&gt; |
 | `status.timestamp` | UTC timestamp | The date and time when the `[status-state]` was recorded, expressed in [UTC format with the designator &#39;Z&#39;](https://www.w3.org/TR/NOTE-datetime). |

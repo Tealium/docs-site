@@ -42,7 +42,7 @@ Amazon Redshift JDBCのドライバは、データベースに接続する前に
 2.  新しいプロファイルに名前を付けます。例えば、Tealiumアカウントとプロファイルを組み合わせた名前、`mycompany-main`など。
 3.  **ドライバ**ドロップダウンリストから`Amazon Redshift JDBC Driver (com.amazon.redshift.jdbc41.Driver)`を選択します。  
   ![](/images/server-side/sql-workbench-connection-profile.jpg)
-4.  Tealiumアカウントで、**DataAccess &gt; EventDB**または**DataAccess &gt; AudienceDB**に移動します。
+4.  Tealiumアカウントで、**Store &gt; EventDB**または**Store &gt; AudienceDB**に移動します。
 5.  **DB接続詳細を取得**をクリックします。  
   **DB接続詳細**ダイアログが表示されます。このウィンドウを開いたまま進行します。以下の例では、機密性を保つために資格情報が削除されています。  
     ![](/images/server-side/sql-workbench-connection-details.jpg)

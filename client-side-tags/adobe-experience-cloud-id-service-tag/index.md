@@ -95,7 +95,7 @@ To map events, refer to [Create an Event Mapping]()
 
 If you are using version 4.0 or newer of the Experience Cloud ID Service tag, the `doesOptInApply` option must be set to `true` for event data to be sent to Tealium. To set `doesOptInApply`, create a JavaScript extension scoped to the Adobe Experience Cloud ID Service Tag, as follows:
 
-1. Go to **iQ Tag Management &gt; Extensions**.
+1. Go to **Tag Management &gt; Extensions**.
 1. Click the **Advanced** tab and click **&#43; Add** for **JavaScript Code**.
 1. For **Scope**, select **Tag Scoped Extensions**, then select **Adobe Experience Cloud ID Service**.
 1. Under **Configuration**, enter the following code:  

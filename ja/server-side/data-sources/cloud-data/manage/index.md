@@ -16,7 +16,7 @@ url: https://docs.tealium.com/ja/server-side/data-sources/cloud-data/manage/
 
 クラウドデータソースを作成するには、以下の手順を使用します：
 
-1. **Sources &gt; Data Sources** に移動します。
+1. **Connect &gt; Data Sources** に移動します。
 1. **&#43; Add Data Source** をクリックします。
 1. **Categories** の下で **Data Warehouse** をクリックし、ベンダーを選択します。
 1. **Name** フィールドに、使用事例に関連するデータソースの一意の名前を入力します。

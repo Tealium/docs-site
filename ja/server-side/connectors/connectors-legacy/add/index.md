@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/connectors-legacy/add/
 
 EventStreamまたはAudienceStreamコネクターを追加するには、以下の手順に従ってください：
 
-1. **EventStream &gt; Event Connectors** または **AudienceStream &gt; Audience Connectors** に移動します。
+1. **Connect &gt; Event Connectors** または **Connect &gt; Audience Connectors** に移動します。
 1. **&#43; Add Connector** をクリックします。
 1. コネクターを検索または閲覧し、追加するコネクターをクリックします。  
 コネクターの概要、ベンダーのドキュメントへのリンク、および構成手順が表示されます。

@@ -181,6 +181,6 @@ In `utag.js` versions 4.48 and earlier, you must manually add a local or session
 
 To use these storage variables:
 
-1. Go to **iQ Tag Management &gt; Data Layer &gt; &#43;Add Variable**.
+1. Go to **Tag Management &gt; Data Layer &gt; &#43;Add Variable**.
 1. Select **UDO Variable**.
 1. Enter the source variable name.

@@ -32,7 +32,7 @@ url: https://docs.tealium.com/ja/server-side/connectors/frequency-capping/cooldo
 
 コネクタアクションにクールダウングループを適用するには、次の手順を使用します：
 
-1. サイドバーで、**AudienceStream &gt; Audience Connectors**に移動します。
+1. サイドバーで、**Connect &gt; Audience Connectors**に移動します。
 1. **My Connectors**をクリックします。
 1. コネクタをクリックして詳細を展開し、**Edit**をクリックします。  
 1. **Actions**タブをクリックし、ドロップダウンリストを使用して頻度制限を適用したいアクションを選択します。

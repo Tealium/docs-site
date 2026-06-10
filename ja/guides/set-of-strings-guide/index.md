@@ -60,7 +60,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 
 訪問中に閲覧されたリゾートの上位3カ国を保存するための文字列セット属性を作成します。次のエンリッチメントを使用します：
 
-1. **AudienceStream &gt; Visitor/Visit Attributes** に移動します。
+1. **Transform &gt; Visitor / Visit Attributes** に移動します。
 1. **&#43; Add Attribute** をクリックします。
 1. **Visit scope** を選択し、**Continue** をクリックします。
 1. **Set of Strings** データタイプを選択します。
@@ -98,7 +98,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 
 **Set of Strings** 属性を作成するには：
 
-1. **AudienceStream &gt; Visitor/Visit Attributes** に移動します。
+1. **Transform &gt; Visitor / Visit Attributes** に移動します。
 1. **&#43; Add Attribute** をクリックします。
 1. **Visit scope** を選択し、**Continue** をクリックします。
 1. **Set of Strings** データタイプを選択します。
@@ -146,7 +146,7 @@ Rule &#34;page_type&#34; equals (ignore case) &#34;resort_details&#34;
 文字列セット属性をトラッキング、フィルタリング、および訪問のインタラクションのアクティベーションに実装した今、セットアップを拡張するための次のステップを検討してください：
 
 * **監査と使用状況のモニタリング**  
-[Trace]() と [Visitor Profile Sampler]() を使用して、セッション全体で属性がどのように集められ、使用されているかを確認します。
+[Trace]() と [Live visitors]() を使用して、セッション全体で属性がどのように集められ、使用されているかを確認します。
 * **新しいチャネルへの展開**  
 SMS、ディスプレイ広告、プッシュ通知などの他のコネクタで文字列セット属性を使用し、一貫したクロスチャネル体験を作り出します。
 

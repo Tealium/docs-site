@@ -1,11 +1,11 @@
 ---
 title: タグ
-description: Tealium iQ Tag Managementでブラウザベースのタグを統合する方法について説明します。
+description: Tealium Tag Managementでブラウザベースのタグを統合する方法について説明します。
 url: https://docs.tealium.com/ja/partners-and-industries/partner-with-us/tags/
 ---
 
 
-独自のJavaScriptタグをTealium Tag Marketplaceで提供したい場合や、ユーザーが長いリリースサイクルを待たずに貴社のタグをサイトに追加できるようにしたい場合は、このガイドをお読みください。タグの仕組みと、Tealium iQ Tag Managementとの正式な統合によるメリットについて説明します。
+独自のJavaScriptタグをTealium Tag Marketplaceで提供したい場合や、ユーザーが長いリリースサイクルを待たずに貴社のタグをサイトに追加できるようにしたい場合は、このガイドをお読みください。タグの仕組みと、Tealium Tag Managementとの正式な統合によるメリットについて説明します。
 
 ## タグの仕組み
 
@@ -29,7 +29,7 @@ url: https://docs.tealium.com/ja/partners-and-industries/partner-with-us/tags/
 
 ### ブラウザへの読み込み
 
-ベンダータグはTealium Universal Tag（utag.js）によって読み込まれます。これは、iQ Tag Managementアカウントからの構成ロジックが含まれるラッパータグです。後続のベンダータグは、非同期のJavaScriptを使用して読み込まれ、タグマネージャの外部での実行時と同じように実行されます。
+ベンダータグはTealium Universal Tag（utag.js）によって読み込まれます。これは、Tag Managementアカウントからの構成ロジックが含まれるラッパータグです。後続のベンダータグは、非同期のJavaScriptを使用して読み込まれ、タグマネージャの外部での実行時と同じように実行されます。
 
 ベンダーのタグライブラリや画像ピクセルは、ページのDOMに同じように表示されます。Tealiumでは、タグができる限り仕様どおりに読み込まれるように努めています。まれにコードの変更が必要になった場合も、最終的なトラッキングビーコンが要件に適合するよう確認しています。
 

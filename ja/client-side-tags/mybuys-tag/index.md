@@ -1,6 +1,6 @@
 ---
 title: MyBuysタグの構成ガイド
-description: この記事では、iQ Tag Management（TiQ）アカウントでMyBuysタグを構成する方法について説明します。
+description: この記事では、Tag Management（TiQ）アカウントでMyBuysタグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/mybuys-tag/
 ---
 ## タグの構成

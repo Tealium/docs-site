@@ -36,7 +36,7 @@ To learn more, see the Usercentrics documentation, [Assign a data attribute](htt
 
 Use the following steps to implement the Usercentrics tag within Tealium iQ Tag Management using the JavaScript Code extension:
 
-1. Go to **Tealium iQ Tag Management &gt; Extensions &gt; Add Extension** and select the **JavaScript Code** extension to add the script for Usercentrics V1 or Usercentrics V2.
+1. Go to **Tag Management &gt; Extensions &gt; Add Extension** and select the **JavaScript Code** extension to add the script for Usercentrics V1 or Usercentrics V2.
 1. Add the **JavaScript Code** extension.  
     If you have not previously used the JavaScript Code extension and need to learn how, see JavaScript Code Extension.
 
@@ -96,7 +96,7 @@ The steps in this section describe how to add the extension, install the bookmar
 
 Use the following steps to add the Usercentrics extension:
 
-1. Go to **iQ Tag Management &gt; Extensions &gt; Add Extension** and click the **Privacy** tab.
+1. Go to **Tag Management &gt; Extensions &gt; Add Extension** and click the **Privacy** tab.
 1. Select one of the Usercentrics extensions: **Usercentrics V1** or **Usercentrics V2**.  
 Select the version that corresponds with the version currently in use by your organization.
 1. In the **Title** field, enter a meaningful title to be used for this extension.  

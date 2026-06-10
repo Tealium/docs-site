@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 拡張機能を追加するには、以下の手順を使用します：
 
-1. サイドバーで **iQ Tag Management &gt; Extensions** に移動します。
+1. サイドバーで **Tag Management &gt; Extensions** に移動します。
 1. **&#43; Add Extension** をクリックします。
 1. マルチタブメニューを使用して拡張機能のカテゴリを参照し、使用したい拡張機能の隣にある **&#43; Add** をクリックします。
 1. 拡張機能を識別するための **Title** を入力します。
@@ -53,7 +53,7 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/manage/
 
 拡張機能の変更履歴を表示するには：
 
-1. サイドバーで **iQ Tag Management &gt; Extensions** に移動します。
+1. サイドバーで **Tag Management &gt; Extensions** に移動します。
 1. レビューしたい拡張機能をクリックします。拡張機能の詳細が表示されます。
 1. **View Change History** をクリックします。
 

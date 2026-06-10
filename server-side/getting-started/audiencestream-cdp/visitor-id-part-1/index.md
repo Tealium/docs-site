@@ -9,7 +9,7 @@ In this example, we will capture email addresses during user registration events
 
 This step assumes you already have an event attribute for `email_address` and an event named `user_register` that sends it. From here, we will create a string visitor attribute for email address, test it in Audience Discovery, then create the final visitor ID attribute.
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes** and click **&#43; Add Attribute**.
+1. Go to **Transform &gt; Visitor/Visit Attributes** and click **&#43; Add Attribute**.
 1. Select the scope of **Visitor** and click **Continue**.
 1. Select the data type **String** and click **Continue**.
 1. Enter the attribute name `Email Address`.

@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ---
 データソースを追加するには:
 
-1. **Sources &gt; Data Sources**に移動し、**&#43; Add Data Source**をクリックします。  
+1. **Connect &gt; Data Sources**に移動し、**&#43; Add Data Source**をクリックします。  
 データソースモーダルが表示されます。
 1. **Categories**サイドパネルで、**Developer Languages**をクリックし、**HTTP API**を選択します。  
     ![](/images/tutorials/eventstream-getting-started-data-source-http.png)

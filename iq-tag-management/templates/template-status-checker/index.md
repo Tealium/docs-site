@@ -54,7 +54,7 @@ From the **Admin** menu, click **Template Status Checker**.
 
 Use the following steps to check the status of your templates from the **Tags** screen:
 
-1. Go to **iQ Tag Management &gt; Tags**.
+1. Go to **Tag Management &gt; Tags**.
 1. In the header toolbar, click **Run Template Status Checker**.
 1. The **Status** column displays in the list of tags with a colored indicator for the status of each template.  
     ![](/images/iq-tag-management/template-status-checker-column.png)

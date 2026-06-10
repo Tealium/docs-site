@@ -9,7 +9,7 @@ The live events chart displays events in real time coming from all data sources 
 
 ## Use live events
 
-Access live events by going to **EventStream &gt; Live Events**.
+Access live events by going to **Validate &gt; Live Events**.
 
 ![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
 

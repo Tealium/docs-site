@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/manage-f
 
 ログファイルには、関数からのメッセージと、実行中に発生したエラーが含まれています。以下の手順を使用して、過去24時間のログファイルを表示します。
 
-1. **Functions &amp;gt; Overview**に移動し、リストから関数をクリックします。
+1. **Transform &gt; Functions**に移動し、リストから関数をクリックします。
 1. **ログ**タブをクリックします。
 
 ## ログのエクスポート
@@ -25,7 +25,7 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/manage-f
 
 ログをエクスポートするには、以下の手順を使用します：
 
-1. **Functions &amp;gt; Overview**に移動し、リストから関数をクリックします。
+1. **Transform &gt; Functions**に移動し、リストから関数をクリックします。
 1. **ログのエクスポート**をクリックします。
 1. 時間枠を選択するか、開始日と終了日と時間を選択するために**カスタム**を選択します。
 1. **カスタム**を選択した場合は、**日付と時間の範囲を選択**をクリックし、以下の操作を行います：
@@ -45,6 +45,6 @@ url: https://docs.tealium.com/ja/server-side/functions/manage-functions/manage-f
 
 エクスポートされたログのリストを表示し、ログファイルをダウンロードするには、以下の手順を使用します：
 
-1. **Functions &amp;gt; Overview**に移動し、リストから関数をクリックします。
+1. **Transform &gt; Functions**に移動し、リストから関数をクリックします。
 1. **ログ**タブをクリックし、次に**エクスポートされたログの表示**をクリックします。
 1. エクスポートされたログファイルの**ダウンロード**をクリックします。

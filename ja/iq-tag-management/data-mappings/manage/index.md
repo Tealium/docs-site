@@ -107,7 +107,7 @@ AudienceStream属性は、あなたの訪問に関するエンリッチされた
 
 ## データマッピングの変更履歴を表示する
 
-データマッピングの変更履歴を表示するには、**iQ Tag Management &gt; Tags**に移動し、**View Tag History**をクリックします。
+データマッピングの変更履歴を表示するには、**Tag Management &gt; Tags**に移動し、**View Tag History**をクリックします。
 
 ## マッピングの編集
 

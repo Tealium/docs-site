@@ -7,7 +7,7 @@ Google DV360 カスタマーマッチコネクターインサイトは、Google 
 
 ## コネクターインサイトへのアクセス
 
-コネクターインサイトにアクセスするには、**AudienceStream &gt; Audience Connectors** に移動し、**Google DV360 カスタマーマッチコネクター** を検索して **Insights** をクリックします。
+コネクターインサイトにアクセスするには、**Connect &gt; Audience Connectors** に移動し、**Google DV360 カスタマーマッチコネクター** を検索して **Insights** をクリックします。
 
 ![](/images/server-side-connectors/insights/using-connector-insights-google-dv360-customer-match.png)
 

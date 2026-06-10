@@ -49,7 +49,7 @@ This extended rule condition is available only when using the `contains` operato
 
 Follow these steps to include a Tally attribute key and its value in a rule:
 
-1. Navigate to **Server-Side Tools &gt; Manage Rules**.
+1. Navigate to **Transform &gt; Rules**.
 1. Add a new rule or select an existing rule to edit.
 1. Under **Conditions**, select the Tally attribute you want to check from the first drop-down list.
 1. Select the **contains** operator in the next drop-down list.

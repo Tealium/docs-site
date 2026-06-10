@@ -27,7 +27,7 @@ After creating an audience in the app, connect it to Tealium to load audience re
 
 ## Create the Snowflake data source
 
-1. In Tealium, go to **Sources &gt; Data Sources**.
+1. In Tealium, go to **Connect &gt; Data Sources**.
 1. Click **Add Data Source**.
 1. Select **Snowflake** under **Data Cloud**.
 

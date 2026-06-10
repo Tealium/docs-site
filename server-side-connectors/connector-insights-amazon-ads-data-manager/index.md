@@ -9,7 +9,7 @@ The Amazon Ads Data Manager connector insights is an integration with Amazon Ads
 
 ## Access
 
-To access connector insights, go to **AudienceStream &gt; Connectors**, find the Amazon Ads Data Manager connector action, and click **Insights**.
+To access connector insights, go to **Connect &gt; Audience Connectors**, find the Amazon Ads Data Manager connector action, and click **Insights**.
 
 ![](/images/server-side-connectors/connector-insights-btn.png)
 

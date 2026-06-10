@@ -1,6 +1,6 @@
 ---
-title: Tealium iQ Tag Management
-description: Tealium iQ Tag Management is a web interface for managing tags without the need to edit page code. Replace the hard-coded tags on your website with a single tag, then manage your tags easily without needing a lengthy development cycle.
+title: Tag Management
+description: Tag Management is a web interface for managing tags without the need to edit page code. Replace the hard-coded tags on your website with a single tag, then manage your tags easily without needing a lengthy development cycle.
 url: https://docs.tealium.com/iq-tag-management/
 ---
 

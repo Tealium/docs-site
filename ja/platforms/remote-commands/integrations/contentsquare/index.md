@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/contents
   * [Tealium for iOS-Swift](/ja/platforms/ios-swift/)
 * 以下のいずれかのリモートコマンド統合：
   * [Contentsquare Remote Command JSON File](/ja/platforms/remote-commands/integrations/contentsquare/#json-template) (Android-Kotlin 1.0.0&#43;またはiOS-Swift 2.12.0&#43;が必要)
-  * Tealium iQ Tag ManagementのContentsquare Remote Commandタグ
+  * Tealium Tag ManagementのContentsquare Remote Commandタグ
 
 ## 動作原理
 
@@ -23,7 +23,7 @@ Contentsquare統合は3つのアイテムを使用します：
 
 アプリにContentsquareリモートコマンドモジュールを追加すると、必要なContentsquareライブラリが自動的にインストールされビルドされます。依存関係マネージャーのインストールを使用している場合、別途Contentsquare SDKをインストールする必要はありません。
 
-リモートコマンドオプションには2つあります：JSON構成ファイル、またはiQ Tag Managementを使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のための推奨オプションで、アプリ内またはリモートでホストされます。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細はこちら](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)。
+リモートコマンドオプションには2つあります：JSON構成ファイル、またはTag Managementを使用してマッピングを構成します。JSON構成ファイルは、ベンダー統合のための推奨オプションで、アプリ内またはリモートでホストされます。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細はこちら](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)。
 
 ## インストール
 

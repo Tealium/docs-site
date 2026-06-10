@@ -1,16 +1,16 @@
 ---
 title: データレイヤー
-description: ユニバーサル データ オブジェクトの組み込み変数について学習します。
+description: ユニバーサルデータオブジェクトの組み込み変数について学びます。
 url: https://docs.tealium.com/ja/platforms/javascript/data-layer/
----ユニバーサルデータオブジェクト（UDO）には、読み込まれたページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、`utag.js`によって作成されたクッキー、ページからの標準DOM変数、読み込まれた構成に関するTealium固有の変数が含まれます。
+---ユニバーサルデータオブジェクト（UDO）には、読み込まれたページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、`utag.js`によって作成されたクッキー、ページの標準DOM変数、および読み込まれた構成に関するTealium固有の変数が含まれます。
 
-利用可能なデータレイヤー変数の種類について[詳しく学ぶ]()。
+[詳細はこちら]()でデータレイヤー変数の種類について学びましょう。
 
 ## 標準ページデータ
 
-以下の変数は、ウェブページで利用可能な標準的なJavaScriptプロパティから生成されます。これらの変数は、ロードルール、拡張機能、データマッピング、条件とともにiQインターフェース内に自動的に表示されます。
+以下の変数は、ウェブページで利用可能な標準JavaScriptプロパティから生成されます。これらの変数は、ロードルール、拡張機能、データマッピング、および条件を使用するためにiQインターフェース内で自動的に表示されます。
 
-これらの値は、ページのURLを前提としています：
+これらの値はページのURLを前提としています：
 
 ```
 http://www.example.com/path/file.html?param1=value1#hash=fragment
@@ -18,35 +18,35 @@ http://www.example.com/path/file.html?param1=value1#hash=fragment
 
 | 変数 | 説明 | 例 |
 | --- | --- | --- |
-| `dom.domain`| URLの完全なドメイン。ソース: `location.hostname` | `www.example.com` |
-| `dom.hash` | URLのハッシュフラグメント（#文字を除く）。ソース: `location.hash` | `hash=fragment` |
-| `dom.pathname` | URLのパス、クエリパラメータとドメインを除く。ソース: `location.pathname` | `&#34;/path/file.html&#34;` |
-| `dom.query_string`| URLの完全なクエリストリング。ソース: `location.search` |  `param1=value1` |
-| `dom.referrer` | 前のページのURL。ソース: `document.referrer` |   |
-| `dom.title` | `&lt;title&gt;`タグ間のテキスト。ソース: `document.title`| `&#34;Test Page Name&#34;`|
-| `dom.url` | ページの完全なURL。ソース: `document.URL` | `http://www.example.com/` `PATH/FILE.html?param1=VALUE#hash=FRAGMENT` |
-| `dom.viewport_height` | ブラウザビューポートの高さ。ソース: `window.innerHeight` または `document.documentElement. clientHeight` | `1320` |
-| `dom.viewport_width` | ブラウザビューポートの幅。ソース: `window.innerWidth` または `document.documentElement. clientWidth` | `1278` |
+| `dom.domain`| URLの完全なドメイン。出典: `location.hostname` | `www.example.com` |
+| `dom.hash` | URLのハッシュフラグメント（#文字を除く）。出典: `location.hash` | `hash=fragment` |
+| `dom.pathname` | URLのパス、クエリパラメータとドメインを除く。出典: `location.pathname` | `&#34;/path/file.html&#34;` |
+| `dom.query_string`| URLの完全なクエリ文字列。出典: `location.search` |  `param1=value1` |
+| `dom.referrer` | 前のページのURL。出典: `document.referrer` |   |
+| `dom.title` | `&lt;title&gt;`タグの間に含まれるテキスト。出典: `document.title`| `&#34;Test Page Name&#34;`|
+| `dom.url` | ページの完全なURL。出典: `document.URL` | `http://www.example.com/` `PATH/FILE.html?param1=VALUE#hash=FRAGMENT` |
+| `dom.viewport_height` | ブラウザビューポートの高さ。出典: `window.innerHeight` または `document.documentElement. clientHeight` | `1320` |
+| `dom.viewport_width` | ブラウザビューポートの幅。出典: `window.innerWidth` または `document.documentElement. clientWidth` | `1278` |
 
 ## クッキー
 
-以下の変数は、`utag_main`という名前の単一のクッキーに保存され、維持されます。または、`utag_main_`クッキーネームスペース（バージョン4.50から）のスタンドアロンクッキーとして保存されます。すべての変数は、データオブジェクト内に別々の変数として表示され、すべて`cp.utag_main_`でプレフィックスされます。
+以下の変数は、`utag_main`という単一のクッキーに格納および維持されるか、バージョン4.50からは`utag_main_`クッキー名前空間のスタンドアロンクッキーとして存在します。すべての変数は、`cp.utag_main_`で接頭辞が付けられた別々の変数としてデータオブジェクトに表示されます。
 
 これらの変数をiQ構成に追加するには、**Data Layer**タブから`Tealium Built-in Data`という名前の[データバンドルを使用]()します。
 
 | 変数 | 説明 | 例 |
 | --- | --- | --- |
-| `cp.utag_main__pn` | **セッションページビューカウント** - 現在のセッションで表示されたページの数 | `2` |
-| `cp.utag_main__se` | **セッションイベントカウント** - 現在のセッションで追跡されたイベントの数 | `2` |
-| `cp.utag_main__sn` | **セッションカウント** - このユニークな訪問のセッション数 | `1` |
+| `cp.utag_main__pn` | **セッションページビューカウント** - 現在のセッションで表示されたページ数 | `2` |
+| `cp.utag_main__se` | **セッションイベントカウント** - 現在のセッションで追跡されたイベント数 | `2` |
+| `cp.utag_main__sn` | **セッションカウント** - このユニーク訪問のセッション数 | `1` |
 | `cp.utag_main__ss` | **セッションの開始かどうか** - ページビューがセッションの開始かどうかを示すフラグ（1=はい、0=いいえ） | `0` |
 | `cp.utag_main__st` | **タイムスタンプ** - ミリ秒単位のUnix/Epochタイムスタンプ | `1522968400449` |
-| `cp.utag_main_ses_id` | **セッションID** - セッションの一意の識別子 | `1522965346545` |
-| `cp.utag_main_v_id` | **訪問ID** - 各訪問の一意の識別子 | `016297481...` (45文字) |
+| `cp.utag_main_ses_id` | **セッションID** - セッションのユニーク識別子 | `1522965346545` |
+| `cp.utag_main_v_id` | **訪問ID** - 各訪問のユニーク識別子 | `016297481...` (45文字) |
 
 ## Tealiumデータ
 
-以下の変数には、ページに読み込まれた`utag.js`に関する情報と、内部で使用される他の値が含まれています。
+以下の変数は、ページに読み込まれた`utag.js`に関する情報と、内部で使用される他の値を含みます。
 
 `ut.*`変数をiQ構成に追加するには、**Data Layer**タブから`Tealium Built-in Data`という名前の[データバンドルを使用]()します。
 
@@ -55,18 +55,18 @@ http://www.example.com/path/file.html?param1=value1#hash=fragment
 | `tealium_account` | アカウント名 | `sandbox` |
 | `tealium_datasource` | データソースキー | `&#34;abc123&#34;` |
 | `tealium_environment` | 公開環境 | `prod` |
-| `tealium_event` | Tealiumイベント名（直接構成されていない場合は&#34;view&#34;または&#34;link&#34;にデフォルト構成） | `view` |
+| `tealium_event` | Tealiumイベント名（直接構成されていない場合はデフォルトで&#34;view&#34;または&#34;link&#34;） | `view` |
 | `tealium_library_name` | ライブラリ名 | `utag.js` |
 | `tealium_library_version` | ライブラリバージョン | `4.44.0` |
 | `tealium_profile` | アカウントプロファイル | `main` |
 | `tealium_random` | ランダム数 | `7782219635308327` |
 | `tealium_session_id` | `utag_main_ses_id`のコピー | `1522965346545` |
-| `tealium_timestamp_epoch` | 現在のUnixタイムスタンプ（秒） | `1522956509` |
+| `tealium_timestamp_epoch` | 現在のUnixタイムスタンプ（秒単位） | `1522956509` |
 | `tealium_timestamp_local` | ローカルタイムスタンプ | `2018-04-05T12:28:29.019` |
-| `tealium_timestamp_utc` | UTCタイムスタンプ  | `2018-04-05T19:28:29.019Z` |
+| `tealium_timestamp_utc` | UTCタイムスタンプ | `2018-04-05T19:28:29.019Z` |
 | `tealium_visitor_id` | `utag_main_v_id`のコピー | `016297481...` (45文字) |
 | `ut.account` | tealium_accountのコピー | `sandbox` |
-| `ut.domain` | クッキーを構成するためのトップレベルドメイン。 | `example.com` |
+| `ut.domain` | クッキー構成用のトップレベルドメイン | `example.com` |
 | `ut.env` | `tealium_environment`のコピー | `prod` |
 | `ut.event` | `tealium_event`のコピー | `view` |
 | `ut.profile` | `tealium_profile`のコピー | `main` |
@@ -74,17 +74,17 @@ http://www.example.com/path/file.html?param1=value1#hash=fragment
 | `ut.version` | 公開バージョン（`utag.js`バージョン &#43; タイムスタンプ） | `ut4.44.201710171745` |
 | `ut.visitor_id` | `tealium_visitor_id`のコピー |`016297481...` (45文字) |
 
-## ローカル保存とセッション保存
+## ローカルおよびセッション保存
 
-ローカル保存とセッション保存のキーは、`localStorage`と`sessionStorage`変数を使用してデータレイヤーに自動的に表示されます。
+ローカルおよびセッション保存キーは、`localStorage`および`sessionStorage`変数を使用してデータレイヤーに自動的に表示されます。
 
-これらの保存変数を使用するには、**iQタグ管理 &gt; データレイヤー &gt; &#43;変数を追加**に移動します。**UDO変数**を選択し、ソース変数名を入力します。ローカル保存の場合は`ls.variable_name`、セッション保存の場合は`ss.variable_name`を使用します。
+これらの保存変数を使用するには、**Tag Management &gt; Data Layer &gt; &#43;Add Variable**に移動します。**UDO Variable**を選択し、ソース変数名を入力します。ローカル保存の場合は`ls.variable_name`を、セッション保存の場合は`ss.variable_name`を使用します。
 
-ローカル保存とセッション保存変数についての詳細は、[データレイヤー変数]()を参照してください。
+ローカルおよびセッション保存変数についての詳細は、[Data Layer Variables]()を参照してください。
 
 ## サンプル
 
-以下は、`utag.data`内の組み込みデータのサンプルです。
+以下は、`utag.data`内に見つかる組み込みデータのサンプルです。
 
 ```json
 {  

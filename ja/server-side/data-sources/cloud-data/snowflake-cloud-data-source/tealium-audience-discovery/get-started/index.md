@@ -39,7 +39,7 @@ SnowflakeマーケットプレイスからSnowflake用Tealium Audience Discovery
 
 1. オーディエンスリストでアクションメニューを開き、**Share**をクリックします。
 1. **Database**、**Schema**、**Role**の値をコピーします。
-1. Tealiumで**Sources &gt; Data Sources**に移動し、**Add Data Source**をクリックします。
+1. Tealiumで**Connect &gt; Data Sources**に移動し、**Add Data Source**をクリックします。
 1. **Data Cloud**の下で**Snowflake**を選択します。
 1. 名前を入力し、コピーした値を使用して接続を構成します。
 1. 処理を有効にし、処理構成を構成します。

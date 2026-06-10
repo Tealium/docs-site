@@ -321,8 +321,8 @@ Below listed errors are specific to Omnichannel Files; they are different from t
 |---| ---| ---|
 |Unknown file prefix, unable to parse file| File for the supplied prefix (name) could not be found. Either the file doesn&#39;t exist or there is a typographical error in the prefix.| Re-upload the file and double check the file prefix in the Omnichannel Definitions tab. If the error persists, please contact your Tealium Account Manager.|
 |DBObject of size `{###}`` is over Max BSON size `{###}`| File is too large to be processed| Split up your file data into multiple file definitions|
-|Failed to download (FTP, SFTP, S3) file| File could not be downloaded due to errors in your service credentials (see [File Import Service Configuration]()).|  * For FTP/SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
-|Invalid connection type&lt;br&gt; **OR**&lt;br&gt; Could not find required (FTP, SFTP, S3) configuration parameters for definition| Your service credentials (under [File Import Service Configuration]()) could not be authenticated.|  * For FTP/SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+|Failed to download (SFTP, S3) file| File could not be downloaded due to errors in your service credentials (see [File Import Service Configuration]()).|  * For SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+|Invalid connection type&lt;br&gt; **OR**&lt;br&gt; Could not find required (SFTP, S3) configuration parameters for definition| Your service credentials (under [File Import Service Configuration]()) could not be authenticated.|  * For SFTP, double check the Host name, user name, and password&lt;br&gt; * For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
 
 ### Configuration and definition errors
 

@@ -11,7 +11,7 @@ Tealiumのデータソースについての詳細は、[About Data Sources]()を
 
 Tealium Connectデータソースを追加するには、以下の手順を完了します：
 
-1. **Sources &gt; Data Sources**に移動します。
+1. **Connect &gt; Data Sources**に移動します。
 1. **&#43; Add Data Source**をクリックします。
 1. **Select a Platform**画面から**Tealium Connect**を選択します。
 1. **Summary**の下の**Name**フィールドに名前を入力し、**Continue**をクリックします。

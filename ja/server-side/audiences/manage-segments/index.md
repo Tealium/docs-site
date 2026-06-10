@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 複数のオーディエンスで使用できるオーディエンスセグメントを作成するには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. **SEGMENTS** タブをクリックし、**&#43; New Segment** をクリックします。
 1. セグメントの**名前**を入力します。[DataAccess]()製品（EventStore、AudienceStore、EventDB、またはAudienceDB）を使用する場合、セグメント名は128文字以内でなければなりません。そうでない場合、DataAccessはセグメント名を切り詰め、エラーが発生する可能性があります。
 1. 条件を追加するには、属性、演算子、および値を選択します。
@@ -33,7 +33,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 お気に入りにセグメントを保存するには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. **SEGMENTS** タブをクリックします。
 1. セグメント名の隣の星をクリックします。
 
@@ -41,7 +41,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 セグメントリストをラベルまたはお気に入りでフィルタリングするには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. **SEGMENTS** タブをクリックします。
 1. 特定のラベルでフィルタリングするには、**Labels** をクリックしてラベルを選択します。
 1. お気に入りのセグメントのみを表示するには、**Favorite** をクリックして **Favorite** を選択します。
@@ -52,7 +52,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 セグメントを編集するには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. **SEGMENTS** タブをクリックし、編集するセグメントを選択します。
 1. **Edit** をクリックします。
     * 必要に応じて条件を追加または編集します。
@@ -65,6 +65,6 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage-segments/
 
 セグメントを削除するには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audiences** に移動し、**SEGMENTS** タブをクリックします。
+1. **Activate &gt; Audiences** に移動し、**SEGMENTS** タブをクリックします。
 1. セグメントのメニューをクリックし、**Delete** を選択します。
 セグメントは削除されます。保存して公開する必要はありません。

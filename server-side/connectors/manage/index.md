@@ -11,7 +11,7 @@ When you deactivate a connector, none of the actions for the connector will fire
 
 To activate or deactivate a connector, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Click the checkbox next to the connector to be activated or deactivated.  
 You can select multiple connectors that have the same status. A toolbar is displayed showing the number of connectors selected and actions that can be taken. For example:  
 ![](/images/server-side/connectors/activate-deactivate.png)
@@ -24,7 +24,7 @@ After activating a connector, you can activate the connector actions.
 
 To activate or deactivate an action, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Click the connector, then click the **Actions** tab.
 1. Click the checkbox next to the actions to be activated or deactivated.  
 You can select multiple actions that have the same status. A toolbar is displayed showing the number of actions selected and actions that can be taken. For example:
@@ -36,7 +36,7 @@ You can select multiple actions that have the same status. A toolbar is displaye
 
 To change the action type of an action, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Click the connector, then click the **Actions** tab.
 1. Click the action. The **Action Details** screen is displayed.
 1. In the upper-right corner of the screen, click the more actions button and click **Change Action Type**.
@@ -51,7 +51,7 @@ To change the action type of an action, use the following steps:
 
 To duplicate a connector and the associated actions, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Click the connector menu, then click **Duplicate**.  
     ![](/images/server-side/connectors/duplicate-connector.png)  
     A new, identical connector, including the associated actions, is shown in the list of connectors. The connector name is appended with **- copy**.  
@@ -65,7 +65,7 @@ To duplicate a connector and the associated actions, use the following steps:
 
 To delete a connector, use the following steps: 
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.  
+1. Go to **Connect &gt; Connectors &gt; Overview**.  
 1. Click the connector menu, then click **Delete**.  
 If there are actions associated with the connector, a prompt is displayed to verify that you want to delete all actions for the connector.
 1. To delete the connector and all actions, click **Delete**.
@@ -76,7 +76,7 @@ If there are actions associated with the connector, a prompt is displayed to ver
 
 To delete a connector action, use the following steps: 
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Select a connector by clicking that row. The **Connector Details** screen is displayed.
 1. Click the **Actions** tab.
 1. Click the action menu for the action you want to delete, then select **Delete**.
@@ -107,7 +107,7 @@ The following actions can be done for multiple actions at the same time:
 
 Use the following steps to perform bulk actions for a connector action:
 
-1. Go to **Server-side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Select a connector by clicking that row. The **Connector Details** screen is displayed.
 1. Click the **Actions** tab.
 1. Click the box next to each action you want to change or delete.  
@@ -121,7 +121,7 @@ If you selected **Delete**, click **Delete** in the confirmation dialog. If you 
 
 To get the connector ID for a connector, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Select a connector by clicking that row.  
 The **Connector Details** screen is displayed, which shows the UID for the connector below the connector name. For example:  
 ![](/images/server-side/connectors/get-uid.png)
@@ -131,7 +131,7 @@ The **Connector Details** screen is displayed, which shows the UID for the conne
 
 To get the action ID for a connector action, use the following steps:
 
-1. Go to **Server-Side &gt; Connectors &gt; Overview**.
+1. Go to **Connect &gt; Connectors &gt; Overview**.
 1. Select a connector by clicking that row. 
 1. On the **Connector Details** screen, click the **Actions** tab.
 1. Select an action by clicking that row.  

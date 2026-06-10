@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-attributes/
 
  事前にロードされた属性は変更できませんが、事前にロードされた属性を複製して、そのコピーを変更することができます。複製には元の属性のすべてのエンリッチメントとルールが含まれます。 
 
-**AudienceStream &gt; 訪問 / 訪問属性** にアクセスして、属性を表示します。左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
+**Transform &gt; Visitor / Visit Attributes** にアクセスして、属性を表示します。左側にある利用可能なオプションをクリックして、表示をフィルタリングすることもできます。属性をクリックして、その詳細を表示します。
 
 ![](/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png)
 

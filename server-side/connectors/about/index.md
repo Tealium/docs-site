@@ -104,7 +104,7 @@ You can view the trends data for the **Past 24 hours**, **Past 7 days**, or **Pa
 
 Use the following steps to view error information for a connector action:
 
-1. Go to **Server-Side &gt; Connectors**, then select a connector.
+1. Go to **Connect &gt; Connectors**, then select a connector.
 1. Click the **Actions** tab, then select an action that has errors.  
 The **Action Details** screen is displayed.
 1. Under **Trends**, select **24 Hours**, **7 Days**, **30 Days**, or a custom date range.
@@ -116,7 +116,7 @@ The detailed view includes a sample of the affected code with a timestamp contai
 
 Use the following steps to export sampled errors for a connector:
 
-1. Go to **Server-Side &gt; Connectors**, then select a connector.
+1. Go to **Connect &gt; Connectors**, then select a connector.
 1. Click the **Actions** tab, then select an action that has errors.  
 The **Action Details** screen is displayed.
 1. Click **Export Sampled Errors**.  

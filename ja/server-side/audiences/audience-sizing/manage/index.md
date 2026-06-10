@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 
 ジョブの日付範囲を構成し、ルール条件を選択するには、以下の手順を使用します：
 
-1. サイドバーから **AudienceStream &gt; Discover** へ移動します。
+1. サイドバーから **Activate &gt; Discover** へ移動します。
 2. **Audience Sizing** タブをクリックします。
 3. **Historical Date Range** の下で、カレンダーツールを使用して日付範囲の開始日と終了日を選択します。
    システムは選択された日付間で活動があった訪問のみを見つけます（発見します）。指定された日付範囲内に活動がなかった訪問や、[プロファイル保持時間]()によって削除された訪問は検索されません。
@@ -62,7 +62,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/manage/
 
 ジョブがコネクタにリンクされたので、以下の手順を使用してアクティブ化します：
 
-1. サイドバーから **AudienceStream &gt; Audience Connectors** へ移動します。
+1. サイドバーから **Connect &gt; Audience Connectors** へ移動します。
 1. **Jobs** タブをクリックします。
 1. ジョブをクリックして開きます。
 1. **Start** をクリックします。

@@ -348,8 +348,8 @@ curl -H &#39;Authorization: Bearer {token}&#39; \
 |---| ---| ---|
 |`Unknown file prefix, unable to parse file`|指定されたプレフィックス（`name`）のファイルが見つかりませんでした。ファイルが存在しないか、プレフィックスに誤字がある可能性があります。|ファイルを再アップロードし、[ファイルインポートサービスの構成]()でファイルプレフィックスをダブルチェックしてください。エラーが解消しない場合は、Tealiumのアカウントマネージャに連絡してください。|
 |`DBObject of size {###} is over Max BSON size {###}`|ファイルが処理できるサイズを超えています|ファイルデータを複数のファイル定義に分割してください|
-|`Failed to download (FTP, SFTP, S3) file`|サービス資格情報にエラーがあるため、ファイルをダウンロードできませんでした。[ファイルインポートサービスの構成]()を参照してください。|FTP/SFTPの場合は、ホスト名、ユーザー名、パスワードをダブルチェックしてください。S3/Tealium S3の場合は、アクセス/シークレットキーとバケット/プレフィックスをダブルチェックしてください。|
-|`Invalid connection type`&lt;br&gt; – **または** – &lt;br&gt; `Could not find required (FTP, SFTP, S3) configuration parameters for definition`| [ファイルインポートサービスの構成]()のサービス資格情報が認証できませんでした|FTP/SFTPの場合は、ホスト名、ユーザー名、パスワードをダブルチェックしてください。S3/Tealium S3の場合は、アクセス/シークレットキーとバケット/プレフィックスをダブルチェックしてください。|
+|`Failed to download (SFTP, S3) file`|サービス資格情報にエラーがあるため、ファイルをダウンロードできませんでした。[ファイルインポートサービスの構成]()を参照してください。|SFTPの場合は、ホスト名、ユーザー名、パスワードをダブルチェックしてください。S3/Tealium S3の場合は、アクセス/シークレットキーとバケット/プレフィックスをダブルチェックしてください。|
+|`Invalid connection type`&lt;br&gt; – **または** – &lt;br&gt; `Could not find required (SFTP, S3) configuration parameters for definition`| [ファイルインポートサービスの構成]()のサービス資格情報が認証できませんでした|SFTPの場合は、ホスト名、ユーザー名、パスワードをダブルチェックしてください。S3/Tealium S3の場合は、アクセス/シークレットキーとバケット/プレフィックスをダブルチェックしてください。|
 
 ### 構成および定義エラー
 

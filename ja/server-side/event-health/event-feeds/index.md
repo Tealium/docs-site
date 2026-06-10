@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/event-feeds/
 
 イベントフィードを作成するには：
 
-1. **EventStream &gt; Live Events**に移動します。
+1. **Validate &gt; Live Events**に移動します。
 1. **&#43; Add Event Feed**をクリックします。  
 **Create Event Feed** ダイアログが表示されます。
 1. **Title** と **Notes** を構成します。

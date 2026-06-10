@@ -1,74 +1,74 @@
 ---
 title: Acxiom Identity ResolutionのためのTealium Functionsの使用
-description: この記事では、Acxiom identityプロバイダから確率的なアイデンティティデータを取得し、訪問プロファイルに保存するための訪問関数の使用方法について説明します。
+description: この記事では、訪問関数を使用してAcxiomアイデンティティプロバイダーから確率的アイデンティティデータを取得し、訪問プロファイルに保存する方法について説明します。
 url: https://docs.tealium.com/ja/industries/tealium-identity-partners/acxiom-identity-resolution/
 ---
-Acxiomからのデータを取得するために、訪問関数の使用を推奨します。訪問関数についての詳細は、[Event and Visitor Functions](/ja/server-side/functions/event-visitor-functions/about/)を参照してください。
+Acxiomからデータを取得するために訪問関数の使用を推奨します。訪問関数についての詳細は、[イベントと訪問関数](/ja/server-side/functions/event-visitor-functions/about/)を参照してください。
 
-訪問関数は以下のことを行います：
+訪問関数は以下の操作を行います：
 
-*   Acxiomから追加のデータをリクエストします。
-*   追加のデータと`tealium_visitor_id`を含むイベントをTealium Collectに送信します。
+*   Acxiomから追加データをリクエストします。
+*   追加データと`tealium_visitor_id`を含むイベントをTealium Collectに送信します。
 
-関数から送信されたイベントによって、EventStreamの属性と訪問の属性が豊かになります。
+EventStream属性と訪問属性は、関数から送信されたイベントによって豊かにされます。
 
 ## 前提条件
 
-*   Tealium EventSteamとTealium Functions。
+*   Tealium EventSteamおよびTealium Functions。
 *   データソースとしてのTealium Collect API。
-*   追加情報を保存するための訪問の属性。
-*   訪問の属性をエンリッチするために必要な属性を持つ`acxiom_function_event`というタイトルのイベント仕様。
-*   イベント属性の値に訪問の属性を構成するためのエンリッチメント。
+*   追加情報を保存する訪問属性。
+*   訪問属性をエンリッチするために必要な属性を持つイベント仕様である`acxiom_function_event`。
+*   イベント属性の値に訪問属性を構成するエンリッチメント。
 
-Acxiom Real Tagタグがインストールされていると、この関数は最も効果的に動作します。この識別子は、訪問の信頼度を高めます。
+Acxiom Real Tagタグがインストールされている場合、関数は最も効果的に動作します。この識別子は訪問の信頼度を高めます。
 
-## イベントを処理するための関数の作成
+## イベントを処理する関数の作成
 
 関数を作成するには：
 
-1.  **Functions**に移動します。
+1.  **Transform &gt; Functions**に移動します。
 2.  **Add Function**をクリックします。
 3.  関数の名前を入力します。
-4.  関数の説明を記入します。
+4.  関数の説明をノートに入力します。
 5.  **Processed Event**トリガーを選択します。
-6.  トリガーのイベントフィードを選択します。
+6.  トリガーのためのイベントフィードを選択します。
 7.  **Continue**をクリックします。
 8.  下記のサンプルコードを**Code**ボックスに入力します。
-9.  必要に応じてコードをカスタマイズします。
+9.  構成に必要に応じてコードをカスタマイズします。
 10.  関数を保存します。
 
-**Test**機能とPostman API Workbenchなどのツールを使用して、関数をテストすることができます。
+**Test**機能とPostman API Workbenchなどのツールを使用して関数をテストできます。
 
-関数の作成についての詳細は、[Managing Functions](/ja/server-side/functions/manage-functions/create-function/)を参照してください。
+関数の作成に関する詳細は、[Managing Functions](/ja/server-side/functions/manage-functions/create-function/)を参照してください。
 
-## 例の関数コード
+## 例示関数コード
 
-以下に示すテスト例の関数は、送信した属性に基づいて訪問プロファイルをマッチングしようとします：
+以下に含まれるテスト例関数は、送信された属性に基づいて訪問プロファイルをマッチングしようとします：
 
 | 属性 | 説明 |
 | --------- | ----------- |
-| `acxiom_function_event` | イベント仕様の名前 |
+| `acxiom_function_event` | イベント仕様名 |
 | `realId`   | Acxiom rTag |
 | `address`  | ユーザーの住所 |
 | `phone`    | ユーザーの電話番号 |
 | `email`    | ユーザーのメールアドレス |
 | `fullName` | ユーザーのフルネーム |
 
-関数は、プロファイルの豊かさを増すための追加のユーザーデータを返します。
+関数はプロファイルエンリッチメントのための追加ユーザーデータを返します。
 
 このコードは現在ベータ版です。
 
 ```js
-// イベントスコープの関数では、以下のモジュールが使用可能です: event, auth
+// イベントスコープ関数では、event, authなどのモジュールが使用可能です
 import { event, store, tealium } from &#34;tealium&#34;;
 (async () =&gt; {
     
-    // これらのエンドポイントは、Acxiomとのセットアップに特有のものです。
+    // これらのエンドポイントは、Acxiomとの構成に特有のものです。
     const access_url=&#34;https://mydomain.com/metrics/access_token&#34;
     const query_url=&#34;https://mydomain.com/metrics&#34;
     const query_name=&#34;demo_dsapi_match&#34;
 
-    // このコメントを外すと、イベントオブジェクトで何が使用可能かを正確に知ることができます
+    // イベントオブジェクトで使用可能なものを正確に知るために、これをアンコメントしてください
     //console.log(&#39;Data available:\n&#39;, JSON.stringify(event, null, 2));
 
     const data = {};
@@ -82,7 +82,7 @@ import { event, store, tealium } from &#34;tealium&#34;;
     data.customer_last_name = event?.data?.udo?.customer_last_name;
     data.customer_full_name = `${data.customer_first_name} ${data.customer_last_name}`
 
-    // acxiom_real_idが利用可能かどうかを確認します
+    // acxiom_real_idが利用可能かチェックします
     // if (typeof data.acxiom_real_id === &#34;undefined&#34;) {
     //     console.error(&#34;acxiom_entity_id is unavailable.&#34;);
     //     return;
@@ -137,7 +137,7 @@ import { event, store, tealium } from &#34;tealium&#34;;
     // console.log(&#34;Status: &#34; &#43; response.status);
     console.log(&#34;Body: &#34; &#43; JSON.stringify(body, null, 2));
 
-    // Acxiomからのレスポンスデータが利用可能かどうかを確認します
+    // Acxiomからの応答データが利用可能かチェックします
     if (!response.ok) {
         console.error(&#34;Acxiom response data is unavailable.&#34;);
         return;

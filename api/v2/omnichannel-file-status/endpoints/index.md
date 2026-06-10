@@ -348,8 +348,8 @@ The following table describes errors specific to processing and downloading and 
 |---| ---| ---|
 |`Unknown file prefix, unable to parse file`| File for the supplied prefix ( `name`) could not be found. Either the file does not exist or there is a typographical error in the prefix.| Re-upload the file and double check the file prefix in the [File Import Service Configuration](). If the error persists, contact your Tealium Account Manager.|
 |`DBObject of size {###} is over Max BSON size {###}`| File is too large to be processed| Split your file data into multiple file definitions|
-|`Failed to download (FTP, SFTP, S3) file`|  File could not be downloaded due to errors in your service credentials. See [File Import Service Configuration](). |  For FTP/SFTP, double check the host name, user name, and password. For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
-| `Invalid connection type`&lt;br&gt; – **OR** – &lt;br&gt; `Could not find required (FTP, SFTP, S3) configuration parameters for definition`| Your service credentials under the [File Import Service Configuration]() could not be authenticated|  For FTP/SFTP, double check the host name, user name, and password. For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+|`Failed to download (SFTP, S3) file`|  File could not be downloaded due to errors in your service credentials. See [File Import Service Configuration](). |  For SFTP, double check the host name, user name, and password. For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
+| `Invalid connection type`&lt;br&gt; – **OR** – &lt;br&gt; `Could not find required (SFTP, S3) configuration parameters for definition`| Your service credentials under the [File Import Service Configuration]() could not be authenticated|  For SFTP, double check the host name, user name, and password. For S3/Tealium S3, double check the Access/Secret keys and Bucket/prefix |
 
 ### Configuration and definition errors
 

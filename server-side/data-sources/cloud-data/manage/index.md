@@ -16,7 +16,7 @@ The configuration for cloud data sources is nearly the same for every vendor. Fo
 
 To create a cloud data source, use the following steps:
 
-1. Go to **Sources &gt; Data Sources**.
+1. Go to **Connect &gt; Data Sources**.
 1. Click **&#43; Add Data Source**.
 1. Under **Categories**, click **Data Warehouse** and select a vendor.
 1. In the **Name** field, enter a unique name for the data source related to your use case.

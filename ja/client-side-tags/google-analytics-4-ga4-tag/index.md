@@ -1,6 +1,6 @@
 ---
 title: Google Analytics 4（GA4）タグの構成ガイド
-description: この記事では、Tealium iQ Tag ManagementアカウントでGoogle Analytics 4（GA4）タグを構成する方法と、実装中に注意するべき事項について説明します。
+description: この記事では、Tealium Tag ManagementアカウントでGoogle Analytics 4（GA4）タグを構成する方法と、実装中に注意するべき事項について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/google-analytics-4-ga4-tag/
 ---
 ## 動作原理

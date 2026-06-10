@@ -54,7 +54,7 @@ Tealiumに統合したい**アプリ**を検索します。スケジュールベ
         * **既知のユーザー識別子を使用して訪問ID属性でスティッチングする場合**：レシピ内でユーザー識別子の値を含むデータピルを選択します。**Visitor Attribute ID**フィールドに対応する訪問属性IDを入力します。レシピからのイベントに構成される訪問ID属性を構成するために、任意の訪問ID属性のエンリッチメントを構成する必要があります。詳細については、[Visitor ID attribute enrichment for Tealium Connect]()を参照してください。
         * **匿名識別子に基づいてデータをインポートする場合**：レシピ内で匿名識別子を含むデータピルを選択します。**Visitor Attribute ID**フィールドを空のままにします。この値は直接`tealium_visitor_id`を構成します。
     * **Visitor Attribute ID** - この数値は、既存の訪問ID属性に`tealium_visitor_id`をマッチングするのに役立ちます。たとえば`_{Account}_{Profile}_{Visitor Attribute ID}_{Visitor ID Value}_`です。
-        * **既知のユーザー識別子を使用して訪問ID属性でスティッチングする場合**：訪問属性IDを入力します。**AudienceStream &gt; Visitor/Visit Attributes**に移動し、使用したい訪問属性を選択し、属性IDをTealium Eventsアプリにコピーします。詳細については、[Attribute IDs]()を参照してください。
+        * **既知のユーザー識別子を使用して訪問ID属性でスティッチングする場合**：訪問属性IDを入力します。**Transform &gt; Visitor / Visit Attributes**に移動し、使用したい訪問属性を選択し、属性IDをTealium Eventsアプリにコピーします。詳細については、[Attribute IDs]()を参照してください。
         * **匿名識別子に基づいてデータをインポートする場合**：このフィールドを空のままにします。
     * **Attributes to add** - **Attributes to add**セクションを展開します。WorkatoがTealiumに送信するイベントの各イベント属性のキーと値を指定します。**Attributes to add**には、大文字小文字を無視して一意の名前を持つフィールドが含まれていることを確認してください。&lt;br&gt;Tealiumはすべてのイベントフィールド名を小文字で処理します。
         * ここに追加しないレシピのデータはTealiumに送信されません。

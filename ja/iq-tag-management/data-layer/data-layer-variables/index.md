@@ -184,6 +184,6 @@ localStorage.setItem(&#34;last_category_viewed&#34;, &#34;Apparel&#34;)
 
 これらの保存変数を使用するには：
 
-1. **iQ Tag Management &gt; Data Layer &gt; &#43;Add Variable**に進みます。
+1. **Tag Management &gt; Data Layer &gt; &#43;Add Variable**に進みます。
 1. **UDO Variable**を選択します。
 1. ソース変数名を入力します。

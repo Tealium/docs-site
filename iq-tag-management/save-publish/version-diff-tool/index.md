@@ -23,7 +23,7 @@ You cannot use the Diff Tool on versions published before December 19, 2014.
 
 Use the following steps to interact with the Diff Tool:
 
-1. In the sidebar, go to **iQ Tag Management &gt; Client-Side Versions.**
+1. In the sidebar, go to **Tag Management &gt; Client-Side Versions.**
 1. Click the published version you want to compare and choose one of its publish environments.
 1. Click **Compare using Diff tool** in the environment you just selected.  
 The tool is immediately grayed out to signal that this version will be compared first.  

@@ -224,7 +224,7 @@ Migratorツールを使用する前に、以下の制限に注意してくださ
 Adobe AnalyticsタグをTealium Toolsを使用して移行するには、次の手順を完了してください：
 
 1. 次のURLでJSON定義を使用してTealium ToolsにAdobe Experience Platform Web SDK Migratorを追加します：https://solutions.tealium.net/hosted/tealiumTools/aep_migrate/aep_migrate.json。カスタムツールを追加する方法の詳細については、[Manage Custom Tools]()を参照してください。
-1. **iQ Tag Management &gt; Tags**に移動し、Adobe Experience Platform Web SDK Migratorツールを起動します。
+1. **Tag Management &gt; Tags**に移動し、Adobe Experience Platform Web SDK Migratorツールを起動します。
 1. 移行の一環として既存のAdobe Analyticsタグを無効にするには、**Disable existing tag**を選択します。
 1. 移行の範囲を選択します：
     * すべてのAppMeasurementタグ

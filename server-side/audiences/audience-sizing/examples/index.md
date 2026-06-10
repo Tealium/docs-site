@@ -22,7 +22,7 @@ This example assumes that you have already set up the necessary date selections 
 
 Use the following steps:
 
-1. In the sidebar, go to **AudienceStream &gt; Discover**.
+1. In the sidebar, go to **Activate &gt; Discover**.
 1. Click the **Audience Sizing** tab.
 1. Select a date range that represents the last 7 days.
 1. Select or create the following rules:
@@ -64,7 +64,7 @@ This example assumes that you have already set up the necessary date selections 
 * The marketing channel they engage with most.
 * Their coupon usage frequency.
 
-1. In the sidebar, go to **AudienceStream &gt; Discover**.
+1. In the sidebar, go to **Activate &gt; Discover**.
 1. Click the **Audience Sizing** tab.
 1. Select a date range that represents the December holiday season (for example, December 1 - December 31.
 1. Select or create the following rules:  

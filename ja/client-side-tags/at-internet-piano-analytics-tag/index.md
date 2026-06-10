@@ -1,6 +1,6 @@
 ---
 title: AT Internet Piano Analytics タグの構成ガイド
-description: この記事では、Tealium iQ Tag Management アカウントで AT Internet Piano Analytics タグを構成する方法について説明します。
+description: この記事では、Tealium Tag Management アカウントで AT Internet Piano Analytics タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/at-internet-piano-analytics-tag/
 ---
 Piano Analytics は、Analytics Suite 2 の論理的な進化です。このソリューションは、20年以上にわたり継続的に開発され、数万人の顧客に支持されてきました。Piano Analytics は、ユーザー中心、倫理的な設計、価値志向のデータモデルを持ち、業界が直面する深刻なデータ品質の問題を解決します。

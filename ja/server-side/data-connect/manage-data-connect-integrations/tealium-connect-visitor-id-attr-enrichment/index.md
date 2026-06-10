@@ -9,7 +9,7 @@ Tealium Connectで訪問ID属性をエンリッチメントするには、以下
   1. Workatoレシピの訪問ID属性と一緒に使用するイベント属性の名前をメモします。例えば、`customer_id`。
   1. すでに存在しない場合は、イベント属性名でUniversal Data Objectタイプの文字列イベント属性を作成します。
 1. ビルトインのイベント属性`tealium_datasource={{tealium_data_source_key}}`に基づいてTealium Connectデータソースからのイベントを識別するルールを作成します。このルールがまだ存在しない場合は、あなたのデータソースキーは[Tealium Connectデータソース]()で見つけることができます。
-1. **AudienceStream &gt; 訪問/訪問属性**に移動します。
+1. **Transform &gt; Visitor / Visit Attributes**に移動します。
 1. Tealium Connectデータと一緒に使用したい訪問IDを選択します。訪問IDがまだ存在しない場合は、以下の手順を完了します：
   1. **&#43; 属性を追加**をクリックします。
   1. 属性スコープで**訪問**を選択し、**続行**をクリックします。

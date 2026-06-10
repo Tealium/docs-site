@@ -90,6 +90,9 @@
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
       <li class="f5 dib mr4">
+         <a href="/ja/release-notes/" class="dim link mid-gray">リリースノート</a>
+      </li>
+      <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
       </li>
         
@@ -112,6 +115,9 @@
     <button class="js-toggle f6 pa0 bg-white bn" style="height: 24px;" data-target=".mobilenav"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 640 640"><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" fill="#051838" /></svg>
 </button>
     <ul class="list ma0 pa0">
+      <li class="f5 dib mr4">
+         <a href="/ja/release-notes/" class="dim link mid-gray">リリースノート</a>
+      </li>
       <li class="f5 dib mr4">
          <a href="/ja/help/" class="dim link mid-gray">ヘルプ</a>
       </li>
@@ -372,6 +378,9 @@
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/dynamic-yield-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Dynamic Yield</span></a>
+      </li>
+  <li  class="tl dib ma0 w-100">
+      <a href="/ja/server-side-connectors/elastic-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Elastic</span></a>
       </li>
   <li  class="tl dib ma0 w-100">
       <a href="/ja/server-side-connectors/eloqua-connector/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>Eloqua</span></a>
@@ -1289,6 +1298,8 @@
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/dynamic-yield-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".dynamic-yield-connector">Dynamic Yield</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/elastic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".elastic-connector">Elastic</a></li>
+    <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/eloqua-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eloqua-connector">Eloqua</a></li>
     <li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/emailicious-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".emailicious-connector">Emailicious</a></li>
@@ -1815,28 +1826,28 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="大規模な訪問プロファイルの取り扱い">大規模な訪問プロファイルの取り扱い</h2>
-<p><a href="#send-entire-visitor-data-micro-batch"><strong>Send Entire Visitor Data</strong> アクション</a>は、各SQL INSERT文に訪問のJSON全体を埋め込みます。Redshift Data APIはSQL文ごとに100kBの制限を課しているため、訪問プロファイルがこの制限を超えると、コネクタアクションは <code>ValidationException: Query string size exceeds 100 kB</code> のエラーで失敗します。</p>
+<p><a href="#send-entire-visitor-data-micro-batch"><strong>Send Entire Visitor Data</strong> アクション</a>は、各SQL INSERT文に訪問のJSON全体を埋め込みます。Redshift Data APIはSQL文ごとに100kBの制限を課しているため、訪問プロファイルがこの制限を超えると、コネクタアクションは <code>ValidationException: Query string size exceeds 100 kB</code> エラーで失敗します。</p>
 <p>この問題を避けるために、以下のガイドラインに従ってください：</p>
 <ul>
 <li><strong>小規模な訪問プロファイルにはSend Entire Visitor Dataを使用します。</strong><br>
-数キロバイトを超える訪問プロファイルは、制限を超えるリスクが高まります。訪問プロファイルが100kBの制限を大幅に下回る場合にこのアクションを使用してください。<a href="/ja/server-side/audiences/visitor-lookup-tool/">訪問検索ツール</a>を使用して、プロファイルの全体を取得し、そのサイズを評価してください。</li>
+数キロバイトを超える訪問プロファイルは制限を超えるリスクが高まります。訪問プロファイルが100kBの制限を大幅に下回る場合にこのアクションを使用してください。<a href="/ja/server-side/visitor-search/">訪問検索</a>を使用して完全なプロファイルを取得し、そのサイズを評価してください。</li>
 <li><strong>プロファイル全体ではなく、マッピングされた属性を送信します。</strong><br>
-<a href="#send-custom-visitor-data-micro-batch"><strong>Send Custom Visitor Data</strong></a> アクションを使用して、必要な属性のみを選択し、訪問のJSON全体を送信するのではなく、選択した属性のみを送信してください。</li>
+<a href="#send-custom-visitor-data-micro-batch"><strong>Send Custom Visitor Data</strong></a> アクションを使用して、必要な属性のみを選択し、訪問のJSON全体を送信するのではなく、必要な属性のみを送信します。</li>
 <li><strong>S3およびRedshiftを使用して、大量または履歴データをロードします。</strong><br>
-大規模な訪問JSONペイロードや一度限りの大量アップロードの場合、訪問データを <a href="/ja/server-side-connectors/amazon-s3-connector/">S3コネクタ</a> に送信し、COPYコマンドを使用してRedshiftにデータをロードしてください。詳細については、<a href="https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html">Amazon Redshift: Amazon S3からのCOPYコマンドを使用したロード</a>を参照してください。</li>
+大規模な訪問JSONペイロードや一度きりの大量アップロードの場合、訪問データを <a href="/ja/server-side-connectors/amazon-s3-connector/">S3コネクタ</a> に送信し、COPYコマンドを使用してRedshiftにデータをロードします。詳細については、<a href="https://docs.aws.amazon.com/redshift/latest/dg/t_loading-tables-from-s3.html">Amazon Redshift: Amazon S3からのCOPYコマンドを使用したロード</a>を参照してください。</li>
 <li><strong>大規模なペイロードにはWebhook (JDBC) コネクタを使用します。</strong>
-<a href="/ja/server-side-connectors/webhook-jdbc/">Webhook (JDBC) コネクタ</a>はJDBCを介して直接Redshiftに接続し、Redshift Data APIの100kB制限を回避します。訪問プロファイルが100kBを超える場合は、このオプションを使用してください。</li>
+<a href="/ja/server-side-connectors/webhook-jdbc/">Webhook (JDBC) コネクタ</a>はJDBCを介して直接Redshiftに接続し、Redshift Data APIの100kB制限を回避します。訪問プロファイルが100kBを超える場合はこのオプションを使用してください。</li>
 </ul>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスにアクセスし、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>コネクタを追加した後、次の構成を構成します：</p>
+<p>コネクタマーケットプレイスにアクセスして新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>認証タイプ</strong>
 <ul>
 <li>認証タイプを選択します：
 <ul>
 <li><strong>STS</strong>：次のフィールドが必要です <strong>Assume Role: ARN</strong>, <strong>Assume Role: Session Name</strong>。詳細については、<a href="#sts-credentials">STS credentials</a>を参照してください。</li>
-<li><strong>Access Key</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> と <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">Access Key and Secret credentials</a>を参照してください。</li>
+<li><strong>Access Key</strong>：次のフィールドが必要です <strong>AWS Access Key</strong> および <strong>AWS Secret Access Key</strong>。詳細については、<a href="#access-key-and-secret-credentials">Access Key and Secret credentials</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
@@ -1870,14 +1881,14 @@
 <li>Access Key認証に必要です。AWSシークレットアクセスキーを提供してください。</li>
 </ul>
 </li>
-<li><strong>地域</strong>
+<li><strong>Region</strong>
 <ul>
-<li>（必須）地域を選択してください。</li>
+<li>（必須）リージョンを選択してください。</li>
 </ul>
 </li>
 <li><strong>Secret Name</strong>
 <ul>
-<li>（オプション）AWS Secrets Managerメソッドを使用してRedshiftにアクセスする場合、TealiumがRedshift接続に使用するSecret ARNを動的に引き出すためのSecret Nameを提供してください。</li>
+<li>（オプション）AWS Secrets Managerメソッドを使用してRedshiftにアクセスする場合、TealiumがRedshift接続に使用するSecret ARNを動的に取得するために、Secret Nameを提供してください。</li>
 </ul>
 </li>
 <li><strong>Workgroup Name</strong>
@@ -1897,7 +1908,7 @@
 </li>
 </ul>
 <h3 id="aws-redshiftへの接続を作成する">AWS Redshiftへの接続を作成する</h3>
-<p>TealiumはAWS Redshiftインスタンスへの接続が必要です。クラスター、ワークスペース、データベースのリストを表示し、イベントデータとオーディエンスデータをRedshiftテーブルにアップロードします。認証には2つのオプションがあります：</p>
+<p>Tealiumは、クラスター、ワークスペース、データベースのリストを表示し、イベントおよびオーディエンスデータをRedshiftテーブルにアップロードするために、AWS Redshiftインスタンスへの接続を必要とします。認証には2つのオプションがあります：</p>
 <ul>
 <li><a href="#access-key-and-secret-credentials">Access KeyとAccess Secretを提供する</a>。</li>
 <li><a href="#sts-credentials">STS認証情報を提供する</a>。</li>
@@ -1921,7 +1932,7 @@
 <ol>
 <li>AWS管理コンソールにログインし、<strong>IAM</strong>（Identity and Access Management）サービスにアクセスします。</li>
 <li><strong>ロール</strong>をクリックし、<strong>ロールの作成</strong>をクリックします。</li>
-<li><strong>信頼されたエンティティタイプ</strong>で、AWSアカウントを選択します。</li>
+<li><strong>信頼されたエンティティタイプ</strong>の下で、AWSアカウントを選択します。</li>
 <li>別のAWSアカウントを選択し、TealiumアカウントID：<code>757913464184</code>を入力します。</li>
 <li>（オプション）<strong>外部IDが必要</strong>チェックボックスを選択し、使用したい外部IDを指定します。外部IDは256文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
 <li>ロールの名前を入力します。ロール名は<code>TealiumRedshift</code>で始まる必要があります。例：<code>TealiumRedshift-test</code>。</li>
@@ -1929,7 +1940,7 @@
 <li>信頼ポリシーを作成します。
 <ul>
 <li><strong>信頼関係</strong>タブに移動し、<strong>信頼関係の編集</strong>をクリックします。</li>
-<li>作成したロールを使用する特定の外部IDが許可されていることを確認し、Tealiumの本番アカウントIDが<code>757913464184</code>であることを確認します。</li>
+<li>作成したロールを使用する特定の外部IDが信頼ポリシーに許可されていること、およびTealiumの本番アカウントIDが<code>757913464184</code>であることを確認します。</li>
 <li>Tealiumへの接続に使用する<code>EXTERNAL_ID</code>値を構成します。IDは256文字までの長さで、英数字（<code>A-Z</code>, <code>a-z</code>, <code>0-9</code>）およびハイフン（<code>-</code>）、アンダースコア（<code>_</code>）、ピリオド（<code>.</code>）などの記号を含むことができます。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
@@ -1954,12 +1965,12 @@
 <h4 id="ポリシーのアタッチ">ポリシーのアタッチ</h4>
 <p>ポリシーをアタッチするには：</p>
 <ol>
-<li><strong>権限</strong>タブで<strong>既存のポリシーを直接アタッチ</strong>をクリックします。
+<li><strong>権限</strong>タブで、<strong>既存のポリシーを直接アタッチ</strong>をクリックします。
 <ol>
 <li>
 <p>フルアクセス</p>
 <ul>
-<li><code>SecretsManagerReadWrite</code>、<code>AmazonRedshiftAllCommandsFullAccess</code>、<code>AmazonRedshiftDataFullAccess</code> ポリシーを検索してアタッチし、フルアクセスを構成します。</li>
+<li><code>SecretsManagerReadWrite</code>、<code>AmazonRedshiftAllCommandsFullAccess</code>、<code>AmazonRedshiftDataFullAccess</code> ポリシーを検索してアタッチし、フルアクセスを許可します。</li>
 </ul>
 </li>
 <li>
@@ -2119,7 +2130,7 @@
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="全イベントデータ送信マイクロバッチ">全イベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2161,7 +2172,7 @@
 </table>
 <h3 id="全イベントデータ送信バッチ">全イベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2203,7 +2214,7 @@
 </table>
 <h3 id="カスタムイベントデータ送信マイクロバッチ">カスタムイベントデータ送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-2">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2234,7 +2245,7 @@
 </table>
 <h3 id="カスタムイベントデータ送信バッチ">カスタムイベントデータ送信（バッチ）</h3>
 <h4 id="バッチ制限-3">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2265,9 +2276,9 @@
 </table>
 <h3 id="全訪問データの送信マイクロバッチ">全訪問データの送信（マイクロバッチ）</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Redshift Data APIはSQLステートメントを100 kBに制限しています。訪問のJSONペイロードがこの制限を超えると、コネクタアクションが失敗します。
-この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大規模な訪問プロファイルの取り扱い</a>を参照してください。</p>
+この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大きな訪問プロファイルの取り扱い</a>を参照してください。</p>
 <h4 id="バッチ制限-4">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入ります：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2313,9 +2324,9 @@
 </table>
 <h3 id="全訪問データの送信バッチ">全訪問データの送信（バッチ）</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Redshift Data APIはSQLステートメントを100 kBに制限しています。訪問のJSONペイロードがこの制限を超えると、コネクタアクションが失敗します。
-この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大規模な訪問プロファイルの取り扱い</a>を参照してください。</p>
+この問題を回避するためのガイドラインについては、<a href="#working-with-large-visitor-profiles">大きな訪問プロファイルの取り扱い</a>を参照してください。</p>
 <h4 id="バッチ制限-5">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入ります：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2361,7 +2372,7 @@
 </table>
 <h3 id="カスタム訪問データの送信マイクロバッチ">カスタム訪問データの送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-6">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入ります：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2392,7 +2403,7 @@
 </table>
 <h3 id="カスタム訪問データの送信バッチ">カスタム訪問データの送信（バッチ）</h3>
 <h4 id="バッチ制限-7">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入ります：</p>
 <ul>
 <li>最大リクエスト数：2,000</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2423,7 +2434,7 @@
 </table>
 <h3 id="カスタムステートメントの実行バッチ">カスタムステートメントの実行（バッチ）</h3>
 <h4 id="バッチ制限-8">バッチ制限</h4>
-<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入れられます：</p>
+<p>このアクションは、バッチリクエストを使用してベンダーへの大量データ転送をサポートします。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストがキューに入ります：</p>
 <ul>
 <li>最大リクエスト数：40</li>
 <li>最古のリクエストからの最大時間：60分</li>
@@ -2494,7 +2505,7 @@
 </span></span></code></pre></div><p>レスポンスにはステートメントのステータスとRedshiftによって返されたエラーメッセージが含まれます。</p>
 <h3 id="全ログイベントの送信マイクロバッチ">全ログイベントの送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-9">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2517,12 +2528,12 @@
 <td>接続したいテーブル名を指定してください。</td>
 </tr>
 <tr>
-<td>ペイロードを記録する列</td>
-<td>ペイロードを記録するために<code>SUPER</code>列を選択してください。</td>
+<td>ペイロードを記録するカラム</td>
+<td>ペイロードを記録するために <code>SUPER</code> カラムを選択してください。</td>
 </tr>
 <tr>
-<td>タイムスタンプを記録する列</td>
-<td>タイムスタンプを記録する列を選択してください。テーブルに<code>timestamp</code>列が<code>default sysdate</code>に構成されている場合は不要です。</td>
+<td>タイムスタンプを記録するカラム</td>
+<td>タイムスタンプを記録するカラムを選択してください。テーブルに <code>default sysdate</code> で構成された <code>timestamp</code> カラムが既にある場合は不要です。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
@@ -2532,7 +2543,7 @@
 </table>
 <h3 id="ログイベント送信マイクロバッチ">ログイベント送信（マイクロバッチ）</h3>
 <h4 id="バッチ制限-10">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値に達するか、プロファイルが公開されるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。並列処理により、イベントが順不同でベンダーに到達する可能性があります。順序が重要な場合は、イベントにシーケンス値を追加してください。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。次のいずれかの閾値に達するか、プロファイルが公開されるまでリクエストはキューに入れられます：</p>
 <ul>
 <li>最大リクエスト数：50</li>
 <li>最古のリクエストからの最大時間：16分</li>
@@ -2560,7 +2571,7 @@
 </tr>
 <tr>
 <td>ログイベントHTTP属性</td>
-<td>ログシステム内のHTTPリクエストとレスポンスを記録するフィールドです。<code>http</code>配列全体を単一の列にマッピングするには、<code>http</code>属性をマッピングしてください。</td>
+<td>ログシステム内のHTTPリクエストとレスポンスを記録するフィールドです。<code>http</code>配列全体を単一のカラムにマッピングするには、<code>http</code>属性をマッピングしてください。</td>
 </tr>
 <tr>
 <td>ログイベント結果属性</td>
@@ -2568,7 +2579,7 @@
 </tr>
 <tr>
 <td>ログイベントその他の属性</td>
-<td>ログイベントに関する追加のメタデータを提供するフィールドです。</td>
+<td>ログされたイベントに関する追加のメタデータを提供するフィールドです。</td>
 </tr>
 <tr>
 <td>バッチの有効期限</td>
@@ -2636,7 +2647,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年May月13日
+          <p>最終更新日 ::  2026年June月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

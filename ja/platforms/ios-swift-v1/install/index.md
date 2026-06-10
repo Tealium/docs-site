@@ -137,7 +137,7 @@ target &#39;CPodTest&#39; do
     pod &#34;tealium-swift/TealiumLogger&#34;
     # iOSのみ。TagManagementモジュールと連携してリモートコマンドをトリガーします。
     pod &#34;tealium-swift/TealiumRemoteCommands&#34;
-    # iOSのみ。Tealium iQ Tag Managementを有効にします。
+    # iOSのみ。Tealium Tag Managementを有効にします。
     pod &#34;tealium-swift/TealiumTagManagement&#34;
     # すべてのプラットフォーム。各ディスパッチに重要なデータを追加し、現在のセッションのためにデータの一時的な保存を可能にします。
     pod &#34;tealium-swift/TealiumVolatileData&#34;

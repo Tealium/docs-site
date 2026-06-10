@@ -1,4 +1,4 @@
 ---
-title: Getting started
+title: Get started
 url: https://docs.tealium.com/server-side/getting-started/
 ---

@@ -27,4 +27,4 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-sizing/about/
 
 アクティブ化されたジョブは一度だけ実行されます。アクティブなジョブを一時停止または再開することはできません。これにより、特に訪問にメールを送信するジョブなど、ジョブの重複を防ぐことができます。
 
-完了したジョブは再利用できません。その構成を表示するか、ジョブリストから削除することができます。既存のジョブのリストを表示するには、**AudienceStream &gt; Audience Connectors &gt; Jobs** に移動してください。
+完了したジョブは再利用できません。その構成を表示するか、ジョブリストから削除することができます。既存のジョブのリストを表示するには、**Connect &gt; Audience Connectors &gt; Jobs** に移動してください。

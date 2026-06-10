@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/audience-discovery/favori
 * お気に入りの数字にマウスを合わせると、そのお気に入りに関連する主要な表示の列が強調表示されます。
 * お気に入りをクリックして結果を現在の表示に固定し、お気に入りの数字を比較します。
 
-お気に入りの数字にアクセスするには、**AudienceStream &gt; Discover**に移動します。**Favorite Numbers**セクションは、メインのAudience Discoveryチャートの直下にあります。
+お気に入りの数字にアクセスするには、**Activate &gt; Discover**に移動します。**Favorite Numbers**セクションは、メインのAudience Discoveryチャートの直下にあります。
 
 お気に入りの数字の結果では、属性のみが更新されます。フィルタは更新されません。&lt;br&gt;
 複数の列のお気に入りの数字の1つをズームインすると、視点とフィルタの両方が更新されます。

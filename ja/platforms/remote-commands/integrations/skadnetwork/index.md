@@ -17,7 +17,7 @@ SKAdNetwork統合には2つのアイテムが使用されます。
 1. SKAdNetwork変換値を送信するリモートコマンドモジュール
 2. イベントトラッキングを変換値に変換するためのJSON構成ファイルまたはリモートコマンドタグ
 
-JSON構成ファイルは、この統合の推奨オプションであり、アプリ内またはリモートでホストされます。iQ Tag Managementを使用している場合は、ベンダー統合のためにリモートコマンドタグを追加します。[ベンダー統合](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)について詳しくは、こちらをご覧ください。
+JSON構成ファイルは、この統合の推奨オプションであり、アプリ内またはリモートでホストされます。Tag Managementを使用している場合は、ベンダー統合のためにリモートコマンドタグを追加します。[ベンダー統合](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)について詳しくは、こちらをご覧ください。
 
 ## インストール
 

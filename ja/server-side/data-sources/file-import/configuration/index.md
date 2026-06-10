@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/data-sources/file-import/configurat
 
 ## 1. ファイルインポートデータソースを追加
 
-  1. **Sources &gt; Data Sources**に移動します。
+  1. **Connect &gt; Data Sources**に移動します。
   1. **&#43; Add Data Source**をクリックします。
   1. **Categories**で**File Import**をクリックし、**File Import**プラットフォームを選択します。
   1. **Name**フィールドに、ファイルタイプに関連するユニークな名前を入力します。

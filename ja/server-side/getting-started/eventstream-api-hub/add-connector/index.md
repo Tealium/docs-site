@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 
 Google Sheetsコネクタを構成するには、次の手順を使用します:
 
-1. **EventStream &gt; Event Connectors**に移動します。
+1. **Connect &gt; Event Connectors**に移動します。
 1. **&#43; Add Connector**をクリックします。
 1. サイドナビゲーションパネルの**Categories**の下で、**Big Data**をクリックしてリストをフィルタリングします。
 1. **Google Sheets**を選択し、**Continue**をクリックします。

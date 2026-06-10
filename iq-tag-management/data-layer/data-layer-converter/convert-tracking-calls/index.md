@@ -24,7 +24,7 @@ utag.link({
 
 Use the following steps to convert data layer tracking calls:
 
-1. In the left sidebar, navigate to **iQ Tag Management &gt; Extensions**.
+1. In the left sidebar, navigate to **Tag Management &gt; Extensions**.
 1. Add a [JavaScript extension]().
 1. In the **Title** field, enter `Convert Tracking Calls`.
 1. In the **Draft Name** field, enter a name for your draft.

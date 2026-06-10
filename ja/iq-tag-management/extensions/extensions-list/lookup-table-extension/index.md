@@ -9,13 +9,13 @@ url: https://docs.tealium.com/ja/iq-tag-management/extensions/extensions-list/lo
 
 ## 動作原理
 
-ルックアップテーブル拡張機能は、ルックアップ値のリストを使用して、ある変数の値を別の変数の値に基づいて構成する方法を提供します。例えば、カテゴリ名を構成する必要があるが、データレイヤーがカテゴリIDの値のみを提供する場合、ルックアップテーブル拡張機能はカテゴリIDからカテゴリ名へのマッピングを提供します。サンプルマッピングでは、カテゴリID `35` がカテゴリ名 `iQ Tag Management` に、カテゴリID `38` がカテゴリ名 `Mobile` にマッピングされています。
+ルックアップテーブル拡張機能は、ルックアップ値のリストを使用して、ある変数の値を別の変数の値に基づいて構成する方法を提供します。例えば、カテゴリ名を構成する必要があるが、データレイヤーがカテゴリIDの値のみを提供する場合、ルックアップテーブル拡張機能はカテゴリIDからカテゴリ名へのマッピングを提供します。サンプルマッピングでは、カテゴリID `35` がカテゴリ名 `Tag Management` に、カテゴリID `38` がカテゴリ名 `Mobile` にマッピングされています。
 
 ルックアップテーブル拡張機能を構成する際には、**Lookup Value In** フィールドにルックアップ変数（ソース変数）を構成し、次に **Destination** フィールドにルックアップエントリに基づいて構成したい変数を構成します。
 
 **Variable Type** フィールドはルックアップ変数のデータタイプ（`String` または `Array`）を指定します。ルックアップ変数は **Match Type** に基づいてルックアップマッチ値と比較されます。マッチタイプは、正確なケースセンシティブな比較を使用するために **Exact** に構成されるか、文字列内の部分文字列 [文字列内の連続する文字のシーケンス] の比較を使用するために **Contains** に構成されるか、または（上級ユーザー向けに）[正規表現](http://w3schools.com/js/js_regexp.asp) パターンに構成されます。
 
-ルックアップテーブルは、**Lookup Match** フィールドと **Output** フィールドにルックアップ値と出力値のエントリを追加することによって構成されます。上記の例から、ルックアップ値 `35` は **Lookup Match** フィールドに表示され、出力値 `iQ Tag Management` は **Output** フィールドに表示されます。
+ルックアップテーブルは、**Lookup Match** フィールドと **Output** フィールドにルックアップ値と出力値のエントリを追加することによって構成されます。上記の例から、ルックアップ値 `35` は **Lookup Match** フィールドに表示され、出力値 `Tag Management` は **Output** フィールドに表示されます。
 
 ルックアップ変数の値がエントリと一致する場合、**Destination** 変数は **Output** 値に構成されます。
 
@@ -56,7 +56,7 @@ Lookup Value, Output Value, Note
 
 ```
 38, Mobile, forums
-35, iQ Tag Management, forums
+35, Tag Management, forums
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums
@@ -78,7 +78,7 @@ Lookup Value, Output Value, Note
 
 ```
 38, Mobile, forums
-35, iQ Tag Management, forums
+35, Tag Management, forums
 46, AudienceStream, forums
 34, DataAccess, forums
 48, Digital Strategy, forums

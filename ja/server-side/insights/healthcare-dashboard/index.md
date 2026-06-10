@@ -16,11 +16,11 @@ url: https://docs.tealium.com/ja/server-side/insights/healthcare-dashboard/
 
 ヘルスケアダッシュボードを生成するには：
 
-1. **Server-Side &gt; Insights &gt; Templates** に移動します。
+1. **Server-Side &gt; Analyze &gt; Insights &gt; Templates** に移動します。
 1. **Healthcare dashboard** テンプレートを見つけて、**View Details** をクリックします。
 1. **Generate Dashboard** をクリックします。
 
-生成後、**Insights &gt; Dashboards** でダッシュボードにアクセスします。
+生成後、**Analyze &gt; Insights &gt; Dashboards** でダッシュボードにアクセスします。
 
 ダッシュボードの管理についての詳細は、[ダッシュボードの管理]()を参照してください。
 ダッシュボードへのアクセスや使用に問題がある場合は、Tealiumアカウントマネージャーに連絡してください。

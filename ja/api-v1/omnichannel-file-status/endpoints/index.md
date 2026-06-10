@@ -321,8 +321,8 @@ cURL -i -b JSESSIONID={session_id} \
 |---| ---| ---|
 |Unknown file prefix, unable to parse file| 指定されたプレフィックス（名前）のファイルが見つかりませんでした。ファイルが存在しないか、プレフィックスにタイプミスがある可能性があります。| ファイルを再アップロードし、Omnichannel Definitionsタブでファイルプレフィックスをダブルチェックしてください。エラーが解消しない場合は、Tealiumのアカウントマネージャにお問い合わせください。|
 |DBObject of size `{###}`` is over Max BSON size `{###}`| ファイルが処理できるサイズを超えています| ファイルデータを複数のファイル定義に分割してください|
-|Failed to download (FTP, SFTP, S3) file| サービス資格情報にエラーがあるため、ファイルをダウンロードできませんでした（[File Import Service Configuration]()を参照）。|  * FTP/SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください&lt;br&gt; * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください |
-|Invalid connection type&lt;br&gt; **OR**&lt;br&gt; Could not find required (FTP, SFTP, S3) configuration parameters for definition| サービス資格情報（[File Import Service Configuration]()）が認証できませんでした。|  * FTP/SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください&lt;br&gt; * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください |
+|Failed to download (SFTP, S3) file| サービス資格情報にエラーがあるため、ファイルをダウンロードできませんでした（[File Import Service Configuration]()を参照）。|  * SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください&lt;br&gt; * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください |
+|Invalid connection type&lt;br&gt; **OR**&lt;br&gt; Could not find required (SFTP, S3) configuration parameters for definition| サービス資格情報（[File Import Service Configuration]()）が認証できませんでした。|  * SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください&lt;br&gt; * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください |
 
 ### 構成および定義エラー
 

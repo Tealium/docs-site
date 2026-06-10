@@ -1,6 +1,6 @@
 ---
 title: Data Supply Chain dashboard
-description: The Data Supply Chain dashboard provides a comprehensive summary of the data supply chain of the Customer Data Hub.
+description: The data supply chain dashboard provides a comprehensive summary of the data supply chain of the Customer Data Hub.
 url: https://docs.tealium.com/server-side/getting-started/data-supply-chain-dashboard/
 ---
 ## How it works
@@ -38,7 +38,7 @@ The heading bar appears on the top of your Tealium window. It contains the follo
 
 ### Navigation bar
 
-The navigation bar appears on the left side of your Tealium window. It contains links to all of the available products, features, and tools. Click any item to load it in the Tealium window. If you click the client-side **iQ Tag Management** link, a new tab will open in your browser to load the client-side profile.
+The navigation bar appears on the left side of your Tealium window. It contains links to all of the available products, features, and tools. Click any item to load it in the Tealium window. If you click the client-side **Tag Management** link, a new tab will open in your browser to load the client-side profile.
 
 ![](/images/server-side/server-side-dashboard-navigation-bar1.png)
 

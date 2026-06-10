@@ -36,7 +36,7 @@ Set up a Tealium Connect data source. For more information, see [Set up a Tealiu
 
 To establish a connection to the DealerTrack API, perform the following steps:
 
-1. Go to **Data Connect &gt; Integrations**.
+1. Go to **Connect &gt; Data Connect &gt; Integrations**.
 1. Click **Connections**, and then click **Create**.
 1. Select the **DealerTrack** connection.
 1. Under **Base URL**, enter `https://ot.dms.dealertrack.com`.
@@ -53,7 +53,7 @@ To create a recipe to send data from DealerTrack to Tealium, perform the followi
 
 For more information on how to create a new recipe, see [Create a recipe in Data Connect]().
 
-1. Go to **DataConnect &gt; Integrations**.
+1. Go to **Connect &gt; Data Connect &gt; Integrations**.
 1. In the **Integrations** screen, click **Create &gt; Recipe**.
 1. Create a new recipe that triggers from the Schedule app. For information on how to create a recipe that triggers from an app, see [Create a recipe in Data Connect]().
 
@@ -76,7 +76,7 @@ For additional information, see [Create a recipe: Configure an Action]().
 
 Use the following steps to create an event feed:
 
-1. Go to **EventStream &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
 1. In the **Create Event Feed** dialog, enter a **Title** and any **Notes**.
     * The event feed title is dependent on how lead events come into Data Connect.
 1. (Optional) Click **Add Label** to select labels to apply to this event feed.
@@ -94,7 +94,7 @@ Use the following steps to test with trace and activate the recipe:
 1. Go to **Trace**.
 1. Under **New Trace**, click **Start**. A dialog with a trace ID appears.
 1. Copy the trace ID and click **Continue**.
-1. Go to **Data Connect &gt; Integrations**.
+1. Go to **Connect &gt; Data Connect &gt; Integrations**.
 1. In the **Integrations** screen, perform the following steps for recipes that send new leads from DealerTrack to Tealium:
     1. Select your recipe.
     1. Select the **Tealium events V2 action** to edit it.

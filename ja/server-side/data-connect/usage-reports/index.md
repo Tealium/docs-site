@@ -13,7 +13,7 @@ url: https://docs.tealium.com/ja/server-side/data-connect/usage-reports/
 
 データコネクトの使用レポートをダウンロードするには、以下の手順を完了します：
 
-1. **Data Supply Chain &gt; Usage Reports**に移動します。
+1. **Analyze &gt; Usage**に移動します。
 1. **All Usage Reports**ドロップダウンリストから**DataConnect Reports**を選択します。
 1. **Get Report**をクリックします。
 
@@ -21,6 +21,6 @@ url: https://docs.tealium.com/ja/server-side/data-connect/usage-reports/
 
 データコネクトでのタスクを追跡するには、以下の手順を完了します：
 
-1. **Data Connect &gt; Dashboard**に移動します。
+1. **Connect &gt; Data Connect &gt; Dashboard**に移動します。
 1. **Dashboard**グラフは、レシピ、成功および失敗したジョブ、タスクの数を表示します。
 1. 特定の期間からのタスク使用状況を表示するには、**Period**ドロップダウンリストから時間範囲を選択します。デフォルトは7日間です。

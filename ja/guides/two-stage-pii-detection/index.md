@@ -174,7 +174,7 @@ transform((event) =&gt; {
 
 ステップ1で追加された `potential_pii_detected` フラグからその値を導出するブール型イベント属性を作成します。
 
-1. **EventStream &gt; Event Attributes &gt; Add Attribute** に移動します。
+1. **Transform &gt; Event Attributes &gt; Add Attribute** に移動します。
 1. **属性タイプ** で **Universal Variable** を選択します。
 1. **Continue** をクリックします。
 1. データタイプとして **Boolean** を選択します。
@@ -226,7 +226,7 @@ transform((event) =&gt; {
 
 イベントフィードを使用すると、属性条件に基づいてイベントをグループ化して分離することができます。このステップでは、潜在的なPIIを含むとフラグ付けされたイベントを収集するフィードを作成します。これにより、それらを別々に処理することができます。たとえば、二次検証のためにAPIに送信します。
 
-1. **EventStream &gt; Live Events** に移動し、**&#43; Add Event Feed** をクリックします。
+1. **Validate &gt; Live Events** に移動し、**&#43; Add Event Feed** をクリックします。
 1. **Title** を `Email_Check is True` またはお好みの説明的な名前に構成します。
 1. **Capture events that...** セクションに以下の条件を追加します：
 
@@ -266,7 +266,7 @@ transform((event) =&gt; {
 
 #### 処理済みイベント関数の作成
 
-1. **Server-Side &gt; Functions &gt; Overview** に移動します。
+1. **Server-Side &gt; Transform &gt; Functions** に移動します。
 1. **&#43; Add Function** をクリックします。
 1. 関数の名前を入力します。
 1. **Processed Event** トリガーを選択し、**Continue** をクリックします。

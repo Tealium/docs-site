@@ -12,7 +12,7 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/braze/
   * [Tealium for iOS-Swift](/ja/platforms/ios-swift/) (2.8.0&#43;)
 * 以下のいずれかのリモートコマンド統合：
   * [Braze Remote Command JSON File](/ja/platforms/remote-commands/integrations/braze/#json-template) (Android-Kotlin 1.0.0&#43;またはiOS-Swift 2.1.0&#43;が必要)
-  * Tealium iQ Tag Management内のBraze Remote Commandタグ
+  * Tealium Tag Management内のBraze Remote Commandタグ
 
 ## 動作原理
 
@@ -24,7 +24,7 @@ Braze統合は以下の項目を使用します：
 
 アプリにBrazeリモートコマンドモジュールを追加すると、アプリにベンダー固有のコードを追加することなく、必要なBrazeライブラリが自動的にインストールされてビルドされます。依存関係マネージャーのインストールを使用している場合、Braze SDKを別途インストールする必要はありません。
 
-リモートコマンドオプションには、JSON構成ファイルを使用するか、iQ Tag Managementを使用してマッピングを構成するかの2つがあります。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルの使用を推奨します。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細はこちら](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)をご覧ください。
+リモートコマンドオプションには、JSON構成ファイルを使用するか、Tag Managementを使用してマッピングを構成するかの2つがあります。ベンダー統合には、アプリ内またはリモートでホストされるJSON構成ファイルの使用を推奨します。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細はこちら](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)をご覧ください。
 
 
 ## インストール

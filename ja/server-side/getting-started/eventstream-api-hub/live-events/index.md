@@ -5,7 +5,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/eventstream-api-hub
 ---
 ## ライブイベントの使用
 
-まず、**EventStream &gt; ライブイベント**に移動し、**すべてのデータソース**リストから新しいデータソースを選択し、**適用**をクリックします。
+まず、**Validate &gt; Live Events**に移動し、**すべてのデータソース**リストから新しいデータソースを選択し、**適用**をクリックします。
 
 ![](/images/server-side/eventstream-getting-started-live-events-select-data-sources.png)
 

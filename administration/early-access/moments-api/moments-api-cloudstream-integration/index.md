@@ -21,7 +21,7 @@ The integration requires configuration in both your CloudStream profile and Mome
 
 In your CloudStream profile, configure the Moments API integration for each cloud data source you want to use with Moments API:
 
-1. Go to **Sources &gt; Data Sources** in your CloudStream profile.
+1. Go to **Connect &gt; Data Sources** in your CloudStream profile.
 1. Either create a new cloud data source or edit an existing one.
 1. Navigate to the **Moments API Integration** section in the data source configuration.
 1. Enable **Moments API Integration**.

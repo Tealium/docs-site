@@ -57,7 +57,7 @@ Carefully consider when you set a user to **No Access** for a feature or product
 
 #### Tealium Insights permissions
 
-Insights user roles are managed through the **Insights &gt; Manage Users** page. However, Insights users must also be a member of a permission group with view access to the Insights feature.
+Insights user roles are managed through the **Analyze &gt; Insights &gt; QuickSight Users** page. However, Insights users must also be a member of a permission group with view access to the Insights feature.
 
 For more information, see [About Tealium Insights]().
 

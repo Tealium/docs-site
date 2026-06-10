@@ -1,6 +1,6 @@
 ---
 title: Criteo OneTag タグの構成ガイド
-description: この記事では、Tealium iQ Tag Management アカウントに Criteo OneTag タグを構成する方法について説明します。
+description: この記事では、Tealium Tag Management アカウントに Criteo OneTag タグを構成する方法について説明します。
 url: https://docs.tealium.com/ja/client-side-tags/criteo-onetag-tag/
 ---
 ## タグのヒント

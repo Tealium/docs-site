@@ -3,7 +3,7 @@ title: Manage visitor and visit attributes
 description: This article describes how to manage visitor and visit attributes.
 url: https://docs.tealium.com/server-side/attributes/manage-as-attributes/
 ---
-Go to **AudienceStream &gt; Visitor/Visit Attributes** to view your visitor attributes.
+Go to **Transform &gt; Visitor/Visit Attributes** to view your visitor attributes.
 
 ![](/images/server-side/attributes/visit-visitor-attributes-table.png)
 
@@ -38,7 +38,7 @@ The attribute details page contains two tabs:
 
 The process of adding visit or visitor attributes is similar. The following steps show how to add a visit or visitor attribute:
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes**.  
+1. Go to **Transform &gt; Visitor/Visit Attributes**.  
 You can optionally use the filters on the left to narrow your view.
 1. Click **&#43; Add Attribute**.
 1. In the **Add Attribute** dialog, select **Visit** or **Visitor** for the attribute scope and click **Continue**.  

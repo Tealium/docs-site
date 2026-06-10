@@ -15,7 +15,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 Googleシートのコネクターを構成するには、以下の手順を使用します：
 
-1. **AudienceStream &gt; Audience Connectors**に移動します。
+1. **Connect &gt; Audience Connectors**に移動します。
 1. **&#43; Add Connector**ボタンをクリックします。
 1. サイドナビゲーションパネルの**Categories**で**Big Data**をクリックして選択肢を絞ります。
 1. **Google Sheets**を選択し、**Continue**をクリックします。

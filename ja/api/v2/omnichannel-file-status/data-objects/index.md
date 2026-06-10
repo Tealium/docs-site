@@ -12,8 +12,8 @@ url: https://docs.tealium.com/ja/api/v2/omnichannel-file-status/data-objects/
 | `created at` | UTC timestamp | ファイルステータスが作成された日時。[UTC形式のデザイネータ&#39;Z&#39;で表現](https://www.w3.org/TR/NOTE-datetime)。 |
 | `file.name` | string | ファイルの名前。 |
 | `file.size` | number | ファイルサイズ（バイト単位）。 |
-| `file.source-type` | string | ファイルのアップロードに使用されたサービス：FTP、SFTP、Tealium S3、またはS3。 |
-| `file.source-host` | string | サービスの名前。&lt;/br&gt;     * FTP/SFTPのホスティングアカウント &lt;/br&gt;   * S3/Tealium S3のバケット名 |
+| `file.source-type` | string | ファイルのアップロードに使用されたサービス：SFTP、Tealium S3、またはS3。 |
+| `file.source-host` | string | サービスの名前。&lt;/br&gt;     * SFTPのホスティングアカウント &lt;/br&gt;   * S3/Tealium S3のバケット名 |
 | `line_count` | number | ファイル内の行数。 |
 | `status.state` | string | ファイルに対する処理アクションを示します。可能な値は次のとおりです。&lt;/br&gt; * `DOWNLOADING`&lt;/br&gt; * `DOWNLOADED`&lt;/br&gt;   * `PROCESSING`&lt;/br&gt;   * `PROCESSED`&lt;/br&gt; |
 | `status.timestamp` | UTC timestamp | `[status-state]`が記録された日時。[UTC形式のデザイネータ&#39;Z&#39;で表現](https://www.w3.org/TR/NOTE-datetime)。 |

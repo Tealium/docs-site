@@ -27,4 +27,4 @@ When you have selected rule conditions and the results have been displayed, you 
 
 An activated job is run only once. You cannot pause or restart an active job, which helps prevent duplication of jobs, especially jobs that send email to visitors.
 
-A completed job cannot be reused. You can view its configuration or remove it from the jobs list. To view a list of existing jobs, go to **AudienceStream &gt; Audience Connectors &gt; Jobs**.
+A completed job cannot be reused. You can view its configuration or remove it from the jobs list. To view a list of existing jobs, go to **Connect &gt; Audience Connectors &gt; Jobs**.

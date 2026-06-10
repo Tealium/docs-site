@@ -13,7 +13,7 @@ The spreadsheet looks like this:
 
 Use the following steps to configure the Google Sheets connector:
 
-1. Go to **EventStream &gt; Event Connectors**
+1. Go to **Connect &gt; Event Connectors**
 1. Click **&#43; Add Connector**.
 1. Under **Categories** in the side navigation panel, click **Big Data** to filter the list.
 1. Select **Google Sheets** then click **Continue**.

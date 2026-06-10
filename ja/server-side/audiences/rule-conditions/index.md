@@ -49,7 +49,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/rule-conditions/
 
 ルールにTally属性のキーとその値を含めるには、次の手順を実行します：
 
-1. **Server-Side Tools &gt; Manage Rules**に移動します。
+1. **Transform &gt; Rules**に移動します。
 1. 新しいルールを追加するか、編集する既存のルールを選択します。
 1. **Conditions**の下で、最初のドロップダウンリストからチェックしたいTally属性を選択します。
 1. 次のドロップダウンリストで**contains**演算子を選択します。

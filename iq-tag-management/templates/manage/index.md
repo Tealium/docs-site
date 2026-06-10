@@ -15,8 +15,8 @@ To update a template:
 
 1. Use a method to access the template:
     * In the admin menu, click **Manage Templates** and select the template you want to update from the drop-down list.
-    * Go to **iQ Tag Management &gt; Tags** and click **Run Tag Template Status Checker**. For more information, see [Template Status Checker]().
-    * Go to **iQ Tag Management &gt; Tags**, click the tag, click **Edit**, and click **Edit Template**.
+    * Go to **Tag Management &gt; Tags** and click **Run Tag Template Status Checker**. For more information, see [Template Status Checker]().
+    * Go to **Tag Management &gt; Tags**, click the tag, click **Edit**, and click **Edit Template**.
 1. Click **Update**. A confirmation dialog appears.
 1. Click **Update** to confirm and replace the template with the latest system version of the template.
 1. If you have customized this template, make any necessary customizations to the template.

@@ -3,7 +3,7 @@ title: ユーザー権限について
 description: この記事では、Tealium iQタグ管理でのユーザー権限の仕組みについて説明します。
 url: https://docs.tealium.com/ja/iq-tag-management/administration/user-permissions/about/
 ---
-サーバーサイドの権限については、[サーバーサイドユーザー権限の管理](/ja/server-side/administration/user-permissions/manage/)を参照してください。
+サーバーサイドの権限については、[サーバーサイドユーザー権限の管理](/ja/server-side/settings/user-permissions/manage/)を参照してください。
 
 ## ユーザー権限の仕組み
 

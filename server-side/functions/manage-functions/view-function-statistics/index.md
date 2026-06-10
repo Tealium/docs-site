@@ -39,5 +39,5 @@ Graphs can be displayed for the following time frames:
 
 Follow these steps to view function statistics:
 
-1. Navigate to **Functions &gt; Overview**, and click a function in the list.
+1. Navigate to **Transform &gt; Functions**, and click a function in the list.
 1. Click the **Monitoring** tab to see the graphs of the function statistics.

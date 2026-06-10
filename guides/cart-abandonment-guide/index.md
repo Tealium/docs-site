@@ -61,7 +61,7 @@ To start, we need to know when a visitor adds something to their cart. Create an
 
 In this use case, we are setting `tealium_event` to `cart_add`. 
 
-1. Go to **iQ Tag Management &gt; Events** and click **&#43;New Event**.
+1. Go to **Tag Management &gt; Events** and click **&#43;New Event**.
 1. In the **Event Types** screen, select the **Click** event type and click **Next**.
 1. In the **Configuration** screen, set the following values for your click event:
    * **Name**: Add to Cart
@@ -87,7 +87,7 @@ Now we need to create two boolean attributes:
 
 Create a visitor boolean attribute to track when a `cart_add` event has occurred.
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
 1. In the **Add Attribute** screen, click **Visitor** and **Continue**.
 1. Select **Boolean** and click **Continue**.
 1. In the **Properties** section, enter `Added to Cart `as the title.
@@ -105,7 +105,7 @@ Create a visitor boolean attribute to track when a `cart_add` event has occurred
 
 Create a visitor boolean attribute to track when a `purchase` event has occurred.
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
 1. In the **Add Attribute** screen, click **Visitor** and **Continue**.
 1. Select **Boolean** and click **Continue**.
 1. In the **Properties** section, enter `Did Purchase` as the title.
@@ -123,7 +123,7 @@ Create a visitor boolean attribute to track when a `purchase` event has occurred
 
 Before you create your audience, you&#39;ll need to create a badge to assign to visitors if they&#39;ve abandoned their cart using the boolean attributes you&#39;ve just created.
 
-1. Go to **AudienceStream &gt; Visitor/Visit Attributes** and click **&#43;Add Attribute**.
+1. Go to **Transform &gt; Visitor / Visit Attributes** and click **&#43;Add Attribute**.
 1. Select **Visitor** and then select **Badge**. 
 1. In the **Properties** section, enter `Cart Abandoner `as the title.
 1. Click **Add Enrichment** and **Assign a badge**.
@@ -143,7 +143,7 @@ Before you create your audience, you&#39;ll need to create a badge to assign to 
 
 Now you can easily create an audience using the badge you&#39;ve just created.
 
-1. Go to **AudienceStream &gt; Audiences** and click **&#43;New Audience**.
+1. Go to **Activate &gt; Audiences** and click **&#43;New Audience**.
 1. Add the following audience:
     * **Name**: Cart Abandoners
     * Select the **Cart Abandoner** badge from the first drop-down list and **is assigned** from the second drop-down list.

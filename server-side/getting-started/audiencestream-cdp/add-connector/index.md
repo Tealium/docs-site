@@ -15,7 +15,7 @@ The spreadsheet looks like this:
 
 Use the following steps to configure the Google Sheets connector:
 
-1. Navigate to **AudienceStream &gt; Audience Connectors**.
+1. Navigate to **Connect &gt; Audience Connectors**.
 1. Click on the **&#43; Add Connector** button.
 1. Under **Categories** in the side navigation panel, click **Big Data** to narrow the selections.
 1. Select **Google Sheets** then click **Continue**.

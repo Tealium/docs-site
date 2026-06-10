@@ -1,5 +1,5 @@
 ---
-title: ファイル転送プロトコル（FTP、SFTP、FTPS）コネクタ構成ガイド
+title: ファイル転送プロトコル（SFTP、FTPS）コネクタ構成ガイド
 description: この記事では、ファイル転送プロトコルコネクタの構成方法について説明します。
 url: https://docs.tealium.com/ja/server-side-connectors/ftp-connector/
 ---
@@ -17,14 +17,12 @@ url: https://docs.tealium.com/ja/server-side-connectors/ftp-connector/
 
 コネクタを追加した後、以下の構成を構成します：
 * **接続タイプ**：（必須）接続タイプを指定します。
-  * FTP
   * SFTP
   * FTPS
 * **ホスト**：（必須）リモートホストを指定します。
 * **ユーザー名**：（必須）ユーザー名を指定します。
 * **パスワード**：（必須）ユーザーパスワードを指定します。
 * **ポート**：（オプション）ポートを指定します。ポートが指定されていない場合、以下のデフォルトポートが使用されます：
-    * FTP：21
     * SFTP：22
     * FTPS：990
 

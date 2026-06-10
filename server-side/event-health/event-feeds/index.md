@@ -11,7 +11,7 @@ Event feeds are groups of events that match specific conditions based on their a
 
 To create an event feed:
 
-1. Go to **EventStream &gt; Live Events**.
+1. Go to **Validate &gt; Live Events**.
 1. Click **&#43; Add Event Feed**.  
 The **Create Event Feed** dialog appears.
 1. Set the **Title** and **Notes**.

@@ -71,7 +71,7 @@ Use the following connectors to send log entries:
 | [AWS Firehose (Tealium Provided Credentials)]() | ✓ | ✗ |
 | [Confluent Kafka Connect]() | ✓ | ✓ |
 | [Datadog]() | ✓ | ✗ |
-| [File Transfer Protocol (FTP, SFTP, FTPS)]() | ✓ | ✓ |
+| [File Transfer Protocol (SFTP, FTPS)]() | ✓ | ✓ |
 | [Google BigQuery]() | ✓ | ✓ |
 | [Google Cloud Pub/Sub]() | ✓ | ✗ |
 | [Google Cloud Storage]() | ✓ | ✓ |

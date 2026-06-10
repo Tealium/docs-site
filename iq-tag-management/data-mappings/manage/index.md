@@ -107,7 +107,7 @@ For more information, see [About Data Layer Enrichment]().
 
 ## View data mapping change history
 
-To view the change history of a data mapping, go to **iQ Tag Management &gt; Tags** and click **View Tag History**.
+To view the change history of a data mapping, go to **Tag Management &gt; Tags** and click **View Tag History**.
 
 ## Edit a mapping
 

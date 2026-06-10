@@ -172,7 +172,7 @@ Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permi
 | AudienceStore|No Access, View, View &amp; Edit, View Edit &amp; Delete|
 | EventStore|No Access, View, View &amp; Edit, View Edit &amp; Delete|
 
-\* Tealium Insights permissions can be set by user admins through the **Insights &gt; Manage Users** page. For more information, see [About Tealium Insights]().
+\* Tealium Insights permissions can be set by user admins through the **Analyze &gt; Insights &gt; QuickSight Users** page. For more information, see [About Tealium Insights]().
 
 #### Predict
 
@@ -192,8 +192,8 @@ Users that have **View &amp;amp; Edit** or **View, Edit &amp;amp; Delete** permi
 |-----------------------------------------------|:-----------------------------------------------------------|
 | Manage Rules|No Access, View, View &amp; Edit, View Edit &amp; Delete|
 | Visitor Delete|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Visitor Lookup|No Access, View, View &amp; Edit, View Edit &amp; Delete|
-| Visitor Profile Sampler|No Access, View|
+| Visitor Search (formerly Visitor lookup)|No Access, View, View &amp; Edit, View Edit &amp; Delete|
+| Live Visitors (formerly Visitor profile sampler)|No Access, View|
 
 #### Server-Side (Others)
 

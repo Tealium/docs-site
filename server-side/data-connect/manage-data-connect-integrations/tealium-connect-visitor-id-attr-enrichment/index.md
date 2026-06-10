@@ -9,7 +9,7 @@ To enrich a visitor ID attribute for use with Tealium Connect, complete the foll
   1. Note the name of the event attribute that you will use with the visitor ID attribute in your Workato recipe, for example, `customer_id`.
   1. Create a string event attribute of type Universal Data Object with the event attribute name, if it does not already exist.
 1. Create a rule that identifies events from your Tealium Connect data source based on the built-in event attribute `tealium_datasource={{tealium_data_source_key}}` if this rule does not already exist. Your Data Source Key can be found in your [Tealium Connect data source]().
-1. Navigate to **AudienceStream &gt; Visitor/Visit Attributes**. 
+1. Navigate to **Transform &gt; Visitor/Visit Attributes**. 
 1. Select the visitor ID you want to use with Tealium Connect data. If a visitor ID does not already exist, complete the following steps:
   1. Click **&#43; Add Attribute**.
   1. For the attribute scope, select **Visitor** and click **Continue**.

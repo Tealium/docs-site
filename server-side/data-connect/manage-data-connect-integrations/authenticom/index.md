@@ -44,7 +44,7 @@ Contact your Implementation Engineer or Customer Success Manager, and they will 
 
 To establish a connection to the Authenticom API, perform the following steps:
 
-1. Go to **Data Connect &gt; Integrations**.
+1. Go to **Connect &gt; Data Connect &gt; Integrations**.
 1. Select the **Authenticom** connection.
 1. Do not change **Base URL**.
 1. Enter the **Subscription Key**, which is in the Authenticom Developers API portal in production.
@@ -86,7 +86,7 @@ For additional information, see [Create a recipe: Configure an Action]().
 
 Use the following steps to create an event feed:
 
-1. Go to **EventStream &gt; Live Events** and click **&#43; Add Event Feed**.
+1. Go to **Validate &gt; Live Events** and click **&#43; Add Event Feed**.
 1. In the **Create Event Feed** dialog, enter a **Title** and any **Notes**.
 1. (Optional) Click **Add Label** to select labels to apply to this event feed.
 1. Under **Event Data Storage**, enable the feed for EventStore or EventDB.
@@ -103,7 +103,7 @@ Use the following steps to test with trace and activate the recipe:
 1. Go to **Trace**.
 1. Under **New Trace**, click **Start**. A dialog with a trace ID appears.
 1. Copy the trace ID and click **Continue**.
-1. Go to **Data Connect &gt; Integrations**.
+1. Go to **Connect &gt; Data Connect &gt; Integrations**.
 1. In the **Integrations** screen, perform the following steps for recipes that send new leads from Authenticom to Tealium:
     1. Select your recipe.
     1. Select the **Tealium Events V2 action** to edit it.

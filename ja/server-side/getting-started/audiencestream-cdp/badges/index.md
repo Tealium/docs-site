@@ -22,7 +22,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/audiencestream-cdp/
 
 バッジを作成するには、以下の手順を実行します：
 
-1. **AudienceStream &amp;gt; Attributes**に移動し、**Add Attribute**をクリックします。
+1. **Transform &gt; Visitor / Visit Attributes**に移動し、**Add Attribute**をクリックします。
 1. **Visitor**の範囲を選択し、**Continue**をクリックします。
 1. データタイプ**Badge**を選択し、**Continue**をクリックします。
 1. 属性の名前を入力します：`VIP`。

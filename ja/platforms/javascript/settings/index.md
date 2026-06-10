@@ -164,7 +164,7 @@ window.utag_cfg_ovrd.load_rules_at_wait = true;
 
 例のメタタグ：
 ```html
-&lt;meta content=&#34;iQ Tag Management&#34; property=&#34;Article:Section&#34;&gt;
+&lt;meta content=&#34;Tag Management&#34; property=&#34;Article:Section&#34;&gt;
 ```
 
 結果の値：

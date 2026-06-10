@@ -7,7 +7,7 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 
 新しい属性インターフェースはEarly Accessであり、選ばれた顧客のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。
 
-**AudienceStream &gt; 訪問/訪問属性**に移動して、属性を表示します。
+**Transform &gt; Visitor / Visit Attributes**に移動して、属性を表示します。
 
 ![](/images/server-side/attributes/visit-visitor-attributes-table.png)
 
@@ -42,7 +42,7 @@ url: https://docs.tealium.com/ja/administration/early-access/attributes-improvem
 
 訪問または訪問属性を追加するプロセスは似ています。次の手順は、オーディエンス属性を追加する方法を示しています：
 
-1. **AudienceStream &gt; 訪問/訪問属性**に移動します。  
+1. **Transform &gt; Visitor / Visit Attributes**に移動します。  
 左側のフィルターを使用して表示を絞り込むこともできます。
 1. **&#43; 属性を追加**をクリックします。
 1. **属性を追加**ダイアログで、属性のスコープとして**訪問**または**訪問**を選択し、**続行**をクリックします。  

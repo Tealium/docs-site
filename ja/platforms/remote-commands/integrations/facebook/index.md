@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/platforms/remote-commands/integrations/facebook
   * [Tealium for iOS (Swift)](/ja/platforms/ios-swift/).
 * 以下のリモートコマンド統合のいずれか：
   * [Facebook Remote Command JSON File](/ja/platforms/remote-commands/integrations/facebook/.#json-template) (Android-Kotlin 1.0.0&#43;またはiOS-Swift 2.1.0&#43;が必要).
-  * Tealium iQ Tag ManagementのFacebook Remote Commandタグ。
+  * Tealium Tag ManagementのFacebook Remote Commandタグ。
 
 iOSおよびAndroidに必要な要件は以下の通りです：
 
@@ -100,7 +100,7 @@ Facebook統合は3つの要素を使用します：
 
 Facebookリモートコマンドモジュールをアプリに追加すると、ベンダー固有のコードをアプリに追加することなく、必要なFacebookライブラリが自動的にインストールされビルドされます。依存関係マネージャーのインストールを使用している場合、Facebook SDKを別途インストールする必要はありません。
 
-リモートコマンドのオプションは2つあります：JSON構成ファイル、またはiQ Tag Managementを使用してマッピングを構成します。ベンダー統合には、リモートまたはアプリ内にローカルでホストされたJSON構成ファイルが推奨されます。iQ Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
+リモートコマンドのオプションは2つあります：JSON構成ファイル、またはTag Managementを使用してマッピングを構成します。ベンダー統合には、リモートまたはアプリ内にローカルでホストされたJSON構成ファイルが推奨されます。Tag Managementを使用する場合は、ベンダー統合のためのRemote Commandタグを追加します。[ベンダー統合についての詳細](/ja/platforms/remote-commands/how-it-works/#vendor-integrations)を学びましょう。
 
 ## インストール
 

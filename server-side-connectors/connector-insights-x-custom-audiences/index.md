@@ -17,7 +17,7 @@ The X Custom Audiences API enables X advertisers to manage advertising operation
 
 ## Using Connector Insights
 
-To access Connector Insights, go to **AudienceStream &gt; Audience Connectors**, search for the **X Custom Audiences** connector, and click **Insights**.
+To access Connector Insights, go to **Connect &gt; Audience Connectors**, search for the **X Custom Audiences** connector, and click **Insights**.
 
 ![](/images/server-side-connectors/connector-insights-btn.png)
 

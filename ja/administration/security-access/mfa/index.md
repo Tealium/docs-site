@@ -87,7 +87,7 @@ Tealium MFAは、[Google](https://googleauthenticator.net/)と[Windows](https://
 
 サインインする前に、認証アプリはすでにインストールされ、アカウントと同期されている必要があります。以下の手順を使用して、MFAが有効なアカウントにサインインします：
 
-1. [Tealium iQ Tag Management](https://my.tealiumiq.com/)に移動します。  
+1. [Tealium Tag Management](https://my.tealiumiq.com/)に移動します。  
 1. ユーザー名とパスワードを入力します。
 1. 認証アプリを開いてトークンを受け取ります。
 1. トークンを**MFAトークン**フィールドにコピー＆ペーストまたは入力します。  

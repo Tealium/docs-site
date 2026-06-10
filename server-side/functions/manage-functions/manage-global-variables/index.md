@@ -15,7 +15,7 @@ V2 event and visitor functions can retrieve the value of a global variable using
 
 To add a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Functions &gt;&gt; Overview**.
+1. in the **Server-Side**, go to **Transform &gt; Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
 1. Click **Global Variables**, then click **&#43; Add Variable**.
 1. Enter a **Name** for the variable.  
@@ -31,7 +31,7 @@ The following example shows the name, key, and value after creating a global var
 
 To edit a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Functions &gt;&gt; Overview**.
+1. in the **Server-Side**, go to **Transform &gt; Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
 1. Click **Global Variables**.
 1. In the menu for the variable, click **Edit**.
@@ -42,7 +42,7 @@ To edit a global variable, follow these steps:
 
 To delete a global variable, follow these steps:
 
-1. in the **Server-Side**, go to **Functions &gt;&gt; Overview**.
+1. in the **Server-Side**, go to **Transform &gt; Functions**.
 1. Select an event or visitor function, then click the **Code** tab.
 1. Click **Global Variables**.
 1. In the menu for the variable, click **Delete**.

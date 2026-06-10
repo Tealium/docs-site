@@ -10,7 +10,7 @@ The [**Send Entire Visitor Data** actions](#send-entire-visitor-data-micro-batch
 To avoid this issue, follow these guidelines:
 
 * **Use Send Entire Visitor Data for small visitor profiles.**  
-Visitor profiles larger than a few kilobytes increase the risk of exceeding the limit. Use this action if your visitor profiles are well under the 100 kB limit. Use the [visitor lookup tool]() to fetch full profiles and evaluate their size.
+Visitor profiles larger than a few kilobytes increase the risk of exceeding the limit. Use this action if your visitor profiles are well under the 100 kB limit. Use [visitor search]() to fetch full profiles and evaluate their size.
 * **Send mapped attributes instead of the entire profile.**  
 Use a [**Send Custom Visitor Data**](#send-custom-visitor-data-micro-batch) action to select only the attributes you need, rather than sending the full visitor JSON.
 * **Use S3 and Redshift for bulk or historical loads.**  

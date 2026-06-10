@@ -1,6 +1,5 @@
 ---
 title: Web Companion Adobe Test & Targetの使用方法
-description: Web CompanionでAdobe Test & Targetツールを使用する方法について説明します。
 url: https://docs.tealium.com/ja/iq-tag-management/tealium-tools/web-companion-tool-adobe-test-amp-target/
 ---
 Web CompanionでAdobe Test &amp; Targetツールを使用するには：
@@ -12,7 +11,7 @@ Web CompanionでAdobe Test &amp; Targetツールを使用するには：
 1. Adobe Test and Targetバーをクリックします。
 1. **Select Target**をクリックします。ページ上の要素セレクターの十字線が表示されます。
 1. その十字線を使用して、テストを適用したい要素を選択します。
-1. Web Companionは選択した要素の識別情報を入力します。mBox情報とStaticパラメータを入力します。
+1. Web Companionは選択した要素の識別情報を入力します。mBox情報とStaticパラメータを入力してください。
     ![](/images/iq-tag-management/no-title-1318i318bf7765a3d7dfb.png)
 
 1. 変更内容を配置する場所を選択します。詳細については、[Test &amp;amp; Target]()の記事を参照してください。
@@ -22,5 +21,5 @@ Web CompanionでAdobe Test &amp; Targetツールを使用するには：
 1. **Add to Queue**をクリックします。
 1. キューに移動して**Save**をクリックします。
 1. Tealium iQのログイン情報を入力し、**Login**をクリックします。
-1. デフォルトでは、Web Companionを介して追加されたものはTealium iQでオフになっています。Tealium iQに入り、追加したタグや拡張機能をオンにします。
+1. デフォルトでは、Web Companionで追加されたものはTealium iQでオフになっています。Tealium iQにログインして、追加したタグや拡張機能をオンにします。
 1. プロファイルを保存/公開します。

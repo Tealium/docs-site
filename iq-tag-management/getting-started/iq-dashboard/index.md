@@ -7,7 +7,7 @@ url: https://docs.tealium.com/iq-tag-management/getting-started/iq-dashboard/
 
 The dashboard is the default view when you log into iQ Tag Management. The dashboard displays a summary of the profile configuration, tag metrics for the current profile, and a list of recent changes. Use the dashboard to quickly jump to a specific area within your account.
 
-To access the dashboard, from the sidebar select **iQ Tag Management &gt; Dashboard**.
+To access the dashboard, from the sidebar select **Tag Management &gt; Dashboard**.
 
 ## Account summary
 
@@ -28,13 +28,11 @@ The heading bar appears on the top of your Tealium window. It contains the follo
 
 ### Navigation bar
 
-The navigation bar appears on the left side of your Tealium window. It contains links to all of the available products, features, and tools. Click any item to load it in the Tealium window. If you click a server-side product or feature (for example, AudienceStream), a new tab will open in your browser to load the server-side profile.
+The navigation bar appears on the left side of your Tealium window. It contains links to all of the available products, features, and tools. Click any item to load it in the Tealium window. If you click a server-side product or feature, a new tab will open in your browser to load the server-side profile.
 
 ![](/images/iq-tag-management/iq-dashboard-navigation-bar1.png)
 
 You can minimize the navigation bar by clicking the left arrow at the bottom of the navigation bar. Tealium applications will appear as buttons which display the product&#39;s functions or a tooltip describing the product it will open. To expand the navigation bar again, click the right arrow at the bottom of the navigation bar.
-
-![](/images/iq-tag-management/iq-dashboard-navigation-bar1.png)
 
 ### Summary
 

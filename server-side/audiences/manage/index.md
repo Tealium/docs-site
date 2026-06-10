@@ -11,7 +11,7 @@ An audience is a combination of one or more attribute conditions. The more filte
 
 Use the following steps to create an audience:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click **&#43; New Audience**.
 1. Enter a **Name** for the audience. If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.
 1. To add a condition for the audience, select an attribute, an operator, and a value.
@@ -51,7 +51,7 @@ You can duplicate an audience from the list of audiences, or from the audience d
 
 To duplicate an audience from the list of audiences, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. In the audience menu, select **Duplicate**.
     * The copy of the audience is displayed.
 1. Click **Edit** to modify the **Name** and conditions as needed for the new audience.
@@ -61,7 +61,7 @@ To duplicate an audience from the list of audiences, follow these steps:
 
 To duplicate an audience from audience details, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click an audience in the list, then click **Duplicate**.
     * The copy of the audience is displayed.
 1. Click **Edit** to modify the **Name** and conditions as needed for the new audience.
@@ -73,7 +73,7 @@ To duplicate an audience from audience details, follow these steps:
 
 To edit an audience, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click an audience in the list, then click **Edit**.
 1. Modify the audience as needed.
     * Click **Calculate** to update the potential size as you edit or add conditions.
@@ -88,7 +88,7 @@ To edit an audience, follow these steps:
 
 To activate an audience, select and configure a connector, as follows:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click an audience in the list, then click **Edit**.
 1. Click the **Activations** tab, then click **&#43; Add Activation**.
 1. Select and configure a connector.
@@ -100,7 +100,7 @@ To activate an audience, select and configure a connector, as follows:
 
 To deactivate an audience, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click an audience in the list, then click **Activations**.
 1. Click the connector, then toggle the connector to **Off**.
 1. Save and publish.
@@ -111,14 +111,14 @@ You can delete an audience from the list of audiences or from the audience detai
 
 To delete an audience from the list of audiences, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click the audience menu, and select **Delete**.
 1. In the confirmation dialog, click **Delete**.
 1. Save and publish.
 
 To delete an audience from audience details, follow these steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. In the list of audiences, click the audience.
 1. Click **Delete**.
 1. In the confirmation dialog, click **Delete**.

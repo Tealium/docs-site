@@ -1,6 +1,6 @@
 ---
-title: Cyberduckを使用してFTP/SFTPまたはAmazon S3経由でファイルをアップロードする
-description: この記事では、FTP/SFTPまたはAmazon S3経由でファイルをアップロードするためにCyberduckを構成する方法について説明します。
+title: Cyberduckを使用してSFTPまたはAmazon S3経由でファイルをアップロードする
+description: この記事では、SFTPまたはAmazon S3経由でファイルをアップロードするためにCyberduckを構成する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/data-sources/file-import/file-transfer-service/cyberduck/
 ---
 1. Cyberduckを実行します。

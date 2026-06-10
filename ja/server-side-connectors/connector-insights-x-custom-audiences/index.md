@@ -17,7 +17,7 @@ XカスタムオーディエンスAPIは、Xの広告主が広告運用をプロ
 
 ## コネクターインサイトの使用方法
 
-コネクターインサイトにアクセスするには、**AudienceStream &gt; Audience Connectors** に移動し、**Xカスタムオーディエンス** コネクターを検索して **Insights** をクリックします。
+コネクターインサイトにアクセスするには、**Connect &gt; Audience Connectors** に移動し、**Xカスタムオーディエンス** コネクターを検索して **Insights** をクリックします。
 
 ![](/images/server-side-connectors/connector-insights-btn.png)
 

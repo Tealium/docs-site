@@ -74,7 +74,7 @@ All queries to DataAccess are logged and stored in the **DataAccess query histor
 The dataset is available in read-only mode to all DataAccess customers. You can access it in the following ways:
 
 * **DataAccess tables**: Requires authentication credentials. For more information, see .  
-* **Insights dashboard**: Available under **Insights &gt; Dashboards &gt; Analyses**. For more information, see .
+* **Insights dashboard**: Available under **Analyze &gt; Insights &gt; Dashboards &gt; Analyses**. For more information, see .
 
 You can use the query history dataset to:
 

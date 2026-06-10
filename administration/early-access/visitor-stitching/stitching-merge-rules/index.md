@@ -119,9 +119,11 @@ When stitching merge rules are enabled, a new setting is available in the attrib
 
 ### And
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **And** | (Badge) Set to `Assigned` only if both are `Assigned`.&lt;br&gt;(Boolean) Set to `true` only if both are `true`.|  Badge&lt;br&gt; Boolean|
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Badge | Set to `Assigned` only if both are `Assigned`. |
+|  Boolean | Set to `true` only if both are `true`. |
+{class=&#34;dt--fixed&#34;}
 
 **Example**
 
@@ -150,9 +152,11 @@ This example attribute is `true` for a visitor if all the visitor&#39;s online v
 
 ### Or
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Or** | (Badge) Set to `Assigned` if either is `Assigned`.&lt;br&gt;(Boolean) Set to `true` if either is `true`. |  Badge&lt;br&gt; Boolean |
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Badge | Set to `Assigned` if either is `Assigned`. |
+|  Boolean | Set to `true` if either is `true`. |
+{class=&#34;dt--fixed&#34;}
 
 **Example**
 
@@ -183,9 +187,11 @@ Based on these enrichments, the merged badge is assigned if either visitor has r
 
 ### Max
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Max** |  (Number) Keep the higher value&lt;br&gt;(Date) Keep the later date. |  Number&lt;br&gt; Date | 
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Number | Keep the higher value. |
+|  Date | Keep the later date. |
+{class=&#34;dt--fixed&#34;}
 
 **Example**
 
@@ -197,9 +203,11 @@ Since this enrichment uses the current timestamp, the **Newer** rule produces th
 
 ### Min
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Min** |  (Number) Keep the lower value&lt;br&gt;(Date) Keep the earlier date. |  Number&lt;br&gt; Date |
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Number | Keep the lower value. |
+|  Date | Keep the earlier date. |
+{class=&#34;dt--fixed&#34;}
 
 **Example**
 
@@ -211,27 +219,26 @@ Since this enrichment uses the current timestamp, the **Older** rule produces th
 
 ### Newer
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Newer** | Keep the more recently updated value (including removed values) |  Badge&lt;br&gt;  Boolean&lt;br&gt; Date&lt;br&gt; Number&lt;br&gt; Set of strings&lt;br&gt; String&lt;br&gt; Tally |
+The **Newer** rule chooses the attribute value, including a removed value, updated most recently. This rule is best for attributes with enrichments based on incoming event attributes (as opposed to other visitor attributes).
+
+The **Newer** rule is based on an internal timestamp set when an enrichment updates the value of an attribute. If the internal timestamp is not set for both attributes, the timestamps of the last visit for each visitor are used to determine which was set first.
+
+| Supported data types | Rule behavior |
+|-------------|--------------------|
+|  Badge | Keep the more recently updated state (including unassigned). |
+|  Boolean&lt;br&gt;  Number |  Keep the more recently updated value. |
+|  Date |  Keep the more recently updated value (including removed values). This is based on when this date attribute was last enriched, not the date value stored in the attribute itself. |
+|  Set of strings |  Keep the more recently updated (including removed) set of strings. |
+|  String |  Keep the more recently updated value (including removed values). |
+|  Tally |  Keep the more recently updated (including removed) tally. |
+|  Array of booleans&lt;br&gt;  Array of numbers&lt;br&gt;  Array of strings |  Keep the more recently updated (including removed) array. |
+{class=&#34;dt--fixed&#34;}
 
 **Example**
 
 ![](/images/server-side/merge-rules/rule-newer-example.png)
 
-The **Newer** rule chooses the attribute value, including a removed value, updated most recently. This rule is best for attributes with enrichments based on incoming event attributes (as opposed to other visitor attributes).
-
-The **Newer** rule is based on an internal timestamp set when an enrichment updates the value of an attribute. If the internal timestamp is not set for both attributes, the timestamps of the last visit for each visitor are used to determine which was set first.
-
 ### Older
-
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Older** | Keep the earlier updated value (including removed values) |  Badge&lt;br&gt;  Boolean&lt;br&gt; Date&lt;br&gt; Number&lt;br&gt; Set of strings&lt;br&gt; String&lt;br&gt; Tally |
-
-**Example**
-
-![](/images/server-side/merge-rules/rule-older-example.png)
 
 The **Older** rule chooses the attribute value, including a removed value, updated earlier. The **Older** rule is best for attributes with enrichments that only set a value if a value is not already set to ensure that only the first value for the visitor is saved.
 
@@ -239,11 +246,29 @@ The **Older** rule is based on an internal timestamp set when an enrichment upda
 
 If an attribute enrichment does not use a self-referencing rule to ensure it&#39;s only set once, then using the **Older** rule will not necessarily result in the earliest value set.
 
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Badge | Keep the earlier updated state (including unassigned). |
+|  Boolean&lt;br&gt; Number | Keep the earlier updated value. |
+|  Date | Keep the earlier updated value (including removed values). This is based on when this date attribute was last enriched, not the date value stored in the attribute itself. |
+|  Set of strings | Keep the earlier updated (including removed) set of strings. |
+|  String | Keep the earlier updated value (including removed values). |
+|  Tally | Keep the earlier updated (including removed) tally. |
+|  Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Keep the earlier updated (including removed) array. |
+{class=&#34;dt--fixed&#34;}
+
+**Example**
+
+![](/images/server-side/merge-rules/rule-older-example.png)
+
 ### Recalculate
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Recalculate** | Discard previous values and run enrichments on the final merged profile. |  Badge&lt;br&gt;  Boolean&lt;br&gt; Date&lt;br&gt; Number&lt;br&gt; Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings |
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Badge | Discard previous states and run enrichments on the final merged profile. |
+|  Boolean&lt;br&gt; Date&lt;br&gt; Number | Discard previous values and run enrichments on the final merged profile. |
+|  Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Start unassigned and run enrichments on the final merged profile. |
+{class=&#34;dt--fixed&#34;}
 
 The **Recalculate** rule discards the initial merged value of the attribute and reruns the enrichments for the attribute. Discarding the initial merged value ensures that the recalculation starts with an unset value and the value is set only based on the enrichments.
 
@@ -253,7 +278,7 @@ The **Recalculate** rule is best suited for attributes derived from other visito
 
 * If an enrichment is set to run on **New Visitor**, **New Visit**, or **End of Visit**, it is run in the merge rule only if the event leading to the merge also caused a **New Visitor**, **New Visit**, or **End of Visit**.
 * Enrichment rule conditions that use event attributes are evaluated based on the event that caused the merge.
-* Enrichment rule conditions with the **Has Changed** operator evaluate to `true` if this attribute has changed compared to _either_ of the visitor profiles being merged.
+* Enrichment rule conditions with the **Has Changed** operator evaluate to `true` if the attribute value being checked differs from either profile.
 
 **Example**
 
@@ -262,10 +287,6 @@ The **Recalculate** rule is best suited for attributes derived from other visito
 In this example, the attribute value is derived from another visitor attribute, `Orders Timeline`. If the `Orders Timeline` attribute has its own merge rule (**Merge timeline**), that rule runs before this number attribute is evaluated by the **Recalculate** rule.
 
 ### Recalculate (Force)
-
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Recalculate** (Force) |  Discard previous values and run enrichments on the final merged profile and force some conditions to `true`. |  Badge&lt;br&gt;  Boolean&lt;br&gt; Date&lt;br&gt; Number&lt;br&gt; Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings |
 
 The **Recalculate (Force)** rule is the same as the **Recalculate** rule except that it forces several enrichment conditions to `true`. The **Recalculate (Force)** rule is best for attributes derived from the value of one or more other visitor or visit attributes that also use any of the **New Visitor**, **New Visit**, or **End of Visit** conditions.
 
@@ -277,6 +298,13 @@ Visitor stitching can occur at times that do not coincide with the **New Visitor
 * Enrichment rule conditions that use event attributes are forced to evaluate to `true`.
 * Enrichment rule conditions with the **Has Changed** operator are forced to evaluate to `true`. 
 
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Badge | Discard previous states and run enrichments on the final merged profile and force some conditions to `true`. |
+|  Boolean&lt;br&gt; Date&lt;br&gt; Number | Discard previous values and run enrichments on the final merged profile and force some conditions to `true`. |
+|  Set of strings&lt;br&gt; String&lt;br&gt; Tally&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Start unassigned and run enrichments on the final merged profile and force some conditions to `true`. |
+{class=&#34;dt--fixed&#34;}
+
 **Example**
 
 ![](/images/server-side/merge-rules/rule-recalculate-force-end-visit.png)
@@ -287,11 +315,12 @@ If `Visit Ended` is not forced to evaluate to `true`, the badge remains unassign
 
 ### Sum
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Sum** | Add values from both visitors. |  Number |
-
 The **Sum** rule keeps the sum of the values of each number attribute. If one of the values is not set, the result is the other value that is set. If neither value is set, the merged value is also not set (as opposed to a value of `0`).
+
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Number | Add values from both visitors. |
+{class=&#34;dt--fixed&#34;}
 
 ![](/images/server-side/merge-rules/rule-sum-example.png)
 
@@ -299,11 +328,13 @@ In this example, if Visitor A spent $30 and Visitor B spent $60, then the merged
 
 ### Union
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Union** | Combine values from both, preserving consistent order across arrays. |  Set of strings&lt;br&gt; Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings |
-
 The **Union** rule combines values from both attributes, preserving consistent order across arrays. The values in a set of strings are deduplicated.
+
+| Supported data types | Rule behavior |
+|----------------------|---------------|
+|  Set of strings | Combine values from both. |
+|  Array of booleans&lt;br&gt; Array of numbers&lt;br&gt; Array of strings | Combine values from both, preserving consistent order across arrays. |
+{class=&#34;dt--fixed&#34;}
 
 **Example: Set of strings** 
 
@@ -349,13 +380,13 @@ The merged attribute retains the order of the arrays from the original visitor p
 
 ### Union Max/Min/Sum
 
-| Rule | Description | Supported data types |
-|------|-------------| -------------------- |
-| **Union Max** |  Merge keys and keep the higher value for matching keys. |  Tally |
-| **Union Min** | Merge keys and keep the lower value for matching keys. |  Tally |
-| **Union Sum** |  Merge keys and add values for matching keys. |  Tally |
-
 The **Union Max/Min/Sum** rules merge tally attributes where the values of any common keys are combined based on the specific rule (**Max**, **Min**, or **Sum**). The merged tally retains all keys that exist in one of the original attributes.
+
+| Rule | Supported data types |  Description |
+|------|-------------| -------------------- |
+| **Union Max** |   Tally | Merge keys and keep the higher value for matching keys. | 
+| **Union Min** |   Tally | Merge keys and keep the lower value for matching keys. |
+| **Union Sum** |    Tally | Merge keys and add values for matching keys. |
 
 **Example: Union Sum**
 

@@ -15,7 +15,7 @@ The following example creates a basic VIP audience using [the previously created
 
 Use the following steps to create an audience:
 
-1. Go to **AudienceStream &gt; Audiences** and click **&#43; Add Audience**.
+1. Go to **Activate &gt; Audiences** and click **&#43; Add Audience**.
 1. Enter a **Name** to uniquely identify the audience, such as `VIP`. If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.
 1. Use the **Conditions** drop-downs to create a filter:
     ```

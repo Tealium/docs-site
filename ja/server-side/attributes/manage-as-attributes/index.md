@@ -3,7 +3,7 @@ title: 訪問と訪問属性の管理
 description: この記事では、訪問と訪問属性を管理する方法について説明します。
 url: https://docs.tealium.com/ja/server-side/attributes/manage-as-attributes/
 ---
-**AudienceStream &gt; 訪問/訪問属性** にアクセスして、訪問属性を表示します。
+**Transform &gt; Visitor / Visit Attributes** にアクセスして、訪問属性を表示します。
 
 ![](/images/server-side/attributes/visit-visitor-attributes-table.png)
 
@@ -38,7 +38,7 @@ url: https://docs.tealium.com/ja/server-side/attributes/manage-as-attributes/
 
 訪問または訪問属性を追加するプロセスは似ています。訪問または訪問属性を追加する手順は以下の通りです：
 
-1. **AudienceStream &gt; 訪問/訪問属性** にアクセスします。  
+1. **Transform &gt; Visitor / Visit Attributes** にアクセスします。  
 左側のフィルターを使用して表示を絞り込むこともできます。
 1. **&#43; 属性を追加** をクリックします。
 1. **属性を追加** ダイアログで、属性のスコープとして **訪問** または **訪問** を選択し、**続行** をクリックします。  

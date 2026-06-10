@@ -23,7 +23,7 @@ If the number of users is yet to be determined, these values are null.
 
 ## Using Connector Insights
 
-To access Connector Insights, go to **AudienceStream &gt; Audience Connectors**, search for the **Google Ads Customer Match (Tealium-Provided Credentials) Connector** connector, and click **Insights**.
+To access Connector Insights, go to **Connect &gt; Audience Connectors**, search for the **Google Ads Customer Match (Tealium-Provided Credentials) Connector** connector, and click **Insights**.
 
 ![](/images/server-side-connectors/connector-insights-btn.png)
 

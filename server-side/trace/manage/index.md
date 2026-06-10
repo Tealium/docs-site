@@ -11,7 +11,7 @@ After you save your changes and are ready to begin testing your enrichments, aud
 
 Use the following steps to get a trace ID:
 
-1. Go to **Server-Side &gt; Trace**.
+1. Go to **Validate &gt; Trace**.
 1. Click **Start**.  
 A trace ID appears.  
       ![](/images/server-side/whiteui-dataaccess-trace-getting-a-trace-id.png)
@@ -40,7 +40,7 @@ Use the following steps to join a trace that is in progress:
 
 You must exit any active traces before you can join a trace.
 
-1. Click **Server-Side &gt; Trace**.
+1. Click **Validate &gt; Trace**.
 1. Click **Join**.
 1. Enter the trace ID for an active trace.
 1. Click **Join**.  
@@ -49,7 +49,7 @@ The trace log appears.
 
 ## Start or join a trace with the slide-out screen
 
-If you have closed the trace screen, click **Server-Side &gt; Trace** and the screen slides out again. Use the trace screen to start or join a trace without leaving your current location in the product. When a trace is in progress, a blue arrow next to **Server-Side &gt; Trace** pulses.
+If you have closed the trace screen, click **Validate &gt; Trace** and the screen slides out again. Use the trace screen to start or join a trace without leaving your current location in the product. When a trace is in progress, a blue arrow next to **Validate &gt; Trace** pulses.
 
 ## Stop a trace
 

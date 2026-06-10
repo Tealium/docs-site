@@ -11,7 +11,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスを作成するには、以下の手順に従ってください：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. **&#43; New Audience** をクリックします。
 1. オーディエンスの**名前**を入力します。[DataAccess]()製品（EventStore、AudienceStore、EventDB、AudienceDB）を使用する場合、オーディエンス名は128文字以内でなければなりません。そうでないと、DataAccessがオーディエンス名を切り詰め、エラーが発生する可能性があります。
 1. オーディエンスの条件を追加するには、属性、演算子、値を選択します。
@@ -51,7 +51,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスリストからオーディエンスを複製するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. オーディエンスメニューで **Duplicate** を選択します。
     * オーディエンスのコピーが表示されます。
 1. **Edit** をクリックして、新しいオーディエンスの**名前**と条件を必要に応じて変更します。
@@ -61,7 +61,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスの詳細からオーディエンスを複製するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Duplicate** をクリックします。
     * オーディエンスのコピーが表示されます。
 1. **Edit** をクリックして、新しいオーディエンスの**名前**と条件を必要に応じて変更します。
@@ -73,7 +73,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスを編集するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Edit** をクリックします。
 1. 必要に応じてオーディエンスを変更します。
     * 条件を編集するときに、**Calculate** をクリックして潜在的なサイズを更新します。
@@ -88,7 +88,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスをアクティベートするには、コネクタを選択して構成します：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Edit** をクリックします。
 1. **Activations** タブをクリックし、**&#43; Add Activation** をクリックします。
 1. コネクタを選択して構成します。
@@ -100,7 +100,7 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスを非アクティブ化するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. リストからオーディエンスをクリックし、**Activations** をクリックします。
 1. コネクタをクリックし、コネクタを **Off** に切り替えます。
 1. 保存して公開します。
@@ -111,14 +111,14 @@ url: https://docs.tealium.com/ja/server-side/audiences/manage/
 
 オーディエンスリストからオーディエンスを削除するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. オーディエンスメニューをクリックし、**Delete** を選択します。
 1. 確認ダイアログで **Delete** をクリックします。
 1. 保存して公開します。
 
 オーディエンスの詳細からオーディエンスを削除するには、次の手順に従います：
 
-1. **AudienceStream &gt; Audiences** に移動します。
+1. **Activate &gt; Audiences** に移動します。
 1. オーディエンスリストでオーディエンスをクリックします。
 1. **Delete** をクリックします。
 1. 確認ダイアログで **Delete** をクリックします。

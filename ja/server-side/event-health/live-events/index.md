@@ -9,7 +9,7 @@ url: https://docs.tealium.com/ja/server-side/event-health/live-events/
 
 ## ライブイベントの使用
 
-**EventStream &gt; Live Events**にアクセスしてライブイベントにアクセスします。
+**Validate &gt; Live Events**にアクセスしてライブイベントにアクセスします。
 
 ![](/images/server-side/whiteui-eventstream-liveeventfeed.png)
 

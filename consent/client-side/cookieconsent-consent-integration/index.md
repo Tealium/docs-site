@@ -107,7 +107,7 @@ Implement consent logging in one of the following ways:
 
 Set up the CookieConsent v3 consent integration and define rules to enforce consent. This step links CookieConsent to your consent logic in Tealium iQ, ensuring that tags fire only when the user has given appropriate consent.
 
-1. Go to the **iQ Tag Management &gt; Consent Integrations** section.
+1. Go to the **Tag Management &gt; Consent Integrations** section.
 1. Click **Add Integration**.
 1. Enter a name for the integration that clearly identifies its purpose.
 1. Select **CookieConsent v3** from the vendor drop-down list.

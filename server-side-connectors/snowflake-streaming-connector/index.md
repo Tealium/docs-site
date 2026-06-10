@@ -213,7 +213,7 @@ To drop channels that Tealium has created, provide a list of channels in CSV for
 
 To configure channels to drop, use the following steps:
 
-1. Go to **Server-Side &gt; EventStream &gt; Event Connectors** or to **Server-Side &gt; AudienceStream &gt; Audience Connectors**.
+1. Go to **Connect &gt; Event Connectors** or to **Connect &gt; Audience Connectors**.
 1. Select a Snowflake connector.
 1. Under **Remote Configuration**, click **Drop Channel**.
 1. Enter the following information:  

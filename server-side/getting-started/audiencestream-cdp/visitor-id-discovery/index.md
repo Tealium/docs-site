@@ -9,7 +9,7 @@ We will use Audience Discovery to sample our active customers using our new Emai
 
 Remember, for this to work you will need to let some time pass since the creation of the email address attribute so that AudienceStream can collect enough data to provide a decent sample set. Follow these steps to validate the email address attribute.
 
-1. Navigate to **AudienceStream &gt; Discover** (Audience Discovery).
+1. Navigate to **Activate &gt; Discover** (Audience Discovery).
 1. Click **Perspective** and select the visitor string attribute **Email Address**.
 1. You should examine not just the **Live** view, but the **Historic** view.
 

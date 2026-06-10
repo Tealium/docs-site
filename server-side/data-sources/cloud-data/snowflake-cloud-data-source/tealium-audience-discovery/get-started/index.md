@@ -39,7 +39,7 @@ For detailed configuration options, see [Manage audiences in Tealium Audience Di
 
 1. In the audience list, open the actions menu and click **Share**.
 1. Copy the **Database**, **Schema**, and **Role** values.
-1. In Tealium, go to **Sources &gt; Data Sources** and click **Add Data Source**.
+1. In Tealium, go to **Connect &gt; Data Sources** and click **Add Data Source**.
 1. Select **Snowflake** under **Data Cloud**.
 1. Enter a name and configure the connection using the copied values.
 1. Enable processing and configure processing settings.

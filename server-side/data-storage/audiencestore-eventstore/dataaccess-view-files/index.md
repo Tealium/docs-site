@@ -9,7 +9,7 @@ You can browse the files associated with each audience or event feed using the D
 
 The list of files will be empty immediately after configuring EventStore or AudienceStore. Use the following steps to access files in the DataAccess Console:
 
-1. In the sidebar, go to **DataAccess &gt; EventStore** or **DataAccess &gt; AudienceStore.**
+1. In the sidebar, go to **Store &gt; EventStore** or **Store &gt; AudienceStore.**
 1. Select the number of weeks of data to display (1 to 4 weeks, the default is 1 week).
 1. Select the name of an Event Feed or an AudienceStore Action.&lt;br&gt;For EventStore, the list only displays feeds that are enabled for EventStore. For AudienceStore, files can be JSON or CSV, depending on the configured action.
 1. Click **Reload**.  
@@ -28,7 +28,7 @@ You can also access files using third-party tools such as an FTP client or the A
 
 To get the Amazon S3 access key:
 
-1. In the sidebar, go to **DataAccess &gt; EventStore** or **DataAccess &gt; AudienceStore.**
+1. In the sidebar, go to **Store &gt; EventStore** or **Store &gt; AudienceStore.**
 1. Click **Get Amazon Access Key**. The following fields are displayed:
     * Access Key ID
     * Secret Access Key

@@ -7,7 +7,7 @@ url: https://docs.tealium.com/server-side/audiences/manage-segments/
 
 To create an audience segment that can be used in multiple audiences, use the following steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click the **SEGMENTS** tab, then click **&#43; New Segment**.
 1. Enter a **Name** for the segment. If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
 1. To add a condition, select an attribute, an operator, and a value.
@@ -33,7 +33,7 @@ Potential segment sizing is not available when a segment is built with the follo
 
 To save a segment to favorites, use the following steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click the **SEGMENTS** tab.
 1. Click the star next to the segment name.
 
@@ -41,7 +41,7 @@ To save a segment to favorites, use the following steps:
 
 To filter the segments list by a label or by favorites, use the following steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click the **SEGMENTS** tab.
 1. To filter by a specific label, click **Labels** and select a label.
 1. To see only your favorite segments, click **Favorite** and select **Favorite**.
@@ -52,7 +52,7 @@ Currently, segments that are being used in an audience cannot be edited.
 
 To edit a segment, use the following steps:
 
-1. Go to **AudienceStream &gt; Audiences**.
+1. Go to **Activate &gt; Audiences**.
 1. Click the **SEGMENTS** tab, then select the segment to edit.
 1. Click **Edit**.
     * Add or edit conditions as needed.
@@ -65,6 +65,6 @@ You cannot delete a segment that is in use in an audience.
 
 Use the following steps to delete a segment:
 
-1. Go to **AudienceStream &gt; Audiences**, and click the **SEGMENTS** tab.
+1. Go to **Activate &gt; Audiences**, and click the **SEGMENTS** tab.
 1. Click the menu for the segment, then select **Delete**.  
 The segment is deleted. Save and Publish is not required.

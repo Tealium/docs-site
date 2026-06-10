@@ -24,7 +24,7 @@ utag.link({
 
 以下の手順でデータレイヤーのトラッキングコールを変換します：
 
-1. 左側のサイドバーで、**iQ Tag Management &gt; Extensions**に移動します。
+1. 左側のサイドバーで、**Tag Management &gt; Extensions**に移動します。
 1. [JavaScript extension]()を追加します。
 1. **Title**フィールドに`Convert Tracking Calls`と入力します。
 1. **Draft Name**フィールドにドラフトの名前を入力します。

@@ -26,7 +26,7 @@ The function works best when the Acxiom Real Tag tag is installed. This identifi
 
 To create the function:
 
-1.  Navigate to **Functions**.
+1.  Navigate to **Transform &gt; Functions**.
 2.  Click **Add Function**.
 3.  Enter a name for the function.
 4.  Enter notes to describe the function.

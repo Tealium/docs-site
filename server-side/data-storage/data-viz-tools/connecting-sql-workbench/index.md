@@ -42,7 +42,7 @@ The following steps describe how to create a connection profile by providing SQL
 2.  Enter a name your new profile. For example, a name that combines your Tealium account and profile, such as `mycompany-main`.
 3.  In the **Driver** drop-down list, select `Amazon Redshift JDBC Driver (com.amazon.redshift.jdbc41.Driver)`.  
   ![](/images/server-side/sql-workbench-connection-profile.jpg)
-4.  In your Tealium account, navigate to **DataAccess &gt; EventDB** or **DataAccess &gt; AudienceDB**.
+4.  In your Tealium account, navigate to **Store &gt; EventDB** or **Store &gt; AudienceDB**.
 5.  Click **Get DB Connection Details**.  
   The **DB Connection Detail** dialog displays. Keep this window open as you proceed. In the following example, credentials are removed for confidentiality.  
     ![](/images/server-side/sql-workbench-connection-details.jpg)
