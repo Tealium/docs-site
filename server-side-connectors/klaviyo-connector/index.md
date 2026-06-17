@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/klaviyo-connector/
 This connector uses the following vendor API:
 
 * API Name: Klaviyo API
-* API Version: 2025-01-15
+* API Version: 2026-01-15
 * API Endpoint: `https://a.klaviyo.com/api/`
 * Documentation: [Klaviyo API Reference](https://developers.klaviyo.com/en/reference/api_overview)
 

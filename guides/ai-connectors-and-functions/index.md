@@ -5,7 +5,7 @@ url: https://docs.tealium.com/guides/ai-connectors-and-functions/
 ---
 Tealium supports two approaches for integrating AI models into real-time data workflows:
 
-* **AI connectors**: Integrate with supported large language model (LLM) providers for prompt-based interactions.
+* **AI connectors**: Integrate with supported AI providers for prompt-based LLM interactions or direct model endpoint invocation.
 * **Tealium functions**: Invoke your own model or call custom endpoints.
 
 Use this guide to understand how each approach works and when to use each one.
@@ -14,18 +14,21 @@ Use this guide to understand how each approach works and when to use each one.
 
 ### How it works
 
-AI connectors integrate with hosted LLM APIs from supported providers and require prompt-based interactions that return structured JSON. They follow a consistent prompt, response, and activation pattern across all supported providers.
+AI connectors integrate with hosted AI services from supported providers. They support two interaction patterns:
 
-To use an AI connector, you need authentication credentials for your provider and at least one configured action that defines a prompt and the Tealium data to send to the AI model.
+* **Prompt-based (LLM)**: Send a prompt and Tealium data to an LLM endpoint. The model returns a structured JSON response that is forwarded to Tealium Collect for profile enrichment.
+* **Model endpoint invocation**: Send Tealium event or visitor attributes directly to a deployed model endpoint (for example, a Snowflake Model Registry endpoint). The model returns predictions or scores that are forwarded to Tealium Collect for profile enrichment.
 
-AI connectors are designed for LLM activation only. They are not intended for invoking traditional machine learning models that return numeric scores or tabular predictions. For those use cases, use Tealium functions.
+To use an AI connector, you need authentication credentials for your provider and at least one configured action that defines the request and the Tealium data to send to the model.
+
+AI connectors are designed for use cases that return structured, predictable output. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization&#39;s AI governance processes before moving to production.
 
 ### Data flow
 
 ![](/images/guides/ai-connectors-flow.png)
 
 1. **Trigger fires**: An event or audience change triggers a connector action.
-1. **Prompt sent**: The connector sends your prompt and Tealium data to the AI model endpoint.
+1. **Request sent**: The connector sends your prompt or input data to the AI model endpoint.
 1. **Response received**: The model generates the requested values and returns a JSON object.
 1. **Event ingested**: The connector forwards the response to Tealium Collect.
 1. **Profile enriched**: Enrichment rules write the response values to visitor profile attributes.
@@ -34,6 +37,8 @@ AI connectors are designed for LLM activation only. They are not intended for in
 ### Prompts
 
 The prompt instructs the model about the context data to evaluate, asks a specific question, and defines the expected response. Depending on the vendor connector, you may or may not need to include specific instructions about the response output. See the specific connector instructions for details.
+
+Some connectors, such as the OpenAI **Send Prompt to OpenAI** action, enforce JSON structure automatically through a schema. For those connectors, do not include response format instructions in your prompt. The examples below apply to connectors that require manual response formatting.
 
 #### Context data
 
@@ -203,7 +208,7 @@ The following AI connectors are available:
 
 ### How it works
 
-Tealium functions provide a code-based approach for invoking your own model (IYOM). Instead of using a preconfigured connector, you write JavaScript to call any model endpoint directly from an event or visitor function. Use cases include traditional machine learning models returning numeric scores, LLMs hosted on platforms without a dedicated AI connector, and endpoints on data platforms such as Snowflake Cortex, Databricks Model Serving, or Amazon SageMaker.
+Tealium functions provide a code-based approach for invoking your own model (IYOM). Instead of using a preconfigured connector, you write JavaScript to call any model endpoint directly from an event or visitor function. Use cases include traditional machine learning models returning numeric scores, LLMs hosted on platforms without a dedicated AI connector, and endpoints on cloud data platforms.
 
 Tealium functions support both event functions (triggered after an event is processed) and visitor functions (triggered after a visitor profile updates), allowing you to score either immediate event context or accumulated visitor history.
 
@@ -227,17 +232,16 @@ For implementation details, see [Create a function for AI activation]().
 ### Use an AI connector when
 
 * You are invoking a large language model for prompt-based inference.
+* You are invoking a deployed model endpoint on a supported platform (for example, Snowflake Model Registry) for real-time inference.
 * Your use case maps to one of the supported AI providers.
-* Your prompt uses a consistent template with event or visitor data as input.
-* The model returns structured JSON that can be forwarded directly as a Tealium event.
+* The model returns structured output that can be forwarded directly as a Tealium event.
 * You want to configure the integration through the Tealium UI without writing code.
 * Your use case consists of targeted, high-value events or audiences rather than high-volume, low-value events such as page views.
 
-AI connectors are designed for use cases that return structured, predictable JSON output, such as classification labels, confidence values, or identifiers from a predefined list. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization&#39;s AI governance processes before moving to production.
+AI connectors are designed for use cases that return structured, predictable output, such as classification labels, confidence values, scores, or identifiers from a predefined list. They are not designed for long-form content or media generation. If your use case requires free-form output, align with your organization&#39;s AI governance processes before moving to production.
 
 ### Use Tealium functions when
 
-* You need to invoke a traditional machine learning model that returns numeric scores or tabular predictions.
 * Your model is hosted on a platform without a dedicated AI connector.
 * Your payload requires custom logic, data transformation, or PII filtering before sending to the model.
 * You need to handle asynchronous model responses or custom network configuration.
@@ -249,7 +253,7 @@ When you must remove or tokenize PII before sending data to a model, use Tealium
 | Consideration | AI connectors | Tealium functions |
 |---------------|---------------|-------------------|
 | Setup | Configure through the UI | Write JavaScript code |
-| Model types supported | LLMs only | Any ML or AI model, including traditional ML |
+| Model types supported | LLMs and deployed model endpoints on supported platforms | Any ML or AI model, including traditional ML |
 | Supported providers | See [Supported vendors](#supported-vendors) | Any HTTPS endpoint |
 | Prompt control | Template-based with variable substitution | Fully programmable |
 | Authentication | Managed in connector settings | Stored as authentication tokens in Tealium functions |
@@ -267,7 +271,7 @@ The following table lists common AI use cases and the recommended integration ap
 | Sentiment analysis | Classify customer feedback or review events as positive, neutral, or negative. | AI connector |
 | Intent classification | Identify a customer&#39;s likely intent based on browsing or purchase history. | AI connector |
 | Next-best-action (playbook selection) | Select from a finite set of approved actions or offers based on visitor context. | AI connector |
-| Propensity scoring | Predict the likelihood of a conversion, churn, or high-value action using a trained machine learning model. | Tealium functions |
-| Next-best-action (score optimization) | Score a set of candidate actions using a numeric model and select the highest-scoring one. | Tealium functions |
+| Propensity scoring | Predict the likelihood of a conversion, churn, or high-value action using a trained machine learning model. | AI connector (if the model is deployed on a supported platform) or Tealium functions |
+| Next-best-action (score optimization) | Score a set of candidate actions using a numeric model and select the highest-scoring one. | AI connector (if the model is deployed on a supported platform) or Tealium functions |
 | Feature store lookup | Retrieve pre-calculated scores or features from a data platform for activation. | Tealium functions |
 | Custom endpoint inference | Invoke a model hosted on a platform without a dedicated AI connector. | Tealium functions |

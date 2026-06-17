@@ -13,7 +13,7 @@ url: https://docs.tealium.com/server-side-connectors/dynamic-yield-connector/
 | Record engagement | ✗ | ✓ |
 | Report engagement (batch) | ✗ | ✓ |
 | Upsert or delete a user | ✓ | ✗ |
-| Upsert or delete a user (batch) | ✓ | ✗ |
+| Upsert or delete a user (batch) | ✓ | ✓ |
 
 ## Configuration
 
@@ -174,7 +174,6 @@ This action uses batched requests to support high-volume data transfers to the v
 * Max time since oldest request: 1 minutes
 * Max size of requests: 1 MB
 
-
 #### Parameters
 
 | **Parameter** | **Description** |
@@ -210,7 +209,6 @@ This action uses batched requests to support high-volume data transfers to the v
 * Max number of requests: 100
 * Max time since oldest request: 60 minutes
 * Max size of requests: 1 MB
-
 
 #### Parameters
 

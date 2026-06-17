@@ -560,13 +560,27 @@ img { max-width: 100%; }
   This will set table to full width and then
   all cells will be equal width
 */
+.dt--fixed {
+  table-layout: fixed;
+  width: 100%;
+}
 @media screen and (min-width: 62.5em) {
   .dn-ns {              display: none; }
   .db-ns {              display: block; }
   .dib-ns {             display: inline-block; }
+
+  .dt--fixed-ns {
+    table-layout: fixed;
+    width: 100%;
+  }
 }
 @media screen and (min-width: 75em) {
   .dn-l {              display: none; }
+
+  .dt--fixed-l {
+    table-layout: fixed;
+    width: 100%;
+  }
 }
 /*
 
@@ -2748,6 +2762,28 @@ td figure {
 figure img {
   box-shadow: rgba(0, 0, 0, .35) 0px 5px 15px;
   height:  auto;
+}
+.prose figure.docs-diagram {
+  margin: 0; /* Sets all margins to 0 */
+  -webkit-margin-start: 0;
+          margin-inline-start: 0; /* Explicitly overrides the .prose figure rule */
+  -webkit-margin-end: 0;
+          margin-inline-end: 0; /* Explicitly overrides the .prose figure rule */
+  width: 100%;
+}
+figure.docs-diagram {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dce3e8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: hidden;
+}
+figure.docs-diagram img {
+  display: block;
+  max-width: 100%;
+  box-shadow: none;
 }
 .prose figure {
   -webkit-margin-start: 20px;
