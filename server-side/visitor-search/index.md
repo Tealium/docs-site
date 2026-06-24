@@ -56,3 +56,4 @@ The **REST API** tab provides an interface to the [Visitor Privacy API](/api/v3/
 Each API call is available in the **Request Types** drop-down list. Select a request type to view the details of that API call.
 
 ![](/images/server-side/whiteui-audiencestream-visitorlookuptool-select-rest-api-request-type.png)
+

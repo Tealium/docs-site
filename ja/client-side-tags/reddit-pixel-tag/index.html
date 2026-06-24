@@ -1953,13 +1953,13 @@
 </ul>
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
-<li>マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。</li>
-<li><strong>Order ID</strong> が構成されている場合、購入イベントが発火します。</li>
+<li>マッピングを使用して標準構成値を上書きし、イベントをトリガーします。</li>
+<li><strong>Order ID</strong> が構成されているときに購入イベントが発火します。</li>
 <li>Reddit Pixel イベント ID をサーバーサイド属性として利用可能にするには、<strong>Generate Event ID</strong> を <code>true</code> に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>の最新バージョンを使用します。</li>
-<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>のコンバージョン ID 構成を使用することをお勧めします。この構成を使用すると、同じコンバージョンイベントが両方のソースから送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
-<li>最も正確なコンバージョン追跡とレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化された形式で渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシュを適用します。</li>
+<li>Reddit Pixel タグと Reddit Conversions コネクタの両方を実装している場合のみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions コネクタ</a>のコンバージョン ID 構成を使用することをお勧めします。コンバージョン ID 構成を使用すると、同じコンバージョンイベントが両方のソースに送信された場合に二重計算されるのを防ぐことができます。この値が不適切に渡されると、帰属とキャンペーンのパフォーマンスに影響を与えます。</li>
+<li>最も正確なコンバージョン追跡とレポートのために、Reddit の高度なマッチングを使用することをお勧めします。メールアドレスと電話番号は、プレーンな値または SHA256 で事前にハッシュ化されたものとして渡すことができます。Reddit ライブラリは、送信前にプレーンなメールアドレスに SHA256 ハッシュを適用します。</li>
 <li>使用する予定のパラメータのみをマッピングし、Reddit のドキュメントでサポートを確認してください。</li>
-<li>異なるイベントが異なるメタデータを必要とする場合に、イベント固有のパラメータを使用して細かい制御を行います。</li>
+<li>異なるイベントが異なるメタデータを必要とする場合に、イベント固有のパラメータを使用して細かな制御を行います。</li>
 <li>タグは Reddit のイベントレベルのパラメータ要件を強制します。未定義または空の値は削除され、特定のイベントに対して Reddit がサポートしていないパラメータはペイロードから削除されます。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
@@ -1974,18 +1974,18 @@
 </ul>
 </li>
 <li><strong>Send Default Purchase Event</strong>: デフォルトでは、購入イベントがサイト上で追跡されます。しかし、Reddit Pixel に購入イベントを送信したくない場合は、このオプションを <code>false</code> に構成します。</li>
-<li><strong>Generate Event ID</strong>: 各 Reddit トラッキングイベントに対してイベント ID を自動生成します。</li>
+<li><strong>Generate Event ID</strong>: すべての Reddit トラッキングイベントに対してイベント ID を自動生成します。</li>
 </ul>
 <h3 id="conversions-api">Conversions API</h3>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>この機能にはアクティブな <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect タグ</a>が必要です。</p>
-<p>Reddit Conversions API をサポートするには、<strong>Generate Event ID</strong> を <code>true</code> に構成します。<strong>Generate Event ID</strong> が有効になっている場合、このタグは追跡される各イベントに対して一意のイベント ID を生成し、それを <code>event_id</code> パラメータで Reddit Pixel に送信し、Tealium EventStream で使用するために属性として送信します。このイベント ID 属性は、コネクタでマッピングされ、ウェブベースのタグとサーバーサイドの統合を同期させることができます。</p>
-<p>タグは、次の命名規則を使用してイベント ID を生成したイベント属性を送信します：</p>
+<p>Reddit Conversions API をサポートするには、<strong>Generate Event ID</strong> を <code>true</code> に構成します。<strong>Generate Event ID</strong> が有効になっている場合、このタグは追跡される各イベントに対して一意のイベント ID を生成し、それを <code>event_id</code> パラメータとして Reddit Pixel に渡し、Tealium EventStream で使用するために属性として送信します。このイベント ID 属性は、コネクタでマッピングされ、ウェブベースのタグとサーバーサイドの統合を同期させることができます。</p>
+<p>タグは次の命名規則を使用してイベント ID を生成した属性を送信します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">reddit_pixel_event_id_{REDDIT_EVENT}_{TAG_UID}
-</code></pre><p>例えば、タグ #32 からの購入イベントは、次の属性と値を送信します：</p>
+</code></pre><p>例えば、タグ #32 からの購入イベントは次の属性と値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_Purchase_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同じタグからのページビューイベントは、次の属性と値を送信します：</p>
+</span></span></code></pre></div><p>同じタグからのページビューイベントは次の属性と値を送信します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;reddit_pixel_event_id_PageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
 </span></span><span style="display:flex;"><span>}
@@ -1994,20 +1994,20 @@
 <ul>
 <li><strong>Tag Timing</strong> ドロップダウンから <strong>Prioritized</strong> を選択します。</li>
 <li><strong>Bundle Flag</strong> トグルを <code>On</code> に構成します。</li>
-<li><a href="/ja/iq-tag-management/extensions/load-order-manager/">Load Order Manager 画面</a>を使用して、Tealium Collect タグの前に Reddit Pixel タグを発火させます。Tealium Collect タグは最後に発火させることをお勧めします。</li>
+<li><a href="/ja/iq-tag-management/extensions/load-order-manager/">Load Order Manager screen</a>を使用して、Tealium Collect タグの前に Reddit Pixel タグを発火させます。Tealium Collect タグは最後に発火させることをお勧めします。</li>
 </ul>
 <p>これらのイベント ID 属性の使用に関する情報については、<a href="/ja/server-side-connectors/reddit-conversions-connector/#deduplication-for-web-events">Reddit Conversions コネクタ: ウェブイベントの重複排除</a>を参照してください。</p>
 <h2 id="検証">検証</h2>
 <p>タグが期待通りに動作していることを確認するには、ブラウザの開発者ツールと <a href="https://business.reddithelp.com/s/article/Reddit-Pixel-Helper-Chrome-extension">Reddit Pixel Helper</a> ブラウザ拡張機能を使用します：</p>
 <ul>
-<li>各イベントに対して予想されるパラメータが表示されることを確認します。</li>
+<li>各イベントに対して期待されるパラメータが表示されることを確認します。</li>
 <li>サポートされていないメタデータや無効なメタデータに関する警告が表示されないことを確認します。</li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
 <p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
 <p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
-<p>以下のカテゴリを使用してパラメータをマッピングできます。ただし、マッピングされたパラメータが特定のイベントに対して Reddit によってサポートされていない場合は、ペイロードから削除されます。<a href="#event-specific-parameters">イベント固有のパラメータ</a>を使用して、イベントごとに送信されるパラメータを制御します。</p>
+<p>以下のカテゴリを使用してパラメータをマッピングできます。ただし、マップされたパラメータが特定のイベントに対して Reddit によってサポートされていない場合は、ペイロードから削除されます。<a href="#event-specific-parameters">イベント固有のパラメータ</a>を使用して、イベントごとに送信されるパラメータを制御します。</p>
 <p>利用可能なカテゴリは次のとおりです：</p>
 <h3 id="標準">標準</h3>
 <table>
@@ -2056,7 +2056,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="eコマース">Eコマース</h3>
+<h3 id="e-commerce">E-commerce</h3>
 <table>
 <thead>
 <tr>
@@ -2079,7 +2079,7 @@
 <tr>
 <td><code>currency</code></td>
 <td>文字列</td>
-<td>通貨 ( <code>_ccurrency</code> を上書き)。</td>
+<td>通貨 (Overrides <code>_ccurrency</code>).</td>
 </tr>
 <tr>
 <td><code>transactionId</code></td>
@@ -2101,22 +2101,22 @@
 <tr>
 <td style="text-align:left"><code>id</code></td>
 <td style="text-align:left">配列</td>
-<td style="text-align:left">製品 ID (<code>_cprod</code> を上書き)。</td>
+<td style="text-align:left">製品 ID (Overrides <code>_cprod</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>category</code></td>
 <td style="text-align:left">配列</td>
-<td style="text-align:left">製品カテゴリ (<code>_ccat</code> を上書き)。</td>
+<td style="text-align:left">製品カテゴリ (Overrides <code>_ccat</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>name</code></td>
 <td style="text-align:left">配列</td>
-<td style="text-align:left">製品名 (<code>_cprodname</code> を上書き)。</td>
+<td style="text-align:left">製品名 (Overrides <code>_cprodname</code>).</td>
 </tr>
 </tbody>
 </table>
 <h3 id="イベント">イベント</h3>
-<p>マッピングされた変数の値を入力して、選択したイベントをトリガーします。</p>
+<p>選択したイベントをトリガーするために必要なマップされた変数の値を入力します。</p>
 <table>
 <thead>
 <tr>
@@ -2131,7 +2131,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>ViewContent</code></td>
-<td style="text-align:left">コンテンツを表示。</td>
+<td style="text-align:left">コンテンツ表示。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Search</code></td>
@@ -2275,12 +2275,12 @@
 <tr>
 <td style="text-align:left"><code>dpcc</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">ISO 3166-1 alpha-2国コード形式のデータ処理国コード。</td>
+<td style="text-align:left">データ処理国コード。ISO 3166-1 アルファ-2国コード形式。</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dprc</code></td>
 <td style="text-align:left">文字列</td>
-<td style="text-align:left">国のプレフィックスの有無にかかわらず、ISO 3166-2地域コード形式のデータ処理地域コード。</td>
+<td style="text-align:left">データ処理地域コード。ISO 3166-2 地域コード形式で、国のプレフィックスがあるかないか。</td>
 </tr>
 </tbody>
 </table>
@@ -2344,7 +2344,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年May月28日
+          <p>最終更新日 ::  2026年June月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2366,7 +2366,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-commerce</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">製品データ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>

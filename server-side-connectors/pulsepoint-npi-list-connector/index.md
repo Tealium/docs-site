@@ -10,8 +10,8 @@ This integration connects you to Life by PulsePoint. Life is a DSP focused on he
 This connector uses the following vendor API:
 
 * API Name: PulsePoint API
-* API Version: v1
-* API Endpoint: `https://lifeapi.pulsepoint.com/RestApi/v1/npi/npi-list/`
+* API Version: v2
+* API Endpoint: `https://lifeapi.pulsepoint.com/RestApi/v2/npi/npi-list/`
 
 ## Connector Actions
 

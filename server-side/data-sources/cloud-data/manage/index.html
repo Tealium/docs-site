@@ -1125,6 +1125,8 @@
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/insights/manage-dashboards/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-dashboards">Manage dashboards</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/insights/threshold-alerts/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".threshold-alerts">Threshold alerts</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/insights/manage-datasets/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-datasets">Manage datasets</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/insights/datasets-best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".datasets-best-practices">Datasets best practices</a></li>
@@ -1310,7 +1312,7 @@ The process runs once a week at the day and time you specify.</li>
 <p>Optionally include a SQL <code>WHERE</code> clause to import only those records that match your custom condition. The SQL <code>WHERE</code> clause does not support nested <code>SELECT</code> statements. To join multiple tables, use Advanced mode.</p>
 <h4 id="advanced-mode">Advanced mode</h4>
 <p>In Advanced mode, use the SQL editor to enter valid, read-only SQL queries and connect with one or more tables or schemas. The SQL editor supports advanced SQL commands, such as <code>CAST</code> and <code>JOIN</code>. Either incrementing, timestamp, or incrementing and timestamp columns must be included in your selection.</p>
-<h3 id="sql-query-best-practices">SQL query best practices</h3>
+<h4 id="sql-query-best-practices">SQL query best practices</h4>
 <ul>
 <li><strong>Calculated fields</strong><br>
 The Advanced SQL query supports calculated (derived) fields. Calculated values are re-evaluated on each batch fetch and may behave differently depending on your vendor. Using calculated fields in query mode columns (timestamp, incrementing, or timestamp and incrementing) may lead to errors in importing data (for example, skipped rows or loops in ingestion). We recommend avoiding calculated fields for query mode columns.</li>
@@ -1330,6 +1332,31 @@ Only read-only SQL queries are supported. Ensure that your queries do not modify
 <p>When you are done, click <strong>Test Query</strong> to preview the results.</p>
 <h3 id="3-preview-test-query">3. Preview test query</h3>
 <p>Use the test query preview to validate your query results.</p>
+<h3 id="source-table-column-changes">Source table column changes</h3>
+<p>If columns in your source table change after you configure the data source, the required action depends on the type of change:</p>
+<ul>
+<li><strong>Column renamed</strong>: If a column used in the query builder is renamed in the source table, you must duplicate the data source:
+<ol>
+<li>Select the <strong>Duplicate</strong> option from the data source action menu on the <strong>Data Sources</strong> screen.</li>
+<li>In the duplicate data source, update the query builder to use the new column name.</li>
+<li>Use <strong>Set Processing Start</strong> to configure the ingestion start point for the new data source. See <a href="#set-processing-start">Set Processing Start</a> for more information.</li>
+</ol>
+</li>
+<li><strong>Column added</strong>:
+<ul>
+<li>If a new column is added to the source table and you do not need to ingest it, no action is required.</li>
+<li>If the column is a timestamp or incrementing column, duplicate the data source as you would for a renamed column.</li>
+<li>For any other new column type:
+<ol>
+<li>Toggle data source processing to <strong>Off</strong> and save and publish.</li>
+<li>Edit the data source to add the column in the query builder and add column mappings.</li>
+<li>Set the processing toggle to <strong>On</strong>.</li>
+<li>Save and publish again.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="map-columns">Map columns</h2>
 <p>Use the column mapping table to map pre-configured column labels to event attributes or manually enter the column labels for mapping. Columns not mapped to an event attribute are ignored.</p>
 <p>For each column label, select the corresponding event attribute from the list.</p>
@@ -1546,7 +1573,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 9, 2026 
+          <p>This page was last updated:  June 24, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1569,9 +1596,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-size" href="javascript:void(0)">Batch size</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-the-query" href="javascript:void(0)">Configure the query</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#1-build-query" href="javascript:void(0)">1. Build query</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql-query-best-practices" href="javascript:void(0)">SQL query best practices</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2-set-query-mode" href="javascript:void(0)">2. Set query mode</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#3-preview-test-query" href="javascript:void(0)">3. Preview test query</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#source-table-column-changes" href="javascript:void(0)">Source table column changes</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-columns" href="javascript:void(0)">Map columns</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#map-a-visitor-id" href="javascript:void(0)">Map a visitor ID</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#summary" href="javascript:void(0)">Summary</a></li>

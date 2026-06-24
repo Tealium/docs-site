@@ -28,6 +28,7 @@ After adding the connector, configure the following settings:
 | Action Name | AudienceStream | EventStream |
 | --- | :---: | :---: |
 | Send Conversion Event | ✓ | ✓ |
+| Send Healthcare Conversion Event | ✓ | ✓ |
 
 Enter a name for the action and select the action type from the drop-down menu.
 
@@ -91,3 +92,45 @@ This action uses batched requests to support high-volume data transfers to the v
 | Conversion State | The state of the conversion location. |
 | Conversion City | The city of the conversion location. |
 | Disable Automapping | Disable automatic mapping for the connector. |
+
+### Send Healthcare Conversion Event
+
+#### Batch Limits
+
+This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see [Batched Actions](). Requests are queued until one of the following thresholds is met or the profile is published:
+
+* Max number of requests: 1,000
+* Max time since oldest request: 10 minutes
+* Max size of requests: 10 MB
+
+#### Parameters
+
+| Parameter | Description |
+| --- | --- |
+| Healthcare Event Name | (Required) The anonymized event code to send to Viant. For example, `Page View`, `Event 1`, `Event 2`. Use short opaque codes rather than descriptive event names to comply with HIPAA requirements. |
+
+#### Sales Data
+
+| Parameter | Description |
+| --- | --- |
+| Transaction ID | (Required) Unique identifier for the transaction. Used to group Impression ID and Click ID. |
+| Conversion Timestamp | ISO 8601 timestamp of the conversion. For example, `2025-07-28T15:32:00Z`. Current time used if not provided. |
+| Store ID | Unique identifier for the store or location. |
+| Sales Channel | Sales channel. For example, `Online`, `In-store`. |
+
+#### Healthcare Identifiers
+
+| Parameter | Description |
+| --- | --- |
+| Viant Impression ID | Viant pseudonymous impression tracking ID from the creative macro `${ADELPHIC_IMPRESSIONID}`. Used for post-view conversion attribution. |
+| Viant Click ID | Viant pseudonymous click tracking ID from the creative macro `${ADELPHIC_CLICKID}`. Used for post-click conversion attribution. |
+| Custom Identifier | (Optional) A customer-defined pseudonymous key. For example, internal encounter or funnel ID. |
+| Custom Data | (Optional) Key-value metadata pairs for additional context. The `healthcare_capi` flag is automatically included. |
+
+#### Conversion Location
+
+| Parameter | Description |
+| --- | --- |
+| Conversion Country | The country of the conversion location. |
+| Conversion State | The state of the conversion location. |
+| Conversion City | The city of the conversion location. |

@@ -5,8 +5,10 @@ url: https://docs.tealium.com/client-side-tags/braze-web-sdk-tag/
 ---
 ## Supported Versions
 
+* 6.8
+* 5.5
+* 4.8
 * 3.5
-* 4.0
 
 The Braze Web SDK Tag supports tag template versions 3.3 and older. For best tag performance and functionality, we recommend updating to the most recent tag template.
 
@@ -33,7 +35,8 @@ After adding the tag, configure the following settings:
 
 * **Code Version**
   * Enter the major.minor version of the Braze Web SDK version you want to use.
-  * For example, to deploy version 2.6.1, enter 2.6.
+  * For example, to deploy version 4.8.1, enter 4.8.
+  * Code versions 4.0&#43; no longer support Internet Explorer.
   * To find the latest version of the Braze Web SDK, see the [changelog](https://github.com/Appboy/appboy-web-sdk/blob/master/CHANGELOG.md).
 
 * **API Key**
@@ -62,6 +65,8 @@ The destination variables for the Braze Web SDK tag are built into the Data Mapp
 
 | **Destination Name**              | **Description**                                                                                                                                                                                                        |
 |:----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `api_key`                                | &lt;ul&gt;&lt;li&gt;API Key&lt;/li&gt;&lt;li&gt;Your unique API key, available in the Braze dashboard under &lt;strong&gt;Manage App Group&lt;/strong&gt; settings.&lt;/li&gt;&lt;/ul&gt;                                                                         |
+| `code_version`                           | &lt;ul&gt;&lt;li&gt;Code Version&lt;/li&gt;&lt;li&gt;The major.minor version of the Braze Web SDK to load.&lt;/li&gt;&lt;li&gt;For example, enter &lt;code&gt;6.8&lt;/code&gt; to deploy the latest 6.8.x release.&lt;/li&gt;&lt;/ul&gt;                                     |
 | `initOpt.allow_crawler`           | &lt;ul&gt;&lt;li&gt;Allow Crawlers&lt;/li&gt;&lt;li&gt;All activity from web crawlers to be recorded by Braze.&lt;/li&gt;&lt;li&gt;Options are `true` or `false`.&lt;/li&gt;&lt;/ul&gt;                                                                                |
 | `initOpt.app_ver`                 | &lt;ul&gt;&lt;li&gt;App Version&lt;/li&gt;&lt;li&gt;The version of your app to associate data with.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                  |
 | `initOpt.base_url`                | &lt;ul&gt;&lt;li&gt;Base URL&lt;/li&gt;&lt;li&gt;Full URL to your Braze-provided custom endpoint.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                    |
@@ -77,7 +82,13 @@ The destination variables for the Braze Web SDK tag are built into the Data Mapp
 | `initOpt.safari_pushid`           | &lt;ul&gt;&lt;li&gt;Safari Website Push ID&lt;/li&gt;&lt;li&gt;The ID from your Safari push certificate.&lt;/li&gt;&lt;/ul&gt;                                                                                                                             |
 | `initOpt.srvcewrkr_location`      | &lt;ul&gt;&lt;li&gt;Service Worker Location&lt;/li&gt;&lt;li&gt;Path to your `service-worker.js` file if it is not in the root directory.&lt;/li&gt;&lt;/ul&gt;                                                                                            |
 | `initOpt.session_timeout`         | &lt;ul&gt;&lt;li&gt;Session Timeout&lt;/li&gt;&lt;li&gt;Time until the session will time out, in minutes.&lt;/li&gt;&lt;li&gt;Default: value is `30`.&lt;/li&gt;&lt;/ul&gt;                                                                                            |
-| `initOpt.enableSdkAuthentication` | &lt;ul&gt;&lt;li&gt;Appends the current user’s last known JSON web token to network requests made to Braze Servers.&lt;/li&gt;&lt;li&gt;This setting is available in versions 3.5 and higher.&lt;/li&gt;&lt;li&gt;Options are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
+| `initOpt.devicePropertyAllowlist`        | &lt;ul&gt;&lt;li&gt;Device Property Allow List&lt;/li&gt;&lt;li&gt;An array of device properties to collect.&lt;/li&gt;&lt;li&gt;Properties not in the list are excluded from collection.&lt;/li&gt;&lt;/ul&gt;                                                  |
+| `initOpt.enableSdkAuthentication`        | &lt;ul&gt;&lt;li&gt;Enable SDK Authentication&lt;/li&gt;&lt;li&gt;Appends the current user&#39;s last known JSON web token to network requests made to Braze servers.&lt;/li&gt;&lt;li&gt;This setting is available in versions 3.5 and higher.&lt;/li&gt;&lt;li&gt;Options are `true` or `false`.&lt;/li&gt;&lt;/ul&gt; |
+| `initOpt.sdk_auth_signature`             | &lt;ul&gt;&lt;li&gt;SDK Authentication Signature&lt;/li&gt;&lt;li&gt;The JSON web token used to authenticate SDK requests when SDK Authentication is enabled.&lt;/li&gt;&lt;li&gt;This setting is available in versions 3.5 and higher.&lt;/li&gt;&lt;/ul&gt;    |
+| `initOpt.allow_user_supplied_javascript` | &lt;ul&gt;&lt;li&gt;Allow User Supplied Javascript&lt;/li&gt;&lt;li&gt;Allows user-supplied JavaScript to run in in-app messages.&lt;/li&gt;&lt;li&gt;Options are `true` or `false`.&lt;/li&gt;&lt;/ul&gt;                                                       |
+| `initOpt.content_security_nonce`         | &lt;ul&gt;&lt;li&gt;Content Security Nonce&lt;/li&gt;&lt;li&gt;A nonce string to include in Braze SDK script tags for Content Security Policy compliance.&lt;/li&gt;&lt;/ul&gt;                                                                      |
+| `initOpt.disable_push_token_maintenance` | &lt;ul&gt;&lt;li&gt;Disable Push Token Maintenance&lt;/li&gt;&lt;li&gt;Disables automatic push token refresh on session start.&lt;/li&gt;&lt;li&gt;Options are `true` or `false`.&lt;/li&gt;&lt;/ul&gt;                                                          |
+| `initOpt.in_app_message_zindex`          | &lt;ul&gt;&lt;li&gt;In App Message Zindex&lt;/li&gt;&lt;li&gt;Overrides the default z-index for the in-app message overlay.&lt;/li&gt;&lt;/ul&gt;                                                                                                    |
 
 ### E-Commerce
 
@@ -132,6 +143,24 @@ The following table lists the event triggers when the supplied value is found in
 | `SetLang`                | &lt;ul&gt;&lt;li&gt;Set Language&lt;/li&gt;&lt;li&gt;Sets the language for the current user.&lt;/li&gt;&lt;/ul&gt;                                                                                      |
 | `SetPhone`               | &lt;ul&gt;&lt;li&gt;Set Phone Number&lt;/li&gt;&lt;li&gt;Sets the phone number for the current user.&lt;/li&gt;&lt;/ul&gt;                                                                              |
 | `SetGender`              | &lt;ul&gt;&lt;li&gt;Set Gender&lt;/li&gt;&lt;li&gt;Sets the gender for the current user.&lt;/li&gt;&lt;/ul&gt;                                                                                          |
+| `removeFromSubscriptionGroup` | &lt;ul&gt;&lt;li&gt;Remove From Subscription Group&lt;/li&gt;&lt;li&gt;Removes the current user from an email or SMS subscription group.&lt;/li&gt;&lt;li&gt;This setting is available in versions 3.5 and higher.&lt;/li&gt;&lt;/ul&gt; |
+| `setCustomLocationAttribute` | &lt;ul&gt;&lt;li&gt;Set Custom Location Attribute&lt;/li&gt;&lt;li&gt;Sets a custom location attribute (key, latitude, longitude) for the current user.&lt;/li&gt;&lt;/ul&gt;                          |
+| `SetLineId`              | &lt;ul&gt;&lt;li&gt;Set LINE ID&lt;/li&gt;&lt;li&gt;Sets the LINE messaging app ID for the current user.&lt;/li&gt;&lt;/ul&gt;                                                                          |
+| `Ecommerce`              | &lt;ul&gt;&lt;li&gt;Log Ecommerce Event&lt;/li&gt;&lt;li&gt;Logs a structured ecommerce event for the current user.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt; |
+| `WipeData`               | &lt;ul&gt;&lt;li&gt;Wipe Data (delete local SDK data)&lt;/li&gt;&lt;li&gt;Deletes all locally stored SDK data and disables the SDK.&lt;/li&gt;&lt;li&gt;The SDK must be explicitly re-enabled before further data collection resumes.&lt;/li&gt;&lt;/ul&gt; |
+| `RefreshFeatureFlags`    | &lt;ul&gt;&lt;li&gt;Refresh Feature Flags&lt;/li&gt;&lt;li&gt;Requests a refresh of feature flags for the current user from Braze.&lt;/li&gt;&lt;/ul&gt;                                                |
+| `LogFeatureFlagImpression` | &lt;ul&gt;&lt;li&gt;Log Feature Flag Impression&lt;/li&gt;&lt;li&gt;Logs an impression event for the specified feature flag.&lt;/li&gt;&lt;/ul&gt;                                                    |
+| `RefreshContentCards`    | &lt;ul&gt;&lt;li&gt;Refresh Content Cards&lt;/li&gt;&lt;li&gt;Requests a refresh of the Content Cards feed from Braze.&lt;/li&gt;&lt;/ul&gt;                                                            |
+| `ShowContentCards`       | &lt;ul&gt;&lt;li&gt;Show Content Cards&lt;/li&gt;&lt;li&gt;Displays the Content Cards feed.&lt;/li&gt;&lt;/ul&gt;                                                                                       |
+| `LogContentCardImpressions` | &lt;ul&gt;&lt;li&gt;Log Content Card Impressions&lt;/li&gt;&lt;li&gt;Logs impression events for an array of Content Cards.&lt;/li&gt;&lt;/ul&gt;                                                     |
+| `LogContentCardClick`    | &lt;ul&gt;&lt;li&gt;Log Content Card Click&lt;/li&gt;&lt;li&gt;Logs a click event for a specific Content Card.&lt;/li&gt;&lt;/ul&gt;                                                                    |
+| `RequestPushPermission`  | &lt;ul&gt;&lt;li&gt;Request Push Permission&lt;/li&gt;&lt;li&gt;Prompts the user to grant push notification permission.&lt;/li&gt;&lt;/ul&gt;                                                           |
+| `UnregisterPush`         | &lt;ul&gt;&lt;li&gt;Unregister Push&lt;/li&gt;&lt;li&gt;Unregisters the current device from push notifications.&lt;/li&gt;&lt;/ul&gt;                                                                   |
+| `FlushData`              | &lt;ul&gt;&lt;li&gt;Flush Data&lt;/li&gt;&lt;li&gt;Immediately sends queued analytics data to Braze servers.&lt;/li&gt;&lt;/ul&gt;                                                                      |
+| `RefreshBanners`         | &lt;ul&gt;&lt;li&gt;Refresh Banners&lt;/li&gt;&lt;li&gt;Requests a refresh of Braze Banners for the specified placement IDs.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt; |
+| `LogBannerImpressions`   | &lt;ul&gt;&lt;li&gt;Log Banner Impressions&lt;/li&gt;&lt;li&gt;Logs impression events for an array of Banner placement IDs.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt; |
+| `LogBannerClick`         | &lt;ul&gt;&lt;li&gt;Log Banner Click&lt;/li&gt;&lt;li&gt;Logs a click event for a specific Banner.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;                  |
+| `InsertBanner`           | &lt;ul&gt;&lt;li&gt;Insert Banner&lt;/li&gt;&lt;li&gt;Retrieves a Banner for the specified placement ID and inserts it into the specified parent element.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt; |
 | `Custom`                 | &lt;ul&gt;&lt;li&gt;Custom&lt;/li&gt;&lt;li&gt;Sends a custom event made by the current user.&lt;/li&gt;&lt;/ul&gt;                                                                                     |
 
 ### Parameter
@@ -158,6 +187,17 @@ Use the following steps to pass a parameter to a predefined event:
 | `key`                 | &lt;ul&gt;&lt;li&gt;Custom Attribute Key&lt;/li&gt;&lt;li&gt;The identifier for the custom attribute.&lt;/li&gt;&lt;li&gt;Enter the name of the parameter to send.&lt;/li&gt;&lt;/ul&gt;                                                                                                           |
 | `value`               | &lt;ul&gt;&lt;li&gt;Custom Attribute Value&lt;/li&gt;&lt;li&gt;The value for the custom attribute.&lt;/li&gt;&lt;li&gt;Enter the name of the parameter to send.&lt;/li&gt;&lt;/ul&gt;                                                                                                              |
 | `inc_value`           | &lt;ul&gt;&lt;li&gt;Custom Attribute Incrementation Value&lt;/li&gt;&lt;li&gt;The value by which to increment a custom user attribute.&lt;/li&gt;&lt;li&gt;Enter the name of the parameter to send.&lt;/li&gt;&lt;li&gt;Use negative numbers to decrement.&lt;/li&gt;&lt;li&gt;Default value is `1`.&lt;/li&gt;&lt;/ul&gt; |
+| `custom_attributes`   | &lt;ul&gt;&lt;li&gt;Custom Attribute Object&lt;/li&gt;&lt;li&gt;An object of custom attribute key-value pairs to set on the current user in a single call.&lt;/li&gt;&lt;/ul&gt;                                                                                                       |
+| `line_id`             | &lt;ul&gt;&lt;li&gt;User&#39;s LINE ID&lt;/li&gt;&lt;li&gt;The LINE messaging app ID for the current user.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                          |
+| `feature_flag_id`     | &lt;ul&gt;&lt;li&gt;Feature Flag ID&lt;/li&gt;&lt;li&gt;The unique identifier of the feature flag to log an impression for.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                     |
+| `banner_placement_ids` | &lt;ul&gt;&lt;li&gt;Banner Placement IDs (Array or comma-separated)&lt;/li&gt;&lt;li&gt;An array or comma-separated string of Banner placement IDs to refresh or log impressions for.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;            |
+| `banner_placement_id` | &lt;ul&gt;&lt;li&gt;Banner Placement ID&lt;/li&gt;&lt;li&gt;The unique identifier for a single Banner placement to retrieve and insert.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;                                                           |
+| `banner_click_id`     | &lt;ul&gt;&lt;li&gt;Banner Click ID&lt;/li&gt;&lt;li&gt;The click tracking ID of the Banner that was clicked.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;                                                                                     |
+| `banner_parent_selector` | &lt;ul&gt;&lt;li&gt;Banner Parent Selector (CSS)&lt;/li&gt;&lt;li&gt;A CSS selector string identifying the parent element into which the Banner is inserted.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;                                   |
+| `content_cards`       | &lt;ul&gt;&lt;li&gt;Content Cards Array&lt;/li&gt;&lt;li&gt;An array of Content Card objects to log impressions for.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                            |
+| `content_card`        | &lt;ul&gt;&lt;li&gt;Content Card Object&lt;/li&gt;&lt;li&gt;A single Content Card object to log a click for.&lt;/li&gt;&lt;/ul&gt;                                                                                                                                                    |
+| `ecommerce_event_name` | &lt;ul&gt;&lt;li&gt;Ecommerce Event Name&lt;/li&gt;&lt;li&gt;The name of the ecommerce event to log.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt;                                                                                             |
+| `ecommerce_properties` | &lt;ul&gt;&lt;li&gt;Ecommerce Properties&lt;/li&gt;&lt;li&gt;An object of properties for the ecommerce event.&lt;/li&gt;&lt;li&gt;Supports a &lt;code&gt;source&lt;/code&gt; field that defaults to &lt;code&gt;&#34;tealium&#34;&lt;/code&gt;.&lt;/li&gt;&lt;li&gt;This setting is available in versions 6.0 and higher.&lt;/li&gt;&lt;/ul&gt; |
 | `avatar_url`          | &lt;ul&gt;&lt;li&gt;Avatar Image URL&lt;/li&gt;&lt;li&gt;URL for the current user&#39;s selected avatar.&lt;/li&gt;&lt;li&gt;Not available in versions 4.0 and higher.&lt;/li&gt;&lt;/ul&gt;                                                                                                           |
 | `longitude`           | &lt;ul&gt;&lt;li&gt;User&#39;s Longitude&lt;/li&gt;&lt;li&gt;The validated longitude of the user&#39;s location, in degrees.&lt;/li&gt;&lt;li&gt;Values are from `-180` to `180`&lt;/li&gt;&lt;/ul&gt;                                                                                                     |
 | `latitude`            | &lt;ul&gt;&lt;li&gt;User&#39;s Latitude&lt;/li&gt;&lt;li&gt;The validated latitude of the user&#39;s location, in degrees.&lt;/li&gt;&lt;li&gt;Values are from `-90` to `90`&lt;/li&gt;&lt;/ul&gt;                                                                                                         |
@@ -187,6 +227,15 @@ Use the following steps to map a custom event data variable:
 1. For **Event Name**, enter the name of the custom event, exactly as specified in the **Events** tab.
 1. For **Parameter**, enter the name of the parameter you want to send.
 1. Click **&#43; Add**.
+
+### Cookie Consent
+
+Map to the Cookie Consent destination to control whether the Braze SDK is enabled or disabled based on a user&#39;s consent state. Consent gating runs before SDK initialization.
+
+| **Value** | **Description**                                                                                          |
+|:----------|:---------------------------------------------------------------------------------------------------------|
+| `grant`   | Enables the SDK and allows data collection to proceed. The SDK initializes and opens a session normally. |
+| `revoke`  | Disables the SDK before initialization. No data is collected and no session is opened.                   |
 
 ## Vendor Documentation
 

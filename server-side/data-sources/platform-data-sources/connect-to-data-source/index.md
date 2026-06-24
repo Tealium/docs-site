@@ -40,3 +40,4 @@ Use the following steps to view and verify your data source:
 
 1. With the data source details expanded, click the **Live Events** chart icon to view live events filtered to this data source.
 1. In your installation, trigger test events and view them as they display in the Live Events feed.
+

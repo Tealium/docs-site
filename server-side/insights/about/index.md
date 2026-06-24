@@ -52,12 +52,14 @@ Insights provides the following user roles:
     * Generate and update dashboards from templates.
     * Export or import custom dashboards.
     * View dashboards and create PDFs for dashboards.
-* **Reader** &amp;ndash; Users with the reader role have all the default permissions, plus they can subscribe to an existing email schedule for dashboards.
-* **Author** &amp;ndash; - Users with the author role have all the default and reader permissions, plus they can:
+* **Reader** &amp;ndash; Users with the reader role have all the default permissions, plus they can:
+    * Subscribe to an existing email schedule for dashboards.
+    * Create and manage threshold alerts for dashboard visuals.
+* **Author** &amp;ndash; Users with the author role have all the default and reader permissions, plus they can:
     * Create dashboards and share them with other users in the account.
     * Create analyses and datasets.
     * Edit a predefined analysis and save it as a new analysis.
     * Create dashboards from a predefined analysis.
     * Create and subscribe to an email delivery schedule for a dashboard.
 
-Insights provides five reader roles and two author role per profile. Additional reader and author roles can be purchased. For more information, contact your customer success manager.
+Insights provides five reader roles and two author roles per profile. Additional reader and author roles can be purchased. For more information, contact your customer success manager.

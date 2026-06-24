@@ -1553,28 +1553,6 @@
   <h2 id="requirements">Requirements</h2>
 <p>To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google DV360 interface (<strong>Linked Accounts &gt; Link New Account &gt; External Data Partner &gt; Tealium</strong>). For more information, see <a href="https://support.google.com/displayvideo/answer/9649053?hl=en">Google: Sharing audience lists from external data management platforms or customer match uploader partners</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement.</p>
-<h2 id="connector-actions">Connector Actions</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Add Visitor to User-List or Segment</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove Visitor from User-List or Segment</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-</tbody>
-</table>
 <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor APIs:</p>
 <ul>
@@ -1597,29 +1575,24 @@
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>It may take up to 72 hours from when the connector fires before the visitor becomes available for use. <br>
 For more information, see <a href="https://support.google.com/displayvideo/answer/6212219?hl=en&amp;ref_topic=2726036">Tips for using third-party audience lists</a>.</p>
-<h2 id="configure-settings">Configure Settings</h2>
+<h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you must accept the vendor&rsquo;s data platform policy that appears.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Client Customer ID</strong></p>
+<li><strong>Client Customer ID</strong>
 <ul>
-<li>Required</li>
-<li>Your customer identifier in the selected product</li>
+<li>(Required) Your customer identifier in the selected product</li>
 </ul>
 </li>
-<li>
-<p><strong>Select the Target Product</strong></p>
+<li><strong>Select the Target Product</strong>
 <ul>
-<li>Required</li>
-<li>The account that establishes a connection here should have access to the target product selected.</li>
+<li>(Required) The account that establishes a connection must have access to the target product selected.</li>
 </ul>
 </li>
-<li>
-<p><strong>Google Network ID</strong></p>
+<li><strong>Google Network ID</strong>
 <ul>
-<li>Optional</li>
+<li>(Optional)</li>
 <li>If you use the Google-hosted version of the Google Cookie Matching tag, enter your Google Network ID.</li>
 <li>If you use the Tealium-hosted version of the Google Cookie Matching tag, leave this blank.</li>
 </ul>
@@ -1642,85 +1615,104 @@ For more information, see <a href="https://support.google.com/displayvideo/answe
 The Integration Code is an ID used by user list sellers to correlate IDs on their systems. If no ID is available, you can manually enter a random number between <code>1</code> and <code>1000</code>. Confirmation will appear in the form of a check mark next to the Create Segment button to verify that the segment has been created.</li>
 </ol>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Allow 3 to 4 hours before using new audiences within an action when you create a new Google Display &amp; Video 360 audience. When your audience list is visible inside Google Display &amp; Video 360, you can then use your audience without error. For more information, see <a href="https://support.google.com/displayvideo/answer/2949947?hl=en">Google Display &amp; Video Help: Audience list targeting</a>.</p>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-visitor-to-user-list-or-segment">Action - Add Visitor to User-List or Segment</h3>
+<h2 id="actions">Actions</h2>
+<table>
+<thead>
+<tr>
+<th>Action Name</th>
+<th style="text-align:center">AudienceStream</th>
+<th style="text-align:center">EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add Visitor to User-List or Segment</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>Remove Visitor from User-List or Segment</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-visitor-to-user-list-or-segment">Add Visitor to User-List or Segment</h3>
 <h4 id="parameters">Parameters</h4>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must use one of the following ID parameters: <strong>Partner Provided ID (already MD5 hashed)</strong>, <strong>Partner Provided ID (apply MD5 hash)</strong>, <strong>Google User ID</strong>, <strong>iOS Advertising ID</strong>, <strong>Android Advertising ID</strong>, <strong>RIDA</strong>, <strong>AFAI</strong>, or <strong>MSAI</strong>.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left">* <strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Select the Target User-list/Segment</td>
-<td style="text-align:left"><ul><li>(Required) User map identifier.</li><li>Specifies the user that this operation applies to.</li><li>This is the target User-list/Segment where the user will be added to.</li></ul></td>
+<td>Select the Target User-list/Segment</td>
+<td>(Required) User map identifier. Specifies the user that this operation applies to. This is the target User-list/Segment where the user will be added to.</td>
 </tr>
 <tr>
-<td style="text-align:left">Partner Provided ID (already MD5 hashed)</td>
-<td style="text-align:left"><ul><li>This parameter is sent to Google by the Tealium iQ cookie matching service tag. The default cookie match tag implementation sends the Tealium Visitor ID as an MD5 hash. If you are using this ID as the default, map this attribute to the MD5 hash option. </li></ul></td>
+<td>Partner Provided ID (already MD5 hashed)</td>
+<td>This parameter is sent to Google by the Tealium iQ cookie matching service tag. The default cookie match tag implementation sends the Tealium Visitor ID as an MD5 hash. If you are using this ID as the default, map this attribute to the MD5 hash option.</td>
 </tr>
 <tr>
-<td style="text-align:left">Partner Provided ID (apply MD5 hash)</td>
-<td style="text-align:left"><ul><li>This parameter is similar to <strong>Partner Provided ID (already MD5 hashed)</strong>, except that it will MD5 hash the value for you.</li></ul></td>
+<td>Partner Provided ID (apply MD5 hash)</td>
+<td>This parameter is similar to <strong>Partner Provided ID (already MD5 hashed)</strong>, except that it will MD5 hash the value for you.</td>
 </tr>
 <tr>
-<td style="text-align:left">Google User ID</td>
-<td style="text-align:left"><ul><li>Google User ID</li><li>Provided by the ADX cookie-matching service.</li></ul></td>
+<td>Google User ID</td>
+<td>Google User ID. Provided by the ADX cookie-matching service.</td>
 </tr>
 <tr>
-<td style="text-align:left">iOS Advertising ID</td>
-<td style="text-align:left"><ul><li>iOS Advertising ID</li></ul></td>
+<td>iOS Advertising ID</td>
+<td>iOS Advertising ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">Android Advertising ID</td>
-<td style="text-align:left"><ul><li>Android Advertising ID</li></ul></td>
+<td>Android Advertising ID</td>
+<td>Android Advertising ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">RIDA</td>
-<td style="text-align:left"><ul><li>Roku ID</li></ul></td>
+<td>RIDA</td>
+<td>Roku ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">AFAI</td>
-<td style="text-align:left"><ul><li>Amazon Fire TV ID</li></ul></td>
+<td>AFAI</td>
+<td>Amazon Fire TV ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">MSAI</td>
-<td style="text-align:left"><ul><li>Xbox/Microsoft ID</li></ul></td>
+<td>MSAI</td>
+<td>Xbox/Microsoft ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Source ID</td>
-<td style="text-align:left"><ul><li>(Optional) An ID indicating the data source that contributed this membership.</li><li>Required to be in the range of <code>1</code> to <code>1,000</code>.</li><li>Any ID greater than <code>1,000</code> results in a <code>BAD_DATA_SOURCE_ID</code> error.</li><li>These IDs do not have reference or meaning for Google and are only used as labels for reporting purposes.</li></ul></td>
+<td>Data Source ID</td>
+<td>(Optional) An ID indicating the data source that contributed this membership. Required to be in the range of <code>1</code> to <code>1,000</code>. Any ID greater than <code>1,000</code> results in a <code>BAD_DATA_SOURCE_ID</code> error. These IDs do not have reference or meaning for Google and are only used as labels for reporting purposes.</td>
 </tr>
 </tbody>
 </table>
 <h5 id="consent">Consent</h5>
 <p>When using the <strong>Add Visitor to User List</strong> action, the connector will send consent as <code>true</code>. Use audience logic to prevent non-consented visitors from being added to lists. Use the <strong>Remove Visitor from User List</strong> action to remove non-consented visitors from lists.</p>
-<h3 id="action---remove-visitor-from-user-list-or-segment">Action - Remove Visitor from User-List or Segment</h3>
+<h3 id="remove-visitor-from-user-list-or-segment">Remove Visitor from User-List or Segment</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Select the Target User-list/Segment</td>
-<td style="text-align:left"><ul><li>(Required) This is the target User-list/Segment where the user will be removed from.</li></ul></td>
+<td>Select the Target User-list/Segment</td>
+<td>(Required) This is the target User-list/Segment where the user will be removed from.</td>
 </tr>
 <tr>
-<td style="text-align:left">Google User ID</td>
-<td style="text-align:left"><ul><li>Google User ID</li><li>Provided by the ADX cookie-matching service.</li></ul></td>
+<td>Google User ID</td>
+<td>Google User ID. Provided by the ADX cookie-matching service.</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Source ID</td>
-<td style="text-align:left"><ul><li>(Optional) An ID indicating the data source that contributed this membership.</li><li>Required to be in the range of <code>1</code> to <code>1,000</code>.</li><li>Any ID greater than <code>1,000</code> results in a <code>BAD_DATA_SOURCE_ID</code> error.</li><li>These IDs do not have reference or meaning for Google and are only used as labels for reporting purposes.</li></ul></td>
+<td>Data Source ID</td>
+<td>(Optional) An ID indicating the data source that contributed this membership. Required to be in the range of <code>1</code> to <code>1,000</code>. Any ID greater than <code>1,000</code> results in a <code>BAD_DATA_SOURCE_ID</code> error. These IDs do not have reference or meaning for Google and are only used as labels for reporting purposes.</td>
 </tr>
 </tbody>
 </table>
@@ -1784,7 +1776,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 28, 2026 
+          <p>This page was last updated:  June 23, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1799,13 +1791,12 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-new-segment" href="javascript:void(0)">Create a New Segment</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-visitor-to-user-list-or-segment" href="javascript:void(0)">Action - Add Visitor to User-List or Segment</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---remove-visitor-from-user-list-or-segment" href="javascript:void(0)">Action - Remove Visitor from User-List or Segment</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-visitor-to-user-list-or-segment" href="javascript:void(0)">Add Visitor to User-List or Segment</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-visitor-from-user-list-or-segment" href="javascript:void(0)">Remove Visitor from User-List or Segment</a></li>
               </nav>
   </aside></nav>
 

@@ -31,3 +31,4 @@ No. The **Manage Account** permission does not grant access to add new users or 
 
 #### Does this feature change the way user management access is granted or controlled within TiQ?
 No. The **Manage Users** permission in iQ Tag Management remains the permission that grants a user access to add or remove users from a business account. Users with only the **Manage Users** permission do not have access to manage permissions on the server-side.
+

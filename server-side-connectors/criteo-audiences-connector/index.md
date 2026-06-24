@@ -17,7 +17,7 @@ We reccomend that you use the [Criteo Audiences (OAuth) connector]() to send vis
 This connector uses the following vendor API:
 
 * API Name: Criteo API
-* API Version: 2025-07
+* API Version: 2026-01
 * API Endpoint: `https://api.criteo.com/2025-07/audiences`
 * Documentation: [Criteo: Audiences API](https://developers.criteo.com/marketing-solutions/docs/audiences)
 

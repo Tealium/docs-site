@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/criteo-audiences-oauth-conn
 This connector uses the following vendor API:
 
 * API Name: Criteo API
-* API Version: 2025-07
+* API Version: 2026-01
 * API Endpoint: `https://api.criteo.com/2025-07/marketing-solutions`
 * Documentation: [Criteo Audiences API](https://developers.criteo.com/marketing-solutions/docs/audiences)
 
@@ -60,8 +60,16 @@ The following section describes how to set up parameters and options for each ac
 
 #### Identifier
 
+Map a user identifier value.
+
 | **Parameter** | **Description** |
 | --- | --- |
+| Email | Send email value without applying built-in hashing. Select this option if the value requires no hashing or is already hashed. |
+| Email (apply MD5 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using MD5 hash. |
+| Email (apply MD5 SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using MD5 and then SHA256 hash. |
+| Mobile ID | IDFA mobile ID for Apple, ADID mobile ID for Android. |
+| Identity Link | Identity link. |
+| Gum ID | Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request. |
 | Gum Caller ID | Value used by Criteo for GUM salting. Leave unmapped if using the Criteo Cookie Matching Service tag. |
 
 #### Batch Configuration
@@ -81,8 +89,16 @@ The following section describes how to set up parameters and options for each ac
 
 #### Identifier
 
+Map a user identifier value.
+
 | **Parameter** | **Description** |
 | --- | --- |
+| Email | Send email value without applying built-in hashing. Select this option if the value requires no hashing or is already hashed. |
+| Email (apply MD5 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using MD5 hash. |
+| Email (apply MD5 SHA256 hash) | Provide a plain text email address and the connector whitespace trims, lowercases, and hashes this value using MD5 and then SHA256 hash. |
+| Mobile ID | IDFA mobile ID for Apple, ADID mobile ID for Android. |
+| Identity Link | Identity link. |
+| Gum ID | Identifier obtained from cookie matching. A corresponding Gum Caller ID is automatically added to the request. |
 | Gum Caller ID | Value used by Criteo for GUM salting. Leave unmapped if using the Criteo Cookie Matching Service tag. |
 
 #### Batch Configuration

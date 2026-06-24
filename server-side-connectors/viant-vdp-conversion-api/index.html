@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1582,6 +1582,11 @@
 <td style="text-align:center">✓</td>
 <td style="text-align:center">✓</td>
 </tr>
+<tr>
+<td>Send Healthcare Conversion Event</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
 </tbody>
 </table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
@@ -1745,6 +1750,106 @@
 </tr>
 </tbody>
 </table>
+<h3 id="send-healthcare-conversion-event">Send Healthcare Conversion Event</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Parallel processing may result in events reaching the vendor out of sequence. Add a sequence value to events if ordering is important. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 1,000</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Healthcare Event Name</td>
+<td>(Required) The anonymized event code to send to Viant. For example, <code>Page View</code>, <code>Event 1</code>, <code>Event 2</code>. Use short opaque codes rather than descriptive event names to comply with HIPAA requirements.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sales-data-1">Sales Data</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction ID</td>
+<td>(Required) Unique identifier for the transaction. Used to group Impression ID and Click ID.</td>
+</tr>
+<tr>
+<td>Conversion Timestamp</td>
+<td>ISO 8601 timestamp of the conversion. For example, <code>2025-07-28T15:32:00Z</code>. Current time used if not provided.</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>Unique identifier for the store or location.</td>
+</tr>
+<tr>
+<td>Sales Channel</td>
+<td>Sales channel. For example, <code>Online</code>, <code>In-store</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="healthcare-identifiers">Healthcare Identifiers</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Viant Impression ID</td>
+<td>Viant pseudonymous impression tracking ID from the creative macro <code>${ADELPHIC_IMPRESSIONID}</code>. Used for post-view conversion attribution.</td>
+</tr>
+<tr>
+<td>Viant Click ID</td>
+<td>Viant pseudonymous click tracking ID from the creative macro <code>${ADELPHIC_CLICKID}</code>. Used for post-click conversion attribution.</td>
+</tr>
+<tr>
+<td>Custom Identifier</td>
+<td>(Optional) A customer-defined pseudonymous key. For example, internal encounter or funnel ID.</td>
+</tr>
+<tr>
+<td>Custom Data</td>
+<td>(Optional) Key-value metadata pairs for additional context. The <code>healthcare_capi</code> flag is automatically included.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="conversion-location-1">Conversion Location</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Country</td>
+<td>The country of the conversion location.</td>
+</tr>
+<tr>
+<td>Conversion State</td>
+<td>The state of the conversion location.</td>
+</tr>
+<tr>
+<td>Conversion City</td>
+<td>The city of the conversion location.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -1805,7 +1910,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 22, 2026 
+          <p>This page was last updated:  June 22, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1823,6 +1928,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-conversion-event" href="javascript:void(0)">Send Conversion Event</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-healthcare-conversion-event" href="javascript:void(0)">Send Healthcare Conversion Event</a></li>
               </nav>
   </aside></nav>
 

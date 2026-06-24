@@ -49,20 +49,7 @@ After you turn on functions insights dashboards, it may take up to 2 hours for d
 ## View functions insights
 
 1. Go to **Transform &gt; Functions**.
-1. Click the **Insights** tab.  
+1. Click the **Insights** tab.
 You may need to scroll down to see all the graphs.
-
-## Update the functions insights template
-
-If Tealium updates the functions insights dashboard, a message is displayed indicating that an update to the dashboard is available.
-
-Use the following steps to update the dashboard:
-
-1. In the message, click **View Updates**.  
-Or go to **Analyze &gt; Insights &gt; Templates**.
-1. For the **Functions Dashboard**, click **View Details**.
-1. Click **Update Dashboard**.
-1. In the **Confirm Update** dialog, click **Update**.  
-Save and publish is not required after the update.
 
 For more information about dashboards and templates, see [About Tealium Insights]() and [About templates]().

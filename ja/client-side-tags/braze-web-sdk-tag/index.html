@@ -1947,14 +1947,16 @@
 <div class="prose nested-links" id="prose">
   <h2 id="サポートされているバージョン">サポートされているバージョン</h2>
 <ul>
+<li>6.8</li>
+<li>5.5</li>
+<li>4.8</li>
 <li>3.5</li>
-<li>4.0</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Braze Web SDK タグは、タグテンプレートバージョン 3.3 およびそれ以前をサポートしています。最高のタグパフォーマンスと機能性を得るために、最新のタグテンプレートへの更新をお勧めします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Braze Web SDK タグは、タグテンプレートバージョン 3.3 およびそれ以前をサポートしています。最適なタグのパフォーマンスと機能性を得るために、最新のタグテンプレートに更新することをお勧めします。</p>
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>
-<p>注文IDが存在する場合、購入イベントが発火します。</p>
+<p>注文IDが存在する場合に購入イベントが発火します。</p>
 </li>
 <li>
 <p>以下の E-Commerce 拡張パラメータをサポートしています：</p>
@@ -1965,39 +1967,40 @@
 <li>注文ID（<code>_corder</code>を上書き）</li>
 <li>小計（<code>_csubtotal</code>を上書き）</li>
 <li>通貨（<code>_ccurrency</code>を上書き）</li>
-<li>商品ID（<code>_cprod</code>を上書き）</li>
-<li>商品数量（<code>_cquan</code>を上書き）</li>
+<li>製品ID（<code>_cprod</code>を上書き）</li>
+<li>製品数量（<code>_cquan</code>を上書き）</li>
 </ul>
 </li>
 <li>
 <p>標準構成値を動的に上書きするためにマッピングを使用します。</p>
 </li>
 </ul>
-<h2 id="タグ構成">タグ構成</h2>
-<p>まず、Tealiumの<strong>タグマーケットプレイス</strong>にアクセスし、プロファイルにBraze Web SDKタグを追加します（<a href="/ja/iq-tag-management/load-rules/about/">タグの追加方法?</a>）。</p>
+<h2 id="タグの構成">タグの構成</h2>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、<a href="/ja/iq-tag-management/tags/manage/">タグの管理</a>を参照してください。</p>
 <p>タグを追加した後、以下の構成を構成します：</p>
 <ul>
 <li>
 <p><strong>コードバージョン</strong></p>
 <ul>
-<li>使用したいBraze Web SDKのメジャー.マイナーバージョンを入力します。</li>
-<li>例えば、バージョン2.6.1をデプロイする場合は、2.6と入力します。</li>
-<li>Braze Web SDKの最新バージョンは、<a href="https://github.com/Appboy/appboy-web-sdk/blob/master/CHANGELOG.md">changelog</a>を参照してください。</li>
+<li>使用したい Braze Web SDK のメジャー.マイナーバージョンを入力します。</li>
+<li>例えば、バージョン 4.8.1 をデプロイする場合は、4.8 を入力します。</li>
+<li>コードバージョン 4.0 以降は Internet Explorer をサポートしていません。</li>
+<li>Braze Web SDK の最新バージョンについては、<a href="https://github.com/Appboy/appboy-web-sdk/blob/master/CHANGELOG.md">変更履歴</a>を参照してください。</li>
 </ul>
 </li>
 <li>
-<p><strong>APIキー</strong></p>
+<p><strong>API キー</strong></p>
 <ul>
-<li>Brazeダッシュボードの<strong>アプリグループ管理</strong>構成で利用可能なユニークなAPIキー。</li>
+<li>Braze ダッシュボードの <strong>アプリグループ管理</strong> 構成で利用可能なユニークな API キー。</li>
 </ul>
 </li>
 <li>
-<p><strong>ベースURL</strong></p>
+<p><strong>ベース URL</strong></p>
 <ul>
-<li>割り当てられたBrazeクラスターを指すAPIエンドポイント。</li>
-<li>4.0の例：<code>https://js.appboycdn.com/web-sdk/4.0/braze.no-amd.min.js</code></li>
-<li>3.5およびそれ以前のバージョンの例：<code>https://js.appboycdn.com/web-sdk/3.5/appboy.no-amd.min.js</code></li>
-<li>オプションのリストについては、<a href="https://www.braze.com/docs/user_guide/administrative/access_braze/sdk_endpoints/">Braze SDK Endpoints</a>を参照してください。</li>
+<li>割り当てられた Braze クラスターを指す API エンドポイント。</li>
+<li>4.0 の例：<code>https://js.appboycdn.com/web-sdk/4.0/braze.no-amd.min.js</code></li>
+<li>3.5 およびそれ以前のバージョンの例：<code>https://js.appboycdn.com/web-sdk/3.5/appboy.no-amd.min.js</code></li>
+<li>オプションのリストについては、<a href="https://www.braze.com/docs/user_guide/administrative/access_braze/sdk_endpoints/">Braze SDK エンドポイント</a>を参照してください。</li>
 </ul>
 </li>
 <li>
@@ -2008,22 +2011,30 @@
 </li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
-<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、このタグのインスタンスをサイトのどこに、いつロードするかを決定します。</p>
+<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、サイト上でこのタグのインスタンスをいつ、どこでロードするかを決定します。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-mappings/manage/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。（<a href="/ja/iq-tag-management/data-mappings/manage/">詳細を学ぶ</a>）</p>
-<p>Braze Web SDKタグの宛先変数は、タグのデータマッピングタブに組み込まれています。以下の表は、利用可能な宛先カテゴリをリストし、各宛先名を説明しています。</p>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-mappings/manage/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。(<a href="/ja/iq-tag-management/data-mappings/manage/">詳細を学ぶ</a>)</p>
+<p>Braze Web SDK タグの宛先変数は、タグのデータマッピングタブに組み込まれています。以下の表は、利用可能な宛先カテゴリをリストし、各宛先名を説明しています。</p>
 <h3 id="標準">標準</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>宛先名</strong></th>
+<th style="text-align:left"><strong>目的地名</strong></th>
 <th style="text-align:left"><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left"><code>api_key</code></td>
+<td style="text-align:left"><ul><li>APIキー</li><li>「Manage App Group」構成の下にあるBrazeダッシュボードで利用可能なユニークなAPIキー。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>code_version</code></td>
+<td style="text-align:left"><ul><li>コードバージョン</li><li>Braze Web SDKをロードするメジャー.マイナーバージョン。</li><li>例えば、最新の6.8.xリリースをデプロイするには<code>6.8</code>と入力します。</li></ul></td>
+</tr>
+<tr>
 <td style="text-align:left"><code>initOpt.allow_crawler</code></td>
-<td style="text-align:left"><ul><li>クローラーを許可</li><li>Brazeによってウェブクローラーの活動が記録されます。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>クローラーを許可</li><li>ウェブクローラーからのすべてのアクティビティをBrazeに記録させる。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.app_ver</code></td>
@@ -2035,19 +2046,19 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.no_cookies</code></td>
-<td style="text-align:left"><ul><li>クッキーなし</li><li>Brazeがユーザー情報をクッキーに保存するのを防ぎます。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>クッキーなし</li><li>Brazeがユーザー情報をクッキーに保存するのを防ぐ。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.no_fntawsm</code></td>
-<td style="text-align:left"><ul><li>フォントアウェサムなし</li><li>Brazeが <code>FontAwesome</code> をロードするのを防ぎます。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>フォントアウェサムなし</li><li>Brazeが <code>FontAwesome</code> をロードするのを防ぐ。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.enable_htmlmsgs</code></td>
-<td style="text-align:left"><ul><li>メッセージ内のHTMLを有効化</li><li>Brazeユーザーがアプリ内メッセージを介してHTMLを送信できるようにします。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>メッセージ内のHTMLを有効にする</li><li>Brazeユーザーがアプリ内メッセージを通じてHTMLを送信できるようにする。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.enable_logging</code></td>
-<td style="text-align:left"><ul><li>ログの有効化</li><li>ウェブコンソールにBrazeのエラーメッセージが表示されることを許可します。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>ログを有効にする</li><li>ウェブコンソールにBrazeのエラーメッセージを表示させる。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.localization</code></td>
@@ -2055,19 +2066,19 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.min_trggrinterval</code></td>
-<td style="text-align:left"><ul><li>アクション間の最小間隔</li><li>別のトリガーアクションが発生するまでの時間（秒単位）。</li><li>デフォルト値は <code>30</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>アクション間の最小間隔</li><li>別のトリガーアクションが発生するまでの時間（秒）。</li><li>デフォルト値は <code>30</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.msg_innewtab</code></td>
-<td style="text-align:left"><ul><li>新しいタブでアプリ内メッセージを開く</li><li>アプリ内メッセージのリンクを新しいタブまたはウィンドウで開くように強制します。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>新しいタブでアプリ内メッセージを開く</li><li>アプリ内メッセージのリンクを新しいタブまたはウィンドウで開くように強制する。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.card_innewtab</code></td>
-<td style="text-align:left"><ul><li>新しいタブでニュースフィードカードを開く</li><li>ニュースフィードカードのリンクを新しいタブまたはウィンドウで開くように強制します。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>新しいタブでニュースフィードカードを開く</li><li>ニュースフィードカードのリンクを新しいタブまたはウィンドウで開くように強制する。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.explicit_dissmisal</code></td>
-<td style="text-align:left"><ul><li>明示的な解除を要求</li><li>ユーザーがメッセージを解除するためにボタンをクリックすることを強制します。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>明示的な解除を要求する</li><li>ユーザーがメッセージを解除するためにボタンをクリックすることを強制する。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.safari_pushid</code></td>
@@ -2075,24 +2086,48 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.srvcewrkr_location</code></td>
-<td style="text-align:left"><ul><li>サービスワーカーの場所</li><li>ルートディレクトリにない場合の <code>service-worker.js</code> ファイルへのパス。</li></ul></td>
+<td style="text-align:left"><ul><li>サービスワーカーの場所</li><li>ルートディレクトリにない場合の<code>service-worker.js</code>ファイルへのパス。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.session_timeout</code></td>
-<td style="text-align:left"><ul><li>セッションタイムアウト</li><li>セッションがタイムアウトするまでの時間（分単位）。デフォルト値は <code>30</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>セッションタイムアウト</li><li>セッションがタイムアウトするまでの時間（分）。</li><li>デフォルト値は <code>30</code>。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.devicePropertyAllowlist</code></td>
+<td style="text-align:left"><ul><li>デバイスプロパティ許可リスト</li><li>収集するデバイスプロパティの配列。</li><li>リストにないプロパティは収集から除外されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>initOpt.enableSdkAuthentication</code></td>
-<td style="text-align:left"><ul><li>現在のユーザーの最後に知られているJSONウェブトークンをBrazeサーバーへのネットワークリクエストに追加します。</li><li>この構成はバージョン3.5以降で利用可能です。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+<td style="text-align:left"><ul><li>SDK認証を有効にする</li><li>Brazeサーバーへのネットワークリクエストに現在のユーザーの最後に知られているJSONウェブトークンを追加する。</li><li>この構成はバージョン3.5以降で利用可能です。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.sdk_auth_signature</code></td>
+<td style="text-align:left"><ul><li>SDK認証署名</li><li>SDK認証が有効な場合にSDKリクエストを認証するために使用されるJSONウェブトークン。</li><li>この構成はバージョン3.5以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.allow_user_supplied_javascript</code></td>
+<td style="text-align:left"><ul><li>ユーザー提供のJavaScriptを許可する</li><li>アプリ内メッセージでユーザー提供のJavaScriptの実行を許可する。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.content_security_nonce</code></td>
+<td style="text-align:left"><ul><li>コンテンツセキュリティNonce</li><li>コンテンツセキュリティポリシーの準拠のためにBraze SDKスクリプトタグに含めるべきnonce文字列。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.disable_push_token_maintenance</code></td>
+<td style="text-align:left"><ul><li>プッシュトークンメンテナンスを無効にする</li><li>セッション開始時の自動プッシュトークンリフレッシュを無効にする。</li><li>オプションは <code>true</code> または <code>false</code>。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.in_app_message_zindex</code></td>
+<td style="text-align:left"><ul><li>アプリ内メッセージZindex</li><li>アプリ内メッセージオーバーレイのデフォルトz-indexを上書きする。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="eコマース">Eコマース</h3>
-<p>Braze Web SDKタグはEコマース対応であり、デフォルトのEコマース拡張マッピングを自動的に使用します。このカテゴリで手動でマッピングする必要は通常ありませんが、拡張マッピングを上書きするか、Eコマース変数が拡張に提供されていない場合は必要になることがあります。</p>
+<h3 id="e-コマース">E-コマース</h3>
+<p>Braze Web SDKタグはE-コマース対応であり、デフォルトのE-コマース拡張マッピングを自動的に使用します。このカテゴリで手動でマッピングする必要は通常ありませんが、拡張マッピングを上書きしたい場合や、拡張に提供されていないE-コマース変数がある場合は必要です。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>宛先名</strong></th>
+<th style="text-align:left"><strong>目的地名</strong></th>
 <th style="text-align:left"><strong>説明</strong></th>
 </tr>
 </thead>
@@ -2123,7 +2158,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>product_id</code></td>
-<td style="text-align:left"><ul><li>配列</li><li>商品IDのリスト</li><li><code>_cprod</code>を上書きします。</li></ul></td>
+<td style="text-align:left"><ul><li>配列</li><li>製品IDのリスト</li><li><code>_cprod</code>を上書きします。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>product_quantity</code></td>
@@ -2132,7 +2167,7 @@
 </tbody>
 </table>
 <h3 id="イベント">イベント</h3>
-<p>ページ上で特定のイベントをトリガーするためにこれらの宛先にマップします。</p>
+<p>特定のイベントをページでトリガーするためにこれらの目的地にマッピングします。</p>
 <p>イベントをトリガーするには、以下の手順を使用します：</p>
 <ol>
 <li>ドロップダウンリストからイベントを選択します。</li>
@@ -2142,22 +2177,22 @@
 <li>カスタムイベントの場合、それを識別する名前を入力します。</li>
 </ul>
 <ol>
-<li><strong>トリガー</strong>フィールドにマッピングされる変数の値を入力します。</li>
-<li>より多くのイベントをマップするには、**+**ボタンをクリックして手順1と2を繰り返します。</li>
+<li><strong>トリガー</strong> フィールドにマッピングされる変数の値を入力します。</li>
+<li>より多くのイベントをマッピングするには、<strong>+</strong> ボタンをクリックして手順1と2を繰り返します。</li>
 <li><strong>適用</strong>をクリックします。</li>
 </ol>
-<p>次の表は、データレイヤーに提供された値が見つかったときにイベントトリガーをリストします。</p>
+<p>以下の表は、データレイヤーで指定された値が見つかったときにイベントトリガーをリストしています。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>宛先名</strong></th>
+<th style="text-align:left"><strong>目的地名</strong></th>
 <th style="text-align:left"><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>Purchase</code></td>
-<td style="text-align:left"><ul><li>購入ログ</li><li>現在のユーザーによってアプリ内購入が行われます。</li><li>注文IDが存在する場合、購入イベントは自動的に構成されます。</li></ul></td>
+<td style="text-align:left"><ul><li>購入ログ</li><li>現在のユーザーによるアプリ内購入が行われます。</li><li>注文IDが存在する場合、購入イベントは自動的に構成されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>Alias</code></td>
@@ -2165,7 +2200,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>addToSubscriptionGroup</code></td>
-<td style="text-align:left"><ul><li>ユーザーをメールまたはSMSのサブスクリプショングループに追加します。</li><li>この構成はバージョン3.5以降で利用可能です。</li></ul></td>
+<td style="text-align:left"><ul><li>メールまたはSMSのサブスクリプショングループにユーザーを追加します。</li><li>この構成はバージョン3.5以降で利用可能です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>AddAtt</code></td>
@@ -2217,7 +2252,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>SetCity</code></td>
-<td style="text-align:left"><ul><li>ホームシティの構成</li><li>現在のユーザーの市を構成します。</li></ul></td>
+<td style="text-align:left"><ul><li>ホームシティの構成</li><li>現在のユーザーの都市を構成します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>SetCountry</code></td>
@@ -2236,14 +2271,86 @@
 <td style="text-align:left"><ul><li>性別の構成</li><li>現在のユーザーの性別を構成します。</li></ul></td>
 </tr>
 <tr>
+<td style="text-align:left"><code>removeFromSubscriptionGroup</code></td>
+<td style="text-align:left"><ul><li>サブスクリプショングループから削除</li><li>メールまたはSMSのサブスクリプショングループから現在のユーザーを削除します。</li><li>この構成はバージョン3.5以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>setCustomLocationAttribute</code></td>
+<td style="text-align:left"><ul><li>カスタム位置属性の構成</li><li>現在のユーザーのカスタム位置属性（キー、緯度、経度）を構成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SetLineId</code></td>
+<td style="text-align:left"><ul><li>LINE IDの構成</li><li>現在のユーザーのLINEメッセージングアプリIDを構成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Ecommerce</code></td>
+<td style="text-align:left"><ul><li>イーコマースイベントのログ</li><li>現在のユーザーの構造化されたイーコマースイベントをログします。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>WipeData</code></td>
+<td style="text-align:left"><ul><li>データのワイプ（ローカルSDKデータの削除）</li><li>ローカルに保存されたすべてのSDKデータを削除し、SDKを無効にします。</li><li>さらなるデータ収集を再開する前に、SDKを明示的に再有効化する必要があります。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshFeatureFlags</code></td>
+<td style="text-align:left"><ul><li>フィーチャーフラグの更新</li><li>Brazeから現在のユーザーのフィーチャーフラグを更新するよう要求します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogFeatureFlagImpression</code></td>
+<td style="text-align:left"><ul><li>フィーチャーフラグインプレッションのログ</li><li>指定されたフィーチャーフラグのインプレッションイベントをログします。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshContentCards</code></td>
+<td style="text-align:left"><ul><li>コンテンツカードの更新</li><li>Brazeからコンテンツカードフィードを更新するよう要求します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ShowContentCards</code></td>
+<td style="text-align:left"><ul><li>コンテンツカードの表示</li><li>コンテンツカードフィードを表示します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogContentCardImpressions</code></td>
+<td style="text-align:left"><ul><li>コンテンツカードインプレッションのログ</li><li>コンテンツカードの配列のインプレッションイベントをログします。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogContentCardClick</code></td>
+<td style="text-align:left"><ul><li>コンテンツカードクリックのログ</li><li>特定のコンテンツカードのクリックイベントをログします。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RequestPushPermission</code></td>
+<td style="text-align:left"><ul><li>プッシュ通知の許可を要求</li><li>ユーザーにプッシュ通知の許可を求めます。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UnregisterPush</code></td>
+<td style="text-align:left"><ul><li>プッシュの登録解除</li><li>現在のデバイスをプッシュ通知から登録解除します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FlushData</code></td>
+<td style="text-align:left"><ul><li>データのフラッシュ</li><li>キューに入れられた分析データを直ちにBrazeサーバーに送信します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshBanners</code></td>
+<td style="text-align:left"><ul><li>バナーの更新</li><li>指定された配置IDのBrazeバナーを更新するよう要求します。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogBannerImpressions</code></td>
+<td style="text-align:left"><ul><li>バナーインプレッションのログ</li><li>バナー配置IDの配列のインプレッションイベントをログします。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogBannerClick</code></td>
+<td style="text-align:left"><ul><li>バナークリックを記録</li><li>特定のバナーのクリックイベントを記録します。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>InsertBanner</code></td>
+<td style="text-align:left"><ul><li>バナーを挿入</li><li>指定された配置IDのバナーを取得し、指定された親要素に挿入します。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
 <td style="text-align:left"><code>Custom</code></td>
 <td style="text-align:left"><ul><li>カスタム</li><li>現在のユーザーによって作成されたカスタムイベントを送信します。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="パラメータ">パラメータ</h3>
-<p>これらの目的地にマッピングして、以前にマッピングしたイベントにデータを渡します。パラメータは事前定義されたイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法については、以下のカスタムイベントデータセクションを参照してください。</p>
-<p>事前定義されたイベントにパラメータを渡すには、以下の手順を使用します：</p>
+<p>これらの目的地にデータをマッピングして、以前にマッピングされたイベントにデータを渡します。パラメータは事前定義されたイベントでのみ使用されます。カスタムイベントでパラメータを渡す方法については、以下のカスタムイベントデータセクションを参照してください。</p>
+<p>事前定義されたイベントにパラメータを渡すには、次の手順を使用します：</p>
 <ol>
 <li>イベントフィールドで、ドロップダウンリストからイベントを選択します。</li>
 <li>パラメータフィールドで、ドロップダウンリストからパラメータを選択します。</li>
@@ -2264,7 +2371,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>product_quantity</code></td>
-<td style="text-align:left"><ul><li>商品数量</li><li>アプリ内で購入された商品の数量。</li><li>これはeコマースの値<code>_cquan</code>を上書きします。</li></ul></td>
+<td style="text-align:left"><ul><li>商品数量</li><li>アプリ内で購入された商品の数量。</li><li>これはeコマース値<code>_cquan</code>を上書きします。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>order_id</code></td>
@@ -2303,16 +2410,60 @@
 <td style="text-align:left"><ul><li>カスタム属性増分値</li><li>カスタムユーザー属性を増分する値。</li><li>送信するパラメータの名前を入力します。</li><li>減少させるには負の数を使用します。</li><li>デフォルト値は<code>1</code>です。</li></ul></td>
 </tr>
 <tr>
+<td style="text-align:left"><code>custom_attributes</code></td>
+<td style="text-align:left"><ul><li>カスタム属性オブジェクト</li><li>現在のユーザーに一度に構成するカスタム属性キー値ペアのオブジェクト。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>line_id</code></td>
+<td style="text-align:left"><ul><li>ユーザーのLINE ID</li><li>現在のユーザーのLINEメッセージングアプリID。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>feature_flag_id</code></td>
+<td style="text-align:left"><ul><li>フィーチャーフラグID</li><li>印象を記録するためのフィーチャーフラグのユニーク識別子。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_placement_ids</code></td>
+<td style="text-align:left"><ul><li>バナー配置ID（配列またはコンマ区切り）</li><li>バナー配置IDの配列またはコンマ区切りの文字列で、リフレッシュまたは印象を記録します。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_placement_id</code></td>
+<td style="text-align:left"><ul><li>バナー配置ID</li><li>単一のバナー配置のユニーク識別子で、取得して挿入します。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_click_id</code></td>
+<td style="text-align:left"><ul><li>バナークリックID</li><li>クリックされたバナーのクリック追跡ID。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_parent_selector</code></td>
+<td style="text-align:left"><ul><li>バナーペアレントセレクタ（CSS）</li><li>バナーが挿入される親要素を識別するCSSセレクタ文字列。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_cards</code></td>
+<td style="text-align:left"><ul><li>コンテンツカード配列</li><li>印象を記録するためのコンテンツカードオブジェクトの配列。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_card</code></td>
+<td style="text-align:left"><ul><li>コンテンツカードオブジェクト</li><li>クリックを記録するための単一のコンテンツカードオブジェクト。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecommerce_event_name</code></td>
+<td style="text-align:left"><ul><li>イーコマースイベント名</li><li>記録するイーコマースイベントの名前。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecommerce_properties</code></td>
+<td style="text-align:left"><ul><li>イーコマースプロパティ</li><li>イーコマースイベントのプロパティのオブジェクト。</li><li><code>source</code>フィールドをサポートし、デフォルトは<code>&ldquo;tealium&rdquo;</code>です。</li><li>この構成はバージョン6.0以降で利用可能です。</li></ul></td>
+</tr>
+<tr>
 <td style="text-align:left"><code>avatar_url</code></td>
-<td style="text-align:left"><ul><li>アバター画像URL</li><li>現在のユーザーが選択したアバターのURL。</li><li>バージョン4.0以降では利用できません。</li></ul></td>
+<td style="text-align:left"><ul><li>アバター画像URL</li><li>現在のユーザーが選択したアバターのURL。</li><li>バージョン4.0以降では利用不可です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>longitude</code></td>
-<td style="text-align:left"><ul><li>ユーザーの経度</li><li>ユーザーの位置の検証済み経度、度単位。</li><li>値は<code>-180</code>から<code>180</code>までです</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの経度</li><li>ユーザーの位置の検証済み経度、度単位。</li><li>値は<code>-180</code>から<code>180</code>です</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>latitude</code></td>
-<td style="text-align:left"><ul><li>ユーザーの緯度</li><li>ユーザーの位置の検証済み緯度、度単位。</li><li>値は<code>-90</code>から<code>90</code>までです</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの緯度</li><li>ユーザーの位置の検証済み緯度、度単位。</li><li>値は<code>-90</code>から<code>90</code>です</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>accuracy</code></td>
@@ -2320,15 +2471,15 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>altitude</code></td>
-<td style="text-align:left"><ul><li>ユーザーの高度</li><li>ユーザーの位置の高度、メートル単位。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの高度</li><li>ユーザーの位置の高度（メートル単位）。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>altitude_accuracy</code></td>
-<td style="text-align:left"><ul><li>高度精度</li><li>ユーザーの高度の精度、メートル単位。</li></ul></td>
+<td style="text-align:left"><ul><li>高度の精度</li><li>ユーザーの高度の精度（メートル単位）。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>year</code></td>
-<td style="text-align:left"><ul><li>ユーザーの誕生年</li><li>現在のユーザーの誕生日に関連する年。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの生年</li><li>現在のユーザーの誕生日に関連する年。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>month</code></td>
@@ -2340,11 +2491,11 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>email</code></td>
-<td style="text-align:left"><ul><li>ユーザーのメール</li><li>現在のユーザーの検証済みメールアドレス。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーのメールアドレス</li><li>現在のユーザーの検証済みメールアドレス。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>notification_type</code></td>
-<td style="text-align:left"><ul><li>通知購読タイプ</li><li>現在のユーザーの選択された通知タイプ。</li><li>オプション: <code>opted_in</code>, <code>subscribed</code>, <code>unsubscribed</code></li></ul></td>
+<td style="text-align:left"><ul><li>通知の種類</li><li>現在のユーザーの選択された通知タイプ。</li><li>オプション: <code>opted_in</code>, <code>subscribed</code>, <code>unsubscribed</code></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>first_name</code></td>
@@ -2352,7 +2503,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>subscriptionGroupId</code></td>
-<td style="text-align:left"><ul><li>サブスクリプショングループID。</li><li>サブスクリプショングループのユニークな識別子。</li></ul></td>
+<td style="text-align:left"><ul><li>サブスクリプショングループID</li><li>サブスクリプショングループの一意の識別子。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>last_name</code></td>
@@ -2360,15 +2511,15 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>gender</code></td>
-<td style="text-align:left"><ul><li>ユーザーの性別</li><li>現在のユーザーの性別コード。</li><li>オプションは男性(<code>m</code>)、女性(<code>f</code>)、その他(<code>o</code>)です。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの性別</li><li>現在のユーザーの性別コード。</li><li>オプションは男性 (<code>m</code>), 女性 (<code>f</code>), その他 <code>o</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customer_city</code></td>
-<td style="text-align:left"><ul><li>ユーザーの居住都市</li><li>現在のユーザーの居住都市。</li><li><code>_ccity</code>を上書きします。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの居住都市</li><li>現在のユーザーの居住都市。</li><li><code>_ccity</code>を上書き。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>customer_country</code></td>
-<td style="text-align:left"><ul><li>ユーザーの国</li><li>現在のユーザーの国。</li><li><code>_ccountry</code>を上書きします。</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの国</li><li>現在のユーザーの国。</li><li><code>_ccountry</code>を上書き。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>localization</code></td>
@@ -2376,18 +2527,38 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>phone_number</code></td>
-<td style="text-align:left"><ul><li>ユーザーの電話番号</li><li>現在のユーザーの電話番号。</li><li>数字、スペース、<code>+</code>、<code>.</code>、<code>-</code>、<code>(</code>、<code>)</code>の文字のみ許可されます</li></ul></td>
+<td style="text-align:left"><ul><li>ユーザーの電話番号</li><li>現在のユーザーの電話番号。</li><li>数字、スペース、<code>+</code>, <code>.</code>, <code>-</code>, <code>(</code>, <code>)</code> の文字のみ許可</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="カスタムイベントデータ">カスタムイベントデータ</h3>
-<p>イベントタブで以前にマッピングしたカスタムイベントにカスタムパラメータを渡したい場合、カスタムイベントデータの送信先にマップします。</p>
-<p>カスタムイベントデータ変数をマップするには、以下の手順に従ってください：</p>
+<p>イベントタブで以前にマッピングしたカスタムイベントにカスタムパラメータを渡したい場合、カスタムイベントデータの目的地にマップします。</p>
+<p>カスタムイベントデータ変数をマッピングするには、以下の手順に従ってください：</p>
 <ol>
-<li><strong>イベント名</strong>に、<strong>イベント</strong>タブで指定されたカスタムイベントの名前を正確に入力します。</li>
+<li><strong>イベント名</strong>に、<strong>イベント</strong>タブで指定されたカスタムイベントの名前を入力します。</li>
 <li><strong>パラメータ</strong>に、送信したいパラメータの名前を入力します。</li>
 <li><strong>+ 追加</strong>をクリックします。</li>
 </ol>
+<h3 id="クッキー同意">クッキー同意</h3>
+<p>ユーザーの同意状態に基づいてBraze SDKが有効または無効になるように、クッキー同意の目的地にマップします。同意ゲーティングはSDKの初期化前に実行されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>値</strong></th>
+<th style="text-align:left"><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>grant</code></td>
+<td style="text-align:left">SDKを有効にし、データ収集を進めます。SDKは初期化され、セッションが通常通り開始されます。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>revoke</code></td>
+<td style="text-align:left">初期化前にSDKを無効にします。データは収集されず、セッションは開始されません。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="ベンダー文書">ベンダー文書</h2>
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/web/initial_sdk_setup/">Braze Web SDK</a></li>
@@ -2468,14 +2639,15 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされているバージョン</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">Eコマース</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B9" href="javascript:void(0)">E-コマース</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">パラメータ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">カスタムイベントデータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E5%90%8C%E6%84%8F" href="javascript:void(0)">クッキー同意</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>

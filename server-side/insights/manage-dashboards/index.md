@@ -145,3 +145,7 @@ After you have exported a custom dashboard, you can import the JSON file into ot
 1. For each dataset, map each source attribute (from the JSON file) to an attribute in this profile.
 1. Click **Generate**.
 1. When the import is completed, the **Dashboard Imported** message is displayed.
+
+## Set up threshold alerts
+
+Threshold alerts send an email notification when a dashboard visual crosses a defined value. For setup instructions, examples, and filter behavior, see [Threshold alerts]().

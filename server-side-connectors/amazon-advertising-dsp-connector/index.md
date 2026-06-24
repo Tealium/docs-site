@@ -108,6 +108,10 @@ This action uses batched requests to support high-volume data transfers to the v
 |MAID| Mobile advertising identifier.|
 |Amazon Cookie| Cookie obtained through a cookie sync.|
 
+#### Consent
+
+When using the **Add to Audience** action, the connector sends `GRANTED` for all `amazonConsent` values. To prevent non-consented visitors from being added to audiences, create an audience with rules that check visitor profile consent status. Then use the **Remove from Audience** action to remove visitors that have not given consent.
+
 ### Action — Remove from Audience
 
 This action is used to remove a visitor from an audience within Amazon DSP. For example, you can remove a visitor from a specific Amazon DSP audience when they leave an AudienceStream audience so they are not retargeted.

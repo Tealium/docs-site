@@ -33,12 +33,12 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 * 検索バー：プロファイル内の属性、ルール、アクションを検索します。
 * [保存/公開]()：変更をバージョンに保存して公開します。このボタンは、保存または公開の権限がない場合に**読み取り専用モード**を表示します。
 * リソースセンター：このボタンをクリックしてサポートタブを開きます。このタブから、サポートチケットを提出したり、製品ガイドを検索したり、製品発表を見たり、マーケティングコンテンツや今後のイベントを読んだり、製品に対するアイデアを提出したりすることができます。
-* 同時ユーザー：他のユーザーがログオンしてプロファイルを使用している場合、このアイコンが表示されます。アイコンをクリックして、どのユーザーが使用しているかを確認し、プロファイルを閲覧する人にメッセージを投稿します。
+* 同時ユーザー：他のユーザーがログオンしてプロファイルを使用している場合、このアイコンが表示されます。アイコンをクリックして、どのユーザーがいるかを確認し、プロファイルを閲覧する人にメッセージを投稿します。
 * プロファイルアイコン：プロファイルアイコンをクリックして**管理**メニューを表示します。**管理**メニューには、アカウントで使用できるすべての機能が含まれています。
 
 ### ナビゲーションバー
 
-ナビゲーションバーはTealiumウィンドウの左側に表示されます。利用可能なすべての製品、機能、ツールへのリンクが含まれています。どのアイテムもクリックするとTealiumウィンドウでロードされます。クライアントサイドの**タグ管理**リンクをクリックすると、クライアントサイドプロファイルをロードするためにブラウザの新しいタブが開きます。
+ナビゲーションバーはTealiumウィンドウの左側に表示されます。利用可能なすべての製品、機能、ツールへのリンクが含まれています。どのアイテムもクリックするとTealiumウィンドウでロードされます。クライアントサイドの**タグ管理**リンクをクリックすると、ブラウザの新しいタブが開いてクライアントサイドのプロファイルがロードされます。
 
 ![](/images/server-side/server-side-dashboard-navigation-bar1.png)
 
@@ -50,7 +50,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 **全製品**の概要ビューから、概要に記載されている標準情報または以下のビューのいずれかを選択します：
 
-* **アクションのトリガー** – 成功したコネクタアクションと失敗したコネクタアクションの数を表示します
+* **トリガーされたアクション** – 成功したコネクタアクションと失敗したコネクタアクションの数を表示
 * **コネクター** – EventStreamおよびAudienceStreamコネクタへのクイックリンク
 
 ![](/images/server-side/70b4eafe-6314-478a-90ce-a5fa7fd1b9d5.jpeg)
@@ -61,7 +61,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 * **適用されたエンリッチメント** – 属性へのクイックリンク
 * **アクティブなフィード** – フィードへのクイックリンク
-* **EventStreamアクションのトリガー** – 成功したEventStreamアクションまたは失敗したEventStreamアクションの数を表示します
+* **EventStreamアクションのトリガー** – 成功したEventStreamアクションまたは失敗したEventStreamアクションの数を表示
 * **EventStreamコネクター** – EventStreamコネクタへのクイックリンク
 
 ![](/images/server-side/c6026834-1bcd-44c8-8c8c-229d27728a60.jpeg)
@@ -70,9 +70,9 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 **AudienceStream**の概要ビューから、概要に記載されている標準情報または以下のビューのいずれかを選択します：
 
-* **訪問数** – 選択した期間の訪問数を表示します
+* **訪問数** – 選択した期間の訪問数を表示
 * **アクティブなオーディエンス** – オーディエンスへのクイックリンク
-* **AudienceStreamアクションのトリガー** – 成功したAudienceStreamアクションまたは失敗したAudienceStreamアクションの数を表示します
+* **AudienceStreamアクションのトリガー** – 成功したAudienceStreamアクションまたは失敗したAudienceStreamアクションの数を表示
 * **AudienceStreamコネクター** – AudienceStreamコネクタへのクイックリンク
 
 ![](/images/server-side/7cf9d59e-5e87-4d4e-b379-fb31ee428d1c.jpeg)
@@ -82,7 +82,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 **EventStore**の概要ビューから、概要に記載されている標準情報または以下のビューのいずれかを選択します：
 
 * **EventStoreフィード** – フィードへのクイックリンク
-* **S3へ送信されたイベント** – S3バケットに送信されたイベント数を表示します
+* **S3へ送信されたイベント** – S3バケットに送信されたイベント数を表示
 
 ![](/images/server-side/39b1d6db-89e8-4199-90f7-6496cbcbfa08.jpeg)
 
@@ -91,7 +91,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 **EventDB**の概要ビューから、概要に記載されている標準情報または以下のビューのいずれかを選択します：
 
 * **EventDBフィード** – フィードへのクイックリンク
-* **Redshiftへ送信されたイベント** – Redshiftに送信されたイベント数を表示します
+* **Redshiftへ送信されたイベント** – Redshiftに送信されたイベント数を表示
 
 ![](/images/server-side/627e279a-9eeb-4ca6-a5a9-ce4b5be26fef.jpeg)
 
@@ -100,7 +100,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 **AudienceStore**の概要ビューから、**データソース**または以下のビューのいずれかを選択します：
 
 * **アクティブなオーディエンス** – オーディエンスへのクイックリンク
-* **S3へ送信された訪問** – S3バケットに送信された訪問数を表示します
+* **S3へ送信された訪問** – S3バケットに送信された訪問数を表示
 
 ![](/images/server-side/b748d370-f2d6-4bb2-913e-7bd9c8a661a8.jpeg)
 
@@ -109,7 +109,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 **AudienceDB**の概要ビューから、**データソース**または以下のビューのいずれかを選択します：
 
 * **アクティブなオーディエンス** – オーディエンスへのクイックリンク
-* **RedShiftへ送信された訪問** – RedShiftに送信された訪問数を表示します
+* **RedShiftへ送信された訪問** – RedShiftに送信された訪問数を表示
 
 ![](/images/server-side/df400ce6-152e-4f30-bc9c-36b6a4c07eed.jpeg)
 
@@ -119,7 +119,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 ### データフローと関係の表示
 
-画面の下部にはデータ関係とデータフローが明確に表示されます。これらの関係とフローをすばやく確認し、関連するアイテムの詳細にドリルダウンして編集できます。
+画面の下部にはデータの関係とデータフローが明確に表示されます。これらの関係とフローをすばやく確認し、関連するアイテムの詳細にドリルダウンして編集できます。
 
 ![](/images/server-side/e44f1444-fdc8-40f6-a6b1-2e181191468e-1-201-a.jpeg)
 
@@ -137,7 +137,7 @@ url: https://docs.tealium.com/ja/server-side/getting-started/data-supply-chain-d
 
 ### 結果の並べ替え
 
-上 (▲) または下 (▼) の矢印を使用して、結果を量、アクションの成功、またはアクションの失敗によって並べ替えます。
+上 (▲) または下 (▼) の矢印を使用して、量、アクションの成功、または失敗によって結果を並べ替えます。
 
 ![](/images/server-side/e2735efb-d75d-40e7-8da4-91e21d7f006e-1-201-a.jpeg)
 

@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -1945,9 +1945,9 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Amplitudeは、企業が製品の力を解放するのを助ける先導的なデジタルアナリティクスプラットフォームです。ブラウザSDKを使用すると、Amplitudeにイベントを送信できます。</p>
+  <p>Amplitudeは、企業が製品の力を解き放つのを助ける先進的なデジタルアナリティクスプラットフォームです。ブラウザSDKを使用すると、Amplitudeにイベントを送信できます。</p>
 <h2 id="ベンダー情報">ベンダー情報</h2>
-<p>このタグは、次のベンダーAPIを実装しています：</p>
+<p>このタグは、以下のベンダーAPIを実装しています：</p>
 <ul>
 <li><a href="https://amplitude.com/docs/sdks/analytics/browser/browser-sdk-2">AmplitudeブラウザSDK 2</a></li>
 <li><a href="https://amplitude.com/docs/sdks/analytics/browser/migrate-from-javascript-sdk-to-browser-sdk-1-0">Amplitude: Javascript SDKからブラウザSDK 1.0への移行</a></li>
@@ -1956,7 +1956,7 @@
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>注文IDが構成されると変換が発生します。</li>
-<li><code>userId</code>として顧客IDが<code>amplitude.init()</code>呼び出しで送信されます（入力されている場合）。</li>
+<li>顧客IDが入力されている場合、<code>userId</code>として<code>amplitude.init()</code>呼び出しで送信されます。</li>
 <li>以下のEコマース拡張パラメータをサポートしています：
 <ul>
 <li>注文ID（<code>_corder</code>）</li>
@@ -1969,17 +1969,17 @@
 </li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>タグマーケットプレイスに移動して新しいタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/about/">タグについて</a>を参照してください。</p>
+<p>タグマーケットプレイスにアクセスして新しいタグを追加します。タグを追加する方法についての詳細は、<a href="/ja/iq-tag-management/tags/manage/">タグの管理</a>を参照してください。</p>
 <p>タグを追加する際に、以下の構成を構成します：</p>
 <ul>
 <li><strong>APIキー</strong>：AmplitudeプロジェクトのAPIキー。</li>
-<li><strong>SDKバージョン</strong>：ロードするライブラリのバージョン。デフォルトはバージョン2.6.0です。</li>
+<li><strong>SDKバージョン</strong>：読み込むAmplitudeブラウザSDKライブラリのバージョン。デフォルトは<code>2.6.0</code>です。この値はCDN URLの構築に使用されます。例えば、<code>2.41.1</code>を入力すると<code>https://cdn.amplitude.com/libs/analytics-browser-2.41.1-min.js.gz</code>が読み込まれます。</li>
 <li><strong>セッションリプレイ</strong>：セッションリプレイを有効または無効にします。</li>
-<li><strong>セッションリプレイバージョン</strong>：ロードするライブラリのバージョン。デフォルト値は1.13.9です。</li>
+<li><strong>セッションリプレイバージョン</strong>：読み込むセッションリプレイライブラリのバージョン。デフォルト値は<code>1.13.9</code>です。</li>
 <li><strong>ガイドと調査の有効化</strong>：ガイドと調査を有効または無効にします。</li>
 </ul>
-<h2 id="ロードルール">ロードルール</h2>
-<p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">ロードルールについて</a>を参照してください。</p>
+<h2 id="読み込みルール">読み込みルール</h2>
+<p>すべてのページでタグを読み込むか、タグが読み込まれる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">読み込みルールについて</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
 <p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数へのデータ送信のプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">データマッピングについて</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
@@ -2004,9 +2004,14 @@
 <td style="text-align:left">SDKバージョン</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>defaultTracking</code></td>
+<td style="text-align:left"><code>autocapture</code></td>
 <td style="text-align:left">ブール値</td>
-<td style="text-align:left">デフォルトトラッキング</td>
+<td style="text-align:left">クリック、入力変更、その他のブラウザの相互作用の自動キャプチャを有効または無効にします</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>elementInteractions</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left">autocaptureが有効な場合に要素の相互作用イベントの追跡を有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>deviceId</code></td>
@@ -2026,7 +2031,7 @@
 <tr>
 <td style="text-align:left"><code>flushMaxRetries</code></td>
 <td style="text-align:left">数値</td>
-<td style="text-align:left">フラッシュ最大リトライ回数</td>
+<td style="text-align:left">フラッシュの最大リトライ回数</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>identityStorage</code></td>
@@ -2065,8 +2070,18 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>userId</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">ユーザーID、実行時に<code>amplitude.setUserId()</code>にマッピングされます</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sessionId</code></td>
 <td style="text-align:left">数値</td>
-<td style="text-align:left">ユーザーID</td>
+<td style="text-align:left">セッションID（エポックからのミリ秒単位のUnixタイムスタンプ）、実行時に<code>amplitude.setSessionId()</code>にマッピングされます</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>reset_identity</code></td>
+<td style="text-align:left">ブール値</td>
+<td style="text-align:left"><code>true</code>の場合、<strong>IDリセットを有効にする</strong>が有効な場合、ID値を適用する前に<code>amplitude.reset()</code>を呼び出します</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>session_replay</code></td>
@@ -2096,27 +2111,27 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>add.custom</code></td>
-<td style="text-align:left">指定された数値で数値を増やす</td>
+<td style="text-align:left">指定された数値で数値を増やします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>append.custom</code></td>
-<td style="text-align:left">値をプロパティ配列に追加する</td>
+<td style="text-align:left">値をプロパティ配列に追加します</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>prepend.custom</code></td>
-<td style="text-align:left">値をプロパティ配列の先頭に追加する</td>
+<td style="text-align:left">値をプロパティ配列の先頭に追加します</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>set.custom</code></td>
-<td style="text-align:left">プロパティ値を構成または上書きする</td>
+<td style="text-align:left">プロパティ値を構成または上書きします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>setOnce.custom</code></td>
-<td style="text-align:left">値を構成し、一度構成するとこれらの値は上書きできない</td>
+<td style="text-align:left">値を構成し、一度構成するとこれらの値は上書きできません</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>unset.custom</code></td>
-<td style="text-align:left">値をnullに構成する</td>
+<td style="text-align:left">値をnullに構成します</td>
 </tr>
 </tbody>
 </table>
@@ -2196,7 +2211,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>group.custom</code></td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><code>amplitude.setGroup()</code>を介してユーザーをグループに割り当てます。<code>custom</code>をグループ名に変更します。</td>
 </tr>
 </tbody>
 </table>
@@ -2206,28 +2221,34 @@
 <tr>
 <th style="text-align:left">変数</th>
 <th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>attribution</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">UTMパラメーターやリファラーなどの帰属データの自動トラッキングを有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>pageViews</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">ページビューの自動トラッキングを有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>sessions</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">セッションの自動トラッキングを有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>formInteractions</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">フォームの相互作用の自動トラッキングを有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>fileDownloads</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">ファイルダウンロードのクリックの自動トラッキングを有効または無効にします</td>
 </tr>
 </tbody>
 </table>
@@ -2237,51 +2258,98 @@
 <tr>
 <th style="text-align:left">変数</th>
 <th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>ipAddress</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">ユーザーのIPアドレスの収集を有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>language</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">ユーザーのブラウザ言語の収集を有効または無効にします</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>platform</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">ユーザーのプラットフォーム情報の収集を有効または無効にします</td>
 </tr>
 </tbody>
 </table>
-<h3 id="クッキーオプション">クッキーオプション</h3>
+<h3 id="cookieオプション">Cookieオプション</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">変数</th>
 <th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><code>domain</code></td>
 <td style="text-align:left">文字列</td>
+<td style="text-align:left">Amplitudeクッキーのドメイン</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>expiration</code></td>
 <td style="text-align:left">数値</td>
+<td style="text-align:left">クッキーの有効期限（日数）</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>sameSite</code></td>
 <td style="text-align:left">文字列</td>
+<td style="text-align:left">クッキーのSameSite属性（<code>Lax</code>、<code>Strict</code>、または<code>None</code>）</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>secure</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">クッキーにSecureフラグを構成するかどうか</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>upgrade</code></td>
 <td style="text-align:left">ブール値</td>
+<td style="text-align:left">以前のSDKバージョンからのクッキーをアップグレードするかどうか</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utmurchin-traffic-monitor">UTM（Urchin Traffic Monitor）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>utm_source</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">トラフィックを送信したウェブサイト</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>utm_medium</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">マーケティング手段、例えば<code>email</code>や<code>cpc</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>utm_campaign</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">特定のキャンペーン名、例えば<code>summer_sale</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>utm_term</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">使用された有料検索用語、例えば<code>product+analytics</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>utm_content</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">ユーザーをサイトに導いたものを特定するために一般的に使用される、A/Bテストなどに使用されます</td>
 </tr>
 </tbody>
 </table>
@@ -2345,7 +2413,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年November月6日
+          <p>最終更新日 ::  2026年June月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2362,7 +2430,7 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%83%85%E5%A0%B1" href="javascript:void(0)">ベンダー情報</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">読み込みルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3" href="javascript:void(0)">ユーザープロパティ</a></li>
@@ -2371,7 +2439,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97" href="javascript:void(0)">ユーザーグループ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">デフォルトトラッキング</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">トラッキングオプション</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">クッキーオプション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookie%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">Cookieオプション</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utmurchin-traffic-monitor" href="javascript:void(0)">UTM（Urchin Traffic Monitor）</a></li>
               </nav>
   </aside></nav>
 

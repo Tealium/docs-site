@@ -41,3 +41,4 @@ Click any bar in the visitor profile distribution chart, a badge, or an audience
 
 ![](/images/server-side/visitor-profile-summary.png)
 
+

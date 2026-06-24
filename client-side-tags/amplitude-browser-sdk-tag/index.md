@@ -32,9 +32,9 @@ Go to the tag marketplace to add a new tag. For more information about how to ad
 When adding the tag, configure the following settings:
 
 * **API Key**: Your Amplitude project&#39;s API key.
-* **SDK Version**: The version of the library to load. The default is version 2.6.0.
+* **SDK Version**: The version of the Amplitude Browser SDK library to load. The default is `2.6.0`. This value is used to construct the CDN URL. For example, entering `2.41.1` loads `https://cdn.amplitude.com/libs/analytics-browser-2.41.1-min.js.gz`.
 * **Session Replay**: Enable or disable session replay.
-* **Session Replay Version**: The version of the library to load. The default value is 1.13.9.
+* **Session Replay Version**: The version of the session replay library to load. The default value is `1.13.9`.
 * **Enable Guides and Surveys**: Enable or disable guides and surveys.
 
 ## Load rules
@@ -53,7 +53,8 @@ The available categories are:
 |:---------|:-----|:------------|
 | `api_key`  | String | API key |
 | `sdk_version`  | String | SDK version |
-| `defaultTracking`  | Boolean | Default tracking|
+| `autocapture`  | Boolean | Enable or disable autocapture of clicks, input changes, and other browser interactions |
+| `elementInteractions`  | Boolean | Enable or disable tracking of element interaction events when autocapture is active |
 | `deviceId`  | String | Device ID |
 | `flushIntervalMillis`  | Number | Flush interval in milliseconds |
 | `flushQueueSize`  | Number | Flush queue size |
@@ -62,10 +63,12 @@ The available categories are:
 | `logLevel`  | String | Log level |
 | `optOut`  | Boolean | Opt out |
 | `serverUrl`  | String | Server URL |
-| `serverZone`  | String | Sever zone |
+| `serverZone`  | String | Server zone |
 | `transport`  | String | Transport |
 | `useBatch`  | Boolean | Use batch |
-| `userId`  | Number | User ID |
+| `userId`  | String | User ID, mapped to `amplitude.setUserId()` at runtime |
+| `sessionId`  | Number | Session ID in milliseconds since epoch (Unix timestamp), mapped to `amplitude.setSessionId()` at runtime |
+| `reset_identity`  | Boolean | When `true` and **Enable Reset Identity** is enabled, calls `amplitude.reset()` before applying identity values |
 | `session_replay` | Boolean | Enable session replay |
 | `session_replay_version` | String | Session replay version |
 | `guides_and_surveys` | Boolean | Enable guides and surveys |
@@ -86,14 +89,14 @@ The available categories are:
 | Variable | Description |
 |:---------|:------------|
 | `event_type` | Event type |
-| `eventProperties.custom` | Event properties  |
+| `eventProperties.custom` | Event properties |
 | `groups.custom` | Groups |
 
 ### Revenue Tracking/E-Commerce
 
 | Variable | Type | Description |
 |:---------|:-----|:------------|
-| `order_id`  | String | Order ID (overrides `_corder`) | 
+| `order_id`  | String | Order ID (overrides `_corder`) |
 | `order_type`  | String | Cart or order type (overrides `_ctype`) |
 | `customer_id`  | String | Customer ID (overrides `_ccustid`) |
 | `product_id`  | Array | List of product IDs (overrides `_cprod`) |
@@ -104,34 +107,42 @@ The available categories are:
 
 | Variable | Description |
 |:---------|:------------|
-| `group.custom`  |  |
+| `group.custom`  | Assigns the user to a group via `amplitude.setGroup()`. Change `custom` to the group name. |
 
 ### Default Tracking
 
-| Variable | Type |
-|:---------|:-----|
-| `attribution`  | Boolean |
-| `pageViews`  | Boolean |
-| `sessions`  | Boolean |
-| `formInteractions`  | Boolean |
-| `fileDownloads`  | Boolean |
+| Variable | Type | Description |
+|:---------|:-----|:------------|
+| `attribution`  | Boolean | Enable or disable automatic tracking of attribution data such as UTM parameters and referrer |
+| `pageViews`  | Boolean | Enable or disable automatic page view tracking |
+| `sessions`  | Boolean | Enable or disable automatic session tracking |
+| `formInteractions`  | Boolean | Enable or disable automatic tracking of form interactions |
+| `fileDownloads`  | Boolean | Enable or disable automatic tracking of file download clicks |
 
 ### Tracking Options
 
-| Variable | Type |
-|:---------|:-----|
-| `ipAddress`  | Boolean |
-| `language`  | Boolean |
-| `platform`  | Boolean |
+| Variable | Type | Description |
+|:---------|:-----|:------------|
+| `ipAddress`  | Boolean | Enable or disable collection of the user&#39;s IP address |
+| `language`  | Boolean | Enable or disable collection of the user&#39;s browser language |
+| `platform`  | Boolean | Enable or disable collection of the user&#39;s platform information |
 
 ### Cookie Options
 
-| Variable | Type |
-|:---------|:-----|
-| `domain`  | String |
-| `expiration`  | Number |
-| `sameSite`  | String |
-| `secure`  | Boolean |
-| `upgrade`  | Boolean |
+| Variable | Type | Description |
+|:---------|:-----|:------------|
+| `domain`  | String | The domain for the Amplitude cookie |
+| `expiration`  | Number | The number of days before the cookie expires |
+| `sameSite`  | String | The SameSite attribute for the cookie (`Lax`, `Strict`, or `None`) |
+| `secure`  | Boolean | Whether to set the Secure flag on the cookie |
+| `upgrade`  | Boolean | Whether to upgrade existing cookies from a previous SDK version |
 
-    
+### UTM (Urchin Traffic Monitor)
+
+| Variable | Type | Description |
+|:---------|:-----|:------------|
+| `utm_source`  | String | The website that sent the traffic |
+| `utm_medium`  | String | The marketing medium, for example, `email` or `cpc` |
+| `utm_campaign`  | String | The specific campaign name, for example, `summer_sale` |
+| `utm_term`  | String | The paid search terms used, for example, `product&#43;analytics` |
+| `utm_content`  | String | Identifies what brought the user to the site, commonly used for A/B testing |

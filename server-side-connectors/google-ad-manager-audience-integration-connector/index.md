@@ -15,9 +15,9 @@ The Google Ad Manager Audience Integration connector allows publishers to add vi
 
 This connector uses the following vendor API:
 
-* API Name: Google Audience Partner API
-* API Version: v2
-* API Endpoint: `https://audiencepartner.googleapis.com/v2`
+* API Name: Google Data Manager API
+* API Version: v1
+* API Endpoint: `https://datamanager.googleapis.com`
 
 ## Connector actions
 

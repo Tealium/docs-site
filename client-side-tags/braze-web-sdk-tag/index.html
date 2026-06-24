@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "8",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1867,8 +1867,10 @@
 <div class="prose nested-links" id="prose">
   <h2 id="supported-versions">Supported Versions</h2>
 <ul>
+<li>6.8</li>
+<li>5.5</li>
+<li>4.8</li>
 <li>3.5</li>
-<li>4.0</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The Braze Web SDK Tag supports tag template versions 3.3 and older. For best tag performance and functionality, we recommend updating to the most recent tag template.</p>
 <h2 id="tag-tips">Tag Tips</h2>
@@ -1901,7 +1903,8 @@
 <p><strong>Code Version</strong></p>
 <ul>
 <li>Enter the major.minor version of the Braze Web SDK version you want to use.</li>
-<li>For example, to deploy version 2.6.1, enter 2.6.</li>
+<li>For example, to deploy version 4.8.1, enter 4.8.</li>
+<li>Code versions 4.0+ no longer support Internet Explorer.</li>
 <li>To find the latest version of the Braze Web SDK, see the <a href="https://github.com/Appboy/appboy-web-sdk/blob/master/CHANGELOG.md">changelog</a>.</li>
 </ul>
 </li>
@@ -1941,6 +1944,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left"><code>api_key</code></td>
+<td style="text-align:left"><ul><li>API Key</li><li>Your unique API key, available in the Braze dashboard under <strong>Manage App Group</strong> settings.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>code_version</code></td>
+<td style="text-align:left"><ul><li>Code Version</li><li>The major.minor version of the Braze Web SDK to load.</li><li>For example, enter <code>6.8</code> to deploy the latest 6.8.x release.</li></ul></td>
+</tr>
 <tr>
 <td style="text-align:left"><code>initOpt.allow_crawler</code></td>
 <td style="text-align:left"><ul><li>Allow Crawlers</li><li>All activity from web crawlers to be recorded by Braze.</li><li>Options are <code>true</code> or <code>false</code>.</li></ul></td>
@@ -2002,8 +2013,32 @@
 <td style="text-align:left"><ul><li>Session Timeout</li><li>Time until the session will time out, in minutes.</li><li>Default: value is <code>30</code>.</li></ul></td>
 </tr>
 <tr>
+<td style="text-align:left"><code>initOpt.devicePropertyAllowlist</code></td>
+<td style="text-align:left"><ul><li>Device Property Allow List</li><li>An array of device properties to collect.</li><li>Properties not in the list are excluded from collection.</li></ul></td>
+</tr>
+<tr>
 <td style="text-align:left"><code>initOpt.enableSdkAuthentication</code></td>
-<td style="text-align:left"><ul><li>Appends the current user’s last known JSON web token to network requests made to Braze Servers.</li><li>This setting is available in versions 3.5 and higher.</li><li>Options are <code>true</code> or <code>false</code>.</li></ul></td>
+<td style="text-align:left"><ul><li>Enable SDK Authentication</li><li>Appends the current user&rsquo;s last known JSON web token to network requests made to Braze servers.</li><li>This setting is available in versions 3.5 and higher.</li><li>Options are <code>true</code> or <code>false</code>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.sdk_auth_signature</code></td>
+<td style="text-align:left"><ul><li>SDK Authentication Signature</li><li>The JSON web token used to authenticate SDK requests when SDK Authentication is enabled.</li><li>This setting is available in versions 3.5 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.allow_user_supplied_javascript</code></td>
+<td style="text-align:left"><ul><li>Allow User Supplied Javascript</li><li>Allows user-supplied JavaScript to run in in-app messages.</li><li>Options are <code>true</code> or <code>false</code>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.content_security_nonce</code></td>
+<td style="text-align:left"><ul><li>Content Security Nonce</li><li>A nonce string to include in Braze SDK script tags for Content Security Policy compliance.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.disable_push_token_maintenance</code></td>
+<td style="text-align:left"><ul><li>Disable Push Token Maintenance</li><li>Disables automatic push token refresh on session start.</li><li>Options are <code>true</code> or <code>false</code>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>initOpt.in_app_message_zindex</code></td>
+<td style="text-align:left"><ul><li>In App Message Zindex</li><li>Overrides the default z-index for the in-app message overlay.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -2156,6 +2191,78 @@
 <td style="text-align:left"><ul><li>Set Gender</li><li>Sets the gender for the current user.</li></ul></td>
 </tr>
 <tr>
+<td style="text-align:left"><code>removeFromSubscriptionGroup</code></td>
+<td style="text-align:left"><ul><li>Remove From Subscription Group</li><li>Removes the current user from an email or SMS subscription group.</li><li>This setting is available in versions 3.5 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>setCustomLocationAttribute</code></td>
+<td style="text-align:left"><ul><li>Set Custom Location Attribute</li><li>Sets a custom location attribute (key, latitude, longitude) for the current user.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SetLineId</code></td>
+<td style="text-align:left"><ul><li>Set LINE ID</li><li>Sets the LINE messaging app ID for the current user.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Ecommerce</code></td>
+<td style="text-align:left"><ul><li>Log Ecommerce Event</li><li>Logs a structured ecommerce event for the current user.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>WipeData</code></td>
+<td style="text-align:left"><ul><li>Wipe Data (delete local SDK data)</li><li>Deletes all locally stored SDK data and disables the SDK.</li><li>The SDK must be explicitly re-enabled before further data collection resumes.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshFeatureFlags</code></td>
+<td style="text-align:left"><ul><li>Refresh Feature Flags</li><li>Requests a refresh of feature flags for the current user from Braze.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogFeatureFlagImpression</code></td>
+<td style="text-align:left"><ul><li>Log Feature Flag Impression</li><li>Logs an impression event for the specified feature flag.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshContentCards</code></td>
+<td style="text-align:left"><ul><li>Refresh Content Cards</li><li>Requests a refresh of the Content Cards feed from Braze.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ShowContentCards</code></td>
+<td style="text-align:left"><ul><li>Show Content Cards</li><li>Displays the Content Cards feed.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogContentCardImpressions</code></td>
+<td style="text-align:left"><ul><li>Log Content Card Impressions</li><li>Logs impression events for an array of Content Cards.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogContentCardClick</code></td>
+<td style="text-align:left"><ul><li>Log Content Card Click</li><li>Logs a click event for a specific Content Card.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RequestPushPermission</code></td>
+<td style="text-align:left"><ul><li>Request Push Permission</li><li>Prompts the user to grant push notification permission.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UnregisterPush</code></td>
+<td style="text-align:left"><ul><li>Unregister Push</li><li>Unregisters the current device from push notifications.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FlushData</code></td>
+<td style="text-align:left"><ul><li>Flush Data</li><li>Immediately sends queued analytics data to Braze servers.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RefreshBanners</code></td>
+<td style="text-align:left"><ul><li>Refresh Banners</li><li>Requests a refresh of Braze Banners for the specified placement IDs.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogBannerImpressions</code></td>
+<td style="text-align:left"><ul><li>Log Banner Impressions</li><li>Logs impression events for an array of Banner placement IDs.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LogBannerClick</code></td>
+<td style="text-align:left"><ul><li>Log Banner Click</li><li>Logs a click event for a specific Banner.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>InsertBanner</code></td>
+<td style="text-align:left"><ul><li>Insert Banner</li><li>Retrieves a Banner for the specified placement ID and inserts it into the specified parent element.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
 <td style="text-align:left"><code>Custom</code></td>
 <td style="text-align:left"><ul><li>Custom</li><li>Sends a custom event made by the current user.</li></ul></td>
 </tr>
@@ -2221,6 +2328,50 @@
 <tr>
 <td style="text-align:left"><code>inc_value</code></td>
 <td style="text-align:left"><ul><li>Custom Attribute Incrementation Value</li><li>The value by which to increment a custom user attribute.</li><li>Enter the name of the parameter to send.</li><li>Use negative numbers to decrement.</li><li>Default value is <code>1</code>.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom_attributes</code></td>
+<td style="text-align:left"><ul><li>Custom Attribute Object</li><li>An object of custom attribute key-value pairs to set on the current user in a single call.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>line_id</code></td>
+<td style="text-align:left"><ul><li>User&rsquo;s LINE ID</li><li>The LINE messaging app ID for the current user.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>feature_flag_id</code></td>
+<td style="text-align:left"><ul><li>Feature Flag ID</li><li>The unique identifier of the feature flag to log an impression for.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_placement_ids</code></td>
+<td style="text-align:left"><ul><li>Banner Placement IDs (Array or comma-separated)</li><li>An array or comma-separated string of Banner placement IDs to refresh or log impressions for.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_placement_id</code></td>
+<td style="text-align:left"><ul><li>Banner Placement ID</li><li>The unique identifier for a single Banner placement to retrieve and insert.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_click_id</code></td>
+<td style="text-align:left"><ul><li>Banner Click ID</li><li>The click tracking ID of the Banner that was clicked.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>banner_parent_selector</code></td>
+<td style="text-align:left"><ul><li>Banner Parent Selector (CSS)</li><li>A CSS selector string identifying the parent element into which the Banner is inserted.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_cards</code></td>
+<td style="text-align:left"><ul><li>Content Cards Array</li><li>An array of Content Card objects to log impressions for.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_card</code></td>
+<td style="text-align:left"><ul><li>Content Card Object</li><li>A single Content Card object to log a click for.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecommerce_event_name</code></td>
+<td style="text-align:left"><ul><li>Ecommerce Event Name</li><li>The name of the ecommerce event to log.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecommerce_properties</code></td>
+<td style="text-align:left"><ul><li>Ecommerce Properties</li><li>An object of properties for the ecommerce event.</li><li>Supports a <code>source</code> field that defaults to <code>&ldquo;tealium&rdquo;</code>.</li><li>This setting is available in versions 6.0 and higher.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>avatar_url</code></td>
@@ -2308,6 +2459,26 @@
 <li>For <strong>Parameter</strong>, enter the name of the parameter you want to send.</li>
 <li>Click <strong>+ Add</strong>.</li>
 </ol>
+<h3 id="cookie-consent">Cookie Consent</h3>
+<p>Map to the Cookie Consent destination to control whether the Braze SDK is enabled or disabled based on a user&rsquo;s consent state. Consent gating runs before SDK initialization.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Value</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>grant</code></td>
+<td style="text-align:left">Enables the SDK and allows data collection to proceed. The SDK initializes and opens a session normally.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>revoke</code></td>
+<td style="text-align:left">Disables the SDK before initialization. No data is collected and no session is opened.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/web/initial_sdk_setup/">Braze Web SDK</a></li>
@@ -2396,6 +2567,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event" href="javascript:void(0)">Event</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#parameter" href="javascript:void(0)">Parameter</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-event-data" href="javascript:void(0)">Custom Event Data</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookie-consent" href="javascript:void(0)">Cookie Consent</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor Documentation</a></li>
               </nav>
   </aside></nav>

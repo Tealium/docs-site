@@ -70,3 +70,4 @@ The following attributes are specific to PulsePoint and can be sent through the 
 | `pulsepoint_param3` | String | Optional parameter that can be used to describe the event. | key action |
 | `pulsepoint_param4` | String | Optional parameter that can be used to describe the event. | key action |
 | `pulsepoint_param5` | String | Optional parameter that can be used to describe the event. | key action |
+

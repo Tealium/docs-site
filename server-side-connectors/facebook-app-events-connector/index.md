@@ -8,7 +8,7 @@ url: https://docs.tealium.com/server-side-connectors/facebook-app-events-connect
 This connector uses the following vendor API:
 
 * API Name: Facebook Graph API - Marketing API
-* API Version: v24.0
+* API Version: v25.0
 * API Endpoint: `https://graph.facebook.com`
 
 ## How it works
