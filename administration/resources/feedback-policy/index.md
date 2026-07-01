@@ -3,7 +3,7 @@ title: Tealium feedback policy
 description: This document explains our feedback policy.
 url: https://docs.tealium.com/administration/resources/feedback-policy/
 ---
-We value your product feedback as it helps shape the future of Tealium’s solutions. For bug reports or assistance using Tealium, please contact our [Tealium Support Desk](https://support.tealiumiq.com/) or visit [Tealium Docs](https://docs.tealium.com/). To connect with fellow Tealium users, we invite you to join [Turning Teal](https://tealium.customershome.com/login?returnUrl=%2F), Tealium’s community.
+Use the Feedback module in the [Resource Center]() to submit product ideas, vote on ideas the product team is considering, and track items on the roadmap. This article explains how Tealium collects, reviews, and acts on product feedback.
 
 ## Our approach to product feedback
 
@@ -15,7 +15,7 @@ Your feedback plays a vital role in helping us understand how you&#39;re current
 
 We offer several ways for you to share product feedback:
 
-* **Resource Center**: To access the Tealium Ideas Portal, select the **Feedback** option in the Resource Center. You can browse, vote on, and provide feedback on ideas that our product team is considering or actively developing. To share additional feedback, click **Give Feedback** in the upper-right corner.  
+* **Resource Center**: To access the Tealium Ideas Portal, select the **Feedback** option in the [Resource Center](). You can browse, vote on, and provide feedback on ideas that our product team is considering or actively developing. To share additional feedback, click **Give Feedback** in the upper-right corner.  
 * **Feedback Guides**: Look for the &#34;i&#34; badge in the breadcrumb of a page. These guides provide additional information as well as enable you to provide feedback on Tealium features.
 * **In-app Product Surveys**: Our team uses in-app surveys to gather targeted feedback on products, features, or user experiences.
 * **NPS Surveys**: You may receive an in-app Net Promoter Score (NPS) survey to measure overall satisfaction and loyalty. Unlike in-app product surveys, which focus on specific features, NPS surveys gather broader feedback. We encourage detailed responses to help improve your Tealium experience.

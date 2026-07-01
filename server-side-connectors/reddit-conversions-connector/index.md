@@ -38,6 +38,7 @@ After adding the connector, configure the following settings:
   * For more information, see [Reddit: Conversion Access Token](https://business.reddithelp.com/s/article/conversion-access-token).
   * If you aren&#39;t using a conversion access token, use the **Establish Connection** button to initiate the OAuth authentication workflow.
   * To migrate from OAuth to conversion access token, enter the token in the conversion access token field and the connector uses that token instead of the OAuth token.
+  * To override this token per event, map the **Conversion Access Token Override** field in the Send Conversion V3 action.
 
 ## Deduplication for web events
 
@@ -151,6 +152,7 @@ At least one attribution signal is required with each conversion event. Reddit r
 | Country | The country code of the user in ISO 3166-1 alpha-2 standard. |
 | Region | The region code of the user in ISO 3166-2 standard or the region code without country prefix. |
 | Account ID Override | The ID of the Reddit Ad account that the conversion event belongs to. |
+| Conversion Access Token Override | Overrides the conversion access token set in the connector configuration for this event. Use this to route events to multiple Reddit Ad accounts or to assign tokens from a secure attribute. If this field is empty or not mapped, the connector uses the configured value. If neither is set, the event is skipped. Events with different override tokens are split into separate requests. |
 
 #### Disable Automapping
 

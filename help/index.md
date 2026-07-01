@@ -56,14 +56,6 @@ Our in-product resource center provides context-sensitive links to product guide
 
 
 
-![](/images/icons/icon-feedback.svg)
-
-#### Ideas Portal
-
-The Feedback link within the Resource Center site lets you submit, review, and vote on product ideas for our platforms and services.
-
-
-
 
 ![](/images/icons/icon-triangle-exclamation.svg)
 

@@ -1856,15 +1856,15 @@
 <li><strong>広告アカウント</strong>: (必須) スポンサーアカウントに合わせた広告アカウントIDを選択します。</li>
 </ul>
 <h3 id="認証">認証</h3>
-<p>LinkedIn でコネクタを使用するには、サインインします。</p>
+<p>LinkedIn でサインインしてコネクタを使用します。</p>
 <ol>
 <li><strong>接続を確立</strong>をクリックします。</li>
 <li>LinkedIn アカウントにサインインします。</li>
 <li><strong>許可</strong>をクリックして接続を承認します。</li>
 </ol>
 <h2 id="重複排除">重複排除</h2>
-<p>重複排除は、Insight Tag と CAPI から送信されたイベントを比較することで機能します。両方のソースが同じイベントを送信した場合、システムは1つだけを保持し、重複を破棄して正確なカウントを保証します。CAPI データを <a href="/ja/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> と組み合わせてキャンペーンのコンバージョンに完全な可視性を提供するために、両方のソースを通じて同じイベントを送信します。</p>
-<p>このコネクタアクションを構成して、Tag Management アカウントの LinkedIn Insights タグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：</p>
+<p>重複排除は、Insight Tag と CAPI から送信されたイベントを比較することで機能します。両方のソースが同じイベントを送信した場合、システムは1つだけを保持し、重複を破棄して正確なカウントを保証します。CAPI データと <a href="/ja/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> を組み合わせてキャンペーンのコンバージョンに完全な可視性を提供するために、両方のソースを通じて同じイベントを送信します。</p>
+<p>このコネクタアクションを構成して、iQ Tag Management アカウントの LinkedIn Insights タグからイベントIDを受け取るには、次の命名規則を使用してイベント属性を探します：</p>
 <pre tabindex="0"><code class="language-none" data-lang="none">linkedin_event_id_{CONVERSION_ID}_{TAG_UID}
 </code></pre><p>Tealium iQの<strong>タグ</strong>テーブルまたはタグの詳細画面でタグのUIDを見つけます：</p>
 <figure><a class="slb" href="/images/server-side-connectors/linkedin-insight-tag-uid.png"><img src="/images/server-side-connectors/linkedin-insight-tag-uid.png"
@@ -1872,7 +1872,7 @@
          title="LinkedIn Insight Tag UID"/>
     </a>
 </figure>
-<p>例えば、UIDが <code>172</code> のタグからのイベントは、次の属性値を送信します：</p>
+<p>例えば、UIDが <code>172</code> のタグからのイベントは次の属性値を送信します：</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">linkedin_event_id_11563522_172
 </code></pre><p><strong>Conversion ID</strong>は、特定のイベントを追跡するためにLinkedIn <strong>Campaign Manager</strong>アカウントを構成する際に見つけることができます：</p>
 <ol>
@@ -1886,41 +1886,41 @@
 <li>必要なすべてのフォームが作成された後、<strong>作成</strong>をクリックします。</li>
 </ol>
 <h3 id="自動重複排除">自動重複排除</h3>
-<p><strong>自動重複排除</strong>値が構成されている場合、コネクタはUDOオブジェクト内の対応する変数を探します。このセクションが入力されている場合、イベントIDを追加する必要はありません。LinkedIn InsightsタグでイベントIDの生成を有効にすると、タグのUIDが必要です。また、Tealium iQを使用せずにEventStreamを使用する場合は、引き続き次のアプローチが必要になる場合があります。</p>
+<p><strong>自動重複排除</strong>値が構成されている場合、コネクタはUDOオブジェクト内の対応する変数を探します。このセクションが入力されていてTealium iQを使用している場合、イベントIDを追加する必要はありません。LinkedIn InsightsタグでイベントIDの生成を有効にする場合、タグのUIDを使用することも必要です。EventStreamをTealium iQなしで使用する場合は、引き続きこのアプローチが必要になる場合があります。</p>
 <p>コネクタは次の操作順序を使用します：</p>
 <ol>
 <li><strong>自動重複排除</strong>値が構成され、値がデータレイヤーで見つかった場合（例：<code>linkedin_event_id_10501014_30</code>）、この値はイベントIDのマッピングを上書きします。</li>
-<li><strong>自動重複排除</strong>値が構成されているが、値が見つからない場合は、構成されている場合にマップされたイベントIDが使用されます。</li>
+<li><strong>自動重複排除</strong>値が構成されているが値が見つからない場合、構成されている場合はマップされたイベントIDが使用されます。</li>
 </ol>
 <h3 id="重複排除の制限">重複排除の制限</h3>
-<p>LinkedInは、同じConversion IDとEvent IDが両方のソースから送信された場合、Insight Tag（ピクセル）とConversions API（CAPI）によって追跡されたコンバージョンイベントを重複排除します。重複排除の結果は、提供された識別子の組み合わせに依存します。測定目標と報告の優先順位を見直し、要件に合った構成を選択してください：</p>
+<p>LinkedInは、Insight Tag（ピクセル）とConversions API（CAPI）の両方から同じConversion IDとEvent IDが送信された場合、コンバージョンイベントを重複排除します。重複排除の結果は、提供された識別子の組み合わせに依存します。測定目標と報告の優先順位を確認し、要件に合った構成を選択してください：</p>
 <ul>
 <li>
 <p><strong>同じConversion IDとEvent ID</strong></p>
 <ul>
-<li>LinkedInはイベントを同じイベントとして扱い、重複排除を行い、報告のためにInsight Tagイベントのみを保持します。CAPIイベントは破棄されます。</li>
-<li>ピクセルを主要な帰属ソースとして残したい場合や、CAPIをバックアップ信号としてのみ必要とする場合は、この構成を使用します。</li>
+<li>LinkedInはイベントを同じイベントとして扱い、重複排除し、報告のためにInsight Tagイベントのみを保持します。CAPIイベントは破棄されます。</li>
+<li>ピクセルを主要な帰属源として残したい場合や、CAPIをバックアップ信号としてのみ必要とする場合は、この構成を使用します。</li>
 </ul>
 </li>
 <li>
-<p><strong>同じConversion IDで異なるEvent ID</strong></p>
+<p><strong>同じConversion IDと異なるEvent ID</strong></p>
 <ul>
-<li>LinkedInはイベントを別のコンバージョンとして扱い、両方をカウントします。これにより二重カウントが発生しますが、テストまたは移行期間中にピクセルとCAPIデータを比較することができます。</li>
-<li>ピクセルベースの追跡からCAPIへの移行を検証するための短期間の構成として、この構成を使用します。</li>
+<li>LinkedInはイベントを別のコンバージョンとして扱い、両方をカウントします。これにより二重カウントが発生しますが、テストまたは移行期間中にピクセルとCAPIのデータを比較することができます。</li>
+<li>ピクセルベースのトラッキングからCAPIへの移行を検証するための短期間の検証にこの構成を使用します。</li>
 </ul>
 </li>
 <li>
 <p><strong>異なるConversions ID（Event IDに関係なく）</strong></p>
 <ul>
-<li>LinkedInはイベントをInsight TagとCAPIを通じて追跡される異なるコンバージョンとして扱います。この構成は重複排除を完全に回避し、CAPIイベントの完全なサーバーサイド帰属を保証します。</li>
+<li>LinkedInはイベントをInsight TagとCAPIを通じて追跡される別々のコンバージョンとして考えます。この構成は重複排除を完全に回避し、CAPIイベントの完全なサーバーサイド帰属を保証します。</li>
 <li>CAPIを主要な真実の源として使用し、サーバーサイドのコンバージョンに独立した帰属を維持したい場合は、この構成を使用します。</li>
 </ul>
 </li>
 </ul>
-<p>各アプローチには精度、可視性、および報告の整合性に関するトレードオフがあります。CAPIのみの追跡は最も完全な実装を提供します。並行追跡は移行中の制御されたテストと検証を可能にします。重複排除モードは二重カウントを最小限に抑えますが、サーバーサイドデータの可視性を制限します。Tealiumはこれらの3つの方法をすべてサポートし、広告主がLinkedInによるコンバージョンの測定と帰属をどのように反映させたいかを決定することを奨励します。</p>
+<p>各アプローチには精度、可視性、および報告の整合性におけるトレードオフがあります。CAPIのみのトラッキングは最も完全な実装を提供します。並行トラッキングは移行中の制御されたテストと検証を可能にします。重複排除モードは二重カウントを最小限に抑えますが、サーバーサイドデータの可視性を制限します。Tealiumはこれらの3つの方法すべてをサポートし、広告主がLinkedInによるコンバージョンの測定と帰属をどのように反映させたいかを決定することを奨励します。</p>
 <h3 id="linkedin-click-idの保持">LinkedIn Click IDの保持</h3>
 <p>このコネクタでLinkedIn Insight Tagを使用している場合、LinkedIn Click IDをファーストパーティクッキーとして保持します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>デフォルトでは、コネクタは自動的にクエリ文字列パラメータから <code>li_fat_id</code> を読み取ります。自動マッピングを無効にした場合や <code>li_fat_id</code> をファーストパーティクッキーとして保持する必要がある場合のみ、これらの手順に従ってください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>デフォルトでは、コネクタはクエリ文字列パラメータから自動的に <code>li_fat_id</code> を読み取ります。自動マッピングを無効にした場合や <code>li_fat_id</code> をファーストパーティクッキーとして保持する必要がある場合のみ、これらの手順に従ってください。</p>
 <ol>
 <li><a href="/ja/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>を作成します。</li>
 <li>データレイヤーにクエリ文字列パラメータ <code>li_fat_id</code> を追加します。</li>
@@ -1930,14 +1930,14 @@
     </a>
 </figure></li>
 <li>EventStreamで、<code>li_fat_id_cookie</code> という名前のファーストパーティクッキー属性を作成します。</li>
-<li>コネクタで、<code>li_fat_id_cookie</code> をLinkedIn First Party Ads Tracking UUIDにマッピングします。<figure><a class="slb" href="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"><img src="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"
+<li>コネクタで <code>li_fat_id_cookie</code> をLinkedIn First Party Ads Tracking UUIDにマップします。<figure><a class="slb" href="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"><img src="/images/server-side-connectors/linkedin-conversions-connector-persist-click-id-3.png"
          alt="Map cookie to tracking UID"
          title="Map cookie to tracking UID"/>
     </a>
 </figure></li>
 </ol>
 <h2 id="変換の作成">変換の作成</h2>
-<p>Tealiumで変換を作成する場合、LinkedInキャンペーンマネージャーで変換イベントを構成する必要はありません。Tealiumを使用して、<strong>キャンペーンマネージャー</strong>インターフェースで追跡される変換イベントを作成します。これらの値は変換イベントを追跡し、キャンペーンに関連付けます。変換イベントはLinkedInキャンペーンマネージャープラットフォームの<strong>分析 &gt; 変換トラッキング</strong>セクションに<code>Tealium</code>のデータソース値で表示されます。</p>
+<p>Tealiumで変換を作成する場合、LinkedInキャンペーンマネージャーで変換イベントを構成する必要はありません。Tealiumを使用して、<strong>キャンペーンマネージャー</strong>インターフェースで追跡される変換イベントを作成します。これらの値は変換イベントを追跡し、キャンペーンに関連付けます。変換イベントはLinkedInキャンペーンマネージャープラットフォームの<code>Tealium</code>というデータソース値を持つ<strong>分析 &gt; 変換トラッキング</strong>セクションに表示されます。</p>
 <table>
 <thead>
 <tr>
@@ -1959,33 +1959,195 @@
 </tr>
 <tr>
 <td>有効 (<code>enabled</code>)</td>
-<td>このルールが変換にマッチするかどうかを有効または無効に構成します。初期状態はどちらでも可能ですが、有効なルールのみが変換イベントをトリガーします。デフォルト値は<code>true</code>です。</td>
+<td>このルールが変換にマッチするかどうかを有効または無効に構成します。初期状態はどちらでもよいが、有効なルールのみが変換イベントをトリガーします。デフォルト値は<code>true</code>です。</td>
 <td>ブール</td>
 </tr>
 <tr>
 <td>クリック後帰属ウィンドウサイズ (<code>postClickAttributionWindowSize</code>)</td>
-<td>LinkedIn広告をクリックしたメンバーの変換ウィンドウ時間枠（日数）。この期間内に変換がLinkedIn広告に帰属されます。許可される値は<code>1</code>、<code>7</code>、<code>30</code>、または<code>90</code>です。デフォルト値は<code>30</code>です。</td>
+<td>LinkedIn広告をクリックしたメンバーの変換ウィンドウ時間枠（日数）。変換はLinkedIn広告に帰属されます。許可される値は<code>1</code>、<code>7</code>、<code>30</code>、または<code>90</code>です。デフォルト値は<code>30</code>です。</td>
 <td>整数</td>
 </tr>
 <tr>
 <td>視認後帰属ウィンドウサイズ (<code>viewThroughAttributionWindowSize</code>)</td>
-<td>LinkedIn広告を視認したメンバーの変換ウィンドウ時間枠（日数）。この期間内に変換がLinkedIn広告に帰属されます。許可される値は<code>1</code>、<code>7</code>、<code>30</code>、<code>90</code>、または<code>365</code>です。<code>365</code>は次のタイプにのみ有効です：<code>Submit Application</code>、<code>Purchase</code>、<code>Add to Cart</code>、<code>Qualified Lead and Lead</code>。デフォルト値は<code>7</code>です。</td>
+<td>LinkedIn広告を視認したメンバーの変換ウィンドウ時間枠（日数）。変換はLinkedIn広告に帰属されます。許可される値は<code>1</code>、<code>7</code>、<code>30</code>、<code>90</code>、または<code>365</code>です。<code>365</code>は次のタイプにのみ有効です：<code>Submit Application</code>、<code>Purchase</code>、<code>Add to Cart</code>、<code>Qualified Lead and Lead</code>。デフォルト値は<code>7</code>です。</td>
 <td>整数</td>
 </tr>
+</tbody>
+</table>
+<h3 id="帰属タイプ">帰属タイプ</h3>
+<p><code>attributionType</code>パラメータは、変換アクションがどのようにカウントされるかを決定します：</p>
+<table>
+<thead>
 <tr>
-<td>帰属タイプ (<code>attributionType</code>)<br>パラメータ値:<ul><li><code>LAST_TOUCH_BY_CAMPAIGN</code></li><li><code>LAST_TOUCH_BY_CONVERSION</code></li></ul></td>
-<td>変換アクションがどのようにカウントされるかを説明するモデル：<ul><li>各キャンペーン：変換アクションはそれに帰属できる各キャンペーンに対して一度カウントされます（デフォルト）</li><li>最後のキャンペーン：（単一キャンペーン）変換アクションは少なくとも一つの関連キャンペーンがある各変換に対して一度カウントされます。</li></ul></td>
-<td>左セクションの値をサポートするドロップダウン：<ul><li>各キャンペーン：複数のキャンペーンに関連付けられた変換アクションの場合、変換ウィンドウ内でインタラクションがあったすべてのキャンペーンが変換でクレジットされます。</li><li>最後のキャンペーン：キャンペーンに関連付けられた変換アクションの場合、変換ウィンドウ内で最も最近のキャンペーンが広告インタラクションがあったキャンペーンでクレジットされます。</li></ul></td>
+<th>値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAST_TOUCH_BY_CAMPAIGN</code></td>
+<td>各キャンペーン：変換アクションは、それに帰属できる各キャンペーンに対して一度カウントされます。複数のキャンペーンに関連する変換の場合、変換ウィンドウ内でインタラクションがあった各キャンペーンがクレジットされます。（デフォルト）</td>
 </tr>
 <tr>
-<td>タイプ (<code>type</code>)</td>
-<td>この変換ルールに追跡する変換のタイプ：<ul><li><strong>Ad Click</strong>: ユーザーが第三者の広告をクリックしました。</li><li><strong>Ad View</strong>: ユーザーが広告を視認しました。</li><li><strong>Add Billing Info</strong>: ユーザーがクレジットカードまたは購入詳細を追加しました。</li><li><strong>Add to Cart</strong>: ユーザーがショッピングカートに一つ以上のものを追加しました。</li><li><strong>Add to List</strong>: ユーザーが製品をウィッシュリストに追加しました。</li><li><strong>Book Appointment</strong>: ユーザーが予約をしました。</li><li><strong>Complete Signup</strong>: ユーザーが登録プロセスを完了しました。</li><li><strong>Contact</strong>: ユーザーがフォームを記入して連絡を試みました。</li><li><strong>Donate</strong>: ユーザーが寄付を行いました。</li><li><strong>Download</strong>: ユーザーがファイルをダウンロードしました。</li><li><strong>Install</strong>: ユーザーがプラグインまたはアプリをインストールしました。</li><li><strong>Invite</strong>: ユーザーが招待を送信/共有しました。</li><li><strong>Job Apply</strong>: ユーザーがLinkedInで求人に応募しました。</li><li><strong>Key Page View</strong>: ユーザーが重要なウェブページ/アプリ画面を閲覧しました。</li><li><strong>Lead</strong>: ユーザーがリード生成フォームを記入しました。</li><li><strong>Login</strong>: ユーザーが広告主のサービスアカウントにログインしました。</li><li><strong>Other</strong>: リストにない何かです。</li><li><strong>Outbound Click</strong>: ユーザーがリンクをクリックしてアプリまたはページを離れました。</li><li><strong>Phone Call</strong>: ユーザーが通話を開始したり、電話固有のイベントや提出を行いました。</li><li><strong>Purchase</strong>: ユーザーが購入しました。</li><li><strong>Qualified Lead</strong>: リードを有資格リードとして特定しました。</li><li><strong>Rate</strong>: ユーザーがサービスや製品を評価しました。</li><li><strong>Request Quote</strong>: ユーザーが見積もりを要求しました。</li><li><strong>Save</strong>: フォームやフローの状態を保存しました。</li><li><strong>Schedule</strong>: サービスや予約をスケジュールしました。</li><li><strong>Search</strong>: ユーザーがアプリ内で検索しました。</li><li><strong>Share</strong>: ユーザーがコンテンツを共有しました。</li><li><strong>Signup</strong>: ユーザーがウェブサイト/アプリサービスにサインアップしました。</li><li><strong>Start Checkout</strong>: チェックアウトプロセスを開始しました。</li><li><strong>Start Trial</strong>: ユーザーが試用サブスクリプションを開始しました。</li><li><strong>Submit Application</strong>: ユーザーがアプリケーションを提出しました（&lsquo;Complete Signup&rsquo;と同じ）。</li><li><strong>Subscribe</strong>: ユーザーがサービスに登録しました。</li><li><strong>Talent Lead</strong>: ユーザーがLinkedIn Talent MediaのPipeline Builderページにリード情報を提出しました。</li><li><strong>View Content</strong>: ユーザーがページまたはアプリ画面のセクションを閲覧しました（webview）。</li><li><strong>View Video</strong>: ユーザーがビデオを再生しました。</li></ul></ul></td>
-<td></td>
+<td><code>LAST_TOUCH_BY_CONVERSION</code></td>
+<td>最後のキャンペーン：変換アクションは、少なくとも1つの関連キャンペーンを持つ各変換に対して一度カウントされます。キャンペーンに関連する変換の場合、変換ウィンドウ内で広告インタラクションがあった最も最近のキャンペーンがクレジットされます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="変換タイプ">変換タイプ</h3>
+<p><code>type</code>パラメータは、この変換ルールに対して追跡する変換のタイプを指定します：</p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad Click</td>
+<td>ユーザーが第三者の広告をクリックしました。</td>
+</tr>
+<tr>
+<td>Ad View</td>
+<td>ユーザーが広告を視認しました。</td>
+</tr>
+<tr>
+<td>Add Billing Info</td>
+<td>ユーザーがクレジットカードまたは購入詳細を追加しました。</td>
+</tr>
+<tr>
+<td>Add to Cart</td>
+<td>ユーザーがショッピングカートに1つ以上の商品を追加しました。</td>
+</tr>
+<tr>
+<td>Add to List</td>
+<td>ユーザーが商品をウィッシュリストに追加しました。</td>
+</tr>
+<tr>
+<td>Book Appointment</td>
+<td>ユーザーが予約をしました。</td>
+</tr>
+<tr>
+<td>Complete Signup</td>
+<td>ユーザーが登録プロセスを完了しました。</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>ユーザーがフォームを記入して連絡を試みました。</td>
+</tr>
+<tr>
+<td>Donate</td>
+<td>ユーザーが寄付を行いました。</td>
+</tr>
+<tr>
+<td>Download</td>
+<td>ユーザーがファイルをダウンロードしました。</td>
+</tr>
+<tr>
+<td>Install</td>
+<td>ユーザーがプラグインまたはアプリをインストールしました。</td>
+</tr>
+<tr>
+<td>Invite</td>
+<td>ユーザーが招待を送信または共有しました。</td>
+</tr>
+<tr>
+<td>Job Apply</td>
+<td>ユーザーがLinkedInで求人に応募しました。</td>
+</tr>
+<tr>
+<td>Key Page View</td>
+<td>ユーザーが重要なウェブページまたはアプリ画面を閲覧しました。</td>
+</tr>
+<tr>
+<td>Lead</td>
+<td>ユーザーがリード生成フォームを記入しました。</td>
+</tr>
+<tr>
+<td>Login</td>
+<td>ユーザーが広告主のサービスアカウントにログインしました。</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>上記に該当しないもの。</td>
+</tr>
+<tr>
+<td>Outbound Click</td>
+<td>ユーザーがリンクをクリックしてアプリまたはページを離れました。</td>
+</tr>
+<tr>
+<td>Phone Call</td>
+<td>ユーザーが通話を開始または電話固有のイベントまたは提出を行いました。</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td>ユーザーが購入を行いました。</td>
+</tr>
+<tr>
+<td>Qualified Lead</td>
+<td>リードを有資格リードとして特定しました。</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>ユーザーがサービスまたは製品を評価しました。</td>
+</tr>
+<tr>
+<td>Request Quote</td>
+<td>ユーザーが見積もりを依頼しました。</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>フォームまたはフローの状態を保存しました。</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>サービスまたは予約をスケジュールしました。</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>ユーザーがアプリ内で検索しました。</td>
+</tr>
+<tr>
+<td>Share</td>
+<td>ユーザーがコンテンツを共有しました。</td>
+</tr>
+<tr>
+<td>Signup</td>
+<td>ユーザーがウェブサイトまたはアプリサービスにサインアップしました。</td>
+</tr>
+<tr>
+<td>Start Checkout</td>
+<td>チェックアウトプロセスを開始しました。</td>
+</tr>
+<tr>
+<td>Start Trial</td>
+<td>ユーザーが試用サブスクリプションを開始しました。</td>
+</tr>
+<tr>
+<td>Submit Application</td>
+<td>ユーザーがアプリケーションを提出しました（Complete Signupと同じ）。</td>
+</tr>
+<tr>
+<td>Subscribe</td>
+<td>ユーザーがサービスに登録しました。</td>
+</tr>
+<tr>
+<td>Talent Lead</td>
+<td>ユーザーがLinkedIn Talent MediaのPipeline Builderページでリードとして情報を提出しました。</td>
+</tr>
+<tr>
+<td>View Content</td>
+<td>ユーザーがページまたはアプリ画面のセクションを閲覧しました（webview）。</td>
+</tr>
+<tr>
+<td>View Video</td>
+<td>ユーザーがビデオを再生しました。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="キャンペーンを変換に関連付ける">キャンペーンを変換に関連付ける</h2>
-<p>各変換イベントを必要なキャンペーン値に関連付けます。変換イベントは複数のLinkedInキャンペーンに関連することができます。Tealiumはマップされたアクションで使用するために変換イベントを取得します。<strong>キャンペーンを変換に関連付ける</strong>オーバーレイを使用して、変換をキャンペーンにマップします。変換とキャンペーンの値を選択した後、<strong>関連付けを作成</strong>を選択し、<strong>成功</strong>メッセージを待ちます。</p>
+<p>各変換イベントを必要なキャンペーン値に関連付けます。変換イベントは複数のLinkedInキャンペーンに関連することがあります。Tealiumはマップされたアクションで使用するために変換イベントを取得します。<strong>キャンペーンを変換に関連付ける</strong>オーバーレイを使用して、変換をキャンペーンにマッピングします。変換とキャンペーン値を選択した後、<strong>関連付けを作成</strong>を選択し、<strong>成功</strong>メッセージを待ちます。</p>
 <table>
 <thead>
 <tr>
@@ -1996,11 +2158,11 @@
 <tbody>
 <tr>
 <td>変換</td>
-<td>(必須) 変換を選択するか、カスタムテキストとして変換IDを提供します。</td>
+<td>（必須）変換を選択するか、カスタムテキストとして変換IDを提供します。</td>
 </tr>
 <tr>
 <td>キャンペーン</td>
-<td>(必須) キャンペーンを選択するか、カスタムテキストとしてキャンペーンIDを提供します。</td>
+<td>（必須）キャンペーンを選択するか、カスタムテキストとしてキャンペーンIDを提供します。</td>
 </tr>
 </tbody>
 </table>
@@ -2021,8 +2183,8 @@
 </tr>
 </tbody>
 </table>
-<p>コネクタアクションを使用して、変換からLinkedInに連絡先情報を送信します。</p>
-<p>アクション名を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>コネクタアクションを使用して変換からLinkedInに連絡先情報を送信します。</p>
+<p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="バッチ変換イベント">バッチ変換イベント</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
@@ -2033,7 +2195,7 @@
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
 <h4 id="パラメータ">パラメータ</h4>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>次のいずれかのパラメータを少なくとも一つ送信する必要があります: <strong>メールアドレス</strong>、<strong>LinkedInファーストパーティ広告トラッキングUUID</strong>、<strong>Acxiom ID</strong>、<strong>Oracle Moat ID</strong>、または<strong>名</strong>と<strong>姓</strong>。ユーザー情報（例: <strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>）を送信する場合は、他の識別パラメータを提供しているかどうかに関わらず、<strong>名</strong>と<strong>姓</strong>のパラメータを含める必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>少なくとも以下のいずれかのパラメータを送信する必要があります：<strong>メールアドレス</strong>、<strong>LinkedInファーストパーティ広告トラッキングUUID</strong>、<strong>Acxiom ID</strong>、<strong>Oracle Moat ID</strong>、または<strong>名</strong>と<strong>姓</strong>。ユーザー情報（例：<strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>）を送信する場合は、他の識別パラメータを提供しているかどうかに関わらず、<strong>名</strong>と<strong>姓</strong>のパラメータを含める必要があります。</p>
 <table>
 <thead>
 <tr>
@@ -2056,11 +2218,11 @@
 </tr>
 <tr>
 <td>LinkedInファーストパーティ広告トラッキングUUID</td>
-<td>ファーストパーティクッキーID。広告主は<strong>キャンペーンマネージャー</strong>からエンリッチメントされたコンバージョントラッキングを有効にし、クリックURLに<strong>Click ID</strong>パラメータ<code>li_fat_id</code>を追加するファーストパーティクッキーをアクティブにする必要があります。</td>
+<td>ファーストパーティクッキーID。広告主は<strong>キャンペーンマネージャー</strong>から拡張コンバージョントラッキングを有効にし、クリックURLに<code>li_fat_id</code>パラメータを追加するファーストパーティクッキーをアクティブにする必要があります。</td>
 </tr>
 <tr>
 <td>Acxiom ID</td>
-<td>LiveRampのアイデンティティグラフとのマッチング用ユーザー識別子。</td>
+<td>LiveRampアイデンティティグラフとのマッチング用ユーザー識別子。</td>
 </tr>
 <tr>
 <td>Oracle Moat ID</td>
@@ -2068,11 +2230,11 @@
 </tr>
 <tr>
 <td>名</td>
-<td>コンバージョンにマッチする連絡先の名。<strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>の属性が入力されている場合は必須です。</td>
+<td>コンバージョンにマッチする連絡先の名。<strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>属性が入力されている場合は必須です。</td>
 </tr>
 <tr>
 <td>姓</td>
-<td>コンバージョンにマッチする連絡先の姓。<strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>の属性が入力されている場合は必須です。</td>
+<td>コンバージョンにマッチする連絡先の姓。<strong>会社</strong>、<strong>役職</strong>、または<strong>国コード</strong>属性が入力されている場合は必須です。</td>
 </tr>
 <tr>
 <td>会社</td>
@@ -2096,10 +2258,15 @@
 </tr>
 <tr>
 <td>Google広告ID（GAID）</td>
-<td>デバイス識別子としてプレーンテキストのGoogle広告IDが送信されます。</td>
+<td>明示的な属性マッピングから取得されたGoogle広告ID。専用の属性（例：<code>google_advertising_id</code>または<code>gaid</code>）をマッピングし、その属性をアプリまたはモバイルバックエンドがデバイスのGAIDで入力するようにします。値はUUID形式の文字列（例：<code>38400000-8cf0-11bd-b23e-10b96e40000d</code>）である必要があります。マッピングされた値がこの形式に一致しない場合、コネクタはGAIDを省略し、イベントをそのまま送信します。エラーは発生せず、他の識別子には影響しません。</td>
 </tr>
 </tbody>
 </table>
+<h4 id="gaidの取得">GAIDの取得</h4>
+<p>GAIDは明示的な属性マッピングからのみ取得されます。コネクタはイベント内の他のデータからGAIDを推測しません。</p>
+<p>GAIDを送信するには、データレイヤーに専用の属性（例：<code>google_advertising_id</code>または<code>gaid</code>）を作成し、モバイルアプリまたはバックエンドを使用してデバイスのGoogle広告IDでそれを入力します。その属性をコネクタアクションの**Google広告ID（GAID）**フィールドにマッピングします。</p>
+<p>値はUUID形式（36文字、ハイフンで区切られた16進数）に一致する必要があります。マッピングされた値がこの形式に一致しない場合、コネクタはGAIDをドロップし、イベントをそのまま送信します。エラーは発生せず、他の識別子には影響しません。</p>
+<p>このフィールドに<code>_ga</code>、<code>_gid</code>、または他のGoogleアナリティクスクッキー値をマッピングしないでください。これらの値はGoogleアナリティクスクライアントID形式（<code>GA1.1.*.*</code>）を使用し、有効なGAIDではありません。</p>
 <h4 id="コンバージョンイベント属性">コンバージョンイベント属性</h4>
 <table>
 <thead>
@@ -2115,11 +2282,11 @@
 </tr>
 <tr>
 <td>コンバージョン金額</td>
-<td>このコンバージョンの金銭的価値。<strong>conversionValue</strong>オブジェクトの送信が必須です。</td>
+<td>このコンバージョンの金銭的価値。<strong>conversionValue</strong>オブジェクトの送信が必要です。</td>
 </tr>
 <tr>
 <td>通貨コード</td>
-<td>ISO 4217形式の通貨コード。<strong>conversionValue</strong>オブジェクトの送信が必須です。</td>
+<td>ISO 4217形式の通貨コード。<strong>conversionValue</strong>オブジェクトの送信が必要です。</td>
 </tr>
 <tr>
 <td>イベントID</td>
@@ -2128,7 +2295,7 @@
 </tbody>
 </table>
 <h4 id="自動重複排除-1">自動重複排除</h4>
-<p>LinkedInはタグとCAPI用に別のコンバージョンIDを使用することを推奨しているため、重複排除はコンバージョンIDに関わらずイベントIDを使用します。Tealium iQタグIDを提供すると、コネクタはTealium iQから送信されたイベントID値を検索します。タグのコンバージョンIDがコネクタのコンバージョンIDと異なる場合、そのID値をLinkedIn Insight Tag Conversion IDにマップします。</p>
+<p>LinkedInはタグとCAPIのために別々のコンバージョンIDを使用することを推奨しているため、重複排除はイベントIDを使用します。Tealium iQタグIDを提供すると、コネクタはTealium iQから送信されたイベントID値を検索します。タグのコンバージョンIDがコネクタのコンバージョンIDと異なる場合、そのID値をLinkedIn Insight TagコンバージョンIDにマッピングします。</p>
 <table>
 <thead>
 <tr>
@@ -2142,13 +2309,13 @@
 <td>イベントID値を提供するTealium iQタグ。</td>
 </tr>
 <tr>
-<td>LinkedIn Insight Tag Conversion ID</td>
-<td>タグのコンバージョンIDをマップするLinkedIn Insight Tag Conversion ID。</td>
+<td>LinkedIn Insight TagコンバージョンID</td>
+<td>タグのコンバージョンIDをマッピングするLinkedIn Insight TagコンバージョンID。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="識別子自動マッピングの無効化">識別子自動マッピングの無効化</h4>
-<p>デフォルトでは、コネクタはデータレイヤーからクライアントIPv4、GAID、LinkedInファーストパーティ広告トラッキングUUIDを自動マッピングします。LinkedInファーストパーティ広告トラッキングUUIDの場合、コネクタは<code>li_fat_id</code>クエリストリングパラメータを読み取ります。このパラメータをアクションでマップする場合、そのマッピングが自動マップされた値に優先します。<strong>識別子自動マッピング無効化</strong>オプションを使用して、すべての識別子の自動マッピングをオフにします。</p>
+<h4 id="識別子の自動マッピング無効化">識別子の自動マッピング無効化</h4>
+<p>デフォルトでは、コネクタはデータレイヤーからクライアントIPv4およびLinkedInファーストパーティ広告トラッキングUUIDを自動マッピングします。LinkedInファーストパーティ広告トラッキングUUIDについては、コネクタが<code>li_fat_id</code>クエリストリングパラメータを読み取ります。このパラメータをアクションでマッピングする場合、そのマッピングが自動マッピングされた値に優先します。<strong>識別子の自動マッピング無効化</strong>オプションを使用して、これらの識別子の自動マッピングをオフにします。</p>
 <table>
 <thead>
 <tr>
@@ -2158,8 +2325,8 @@
 </thead>
 <tbody>
 <tr>
-<td>識別子自動マッピング無効化</td>
-<td>有効にすると、クライアントIPv4、GAID、LinkedInファーストパーティ広告トラッキングUUIDはデータレイヤーから自動マッピングされません。</td>
+<td>識別子の自動マッピング無効化</td>
+<td>有効にすると、クライアントIPv4およびLinkedInファーストパーティ広告トラッキングUUIDはデータレイヤーから自動マッピングされません。</td>
 </tr>
 </tbody>
 </table>
@@ -2223,7 +2390,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年June月9日
+          <p>最終更新日 ::  2026年July月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2245,7 +2412,9 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%87%8D%E8%A4%87%E6%8E%92%E9%99%A4%E3%81%AE%E5%88%B6%E9%99%90" href="javascript:void(0)">重複排除の制限</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#linkedin-click-id%E3%81%AE%E4%BF%9D%E6%8C%81" href="javascript:void(0)">LinkedIn Click IDの保持</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%8F%9B%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">変換の作成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3%E3%82%92%E5%A4%89%E6%8F%9B%E3%81%AB%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91%E3%82%8B" href="javascript:void(0)">キャンペーンを変換に関連付ける</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B8%B0%E5%B1%9E%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">帰属タイプ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%8F%9B%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">変換タイプ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3%E3%82%92%E5%A4%89%E6%8F%9B%E3%81%AB%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91%E3%82%8B" href="javascript:void(0)">キャンペーンを変換に関連付ける</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%A4%89%E6%8F%9B%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">バッチ変換イベント</a></li>
               </nav>

@@ -1,5 +1,5 @@
 ---
 title: iQ Profiles API
-description: This section explains how to manage your iQ configurations through API.
+description: Use the iQ Profiles API to read the profile configurations and manage objects such as tags, rules, and events.
 url: https://docs.tealium.com/api/v3/iq-profiles/
 ---

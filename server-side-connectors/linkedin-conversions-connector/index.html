@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "12",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1682,15 +1682,177 @@
 <td>Conversion window timeframe (in days) of a member seeing a LinkedIn ad (a view-through conversion) within which conversions are attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, <code>90</code>, or <code>365</code>. 365 is a valid option only for the following types: <code>Submit Application</code>, <code>Purchase</code>, <code>Add to Cart</code>,<code> Qualified Lead and Lead</code>. The default value is <code>7</code></td>
 <td>Integer</td>
 </tr>
+</tbody>
+</table>
+<h3 id="attribution-types">Attribution types</h3>
+<p>The <code>attributionType</code> parameter determines how conversion actions are counted:</p>
+<table>
+<thead>
 <tr>
-<td>Attribution Type (<code>attributionType</code>)<br>Parameter values:<ul><li><code>LAST_TOUCH_BY_CAMPAIGN</code></li><li><code>LAST_TOUCH_BY_CONVERSION</code></li></ul></td>
-<td>The model that describes how conversion actions are to be counted:<ul><li>Each Campaign: Conversion actions are counted once for each campaign to which they can be attributed (Default)</li><li>Last Campaign: (single campaign) Conversion actions are counted once for each Conversion with at least one associated campaign.</li></ul></td>
-<td>Drop-down supporting both of the values in the left section:<ul><li>Each campaign: For a conversion action associated with multiple campaigns, every campaign that has had an interaction in the conversion window gets credited with a conversion.</li><li>Last campaign: For a conversion action associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window gets credited with a conversion.</li></ul></td>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAST_TOUCH_BY_CAMPAIGN</code></td>
+<td>Each campaign: Conversion actions are counted once for each campaign to which they can be attributed. For a conversion associated with multiple campaigns, every campaign that has had an interaction in the conversion window gets credited. (Default)</td>
 </tr>
 <tr>
-<td>Type (<code>type</code>)</td>
-<td>Type of conversion to track for this conversion rule:<ul><li><strong>Ad Click</strong>: The user clicked a third-party ad.</li><li><strong>Ad View</strong>: The user viewed an ad.</li><li><strong>Add Billing Info</strong>: The user added credit card or purchase details.</li><li><strong>Add to Cart</strong>: The user added one or more things to their shopping cart.</li><li><strong>Add to List</strong>: The user added a product to a wishlist.</li><li><strong>Book Appointment</strong>: The user reserved an appointment.</li><li><strong>Complete Signup</strong>: The user completed registration process.</li><li><strong>Contact</strong>: The user attempted to contact, by filling a form.</li><li><strong>Donate</strong>: The user performed a donation.</li><li><strong>Download</strong>: The user downloaded a file.</li><li><strong>Install</strong>: The user installed a plugin or an app.</li><li><strong>Invite</strong>: The user sent/shared an invite.</li><li><strong>Job Apply</strong>: User clicked apply to a job on LinkedIn.</li><li><strong>Key Page View</strong>: The user viewed an important web page/app screen.</li><li><strong>Lead</strong>: The user filled out a lead generation form.</li><li><strong>Login</strong>: The user logged in to advertiser&rsquo;s service account.</li><li><strong>Other</strong>: Something that&rsquo;s not listed.</li><li><strong>Outbound Click</strong>: The user left the app or page by clicking a link.</li><li><strong>Phone Call</strong>: The user started a call, or performed phone-call specific event or submission.</li><li><strong>Purchase</strong>: The user made a purchase.</li><li><strong>Qualified Lead</strong>: Identified lead as a qualified lead.</li><li><strong>Rate</strong>: The user rated a service or a product.</li><li><strong>Request Quote</strong>: The user requested a quote.</li><li><strong>Save</strong>: Saves a form or state in the flow.</li><li><strong>Schedule</strong>: Schedule a service or appointment.</li><li><strong>Search</strong>: The user searched within the app.</li><li><strong>Share</strong>: The user shared content.</li><li><strong>Signup</strong>: The user signed up for a web site / app service.</li><li><strong>Start Checkout</strong>: Begins the checkout process.</li><li><strong>Start Trial</strong>: The user started a trial subscription.</li><li><strong>Submit Application</strong>: The user submitted an application (same as &lsquo;Complete Signup).</li><li><strong>Subscribe</strong>: The user subscribed to a service.</li><li><strong>Talent Lead</strong>: User submitted their information as a lead on LInkedIn Talent Media&rsquo;s Pipeline Builder page.</li><li><strong>View Content</strong>: The user viewed a section of the page or app screen (webview).</li><li><strong>View Video</strong>: The user played a video.</li></ul></ul></td>
-<td></td>
+<td><code>LAST_TOUCH_BY_CONVERSION</code></td>
+<td>Last campaign: Conversion actions are counted once for each conversion with at least one associated campaign. For a conversion associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window gets credited.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conversion-types">Conversion types</h3>
+<p>The <code>type</code> parameter specifies the type of conversion to track for this conversion rule:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad Click</td>
+<td>The user clicked a third-party ad.</td>
+</tr>
+<tr>
+<td>Ad View</td>
+<td>The user viewed an ad.</td>
+</tr>
+<tr>
+<td>Add Billing Info</td>
+<td>The user added credit card or purchase details.</td>
+</tr>
+<tr>
+<td>Add to Cart</td>
+<td>The user added one or more things to their shopping cart.</td>
+</tr>
+<tr>
+<td>Add to List</td>
+<td>The user added a product to a wishlist.</td>
+</tr>
+<tr>
+<td>Book Appointment</td>
+<td>The user reserved an appointment.</td>
+</tr>
+<tr>
+<td>Complete Signup</td>
+<td>The user completed the registration process.</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>The user attempted to contact by filling a form.</td>
+</tr>
+<tr>
+<td>Donate</td>
+<td>The user performed a donation.</td>
+</tr>
+<tr>
+<td>Download</td>
+<td>The user downloaded a file.</td>
+</tr>
+<tr>
+<td>Install</td>
+<td>The user installed a plugin or an app.</td>
+</tr>
+<tr>
+<td>Invite</td>
+<td>The user sent or shared an invite.</td>
+</tr>
+<tr>
+<td>Job Apply</td>
+<td>The user clicked apply to a job on LinkedIn.</td>
+</tr>
+<tr>
+<td>Key Page View</td>
+<td>The user viewed an important web page or app screen.</td>
+</tr>
+<tr>
+<td>Lead</td>
+<td>The user filled out a lead generation form.</td>
+</tr>
+<tr>
+<td>Login</td>
+<td>The user logged in to the advertiser&rsquo;s service account.</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>Something that is not listed.</td>
+</tr>
+<tr>
+<td>Outbound Click</td>
+<td>The user left the app or page by clicking a link.</td>
+</tr>
+<tr>
+<td>Phone Call</td>
+<td>The user started a call or performed a phone-call specific event or submission.</td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td>The user made a purchase.</td>
+</tr>
+<tr>
+<td>Qualified Lead</td>
+<td>Identified lead as a qualified lead.</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>The user rated a service or a product.</td>
+</tr>
+<tr>
+<td>Request Quote</td>
+<td>The user requested a quote.</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>Saves a form or state in the flow.</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Schedule a service or appointment.</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>The user searched within the app.</td>
+</tr>
+<tr>
+<td>Share</td>
+<td>The user shared content.</td>
+</tr>
+<tr>
+<td>Signup</td>
+<td>The user signed up for a web site or app service.</td>
+</tr>
+<tr>
+<td>Start Checkout</td>
+<td>Begins the checkout process.</td>
+</tr>
+<tr>
+<td>Start Trial</td>
+<td>The user started a trial subscription.</td>
+</tr>
+<tr>
+<td>Submit Application</td>
+<td>The user submitted an application (same as Complete Signup).</td>
+</tr>
+<tr>
+<td>Subscribe</td>
+<td>The user subscribed to a service.</td>
+</tr>
+<tr>
+<td>Talent Lead</td>
+<td>User submitted their information as a lead on LinkedIn Talent Media&rsquo;s Pipeline Builder page.</td>
+</tr>
+<tr>
+<td>View Content</td>
+<td>The user viewed a section of the page or app screen (webview).</td>
+</tr>
+<tr>
+<td>View Video</td>
+<td>The user played a video.</td>
 </tr>
 </tbody>
 </table>
@@ -1806,10 +1968,15 @@
 </tr>
 <tr>
 <td>Google Advertising ID (GAID)</td>
-<td>Plain-text Google Advertising ID sent as a device identifier.</td>
+<td>Google Advertising ID sourced from an explicit attribute mapping. Map a dedicated attribute (for example, <code>google_advertising_id</code> or <code>gaid</code>) that your app or mobile backend populates with the device&rsquo;s GAID. The value must be a UUID-format string (for example, <code>38400000-8cf0-11bd-b23e-10b96e40000d</code>). If the mapped value fails format validation or no mapping is configured, the connector omits GAID from the event. Note: <code>_ga</code> or <code>_gid</code> are not valid GAIDs.</td>
 </tr>
 </tbody>
 </table>
+<h4 id="gaid-sourcing">GAID sourcing</h4>
+<p>GAID is sourced only from an explicit attribute mapping. The connector does not infer GAID from any other data in the event.</p>
+<p>To send GAID, create a dedicated attribute in your data layer (for example, <code>google_advertising_id</code> or <code>gaid</code>) and populate it from your mobile app or backend using the device&rsquo;s Google Advertising ID. Map that attribute to the <strong>Google Advertising ID (GAID)</strong> field in the connector action.</p>
+<p>The value must match UUID format (36 characters, hex digits separated by hyphens). If the mapped value does not match this format, the connector drops GAID and sends the event without it. No error is raised and other identifiers are unaffected.</p>
+<p>Do not map <code>_ga</code>, <code>_gid</code>, or any other Google Analytics cookie value to this field. Those values use the Google Analytics client ID format (<code>GA1.1.*.*</code>) and are not valid GAIDs.</p>
 <h4 id="conversion-event-attributes">Conversion Event Attributes</h4>
 <table>
 <thead>
@@ -1858,7 +2025,7 @@
 </tbody>
 </table>
 <h4 id="disable-identifier-automapping">Disable Identifier Automapping</h4>
-<p>By default, the connector automatically maps Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the <code>li_fat_id</code> querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the <strong>Disable Identifier Automapping</strong> option to turn off automapping for all three identifiers.</p>
+<p>By default, the connector automatically maps Client IPv4 and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the <code>li_fat_id</code> querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the <strong>Disable Identifier Automapping</strong> option to turn off automapping for these identifiers.</p>
 <table>
 <thead>
 <tr>
@@ -1869,7 +2036,7 @@
 <tbody>
 <tr>
 <td>Disable Identifier Automapping</td>
-<td>When enabled, Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID are not automapped from the data layer.</td>
+<td>When enabled, Client IPv4 and LinkedIn First Party Ads Tracking UUID are not automapped from the data layer.</td>
 </tr>
 </tbody>
 </table>
@@ -1933,7 +2100,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 2, 2026 
+          <p>This page was last updated:  June 30, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1955,7 +2122,9 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#deduplication-limitations" href="javascript:void(0)">Deduplication limitations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#persist-the-linkedin-click-id" href="javascript:void(0)">Persist the LinkedIn Click ID</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-conversion" href="javascript:void(0)">Create a conversion</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#associate-campaigns-to-conversions" href="javascript:void(0)">Associate campaigns to conversions</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#attribution-types" href="javascript:void(0)">Attribution types</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#conversion-types" href="javascript:void(0)">Conversion types</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#associate-campaigns-to-conversions" href="javascript:void(0)">Associate campaigns to conversions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-conversion-events" href="javascript:void(0)">Batch Conversion Events</a></li>
               </nav>

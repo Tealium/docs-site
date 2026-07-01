@@ -111,8 +111,57 @@ If you create a conversion in Tealium, you do not need to configure a conversion
 | Enabled (`enabled`) | Set to `true` or `false` to enable or disable this rule from matching conversions. The initial state can be either, but only enabled rules trigger conversion events. The default value is `true`. | Boolean |
 |  Post Click attribution window size (`postClickAttributionWindowSize`) | Conversion window timeframe (in days) of a member clicking on a LinkedIn Ad (a post-click conversion) within which conversions are attributed to a LinkedIn ad. Allowed values are `1`, `7`, `30`, or `90`. The default value is `30` | Integer |
 |  View Through Attribution Window Size (`viewThroughAttributionWindowSize`) | Conversion window timeframe (in days) of a member seeing a LinkedIn ad (a view-through conversion) within which conversions are attributed to a LinkedIn ad. Allowed values are `1`, `7`, `30`, `90`, or `365`. 365 is a valid option only for the following types: `Submit Application`, `Purchase`, `Add to Cart`,` Qualified Lead and Lead`. The default value is `7` | Integer |
-| Attribution Type (`attributionType`)&lt;br&gt;Parameter values:&lt;ul&gt;&lt;li&gt;`LAST_TOUCH_BY_CAMPAIGN`&lt;/li&gt;&lt;li&gt;`LAST_TOUCH_BY_CONVERSION`&lt;/li&gt;&lt;/ul&gt; | The model that describes how conversion actions are to be counted:&lt;ul&gt;&lt;li&gt;Each Campaign: Conversion actions are counted once for each campaign to which they can be attributed (Default)&lt;/li&gt;&lt;li&gt;Last Campaign: (single campaign) Conversion actions are counted once for each Conversion with at least one associated campaign.&lt;/li&gt;&lt;/ul&gt; | Drop-down supporting both of the values in the left section:&lt;ul&gt;&lt;li&gt;Each campaign: For a conversion action associated with multiple campaigns, every campaign that has had an interaction in the conversion window gets credited with a conversion.&lt;/li&gt;&lt;li&gt;Last campaign: For a conversion action associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window gets credited with a conversion.&lt;/li&gt;&lt;/ul&gt; |
-| Type (`type`) | Type of conversion to track for this conversion rule:&lt;ul&gt;&lt;li&gt;**Ad Click**: The user clicked a third-party ad.&lt;/li&gt;&lt;li&gt;**Ad View**: The user viewed an ad.&lt;/li&gt;&lt;li&gt;**Add Billing Info**: The user added credit card or purchase details.&lt;/li&gt;&lt;li&gt;**Add to Cart**: The user added one or more things to their shopping cart.&lt;/li&gt;&lt;li&gt;**Add to List**: The user added a product to a wishlist.&lt;/li&gt;&lt;li&gt;**Book Appointment**: The user reserved an appointment.&lt;/li&gt;&lt;li&gt;**Complete Signup**: The user completed registration process.&lt;/li&gt;&lt;li&gt;**Contact**: The user attempted to contact, by filling a form.&lt;/li&gt;&lt;li&gt;**Donate**: The user performed a donation.&lt;/li&gt;&lt;li&gt;**Download**: The user downloaded a file.&lt;/li&gt;&lt;li&gt;**Install**: The user installed a plugin or an app.&lt;/li&gt;&lt;li&gt;**Invite**: The user sent/shared an invite.&lt;/li&gt;&lt;li&gt;**Job Apply**: User clicked apply to a job on LinkedIn.&lt;/li&gt;&lt;li&gt;**Key Page View**: The user viewed an important web page/app screen.&lt;/li&gt;&lt;li&gt;**Lead**: The user filled out a lead generation form.&lt;/li&gt;&lt;li&gt;**Login**: The user logged in to advertiser&#39;s service account.&lt;/li&gt;&lt;li&gt;**Other**: Something that&#39;s not listed.&lt;/li&gt;&lt;li&gt;**Outbound Click**: The user left the app or page by clicking a link.&lt;/li&gt;&lt;li&gt;**Phone Call**: The user started a call, or performed phone-call specific event or submission.&lt;/li&gt;&lt;li&gt;**Purchase**: The user made a purchase.&lt;/li&gt;&lt;li&gt;**Qualified Lead**: Identified lead as a qualified lead.&lt;/li&gt;&lt;li&gt;**Rate**: The user rated a service or a product.&lt;/li&gt;&lt;li&gt;**Request Quote**: The user requested a quote.&lt;/li&gt;&lt;li&gt;**Save**: Saves a form or state in the flow.&lt;/li&gt;&lt;li&gt;**Schedule**: Schedule a service or appointment.&lt;/li&gt;&lt;li&gt;**Search**: The user searched within the app.&lt;/li&gt;&lt;li&gt;**Share**: The user shared content.&lt;/li&gt;&lt;li&gt;**Signup**: The user signed up for a web site / app service.&lt;/li&gt;&lt;li&gt;**Start Checkout**: Begins the checkout process.&lt;/li&gt;&lt;li&gt;**Start Trial**: The user started a trial subscription.&lt;/li&gt;&lt;li&gt;**Submit Application**: The user submitted an application (same as &#39;Complete Signup).&lt;/li&gt;&lt;li&gt;**Subscribe**: The user subscribed to a service.&lt;/li&gt;&lt;li&gt;**Talent Lead**: User submitted their information as a lead on LInkedIn Talent Media&#39;s Pipeline Builder page.&lt;/li&gt;&lt;li&gt;**View Content**: The user viewed a section of the page or app screen (webview).&lt;/li&gt;&lt;li&gt;**View Video**: The user played a video.&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;|
+
+### Attribution types
+
+The `attributionType` parameter determines how conversion actions are counted:
+
+| Value | Description |
+| --- | --- |
+| `LAST_TOUCH_BY_CAMPAIGN` | Each campaign: Conversion actions are counted once for each campaign to which they can be attributed. For a conversion associated with multiple campaigns, every campaign that has had an interaction in the conversion window gets credited. (Default) |
+| `LAST_TOUCH_BY_CONVERSION` | Last campaign: Conversion actions are counted once for each conversion with at least one associated campaign. For a conversion associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window gets credited. |
+
+### Conversion types
+
+The `type` parameter specifies the type of conversion to track for this conversion rule:
+
+| Value | Description |
+| --- | --- |
+| Ad Click | The user clicked a third-party ad. |
+| Ad View | The user viewed an ad. |
+| Add Billing Info | The user added credit card or purchase details. |
+| Add to Cart | The user added one or more things to their shopping cart. |
+| Add to List | The user added a product to a wishlist. |
+| Book Appointment | The user reserved an appointment. |
+| Complete Signup | The user completed the registration process. |
+| Contact | The user attempted to contact by filling a form. |
+| Donate | The user performed a donation. |
+| Download | The user downloaded a file. |
+| Install | The user installed a plugin or an app. |
+| Invite | The user sent or shared an invite. |
+| Job Apply | The user clicked apply to a job on LinkedIn. |
+| Key Page View | The user viewed an important web page or app screen. |
+| Lead | The user filled out a lead generation form. |
+| Login | The user logged in to the advertiser&#39;s service account. |
+| Other | Something that is not listed. |
+| Outbound Click | The user left the app or page by clicking a link. |
+| Phone Call | The user started a call or performed a phone-call specific event or submission. |
+| Purchase | The user made a purchase. |
+| Qualified Lead | Identified lead as a qualified lead. |
+| Rate | The user rated a service or a product. |
+| Request Quote | The user requested a quote. |
+| Save | Saves a form or state in the flow. |
+| Schedule | Schedule a service or appointment. |
+| Search | The user searched within the app. |
+| Share | The user shared content. |
+| Signup | The user signed up for a web site or app service. |
+| Start Checkout | Begins the checkout process. |
+| Start Trial | The user started a trial subscription. |
+| Submit Application | The user submitted an application (same as Complete Signup). |
+| Subscribe | The user subscribed to a service. |
+| Talent Lead | User submitted their information as a lead on LinkedIn Talent Media&#39;s Pipeline Builder page. |
+| View Content | The user viewed a section of the page or app screen (webview). |
+| View Video | The user played a video. |
 
 ## Associate campaigns to conversions
 
@@ -165,7 +214,17 @@ This action uses batched requests to support high-volume data transfers to the v
 | Country Code | ISO 3166 standardized two letter country code representing the country of the contact. |
 | External IDs | A list of `externalIds`. An `externalId` contains an advertiser-provided identifier representing the user who triggered the conversion event. For more information, see [LinkedIn: Custom Matching Identifiers](https://learn.microsoft.com/en-us/linkedin/marketing/conversions/custom-matching-identifiers?view=li-lms-2025-03). |
 | Client IP Address (IPv4) | Client IPv4 address sent unhashed to LinkedIn. Only valid IPv4 values are sent; IPv6 and invalid values are ignored. |
-| Google Advertising ID (GAID) | Plain-text Google Advertising ID sent as a device identifier. |
+| Google Advertising ID (GAID) | Google Advertising ID sourced from an explicit attribute mapping. Map a dedicated attribute (for example, `google_advertising_id` or `gaid`) that your app or mobile backend populates with the device&#39;s GAID. The value must be a UUID-format string (for example, `38400000-8cf0-11bd-b23e-10b96e40000d`). If the mapped value fails format validation or no mapping is configured, the connector omits GAID from the event. Note: `_ga` or `_gid` are not valid GAIDs. |
+
+#### GAID sourcing
+
+GAID is sourced only from an explicit attribute mapping. The connector does not infer GAID from any other data in the event.
+
+To send GAID, create a dedicated attribute in your data layer (for example, `google_advertising_id` or `gaid`) and populate it from your mobile app or backend using the device&#39;s Google Advertising ID. Map that attribute to the **Google Advertising ID (GAID)** field in the connector action.
+
+The value must match UUID format (36 characters, hex digits separated by hyphens). If the mapped value does not match this format, the connector drops GAID and sends the event without it. No error is raised and other identifiers are unaffected.
+
+Do not map `_ga`, `_gid`, or any other Google Analytics cookie value to this field. Those values use the Google Analytics client ID format (`GA1.1.*.*`) and are not valid GAIDs.
 
 #### Conversion Event Attributes
 
@@ -187,8 +246,8 @@ Because LinkedIn recommends using a separate conversion ID for tags and for the 
 
 #### Disable Identifier Automapping
 
-By default, the connector automatically maps Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the `li_fat_id` querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the **Disable Identifier Automapping** option to turn off automapping for all three identifiers.
+By default, the connector automatically maps Client IPv4 and LinkedIn First Party Ads Tracking UUID from the data layer. For LinkedIn First Party Ads Tracking UUID, the connector reads the `li_fat_id` querystring parameter. If you map this parameter in the action, that mapping takes precedence over the automapped value. Use the **Disable Identifier Automapping** option to turn off automapping for these identifiers.
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Disable Identifier Automapping | When enabled, Client IPv4, GAID, and LinkedIn First Party Ads Tracking UUID are not automapped from the data layer. |
+| Disable Identifier Automapping | When enabled, Client IPv4 and LinkedIn First Party Ads Tracking UUID are not automapped from the data layer. |
