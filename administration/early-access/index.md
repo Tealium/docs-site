@@ -34,8 +34,6 @@ Get access to beta features through the Early Access program.
 
 #### Audiences
 
-* [About audiences]()
-* [Manage audiences]()
 * [Audience dashboard]()
 
 

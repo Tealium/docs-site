@@ -220,7 +220,7 @@ This section describes how to set up parameters and options for each action.
 | Short Version | The short version of the application. For example, `1`. |
 | Long Version | The long version of the application. For example, `1.0.12.1`. |
 | Device Model Name | The device model name. |
-| Locale | The locale. |
+| Locale | The device locale. The default value is `en-US`. To use a custom locale, enter a value in `xx-YY` format (2-letter language code, dash, 2-letter country code). |
 | Timezone Abbreviation | The timezone abbreviation. |
 | Carrier | The carrier. |
 | Screen Width | The screen width. |

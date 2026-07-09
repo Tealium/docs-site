@@ -15,7 +15,7 @@ Use the following steps to create an audience:
 1. Click **&#43; New Audience**.
 1. Enter a **Name** for the audience. If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.
 1. To add a condition for the audience, select an attribute, an operator, and a value.
-    * The estimated potential size for the audience is displayed. For more information, see [potential size](#potential-size).
+    * The estimated potential size for the audience is displayed. For more information, see [potential size]().
     * When you hover over an attribute, the enrichment for the attribute is displayed.  
     * If you select a badge for the attribute, select **is assigned** or **is not assigned**.  
     * For operators that specify a time frame, select a value and the time frame.
@@ -25,7 +25,8 @@ Use the following steps to create an audience:
 1. Enter a **Name** for the segment, then click **Done**.If you use a [DataAccess]() product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.
 1. To add a segment, click **&#43; Add Segment**, then add conditions for the segment.
 1. To add a previously saved segment, click the down-arrow next to **&#43; Add Segment** and select a segment.  
-When you hover over a segment, the conditions for the segment are displayed.  
+    * When you hover over a segment, the conditions for the segment are displayed.
+1. To perform a one-time backfill of the audience, select **Fill Audience**. For more information, see [Fill an audience]().
 1. To add a label or notes, click **More Options**.
     1. To add a label, click **Add Label** and select a label.
     1. Enter notes, if needed. Click **AI Note** to generate notes with AI. For more information, see [AI Note Generation]().
@@ -33,17 +34,6 @@ When you hover over a segment, the conditions for the segment are displayed.
     * For more information, refer to the setup guide for the selected connector.
 1. To save the audience without activating it, click **Done**.
 1. Save and publish.
-
-### Potential size
-
-The potential size of the audience is the count of visitor profiles that match the defined audience conditions. The calculation result displays the number of visitors meeting the conditions as both a number and a percentage, alongside the total number of visitors. The total visitors count is the number of visitors in your Tealium profile within your configured retention window, which includes both anonymous and stitched visitors.
-
-#### Limitations
-
-Potential audience sizing is not available when an audience is built with the following attributes:
-
-* **Visit attributes**: Visit attributes are transitory and do not persist after the visitor’s session ends.
-* **Unsaved and unpublished attributes**: Attribute values are only created, enriched, and saved to a visitor profile when the attribute configuration is saved and published. Until the save and publish process occurs, no values exist that can be queried to calculate a potential audience size.
 
 ## Create an audience from an existing audience
 
@@ -77,6 +67,7 @@ To edit an audience, follow these steps:
 1. Click an audience in the list, then click **Edit**.
 1. Modify the audience as needed.
     * Click **Calculate** to update the potential size as you edit or add conditions.
+1. To perform a one-time backfill of the audience, select **Fill Audience**. For more information, see [Fill an audience]().
 1. To add an activation or view activations for this audience, click **Activations**.
     * For information on adding an activation, see [Activate an audience](#activate-an-audience).
 1. To view information about visitors and activity for this audience, click **Insights**.

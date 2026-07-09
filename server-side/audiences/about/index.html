@@ -38,7 +38,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "6",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -1254,6 +1254,11 @@
 <li><strong>Audiences</strong>: Displays the list of audiences in the profile.</li>
 <li><strong>Segments</strong>: Displays the list of saved segments. For more information, see <a href="#saved-segments">Saved segments</a>.</li>
 </ul>
+<figure><a class="slb" href="/images/server-side/audiences/audiences-table.png"><img src="/images/server-side/audiences/audiences-table.png"
+         alt="Audiences table showing audience name, size, last updated date, labels, activations, and UID columns"
+         title="Audiences table showing audience name, size, last updated date, labels, activations, and UID columns"/>
+    </a>
+</figure>
 <h2 id="audience-details">Audience details</h2>
 <p>When you select an audience on the <strong>Audiences</strong> page, the audience details page is displayed and has the following tabs:</p>
 <ul>
@@ -1271,6 +1276,53 @@
 </li>
 <li><strong>Activations</strong>: Displays a list of activations for the audience and lets you edit, activate, or deactivate activations.</li>
 <li><strong>Functions</strong>: Displays a list of the functions that are triggered by the audience.</li>
+</ul>
+<h3 id="potential-size">Potential size</h3>
+<p>The potential size of the audience is the count of visitor profiles that match the defined audience conditions. The calculated result displays the number of visitors meeting the conditions as both a number and a percentage, alongside the total number of visitors. The total visitors count is the number of visitors in your Tealium profile within your configured retention window, which includes both anonymous and stitched visitors.</p>
+<figure><a class="slb" href="/images/server-side/audiences/fill-audience.png"><img src="/images/server-side/audiences/fill-audience.png"
+         alt="Potential size with filling an audience"
+         title="Potential size with filling an audience"/>
+    </a>
+</figure>
+<h4 id="limitations">Limitations</h4>
+<p>Potential audience sizing is not available when an audience is built with the following attributes:</p>
+<ul>
+<li><strong>Visit attributes</strong>: Visit attributes are transitory and do not persist after the visitor&rsquo;s session ends.</li>
+<li><strong>Unsaved and unpublished attributes</strong>: Attribute values are only created, enriched, and saved to a visitor profile when the attribute configuration is saved and published. Until the save and publish process occurs, no values exist that can be queried to calculate a potential audience size.</li>
+</ul>
+<h2 id="fill-an-audience">Fill an audience</h2>
+<p>You can perform a one-time backfill of an audience from historical data for visitors who meet the audience conditions. This backfill applies to both new and existing audiences. <strong>Potential Size</strong> shows the estimated number of qualified visitors in existing data. The <strong>Fill Audience</strong> checkbox is only available after you run a potential size calculation that returns a non-zero result.</p>
+<p>Connect the audience to at least one connector action before filling. This configuration ensures that as the audience is populated, matching visitors are automatically sent to the connectors. If no connector actions are configured for the audience, the backfill does not trigger any actions and you cannot perform it again.</p>
+<h3 id="fill-process">Fill process</h3>
+<p>When you select <strong>Fill Audience</strong> and then save and publish the profile, the system performs a one-time backfill that adds visitors who meet the specified conditions.</p>
+<p>Only the <strong>Joined Audience</strong> connector action trigger is activated during a fill.</p>
+<p>Visitors who already belong to the audience are excluded from the fill to avoid unnecessary reprocessing. The fill does not trigger &ldquo;left audience&rdquo; events.</p>
+<p>During a fill, attributes are not re-evaluated and audience conditions are not processed. The fill operates by looking at existing attribute values only. Filling an audience does not generate new visits or change visitor attributes from historical data.</p>
+<p>The <strong>Audiences</strong> table displays the current fill status in the <strong>Size</strong> column. A fill can be queued, in progress, completed, or failed. When a fill is in progress, the column shows the percentage filled and the current number of visitors added to the audience.</p>
+<figure><a class="slb" href="/images/server-side/audiences/audience-table-fill-highlight.png"><img src="/images/server-side/audiences/audience-table-fill-highlight.png"
+         alt="Audience filling in audience table"
+         title="Audience filling in audience table" width="700"/>
+    </a>
+</figure>
+<p>Each audience can only be filled one time. Review the audience conditions carefully and ensure that you have configured at least one connector action for the audience before starting.</p>
+<h3 id="performance">Performance</h3>
+<p>The typical fill rate is 200 visitor profiles per second, but actual speed is provided on a best-effort basis and may vary from run to run. Filling an audience may cause throttling on the platform due to the volume of visitor profiles being evaluated or the number of connector actions being queued for delivery. However, real-time evaluation of incoming events continues as a priority, so live campaigns and personalization are not interrupted.</p>
+<p>Large fills should be planned as operational jobs that can take hours to complete. Plan audience fills ahead of deadlines and allow extra time during busy periods.</p>
+<h3 id="event-volume">Event volume</h3>
+<p>Fill events do not count toward your contracted event volume. Fill activity is tracked on the <a href="/server-side/usage-report/">Usage dashboard</a> for visibility only, with no billing implications.</p>
+<h3 id="monitoring-progress">Monitoring progress</h3>
+<p>Track fill progress in the following ways:</p>
+<ul>
+<li>The <strong>Audiences</strong> table shows the fill percentage in the <strong>Size</strong> column.</li>
+<li>The audience <strong>Activity</strong> view shows how many visitors have been added.</li>
+</ul>
+<p>Joined audience actions generated during filling appear in profile activity, including connector statistics and charts.</p>
+<h3 id="limitations-1">Limitations</h3>
+<p>Fill an audience is not available in the following cases:</p>
+<ul>
+<li><strong>Audience conditions with visit attributes</strong>: Visit attributes are transitory and do not persist after the visitor&rsquo;s session ends, so they cannot be re-evaluated during an audience fill. If visit attributes are used in an audience condition, the <strong>Fill Audience</strong> checkbox is unavailable.</li>
+<li><strong>CloudStream deployments</strong>: Fill an audience is not supported for CloudStream.</li>
+<li><strong>Unsupported regions</strong>: Fill an audience is not available in the <code>ap-southeast-1</code> (Hong Kong) region or the <code>me-central-1</code> (UAE) region.</li>
 </ul>
 <h2 id="audience-conditions-and-segments">Audience conditions and segments</h2>
 <p>An audience is created by defining one or more conditions using visit or visitor attributes. An audience segment is a set of conditions that can be saved and used as a building block in multiple audiences.</p>
@@ -1310,7 +1362,7 @@
     </a>
 </figure>
 <h2 id="saved-segments">Saved segments</h2>
-<p>Saved segments can be used in multiple audiences, avoiding the need to create the same conditions for each audience. You can save segments while you are adding conditions to an audience, as shown in the following figure:
+<p>Saved segments can be used in multiple audiences, avoiding the need to create the same conditions for each audience. Save segments while adding conditions to an audience, as shown in the following figure:
 <figure><a class="slb" href="/images/guides/server-side/audiences-save-a-segment.png"><img src="/images/guides/server-side/audiences-save-a-segment.png"
          alt="audiences page, tooltip for save icon for segments displayed"
          title="audiences page, tooltip for save icon for segments displayed"/>
@@ -1496,7 +1548,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 8, 2025 
+          <p>This page was last updated:  July 8, 2026 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1512,7 +1564,14 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audience-details" href="javascript:void(0)">Audience details</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audience-conditions-and-segments" href="javascript:void(0)">Audience conditions and segments</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#potential-size" href="javascript:void(0)">Potential size</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fill-an-audience" href="javascript:void(0)">Fill an audience</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#fill-process" href="javascript:void(0)">Fill process</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#performance" href="javascript:void(0)">Performance</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-volume" href="javascript:void(0)">Event volume</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#monitoring-progress" href="javascript:void(0)">Monitoring progress</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#limitations" href="javascript:void(0)">Limitations</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audience-conditions-and-segments" href="javascript:void(0)">Audience conditions and segments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#and-logic-example" href="javascript:void(0)">AND logic example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#or-logic-example" href="javascript:void(0)">OR logic example</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#excluding-logic-example" href="javascript:void(0)">Excluding logic example</a></li>

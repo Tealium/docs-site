@@ -217,13 +217,15 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".admin-security">セキュリティとアクセス</a>
         <ul class="pl2  admin-security desktopmenu animated fadeIn list  dn">
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/security-access/mfa/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-mfa">マルチファクター認証 (MFA)</a></li>
-    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/security-access/mfa-faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-faq">マルチファクター認証 FAQ</a></li>
+        <a href="/ja/administration/security-access/sign-in/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Tealiumへのサインイン</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/security-access/password-policy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".password-policy">パスワードポリシー</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/security-access/session-timeout/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".session-timeout">セッションタイムアウト</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/administration/security-access/multi-factor-authentication-mfa/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-mfa">多要素認証（MFA）</a></li>
+    <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/administration/security-access/mfa-faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".multi-factor-authentication-faq">マルチファクタ認証 FAQ</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/security-access/api-keys/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".api-keys">APIキーの管理と生成</a></li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -321,7 +323,7 @@
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/early-access/api/scim-api/put-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-group-api">PUT グループ API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUT ユーザー API</a></li>
+        <a href="/ja/administration/early-access/api/scim-api/put-user-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".put-user-api">PUTユーザーAPI</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/early-access/api/scim-api/delete-group-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".delete-group-api">グループ削除API</a></li>
     <li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -334,11 +336,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".ea-audiences">オーディエンス</a>
         <ul class="pl2  ea-audiences desktopmenu animated fadeIn list  dn">
     <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/early-access/audiences/about-audiences-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences-early-access">オーディエンスについて</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/early-access/audiences/audience-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audience-dashboard">オーディエンスダッシュボード</a></li>
-    <li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/administration/early-access/audiences/manage-audiences-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences-early-access">オーディエンスの管理</a></li></ul>
+        <a href="/ja/administration/early-access/audiences/audience-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audience-dashboard">オーディエンスダッシュボード</a></li></ul>
       </li>
     <li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/administration/early-access/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-new-ui">コネクター</a></li>
@@ -505,7 +503,7 @@
 <td><code>startIndex</code></td>
 <td>数値</td>
 <td>任意</td>
-<td>インデックスで最初に返すレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。</td>
+<td>インデックスで返す最初のレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。</td>
 </tr>
 <tr>
 <td><code>filter</code></td>
@@ -521,7 +519,7 @@
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>「Standard User」、「Account Admins」、「User Admins」、「Privacy Admins」、「Technical Admins」、「Profile Admins」などの組み込みグループがレスポンスに含まれます。<code>id</code> フィールドは各グループの安定した識別子です。詳細については、<a href="/ja/administration/early-access/api/scim-api/about/#groups">グループ</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>レスポンスには「Standard User」、「Account Admins」、「User Admins」、「Privacy Admins」、「Technical Admins」、「Profile Admins」といった組み込みグループが含まれます。<code>id</code> フィールドは各グループの安定した識別子です。詳細については、<a href="/ja/administration/early-access/api/scim-api/about/#groups">グループ</a>を参照してください。</p>
 <h3 id="curl-リクエストの例">cURL リクエストの例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Authorization: Bearer {token}&#39;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">&#39;https://developer.tealiumapis.com/scim/v2/Groups&#39;</span>
@@ -543,7 +541,7 @@
         <span style="font-weight:bold;">
         
     	
-    	コードスニペットを表示するには展開
+    	コードスニペットを表示するには展開してください
     	
     	</span>
     </div>
@@ -625,7 +623,7 @@
 </div>
 </div>
 <h3 id="エラーメッセージ">エラーメッセージ</h3>
-<p>このエンドポイントの潜在的なエラーメッセージ：</p>
+<p>このエンドポイントに関する潜在的なエラーメッセージ：</p>
 <table>
 <thead>
 <tr>
@@ -716,7 +714,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2026年April月22日
+          <p>最終更新日 ::  2026年July月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

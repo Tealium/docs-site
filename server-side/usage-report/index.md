@@ -17,6 +17,8 @@ Usage costs for Tealium AudienceStream, Tealium AudienceDB, Tealium AudienceStor
 
 Every event, at its point of entry into the Tealium Customer Data Hub, counts towards the total volume and is charged equally.
 
+Usage reports track audience fill events for visibility, but fill events do not count toward your contracted event volume. For more information, see [Fill an audience]().
+
 Usage reports do not provide billing or pricing information. Your final usage cost is determined by a combination of your event volume, your contract terms, and your implementation setup. Contact your account manager for all billing and pricing inquiries.
 
 ## Graph format

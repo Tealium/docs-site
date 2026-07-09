@@ -16,6 +16,8 @@ The **Audiences** page has the following tabs:
 * **Audiences**: Displays the list of audiences in the profile.
 * **Segments**: Displays the list of saved segments. For more information, see [Saved segments]().
 
+![](/images/server-side/audiences/audiences-table.png)
+
 ## Audience details
 
 When you select an audience on the **Audiences** page, the audience details page is displayed and has the following tabs:  
@@ -26,6 +28,68 @@ When you select an audience on the **Audiences** page, the audience details page
     ![](/images/server-side/audience-insights.png) 
 * **Activations**: Displays a list of activations for the audience and lets you edit, activate, or deactivate activations.
 * **Functions**: Displays a list of the functions that are triggered by the audience.
+
+### Potential size
+
+The potential size of the audience is the count of visitor profiles that match the defined audience conditions. The calculated result displays the number of visitors meeting the conditions as both a number and a percentage, alongside the total number of visitors. The total visitors count is the number of visitors in your Tealium profile within your configured retention window, which includes both anonymous and stitched visitors.
+
+![](/images/server-side/audiences/fill-audience.png)
+
+#### Limitations
+
+Potential audience sizing is not available when an audience is built with the following attributes:
+
+* **Visit attributes**: Visit attributes are transitory and do not persist after the visitor&#39;s session ends.
+* **Unsaved and unpublished attributes**: Attribute values are only created, enriched, and saved to a visitor profile when the attribute configuration is saved and published. Until the save and publish process occurs, no values exist that can be queried to calculate a potential audience size.
+
+## Fill an audience
+
+You can perform a one-time backfill of an audience from historical data for visitors who meet the audience conditions. This backfill applies to both new and existing audiences. **Potential Size** shows the estimated number of qualified visitors in existing data. The **Fill Audience** checkbox is only available after you run a potential size calculation that returns a non-zero result.
+
+Connect the audience to at least one connector action before filling. This configuration ensures that as the audience is populated, matching visitors are automatically sent to the connectors. If no connector actions are configured for the audience, the backfill does not trigger any actions and you cannot perform it again.
+
+### Fill process
+
+When you select **Fill Audience** and then save and publish the profile, the system performs a one-time backfill that adds visitors who meet the specified conditions.
+
+Only the **Joined Audience** connector action trigger is activated during a fill.
+
+Visitors who already belong to the audience are excluded from the fill to avoid unnecessary reprocessing. The fill does not trigger &#34;left audience&#34; events.
+
+During a fill, attributes are not re-evaluated and audience conditions are not processed. The fill operates by looking at existing attribute values only. Filling an audience does not generate new visits or change visitor attributes from historical data.
+
+The **Audiences** table displays the current fill status in the **Size** column. A fill can be queued, in progress, completed, or failed. When a fill is in progress, the column shows the percentage filled and the current number of visitors added to the audience.
+
+![](/images/server-side/audiences/audience-table-fill-highlight.png)
+
+Each audience can only be filled one time. Review the audience conditions carefully and ensure that you have configured at least one connector action for the audience before starting.
+
+### Performance
+
+The typical fill rate is 200 visitor profiles per second, but actual speed is provided on a best-effort basis and may vary from run to run. Filling an audience may cause throttling on the platform due to the volume of visitor profiles being evaluated or the number of connector actions being queued for delivery. However, real-time evaluation of incoming events continues as a priority, so live campaigns and personalization are not interrupted.
+
+Large fills should be planned as operational jobs that can take hours to complete. Plan audience fills ahead of deadlines and allow extra time during busy periods.
+
+### Event volume
+
+Fill events do not count toward your contracted event volume. Fill activity is tracked on the [Usage dashboard]() for visibility only, with no billing implications.
+
+### Monitoring progress
+
+Track fill progress in the following ways:
+
+* The **Audiences** table shows the fill percentage in the **Size** column.
+* The audience **Activity** view shows how many visitors have been added.
+
+Joined audience actions generated during filling appear in profile activity, including connector statistics and charts.
+
+### Limitations
+
+Fill an audience is not available in the following cases:
+
+* **Audience conditions with visit attributes**: Visit attributes are transitory and do not persist after the visitor&#39;s session ends, so they cannot be re-evaluated during an audience fill. If visit attributes are used in an audience condition, the **Fill Audience** checkbox is unavailable.
+* **CloudStream deployments**: Fill an audience is not supported for CloudStream.
+* **Unsupported regions**: Fill an audience is not available in the `ap-southeast-1` (Hong Kong) region or the `me-central-1` (UAE) region.
 
 ## Audience conditions and segments
 
@@ -64,7 +128,7 @@ To exclude specific visitors from an audience, use excluding logic. For example,
 
 ## Saved segments
 
-Saved segments can be used in multiple audiences, avoiding the need to create the same conditions for each audience. You can save segments while you are adding conditions to an audience, as shown in the following figure:
+Saved segments can be used in multiple audiences, avoiding the need to create the same conditions for each audience. Save segments while adding conditions to an audience, as shown in the following figure:
 ![](/images/guides/server-side/audiences-save-a-segment.png)
 
 You can also create segments on the **Segments** tab on the **Audiences** page. After you save or create a segment, it is automatically saved. Save and publish is not required. For more information, see [Manage segments]().

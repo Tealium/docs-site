@@ -42,8 +42,8 @@ To use your custom audience, it must contain a minimum of 20 entries. If your au
 
 Click **Create Custom Audience**, then configure the following settings:
 
-* **New Custom Audience Name**: (Required) The name of the custom audience.
-* **New Custom Audience Description**: The description of the custom audience.
+* **Audience Name**: (Required) The name of the custom audience. Use the audience or segment name from your CRM (for example, `Qualified Leads - US - Q3 2026` or `High Value Customers - EMEA`). Meta uses this name to identify your audience segment.
+* **Audience Metadata (JSON)**: (Optional) A JSON object describing the audience criteria, mapped to the `description` parameter in the Meta API. Use key-value pairs with aggregated or categorical attributes. Do not include PII. For example: `{&#34;lifecycle_stage&#34;:&#34;churned&#34;,&#34;region&#34;:&#34;EMEA&#34;,&#34;tier&#34;:&#34;high_value&#34;}`. Meta uses this metadata with Audience Labels and optimization features. Label assignment occurs in Meta Ads Manager. The value must be valid JSON for Meta to parse the metadata.
 * **Customer File Source**:
   * `USER_PROVIDED_ONLY`: Use advertiser-collected information directly from customers.
   * `PARTNER_PROVIDED_ONLY`: Use advertiser-sourced information directly from partners, such as agencies or data providers.

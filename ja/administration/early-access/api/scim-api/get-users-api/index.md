@@ -1,11 +1,11 @@
 ---
 title: GETユーザーAPI
-description: GETユーザーAPIはアカウントからユーザーのリストを取得します。
+description: GETユーザーAPIはアカウントからユーザーリストを取得します。
 url: https://docs.tealium.com/ja/administration/early-access/api/scim-api/get-users-api/
 ---
 ## 動作方法
 
-GETメソッドを使用してユーザーのリストを取得します：
+GETメソッドを使用してユーザーリストを取得します：
 
 ```bash
 GET /scim/v2/Users/
@@ -24,17 +24,17 @@ GET /scim/v2/Users/
 | オブジェクト | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
 | `count` | 数値 | 任意 | 返すレコードの数。最大値は `100` です。 |
-| `startIndex` | 数値 | 任意 | インデックスで返す最初のレコード。countがレコード数を超える場合、この値は無視されます。 |
+| `startIndex` | 数値 | 任意 | インデックスで最初に返すレコード。countがレコード数を超える場合、この値は無視されます。 |
 | `filter` | 文字列 | 任意 | ユーザー名に基づいてユーザーをフィルタリングします。同等の値を見つけるために `eq` 演算子を使用します。 |
 
-### cURLリクエストの例
+### 例のcURLリクエスト
 
 ```bash
 curl -H &#39;Authorization: Bearer {token}&#39; \
 https://developer.tealiumapis.com/scim/v2/Users?startIndex=1&amp;count=10&amp;filter=userName%20eq%20%22user@example.com%22
 ```
 
-### 応答の例
+### 例のレスポンス
 
 
 

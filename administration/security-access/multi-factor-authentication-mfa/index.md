@@ -71,7 +71,6 @@ Use the following steps to set up our Authenticator application:
 1. Go to your MFA-enabled account and log in with the correct username and password.  
 The **Setup** screen appears.
 1. Select your smartphone platform and then click **Next**. A barcode appears.
-    MFA does not support Blackberry devices. Contact your primary account holder or a Tealium account manager for assistance. 
 1. Scan the barcode using a generic barcode reader app on your smartphone.  
 This step will vary depending on your smartphone platform.  
     * Android: Tap **Set an Account &gt; Scan account barcode**.

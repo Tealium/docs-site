@@ -24,11 +24,11 @@ GET /scim/v2/Groups/
 | オブジェクト | タイプ | 必須 | 説明 |
 | --- | --- | --- | --- |
 | `count` | 数値 | 任意 | 返すレコードの数。最大値は `100`。デフォルト値は `20`。 |
-| `startIndex` | 数値 | 任意 | インデックスで最初に返すレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。 |
+| `startIndex` | 数値 | 任意 | インデックスで返す最初のレコード。count がレコード数を超える場合、この値は無視されます。最小値およびデフォルト値は 1。 |
 | `filter` | 文字列 | 任意 | `displayName` に基づいてグループをフィルタリングします。同等の値を見つけるために `eq` 演算子を使用します。例：`filter=displayName eq &#34;Standard User&#34;`。 |
 | `excludedAttributes` | 文字列 | 任意 | レスポンスから除外する属性のカンマ区切りリスト。許可される値は `members`, `externalId`, `meta`, `meta.location`, `meta.resourceType` です。 |
 
-「Standard User」、「Account Admins」、「User Admins」、「Privacy Admins」、「Technical Admins」、「Profile Admins」などの組み込みグループがレスポンスに含まれます。`id` フィールドは各グループの安定した識別子です。詳細については、[グループ]()を参照してください。
+レスポンスには「Standard User」、「Account Admins」、「User Admins」、「Privacy Admins」、「Technical Admins」、「Profile Admins」といった組み込みグループが含まれます。`id` フィールドは各グループの安定した識別子です。詳細については、[グループ]()を参照してください。
 
 ### cURL リクエストの例
 
@@ -128,7 +128,7 @@ curl -H &#39;Authorization: Bearer {token}&#39; \
 
 ### エラーメッセージ
 
-このエンドポイントの潜在的なエラーメッセージ：
+このエンドポイントに関する潜在的なエラーメッセージ：
 
 | エラーコード | エラーメッセージ |
 | --- | --- |

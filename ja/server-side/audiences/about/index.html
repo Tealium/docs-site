@@ -255,7 +255,7 @@
       </li>
       
       <li  class="tl dib ma0 w-100">
-      <a href="/ja/server-side/usage-report/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>利用レポートの理解</span></a>
+      <a href="/ja/server-side/usage-report/" class="f4 fw3 link overflow db ma0 w-100 pv2 ph4  text-color-primary hover-primary-color"><span>使用レポート</span></a>
       </li>
       
       <li  class="tl dib ma0 w-100">
@@ -1140,7 +1140,7 @@
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/server-side/audiencestream-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-dashboard">オーディエンスダッシュボード</a></li>
     <li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/server-side/usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">利用レポートの理解</a></li>
+        <a href="/ja/server-side/usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">使用レポート</a></li>
     <li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  primary-color" data-target=".insights">Tealium Insights</a>
         <ul class="pl2  insights desktopmenu animated fadeIn list  dn">
@@ -1300,6 +1300,34 @@
 <li><strong>Activations</strong>：オーディエンスのアクティベーションリストを表示し、アクティベーションを編集、アクティブ化、または非アクティブ化できます。</li>
 <li><strong>Functions</strong>：オーディエンスによってトリガーされる関数のリストを表示します。</li>
 </ul>
+<h3 id="潜在的なサイズ">潜在的なサイズ</h3>
+<p>オーディエンスの潜在的なサイズは、定義されたオーディエンス条件に一致する訪問プロファイルの数です。計算結果は、条件を満たす訪問者の数を、数値とパーセンテージの両方で、訪問者の合計数と並べて表示します。訪問者の合計数は、構成された保持ウィンドウ内のTealiumプロファイル内の訪問者数であり、匿名の訪問者とステッチされた訪問者の両方が含まれます。</p>
+<figure><a class="slb" href="/images/server-side/audiences/fill-audience.png"><img src="/images/server-side/audiences/fill-audience.png"
+         alt="Potential size with filling an audience"
+         title="Potential size with filling an audience"/>
+    </a>
+</figure>
+<h4 id="制限事項">制限事項</h4>
+<p>以下の属性でオーディエンスが構築されている場合、潜在的なオーディエンスのサイジングは利用できません：</p>
+<ul>
+<li><strong>訪問属性</strong>：訪問属性は一時的なものであり、訪問者のセッションが終了した後は保持されません。</li>
+<li><strong>未保存および未公開の属性</strong>：属性値は、属性構成が保存および公開されたときにのみ作成、エンリッチ、および訪問プロファイルに保存されます。保存および公開プロセスが実行されるまで、潜在的なオーディエンスサイズを計算するためにクエリできる値は存在しません。</li>
+</ul>
+<h2 id="fill-an-audience">オーディエンスを埋める</h2>
+<p>過去の履歴データから、オーディエンスの条件を満たす訪問者でオーディエンスをバックフィルすることができます。これは、新規および既存のオーディエンスの両方に適用されます。<strong>Potential Size</strong>は、既存データの中で資格を持つ訪問者の推定数を示します。</p>
+<p>オーディエンスを少なくとも1つのコネクタアクションに接続してください。これにより、オーディエンスが埋められる際に、条件に一致する訪問者が自動的にコネクタに送信されます。オーディエンスにコネクタアクションが構成されていない場合、バックフィルはアクションをトリガーせず、再実行することもできません。</p>
+<h3 id="仕組み-1">仕組み</h3>
+<p><strong>Fill Audience</strong>を選択してプロファイルを保存して公開すると、システムは指定された条件を以前に満たした非アクティブな訪問者を追加する1回限りのバックフィルを実行します。</p>
+<p><strong>Joined Audience</strong>コネクタアクショントリガーのみがフィル中にアクティブになります。</p>
+<p><strong>Audiences</strong>テーブルに進行状況が表示されます：</p>
+<figure><a class="slb" href="/images/server-side/audiences/audience-table-fill-highlight.png"><img src="/images/server-side/audiences/audience-table-fill-highlight.png"
+         alt="Audience filling in audience table"
+         title="Audience filling in audience table"/>
+    </a>
+</figure>
+<p>オーディエンスを埋めることで、新しい訪問が生成されたり、過去のデータから訪問者属性が変更されることはありません。オーディエンスは1回のみ埋めることができるため、オーディエンスの条件を慎重に確認し、開始前にオーディエンスに少なくとも1つのコネクタアクションが構成されていることを確認してください。</p>
+<p>埋める速度は通常、条件を満たす属性と訪問者の数に応じて、1秒あたり200訪問プロファイルです。オーディエンスを埋めることで、評価される訪問プロファイルの量や配信のためにキューに入れられるコネクタアクションの数により、プラットフォームのスロットリングが発生する可能性があります。ただし、受信イベントのリアルタイム評価は優先的に継続されるため、ライブキャンペーンやパーソナライゼーションは中断されません。</p>
+<p>バックフィル中に生成されたJoined audienceアクションは、コネクタの統計やチャートを含むプロファイルアクティビティに表示されます。このアクティビティによるスロットリングや分析ノイズを軽減するために、オフピーク時間にオーディエンスを埋めることをお勧めします。</p>
 <h2 id="オーディエンスの条件とセグメント">オーディエンスの条件とセグメント</h2>
 <p>オーディエンスは、訪問または訪問の属性を使用して1つ以上の条件を定義することによって作成されます。オーディエンスセグメントは、複数のオーディエンスでビルディングブロックとして使用できる条件のセットです。</p>
 <p>セグメントはANDまたはORの論理でレイヤー化してオーディエンスを作成できます。オーディエンスの条件を満たす訪問を除外するために、除外論理を使用できます。これらのオーディエンスの条件を満たす訪問は、ユーザー生成イベントに基づいてリアルタイムでオーディエンスに追加または削除されます。</p>
@@ -1524,7 +1552,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2025年October月8日
+          <p>最終更新日 ::  2026年July月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1540,7 +1568,10 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E8%A9%B3%E7%B4%B0" href="javascript:void(0)">オーディエンスの詳細</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%A8%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">オーディエンスの条件とセグメント</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%BD%9C%E5%9C%A8%E7%9A%84%E3%81%AA%E3%82%B5%E3%82%A4%E3%82%BA" href="javascript:void(0)">潜在的なサイズ</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%82%92%E5%9F%8B%E3%82%81%E3%82%8B" href="javascript:void(0)">オーディエンスを埋める</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%81%A8%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">オーディエンスの条件とセグメント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#and%E8%AB%96%E7%90%86%E3%81%AE%E4%BE%8B" href="javascript:void(0)">AND論理の例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#or%E8%AB%96%E7%90%86%E3%81%AE%E4%BE%8B" href="javascript:void(0)">OR論理の例</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%99%A4%E5%A4%96%E8%AB%96%E7%90%86%E3%81%AE%E4%BE%8B" href="javascript:void(0)">除外論理の例</a></li>
