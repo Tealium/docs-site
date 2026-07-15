@@ -7,9 +7,10 @@ url: https://docs.tealium.com/client-side-tags/webgains-tag/
 
 * Use the E-Commerce extension to set values for `_corder`, `_csubtotal`, `_ccustid`, `_cpromo`.
 * Map an array value to `wgvouchercode` to set product-level vouchers.
-* Requires that `_cprice` has list of prices.
+* Requires that `_cprice` has a list of prices.
 * `wgitems` is set automatically using E-Commerce Extension values (`_cprice`, `_cprodname`, `_cprod`). To override these E-Commerce Extension values, map a string to this variable.
-* To set an order-level discount, map a value to `wgDISCOUNT`. This is automatically converted to a negative value. A discount line item will be added to the list of products in the order.
+* Map a discount value to `wgDISCOUNT` to set an order-level discount. The tag converts this value to a negative amount and adds a discount line item to the product list.
+* The tag fires a landing page script on every page and a conversion script on order confirmation pages. The conversion script sends a `cvr` object built from your data layer variables and an `items[]` array built automatically from `_cprice`, `_cprodname`, `_cprod`, and `_cquan`. Only one conversion fires per unique order reference per page load.
 
 ## Tag configuration
 
@@ -17,8 +18,9 @@ Go to the tag marketplace to add a new tag. For more information about how to ad
 
 When adding the tag, configure the following settings:
 
-* **Program ID**: The Webgains program ID.
-* **Event ID**: Required value. Webgains uses this value to determine the commission rate.
+* **Program ID**: Your Webgains Program ID. The tag uses this value to construct the analytics endpoint URL: `https://analytics.webgains.io/{programid}/main.min.js`. See the [Webgains Default Tracking Guide](https://knowledgehub.webgains.com/home/webgains-default-tracking-guide) for details.
+* **Event ID**: Required value. Webgains uses Event ID to determine commission rate. See the [Webgains Default Tracking Guide](https://knowledgehub.webgains.com/home/webgains-default-tracking-guide) for your Event/Commission Group ID.
+* **Enable Legacy Transaction Pixel**: When enabled, the tag fires both the new `analytics.webgains.io` conversion tracking and the legacy `track.webgains.com/transaction.html` pixel. Disable this option after you complete migration to Default Tracking.
 
 ## Load rules
 
@@ -48,4 +50,8 @@ The available categories are:
 | `wgproductid` | String | The product ID. |
 | `wgvouchercode` | String | The voucher or discount code for the event. |
 | `wgchecksum` | String | The checksum for the event.  |
-| `wgDISCOUNT`  | String | Adds a discount product with this value. |
+| `wgDISCOUNT`  | String | Adds a discount product with this value. | 
+| `wgcurrency`  | String | Transaction currency, such as `USD`. |   
+| `wglanguage`  | String | The language of the order, such as `en_EN`. |   
+| `wgcustomertype`  | String | Customer type: `new`, `existing`, or custom value such as `trial` or `subscription`. |   
+| `wglocation`  | String | The URL of the order confirmation page, such as `https://example.com/checkout`. |   

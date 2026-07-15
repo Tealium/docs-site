@@ -12,21 +12,20 @@ Get access to beta features through the Early Access program.
 
 
 
+![](/images/icons/icon-cloud-down.svg)
+
+#### Cloud data sources
+
+* [Databricks Delta Sharing]()
+* [Trino]()
+
+
 
 ![](/images/icons/icon-connector.svg)
 
 #### Server-side Connectors
 
-* [Databricks (AWS S3)]()
-
-
-
-![](/images/icons/icon-terminal.svg)
-
-#### Tealium API
-
-* [SCIM API]()
-* [Tealium API (v3)]()
+* 
 
 
 

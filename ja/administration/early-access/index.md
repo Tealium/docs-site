@@ -21,15 +21,6 @@ url: https://docs.tealium.com/ja/administration/early-access/
 
 
 
-![](/images/icons/icon-terminal.svg)
-
-#### Tealium API
-
-* [SCIM API]()
-* [Tealium API (v3)]()
-
-
-
 ![](/images/icons/icon-cloud-up.svg)
 
 #### ログストリーミング

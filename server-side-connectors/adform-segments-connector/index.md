@@ -13,68 +13,73 @@ This connector uses the following vendor API:
 * API Endpoint: `https://api.adform.com/v1/dmp`
 * Documentation: [Adform API](https://api.adform.com/v1/help/dmp)
 
-## Connector Actions
-
-| Action Name | AudienceStream | EventStream |
-| --- | :---: | :---: |
-|Add User to Audience Segment| ✓| ✓|
-|Remove User from Audience Segment| ✓| ✓|
-
-## Configure Settings
+## Configuration
 
 Go to the **Connector Marketplace** and add a new connector. Read the [Connector Overview]() article for general instructions on how to add a connector.
 
 After adding the connector, configure the following settings:
 
-* **Client ID**  
-(Required) Provide your Client ID.
-* **Client Secret**  
-(Required) Provide your Client Secret.
+* **Client ID**: (Required) Provide your Client ID.
+* **Client Secret**: (Required) Provide your Client Secret.
+* **Account Scope Type**: Select the account mode for your Adform account:
+  * **Partner Level** (default): uses your Adform Partner ID. Select this for legacy Adform DMP accounts.
+  * **Advertiser Level**: uses the Adform Audience Manager with an Adform Advertiser ID.
+* **Adform Partner ID**: (Required with Partner Level) Enter your Adform Partner ID.
+* **Adform Advertiser ID**: (Required with Advertiser Level) Select your Adform Advertiser ID from the list or enter it manually. Only active advertisers are shown.
 
-Click **Done** when you are finished configuring the connector.
+## Manage Audience Segments
 
-## Audience Segment
+Create and delete segments, and add or remove users from audience segments. The connector uses an API endpoint to retrieve, create, and delete segments in your Tealium AudienceStream instance.
 
-Segments can be created and deleted, and you can add users to or remove users from audience segments. AudienceStream utilizes an API endpoint to retrieve, create, and delete segments within your Tealium AudienceStream instance.
+Only account administrators can make dynamic audience generation available or adjust the default settings for all dynamically-generated audiences. Administrators can set the price, indicate the time to live (TTL) in days, and specify a data type.
+
+To delete a segment, click **Delete Audience Segment** and select the audience segment to be deleted.
 
 By default, the ability to dynamically create audiences is not available. To use this feature, ask your Adform administrator to make this feature available.
 
-Only account administrators can make dynamic audience generation available or adjust the default settings for all dynamically-generated audiences. Administrators can set the price, indicate the to live (TTL) in days, and specify a data type.
+### Partner Level
 
-To create a segment, click **Create Segment** for the following parameters:
+To create a partner-level segment, click **New Audience Segment** and configure the following settings:
 
-#### Parameters
-
-|**Parameter**| **Description**|
+|**Setting**| **Description**|
 |---| ---|
-| Audience Name | (Required) Name of the audience to appear in Adform. |
+| Name | (Required) Name of the audience to appear in Adform. |
 | Adform Partner ID |  (Required) The Adform Partner ID for your account. |
 | Category ID  | (Required) A category ID to which the audience should belong. |
 | Owner ID |  (Required) Audience Owner ID value. |
 | Price | (Required) The price to set per audience. |
-| Data Type |  Set the data type according to your data sharing plans: &lt;ul&gt;&lt;li&gt;**1st Party**: Only you will be using the data. &lt;/li&gt;&lt;li&gt;**2nd Party**: You plan to share the data with your partner or partners. &lt;/li&gt;&lt;li&gt;**3rd Party**: You plan to share this data with everyone as a branded data provider. &lt;/li&gt;&lt;/ul&gt; |
+| Data Type |  Set the data type according to your data sharing plans: &lt;ul&gt;&lt;li&gt;**1st Party**: Only you use the data. &lt;/li&gt;&lt;li&gt;**2nd Party**: You share the data with your partner or partners. &lt;/li&gt;&lt;li&gt;**3rd Party**: You share this data with everyone as a branded data provider. &lt;/li&gt;&lt;/ul&gt; |
 | Time to Live (TTL) | (Required) The lifetime of data under an audience segment. |
-| Frequency | (Required) The number of times an identifier must be qualified before the defined criteria will be added to the audience list. |
+| Frequency | (Required) The number of times a user must fall into a category to be assigned to an audience. |
 
-To delete a segment, click **Delete Audience** and select the audience segment to be deleted.
+The status of the segment appears in parentheses next to the audience segment name. For example: `Cart Abandoners (active)`
 
-Additionally, the status of the segment appears in parentheses next to the audience segment name.
+### Audience Manager
 
-For example: Cart Abandoners (active)
+To create an advertiser-level audience for Audience Manager global accounts, click **New Audience Segment (Audience Manager)** and configure the following settings:
 
-## Action settings — parameters and options
+|**Setting**| **Description**|
+|---| ---|
+| Name | (Required) Name of the audience to appear in Adform. |
+| Third Party Audience ID |  (Required) A unique external identifier for this audience. Used as the segment ID in add/remove user calls. |
+| Category ID  | (Required) A category ID for the audience. |
+| Time to Live (TTL) | (Required) The lifetime of data under an audience segment. |
+| Frequency | (Required) The number of times a user must fall into a category to be assigned to an audience. |
+| ID Fusion | Enable ID Fusion for cross-device identity resolution. Default: `Yes`. |
+| Lookalike | Enable lookalike audience modeling. Default: `No`. |
 
-Click **Continue** to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.
+## Actions
 
- The Adform Segments connector does not support sending the `UID` parameter. If the `UID` parameter is necessary. Adform suggests using [their Tealium tag](). 
+| Action Name | AudienceStream | EventStream |
+| --- | :---: | :---: |
+|Add User to Audience Segment| ✓| ✓|
+|Remove User from Audience Segment| ✓| ✓|
+|Add User to Audience Segment (Audience Manager)| ✓| ✓|
+|Remove User from Audience Segment (Audience Manager)| ✓| ✓|
 
-### Action Settings — Parameters and Options
+ The Adform Segments connector does not support sending the `UID` parameter. If the `UID` parameter is required, Adform suggests using the [Adform tag](). 
 
-Click **Continue** to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.
-
-The following section describes how to set up parameters and options for each action.
-
-### Action — Add User to Audience Segment
+### Add User to Audience Segment
 
 #### Parameters
 
@@ -88,7 +93,7 @@ The following section describes how to set up parameters and options for each ac
 |First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  &lt;ul&gt;&lt;li&gt;1 - Collected from a desktop device in a browser.&lt;/li&gt;&lt;li&gt;2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).&lt;/li&gt;&lt;li&gt;3 - A user-based ID, which is the same across multiple devices and applications.&lt;/li&gt;&lt;li&gt;500&#43; - Vendor-specific context and ID, vendor-specific codes.&lt;/li&gt;&lt;/ul&gt; |
 |First Party ID| An identifier for the first-party ID from the source provider. This might be a long string or a GUID.|
 
-### Action — Remove User from Audience Segment
+### Remove User from Audience Segment
 
 #### Parameters
 
@@ -101,12 +106,20 @@ The following section describes how to set up parameters and options for each ac
 |First Party Data Source| Text for the source or technology provider responsible for the included IDs. This should be a top-level domain. For example, `netid.de`|
 |First Party Agent Type| An integer that identifies the type of user agent that the user identifier is from. Possible agent type values:  &lt;ul&gt;&lt;li&gt;1 - Collected from a desktop device in a browser.&lt;/li&gt;&lt;li&gt;2 - Collected from an app (in-app) on a mobile device (for example, IDFA or AAID).&lt;/li&gt;&lt;li&gt;3 - A user-based ID, which is the same across multiple devices and applications.&lt;/li&gt;&lt;li&gt;500&#43; - Vendor-specific context and ID, vendor-specific codes.&lt;/li&gt;&lt;/ul&gt; |
 |First Party ID| An identifier for the first-party ID from the source provider. This might be a long string or a GUID.|
+
+### Add User to Audience Segment (Audience Manager)
+
+Uses the same parameters as [Add User to Audience Segment](#add-user-to-audience-segment). For the `sg` parameter, use the **Third Party Audience ID** of the Audience Manager segment.
+
+### Remove User from Audience Segment (Audience Manager)
+
+Uses the same parameters as [Remove User from Audience Segment](#remove-user-from-audience-segment). For the `sg` parameter, use the **Third Party Audience ID** of the Audience Manager segment.
 
 ## First Party ID
 
-Adform accepts all currently available first-party ID solutions. First-party IDs are assigned to the audiences provided in the call.
+Adform accepts all currently available first-party ID solutions. The connector assigns first-party IDs to the audiences in the call.
 
-The following first party IDs are supported:
+The connector supports the following first-party IDs:
 
 |**Provider Name**| **Source Name**|
 |---| ---|
